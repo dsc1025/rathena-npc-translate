@@ -41,8 +41,10 @@ import urllib.parse
 
 SEP = '<<<SEP>>>'
 CLR_TOKEN = '<<<CLR{}>>>'
+BR_TOKEN = '<<<BR{}>>>'
 
 clr_re = re.compile(r"\^[0-9a-fA-F]{6}")
+br_re = re.compile(r"[\[\]]")
 
 string_re = re.compile(r'"([^\"]*)"')
 mes_line_re = re.compile(r'(?P<prefix>\bmes\b\s*)(?P<expr>.+)$')
@@ -71,26 +73,53 @@ def translate_text(text, target='zh-cn'):
             return text
         return res
     except Exception as e:
-        print(f'translate_text: deep-translator failed ({type(e).__name__}: {e}), falling back to LibreTranslate', file=sys.stderr)
+        # If translation via deep-translator fails, return original text (no fallback)
+        print(f'translate_text: deep-translator failed ({type(e).__name__}: {e}), returning original text', file=sys.stderr)
+        return text
 
-    # Fallback: LibreTranslate public instance
-    def translate_via_libre(q, tgt='zh-cn'):
-        url = 'https://libretranslate.de/translate'
-        data = urllib.parse.urlencode({
-            'q': q,
-            'source': 'auto',
-            'target': tgt,
-            'format': 'text'
-        }).encode('utf-8')
-        req = urllib.request.Request(url, data=data, headers={'Accept': 'application/json'})
-        try:
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                result = json.load(resp)
-                return result.get('translatedText', q) or q
-        except Exception:
-            return q
 
-    return translate_via_libre(text, target)
+def translate_protected_list(protected_texts, target='zh-cn'):
+    """Translate a list of already-protected strings as a single request to
+    preserve context. Returns a list of translated strings of the same length.
+    If the translator returns no meaningful change, the original protected
+    strings are returned for those positions.
+    """
+    if not protected_texts:
+        return []
+    combined = SEP.join(protected_texts)
+    translated_combined = translate_text(combined, target=target)
+    translated_parts = translated_combined.split(SEP)
+    if len(translated_parts) == len(protected_texts):
+        # normalize returns: keep original if translator produced identical text
+        out = []
+        for orig, t in zip(protected_texts, translated_parts):
+            if (t is None) or (t.strip() == orig.strip()):
+                out.append(orig)
+            else:
+                out.append(t)
+        return out
+
+    # Split mismatch: translate individually and fall back to originals on no-op
+    out = []
+    for p in protected_texts:
+        if re.fullmatch(r"[.．。…]{1,}", p.strip()):
+            out.append(p)
+            continue
+        t = translate_text(p, target=target)
+        if (t is None) or (t.strip() == p.strip()):
+            out.append(p)
+        else:
+            out.append(t)
+    return out
+
+
+def choose_translation(orig_protected, candidate):
+    """Return candidate if it's a meaningful translation of orig_protected,
+    otherwise return orig_protected.
+    """
+    if (candidate is None) or (candidate.strip() == orig_protected.strip()):
+        return orig_protected
+    return candidate
 
 
 def protect_color_codes(s):
@@ -103,6 +132,22 @@ def protect_color_codes(s):
     return prov, codes
 
 
+def protect_brackets(s):
+    codes = []
+    def _repl(m):
+        idx = len(codes)
+        codes.append(m.group(0))
+        return BR_TOKEN.format(idx)
+    prov = br_re.sub(_repl, s)
+    return prov, codes
+
+
+def restore_brackets(s, codes):
+    for i, c in enumerate(codes):
+        s = s.replace(BR_TOKEN.format(i), c)
+    return s
+
+
 def restore_color_codes(s, codes):
     for i, c in enumerate(codes):
         s = s.replace(CLR_TOKEN.format(i), c)
@@ -110,102 +155,57 @@ def restore_color_codes(s, codes):
 
 
 def process_mes_expression(expr, target='zh-cn'):
-    # find all string literal matches and their spans
-    matches = list(string_re.finditer(expr))
+    # First, replace F_Navi(...) first-string args with placeholders so they
+    # won't be re-processed by the generic literal translation below.
+    replaced_expr, fnav_map = replace_f_navi_in_text(expr, target=target)
+
+    # find all string literal matches and their spans in the replaced expr
+    matches = list(string_re.finditer(replaced_expr))
     if not matches:
-        return expr  # nothing to translate
+        # restore any F_Navi placeholders and return
+        res = replaced_expr
+        for k, v in fnav_map.items():
+            res = res.replace(k, v)
+        return res
 
-    # Default: translate all string literals unless they're additional params inside F_Navi calls
-    translate_flags = [True] * len(matches)
-
-    # Find F_Navi(...) spans and mark only the first quoted string inside each call for translation
-    for fn_m in re.finditer(r'F_Navi\s*\(', expr):
-        fn_start = fn_m.start()
-        # find the matching closing paren for this F_Navi call (simple scan, single-line assumption)
-        depth = 0
-        fn_end = None
-        for i in range(fn_m.end(), len(expr)):
-            ch = expr[i]
-            if ch == '(':
-                depth += 1
-            elif ch == ')':
-                if depth == 0:
-                    fn_end = i + 1
-                    break
-                else:
-                    depth -= 1
-        if fn_end is None:
-            fn_end = len(expr)
-
-        # collect indices of string matches within this F_Navi span
-        inside_idxs = [i for i, mm in enumerate(matches) if mm.start() >= fn_start and mm.end() <= fn_end]
-        if inside_idxs:
-            # only the first string literal inside F_Navi should be translated
-            for k, idx in enumerate(inside_idxs):
-                translate_flags[idx] = (k == 0)
-
-    # Build protected parts only for those that will be translated; preserve others as originals
-    string_parts = []  # parallel to matches; either tuple or None
-    for i, m in enumerate(matches):
+    # Build protected parts for all string literals (remaining ones need translation)
+    string_parts = []
+    for m in matches:
         content = m.group(1)
-        if translate_flags[i]:
-            protected, codes = protect_color_codes(content)
-            string_parts.append((protected, codes, content))
-        else:
-            string_parts.append(None)
+        protected, color_codes = protect_color_codes(content)
+        protected, br_codes = protect_brackets(protected)
+        string_parts.append((protected, color_codes, br_codes, content))
 
-    # Combine protected texts for translation (only those flagged)
-    protected_texts = [p[0] for p in string_parts if p is not None]
-    translated_parts = []
-    if protected_texts:
-        combined = SEP.join(protected_texts)
-        translated_combined = translate_text(combined, target=target)
-        translated_parts = translated_combined.split(SEP)
-        if len(translated_parts) != len(protected_texts):
-            # fallback: translate individually
-            translated_parts = []
-            for p in protected_texts:
-                # if original is just ellipses, skip
-                if re.fullmatch(r"[.．。…]{1,}", p.strip()):
-                    translated_parts.append(p)
-                    continue
-                t = translate_text(p, target=target)
-                if (t is None) or (t.strip() == p.strip()):
-                    translated_parts.append(p)
-                else:
-                    translated_parts.append(t)
+    protected_texts = [p[0] for p in string_parts]
+    translated_parts = translate_protected_list(protected_texts, target=target) if protected_texts else []
 
     # Restore color codes and assemble final replacement texts in order
     restored_parts = []
-    ti = 0
-    for idx, p in enumerate(string_parts):
-        if p is None:
-            # not translated: keep original raw content
-            restored_parts.append(matches[idx].group(1))
+    for (tpart, (prot, color_codes, br_codes, raw_orig)) in zip(translated_parts, string_parts):
+        if re.fullmatch(r"[.．。…]{1,}", raw_orig.strip()):
+            use_text = prot
         else:
-            prot, codes, raw_orig = p
-            tpart = translated_parts[ti] if ti < len(translated_parts) else prot
-            ti += 1
-            if re.fullmatch(r"[.．。…]{1,}", raw_orig.strip()):
-                use_text = prot
-            else:
-                use_text = tpart
-                if (tpart is None) or (tpart.strip() == prot.strip()):
-                    use_text = prot
-            s = restore_color_codes(use_text, codes)
-            s = s.replace('"', '\\"')
-            restored_parts.append(s)
+            use_text = choose_translation(prot, tpart)
+        s = restore_brackets(use_text, br_codes)
+        s = restore_color_codes(s, color_codes)
+        s = s.replace('"', '\\"')
+        restored_parts.append(s)
 
-    # Rebuild expression by replacing string literals in original expr with translated ones
+    # Rebuild expression by replacing string literals in replaced_expr with translated ones
     out = []
     last = 0
     for (m, new_str) in zip(matches, restored_parts):
         start, end = m.span()
-        out.append(expr[last:start])
+        out.append(replaced_expr[last:start])
         out.append('"' + new_str + '"')
         last = end
-    out.append(expr[last:])
-    return ''.join(out)
+    out.append(replaced_expr[last:])
+    res = ''.join(out)
+
+    # Restore F_Navi placeholders
+    for k, v in fnav_map.items():
+        res = res.replace(k, v)
+    return res
 
 
 def process_npctalk_expression(expr, target='zh-cn'):
@@ -224,22 +224,24 @@ def process_npctalk_expression(expr, target='zh-cn'):
         # For second argument (index 1), preserve suffix after '#'
         if i == 1 and '#' in content:
             before, sep, after = content.partition('#')
-            protected, codes = protect_color_codes(before)
+            protected, color_codes = protect_color_codes(before)
+            protected, br_codes = protect_brackets(protected)
             t = translate_text(protected, target=target)
-            # if translation failed (no-op), keep original before+sep+after
-            if (t is None) or (t.strip() == protected.strip()):
+            chosen = choose_translation(protected, t)
+            if chosen == protected:
                 translated = before + sep + after
             else:
-                restored = restore_color_codes(t, codes)
+                restored = restore_brackets(chosen, br_codes)
+                restored = restore_color_codes(restored, color_codes)
                 restored = restored.replace('"', '\\"')
                 translated = restored + sep + after
         elif i <= 1:
-            protected, codes = protect_color_codes(content)
+            protected, color_codes = protect_color_codes(content)
+            protected, br_codes = protect_brackets(protected)
             t = translate_text(protected, target=target)
-            if (t is None) or (t.strip() == protected.strip()):
-                restored = restore_color_codes(protected, codes)
-            else:
-                restored = restore_color_codes(t, codes)
+            chosen = choose_translation(protected, t)
+            restored = restore_brackets(chosen, br_codes)
+            restored = restore_color_codes(restored, color_codes)
             translated = restored.replace('"', '\\"')
         else:
             translated = content
@@ -275,26 +277,12 @@ def process_select_expression(expr, target='zh-cn'):
     protected_items = []  # list of (protected, codes, raw)
     for flag, raw in zip(translate_flags, parts):
         if flag:
-            prot, codes = protect_color_codes(raw)
-            protected_items.append((prot, codes, raw))
+            prot, color_codes = protect_color_codes(raw)
+            prot, br_codes = protect_brackets(prot)
+            protected_items.append((prot, color_codes, br_codes, raw))
 
     # Translate combined protected texts to preserve context
-    combined = SEP.join(p[0] for p in protected_items)
-    translated_combined = translate_text(combined, target=target)
-
-    # Split back into translated pieces; if splitting count mismatches, translate individually
-    translated_pieces = translated_combined.split(SEP)
-    if len(translated_pieces) != len(protected_items):
-        translated_pieces = []
-        for prot, codes, raw in protected_items:
-            if re.fullmatch(r"[.．。…]{1,}", raw.strip()):
-                translated_pieces.append(prot)
-                continue
-            t = translate_text(prot, target=target)
-            if (t is None) or (t.strip() == prot.strip()):
-                translated_pieces.append(prot)
-            else:
-                translated_pieces.append(t)
+    translated_pieces = translate_protected_list([p[0] for p in protected_items], target=target)
 
     # Restore color codes and reassemble final string parts in order
     restored_parts = []
@@ -304,7 +292,7 @@ def process_select_expression(expr, target='zh-cn'):
             restored_parts.append(raw)
         else:
             tpart = translated_pieces[ti]
-            prot, codes, raw_orig = protected_items[ti]
+            prot, color_codes, br_codes, raw_orig = protected_items[ti]
             ti += 1
             if re.fullmatch(r"[.．。…]{1,}", raw_orig.strip()):
                 use_text = prot
@@ -312,7 +300,8 @@ def process_select_expression(expr, target='zh-cn'):
                 use_text = tpart
                 if (tpart is None) or (tpart.strip() == prot.strip()):
                     use_text = prot
-            s = restore_color_codes(use_text, codes)
+            s = restore_brackets(use_text, br_codes)
+            s = restore_color_codes(s, color_codes)
             s = s.replace('"', '\\"')
             restored_parts.append(s)
 
@@ -328,18 +317,24 @@ def process_select_expression(expr, target='zh-cn'):
     return ''.join(out)
 
 
-def process_f_navi_in_line(line, target='zh-cn'):
-    # Process all F_Navi(...) occurrences in a single line, translating only the
-    # first quoted string inside each call. Returns the updated line.
+def replace_f_navi_in_text(text, target='zh-cn'):
+    """Find F_Navi(...) calls in text and replace the first quoted argument
+    inside each call with a placeholder. Return (modified_text, mapping)
+    where mapping maps placeholder -> final quoted string (including quotes).
+    The placeholder is safe (not quoted) so callers can translate other
+    literals and later restore the placeholders.
+    """
     out = []
     last = 0
-    for fn_m in re.finditer(r'F_Navi\s*\(', line):
+    mapping = {}
+    counter = 0
+    for fn_m in re.finditer(r'F_Navi\s*\(', text):
         fn_start = fn_m.start()
         # find matching closing paren (simple scan)
         depth = 0
         fn_end = None
-        for i in range(fn_m.end(), len(line)):
-            ch = line[i]
+        for i in range(fn_m.end(), len(text)):
+            ch = text[i]
             if ch == '(':
                 depth += 1
             elif ch == ')':
@@ -349,45 +344,45 @@ def process_f_navi_in_line(line, target='zh-cn'):
                 else:
                     depth -= 1
         if fn_end is None:
-            fn_end = len(line)
+            fn_end = len(text)
 
-        # Append text before this F_Navi
-        out.append(line[last:fn_start])
-
-        fn_text = line[fn_start:fn_end]
-        # find string literals inside fn_text
+        out.append(text[last:fn_start])
+        fn_text = text[fn_start:fn_end]
         matches = list(string_re.finditer(fn_text))
         if not matches:
-            # nothing to do
             out.append(fn_text)
             last = fn_end
             continue
 
-        # Only translate the first quoted string inside F_Navi
         m0 = matches[0]
         content = m0.group(1)
-        protected, codes = protect_color_codes(content)
-        t = translate_text(protected, target=target)
-        if (t is None) or (t.strip() == protected.strip()):
-            use = protected
-        else:
-            use = t
-        restored = restore_color_codes(use, codes)
+        protected, color_codes = protect_color_codes(content)
+        protected, br_codes = protect_brackets(protected)
+        translated = translate_protected_list([protected], target=target)[0]
+        restored = restore_brackets(translated, br_codes)
+        restored = restore_color_codes(restored, color_codes)
         restored = restored.replace('"', '\\"')
 
-        # Rebuild fn_text with replaced first string
-        fn_out = []
-        last_i = 0
-        start0, end0 = m0.span()
-        fn_out.append(fn_text[last_i:start0])
-        fn_out.append('"' + restored + '"')
-        last_i = end0
-        fn_out.append(fn_text[last_i:])
-        out.append(''.join(fn_out))
-        last = fn_end
+        placeholder = f'__F_NAV_{counter}__'
+        mapping[placeholder] = '"' + restored + '"'
 
-    out.append(line[last:])
-    return ''.join(out)
+        start0, end0 = m0.span()
+        fn_modified = fn_text[:start0] + placeholder + fn_text[end0:]
+        out.append(fn_modified)
+        last = fn_end
+        counter += 1
+
+    out.append(text[last:])
+    return ''.join(out), mapping
+
+
+def process_f_navi_in_line(line, target='zh-cn'):
+    # Use the centralized replacer to handle F_Navi first-arg translation
+    replaced, fnav_map = replace_f_navi_in_text(line, target=target)
+    # restore placeholders immediately and return
+    for k, v in fnav_map.items():
+        replaced = replaced.replace(k, v)
+    return replaced
 
 
 def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force=False):
@@ -439,35 +434,77 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
 
     # Open output in append mode and write processed lines as we go
     with open(outfile, 'a', encoding='utf-8') as fo:
+        # writer wrapper: replace author signature to 'ding' in header comment lines
+        def write_line(txt):
+            try:
+                if txt.lstrip().startswith('//=') and 'L0ne_W0lf' in txt:
+                    txt = txt.replace('L0ne_W0lf', 'ding')
+            except Exception:
+                pass
+            fo.write(txt)
         use_tqdm = _tqdm is not None
         if use_tqdm:
             it = _tqdm(range(resume_idx, end_idx), total=(end_idx - start_idx), initial=(resume_idx - start_idx), unit='line')
         else:
             it = range(resume_idx, end_idx)
 
+        # Skip certain header blocks in output: keep closing marker for Additional Comments
+        skip_additional_block = False
+        skip_indices = set()
         for idx in it:
+            if idx in skip_indices:
+                continue
             line = lines[idx]
+            stripped = line.strip()
+
+            # Remove the Current Version header and its following value line
+            if stripped.startswith('//===== Current Version'):
+                next_idx = idx + 1
+                if next_idx < total and lines[next_idx].lstrip().startswith('//='):
+                    skip_indices.add(next_idx)
+                continue
+
+            # Remove the Compatible With header and its following value line
+            if stripped.startswith('//===== Compatible With'):
+                next_idx = idx + 1
+                if next_idx < total and lines[next_idx].lstrip().startswith('//='):
+                    skip_indices.add(next_idx)
+                continue
+
+            # Detect start of Additional Comments header block and skip until its closing line
+            if stripped.startswith('//===== Additional Comments'):
+                skip_additional_block = True
+                continue
+            if skip_additional_block:
+                # If we reach the block end marker, write it and stop skipping
+                if stripped.startswith('//============================================================'):
+                    write_line(line)
+                    skip_additional_block = False
+                    continue
+                # otherwise keep skipping lines inside the Additional Comments block
+                continue
             # Prefer mes handling
             m = mes_line_re.search(line)
             if m:
                 expr = m.group('expr').rstrip('\r\n')
                 new_expr = process_mes_expression(expr, target=target)
                 new_line = line[:m.start('expr')] + new_expr + '\n'
-                fo.write(new_line)
+                write_line(new_line)
             else:
                 # For non-mes lines, translate first string inside any F_Navi(...) calls
                 try:
                     line = process_f_navi_in_line(line, target=target)
-                except Exception:
-                    # don't let F_Navi post-processing break the run
-                    pass
+                except Exception as e:
+                    # don't let F_Navi post-processing break the run; log error
+                    print(f'process_f_navi_in_line failed: {e}', file=sys.stderr)
+                    traceback.print_exc()
                 # Handle npctalk lines: translate first two string args
                 n = npctalk_line_re.search(line)
                 if n:
                     expr = n.group('expr').rstrip('\r\n')
                     new_expr = process_npctalk_expression(expr, target=target)
                     new_line = line[:n.start('expr')] + new_expr + '\n'
-                    fo.write(new_line)
+                    write_line(new_line)
                 else:
                     # Handle select(...) lines: translate string literals containing English
                     s = select_line_re.search(line)
@@ -475,9 +512,9 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
                         expr = s.group('expr').rstrip('\r\n')
                         new_expr = process_select_expression(expr, target=target)
                         new_line = line[:s.start('expr')] + new_expr + '\n'
-                        fo.write(new_line)
+                        write_line(new_line)
                     else:
-                        fo.write(line)
+                        write_line(line)
             fo.flush()
             if not use_tqdm:
                 print(f'Translated line {idx+1}/{end_idx}')
