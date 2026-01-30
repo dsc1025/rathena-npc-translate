@@ -11,7 +11,7 @@ keeps a safe dry-run default for initial testing.
 """
 import os
 import argparse
-# Dry-run listing only for initial tests; do not import TranslateEngine yet
+from script.translate import TranslateEngine
 
 
 def find_txt_files(root, recursive=True):
@@ -70,7 +70,21 @@ def main():
         for p in untranslated:
             print(' -', p)
 
-    print(f"\nDry-run complete: {len(untranslated)} files missing .zh-cn.txt; no translations performed.")
+    # Perform translations for the missing files using TranslateEngine
+    engine = TranslateEngine(target='zh-cn')
+    succeeded = []
+    failed = []
+    for p in untranslated:
+        outp = os.path.splitext(p)[0] + '.zh-cn.txt'
+        print(f'Processing: {p} -> {outp}')
+        try:
+            engine.process_file(p, outfile=outp, force=args.force)
+            succeeded.append(p)
+        except Exception as e:
+            print(f'Failed to translate {p}: {e}')
+            failed.append((p, str(e)))
+
+    print(f"\nCompleted: {len(succeeded)} succeeded, {len(failed)} failed.")
 
 
 if __name__ == '__main__':
