@@ -5081,3 +5081,4990 @@ conch_in,65,58,3	script	Purser#dorcon	4_CAT_ADV1,{
 		mes "[事务长]";
 		mes "是的。海上的^0000cd雾^000000。海雾。";
 		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果怪物冲出迷雾我不会感到惊讶。我也闻到了一股烟味。这附近最近有火山喷发吗？";
+		next;
+		mes "[事务长]";
+		mes "由于大雾，我们无法发出航行信号。询问^0000cd大副^000000 航行时间表是否有任何变化。有的话就去修吧。";
+		npctalk "只有大副才能决定我们能否去新大陆还是现在。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "什么？我昨天完成了训练。";
+		next;
+		mes "[事务长]";
+		mes "我们不是在这里做慈善工作。我们训练有前途的多拉姆，并将他们送往新大陆，为多拉姆的名字带来荣耀。这就是为什么要训练你们。";
+		next;
+		mes "[事务长]";
+		mes "把它看作是你在新大陆遇到的所有困难的热身。";
+		npctalk "大副就在那边的船长室里。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的！";
+		erasequest 14537;// When do we take off?
+		setquest 14538;// Can we take off?
+		lasagna_quest[1] = 20;
+		close;
+	}
+	if (lasagna_quest[1] == 20) {
+		mes "[事务长]";
+		mes "大副在船长室。去问问他是否会因为大雾而改变船期！";
+		close;
+	}
+	if (lasagna_quest[1] == 21) {
+		mes "[事务长]";
+		mes "我估计因为有雾我们无法出发了。";
+		close;
+	}
+	if (lasagna_quest[1] == 28) {
+		mes "[事务长]";
+		if (Class != Job_Summoner)
+			mes "进展如何？请向大副斯特洛汇报。";
+		else
+			mes "去吧，向大副报告。";
+		close;
+	}
+	if (lasagna_quest[1] == 29) {
+		mes "[事务长]";
+		if (Class != Job_Summoner)
+			mes "享受顺利的航行。";
+		else
+			mes "我很高兴你像一个成熟的多拉姆一样工作。";
+		close;
+	}
+	mes "[事务长]";
+	mes "启航前我应该检查一下货物。";
+	close;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(14531) == 1" );
+	end;
+}
+
+conch_in,52,60,0	script	#dorcon95	HIDDEN_WARP_NPC,1,1,{
+	end;
+OnTouch:
+	if (lasagna_quest[1] != 14)
+		npctalk "- 敲敲门 -", "", bc_self;
+	end;
+}
+
+// in A_B
+conch_in,24,62,5	script	Stello#dorcon	4_DR_STELO,{
+	if (checkweight(1001,4) == 0) {
+		mes "[星星]";
+		mes "看起来很多而且很大。减少一些怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] < 14) {
+		mes "[星星]";
+		mes "你是谁？未经许可，不得入内。请离开。";
+		close;
+	}
+	if (lasagna_quest[1] == 14) {
+		mes "[星星]";
+		mes "是什么把你带到这里来的？你听说要见船长吗？如果没有，请离开。你不应该在这里。";
+		close;
+	}
+	if (lasagna_quest[1] < 20) {
+		mes "[星星]";
+		mes "请记住这一点。当你与这艘船的船员打交道时，需要注意你的举止。";
+		close;
+	}
+	if (lasagna_quest[1] == 20) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "亲爱的首席官！";
+		next;
+		mes "[星星]";
+		mes "到底是怎么回事？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "乘务长让我检查一下在浓浓的^0000cd雾^000000中航行是否会出现任何问题。";
+		npctalk "雾！", "甘贝里队长#dorcon0", bc_self;
+		npctalk "正确的。", "", bc_self;
+		next;
+		mes "[星星]";
+		mes "嗯……这雾一定是……";
+		next;
+		mes "[甘贝里队长]";
+		mes "又是^0000cd那个^000000。";
+		next;
+		mes "[星星]";
+		mes "是的。再次。嗯，我们该怎么办？我们没有人可以派去那里。大家都在忙着准备出海。";
+		npctalk "这很烦人。", "", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "斯特洛，我想你应该亲自去那里。";
+		npctalk "没有其他办法。", "甘贝里队长#dorcon0", bc_self;
+		next;
+		mes "[星星]";
+		mes "让我们送蛋蛋吧。";
+		next;
+		mes "[甘贝里队长]";
+		mes "Eggling 还没有准备好应对它。想想为什么蛋灵还叫蛋灵。";
+		next;
+		mes "[星星]";
+		mes "……我想我该走了。该死的。";
+		npctalk "他只会让事情变得更糟。", "", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "斯特洛。君子无论何时都应该使用良好的语言。";
+		npctalk "我该走了。哦，亲爱的。", "", bc_self;
+		npctalk "史黛拉？", "甘贝里队长#dorcon0", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯……事务长派我去解决这个问题。";
+		next;
+		emotion ET_SURPRISE;
+		emotion ET_SURPRISE, getnpcid(0, "Captain Gamberi#dorcon0");
+		mes "[星星]";
+		mes "有。";
+		next;
+		mes "[甘贝里队长]";
+		mes "一个训练有素的。";
+		next;
+		mes "[星星]";
+		mes "多拉姆.";
+		next;
+		mes "[甘贝里队长]";
+		mes "在我们面前。";
+		npctalk "是的，有。", "", bc_self;
+		next;
+		emotion ET_SWEAT, playerattached();
+		mes "[星星]";
+		mes "好的。将其视为启航前的最后一次训练。";
+		next;
+		mes "[甘贝里队长]";
+		mes "斯特洛。当我们面对一个已经完成冒险训练的多拉姆时，将其称为最后一次训练是没有意义的。这应该称为第一次实践。";
+		next;
+		mes "[星星]";
+		mes "不管是什么。嗯，很好。我将给你分配第一个任务作为你的第一次练习。";
+		npctalk "屁股和屁股有什么不同吗？", "", bc_self;
+		next;
+		mes "[星星]";
+		mes "我们即将走的海道是^0000cd非典型海道^000000。你需要解读星星和风的运动。你需要走地图上没有标记的路，这让你怀疑是否能找到那片土地。";
+		next;
+		mes "[星星]";
+		mes "这就是为什么我们需要除去所有阻碍我们解读阳光和风的雾气。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我们能驱散迷雾吗？";
+		next;
+		mes "[星星]";
+		mes "如果是普通的雾。您需要等到它被抬起。然而，有^0000cd某些东西导致了这种雾^000000。它可以被删除。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "有什么东西造成雾气吗？也许有坏人参与其中？这太令人兴奋了！";
+		next;
+		mes "[星星]";
+		mes "不完全是。附近的山洞里住着一条龙。龙喷出火焰，燃烧周围的一切。雾是由烟组成的。";
+		npctalk "我想你已经读过很多冒险小说了，亲爱的冒险家。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "难怪雾气有股烟味。";
+		next;
+		mes "[星星]";
+		mes "龙的状况始终受到治安维持队的监视。请去看看守卫村庄南桥的^0000cd守卫者^000000，并检查龙的状态。";
+		next;
+		mes "[星星]";
+		mes "如果您需要帮助，请帮助他们阻止龙喷火。";
+		next;
+		mes "[甘贝里队长]";
+		mes "亲爱的冒险家，航行取决于你的手。好吧，继续执行你的第一个任务吧！";
+		next;
+		mes "[星星]";
+		mes "等等，把这个带走。在紧急情况下它会派上用场。请小心！";
+		erasequest 14538;// Can we take off?
+		setquest 14539;// Crazy Dragon
+		getitem 569,30;// Novice Potion
+		getitem 12323,20;// Novice Fly Wing
+		lasagna_quest[1] = 21;
+		close;
+	}
+	if (lasagna_quest[1] < 28) {
+		mes "[星星]";
+		mes "询问自卫队龙的情况如何，如果出现任何问题，请与自卫队解决。";
+		close;
+	}
+	if (lasagna_quest[1] == 28) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "亲爱的首席官！";
+		next;
+		mes "[星星]";
+		mes "你在这里。我们刚才正在谈论你。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你在说什么？";
+		next;
+		mes "[甘贝里队长]";
+		mes "我们想知道我们是否必须去那里取回你的尸体......";
+		emotion ET_HUK;
+		emotion ET_HUK, playerattached();
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "什么？这是一个如此危险的任务吗？";
+		next;
+		mes "[星星]";
+		mes "不，一点也不。队长，你在说什么？";
+		npctalk "他有时板着脸说出这样血腥的话。", "", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "斯特洛，这就是所谓的笑话。";
+		npctalk "一个绅士应该有幽默感。", "甘贝里队长#dorcon0", bc_self;
+		next;
+		mes "[星星]";
+		mes "一个笑话应该让双方都感到愉快。这只是一个诅咒。";
+		npctalk "至少你让我吃了一惊。", "", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "斯特洛，你必须了解这个叫做社会规范的东西。";
+		next;
+		mes "[星星]";
+		mes "好吧，我们可以稍后再讨论。我想知道你什么时候回来。当迷雾消散时，我们发现你成功了，亲爱的冒险家。感谢您的努力。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这对我来说是一次很棒的经历。";
+		next;
+		mes "[甘贝里队长]";
+		mes "斯特洛，你应该慷慨地表扬你。就像我对你做的那样。";
+		next;
+		mes "[星星]";
+		mes "哦是的。让我们为任务归来的冒险家送上一份厚礼吧！";
+		npctalk "哇哦。掌声，掌声，掌声。", "", bc_self;
+		npctalk "斯特洛？你需要真心实意。", "甘贝里队长#dorcon0", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哦是的。嗯，谢谢。";
+		next;
+		if (Class != Job_Summoner) {
+			mes "[甘贝里队长]";
+			mes "那么好吧。是时候发出航行信号了。";
+			next;
+			mes "[甘贝里队长]";
+			mes "大家各就各位！我们现在就启航了！";
+			next;
+			mes "[说谎-]";
+			completequest 14554;// We can start sail now
+		}
+		else {
+			mes "[甘贝里队长]";
+			mes "斯特洛。将^0000cd那个^000000交给冒险家。";
+			next;
+			mes "[星星]";
+			mes "那？你这是什么意思？";
+			next;
+			mes "[甘贝里队长]";
+			mes "当你离开千层面时，你无法用金钱买到的东西。";
+			npctalk "哦，那个！我一定是把它放在这附近了...", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "凤尾鱼？";
+			next;
+			mes "[星星]";
+			mes "哦！你怎么知道的？";
+			emotion ET_HUK;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我收到了一把。我不需要更多。";
+			next;
+			mes "[星星]";
+			mes "真的吗？那么你可能也不需要这个。太糟糕了。我已经为你准备好了。我想它现在已经属于别人了。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "什么……那是什么？";
+			next;
+			mes "[星星]";
+			mes "这是法法尔义警团的团长和康克利纳号的队长为庆祝第一次任务而为新手冒险家准备的小礼物。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "帽子和戒指？";
+			next;
+			mes "[星星]";
+			mes "这顶帽子是 Pepponcino 听完你的故事后准备的。多拉姆冒险家值得拥有一顶帽子。这顶帽子会给你带来好运。";
+			next;
+			mes "[星星]";
+			mes "而戒指是队长准备的。亲爱的船长？";
+			next;
+			mes "[甘贝里队长]";
+			mes "这枚戒指将帮助你作为新手冒险家积累特殊的经验。";
+			next;
+			mes "[甘贝里队长]";
+			mes "它会和你一起成长，直到你不再需要它的帮助。当你成为经验丰富的冒险者时，它就会失去所有力量，变成一个普通的草环。";
+			next;
+			mes "[星星]";
+			mes "哦，我应该给你一个放大镜。当您获得不明武器或装备时，请进行检查。";
+			next;
+			mes "[星星]";
+			mes "我会给你一些^0000cd卡鲁格纳牛奶^000000，这是所有去过千层面的多拉姆人都渴望的。非常感谢您的努力。";
+			emotion ET_DELIGHT;
+			next;
+			mes "[甘贝里队长]";
+			mes "那么好吧。是时候发出航行信号了。";
+			next;
+			mes "[甘贝里队长]";
+			mes "大家各就各位！我们现在就启航了！";
+			next;
+			mes "[说谎-]";
+			completequest 14544;// Now I can leave
+			getexp 500,500;
+			getitem 19084,1;// Parfaille Vigilante Hat [1]
+			getitem 28374,1;// Foxtail Ring
+			getitem 11601,50;// Delicious Anchovy
+			getitem 12325,20;// Novice Magnifier
+		}
+		getitem 22984,5;// Kahluna Milk
+		lasagna_quest[1] = 29;
+		close2;
+		warp "izlude",193,209;
+		end;
+	}
+	if (lasagna_quest[1] == 29) {
+		mes "[星星]";
+		if (Class != Job_Summoner)
+			mes "当我有一天离开船时，我想探索新大陆。";
+		else {
+			mes "新大陆怎么样？我应该请假去冒险吗？";
+			next;
+			mes "[甘贝里队长]";
+			mes "废话！还有谁来负责通往新大陆的海路？";
+			next;
+			mes "[星星]";
+			mes "只是说……说出来也没什么坏处。";
+		}
+		close;
+	}
+}
+
+conch_in,26,64,5	script	Captain Gamberi#dorcon0	4_DR_GAMBERI,{
+	if (lasagna_quest[1] < 14) {
+		mes "[甘贝里队长]";
+		mes "一定要敲门。保持你的礼貌。";
+		close;
+	}
+	if (lasagna_quest[1] == 14) {
+		if (Class != Job_Summoner) {
+			mes "[甘贝里队长]";
+			mes "斯特洛，我已经告诉过你，你的着装如何表明你是一个什么样的多拉姆。请广告一下你的着装。";
+			next;
+			mes "[星星]";
+			mes "这太重、太紧、太烦人。这实在是太不舒服了。";
+			next;
+			mes "[甘贝里队长]";
+			mes "您需要克服不便才能保持正确的姿势。正确的姿势是你成为绅士的第一步。你明白吗，斯特洛？";
+			next;
+			emotion ET_OK;
+			mes "[甘贝里队长]";
+			mes "斯特洛，再说一遍。";
+			npctalk "史黛拉？", "", bc_self;
+			next;
+			mes "[星星]";
+			mes "是的，先生。";
+			npctalk "他总是需要听到答案吗？", "斯特拉#dorcon", bc_self;
+			npctalk "史黛拉？", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "打扰一下。";
+			next;
+			mes "[星星]";
+			mes "你是谁？未经许可，不得入内。请离开。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "你好。我是这艘船上的乘客。我想知道这艘​​??船什么时候出发。";
+			next;
+			mes "[星星]";
+			mes "到时候船就会出发。";
+			next;
+			mes "[甘贝里队长]";
+			mes "斯特洛，我认为这不是问题的关键。看看外面。";
+			npctalk "雾...", "斯特拉#dorcon", bc_self;
+			next;
+			mes "[星星]";
+			mes "哦，红色^0000cd雾^000000！刚才好像还好啊！";
+			next;
+			mes "[甘贝里队长]";
+			mes "我猜想可能是有什么东西造成了干扰。";
+			next;
+			mes "[星星]";
+			mes "我们不能就这样扬帆远航。";
+			npctalk "绝不。", "斯特拉#dorcon", bc_self;
+			next;
+			mes "[甘贝里队长]";
+			mes "我看来是这样的";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "不过，我确实很着急。我应该等到雾散去吗？";
+			next;
+			mes "[星星]";
+			mes "如果你只是坐着等待，那团雾就不会消散。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "这不是天然的雾吗？";
+			next;
+			mes "[星星]";
+			mes "事实并非如此。这种雾是由居住在洞穴中的龙^000000在不安时喷出的烟雾制成的。请等待^0000cd义务警员^000000来处理它。";
+			npctalk "他们是专业人士。他们很快就会处理好！", "斯特拉#dorcon", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "那我们什么时候可以出发呢？";
+			next;
+			mes "[星星]";
+			mes "也许明天。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "靠近海岸的地方不是有雾气吗？直接开船不会有问题吗？";
+			next;
+			mes "[星星]";
+			mes "我们即将走的海道是^0000cd非典型海道^000000。你需要解读星星和风的运动。你需要走地图上没有标记的路，这让你怀疑是否能找到那片土地。";
+			npctalk "找路真是太麻烦了。", "斯特拉#dorcon", bc_self;
+			next;
+			mes "[星星]";
+			mes "这就是为什么我们需要摆脱所有阻碍我们读取阳光和风的^0000cd雾^000000。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我想我已经别无选择了。我应该去那里。";
+			next;
+			mes "[星星]";
+			mes "你不需要这样做。";
+			next;
+			mes "[甘贝里队长]";
+			mes "斯特洛。这位冒险家看来经验丰富。这也可能是一次新的冒险。它可以帮助我们。";
+			npctalk "大概吧。这位冒险家看起来确实很厉害。", "斯特拉#dorcon", bc_self;
+			npctalk "你觉得怎么样，斯特洛？", "", bc_self;
+			next;
+			mes "[星星]";
+			mes "嗯……好吧。请去看看守卫村庄南桥的^0000cd守卫者^000000，并检查龙的状态。";
+			next;
+			mes "[星星]";
+			mes "由于龙的状况在烤宽面条中非常重要，治安维护者一直在检查它。";
+			next;
+			mes "[星星]";
+			mes "询问自卫队龙的情况如何，如果出现任何问题，请与自卫队解决。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我懂了。让我快速浏览一下。";
+			npctalk "照顾好你自己。", "", bc_self;
+			erasequest 14547;// Can we set out the sailing?
+			setquest 14548;// Crazy Dragon
+			lasagna_quest[1] = 21;// jump to 21
+			close;
+		}
+		mes "[甘贝里队长]";
+		mes "斯特洛，我已经告诉过你，你的着装如何表明你是一个什么样的多拉姆。请广告一下你的着装。";
+		next;
+		mes "[星星]";
+		mes "这太重、太紧、太烦人。这实在是太不舒服了。";
+		next;
+		mes "[甘贝里队长]";
+		mes "您需要克服不便才能保持正确的姿势。正确的姿势是你成为绅士的第一步。你明白吗，斯特洛？";
+		next;
+		emotion ET_OK, getnpcid(0, "Stello#dorcon");
+		mes "[甘贝里队长]";
+		mes "斯特洛，再说一遍。";
+		npctalk "史黛拉？", "", bc_self;
+		next;
+		mes "[星星]";
+		mes "是的，先生。";
+		npctalk "他总是需要听到答案吗？", "斯特拉#dorcon", bc_self;
+		npctalk "史黛拉？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呃，这是……吗？";
+		next;
+		mes "[星星]";
+		mes "你是谁？未经许可，不得入内。请离开。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "大家好，我是即将踏上新冒险的" + strcharinfo(0) + "。";
+		next;
+		mes "[甘贝里队长]";
+		mes "新的冒险家。礼貌的多拉姆总是在进门前敲门。既然冒险之前你一定会紧张，所以这次我就放过它吧。";
+		npctalk "敲……是的，敲非常重要。", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "我是负责这艘船的^0000cdGamberi^000000船长。欢迎登机。";
+		npctalk "我是负责这艘船的甘贝里船长。", "斯特拉#dorcon", bc_self;
+		npctalk "史黛拉？", "", bc_self;
+		npctalk "哈！对不起。", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[星星]";
+		mes "事务长一定派了另一个不相干的访客来。他一定告诉过你，来自同一个家乡的人应该如何团结在一起。";
+		next;
+		mes "[星星]";
+		mes "哦，我没有责怪你。我会尽我所能为您带来最好的航海冒险。我是^0000cd斯特洛^000000。";
+		npctalk "首席官。", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "它可以帮助您放松在船上走动的神经。只要你注意礼貌，大家都会欢迎你的。";
+		next;
+		mes "[星星]";
+		mes "尤其是，你需要调整你的着装。正确的着装决定正确的姿势，正确的姿势是成为绅士的第一步。";
+		npctalk "这是正确的。", "", bc_self;
+		next;
+		mes "[星星]";
+		mes "所有的船员都是绅士，但他们对不礼貌的行为毫不留情。你应该小心这一点。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的，我会。谢谢。";
+		erasequest 14532;// Greetings to Captain Gamberi
+		setquest 14533;// Say hi to recorder
+		getexp 200,300;
+		lasagna_quest[1] = 15;
+		close;
+	}
+	if (lasagna_quest[1] < 21) {
+		if (Class != Job_Summoner) {
+			mes "[甘贝里队长]";
+			mes "我很高兴像你这样经验丰富的冒险家能够帮助我们。向义务警员询问龙的状态。";
+			close;
+		}
+		mes "[甘贝里队长]";
+		mes "与其他船员见面是个好主意。";
+		close;
+	}
+	if (lasagna_quest[1] < 29) {
+		if (lasagna_quest[1] == 28 && Class != Job_Summoner) {
+			mes "[甘贝里队长]";
+			mes "请告诉斯特洛。";
+			close;
+		}
+		mes "[甘贝里队长]";
+		mes "你需要让龙平静下来才能启航。请上床睡觉。";
+		close;
+	}
+
+	if (conch_in_recorder == 1) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "对不起，队长。";
+		next;
+		mes "[甘贝里队长]";
+		mes "是什么把你带到这里来的？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我来这里是为了履行^0000cd作为冒险者的职责^000000。";
+		next;
+		mes "[甘贝里队长]";
+		mes "作为冒险者的职责？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "除了开始冒险之外，我还收集其他人的冒险故事。我听说甘贝里队长，你做烤宽面条已经很久了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "大家都说我能从你那里听到关于烤宽面条和Con-Chliina的冒险故事。";
+		next;
+		mes "[甘贝里队长]";
+		mes "哼！那么你就找到了对的人。给冒险家讲冒险故事对我来说是另一种冒险。你现在想听哪个故事？";
+		npctalk "我已经很久没有见到你这样的访客了。", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我对关于你的故事最感兴趣。";
+		next;
+		mes "[虾]";
+		mes "我来自烤宽面条。我出生在一个尊贵的家庭和温柔的父母。我长大后成为一个充满好奇心和冒险精神的孩子。";
+		npctalk "村里没有人不认识我。", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[虾]";
+		mes "我想摆脱家族的束缚。我跑开，在烤宽面条周围闲逛。";
+		npctalk "我的家是一座无形的监狱，将我困在里面，我是一只渴望自由的小鸟……", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[星星]";
+		mes "哦，奇怪。这不是我从你母亲那里听到的故事，船长。她说你不想帮肉店生意，你一大早就出去了。";
+		npctalk "谁在说谎？", "斯特拉#dorcon", bc_self;
+		npctalk "史黛拉？", "", bc_self;
+		next;
+		mes "[虾]";
+		mes "斯特洛，打断是不礼貌的。我有强烈的正义感，不能让那些坏多拉姆破坏千层面的和平。我必须^0000cd引导他们走上正确的道路^000000。";
+		next;
+		mes "[虾]";
+		mes "然后我遇到了意大利辣椒。";
+		next;
+		mes "[星星]";
+		mes "我听过那个故事。这就是为什么你被称为疯子...";
+		npctalk "史黛拉？", "", bc_self;
+		npctalk "不，没关系。", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[虾]";
+		mes "我对渔业很感兴趣，于是我与 Pepperoncino 一起进入了^0000cd凤尾鱼加工^000000业务。我们发了财。我们想知道如何处理我们拥有的所有钱......";
+		next;
+		mes "[星星]";
+		mes "原来是...";
+		npctalk "真的是吗？", "", bc_self;
+		npctalk "不，别管我...", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[虾]";
+		mes "你现在可能看不到了，但烤宽面条曾经是一个黑暗的地方。街上到处都是坏多拉姆，打架斗殴事件也时有发生。";
+		next;
+		mes "[虾]";
+		mes "我的职责是^0000cd引导那些坏Dorams走上正确的道路^000000。";
+		next;
+		mes "[虾]";
+		mes "十年前，佩佩罗西诺和托马斯齐心协力，为这座小镇带来了和平……";
+		next;
+		mes "[星星]";
+		mes "你需要一些人力...";
+		npctalk "......", "", bc_self;
+		npctalk "……呃……", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[虾]";
+		mes "那时我遇见了斯特洛。我^0000cd纠正了当时是扒手的斯特洛^000000。他已成为首席办公室。";
+		next;
+		mes "[星星]";
+		mes "哼，咱们不说这个了。那是很久以前的事了。";
+		npctalk "你在跟客人说什么？", "", bc_self;
+		next;
+		mes "[虾]";
+		mes "我、佩佩罗西诺和托马斯想要完成一场重要的演出。非常大的一个。与我们当时所做的事情完全不同。一项业务。我是说。";
+		next;
+		mes "[虾]";
+		mes "我们开始的业务是^0000cd在其他城市销售烤宽面条的特色产品^000000。进展顺利，我们雇佣了更多的人来扩大业务规模。";
+		next;
+		mes "[虾]";
+		mes "与此同时，我们组织了一支^0000cd治安队^000000来清理千层面的街道。许多人为了我们的事业加入了我们。";
+		npctalk "当我组建义务警队时，很多人被我的个性所吸引并加入了我。", "", bc_self;
+		next;
+		mes "[星星]";
+		mes "你是要跟我一起还是要被打脸？难道你还要继续生活在阴沟里吗？听到这些威胁，谁不会加入治安维持会......";
+		next;
+		mes "[虾]";
+		mes "史黛拉？";
+		npctalk "真的吗？你是强行加入的吗？", "", bc_self;
+		next;
+		mes "[星星]";
+		mes "不！我真的很想加入！";
+		npctalk "不！我真的很想加入！", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[虾]";
+		mes "我纠正了那些坏多拉姆，组建了商人团和治安团，从事^0000cd贸易^000000。生意兴隆，附近的所有城市都充满了烤宽面条的商品。";
+		next;
+		mes "[虾]";
+		mes "不管怎样，我们决定把舞台延伸到^0000cd大海^000000。这个决定是出于我的冒险精神。";
+		next;
+		mes "[星星]";
+		mes "那是因为佩佩罗西诺...";
+		npctalk "这是因为意大利辣香肠。", "", bc_self;
+		npctalk "嗯，他可能有一些影响......", "斯特拉#dorcon", bc_self;
+		next;
+		mes "[虾]";
+		mes "然后我们遭遇了暴风雨，与^0000cd托马斯的船Navi^000000分开了。我们继续寻找Navi。";
+		next;
+		mes "[虾]";
+		mes "然后我和我已经拉直的^0000cd斯特洛^000000一起开辟了通往马兰多的海路，并与托马斯重聚。最终，我们决定进军新大陆。";
+		npctalk "咳咳，那部分请详细说一下！", "", bc_self;
+		next;
+		mes "[虾]";
+		mes "从那时起，我们不仅引领了与新大陆的贸易，而且连接了各大洲。来自两大洲的冒险家都使用《<<CLR0>>>Con-Chliina^000000，我们为此感到自豪。";
+		next;
+		mes "[虾]";
+		mes "这够了吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哦，这真是一个故事。我真的很欣赏你的故事。我相信，所有无数的冒险经历让你成为了现在的你，亲爱的船长。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "好吧，我想我是时候出去寻找新的冒险了，把这段宝贵的经历抛在脑后。";
+		next;
+		mes "[甘贝里队长]";
+		mes "请稍后回来告诉我你的故事。";
+		npctalk "我也想听听。", "斯特拉#dorcon", bc_self;
+		erasequest 14579;// Interview with Captain
+		setquest 14580;// To Recorder
+		conch_in_recorder = 2;
+		close;
+	}
+	if (conch_in_recorder == 2) {
+		mes "[甘贝里队长]";
+		mes "有什么问题就来找我吧。";
+		close;
+	}
+	mes "[甘贝里队长]";
+	if (Class != Job_Summoner)
+		mes "我希望有一天能听听这个冒险故事。";
+	else
+		mes "我希望有一天能听听你在新大陆的冒险故事。在冒险的过程中时不时来拜访我。";
+	close;
+}
+
+// in G_H
+conch_in,96,29,5	script	Recorder#dorcon	4_CAT_MERMASTER,{
+	if (checkweight(1001,1) == 0) {
+		mes "[录音机]";
+		mes "看起来很多而且很大。减少一些怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] < 15) {
+		mes "[录音机]";
+		mes "因为需要集中注意力，所以请不要打扰我。";
+		close;
+	}
+	if (lasagna_quest[1] == 15) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "打扰一下。";
+		next;
+		mes "[录音机]";
+		mes "我说了不要打扰……哦，你是谁？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "大家好，我是" + strcharinfo(0) + "，正在寻找来自新大陆的冒险。我是按照事务长的建议来这里打招呼的。";
+		npctalk "我懂了。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "很高兴见到你。我是这艘船的记录员，负责这艘船的所有记录。有问题随时可以过来。您可以自由访问除机密记录之外的任何记录。";
+		next;
+		mes "[录音机]";
+		mes "现在让我记录您的个人资料。哦，你不需要做任何事情。你可能只是站在那里。";
+		next;
+		mes "[录音机]";
+		mes "你的名字是..." + strcharinfo(0) + "...身高必须是...并且颜色是...像这样...你的口音...你一定住在帕内并搬到了邦戈拉。";
+		npctalk "而你在烤宽面条...", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "你脚上的泥土和草……你不是一个爱整洁的人……哦，没关系。我不是写下你的错误……这就够了。";
+		next;
+		emotion ET_HUK;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你如何详细了解这些事情？";
+		next;
+		mes "[录音机]";
+		mes "你只需要稍微注意一下。这只是我通过长期观察人们而学到的一种技巧。";
+		next;
+		mes "[录音机]";
+		mes "让我看看，你一定见过船长和大副。这个地方一定是你的第二站。";
+		next;
+		emotion ET_HUK;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这是正确的！";
+		next;
+		mes "[录音机]";
+		mes "现在是时候见到^0000cd主厨、舵手和水手长^000000了。他们一定在走廊尽头的^0000cd餐厅^000000。祝您旅途平安。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哈!是的。谢谢。";
+		erasequest 14533;// Say hi to recorder
+		setquest 14534;// To the kitchen
+		getexp 200,300;
+		lasagna_quest[1] = 16;
+		close;
+	}
+	if (lasagna_quest[1] == 16) {
+		mes "[录音机]";
+		mes "你应该去见见主厨、舵手和水手长。他们在走廊尽头的餐厅里。";
+		close;
+	}
+	if (lasagna_quest[1] == 17) {
+		mes "[录音机]";
+		mes "现在不是去见事务长的时间吗？";
+		close;
+	}
+	if (lasagna_quest[1] == 18) {
+		mes "[录音机]";
+		mes "您正在去见副主厨的路上。他在走廊尽头的餐厅里。";
+		close;
+	}
+	if (lasagna_quest[1] == 19) {
+		mes "[录音机]";
+		mes "你一定正在返回事务长的路上。我很奇怪，因为即使在预定时间之后也没有航行信号。";
+		close;
+	}
+	if (lasagna_quest[1] == 20) {
+		mes "[录音机]";
+		mes "大副和船长是发出航行信号的人。询问他们将是找出答案的最快方法。";
+		close;
+	}
+	if (lasagna_quest[1] == 21) {
+		mes "[录音机]";
+		mes "你要去那里迎接义务警员吗？我正要去那里看看新成员。等她的事情处理完了，我就下去。当然。用笔记本。";
+		close;
+	}
+	if (lasagna_quest[1] <= 28) {
+		mes "[录音机]";
+		mes "你应该去见见船长和大副。大家都在等待出发。";
+		close;
+	}
+
+	if (conch_in_recorder == 0) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "打扰一下。";
+		next;
+		mes "[录音机]";
+		mes "我说了不要打扰……哦，你是谁？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "大家好，我是" + strcharinfo(0) + "，正在寻找来自新大陆的冒险。我是按照事务长的建议来这里打招呼的。";
+		next;
+		mes "[录音机]";
+		mes "我懂了。很高兴见到你。我是这艘船的记录员，负责这艘船的所有记录。有问题随时可以过来。您可以自由访问除机密记录之外的任何记录。";
+		next;
+		mes "[录音机]";
+		mes "现在让我记录您的个人资料。哦，你不需要做任何事情。你可能只是站在那里。你的名字是..." + strcharinfo(0) + "...身高必须是...并且颜色是...像这样...";
+		npctalk "新大陆来的人都这么高。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "哦，没关系。我不是写下你的错误……这就够了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你如何详细了解这些事情？";
+		next;
+		mes "[录音机]";
+		mes "你只需要稍微注意一下。这只是我通过长期观察人们而学到的一种技巧。";
+		npctalk "这也是一种职业病。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "无论如何，来得正是时候。刚刚发生了一件神秘的事情，我需要^0000cd一个不参与其中的新鲜眼睛^000000。";
+		npctalk "我不能相信任何人。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我有预感，我现在必须离开这个地方。";
+		next;
+		mes "[录音机]";
+		mes "你可能至少想听听我说完。作为一个冒险家，听很多故事是有帮助的。";
+		next;
+		if (select( "我会听这个故事。", "我不会听这个故事。" ) == 2) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "我不会听的。我不想再卷入其他烦人的事情了。";
+			next;
+			mes "[录音机]";
+			mes "是这样吗？嗯，联系一个忙碌的人是不礼貌的。";
+			next;
+			mes "[录音机]";
+			mes "但是，如果您改变主意，请随时回来。我会等你。";
+			close;
+		}
+		mes "[" + strcharinfo(0) + "]";
+		mes "我会听这个故事。";
+		next;
+		mes "[录音机]";
+		mes "好的。请看一下这里的这个架子。";
+		npctalk "它们不就是美丽吗？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "有很多书。";
+		next;
+		mes "[录音机]";
+		mes "它们可能看起来像书，但其实不是。它们是船上发生的所有事情的记录。";
+		next;
+		mes "[录音机]";
+		mes "它不仅包括船上发生的事件，还包括几乎每个与 Con-Chliina 有关的人的历史。";
+		emotion ET_SWEAT, playerattached();
+		next;
+		mes "[录音机]";
+		mes "透过过去可以看到未来。";
+		next;
+		mes "[录音机]";
+		mes "我不只是创造新纪录。我也尽力将记录保存在最佳状态。";
+		next;
+		mes "[录音机]";
+		mes "然而，有人^0000cd损坏了这个地方的一条记录^000000。";
+		next;
+		mes "[录音机]";
+		mes "无论是谁干的，都没有试图隐瞒这一行为。这个人刚刚毫不留情地撕毁了整本书。它被毁了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哈！我是否需要找到丢失的页面？您正在寻找的这个新鲜眼睛的作用是为调查破案提供新的见解？";
+		next;
+		mes "[录音机]";
+		mes "不，丢失的页面已经找到。在厨房的烤箱里。";
+		npctalk "我猜你一定是神秘迷。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "不幸的是，大部分书页都在火灾中消失了。我几乎认不出文件的其余部分。";
+		npctalk "令人欣慰的是，一切还没有消失……", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "缺失的页面是关于什么的？";
+		next;
+		mes "[录音机]";
+		mes "不幸的是，这些页面包含^0000cd关于甘贝里队长的记录^000000。由于甘贝里是我们的队长，我尽了最大努力来创造纪录。";
+		npctalk "这是最长的一次，花费了很长时间和精力。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "关于甘贝里船长的故事也包含在所有书中。而这一切，都化为灰烬。";
+		next;
+		mes "[录音机]";
+		mes "丢失的记录是关于甘贝里船长在成为Con-Chliina船长之前的故事，这是非常罕见的。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "为什么？";
+		next;
+		mes "[录音机]";
+		mes "这是因为千层面人口的特点。它主要由来自其他地区的人组成。纳维的甘贝里船长和托马斯船长几乎是唯一来自烤宽面条的人。";
+		next;
+		mes "[录音机]";
+		mes "大多数了解甘贝里队长过去的人都已经离开了千层面。现在这里几乎没有人知道过去的事了。";
+		next;
+		mes "[录音机]";
+		mes "所以才花了很长时间去研究和记录。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那我要帮你找到小偷吗？";
+		next;
+		mes "[录音机]";
+		mes "不，我已经找到小偷了。我打算用最痛苦的方式惩罚他。不过，在此之前，有些事情我必须处理一下。这就是为什么我保持沉默。";
+		npctalk "凡事都有一个时间。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那么你需要新的眼光来做什么？";
+		next;
+		mes "[录音机]";
+		mes "如果我无法恢复它，我应该重建它。我试图采访甘贝里队长以填补缺失的页面，但加普坦·甘贝里没有回应。";
+		next;
+		mes "[录音机]";
+		mes "我还派了很多人。没有用。他不会向 Con-Chliina 上的任何人透露他的过去。这就是为什么我需要^0000cd新鲜的眼睛^000000。";
+		next;
+		mes "[录音机]";
+		mes "他有时会一边讲述一些冒险故事，一边向陌生人或新手^0000cd讲述他的故事，以及烤宽面条迄今为止的发展历程^000000。这次我想派你去听听他的消息。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你的意思是我应该问他过去发生的事情，而不是让他觉得我是被你问过的。";
+		next;
+		mes "[录音机]";
+		mes "是的，确实如此。这应该是一个秘密。如果甘贝里队长发现了，你我都逃不掉。";
+		npctalk "一切都取决于你。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我懂了。";
+		next;
+		mes "[录音机]";
+		mes "好吧，那么。祝您旅途平安。";
+		setquest 14579;// Interview with Captain
+		conch_in_recorder = 1;
+		close;
+	}
+	if (conch_in_recorder == 1) {
+		mes "[录音机]";
+		mes "你可以采访甘贝里队长并告诉我这个故事。";
+		close;
+	}
+	if (conch_in_recorder == 2) {
+		mes "[录音机]";
+		mes "你在这里。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我听过甘贝里队长的故事，但我很困惑。";
+		npctalk "请告诉我这个故事！", "", bc_self;
+		next;
+		mes "[当你讲述从甘贝里队长那里听到的故事以及斯特洛如何打断的故事时，记录员开始把它写下来。 ]";
+		next;
+		emotion ET_SCRATCH;
+		mes "[录音机]";
+		mes "这很奇怪。我记不清所有的记录，但甘贝里船长讲述的故事^0000cd与我所记得的记录部分不同^000000。";
+		npctalk "本来不应该这么长的。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那么大副的故事是真的吗？";
+		next;
+		mes "[录音机]";
+		mes "嗯，我不确定。我们需要看看其他版本的故事。由于存在差异，我无法依靠甘贝里队长的话进行记录。";
+		next;
+		mes "[录音机]";
+		mes "令人欣慰的是，除了甘贝里队长之外，我们还有更多的人可以听到这个故事。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "还有谁？";
+		next;
+		mes "[录音机]";
+		mes "虽然这个人不是来自烤宽面条，但他和甘贝里队长一起度过了有意义的时间。你可以去跟他谈谈。我们可以将他的故事与对甘贝里队长的采访进行比较。";
+		npctalk "我应该早点做这件事。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "很抱歉再次询问您。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那是谁？";
+		next;
+		mes "[录音机]";
+		mes "我的意思是^0000cdPepperoncino，自卫队的首领^000000。他现在肯定正在新的冒险家具乐部吃早饭。";
+		npctalk "他可能在餐桌上。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "前往<NAVI>^4D4DFF[冒险家具乐部]^000000<INFO>烤宽面条,56,186,000,1,</INFO></NAVI>南门即可进入餐厅。";
+		npctalk "你可以关注这个红纱。红纱总是引导你走上正确的道路。", "", bc_self;
+		erasequest 14580;// To Recorder
+		setquest 14581;// Interview with the Chief
+		conch_in_recorder = 3;
+		close;
+	}
+	if (conch_in_recorder == 3) {
+		mes "[录音机]";
+		mes "你可以采访 Pepponcino 并告诉我这个故事。";
+		next;
+		mes "[录音机]";
+		mes "他现在肯定正在新建的<NAVI>^4D4DFF[冒险家具乐部]^000000<INFO>烤宽面条,56,186,000,1,</INFO></NAVI>吃早饭。走到南门就可以进入餐厅。";
+		close;
+	}
+	if (conch_in_recorder == 4) {
+		mes "[录音机]";
+		mes "我想这次你一定听到了真实的故事。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "Pepponcino 这边的故事让我更加困惑。你自己听听。";
+		next;
+		mes "[当你讲述从 Pepponcino 那里听到的故事以及奥利奥如何打断的故事时，录音机开始把它写下来。 ]";
+		next;
+		mes "[录音机]";
+		mes "Pepponcino 的故事也不太有意义。我可以通过记录查到他的故事。";
+		next;
+		mes "[录音机]";
+		mes "让我们来看看。嗯，你听到的故事和 Pepponcino 的唱片不一样。";
+		next;
+		mes "[录音机]";
+		mes "我们并不是不能完全相信 Pepponcino 讲述的故事。我无法记录我不信任的故事。";
+		npctalk "我简直不敢相信我们的队长和领导到底有多自命不凡！", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "但是，我不能让记录就这样丢失。我应该怎么办...";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "问问 Navi 的托马斯船长怎么样？";
+		npctalk "托马斯船长？", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "正如你所看到的，甘贝里队长和佩佩罗西诺只讲他们喜欢讲的故事。我们也不能相信托马斯船长的故事。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "烤宽面条最年长的人讲的故事怎么样？";
+		next;
+		mes "[录音机]";
+		mes "烤宽面条是您年轻时顺便去制作面团的地方。他们中的大多数人就离开了这个地方......";
+		next;
+		mes "[录音机]";
+		mes "哦，你说得对。有^0000cd这个人^000000。";
+		npctalk "烤宽面条的鲜活历史。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "现在冒险家具乐部所在的地方，曾经是^0000cd酒吧烤箱^000000。以前卖卡卢尼亚牛奶的地方。你可以去见^0000cd这个地方的第一个主人^000000。然而...";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "有什么问题吗？";
+		next;
+		mes "[录音机]";
+		mes "不过，她现在想不清楚了……我猜她可能会因此而对过去的事情记得更清楚。她就像生活在过去。";
+		next;
+		mes "[录音机]";
+		mes "去见^0000cd曾经是Pub-Oven老板的老太太^000000。她住在冒险家具乐部^000000附近的一栋^0000cd小房子里。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。我很快就会回来。";
+		erasequest 14582;// To Recorder
+		setquest 14583;// To Granma
+		conch_in_recorder = 5;
+		close;
+	}
+	if (conch_in_recorder == 5) {
+		mes "[录音机]";
+		mes "去看看曾经是Pub-Oven第一任老板的老太太。她一定是附近的房子。";
+		close;
+	}
+	if (conch_in_recorder == 6) {
+		mes "[录音机]";
+		mes "欢迎。感谢您的努力。请立即举报。";
+		next;
+		mes "[当你讲述从老太太那里听到的关于甘贝里船长的故事时，记录员开始把它写下来。 ]";
+		next;
+		mes "[录音机]";
+		mes "干得好。这个故事与我记得的一些细节相符。他确实是一段活生生的历史。我想我应该根据故事来填写记录。";
+		npctalk "烤宽面条的鲜活历史。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "它将比以前的记录充满更丰富的细节。";
+		next;
+		classchange( 4_DR_GAMBERI, "Captain Gamberi#dorcon0_2", bc_self );
+		mes "[录音机]";
+		mes "亲爱的船长，你在这里做什么？";
+		next;
+		emotion ET_HUK, getnpcid(0, "Captain Gamberi#dorcon0");
+		mes "[甘贝里队长]";
+		mes "你就在原地。我只是在出发前检查每个人是否都在正确的位置。";
+		npctalk "哼！哼！我以为这附近没人。", "甘贝里队长#dorcon0_2", bc_self;
+		next;
+		mes "[录音机]";
+		mes "从什么时候开始你就有责任检查它了？这么安静？不敲门吗？";
+		next;
+		mes "[甘贝里队长]";
+		mes "作为一名经验丰富的 Con-Chliina 船员，必须能够在任何需要的时候应对任何情况。";
+		next;
+		emotion ET_HUK, playerattached();
+		mes "[录音机]";
+		mes "我懂了。 ^0000cd撕毁文件也一定是队长的职责^000000，我猜。";
+		npctalk "你真以为我不会发现吗？你在你身后留下了很长的痕迹和证据。", "", bc_self;
+		npctalk "我不知道你在说什么。", "甘贝里队长#dorcon0_2", bc_self;
+		next;
+		mes "[甘贝里队长]";
+		mes "哦，嗯。我应该去检查一下水手长是否在正确的位置。";
+		npctalk "我应该去很多地方。", "甘贝里队长#dorcon0_2", bc_self;
+		next;
+		classchange( HIDDEN_WARP_NPC, "Captain Gamberi#dorcon0_2", bc_self );
+		mes "[录音机]";
+		mes "从现在开始想都别想！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那么，队长一定是……？";
+		next;
+		mes "[录音机]";
+		mes "随着越来越多的人开始使用这艘船并访问该记录，他一定对充满他不那么美好的过去的记录感到尴尬。";
+		npctalk "在烤宽面条中这并不是什么令人尴尬的事情。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "我知道他会再来。他肯定听说我正在回忆记录。我以为他会再次回来摆脱它。我想我应该更加小心，不要失去它。";
+		npctalk "我最好多复印几份，藏到各处。", "", bc_self;
+		next;
+		mes "[录音机]";
+		mes "亲爱的冒险家。既然你已经完成了你的任务，这是给你的奖励。从此您可以自由查阅录音室的所有文件。那么好吧。";
+		completequest 14584;// Back to Recorder
+		getexp 700,700;
+		conch_in_recorder = 7;
+		close;
+	}
+	if (conch_in_recorder == 7) {
+		mes "[录音机]";
+		mes "您可以自由查阅录音室的所有文件。";
+		close;
+	}
+}
+
+conch_in,101,31,3	script	Captain Gamberi#dorcon0_2	HIDDEN_WARP_NPC,{ end; }
+
+conch_in,98,33,5	script	Con-Chliina Ship's Log#	HIDDEN_NPC,{
+	if (conch_in_recorder < 7) {
+		mes "[录音机]";
+		mes "请不要触摸书籍。";
+		close;
+	}
+	mes "[" + strcharinfo(0) + "]";
+	mes "我应该先读哪一篇？";
+	next;
+	switch( select( "航海日志", "主要人物", "词汇表", "您合上书本。" ) ) {
+	case 1:
+		switch( select( "7年前", "6年前", "5年前", "4年前", "3年前", "您合上书。" ) ) {
+		case 1:
+			mes "X 月 X 日";
+			mes "期待已久的第一次航行。卸下所有东西后，我希望我们能再次满载而归......";
+			next;
+			mes "X 月 X 日";
+			mes "我们所到之处生意都很好。我对佩佩罗西诺船长和他的船员的洞察力感到惊讶。";
+			next;
+			mes "X 月 X 日";
+			mes "我们离开里科利港已经三天了。遇到了暴风雨。这不是我们第一次经历大自然的无常，但清点损失时，我们不禁黯然神伤。";
+			mes "重伤1只，轻伤13只，优质凤尾鱼23盒，卡鲁纳7罐，胡须梳1盒，精美布料200卷。";
+			next;
+			mes "X 月 X 日";
+			mes "几天前我们遇到了一场风暴，但又一场风暴？ ！谁在每年的这个时候这样设定路线？我想我应该放手，因为这是第一次。";
+			next;
+			mes "X 月 X 日";
+			mes "什么都没有。安静的。一群飞鱼在满月的映衬下飞过大海，景色十分壮观。";
+			next;
+			mes "X 月 X 日";
+			mes "清空所有货物并装载新物品返回真是太好了。我感到自豪，就像摘取庄稼并广泛传播的感觉。";
+			next;
+			mes "X 月 X 日";
+			mes "收到工资后在酒吧喝一杯卡卢纳牛奶是世界上最甜蜜的事情。";
+			close;
+		case 2:
+			mes "X 月 X 日";
+			mes "甘伯里船长和托马斯船长很奇怪。他们试图保持直线领先并以相同的速度航行。就像让孩子一步步走路一样。";
+			next;
+			mes "X 月 X 日";
+			mes "我们经常遇到暴风雨，我想知道我们是否应该改变路线。感谢上帝，我们避开了里科利港的风暴。";
+			next;
+			mes "X 月 X 日";
+			mes "我们从里科利港聘请的副主厨非常棒。";
+			next;
+			mes "X 月 X 日";
+			mes "离开里科利港第二天，我们就遭遇了暴风雨，导致我们失去了蝴蝶号。当我们回到烤宽面条时，我们非常沮丧，没有人能说什么。";
+			next;
+			mes "X 月 X 日";
+			mes "有一段时间没有航行了。";
+			next;
+			mes "X 月 X 日";
+			mes "如果我去港口，感觉每个人都会回来并微笑。";
+			next;
+			mes "X 月 X 日";
+			mes "还没有消息。";
+			close;
+		case 3:
+			mes "X 月 X 日";
+			mes "第二次寻找蝴蝶。没有什么。我们没有找到蝴蝶的任何遗迹。所以他们一定是安全的。";
+			next;
+			mes "X 月 X 日";
+			mes "至今还没有《蝴蝶》的消息。";
+			next;
+			mes "X 月 X 日";
+			mes "舵手钓鱼捕获了金枪鱼。主厨想蒸整条鱼，但副主厨勉强阻止了他，切成块给大家吃。我希望我能再多一些。";
+			next;
+			mes "X 月 X 日";
+			mes "金枪鱼再次上桌。第一天是金枪鱼，第二天是金枪鱼意大利面，第三天是炸金枪鱼，第四天是红烧金枪鱼……我厌倦了。刚吃过。我们做了什么激怒副主厨的事吗？";
+			next;
+			mes "X 月 X 日";
+			mes "水手长试图扔掉剩下的金枪鱼，被副主厨抓住了。我们都知道他有多可怕。";
+			next;
+			mes "X 月 X 日";
+			mes "我们遇到了一场暴风雨。大家都做好了充分的准备，所以损失并不大。我想这就是诀窍吧。";
+			next;
+			mes "X 月 X 日";
+			mes "水手长的行为很奇怪。我们勉强阻止了他在半夜试图跳入水中。当我看到他浑身发抖时，他似乎失去了理智，但第二天早上他就没事了。他是着魔了还是怎么的。";
+			next;
+			mes "X 月 X 日";
+			mes "仍在寻找。还没有《蝴蝶》的消息。";
+			close;
+		case 4:
+			mes "X 月 X 日";
+			mes "我们从来没有出现过老鼠，但突然间船上就出现了老鼠。经调查，水手长……你真是……";
+			next;
+			mes "X 月 X 日";
+			mes "一年可能过去了，但我们不能放弃寻找。我们正在梳理丢失它们的区域。";
+			next;
+			mes "X 月 X 日";
+			mes "不知道为什么，我就是不喜欢这种感觉。";
+			next;
+			mes "X 月 X 日";
+			mes "风暴。厌倦了风暴。我们已经习惯了，几乎可以骑过去。";
+			next;
+			mes "X 月 X 日";
+			mes "你调转了我们的船，因为斯特洛声称昨晚看到了一些奇怪的东西。这是一条我们以前从未见过的路线。每个人都有不同的意见，但既然我们已经到处寻找，我们决定尝试一下。";
+			next;
+			mes "X 月 X 日";
+			mes "我做了一个奇怪的梦。";
+			next;
+			mes "X 月 X 日";
+			mes "当我们穿过突然出现的浓雾时，出现了一座我们从未见过的岛屿。还有蝴蝶号船员，他们的存在就像当地人一样自然。";
+			next;
+			mes "X 月 X 日";
+			mes "我们被巨浪冲击后软着陆的地方叫做软岛。这是一个神秘的地方，居住着外表各异的人们。这是一个新世界的发现。";
+			next;
+			mes "X 月 X 日";
+			mes "以软岛为基地，蝴蝶已经在新世界站稳了脚跟，并开始盈利。他们生来就是为了做商人。";
+			next;
+			mes "X 月 X 日";
+			mes "错误 504（服务器错误）！！1504。这是一个错误。出现错误。请稍后重试。我们只知道这些。";
+			next;
+			mes "X 月 X 日";
+			mes "到达烤宽面条。喝了五杯卡卢纳牛奶。";
+			close;
+		case 5:
+			mes "3年前：决定扬帆起航";
+			mes "X 月 X 日";
+			mes "我们正满载物资前往新世界。我想仔细看看，这是一个很好的机会。";
+			next;
+			mes "X 月 X 日";
+			mes "再次暴风雨。";
+			next;
+			mes "X 月 X 日";
+			mes "抵达软岛。我不知道我们是如何在茫茫大海中找到路的，但这仍然很神奇。";
+			next;
+			mes "X 月 X 日";
+			mes "甘伯里船长和托马斯船长正式宣布了他们向新世界的扩张计划。 Con-Chliina将负责招募和派遣冒险者前往新世界";
+			mes "Farfalle Vigilantes 将负责训练他们。以软岛为基地，蝴蝶同意支援冒险者。准备时间为三年。";
+			next;
+			mes "X 月 X 日";
+			mes "我想出了可以在新世界和远星之间出售的物品。我很惊讶他们的品味如此不同。听到 Igdrasil 水果的价格真的很惊讶。";
+			next;
+			mes "X 月 X 日";
+			mes "从软岛出发。我们可能还会来几次。";
+			close;
+		case 6:
+			mes "[" + strcharinfo(0) + "]";
+			mes "没什么可看的。";
+			close;
+		}
+	case 2:
+		switch( select( "甘伯里", "Peperoncino", "托梅·托马斯", "你合上书。" ) ) {
+		case 1:
+			mes "- 金井 -";
+			mes "Con-Chliina 船长。";
+			mes "昵称是贝瑞。";
+			mes "卡卢纳牛奶应该搅拌。";
+			next;
+			mes "- 金井 -";
+			mes "他的父母在烤宽面条经营一家肉店。";
+			next;
+			mes "- 金井 -";
+			mes "年轻时，他无法抗拒使用暴力来改造流氓多拉姆。因此，他被称为烤宽面条疯狗。";
+			next;
+			mes "- 金井 -";
+			mes "他在 Pub-Oven 认识了 Peperoncino（Farfalle Vigilantes 的现任负责人），因为在如何喝卡卢纳的问题上存在分歧。";
+			next;
+			mes "- 金井 -";
+			mes "由于当时欠下的债务，他最终和 Peperoncino 一起在凤尾鱼作坊工作。甘伯里的技能得到认可，成为车间经理。";
+			next;
+			mes "- 金井 -";
+			mes "他们与后来加入的托马斯（蝴蝶号现任船长）组织了一家商业公司。";
+			next;
+			mes "- 金井 -";
+			mes "甘伯里和托马斯决定将领地扩展到海上，于是集结了一支舰队扬帆出海，但托马斯船长却在暴风雨中失踪了。";
+			next;
+			mes "- 金井 -";
+			mes "康-克利纳号的大副斯特洛发现了海上航线，并最终找到了安全抵达新世界软岛的蝴蝶号。";
+			next;
+			mes "- 金井 -";
+			mes "目前，连接烤宽面条和新世界的班轮正在航行。";
+			close;
+		case 2:
+			mes "- 辣椒 -";
+			mes "法法勒治安维持会的首领。";
+			mes "昵称是佩佩。";
+			mes "卡卢纳牛奶应该摇匀。";
+			next;
+			mes "- 辣椒 -";
+			mes "除了他在富西利长大的事实之外，我们对他的早年生活一无所知。";
+			next;
+			mes "- 辣椒 -";
+			mes "他来到千层面，怀揣着靠制作凤尾鱼钓鱼线发家致富的宏伟计划，但因晕船而放弃。";
+			next;
+			mes "- 辣椒 -";
+			mes "后来，他开始在一家凤尾鱼作坊工作。";
+			next;
+			mes "- 辣椒 -";
+			mes "他在 Pub-Oven 认识了甘伯里（Con-Chliina 现任队长），因为在如何喝卡卢纳的问题上存在分歧。";
+			next;
+			mes "- 辣椒 -";
+			mes "由于当时欠下的债务，他最终和甘伯里一起在凤尾鱼作坊工作。";
+			next;
+			mes "- 辣椒 -";
+			mes "他们与后来加入的托马斯（蝴蝶号现任船长）组织了一家商业公司。";
+			next;
+			mes "- 辣椒 -";
+			mes "当甘伯里和托马斯召集一支舰队出发时，佩佩罗西诺组织并管理至今的法法尔维吉兰特斯以维持烤宽面条的公共秩序。";
+			close;
+		case 3:
+			mes "- 托梅·托马斯 -";
+			mes "蝴蝶船长。";
+			mes "昵称是托托。";
+			mes "卡卢纳牛奶应该摇匀。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "出生时原名为托梅·托马斯，但简称为托马斯。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "出生于烤宽面条，在富裕的父母的帮助下长大。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "与甘伯里（Con-Chliina 现任队长）一起长大，是儿时好友。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "作为业余爱好，与甘伯里和佩佩罗西诺（Farfalle Vigilantes 现任队长）一起在凤尾鱼作坊工作。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "当两人把所有的钱都用来还债的时候，托马斯却能够攒下工资。这成为商人业务的初始资金。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "甘伯里和托马斯决定将领地扩展到海上，于是集结了一支舰队扬帆出海，但托马斯船长却在暴风雨中失踪了。";
+			next;
+			mes "- 托梅·托马斯 -";
+			mes "随后，他安全抵达并定居在新世界的软岛。他正在稳步扩大自己的领域。";
+			close;
+		case 4:
+			mes "[" + strcharinfo(0) + "]";
+			mes "没什么可看的。";
+			close;
+		}
+	case 3:
+		mes "^0000cd[酒吧烤箱]^000000";
+		mes "托马斯、佩佩罗西诺和甘伯里会面并达成协议的地方。";
+		next;
+		mes "^0000cd[酒吧烤箱]^000000";
+		mes "如今，它是一个冒险家具乐部和纪念馆，是朵拉们冒险的必去之地。";
+		next;
+		mes "<<< Cht0 >>> [哪个最好[) upgra [)<< backqupt1 >>>";
+		mes "三个多拉姆见面时喝的一种由卡卢纳和牛奶混合制成的饮料。在他们的记忆中，它现在已成为一种节日饮料。";
+		next;
+		mes "<<< Cht0 >>> [哪个最好[) upgra [)<< backqupt1 >>>";
+		mes "混合通常是通过搅拌或摇动来完成的，但这两种方法的争论永无休止。";
+		next;
+		mes "<<< Cht0 >>> [哪个最好[) upgra [)<< backqupt1 >>>";
+		mes "根据喜好，可以添加一到三个醋栗。";
+		next;
+		mes "^0000cd[烤箱分辨率]^000000";
+		mes "指托马斯、佩佩罗西诺和甘伯里三人协议组成的兄弟会。";
+		next;
+		mes "^0000cd[蝴蝶]^000000";
+		mes "已知在暴风雨中失踪，但后来发现已安全抵达并在新世界定居。消息传开后，蝴蝶作为冒险和英雄的象征而广为人知。";
+		next;
+		mes "^0000cd[L-Day]^000000";
+		mes "烤宽面条日的缩写。这一天，蝴蝶号经过32次搜寻，发现了新的航路，安全抵达新世界。";
+		next;
+		mes "^0000cd[L-Day]^000000";
+		mes "烤宽面条每年都会以绚丽的烟花和节日来庆祝这一天。";
+		close;
+	case 4:
+		mes "[" + strcharinfo(0) + "]";
+		mes "没什么可看的。";
+		close;
+	}
+}
+
+conch_in,181,61,5	script	Boatswain#dorcon	4_M_BOSSCAT,{
+	if (checkweight(1001,1) == 0) {
+		mes "[水手长]";
+		mes "看起来很多而且很大。减少一些怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] < 16) {
+		mes "[水手长]";
+		mes "娃娃，检查一下。";
+		mes "贝尔，检查一下。";
+		mes "干星莉莉，检查一下。";
+		mes "绳子绑了33次，检查一下。";
+		mes "帆上有 5 个折痕，检查一下。好的！";
+		next;
+		mes "[水手长]";
+		mes "什么！谁折断了这根褪色柳树枝！";
+		close;
+	}
+	if (lasagna_quest[1] == 16) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "你好，我是" + strcharinfo(0) + "这次谁将踏上新的冒险之旅。很高兴见到你。";
+		next;
+		mes "[副主厨]";
+		mes "......";
+		npctalk "你很冷。", "", bc_self;
+		npctalk "他大概没有听到。", "舵手#dorcon", bc_self;
+		next;
+		mes "[水手长]";
+		mes "哦，你是新训练的冒险家，即将踏上前往新大陆的冒险之旅。我喜欢冒险精神。当我年轻的时候，我曾经从一个地方到另一个地方旅行。";
+		next;
+		mes "[舵手]";
+		mes "究竟是什么时候？多久以前？";
+		next;
+		mes "[水手长]";
+		mes "不久前。感觉就像发生在昨天一样。";
+		next;
+		mes "[舵手]";
+		mes "昨天半夜，你在甲板上跑步。";
+		next;
+		mes "[水手长]";
+		mes "呸，真是废话。";
+		next;
+		mes "[副主厨]";
+		mes "嘿，我明白了。那里太吵了。你现在可以走了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes ".......";
+		next;
+		mes "[水手长]";
+		mes "启航前，副主厨总是处于紧张状态。别把它当成是针对你个人的。";
+		npctalk "这并不意味着他不喜欢你。", "舵手#dorcon", bc_self;
+		next;
+		mes "[舵手]";
+		mes "成熟的多拉姆不会执着于这些东西。你可以走了。我们即将出发。";
+		erasequest 14534;// To the kitchen
+		setquest 14535;// To Purser
+		getexp 200,300;
+		lasagna_quest[1] = 17;
+		close;
+	}
+	if (lasagna_quest[1] == 17) {
+		mes "[水手长]";
+		mes "差不多到了我们启航的时间了。你应该回去。";
+		close;
+	}
+	if (lasagna_quest[1] < 29) {
+		mes "[水手长]";
+		mes "娃娃，检查一下。";
+		mes "贝尔，检查一下。";
+		mes "干星莉莉，检查一下。";
+		mes "绳子绑了33次，检查一下。";
+		mes "帆上有 5 个折痕，检查一下。好的！";
+		close;
+	}
+
+	if (conch_in_boatswain == 0) {// start for daily quest
+		mes "[水手长]";
+		mes "娃娃，检查一下。";
+		mes "贝尔，检查一下。";
+		mes "干星莉莉，检查一下。";
+		mes "绳子绑了33次，检查一下。";
+		mes "帆上有 5 个折痕，检查一下。";
+		next;
+		mes "[水手长]";
+		mes "什么！谁折断了这根褪色柳树枝！";
+		npctalk "哦，不会了。", "舵手#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你似乎遇到麻烦了。什么事？";
+		next;
+		if (BaseLevel < 140) {
+			mes "[水手长]";
+			mes "你似乎没有足够的经验来解决我的问题。获得更多经验后再回来。";
+			close;
+		}
+		mes "[水手长]";
+		mes "我们很快就要起飞，而航行的准备工作却没有做好。";
+		npctalk "哦！你这个冒险家！你不想这么认真地对待他……！", "舵手#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我对航海了解不多，但这些听起来都与船无关。";
+		next;
+		mes "[水手长]";
+		mes "这不关你的事...好吧，^0000cd一个来自新地方的陌生人应该解决这个问题^000000。";
+		npctalk "在我面前的是一个来自新地方的陌生人。", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "我是水手中的水手。真正的海员。我是这艘船的水手长，负责照顾强硬的水手和甲板上的所有事务。我要告诉你的故事......你不应该告诉其他任何人。";
+		next;
+		mes "[水手长]";
+		mes "然后你就会知道水手是多么可怕。";
+		next;
+		if (select( "这是什么？", "我不听。" ) == 2) {
+			mes "[水手长]";
+			mes "然后回到你的位置。从现在开始，你不应该指望从我这里得到任何好处。";
+			close;
+		}
+		mes "[水手长]";
+		mes "好的。我喜欢你不屈服于威胁的态度。我也是。嗯，我也是。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "为什么要用过去时态？";
+		next;
+		mes "[水手长]";
+		mes "你相信看不见的东西吗？就像那些根本不存在的东西一样？尤其是晚上出现的那些特殊的......";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哦，死人。";
+		next;
+		mes "[水手长]";
+		mes "你是对的。我没有恐惧。我喜欢冒险之类的事情。这就是我如何最终来到烤宽面条，并在遇到甘贝里船长后成为Con-Chliina的水手长。";
+		npctalk "这是我电梯里最珍贵的时刻。", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "我到处都去过。有一天，我找到了它。";
+		next;
+		mes "[水手长]";
+		mes "海上有许多无人居住的岛屿。有时，你会发现一个罐子埋在岛屿中央。";
+		next;
+		mes "[水手长]";
+		mes "当船停泊在一个不知名的岛屿补充水源时，我像往常一样探索这个岛屿。我在那里发现了一个^0000cd密封罐^000000。";
+		npctalk "我应该把它留在那里然后走开。", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "我摇了摇，却没有发出任何声音。我想知道里面到底是什么东西，被如此小心地密封着却没有发出任何声音。";
+		npctalk "他们说，好奇心杀死了多拉姆……", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "赶来的甘贝里试图阻止我，但我打开了封印。 ^0000cd锅^000000中什么也没有，什么也没有发生。";
+		next;
+		mes "[水手长]";
+		mes "我扔掉锅，上了Con-Chliina。事情就发生在那天晚上。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哦，我想我们正在进入好的部分。我真的很喜欢它。";
+		next;
+		mes "[水手长]";
+		mes "哦，那个晚上，我听了这首歌。我在任何地方都能听到它。我可以从我手掌的褶皱、耳朵附近和银色的波浪中听到声音。";
+		next;
+		mes "[水手长]";
+		mes "感觉就像我可以用手抓住曲子。当我顺着声音走的时候，有人用力摇晃我。接下来我注意到的是，就在我跳下船之前，我被船员们抓住了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "被这首歌迷住了吗？";
+		next;
+		mes "[水手长]";
+		mes "我是这么想的。我闭着耳朵睡着了。奇怪的是，第二天和后天又出现了这种情况。";
+		next;
+		mes "[水手长]";
+		mes "每天晚上，我都会看到一个模糊的人影，或者因为耳边的喋喋不休的噪音而无法入睡。当我睡着时，我感觉到身上的重量，然后醒来，浑身冷汗。";
+		next;
+		mes "[水手长]";
+		mes "原来，那壶里是被封印了邪鬼的壶。甘贝里知道这一点并试图阻止我。然而，为时已晚。我已经打破了封印。我在这片土地上长大，对此一无所知。";
+		npctalk "人们只能看到他们所知道的一切。", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "从那时起我就一直遭受着<<<C​​??LR0>>>超自然现象^000000的折磨。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你的意思是里面有什么东西诅咒了你，对吗？";
+		next;
+		mes "[水手长]";
+		mes "甘贝里带我去萨满喵寻求咨询，但没有效果。这个恶鬼太古老、太强大、占有欲太强，无法除掉。";
+		next;
+		mes "[水手长]";
+		mes "我唯一能做的就是每天尽可能地削弱它。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "难道依靠各种迷信就能削弱它吗？";
+		npctalk "迷信？不，它们是基于纯科学的。", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "除了我和甘贝里船长之外，Con-Chliina 号的其他船员都不知道这件事。";
+		next;
+		mes "[水手长]";
+		mes "^0000cd萨满喵^000000告诉了我一个谜语，一个来自新地方的陌生人会解决这个问题。我们的相遇并非巧合。";
+		next;
+		mes "[水手长]";
+		mes "请你去把这个故事告诉萨满喵，并给我带来解药。如果你能摆脱它，我会为你做任何事。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "任何事物？这是一个承诺吗？";
+		next;
+		mes "[水手长]";
+		mes "康克利纳的水手长不会说谎。如果你不信任我，你应该相信甘贝里，他聘请我担任康克利纳的水手长。";
+		npctalk "我永远不会背叛甘贝里。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我很快就会回来。";
+		next;
+		mes "[水手长]";
+		mes "萨满喵住在村口附近一处僻静的地方。";
+		setquest 14556;// There also is a scary thing for me
+		conch_in_boatswain = 1;
+		close;
+	}
+	if (conch_in_boatswain == 1) {
+		mes "[水手长]";
+		mes "萨满喵住在千层面入口处一处僻静的地方。我希望像你一样来自新地方的陌生人能解决我的问题。";
+		close;
+	}
+	if (conch_in_boatswain == 2) {
+		mes "[水手长]";
+		mes "亲爱的冒险家，你遇见萨满喵了吗？";
+		next;
+		mes "[你告诉了水手长你从萨满喵那里听到的故事。 ]";
+		next;
+		mes "[水手长]";
+		mes "什么？我应该成为萨满喵？真是胡说八道！我是一名水手！我将作为水手死在海上！";
+		npctalk "嘿，你！保持安静！别笑！", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "我宁愿余生去战斗，也不愿与鬼共处！";
+		npctalk "是的！你们就是鬼！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "萨满喵并没有你想象的那么糟糕。等你有空的时候，何不去咨询一下呢？";
+		next;
+		mes "[水手长]";
+		mes "我就当你没说过这句话吧！我根本不在乎萨满喵喵说那些恶毒的话！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "邪灵会吸收你的生命。这样的日子你撑不了多少天了，亲爱的水手长。";
+		next;
+		mes "[水手长]";
+		mes "什么？等等……那是……";
+		npctalk "这样不好……我撑不住了？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "凭借^0000cd日常护身符^000000，您可以度过一天。我猜你现在应该更接近萨满喵了。";
+		next;
+		mes "[水手长]";
+		mes "......";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "今天的护身符是^0000cd20 个罗勒和5 个罗勒石^000000。你可以从蛇怪那里得到它们。";
+		next;
+		mes "[水手长]";
+		mes "巴……蛇怪……从煎锅里掉进火里。我不喜欢和那些肮脏的事情打交道。";
+		npctalk "我应该从甲板上跳下去吗...？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯，这就是我的。我该走了...";
+		next;
+		mes "[水手长]";
+		mes "是的，陌生人正在解决这个问题。这一定是我们的命运。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "其实，这意味着你死了，恶鬼又找到了新的宿主。";
+		next;
+		mes "[水手长]";
+		mes "不，不，从来没有。你无法就这样摆脱困境。 ^0000cd这一定是我们的命运。 ^000000这是命运！你应该帮助我。";
+		npctalk "你会帮助我的。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "……嗯，正如我从萨满喵那里听到的那样。有人告诉我水手长会让我这么做。";
+		next;
+		mes "[水手长]";
+		mes "那萨满喵看来确实有远见。我现在是信徒了。我相信护身符确实有效。请现在就去给我买一张。请。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "好吧，我忍不住了。就为了今天。";
+		erasequest 14557;// Truth is alway harsh
+		setquest 14558;// Dirty Creatures
+		conch_in_boatswain = 3;
+		close;
+	}
+	if (conch_in_boatswain == 3) {
+		if (countitem(25049) < 5 || countitem(22985) < 20) {
+			mes "[水手长]";
+			mes "今天的护身符是 20 个罗勒和 5 个罗勒石！太阳很快就会落山！";
+			close;
+		}
+		mes "[" + strcharinfo(0) + "]";
+		mes "这是罗勒和罗勒罗勒。";
+		next;
+		mes "[水手长]";
+		mes "啊……给我吧。不，不。不是那样的。只要稍微包起来，不让别人看到就可以了。正确的。就这样。把你拥有的一切都给我。";
+		npctalk "我不敢相信我应该整天带着它......", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这很难。";
+		npctalk "嘿，你看起来很可疑。", "舵手#dorcon", bc_self;
+		npctalk "不，没关系！", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "这……这是……";
+		specialeffect EF_CURE;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你怎么认为？";
+		next;
+		mes "[水手长]";
+		mes "感觉身上的黑雾正在消散！我再也听不到窃窃私语的声音了！我的头脑好久都感觉如此清晰。";
+		next;
+		mes "[水手长]";
+		mes "很不公平的是我至今还不知道这个方法！";
+		npctalk "什么是不公平？", "舵手#dorcon", bc_self;
+		npctalk "没有什么！你没有其他事情要做吗？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "它只持续一天。过期了就会被烧掉。我想，从现在开始，你应该和萨满喵亲近了。";
+		next;
+		mes "[水手长]";
+		mes "不，从来没有。我不想和萨满喵做朋友，也不想自己去猎杀蛇怪。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那你要做什么？";
+		next;
+		mes "[水手长]";
+		mes "好吧，我面前不是有^0000cd新助手^000000吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我就知道！";
+		emotion ET_FRET, playerattached();
+		next;
+		mes "[水手长]";
+		mes "我会丰厚地奖励你。然而，你无法永久解决问题，所以我不必遵守我的承诺。";
+		npctalk "你还没有真正彻底解决问题。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这是不公平的。";
+		npctalk "水手长有点卑鄙。", "舵手#dorcon", bc_self;
+		next;
+		mes "[水手长]";
+		mes "我会丰厚地奖励你。明天请再帮我一个忙。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我们会看到。如果我愿意的话我会回来的。";
+		next;
+		mes "[水手长]";
+		mes "哦，你会来的。我有预感。";
+		npctalk "我的预感永远不会错。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我很确定是恶鬼在跟你说话。";
+		next;
+		mes "[水手长]";
+		mes "既然你帮了我一个忙，我就让它过去吧。明天我会再次见到你。";
+		erasequest 14558;// Dirty Creatures
+		setquest 14559;// Charm Effect Duration
+		delitem 22985,20;// Basil
+		delitem 25049, countitem(25049);// Basilac Clam
+		getexp 500000,0;// none jexp
+		conch_in_boatswain = 4;
+		close;
+	}
+	if (conch_in_boatswain == 4) {
+		switch( checkquest(14559,PLAYTIME) ) {
+		case -1:
+			if (isbegin_quest(14560) == 1)
+				.@count = ( countitem(25049) < 5 || countitem(523) < 1 );
+			else if (isbegin_quest(14561) == 1)
+				.@count = ( countitem(25049) < 20 );
+			else
+				.@count = ( countitem(25049) < 5 || countitem(22985) < 20 );
+			if (.@count == 0) {
+				mes "[水手长]";
+				mes "今天的护身符带了吗？看来你两手空空。有什么问题吗？";
+				next;
+				mes "[水手长]";
+				mes "请现在给我。我感觉护身符的力量现在正在消失。";
+				close;
+			}
+			mes "[水手长]";
+			mes "这就是今天的护身符！把你所有的罗勒石都给我。";
+			next;
+			mes "[水手长]";
+			specialeffect EF_CURE;
+			if (isbegin_quest(14560) == 1) {
+				mes "感觉就像在晴朗无风的日子里看着蓝色的地平线。令人耳目一新。";
+				next;
+				erasequest 14560;// New Ingredient
+				delitem 25049,5;// Basilac Clam
+				delitem 523,1;// Holy Water
+			}
+			else if (isbegin_quest(14561) == 1) {
+				mes "感觉就像躺在青山上看着云朵飘过。";
+				next;
+				delitem 25049,20;// Basilac Clam
+				erasequest 14561;// Dirty and Filty
+			}
+			else {
+				mes "感觉就像透过黑雾看到阳光一样。";
+				next;
+				delitem 22985,20;// Basil
+				delitem 25049,5;// Basilac Clam
+				erasequest 14562;// The basic are the best
+			}
+			setquest 14559;// Charm Effect Duration
+			mes "[水手长]";
+			mes "谢谢你帮我买了它们。请明天回来。";
+			getexp 500000,0;
+			close;
+		case 0:
+		case 1:
+			mes "[水手长]";
+			mes "你说过如果你愿意的话你就会来。";
+			next;
+			mes "[水手长]";
+			mes "护身符仍然有效。 ^0000cd凌晨4:00^000000之后去见萨满阳，给我带明天的护身符。";
+			close;
+		case 2:
+			mes "[水手长]";
+			mes "你说过如果你愿意的话你就会来。";
+			npctalk "不来你感觉不舒服，对吗？", "", bc_self;
+			next;
+			mes "[水手长]";
+			mes "不过，你不应该来找我。你应该去^0000cd萨满阳^000000询问今天的护身符。";
+			next;
+			mes "[水手长]";
+			mes "那我就指望你了。";
+			close;
+		}
+	}
+}
+
+conch_in,181,58,3	script	Helmsman#dorcon	4_CAT_SAILOR5,{
+	if (checkweight(1001,1) == 0) {
+		mes "[舵手]";
+		mes "看起来很多而且很大。减少一些怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] < 16) {
+		mes "[舵手]";
+		mes "只要有风，有帆，我们就可以去任何地方。";
+		close;
+	}
+	if (lasagna_quest[1] == 16) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "你好，我是" + strcharinfo(0) + "这次谁将踏上新的冒险之旅。很高兴见到你。";
+		next;
+		mes "[副主厨]";
+		mes "......";
+		npctalk "你很冷。", "水手长#dorcon", bc_self;
+		npctalk "他大概没有听到。", "", bc_self;
+		next;
+		mes "[水手长]";
+		mes "哦，你是新训练的冒险家，即将踏上前往新大陆的冒险之旅。我喜欢冒险精神。当我年轻的时候，我曾经从一个地方到另一个地方旅行。";
+		next;
+		mes "[舵手]";
+		mes "究竟是什么时候？多久以前？";
+		next;
+		mes "[水手长]";
+		mes "不久前。感觉就像发生在昨天一样。";
+		next;
+		mes "[舵手]";
+		mes "昨天半夜，你在甲板上跑步。";
+		next;
+		mes "[水手长]";
+		mes "呸，真是废话。";
+		next;
+		mes "[副主厨]";
+		mes "嘿，我明白了。那里太吵了。你现在可以走了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes ".......";
+		next;
+		mes "[水手长]";
+		mes "启航前，副主厨总是处于紧张状态。别把它当成是针对你个人的。";
+		npctalk "这并不意味着他不喜欢你。", "", bc_self;
+		next;
+		mes "[舵手]";
+		mes "成熟的多拉姆不会执着于这些东西。你可以走了。我们即将出发。";
+		erasequest 14534;// To the kitchen
+		setquest 14535;// To Purser
+		getexp 200,300;
+		lasagna_quest[1] = 17;
+		close;
+	}
+	if (lasagna_quest[1] == 17) {
+		mes "[舵手]";
+		mes "副主厨认为做饭时遇到陌生人会带来厄运。你现在应该走了。";
+		close;
+	}
+	if (lasagna_quest[1] > 17) {
+		mes "[舵手]";
+		mes "只要有风，有帆，我们就可以去任何地方。";
+		close;
+	}
+}
+
+conch_in,179,64,5	script	Cow#dorcon01_bis	4_WHITE_COW,{
+	mes "[奶牛]";
+	mes "哞——";
+	next;
+	mes "[水手长]";
+	mes "把你的脏手从她身上拿开！ 【旺牛】很敏感，除了我谁都不能碰她！";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "一头牛的名字是[Woncow]...";
+	next;
+	mes "[水手长]";
+	mes "所以？什么！我打赌赢了她。每次我叫她的名字，都会让我想起那一刻的胜利。很美丽。";
+	npctalk "哞——", "", bc_self;
+	emotion ET_BIGTHROB;
+	npctalk "正确的？", "水手长#dorcon", bc_self;
+	emotion ET_THROB;
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "话说回来，这船上怎么会有一头牛呢？";
+	next;
+	mes "[水手长]";
+	mes "为什么？因为我们每天都想喝新鲜的牛奶！";
+	npctalk "哞-哞-", "", bc_self;
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "你带了一头牛上船来喝新鲜牛奶吗？";
+	next;
+	mes "[舵手]";
+	mes "水手长一刻也不能离开她身边，因为她是他的幸运女神。我们很幸运，每天都能喝到卡卢纳牛奶。";
+	npctalk "谁能想到我们可以每天在船上享用卡卢纳牛奶？", "舵手#dorcon", bc_self;
+	next;
+	mes "[水手长]";
+	mes "嘿！继续说话你就会倒霉的！";
+	npctalk "哞--------", "", bc_self;
+	npctalk "不，不——那个人不会伤害你——", "水手长#dorcon", bc_self;
+	close;
+}
+
+conch_in,189,63,3	script	Head Chef#dorcon	4_DR_TORTEL,{
+	emotion ET_SLEEPY;
+	mes "[主厨]";
+	mes "*鼾*";
+	npctalk "*鼾*", "", bc_self;
+	close;
+}
+
+conch_in,186,57,3	script	Sous Chef#dorcon	4_CAT_CHEF,{
+	if (checkweight(1001,1) == 0) {
+		mes "[副主厨]";
+		mes "看起来很多而且很大。减少一些怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] < 16) {
+		mes "[副主厨]";
+		mes "很快就到了吃饭的时间了。我应该快点。";
+		close;
+	}
+	if (lasagna_quest[1] == 16) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "你好，我是" + strcharinfo(0) + "这次谁将踏上新的冒险之旅。很高兴见到你。";
+		next;
+		mes "[副主厨]";
+		mes "......";
+		npctalk "你很冷。", "水手长#dorcon", bc_self;
+		npctalk "他大概没有听到。", "舵手#dorcon", bc_self;
+		next;
+		mes "[水手长]";
+		mes "哦，你是新训练的冒险家，即将踏上前往新大陆的冒险之旅。我喜欢冒险精神。当我年轻的时候，我曾经从一个地方到另一个地方旅行。";
+		next;
+		mes "[舵手]";
+		mes "究竟是什么时候？多久以前？";
+		next;
+		mes "[水手长]";
+		mes "不久前。感觉就像发生在昨天一样。";
+		next;
+		mes "[舵手]";
+		mes "昨天半夜，你在甲板上跑步。";
+		next;
+		mes "[水手长]";
+		mes "呸，真是废话。";
+		next;
+		mes "[副主厨]";
+		mes "嘿，我明白了。那里太吵了。你现在可以走了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes ".......";
+		next;
+		mes "[水手长]";
+		mes "启航前，副主厨总是处于紧张状态。别把它当成是针对你个人的。";
+		npctalk "这并不意味着他不喜欢你。", "舵手#dorcon", bc_self;
+		next;
+		mes "[舵手]";
+		mes "成熟的多拉姆不会执着于这些东西。你可以走了。我们即将出发。";
+		erasequest 14534;// To the kitchen
+		setquest 14535;// To Purser
+		getexp 200,300;
+		lasagna_quest[1] = 17;
+		close;
+	}
+	if (lasagna_quest[1] == 17) {
+		mes "[副主厨]";
+		mes "询问乘务长何时发出航行标志。根据时间的不同，我们需要更换食材或者补充食材。";
+		close;
+	}
+	if (lasagna_quest[1] == 18) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "亲爱的副主厨。";
+		next;
+		mes "[副主厨]";
+		mes "保持简短。我很忙。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我的意思是，^0000cd新手来了！ ^000000";
+		emotion ET_HUK, getnpcid(0, "Boatswain#dorcon");
+		emotion ET_HUK, getnpcid(0, "Helmsman#dorcon");
+		next;
+		mes "[副主厨]";
+		mes "你在干什么？这是一种新的自杀方式吗？我不害怕挑战。画出你的武器。";
+		npctalk "你听到我听到的话了吗？", "水手长#dorcon", bc_self;
+		npctalk "是的，我做到了。现在的孩子们……真是太鲁莽了……", "舵手#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我不是说……我不是说……那个……";
+		next;
+		mes "[副主厨]";
+		mes "你这只小老鼠！现在告诉我。我不认为像你这样的菜鸟会自己想出这个办法。谁派你来这里的？";
+		npctalk "有一个傀儡师可以做到这一点！", "水手长#dorcon", bc_self;
+		npctalk "副主厨是怎么想出来的？", "舵手#dorcon", bc_self;
+		npctalk "等等，那家伙手里拿着……", "水手长#dorcon", bc_self;
+		next;
+		mes "[舵手]";
+		mes "副主厨！我认为这家伙说的是实话。是你订的吧？";
+		next;
+		mes "[副主厨]";
+		mes "^0000cd卡鲁格^000000？那个蛋环！他竟然让这个新手这么做，搞恶作剧！嘿，对不起。请接受我的道歉。";
+		npctalk "你需要快速而整齐地道歉。", "水手长#dorcon", bc_self;
+		npctalk "这才是绅士该做的事。", "舵手#dorcon", bc_self;
+		next;
+		mes "[副主厨]";
+		mes "我一定会告诉他向你道歉。他真是个麻烦。他永远只是一个水手男孩。";
+		npctalk "蛋蛋可以安息了。", "水手长#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "不，没关系。";
+		next;
+		mes "[副主厨]";
+		mes "你喜欢^0000cd食物^000000吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的！我愿意！";
+		next;
+		mes "[副主厨]";
+		mes "我的意思是做它，而不是吃它。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呃，我从来没有尝试过，但我相信我会喜欢的。";
+		next;
+		mes "[副主厨]";
+		mes "等你回来后，^0000cd我会教你如何做饭^000000。这是我表达歉意的方式。好吧，你现在可以走了。";
+		npctalk "教如何做饭？到底是什么！", "水手长#dorcon", bc_self;
+		next;
+		mes "[水手长]";
+		mes "嘿新手！询问乘务长我们什么时候启航前往您的途中。我认为出了什么问题，因为到目前为止还没有任何迹象。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "好的，我会的！";
+		delitem 25047,1;// Kahlunac
+		erasequest 14536;// Delivery to Chef
+		setquest 14537;// When do we take off?
+		getexp 200,300;
+		lasagna_quest[1] = 19;
+		close;
+	}
+	if (lasagna_quest[1] < 29) {
+		mes "[副主厨]";
+		mes "很快就到了吃饭的时间了。我应该快点。";
+		close;
+	}
+	if (lasagna_quest[1] == 29 && isbegin_quest(14536) == 0) {// Delivery to Chef
+		mes "[副主厨]";
+		mes "你来这里是为了学习如何做饭吗？";
+		next;
+		if (select( "是的！", "不。" ) == 2) {
+			mes "[副主厨]";
+			mes "如果你想学做饭，可以随时来找我。";
+			close;
+		}
+		if (BaseLevel > 30) {
+			mes "[副主厨]";
+			mes "看来你已经不是新手了。由于我太忙了，我不能再教你了。如果您想更多地探索烹饪世界，您应该找其他人。";
+			next;
+			mes "[副主厨]";
+			mes "听说新大陆的皇宫里有人教做饭。去看看是个好主意。";
+			for ( .@quest_id = 14154; .@quest_id < 14157; .@quest_id++ ) {
+				if (isbegin_quest(.@quest_id) > 0)
+					erasequest .@quest_id;
+			}
+			setquest 14536;// Delivery to Chef
+			completequest 14536;// Delivery to Chef
+			close;
+		}
+		if (sous_chef_quest == 0) {
+			mes "[副主厨]";
+			mes "好的食物可以^0000cd提升一定的状态^000000并^0000cd恢复HP^000000。没有理由不做饭、吃饭。";
+			next;
+			mes "[副主厨]";
+			mes "烹饪有两个主要功能。";
+			next;
+			emotion ET_SURPRISE;
+			mes "[副主厨]";
+			mes "首先，它^0000cd增强状态^000000。";
+			next;
+			mes "[副主厨]";
+			mes "烹饪方法有六种。每个都增强^0000cdStr、Agi、Vit、Int、Dex或Luk^000000。状态提升的多少取决于烹饪的水平。";
+			next;
+			emotion ET_SURPRISE;
+			mes "[副主厨]";
+			mes "其次，^0000cd恢复HP和SP^000000。恢复量还取决于烹饪的程度，有些食物只能恢复HP。";
+			next;
+			mes "[副主厨]";
+			mes "为了烹饪此类菜肴，您需要做一些准备工作。";
+			next;
+			mes "[副主厨]";
+			mes "准备工作有两个步骤。";
+			next;
+			emotion ET_SURPRISE;
+			mes "[副主厨]";
+			mes "第一的！您需要一本^0000cd食谱^000000。";
+			next;
+			mes "[副主厨]";
+			mes "您需要一本食谱来学习如何准备食材和烹饪。你可以从^0000cd任务^000000或^0000cd怪物^000000获得这本食谱。";
+			next;
+			emotion ET_SURPRISE;
+			mes "[副主厨]";
+			mes "获得食谱后，您需要收集^0000cd成分^000000。如果在没有准备好食材的情况下阅读食谱，那么舔书页是没有帮助的。就连鸡蛋圈也比这更清楚。";
+			next;
+			mes "[副主厨]";
+			mes "原料可以从^0000cd怪物^000000或^0000cd原料商人^000000处获得。虽然烹饪需要相当多的准备工作，但效果是值得的。";
+			next;
+			mes "[副主厨]";
+			mes "哦，顺便说一句，你需要知道^0000cd烹饪可能会失败^000000。失败的几率取决于你拥有的炊具和你的烹饪水平。";
+			next;
+			mes "[副主厨]";
+			mes "那么，我们开始做饭吧。当你准备好后再跟我说话！";
+			sous_chef_quest = 1;
+			close;
+		}
+		if (sous_chef_quest == 1) {
+			for ( .@i = 14154; .@i < 14158; .@i++ ) {
+				if (isbegin_quest(.@i) == 1) {
+					.@quest_id = .@i;
+					break;
+				}
+			}
+			if (.@quest_id > 0) {
+				mes "[副主厨]";
+				mes "让我们来看看。你把所有的材料都带来了吗？";
+				next;
+				mes "[副主厨]";
+				switch( .@quest_id ) {
+				case 14154:
+					callsub( S_Check, 705,1, 511,1, 507,1 );
+					mes "吃完这个就去打猎吧。你不会相信你身上新发现的力量。";
+					next;
+					delitem 705,1;// Clover
+					delitem 511,1;// Green Herb
+					delitem 507,1;// Red Herb
+					getitem 11551,1;// Savory Herb Salad (Str+1)
+					erasequest 14154;// Fragrant herb mix
+					close;
+				case 14155:
+					callsub( S_Check, 512,1, 515,2 );
+					mes "如果你吃了这个，你就能比其他人移动得快得多。甚至比蜂鸟扇动翅膀还要快。";
+					delitem 512,1;// Apple
+					delitem 515,2;// Carrot
+					getitem 11552,1;// Apple Carrot Salad (Agi+1)
+					erasequest 14155;// Crunchy salad
+					close;
+				case 14156:
+					callsub( S_Check, 949,1, 909,1, 914,1 );
+					mes "难道你没有感觉到神秘的力量已经在你的血管中流动了吗？你无法抗拒它！";
+					delitem 949,1;// Feather
+					delitem 909,1;// Jellopy
+					delitem 914,1;// Fluff
+					getitem 11553,1;// Casual Stew (Vit+1)
+					erasequest 14156;// Anything shabushabu
+					close;
+				case 14157:
+					callsub( S_Check, 705,1, 512,1 );
+					mes "当你咬一口这个的时候，你会变得更加熟练。";
+					next;
+					delitem 705,1;// Clover
+					delitem 512,1;// Apple
+					getitem 11554,1;// Golden Roasted Apple (Dex+1)
+					erasequest 14157;// Baked golden apple
+					close;
+				}
+			}
+			mes "[副主厨]";
+			mes "你准备好了吗？行动胜于雄辩！我们开始做饭吧！";
+			next;
+			mes "[副主厨]";
+			mes "实际上，你需要食谱和炊具，但对于新手来说可能太复杂了。这次我给你做一份。你知道，我们不应该浪费原料。";
+			next;
+			mes "[副主厨]";
+			mes "由于是新手试用版，所以效果和1级食物一样，只是^0000cd持续时间没那么长。 ^000000";
+			next;
+			mes "[副主厨]";
+			mes "你喜欢吃什么样的食物？由于Int或Luk菜肴对你没有多大好处，你现在可以做四种菜肴。";
+			next;
+			switch( select( "芳香调味香草", "脆脆沙拉", "什锦炖菜", "烤金苹果" ) ) {
+			case 1:
+				mes "[副主厨]";
+				mes "^0000cd芳香调味香草^000000。它增强了^0000cdStr^000000。体力消耗大的人吃这个。";
+				next;
+				mes "[副主厨]";
+				mes "成分是^0000cd1个三叶草、1个绿色药草和1个红色药草^000000。";
+				next;
+				cutin "??\?????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从外面田野里的Leaf Lunatic或Grass Fabre那里得到三叶草和红色药草。";
+				next;
+				cutin "???????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从法布尔草丛中获得绿色药草。";
+				next;
+				cutin "",255;
+				mes "[副主厨]";
+				mes "如果你把所有的材料都带来了，我们就可以做饭了。赶快。";
+				setquest 14154;// Fragrant herb mix
+				close;
+			case 2:
+				mes "[副主厨]";
+				mes "^0000cd脆脆沙拉^000000！我真的很喜欢这道菜。你的品味很好。";
+				next;
+				mes "[副主厨]";
+				mes "脆脆沙拉增强^0000cdAgi^000000。想要更快攻击或不想被击中的人往往会吃它。";
+				next;
+				mes "[副主厨]";
+				mes "成分是^0000cd1个苹果和2个胡萝卜^000000。";
+				next;
+				cutin "?????????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从伊兹鲁德外围的蛋环跳跃中获得苹果。";
+				next;
+				cutin "??????\?????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从叶疯子那里得到胡萝卜。";
+				next;
+				cutin "",255;
+				mes "[副主厨]";
+				mes "如果你把所有的材料都带来了，我们就可以做饭了！";
+				setquest 14155;// Crunchy salad
+				close;
+			case 3:
+				mes "[副主厨]";
+				mes "^0000cd 混合炖菜。 ^000000 它增强^0000cd维生素^000000。它真的会让你感到充实，所以即使你被怪物击中，你也不会感到剧烈的疼痛。";
+				next;
+				mes "[副主厨]";
+				mes "成分是^0000cd1个果冻、1个绒毛和1个羽毛^000000。";
+				next;
+				cutin "?????????.bmp",3;
+				mes "[副主厨]";
+				mes "您可以从外场跳跃的蛋环中获得果冻。";
+				next;
+				cutin "????????????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从 Grass Fabre 或 Leaf Lunatic 获得绒毛。";
+				next;
+				cutin "??????\?????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从法布尔草或疯子叶那里得到羽毛。";
+				next;
+				cutin "",255;
+				mes "[副主厨]";
+				mes "如果你把所有的材料都带来了，我们就可以做饭了。赶快。";
+				setquest 14156;// Anything shabushabu
+				close;
+			case 4:
+				mes "[副主厨]";
+				mes "^0000cd烤金苹果^000000。很难抗拒其表面的金色色调。";
+				next;
+				mes "[副主厨]";
+				mes "它增强了^0000cdDex^000000。那些想要提高命中的人往往会吃这个。";
+				next;
+				mes "[副主厨]";
+				mes "成分是^0000cd1个苹果和1个三叶草^000000。";
+				next;
+				cutin "?????????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从外场的蛋环那里得到苹果。";
+				next;
+				cutin "????????????.bmp",3;
+				mes "[副主厨]";
+				mes "你可以从 Grass Fabre 或 Leaf Lunatic 获得四叶草。";
+				next;
+				cutin "",255;
+				mes "[副主厨]";
+				mes "如果你把所有的材料都带来了，我们就可以做饭了。赶快。";
+				setquest 14157;// Baked golden apple
+				close;
+			}
+		}
+	}
+
+	// daily quest
+	if (BaseLevel < 140) {
+		mes "[副主厨]";
+		mes "我需要有人帮忙。看来你经验还不够。";
+		close;
+	}
+	switch( isbegin_quest(14555) ) {
+	case 0:
+		if (Class != Job_Summoner) {
+			mes "[副主厨]";
+			mes "我告诉过你不要那样进厨房……哦……你是新大陆来的吗？";
+			npctalk "新大陆！新大陆！", "主厨#dorcon", bc_self;
+			next;
+			mes "[副主厨]";
+			mes "这些天我经常见到你。你看起来很奇怪。脸上没有胡须，屁股没有尾巴。";
+			npctalk "当着人面讨论相貌是不礼貌的！", "水手长#dorcon", bc_self;
+			npctalk "没礼貌！", "舵手#dorcon", bc_self;
+			next;
+			mes "[副主厨]";
+			mes "请原谅。我是负责这个厨房的副主厨。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "你好。我是" + strcharinfo(0) + ".";
+			next;
+			mes "[副主厨]";
+			mes "你的名字也很奇怪。";
+		}
+		else {
+			mes "[副主厨]";
+			mes "我告诉过你不要那样进厨房……哦……你看起来很眼熟……";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "你好。我是一名冒险家" + strcharinfo(0) + "，在Con-Killina上开始了冒险。";
+			next;
+			mes "[副主厨]";
+			mes "是这样吗？让我自我介绍一下。我是负责这个厨房的副主厨。";
+		}
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "主厨呢？为什么副主厨负责厨房？";
+		npctalk "哦，你不应该这么说！", "水手长#dorcon", bc_self;
+		npctalk "又开始了。故事很长。", "舵手#dorcon", bc_self;
+		next;
+		mes "[副主厨]";
+		mes "看看那边。那个睡在地板上的男人看上去根本就不是一个绅士。 ^0000cd他是我们的主厨^000000。队长总是说我们必须尽力而为。但没有用。";
+		emotion ET_SLEEPY, getnpcid(0, "Head Chef#dorcon");
+		npctalk "*鼾*","主厨#dorcon", bc_self;
+		next;
+		mes "[副主厨]";
+		mes "你知道做饭最重要的是什么吗？是对最佳品味的无尽热情和追求。不过，我们的主厨对这些事情没有兴趣。";
+		npctalk "味道，非常重要。", "主厨#dorcon", bc_self;
+		next;
+		mes "[副主厨]";
+		mes "然而，他非常擅长在短时间内做出足够多的人吃的份量。这就是他成为主厨的原因。但当人们开始抱怨味道时，我就被叫进去了。";
+		npctalk "我不介意主厨做的菜。", "水手长#dorcon", bc_self;
+		npctalk "你的舌头有问题。", "舵手#dorcon", bc_self;
+		next;
+		mes "[副主厨]";
+		mes "从那时起，主厨就把一切都托付给我了。";
+		next;
+		mes "[副主厨]";
+		mes "我相信新大陆的人们吃的食物和我们不一样。新大陆的人们觉得什么好吃？";
+		next;
+		mes "[副主厨]";
+		mes "我想去那里品尝每道菜。但是，如果我这样做的话，这艘船的船员就会被饿死。";
+		npctalk "如果你想去，就带上我吧。", "主厨#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯，食物的种类有很多。我们还寻找食材并做饭。有很多事情是确定的...";
+		next;
+		mes "[副主厨]";
+		mes "我碰巧有一本^0000cd新大陆食谱^000000。你现在有做菜的原料吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "并不真地...";
+		next;
+		mes "[副主厨]";
+		mes "好吧，那么我请你帮个忙。请给我一些^0000cd食谱^000000中的成分。这个东西叫做^0000cd马斯黛拉果酒^000000...我对此很好奇，但是它需要一些这里找不到的成分。";
+		next;
+		mes "[副主厨]";
+		mes "另外，请给我一些 Navi 主厨制作的《猫硬饼干》《CLR0》《CLR1》。听说味道不好，但是营养丰富，而且容易保存。";
+		next;
+		mes "[副主厨]";
+		mes "请给我带来^0000cd4个马斯特拉水果和1个猫硬饼干^000000。";
+		next;
+		mes "[副主厨]";
+		mes "如果你把它们带给我，我会丰厚地奖励你。";
+		npctalk "我也很兴奋。新食物。", "水手长#dorcon", bc_self;
+		npctalk "你不只是需要食物来填饱肚子吗？", "舵手#dorcon", bc_self;
+		next;
+		mes "[副主厨]";
+		mes "那么好吧。我指望你了。";
+		setquest 14555;// Whole new world of taste
+		close;
+	case 1:
+		if (countitem(522) < 4 || countitem(11536) < 1) {
+			mes "[副主厨]";
+			mes "我拜托你的事怎么了？ 4 个马斯特拉水果和 1 个猫硬饼干。";
+			close;
+		}
+		mes "[副主厨]";
+		mes "你这么快就把它们带来了。我可以挑战用这些制作新菜肴。我的心砰砰直跳。";
+		next;
+		mes "[副主厨]";
+		mes "下次我可以请求更多的帮助吗？你知道，成分。";
+		npctalk "剥削警报！", "水手长#dorcon", bc_self;
+		npctalk "他索要更多的好处真是太圆滑了！", "舵手#dorcon", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "当我有时间的时候让我顺便过来一下。";
+		next;
+		mes "[副主厨]";
+		mes "谢谢。";
+		completequest 14555;// Whole new world of taste
+		setquest 14563;// Free time
+		delitem 522,4;// Mastela Fruit
+		delitem 11536,1;// Cat's Ship Biscuit
+		close;
+	case 2:
+		switch( checkquest(14563,PLAYTIME) ) {
+		case -1:
+			for ( .@quest_id = 14565; .@quest_id < 14567 && isbegin_quest(.@quest_id) == 0; .@quest_id++ )
+				continue;
+			switch( .@quest_id ) {
+			case 14564:
+				if (countitem(553) < 20) {
+					mes "[副主厨]";
+					mes "你离开并没有多久。你已经拿到了吗？还是你忘记了我向你提出的要求？";
+					next;
+					mes "[副主厨]";
+					mes "^0000cd20 个面包^000000。为了保持新鲜，你应该抓紧时间。";
+					close;
+				}
+				mes "[副主厨]";
+				mes "哦，这是包子……它确实又热又大。这和我们这边完全不一样。";
+				npctalk "给我一个。即使其中一个也足以让我充实一整天。", "水手长#dorcon", bc_self;
+				npctalk "是的，对。", "水手长#dorcon", bc_self;
+				next;
+				mes "[副主厨]";
+				mes "谢谢你把它们带给我。多亏了你们，千层面的美食才能更进一步。";
+				delitem 553,20;// Bao
+				erasequest 14564;// I love buns, too
+				setquest 14563;// Free time
+				close;
+			case 14565:
+				if (countitem(11536) < 5 || countitem(12636) < 5) {
+					mes "[副主厨]";
+					mes "你离开并没有多久。你已经拿到了吗？还是你忘记了我向你提出的要求？";
+					next;
+					mes "[副主厨]";
+					mes "带上^0000cd5个猫硬饼干和5个Malangdo罐头食品^000000。请快点。";
+					close;
+				}
+				mes "[副主厨]";
+				mes "猫硬饼干和马兰多罐头食品……嗯，它们可以保存足够长的时间。";
+				npctalk "我可以把它们喂给我的孙子们。", "水手长#dorcon", bc_self;
+				npctalk "如果你有的话。", "舵手#dorcon", bc_self;
+				next;
+				mes "[副主厨]";
+				mes "谢谢你帮我拿来。现在，Con-Chliina 可以想出我们自己的方法来长期储存食物。";
+				delitem 11536,5;// Cat's Ship Biscuit
+				delitem 12636,5;// Malang Sp Can
+				erasequest 14565;// Emergency food supplies
+				setquest 14563;// Free time
+				close;
+			case 14566:
+				if (countitem(7066) < 20) {
+					mes "[副主厨]";
+					mes "你离开并没有多久。你已经拿到了吗？还是你忘记了我向你提出的要求？";
+					next;
+					mes "[副主厨]";
+					mes "您应该携带^0000cd20个冰块^000000。是为了保持储存的食物新鲜。请快点。";
+					close;
+				}
+				mes "[副主厨]";
+				mes "冰块。我很高兴见到他们。不会融化的冰块！这肯定是新大陆。";
+				npctalk "冷卡卢尼亚牛奶是最好的。", "水手长#dorcon", bc_self;
+				npctalk "随时鲜奶！", "舵手#dorcon", bc_self;
+				next;
+				mes "[副主厨]";
+				mes "谢谢你把它们带给我。多亏了你，Con-Chliina 的船员才可以吃到新鲜的食物。";
+				delitem 7066,20;// Ice Cubic
+				erasequest 14566;// Brilliant idea
+				setquest 14563;// Free time
+				close;
+			}
+			end;
+		case 0:
+		case 1:
+			mes "[副主厨]";
+			mes "是什么把你带到这里来的？是因为昨天的恩惠吗？";
+			next;
+			mes "[副主厨]";
+			mes "由于我正在值班，所以我无法进行任何个人烹饪研究。天亮后回来。";
+			npctalk "到底是什么原因，这么年轻就这么浮躁。", "水手长#dorcon", bc_self;
+			npctalk "因为年轻而浮躁。", "舵手#dorcon", bc_self;
+			npctalk "对于烹饪来说，所有的匆忙都无济于事。", "", bc_self;
+			close;
+		case 2:
+			mes "[副主厨]";
+			mes "恰逢其时。我只有一点空闲时间，我想继续研究新大陆的美食。你能给我拿点配料吗？";
+			next;
+			mes "[副主厨]";
+			switch( rand(3) ) {
+			case 0:
+				mes "我今天需要的是^0000cd小圆面包^000000。我们的烤宽面条也有类似的东西，但配方完全不同。";
+				npctalk "面包听起来超级好吃。", "舵手#dorcon", bc_self;
+				npctalk "有什么东西听起来不好吃吗？", "水手长#dorcon", bc_self;
+				next;
+				mes "[副主厨]";
+				mes "我想知道它是如何制作的。请给我一些。 ^0000cd20个面包^000000就可以了。";
+				erasequest 14563;// Free time
+				setquest 14564;// I love buns, too
+				close;
+			case 1:
+				mes "我今天需要的是^0000cd猫硬饼干和Malangdo罐头食品^000000。我很好奇Navi号的船员们是如何在如此漫长的航行中幸存下来的。";
+				npctalk "听起来很可爱，但听起来不太好吃。", "水手长#dorcon", bc_self;
+				npctalk "但你还是会吃它们，对吗？", "舵手#dorcon", bc_self;
+				npctalk "是的。", "水手长#dorcon", bc_self;
+				next;
+				mes "[副主厨]";
+				mes "我想知道它们是如何制作的。请给我一些。 ^0000cd5 个猫硬饼干和 5 个 Malangdo 罐头食品^000000 就可以了。";
+				erasequest 14563;// Free time
+				setquest 14565;// Emergency food supplies
+				close;
+			case 2:
+				mes "我今天需要^0000cd冰块^000000。听说这个洞里的冰块即使在盛夏也不会融化。";
+				npctalk "到底是什么！为什么它不融化？", "舵手#dorcon", bc_self;
+				npctalk "打败了我。世界充满了奥秘。", "水手长#dorcon", bc_self;
+				next;
+				mes "[副主厨]";
+				mes "如果我们有这些，我们就可以保持食物新鲜并随时喝冷的卡卢尼亚牛奶。 ^0000cd20个冰块^000000就可以了，谢谢。";
+				erasequest 14563;// Free time
+				setquest 14566;// Brilliant idea
+				close;
+			}
+		}
+	}
+	end;
+
+S_Check:
+	.@arg_count = getargcount();
+	for ( .@i = 0; .@i < .@arg_count; .@i += 2 ) {
+		if ((.@i+2) >= .@arg_count)
+			.@tmp$ = "";
+		else if ((.@i+4) >= .@arg_count)
+			.@tmp$ = " and ";
+		else
+			.@tmp$ = ", ";
+		.@string$ = .@string$ + getarg(.@i+1) + " " + getitemname( getarg(.@i) ) + .@tmp$;
+		.@countitem = .@countitem || ( countitem(getarg(.@i)) < getarg(.@i+1) );
+	}
+	if (.@countitem == 1) {
+		mes "如果没有这些成分，你希望我做什么？";
+		next;
+		mes "[副主厨]";
+		mes "现在就给我" + .@string$ + "！";
+		close;
+	}
+	emotion ET_SPARK;
+	mes "哦，你把它们都带来了！让我马上煮给你吃。";
+	next;
+	mes "[副主厨]";
+	return;
+}
+
+lasagna,298,84,5	script	Vigilante#dorcon01	4_DR_SOLDIER,{
+	if (lasagna_quest[1] == 21) {
+		if (Class != Job_Summoner) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "你好。我是";
+			next;
+			mes "[治安维持者]";
+			mes "来自新大陆的冒险家。是什么把你带到这里来的？您需要帮助吗？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "听说因为大雾我们无法出发了。我来这里是为了查看洞内巨龙的情况。";
+			next;
+			mes "[治安维持者]";
+			mes "你打算自己做吗？";
+			npctalk "这以前从未发生过。", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我很急。";
+			next;
+			mes "[治安维持者]";
+			mes "雾气笼罩着天空。 ^0000cd巡逻^000000尚未返回，因此可能需要一些时间。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "请告诉我龙住在哪里。";
+			npctalk "你要亲自去那里吗？万一有事怎么办？这不会引起任何外交问题吗...？哦...烤宽面条的结局...不可能！", "", bc_self;
+			next;
+			mes "[治安维持者]";
+			mes "那就跟我来吧。 <NAVI>^4D4DFF[龙之巢]^000000<INFO>lasa_fild02,340,244,000,1,</INFO></NAVI>在村外田野右端的山洞里。";
+			erasequest 14548;// Crazy Dragon
+			setquest 14549;// No news is not a good news
+			lasagna_quest[1] = 22;
+			close;
+		}
+		mes "[" + strcharinfo(0) + "]";
+		mes "你好。我是";
+		next;
+		mes "[治安维持者]";
+		mes "你在这里做什么？你错过了船吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "听说因为大雾我们无法出发了。我来这里是为了查看洞内巨龙的情况。";
+		next;
+		mes "[治安维持者]";
+		mes "雾？哈！雾！这是什么时候发生的事？而巡逻队还没有回来。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那么龙是...";
+		next;
+		mes "[治安维持者]";
+		mes "去检查的巡逻队^0000cd还没有回来^000000。肯定发生了什么事情。你不是说要去那里看看龙的状况吗？跟我来吧，石头";
+		npctalk "如果发生什么事情，他需要帮助。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "在哪里？";
+		next;
+		mes "[治安维持者]";
+		mes "你知道，<NAVI>^4D4DFF[龙之巢]^000000<INFO>lasa_fild02,340,244,000,1,</INFO></NAVI>。它在村外田地右端的山洞里。你应该先走。做好一些准备后我就跟着你。";
+		erasequest 14539;// Crazy Dragon
+		setquest 14541;// No news is not a good news
+		lasagna_quest[1] = 22;
+		close;
+	}
+	if (lasagna_quest[1] == 22) {
+		mes "[治安维持者]";
+		if (Class != Job_Summoner)
+			mes "<NAVI>^4D4DFF[龙之巢]^000000<INFO>lasa_fild02,340,244,000,1,</INFO></NAVI>在右侧的山洞里。那就跟我来吧。";
+		else
+			mes "我会跟着你。 <NAVI>^4D4DFF【龙之谷】^000000<INFO>lasa_fild02,340,244,000,1,</INFO></NAVI>在村外田野右端的山洞里。";
+		close;
+	}
+	mes "[治安维持者]";
+	mes "今天的风很不安。";
+	close;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(14548) == 1 || isbegin_quest(14539) == 1" );
+	end;
+}
+
+lasa_dun01,29,146,5	script	Vigilante#dorcon03	HIDDEN_WARP_NPC,5,5,{
+	end;
+OnTouch:
+	if (lasagna_quest[1] == 22) {// summoner
+		classchange( 4_DR_SOLDIER, "", bc_self );
+		mes "[治安维持者]";
+		mes "我在这附近没有看到它。我们应该更深入一些！";
+		npctalk "我在这附近没有看到它。我们应该更深入一些！", "", bc_self;
+		close2;
+		classchange( HIDDEN_WARP_NPC, "", bc_self );
+		end;
+	}
+	end;
+}
+
+lasa_dun01,151,102,5	script	Machie#dorcon01	4_CAT_SAILOR4,{
+	if (lasagna_quest[1] == 22) {
+		mes "[覆盖]";
+		mes "......";
+		close;
+	}
+	if (lasagna_quest[1] >= 23 || lasagna_quest[1] < 27) {
+		mes "[覆盖]";
+		mes "我也许装死了，但我不是胆小鬼。确实是巨大而可怕。好吧，现在这并不重要。就去塔尔图菲吧。告诉他我很抱歉今天不能来。";
+		close;
+	}
+	if (lasagna_quest[1] == 27) {
+		mes "[覆盖]";
+		mes "你已经处理好了吗？你很快。我现在要休息了。你现在可以走了！";
+		close;
+	}
+	mes "[覆盖]";
+	mes "蛇怪今天表现得很奇怪。";
+	close;
+}
+
+lasa_dun01,153,103,3	script	Vigilante#dorcon02	4_DR_SOLDIER,{
+	if (lasagna_quest[1] == 22) {
+		mes "[覆盖]";
+		mes "啊啊……";
+		next;
+		mes "[治安维持者]";
+		if (Class == Job_Summoner) {
+			mes "嘿！马奇！醒醒吧！这是怎么回事？哦，我的...";
+			next;
+			mes "[治安维持者]";
+			mes "你不是说要把你老家的妈妈接过来吗？你不能就这样死掉！嘿，伙计！马奇！别死在我身上！";
+		}
+		else {
+			mes "嘿！马奇！醒醒吧！这是怎么回事？你不是说要把你老家的妈妈接过来吗？你不能就这样死掉！";
+			next;
+			mes "[治安维持者]";
+			mes "嘿，伙计！马奇！别死在我身上！";
+		}
+		next;
+		mes "[覆盖]";
+		mes "不要用你的言语杀死一个人。";
+		next;
+		mes "[治安维持者]";
+		mes "限制？";
+		next;
+		mes "[覆盖]";
+		mes "唷...我很努力地假死。现在消失了吗？";
+		npctalk "它消失了。多么令人欣慰啊！", "限制#dorcon01", bc_self;
+		next;
+		mes "[治安维持者]";
+		mes "什么？";
+		next;
+		mes "[覆盖]";
+		mes "最凶猛、最令人发指、最残暴的蛇怪。这东西很危险。这是我见过的最可怕的蛇怪。我因为害怕而扭伤了脚踝。";
+		npctalk "如果不是我的演技我可能已经死了。", "限制#dorcon01", bc_self;
+		next;
+		mes "[治安维持者]";
+		mes "所以你装死了？好工作。义务警员应该知道如何拯救自己的生命。对你有好处。";
+		npctalk "论小伎俩，你是最棒的。", "限制#dorcon01", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "情况有那么糟糕吗？";
+		next;
+		mes "[覆盖]";
+		if (Class == Job_Summoner)
+			mes "这是谁？新手？";
+		else {
+			mes "是谁？来自新大陆的人？义务警队的新人？";
+			npctalk "我们现在接受来自新大陆的人了吗？", "", bc_self;
+		}
+		next;
+		mes "[治安维持者]";
+		mes "不，是等待起航的冒险家。我猜因为有雾，船没有出发。这家伙来这里是为了查看情况。";
+		next;
+		mes "[覆盖]";
+		mes "我懂了。塔尔图菲又惹麻烦了。蛇怪今天很猖狂。";
+		next;
+		if (Class == Job_Summoner) {
+			mes "[治安维持者]";
+			mes "好天气可能让他们感到困扰。或者他们可能听到长笛之类的曲子。";
+			next;
+			mes "[覆盖]";
+			mes "啊……请抱紧我。我无法正常行走。";
+			next;
+			mes "[治安维持者]";
+			mes "亲爱的冒险家，我应该带他去基地。你能一个人去那里吗？";
+			next;
+			mes "[治安维持者]";
+			mes "^0000cd塔尔图菲^000000就在楼上。去问问他有什么问题。他不咬人。你不需要害怕。";
+			npctalk "他只是个婴儿。", "限制#dorcon01", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "是的，我会去那里。";
+			next;
+			mes "[治安维持者]";
+			mes "你不需要着急，因为在塔尔图菲平静之前船不会航行。慢慢来。没有你，船就无法离开。";
+			next;
+			mes "[覆盖]";
+			mes "听起来很有压力。";
+			npctalk "你很刻薄。", "限制#dorcon01", bc_self;
+			next;
+			mes "[治安维持者]";
+			mes "是这样吗？我只是想让你慢慢来。好吧，进去吧。请记住，塔尔图菲的和平就是海洋的和平。这意味着希望。";
+			next;
+			mes "[覆盖]";
+			mes "不好意思只送你一个人！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "那么，怎样才能找到龙巢呢？";
+			next;
+			mes "[覆盖]";
+			mes "很难错过。一看就知道是龙巢。它位于很高的地方，非常浮华……嗯，你就看出来了。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "嗯，我会回来的。";
+			next;
+			mes "[治安维持者]";
+			mes "是的！别害怕！";
+			erasequest 14541;// No news is not a good news
+			setquest 14542;// How is the Dragon
+			lasagna_quest[1] = 23;
+			close2;
+			warp "lasa_dun_q",190,20;
+			end;
+		}
+		else {
+			mes "[覆盖]";
+			mes "我听说^0000cd有一个外来者在扰乱蛇怪^000000。";
+			npctalk "是那边那个人吗？", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我想这可能是我造成的。";
+			next;
+			mes "[治安维持者]";
+			mes "什么？";
+			next;
+			mes "[覆盖]";
+			mes "真的吗？";
+			npctalk "是啊，对！我告诉你了！", "", bc_self;
+			next;
+			mes "[治安维持者]";
+			mes "做什么的？追捕蛇怪你不会得到任何好处。";
+			next;
+			mes "[覆盖]";
+			mes "也许是出于好奇。如果我也去新大陆，我会去探究一切。啊……请抱紧我。我无法正常行走。";
+			next;
+			mes "[治安维持者]";
+			mes "亲爱的冒险家，我应该带他去基地。你能一个人去那里吗？ ^0000cd塔尔图菲^000000在楼上。去问问他有什么问题。";
+			next;
+			mes "[治安维持者]";
+			mes "我想冒险家已经知道问题所在了。";
+			emotion ET_SWEAT;
+			next;
+			mes "[覆盖]";
+			mes "你不必这样说。";
+			npctalk "什么 ！是真的！", "", bc_self;
+			next;
+			mes "[治安维持者]";
+			mes "如果那家伙不去管蛇怪的话，就不会发生这样的事了。好吧，继续吧。";
+			next;
+			mes "[治安维持者]";
+			mes "请记住，塔尔图菲的和平就是海洋的和平。这意味着希望。请讨好塔尔图菲。";
+			npctalk "请。", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "是的。我一定会解决这个问题。";
+			close2;
+			erasequest 14549;// No news is not a good news
+			setquest 14550;// How is the Dragon
+			lasagna_quest[1] = 23;
+			end;
+		}
+	}
+	if (lasagna_quest[1] >= 23 && lasagna_quest[1] < 27) {
+		mes "[治安维持者]";
+		mes "你继续去见塔尔图菲。休息一会我就带着Machie一起去。请记住，塔尔图菲的和平就是海洋的和平。这意味着希望。";
+		close2;
+		if (Class == Job_Summoner)
+			warp "lasa_dun_q",190,20;
+		end;
+	}
+	if (lasagna_quest[1] == 27) {
+		mes "[治安维持者]";
+		mes "塔尔图菲一定已经平静下来了。请先走。等马奇能走路了，我就和他一起去。我背着他太重了。";
+		close;
+	}
+	mes "[治安维持者]";
+	mes "你能站起来吗？";
+	next;
+	mes "[覆盖]";
+	mes "不，我希望有人背着我……";
+	next;
+	mes "[治安维持者]";
+	mes "你这么说是为了让我听。你连做梦都想不到吗？我厌倦了工具。";
+	next;
+	mes "[覆盖]";
+	mes "啧。";
+	close;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(14541) == 1 || isbegin_quest(14549) == 1" );
+	end;
+}
+
+lasa_dun_q,162,158,3	script	Tartufi#dorcon01	4_TARUTUPI,{
+	if (lasagna_quest[1] == 23) {
+		mes "[松露]";
+		mes "烦人的苍蝇。烦人的蚊子。只是烦人。我一个人在这里做什么名誉和财富......";
+		npctalk "妈妈，爸爸……我想你们。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "松露？";
+		next;
+		mes "[松露]";
+		mes "你已经够麻烦的了。今天大家都怎么了？你们都是虎蛾什么的？";
+		npctalk "想要老虎袭击什么的吗？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "听着，我不是蛇怪。";
+		next;
+		mes "[松露]";
+		mes "你是谁？再说一次，我以前从未见过你…… Magchi 在哪里？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "马奇在一次巡逻中受伤后返回。";
+		next;
+		mes "[松露]";
+		mes "哦不。发生了什么？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "一只巨大的蛇怪出现了，他吓得腿受伤了。另一个治安警察带走了他，所以我确信他安全回来了。";
+		next;
+		mes "[松露]";
+		mes "是的？那我猜他还没死。我一直对 Magchi 每天告诉我的故事的其余部分感到好奇。哦，你也有这个故事吗？";
+		next;
+		mes "[松露]";
+		mes "是【我在满月之夜目睹了一场谋杀】。如果你知道这个故事，请告诉我。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "没有任何线索。我从来没有听说过。";
+		next;
+		mes "[松露]";
+		mes "真的吗？那么这个故事是马奇编的吗？你会照顾他们吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "打扰一下？";
+		next;
+		mes "[松露]";
+		mes "马奇过去常常击退每天来这里的蛇怪。没有马奇，他们今天就很麻烦了。太烦人了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "所以这就是你喷火的原因。";
+		next;
+		mes "[松露]";
+		mes "因为它暂时让他们远离。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "由于浓烟，港口被浓雾笼罩。因为船不能开，所以我才来考察。";
+		next;
+		mes "[松露]";
+		mes "启航？那你是冒险家吗？我从马奇那里听说发现了一个新世界。一片未知的土地，没有人去过。我也希望我能去。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你现在就可以走了。";
+		next;
+		mes "[松露]";
+		mes "没有。我妈妈和爸爸最近才离开。我必须留在这里，再长大一点。睡很多，吃很多。一旦我变得坚强和坚强，我就会去观光。";
+		npctalk "我的妈妈和爸爸一遍又一遍地告诉我。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "都这么大了还说自己是小孩子？";
+		next;
+		mes "[松露]";
+		mes "不过别叫我小孩子。我才457岁。但话又说回来，与躲在那边的爷爷相比，我还是个孩子。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "爷爷？ WHO？";
+		next;
+		mes "[松露]";
+		mes "他是^0000cdImoogi^000000，有点像蛇怪首领。但我不知道。他在抱怨如果没有^0000cd我的妈妈和爸爸，他早就升天了^000000。所以他总是派出蛇怪来骚扰我。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "天哪。";
+		next;
+		mes "[松露]";
+		mes "哦！有蛇怪又朝这边过来了。请照顾他们。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我该怎么办？";
+		next;
+		mes "[松露]";
+		mes "嗯，马奇曾经挥舞着某种长杆。也许这样就可以了。 ^0000cd至少有20个^000000必须在他们逃跑之前得到解决。";
+		npctalk "他们似乎没有学习技能，因为他们每天都这样做。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我挑选了一些东西，所以让我尝试一下。等待。";
+		erasequest 14542;// How is the Dragon
+		setquest 14543;// Basilisk Hunt
+		lasagna_quest[1] = 24;
+		close;
+	}
+	if (lasagna_quest[1] == 24) {
+		if (checkquest(14543,HUNTING) != 2) {// Basilisk Hunt
+			mes "[松露]";
+			mes "他们就是从不放弃，不是吗？但你必须再努力一点。他们还远远没有完成，因为他们知道你很弱。所以你一定要展现出你坚强的一面！";
+			next;
+			mes "[松露]";
+			mes "如果你向他们表明你很坚强，他们会安静一段时间。所以再努力一点。我会帮助你。";
+			specialeffect2 EF_HEAL2;
+			percentheal 100,100;
+			close;
+		}
+		mes "[松露]";
+		mes "他走了吗？我猜他是。这应该能让他们安静一段时间。一开始让我很担心，因为他说他是一个新手冒险家，但他应该能够完成多拉姆的任务。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "大家都把我当新手蛋一样对待，但我也完成了正式的培训课程！";
+		next;
+		mes "[松露]";
+		mes "Magchi 告诉我，这是一个简短而密集的项目。但这就足够了吗？你在击倒那些蛇怪的过程中经历了地狱般的训练，所以你不再是菜鸟了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哦，是的。谢谢。";
+		next;
+		mes "[松露]";
+		mes "等他准备好再次四处奔波的时候，马奇就会来了。多谢。你说你要去新世界冒险？时不时告诉我你吃烤宽面条时的新世界。";
+		npctalk "我真的很好奇。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我会。那么，再见了。";
+		next;
+		mes "[松露]";
+		mes "虽然时间很短，但我真的很喜欢你在这里。再见。";
+		erasequest 14543;// Basilisk Hunt
+		setquest 14544;// Now I can leave
+		getexp 500,500;
+		lasagna_quest[1] = 27;// jump to 27
+		close;
+	}
+	if (lasagna_quest[1] == 27) {
+		mes "[松露]";
+		mes "兹兹……兹兹……";
+		close;
+	}
+}
+
+lasa_dun03,161,292,5	script	Lord Imuk#dorcon	4_NFWISP,{
+	if (Class == Job_Summoner)
+		end;
+	if (lasagna_quest[1] == 24) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "一定是在这附近的某个地方，可以与 Imoogi 进行通信。";
+		next;
+		mes "[？？？]";
+		mes "你是谁？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "G幽灵？";
+		next;
+		mes "[？？？]";
+		mes "你竟然敢把我当鬼一样对待！我已经活了^0000cd2500年^000000了！";
+		specialeffect2 EF_LIGHTBOLT;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呜呜……好痛啊。如果我冒犯了你，我很抱歉，但你是蛇怪首领伊莫吉吗？";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "你的语言和你的外表一样粗俗。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "塔尔图菲是这么说的。";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "他年轻又愚蠢，因为缺乏学习。我是伊穆克。我被称为^0000cd伊穆克勋爵^000000。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "伊穆克大人……你说你活了2500岁吗？";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "是的。而我本来应该^0000cd成为一条龙并升天^000000。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "提升？你是说去天堂吗？";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "我可以^0000cd修炼一千年，成为龙^000000升天。但是，<<CLR2>>>那个小家伙^000000的母亲和父亲过去两次抢夺了^0000cd汝义州^000000并飞升了。";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "而现在，那个年轻人正躲在汝矣岛的某个地方，寻找五百年后飞升的机会。我会夺回属于我的东西。我的权利是正当的。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "看来，要成为龙，汝义州是必须具备的条件。这就是蛇怪困扰塔尔图菲的原因吗？";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "^0000cd蛇怪担负着恢复汝义州^000000的任务。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你看，塔尔图菲受到攻击时会喷出火焰，烟雾笼罩了整个城镇。这使得人们无法自由出行。";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "听到这个消息我很遗憾。但那个年轻人有错。蛇怪将继续他们的任务，直到汝义州被收回。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯……我明白了。所以在你得到那个Yeouiju之前你不会打算放弃。我会向塔尔图菲询问汝义州的情况。";
+		next;
+		mes "[伊穆克勋爵]";
+		mes "谢谢。现在我必须继续我的训练，所以不要打扰我并走开。";
+		erasequest 14551;// Chief Basilisk
+		setquest 14552;// Lord Imuk's message
+		lasagna_quest[1] = 25;
+		close;
+	}
+	if (lasagna_quest[1] == 25) {// humain
+		mes "[伊穆克勋爵]";
+		mes "给年轻人讲讲汝义州的事。我必须继续我的训练，所以不要打扰我并走开。";
+		close;
+	}
+}
+
+lasa_dun03,162,158,3	script	Tartufi#dorcon02	4_TARUTUPI,{
+	if (Class == Job_Summoner)
+		end;
+	if (lasagna_quest[1] == 23) {
+		mes "[松露]";
+		mes "烦人的苍蝇。烦人的蚊子。只是烦人。我想念爸爸妈妈。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "松露？";
+		next;
+		mes "[松露]";
+		mes "你已经够麻烦的了。今天大家都怎么了？猛虎一击还不够？你们都是虎蛾什么的？";
+		npctalk "没有烤蛇！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "听着，我不是蛇怪。";
+		next;
+		mes "[松露]";
+		mes "你是谁？你的衣服很奇怪，你看起来也很奇怪。马奇去哪儿了？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "马奇在一次巡逻中受伤后返回。而我来自新世界。";
+		next;
+		mes "[松露]";
+		mes "我懂了。你来自新世界。但马奇呢？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "蛇怪狂暴，他的腿受伤了。另一个治安警察带走了他，所以我确信他安全回来了。";
+		next;
+		mes "[松露]";
+		mes "是的？那么这就是一种解脱。但我不知道这些生物体内到底发生了什么。他们直到现在都很安静。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯，我之前就在追捕蛇怪。";
+		next;
+		mes "[松露]";
+		mes "什么？你去追蛇怪了吗？你？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呃...是的。对不起。我不是故意的。";
+		next;
+		mes "[松露]";
+		mes "不，不。我并不是说你做的事情是错的。但你能告诉我更多相关信息吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我被要求去找一些罗勒。听说可以从蛇怪身上找到它们，所以我千里迢迢来到这里捕捉它们。我想这一定让他们兴奋不已。";
+		next;
+		mes "[松露]";
+		mes "我懂了。那你强吗？你说你抓到了一些蛇怪。";
+		npctalk "如果你抓住了他们，你一定很坚强。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯，我想你可以这么说……";
+		next;
+		mes "[松露]";
+		mes "马奇刚刚赶走了每天来这里的蛇怪。这已经足够了，但是没有 Magchi，他们又来打扰我了。太烦人了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "所以这就是你喷火的原因。";
+		next;
+		mes "[松露]";
+		mes "因为它暂时让他们远离。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "由于浓烟，港口被浓雾笼罩。因为船不能开，所以我才来考察。";
+		next;
+		mes "[松露]";
+		mes "启航？啊，对了。你说你来自新世界。那我可以请求帮忙吗？请告诉他们的^0000cd酋长^000000让他们保持安静。";
+		npctalk "我不再想要了。", "", bc_self;
+		next;
+		mes "[松露]";
+		mes "他的名字叫伊莫吉。我不知道他住在哪里，但那里有一个^0000cd可以与Imoogi^000000通信。蛇怪每天早上都会去那里并听到一些声音......";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我懂了。对蛇怪感到抱歉。我会处理的。";
+		next;
+		mes "[松露]";
+		mes "好的。稍后见。";
+		erasequest 14550;// How is the Dragon
+		setquest 14551;// Chief Basilisk
+		lasagna_quest[1] = 24;
+		close;
+	}
+	if (lasagna_quest[1] == 24) {
+		mes "[松露]";
+		mes "你和 Imoogi 聊过吗？他说什么？还没有？赶快。蛇怪太烦人了。";
+		close;
+	}
+	if (lasagna_quest[1] == 25) {
+		mes "[松露]";
+		mes "你在这里。那么进展如何呢？";
+		next;
+		mes "[你向塔尔图菲讲述了伊穆克勋爵和汝矣岛的故事。 ]";
+		next;
+		mes "[松露]";
+		mes "汝义州？那是什么？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我不太确定，但这是成龙登天的必备条件。";
+		next;
+		mes "[松露]";
+		mes "不管是什么，我都会寻找它。在这里某个地方寻找它应该需要一些时间。但与此同时，你能照顾他们吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我会。需要多长时间？";
+		next;
+		mes "[松露]";
+		mes "我不知道。也许200年左右？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "200年？";
+		next;
+		mes "[松露]";
+		mes "想一想。把这里的所有东西都搜索一遍大概需要这么多时间。最重要的是，我什至不知道什么是汝义州。";
+		next;
+		mes "[松露]";
+		mes "无论如何，我会去找的，所以你照顾他们。就在今天。明天，也许马奇就会来除掉他们。但今天，你做到了。我听说是因为你。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "美好的。如果你万一发现了汝义州，请告诉伊木勋爵。";
+		next;
+		mes "[松露]";
+		mes "我会考虑一下。我什至不知道那是什么。在不知道那是什么的情况下我无法向你保证。";
+		npctalk "如果是很重要的东西，我不能给你。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我想你是对的。我不能永远等待，所以我应该除掉那些蛇怪。我应该照顾多少人？";
+		next;
+		mes "[松露]";
+		mes "摆脱^0000cd20个左右^000000，他们就不会因为恐惧而靠近。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "美好的。如果你万一发现了汝义州，请告诉伊木勋爵。";
+		erasequest 14552;// Lord Imuk's message
+		setquest 14553;// Basilisk Hunt
+		lasagna_quest[1] = 26;
+		close;
+	}
+	if (lasagna_quest[1] == 26) {
+		if (checkquest(14553,HUNTING) != 2) {
+			mes "[松露]";
+			mes "不，还没有。他们不断地来。我说还没有。";
+			next;
+			mes "[松露]";
+			mes "你忘记了吗？在它们安静下来之前，你必须除掉至少 20 只蛇怪。";
+			close;
+		}
+		mes "[" + strcharinfo(0) + "]";
+		mes "呼。都照顾好了。";
+		next;
+		mes "[松露]";
+		mes "好工作。现在应该让他们保持安静。我要去看看我的宝藏，但我需要先睡觉。我很困，因为我今天睡了太久了。";
+		npctalk "我听说我必须睡很多才能长很多。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。我确信伊穆克勋爵也会等待。";
+		next;
+		mes "[松露]";
+		mes "美好的。你正在登船，对吗？我希望你能安全到达目的地。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "谢谢。我想天气好的时候我可以启航。";
+		next;
+		mes "[松露]";
+		mes "没问题。那么，再见了。";
+		erasequest 14553;// Basilisk Hunt
+		setquest 14554;// We can start sail now
+		lasagna_quest[1] = 27;
+		close;
+	}
+	if (lasagna_quest[1] == 27) {
+		mes "[松露]";
+		mes "我听说你要登船了你不应该快点吗？";
+		close;
+	}
+	mes "[松露]";
+	mes "兹兹……兹兹……";
+	close;
+}
+
+// recorder quest
+lasa_in01,186,57,3	script	Vigilante Chef#dorcon99	4_CAT_CHEF,{
+	mes "义务警员厨师";
+	mes "只有义务警员才能在这里吃饭。";
+	close;
+}
+
+lasagna,56,186,0	script	#dorcon96	HIDDEN_WARP_NPC,5,5,{
+	end;
+OnTouch:
+	if (conch_in_recorder == 3)
+		warp "lasa_in01",162,61;
+	end;
+}
+
+lasa_in01,179,60,5	script	Chief Peperoncino#dorco	4_DR_PEPE,{
+	if (conch_in_recorder == 3) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "你好。";
+		next;
+		mes "[首席辣椒]";
+		if (Class != Job_Summoner)
+			mes "你是新世界来的吗？一个来自新世界的人想要我做什么？";
+		else {
+			mes "你是我们冒险家具乐部" + strcharinfo(0) + "的，不是吗？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "你还记得我。";
+			next;
+			mes "[首席辣椒]";
+			mes "我记得所有与我有过交集的人。";
+		}
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "除了寻找新的冒险之外，聆听别人的故事也是冒险家的职责。据我所知，你吃烤宽面条的时间比大多数人都长。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "每个人都建议我向你询问有关烤宽面条和法法尔维吉兰特斯的故事。";
+		next;
+		mes "[首席辣椒]";
+		mes "聆听别人的冒险故事是冒险家的美德之一。如果你能仔细倾听并从别人身上学到一些东西，他们将成为你人生中宝贵的教训。";
+		npctalk "现在像你这样的年轻人已经很少见了。", "", bc_self;
+		next;
+		mes "[首席辣椒]";
+		mes "那么你好奇什么？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我对你的故事很好奇。";
+		next;
+		mes "[辣椒]";
+		mes "我的故事...你为什么好奇？但既然你问了，我就告诉你。我出生在烤宽面条之外，名为^0000cdFusilli^000000。那时，你提到 Peperoncino 这个名字，Fusilli 的每个人都知道。";
+		npctalk "我离开的那天，整个Fusilli都在流泪。", "", bc_self;
+		next;
+		mes "[治安维持者]";
+		mes "先生，上次我们喝酒时你可不是这么说的。你说你离开是因为你讨厌因为贫穷而被人瞧不起。";
+		npctalk "你说过有一天你会用一叠钞票打他们的脸。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "你在说什么？那天你一定喝得很醉。当你能在浩瀚的海洋中体验如此多的事物时，冒险家还能要求什么呢？";
+		next;
+		mes "[辣椒]";
+		mes "但不幸的是，^0000cd我无法登上飞船^000000。我不能告诉你为什么。这是机密信息。";
+		next;
+		mes "义务警员厨师";
+		mes "晕船。";
+		npctalk "你不忙吗？", "", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "然后我看到了渔业，或者更准确地说是凤尾鱼制造业的无限潜力。所以我跳入了^0000cd凤尾鱼制造业务^000000。大约在那个时候我认识了甘伯里。";
+		npctalk "没错，甘伯里……", "", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "^0000cd甘伯里是个流氓，让我想起了流氓^000000。他很快就被我的话所感动，并加入了我的行列。";
+		next;
+		mes "义务警员厨师";
+		mes "我听说你们吵架了";
+		npctalk "几乎到了彻底摧毁一家商店的地步。", "义务警员厨师#dorcon99", bc_self;
+		npctalk "你用嘴做饭吗？", "", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "当然也有一些小争执，但甘伯里被我的领导所感动并受到影响。在我们从凤尾鱼制造中获得了足够的经验和专业知识后，我们决定绘制更大的图景。";
+		next;
+		mes "[辣椒]";
+		mes "这是^0000cd销售特色产品^000000。 Gamberry 的朋友 ^0000cdThomas^000000 加入了我们的合资企业，我们决定开始在烤宽面条方面开展业务。但问题是^0000cd糟糕的dorams^000000。";
+		next;
+		mes "[辣椒]";
+		mes "他们会对每一件事都挑剔，所以我决定抓住他们并让他们发挥作用。";
+		next;
+		mes "义务警员厨师";
+		mes "这个故事不成立。";
+		npctalk "和我听到的版本不一样。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "无论如何，甘伯里船长是个好人。他从乌合之众时代起就受到我的影响，现在他已经成为了一名杜拉姆人。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "烤宽面条过去怎么样？";
+		next;
+		mes "[辣椒]";
+		mes "当我第一次来这里时，烤宽面条太糟糕了。你呼吸，有人挑衅。你走路就会打架。甘伯里船长四处制止那些人群，但我对他的第一印象和他们没有什么不同。";
+		next;
+		mes "[辣椒]";
+		mes "如果以暴力制止暴力，那么用什么来制止暴力呢？无论如何，烤宽面条就像一个腐烂的垃圾桶。相比之下，富西利是一个完全无辜的小镇！";
+		npctalk "我永远不会听到那个该死的螺丝粉的结局。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "义务警员厨师";
+		mes "我向新来的人询问螺丝粉，他们都不知道。它一定是在偏僻的树林里或者什么地方。";
+		npctalk "不要侮辱螺丝粉！", "", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "不管怎样，我们创业时最大的障碍是Lasagna的烂doram。他们向我扑来，准备打架。住在海边的人都这么好战吗？";
+		next;
+		mes "义务警员厨师";
+		mes "不，不要侮辱他们。就是这个地方，很不寻常。";
+		npctalk "我的家乡不是这样的。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "起初，我试图通过谈话来说服那些糟糕的doram。我试图表现得像个绅士，但他们不听。就在那时，甘伯里亲自处理了这件事。";
+		next;
+		mes "[辣椒]";
+		mes "我刚才不是跟你说过了吗？他彻底处理了这件事。我聚集了那些糟糕的杜拉姆并与他们交谈。他们被我的演讲深深感动，自愿加入警戒队。";
+		npctalk "你威胁他们要么加入要么离开。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "哼！不管怎样，在治安队和商人的努力下，千层面重生到了现在的样子。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "警戒队和商人怎么样了？";
+		next;
+		mes "[辣椒]";
+		mes "^0000cd警戒队和商人^000000是……嗯……在经营千层面的几个组织中，可以说是这两个人创造了今天的千层面。甘伯里、托马斯和我是这件事的核心。";
+		next;
+		mes "[辣椒]";
+		mes "当我们涉足特色产品业务时，许多被我们感动的杜拉姆都想提供帮助。";
+		next;
+		mes "义务警员厨师";
+		mes "明白我的意思吗？与上一个版本不同。";
+		npctalk "我正在考虑明天邀请Con-Chliina的所有船员并举办一场宴会。", "", bc_self;
+		npctalk "不，没关系。我现在就闭嘴。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "我们收集了那些糟糕的多拉姆，并将它们送到了治安队和商人那里。烤宽面条的^0000cd秩序维持由义务警员^000000处理，而^0000cd与产品相关的一切则由商人^000000处理。";
+		next;
+		mes "[辣椒]";
+		mes "为了扩大我们蓬勃发展的业务，我们^0000cd开始海上贸易^000000。但就在此时，《托马斯的船蝴蝶》在台风中失踪了《<<CLR3>>>。";
+		next;
+		mes "[辣椒]";
+		mes "我^0000cd坚持不懈地说服Con-Chliina号的船长和船员去寻找蝴蝶^000000。我的努力终于得到了回报，我们在新世界的一个《CLR2》的孤岛《CLR3》中找到了他们。";
+		next;
+		mes "义务警员厨师";
+		mes "嗯，那是 Con-Chliina 的 Stello...";
+		npctalk "宴会？", "", bc_self;
+		npctalk "没有。", "义务警员厨师#dorcon99", bc_self;
+		next;
+		mes "[辣椒]";
+		mes "你还有什么好奇的吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那真是……多么奇妙的冒险啊。感谢您分享您的故事。我清楚地看出你的威严从何而来。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "感谢您抽出时间。";
+		next;
+		mes "[首席辣椒]";
+		mes "我希望有一天我能听你的故事。";
+		erasequest 14581;// Interview with the Chief
+		setquest 14582;// To Recorder
+		conch_in_recorder = 4;
+		close;
+	}
+	if (conch_in_recorder == 4) {
+		mes "[首席辣椒]";
+		mes "我希望有一天我能听你的故事。";
+		close;
+	}
+}
+
+lasagna,263,156,5	script	Grandma#dorcon01	4_CAT_REST,{
+	if (conch_in_recorder == 5) {
+		mes "[奶奶]";
+		mes "是谁的？谁在那里？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哇，你有惊人的感应能力。";
+		next;
+		mes "[奶奶]";
+		mes "当你一个人生活时间长了，你就会对最轻微的噪音变得敏感。那么是什么风把你吹到这里来的呢？我现在没有卡卢纳牛奶了。您还想订购其他东西吗？";
+		npctalk "但我把所有的盘子都打碎了，所以我一个也没有。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我有件事想问你。你还记得甘伯里船长和佩佩罗西诺酋长的事吗？";
+		next;
+		mes "[奶奶]";
+		mes "哦，那些蛋蛋男孩。说起来，最近我没怎么见到他们了。他们放弃并离开烤宽面条了吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "不，他们都很好，还在吃烤宽面条。我来这里是因为我想了解一些关于甘伯里船长的事情。";
+		next;
+		mes "[奶奶]";
+		mes "队长？队长是谁？甘伯里？那个蛋蛋男孩？哦，你是对的。他确实成为了队长。我记得当他和佩佩一起出现在我的酒吧时。";
+		npctalk "那是很久以前的事了，当时蛋圈上有壳。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "佩佩？";
+		next;
+		mes "[奶奶]";
+		mes "^0000cd佩佩。佩佩罗西诺。 Gamberry 是 Berry，Tomei Thomas 是 Toto^000000。估计年轻人不知道。无论如何，他们就像野生蛇怪。";
+		next;
+		mes "[奶奶]";
+		mes "石化蜥蜴还在山洞里吗？小时候，我们连山洞都没有靠近过。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那么后来发生了什么？他们出现在酒吧，做了什么？";
+		next;
+		mes "[奶奶]";
+		mes "哦，对了。佩佩看起来像个无家可归的人，点了卡卢纳牛奶。就在那时，贝瑞发起了反击，他说只有孩子们才会动摇。";
+		next;
+		mes "[奶奶]";
+		mes "所以他们^0000cd战斗^000000。我的^0000cd商店被毁了^000000。因此，我针对损坏的家具和利润损失提出了^0000cd损害赔偿^000000索赔，直到酒吧恢复营业。";
+		next;
+		mes "[奶奶]";
+		mes "你提到了佩佩。看来他那里也很穷。他从哪里听说在捕捞凤尾鱼的船上可以赚很多钱，就来到了烤宽面条，但因为晕船而放弃了。";
+		next;
+		mes "[奶奶]";
+		mes "从此以后，他再也不敢上船了。哈哈。他因为《<<CLR0>>>违约处罚^000000而负债累累，无法离开。所以他最终来到了凤尾鱼作坊，在那里他去除了凤尾鱼头和内脏......";
+		npctalk "我认为它们是用来制造肥料的。", "", bc_self;
+		next;
+		mes "[奶奶]";
+		mes "无论如何，他从船和酒吧欠下了巨额债务。两人思考着要做什么，最终来到了《<<CLR0>>>凤尾鱼工坊^000000。几年后，《CLR2》甘伯里成为车间主任《CLR3》。这份工作对他来说非常完美。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "以前的烤宽面条怎么样？";
+		next;
+		mes "[奶奶]";
+		mes "更不用提它了。真是一团糟。路况很糟糕。人们很糟糕。过去被称为黑暗时代是有原因的。";
+		next;
+		mes "[奶奶]";
+		mes "你在路上踩过鱼内脏吗？当时的烤宽面条就是这样的。";
+		next;
+		mes "[奶奶]";
+		mes "有一天，两个粗人跟商人和治安队一起围攻，开始殴打吃烤宽面条的孩子。";
+		npctalk "有趣的是，这两个流氓是如何整顿其他流氓的。", "", bc_self;
+		next;
+		mes "[奶奶]";
+		mes "我想木棍确实可以制作木偶。两人将那些流氓送到了商人和治安队。嗯...我记得那些男孩。他们的胡须被剪掉了，尾巴也被撕破了。";
+		next;
+		mes "[奶奶]";
+		mes "那些看起来像多拉姆老鼠的人都离开了烤宽面条，只有那些想过上体面生活的人留下来了。他们是制作现在的烤宽面条的人。";
+		next;
+		mes "[奶奶]";
+		mes "但你是谁？您是来订购卡卢纳牛奶的吗？搅拌还是摇晃？我所有的工人都去哪儿了？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我现在就出发...";
+		next;
+		mes "[奶奶]";
+		mes "如果没有顾客，我的酒吧很快就会关门。";
+		erasequest 14583;// To Granma
+		setquest 14584;// Back to Recorder
+		conch_in_recorder = 6;
+		close;
+	}
+	if (conch_in_recorder == 6) {
+		mes "[奶奶]";
+		mes "如果你不打算订购任何东西，那就滚吧！";
+		close;
+	}
+	mes "[奶奶]";
+	mes "滋滋……滋滋……";
+	close;
+}
+
+lasagna,226,181,3	script	Kalu#dorcon	4_CAT_CHEF,{
+	if (checkweight(1001,1) == 0) {
+		mes "[卡鲁]";
+		mes "它看起来又大又重。去摆脱一些吧。";
+		close;
+	}
+	if (BaseLevel < 140) {
+		mes "[卡鲁]";
+		mes "如果你想跟我说话，那么你最好去积累更多的经验。";
+		close;
+	}
+	if (lasagna_quest[2] == 0) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "请来一杯卡卢纳牛奶。";
+		next;
+		select("搅拌。","摇匀。");
+		mes "[卡鲁]";
+		mes "如果你想喝卡卢纳牛奶，那就去见隔壁的那个人吧。但你最好快点。搅拌或摇晃，很快就不再重要了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "到底是怎么回事？";
+		next;
+		mes "[卡鲁]";
+		mes "你知道卡卢纳牛奶的主要成分是什么吗？它们是^0000cd卡鲁纳^000000，一种由一种名为^0000cdkalunyak^000000的特殊贝类发酵而成的精华，和新鲜牛奶。";
+		npctalk "第1页 震撼！", "布泽尔#dorcon02", bc_self;
+		npctalk "卡卢纳牛奶，摇匀！一杯！", "", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "将其在中等温度下混合，并用醋栗装饰。然后你就得到了每个人都喜欢的卡卢纳牛奶。";
+		npctalk "如果你有鲜榨牛奶，那么你可以品尝到至尊版的卡卢纳牛奶。", "", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "但我们店里的卡卢纳已经快用完了，而给我们供货的人已经好几天没来了。就连我们储备的也快没了。";
+		next;
+		mes "[卡鲁]";
+		mes "没有卡卢纳，就没有卡卢纳牛奶。你明白这意味着什么吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这是什么意思？";
+		npctalk "你什么意思你不知道？ ！", "", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "这意味着前来购买卡卢纳牛奶的顾客将白来一趟。";
+		npctalk "卡鲁纳牛奶！给那边的那位先生一杯！", "布泽尔#dorcon01", bc_self;
+		npctalk "卡卢纳牛奶，搅拌！给那边的那位先生一杯！", "", bc_self;
+		npctalk "哦！", "咕喵#dorcon01", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "没有喝到卡卢纳牛奶的愤怒的人们很快就会引起^0000cd骚乱^000000，很快就会蔓延到整个烤宽面条。";
+		next;
+		mes "[卡鲁]";
+		mes "然后烤宽面条将恢复到以前的肮脏和危险状态。我不能让这种事发生。我们终于像正派的人一样生活了，但又回到了那个黑暗的时代……";
+		npctalk "然后我会毫不犹豫地离开烤宽面条。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我确信仅仅喝一杯卡卢纳牛奶就不会发生这种情况。";
+		next;
+		mes "[卡鲁]";
+		mes "你不明白卡卢纳牛奶对于烤宽面条的人来说意味着什么。对于这些人来说，这不仅仅是一种可以放松身体的饮料。";
+		npctalk "第1页", "咕喵#dorcon01", bc_self;
+		npctalk "卡卢纳牛奶，搅拌！一杯！", "", bc_self;
+		npctalk "你已经受够了！", "喵哥#dorcon01", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "卡鲁纳牛奶还象征着<<<C​​??LR0>>>信仰和友谊，以及节日^000000。我不能在这里讨论细节，但如果你好奇的话，可以去找 Con-Chliina 的簿记员。";
+		next;
+		mes "[卡鲁]";
+		mes "他是一个录音狂人，什么都喜欢记录。";
+		npctalk "只要翻阅有关我的文章即可。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我不太确定，但我可以看出这对这里的人们来说非常重要。";
+		next;
+		mes "[卡鲁]";
+		mes "正确的。这就是我要说的。您总是以卡卢纳牛奶开始或结束一天。但那个卡卢纳几乎全部消失了！";
+		npctalk "第1页", "喵哥#dorcon01", bc_self;
+		npctalk "卡卢纳牛奶，搅拌！一杯！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你为什么不派人过来看看到底发生了什么事？";
+		next;
+		mes "[卡鲁]";
+		mes "我不傻你知道的。但没人送！瞧，大家都很忙。";
+		npctalk "第1页", "布泽尔#dorcon01", bc_self;
+		npctalk "希尔赫德磨坊，搅拌！", "", bc_self;
+		next;
+		if (select( "我会帮助你。", "哦不。对不起。" ) == 2) {
+			mes "[卡鲁]";
+			mes "是的，我很忙，所以你该走了。如果你想喝卡卢纳牛奶，可以去隔壁试试。";
+			close;
+		}
+		mes "[卡鲁]";
+		mes "什么？你刚才说什么？如果我没听错的话，你说过你会帮助我的。";
+		npctalk "哎呀，这简直就是一个金钟啊！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你没听错。";
+		next;
+		mes "[卡鲁]";
+		mes "亲爱的主，谢谢你。所以这就是你报答我所做的一切善行的方式。";
+		npctalk "第1页", "喵哥#dorcon01", bc_self;
+		npctalk "卡卢纳牛奶，搅拌！一杯！哦，搞什么啊！两杯！", "", bc_self;
+		npctalk "是的！ ！ ！", "喵哥#dorcon01", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我明明说要帮你的，可怎么会得到主上的赏识呢？";
+		npctalk "为什么我们没有得到任何服务？", "布泽尔#dorcon01", bc_self;
+		npctalk "你这是在歧视我们吗？ ！", "布泽尔#dorcon02", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "哦，一点也不。我也很感激你。不管怎样，如果你去南桥附近的^0000cd钓鱼洞^000000，你会遇到拄着拐杖的^0000cd莱加拉斯^000000。他是为我们提供卡卢纳的人。";
+		npctalk "我们可以一起喝酒！", "喵哥#dorcon01", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "烤宽面条的大多数人都为治安队或商人工作，因此镇上总是人手短缺。";
+		npctalk "我正在进入心情，所以请稍等一下！如果一切顺利的话，我不只是一杯，而是两杯！", "", bc_self;
+		npctalk "惊人的！", "布泽尔#dorcon01", bc_self;
+		npctalk "噢耶！", "布泽尔#dorcon02", bc_self;
+		npctalk "我会等待！我会等待！", "喵哥#dorcon01", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "所以我们聘请想要工作的外来人员作为特殊待遇政策，而Legalas则负责发酵kaluna。";
+		next;
+		mes "[卡鲁]";
+		mes "他非常擅长捕捉、清洗和发酵卡卢尼亚克，烤宽面条的卡卢纳牛奶被认为是这里最好的。啊，这不是重点。";
+		next;
+		mes "[卡鲁]";
+		mes "去找拉加拉斯，看看发生了什么事。并告诉他尽快发货。按照我们目前的速度，今天之后我们就会缺货。";
+		npctalk "第1页", "布泽尔#dorcon01", bc_self;
+		npctalk "希尔赫德磨坊，搅拌！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "好吧，我去了解一下。";
+		next;
+		mes "[卡鲁]";
+		mes "太感谢了！";
+		setquest 14567;// Kaluna milk is in Danger!
+		lasagna_quest[2] = 1;
+		close;
+	}
+	if (lasagna_quest[2] < 7) {
+		mes "[卡鲁]";
+		mes "你不是说要找出为什么莱加拉斯无法送货的原因吗？";
+		next;
+		mes "[卡鲁]";
+		mes "我求求你。我真的很担心。 Can't even sleep these days.";
+		npctalk "连胡子都稀疏了...救救我...", "", bc_self;
+		close;
+	}
+	if (lasagna_quest[2] == 7) {
+		mes "[卡鲁]";
+		mes "冒险家，雷加拉斯说什么了？他有说他可以送卡卢纳吗？";
+		npctalk "我真心希望他做到了。不然我就死定了！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。幸运的是，他说他已经接近完成交付配额了。";
+		next;
+		mes "[卡鲁]";
+		mes "多么令人欣慰啊！但你有告诉过你是什么原因导致他延误了吗？";
+		next;
+		mes "[你向卡鲁讲述达尔达尔和戈帕拉的故事。 ]";
+		next;
+		mes "[卡鲁]";
+		mes "所以你的意思是，当拉加拉斯工作时，我应该让这两个人远离车间。";
+		next;
+		mes "[卡鲁]";
+		mes "我想这是我可以处理的事情。事实上，我有一个^0000cd午餐盒要在洞穴里制作^000000。每一天，就是这样。";
+		npctalk "嗯，这确实不是因为我们人手不足......", "", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "看起来可以在 Legalas 工作的时候把这两个人送到送货团队。对于工资来说，每天吃一顿饭就够了。";
+		npctalk "公平就是公平吧？", "", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "洞穴？那很好。我一直想亲自去那里。";
+		next;
+		mes "[喋喋不休]";
+		mes "不管怎样，我很高兴能吃到美味的食物。";
+		next;
+		mes "[卡鲁]";
+		mes "好的，那么我们现在就开始吧！把这个午餐盒交给洞穴内的^0000cd治安维护者。他的名字叫潘纳。 ^000000";
+		next;
+		mes "[戈帕拉]";
+		mes "我们走吧。";
+		npctalk "我们走吧。", "", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "起床。";
+		npctalk "团队必须一体行动。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我、我也是吗？";
+		next;
+		mes "[戈帕拉]";
+		mes "我们是一个团队。";
+		npctalk "我们是一个团队。", "", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "团队必须一体行动。";
+		npctalk "团队必须一体行动。", "", bc_self;
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon05", bc_self );
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon05", bc_self );
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我从什么时候开始成为这个团队的一员了？好吧，好吧……我们走吧。";
+		getitem 25048,1;// Hearty Lunchbox
+		erasequest 14573;// I need the time on my own
+		setquest 14574;// Meal Box Delivery
+		lasagna_quest[2] = 8;
+		close;
+	}
+	if (lasagna_quest[2] == 8) {
+		mes "[卡鲁]";
+		mes "只需将这个大午餐盒送给正在洞穴巡逻的潘纳即可。";
+		if (countitem(25048) < 1)
+			getitem 25048,1;// Hearty Lunchbox
+		close;
+	}
+	if (lasagna_quest[2] == 9) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "我回来了。";
+		next;
+		mes "[戈帕拉]";
+		mes "我说我回来了。";
+		npctalk "我累极了。", "戈帕拉#dorcon05", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "我回来了。";
+		npctalk "我被打败了。", "喋喋不休#dorcon05", bc_self;
+		next;
+		mes "[卡鲁]";
+		mes "好工作。当你们三人前往洞穴时，莱加拉斯拜访了卡鲁纳。如果我们每天都能保持这个状态，交货完全没有问题。";
+		next;
+		mes "[戈帕拉]";
+		mes "冒险家，明天也指望你了。";
+		next;
+		mes "[喋喋不休]";
+		mes "如果时间允许的话，我会早点出去等待。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我、我也是吗？";
+		next;
+		mes "[戈帕拉]";
+		mes "我们以前叫什么？";
+		next;
+		mes "[喋喋不休]";
+		mes "一！";
+		next;
+		mes "[戈帕拉]";
+		mes "团队！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "一队。如果我不出现，他们可能会再次骚扰拉加拉斯。美好的。";
+		next;
+		mes "[喋喋不休]";
+		mes "好吧，现在给我食物。";
+		npctalk "我饿了。", "喋喋不休#dorcon05", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "我很好。吃了太多我还在消化的卡伦亚克。";
+		npctalk "我现在连一块都不想要了。", "戈帕拉#dorcon05", bc_self;
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon05", bc_self );
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon05", bc_self );
+		next;
+		mes "[卡鲁]";
+		mes "你应该接受这个。干得好。";
+		erasequest 14575;// Delivery Complete Report
+		setquest 14576;// Meal Box Delivery Time
+		lasagna_quest[2] = 10;
+		close;
+	}
+	if (lasagna_quest[2] == 10) {
+		switch( checkquest(14576,PLAYTIME) ) {
+		case -1:
+			if (isbegin_quest(14578) == 1) {
+				mes "[卡鲁]";
+				mes "今天也干得不错。你们两个，去吃点东西吧。冒险家，就是这个。明天我也指望你了！";
+				erasequest 14578;// Delivery Complete Report
+				setquest 14576;// Meal Box Delivery Time
+				close;
+			}
+			mes "[卡鲁]";
+			mes "只需将这个大午餐盒送给正在洞穴巡逻的潘纳即可。";
+			if (countitem(25048) < 1)
+				getitem 25048,1;// Hearty Lunchbox
+			close;
+		case 0:
+		case 1:
+			classchange( 4_SEA_OTTER, "Daldal#dorcon05", bc_self );
+			classchange( 4_GALAPAGO, "Gopara#dorcon05", bc_self );
+			mes "[卡鲁]";
+			mes "冒险家，你已经来了吗？现在还没到送饭盒的时间。";
+			next;
+			mes "[戈帕拉]";
+			mes "正确的。时间已关闭。";
+			npctalk "正确的。时间已关闭。", "戈帕拉#dorcon05", bc_self;
+			next;
+			mes "[喋喋不休]";
+			mes "时间已到！";
+			npctalk "时间已到！", "喋喋不休#dorcon05", bc_self;
+			next;
+			mes "[卡鲁]";
+			mes "天亮后回来。";
+			next;
+			mes "[戈帕拉]";
+			mes "稍后见。";
+			next;
+			mes "[喋喋不休]";
+			mes "再见。";
+			close;
+		case 2:
+			mes "[卡鲁]";
+			mes "准时。已经有两个人在这里等待了。";
+			next;
+			mes "[戈帕拉]";
+			mes "是的，我们一直在等待。";
+			npctalk "是的，我们一直在等待。", "喋喋不休#dorcon06", bc_self;
+			next;
+			mes "[喋喋不休]";
+			mes "等了很久。差点就等死了。";
+			npctalk "等了很久。差点就等死了。", "戈帕拉#dorcon06", bc_self;
+			next;
+			mes "[卡鲁]";
+			mes "然后我请你把今天的午餐盒也^0000cd送到洞穴里的Panna^000000。去那里的路上要快点，回来的时候要慢慢来。";
+			next;
+			mes "[戈帕拉]";
+			mes "我们走吧。";
+			next;
+			mes "[喋喋不休]";
+			mes "我们出发吧！";
+			classchange( HIDDEN_WARP_NPC, "Daldal#dorcon05", bc_self );
+			classchange( HIDDEN_WARP_NPC, "Gopara#dorcon05", bc_self );
+			erasequest 14576;// Meal Box Delivery Time
+			setquest 14577;// Meal Box Delivery
+			getitem 25048,1;// Hearty Lunchbox
+			close;
+		}
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14567) && BaseLevel >= 140" );
+	end;
+}
+
+lasagna,248,105,5	script	Legalas#dorcon	4_RAGGLER,{
+	if (lasagna_quest[2] == 0) {
+		mes "[合法的]";
+		mes "别吃了！停止！你太无耻了！";
+		close;
+	}
+	if (lasagna_quest[2] == 1) {
+		mes "[合法的]";
+		mes "已经够了！你们的处境一天比一天糟糕！你们不觉得这太过分了吗？你有没有良心？ ！";
+		next;
+		mes "[喋喋不休]";
+		mes "良心？嗯……抱歉，但我不知道，因为我不知道我的良心在哪里。";
+		npctalk "我不知道我的良心在哪里。", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "应该是在胸口吧？但我该怎么办呢？";
+		npctalk "我用它做什么？", "戈帕拉#dorcon01", bc_self;
+		next;
+		mes "[合法的]";
+		mes "我一抓到卡伦亚克，你们两个就把它吃掉！你连我洗干净的东西都吃了！";
+		next;
+		mes "[合法的]";
+		mes "我不是跟你说过很多次了，必须要发酵才能送来吗？而且截止日期已经过去了！";
+		next;
+		mes "[喋喋不休]";
+		mes "真的吗？我不知道。";
+		npctalk "你可知道？", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "我做到了。但我无能为力。";
+		npctalk "我很无聊。", "戈帕拉#dorcon01", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呃，你是供应卡卢纳的Legalas吗？";
+		next;
+		mes "[合法的]";
+		mes "现在看！有人来了，因为我无法送货！我现在就毁了！我会饿死的！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "冷静下来。形势虽然不好，但没必要这么悲观。为什么这里的每个人都这么极端？";
+		next;
+		mes "[合法的]";
+		mes "我不知道你的意思。请解释一下。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "冒险家具乐部的卡鲁想知道为什么交货迟到。他今天的货够卖了，所以只要你今天能交货就万事大吉了。";
+		next;
+		mes "[合法的]";
+		mes "哈!哈！哈!我希望我能做到这一点。但这两只猪正在吃卡伦雅克！起初，他们只吃一两个，但现在我一抓到一个，他们就开始吃。我没有机会清理和发酵它！";
+		next;
+		mes "[合法的]";
+		mes "如果你想要卡卢纳，那就对那边的^0000cd那两个^000000做点什么！我快要疯了，因为他们不仅侵占我，现在还毁了我的工作。或许我还是回到战场比较好！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "请冷静。我会和他们谈谈。";
+		completequest 14567;// Kaluna milk is in Danger!
+		setquest 14568;// Time to persuade
+		lasagna_quest[2] = 2;
+		close;
+	}
+	if (lasagna_quest[2] == 2) {
+		mes "[合法的]";
+		mes "他们无论如何都不会听。看看那些肚子。他们是吃了太多卡伦亚克和卡卢纳造成的。";
+		close;
+	}
+	if (lasagna_quest[2] >= 3 && lasagna_quest[2] < 6) {
+		mes "[合法的]";
+		mes "谁知道猪突然消失到哪里去了，但我希望它们不会很快回来。我在这里很开心！再一点，再一点……！";
+		close;
+	}
+	if (lasagna_quest[2] == 6) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "Legalas，我想尽一切办法让他们发挥作用，但他们既没有技能也没有意愿。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "但他们承诺不会吃kalunyak，所以你不会再有任何送货上的问题。";
+		npctalk "他在说什么？", "喋喋不休#dorcon01", bc_self;
+		npctalk "你怎么了？", "戈帕拉#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "看来你和我们有仇啊。莱加拉斯一到这里我就会告诉他一切。";
+		npctalk "你对我们出言不逊。", "戈帕拉#dorcon01", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "到底我们做错了什么？";
+		next;
+		mes "[合法的]";
+		mes "我想知道你为什么突然把这两个人拿出来？所以这就是发生的事情。带着他们到处走肯定很困难。";
+		next;
+		mes "[合法的]";
+		mes "感谢你们的牺牲，我才能够交付我需要的大部分^0000cdkaluna^000000。太感谢了。";
+		next;
+		mes "[戈帕拉]";
+		mes "你们公然对我们很刻薄。";
+		next;
+		mes "[喋喋不休]";
+		mes "卡伦亚克绝对是最好的。";
+		npctalk "又吃饭了？", "戈帕拉#dorcon01", bc_self;
+		next;
+		mes "[合法的]";
+		mes "哎哟！那头猪又吃卡伦亚克了！";
+		next;
+		mes "[喋喋不休]";
+		mes "我很饿。我不能再吃凤尾鱼了我现在只能吃kalunyak了。";
+		npctalk "我也是。", "戈帕拉#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "我没有工作，所以我又去吃饭了。";
+		npctalk "我要亲自完成这件事。", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[合法的]";
+		mes "冒险家，我有件事想拜托你。我还没有达到我的交货指标，但是那两个人已经吃光了我所有的卡伦亚克！你所看到的就是我今天得到的全部，照这样下去，我将无法完成订单。";
+		next;
+		mes "[合法的]";
+		mes "请再次带上它们，哪怕只是一小会儿！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "无论如何，我需要向卡鲁传达一些信息，所以我会带着他们两个一起去。";
+		npctalk "去哪儿？", "戈帕拉#dorcon01", bc_self;
+		npctalk "吃完这些我不会走。", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[合法的]";
+		mes "拜托，我求求你了！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "伙计们，我们去^0000cd酒吧烤箱^000000怎么样？";
+		next;
+		mes "[戈帕拉]";
+		mes "美好的。去哪儿都行，只要不无聊。";
+		next;
+		mes "[喋喋不休]";
+		mes "那里有很多好吃的吗？如果是，我就去。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那我们走吧。";
+		erasequest 14572;// Helpless...
+		setquest 14573;// I need the time on my own
+		lasagna_quest[2] = 7;
+		close;
+	}
+	if (lasagna_quest[2] >= 7) {
+		mes "[合法的]";
+		mes "感谢您保留这些猪。谢谢你，我的工作变得更轻松了！";
+		close;
+	}
+}
+
+lasagna,246,103,5	script	Gopara#dorcon01	4_GALAPAGO,3,3,{
+	if (lasagna_quest[2] == 2) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "伙计们，有件事我想和你们分享。";
+		next;
+		mes "[喋喋不休]";
+		mes "我现在厌倦了这个。但没有别的东西可以吃。";
+		next;
+		mes "[戈帕拉]";
+		mes "我们什么时候因为想吃而吃东西？它更像是吃东西，因为它就在那里。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "伙计们？";
+		next;
+		mes "[喋喋不休]";
+		mes "它是什么？你带东西吃了吗？";
+		npctalk "它是什么？你带东西吃了吗？", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "你要和我们一起玩吗？";
+		npctalk "你要和我们一起玩吗？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "据我所知，你吃掉了所有雷加拉斯清理过的卡伦亚克。现在，我们用这些卡伦亚克制成的卡伦纳几乎用完了。你能控制一下自己吗？";
+		next;
+		mes "[喋喋不休]";
+		mes "我们为什么要这样做？";
+		npctalk "是的。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "因为没有卡卢纳就无法制作卡卢纳牛奶。本来应该从拉加拉斯那里得到卡卢纳的人现在陷入了困境。";
+		next;
+		mes "[戈帕拉]";
+		mes "这和我们有什么关系？";
+		npctalk "正确的。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你看，卡鲁真的需要卡鲁纳。没有卡卢纳，他的生意就无法继续下去。";
+		next;
+		mes "[喋喋不休]";
+		mes "那与我无关。";
+		npctalk "我不知道他是谁。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这和莱加拉斯有很大关系。您知道 Legalas 向 Kalu 提供由 kalunyak 发酵而成的 kaluna，对吧？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果他不能按时完成任务或交付配额，他就会把工作让给别人。";
+		next;
+		mes "[戈帕拉]";
+		mes "那么这与我们有什么关系呢？";
+		npctalk "我只需要填饱肚子就可以了。", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果莱加拉斯失业了，那么他就赚不到钱了。如果他赚不到钱，那你们不是就陷入困境了吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "据我所知，雷加拉斯为你提供食物、衣服，并为你提供栖身之所。";
+		next;
+		mes "[喋喋不休]";
+		mes "我们不穿衣服。";
+		next;
+		mes "[戈帕拉]";
+		mes "然后，Legalas 可以找到其他工作。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果你现在毁掉了他的工作，你凭什么认为莱加拉斯以后不会采取任何行动？他很可能会甩掉你们两个，去寻找其他机会。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "然后你们两个养活不了自己的人就会流浪到某个肮脏的后街小巷里饿死。";
+		next;
+		mes "[喋喋不休]";
+		mes "不、不行！";
+		next;
+		mes "[戈帕拉]";
+		mes "这、这也太极端了吧！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那你们现在不应该妨碍我们，不是吗？你要吃更多的kalunyaks吗？";
+		next;
+		mes "[喋喋不休]";
+		mes "不！不再！";
+		npctalk "不！不再！", "胡说#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "不吃 kalunyaks 是不够的。我从来没有想过拉加拉斯可能会离开我们。我们必须做点什么。";
+		npctalk "我们也需要做点什么。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "态度很好！现在，莱加拉斯将...";
+		next;
+		mes "[戈帕拉]";
+		mes "现在，教我们吧。";
+		next;
+		mes "[喋喋不休]";
+		mes "是的！ ^0000cd教我们工作^000000或者其他什么。";
+		next;
+		mes "[戈帕拉]";
+		mes "你提出这个问题，所以你应该对我们负责。这就是Legalas一直以来对我们的照顾。";
+		next;
+		mes "[喋喋不休]";
+		mes "雷加拉斯去哪里，我就去哪里。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "多拉姆中有一种叫做多拉姆垃圾的东西。太糟糕了，你不能使用它，因为你不是 dorams，仅此而已。美好的。";
+		npctalk "多拉姆垃圾？什么？你怎么能说出这样的话？ ！", "", bc_self;
+		npctalk "这意味着什么？", "喋喋不休#dorcon01", bc_self;
+		npctalk "你最好不知道。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我是负责提出这个话题的人，看在可怜的拉加拉斯的份上，我会帮助你们找一份工作。";
+		next;
+		mes "[戈帕拉]";
+		mes "你应该教我们。";
+		next;
+		mes "[喋喋不休]";
+		mes "你应该雇用我们。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我没有什么可以教你的。但正如我所说，我会寻找一个你可以学习的地方。";
+		next;
+		mes "[戈帕拉]";
+		mes "然后找一些简单的事情。我认为像^0000cd保姆^000000这样的东西会很好。";
+		npctalk "简单的。", "", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "是的，我喜欢婴儿。小而可爱。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "美好的。我看看这附近有没有宝宝。酒吧上方有某种类型的^0000cd游乐场^000000。我去那里看看。";
+		erasequest 14568;// Time to persuade
+		setquest 14569;// Babysitter
+		lasagna_quest[2] = 3;
+		close;
+	}
+	if (lasagna_quest[2] == 6) {
+		mes "[戈帕拉]";
+		mes "是的，这个地方是最好的。味道不怎么样，但是喝卡卢纳似乎就是我的命运。";
+		close;
+	}
+	if (lasagna_quest[2] == 7) {
+		mes "[戈帕拉]";
+		mes "我说我要去见卡鲁。反正我很无聊，所以一切都很好。走吧，你带路。";
+		close;
+	}
+	mes "[戈帕拉]";
+	mes "我现在正在喝卡卢纳，但这并不是因为它好吃。这是因为它就在那里。";
+	close;
+OnTouch:
+	if (lasagna_quest[2] == 3) {
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon01", bc_self );
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon01", bc_self );
+	}
+	end;
+}
+
+lasagna,247,101,7	script	Daldal#dorcon01	4_SEA_OTTER,{
+	if (lasagna_quest[2] == 2) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "伙计们，有件事我想和你们分享。";
+		next;
+		mes "[喋喋不休]";
+		mes "我现在厌倦了这个。但没有别的东西可以吃。";
+		next;
+		mes "[戈帕拉]";
+		mes "我们什么时候因为想吃而吃东西？它更像是吃东西，因为它就在那里。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "伙计们？";
+		next;
+		mes "[喋喋不休]";
+		mes "它是什么？你带东西吃了吗？";
+		npctalk "它是什么？你带东西吃了吗？", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "你要和我们一起玩吗？";
+		npctalk "你要和我们一起玩吗？", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "据我所知，你吃掉了所有雷加拉斯清理过的卡伦亚克。现在，我们用这些卡伦亚克制成的卡伦纳几乎用完了。你能控制一下自己吗？";
+		next;
+		mes "[喋喋不休]";
+		mes "我们为什么要这样做？";
+		npctalk "是的。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "因为没有卡卢纳就无法制作卡卢纳牛奶。本来应该从拉加拉斯那里得到卡卢纳的人现在陷入了困境。";
+		next;
+		mes "[戈帕拉]";
+		mes "这和我们有什么关系？";
+		npctalk "正确的。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你看，卡鲁真的需要卡鲁纳。没有卡卢纳，他的生意就无法继续下去。";
+		next;
+		mes "[喋喋不休]";
+		mes "那与我无关。";
+		npctalk "我不知道他是谁。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这和莱加拉斯有很大关系。您知道 Legalas 向 Kalu 提供由 kalunyak 发酵而成的 kaluna，对吧？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果他不能按时完成任务或交付配额，他就会把工作让给别人。";
+		next;
+		mes "[戈帕拉]";
+		mes "那么这与我们有什么关系呢？";
+		npctalk "我只需要填饱肚子就可以了。", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果莱加拉斯失业了，那么他就赚不到钱了。如果他赚不到钱，那你们不是就陷入困境了吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "据我所知，雷加拉斯为你提供食物、衣服，并为你提供栖身之所。";
+		next;
+		mes "[喋喋不休]";
+		mes "我们不穿衣服。";
+		next;
+		mes "[戈帕拉]";
+		mes "然后，Legalas 可以找到其他工作。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "如果你现在毁掉了他的工作，你凭什么认为莱加拉斯以后不会采取任何行动？他很可能会甩掉你们两个，去寻找其他机会。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "然后你们两个养活不了自己的人就会流浪到某个肮脏的后街小巷里饿死。";
+		next;
+		mes "[喋喋不休]";
+		mes "不、不行！";
+		next;
+		mes "[戈帕拉]";
+		mes "这、这也太极端了吧！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那你们现在不应该妨碍我们，不是吗？你要吃更多的kalunyaks吗？";
+		next;
+		mes "[喋喋不休]";
+		mes "不！不再！";
+		npctalk "不！不再！", "喋喋不休#dorcon01", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "不吃 kalunyaks 是不够的。我从来没有想过拉加拉斯可能会离开我们。我们必须做点什么。";
+		npctalk "我们也需要做点什么。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "态度很好！现在，莱加拉斯将...";
+		next;
+		mes "[戈帕拉]";
+		mes "现在，教我们吧。";
+		next;
+		mes "[喋喋不休]";
+		mes "是的！ ^0000cd教我们工作^000000或者其他什么。";
+		next;
+		mes "[戈帕拉]";
+		mes "你提出这个问题，所以你应该对我们负责。这就是Legalas一直以来对我们的照顾。";
+		next;
+		mes "[喋喋不休]";
+		mes "雷加拉斯去哪里，我就去哪里。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "多拉姆中有一种叫做多拉姆垃圾的东西。太糟糕了，你不能使用它，因为你不是 dorams，仅此而已。美好的。";
+		npctalk "多拉姆垃圾？什么？你怎么能说出这样的话？ ！", "", bc_self;
+		npctalk "这意味着什么？", "喋喋不休#dorcon01", bc_self;
+		npctalk "你最好不知道。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我是负责提出这个话题的人，看在可怜的拉加拉斯的份上，我会帮助你们找一份工作。";
+		next;
+		mes "[戈帕拉]";
+		mes "你应该教我们。";
+		next;
+		mes "[喋喋不休]";
+		mes "你应该雇用我们。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我没有什么可以教你的。但正如我所说，我会寻找一个你可以学习的地方。";
+		next;
+		mes "[戈帕拉]";
+		mes "然后找一些简单的事情。我认为像^0000cd保姆^000000这样的东西会很好。";
+		npctalk "简单的。", "", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "是的，我喜欢婴儿。小而可爱。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "美好的。我看看这附近有没有宝宝。酒吧上方有某种类型的^0000cd游乐场^000000。我去那里看看。";
+		erasequest 14568;// Time to persuade
+		setquest 14569;// Babysitter
+		lasagna_quest[2] = 3;
+		close;
+	}
+	if (lasagna_quest[2] == 6) {
+		mes "[喋喋不休]";
+		mes "我不敢相信我要离开这个舒适的地方。我一瞬间忘记了吃kalunyak是我一生中最大的快乐。";
+		close;
+	}
+	if (lasagna_quest[2] == 7) {
+		mes "[喋喋不休]";
+		mes "我们去看看卡鲁吧。我想去吃点好吃的。";
+		close;
+	}
+	mes "[喋喋不休]";
+	mes "吃kalunyak很简单。抓住硬壳的kalunyak。然后交给雷加拉斯。";
+	next;
+	mes "[喋喋不休]";
+	mes "莱加拉斯去掉了卡伦亚克的壳，并将其放入容器中。然后你就从那个容器里吃东西。很简单，对吧？";
+	close;
+}
+
+// baby
+lasagna,193,234,5	script	Daldal#dorcon02	HIDDEN_WARP_NPC,{
+	if (lasagna_quest[2] == 3) {
+		mes "[喋喋不休]";
+		mes "我喜欢宝贝！可爱的！";
+		close;
+	}
+	end;
+}
+
+lasagna,192,236,5	script	Gopara#dorcon02	HIDDEN_WARP_NPC,5,5,{
+	if (lasagna_quest[2] == 3) {
+		mes "[戈帕拉]";
+		mes "保姆不是很容易吗？一个小孩子能做什么？";
+		close;
+	}
+	end;
+OnTouch:
+	if (lasagna_quest[2] == 3) {
+		classchange( 4_SEA_OTTER, "Daldal#dorcon02", bc_self );
+		classchange( 4_GALAPAGO, "Gopara#dorcon02", bc_self );
+	}
+	end;
+}
+
+lasagna,195,235,3	script	Cute Baby#dorcon	4_F_KR_TIGER,{
+	if (lasagna_quest[2] == 3) {
+		mes "[婴儿]";
+		mes "这是。";
+		npctalk "到达的。", "喋喋不休#dorcon02", bc_self;
+		npctalk "疲劳的。", "戈帕拉#dorcon02", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "这里有一个婴儿。";
+		next;
+		mes "[喋喋不休]";
+		mes "宝贝……对吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "虽然很大，但绝对是……一个婴儿。";
+		npctalk "是——啊——喵", "可爱的宝宝#dorcon", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "好的，我现在坐着。";
+		npctalk "现在坐着。", "喋喋不休#dorcon02", bc_self;
+		next;
+		emotion ET_QUESTION;
+		mes "[喋喋不休]";
+		mes "坐着。";
+		npctalk "坐着。", "戈帕拉#dorcon02", bc_self;
+		next;
+		emotion ET_QUESTION;
+		mes "[戈帕拉]";
+		mes "耐心地坐着。";
+		npctalk "耐心地——", "喋喋不休#dorcon02", bc_self;
+		next;
+		emotion ET_QUESTION;
+		mes "[喋喋不休]";
+		mes "坐着。";
+		npctalk "坐着。", "喋喋不休#dorcon02", bc_self;
+		next;
+		emotion ET_CRY;
+		mes "[婴儿]";
+		mes "这是。这是！";
+		next;
+		emotion ET_SWEAT, playerattached();
+		mes "[" + strcharinfo(0) + "]";
+		mes "G-伙计们？你不想让我给你找一份保姆工作吗？";
+		next;
+		mes "[戈帕拉]";
+		mes "这就是我们现在正在做的事情。我们尽我们所能地坐着。";
+		npctalk "我正在尽力而为。", "喋喋不休#dorcon02", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "我也是。";
+		npctalk "我们正在交流。", "戈帕拉#dorcon02", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "保姆并不是安静地坐着。原来是在照顾宝宝啊！";
+		next;
+		mes "[戈帕拉]";
+		mes "是这样吗？但这样太麻烦了！我连自己的身体都照顾不了。";
+		next;
+		mes "[喋喋不休]";
+		mes "这就是保姆的意义吗？我不知道。如果我这样做，我就不会这样做。";
+		next;
+		emotion ET_CRY;
+		mes "[婴儿]";
+		mes "这是。这是。";
+		next;
+		mes "[戈帕拉]";
+		mes "安静。只要说出来。";
+		npctalk "我不想再这样做了。", "喋喋不休#dorcon02", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这是行不通的。让我们忘记保姆吧。有什么事情是你一直想做的吗？";
+		next;
+		mes "[喋喋不休]";
+		mes "没有这样的事。我饿了。";
+		npctalk "我想回去。", "喋喋不休#dorcon02", bc_self;
+		next;
+		mes "[戈帕拉]";
+		mes "现在想来，我一直想做一些^0000cd与凤尾鱼相关的^000000。凤尾鱼很好吃。";
+		npctalk "凤尾鱼听起来很棒！", "戈帕拉#dorcon02", bc_self;
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon02", bc_self );
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon02", bc_self );
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "好吧，好吧。我们去码头附近的凤尾鱼作坊^0000cd吧^000000。";
+		erasequest 14569;// Babysitter
+		setquest 14570;// Processing Anchovy
+		lasagna_quest[2] = 4;
+		close;
+	}
+	if (lasagna_quest[2] == 4) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "宝贝，可爱...";
+		next;
+		mes "[婴儿]";
+		mes "这是！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哎呀！我本来应该去凤尾鱼作坊的。得快点。";
+		close;
+	}
+	mes "[婴儿]";
+	mes "一闪一闪亮晶晶的小星星——我多么想知道你是什么——";
+	mes "如此之高的世界之上——就像天空中的一颗钻石——";
+	next;
+	mes "[婴儿]";
+	mes "一闪一闪亮晶晶的小星星——我多么想知道你是什么——";
+	close;
+}
+
+// workshop Manager
+lasagna,223,288,5	script	Daldal#dorcon03	HIDDEN_WARP_NPC,5,5,{
+	if (lasagna_quest[2] == 4) {
+		mes "[喋喋不休]";
+		mes "说实话，来之前我以为凤尾鱼是从地里挖出来的。但我并不感到尴尬。";
+		close;
+	}
+	end;
+OnTouch:
+	if (lasagna_quest[2] == 4) {
+		classchange( 4_SEA_OTTER, "Daldal#dorcon03", bc_self );
+		classchange( 4_GALAPAGO, "Gopara#dorcon03", bc_self );
+	}
+	end;
+}
+
+lasagna,222,290,5	script	Gopara#dorcon03	HIDDEN_WARP_NPC,{
+	if (lasagna_quest[2] == 4) {
+		mes "[戈帕拉]";
+		mes "我以前吃过凤尾鱼，因为莱加拉斯有时会买一些。";
+		close;
+	}
+	end;
+}
+
+lasagna,225,290,5	script	Workshop Manager#dorcon	4_M_BOSSCAT,{
+	if (lasagna_quest[2] == 4) {
+		mes "[车间主任]";
+		mes "新秀？有该领域的工作经验吗？好吧，即使你不这样做也没关系。你可以很容易地学会它。";
+		next;
+		mes "[车间主任]";
+		mes "现在，跟着我吧。抓住一条凤尾鱼。取下它的头。把胆子拔出来。将其放入容器内。";
+		npctalk "小菜一碟，对吧？", "", bc_self;
+		next;
+		mes "[车间主任]";
+		mes "新手会完成这四个步骤，但熟练工人会拿起并同时取出头部和内脏，然后将其扔进容器内。他们能够采用一步法。";
+		next;
+		mes "[车间主任]";
+		mes "Con-Chliina 号的船长尤其擅长此道。现在，你们就来尝试一下吧。";
+		next;
+		mes "[戈帕拉]";
+		mes "这……是什么啊。";
+		next;
+		mes "[喋喋不休]";
+		mes "这个看起来很恶心的东西是什么？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "凤尾鱼。你说你想做一些与凤尾鱼有关的事情，所以我带你来这里。";
+		next;
+		mes "[戈帕拉]";
+		mes "凤尾鱼是一种又长又细的零食，有点咸，不是吗？但这东西有头……还有眼睛！";
+		npctalk "你在冷落我们吗？", "戈帕拉#dorcon03", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "当然它有眼睛和头，因为它是一条鱼。";
+		next;
+		mes "[喋喋不休]";
+		mes "鳀鱼是鱼吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那你以为那是什么？";
+		next;
+		mes "[戈帕拉]";
+		mes "我以为这是用店里的一些神秘食材制成的美味食物。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "伙计们……你怎么会不知道凤尾鱼是一种鱼呢？你们过着怎样的生活？";
+		next;
+		mes "[车间主任]";
+		mes "你到底在哪里找到这些白痴？你认为他们能胜任这份工作吗？";
+		next;
+		mes "[戈帕拉]";
+		mes "我不能这样做。";
+		npctalk "我是在庇护下长大的。", "戈帕拉#dorcon03", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "我想我再也不能吃另一条凤尾鱼了。我们的目光刚刚相遇。每当我看到凤尾鱼时，他们就会跟着我。";
+		npctalk "我不敢相信我一直在吃它们。", "喋喋不休#dorcon03", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "哈……是这样吗？看来这份工作也不适合你。那我们就去找点别的东西吧。您还有其他想尝试的工作吗？";
+		next;
+		mes "[喋喋不休]";
+		mes "船。我想登上^0000cd船^000000！";
+		next;
+		mes "[戈帕拉]";
+		mes "正确的。我一直住在烤宽面条里，从来没有上过船。这是一个登上其中的好机会。";
+		npctalk "我想这很适合我的个性。", "戈帕拉#dorcon03", bc_self;
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon03", bc_self );
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon03", bc_self );
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的？那我们就去那艘^0000cd那里的凤尾鱼渔船^000000吧。";
+		erasequest 14570;// Processing Anchovy
+		setquest 14571;// Anchovy fishing ship
+		lasagna_quest[2] = 5;
+		close;
+	}
+	if (lasagna_quest[2] == 5) {
+		mes "[车间主任]";
+		mes "你不是说要去那艘凤尾鱼运输船吗？即使你去了那里，你也能在那里做些什么，这让我很困惑。";
+		close;
+	}
+	mes "[车间主任]";
+	mes "烤宽面条的凤尾鱼很特别。顶级品质的凤尾鱼经过九次蒸煮和干燥，然后去除头部和内脏。这是一件需要精细工艺的艺术品。";
+	next;
+	mes "[车间主任]";
+	mes "它们非常适合搭配酒精饮料，也是备考学生的美味零食。尝试一个。";
+	close;
+}
+
+// anchovy shipping boat
+lasagna,136,299,5	script	Gopara#dorcon04	HIDDEN_WARP_NPC,5,5,{
+	if (lasagna_quest[2] == 5) {
+		mes "[戈帕拉]";
+		mes "我一直想在船上...哈哈...怀旧...";
+		close;
+	}
+	end;
+OnTouch:
+	if (lasagna_quest[2] == 5) {
+		classchange( 4_SEA_OTTER, "Daldal#dorcon04", bc_self );
+		classchange( 4_GALAPAGO, "Gopara#dorcon04", bc_self );
+	}
+	end;
+}
+
+lasagna,134,300,7	script	Daldal#dorcon04	HIDDEN_WARP_NPC,{
+	if (lasagna_quest[2] == 5) {
+		mes "[喋喋不休]";
+		mes "每次看到船，我就想起贝壳。你知道，那种内心空虚、外表坚硬的人。";
+		close;
+	}
+	end;
+}
+
+lasagna,139,299,3	script	Captain of Anchovy Fish	4_CAT_SAILOR5,{
+	if (lasagna_quest[2] == 5) {
+		mes "鳀鱼渔船船长";
+		mes "它是什么？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我想知道你在船上是否需要任何帮助。";
+		next;
+		mes "鳀鱼渔船船长";
+		mes "凤尾鱼生意确实有过好日子，但我总是缺人手。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那你试试这两个怎么样？他们想在船上工作，所以即使是学徒也很好。";
+		next;
+		mes "[戈帕拉]";
+		mes "感觉就像我们被出卖了。";
+		npctalk "感觉就像我们被出卖了。", "戈帕拉#dorcon04", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "也许只是一种想象。他不会出卖我们的。";
+		npctalk "也许只是一种想象。", "喋喋不休#dorcon04", bc_self;
+		next;
+		mes "鳀鱼渔船船长";
+		mes "嘿，你们两个在那边。你坐过船吗？";
+		next;
+		mes "[戈帕拉]";
+		mes "没有。";
+		next;
+		mes "[喋喋不休]";
+		mes "不。妈妈牵着我的手，乘着潮水来到了这里。她被卷走了，而我独自降落在这里。拉加拉斯找到了我，从那时起，我们就像一家人一样生活在一起。";
+		next;
+		mes "鳀鱼渔船船长";
+		mes "没必要知道你的过去。我只需要你在船上做好工作。由于你们都是第一次坐船，看来前面的路还很长很坎坷。";
+		next;
+		emotion ET_CRY, getnpcid(0, "Daldal#dorcon04");
+		mes "[喋喋不休]";
+		mes "太卑鄙了。我分享了我痛苦的过去，你一点也不在乎。";
+		next;
+		emotion ET_OK, getnpcid(0, "Gopara#dorcon04");
+		mes "[戈帕拉]";
+		mes "没关系。我在乎。";
+		next;
+		mes "[喋喋不休]";
+		mes "谢谢。";
+		next;
+		mes "[戈帕拉]";
+		mes "我想分享我的。我可以告诉你吗？";
+		npctalk "这么多令人心碎的故事。", "戈帕拉#dorcon04", bc_self;
+		next;
+		mes "[喋喋不休]";
+		mes "不太感兴趣。";
+		next;
+		emotion ET_ANGER, getnpcid(0, "Gopara#dorcon04");
+		mes "[戈帕拉]";
+		mes "我们来战斗吧！";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "现在现在，冷静点。在船上的感觉如何？它将凤尾鱼从凤尾鱼渔船运往烤宽面条，但由于货物存放在存储区，因此您看不到它们。";
+		next;
+		mes "[喋喋不休]";
+		mes "这不是我心烦意乱的问题。";
+		next;
+		mes "[戈帕拉]";
+		mes "为什么地板看起来那么恶心？";
+		next;
+		mes "鳀鱼渔船船长";
+		mes "看来你晕船了。过一段时间就会好起来。到时候，你走在陆地上就会感觉很奇怪。";
+		next;
+		mes "[戈帕拉]";
+		mes "诡异的。船固然坚固，但为何如此恶心？";
+		next;
+		mes "鳀鱼渔船船长";
+		mes "那是因为船随着波浪移动。";
+		next;
+		mes "[戈帕拉]";
+		mes "什么？船不是牢牢地贴在水面上吗？ ！";
+		npctalk "别再说谎了！", "戈帕拉#dorcon04", bc_self;
+		next;
+		mes "鳀鱼渔船船长";
+		mes "它漂浮在水面上，而不是粘在水面上。船如果困在水里怎么能动呢？";
+		next;
+		mes "[喋喋不休]";
+		mes "我简直不敢相信！这么重的船怎么能浮在水面上呢？ ！";
+		npctalk "即使我有常识也知道重的东西会沉入水中！", "喋喋不休#dorcon04", bc_self;
+		next;
+		mes "鳀鱼渔船船长";
+		mes "嘿，你，冒险家！";
+		next;
+		mes "鳀鱼渔船船长";
+		mes "把它们带回去。在船上工作不需要高智商，但这些白痴可能连清洁工作都做不了。不，忘记清洁。如果他们没有先把我逼疯的话我就很幸运了。";
+		npctalk "你这是什么意思？", "喋喋不休#dorcon04", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我明白。";
+		next;
+		mes "[戈帕拉]";
+		mes "你明白什么意思？你不会说这样的话。";
+		next;
+		mes "[喋喋不休]";
+		mes "你在说什么？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这不行。我想我帮不了你。我们应该回去^0000cdLegalas^000000和他讨论这件事。我们现在就走吧。";
+		next;
+		mes "[喋喋不休]";
+		mes "我不知道刚刚发生了什么，但我很高兴能回去。";
+		next;
+		mes "[戈帕拉]";
+		mes "是的，我们现在回去吧。这不再有趣了。";
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon04", bc_self );
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon04", bc_self );
+		erasequest 14571;// Anchovy fishing ship
+		setquest 14572;// Helpless...
+		lasagna_quest[2] = 6;
+		close;
+	}
+	if (lasagna_quest[2] == 6) {
+		mes "鳀鱼渔船船长";
+		mes "你不是说要回雷加拉斯吗？下次你带一些帮手时，确保他们是体面的。";
+		close;
+	}
+	mes "鳀鱼渔船船长";
+	mes "如果你有合适的人，就带他来。我人手太少了，所以所有的工作都是我一个人做的。";
+	close;
+}
+
+// Kalu
+lasagna,222,180,7	script	Daldal#dorcon05	HIDDEN_WARP_NPC,5,5,{
+	if (lasagna_quest[2] == 7) {
+		mes "[喋喋不休]";
+		mes "它是什么？你不是说你不是和我有事，而是和卡鲁有事吗？";
+		close;
+	}
+	if (lasagna_quest[2] == 9) {
+		mes "[喋喋不休]";
+		mes "卡鲁！告诉卡鲁你送了午餐盒，这样我们就可以吃饭了！";
+		close;
+	}
+	if (lasagna_quest[2] == 10) {
+		mes "[喋喋不休]";
+		mes "我也喜欢在这里放松。也不渴望卡伦亚克。";
+		close;
+	}
+	end;
+OnTouch:
+	if (lasagna_quest[2] == 7 || lasagna_quest[2] > 8) {
+		classchange( 4_SEA_OTTER, "Daldal#dorcon05", bc_self );
+		classchange( 4_GALAPAGO, "Gopara#dorcon05", bc_self );
+	}
+	end;
+}
+
+lasagna,224,178,7	script	Gopara#dorcon05	HIDDEN_WARP_NPC,{
+	if (lasagna_quest[2] == 7) {
+		mes "[戈帕拉]";
+		mes "你不是说有话要跟卡鲁说吗？前进。";
+		close;
+	}
+	if (lasagna_quest[2] == 9) {
+		mes "[戈帕拉]";
+		mes "为时已晚。去向卡鲁汇报吧。";
+		close;
+	}
+	if (lasagna_quest[2] == 10) {
+		mes "[戈帕拉]";
+		mes "你已经在这里了。我们讨厌等待，所以我们考虑在这里定居。";
+		close;
+	}
+	end;
+}
+
+lasa_dun02,52,153,5	script	Gopara#dorcon06	HIDDEN_WARP_NPC,5,5,{
+	if (lasagna_quest[2] == 8 || lasagna_quest[2] == 10) {
+		mes "[戈帕拉]";
+		mes "赶紧去给他送饭盒。他看上去快要饿死了。";
+		close;
+	}
+	end;
+OnTouch:
+	if (lasagna_quest[2] == 8 || lasagna_quest[2] == 10) {
+		classchange( 4_SEA_OTTER, "Daldal#dorcon06", bc_self );
+		classchange( 4_GALAPAGO, "Gopara#dorcon06", bc_self );
+	}
+	end;
+}
+
+lasa_dun02,53,150,7	script	Daldal#dorcon06	HIDDEN_WARP_NPC,{
+	if (lasagna_quest[2] == 8 || lasagna_quest[2] == 10) {
+		mes "[喋喋不休]";
+		mes "给那个义务警员一个午餐盒。我很好奇里面有什么。";
+		close;
+	}
+	end;
+}
+
+lasa_dun02,55,153,3	script	Panna#dorcon	4_DR_SOLDIER,{
+	if (isbegin_quest(14574) > 0 || isbegin_quest(14577) > 0) {
+		mes "[潘纳]";
+		mes "哦，我好饿。食物什么时候来？食物。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		if (countitem(25048) < 1) {
+			mes "潘纳？";
+			next;
+			mes "[潘纳]";
+			mes "饭盒在哪儿？我的在哪里？我没有！你把它丢到哪里了？我的食物！我的食物！ ！ ！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "冷静下来。我现在就去找。";
+			next;
+			mes "[戈帕拉]";
+			mes "他失去了理智。";
+			next;
+			mes "[喋喋不休]";
+			mes "不过我可以理解。我们去找饭盒吧。";
+			close2;
+			classchange( HIDDEN_WARP_NPC, "Daldal#dorcon06", bc_self );
+			classchange( HIDDEN_WARP_NPC, "Gopara#dorcon06", bc_self );
+			end;
+		}
+		mes "潘纳？这是你的午餐盒...";
+		next;
+		mes "[潘纳]";
+		mes "食物！ ！ ！";
+		next;
+		mes "[戈帕拉]";
+		mes "多么粗鲁、忘恩负义的多拉姆啊。";
+		next;
+		mes "[喋喋不休]";
+		mes "吃饭的时候我该怎么说话？";
+		next;
+		mes "[潘纳]";
+		mes "咳咳咳。";
+		next;
+		mes "[喋喋不休]";
+		mes "看起来很好吃的样子...";
+		npctalk "给我咬一口...", "胡说#dorcon06", bc_self;
+		npctalk "你怎么可能想到要吃他的食物？再坚持一会儿。", "戈帕拉#dorcon06", bc_self;
+		next;
+		mes "[潘纳]";
+		mes "哈哈，我现在感觉好多了。我太饿了，正想吃蛇怪，而你来的正是时候。我差点就变成了一只没能保持原样而变成动物的杜拉姆。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我来拿空盘子。";
+		next;
+		mes "[潘纳]";
+		mes "没关系，离开他们就行了。等我回城的时候我会把它们带走。";
+		next;
+		mes "[戈帕拉]";
+		mes "我要去。";
+		classchange( HIDDEN_WARP_NPC, "Gopara#dorcon06", bc_self );
+		next;
+		mes "[喋喋不休]";
+		mes "我要走了。";
+		classchange( HIDDEN_WARP_NPC, "Daldal#dorcon06", bc_self );
+		delitem 25048,1;// Hearty Lunchbox
+		if (lasagna_quest[2] == 8) {
+			erasequest 14574;// Meal Box Delivery
+			setquest 14575;// Delivery Complete Report
+			lasagna_quest[2] = 9;
+		}
+		else {
+			erasequest 14577;// Meal Box Delivery
+			setquest 14578;// Delivery Complete Report
+		}
+		close;
+	}
+	if (isbegin_quest(14575) == 1 || isbegin_quest(14578) == 1) {
+		mes "[潘纳]";
+		mes "多亏了你，我才能吃上一顿丰盛的饭菜。请告诉卡鲁，我很感激这顿美味的午餐。希望今天又是安全的一天……";
+		close;
+	}
+	mes "[潘纳]";
+	mes "哦，我好饿。食物什么时候来？食物。";
+	close;
+}
+
+conch_in,122,61,5	script	Crewman#dorcon01	4_CAT_ADV1,{
+	npctalk "感谢您搭乘 Con-Chliina。请您安全舒适地到达目的地！", "", bc_self;
+	end;
+}
+
+// in C_D
+conch_in,59,29,5	script	Engineer#dorcon01	4_CAT_SAILOR5,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "你是前往新世界的冒险家吗？欢迎。你听说过我们的船是如何移动的吗？", "", bc_self;
+	sleep2 2000;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : No, I have not.", bc_self;
+	sleep2 2000;
+	npctalk "与其他船舶相比，我们的船舶具有不同的动力系统。而只有少数人知道这一点。", "", bc_self;
+	sleep2 2000;
+	npctalk "数百只仓鼠正在这艘船底部的跑步机上跑步。船向前移动是因为这个区域与发动机的主要部分相连。", "", bc_self;
+	sleep2 1000;
+	emotion ET_HUK;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : Pardon???", bc_self;
+	sleep2 1000;
+	emotion ET_SWEAT;
+	npctalk "哦，等等。你没有认真对待我，是吗？这是一个笑话，一个笑话！", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+// in E_F
+conch_in,59,91,5	script	Passenger#dorcon04	4_F_ALCHE_A,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "计划前往米德加德？这是我第一次吃烤宽面条，真的很棒！所以我打算永远留在这里。我也找到了住处，也签了文件！", "", bc_self;
+	sleep2 2000;
+	npctalk "我正在去米德加德收拾行李的路上。真的很棒。", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+// in_I_J
+conch_in,97,96,5	script	Merchant#dorcon01	4_M_MERCAT2,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "从这个包里你就能看出来，对吧？我不是新手冒险家。我是一名商人，经常到不同的地方去卖东西。", "", bc_self;
+	sleep2 2000;
+	npctalk "听说新世界里没有伊格德拉希尔，所以很稀有。所以我打算尝试在那里卖掉它。", "", bc_self;
+	sleep2 2000;
+	npctalk "如果还有什么东西可以卖的话，我会买一些然后在那里卖掉。我要成为百万富翁。", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+// in_N_M
+conch_in,135,91,5	script	Passenger#dorcon01	4_CAT_ADV2,{
+	npctalk "新世界的人想要我做什么？", "", bc_self;
+	end;
+}
+conch_in,135,93,5	script	Passenger#dorcon03	4_DR_TORTEL,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "这是您第一次参加 Con-Chliina 吗？我曾经在这艘船上训练结束后前往新世界。那时候的食物真的很好吃，所以...", "", bc_self;
+	sleep2 2000;
+	npctalk "当我登陆新世界的那一刻，我就回到了船上。只是喜欢这里的食物...", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+conch_in,137,98,3	script	Passenger#dorcon02	4_DR_F_01,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "这是我第一次来到新世界，我真的很兴奋。你决定到达那里后首先要做的事情了吗？我想先去雷神山！", "", bc_self;
+	sleep2 2000;
+	npctalk "当我在《新世界冒险家指南》上看到它的那一刻，我就向自己保证我一定要去！听说这里风景优美！", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+// in_P_O
+conch_in,169,70,3	script	Crewman#dorcon02	4_CAT_SAILOR2,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "米德加德已经被发现，所以我想知道那里是否还有其他地方。我们从未去过且地图上没有的地方。", "", bc_self;
+	sleep2 2000;
+	npctalk "你觉得有这样的地方吗？", "船员#dorcon03", bc_self;
+	sleep2 2000;
+	npctalk "在它被发现之前，我们根本不知道米德加德的存在。我确信那里有一个地方，只是我们不知道而已。", "", bc_self;
+	sleep2 2000;
+	npctalk "你认为它也在找我们吗？", "船员#dorcon03", bc_self;
+	sleep2 2000;
+	npctalk "哦，光是想到这个我的心就在跳动。", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+conch_in,166,68,6	script	Crewman#dorcon03	4_CAT_SAILOR1,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "你知道，我认为大副斯特洛也许能够找到另一条通往地图上没有的新世界的海上航线。", "", bc_self;
+	sleep2 2000;
+	npctalk "事实上，如果它确实存在，那么有一天我们就能找到它并在上面航行！", "船员#dorcon02", bc_self;
+	sleep2 2000;
+	npctalk "我应该在Con-Chliina停留很长一段时间，见证我们有发现的那一刻。", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}

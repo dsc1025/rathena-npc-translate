@@ -1,0 +1,92 @@
+//===== rAthena Script ======================================= 
+//= El Dicastes Guide
+//===== By: ================================================== 
+//= Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guide for the city of El Dicastes.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [Joseph]
+//= 1.1 Fixed viewpoint syntax. [Euphy]
+//= 1.2 Navigation system update. [Euphy]
+//============================================================ 
+
+dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
+	mes "[旅行者伊查克]";
+	mes "哦！！你是个陌生人！";
+	mes "我是伊查克，第一个来到埃尔迪卡斯特的冒险家！";
+	next;
+	mes "[旅行者伊查克]";
+	mes "探险队里有人声称自己是第一个，但其实是我。这是正确的。";
+	next;
+	mes "[旅行者伊查克]";
+	mes "所以我才会提供引导米德加尔特冒险者的服务。";
+	mes "您想知道什么？";
+	F_Navi("[Traveler Ichack]");
+	next;
+	switch(select("Dicastes Diel:住宅区:训练室:工厂:酒吧:猫爪商队")) {
+	case 1:
+		mes "[旅行者伊查克]";
+		mes "啊~好漂亮的建筑啊。";
+		mes "据说他们正在讨论重要的事情......";
+		next;
+		mes "[旅行者伊查克]";
+		mes "请确保您在 "+F_Navi("Diel","dicastes01,198,351")+" 登录，否则您会遇到麻烦。";
+		mes "从这里直接往北走，你不会错过的。";
+		viewpoint 1,198,351,0,0x00FF00;
+		close;
+	case 2:
+		mes "[旅行者伊查克]";
+		mes "萨法部落真是太奇怪了。他们怎么能睡在那里？";
+		next;
+		mes "[旅行者伊查克]";
+		mes "你不明白吗？";
+		mes "在你亲眼目睹之前你不会相信我！亲自去看看吧！";
+		next;
+		mes "[旅行者伊查克]";
+		mes "住宅区分为2个区域。";
+		mes ""+F_Navi("下层住宅区","dicastes01,136,106")+"是7点左右，";
+		mes F_Navi("上部区域","dicastes01,280,283")+" 1 点左右。";
+		viewpoint 1,280,283,1,0x01FF01;
+		viewpoint 1,136,106,2,0x0066FF;
+		close;
+	case 3:
+		mes "[旅行者伊查克]";
+		mes "由于这里存在危险，我们需要更好的安全措施......";
+		mes "你去过吗";
+		mes F_Navi("培训室","dicastes01,255,172")+"？训练警卫们似乎从不睡觉！";
+		viewpoint 1,255,172,3,0xFFCCCC;
+		close;
+	case 4:
+		mes "[旅行者伊查克]";
+		mes "这是他们住在这里的最重要原因之一。";
+		mes "如果你去"+F_Navi("工厂","dicastes01,97,256")+"，你可以看到最近精炼的钸。";
+		viewpoint 1,97,256,4,0x0066FF;
+		close;
+	case 5:
+		mes "[旅行者伊查克]";
+		mes "虽然我是第一个来到这里的冒险者，但酒馆的老板却是第一个来到这里的人。";
+		mes F_Navi("布门弗洛林的酒吧","迪卡斯泰斯01,136,106")+"位于低层住宅区的地下。";
+		mes "他可能会给你一些有价值的信息。";
+		viewpoint 1,136,106,5,0xFF3300;
+		close;
+	case 6:
+		mes "[旅行者伊查克]";
+		mes ""+F_Navi("猫","dicastes01,199,39")+"似乎不像我们那样与Sapha有着良好的关系。";
+		mes "也许是因为涉及交易。";
+		mes "可怜的猫。他们一定在外面冻得瑟瑟发抖。";
+		next;
+		mes "[旅行者伊查克]";
+		mes "您可以在门外找到他们的大篷车。";
+		viewpoint 1,199,39,6,0x9933FF;
+		close;
+	}
+OnTouch:
+	if (ep13_3_invite == 6) 
+		emotion ET_SURPRISE;
+	end;
+}
