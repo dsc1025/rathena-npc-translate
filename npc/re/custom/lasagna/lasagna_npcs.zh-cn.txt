@@ -1,0 +1,5083 @@
+//===== rAthena Script =======================================
+//= Lasagna NPCs.
+//===== Description: =========================================
+//--- Lasagna NPCs from iRO playing conversion.
+// Notes:
+//- lasagna_quest[0] <-> 1st part variable
+//- lasagna_quest[1] <-> 2nd part variable up to Tartufi
+//- lasagna_quest[2] <-> Kazu Quest (lvl 110-140 req)
+//-- Some questinfo condition may be inaccurate.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//= 1.1 Moving Hair Designer to Merchants. [JohnnyPlayy]
+//= 1.2 Tool Dealer Update. [JohnnyPlayy]
+//============================================================
+
+lasa_fild01,47,297,0	script	#doint_evt01	HIDDEN_WARP_NPC,1,1,{
+	end;
+OnTouch:
+	if (Class == Job_Summoner && isbegin_quest(7711) == 0) {
+		setpcblock PCBLOCK_NPC, true;
+		sleep2 100;
+		setpcblock PCBLOCK_NPC, false;
+		npctalk "嘿，新手！过来这里！", "常规治安维持者#doram0", bc_self;
+		npctalk "过来这里吧！点我，快点！", "常规治安维持者#doram0", bc_self;
+		setquest 7711;// Beginning
+	}
+	end;
+}
+
+lasa_fild01,49,304,3	script	Vigilante Ajegna#doram0	4_DR_SOLDIER,{
+	if (Class != Job_Summoner) {
+		mes "[治安维持者阿杰尼亚]";
+		mes "啊？我怀疑你是远星人。";
+		mes "我得到它！你来自新大陆，是吗？";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "如果你打算跨越那条山脊，我不推荐它。";
+		mes "你为什么不从这里回到你的村庄呢？";
+		close;
+	}
+	switch( isbegin_quest(7712) ) {
+	case 0:
+		mes "[治安维持者阿杰尼亚]";
+		mes "哦，给你！";
+		mes "你可以像刚才对我说话一样与其他人交谈。";
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff基本上，您可以通过将光标悬停在 NPC 上并单击鼠标左键来进行交谈。";
+		mes "单击鼠标左键可与 NPC 交谈、移动并攻击目标。 ^000000";
+		cutin "tutorial01.bmp",4;
+		next;
+		cutin "",255;
+		mes "[治安维持者阿杰尼亚]";
+		mes "新手，翻山越岭，辛苦了。";
+		mes "和你一样，这些天也有一群人正在翻越这座山脉，前往^4d4dff新大陆^000000。";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "说实话，我也很惊讶。";
+		mes "即使在我最疯狂的梦想中，我也从未想象过除了我们居住的^4d4dff米德加德^000000或^4d4dff远星^000000之外还会有任何其他大陆。";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "这就解释了为什么会有大量的多拉姆人在^4d4dff烤宽面条^000000中闲逛，那里只不过是边境地区的一个渔村。";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "更糟糕的是，来自烤宽面条以外的多拉姆人经常会带来麻烦。这实在是让治安团头疼不已。";
+		mes "义务警员的工作除了维持公共秩序外，还包括协助远征新大陆的多拉姆人，所以请大家帮忙。";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "你看到那边的多拉姆了吗？他是^4d4dff阿格里奥^000000。他会让你了解一些有用的东西。去见见那个家伙。";
+		if (isbegin_quest(7711) == 0)
+			setquest 7711;
+		completequest 7711;// Beginning
+		setquest 7712;// Where am I? Who am I??
+		close;
+	case 1:
+		mes "[治安维持者阿杰尼亚]";
+		mes "我应该欢迎新的多拉姆来到这里。";
+		mes "^4d4dffAglio^000000 将让您了解更多详细信息。他就在那里。";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "阿格里奥是 Farfalle Vigilante Corp 中非常、我的意思是非常优秀的 Doram 之一，所以请观看并学习！";
+		close;
+	case 2:
+		mes "[治安维持者阿杰尼亚]";
+		mes "如果您有任何疑问，请随时询问他。";
+		mes "即使身处新大陆，也不要感到陌生！";
+		next;
+		mes "[治安维持者阿杰尼亚]";
+		mes "烤宽面条港就在那边！";
+		mes "别告诉我你来这里是因为你不知道。";
+		close;
+	}
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7712)" );
+	end;
+}
+
+lasa_fild01,53,322,3	script	Applicant Paul#doramt13	4_M_MERCAT1,4,4,{
+	if (Class != Job_Summoner) {
+		mes "[保罗]";
+		mes "~尖叫~你吓到我了！";
+		mes "人类？哇，看起来多么奇怪啊！";
+		close;
+	}
+	switch( isbegin_quest(7723) ) {
+	case 0:
+		mes "[保罗]";
+		mes "那么，你就是那个冒险家多拉姆吧？";
+		mes "嘿，你觉得怎么样？";
+		mes "你同意我关于伤害的看法，对吧？ STR第一！";
+		next;
+		mes "[保罗]";
+		mes "你需要进攻才能赢得战斗。";
+		mes "^4d4dff提升攻击力最快的方法就是提升力量^000000！";
+		next;
+		mes "[麦卡尼]";
+		mes "……鲁莽的攻击是没有用的！";
+		mes "如果没有击中目标，攻击将无效！";
+		next;
+		mes "[麦卡尼]";
+		mes "所以，^4d4dff你需要先提升DEX来提高准确性^000000。";
+		mes "你有多强并不重要。你需要先击中目标！";
+		next;
+		mes "[麦卡尼]";
+		mes "我才不会像你一样随意使用武功呢！";
+		mes "^4d4dff我正在通过提升智力来使用召唤技能进行魔法攻击！ ^000000";
+		next;
+		mes "[保罗]";
+		mes "噗！用召唤技能来补充身体技能有什么问题吗？";
+		mes "你是在暗示我没有线索吗？";
+		next;
+		mes "[麦卡尼]";
+		mes "……我不是这个意思！这猫脑子里肯定装满了脂肪！";
+		next;
+		mes "[面疙瘩治安维持者]";
+		mes "……你们两个别再打了！";
+		mes "嘿。新人。";
+		mes "有什么想了解的都可以问我。";
+		npctalk "有什么想了解的都可以问我。", "维吉兰特面疙瘩#doramt13", bc_self;
+		setquest 7723;// The potential within
+		close;
+	case 1:
+		mes "[保罗]";
+		mes "他可能会告诉你成为义务警员有什么好处，所以去问他吧。";
+		mes "毕竟他会证明我是对的。";
+		close;
+	case 2:
+		mes "[保罗]";
+		mes "那么，这一切都是为了根据你的能力来提升你的能力吗？";
+		next;
+		mes "[保罗]";
+		mes "话说回来，村里有一个《<<CLR0>>>催眠师^000000。";
+		mes "^4d4dff你可以通过催眠师重置技能和状态^000000。只是为了让你知道你可以。";
+		close;
+	}
+OnTouch:
+	if (Class == Job_Summoner && isbegin_quest(7723) == 0) {
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "你这个笨蛋！没有什么比伤害更重要的了！你应该先提升你的STR！", "申请人保罗#doramt13", bc_self;
+		sleep2 2000;
+		npctalk "你不知道！如果你想让你的攻击成功，DEX是第一位的！ ！", "适用于麦卡尼#doramt13", bc_self;
+		sleep2 1000;
+		setpcblock PCBLOCK_NPC, false;
+		emotion ET_STARE, getnpcid(0, "Applicant Paul#doramt13");
+		emotion ET_OHNO, getnpcid(0, "Applicant MacCarnie#doramt13");
+	}
+	end;
+OnInit:
+	if (strnpcinfo(0) == "Applicant Paul#doramt13")
+		questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7723)" );
+	end;
+}
+lasa_fild01,50,321,6	duplicate(Applicant Paul#doramt13)	Applicant MacCarnie#doramt13	4_M_MERCAT1
+
+lasa_fild01,54,325,3	script	Vigilante Gnocchi#doramt13	4_DR_SOLDIER,{
+	if (Class != Job_Summoner) {
+		mes "[面疙瘩治安维持者]";
+		mes "咳咳！这里就像是通往远星大陆的门户。";
+		mes "不允许再有人类了！";
+		close;
+	}
+	switch( isbegin_quest(7723) ) {
+	case 0:
+		npctalk "你知道他们为什么发出这么大的噪音吗？", "", bc_self;
+		end;
+	case 1:
+		mes "[面疙瘩治安维持者]";
+		mes "于是他们就地位展开了热烈的讨论。";
+		next;
+		break;
+	case 2:
+		mes "[面疙瘩治安维持者]";
+		mes "您需要对状态进行更多解释吗？";
+		next;
+		if (select( "是的。", "不。" ) == 2) {
+			mes "[面疙瘩治安维持者]";
+			mes "直到 49 级，村庄催眠师将重置你的统计数据和技能。";
+			mes "这将让您练习和实验，这将有助于找到适合您的道路。";
+			close;
+		}
+		break;
+	}
+	mes "[面疙瘩治安维持者]";
+	mes "按^4d4dffAlt+Q^000000键查看您的身体统计数据。";
+	mes "根据您的设备，也可以进行校准。";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "让我详细解释一下这些状态。";
+	mes "^4d4dffSTR 表示强度^000000。它^4d4dff增强物理攻击^000000。";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "^4d4dffVIT是生命力，代表健康^000000。这就是^4d4dff提升你的整体HP^000000的原因。";
+	mes "^4d4dffAGI 表示敏捷性^000000。它影响^4d4dff回避和攻击速度^000000。";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "^4d4dffINT是指智力，MATK是指魔法攻击力^000000。如果你的技能以魔法为主，那么你首先必须提高智力。";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "^4d4dffDEX与敏捷性和准确性相关^000000。";
+	mes "您既可以加快施法速度，又可以提高攻击的准确性。";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "^4d4dffLUK 表示幸运；你的运气越好，你的暴击率（CRI）就越高^000000。";
+	mes "这也意味着您可以更轻松地躲避敌人的攻击。";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "如果你想增强你的物理攻击力，请专注于STR。如果你想要的是魔法攻击，那就选择INT。知道了？";
+	next;
+	mes "[面疙瘩治安维持者]";
+	mes "DEX 在早期阶段非常重要，因为它可以提高准确性。";
+	mes "这可能是一个很难理解的概念，所以你应该尝试提升这个或那个来找到你自己的方法。";
+	if (isbegin_quest(7723) == 1) {
+		completequest 7723;// The potential within
+		getexp 50,50;
+		next;
+		mes "[面疙瘩治安维持者]";
+		mes "祝你一路顺风！";
+	}
+	close;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7723) == 1" );
+	end;
+}
+
+lasa_fild01,60,322,3	script	Vigilante Aglio#doram02	4_DR_AGLIO,{
+	if (Class != Job_Summoner) {
+		mes "[大蒜义警]";
+		mes "哦！你们一定是新大陆出名的异乡人吧？";
+		mes "这里外地人多拉姆比比皆是，我绝对不想要更多了。";
+		next;
+		mes "[大蒜义警]";
+		mes "他们看到你们不会感到惊讶吗？";
+		mes "而且翻山越岭也很危险。";
+		mes "这是为了你好。只要回到你来的地方就可以了。";
+		close;
+	}
+	if (checkweight(1001,2) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	if (lasagna_quest[0] == 0) {
+		mes "[大蒜义警]";
+		mes "哦，你好？";
+		mes "我是阿格里奥。从现在开始，我就是你的侍从了。";
+		mes "将其视为一种特权。";
+		mes "因为我是法法尔维吉兰特军团的王牌成员之一。";
+		next;
+		mes "[大蒜义警]";
+		mes "我确信我可以为任何事情提供帮助。";
+		mes "首先，让我们看看你有什么。";
+		next;
+		mes "[大蒜义警]";
+		mes "不挂断。让我先检查一下你的装备是否正确。";
+		mes "你现在不想徒手战斗吧？";
+		mes "^4d4dff你应该装备你的武器。 ^000000";
+		next;
+		cutin "tutorial03.BMP",4;
+		mes "！ - 注意 -！";
+		mes "^4d4dff您可以通过双击物品来使用或装备它。";
+		mes "使用快捷键[Alt+E]打开或关闭项目窗口。";
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff通过快捷键[Alt+Q]轻松查看你的装备。";
+		mes "只需将适当的物品拖到您想要装备的区域即可。 ^000000";
+		next;
+		cutin "",255;
+		mes "[大蒜义警]";
+		mes "现在我们已经检查了你的武器，为什么我们不看看要狩猎的目标呢？";
+		mes "你看到那些在那边徘徊的^4d4dff鸡蛋^000000了吗？";
+		next;
+		mes "[大蒜义警]";
+		mes "它们可能看起来很愚蠢，但它们可能会让人非常痛苦。他们会捡起并吃掉遇到的任何东西。";
+		mes "它们在这里随处可见，因此对于新手多拉姆来说，它们是测试其价值的绝佳目标。";
+		next;
+		mes "[大蒜义警]";
+		mes "继续处理掉一些^4d4dffEggring^000000，好吗？ ^4d4dff 现在应该做三个^000000。";
+		if (isbegin_quest(7712) == 0)
+			setquest 7712;// Where am I? Who am I??
+		completequest 7712;
+		setquest 7713;// First Battle!
+		lasagna_quest[0] = 1;
+		next;
+		cutin "tutorial02.BMP",4;
+		mes "^4d4dff!- 注意 -!^000000";
+		mes "您已接受 NPC 的任务。";
+		mes "^4d4dff通过快捷键[Alt+U]、^000000或通过菜单托盘中的任务图标查看任务详细信息。 ^000000";
+		close3;
+	}
+	if (lasagna_quest[0] == 1 || lasagna_quest[0] == 2 || lasagna_quest[0] == 3) {
+		if (lasagna_quest[0] == 1) {
+			if (checkquest(7713,HUNTING) < 2) {
+				mes "[大蒜义警]";
+				mes "好了，热身一下，去消灭^4d4dff三个蛋环^000000。";
+				next;
+				mes "[大蒜义警]";
+				mes "他们长什么样子？只要看一眼它们，您就会立即明白。你不能错过他们！";
+				mes "它们在这附近比比皆是。去抓住他们吧，老虎！";
+				next;
+				cutin "tutorial02.BMP",4;
+				mes "^4d4dff!- 注意 -!^000000";
+				mes "^4d4dff通过快捷键[Alt+U]、^000000或通过菜单托盘中的任务图标查看任务详细信息。 ^000000";
+				close3;
+			}
+			mes "[大蒜义警]";
+			mes "哇，你真好！";
+			mes "我应该在你身上看到这一点，因为翻山越岭绝非易事。";
+			next;
+			mes "[大蒜义警]";
+			mes "我相信即使在新的地点，你也能做得很好。";
+			mes "给，拿着这个。";
+			next;
+			mes "[大蒜义警]";
+			mes "我给你带了一些零食。";
+			mes "这是冰凉的苹果汁！";
+			completequest 7713;// First Battle!
+			getexp 70,70;
+			setquest 7714;// Refreshing Apple Juice
+			lasagna_quest[0] = 2;
+			getitem 531,1;// Apple Juice
+			next;
+		}
+		if (lasagna_quest[0] == 2) {
+			if (countitem(531) > 0) {
+				mes "[大蒜义警]";
+				mes "单击左上角基本信息窗口中的“项目”图标，打开项目窗口。";
+				next;
+				mes "[大蒜义警]";
+				mes "项目窗口有四个选项卡。";
+				mes "物品会根据其类型自动放置到“物品”、“装备”等选项卡中。";
+				next;
+				mes "[大蒜义警]";
+				mes "要使用或装备物品，^4d4dff双击该物品^000000，或";
+				mes "^4d4dff拖至装备窗口^000000即可使用。";
+				next;
+				cutin "tutorial03.BMP",4;
+				mes "！ - 注意 -！";
+				mes "^4d4dff您可以通过双击物品来使用或装备它。";
+				mes "使用快捷键[Alt+E]打开或关闭项目窗口。";
+				next;
+				mes "！ - 注意 -！";
+				mes "^4d4dff通过快捷键[Alt+Q]轻松查看你的装备。";
+				mes "或者，只需将适当的物品拖到您想要装备的区域即可。 ^000000";
+				next;
+				cutin "",255;
+				mes "[大蒜义警]";
+				mes "如果您想要^4d4dff查看每个项目的详细说明，请右键单击该项目。 ^000000";
+				mes "这显示了所选项目的详细描述。";
+				next;
+				cutin "tutorial04.BMP",4;
+				mes "！ - 注意 -！";
+				mes "^4d4dff右键单击某个项目可查看其详细说明。 ^000000";
+				next;
+				mes "！ - 注意 -！";
+				mes "^4d4dff如果玩家愿意，他们可以使用社交选项，例如预订、派对或公会。在这里，他们加入队伍或请求交易。 ^000000";
+				next;
+				cutin "",255;
+				mes "[大蒜义警]";
+				mes "好吧，那么。 ^4d4dff喝我给你的苹果汁吧。 ^000000";
+				close;
+			}
+			mes "[大蒜义警]";
+			mes "你喜欢吗？它很酷，很甜，而且很好，对吧？";
+			mes "如果我有的话，我会给你更多，但是……没有。";
+			next;
+			mes "[大蒜义警]";
+			mes "哦，对了！我也给你这个。";
+			mes "疲劳时服用，可以恢复体力。";
+			next;
+			mes "[大蒜义警]";
+			mes "另外，我会给你一个新员工。";
+			mes "应该比你随身带的那个芽苗菜好。";
+			mes "现在你知道如何装备物品了，因为我已经向你解释过了，不是吗？";
+			erasequest 7714;// Refreshing Apple Juice
+			getitem 569,30;// Novice Potion
+			getitem 1687,1;// Beginner Foxtail Staff [1]
+			getexp 70,70;
+			lasagna_quest[0] = 3;
+		}
+		next;
+		classchange( 4_DR_KID_01, "Kid#doram03t", bc_self );
+		mes "[大蒜义警]";
+		mes "我现在就带你去村子。";
+		npctalk "....阿林咕咕！ ！", "孩子#doram03t", bc_self;
+		next;
+		npctalk "哦，我的日子！你吓到我了！", "", bc_self;
+		mes "[大蒜义警]";
+		mes "这是怎么回事？";
+		mes "哦，你是工具商人最小的小猫！";
+		mes "这附近很危险。是什么让你走到这一步？";
+		next;
+		mes "【工具商人最小的小猫】";
+		mes "哦，其实……我输了！";
+		mes "有一个盒子！";
+		mes "我本来应该把它给Haru的。";
+		mes "我只是想出去玩一会儿，但我摔倒了！";
+		next;
+		mes "【工具商人最小的小猫】";
+		mes "请找到它，阿格里奥！";
+		mes "不然我就会有麻烦了！";
+		next;
+		mes "[大蒜义警]";
+		mes "所以，你正在跑腿去给 Haru 医生送一个盒子。";
+		mes "但你在闲逛时摔倒了，盒子丢了。是这样吗？";
+		next;
+		mes "【工具商人最小的孩子】";
+		mes "是的，先生！";
+		mes "你总结的真好！";
+		next;
+		mes "[大蒜义警]";
+		mes "好吧。你只要回到你的村庄就可以了。";
+		mes "我会看看我能做什么。你回到家并等待。";
+		next;
+		mes "[大蒜义警]";
+		mes "还有一件事。改掉在陌生人面前表现得幼稚的习惯吧！";
+		next;
+		mes "【工具商人最小的小猫】";
+		mes "来吧...我是烤宽面条中最可爱、最小的小猫！";
+		mes "不管怎样，我希望你能帮我找到那个盒子。请。";
+		next;
+		npctalk "你知道我爱你，不是吗？", "孩子#doram03t", bc_self;
+		sleep2 1000;
+		npctalk "快走吧！", "", bc_self;
+		classchange( HIDDEN_WARP_NPC, "Kid#doram03t", bc_self );
+		mes "[大蒜义警]";
+		mes "……";
+		mes "........~深深叹息~...";
+		next;
+		mes "[大蒜义警]";
+		mes "嗯，那就别无选择了。";
+		mes "" + strcharinfo(0) + "";
+		mes "我想这次你可以挺身而出并处理好它。";
+		next;
+		mes "[大蒜义警]";
+		mes "有一个能干的多拉姆和我在一起真是一种解脱。";
+		mes "我的猜测是^4d4dff鸡蛋肯定吃掉了那个盒子。 ^000000";
+		next;
+		mes "[大蒜义警]";
+		mes "继续寻找蛋环，直到找到那个盒子......";
+		mes "我们走吧！";
+		setquest 7715;// Midding Box
+		lasagna_quest[0] = 4;
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff您接受了治安维护者阿格里奥的新任务。";
+		mes "在任务信息窗口中查看任务的详细信息。";
+		next;
+		mes "！ - 注意 -！";
+		mes "按^4d4dffAlt + U^000000快捷键打开任务信息窗口。";
+		close;
+	}
+	if (lasagna_quest[0] == 4) {
+		if (countitem(1081) < 1) {// Midding Box
+			mes "[大蒜义警]";
+			mes "你一定记得蛋环，你以前猎过它们，不是吗？";
+			mes "他们在这里很容易被发现。";
+			next;
+			mes "[大蒜义警]";
+			mes "我不知道哪个蛋格林吞下了盒子，但是，一旦你开始狩猎它们，你就会找到它。";
+			next;
+			mes "[大蒜义警]";
+			mes "好吧，那么。我指望你了。";
+			close;
+		}
+		mes "[大蒜义警]";
+		mes "哦...！这就是盒子！";
+		mes "去村子里的时候可以带这个！";
+		next;
+		mes "[大蒜义警]";
+		mes "^4d4dff到达村庄后，先找到工具店并交付这个盒子。 ^000000";
+		next;
+		mes "[大蒜义警]";
+		mes "我会告诉你如何到达村庄。";
+		mes "沿着刚刚出现在地面上的箭头走。";
+		erasequest 7715;// Midding Box
+		setquest 7716;// To the Village!
+		getexp 100,100;
+		lasagna_quest[0] = 5;
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff有时NPC会通过导航工具帮助你找到目的地。";
+		mes "如果有需要，可以创建链接。如果看到[目标]，请单击它进行寻路。 ^000000";
+		cutin "navi01.bmp",4;
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff通过单击相应的菜单图标调用导航面板。";
+		mes "搜索目标，设定目标，然后单击寻路。";
+		mes "将生成指向目标位置的箭头。 ^000000";
+		cutin "navi02.bmp",4;
+		navigateto "lasagna",168,124;
+		close3;
+	}
+	if (lasagna_quest[0] == 5) {
+		mes "[大蒜义警]";
+		mes "您面前的是港口村庄 Lasagna。";
+		mes "你应该先把那个盒子带到工具店，对吧？";
+		next;
+		mes "[大蒜义警]";
+		mes "我会告诉你如何到达村庄。";
+		mes "沿着刚刚出现在地面上的箭头走。";
+		next;
+		mes "[大蒜义警]";
+		mes "我就在你身后！";
+		mes "别担心我。继续吧。";
+		navigateto "lasagna",168,124;
+		close;
+	}
+	mes "[大蒜义警]";
+	mes "你还没动身去米德加德吗？";
+	mes "嗯，港口确实时不时会出现问题，但我想这对你来说不是问题。";
+	close;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7712) > 0 && (checkquest(7713,HUNTING) == -1 || checkquest(7713,HUNTING) == 2)" );
+	end;
+}
+
+lasa_fild01,62,321,3	script	Kid#doram03t	HIDDEN_WARP_NPC,{ end; }
+
+lasa_fild01,132,374,3	script	Sloth#doram	4_DR_KID_01,3,3,{
+	if (checkweight(1001,3) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	switch( isbegin_quest(7719) ) {
+	case 0:
+		mes "[树懒]";
+		mes "嗯……你看上去精力充沛。";
+		mes "你看，我胃不舒服。";
+		next;
+		mes "[树懒]";
+		mes "天气晴朗温暖，但是……";
+		mes "我想我今天过得很糟糕...";
+		next;
+		mes "[树懒]";
+		mes "我应该把这药草地里的红草全部拔光……";
+		next;
+		mes "[树懒]";
+		mes "但在这阳光明媚的天气里我却吃得很饱……";
+		mes "而且还有一阵好风吹过……";
+		next;
+		mes "[树懒]";
+		mes "我想我永远无法把自己拖上来。";
+		mes "但我应该摘下红草...";
+		mes "如果你这么做了，我就给你凤尾鱼，好吗？";
+		next;
+		switch( select( "我给你摘下红草。", "动动你的屁股，你这个懒惰的树懒！" ) ) {
+		case 1:
+			mes "[树懒]";
+			mes "^4d4dff在此附近采摘 3 颗红草，然后收集 2 颗红色药草^000000！";
+			next;
+			mes "[树懒]";
+			mes "这可能对你有很大帮助！";
+			mes "好吧，那么。我指望你了。";
+			next;
+			mes "[树懒]";
+			mes "我会在这里休息一下，让我不舒服的胃好点。";
+			setquest 7719;// Time to Digest
+			close;
+		case 2:
+			mes "[树懒]";
+			mes "喵……";
+			mes "....喵www....";
+			close;
+		}
+	case 1:
+		if (checkquest(7719,HUNTING) != 2) {
+			mes "[树懒]";
+			mes "我想要的并不算太多。";
+			mes "只需^4d4dff在此附近采摘红草并收集 2 颗红色草药^000000。就这样。";
+			next;
+			mes "[树懒]";
+			mes "它们长得太快了，无论我拔多少次，它们都会继续生长。我已经受过了...";
+			close;
+		}
+		if (countitem(507) < 2) {
+			mes "[树懒]";
+			mes "我想要的并不算太多。";
+			mes "只需^4d4dff在此附近采摘红草并收集 2 颗红色草药^000000。就这样。";
+			close;
+		}
+		mes "[树懒]";
+		mes "噢……这香气！";
+		mes "你采摘红色药草的方式恰到好处。";
+		next;
+		mes "[树懒]";
+		mes "我会像树枝一样咀嚼它们并消化它们。喵！";
+		next;
+		mes "[树懒]";
+		mes "我会把剩下的草药给你作为奖励。";
+		mes "咀嚼它们^4d4dff你的HP将会恢复。 ^000000";
+		next;
+		mes "[树懒]";
+		mes "如果你问哈鲁，她会告诉你如何将它们变成效果更好的药水。";
+		next;
+		mes "[树懒]";
+		mes "反正我是一只懂得报答的猫。";
+		mes "这是给您的。";
+		mes "现在就别惹麻烦了。";
+		completequest 7719;
+		delitem 507,1;// Red Herb
+		getitem 11601,20;// Delicious Anchovy
+		getitem 12323,10;// Novice Fly Wing
+		getitem 12324,10;// Novice Butterfly Wing
+		getexp 80,80;
+		close;
+	case 2:
+		mes "[树懒]";
+		mes "我感觉……好累……";
+		close;
+	}
+OnTouch:
+	if (isbegin_quest(7719) == 2)
+		npctalk "~咆哮~", "", bc_self;
+	else
+		npctalk "嘿！到这里来一会儿！", "", bc_self;
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7719)" );
+	end;
+}
+
+lasa_fild01,103,344,3	script	Well-known Troublemaker	4_DR_KID_01,3,3,{
+	if (Class != Job_Summoner) {
+		mes "【知名麻烦制造者】";
+		mes "是什么让你千里迢迢来到这里，人类？";
+		mes "走吧！走开吧，喵！";
+		next;
+		mes "【知名麻烦制造者】";
+		mes "这就像一个网关。它不能也不应该被人类污染！";
+		close;
+	}
+	switch( isbegin_quest(7721) ) {
+	case 0:
+		mes "【知名小猫】";
+		mes "嘿，伙计！";
+		mes "尼奥霍霍！尼奥霍霍！你看起来很忙碌。你要去哪里？";
+		mes "在我看来，你就像一个刚翻过山脊的新手冒险家喵。";
+		next;
+		mes "【知名小猫】";
+		mes "你是不是太弱了，无法应付烤宽面条中的多拉姆人？";
+		next;
+		mes "【知名小猫】";
+		mes "你还知道如何使用技能吗？";
+		mes "在我看来，你就像是一个刚刚表现出来的新手。";
+		next;
+		select( "我比你更擅长战斗！", "哇，是这样吗？" );
+		mes "【知名小猫】";
+		mes "尼奥豪！尼奥豪！你怎么敢不尊重我？";
+		mes "和我打个赌怎么样？";
+		next;
+		mes "【知名小猫】";
+		mes "我会给你整整 10 分钟的时间，让你在这附近狩猎 ^4d4dff 3 个叶疯子和 2 个草法布尔^000000！";
+		next;
+		mes "【知名小猫】";
+		mes "如果你让我看看你的本性，我就不挡你的路了。";
+		next;
+		switch( select( "接受。", "拒绝。" ) ) {
+		case 1:
+			mes "【知名小猫】";
+			mes "你有 10 分钟的时间。不多也不少！";
+			mes "^4d4dff3 叶疯子和 2 草法布尔！ ^000000";
+			setquest 7721;// Cat showoff contest
+			close;
+		case 2:
+			mes "【知名小猫】";
+			mes "你要逃跑吗？ ！";
+			mes "没有一个胆怯的冒险家能够在新大陆上生存下来！";
+			close;
+		}
+	case 1:
+		.@quest_hunting = checkquest(7721,HUNTING);
+		.@quest_playtime = checkquest(7721,PLAYTIME);
+		if (.@quest_playtime < 2 && .@quest_hunting < 2) {
+			mes "【知名小猫】";
+			mes "在^4d4dff10分钟内^000000消灭在此处聚集的^4d4dff3个叶子疯子和2个草法布尔^000000！";
+			close;
+		}
+		if (.@quest_playtime == 2 && .@quest_hunting < 2) {
+			mes "【知名小猫】";
+			mes "尼奥霍霍！ ！尼奥霍霍！ ！";
+			mes "这对你来说太难处理了吗？";
+			mes "你怎么认为？想再试一次吗？";
+			next;
+			mes "【知名小猫】";
+			mes "对你来说太难了吗？";
+			mes "你在狩猎时使用你的^4d4dff技能^000000了吗？";
+			next;
+			mes "【知名小猫】";
+			mes "您可以通过按[Alt+S]快捷键或点击相应技能图标^4d4dff调出技能树。 ^000000";
+			next;
+			mes "【知名小猫】";
+			mes "设置您想要使用的技能，以便您可以在战斗中使用它。";
+			next;
+			mes "【知名小猫】";
+			mes "^4d4dff手动激活的技能^000000可以^4d4dff放置在快捷栏上^000000以便快速使用。";
+			next;
+			mes "【知名小猫】";
+			mes "...现在你知道如何使用技能了。";
+			mes "那么，你要做什么？";
+			next;
+			switch( select( "再试一次。", "我现在就退出！" ) ) {
+			case 1:
+				mes "【知名小猫】";
+				mes "你有勇气，我喜欢！";
+				mes "好吧，那么。再试一次！";
+				erasequest 7721;
+				setquest 7721;// Cat showoff contest
+				close;
+			case 2:
+				mes "【知名小猫】";
+				mes "如此弱小的心态，怎么能在新大陆生存下去呢？";
+				mes "尼奥霍霍！尼奥霍霍！我是这个领域最强的多拉姆！";
+				close;
+			}
+		}
+		if (.@quest_playtime < 2 && .@quest_hunting == 2) {
+			mes "【知名小猫】";
+			mes "嗯……你很好。";
+			mes "每当我偶然发现像你这样有能力的多拉姆时，我都会感到挑战。";
+		}
+		else {
+			mes "【知名小猫】";
+			mes "时间已经到了！尼奥霍霍！ ！";
+			mes "这再次证明我是这个领域最优秀的！";
+		}
+		next;
+		mes "【知名小猫】";
+		mes "你出色地完成了这项工作，所以我愿意帮助你作为回报。";
+		next;
+		mes "【知名小猫】";
+		mes "顺便问一下，你知道^4d4dff技能树^000000是什么吗？";
+		mes "我有教过你吗？";
+		mes "你还记得这件事吗？";
+		next;
+		mes "【知名小猫】";
+		mes "您可以通过按[Alt+S]快捷键或点击相应技能图标^4d4dff调出技能树。 ^000000";
+		next;
+		mes "【知名小猫】";
+		mes "设置您想要使用的技能，以便您可以在战斗中使用它。";
+		next;
+		mes "【知名小猫】";
+		mes "^4d4dff手动激活的技能^000000可以^4d4dff放置在快捷栏上^000000以便快速使用。";
+		next;
+		mes "【知名小猫】";
+		mes "...现在你知道如何使用技能了。";
+		mes "你应该感谢我。尼奥霍霍！";
+		completequest 7721;// Cat showoff contest
+		getexp 120,120;
+		close2;
+		setpcblock PCBLOCK_NPC, true;
+		classchange( 4_DR_AGLIO, "Vigilante Aglio#doram12", bc_self );
+		sleep2 1000;
+		npctalk "你！你要和另一个无辜的路人打架吗？", "大蒜义警#doram12", bc_self;
+		sleep2 2000;
+		npctalk "挑衅？这就是我们所说的培训！", "知名麻烦制造者", bc_self;
+		sleep2 2000;
+		npctalk "闭上你的嘴！你一回到村子就加入治安维护队，明白吗？", "大蒜义警#doram12", bc_self;
+		sleep2 2000;
+		npctalk "嗯，呃……我……呃……我很自由！就这样！", "知名麻烦制造者", bc_self;
+		sleep2 2000;
+		npctalk "足够的。" + strcharinfo(0) + "下一个目的地是村里的工具店。我会再次告诉你它在哪里。", "Vigilante Aglio#doram12", bc_self;
+		sleep2 2000;
+		npctalk "我会在村里再见到你的！", "大蒜义警#doram12", bc_self;
+		navigateto "lasagna",168,124;
+		sleep2 2000;
+		npctalk "你只是充满了它。", "知名麻烦制造者", bc_self;
+		classchange( HIDDEN_WARP_NPC, "Vigilante Aglio#doram12", bc_self );
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 2:
+		mes "【知名小猫】";
+		mes "还需要再开悟吗？";
+		next;
+		mes "【知名小猫】";
+		mes "生活在这个世界上并没有什么特别的。";
+		mes "你最好熟悉一下技能树。单击技能图标即可访问它。";
+		next;
+		mes "【知名小猫】";
+		mes "战斗多拉姆专门从事召唤。";
+		mes "专注于使用召唤技能，这样你才能赢得战斗。";
+		close;
+	}
+
+OnTouch:
+	if (Class == Job_Summoner && isbegin_quest(7721) == 0)
+		npctalk "喵？ ？这又是一个我没见过的外地人Doram吗？", "", bc_self;
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7716) == 1 && isbegin_quest(7721) != 2" );
+	end;
+}
+
+lasa_fild01,102,342,7	script	Vigilante Aglio#doram12	HIDDEN_WARP_NPC,{ end; }
+
+-	shop	Cat Paw Shrimp Merchant#shop::doram_shrimp	-1,515:-1,567:-1,11602:-1
+
+lasagna,168,125,3	script	Kid#doram04t	4_DR_KID_01,{
+	if (lasagna_quest[0] == 5) {
+		if (countitem(1081) > 0) {
+			mes "[小猫]";
+			mes "就是这个！ ！";
+			next;
+			mes "小猫把送给他的盒子高高举起，高兴地尖叫起来。";
+			next;
+			mes "[工具商人]";
+			mes "等待。这个盒子似曾相识……";
+			mes "嘿！这不是我让你交给Haru的盒子吗？";
+			next;
+			mes "[小猫]";
+			mes "～咕噜咕噜～";
+			mes "我要走了！现在！";
+			mes "感谢您找到盒子！";
+			delitem 1081, countitem(1081);// Delivery Box
+			completequest 7716;// To the Village!
+			getexp 70,70;
+			classchange( HIDDEN_WARP_NPC, "", bc_self );
+			lasagna_quest[0] = 6;
+			next;
+			npctalk "……哇，速度真快。", "工具商人#doram05t", bc_self;
+			mes "[工具商人]";
+			mes "不管怎样，谢谢你找到了这个盒子。";
+			mes "如果你有时间，请坐下来和我谈谈。";
+			close;
+		}
+	}
+	if (lasagna_quest[0] < 6) {
+		mes "[小猫]";
+		mes "他为什么要花这么长时间……？";
+		mes "我很担心。";
+		next;
+		select("有什么事情让你烦恼吗？");
+		mes "[小猫]";
+		mes "不，没什么。";
+		mes "我不是会随意放弃任务的多拉姆人之一！";
+		next;
+		mes "小多拉姆开始哀嚎，暗自意识到他旁边的成年多拉姆。";
+		close;
+	}
+	mes "[小猫]";
+	mes "我听说你要去新大陆了";
+	mes "我也想亲自去一趟！";
+	close2;
+	npctalk "你太年轻了！只需加入义务警员团即可。", "工具商人#doram05t", bc_self;
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7716) == 1" );
+	end;
+}
+
+lasagna,165,125,5	script	Tool Merchant#doram05t	4_DR_M_01,{
+	if (lasagna_quest[0] == 5) {
+		if (countitem(1081) > 0) {
+			mes "[小猫]";
+			mes "就是这个！ ！";
+			next;
+			mes "小猫把送给他的盒子高高举起，高兴地尖叫起来。";
+			next;
+			mes "[工具商人]";
+			mes "等待。这个盒子似曾相识……";
+			mes "嘿！这不是我让你交给Haru的盒子吗？";
+			next;
+			mes "[小猫]";
+			mes "～咕噜咕噜～";
+			mes "我要走了！现在！";
+			mes "感谢您找到盒子！";
+			delitem 1081, countitem(1081);// Delivery Box
+			completequest 7716;// To the Village!
+			getexp 70,70;
+			classchange( HIDDEN_WARP_NPC, "Kid#doram04t", bc_self );
+			lasagna_quest[0] = 6;
+			next;
+			npctalk "……哇，速度真快。", "", bc_self;
+			mes "[工具商人]";
+			mes "不管怎样，谢谢你找到了这个盒子。";
+			mes "如果你有时间，请坐下来和我谈谈。";
+			close;
+		}
+	}
+	if (lasagna_quest[0] == 6) {
+		if (checkweight(1001,6) == 0) {
+			mes "- 请稍等！ ！ -";
+			mes "- 你的物品太多了。 -";
+			mes "- 这意味着您无法再收到任何物品。 -";
+			mes "- 释放一些空间 -";
+			mes "- 然后再试一次。 -";
+			close;
+		}
+		mes "[工具商人]";
+		mes "你必须来这里申请远征新大陆。";
+		mes "看来是我儿子给你带来了麻烦。";
+		mes "感谢您的帮助。";
+		next;
+		mes "[工具商人]";
+		mes "这虽然不多，但请收下。这是我的感激之情。";
+		mes "我还给了你^4d4dff一套新衣服^000000这样你就可以换掉脏衣服了。";
+		next;
+		mes "[工具商人]";
+		mes "每个村子里都可以找到像我一样的工具商人。";
+		mes "您可以通过这些商人购买和出售物品。";
+		next;
+		mes "[工具商人]";
+		mes "向^4d4dffHealer Haru询问组合套件^000000，她会帮助你有效地使用它。";
+		mes "随身携带这个。";
+		setquest 7717;// Merchant's Kindness
+		getitem 569,50;// Novice Potion
+		getitem 12323,10;// Novice Fly Wing
+		getitem 12324,10;// Novice Butterfly Wing
+		getitem 7059,10;// Free Ticket for Kafra Storage
+		getitem 12849,5;// Combination Kit
+		getitem 15150,1;// White Shirt [1]
+		getexp 50,50;
+		lasagna_quest[0] = 7;
+		next;
+		mes "[工具商人]";
+		mes "如果你想处理任何物品，你应该来找我。";
+		mes "你明白吗？";
+		next;
+		mes "[工具商人]";
+		mes "^4d4dff治疗师Haru的房子^000000从这里直接^4d4dff向东^000000。";
+		next;
+		mes "[工具商人]";
+		mes "她家门前种满了植物和草，因为她正忙着测试药材。";
+		mes "^4d4dff这是排列着许多花盆的房子。 ^000000 你不能错过它。";
+		close;
+	}
+	if (lasagna_quest[0] == 7) {
+		mes "[工具商人]";
+		mes "Haru是一个非常聪明的女孩，所以每个生病的人都会去她那里。";
+		next;
+		mes "[工具商人]";
+		mes "你即将踏上旅程，她会为你提供很多帮助。";
+		mes "一定要见到她。";
+		next;
+		mes "[工具商人]";
+		mes "^4d4dff治疗师Haru的房子^000000从这里直接^4d4dff向东^000000。";
+		next;
+		mes "[工具商人]";
+		mes "她家门前种满了植物和草，因为她正忙着测试药材。";
+		mes "^4d4dff这是排列着许多花盆的房子。 ^000000 你不能错过它。";
+		next;
+		mes "[工具商人]";
+		mes "您有什么需要吗？";
+	}
+	else {
+		mes "[工具商人]";
+		mes "欢迎。";
+	}
+	next;
+	if (select( "购买一件物品。", "出售您的物品。" ) == 1) {
+		mes "[工具商人]";
+		mes "你需要什么吗？我有基本的药剂、陷阱、放大镜……凡是你能想到的！";
+		close2;
+		if ( getbattleflag("feature.barter") ) {
+			callshop "tool_shop_lasagna#Extended",1;
+		} else {
+			callshop "tool_shop_lasagna",1;
+		}
+		end;
+	}
+	mes "[工具商人]";
+	mes "好想法！我就知道你会的。你最好卖掉不再需要的物品！";
+	close2;
+	callshop "tool_shop_lasagna",2;
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7717) == 1" );
+	end;
+}
+
+-	shop	tool_shop_lasagna	-1,1750:-1,611:-1,501:-1,502:-1,503:-1,504:-1,645:-1,656:-1,713:-1,601:-1,602:-1,1065:-1
+-	shop	tool_shop_lasagna#Extended	-1,611:-1,602:-1,601:-1,23280:-1,23288:-1,645:-1,656:-1,657:-1,501:-1,502:-1,503:-1,504:-1,506:-1,610:-1,713:-1,717:-1,1771:-1
+
+lasagna,224,126,5	script	Healer Haru#doram07t	4_DR_M_02,{
+	if (lasagna_quest[0] == 7) {
+		mes "[哈鲁治愈者]";
+		mes "这几天我见到了很多外地人。";
+		mes "你需要什么？";
+		.@menu$[2] = "Show her the Combination Kit.";
+	}
+	else {
+		mes "[哈鲁治愈者]";
+		mes "这是怎么回事？";
+		setarray .@menu$[0], "Somebody, help me!", "About First Aid", "About Medical Botany";
+	}
+	next;
+	switch( select( .@menu$[0], .@menu$[1], .@menu$[2] ) ) {
+	case 1:
+		if (Class == Job_Summoner) {
+			mes "[哈鲁治愈者]";
+			mes "哦，不...";
+			mes "一切都会好起来的。";
+			npcskill "AL_HEAL",10,130,115;// 1748 hp
+			percentheal 0,100;
+			close;
+		}
+		mes "[哈鲁治愈者]";
+		mes "哦亲爱的...";
+		mes "很疼吗？";
+		mes "您需要 5,000 Zeny 来治愈这一切。你想让我做吗？";
+		next;
+		if (select( "说是的。", "太贵了。" ) == 2) {
+			mes "[哈鲁治愈者]";
+			mes "慢慢来，休息一下。";
+			close;
+		}
+		if (Zeny >= 5000)// intended ?
+			Zeny = Zeny - 5000;
+		mes "[哈鲁治愈者]";
+		mes "感谢您使用我们的服务。";
+		// npcskill "AL_HEAL",10,130,115;// 1748 hp
+		percentheal 100,100;
+		close;
+	case 2:
+		if (getskilllv("NV_FIRSTAID") > 0) {
+			mes "[哈鲁治愈者]";
+			mes "你已经知道什么是急救...";
+			mes "请。我没有一整天的时间";
+			close;
+		}
+		mes "[哈鲁治愈者]";
+		mes "哦，你想了解急救知识！多么令人敬佩的你啊！";
+		mes "急救是在紧急情况下将SP转化为HP的技能。";
+		next;
+		mes "[哈鲁治愈者]";
+		mes "治疗量可以说是微乎其微……";
+		mes "但你至少可以避免被重击击晕。";
+		specialeffect EF_BEGINSPELL6;
+		specialeffect EF_SPELLBREAKER;
+		next;
+		mes "[哈鲁治愈者]";
+		mes "单击^4d4dff技能^000000按钮打开技能窗口。";
+		mes "仅供参考，快捷键是^4d4dffAlt+S^000000。";
+		getexp 100,100;
+		if (isbegin_quest(7722) == 0) {
+			setquest 7722;// EMT
+			completequest 7722;// EMT
+		}
+		skill "NV_FIRSTAID",1,SKILL_PERM_GRANT;
+		next;
+		mes "[哈鲁治愈者]";
+		mes "好吧，那么。当我在做的时候，我会让你知道一些有趣的事情。";
+		mes "按^4d4dffF12键^000000，好吗？";
+		mes "惊喜！它会弹出快捷键窗口，其中九个小槽排成一排。";
+		next;
+		mes "[哈鲁治愈者]";
+		mes "拖动快捷键窗口右侧的角落区域可以查看其他页面。";
+		next;
+		mes "[哈鲁治愈者]";
+		mes "它很容易使用。 ^4d4dff每个插槽对应于从 F1 到 F9 的按键。 ^000000";
+		mes "将您要使用的技能或物品拖到插槽中，然后按相应的键即可立即激活它。";
+		next;
+		cutin "tutorial05.BMP",4;
+		mes "！ - 注意 -！";
+		mes "^4d4dff要放置要使用的物品或技能图标，请将其拖至快捷键槽。 ^000000";
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff要使用或装备在插槽中注册的物品或装备，请按与 F1 至 F9 中每个插槽相对应的键。 ^000000";
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff在快捷键设置中，您可以根据需要选择对应的快捷键。 ^000000";
+		next;
+		mes "！ - 注意 -！";
+		mes "^4d4dff放置您经常使用的物品和/或技能以便快速使用。 ^000000";
+		cutin "",255;
+		next;
+		mes "[哈鲁治愈者]";
+		mes "好吧，现在。打开技能窗口，将急救技能放入快捷键槽中即可使用。";
+		mes "使用起来会容易很多。";
+		close;
+	case 3:
+		if (isbegin_quest(7718) == 0 || lasagna_quest[0] == 7) {
+			mes "[哈鲁治愈者]";
+			mes "哦，所以你是来学习药剂组合的？";
+			mes "那么，你首先需要一个组合卷轴。";
+			mes "最重要的是，所有组合物品中最重要的应该是药剂。";
+			next;
+			mes "[哈鲁治愈者]";
+			mes "你在旅途中见过田野里长出的小草吗？";
+			mes "^4d4dff红草、蓝草、绿草、白草...^000000等...";
+			next;
+			mes "[哈鲁治愈者]";
+			mes "你可以从这些草中获取草药。";
+			mes "每种草药都是加工成各种药物的良好来源。";
+			next;
+			mes "[哈鲁治愈者]";
+			mes "红色药草即将耗尽。";
+			mes "我想你现在应该去挑选一些。";
+			next;
+			mes "[哈鲁治愈者]";
+			mes "村口长着药草。你看到他们了吗？";
+			mes "^4d4dff去村口收集1颗红色药草。 ^000000这应该是一个很好的做法。";
+			if (isbegin_quest(7717) == 1)
+				erasequest 7717;
+			if (isbegin_quest(7718) == 0)
+				setquest 7718;// I'm used to this
+			if (lasagna_quest[0] == 7)
+				lasagna_quest[0] = 8;
+			next;
+			mes "[哈鲁治愈者]";
+			mes "快点。匆忙！";
+			close2;
+			if (lasagna_quest[0] == 7 && Class == Job_Summoner)
+				npctalk "嘿。新手多拉姆。跟我说话。", "催眠师#doram08t", bc_self;
+			end;
+		}
+		if (isbegin_quest(7718) == 1) {
+			if (countitem(507) > 0) {
+				if (checkweight(1001,5) == 0) {
+					mes "- 请稍等！ ！ -";
+					mes "- 你的物品太多了。 -";
+					mes "- 这意味着您无法再收到任何物品。 -";
+					mes "- 释放一些空间 -";
+					mes "- 然后再试一次。 -";
+					close;
+				}
+				mes "[哈鲁治愈者]";
+				mes "你已经拥有它们了，完美。";
+				mes "这种^4d4dff草药即使直接食用也有效，但是，如果将其制成药水，效果会更佳。 ^000000";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "草药的效果因草药的颜色而异。";
+				mes "^4d4dff绿色草药以解毒而闻名。 ^000000";
+				mes "^4d4dff蓝色药草恢复SP^000000。";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "还要别的吗？";
+				mes "好吧，现在。当红色药草发挥作用时，你的生命值正在恢复。";
+				mes "将其榨成汁，装入瓶中...";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "这就是我们所说的随时随地可以服用的药水！";
+				mes "这是为这次特殊的邂逅而准备的。";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "准备好组合卷轴上写的材料。";
+				mes "然后，^4d4dff使用组合套件或炊具^000000制作你想要的物品。";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "除了药水之外，你还可以用你拾取的材料制作各种其他类型的工具，所以要好好利用它们。";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "我给了你红色药草和苹果。";
+				mes "因此，请尝试使用组合套件制作一些东西。";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "这是指示。要阅读组合卷轴，";
+				mes "^4d4dff右键单击卷轴^000000，然后单击描述窗口中的^4d4dff书形图标^000000。";
+				if (isbegin_quest(7717) > 0)
+					erasequest 7717;
+				if (isbegin_quest(7718) == 0)
+					setquest 7718;// I'm used to this
+				completequest 7718;
+				getexp 200,200;
+				getitem 569,30;// Novice Potion
+				getitem 11058,1;// Novice Combination Book
+				getitem 12849,10;// Combination Kit
+				getitem 507,1;// Red Herb
+				getitem 512,1;// Apple
+				npctalk "哦！给你！", "大蒜义警#doram09", bc_self;
+				classchange( 4_DR_AGLIO, "Vigilante Aglio#doram09", bc_self );
+				lasagna_quest[0] = 9;
+				close;
+			}
+			else {
+				mes "[哈鲁治愈者]";
+				mes "村口附近有一个地方长着草药。";
+				mes "^4d4dff击败红草并获得 1 颗红色药草^000000。";
+				next;
+				mes "[哈鲁治愈者]";
+				mes "你应该知道这些草药是什么样子的。";
+				close;
+			}
+		}
+		mes "[哈鲁治愈者]";
+		mes "我已经向您提供了有关药用植物学基础知识的所有详细信息。";
+		mes "顺便说一句，这个世界上有《光亮草》《CLR0》《CLR1》。";
+		next;
+		mes "[哈鲁治愈者]";
+		mes "你不知道闪亮草会产生什么样的药草。";
+		mes "我有幸获得过一次伊格德拉希尔的果实。";
+		next;
+		mes "[哈鲁治愈者]";
+		mes "传闻，人类之中有《炼金术士》《CLR1》《CLR2》《造物主》《CLR3》》，或者是上位《CLR4》通用《CLR5》";
+		mes "高度专业化地制作药水。";
+		next;
+		mes "[哈鲁治愈者]";
+		mes "如果你在米德加德大陆碰巧遇到了人类，你为什么不问问他们呢？";
+		close;
+	}
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7722) == 0" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7717) == 1" );
+	end;
+}
+
+lasagna,222,123,5	script	Hypnotist#doram08t	4_CAT_MERMASTER,{
+	if (Class != Job_Summoner) {
+		mes "[催眠师]";
+		mes "哦！所以你就是每个人都在谈论的名人！";
+		mes "但为什么你的头发不均匀呢？";
+		next;
+		mes "[催眠师]";
+		mes "你是不是得了皮肤病什么的？";
+		mes "我旁边的这个治疗师真的很不错。你应该请她看看！";
+		next;
+		mes "[催眠师]";
+		mes "你这么大块头，这种糟糕的发型实在不适合你……";
+		mes "一定做了很多工作。";
+		close;
+	}
+	mes "[催眠师]";
+	mes "我正在对年轻小伙子们进行催眠，以确保他们的未来。";
+	next;
+	if (BaseLevel > 49) {
+		mes "[催眠师]";
+		mes "你现在一定已经结束了徘徊。";
+		close;
+	}
+	mes "[催眠师]";
+	mes "如果你不喜欢刚学到的技能，我可以为你重新设置。";
+	next;
+	mes "[催眠师]";
+	mes "^4d4dff直到49级，你的技能和状态都可以随时重置。 ^000000";
+	next;
+	.@s = select( "重置状态。", "重置技能。" );
+	if (Weight > 0) {
+		mes "[催眠师]";
+		mes "您的物品可能会丢失，因此请务必称重^FF00000^000000。";
+		next;
+		mes "[催眠师]";
+		mes "猫爪商业集团负责仓库，所以把你的物品交给他们吧。";
+		close;
+	}
+	if (.@s == 1) {
+		resetstatus();
+		mes "[催眠师]";
+		mes "您的状态已成功重置！";
+		next;
+		mes "[催眠师]";
+		mes "我不为有经验的人做这件事。所以你应该提前弄清楚自己的状态。";
+		close;
+	}
+	resetskill();
+	mes "[催眠师]";
+	mes "您的技能已成功重置！";
+	next;
+	mes "[催眠师]";
+	mes "仅当您的等级保持在 49 或以下时，我才会免费重置技能和状态。";
+	mes "在此之前，我建议你通过不同的方式练习多种技能，以帮助你决定你喜欢什么。";
+	close;
+}
+
+lasagna,230,127,3	script	Vigilante Aglio#doram09	HIDDEN_WARP_NPC,{
+	if (lasagna_quest[0] == 9) {
+		mes "[大蒜义警]";
+		mes "我在工具店找你，他们说你要去这里。";
+		next;
+		mes "[大蒜义警]";
+		mes "首先，我们应该与我们的领导会面，就日程安排做出决定。";
+		mes "我们最好去广场。";
+		next;
+		mes "[大蒜义警]";
+		mes "我想你可以在广场上找到另一个像我一样的治安维持者......";
+		navigateto "lasagna",170,152;
+		close;
+	}
+}
+
+izlude,117,165,3	script	Cat Paw Shrimp Merchant#iz	4_M_MERCAT1,{
+	npctalk "这是虾、胡萝卜和猫薄荷！", "", bc_self;
+	switch( select( "买入", "卖出", "取消" ) ) {
+	case 1:
+		callshop "doram_shrimp",1;
+		end;
+	case 2:
+		callshop "doram_shrimp",2;
+		end;
+	case 3:
+		npctalk "快点再回来吧！", "", bc_self;
+		end;
+	}
+}
+
+alberta,111,159,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#alb	4_M_MERCAT1
+aldeba_in,89,56,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ald	4_M_MERCAT1
+amatsu,102,122,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ama	4_M_MERCAT1
+// ayo_in01,15,177
+brasilis,249,257,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#bra	4_M_MERCAT1
+comodo,103,136,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#com	4_M_MERCAT1
+dewata,193,169,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#dew	4_M_MERCAT1
+einbroch,164,316,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ein	4_M_MERCAT1
+ein_in01,194,22,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ein1	4_M_MERCAT1
+dic_in01,242,119,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#dic	4_M_MERCAT1
+ecl_in01,72,86,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ecl	4_M_MERCAT1
+geffen_in,75,140,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#gef	4_M_MERCAT1
+gonryun,147,88,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#gon	4_M_MERCAT1
+hugel,76,165,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#hug	4_M_MERCAT1
+izlude_a,117,165,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#iz_a	4_M_MERCAT1
+izlude_b,117,165,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#iz_b	4_M_MERCAT1
+izlude_c,117,165,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#iz_c	4_M_MERCAT1
+izlude_d,117,165,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#iz_d	4_M_MERCAT1
+lasagna,166,117,6	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#las	4_M_MERCAT1
+lhz_in02,29,219,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#lhz	4_M_MERCAT1
+lou_in02,241,168,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#lou	4_M_MERCAT1
+malaya,286,175,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#mal	4_M_MERCAT1
+mora,110,118,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#mora	4_M_MERCAT1
+morocc,169,105,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#moro	4_M_MERCAT1
+mosk_in,30,246,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#mosk	4_M_MERCAT1
+payon,155,96,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#pay	4_M_MERCAT1
+prontera,137,223,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#prt	4_M_MERCAT1
+ra_in01,243,272,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ra	4_M_MERCAT1
+um_in,104,118,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#um	4_M_MERCAT1
+ve_in,263,303,3	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#ve	4_M_MERCAT1
+xmas_in,32,38,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#xma	4_M_MERCAT1
+yuno,205,116,5	duplicate(Cat Paw Shrimp Merchant#iz)	Cat Paw Shrimp Merchant#yu	4_M_MERCAT1
+
+izlude,195,213,5	script	Con-Chliina Crewman#doi	4_M_MERCAT1,{
+	mes "[Con-Chliina Crewman]";
+	mes "从米德加德大陆到远星！";
+	next;
+	mes "[Con-Chliina Crewman]";
+	if (Class == Job_Summoner)
+		.@cost = 200;
+	else
+		.@cost = 2000;
+	mes "只有^0000cd" + .@cost + " Zenies^000000到港口城市千层面。";
+	next;
+	if (select( "前往烤宽面条 - " + .@cost + "z", "取消" ) == 2) {
+		mes "[Con-Chliina Crewman]";
+		mes "我懂了。";
+		close;
+	}
+	if (Zeny < .@cost) {
+		mes "[Con-Chliina Crewman]";
+		mes "不够？查一下他有多少钱怎么样？";
+		close;
+	}
+	Zeny = Zeny - .@cost;
+	warp "lasagna",206,297;
+	end;
+}
+malangdo,218,81,5	duplicate(Con-Chliina Crewman#doi)	Con-Chliina Crewman#dom	4_M_MERCAT1
+izlude_a,195,213,5	duplicate(Con-Chliina Crewman#doi)	Con-Chliina Crewman#doia	4_M_MERCAT1
+izlude_b,195,213,5	duplicate(Con-Chliina Crewman#doi)	Con-Chliina Crewman#doib	4_M_MERCAT1
+izlude_c,195,213,5	duplicate(Con-Chliina Crewman#doi)	Con-Chliina Crewman#doic	4_M_MERCAT1
+izlude_d,195,213,5	duplicate(Con-Chliina Crewman#doi)	Con-Chliina Crewman#doid	4_M_MERCAT1
+
+izlude,138,183,3	script	Vigilante Penne#doect01	4_DR_SOLDIER,{
+	if (Class == Job_Summoner) {
+		mes "[治安员潘内]";
+		mes "嗨！即使在这里看到法法尔维吉兰特，不是很令人高兴吗？";
+		next;
+		mes "[治安员潘内]";
+		mes "顺便问一下，你在这片土地上的定居情况怎么样？";
+		mes "您去过这附近的^4d4dffProntera^000000 或^4d4dffPayon^000000 吗？";
+		next;
+		mes "[治安员潘内]";
+		mes "您可能想参观一个天堂集团。";
+		mes "去那里参观也没什么坏处。";
+		close;
+	}
+	mes "[治安员潘内]";
+	mes "人类总是以其奇特的外表吸引我。";
+	mes "就像一只无毛的大猫！";
+	next;
+	mes "[治安员潘内]";
+	mes "我？让我解释一下。我是来自伟大的远星大陆的法法尔义警团的骄傲成员。";
+	next;
+	switch( select( "远星大陆？", "Farfalle Vigilante？", "你是猫爪商业集团的人吗？" ) ) {
+	case 1:
+		mes "[治安员潘内]";
+		mes "除了米德加德之外，还有更多的大陆。";
+		mes "我们穿越的土地叫做远星。";
+		next;
+		mes "[治安员潘内]";
+		mes "嗯，我们也没有什么不同，因为我们都以为阳光下只有远星大陆。";
+		mes "世界确实很宽...";
+		close;
+	case 2:
+		mes "[治安员潘内]";
+		mes "那么，你认为这条丝带与这件很酷的制服非常相配吗？";
+		mes "（显示颈部以下区域。）";
+		next;
+		mes "[治安员潘内]";
+		mes "这是我们 Farfalle Vigilante 的标志。";
+		mes "我们是保护千层面的传奇治安团！";
+		next;
+		mes "[治安员潘内]";
+		mes "你不知道我们的领袖 Peperoncino 有多酷......";
+		mes "我们做各种各样的杂务，从在港口处理海胆到维护村庄的安全。";
+		next;
+		mes "[治安员潘内]";
+		mes "而且，你可以来到这个...Mid...Midgur...Midgar...";
+		mes "反正！只有当法法尔维吉兰特接受时你才可以来这里。";
+		next;
+		mes "这只骄傲的猫变得非常健谈……";
+		close2;
+		npctalk "啊？你只是路过吗？", "", bc_self;
+		end;
+	case 3:
+		mes "[治安员潘内]";
+		mes "不，不是这样的！ ！";
+		mes "猫爪商业集团由托梅-托马斯队长领导！";
+		next;
+		mes "[治安员潘内]";
+		mes "我是佩佩罗西诺领袖指挥的法法尔治安队的一员！";
+		next;
+		mes "[治安员潘内]";
+		mes "哦，我的日子！那么你甚至没有去过烤宽面条，是吗？";
+		mes "我们伟大的甘贝里船长亲自冒险来到这里！";
+		next;
+		mes "[治安员潘内]";
+		mes "我们很仁慈地给像你这样的人一个去千层面之地的机会。";
+		mes "不久之后，这个米德加……米德加……？ ？这片土地很快就会被我们多拉姆人控制！";
+		next;
+		mes "[治安员潘内]";
+		mes "你最好赢得我们的青睐。如果您这样做，我们可能会给您一份在烤宽面条中清洗凤尾鱼的工作！";
+		close;
+	}
+}
+
+lasagna,209,301,3	script	Mustachi#dorcon01	4_DR_KID_01,{
+	mes "[胡子]";
+	mes "我们修剪你的胡须。我们给你梳理尾巴。在出发去新世界之前一定要打扮好自己。";
+	mes "市中心有一家发型设计师，所以一定要去看看。";
+	close;
+}
+
+lasagna,232,181,5	script	Linguina#dorcon01	4_CAT_ADV1,{
+	mes "[扁面条]";
+	mes "这是一家酒吧，也是冒险家们常去的冒险家具乐部。他们来自世界各地，分享自己的故事，并寻找冒险伙伴。";
+	next;
+	mes "[扁面条]";
+	mes "如今，许多人在前往新世界之前都会来寻求信息。";
+	next;
+	mes "[扁面条]";
+	mes "大约十年前，这里是一个安抚流氓多拉姆并招募他们作为治安维持者的地方。在此之前，辛苦劳作的水手们经过一天的辛苦工作后来到这里放松身心。";
+	next;
+	mes "[扁面条]";
+	mes "佩佩罗西诺酋长和甘伯里船长也是在这里第一次见面。三人结为兄弟，并在他们的努力获得成功后成为传奇人物。";
+	next;
+	mes "[扁面条]";
+	mes "因此，那些想要成功的人或者想要成为像他们一样的冒险家的人经常来到这里。";
+	close;
+}
+
+lasagna,227,187,1	script	Vongolo#dorcon01	4_CAT_SAILOR1,{
+	mes "[蛤]";
+	mes "你决定要拥有什么了吗？";
+	next;
+	mes "[蛤]";
+	mes "每个人都在这里点卡卢纳牛奶，因为 Peperoncino、Gamberry 和 Thomas 的烤箱决议。但 Pub-Oven 真正的特色菜单是鱼饼。";
+	next;
+	mes "[蛤]";
+	mes "鱼饼是白色的鱼片与煮熟的豆子捣碎，成型并油炸。确实很好吃，但是没人要。";
+	next;
+	mes "[蛤]";
+	mes "所以我们这些天连食材都没有准备好。偶尔有订单，我们就跑去鱼店买一条鳕鱼然后开始做饭。";
+	next;
+	mes "[蛤]";
+	mes "哦，确实不错...";
+	close;
+}
+
+lasagna,220,172,6	script	Master of Property#do_h	4_M_BABYCAT,{
+	.@r = rand(0,4);
+	if (.@r == 0)
+		npctalk "土元素战胜风元素。", "", bc_self;
+	else if (.@r == 1)
+		npctalk "水元素优于火元素。", "", bc_self;
+	else if (.@r == 2)
+		npctalk "风元素胜过水元素。", "", bc_self;
+	else if (.@r == 3)
+		npctalk "火元素胜过土元素。", "", bc_self;
+	else
+		npctalk "圣系和暗系是截然不同的。", "", bc_self;
+	mes "【地产猫】";
+	mes "这个世界上的每一个生命都拥有财产。";
+	mes "元素种类繁多，从中性元素到四大自然元素，还有圣元素和黑暗元素。";
+	next;
+	mes "【地产猫】";
+	mes "最具代表性的元素是自然元素。";
+	mes "简单来说，就是水、风、土、火四种元素。";
+	mes "除此之外，还有亡灵、神圣、黑暗等元素。";
+	next;
+	mes "【地产猫】";
+	mes "每个元素都是相互交织的。因此，要聪明地使用相反的元素。";
+	next;
+	mes "【地产猫】";
+	mes "这样，你就能在战斗中占据上风。";
+	mes "让我举一个简短的例子来说明它们之间的相关性。";
+	next;
+	mes "【地产猫】";
+	mes "火元素对土元素有很强的抵抗力。";
+	mes "而土系绝对胜过风系。";
+	next;
+	mes "【地产猫】";
+	mes "风元素胜过水元素。";
+	mes "然而，水元素战胜了火元素。";
+	next;
+	mes "【地产猫】";
+	mes "圣系和暗系是直接对立的，这一点你要记住。";
+	next;
+	mes "【地产猫】";
+	mes "除此之外，还有中立和亡灵元素。你很快就会知道它们是关于什么的。";
+	mes "您必须亲自看看。";
+	close;
+}
+
+lasagna,208,188,3	script	Cat Paw Service#lasagna	4_M_MERCAT1,4,4,{
+	if (Class == Job_Summoner && isbegin_quest(7720) == 0) {
+		if (checkweight(1001,2) == 0) {
+			mes "- 请稍等！ ！ -";
+			mes "- 你的物品太多了。 -";
+			mes "- 这意味着您无法再收到任何物品。 -";
+			mes "- 释放一些空间 -";
+			mes "- 然后再试一次。 -";
+			close;
+		}
+		mes "[猫爪商业集团]";
+		mes "嘿，小家伙！";
+		mes "你要去米德加尔特大陆吗？";
+		mes "那么，你最好听我的！";
+		next;
+		mes "[猫爪商业集团]";
+		mes "与我们的 Cat Paw Commerce Group 一样，还有其他团体提供^4d4dff位置共享服务^000000和^4d4dff仓库服务^000000。";
+		next;
+		mes "[猫爪商业集团]";
+		mes "它们是：^4d4dffKafra^000000和^4d4dffZonda^000000。";
+		mes "当然，不要忘记猫爪商业集团！";
+		next;
+		mes "[猫爪商业集团]";
+		mes "^4d4dff位置共享^000000是保存您返回的位置。";
+		mes "如果你在冒险中因疲劳而摔倒，你应该返回村庄。这就是您可以使用此服务执行的操作。";
+		next;
+		mes "[猫爪商业集团]";
+		mes "使用^4d4dff蝴蝶翅膀^000000物品直接飞到该位置。";
+		next;
+		mes "[猫爪商业集团]";
+		mes "大多数共享位置是安全的村庄或城市。";
+		next;
+		mes "[猫爪商业集团]";
+		mes "^4d4dff仓库服务^000000也类似。";
+		mes "您只需支付少量服务费即可安全存放您的物品。";
+		next;
+		mes "[猫爪商业集团]";
+		mes "你总不能把所有的东西都随身携带吧？";
+		mes "这就是仓库派上用场的地方。";
+		next;
+		mes "[猫爪商业集团]";
+		mes "只要支付服务费，您就可以随时随地在仓库存入和取出您的物品！";
+		mes "现在你明白了吗？";
+		setquest 7720;// Service Manual
+		completequest 7720;// Service Manual
+		getitem 12323,10;// Novice Fly Wing
+		getitem 12324,10;// Novice Butterfly Wing
+		getexp 50,50;
+		next;
+		mes "[猫爪商业集团]";
+		mes "哦，你要我再解释一遍吗？";
+		next;
+		if (select( "不。", "请。" ) == 2) {
+			mes "[猫爪商业集团]";
+			mes "与我们的 Cat Paw Commerce Group 一样，还有其他团体提供^4d4dff位置共享服务^000000和^4d4dff仓库服务^000000。";
+			next;
+			mes "[猫爪商业集团]";
+			mes "它们是：^4d4dffKafra^000000和^4d4dffZonda^000000。";
+			mes "当然，不要忘记猫爪商业集团！";
+			next;
+			mes "[猫爪商业集团]";
+			mes "^4d4dff位置共享^000000是保存您返回的位置。";
+			mes "如果你在冒险中因疲劳而摔倒，你应该返回村庄。这就是您可以使用此服务执行的操作。";
+			next;
+			mes "[猫爪商业集团]";
+			mes "使用^4d4dff蝴蝶翅膀^000000物品直接飞到该位置。";
+			next;
+			mes "[猫爪商业集团]";
+			mes "大多数共享位置是安全的村庄或城市。";
+			next;
+			mes "[猫爪商业集团]";
+			mes "^4d4dff仓库服务^000000也类似。";
+			mes "您只需支付少量服务费即可安全存放您的物品。";
+			next;
+			mes "[猫爪商业集团]";
+			mes "你总不能把所有的东西都随身携带吧？";
+			mes "这就是仓库派上用场的地方。";
+			next;
+			mes "[猫爪商业集团]";
+			mes "只要支付服务费，您就可以随时随地在仓库存入和取出您的物品！";
+			mes "现在你明白了吗？";
+			close;
+		}
+		mes "[猫爪商业集团]";
+		mes "那么，你需要我帮你做什么呢？";
+	}
+	else {
+		mes "[猫爪商业集团]";
+		mes "快点！欢迎！";
+		mes "你要我帮你做什么？";
+	}
+	next;
+	switch( select( "位置共享服务", "仓库服务", "退出。" ) ) {
+	case 1:
+		mes "[猫爪商业集团]";
+		mes "得救了喵！";
+		savepoint "lasagna",193,183,1,1;
+		close;
+	case 2:
+		if (!callfunc("F_CanOpenStorage")) {
+			mes "[猫爪商业集团]";
+			mes "对不起，但是...";
+			if (Class == Job_Summoner) {
+				mes "你应该先学习新的基本技能。";
+				mes "想用仓库就去学技能吧。";
+			}
+			else {
+				mes "如果你想使用仓库，你应该先学习一些基本技能。";
+				mes "去学习技能，直到达到使用仓库的等级。";
+				mes "我相信对于人类来说应该是^4d4dff基础级别6^000000。";
+			}
+			close;
+		}
+		if (countitem(7059) > 0)// Free Ticket for Kafra Storage
+			delitem 7059,1;
+		else {
+			if (Zeny < 50) {
+				mes "[猫爪商业集团]";
+				mes "如果你没有奶酪，我很乐意带 Zeny。";
+				mes "仓库服务费用为 50 Zeny。";
+				close;
+			}
+			Zeny = Zeny - 50;
+		}
+		// todo kafra points
+		mes "[猫爪商业集团]";
+		mes "我去把仓库打开。";
+		mes "再来吧！";
+		close2;
+		openstorage();
+		end;
+	case 3:
+		mes "[猫爪商业集团]";
+		mes "那就再来吧。";
+		close;
+	}
+OnTouch:
+	if (Class == Job_Summoner && isbegin_quest(7720) != 2)
+		npctalk "喵！嘿，新朋友！我有一个故事要告诉你。你不想错过这个！", "", bc_self;
+	end;
+OnInit:
+	// note: permanent for human
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7720)" );
+	end;
+}
+
+lasagna,171,105,5	script	Emergency Patient#dorco	4_M_DIEMAN,5,5,{
+	emotion ET_HELP;
+	npctalk "谁、谁来帮帮我……Dorams，他们太可爱了，我要死了……", "", bc_self;
+	end;
+OnTouch:
+	emotion ET_HELP;
+	end;
+}
+
+lasagna,200,278,5	script	Recruiter#dorcon01	4_CAT_ADV2,{
+	mes "[招聘人员]";
+	mes "去吧，有机会以三条凤尾鱼的价格赢取邮轮旅行和亿年薪！机会是属于那些不怀疑的人的！";
+	next;
+	mes "[戈前]";
+	mes "义务警员！在这里！这里有人骗人上船！";
+	next;
+	mes "[招聘人员]";
+	mes "废话！这里运气不好！";
+	close;
+}
+
+lasagna,202,276,5	script	Gomae#dorcon01	4_DR_F_01,{
+	npctalk "听说这几天有非法的凤尾鱼船骗人上船。这是一个可怕的世界。治安维持者睁大眼睛想要抓住他们。", "", bc_self;
+	end;
+}
+
+lasagna,211,186,5	script	Boarding Attendant#dorc	4_CAT_ADV1,5,5,{
+	if (lasagna_quest[1] < 12) {
+		mes "[乘务员]";
+		mes "我们祝你在 Con-Chliina 度过愉快的一天！";
+		close;
+	}
+	if (lasagna_quest[1] == 12) {
+		mes "[乘务员]";
+		mes "你好，冒险家！";
+		next;
+		mes "[乘务员]";
+		mes "我协助那些从 Farfalle Vigilantes 完成培训的人登上 Con-Chliina。";
+		next;
+		mes "[乘务员]";
+		mes "前往新世界的人应该跟随红色纱线前往^0000cd码头^000000。";
+		next;
+		mes "[乘务员]";
+		mes "登机前请检查您是否携带登机牌！";
+		navigateto "lasagna",205,325;
+		close;
+	}
+	end;
+OnTouch:
+	if (isbegin_quest(11445) == 2 && isbegin_quest(14545) == 0)
+		npctalk "请不要错过Con-Chliina详情公告！", "", bc_self;
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14545)" );
+	end;
+}
+
+lasa_fild01,356,374,7	script	Cow#dorcon01	4_BULL,{
+	npctalk "哞——", "", bc_self;
+	end;
+}
+lasa_fild01,352,376,5	script	Cow#dorcon02	4_WHITE_COW,{
+	npctalk "哞-哞-", "", bc_self;
+	end;
+}
+lasa_fild01,361,372,3	script	Cow#dorcon03	4_BULL,{
+	npctalk "巴巴-", "", bc_self;
+	end;
+}
+
+lasagna,217,192,5	script	Kittie#do_hint01	4_CAT_SAILOR1,{
+	npctalk "F12！ F12！", "", bc_self;
+	mes "[猫咪]";
+	mes "^4d4dff按F12键，会弹出快捷键槽。 ^000000";
+	next;
+	cutin "tutorial05.BMP",4;
+	mes "！ - 注意 -！";
+	mes "^4d4dff要准备要使用的物品或技能图标，请将其拖至快捷键槽。";
+	next;
+	mes "！ - 注意 -！";
+	mes "^4d4dff要使用或装备在插槽中注册的物品或装备，请按与 F1 至 F9 的每个插槽对应的键。";
+	next;
+	mes "！ - 注意 -！";
+	mes "^4d4dff在快捷键设置中，您可以根据需要选择对应的快捷键。";
+	next;
+	mes "！ - 注意 -！";
+	mes "^4d4dff准备一个你经常使用的物品和/或技能，以便更快地使用。";
+	cutin "",255;
+	close;
+}
+
+lasagna,260,134,3	script	Rasmus#dorcon01	4_CAT_SAILOR3,{
+	npctalk "红纱带你去你想去的地方，黄路带你回家。别忘了。如果迷路了，就沿着红线走。", "", bc_self;
+	end;
+}
+
+lasagna,244,231,3	script	Crewman of Anchovy Fish	4_CAT_SAILOR1,{
+	npctalk "沿着这条黄色奶酪路，你就会到达我的家乡。我想有一天回到那里。", "", bc_self;
+	end;
+}
+
+lasagna,190,239,5	script	Youngster meow#dorcon01	4_CAT_ADV1,{
+	npctalk "我是这个游乐场的老板——", "", bc_self;
+	end;
+}
+
+lasagna,180,230,7	script	Youngster meow#dorcon02	4_CAT_ADV2,{
+	npctalk "哇，你们这些小孩子……你们对我来说太年轻了。", "", bc_self;
+	end;
+}
+
+lasagna,192,245,7	script	Youngster meow#dorcon03	4_CAT_REST,{
+	npctalk "毛线团有十二十三十……好多啊！", "", bc_self;
+	end;
+}
+
+lasagna,184,234,5	script	Youngster meow#dorcon04	4_M_BABYCAT,{
+	npctalk "想坐跷跷板的人-来这里-", "", bc_self;
+	end;
+}
+
+lasagna,186,231,3	script	Youngster meow#dorcon05	4_DR_KID_01,{
+	emotion ET_CRY;
+	npctalk "为什么这不滚动-让它滚动-", "", bc_self;
+	end;
+}
+
+lasagna,226,196,5	script	Aram#dorcon01	4_DR_F_02,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "这就是著名的Pub-Oven吗？", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "别再像乡巴佬一样东张西望了！", "", bc_self;
+	sleep2 2000;
+	npctalk "哇！看看这个！这里是他们三个人坐的地方吗？", "波尔图#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "哎呀！你只是尖叫着说你是个乡巴佬！", "", bc_self;
+	sleep2 2000;
+	npctalk "既然来到这里，我们就来做个关于烤箱的决定吧！", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "这就是我们千辛万苦来到这里的原因！就像 Peperoncino、Thomas 和 Gamberry 一样，我们将团结起来并取得成功！", "波尔图#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "老板！请用力摇匀三杯卡卢纳牛奶！上面还有蛋黄！", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "哦，这太尴尬了！我要告诉你多少次，这里的每个人都搅拌过？ ！", "", bc_self;
+	sleep2 2000;
+	npctalk "搅拌还是摇晃，只要好吃谁在乎呢？", "波尔图#dorcon01", bc_self;
+	sleep2 1000;
+	npctalk "不要让人们注意到您来自外地！", "", bc_self;
+	sleep2 2000;
+	npctalk "谁在乎它是否显示？显然，这里的烤宽面条本地人并不多。", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "是啊，我们既然来了，就尽情享受吧。我会尽量不让它表现得太多。", "波尔图#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "是啊是啊。我不会展示它。", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	classchange( 4_CAT_SAILOR3, "Employee#dorcon01", bc_self );
+	npctalk "三杯卡卢纳牛奶。干得好。", "员工#dorcon01", bc_self;
+	sleep2 2000;
+	classchange( HIDDEN_WARP_NPC, "Employee#dorcon01", bc_self );
+	npctalk "最后！", "波尔图#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "让我们大家干杯吧。把眼镜举高！", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "我们不是同一天出生，但我们都在同一天死去吧！", "", bc_self;
+	sleep2 2000;
+	npctalk "为什么要提到死亡呢？", "托斯#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "那就一劳永逸吧！一切为了一！", "波尔图#dorcon01", bc_self;
+	sleep2 1000;
+	npctalk "......", "", bc_self;
+	sleep2 2000;
+	npctalk "俗气...", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+lasagna,228,193,5	script	Porto#dorcon01	4_DR_M_01,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "既然千里迢迢来到这里，就应该尝尝卡卢纳牛奶！", "", bc_self;
+	sleep2 2000;
+	npctalk "别那么大声！大家都在看！", "亚兰#dorcon01", bc_self;
+	sleep2 2000;
+	npctalk "你知道，你是那个声音更大的人。", "", bc_self;
+	sleep2 2000;
+	npctalk "对，对。", "托斯#dorcon01", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+lasagna,229,197,5	script	Tos#dorcon01	4_DR_M_02,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "与它的名气相称，这个地方挤满了人。", "", bc_self;
+	sleep2 2000;
+	npctalk "别再像乡巴佬一样东张西望了！", "亚兰#dorcon01", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+lasagna,226,199,5	script	Employee#dorcon01	HIDDEN_WARP_NPC,{ end; }
+
+lasagna,230,192,3	script	Perky Doram#do_hint03	4_CAT_ADV2,{
+	npctalk "当涉及到信息时，请务必右键单击！右键单击人类、物品和猫以了解有关它们的更多信息！", "", bc_self;
+	end;
+}
+
+lasagna,235,193,3	script	Customer#dorcon02	4_DR_TORTEL,{
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "当涉及到信息时，请务必右键单击！右键单击人类、物品和猫以了解有关它们的更多信息！", "", bc_self;
+	sleep2 1000;
+	emotion ET_THROB;
+	npctalk "幸福-", "", bc_self;
+	sleep2 2000;
+	emotion ET_SLEEPY;
+	npctalk "我们已经吃饱了，所以只有一件事要做。睡觉。", "", bc_self;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+lasagna,220,190,5	script	Customer#dorcon01	4_CAT_ADV1,{
+	npctalk "你见过南桥附近疯狂的海鸥吗？它疯狂地跳跃着。这是怎么回事？", "", bc_self;
+	end;
+}
+
+lasagna,220,194,3	script	Serious Doram#do_hint08	4_M_MERCAT1,{
+	npctalk "人类说他们的武器通过精炼变得更加强大。到底什么是精致？", "", bc_self;
+	end;
+}
+
+
+lasagna,221,175,5	script	Smart Doram#do_hint06	4_CAT_SAILOR2,{
+	npctalk "DEX（敏捷）涉及准确性和施法速度。", "", bc_self;
+	end;
+}
+
+lasagna,219,178,3	script	Kittie#do_hint02	4_CAT_SAILOR3,{
+	npctalk "双击要使用的消耗品。", "", bc_self;
+	end;
+}
+
+// Intended ?
+/*
+lasagna,208,179,3	script	Kittie the Eraser#do_hi	4_M_MERCAT1,{
+	npctalk "我正在删除从 7711 到 7720 的所有行。", "", bc_self;
+	lasagna_quest[0] = 0;
+	for ( .@quest_id = 7711; .@quest_id < 7721; .@quest_id++ ) {
+		if (isbegin_quest(.@quest_id) > 0)
+			erasequest .@quest_id;
+	}
+	end;
+}
+*/
+
+lasagna,225,174,3	script	Doram On The Journey#do	4_CAT_3COLOR,{
+	npctalk "如果您携带的物品超过最大重量的 50%，您将无法自然恢复。", "", bc_self;
+	end;
+}
+
+lasagna,233,174,5	script	Boozer#dorcon01	4_CAT_SAILOR5,{
+	npctalk "卡卢纳牛奶应该搅拌。最近这里聚集了很多流浪者，动摇这里的人也越来越多。但这就是孩子们喝的方式，不是吗？", "", bc_self;
+	end;
+}
+
+lasagna,236,173,3	script	Boozer#dorcon02	4_CAT_SAILOR5,{
+	npctalk "卡卢纳牛奶应该摇匀。您必须摇晃它才能品尝充分发酵的卡卢纳与牛奶混合时产生的细腻风味。", "", bc_self;
+	end;
+}
+
+lasagna,236,179,5	script	Meow goon#dorcon01	4_DR_M_01,{
+	mes "[喵喵]";
+	mes "如果您遇到问题，请向他们寻求帮助。你知道，义务警队的双胞胎。阿格里奥...阿里...奥尔...";
+	next;
+	mes "[喵喵]";
+	mes "正确的！他们是阿格里奥和奥利戈！";
+	npctalk "大蒜和奥利戈！", "", bc_self;
+	next;
+	emotion ET_SWEAT, getnpcid(0, "Goon meow#dorcon01");
+	mes "[咕喵]";
+	mes "嘿嘿，不是这样的……不是……";
+	next;
+	mes "[喵喵]";
+	mes "不？";
+	next;
+	mes "[咕喵]";
+	mes "他们是阿格里奥和奥利奥。不是 Aglio 和 Oligo。你让它们听起来像糖。";
+	npctalk "他们是阿格里奥和奥利奥。", "咕喵#dorcon01", bc_self;
+	next;
+	mes "[喵喵]";
+	mes "任何。";
+	close;
+}
+
+lasagna,235,178,5	script	Goon meow#dorcon01	4_DR_M_02,{
+	mes "[咕喵]";
+	mes "把自己暴露在外面的世界是危险的。拿这些三色凤尾鱼。";
+	npctalk "把自己暴露在外面的世界是危险的。", "", bc_self;
+	next;
+	mes "[喵喵]";
+	mes "大家都远离吧！我很危险。克拉！三色凤尾鱼还能撑多久？ ！";
+	npctalk "大家都远离吧！我很危险。", "喵哥#dorcon01", bc_self;
+	next;
+	mes "[咕喵]";
+	mes "我……完了……你继续吧……";
+	next;
+	mes "[喵喵]";
+	mes "啊……一直睡在我包里的恶作剧的鬼魂正在肆虐！";
+	next;
+	emotion ET_BEST;
+	emotion ET_BEST, getnpcid(0, "Meow goon#dorcon01");
+	mes "[咕喵]";
+	mes "好的！这应该足以让我在新世界中不被冷落。";
+	npctalk "我们已经做好万全的准备了！", "喵哥#dorcon01";
+	close;
+}
+
+lasagna,232,187,6	script	Fettuccina#dorcon01	4_CAT_SAILOR2,{
+	mes "[宽面条]";
+	mes "我在这里工作了一段时间，但我仍然是最小的，所以所有的盘子都是我做的。";
+	next;
+	mes "[宽面条]";
+	mes "出海前一杯，长途航行后在陆地上一杯，为每一个从外地来制定烤箱决议的人一杯，为每一位常客一杯，为每一个因为别人喝而喝酒的人一杯。";
+	next;
+	mes "[宽面条]";
+	mes "所以基本上，我每天要洗多少个杯子，超出了你的想象。不仅如此，我还得听警戒队和商人的低级多拉姆的抱怨，并为新冒险者提供建议。";
+	next;
+	mes "[宽面条]";
+	mes "确实，24小时太短了。我们应该再雇一个人！";
+	close;
+}
+
+lasagna,131,245,5	script	The diligent second son	4_CAT_3COLOR,{
+	if (checkweight(1001,1) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	mes "[尤塔·查拉]";
+	mes "父亲，母亲。请平安归来。";
+	mes "（他正在做某事，咕哝着。）";
+	next;
+	if (select( "工艺护身符", "关于家庭" ) == 2) {
+		mes "[尤塔·查拉]";
+		mes "...我的父母经常去危险的地区。我还是个孩子来帮助他们，所以我所做的就是为他们制作这些护身符。";
+		next;
+		emotion ET_PROFUSELY_SWEAT;
+		mes "[尤塔·查拉]";
+		mes "即使我为了他们的安全而努力制作这些护身符，万一传来坏消息怎么办？";
+		next;
+		mes "[尤塔·查拉]";
+		mes "每次收到邮件我都会被吓一跳...";
+		next;
+		emotion ET_CRY, getnpcid(0, "The skittish fourth#wea");
+		mes "[丹迪·查拉]";
+		mes "我们的父母到底发生了什么？ ～突然哭起来～";
+		next;
+		emotion ET_BEST, getnpcid(0, "The brave third#weapon");
+		mes "[乔吉·查拉]";
+		mes "好吧，那么。我要做你爸爸！ ！";
+		next;
+		emotion ET_CRY, getnpcid(0, "The skittish fourth#wea");
+		emotion ET_PROFUSELY_SWEAT;
+		mes "[丹迪·查拉]";
+		mes "～一直哭个不停～不行！ ！妈妈！ ！爸爸！ ！";
+		next;
+		mes "[戈马查拉]";
+		emotion ET_FRET, getnpcid(0, "The sensitive-minded ela");
+		emotion ET_PROFUSELY_SWEAT;
+		mes "两者都会很好，很快就会回到我们身边。所以放弃吧！你真的要让他哭吗？ ！";
+		next;
+		emotion ET_THINK;
+		mes "- Yota变得沮丧并开始悄悄地制作另一个护身符。 -";
+		close;
+	}
+	mes "[尤塔·查拉]";
+	mes "...您有亲近的人并希望他们健康吗？";
+	mes "如果你想要护身符，可以用多拉姆代币兑换。我身上有一堆护身符。";
+	next;
+	.@s = select( "下品竹荚鱼护身符", "下品叶子护身符", "下品兔子护身符", "闪亮树枝符", "新鲜金枪鱼护身符", "肥美的蚯蚓护身符" );
+	mes "[尤塔·查拉]";
+	switch(.@s) {
+	case 1:
+		mes mesitemlink( 28413, false ) + "是为了我远在海边的父亲。";
+		break;
+	case 2:
+		mes mesitemlink( 28416, false ) + "是为了我应该在森林深处徘徊的母亲。";
+		break;
+	case 3:
+		mes mesitemlink( 28419, false ) + "是为了我兄弟们的健康。";
+		break;
+	case 4:
+		mes mesitemlink( 28422, false ) + "就是祝愿妈妈从世界任何地方都能平安归来。";
+		break;
+	case 5:
+		mes mesitemlink( 28423, false ) + "是希望父亲带着满载金枪鱼的船快点回家。";
+		break;
+	case 6:
+		mes mesitemlink( 28424, false ) + "就是祈求轻松捕鱼，让家人不至于挨饿。";
+		break;
+	}
+	if (.@s < 4) {
+		.@cost = 10;
+		.@item_id = 28410 + .@s * 3;
+	}
+	else {
+		.@cost = 30;
+		.@item_id = 28418 + .@s;
+	}
+	mes "您愿意将其兑换成" + .@cost + " " + mesitemlink( 25142, false ) + "吗？";
+	next;
+	if (select( "交换", "取消" ) == 2) {
+		mes "[尤塔·查拉]";
+		mes "是……我说错了，还是什么？";
+		mes "我不是专家，但我已经尽力了。";
+		close;
+	}
+	if (countitem(25142) < .@cost) {
+		mes "[尤塔·查拉]";
+		mes "对不起。如果我不卖个好价钱，我姐姐会很生气的。你会带着 10 个 Doram 代币回来吗？";
+		close;
+	}
+	mes "[尤塔·查拉]";
+	mes "感谢您。希望我的护身符对你有用...";
+	delitem 25142, .@cost;
+	getitem .@item_id, 1;
+	close;
+}
+
+lasagna,131,250,5	script	The brave third#weapon	4_DR_M_02,{
+	if (checkweight(1001,1) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	mes "[乔吉·查拉]";
+	mes "～呼呼～";
+	mes "这是乔吉，来自烤宽面条的轰炸机！";
+	mes "放下武器投降！";
+	next;
+	if (select( "表现得像投降一样。", "无视他。" ) == 2) {
+		mes "[乔吉·查拉]";
+		mes "~发出嘶嘶的声音~";
+		mes "～咚咚的声音～";
+		mes "啊？你认为你要去哪里？";
+		close;
+	}
+	mes "[乔吉·查拉]";
+	mes "哇哈哈！我的又一个胜利！多么有意义的一天啊！";
+	mes "接下来我们应该做什么？";
+	next;
+	if (select( "用代币交换武器。", "关于家族" ) == 2) {
+		emotion ET_BEST;
+		mes "[乔吉·查拉]";
+		mes "我姐姐告诉我我的父母都是战士！他们出发去进行一次巨大的冒险！ ！";
+		next;
+		emotion ET_BEST;
+		mes "[乔吉·查拉]";
+		mes "我要加入民兵，成为像我父母一样伟大的人！";
+		mes "我还太年轻，无法加入民兵，但是，我确信一旦加入民兵我就能成为乐队的王牌，因为我致力于训练自己。";
+		next;
+		emotion ET_HNG;
+		mes "[乔吉·查拉]";
+		mes "我的家人都很懒。除非我基于坚定的信念来训练他们，否则他们永远无法成为战士。";
+		mes "最臭名昭著的是，我的哥哥和弟弟真是让我头疼！";
+		next;
+		emotion ET_SMILE;
+		mes "[乔吉·查拉]";
+		mes "丹迪！今天的训练是<把10条蚯蚓放在头上！ >过来！";
+		next;
+		emotion ET_CRY, getnpcid(0, "The skittish fourth#wea");
+		mes "[丹迪·查拉]";
+		mes "～哭了起来～戈马查拉！ ！";
+		close;
+	}
+	emotion ET_SPARK;
+	mes "[乔吉·查拉]";
+	mes "哇，新武器！新力量！";
+	mes "你要给我什么？你有很多武器吗？我可以搜索它们吗？你愿意用它来兑换" + mesitemlink( 25142, false ) + "吗？";
+	next;
+	if (select( "搜索", "取消" ) == 1) {
+		setarray .@item_data[0],
+			1690, 1,	// Marvelous Foxtail Staff [3]
+			1691, 2,	// Wondrous Foxtail Staff [2]
+			1692, 3,	// Magic Foxtail Staff [2]
+			1693, 4,	// Magic Yellow Foxtail Staff [1]
+			1694, 1,	// Foxtail Replica [3]
+			1695, 2,	// Fine Foxtail Replica [2]
+			1696, 3,	// Elaborate Foxtail Replica [2]
+			1697, 4;	// Elaborate Yellow Foxtail Replica [1]
+		.@total_item = getarraysize(.@item_data);
+
+		while(true) {
+			for ( .@i = 0; .@i < .@total_item; .@i += 2 ) {
+				if ((countitem(.@item_data[.@i]) - isequippedcnt(.@item_data[.@i])) > 0)
+					break;
+			}
+			if (.@i == .@total_item) {
+				mes "[乔吉·查拉]";
+				mes "就是这样？";
+				next;
+				if (select( "再次搜索。", "停止。" ) == 2)
+					break;
+			}
+			else {
+				mes "[乔吉·查拉]";
+				mes "哇！这是^3131FF" + getitemname(.@item_data[.@i]) + "^000000！";
+				mes "兑换" + .@item_data[.@i+1] + " " + mesitemlink( 25142, false ) + "！请？请问你会做吗？";
+				next;
+				if (select( "交换", "退出交换" ) == 2) {
+					mes "[乔吉·查拉]";
+					mes "～咯咯～我们应该多见面啊！";
+					close;
+				}
+				mes "[乔吉·查拉]";
+				mes "耶！ ！谢谢一百万！";
+				mes "我可以寻找其他东西吗？";
+				delitem .@item_data[.@i],1;
+				getitem 25142,.@item_data[.@i+1];// Doram token
+				next;
+			}
+		}
+	}
+	mes "[乔吉·查拉]";
+	mes "?嘲笑?好吧，那么。";
+	close;
+}
+
+lasagna,140,250,3	script	The skittish fourth#wea	4_DR_F_01,{
+	if (checkweight(1001,1) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	emotion ET_HUK;
+	mes "[丹迪·查拉]";
+	mes "?尖叫声?嗨...嗨...";
+	mes "你真的吓到我了……我还以为是乔吉呢。";
+	next;
+	if (select( "用代币兑换盔甲。", "关于家族" ) == 2) {
+		mes "[丹迪·查拉]";
+		mes "她很容易生气，但却给我做了新衣服，说我应该穿漂亮的衣服。";
+		mes "我喜欢她...";
+		next;
+		emotion ET_CRY;
+		mes "[丹迪·查拉]";
+		mes "我的兄弟们可能很刻薄。所以我尽力听从 Dandi 的吩咐。";
+		mes "尽管如此，Yota永远不会露出笑容，而Jogi会给我带来像蚯蚓这样可怕的东西，说我应该更坚强。 ～发出呜咽声～";
+		next;
+		emotion ET_CRY;
+		mes "[丹迪·查拉]";
+		mes "更重要的是，乔吉一直在森林附近徘徊，说他要去民兵队。妈妈说这样很危险...";
+		next;
+		emotion ET_CRY;
+		mes "[丹迪·查拉]";
+		mes "如果怪物夺走了我的兄弟怎么办？那个怪物一定受了很重的伤……";
+		next;
+		emotion ET_SURPRISE;
+		mes "[丹迪·查拉]";
+		mes "你有多余的盔甲给我兄弟吗？你愿意给我吗？我会付钱的...";
+		close;
+	}
+	mes "[丹迪·查拉]";
+	mes "您介意我搜查您身上的物品吗？";
+	mes "如果我找到适合Jogi的物品，我会支付" + mesitemlink( 25142, false ) + "......";
+	next;
+	if (select( "搜索", "取消" ) == 1) {
+		setarray .@item_data[0],	// keep the order
+			15156, 4,	// Elegant Doram Suit [1]
+			20790, 4,	// Elegant Doram Manteau [1]
+			22085, 4,	// Elegant Doram Shoes [1]
+			28415, 4,	// Advanced Saurel Charm [1]
+			28418, 4,	// Advanced Leaf Charm [1]
+			28421, 4,	// Advanced Bunny Charm [1]
+			28414, 3,	// Fair Saurel Charm [1]
+			28417, 3,	// Fair Leaf Charm [1]
+			28420, 3,	// Fair Bunny Charm [1]
+			15129, 3,	// Luxurious Doram Suit [1]
+			20789, 3,	// Luxurious Doram Manteau [1]
+			22084, 3,	// Luxurious Doram Shoes [1]
+			15126, 3,	// Doram Suit [1]
+			20788, 3,	// Doram Manteau [1]
+			22083, 3,	// Doram Shoes [1]
+			28380, 2,	// Fresh Grass Necklace [1]
+			28381, 2,	// Cute Grass Necklace [1]
+			28382, 2,	// Charming Grass Necklace [1]
+			28422, 2,	// Shining Branch Charm [1]
+			28423, 2,	// Fresh Tuna Charm [1]
+			28423, 2,	// Plump Earthworm Charm [1]
+			28413, 2,	// Basic Saurel Charm [1]
+			28416, 2,	// Basic Leaf Charm [1]
+			28419, 2;	// Basic Bunny Charm [1]
+		.@total_item = getarraysize(.@item_data);
+
+		while(true) {
+			for ( .@i = 0; .@i < .@total_item; .@i += 2 ) {
+				if ((countitem(.@item_data[.@i]) - isequippedcnt(.@item_data[.@i])) > 0)
+					break;
+			}
+			if (.@i == .@total_item) {
+				mes "[丹迪·查拉]";
+				mes "……我想就是这样。我应该再看一遍，还是就在这里停下来？";
+				next;
+				if (select( "再次搜索。", "停止。" ) == 2)
+					break;
+			}
+			else {
+				mes "[丹迪·查拉]";
+				mes "哇哦，这一定是^3131FF" + getitemname(.@item_data[.@i]) + "^000000！";
+				mes "你不想和" + .@item_data[.@i+1] + " " + mesitemlink( 25142, false ) + "交换吗？";
+				next;
+				if (select( "交换", "退出交换" ) == 2) {
+					mes "[丹迪·查拉]";
+					mes "我知道。我对你的库存搜索太多了。对不起...";
+					close;
+				}
+				mes "[丹迪·查拉]";
+				mes "谢谢。";
+				mes "我可以寻找其他东西吗？";
+				delitem .@item_data[.@i],1;
+				getitem 25142,.@item_data[.@i+1];// Doram token
+				next;
+			}
+		}
+	}
+	mes "[丹迪·查拉]";
+	mes "好吧...谢谢你的...帮助，我想...";
+	close;
+}
+
+lasagna,140,245,3	script	The sensitive-minded ela	4_CAT_SAILOR3,{
+	if (checkweight(1001,1) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	mes "[戈马查拉]";
+	mes "我是戈玛·查拉，查拉家族的长女。这些小鬼加速了我的衰老过程......";
+	mes "如果你有我哥哥Yota制作的护身符，我可以帮你打磨。";
+	next;
+	if (select( "升级护身符", "关于家族" ) == 2) {
+		mes "[戈马查拉]";
+		mes "我的父亲是一名天生的水手，所以很早以前就出海了，说他会捕获世界上最大的金枪鱼。";
+		next;
+		mes "[戈马查拉]";
+		mes "我的母亲是一位收藏家，所以她会深入森林的最深处，寻找奇怪的水果。甚至在我意识到之前，她就会来来去去。";
+		next;
+		mes "[戈马查拉]";
+		mes "所以照顾这些调皮的兄弟就成了我的责任了！我想知道为什么我是老大！我已经快吃完了！";
+		next;
+		emotion ET_FRET;
+		mes "[戈马查拉]";
+		mes "尤塔！制作护身符后收拾好你的地方！在那里捡起竹荚鱼的鳞片。哦，我的日子...";
+		next;
+		emotion ET_FRET;
+		mes "[戈马查拉]";
+		mes "乔吉，丹迪快要哭出来了。请你好好表现一下好吗？";
+		next;
+		emotion ET_ANGER;
+		mes "[戈马查拉]";
+		mes "?深深地签名?我的头在旋转！";
+		mes "抱歉，我们的闲聊到此结束。当你忙着照顾弟弟们的时候，时间过得真快。";
+		close;
+	}
+	mes "[戈马查拉]";
+	mes "Yota经常制作优质的护身符，但他仍然需要更多的打磨。";
+	mes "如果他注重细节，他的护身符就会更大。但他就是不在乎。";
+	next;
+	.@s = select( "抛光竹荚鱼护身符。", "抛光叶子护身符。", "抛光兔子护身符。" ) - 1;
+	setarray .@ids[0], 28413,28416,28419;
+	.@start_ID = .@ids[.@s];
+	if ((countitem(.@start_ID) - isequippedcnt(.@start_ID))  > 0) {	// basic amulet to upgrade
+		.@your_charm_ID = .@start_ID;
+		.@next_charm_ID = .@start_ID + 1;
+		.@needCoin = 30;
+	}
+	else if ((countitem(.@start_ID+1) - isequippedcnt(.@start_ID+1))  > 0) {	// intermediate
+		.@your_charm_ID = .@start_ID + 1;
+		.@next_charm_ID = .@start_ID + 2;
+		.@needCoin = 90;
+	}
+	else if ((countitem(.@start_ID+2) - isequippedcnt(.@start_ID+2))  > 0) {	// player have some "perfect" amulet in inventory
+		mes "[戈马查拉]";
+		mes "这护身符已经很完美了！";
+		close;
+	}
+	if (.@your_charm_ID < 1) {
+		mes "[戈马查拉]";
+		mes "让我看看你的护身符，好吗？我在你的库存中似乎找不到它。";
+		close;
+	}
+	mes "[戈马查拉]";
+	mes "让我。唔..." + getitemname(.@your_charm_ID) + "， 这是。";
+	mes "......我知道这会再次发生。更糟糕的是，这个必须需要更多的时间来打磨！";
+	next;
+	mes "[戈马查拉]";
+	mes "嘿，如果你给我" + .@needCoin + " " + mesitemlink( 25142, false ) + "，我会帮你解决这个问题。";
+	mes "我猜这应该会产生" + mesitemlink( .@next_charm_ID, false ) + "。你喜欢吗？";
+	next;
+	if (select( "升级", "取消" ) == 2) {
+		mes "[戈马查拉]";
+		mes "如你所愿。";
+		close;
+	}
+	if (countitem(25142) < .@needCoin) {
+		mes "[戈马查拉]";
+		mes "材料不足，无法免费修复。";
+		close;
+	}
+	mes "[戈马查拉]";
+	mes "这护身符的内部看起来相当坚硬。";
+	mes "不过我的手艺比较硬。田田！好好利用我哥哥的护身符吧。";
+	delitem 25142, .@needCoin;// Doram token
+	delitem .@your_charm_ID,1;
+	getitem .@next_charm_ID,1;
+	close;
+}
+
+// Daily Quests
+lasa_fild01,353,370,5	script	Shepherd#dorcon	4_DR_KID_01,{
+	if (BaseLevel < 6 || BaseLevel > 9) {
+		if (BaseLevel > 9) {
+			if (checkquest(14592,PLAYTIME) == 2)
+				erasequest 14592;
+			switch( checkquest(14546,HUNTING) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[牧羊人]";
+				mes "当你如此努力地帮助我们时，我很抱歉这么说，但是寻找其他工作怎么样？我认为让你的技能白白浪费是一种耻辱。";
+				next;
+				mes "[牧羊人]";
+				if (BaseLevel < 14)
+					mes "我听说 Honey Collect 需要帮助，所以你应该去看看^4D4DFF[Florin]^000000。谢谢你帮助我们。";
+				else if (BaseLevel < 16)
+					mes "我听说普罗克现在需要一些帮助。你为什么不去看看^4D4DFF[Prok]^000000？谢谢你帮助我们。";
+				else if (BaseLevel < 20)
+					mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+				else if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14546;// Take care of grass thief
+				close;
+			case 2:
+				mes "[牧羊人]";
+				mes "谢谢。现在我们的奶牛可以享受美味的食物了。";
+				next;
+				mes "[牧羊人]";
+				mes "但你看起来太熟练了，不适合做这种工作。还有很多其他需要体力的工作，所以也许你应该去寻找它们。";
+				next;
+				mes "[牧羊人]";
+				mes "不是今天。也许明天？让我看看...谁说需要帮助？";
+				next;
+				mes "[牧羊人]";
+				if (BaseLevel < 14)
+					mes "我听说 Honey Collect 需要帮助，所以你应该去看看^4D4DFF[Florin]^000000。谢谢你帮助我们。";
+				else if (BaseLevel < 16)
+					mes "我听说普罗克现在需要一些帮助。你为什么不去看看^4D4DFF[Prok]^000000？谢谢你帮助我们。";
+				else if (BaseLevel < 20)
+					mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+				else if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14546;// Take care of grass thief
+				if (isbegin_quest(14592) == 0 && BaseLevel < 21)
+					setquest 14592;// Resting Time
+				getexp 150,250;
+				close;
+			}
+		}
+		mes "[牧羊人]";
+		mes "嘿牛们-多吃多放松-我给你唱首歌-";
+		close;
+	}
+	switch( checkquest(14592,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(14546,HUNTING) ) {
+		case -1:
+			mes "[牧羊人]";
+			mes "您好，您是来帮助我们的人吗？那么你现在就可以开始了。";
+			next;
+			if (select( "发生了什么事？", "我没有工作。" ) == 2) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "工作？这是出乎意料的。不，我不会这么做！";
+				close;
+			}
+			mes "[" + strcharinfo(0) + "]";
+			mes "如果您需要帮助，那么您至少应该告诉我应该做什么。";
+			next;
+			mes "[牧羊人]";
+			mes "哦，厨师没有告诉你吗？抱歉，大多数人都是听他详细介绍才来这里的。";
+			next;
+			mes "[牧羊人]";
+			mes "那些草法布尔和叶疯子正在吞噬整片草。但他们不应该这样做，因为他们把我可爱的奶牛留在这里，没有食物。";
+			next;
+			mes "[牧羊人]";
+			mes "那时我们的牛没有东西吃。";
+			next;
+			mes "[牧羊人]";
+			mes "如果我们的奶牛不能吃草，那么我们就不能给它们挤奶。如果我们没有新鲜牛奶，那么我们就无法制作卡卢纳牛奶。";
+			next;
+			mes "[牧羊人]";
+			mes "而且……哦，我什至不想想象之后的事情。";
+			next;
+			mes "[牧羊人]";
+			mes "所以我需要你去抓住草法布尔和叶疯子。每人五个。好，那就开始吧！";
+			setquest 14546;// Take care of grass thief
+			close;
+		case 0:
+		case 1:
+			mes "[牧羊人]";
+			mes "你还没有完成。请抓住五只草法布尔和五只叶疯子。";
+			close;
+		case 2:
+			mes "[牧羊人]";
+			mes "嗯……很好。该地区现已定居。你真的很擅长这个。";
+			next;
+			mes "[牧羊人]";
+			mes "太感谢了。希望您下次能再次帮助我们。那你说什么？请考虑一下。";
+			erasequest 14546;// Take care of grass thief
+			setquest 14592;// Resting Time
+			getexp 120,200;
+			close;
+		}
+	case 0:
+	case 1:
+		mes "[牧羊人]";
+		mes "现在这里没有任何威胁。我们的奶牛也对食物感到满意。";
+		next;
+		mes "[牧羊人]";
+		mes "好好休息一下，明天再来。";
+		close;
+	case 2:
+		mes "[牧羊人]";
+		mes "冒险家，请帮忙！成群的草法布尔和叶疯子正朝这边过来！";
+		next;
+		mes "[牧羊人]";
+		mes "请从每包中抓五个！剩下的我会尽力而为！";
+		erasequest 14592;// Resting Time
+		setquest 14546;// Take care of grass thief
+		close;
+	}
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14546) && !isbegin_quest(14592) && BaseLevel >= 6 && BaseLevel <= 9" );
+	end;
+}
+
+lasa_fild02,102,372,5	script	Florin#dorcon	4_DR_F_01,{
+	if (BaseLevel < 10 || BaseLevel > 13) {
+		if (BaseLevel > 13) {
+			if (checkquest(14592,PLAYTIME) == 2)
+				erasequest 14592;
+			switch( checkquest(14588,HUNTING) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[弗罗林]";
+				mes "冒险家，我知道你现在正在帮助我们，但我认为你最好不要在这个领域工作，而是在不同的领域工作。";
+				next;
+				mes "[弗罗林]";
+				if (BaseLevel < 16)
+					mes "我听说普罗克现在需要一些帮助。你为什么不去看看^4D4DFF[Prok]^000000？谢谢你帮助我们。";
+				else if (BaseLevel < 20)
+					mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+				else if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14588;// The Competition
+				close;
+			case 2:
+				mes "[弗罗林]";
+				mes "多亏了你，我们才能够采集到这么多蜂蜜。谢谢你！";
+				next;
+				mes "[弗罗林]";
+				mes "但我认为你最好不要在这个领域工作，而在不同的领域工作。";
+				next;
+				mes "[弗罗林]";
+				mes "如果你没问题的话，我可以给你找工作吗？今天做了很多事，请好好休息，明天见。";
+				next;
+				mes "[弗罗林]";
+				if (BaseLevel < 16)
+					mes "我听说普罗克现在需要一些帮助。你为什么不去看看^4D4DFF[Prok]^000000？谢谢你帮助我们。";
+				else if (BaseLevel < 20)
+					mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+				else if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14588;// The Competition
+				if (isbegin_quest(14592) == 0 && BaseLevel < 21)
+					setquest 14592;// Resting Time
+				getexp 200,300;
+				close;
+			}
+		}
+		mes "[弗罗林]";
+		mes "我真的很喜欢这份工作！我可以闻到甜甜的花香，还可以得到一些蜂蜜！";
+		close;
+	}
+	switch( checkquest(14592,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(14588,HUNTING) ) {
+		case -1:
+			mes "[弗罗林]";
+			mes "你不许夺走我的亲爱的！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "哎哟!你为什么突然打我？";
+			next;
+			mes "[弗罗林]";
+			mes "哦！对不起。我以为又是黄蜂。";
+			next;
+			if (select( "你看起来需要帮助。", "下次小心点。" ) == 2) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "我差点受伤了。请下次小心。";
+				close;
+			}
+			mes "[" + strcharinfo(0) + "]";
+			mes "你看起来需要帮助。要我帮忙吗？";
+			next;
+			mes "[弗罗林]";
+			mes "真的……你会帮我吗？甚至在我打了你之后？好吧，如果你可以的话，我非常感激，因为我现在需要一些帮助。";
+			next;
+			mes "[弗罗林]";
+			mes "我正在从这里盛开的花朵中采集发酵卡卢纳所需的蜂蜜，但我们最大的竞争对手黄蜂在我们有机会之前就抢走了一切。";
+			next;
+			mes "[弗罗林]";
+			mes "按照这个速度，我将没有足够的蜂蜜，也无法制作卡卢纳牛奶。如果人们不能喝卡卢纳牛奶，就会发生骚乱......";
+			next;
+			mes "[弗罗林]";
+			mes "冒险家，求求你了。我们必须阻止烤宽面条回到黑暗时代。一切都在你的手中！";
+			next;
+			mes "[弗罗林]";
+			mes "请打败我们的对手，野黄蜂。十个左右就可以了。";
+			next;
+			mes "[弗罗林]";
+			mes "如果你能打败他们，那么剩下的我会尽我所能。谢谢。";
+			setquest 14588;// The Competition
+			close;
+		case 0:
+		case 1:
+			mes "[弗罗林]";
+			mes "哦，你还没有完成。你是否忘记了你应该抓住什么？";
+			next;
+			mes "[弗罗林]";
+			mes "你需要捕捉十只野生黄蜂。祝你好运！";
+			close;
+		case 2:
+			mes "[弗罗林]";
+			mes "多亏了你，我们才能够采集到这么多蜂蜜。谢谢你！";
+			next;
+			mes "[弗罗林]";
+			mes "但我认为你最好不要在这个领域工作，而在不同的领域工作。";
+			next;
+			mes "[弗罗林]";
+			mes "如果你没问题的话，我可以给你找工作吗？今天做了很多事，请好好休息，明天见。";
+			next;
+			mes "[弗罗林]";
+			mes "我听说普罗克现在需要一些帮助。你为什么不去看看^4D4DFF[Prok]^000000？谢谢你帮助我们。";
+			navigateto "lasa_fild01",177,241;
+			erasequest 14588;// The Competition
+			setquest 14592;// Resting Time
+			getexp 200,300;
+			close;
+		}
+	case 0:
+	case 1:
+		mes "[弗罗林]";
+		mes "野生黄蜂现在很安静。有了这个数字，我自己就可以照顾他们了。";
+		next;
+		mes "[弗罗林]";
+		mes "一旦太阳升起，他们就会再次回来。那你能回来帮我吗？";
+		close;
+	case 2:
+		mes "[内德索利]";
+		mes "你今天看起来也仍然需要帮助。要我帮忙吗？";
+		next;
+		mes "[弗罗林]";
+		mes "啊，冒险家，你能来真是太高兴了！";
+		next;
+		mes "[弗罗林]";
+		mes "今天我也需要你打败我们的竞争对手野黄蜂。大约十只黄蜂。谢谢你！";
+		erasequest 14592;// Resting Time
+		setquest 14588;// The Competition
+		close;
+	}
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14588) && !isbegin_quest(14592) && BaseLevel >= 10 && BaseLevel <= 13" );
+	end;
+}
+
+lasa_fild02,177,241,5	script	Prok#dorcon	4_DR_M_02,{
+	if (BaseLevel < 14 || BaseLevel > 15) {
+		if (BaseLevel > 15) {
+			if (checkquest(14592,PLAYTIME) == 2)
+				erasequest 14592;
+			switch( checkquest(14589,HUNTING)) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[普罗克]";
+				mes "在观察了你之后，我有一种感觉，你最好不要在这个领域工作，而在不同的领域工作。";
+				next;
+				mes "[普罗克]";
+				if (BaseLevel < 20)
+					mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+				else if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14589;// Sticky ingredient
+				close;
+			case 2:
+				if (countitem(918) < 5) {
+					mes "[普罗克]";
+					mes "在观察了你之后，我有一种感觉，你最好不要在这个领域工作，而在不同的领域工作。";
+					next;
+					mes "[普罗克]";
+					if (BaseLevel < 20)
+						mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+					else if (BaseLevel < 21)
+						mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+					else
+						mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+					erasequest 14589;// Sticky ingredient
+					close;
+				}
+				mes "[普罗克]";
+				mes "哇，谢谢你！那很快。";
+				next;
+				mes "[普罗克]";
+				mes "但我认为你不应该在这方面工作，而应该寻求冒险。";
+				next;
+				mes "[普罗克]";
+				mes "如果你愿意的话，我可以给你找点东西。但今天不行。也许明天。今天你应该休息一下。";
+				next;
+				mes "[普罗克]";
+				if (BaseLevel < 20)
+					mes "说到这里，^4D4DFF[Fisher]^000000说他需要一些帮助。您想尝试一下吗？谢谢你帮助我们。";
+				else if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14589;// Sticky ingredient
+				if (isbegin_quest(14592) == 0 && BaseLevel < 21)
+					setquest 14592;// Resting Time
+				delitem 918,5;// Sticky Webfoot
+				getexp 300,500;
+				close;
+			}
+		}
+		mes "[普罗克]";
+		mes "滑溜溜的——粘粘的——这种生物的存在真是太神奇了。";
+		close;
+	}
+	switch( checkquest(14592,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(14589,HUNTING) ) {
+		case -1:
+			mes "[普罗克]";
+			mes "你能帮我一下吗？如果你有时间的话，那就是。";
+			next;
+			if (select( "我会帮你的。", "我现在很忙。" ) == 2) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "我现在很忙。下次我会帮助你的。对不起！";
+				close;
+			}
+			mes "[普罗克]";
+			mes "哇！谢谢你！我需要采取粘性蹼脚，但这有点难以单独完成。";
+			next;
+			mes "[普罗克]";
+			mes "这种粘性的蹼脚是布丁的主要成分，但一天后很快就会变质。而且味道也很难闻。";
+			next;
+			mes "[普罗克]";
+			mes "所以每天我只能收集当天需要的数量。但我今天还没有收集到足够的东西。";
+			next;
+			mes "[普罗克]";
+			mes "厨师一定在等……你帮我真是让我松了口气。";
+			next;
+			mes "[普罗克]";
+			mes "你能抓住甜罗达青蛙并给我带来粘性蹼足吗？大约有五个人。谢谢你！";
+			setquest 14589;// Sticky ingredient
+			close;
+		case 0:
+		case 1:
+			mes "[普罗克]";
+			mes "嗯，你真的抓住了 Sweet Roda Frog 吗？";
+			next;
+			mes "[普罗克]";
+			mes "你需要抓住十个……我还需要五个粘性蹼脚。";
+			close;
+		case 2:
+			if (countitem(918) < 5) {
+				mes "[普罗克]";
+				mes "我要了五个粘性蹼脚，但我还需要更多。我没有足够的时间单独收集它们。";
+				close;
+			}
+			mes "[普罗克]";
+			mes "哇，谢谢你！那很快。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "下次可以再请我帮忙吗？我需要每天吃新鲜的。";
+			erasequest 14589;// Sticky ingredient
+			setquest 14592;// Resting Time
+			delitem 918,5;// Sticky Webfoot
+			getexp 300,500;
+			close;
+		}
+	case 0:
+	case 1:
+		mes "[普罗克]";
+		mes "你又来了。但我还不需要粘性蹼脚。你昨天发的就够了。";
+		next;
+		mes "[普罗克]";
+		mes "但你永远不知道，所以你明天能回来吗？";
+		close;
+	case 2:
+		mes "[普罗克]";
+		mes "你在这里。今天你也能帮我吗？";
+		next;
+		mes "[普罗克]";
+		mes "你能抓十只甜罗达青蛙并给我带来粘性蹼脚吗？大约有五个人。谢谢你！";
+		erasequest 14592;// Resting Time
+		setquest 14589;// Sticky ingredient
+		close;
+	}
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14589) && !isbegin_quest(14592) && (BaseLevel == 14 || BaseLevel == 15)" );
+	end;
+}
+
+lasa_fild02,326,170,5	script	Fisher#dorcon	4_CAT_ADV2,{
+	if (BaseLevel < 16 || BaseLevel > 19) {
+		if (BaseLevel > 19) {
+			if (checkquest(14592,PLAYTIME) == 2)
+				erasequest 14592;
+			switch( checkquest(14590,HUNTING) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[费舍尔]";
+				mes "冒险家，暂时停下你手上的事情吧。我想我一个人可以处理这里的事情。你知道，你看起来太坚强了，不适合这种类型的工作。";
+				next;
+				mes "[费舍尔]";
+				if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14590;// Hunter's destination
+				close;
+			case 2:
+				mes "[费舍尔]";
+				mes "太感谢了。我敢打赌他们会害怕出现一段时间。";
+				next;
+				mes "[费舍尔]";
+				mes "但我认为你应该寻求更大的冒险。不要让你的技能浪费在这个偏僻的地方，去更大的地方。";
+				next;
+				mes "[费舍尔]";
+				mes "正确的。有人需要帮助。今天你度过了漫长的一天，所以也许你明天应该去见他。";
+				next;
+				mes "[费舍尔]";
+				if (BaseLevel < 21)
+					mes "^4D4DFF[瞌睡喵]^000000，住在蛇怪居住的洞口，正在拼命寻找强大的个体。也许你应该尝试一下以获得体验。谢谢你帮助我们。";
+				else
+					mes "从^4D4DFF[码头]^000000乘坐一艘船去寻找更大的冒险也是一个好主意。谢谢你帮助我们。";
+				erasequest 14590;// Hunter's destination
+				if (isbegin_quest(14592) == 0 && BaseLevel < 21)
+					setquest 14592;// Resting Time
+				getexp 400,800;
+				close;
+			}
+		}
+		mes "[费舍尔]";
+		mes "今天的风真好！鱼会很好地干燥。";
+		close;
+	}
+	switch( checkquest(14592,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(14590,HUNTING) ) {
+		case -1:
+			mes "[费舍尔]";
+			mes "哦，我该怎么办呢。嘿，你，冒险家！等一下！";
+			next;
+			if (select( "怎么了？", "我现在很忙。" ) == 2) {
+				mes "[费舍尔]";
+				mes "是的？那我想我也无能为力了。";
+				close;
+			}
+			mes "[费舍尔]";
+			mes "看看那些沙漠之狼。你怎么认为？";
+			next;
+			mes "[费舍尔]";
+			mes "那些怪物把我现在晒的鱼全都偷走了！";
+			next;
+			mes "[费舍尔]";
+			mes "世界上什么猎人沙漠狼吃鱼？还有干的！";
+			next;
+			mes "[费舍尔]";
+			mes "话又说回来……这种鱼一旦尝过就很难忘记，因为味道很浓缩。";
+			next;
+			mes "[费舍尔]";
+			mes "但这是厨师最喜欢的小吃。这是挑食者唯一喜欢的零食。";
+			next;
+			mes "[费舍尔]";
+			mes "没有它，我们就必须经历一段非常困难的时期。";
+			next;
+			mes "[费舍尔]";
+			mes "哦，他们又来了！冒险者，请阻止他们来这里。抓住十个。";
+			setquest 14590;// Hunter's destination
+			close;
+		case 0:
+		case 1:
+			mes "[费舍尔]";
+			mes "那些猎人沙漠狼还在肆虐。";
+			next;
+			mes "[费舍尔]";
+			mes "至少应该抓到十个人。";
+			close;
+		case 2:
+			mes "[费舍尔]";
+			mes "冒险家，我当时真是绝望了，路过的人就抓起来，不过我想我中奖了！";
+			next;
+			mes "[费舍尔]";
+			mes "哦，别误解了。不管表面上如何，我内心深处真的很感激。谢谢你！";
+			next;
+			mes "[费舍尔]";
+			mes "我希望你明天也能帮助我！";
+			erasequest 14590;// Hunter's destination
+			setquest 14592;// Resting Time
+			getexp 400,800;
+			close;
+		}
+	case 0:
+	case 1:
+		mes "[费舍尔]";
+		mes "沙漠猎狼队现在很安静。他们看到你的行动一定很震惊。";
+		next;
+		mes "[费舍尔]";
+		mes "所以我希望你明天能回来！";
+		close;
+	case 2:
+		mes "[费舍尔]";
+		mes "冒险家，很高兴见到你！他们正凶猛地向我们袭来。我猜他们因为昨天没有吃到鱼而非常生气。";
+		next;
+		mes "[费舍尔]";
+		mes "哇！他们又来了！冒险，请让那些猎人沙漠狼远离这里。抓住十个。";
+		erasequest 14592;// Resting Time
+		setquest 14590;// Hunter's destination
+		close;
+	}
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14590) && !isbegin_quest(14592) && BaseLevel >= 16 && BaseLevel <= 19" );
+	end;
+}
+
+lasa_fild02,331,251,5	script	Sleepy meow#dorcon	4_CAT_REST,{
+	if (BaseLevel != 20) {
+		if (checkquest(14592,PLAYTIME) == 2)
+			erasequest 14592;
+		switch( checkquest(14591,HUNTING)) {
+		case -1:
+			mes "[瞌睡喵]";
+			mes "别挡住阳光喵...";
+			close;
+		case 0:
+		case 1:
+			mes "[瞌睡喵]";
+			mes "冒险家。我有一个梦想。你正要去新世界喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "我的梦几乎是预言性的。所以停止你正在做的事情，前往^4D4DFF[码头]^000000登上一艘前往新世界的船。更大的冒险将在那里等着你喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "无论你去哪里，我都祝你一切顺利。谢谢喵。";
+			erasequest 14591;// Secret Ingredient
+			close;
+		case 2:
+			if (countitem(921) < 5) {
+				mes "[瞌睡喵]";
+				mes "冒险家。我有一个梦想。你正要去新世界喵。";
+				next;
+				mes "[瞌睡喵]";
+				mes "我的梦几乎是预言性的。所以停止你正在做的事情，前往^4D4DFF[码头]^000000登上一艘前往新世界的船。更大的冒险将在那里等着你喵。";
+				next;
+				mes "[瞌睡喵]";
+				mes "无论你去哪里，我都祝你一切顺利。谢谢喵。";
+				erasequest 14591;// Secret Ingredient
+				close;
+			}
+			mes "[瞌睡喵]";
+			mes "冒险家。你很善良...你救了我的命。";
+			next;
+			mes "[瞌睡喵]";
+			mes "但你在这么乡村的地方做什么呢？去寻找更大的世界不是更好吗？例如，就像新世界一样。";
+			next;
+			mes "[瞌睡喵]";
+			mes "如果我是你，我早就离开了。你不在这里是因为你不知道如何到达那里，对吗？如果是这样的话，那我就告诉你。我能为我的救命恩人做这么多。";
+			next;
+			mes "[瞌睡喵]";
+			mes "如果你去烤宽面条，那里有一个^4D4DFF[码头]^000000。从那里乘坐一艘前往新世界的船。无论你去哪里，我都祝你一切顺利。谢谢你的一切喵。";
+			erasequest 14591;// Secret Ingredient
+			delitem 921,5;// Mushroom Spore
+			getexp 500,1000;
+			navigateto "lasagna",205,325;
+			close;
+		}
+	}
+	switch( checkquest(14592,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(14591,HUNTING) ) {
+		case -1:
+			mes "[瞌睡喵]";
+			mes "冒险家……请救救我……";
+			next;
+			if (select( "为什么？怎么了？", "什么意思，救救你？" ) == 2) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "我认为有更多经验的人应该处理这个问题。我还是个菜鸟。";
+				next;
+				mes "[瞌睡喵]";
+				mes "如此冷酷无情...";
+				close;
+			}
+			mes "[瞌睡喵]";
+			mes "我觉得再这样下去我会死掉的……";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "那么到底是怎么回事呢？";
+			next;
+			mes "[瞌睡喵]";
+			mes "我的爸爸，我的意思是，厨师，告诉我去买蘑菇孢子之类的东西......";
+			next;
+			mes "[瞌睡喵]";
+			mes "但你看。阳光。";
+			next;
+			mes "[瞌睡喵]";
+			mes "在这样的日子里，我必须沐浴阳光，睡觉……";
+			next;
+			mes "[瞌睡喵]";
+			mes "这阳光让我睡着了喵……";
+			next;
+			mes "[瞌睡喵]";
+			mes "我在这里，拼命对抗着阳光，等待着有人经过喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "我想我快要死了，努力对抗睡意喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "所以请帮我拿那些蘑菇孢子，因为我快死了喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "当你这样做的时候，也要打败那些跨孢子。我讨厌他们喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "我的意思是，我的爸爸，大厨，给了我进入洞穴的训练，这样他就可以用我来完成这样的任务喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "所以一想到他们我就愤怒喵。";
+			next;
+			mes "[瞌睡喵]";
+			mes "你的眼神是什么？你觉得我很可怜喵吗？";
+			next;
+			mes "[瞌睡喵]";
+			mes "这很粗鲁，但没关系。你不是唯一一个喵的人。";
+			next;
+			mes "[瞌睡喵]";
+			mes "如果你决定不帮助喵也没关系。";
+			next;
+			mes "[瞌睡喵]";
+			mes "即使我没有在与睡眠的斗争中死去，我的父亲，我的意思是，大厨，也会杀了我。仅仅在蘑菇孢子上喵喵叫。";
+			next;
+			mes "[瞌睡喵]";
+			mes "那也没关系。我已经复活很多次了。我只需要长时间的深度睡眠就可以恢复喵的活力。";
+			next;
+			mes "[瞌睡喵]";
+			mes "所以，请把它想象成...拯救某人的生命...并帮助我...";
+			setquest 14591;// Secret Ingredient
+			close;
+		case 0:
+		case 1:
+			break;
+		case 2:
+			if (countitem(921) < 5)
+				break;
+			mes "[瞌睡喵]";
+			mes "冒险家...？你已经完成任务了，所以要叫醒我吗？让我看看...";
+			next;
+			mes "[瞌睡喵]";
+			mes "哇，你真的完成了！你动作太快了，我完全清醒了。你真是一个奇迹！";
+			next;
+			mes "[瞌睡喵]";
+			mes "你为什么不代替我去 Pub-Oven 工作呢？话又说回来，我相信你也会讨厌这样的。";
+			next;
+			mes "[瞌睡喵]";
+			mes "明天我可能还需要一些蘑菇孢子之类的东西，所以再过来吧。我会很快把这些带来并放松。谢谢！我欠你。";
+			erasequest 14591;// Secret Ingredient
+			delitem 921,5;// Mushroom Spore
+			setquest 14592;// Resting Time
+			getexp 500,1000;
+			close;
+		}
+		mes "[瞌睡喵]";
+		mes "你已经完成了吗喵？";
+		next;
+		mes "[瞌睡喵]";
+		mes "当然不是。不是这样的。你是不是已经忘记了喵？";
+		next;
+		mes "[瞌睡喵]";
+		mes "捕获十个反式孢子并带来五个蘑菇孢子喵。";
+		next;
+		mes "[瞌睡喵]";
+		mes "完成后给我打电话。别无缘无故叫醒我喵。";
+		close;
+	case 0:
+	case 1:
+		mes "[瞌睡喵]";
+		mes "今天没有更多内容了，可以走了……";
+		next;
+		mes "[瞌睡喵]";
+		mes "别打扰我……睡觉……";
+		close;
+	case 2:
+		mes "[瞌睡喵]";
+		mes "一个冒险家。昨天的冒险者。太好了，今天也请救救我吧喵。";
+		next;
+		mes "[瞌睡喵]";
+		mes "好像又有一份麻烦的鱼饼订单进来了，所以请帮我拿一下材料。我今天也很忙，拼命跟阳光喵做斗争。";
+		next;
+		mes "[瞌睡喵]";
+		mes "捕获十个反式孢子并给他们带来五个蘑菇孢子喵。";
+		next;
+		mes "[瞌睡喵]";
+		mes "请帮我...";
+		erasequest 14592;// Resting Time
+		setquest 14591;// Secret Ingredient
+		close;
+	}
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14591) && !isbegin_quest(14592) && BaseLevel == 20" );
+	end;
+}
+
+lasagna,222,187,3	script	Chef#dorcon	4_CAT_CHEF,{
+	if (BaseLevel < 6 || BaseLevel > 20) {
+		if (checkquest(14592,PLAYTIME) == 2)
+			erasequest 14592;
+
+		setarray .@quest_id[0],
+			14591,	// Secret Ingredient
+			14590,	// Hunter's destination
+			14589,	// Sticky ingredient
+			14588,	// The Competition
+			14546;	// Take care of grass thief
+
+		if (BaseLevel > 20) {	// check / remove quests
+			for ( .@i = 0; .@i < 5; .@i++ ) {
+				switch( checkquest(.@quest_id[.@i],HUNTING) ) {
+				case -1:
+					break;
+				case 0:
+				case 1:
+					.@quest_left[.@j] = .@quest_id[.@i];
+					.@j++;
+					break;
+				case 2:
+					mes "[厨师]";
+					mes "你安然无恙地完成了工作。谢谢。";
+					next;
+					mes "[厨师]";
+					mes "但你还是很擅长被困在这里工作。你找点别的东西怎么样？";
+					next;
+					mes "[厨师]";
+					mes "去新世界冒险也不错。如果不是因为工作，我早就离开了。";
+					next;
+					mes "[厨师]";
+					mes "不管怎样，谢谢你的帮助。这很有帮助。";
+					erasequest .@quest_id[.@i];
+					switch(.@quest_id) {
+					case 14546:
+						getexp 120,200;
+						break;
+					case 14588:
+						getexp 200,300;
+						break;
+					case 14589:
+						getexp 300,500;
+						break;
+					case 14590:
+						getexp 400,800;
+						break;
+					case 14591:
+						getexp 500,1000;
+						break;
+					}
+					close;
+				}
+			}
+			if (.@j > 0) {
+				mes "[厨师]";
+				mes "我看到你正在照顾我所请求的帮助。";
+				next;
+				mes "[厨师]";
+				mes "但你还是很擅长被困在这里工作。你找点别的东西怎么样？";
+				next;
+				mes "[厨师]";
+				mes "我还没有厚颜无耻的去束缚一个有这样潜力的年轻人。";
+				next;
+				mes "[厨师]";
+				mes "去新世界冒险也不错。如果不是因为工作，我早就离开了。";
+				next;
+				mes "[厨师]";
+				mes "不管怎样，谢谢你的帮助。这很有帮助。";
+				if (isbegin_quest(14592) > 0)
+					erasequest 14592;
+				for ( .@i = 0; .@i < .@j; .@i++ )
+					erasequest .@quest_left[.@i];
+				close;
+			}
+		}
+		mes "[厨师]";
+		mes "我很忙！太忙了！";
+		close;
+	}
+
+	setarray .@datas[0],
+		10, 14546,	// Take care of grass thief
+		14, 14588,	// The Competition
+		16, 14589,	// Sticky ingredient
+		20, 14590,	// Hunter's destination
+		21, 14591;	// Secret Ingredient
+
+	for ( .@i = 0; .@i < 10; .@i += 2 ) {
+		if (isbegin_quest(.@datas[.@i+1]) > 0) {	// can't start another quest here
+			.@quest_id = .@datas[.@i+1];
+			break;
+		}
+		if (BaseLevel < .@datas[.@i]) {
+			.@quest_id = .@datas[.@i+1];
+			break;
+		}
+	}
+
+	switch( checkquest(14592,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(.@quest_id,HUNTING) ) {
+		case -1:
+			mes "[厨师]";
+			mes "冒险家，你能帮我一个小忙吗？我现在必须做一些事情，但正如你所看到的，我人手不足。你说什么？";
+			next;
+			mes "[厨师]";
+			mes "将其视为您培训的延续，请帮助我。我会给你丰厚的工资，你说呢？";
+			next;
+			if (select( "我会尝试一下。", "我很忙。" ) == 2) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "我现在很忙。我稍后再做。";
+				close;
+			}
+			mes "[厨师]";
+			mes "噢，非常感谢。真是一种解脱，真的！";
+			next;
+			mes "[厨师]";
+			mes "那么让我们切入主题吧。";
+			next;
+			mes "[厨师]";
+			switch(.@quest_id) {
+			case 14546:
+				mes "所有烤宽面条的人都喜欢卡卢纳牛奶，但你知道它是由什么制成的吗？ Kaluna 由发酵良好的 kalunyak 和新鲜牛奶制成。";
+				next;
+				mes "[厨师]";
+				mes "由于食谱很简单，所以需要好的原料才能做出最好的味道。所以我们从我们自己饲养的奶牛那里获取牛奶。";
+				next;
+				mes "[厨师]";
+				mes "我确信你去过拉维奥尔平原。你一定是从那里来的。";
+				next;
+				mes "[厨师]";
+				mes "你必须去的地方不是哨所。如果你一直往南走，你就会看到十字路口。然后直接往下面走。";
+				next;
+				mes "[厨师]";
+				mes "那是我们的奶牛吃草的地方。那里的草又新鲜又干净，所以牛奶的味道非常好。";
+				next;
+				mes "[厨师]";
+				mes "但草法布尔和叶疯子正在吞噬草。";
+				next;
+				mes "[厨师]";
+				mes "所以请去摆脱他们。每组五个应该就足够了。";
+				next;
+				mes "[厨师]";
+				mes "你可以在抓住所有它们后来找我，或者你可以与那里的^4D4DFF[牧羊人]^000000交谈。";
+				navigateto "lasa_fild01",353,370;
+				next;
+				mes "[厨师]";
+				mes "工资在哪里都是一样的。你准备好了吗？";
+				setquest 14546;// Take care of grass thief
+				close;
+			case 14588:
+				mes "你知道制作卡卢纳牛奶时最重要的事情是什么吗？它们是发酵良好的卡卢纳和新鲜牛奶。";
+				next;
+				mes "[厨师]";
+				mes "Kaluna是由南桥附近的kaluna大师制作的。我不能告诉你里面到底装了什么，因为这是商业秘密，但我可以告诉你一件事。";
+				next;
+				mes "[厨师]";
+				mes "这是蜂蜜。烤宽面条田里长满了甜甜的花朵，所以我们可以采集到很多优质的蜂蜜。";
+				next;
+				mes "[厨师]";
+				mes "但你知道采集蜂蜜时最大的敌人是什么吗？这是野生大黄蜂。";
+				next;
+				mes "[厨师]";
+				mes "它们是对蜂蜜疯狂的生物，是采集蜂蜜的高手……我们无法完全摆脱它们，因为花朵需要授粉，但需要控制它们的数量。";
+				next;
+				mes "[厨师]";
+				mes "所以到时候，我们就会雇佣冒险家去猎杀野生黄蜂。";
+				next;
+				mes "[厨师]";
+				mes "你应该尝试一下。十只黄蜂并不算太大的负担。";
+				next;
+				mes "[厨师]";
+				mes "完成后你可以来找我，或者你可以向在那里采集蜂蜜的^4D4DFF[Florin]^000000汇报。";
+				setquest 14588;// The Competition
+				close;
+			case 14589:
+				mes "我求求你。请抓住罗达青蛙并给我带来五只粘性蹼足！没有他们，我就做不出布丁！";
+				next;
+				mes "[厨师]";
+				mes "我求求你了，拜托了。";
+				next;
+				mes "[厨师]";
+				mes "请抓十只罗达青蛙。我一直讨厌他们光滑的皮肤。";
+				next;
+				mes "[厨师]";
+				mes "如果你拿到了粘性网脚，可以把它们带给我，或者你可以把它们带到^4D4DFF[Prok]^000000。无论如何，他同意带他们来这里。";
+				setquest 14589;// Sticky ingredient
+				close;
+			case 14590:
+				mes "我的琴弦还不在这里。一定又是那些沙漠之狼。";
+				next;
+				mes "[厨师]";
+				mes "嘿，冒险家，你说什么？你不照顾一下那些狼，救救我们的琴弦吗？";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "弦是什么？";
+				next;
+				mes "[厨师]";
+				mes "鱼干。它们被一根一根地绑在一根绳子上，所以我们简称它们为绳子。但那些沙漠之狼却让人头疼，因为他们不断地干掉他们。";
+				next;
+				mes "[厨师]";
+				mes "请照顾那些沙漠之狼并拯救我们的琴弦。它们是我最喜欢的零食。抓住十只狼，它们就不会再靠近了。";
+				next;
+				mes "[厨师]";
+				mes "完成后你可以来找我，或者你可以向正在晒鱼的^4D4DFF[渔夫]^000000汇报。";
+				setquest 14590;// Hunter's destination
+				close;
+			case 14591:
+				mes "你知道Pub-Oven的招牌菜单是什么吗？";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "你是？";
+				next;
+				mes "[厨师]";
+				mes "不，不。这是最受欢迎的菜单。我的意思是……对！厨师的特色菜单就是我的意思。";
+				next;
+				mes "[厨师]";
+				mes "就是鱼饼，点的人不多。所以我们甚至没有储备原料。";
+				next;
+				mes "[厨师]";
+				mes "因此，当有订单时，我们会立即获取原料。";
+				next;
+				mes "[厨师]";
+				mes "Pub-Oven 拥有自己的特殊网络，可在十分钟内收到食材。所以顾客不需要无限期地等待。";
+				next;
+				mes "[厨师]";
+				mes "但如你所知，不存在“永远不会”这样的事情。在生活中。然而，我们总是努力去实现“永远”。";
+				next;
+				mes "[厨师]";
+				mes "而现在，这种努力正受到挑战。";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "到底是怎么回事？";
+				next;
+				mes "[厨师]";
+				mes "你一定听说过拉维奥尔森林里的洞穴。有无法形容的事物，也有美味食材的生物。";
+				next;
+				mes "[厨师]";
+				mes "你知道跨孢子吗？他们的？ ？ ？蘑菇孢子？ ？ ？是我们鱼糕的重要成分。";
+				next;
+				mes "[厨师]";
+				mes "但由于某种原因，他们与蛇怪生活在一起，但这对我们来说是一个严重的问题。";
+				next;
+				mes "[厨师]";
+				mes "我们赶紧派人去寻找一些蘑菇孢子，但一无所获。完全没有消息。";
+				next;
+				mes "[厨师]";
+				mes "距离我们发送消息已经过去了 15 分钟，但仍然没有消息。这肯定意味着他可能又睡在附近了。";
+				next;
+				mes "[厨师]";
+				mes "我不想向那个瞌睡虫寻求帮助，但他是唯一可以帮忙的人。";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "所以你想让我拿一些蘑菇孢子，对吗？";
+				next;
+				mes "[厨师]";
+				mes "我的朋友，你反应敏捷，而且很明智。是的，请拿一些蘑菇孢子。";
+				next;
+				mes "[厨师]";
+				mes "在路上，也许你可以击败跨孢子以进行训练。还捕获大约十个反式孢子。";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "这是为什么呢？";
+				next;
+				mes "[厨师]";
+				mes "你必须适应这份工作，这样我才能让你重新工作！";
+				next;
+				mes "[厨师]";
+				mes "你怎么可以强迫我说出这样的话？ ！你好浓啊！走吧，走吧！";
+				next;
+				mes "[厨师]";
+				mes "完成后你可以把它们带给我，也可以把它们交给^4D4DFF[瞌睡喵]^000000。另外，别忘了踢他的屁股！";
+				setquest 14591;// Secret Ingredient
+				close;
+			}
+		case 0:
+		case 1:
+			switch(.@quest_id) {
+			case 14546:
+				mes "[厨师]";
+				mes "我们的牛……应该吃很多好吃的东西……请照顾五个叶疯子和五个草法布尔。";
+				close;
+			case 14588:
+				mes "[厨师]";
+				mes "你必须快点。我们的蜂蜜快吃完了。十只野生黄蜂！";
+				close;
+			case 14589:
+				mes "[厨师]";
+				mes "今天请帮我做一些布丁。抓住十只甜罗达青蛙，给我带来五只粘性蹼足！";
+				close;
+			case 14590:
+				mes "[厨师]";
+				mes "请守护我的琴弦。捕获十只猎人沙漠狼。这应该足以让他们远离我的弦了。";
+				close;
+			case 14591:
+				mes "[厨师]";
+				mes "今天我们可以做一些鱼饼吗？我求求你。请不要让我空手送顾客回家。他们等了很长时间才来吃鱼饼。";
+				next;
+				mes "[厨师]";
+				mes "请抓住十个跨孢子并给我带来五个蘑菇孢子。匆忙！";
+				close;
+			}
+		case 2:
+			switch(.@quest_id) {
+			case 14546:
+				mes "[厨师]";
+				mes "现在我们的奶牛可以吃到很多美味的草了。谢谢。";
+				next;
+				mes "[厨师]";
+				mes "我们的奶牛非常喜欢你。这很令人惊讶，因为他们通常非常害羞。";
+				next;
+				mes "[厨师]";
+				mes "那么明天你能再帮我一个忙吗？哦，不用马上回答。今晚好好休息，明天再来。";
+				erasequest 14546;// Take care of grass thief
+				setquest 14592;// Resting Time
+				getexp 120,200;
+				close;
+			case 14588:
+				mes "[厨师]";
+				mes "你安全地照顾了那些野黄蜂。太棒了。";
+				next;
+				mes "[厨师]";
+				mes "太神奇了，我明天想再请求一次帮助。弗罗林最近遇到了很多困难。";
+				next;
+				mes "[厨师]";
+				mes "那么明天再见！";
+				erasequest 14588;// The Competition
+				setquest 14592;// Resting Time
+				getexp 200,300;
+				close;
+			case 14589:
+				if (countitem(921) < 5) {
+					mes "[厨师]";
+					mes "今天请帮我做一些布丁。抓住十只甜罗达青蛙，给我带来五只粘性蹼足！";
+					close;
+				}
+				mes "[厨师]";
+				mes "五个粘性蹼脚。完美的。";
+				next;
+				mes "[厨师]";
+				mes "哦，谢谢你！你救了我！我希望你能尝尝用这个做的布丁，但我现在很忙。";
+				next;
+				mes "[厨师]";
+				mes "顺便说一句，我们明天还会再见面的，对吗？";
+				delitem 918,5;// Sticky Webfoot
+				erasequest 14589;// Sticky ingredient
+				setquest 14592;// Resting Time
+				getexp 300,500;
+				close;
+			case 14590:
+				mes "[厨师]";
+				mes "冒险家，我听说了你的事迹。多亏了你，我的琴弦才安全。";
+				next;
+				mes "[厨师]";
+				mes "我必须报答你救了我的琴弦。太感谢了。";
+				next;
+				mes "[厨师]";
+				mes "明天你能再次帮助我吗？我想把我的琴弦托付给可靠的人。";
+				erasequest 14590;// Hunter's destination
+				setquest 14592;// Resting Time
+				getexp 400,800;
+				close;
+			case 14591:
+				if (countitem(921) < 5) {
+					mes "[厨师]";
+					mes "今天我们可以做一些鱼饼吗？我求求你。请不要让我空手送顾客回家。他们等了很长时间才来吃鱼饼。";
+					next;
+					mes "[厨师]";
+					mes "请抓住十个跨孢子并给我带来五个蘑菇孢子。匆忙！";
+					close;
+				}
+				mes "[厨师]";
+				mes "五个蘑菇孢子。完美的。向冒险家寻求帮助是明智之举。";
+				next;
+				mes "[厨师]";
+				mes "我们几乎失去了所有想要鱼饼的顾客。多谢！";
+				delitem 921,5;// Mushroom Spore
+				erasequest 14591;// Secret Ingredient
+				setquest 14592;// Resting Time
+				getexp 500,1000;
+				close;
+			}
+		}
+	case 0:
+	case 1:
+		mes "[厨师]";
+		mes "什么，你已经来这里帮忙了？";
+		next;
+		mes "[厨师]";
+		mes "现在还为时过早。强推并不能解决任何问题。";
+		next;
+		mes "[厨师]";
+		mes "好好休息一下，明天再回来。";
+		close;
+	case 2:
+		mes "[厨师]";
+		mes "你在这里？就在我需要帮助的时候。";
+		next;
+		mes "[厨师]";
+		mes "今天你也来帮忙吗？";
+		next;
+		if (select( "我会尝试的。", "我很忙。" ) == 2) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "我现在很忙。我稍后再做。";
+			close;
+		}
+		switch(.@quest_id) {
+		case 14546:
+			mes "[厨师]";
+			mes "请保护草丛免受法布尔草和叶疯子的侵害。它们是我们奶牛的食物。";
+			next;
+			mes "[厨师]";
+			mes "草法布尔和叶疯子，各五个。这应该会吓到附近的其他人，让他们不敢靠近。";
+			next;
+			mes "[厨师]";
+			mes "过了南桥，你就会看到十字路口。走下面的路，直奔牧羊人所在的拉维奥尔平原。";
+			next;
+			mes "[厨师]";
+			mes "你可以在抓住所有它们后来找我，或者你可以与<NAVI>^4D4DFF[牧羊人]^000000<INFO>lasa_fild01,353,370,000,1,</INFO></NAVI>交谈。";
+			next;
+			mes "[厨师]";
+			mes "工资在哪里都是一样的。你准备好了吗？";
+			erasequest 14592;// Resting Time
+			setquest 14546;// Take care of grass thief
+			close;
+		case 14588:
+			mes "[厨师]";
+			mes "新的一天刚刚开始，野黄蜂的活动也即将开始。";
+			next;
+			mes "[厨师]";
+			mes "我们的蜂蜜有危险了！";
+			next;
+			mes "[厨师]";
+			mes "请前往拉维奥尔森林捕捉十只野生黄蜂。";
+			next;
+			mes "[厨师]";
+			mes "完成后你可以来找我，或者你可以向正在那里采集蜂蜜的<NAVI>^4D4DFF[Florin]^000000<INFO>lasa_fild02,102,372,000,1,</INFO></NAVI>报告。";
+			erasequest 14592;// Resting Time
+			setquest 14588;// The Competition
+			close;
+		case 14589:
+			mes "[厨师]";
+			mes "你应该去馄饨森林。请携带五个粘性蹼脚。";
+			next;
+			mes "[厨师]";
+			mes "当你在那里时，捕捉十只甜罗达青蛙。他们的人口最近增加太多了。";
+			next;
+			mes "[厨师]";
+			mes "如果你拿到了粘性网脚，可以把它们带给我，或者你可以把它们带到<NAVI>^4D4DFF[Prok]^000000<INFO>lasa_fild02,177,241,000,1,</INFO></NAVI>。无论如何，他同意带他们来这里。";
+			erasequest 14592;// Resting Time
+			setquest 14589;// Sticky ingredient
+			close;
+		case 14590:
+			mes "[厨师]";
+			mes "仔细听，因为这是最重要的要求。";
+			next;
+			mes "[厨师]";
+			mes "请让猎人沙漠之狼远离我的掌控。抓住十只狼，他们就不会再追我的绳子了。";
+			next;
+			mes "[厨师]";
+			mes "完成后你可以来找我，或者你可以向正在拉维奥尔森林晒鱼的<NAVI>^4D4DFF[Fisher]^000000<INFO>lasa_fild02,326,170,000,1,</INFO></NAVI>报到。";
+			erasequest 14592;// Resting Time
+			setquest 14590;// Hunter's destination
+			close;
+		case 14591:
+			mes "[厨师]";
+			mes "好的。刚刚收到一份鱼饼订单。";
+			next;
+			mes "[厨师]";
+			mes "我们不经常收到这个菜单的订单，所以奇怪的是有这么多的请求。好消息终于传开了吗？";
+			next;
+			mes "[厨师]";
+			mes "无论如何，我们都在匆忙地精确到分秒，但那个瞌睡虫可能又睡着了。所以我希望你，冒险者，能够再次帮助我们。";
+			next;
+			mes "[厨师]";
+			mes "请携带五个蘑菇孢子并捕获十个反式孢子。";
+			next;
+			mes "[厨师]";
+			mes "完成后可以来找我，也可以向在森林里打瞌睡的<NAVI>^4D4DFF[瞌睡喵]^000000<INFO>lasa_fild02,331,251,000,1,</INFO></NAVI>报告。";
+			erasequest 14592;// Resting Time
+			setquest 14591;// Secret Ingredient
+			close;
+		}
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW,
+		"BaseLevel >= 6 && BaseLevel <= 19 && !isbegin_quest(14546) && !isbegin_quest(14592) && !isbegin_quest(14588) && !isbegin_quest(14589) && !isbegin_quest(14590)" );
+	end;
+}
+
+lasagna,85,93,5	script	Shaman meow#dorcon	4_DR_KID_01,{
+	if (conch_in_boatswain == 1) {
+		mes "[萨满喵]";
+		mes "今天不会无聊吗？我想知道今天谁会来看我。是谁？";
+		npctalk "喵喵", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "有人在吗？";
+		next;
+		mes "[萨满喵]";
+		mes "啊!你在这里。进来吧，这是神奇老太太的神奇地方。这是一座神社。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "老太太？她看起来不像一个。就像一个非常……年轻的多拉姆。";
+		next;
+		mes "[萨满喵]";
+		mes "不是我！";
+		npctalk "喵喵", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "还有谁？";
+		next;
+		mes "[萨满喵]";
+		mes "奶奶听到这个消息一定会很难过。这个世界充满了存在但看不见的事物。例如，让我们谈谈您的案例。";
+		next;
+		mes "[萨满喵]";
+		mes "在发现新世界之前，我们杜拉姆人认为烤宽面条就是世界末日。新世界是看不见的，居住在那里的无数人也是看不见的。";
+		next;
+		mes "[萨满喵]";
+		mes "但新世界和人类不是真的存在吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我明白你在说什么。";
+		next;
+		mes "[萨满喵]";
+		mes "那么是什么风把你吹到这里来的呢？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "有一个受苦者，我来这里是为了那个人。";
+		next;
+		mes "[萨满喵]";
+		mes "那是什么痛苦？如果我和奶奶能照顾好的话，我们会的。一个人不应该回避一位患者。";
+		npctalk "喵喵", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "好吧，他否认，但我认为他被邪灵附身了。他在一座无人岛上打开了一个密封的罐子。";
+		next;
+		mes "[萨满喵]";
+		mes "天哪。谁能想到，还有一个像Con-Chliina的水手长^0000cd这样的白痴^000000。";
+		npctalk "喵喵", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呃，那个水手长就是向我求助的人。";
+		next;
+		emotion ET_HUK;
+		mes "[萨满喵]";
+		mes "确实，还有谁会做出如此愚蠢的事情呢？我帮不了他，所以请你离开吧。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "难道真的没有办法帮助他吗？";
+		next;
+		mes "[萨满喵]";
+		mes "这些邪灵通常会试图通过吸收宿主的能量来接管宿主，并在宿主死亡后离开。由于某种原因，他们无法占据宿主的身体。";
+		next;
+		mes "[萨满喵]";
+		mes "于是他们转向附近的另一个人。这就是为什么当宿主死亡时，它会被萨满专门密封在罐子里，并丢弃在无人能找到的地方。";
+		next;
+		mes "[萨满喵]";
+		mes "但如果有人打开罐子，那些邪灵就会粘在那个白痴身上，重复同样的过程。除非宿主死亡，否则无法将它们分离。换句话说，没有任何解决方案能让水手长满意。";
+		npctalk "喵喵", "", bc_self;
+		next;
+		mes "[萨满喵]";
+		mes "当我告诉他“来自新地方的高尚人士可以解决问题时，”我的意思是问题将转移到^0000cd一个新人^000000上。看来他误会我了，才派你来的。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "那、那么，你也……";
+		next;
+		mes "[萨满喵]";
+		mes "我打开罐子。这是一次不幸的事故。";
+		npctalk "喵喵喵喵喵喵！ ！ ！", "", bc_self;
+		next;
+		mes "[萨满喵]";
+		mes "我、我并不是说我不喜欢奶奶。是的，是的。我会小心的。";
+		next;
+		mes "[萨满喵]";
+		mes "无论如何，水手长别无选择。度过余生，受尽折磨，或者成为一只萨满猫，过上舒适的生活。萨满猫的生活还不错。";
+		next;
+		mes "[萨满喵]";
+		mes "知识渊博的人有更多的选择。";
+		npctalk "喵喵。", "", bc_self;
+		next;
+		mes "[萨满喵]";
+		mes "如果他选择不成为萨满喵，那么他的每一天都必须^0000cd依赖于新的护身符^000000。但如果他选择成为萨满喵，那就叫他来见我。";
+		next;
+		mes "[萨满喵]";
+		mes "但成为萨满喵在很多方面都会变得更好。邪灵会越来越耗损他，并占据他的身体。";
+		next;
+		mes "[萨满喵]";
+		mes "听说水手长曾经和甘伯里船长拜访过以前的萨满喵。但他在解释过程中怒气冲冲地走了出去，再也没有回来。";
+		next;
+		mes "[萨满喵]";
+		mes "受了这么多苦，他现在应该数着自己的日子了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "并不真地。他看起来真的很有活力。";
+		next;
+		mes "[萨满喵]";
+		mes "我想并不是每个人都有资格成为 Con-Chliina 的水手长。他是怎么活下来的？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯……他似乎靠着一种迷信生活。就像玩偶和盐一样。";
+		next;
+		mes "[萨满喵]";
+		mes "天哪，他真的是个白痴。如果他早点来找我，我就会告诉他一条不那么痛苦的道路。";
+		npctalk "喵喵。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "无论如何，如果他每天都必须依靠新的符咒，那么今天的符咒是什么？我确信水手长需要一些时间来考虑事情，所以在那之前，他需要护身符。";
+		next;
+		mes "[萨满喵]";
+		mes "今天的护身符……让我看看。";
+		npctalk "喵喵。", "", bc_self;
+		next;
+		mes "[萨满喵]";
+		mes "哦，那个？真的吗？哦，那太糟糕了……说真的，那怎么会……呃。";
+		npctalk "喵喵。", "", bc_self;
+		next;
+		mes "[萨满喵]";
+		mes "今天的护身符是^0000cd20个罗勒和5个罗勒锁^000000。将它们牢牢地绑起来并随身携带。那么他今天就安全了。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "罗勒和罗勒锁？";
+		next;
+		mes "[萨满喵]";
+		mes "它们都是从那些肮脏的^0000cd蛇怪^000000中获得的。石化蜥蜴从活了 2000 多年的伊穆克勋爵那里获得了能量，因此邪灵甚至无法忍受靠近它们的一部分。";
+		next;
+		mes "[萨满喵]";
+		mes "但他们确实太肮脏了。我打赌水手长一定会向你求助，因为他不想亲手抓到一只。";
+		npctalk "喵喵。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "当然。我会告诉他。";
+		next;
+		mes "[萨满喵]";
+		mes "那么很快就会再见到你。";
+		npctalk "喵喵。", "", bc_self;
+		erasequest 14556;// There also is a scary thing for me
+		setquest 14557;// Truth is alway harsh
+		conch_in_boatswain = 2;
+		close;
+	}
+	if (conch_in_boatswain == 2) {
+		mes "[萨满喵]";
+		mes "请务必将我的消息传达给水手长。而今天的护身符是20个罗勒和5个罗勒锁。";
+		close;
+	}
+	if (conch_in_boatswain == 4) {
+		switch( checkquest(14559,PLAYTIME) ) {
+		case -1:
+			mes "[萨满喵]";
+			if (isbegin_quest(14560) == 1)
+				mes "错误 500（服务器错误）！！1500。这是一个错误。出现错误。请稍后重试。我们只知道这些。";
+			else if (isbegin_quest(14561) == 1) {
+				mes "今天的护身符是^0000cd20个罗勒锁^000000。今天你的手会很脏。对不起。但奶奶已经说了，这是底线。";
+				next;
+				mes "[萨满喵]";
+				mes "那个粘在水手长身上的东西也是一只多拉姆。它特别讨厌罗勒锁。这就是使用 basil 锁的原因。";
+			}
+			else
+				mes "今天的护身符是^0000cd20个罗勒和5个罗勒锁^000000。与第一个相同。最基本的也是最有用的。";
+			next;
+			mes "[萨满喵]";
+			mes "我为您的平安和安全祈祷。告诉水手长，只要他改变主意就回来。";
+			close;
+		case 0:
+		case 1:
+			break;
+		case 2:
+			mes "[萨满喵]";
+			mes "一定是水手长派你来的。我会告诉你有什么护身符可以帮助你平安度过今天。";
+			next;
+			mes "[萨满喵]";
+			mes "哪里……是的，是的……今天就是那个吗？知道了。";
+			npctalk "喵喵", "", bc_self;
+			next;
+			mes "[萨满喵]";
+			mes "我来告诉你今天的护身符。这是...";
+			next;
+			specialeffect EF_HITLINE;
+			mes "[萨满喵]";
+			.@quest_id = rand(14560,14562);
+			switch( .@quest_id ) {
+			case 14560:
+				mes "^0000cd5个罗勒锁和1个圣水^000000。在新世界里，圣水可以驱走邪灵。当水手长与新世界的人们接触时，它一定起作用了。";
+				break;
+			case 14561:
+				mes "^0000cd20 个罗勒锁^000000。今天你的手会很脏。对不起。但奶奶已经说了，这是底线。";
+				next;
+				mes "[萨满喵]";
+				mes "那个粘在水手长身上的东西也是一只多拉姆。它特别讨厌罗勒锁。这就是使用 basil 锁的原因。";
+				break;
+			case 14562:
+				mes "^0000cd20 个罗勒和 5 个罗勒锁^000000。与第一个相同。最基本的也是最有用的。";
+				break;
+			}
+			next;
+			mes "[萨满喵]";
+			mes "我为您的平安和安全祈祷。告诉水手长，只要他改变主意就回来。";
+			erasequest 14559;// Charm Effect Duration
+			setquest .@quest_id;
+			close;
+		}
+	}
+	mes "[萨满喵]";
+	mes "You want to know the future?过去？如果你知道自己站在哪里，那么你就能看到过去、未来、一切。";
+	next;
+	mes "[萨满喵]";
+	mes "如果你需要诅咒某人，打破诅咒，或者需要一点运气，那就来找我吧。";
+	close;
+}
+
+lasagna,174,160,3	script	Vigilante Guide#lasa	4_DR_SOLDIER,5,5,{
+	mes "[治安指南]";
+	mes "你好。";
+	mes "错误 500（服务器错误）！！1500。这是一个错误。出现错误。请稍后重试。我们只知道这些。";
+	mes "我能为你做什么？";
+	next;
+	switch( select( "谈论天气。", "询问义务警员。", "询问烤宽面条。", "结束对话。" ) ) {
+	case 1:
+		mes "[治安指南]";
+		mes "在千层面，清新的海风总是会拂动你的胡须。";
+		mes "多亏了这种潮湿的空气，我们的奶酪才能成熟得美味。";
+		close;
+	case 2:
+		if (lasagna_quest[1] < 2) {
+			if (lasagna_quest[1] == 0) {
+				mes "[治安指南]";
+				mes "哦！你还没见过我们的首领吗？";
+				next;
+			}
+			mes "[治安指南]";
+			mes "唔...";
+			mes "我想你最好先去见见领导。";
+			next;
+			mes "[治安指南]";
+			mes "他现在应该在冒险者俱乐部吧……";
+			mes "冒险家具乐部就在这里的东边，所以应该不难找到。";
+			if (isbegin_quest(11435) == 0)
+				setquest 11435;// Vigilante Corp
+			navigateto "lasagna",235,198, NAV_KAFRA_ONLY, 0;
+			lasagna_quest[1] = 1;
+			close;
+		}
+		mes "[治安指南]";
+		mes "治安团不仅维持小镇的公共秩序，而且在小镇的管理中发挥着主要作用。";
+		mes "也许我们的首领应该被称为市长。";
+		close;
+	case 3:
+		mes "[治安指南]";
+		mes "千层面是位于远星大陆尽头的一座港口城镇。";
+		mes "在佩佩罗西诺酋长、甘贝里队长和托马斯队长的努力下，这是一个小而繁荣的小镇！";
+		close;
+	case 4:
+		mes "[治安指南]";
+		mes "再见。";
+		close;
+	}
+OnTouch:
+	npctalk "义务警员指南：欢迎来到港口小镇烤宽面条。", "", bc_self;
+	npctalk "治安维护者指南：如果您需要帮助，请随时访问治安维护者公司。", "", bc_self;
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11435)" );
+	end;
+}
+lasagna,202,291,3	duplicate(Vigilante Guide#lasa)	Vigilante Guide#lasa2	4_DR_SOLDIER,5,5
+
+lasagna,233,197,5	script	Vigilante Olio#lasa	4_DR_OLIO,{
+	if (lasagna_quest[1] == 0) {
+		mes "哟！";
+		mes "嘿嘿！";
+		close;
+	}
+	if (lasagna_quest[1] == 1) {
+		mes "【石油自卫队】";
+		mes "他是佩佩罗西诺酋长，治安团的老大！";
+		close;
+	}
+	if (lasagna_quest[1] == 2) {
+		if (checkweight(1001,1) == 0) {
+			mes "- 请稍等！ ！ -";
+			mes "- 你的物品太多了。 -";
+			mes "- 这意味着您无法再收到任何物品。 -";
+			mes "- 释放一些空间 -";
+			mes "- 然后再试一次。 -";
+			close;
+		}
+		mes "【石油自卫队】";
+		mes "哟！";
+		mes "如果您需要什么，尽管说！";
+		mes "我会尽我所能帮助你！";
+		next;
+		select("询问治安维护者的情况。");
+		mes "【石油自卫队】";
+		mes "让我告诉你一些关于我们维吉兰特军团的事情！";
+		mes "可以说我们在这个小镇上扮演着关键的角色！";
+		mes "所有年轻的多拉姆也想加入我们！";
+		next;
+		mes "【石油自卫队】";
+		mes "治安维护者成立的时间并不长，但在我们出现之前，烤宽面条是一个失败的小镇，多亏了我们，这个小镇现在才开始蓬勃发展！";
+		next;
+		mes "【石油自卫队】";
+		mes "当我还是个孩子的时候，这里是如此……如此艰难……";
+		next;
+		mes "【石油自卫队】";
+		mes "没有这些美味舒适的奶酪街道......相反，我们有糊状的凤尾鱼内脏......无论你走到哪里......";
+		next;
+		mes "【石油自卫队】";
+		mes "别说气味了...";
+		next;
+		mes "【石油自卫队】";
+		mes "...";
+		mes "...";
+		mes "......";
+		next;
+		mes "【石油自卫队】";
+		mes "反正！够了令人沮丧的事情！";
+		next;
+		mes "【石油自卫队】";
+		mes "烤宽面条的未来看起来很黯淡，但他们讨论并决定，佩佩罗西诺酋长将负责治安维持会来保护小镇，而甘贝里和番茄队长则领导商队。";
+		next;
+		select("询问商家乐队。");
+		mes "【石油自卫队】";
+		mes "呃……我对商人乐队不太了解！";
+		mes "但听说它是由三位领导人筹集的一点种子资金开始的，现在已经发展成为一个庞大的组织，占据了这个小镇的大部分收入。";
+		next;
+		mes "【石油自卫队】";
+		mes "一开始，他们只有一艘商船，漏水了，半沉了。";
+		next;
+		mes "【石油自卫队】";
+		mes "但现在，他们却拥有了庞大的舰队！";
+		next;
+		mes "【石油自卫队】";
+		mes "几年前，托马斯船长踏上了探索新贸易路线的旅程，但他的船遭遇风暴，他失踪了。";
+		next;
+		mes "【石油自卫队】";
+		mes "那时候真是太可怕了！";
+		mes "就连我们的首领和甘贝里队长也失去了冷静。";
+		mes "他们放下一切，竭尽全力寻找番茄队长。";
+		next;
+		mes "【石油自卫队】";
+		mes "和...";
+		mes "他们的努力终于得到了回报，托马斯船长最近在米德加德海岸附近一个名叫马兰多的岛上被发现。";
+		next;
+		mes "【石油自卫队】";
+		mes "除此之外，他们还发现了一条通往米德加尔特大陆的新海路！";
+		next;
+		select("询问如何到达米德加德大陆。");
+		mes "【石油自卫队】";
+		if (Class == Job_Summoner) {
+			mes "从这里出发，Con-Chliina 号是唯一可以到达米德加德的船只。因此，唯一可以登船的人是Con-Chliina号的水手和治安维持会的成员。";
+			next;
+			mes "【石油自卫队】";
+			mes "因此，就连其他城镇的人也蜂拥而至加入治安维持会，因此我们不得不将馄饨平原南部的一个哨所变成了等候区。";
+			next;
+			select("询问是否加入义务警员。");
+			mes "【石油自卫队】";
+			mes "啊？";
+			mes "你也有兴趣吗？";
+			next;
+			mes "【石油自卫队】";
+			mes "这并不奇怪！";
+			mes "多拉姆人如果没有好奇心就什么都不是！";
+			next;
+			mes "【石油自卫队】";
+			mes "你需要得到酋长的许可才能加入治安维护者，所以你最好问他。";
+			getitem 22076,1;// Wooden Slippers [1]
+			getexp 500,400;
+		}
+		else {
+			mes "啊？你不是米德加德人吗？";
+			mes "你最初是怎么来到这里的？";
+			mes "你就不能原路返回吗？";
+			next;
+			select("询问有关登上 Con-Chliina 的信息。");
+			mes "【石油自卫队】";
+			mes "唔...";
+			mes "我真的不认识自己！";
+			next;
+			mes "【石油自卫队】";
+			mes "来自米德加德的人们能做什么……？";
+			next;
+			mes "【石油自卫队】";
+			mes "先去跟首领谈谈吧。";
+		}
+		erasequest 11436;// Vigilante Corp
+		setquest 11437;// Vigilante Corp
+		lasagna_quest[1] = 3;
+		close;
+	}
+	if (lasagna_quest[1] == 3) {
+		if (Class == Job_Summoner) {
+			mes "【石油自卫队】";
+			mes "你需要得到酋长的许可才能加入治安维护者，所以你最好问他。";
+			close;
+		}
+		mes "【石油自卫队】";
+		mes "唔...";
+		mes "我真的不认识自己！";
+		next;
+		mes "【石油自卫队】";
+		mes "来自米德加德的人们能做什么……？";
+		next;
+		mes "【石油自卫队】";
+		mes "先去跟首领谈谈吧。";
+		close;
+	}
+	mes "【石油自卫队】";
+	mes "哟！";
+	mes "如果您需要什么，尽管说！";
+	mes "我会尽我所能帮助你！";
+	close;
+}
+
+lasagna,235,198,3	script	Chief Peperoncino#lasa	4_DR_PEPE,{
+	if (lasagna_quest[1] < 2) {
+		mes "[首席辣椒]";
+		mes "很高兴见到你。";
+		mes "我是维吉兰特军团的佩佩罗西诺队长。";
+		next;
+		if (lasagna_quest[1] == 0) {
+			mes "[首席辣椒]";
+			mes "这个不太重要...";
+			mes "但是镇中心广场的治安维护者有告诉你什么吗？";
+			close;
+		}
+		mes "[首席辣椒]";
+		mes "你是第一次来这里吗？";
+		mes "随着新海路的发现，外国人突然涌入我们的城镇......";
+		next;
+		mes "[首席辣椒]";
+		mes "唔...";
+		mes "无论如何，请享受您的住宿，不要造成任何麻烦。";
+		next;
+		mes "[首席辣椒]";
+		mes "奥利奥！";
+		next;
+		mes "【石油自卫队】";
+		mes "是的，酋长！ ！ ！";
+		next;
+		mes "[首席辣椒]";
+		mes "如果您需要什么，请在这里与 Olio 联系。";
+		mes "我有急事要处理，要请假了。";
+		mes "以后再说吧";
+		completequest 11435;// Vigilante Corp
+		setquest 11436;// Vigilante Corp
+		lasagna_quest[1] = 2;
+		close;
+	}
+	if (lasagna_quest[1] == 2) {
+		mes "[首席辣椒]";
+		mes "如果您需要什么，请在这里与 Olio 联系。";
+		mes "我有急事要处理，要请假了。";
+		mes "以后再说吧";
+		close;
+	}
+	if (lasagna_quest[1] == 3) {
+		mes "[首席辣椒]";
+		mes "它是什么？";
+		next;
+		select("询问是否加入义务警员。");
+		mes "[首席辣椒]";
+		mes "按照现在的情况来说，想要加入义团，参加‘米德加尔特远征’，只需要通过一个简单的考验就可以了。";
+		next;
+		mes "[首席辣椒]";
+		mes "但我现在有点忙，要给你测试，所以也许稍后......";
+		next;
+		mes "[首席辣椒]";
+		mes "唔...";
+		mes "不，等等！";
+		next;
+		mes "[首席辣椒]";
+		mes "请跟我来，这边走。";
+		erasequest 11437;// Vigilante Corp
+		setquest 11438;// Vigilante Corp
+		lasagna_quest[1] = 4;
+		close2;
+		warp "lasa_in01",60,92;
+		end;
+	}
+	if (lasagna_quest[1] >= 4 && lasagna_quest[1] < 8) {
+		mes "[首席辣椒]";
+		mes "请这边走。";
+		close2;
+		warp "lasa_in01",60,92;
+		end;
+	}
+	if (lasagna_quest[1] == 8) {
+		mes "[首席辣椒]";
+		mes "虽然有金豆的介入，但我没想到你会这么轻松地完成第一个测试……";
+		next;
+		mes "[首席辣椒]";
+		mes "我们将继续进行下一个测试。";
+		next;
+		mes "[首席辣椒]";
+		mes "这次，位于烤宽面条西北端的塔利将为您提供帮助。";
+		mes "去看她吧。";
+		erasequest 11442;
+		setquest 11443;// Vigilante Corp
+		lasagna_quest[1] = 9;
+		close;
+	}
+	if (lasagna_quest[1] == 9) {
+		mes "[首席辣椒]";
+		mes "虽然有金豆的介入，但我没想到你会这么轻松地完成第一个测试……";
+		next;
+		mes "[首席辣椒]";
+		mes "我们将继续进行下一个测试。";
+		next;
+		mes "[首席辣椒]";
+		mes "这次，位于烤宽面条西北端的塔利将为您提供帮助。";
+		mes "去看她吧。";
+		close;
+	}
+	if (lasagna_quest[1] == 10) {
+		mes "[首席辣椒]";
+		mes "这次，位于烤宽面条西北端的塔利将为您提供帮助。";
+		mes "去看她吧。";
+		close;
+	}
+	if (lasagna_quest[1] == 11) {
+		if (checkweight(1001,2) == 0) {
+			mes "- 请稍等！ ！ -";
+			mes "- 你的物品太多了。 -";
+			mes "- 这意味着您无法再收到任何物品。 -";
+			mes "- 释放一些空间 -";
+			mes "- 然后再试一次。 -";
+			close;
+		}
+		mes "[首席辣椒]";
+		mes "你回来了。";
+		mes "对付她可不是一件容易的事，干得好。";
+		mes "塔利带来了这些，说还有很多衣服剩下。";
+		next;
+		mes "[首席辣椒]";
+		mes "嗯……测试就到此结束了。";
+		mes "我不想对那些渴望冒险的年轻人挑剔，所以这就足够了。";
+		next;
+		mes "[首席辣椒]";
+		mes "好的，恭喜您成为义务警队的一员。";
+		mes "新的冒险等待你来挑战。";
+		next;
+		mes "[首席辣椒]";
+		mes "拿着这张登机牌到城镇北部的港口，他们会让你登船。";
+		mes "现在赶紧去港口吧。";
+		next;
+		mes "[首席辣椒]";
+		mes "这...";
+		mes "当我年轻的时候，我也想成为一个伟大的人。";
+		mes "但这里有太多的东西需要我去保护……";
+		next;
+		mes "[首席辣椒]";
+		mes "我晕船太厉害，无法去冒险。";
+		completequest 11445;
+		getitem 15151,1;// White Eco Shirt [1]
+		getitem 25046,1;// Boarding Pass
+		getexp 700,500;
+		lasagna_quest[1] = 12;
+		close;
+	}
+	if (lasagna_quest[1] >= 12) {
+		mes "[首席辣椒]";
+		mes "这...";
+		mes "当我年轻的时候，我也想成为一个伟大的人。";
+		mes "但这里有太多的东西需要我去保护……";
+		next;
+		mes "[首席辣椒]";
+		mes "我晕船太厉害，无法去冒险。";
+		close;
+	}
+}
+
+lasa_in01,61,91,5	script	Basilisk Prisoner#lasai	4_BASIL_SLAVE,{
+	if (lasagna_quest[1] < 5) {
+		mes "[基本囚徒]";
+		mes "............";
+		close;
+	}
+	if (lasagna_quest[1] < 7) {
+		mes "[基本囚徒]";
+		mes "............";
+		next;
+		mes "[基本囚徒]";
+		mes ".....................";
+		next;
+		mes "[基本囚徒]";
+		mes "...........................";
+		next;
+		mes "[Jindou]";
+		mes "光是瞪他一眼，他的舌头就不会放松。";
+		next;
+		mes "[Jindou]";
+		mes "你需要一个适合他这样的人的“解决方案”。";
+		mes "即使这需要一点力量。";
+		next;
+		mes "[首席辣椒]";
+		mes "Jindou.";
+		mes "这不是你的考验。";
+		mes "如果你介入的话，我们就不能称之为测试，不是吗？";
+		next;
+		mes "[Jindou]";
+		mes "你是不是一个淘气的人。";
+		mes "以前从未面对过蛇怪的人如何能够通过这项测试？";
+		next;
+		mes "[Jindou]";
+		mes "我们不像你们这些人那么悠闲。";
+		next;
+		mes "[首席辣椒]";
+		mes "哦亲爱的...";
+		mes "我想没有什么帮助。";
+		next;
+		mes "[Jindou]";
+		mes "从城镇向东前往馄饨森林，然后继续“向东”行驶，直到找到巨大的带刺藤蔓。";
+		next;
+		mes "[Jindou]";
+		mes "带回5根带刺藤蔓的树枝。";
+		next;
+		mes "[Jindou]";
+		mes "你回来后我们再继续。";
+		if (lasagna_quest[1] == 5) {
+			erasequest 11439;// Vigilante Corp
+			setquest 11440;// Vigilante Corp
+			lasagna_quest[1] = 6;
+		}
+		close2;
+		warp "lasagna",218,185;
+		end;
+	}
+	if (lasagna_quest[1] == 7) {
+		if (checkweight(1001,2) == 0) {
+			mes "- 请稍等！ ！ -";
+			mes "- 你的物品太多了。 -";
+			mes "- 这意味着您无法再收到任何物品。 -";
+			mes "- 释放一些空间 -";
+			mes "- 然后再试一次。 -";
+			close;
+		}
+		select("使用荆棘藤笛");// regardless countitem
+		if (select( "打他。", "嘟嘟嘟嘟嘟" ) == 1) {
+			mes "[基本囚徒]";
+			mes "嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+			close;
+		}
+		mes "[基本囚徒]";
+		mes "嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+		next;
+		select("使用荆棘藤笛");
+		if (select( "呜呜呜", "打他。" ) == 2) {
+			mes "[基本囚徒]";
+			mes "嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+			close;
+		}
+		mes "[基本囚徒]";
+		mes "嘶嘶嘶嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+		next;
+		select("使用荆棘藤笛");
+		if (select( "噗噗——噗噗噗", "打他。" ) == 2) {
+			mes "[基本囚徒]";
+			mes "嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+			close;
+		}
+		mes "[基本囚徒]";
+		mes "嘶！ ！ ！";
+		mes "你认为我会屈服吗？";
+		next;
+		select("使用荆棘藤笛");
+		if (select( "去打他。", "嘟嘟嘟嘟嘟" ) == 1) {
+			mes "[基本囚徒]";
+			mes "嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+			close;
+		}
+		mes "[基本囚徒]";
+		mes "我什么都不知道！我不会告诉你这是我们国王下令的！";
+		next;
+		select("使用荆棘藤笛");
+		if (select( "噗噗噗噗噗", "打他。" ) == 2) {
+			mes "[基本囚徒]";
+			mes "嘶！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！ ！";
+			close;
+		}
+		mes "[基本囚徒]";
+		mes "嘶！";
+		mes "我永远不会告诉你，我们追求的不是烤宽面条，而是住在山洞里的那个黄色的东西！";
+		next;
+		mes "噗噗噗噗——";
+		next;
+		mes "[首席辣椒]";
+		mes "停止！";
+		mes "这已经足够了。";
+		mes "佳作。";
+		next;
+		mes "[首席辣椒]";
+		mes "金豆，剩下的就交给你了。";
+		next;
+		mes "[Jindou]";
+		mes "好吧，我认为我们不能从他那里得到更多的信息，但如果有新的情况我会告诉你的。";
+		next;
+		mes "[首席辣椒]";
+		mes "好的。";
+		mes "你一如既往地可靠。";
+		next;
+		mes "[首席辣椒]";
+		mes "好吧，我们出去讨论一下你的下一个测试吧。";
+		next;
+		mes "[Jindou]";
+		mes "哦，等等！这次你帮了我很大的忙，所以我送你这个作为我的谢意。";
+		next;
+		mes "[丰富狐尾]";
+		mes "徒步 + 70，MSP + 50。";
+		mes "[长狐尾]";
+		mes "远程物理攻击+5%，MHP+200。";
+		next;
+		switch( select( "丰富狐尾草", "长狐尾草", "戒掉。" ) ) {
+		case 1:
+			getitem 1683,1;// Enriched Foxtail Staff [1]
+			break;
+		case 2:
+			getitem 1684,1;// Long Foxtail Staff [1]
+			break;
+		case 3:
+			mes "[Jindou]";
+			mes "很难选择吗？";
+			close;
+		}
+		erasequest 11441;// Vigilante Corp
+		setquest 11442;// Vigilante Corp
+		lasagna_quest[1] = 8;
+		getexp 500,400;
+		close2;
+		warp "lasagna",218,185;
+		end;
+	}
+}
+
+lasa_in01,64,92,3	script	Jindou#lasain	4_DOU_JINDO,{
+	if (lasagna_quest[1] < 6) {
+		mes "[Jindou]";
+		mes "唔...";
+		close;
+	}
+	if (lasagna_quest[1] == 6) {
+		if (countitem(25044) == 5) {
+			mes "[Jindou]";
+			mes "多么美妙的刺啊。";
+			mes "如果我对刺这样做...";
+			next;
+			mes "[Jindou]";
+			mes "正确的。如果用了这个，他的嘴就堵不住了！";
+			delitem 25044,5;// Hard Thorny Vine
+			erasequest 11440;
+			setquest 11441;// Vigilante Corp
+			getitem 25043,1;// Thorny Vine Flute
+			lasagna_quest[1] = 7;
+			close;
+		}
+		mes "[Jindou]";
+		mes "从城镇向东前往“馄饨森林”，然后继续“向东”行驶，直到找到巨大的带刺藤蔓。";
+		next;
+		mes "[Jindou]";
+		mes "带回5根带刺藤蔓的树枝。";
+		next;
+		mes "[Jindou]";
+		mes "你回来后我们再继续。";
+		close2;
+		warp "lasagna",218,185;
+		end;
+	}
+	if (lasagna_quest[1] == 7) {
+		mes "[Jindou]";
+		mes "多么美妙的刺啊。";
+		mes "如果我对刺这样做...";
+		next;
+		mes "[Jindou]";
+		mes "正确的。如果用了这个，他的嘴就堵不住了！";
+		close;
+	}
+}
+
+lasa_in01,59,90,5	script	Chief Peperoncino#lasai	4_DR_PEPE,{
+	if (lasagna_quest[1] == 4) {
+		mes "[首席辣椒]";
+		mes "我不确定你是否知道，但这是蛇怪，一个生活在离这里不远的种族。";
+		next;
+		mes "[首席辣椒]";
+		mes "我们相处得很好，但最近他们开始在烤宽面条方面惹麻烦。";
+		next;
+		mes "[首席辣椒]";
+		mes "尤其是这个人，昨天甚至进了城，造成了严重破坏。我们不得不拘留他，但他不肯透露为什么这么做。";
+		next;
+		mes "[首席辣椒]";
+		mes "既然已经到了这个地步，就用什么力量来松开他的舌头吧……";
+		next;
+		mes "[首席辣椒]";
+		mes "这是你的第一次测试。";
+		next;
+		mes "[首席辣椒]";
+		mes "让他说话。";
+		erasequest 11438;
+		setquest 11439;// Vigilante Corp
+		lasagna_quest[1] = 5;
+		close;
+	}
+	if (lasagna_quest[1] == 5) {
+		mes "[首席辣椒]";
+		mes "这是你的第一次测试。";
+		next;
+		mes "[首席辣椒]";
+		mes "让他说话。";
+		close;
+	}
+	if (lasagna_quest[1] == 6) {
+		mes "[首席辣椒]";
+		mes "哦亲爱的...";
+		mes "我想没有什么帮助。";
+		next;
+		mes "[首席辣椒]";
+		mes "去和金豆谈谈吧。";
+		close;
+	}
+	if (lasagna_quest[1] == 7) {
+		mes "[首席辣椒]";
+		mes "试着让他再说话。";
+		close;
+	}
+}
+
+lasa_fild02,340,251,3	script	Thorny Vine's Thorn#las	HIDDEN_NPC,4,4,{
+	if (checkweight(1001,1) == 0) {
+		mes "- 请稍等！ ！ -";
+		mes "- 你的物品太多了。 -";
+		mes "- 这意味着您无法再收到任何物品。 -";
+		mes "- 释放一些空间 -";
+		mes "- 然后再试一次。 -";
+		close;
+	}
+	if (lasagna_quest[1] == 6) {
+		if (countitem(25044) < 5) {
+			mes "- 你已经获得了坚硬的荆棘藤蔓。 -";
+			getitem 25044,1;// Hard Thorny Vine
+			close;
+		}
+		specialeffect EF_LOCKON;
+		mes "- 你已经获得了足够的坚硬荆棘藤蔓。";
+		mes "返回城镇。 -";
+		close;
+	}
+	mes "- 如果触摸它，您可能会受伤。";
+	mes "当心。 -";
+	close;
+OnTouch:
+	if (lasagna_quest[1] == 6)
+		specialeffect EF_LOCKON;
+	end;
+}
+
+// Tali's quest
+lasagna,77,263,5	script	Tali#lasa	4_DR_F_02,{
+	if (lasagna_quest[1] < 9 || lasagna_quest[1] > 11) {
+		mes "[这样的]";
+		mes "我必须尽快完成这件事，然后去港口见他！";
+		mes "哇！";
+		close;
+	}
+	if (lasagna_quest[1] == 9) {
+		mes "[这样的]";
+		mes "你想要什么？";
+		next;
+		mes "[这样的]";
+		mes "哦！是局长派你来的吗？";
+		next;
+		mes "[这样的]";
+		mes "来！";
+		mes "过来吧。";
+		next;
+		mes "[这样的]";
+		mes "嗯……嗯……嗯！好的！";
+		next;
+		mes "[这样的]";
+		mes "你去过馄饨森林吧？";
+		mes "是的，就是这里东边的那片森林。";
+		next;
+		mes "[这样的]";
+		mes "去教训一下那边的甜罗达青蛙，然后把‘奢华布料’带给我。";
+		next;
+		mes "[这样的]";
+		mes "让我看看... 嗯哼... 嗯...";
+		mes "嗯……两个就够了。";
+		erasequest 11443;
+		setquest 11444;
+		lasagna_quest[1] = 10;
+		close;
+	}
+	if (lasagna_quest[1] == 10) {
+		if (countitem(25045) < 2) {
+			mes "[这样的]";
+			mes "你去过馄饨森林吧？";
+			mes "是的，就是这里东边的那片森林。";
+			next;
+			mes "[这样的]";
+			mes "去教训一下那边的甜罗达青蛙，然后把‘奢华布料’带给我。";
+			next;
+			mes "[这样的]";
+			mes "让我看看... 嗯哼... 嗯...";
+			mes "嗯……两个就够了。";
+			close;
+		}
+		mes "[这样的]";
+		mes "唔...";
+		mes "你带来了相当不错的东西。";
+		delitem 25045,2;// Luxurious Cloth
+		erasequest 11444;
+		setquest 11445;
+		lasagna_quest[1] = 11;
+		next;
+		mes "[这样的]";
+		mes "......";
+		next;
+		mes "[这样的]";
+		mes ".........";
+		next;
+		mes "[这样的]";
+		mes "..................";
+		next;
+		mes "[这样的]";
+		mes "你为什么一直看着我？";
+		next;
+		mes "[这样的]";
+		mes ".........";
+		next;
+		mes "[这样的]";
+		mes "我要用这些做领结。";
+		mes "嗯，这并不是特别重要，但它就像治安团的标志一样……";
+		next;
+		mes "[这样的]";
+		mes "领结制作完成后，会绣上你的名字，挂在治安维持会办公室的墙上。";
+		mes "它就像义务警员的登记册。";
+		next;
+		mes "[这样的]";
+		mes "你叫什么名字？";
+		next;
+		mes "[这样的]";
+		mes "" + strcharinfo(0) + "……这个名字真好听。";
+		mes "绣名字需要一段时间。";
+		mes "完成后我会把它交给组长，你先走吧。";
+		close;
+	}
+	if (lasagna_quest[1] == 11) {
+		mes "[这样的]";
+		mes "绣名字需要一段时间。";
+		mes "完成后我会把它交给组长，你先走吧。";
+		close;
+	}
+}
+
+lasagna,205,325,5	script	Eggling#dorcon	4_M_MERCAT1,2,2,{
+	if (checkweight(1001,1) == 0) {
+		mes "[鸡蛋]";
+		mes "看起来很多而且很大。减少一些怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] > 0 && lasagna_quest[1] < 12) {
+		mes "[鸡蛋]";
+		mes "你不是在义务警队接受训练吗？练不成，怎么上船？回去完成你的训练吧！";
+		close;
+	}
+	if (lasagna_quest[1] == 12) {
+		if (countitem(25046) < 1) {// Boarding Pass
+			mes "[鸡蛋]";
+			mes "门票。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "票？";
+			next;
+			mes "[鸡蛋]";
+			mes "你没有^0000cd登机许可^000000吗？你需要它才能上船！坚持住！回去拿一个吧！";
+			close;
+		}
+		if (Class != Job_Summoner) {
+			mes "[鸡蛋]";
+			mes "门票。";
+			next;
+			mes "[鸡蛋]";
+			mes "你要上船吗？";
+			next;
+			if (select( "你在船上有事。", "离开。" ) == 2) {
+				mes "[鸡蛋]";
+				mes "那么好吧。";
+				close;
+			}
+			mes "[鸡蛋]";
+			mes "现在就上吧。如果您是第一次登机，请与乘务长会面并听取登机说明。";
+			delitem 25046,1;// Boarding Pass
+			setquest 14545;// To Purser
+			completequest 14545;
+			setquest 14531;// Everything about Con-Chliina
+			lasagna_quest[1] = 13;
+			close2;
+			warp "conch_in",58,61;
+			end;
+		}
+		mes "[鸡蛋]";
+		mes "门票。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "这里...";
+		next;
+		mes "[鸡蛋]";
+		mes "嘿，冒险家！这是你的第一次航行吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。";
+		next;
+		mes "[鸡蛋]";
+		mes "好吧，别玷污多拉姆的名誉，好吗？不过，既然你在这里接受过培训，那么无论你在哪里，你都能够发挥自己的作用。祝你好运。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "谢谢。";
+		next;
+		mes "[鸡蛋]";
+		mes "哦，我有件事想拜托你。你能把它带给^0000cd副主厨^000000吗？你能为我做这个吗？你会不时地继续在这艘船上航行，你知道，对吧？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。";
+		next;
+		mes "[鸡蛋]";
+		mes "好吧，好吧。你似乎知道这里的事情是如何运作的。你可以把它带给副主厨。然而，副主厨有点古怪。当你把东西交给他的时候，你必须说些什么。";
+		next;
+		mes "[鸡蛋]";
+		mes "你应该把这个扔给他，说??^0000cd[新手来了！ ]^000000 他相信多拉姆应该在第一次航行时说这句话以获得好运。不管怎样，他似乎认为这是正确的做法。";
+		next;
+		mes "[鸡蛋]";
+		mes "你知道我的意思，对吧？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。";
+		next;
+		mes "[鸡蛋]";
+		mes "看来你很明白。我喜欢它。顺便问一下，你叫什么名字？哈哈...";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我的名字是" + strcharinfo(0) + ".";
+		next;
+		mes "[鸡蛋]";
+		mes "我懂了。当我们相遇时，我们打个招呼吧。好吧，当你把它交给副主厨时，一定要听从我的指示，好吗？";
+		next;
+		mes "[鸡蛋]";
+		mes "如果，你有什么想知道的，别犹豫，来找我吧。当您上车时，请务必向^0000cd事务长^000000打个招呼。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的。谢谢。";
+		next;
+		mes "[鸡蛋]";
+		mes "好的。现在就上那里吧。";
+		delitem 25046,1;// Boarding Pass
+		setquest 14531;// Everything about Con-Chliina
+		setquest 14545;// To Purser
+		completequest 14545;
+		getitem 25047,1;// Kahlunac
+		lasagna_quest[1] = 13;
+		close2;
+		warp "conch_in",58,61;
+		end;
+	}
+	callsub S_quest21;
+	if (lasagna_quest[1] >= 22 && lasagna_quest[1] < 27) {
+		if (Class == Job_Summoner) {
+			mes "[鸡蛋]";
+			mes "你回来了吗？你的使命呢？";
+			next;
+			mes "[鸡蛋]";
+			mes "完成任务就回来吧！";
+			close;
+		}
+	}
+	if (lasagna_quest[1] == 27) {
+		if (Class != Job_Summoner) {
+			mes "[鸡蛋]";
+			mes "恰逢其时。雾散了，我们很快就可以出发了。";
+			lasagna_quest[1] = 28;
+			next;
+			// warp in
+		}
+		else {
+			mes "[鸡蛋]";
+			mes "哇，朋克永远不会死并且会回来。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "你想要我死吗？";
+			next;
+			mes "[鸡蛋]";
+			mes "不，你不知道吗？这是这首热门歌曲的歌词。哦，拜托，别表现得像个乡下人。他们会怎么看我们所有人？不管怎样，你应该带的东西怎么样？你有吗？";
+			next;
+			if (countitem(25049) < 3) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "还没有。你问了几个？";
+				next;
+				mes "[鸡蛋]";
+				mes "真蠢……我告诉过你带上^0000cd3^000000。我说3个！你可以从^0000cd蛇怪^000000获得它们。我得告诉你多少次？我想我已经说了大约100遍了！";
+				next;
+				mes "[鸡蛋]";
+				mes "除非你把它带给我，否则你不能上船！";
+				close;
+			}
+			mes "[" + strcharinfo(0) + "]";
+			mes "他们在这里。罗勒罗克斯。";
+			next;
+			mes "[鸡蛋]";
+			mes "哈。你很不错。退出冒险并成为我的学徒怎么样？我会乖乖的。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我不得不说不。我不想作为一个水手男孩度过永恒。";
+			next;
+			mes "[鸡蛋]";
+			mes "什么？你说什么？一个水手男孩？嘿！我不只是一个水手男孩，而是一个负责Con-Chliina杂项业务的无价资产！这艘船没有我就无法航行！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我懂了。请原谅。";
+			next;
+			mes "[鸡蛋]";
+			mes "你差点让我生气。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我懂了。对不起。";
+			next;
+			mes "[鸡蛋]";
+			mes "好吧，无论如何，谢谢。我真没想到你会给我带来它。我没有什么可以提供给你的。既然外面的世界很危险，那就拿着这个吧。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "凤尾鱼？";
+			next;
+			mes "[鸡蛋]";
+			mes "你知道，烤宽面条的凤尾鱼是最好的。你不能用外面的钱买到这个。当我提供给你时，就拿走吧。把你所有的罗勒石都给我。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我懂了。谢谢。";
+			next;
+			mes "[鸡蛋]";
+			mes "进去吧。";
+			erasequest 14540;// An errand out of nowhere
+			delitem 25049, countitem(25049);// Basilac Clam
+			getitem 11601,10;// Delicious Anchovy
+			getexp 300,300;
+			lasagna_quest[1] = 28;
+			close2;
+			warp "conch_in",58,61;
+			end;
+		}
+	}
+	if (lasagna_quest[1] == 28) {
+		mes "[鸡蛋]";
+		mes "哇，朋克永远不会死并且会回来。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "你想要我死吗？";
+		next;
+		mes "[鸡蛋]";
+		mes "不，你不知道吗？这是这首热门歌曲的歌词。哦，拜托，别表现得像个乡下人。他们会怎么看我们所有人？";
+		next;
+		mes "[鸡蛋]";
+		mes "进去吧。";
+		close2;
+		warp "conch_in",58,61;
+		end;
+	}
+	if (lasagna_quest[1] == 0) {
+		mes "[鸡蛋]";
+		mes "你要登上^0000cd船^000000吗？";
+		if (Class != Job_Summoner)
+			.@cost = 2000;
+		else
+			.@cost = 200;
+		.@menu$[0] = "Get on the Ship";
+	}
+	else {
+		if (Class != Job_Summoner) {
+			mes "[鸡蛋]";
+			mes "你要登上^0000cd船^000000吗？";
+			.@cost = 2000;
+			if (lasagna_quest[1] >= 21 && lasagna_quest[1] < 27)
+				.@menu$[0] = "You have a business in the ship.";
+			else
+				.@menu$[0] = "Get on the Ship";
+		}
+		else {
+			mes "[鸡蛋]";
+			mes "你就是那个朋克。你上船了吗？";
+			.@cost = 200;
+			.@menu$[0] = "Get on the Ship";
+		}
+	}
+	next;
+	if (lasagna_quest[1] == 0 || lasagna_quest[1] >= 29) {
+		.@menu$[1] = "To Izlude - " + .@cost + "z";
+		.@menu$[2] = "To Malangdo - " + .@cost + "z";
+		mes "[鸡蛋]";
+		mes "或者你正前往新大陆的^0000cdIzlude^000000或^0000cdMalangdo^000000？";
+		mes "无论你去哪里，都会花费^0000cd" + .@cost + " Zeny^000000。";
+		next;
+	}
+	switch( select( .@menu$[0], .@menu$[1], .@menu$[2], "取消" ) ) {
+	case 1:
+		mes "[鸡蛋]";
+		mes "进去吧。";
+		close2;
+		warp "conch_in",58,61;
+		end;
+	case 2:
+		if (Zeny < .@cost) {
+			mes "[鸡蛋]";
+			mes "你没有足够的钱。再次检查。";
+			close;
+		}
+		warp "izlude",193,209;
+		end;
+	case 3:
+		if (Zeny < .@cost) {
+			mes "[鸡蛋]";
+			mes "你没有足够的钱。再次检查。";
+			close;
+		}
+		warp "malangdo",213,110;
+		end;
+	case 4:
+		mes "[鸡蛋]";
+		mes "那么好吧。";
+		close;
+	}
+
+S_quest21:
+	if (lasagna_quest[1] == 21 && Class == Job_Summoner) {
+		mes "[鸡蛋]";
+		mes "嘿，你。这边过来。你真的因为我告诉过你所以就把它扔给了副主厨吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我只是做了你让我做的事。";
+		next;
+		mes "[鸡蛋]";
+		mes "哈!你怎么可以？你真的按我说的去做吗？真是个笨蛋！你留胡子是为了时尚吗，白痴？你知道我因为你惹了什么麻烦吗？我就是因为你才被骂的！";
+		next;
+		mes "[鸡蛋]";
+		mes "把它剪掉。好吧，既然你看起来很抱歉，如果你带上^0000cdBasilrock^000000，我会原谅你。我是一个相当慷慨的人。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我为什么要……？";
+		next;
+		mes "[鸡蛋]";
+		mes "您真的愿意参加一生中最糟糕的航行吗？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "什么是罗勒岩？";
+		npctalk "现在我们正在说话。", "", bc_self;
+		next;
+		mes "[鸡蛋]";
+		mes "没有人知道它是什么。然而，所有水手都拥有它。你真的应该停止问。现在就去拿吧。我给10秒。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "每个人都应该知道从哪里可以获得它以便携带它。我在哪里可以得到它？";
+		next;
+		mes "[鸡蛋]";
+		mes "当你走出村庄时，田野的右端有一个洞穴，里面住着令人讨厌的蛇，称为^0000cd蛇怪^000000。你可以从他们那里得到它。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "因为我正在去那里的路上，如果可以的话我会帮你买一些。然而，我的使命是第一位的。你该不会指望我能在队长交给我的任务之前处理完吧？";
+		next;
+		mes "[鸡蛋]";
+		mes "嗯……我不是说……嗯……嗯，10 秒过去了。给我带来^0000cd3块罗勒石^000000，不少。在没人知道的情况下把它们带来。如果你告诉任何人我会让你后悔的。";
+		if (isbegin_quest(14540) == 0)
+			setquest 14540;// An errand out of nowhere
+		close;
+	}
+	return;
+
+OnTouch:
+	callsub S_quest21;
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(14545)" );
+	end;
+}
+
+// hall
+conch_in,65,58,3	script	Purser#dorcon	4_CAT_ADV1,{
+	if (lasagna_quest[1] == 13) {
+		if (Class != Job_Summoner) {
+			mes "[事务长]";
+			mes "欢迎登机。欢迎来到^0000cdCon-Chliina^000000。我们将把您安全送达目的地。不过，我们现在还不能启航。";
+			npctalk "不过，我们现在还不能启航。", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "到底是怎么回事？";
+			next;
+			mes "[事务长]";
+			mes "看看外面的烤宽面条。";
+			npctalk "那里。在那边。", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我什么也没看到。";
+			next;
+			mes "[事务长]";
+			mes "正确的。你什么也看不到。这里有^0000cd浓雾^000000。我想知道我们现在是否可以出发。";
+			npctalk "这里有浓浓的雾气。我想知道我们是否能够出发", "", bc_self;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我很急。";
+			next;
+			mes "[事务长]";
+			mes "如果你赶时间的话，你应该去见^0000cd船长和大副^000000。他们决定是否启航。他们在上面的船长室/";
+			npctalk "船长室是我们前面的房间。", "", bc_self;
+			erasequest 14531;// Everything about Con-Chliina
+			setquest 14547;// Can we set out the sailing?
+			lasagna_quest[1] = 14;
+			close;
+		}
+		mes "[事务长]";
+		mes "我闻到了一些东西。一股新人的气息……";
+		mes "你是？";
+		npctalk "告诉我你的名字。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "呃，我的名字是" + strcharinfo(0) + ".";
+		next;
+		mes "[事务长]";
+		mes "哦，是的。我在名单上看到你的名字。" + strcharinfo(0) + ".";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的...很高兴认识你。";
+		next;
+		mes "[事务长]";
+		mes "不需要出汗。我相信您已经接受了足够的培训，所以现在您不需要做太多事情。你为什么不去熟悉一下工作人员和他们的名字呢？";
+		npctalk "我有预感，我会经常见到你。", "", bc_self;
+		next;
+		mes "[事务长]";
+		mes "当你去一个没人认识的地方时，来自同一个城镇的多拉姆可能会成为你最好的朋友。因此，我建议您现在就尽可能多地与他们见面。";
+		npctalk "来自同一个城镇的多拉姆可以成为你最好的朋友。", "", bc_self;
+		next;
+		mes "[事务长]";
+		mes "这艘船上除船长外还有十二名小队长，还有很多其他船员。你不需要见到他们所有人。你可以见到重要的人。";
+		next;
+		mes "[事务长]";
+		mes "有些人会在船启航前出现，所以你应该去见见那些你现在能见到的人。首先，你应该去见船长。";
+		next;
+		mes "[事务长]";
+		mes "^0000cd船长室^000000就在那里。因为船长重视礼貌和礼仪。确保不要犯任何错误。";
+		npctalk "船长室就在楼梯上。", "", bc_self;
+		erasequest 14531;// Everything about Con-Chliina
+		setquest 14532;// Greetings to Captain Gamberi
+		getexp 200,300;
+		lasagna_quest[1] = 14;
+		close;
+	}
+	if (lasagna_quest[1] == 14) {
+		mes "[事务长]";
+		if (Class != Job_Summoner)
+			mes "船长和大副都在里面。你可以去见见他们。您还可以与他们讨论航行时间表。";
+		else
+			mes "船长室就在那里。因为船长重视礼貌和礼仪。确保不要犯任何错误。";
+		close;
+	}
+	if (lasagna_quest[1] == 15) {
+		mes "[事务长]";
+		mes "去见离这个地方最近的记录员。他是个很有趣的人。你和他谈话会很有趣。";
+		close;
+	}
+	if (lasagna_quest[1] == 16) {
+		mes "[事务长]";
+		mes "你见过录音师吗？来见见主厨怎么样？";
+		close;
+	}
+	if (lasagna_quest[1] == 17) {
+		mes "[事务长]";
+		mes "出色地。你都见过他们吗？";
+		npctalk "他们都是好人。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "不是全部。我无法全部找到它们。";
+		next;
+		mes "[事务长]";
+		mes "我想是的。他们一定是在喝卡鲁格纳牛奶并在某处打鼾。到了出发的时间，他们就会回来。到时候你就可以见到他们了...";
+		npctalk "反正到了出发的时间他们就会回来的。", "", bc_self;
+		next;
+		mes "[事务长]";
+		mes "你手里拿着的不是^0000cdKahlugnag^000000吗？不是任何人都可以拥有它，你知道的。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "入口处查票的人让我把票交给主厨。";
+		next;
+		mes "[事务长]";
+		mes "那你为什么不把它交给主厨呢？快去送给他吧！";
+		npctalk "快去把它交给主厨吧！", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的，是的！";
+		erasequest 14535;// To Purser
+		setquest 14536;// Delivery to Chef
+		lasagna_quest[1] = 18;
+		close;
+	}
+	if (lasagna_quest[1] == 18) {
+		mes "[事务长]";
+		mes "你把东西交给主厨了吗？食材一定要在新鲜的时候送达！厨房位于走廊的尽头。";
+		close;
+	}
+	if (lasagna_quest[1] == 19) {
+		mes "[事务长]";
+		mes "嗯，我们有问题。";
+		npctalk "那就是……一个问题。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我已经把它交给了。水手长想知道^0000cd航行信号^000000何时会发出。";
+		next;
+		mes "[事务长]";
+		mes "我刚才正在思考这个问题。那么，你接受过这次冒险的适当训练吗？难道你不想在那之前^0000cd测试一下你的实力^000000吗？";
+		npctalk "在开始冒险之前测试你的实力至关重要。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我可以帮你吗？";
+		next;
+		mes "[事务长]";
+		mes "看看烤宽面条。你怎么认为？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "我认为这是一个充满活力和幸福的村庄！";
+		next;
+		mes "[事务长]";
+		mes "这不是我想听的。看看我们即将探索的大海。";
+		npctalk "你不需要说那些你不需要说的话。", "", bc_self;
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "雾……？";
+		next;
+		mes "[事务长]";
+		mes "是的。海上的^0000cd雾^000000。海雾。";
+		next;

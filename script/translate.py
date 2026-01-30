@@ -47,6 +47,7 @@ clr_re = re.compile(r"\^[0-9a-fA-F]{6}")
 string_re = re.compile(r'"([^\"]*)"')
 mes_line_re = re.compile(r'(?P<prefix>\bmes\b\s*)(?P<expr>.+)$')
 npctalk_line_re = re.compile(r'(?P<prefix>\bnpctalk\b\s*)(?P<expr>.+)$')
+select_line_re = re.compile(r'(?P<prefix>\bselect\b\s*)(?P<expr>.+)$')
 
 
 def translate_text(text, target='zh-cn'):
@@ -224,6 +225,77 @@ def process_npctalk_expression(expr, target='zh-cn'):
     return ''.join(out)
 
 
+def process_select_expression(expr, target='zh-cn'):
+    # Translate string literals inside select(...) when they contain English letters
+    matches = list(string_re.finditer(expr))
+    if not matches:
+        return expr
+
+    # Decide which string parts need translation (contains ASCII letters)
+    parts = [m.group(1) for m in matches]
+    translate_flags = [True if re.search(r'[A-Za-z]', p) else False for p in parts]
+
+    # If nothing to translate, return original
+    if not any(translate_flags):
+        return expr
+
+    # Protect color codes for parts that will be translated
+    protected_items = []  # list of (protected, codes, raw)
+    for flag, raw in zip(translate_flags, parts):
+        if flag:
+            prot, codes = protect_color_codes(raw)
+            protected_items.append((prot, codes, raw))
+
+    # Translate combined protected texts to preserve context
+    combined = SEP.join(p[0] for p in protected_items)
+    translated_combined = translate_text(combined, target=target)
+
+    # Split back into translated pieces; if splitting count mismatches, translate individually
+    translated_pieces = translated_combined.split(SEP)
+    if len(translated_pieces) != len(protected_items):
+        translated_pieces = []
+        for prot, codes, raw in protected_items:
+            if re.fullmatch(r"[.．。…]{1,}", raw.strip()):
+                translated_pieces.append(prot)
+                continue
+            t = translate_text(prot, target=target)
+            if (t is None) or (t.strip() == prot.strip()):
+                translated_pieces.append(prot)
+            else:
+                translated_pieces.append(t)
+
+    # Restore color codes and reassemble final string parts in order
+    restored_parts = []
+    ti = 0
+    for i, raw in enumerate(parts):
+        if not translate_flags[i]:
+            restored_parts.append(raw)
+        else:
+            tpart = translated_pieces[ti]
+            prot, codes, raw_orig = protected_items[ti]
+            ti += 1
+            if re.fullmatch(r"[.．。…]{1,}", raw_orig.strip()):
+                use_text = prot
+            else:
+                use_text = tpart
+                if (tpart is None) or (tpart.strip() == prot.strip()):
+                    use_text = prot
+            s = restore_color_codes(use_text, codes)
+            s = s.replace('"', '\\"')
+            restored_parts.append(s)
+
+    # Rebuild expression by replacing string literals in original expr with translated ones
+    out = []
+    last = 0
+    for (m, new_str) in zip(matches, restored_parts):
+        start, end = m.span()
+        out.append(expr[last:start])
+        out.append('"' + new_str + '"')
+        last = end
+    out.append(expr[last:])
+    return ''.join(out)
+
+
 def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force=False):
     # Read input with replacement on decode errors to avoid UnicodeDecodeError
     with open(infile, 'r', encoding='utf-8', errors='replace') as f:
@@ -297,7 +369,15 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
                     new_line = line[:n.start('expr')] + new_expr + '\n'
                     fo.write(new_line)
                 else:
-                    fo.write(line)
+                    # Handle select(...) lines: translate string literals containing English
+                    s = select_line_re.search(line)
+                    if s:
+                        expr = s.group('expr').rstrip('\r\n')
+                        new_expr = process_select_expression(expr, target=target)
+                        new_line = line[:s.start('expr')] + new_expr + '\n'
+                        fo.write(new_line)
+                    else:
+                        fo.write(line)
             fo.flush()
             if not use_tqdm:
                 print(f'Translated line {idx+1}/{end_idx}')
