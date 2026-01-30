@@ -1712,7 +1712,7 @@ lasagna,202,276,5	script	Gomae#dorcon01	4_DR_F_01,{
 lasagna,211,186,5	script	Boarding Attendant#dorc	4_CAT_ADV1,5,5,{
 	if (lasagna_quest[1] < 12) {
 		mes "[乘务员]";
-		mes "??????????Con-Chliina ?????????????";
+		mes "我们祝你在 Con-Chliina 度过愉快的一天！";
 		close;
 	}
 	if (lasagna_quest[1] == 12) {
