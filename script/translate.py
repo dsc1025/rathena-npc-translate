@@ -535,3 +535,40 @@ if __name__ == '__main__':
     print(f'Translating {infile} -> {outfile} (target=zh-cn)')
     process_file(infile, outfile, target='zh-cn', start_line=args.start, n_lines=args.line, force=args.force)
     print('Done.')
+
+
+class TranslateEngine:
+    """Lightweight wrapper class around the module-level translation functions.
+
+    This class keeps the existing functions intact but provides a simple
+    object-oriented API for callers and batch scripts.
+    """
+    def __init__(self, target='zh-cn'):
+        self.target = target
+
+    def translate_text(self, text):
+        return translate_text(text, target=self.target)
+
+    def translate_protected_list(self, protected_texts):
+        return translate_protected_list(protected_texts, target=self.target)
+
+    def process_file(self, infile, outfile=None, start_line=1, n_lines=0, force=False):
+        if outfile is None:
+            base, _ = os.path.splitext(infile)
+            outfile = base + '.zh-cn.txt'
+        return process_file(infile, outfile, target=self.target, start_line=start_line, n_lines=n_lines, force=force)
+
+    def process_mes_expression(self, expr):
+        return process_mes_expression(expr, target=self.target)
+
+    def process_npctalk_expression(self, expr):
+        return process_npctalk_expression(expr, target=self.target)
+
+    def process_select_expression(self, expr):
+        return process_select_expression(expr, target=self.target)
+
+    def replace_f_navi_in_text(self, text):
+        return replace_f_navi_in_text(text, target=self.target)
+
+    def process_f_navi_in_line(self, line):
+        return process_f_navi_in_line(line, target=self.target)
