@@ -1,61 +1,54 @@
 //===== rAthena Script ======================================= 
 //= Dewata Guide
 //===== By: ================================================== 
-//= Muad_Dib
-//===== Current Version: ===================================== 
-//= 1.1
-//===== Compatible With: ===================================== 
-//= rAthena Project
+//= ding
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Guide for the city of Dewata.
-//===== Additional Comments: ================================= 
-//= 1.0 First version. [Lemongrass]
-//= 1.1 Navigation system update. [Euphy]
 //============================================================ 
 
 dewata,202,106,4	script	Dewata Guide#dewata01	4_M_DEWWOMAN,{
-	mes "【大神指导】";
+	mes "[德瓦塔指南]";
 	mes "欢迎来到^8B4513德瓦塔岛^000000，";
 	mes "这里拥有令人眼花缭乱的海浪和迷人的景色，是放松身心的好地方。";
 	mes "如果您有任何疑问，请问我。";
 	next;
-	mes "【大神指导】";
+	mes "[德瓦塔指南]";
 	mes "我可以在哪里指导您？";
-	F_Navi("[Dewata Guide]");
+	F_Navi("[德瓦塔指南]");
 	while (1) {
 		next;
-		switch(select("[ 卡夫拉员工 ]:[ 武器经销商 ]:[ 防具经销商 ]:[ 工具经销商 ]:[ 餐厅老板 ]:[ 喀拉喀托守门人 ]:[ 艾伯塔水手 ]: 从小地图上移除标记：取消")) {
+		switch(select("[卡夫拉员工]：[武器经销商]：[盔甲经销商]：[工具经销商]：[餐馆老板]：[喀拉喀托守门人]：[ 艾伯塔省水手 ]：从小地图上删除标记：取消")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employee^000000";
 			viewpoint 1,202,184,0,0x000FFF;
 			break;
 		case 2:
-			callsub L_Mark, F_Navi("Weapon Dealer","dewata,218,164","^008080");
+			callsub L_Mark, F_Navi("武器经销商","dewata,218,164","^008080");
 			viewpoint 1,218,163,1,0x008080;
 			break;
 		case 3:
-			callsub L_Mark, F_Navi("Armor Dealer","dewata,158,182","^008080");
+			callsub L_Mark, F_Navi("盔甲经销商","dewata,158,182","^008080");
 			viewpoint 1,158,182,2,0x008080;
 			break;
 		case 4:
-			callsub L_Mark, F_Navi("Tool Dealer","dewata,182,164","^FF1493");
+			callsub L_Mark, F_Navi("工具经销商","dewata,182,164","^FF1493");
 			viewpoint 1,182,164,3,0xFF1493;
 			break;
 		case 5:
-			callsub L_Mark, F_Navi("Restauranteur","dewata,146,109","^FF1493");
+			callsub L_Mark, F_Navi("餐厅老板","dewata,146,109","^FF1493");
 			viewpoint 1,146,109,4,0xFF1493;
 			break;
 		case 6:
-			callsub L_Mark, F_Navi("Krakau Gatekeeper","dewata,235,56","^8A2BE2");
+			callsub L_Mark, F_Navi("克拉科夫守门人","dewata,235,56","^8A2BE2");
 			viewpoint 1,235,56,5,0x8A2BE2;
 			break;
 		case 7:
-			callsub L_Mark, F_Navi("Alberta Sailor","dewata,229,49","^00BFFF");
+			callsub L_Mark, F_Navi("艾伯塔省水手","dewata,229,49","^00BFFF");
 			viewpoint 1,229,49,6,0x00BFFF;
 			break;
 		case 8:
-			mes "【大神指导】";
+			mes "[德瓦塔指南]";
 			mes "我会从你的小地图上删除所有标记。";
 			mes "我还能为您做些什么吗？";
 			viewpoint 2,202,184,0,0xFFFFFF;
@@ -67,14 +60,14 @@ dewata,202,106,4	script	Dewata Guide#dewata01	4_M_DEWWOMAN,{
 			viewpoint 2,230,52,6,0xFFFFFF;
 			break;
 		case 9:
-			mes "【大神指导】";
+			mes "[德瓦塔指南]";
 			mes "祝您旅途愉快！";
 			close;
 		}
 	}
 
 L_Mark:
-	mes "【大神指导】";
+	mes "[德瓦塔指南]";
 	mes ""+getarg(0)+" 是";
 	mes "标记在您的小地图上。";
 	mes "检查你的小地图。";

@@ -434,13 +434,10 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
 
     # Open output in append mode and write processed lines as we go
     with open(outfile, 'a', encoding='utf-8') as fo:
-        # writer wrapper: replace author signature to 'ding' in header comment lines
+        # writer wrapper: previously replaced a hardcoded author name; instead
+        # detect the `//===== By:` header and replace the following `//=` line
+        # with a canonical author value (ding).
         def write_line(txt):
-            try:
-                if txt.lstrip().startswith('//=') and 'L0ne_W0lf' in txt:
-                    txt = txt.replace('L0ne_W0lf', 'ding')
-            except Exception:
-                pass
             fo.write(txt)
         use_tqdm = _tqdm is not None
         if use_tqdm:
@@ -448,9 +445,11 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
         else:
             it = range(resume_idx, end_idx)
 
-        # Skip certain header blocks in output: keep closing marker for Additional Comments
+        # Skip certain header blocks in output: keep closing marker for Additional Comments and Changelog
         skip_additional_block = False
+        skip_changelog_block = False
         skip_indices = set()
+        author_next = False
         for idx in it:
             if idx in skip_indices:
                 continue
@@ -471,6 +470,22 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
                     skip_indices.add(next_idx)
                 continue
 
+            # Detect By: header so the next '//=' line is the author line to replace
+            if stripped.startswith('//===== By:'):
+                write_line(line)
+                author_next = True
+                continue
+
+            # If previous line indicated the author next, replace any '//=' line with 'ding'
+            if author_next:
+                if line.lstrip().startswith('//='):
+                    leading = line[:line.find('//=')]
+                    write_line(leading + '//= ding\n')
+                    author_next = False
+                    continue
+                else:
+                    author_next = False
+
             # Detect start of Additional Comments header block and skip until its closing line
             if stripped.startswith('//===== Additional Comments'):
                 skip_additional_block = True
@@ -482,6 +497,16 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
                     skip_additional_block = False
                     continue
                 # otherwise keep skipping lines inside the Additional Comments block
+                continue
+            # Detect start of Changelog header block and skip until its closing line
+            if stripped.startswith('//===== Changelog'):
+                skip_changelog_block = True
+                continue
+            if skip_changelog_block:
+                if stripped.startswith('//============================================================'):
+                    write_line(line)
+                    skip_changelog_block = False
+                    continue
                 continue
             # Prefer mes handling
             m = mes_line_re.search(line)

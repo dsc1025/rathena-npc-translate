@@ -1,0 +1,287 @@
+//===== rAthena Script =======================================
+//= Payon Guides
+//===== Description: =========================================
+//= Guides for the city of Payon.
+//===== Changelogs: ==========================================
+//= 1.0 Initial release for Renewal [ding]
+//= 1.1 Fixed and optimized. [Euphy]
+//= 1.2 Navigation system update. [Euphy]
+//============================================================
+
+payon,160,67,3	script	Guide#01payon::GuidePayon	708,{
+	cutin "pay_soldier",2;
+	mes "[支付指南]";
+	mes "欢迎来到^8B4513Payon^000000，";
+	mes "山村。";
+	mes "您需要帮助游览村庄吗？";
+	F_Navi("[支付指南]");
+	next;
+	while (1) {
+		switch(select("[主要设施]：[商人和助手]：从小地图上删除标记：取消")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[弓箭手村]：[工具店]：[武器和防具店]：[旅馆和酒馆]：[中央宫殿]：[宫殿庭院]:[ 皇家厨房 ]:上一个菜单")) {
+				case 1:
+					mes "[支付指南]";
+					mes F_Navi("弓箭手村","payon,227,328","^B9062F")+" 是其中";
+					mes "弓箭手协会驻地。";
+					mes "请从最北的门进入村庄。";
+					mes "您想查看其他地点吗？";
+					viewpoint 1,227,328,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("工具店","payon,144,85","^0000FF");
+					viewpoint 1,144,85,1,0x0A82FF;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("武器与盔甲店","payon,139,159","^FF5400");
+					viewpoint 1,139,159,2,0xFFB400;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, F_Navi("旅馆及酒馆","payon,220,117","^006400");
+					viewpoint 1,220,117,3,0xAAFF00;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("中央皇宫","payon,155,245","^7F3300");
+					viewpoint 1,155,245,4,0xD2691E;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("皇宫阁","payon,107,325","^800080");
+					viewpoint 1,107,325,5,0xDA70D6;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("皇家厨房","payon,154,325","^B9062F");
+					viewpoint 1,154,325,6,0xFF0000;
+					next;
+					break;
+				case 8:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 伊甸园传送官员 ]:[ 卡夫拉商店 ]:[ 修理/兵器匠 ]:[ 卡夫拉员工 ]:[ 陷阱专家 ]:[ Seiayblem ]:[ Leablem ]:[ Jade ]:[ 宠物美容师 ]:[ 厨师助理 ]:上一个菜单")) {
+				case 1:
+					callsub L_Mark, F_Navi("伊甸传送官","payon,177,111","^0000FF");
+					viewpoint 1,177,111,7,0x0A82FF;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("卡夫拉店女孩","payon,164,157","^FF5400");
+					viewpoint 1,164,157,8,0xFFB400;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("修理工和臂匠","payon,144,170","^006400");
+					viewpoint 1,144,170,9,0xAAFF00;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, "^7F3300Kafra Employees^000000";
+					viewpoint 1,181,104,10,0xD2691E;
+					viewpoint 1,175,226,11,0xD2691E;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("陷阱专家","payon,123,109","^800080");
+					viewpoint 1,123,109,12,0xDA70D6;
+					next;
+					break;
+				case 6:
+					mes "[支付指南]";
+					mes F_Navi("塞亚布勒姆","支付,140,​​151","^B9062F");
+					mes "是一名技术员";
+					mes "谁可以在武器和盔甲上创建^0000FF插槽^000000，";
+					mes "但不是所有设备";
+					mes "可以开槽。嗯，他就是这么说的。";
+					mes "您想查看其他地点吗？";
+					viewpoint 1,140,151,13,0xFF0000;
+					next;
+					break;
+				case 7:
+					mes "[支付指南]";
+					mes F_Navi("莱布勒姆","屋顶, 236,199","^0000FF");
+					mes "是一名技术员";
+					mes "谁可以在武器和盔甲上创建^0000FF插槽^000000，";
+					mes "但不是所有设备";
+					mes "可以开槽。嗯，他就是这么说的。";
+					mes "您想查看其他地点吗？";
+					viewpoint 1,236,199,14,0x0A82FF;
+					next;
+					break;
+				case 8:
+					mes "[支付指南]";
+					mes F_Navi("玉","屋顶, 173,238","^FF5400");
+					mes "可以交换不同类型的";
+					mes "^FF5400宝石^000000。";
+					mes "您想查看其他地点吗？";
+					viewpoint 1,173,238,15,0xFFB400;
+					next;
+					break;
+				case 9:
+					callsub L_Mark, F_Navi("宠物美容师","payon,177,131","^006400");
+					viewpoint 1,177,131,16,0xAAFF00;
+					next;
+					break;
+				case 10:
+					callsub L_Mark, F_Navi("助理厨师长","payon,206,119","^7F3300");
+					viewpoint 1,206,119,17,0xD2691E;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[支付指南]";
+			mes "当然，我会从你的小地图上删除所有标记。";
+			mes "我还能为您做些什么吗？";
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			viewpoint 2,1,1,7,0xFFFF00;
+			viewpoint 2,1,1,8,0xFFFF00;
+			viewpoint 2,1,1,9,0xFFFF00;
+			viewpoint 2,1,1,10,0xFFFF00;
+			viewpoint 2,1,1,11,0xFFFF00;
+			viewpoint 2,1,1,12,0xFFFF00;
+			viewpoint 2,1,1,13,0xFFFF00;
+			viewpoint 2,1,1,14,0xFFFF00;
+			viewpoint 2,1,1,15,0xFFFF00;
+			viewpoint 2,1,1,16,0xFFFF00;
+			viewpoint 2,1,1,17,0xFFFF00;
+			next;
+			break;
+		case 4:
+			mes "[支付指南]";
+			mes "祝您住宿愉快。";
+			close2;
+			cutin "",255;
+			end;
+		}
+	}
+	end;
+L_Mark:
+	mes "[支付指南]";
+	mes "让我标记一下位置";
+	mes getarg(0);
+	mes "在你的小地图上。";
+	mes "您想查看其他地点吗？";
+	return;
+}
+
+payon,151,182,6	duplicate(GuidePayon)	Guide#02payon	708
+payon,221,85,6	duplicate(GuidePayon)	Guide#03payon	708
+payon,233,324,4	duplicate(GuidePayon)	Guide#04payon	708
+
+pay_arche,86,33,4	script	Guide#05payon	708,{
+	cutin "pay_soldier",2;
+	mes "[支付指南]";
+	mes "欢迎来到^8B4513弓箭手村^000000，";
+	mes "佩永的一个附属村庄。";
+	mes "您需要帮助游览村庄吗？";
+	F_Navi("[支付指南]");
+	next;
+	set .@str$,"Would you like to check any other locations?";
+	while (1) {
+		switch(select("[佩扬地下城]:[弓箭手公会]:[工具店]:[卡夫拉员工]:[雇佣兵公会]:[炼金公会]：[伊甸传送官]：从小地图上删除标记：取消")) {
+		case 1:
+			mes "[支付指南]";
+			mes "让我标记一下入口";
+			mes ""+F_Navi("佩扬地牢","pay_arche,38,131","^B9062F");
+			mes "在你的小地图上。";
+			mes .@str$;
+			viewpoint 1,38,131,0,0xFF0000;
+			next;
+			break;
+		case 2:
+			mes "[支付指南]";
+			mes ""+F_Navi("弓箭手公会","pay_arche,143,164","^0000FF");
+			mes "是你可以改变的地方";
+			mes "你的工作交给阿彻。";
+			mes .@str$;
+			viewpoint 1,143,164,1,0x0A82FF;
+			next;
+			break;
+		case 3:
+			mes "[支付指南]";
+			mes "让我标记一下位置";
+			mes F_Navi("工具店","pay_arche,72,156","^FF5400");
+			mes "在你的小地图上。";
+			mes .@str$;
+			viewpoint 1,72,156,2,0xFFB400;
+			next;
+			break;
+		case 4:
+			mes "[支付指南]";
+			mes "让我标记 ^006400Kafra 员工^000000 的位置";
+			mes "在你的小地图上。";
+			mes .@str$;
+			viewpoint 1,55,123,3,0xAAFF00;
+			next;
+			break;
+		case 5:
+			mes "[支付指南]";
+			mes "让我标记一下位置";
+			mes F_Navi("雇佣兵公会成员","pay_arche,101,166","^7F3300");
+			mes "在你的小地图上。";
+			mes .@str$;
+			viewpoint 1,101,166,4,0xD2691E;
+			next;
+			break;
+		case 6:
+			mes "[支付指南]";
+			mes "让我标记一下位置";
+			mes F_Navi("炼金术士公会成员","pay_arche,126,113,","^800080");
+			mes "在你的小地图上。";
+			mes .@str$;
+			viewpoint 1,127,113,5,0xDA70D6;
+			next;
+			break;
+		case 7:
+			mes "[支付指南]";
+			mes ""+F_Navi("伊甸传送官","pay_arche,143,164","^0000FF");
+			mes "目前住在里面";
+			mes "弓箭手公会大楼。";
+			mes .@str$;
+			viewpoint 1,143,164,6,0x0A82FF;
+			next;
+			break;
+		case 8:
+			mes "[支付指南]";
+			mes "当然，我会从你的小地图上删除所有标记。";
+			mes .@str$;
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			next;
+			break;
+		case 9:
+			mes "[支付指南]";
+			mes "祝您住宿愉快。";
+			close2;
+			cutin "",255;
+			end;
+		}
+	}
+}

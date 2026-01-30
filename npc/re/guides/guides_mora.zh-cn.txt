@@ -1,0 +1,213 @@
+//===== rAthena Script ======================================= 
+//= Mora Guides
+//===== By: ================================================== 
+//= ding
+//===== Description: ========================================= 
+//= Guides for the city of Mora.
+//============================================================ 
+
+mora,25,158,5	script	Raffle Guide#north	516,{
+	mes "[拉夫]";
+	mes "哇~！";
+	mes "欢迎来到莫拉村。";
+	mes "你想知道的关于村庄的一切我都可以告诉你~！";
+	F_Navi("[拉夫]");
+	next;
+	switch(select("[旅馆]：[住宅]：[商店]：[仓库]：从小地图上删除标记：退出")) {
+	case 1:
+		mes "[拉夫]";
+		mes "哇~！";
+		mes "我们有一个 "+F_Navi("客栈","mora,44,138")+" 但我们不能让旅行者像莱佛士一样睡觉......";
+		mes "休息一下吧！";
+		viewpoint 1,44,134,0,0x0A82FF;
+		close;
+	case 2:
+		mes "[拉夫]";
+		mes "哇~！";
+		mes F_Navi("这","mora,119,170")+" 是莱佛士的房子所在的地方...";
+		mes "不过小声点因为大家都睡着了~！";
+		viewpoint 1,119,170,1,0xAAFF00;
+		close;
+	case 3:
+		mes "[拉夫]";
+		mes "哇~！";
+		mes "如果您正在寻找纪念品，您可以在这个"+F_Navi("区","mora,112,110")+".";
+		viewpoint 1,112,110,2,0xDA70D6;
+		close;
+	case 4:
+		mes "[拉夫]";
+		mes "哇~！";
+		mes F_Navi("这","mora,182,161")+" 是他们存放各种包裹和杂货的地方。";
+		mes "有很多东西不属于莱佛士，所以要小心！";
+		viewpoint 1,182,161,3,0xFF1493;
+		close;
+	case 5:
+		mes "[拉夫]";
+		mes "呵呵~！我要把它们全部删除~！";
+		viewpoint 2,1,1,0,0xFFFF00;
+		viewpoint 2,1,1,1,0xFFFF00;
+		viewpoint 2,1,1,2,0xFFFF00;
+		viewpoint 2,1,1,3,0xFFFF00;
+		close;
+	case 6:
+		mes "[拉夫]";
+		mes "哇~！";
+		mes "你的祖国流行什么运动？";
+		close;
+	}
+}
+
+mora,167,76,3	script	Raffle Guide#east	522,{
+	mes "[拉夫]";
+	mes "呃...";
+	mes "这，这就是莫拉村。";
+	mes "呃……你想了解哪个地方？";
+	F_Navi("[拉夫]");
+	next;
+	switch(select("[旅馆]：[住宅]：[商店]：[仓库]：从小地图上删除标记：退出")) {
+	case 1:
+		mes "[拉夫]";
+		mes "呃...";
+		mes "是、你困了吗？";
+		mes "你可以睡觉了"+F_Navi("这里","莫拉，44,138")+" 呃！！把你的东西放下呃！还有——还有——";
+		viewpoint 1,44,134,0,0x0A82FF;
+		close;
+	case 2:
+		mes "[拉夫]";
+		mes "呃...";
+		mes "你为什么要找出"+F_Navi("在哪里","mora,119,170")+"我住——？";
+		mes "呃，不...我想和我的朋友住在一起--";
+		viewpoint 1,119,170,1,0xAAFF00;
+		close;
+	case 3:
+		mes "[拉夫]";
+		mes "呃...";
+		mes "那些"+F_Navi("商店","mora,112,110")+"里面有很多东西——哦，还有温泉呃！";
+		viewpoint 1,112,110,2,0xDA70D6;
+		close;
+	case 4:
+		mes "[拉夫]";
+		mes "呃...";
+		mes "你不能直接进入"+F_Navi("仓库","mora,182,161")+"，否则你就会有麻烦了——";
+		mes "很多东西都是从村外来的——拉弗已经惹过好几次麻烦了——";
+		viewpoint 1,182,161,3,0xFF1493;
+		close;
+	case 5:
+		mes "[拉夫]";
+		mes "您确定要删除它们吗？";
+		viewpoint 2,1,1,0,0xFFFF00;
+		viewpoint 2,1,1,1,0xFFFF00;
+		viewpoint 2,1,1,2,0xFFFF00;
+		viewpoint 2,1,1,3,0xFFFF00;
+		close;
+	case 6:
+		mes "[拉夫]";
+		mes "呃...";
+		mes "当导游对我的社交恐惧症没有多大帮助--";
+		close;
+	}
+}
+
+mora,115,138,5	script	Raffle Guide#center	524,{
+	mes "[抽奖]";
+	mes "拉拉！";
+	mes "欢迎来到莫拉拉村！";
+	mes "如果您需要了解有关村庄的任何信息，请问我啦！";
+	F_Navi("[抽奖]");
+	next;
+	switch(select("[旅馆]：[住宅]：[商店]：[仓库]：从小地图上删除标记：退出。")) {
+	case 1:
+		mes "[抽奖]";
+		mes "拉拉！";
+		mes F_Navi("这","mora,44,138")+"是旅行者可以休息的地方啦！";
+		mes "店主很友善，多多跟他说话啦！";
+		viewpoint 1,44,134,0,0x0A82FF;
+		close;
+	case 2:
+		mes "[抽奖]";
+		mes "拉拉！";
+		mes F_Navi("这","mora,119,170")+" 是莱佛士住的地方！";
+		mes "去那边啦！";
+		viewpoint 1,119,170,1,0xAAFF00;
+		close;
+	case 3:
+		mes "[抽奖]";
+		mes "拉拉！";
+		mes "那么你想买点东西吗？";
+		mes "有很多"+F_Navi("商店和咖啡馆","mora,112,110")+"，所以检查一下啦！";
+		viewpoint 1,112,110,2,0xDA70D6;
+		close;
+	case 4:
+		mes "[抽奖]";
+		mes "拉拉！";
+		mes ""+F_Navi("仓库","mora,182,161")+" 是您存放贵重物品的地方！";
+		mes "小心点，别被抢劫啦！";
+		viewpoint 1,182,161,3,0xFF1493;
+		close;
+	case 5:
+		mes "[抽奖]";
+		mes "好的，我会删除地图上的所有标记啦！";
+		viewpoint 2,1,1,0,0xFFFF00;
+		viewpoint 2,1,1,1,0xFFFF00;
+		viewpoint 2,1,1,2,0xFFFF00;
+		viewpoint 2,1,1,3,0xFFFF00;
+		close;
+	case 6:
+		mes "[抽奖]";
+		mes "拉拉！";
+		mes "我真的不知道我的家人最后怎么会做出这些事情啦！";
+		close;
+	}
+}
+
+mora,72,51,3	script	Raffle Guide#south	518,{
+	mes "[拉菲利]";
+	mes "忘记？";
+	mes "欢迎来到莫拉村。";
+	mes "如果你想了解这个村子的任何事情，尽管问我。";
+	F_Navi("[拉菲利]");
+	next;
+	switch(select("[旅馆]：[住宅]：[商店]：[仓库]：从小地图上删除标记：退出")) {
+	case 1:
+		mes "[拉菲利]";
+		mes "忘记？";
+		mes F_Navi("这","mora,44,138")+" 是旅行者可以休息的地方。";
+		mes "店主很友善，所以要认识他。";
+		viewpoint 1,44,134,0,0x0A82FF;
+		close;
+	case 2:
+		mes "[拉菲利]";
+		mes "忘记？";
+		mes F_Navi("这","mora,119,170")+" 是莱佛士居住的地方。";
+		mes "你要来拉菲利家吗？我太高兴了。";
+		viewpoint 1,119,170,1,0xAAFF00;
+		close;
+	case 3:
+		mes "[拉菲利]";
+		mes "忘记？";
+		mes "我想买的东西有很多。";
+		mes "您可以找到大量的"+F_Navi("地方","mora,112,110")+"来吃饭和购物，还有大量的东西可以买。";
+		viewpoint 1,112,110,2,0xDA70D6;
+		close;
+	case 4:
+		mes "[拉菲利]";
+		mes "忘记？";
+		mes ""+F_Navi("仓库","mora,182,161")+" 是您存放贵重物品的地方。";
+		mes "但不要被抢劫。";
+		viewpoint 1,182,161,3,0xFF1493;
+		close;
+	case 5:
+		mes "[拉菲利]";
+		mes "我将删除所有标记。";
+		viewpoint 2,1,1,0,0xFFFF00;
+		viewpoint 2,1,1,1,0xFFFF00;
+		viewpoint 2,1,1,2,0xFFFF00;
+		viewpoint 2,1,1,3,0xFFFF00;
+		close;
+	case 6:
+		mes "[拉菲利]";
+		mes "忘记？";
+		mes "李哥今天好像心情不好。我做错了什么吗？";
+		close;
+	}
+}

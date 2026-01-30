@@ -1,18 +1,10 @@
 //===== rAthena Script ======================================= 
 //= El Dicastes Guide
 //===== By: ================================================== 
-//= Muad_Dib
-//===== Current Version: ===================================== 
-//= 1.2
-//===== Compatible With: ===================================== 
-//= rAthena Project
+//= ding
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Guide for the city of El Dicastes.
-//===== Additional Comments: ================================= 
-//= 1.0 First version. [Joseph]
-//= 1.1 Fixed viewpoint syntax. [Euphy]
-//= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
 dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
@@ -26,7 +18,7 @@ dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
 	mes "[旅行者伊查克]";
 	mes "所以我才会提供引导米德加尔特冒险者的服务。";
 	mes "您想知道什么？";
-	F_Navi("[Traveler Ichack]");
+	F_Navi("[旅行者伊查克]");
 	next;
 	switch(select("Dicastes Diel:住宅区:训练室:工厂:酒吧:猫爪商队")) {
 	case 1:
@@ -35,7 +27,7 @@ dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
 		mes "据说他们正在讨论重要的事情......";
 		next;
 		mes "[旅行者伊查克]";
-		mes "请确保您在 "+F_Navi("Diel","dicastes01,198,351")+" 登录，否则您会遇到麻烦。";
+		mes "请确保您在 "+F_Navi("迪尔","dicastes01,198,351")+" 登录，否则您会遇到麻烦。";
 		mes "从这里直接往北走，你不会错过的。";
 		viewpoint 1,198,351,0,0x00FF00;
 		close;
@@ -49,8 +41,8 @@ dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
 		next;
 		mes "[旅行者伊查克]";
 		mes "住宅区分为2个区域。";
-		mes ""+F_Navi("下层住宅区","dicastes01,136,106")+"是7点左右，";
-		mes F_Navi("上部区域","dicastes01,280,283")+" 1 点左右。";
+		mes ""+F_Navi("下层住宅区","dicastes01,136,106")+" 是在 7 点左右，";
+		mes F_Navi("上部区域","迪卡斯泰斯01,280,283")+"已经是1点左右了。";
 		viewpoint 1,280,283,1,0x01FF01;
 		viewpoint 1,136,106,2,0x0066FF;
 		close;
@@ -58,13 +50,13 @@ dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
 		mes "[旅行者伊查克]";
 		mes "由于这里存在危险，我们需要更好的安全措施......";
 		mes "你去过吗";
-		mes F_Navi("培训室","dicastes01,255,172")+"？训练警卫们似乎从不睡觉！";
+		mes F_Navi("培训室","迪卡斯泰斯01,255,172")+"？训练警卫们似乎从不睡觉！";
 		viewpoint 1,255,172,3,0xFFCCCC;
 		close;
 	case 4:
 		mes "[旅行者伊查克]";
 		mes "这是他们住在这里的最重要原因之一。";
-		mes "如果你去"+F_Navi("工厂","dicastes01,97,256")+"，你可以看到最近精炼的钸。";
+		mes "如果你去"+F_Navi("工厂","dicastes01,97,256")+"，你可以看到最近精炼的Bradium。";
 		viewpoint 1,97,256,4,0x0066FF;
 		close;
 	case 5:

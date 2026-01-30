@@ -1,0 +1,103 @@
+//===== rAthena Script ======================================= 
+//= Veins Guides
+//===== By: ================================================== 
+//= ding
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Veins
+//============================================================ 
+
+veins,210,345,5	script	Veins Guide#veins01::GuideVeins	934,{
+	mes "[静脉指南]";
+	mes "感谢你们度过了狂风暴雨。欢迎来到^8B4513矿脉^000000，峡谷村。";
+	mes "如果您是第一次使用导游服务，为什么不先查看\"Notice\"菜单呢？";
+	F_Navi("[静脉指南]");
+	next;
+	while (1) {
+		switch(select("[寺庙]：[旅馆]：[酒馆]：[武器店]：[工具店]：[机场]：[地质研究所]：[ Cool Event Corp.员工]：从小地图上删除标记：取消")) {
+		case 1:
+			mes "[静脉指南]";
+			mes "这"+F_Navi("寺庙","静脉,197,256")+"总是充满了对女神弗雷亚化身的信徒的祈祷。";
+			mes "它位于静脉的北侧。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,197,256,0,0xFF0000;
+			next;
+			break;
+		case 2:
+			mes "[静脉指南]";
+			mes "您可以在"+F_Navi("客栈","的血管里缓解旅途的疲劳，110,278")+"。旅馆位于矿脉的西北侧。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,110,278,1,0xFF4500;
+			next;
+			break;
+		case 3:
+			mes "[静脉指南]";
+			mes "如果您想与静脉镇居民交谈，请访问静脉"+F_Navi("酒馆","静脉，150,215")+".";
+			mes "酒吧位于 Veins 的西侧。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,150,215,2,0xDAA520;
+			next;
+			break;
+		case 4:
+			mes "[静脉指南]";
+			mes "你必须有能力保护自己的身体。";
+			mes "这"+F_Navi("武器店","静脉，150,175")+"in Veins 正在以合理的价格出售优质武器。";
+			mes "它位于静脉的西侧。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,150,175,3,0x008000;
+			next;
+			break;
+		case 5:
+			mes "[静脉指南]";
+			mes "必备物品！看看镇中心的静脉"+F_Navi("工具店","静脉，230,161")+"。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,230,161,4,0x0000FF;
+			next;
+			break;
+		case 6:
+			mes "[静脉指南]";
+			mes "静脉的"+F_Navi("飞机场","静脉，273,287")+"目前仅用于货物。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,273,287,5,0x000080;
+			next;
+			break;
+		case 7:
+			mes "[静脉指南]";
+			mes "您对地质学感兴趣吗？";
+			mes "如果是这样，请访问";
+			mes F_Navi("地质研究所","静脉，150,175")+" 武器店二楼。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,150,175,6,0x800080;
+			next;
+			break;
+		case 8:
+			mes "[静脉指南]";
+			mes "我会标记位置";
+			mes ""+F_Navi("Cool Event 公司员工","静脉，209,127","^808080");
+			mes "在你的小地图上。";
+			mes "您想查看其他地点吗？";
+			viewpoint 1,209,127,7,0x808080;
+			next;
+			break;
+		case 9:
+			mes "[静脉指南]";
+			mes "当然，我会从你的小地图上删除所有标记。";
+			mes "我还能为您做些什么吗？";
+			viewpoint 2,197,256,0,0xFFFFFF;
+			viewpoint 2,110,278,1,0xFFFFFF;
+			viewpoint 2,150,215,2,0xFFFFFF;
+			viewpoint 2,150,175,3,0xFFFFFF;
+			viewpoint 2,230,161,4,0xFFFFFF;
+			viewpoint 2,273,287,5,0xFFFFFF;
+			viewpoint 2,150,175,6,0xFFFFFF;
+			viewpoint 2,209,127,7,0xFFFFFF;
+			next;
+			break;
+		case 10:
+			mes "[静脉指南]";
+			mes "祝您旅途平安！";
+			close;
+		}
+	}
+}
+veins,189,101,5	duplicate(GuideVeins)	Veins Guide#veins02	934

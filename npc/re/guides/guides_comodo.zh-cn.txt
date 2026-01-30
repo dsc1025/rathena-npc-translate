@@ -1,87 +1,79 @@
 //===== rAthena Script ======================================= 
 //= Comodo Guides
 //===== By: ================================================== 
-//= L0ne_W0lf
-//===== Current Version: ===================================== 
-//= 1.2
-//===== Compatible With: ===================================== 
-//= rAthena Project
+//= ding
 //===== Description: ========================================= 
 //= [Official Conversion]
 //= Guides for the city of Comodo.
-//===== Additional Comments: ================================= 
-//= 1.0 First version, Renewal guide.
-//= 1.1 Fixed and optimized. [Euphy]
-//= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
 comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
-	mes "【便捷指南】";
+	mes "[科摩多指南]";
 	mes "欢迎来到^8B4513Comodo^000000，";
 	mes "符文米德加尔特王国的海滩小镇。";
 	mes "您需要帮助游览城镇吗？";
-	F_Navi("[Comodo Guide]");
+	F_Navi("[科摩多指南]");
 	next;
 	while (1) {
-		switch(select("[ 主要设施 ]:[ 商人及帮手 ]: 移除小地图标记: 取消: 关于^8B4513Comodo^000000")) {
+		switch(select("[主要设施]：[商人和助手]：从小地图上删除标记：取消：关于^8B4513Comodo^000000")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ 酒馆 ]:[ 赌场 ]:[ 武器防具店 ]:[ 工具店 ]:[ 营地 ]:[ 纪念品商贩 ]:[ 东洞毛 ]:[ 西洞卡鲁 ]:[ 北洞卢安达 ]:[ 草裙舞舞台 ]:[ 卡夫拉公司西分店 ]: 上一个菜单")) {
+				switch(select("[酒馆]：[赌场]：[武器和防具店]：[工具店]：[露营地]：[纪念品供应商]:[ 东洞茂 ]:[ 西洞卡鲁 ]:[ 北洞卢安达 ]:[ 草裙舞舞台 ]:[ 卡夫拉公司西分公司 ]:上一页菜单")) {
 				case 1:
-					callsub L_Mark, F_Navi("Tavern","comodo,161,315","^FF0000");
+					callsub L_Mark, F_Navi("酒馆","comodo,161,315","^FF0000");
 					viewpoint 1,166,298,0,0xFF0000;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("Casino","comodo,140,111","^FFA500");
+					callsub L_Mark, F_Navi("赌场","comodo,140,111","^FFA500");
 					viewpoint 1,140,98,1,0xFFA500;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("Weapon & Armor Shop","comodo,266,74","^FF4500");
+					callsub L_Mark, F_Navi("武器与盔甲店","comodo,266,74","^FF4500");
 					viewpoint 1,266,70,2,0xFF4500;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("Tool Shop","comodo,92,128","^B8860B");
+					callsub L_Mark, F_Navi("工具店","comodo,92,128","^B8860B");
 					viewpoint 1,86,128,3,0xB8860B;
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("Campsite","comodo,209,308","^32CD32");
+					callsub L_Mark, F_Navi("营地","comodo,209,308","^32CD32");
 					viewpoint 1,210,308,4,0x32CD32;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("Souvenir Vendor","comodo,293,125","^6B8E23");
+					callsub L_Mark, F_Navi("纪念品商贩","comodo,293,125","^6B8E23");
 					viewpoint 1,298,124,5,0x6B8E23;
 					next;
 					break;
 				case 7:
-					callsub L_Mark, F_Navi("East Cave Mao","comodo,333,175","^008B8B");
+					callsub L_Mark, F_Navi("东洞茂","comodo,333,175","^008B8B");
 					viewpoint 1,333,175,6,0x008B8B;
 					next;
 					break;
 				case 8:
-					callsub L_Mark, F_Navi("West Cave Karu","comodo,24,214","^1E90FF");
+					callsub L_Mark, F_Navi("西洞卡鲁","comodo,24,214","^1E90FF");
 					viewpoint 1,24,214,7,0x1E90FF;
 					next;
 					break;
 				case 9:
-					callsub L_Mark, F_Navi("North Cave Ruanda","comodo,176,358","^0000CD");
+					callsub L_Mark, F_Navi("卢旺达北洞","comodo,176,358","^0000CD");
 					viewpoint 1,176,358,8,0x0000CD;
 					next;
 					break;
 				case 10:
-					callsub L_Mark, F_Navi("Hula Dance Stage","comodo,188,168","^C71585");
+					callsub L_Mark, F_Navi("草裙舞舞台","comodo,188,168","^C71585");
 					viewpoint 1,188,168,9,0xC71585;
 					next;
 					break;
 				case 11:
-					mes "【便捷指南】";
+					mes "[科摩多指南]";
 					mes "让我标记一下位置";
-					mes F_Navi("Kafra公司西部分公司","comodo,131,195","^DB7093");
+					mes F_Navi("卡夫拉公司西部分公司","舒适,131,195","^DB7093");
 					mes "在你的小地图上。";
 					mes "您想查看其他地点吗？";
 					viewpoint 1,136,202,10,0xDB7093;
@@ -96,15 +88,15 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ 酋长之家 ]:[ 博尔罗宾 ]:[ 卡夫拉员工 ]:[ 漫游吟游诗人 ]: 上一个菜单")) {
+				switch(select("[酋长之家]：[博尔罗宾]：[卡夫拉员工]：[漫游吟游诗人]：上一个菜单")) {
 				case 1:
-					callsub L_Mark, F_Navi("Chief's House","comodo,115,290","^6495ED");
+					callsub L_Mark, F_Navi("酋长之家","comodo,115,290","^6495ED");
 					viewpoint 1,114,294,11,0x6495ED;
 					next;
 					break;
 				case 2:
-					mes "【便捷指南】";
-					mes F_Navi("罗宾活着","Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.","^228B22");
+					mes "[科摩多指南]";
+					mes F_Navi("罗宾活着","方便，193,151","^228B22");
 					mes "帮助冒险者成为^228B22舞者^000000。";
 					mes "您想查看其他地点吗？";
 					viewpoint 1,193,151,12,0x228B22;
@@ -116,7 +108,7 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 					next;
 					break;
 				case 4:
-					mes "【便捷指南】";
+					mes "[科摩多指南]";
 					mes ""+F_Navi("漫游吟游诗人","comodo,226,123","^DB7093");
 					mes "帮助冒险者成为^DB7093吟游诗人^000000。";
 					mes "您想查看其他地点吗？";
@@ -130,7 +122,7 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 			}
 			break;
 		case 3:
-			mes "【便捷指南】";
+			mes "[科摩多指南]";
 			mes "当然，我会从你的小地图上删除所有标记。";
 			mes "我还能为您做些什么吗？";
 			viewpoint 2,166,298,0,0xFFFFFF;
@@ -151,16 +143,16 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 			next;
 			break;
 		case 4:
-			mes "【便捷指南】";
+			mes "[科摩多指南]";
 			mes "祝您住宿愉快。";
 			close;
 		case 5:
-			mes "【便捷指南】";
+			mes "[科摩多指南]";
 			mes "^8B4513Comodo^000000 是";
 			mes "位于山洞内";
 			mes "自然阳光永远无法到达。";
 			next;
-			mes "【便捷指南】";
+			mes "[科摩多指南]";
 			mes "^8B4513Comodo^000000的村民";
 			mes "克服了恶劣的自然环境";
 			mes "打造热门旅游胜地。";
@@ -171,7 +163,7 @@ comodo,322,178,4	script	Comodo Guide#01comodo::GuideComodo	700,{
 	}
 	end;
 L_Mark:
-	mes "【便捷指南】";
+	mes "[科摩多指南]";
 	mes "让我标记一下位置";
 	mes "这"+getarg(0);
 	mes "在你的小地图上。";

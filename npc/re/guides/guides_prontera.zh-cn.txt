@@ -1,0 +1,294 @@
+//===== rAthena Script =======================================
+//= Prontera Guides
+//===== Description: =========================================
+//= Guides for the city of Prontera.
+//===== Changelogs: ==========================================
+//= 1.0 Initial release for Renewal [ding]
+//= 1.1 Navigation system update. [Euphy]
+//============================================================
+
+prontera,154,187,4	script	Guide#01prontera::GuideProntera	105,{
+	cutin "prt_soldier",2;
+	mes "[前沿指南]";
+	mes "欢迎来到^8B4513普隆德拉^000000，";
+	mes "美丽的首都";
+	mes "符文米德加特王国。";
+	mes "您需要帮助游览这座城市吗？";
+	F_Navi("[前沿指南]");
+	next;
+	set .@str$,"Would you like to check any other locations?";
+	while (1) {
+		switch(select("[主要设施]：[商人和助手]：从小地图上删除标记：取消")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[工具店]：[武器与防具店]：[锻造]：[庇护所]：[骑士办公室]：[旅馆]:[酒馆]:[图书馆]:[普隆德拉城堡]:[职业介绍所]:[市政厅]:上一个菜单")) {
+				case 1:
+					callsub L_Mark, F_Navi("工具店","prontera,134,221","^B9062F");
+					mes .@str$;
+					viewpoint 1,134,221,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("武器与盔甲店","prontera,175,220","^0000FF");
+					mes .@str$;
+					viewpoint 1,175,220,1,0x0A82FF;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("锻造","prontera,179,184","^FF5400");
+					mes .@str$;
+					viewpoint 1,179,184,2,0xFFB400;
+					next;
+					break;
+				case 4:
+					mes "[前沿指南]";
+					mes "这"+F_Navi("普隆德拉保护区","边境，236,316","^006400")+"是";
+					mes "在那里你可以将你的工作转为侍从，";
+					mes "它位于普隆德拉的最东北部。";
+					mes "让我在你的小地图上标记位置。";
+					mes .@str$;
+					viewpoint 1,236,316,3,0xAAFF00;
+					next;
+					break;
+				case 5:
+					mes "[前沿指南]";
+					mes "这"+F_Navi("骑士办公室","边境, 46,345")+"是";
+					mes "在那里你可以将你的工作改为^7F3300骑士^000000";
+					mes "或者申请^7F3300涵洞^000000征服党。";
+					mes .@str$;
+					viewpoint 1,46,345,4,0xD2691E;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("客栈","prontera,203,191","^800080");
+					mes .@str$;
+					viewpoint 1,204,191,5,0xDA70D6;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, "^B9062FTaverns^000000";
+					mes "只有"+F_Navi("北方","prontera,208,154","^B9062F")+"酒馆";
+					mes "目前已开放。";
+					mes .@str$;
+					viewpoint 1,208,154,6,0xFF0000;
+					viewpoint 1,46,67,7,0xFF0000;
+					next;
+					break;
+				case 8:
+					mes "[前沿指南]";
+					mes "^0000FF库^000000是";
+					mes "在这里您可以找到有用的信息，例如怪物百科全书。";
+					mes "目前有两个可用的库，";
+					mes "一份发送至"+F_Navi("东北","prontera,120,264")+"，另一份发送至"+F_Navi("西北","prontera,192,264")+".";
+					mes .@str$;
+					viewpoint 1,120,264,8,0x0A82FF;
+					viewpoint 1,192,264,9,0x0A82FF;
+					next;
+					break;
+				case 9:
+					mes "[前沿指南]";
+					mes ""+F_Navi("普隆德拉城堡","prontera,156,360","^FF5400")+" 从这里向北，";
+					mes "它的后门连接到";
+					mes "普隆德拉平原北部。";
+					mes "让我在你的小地图上标记城堡。";
+					mes .@str$;
+					viewpoint 1,156,360,10,0xFFB400;
+					next;
+					break;
+				case 10:
+					callsub L_Mark, F_Navi("职业介绍所","prontera,133,183","^006400");
+					mes .@str$;
+					viewpoint 1,133,183,11,0xAAFF00;
+					next;
+					break;
+				case 11:
+					mes "[前沿指南]";
+					mes "让我标记一下"+F_Navi("市政府","prontera,75,91","^7F3300的位置");
+					mes "在你的小地图上。";
+					mes "有一个发型师";
+					mes "那里可以改变你的头发颜色。";
+					mes .@str$;
+					viewpoint 1,75,91,12,0xD2691E;
+					next;
+					break;
+				case 12:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 伊甸传送官 ]:[ 佩科·佩科饲养员 ]:[ 骑乘生物大师 ]:[ 魔法装备大师 ]:[ 佩科·佩科去除剂 ]:[ 贸易商人]:[ 雇佣公会成员 ]:[ 催眠师 ]:[ 卡夫拉员工 ]:[ 莱布尔姆 ]:[ 学徒工匠]：[宠物美容师]：上一个菜单")) {
+				case 1:
+					callsub L_Mark, F_Navi("伊甸传送官","prontera,124,76","^800080"),1;
+					mes .@str$;
+					viewpoint 1,124,76,13,0xDA70D6;
+					next;
+					break;
+				case 2:
+					mes "[前沿指南]";
+					mes "两个^0000FFPeco Peco 育种机^000000 可用，";
+					mes "一张为^0000FF骑士^000000前往"+F_Navi("西北","普隆德拉，55,350","^0000FF");
+					mes "另一个为^0000FF十字军^000000到"+F_Navi("东北","prontera,232,310","^0000FF")+".";
+					viewpoint 1,55,350,14,0x0A82FF;
+					viewpoint 1,232,310,15,0x0A82FF;
+					next;
+					break;
+				case 3:
+					mes "[前沿指南]";
+					mes ""+F_Navi("骑乘生物大师","prontera,131,213","^FF5400")+" 提供服务";
+					mes "^FF5400符文骑士^000000和^FF5400皇家卫队^000000。";
+					mes "让我标记他的位置";
+					mes "在你的小地图上。";
+					mes .@str$;
+					viewpoint 1,131,213,16,0xFFB400;
+					next;
+					break;
+				case 4:
+					mes "[前沿指南]";
+					mes "这"+F_Navi("魔法装备大师","边境,163,178","^006400");
+					mes "提供服务";
+					mes "^006400机制^000000。";
+					mes "让我标记他的位置";
+					mes "在你的小地图上。";
+					mes .@str$;
+					viewpoint 1,163,178,17,0xAAFF00;
+					next;
+					break;
+				case 5:
+					mes "[前沿指南]";
+					mes "如果你心爱的 Peco Peco 拒绝";
+					mes "离开你，";
+					mes "请联系"+F_Navi("Peco Peco 去除剂","prontera,125,208","^7F3300");
+					mes "靠近中央喷泉。";
+					mes .@str$;
+					viewpoint 1,125,208,18,0xD2691E;
+					next;
+					break;
+				case 6:
+					mes "[前沿指南]";
+					mes "符文商人、天松商人等";
+					mes F_Navi("贸易商","边境, 178,244","^800080")+"已被标记";
+					mes "在你的小地图上。";
+					mes .@str$;
+					viewpoint 1,178,244,19,0xDA70D6;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("雇佣兵公会成员","prontera,35,337","^0000FF"),1;
+					mes .@str$;
+					viewpoint 1,35,337,20,0x0A82FF;
+					next;
+					break;
+				case 8:
+					mes "[前沿指南]";
+					mes "^FF5400催眠师^000000";
+					mes "帮助初学者冒险家";
+					mes "重置他们的技能。";
+					mes "他已经搬到了普隆德拉东南部的卫星城伊兹鲁德。";
+					mes "您想查看其他地点吗？";
+					mes .@str$;
+					//viewpoint 1,146,232,21,0xFFB400;
+					next;
+					break;
+				case 9:
+					callsub L_Mark, "^006400Kafra Employees^000000",1;
+					mes .@str$;
+					viewpoint 1,152,326,22,0xAAFF00;
+					viewpoint 1,30,207,23,0xAAFF00;
+					viewpoint 1,282,200,24,0xAAFF00;
+					viewpoint 1,151,29,25,0xAAFF00;
+					viewpoint 1,146,89,26,0xAAFF00;
+					next;
+					break;
+				case 10:
+					mes "[前沿指南]";
+					mes F_Navi("莱布勒姆","前沿,244,169","^0000FF");
+					mes "是一名技术员";
+					mes "谁可以在武器和盔甲上创建^0000FF插槽^000000，";
+					mes "听起来很神奇，";
+					mes "并非所有装备都可以开槽。";
+					mes .@str$;
+					viewpoint 1,244,169,27,0x0A82FF;
+					next;
+					break;
+				case 11:
+					callsub L_Mark, F_Navi("工匠学徒","prontera,165,60","^800080"),1;
+					mes .@str$;
+					viewpoint 1,165,60,28,0xDA70D6;
+					next;
+					break;
+				case 12:
+					callsub L_Mark, F_Navi("宠物美容师","prontera,218,211"),1;
+					mes .@str$;
+					viewpoint 1,218,211,29,0xFF0000;
+					next;
+					break;
+				case 13:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[前沿指南]";
+			mes "当然，我会从你的小地图上删除所有标记。";
+			mes "我还能为您做些什么吗？";
+			viewpoint 2,1,1,0,0xFFFF00;
+			viewpoint 2,1,1,1,0x000000;
+			viewpoint 2,1,1,2,0xFF0000;
+			viewpoint 2,1,1,3,0xFFFF00;
+			viewpoint 2,1,1,4,0xFFFF00;
+			viewpoint 2,1,1,5,0xFFFF00;
+			viewpoint 2,1,1,6,0xFFFF00;
+			viewpoint 2,1,1,7,0xFFFF00;
+			viewpoint 2,1,1,8,0xFFFF00;
+			viewpoint 2,1,1,9,0xFFFF00;
+			viewpoint 2,1,1,10,0xFFFF00;
+			viewpoint 2,1,1,11,0xFFFF00;
+			viewpoint 2,1,1,12,0xFFFF00;
+			viewpoint 2,1,1,13,0xFFFF00;
+			viewpoint 2,1,1,14,0xFFFF00;
+			viewpoint 2,1,1,15,0xFFFF00;
+			viewpoint 2,1,1,16,0xFFFF00;
+			viewpoint 2,1,1,17,0xFFFF00;
+			viewpoint 2,1,1,18,0xFFFF00;
+			viewpoint 2,1,1,19,0xFFFF00;
+			viewpoint 2,1,1,20,0xFFFF00;
+			//viewpoint 2,1,1,21,0xFFFF00;
+			viewpoint 2,1,1,22,0xFFFF00;
+			viewpoint 2,1,1,23,0xFFFF00;
+			viewpoint 2,1,1,24,0xFFFF00;
+			viewpoint 2,1,1,25,0xFFFF00;
+			viewpoint 2,1,1,26,0xFFFF00;
+			viewpoint 2,1,1,27,0xFFFF00;
+			viewpoint 2,1,1,28,0xFFFF00;
+			viewpoint 2,1,1,29,0xFFFF00;
+			next;
+			break;
+		case 4:
+			mes "[前沿指南]";
+			mes "祝您住宿愉快。";
+			close2;
+			cutin "prt_soldier",255;
+			end;
+		}
+	}
+	end;
+L_Mark:
+	mes "[前沿指南]";
+	if (getarg(1,0)) {
+		mes "让我标记一下位置";
+		mes getarg(0);
+	} else
+		mes "让我标记一下位置"+getarg(0);
+	mes "在你的小地图上。";
+	return;
+}
+prontera,282,208,2	duplicate(GuideProntera)	Guide#02prontera	105
+prontera,29,200,6	duplicate(GuideProntera)	Guide#03prontera	105
+prontera,160,29,0	duplicate(GuideProntera)	Guide#04prontera	105
+prontera,159,326,4	duplicate(GuideProntera)	Guide#05prontera	105

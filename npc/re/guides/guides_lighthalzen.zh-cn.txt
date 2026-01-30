@@ -1,0 +1,181 @@
+//===== rAthena Script =======================================
+//= Lighthalzen Guides
+//===== Description: =========================================
+//= Guides for the city of Lighthalzen.
+//===== Changelogs: ==========================================
+//= 1.0 Initial release for Renewal [ding]
+//= 1.1 Optimized. [Euphy]
+//= 1.2 Navigation system update. [Euphy]
+//============================================================
+
+lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
+	cutin "ein_soldier",2;
+	mes "[莱特哈尔森指南]";
+	mes "欢迎来到^8B4513Lighthalzen^000000，";
+	mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+	mes "如果您需要任何指导";
+	mes "城市周边，随意";
+	mes "来问我，我会做我的";
+	mes "最好能帮助你。";
+	next;
+	mes "[莱特哈尔森指南]";
+	mes "请注意我是";
+	mes "负责提供信息";
+	mes "关于西区";
+	mes "^8B4513Lighthalzen^000000。现在，请";
+	mes "选择您要的位置";
+	mes "喜欢了解更多。";
+	F_Navi("[莱特哈尔森指南]");
+	next;
+	while (1) {
+		switch(select("[主要设施]：[商人和助手]：从小地图上删除标记：取消")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[酒店]：[银行]：[机场]：[武器店]：[百货商店]：[警察局]：[珠宝店]:[ Cool Event Corp. ]:[ 人体学实验室 ]:[ 炼金术士协会 ]:上一页菜单")) {
+				case 1:
+					callsub L_Mark, F_Navi("酒店","lighthalzen,159,133","^FF0000");
+					viewpoint 1,160,217,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("银行","lighthalzen,203,257","^FF4500");
+					viewpoint 1,203,257,1,0xFF4500;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("飞机场","lighthalzen,262,75","^DAA520");
+					viewpoint 1,262,75,2,0xDAA520;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, F_Navi("武器店","lighthalzen,194,35","^7B68EE");
+					viewpoint 1,194,35,3,0x7B68EE;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("百货商店","lighthalzen,199,164","^B91A4D");
+					viewpoint 1,202,106,4,0xB91A4D;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("警察局","lighthalzen,234,276","^008000");
+					viewpoint 1,234,276,5,0x008000;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("珠宝店","lighthalzen,96,110","^0000FF");
+					viewpoint 1,96,110,6,0x0000FF;
+					next;
+					break;
+				case 8:
+					callsub L_Mark, F_Navi("酷事件公司","lighthalzen,238,217","^000080");
+					viewpoint 1,238,217,7,0x000080;
+					next;
+					break;
+				case 9:
+					callsub L_Mark, F_Navi("躯体学实验室","lighthalzen,101,243","^800080");
+					viewpoint 1,101,243,8,0x800080;
+					next;
+					break;
+				case 10:
+					callsub L_Mark, F_Navi("炼金术士协会","lighthalzen,54,132","^0A9696");
+					viewpoint 1,54,132,9,0x0A9696;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ Armsmith ]:[ Seiayablem ]:[ 宠物美容师 ]:[ Kafra 员工 ]:[ Cool Event Corp 员工 ]:上一个菜单")) {
+				case 1:
+					mes "[莱特哈尔森指南]";
+					mes "你可以去富勒，";
+					mes "^0A9696阿姆史密斯^000000";
+					mes "武器店一楼。";
+					viewpoint 1,194,35,10,0x0A9696;
+					next;
+					callsub L_Mark, "^0A9696Armsmith^000000";
+					next;
+					break;
+				case 2:
+					mes "[莱特哈尔森指南]";
+					mes "^4B0082Seiyablem^000000 添加";
+					mes "您物品上的插座";
+					mes "在一楼";
+					mes "武器店的。";
+					viewpoint 1,194,35,11,0x4B0082;
+					next;
+					callsub L_Mark, "^4B0082Seiyablem^000000",1;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("宠物美容师","lighthalzen,222,191","^FF4500");
+					viewpoint 1,222,191,12,0xFF4500;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, "^008080Kafra Employees^000000";
+					viewpoint 1,164,99,13,0x008080;
+					viewpoint 1,164,99,14,0x008080;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("Cool Event 公司员工","lighthalzen,94,247","^FF1493");
+					viewpoint 1,94,247,15,0xFF1493;
+					next;
+					break;
+				case 6:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[莱特哈尔森指南]";
+			mes "当然，我会从你的小地图上删除所有标记。";
+			mes "我还能为您做些什么吗？";
+			viewpoint 2,160,217,0,0xFFFFFF;
+			viewpoint 2,203,257,1,0xFFFFFF;
+			viewpoint 2,262,75,2,0xFFFFFF;
+			viewpoint 2,194,35,3,0xFFFFFF;
+			viewpoint 2,202,106,4,0xFFFFFF;
+			viewpoint 2,234,276,5,0xFFFFFF;
+			viewpoint 2,96,110,6,0xFFFFFF;
+			viewpoint 2,238,217,7,0xFFFFFF;
+			viewpoint 2,101,243,8,0xFFFFFF;
+			viewpoint 2,54,132,9,0xFFFFFF;
+			viewpoint 2,194,35,10,0xFFFFFF;
+			viewpoint 2,194,35,11,0xFFFFFF;
+			viewpoint 2,222,191,12,0xFFFFFF;
+			viewpoint 2,164,99,13,0xFFFFFF;
+			viewpoint 2,164,99,14,0xFFFFFF;
+			viewpoint 2,94,247,15,0xFFFFFF;
+			next;
+			break;
+		case 4:
+			mes "[莱特哈尔森指南]";
+			mes "享受你的冒险吧！";
+			close2;
+			cutin "ein_soldier",255;
+			end;
+		}
+	}
+	end;
+L_Mark:
+	mes "[莱特哈尔森指南]";
+	mes "我会标记位置";
+	mes "的"+((getarg(1,0))?"":"这")+getarg(0);
+	mes "在你的小地图上。";
+	mes "您想查看其他地点吗？";
+	return;
+}
+lighthalzen,220,310,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz02	852
+lighthalzen,154,100,5	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz03	852
+lighthalzen,307,224,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz04	852
+lighthalzen,247,82,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz05	852

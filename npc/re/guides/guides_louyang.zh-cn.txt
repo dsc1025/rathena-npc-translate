@@ -1,0 +1,120 @@
+//===== rAthena Script ======================================= 
+//= Luoyang Guide
+//===== By: ================================================== 
+//= ding
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guide for the city of Luoyang.
+//============================================================ 
+
+louyang,224,104,4	script	Luoyang Guide#01louyang	818,{
+	mes "[代表]";
+	mes "欢迎来到^8B4513洛阳^000000,";
+	mes "一块古老的土地";
+	mes "充满故事的历史";
+	mes "的勇敢。";
+	next;
+	mes "[代表]";
+	mes "我们现在提供一条海洋通道来容纳外国游客和跨文化交流，使所有人都能从中受益。";
+	next;
+	mes "[代表]";
+	mes "^8B4513洛阳^000000以";
+	mes "其悠久的历史以及这个国家独有的特色。请慢慢来，享受您的住宿。";
+	F_Navi("[代表]");
+	set .@str$,"Is there anything else I can do for you?";
+	while (1) {
+		next;
+		switch(select("[龙堡]：[医生办公室]：[市政厅]：[武器店]：[工具店]：[酒馆]：[天文台]：[返回艾伯塔省]：从小地图上删除标记：取消")) {
+		case 1:
+			mes "[代表]";
+			mes ""+F_Navi("龙堡","louyang,218,253")+"位于^0A82FF+^000000。这是包括我们的领主在内的所有贵族居住的地方。";
+			mes "既然你是外人，我想你还是先去拜访一下我们的主公吧。";
+			mes .@str$;
+			viewpoint 1,218,253,0,0x0A82FF;
+			break;
+		case 2:
+			mes "[代表]";
+			mes "这是著名的"+F_Navi("医生办公室","洛阳,261,93","^AAFF00");
+			mes "据传它可以治愈所有疾病。但我不确定这是否属实。";
+			mes .@str$;
+			viewpoint 1,261,93,1,0xAAFF00;
+			break;
+		case 3:
+			mes "[代表]";
+			mes "我们有一个联邦政府运作的"+F_Navi("市政府","洛阳，309,78")+"。";
+			mes "它位于^008080+^000000。";
+			next;
+			mes "[代表]";
+			mes "如果您有任何问题，";
+			mes "你应该与";
+			mes "那里的员工。";
+			mes .@str$;
+			viewpoint 1,309,78,2,0x20B2AA;
+			break;
+		case 4:
+			mes "[代表]";
+			mes ""+F_Navi("武器店","louyang,145,172")+"位于^55FF33+^000000。";
+			next;
+			mes "[代表]";
+			mes "你会看到";
+			mes "锻造出奇妙的武器";
+			mes "由经验丰富的人";
+			mes "洛阳铁匠。";
+			mes .@str$;
+			viewpoint 1,145,172,3,0xFF1493;
+			break;
+		case 5:
+			mes "[代表]";
+			mes ""+F_Navi("工具店","louyang,138,99")+"位于^3355FF+^000000。";
+			next;
+			mes "[代表]";
+			mes "了解你的敌人";
+			mes "就成功了一半！";
+			mes "做好准备也比事后后悔更安全。你为什么不去检查一下他们的物资呢？";
+			mes .@str$;
+			viewpoint 1,138,99,4,0xFF0000;
+			break;
+		case 6:
+			mes "[代表]";
+			mes "当您旅途劳累时，我建议您游览"+F_Navi("酒馆","洛阳，280,165")+"。它位于^00FF00+^000000。";
+			next;
+			mes "[代表]";
+			mes "小酒馆是个好地方";
+			mes "结识其他游客，以及了解任何可能有帮助的新闻。";
+			mes .@str$;
+			viewpoint 1,280,165,5,0xDAA520;
+			break;
+		case 7:
+			mes "[代表]";
+			mes "你不会比在现场更好地了解世界"+F_Navi("天文台","louyang,136,245")+".";
+			mes "这是这里必看的地方。";
+			mes .@str$;
+			viewpoint 1,136,245,6,0xD8BFD8;
+			break;
+		case 8:
+			mes "[代表]";
+			mes "如果您想返回艾伯塔省，";
+			mes "在城外的码头上找到"+F_Navi("女孩","louyang,218,22","^00BFFF")+"。";
+			mes .@str$;
+			viewpoint 1,218,22,7,0x00BFFF;
+			break;
+		case 9:
+			mes "[代表]";
+			mes "我会从你的小地图上删除所有标记。";
+			mes .@str$;
+			viewpoint 2,1,1,0,0xFFFFFF;
+			viewpoint 2,1,1,1,0xFFFFFF;
+			viewpoint 2,1,1,2,0xFFFFFF;
+			viewpoint 2,1,1,3,0xFFFFFF;
+			viewpoint 2,1,1,4,0xFFFFFF;
+			viewpoint 2,1,1,5,0xFFFFFF;
+			viewpoint 2,1,1,6,0xFFFFFF;
+			viewpoint 2,1,1,7,0xFFFFFF;
+			break;
+		case 10:
+			mes "[代表]";
+			mes "祝您旅途愉快~！";
+			close;
+		}
+	}
+}

@@ -1,0 +1,293 @@
+//===== rAthena Script ======================================= 
+//= Hugel Guides
+//===== By: ================================================== 
+//= ding
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Guides for the city of Hugel.
+//============================================================ 
+
+hugel,98,56,3	script	Hugel Guide Granny#hugel	863,{
+	mes "[胡格尔指南奶奶]";
+	mes "哦，你好~你是一位充满活力的冒险家。";
+	mes "欢迎来到^8B4513Hugel^000000。我很荣幸能够带您游览这个美丽的村庄。";
+	mes "如果这是您第一次使用导游服务，您应该问很多问题。";
+	F_Navi("[胡格尔指南奶奶]");
+	next;
+	set .@str$,"Would you like to know more locations?";
+	while (1) {
+		switch(select("[主要设施]：[商人和助手]：从小地图上删除标记：取消")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[教堂]：[旅馆]：[酒馆]：[机场]：[武器店]：[工具店]：[宾果游戏室]:[ ^3131FF猎人公会^000000 ]:[派对用品店]:[^3131FF神社远征^000000]:上一个菜单")) {
+				case 1:
+					mes "[胡格尔指南奶奶]";
+					mes "嗯，对我来说，这个"+F_Navi("教会","hugel,159,113")+"更像是像我这样的老人的地方，你知道......";
+					mes .@str$;
+					viewpoint 1,159,113,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					mes "[胡格尔指南奶奶]";
+					mes "布丁而不是赞美。";
+					mes "在你开始环顾这个村庄之前，你最好先在"+F_Navi("客栈","hugel,101,77")+"打开你的东西。";
+					mes .@str$;
+					viewpoint 1,101,77,1,0x8B4513;
+					next;
+					break;
+				case 3:
+					mes "[胡格尔指南奶奶]";
+					mes "是的，当您旅行时，您想顺便拜访一下"+F_Navi("酒馆","hugel,126,65")+"并结交新朋友。";
+					mes "从这里往东走，就到了酒馆。";
+					mes .@str$;
+					viewpoint 1,126,65,2,0xDAA520;
+					next;
+					break;
+				case 4:
+					mes "[胡格尔指南奶奶]";
+					mes "不久前，陌生人来到村子里，建造了那个奇怪的建筑。"+F_Navi("飞机场","胡格尔,178,146")+"某种东西...";
+					mes "他们怎么称呼它？飞艇？";
+					mes .@str$;
+					viewpoint 1,178,146,3,0xD7567F;
+					next;
+					break;
+				case 5:
+					mes "[胡格尔指南奶奶]";
+					mes "嗯，我们在村子中心有一个"+F_Navi("武器店","hugel,88,167")+"。";
+					mes "但不知道有没有你觉得有用的武器。";
+					mes .@str$;
+					viewpoint 1,88,167,4,0xCD5C5C;
+					next;
+					break;
+				case 6:
+					mes "[胡格尔指南奶奶]";
+					mes "是的，我喜欢 Hugel 品牌的 Red Potions。我还没有尝过任何其他品牌的红色药水...hohoho。";
+					mes ""+F_Navi("工具店","hugel,92,163")+"位于村庄中心。";
+					mes .@str$;
+					viewpoint 1,92,163,5,0x000080;
+					next;
+					break;
+				case 7:
+					mes "[胡格尔指南奶奶]";
+					mes "我会标记位置";
+					mes ""+F_Navi("宾果游戏室","hugel,58,206","^800080");
+					mes "在你的小地图上。";
+					mes .@str$;
+					viewpoint 1,58,206,6,0x800080;
+					next;
+					break;
+				case 8:
+					mes "[胡格尔指南奶奶]";
+					mes "哦，你是一个有抱负的猎人吗？";
+					mes "然后沿着海滩向东北方向行驶，就会发现"+F_Navi("猎人公会","hugel,209,224")+".";
+					mes .@str$;
+					viewpoint 1,209,224,7,0xFF1493;
+					next;
+					break;
+				case 9:
+					mes "[胡格尔指南奶奶]";
+					mes "我会标记位置";
+					mes ""+F_Navi("派对用品店","hugel,95,103","^483D8B");
+					mes "在你的小地图上。";
+					mes .@str$;
+					viewpoint 1,95,103,8,0x483D8B;
+					next;
+					break;
+				case 10:
+					mes "[胡格尔指南奶奶]";
+					mes "我听说";
+					mes F_Navi("神社远征","巨大，52,95")+"住在西边的一所房子里。";
+					mes "他们在村子中间放了某种标志，所以我猜他们正在雇人做某事......";
+					mes "我想知道他们在这里做什么……嗯。";
+					mes .@str$;
+					viewpoint 1,52,95,9,0x834683;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 怪物竞赛竞技场 ]:[ Cool Event Corp. 员工 ]:上一个菜单")) {
+				case 1:
+					mes "[胡格尔指南奶奶]";
+					mes "我也喜欢玩怪物竞赛游戏。这很有趣，你知道吗？";
+					mes "哦，你还没试过吗？不行~你最好试试。相信我，你会喜欢的。";
+					mes .@str$;
+					viewpoint 1,60,71,10,0xFF1493;
+					next;
+					break;
+				case 2:
+					mes "[胡格尔指南奶奶]";
+					mes "我会标记位置";
+					mes "^DA70D6Cool Event Corp. 员工^000000";
+					mes "在你的小地图上。";
+					mes .@str$;
+					viewpoint 1,88,168,11,0xDA70D6;
+					next;
+					break;
+				case 3:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[胡格尔指南奶奶]";
+			mes "我会从你的小地图上删除这些标记。";
+			mes "我还能为您做些什么吗？";
+			viewpoint 2,159,113,0,0xFFFFFF;
+			viewpoint 2,101,77,1,0xFFFFFF;
+			viewpoint 2,126,65,2,0xFFFFFF;
+			viewpoint 2,178,146,3,0xFFFFFF;
+			viewpoint 2,88,167,4,0xFFFFFF;
+			viewpoint 2,92,163,5,0xFFFFFF;
+			viewpoint 2,58,206,6,0xFFFFFF;
+			viewpoint 2,209,224,7,0xFFFFFF;
+			viewpoint 2,95,103,8,0xFFFFFF;
+			viewpoint 2,52,95,9,0xFFFFFF;
+			viewpoint 2,60,71,10,0xFFFFFF;
+			viewpoint 2,88,168,11,0xFFFFFF;
+			next;
+			break;
+		case 4:
+			mes "[胡格尔指南奶奶]";
+			mes "嗬嗬嗬~！";
+			mes "指导非常有趣。";
+			close;
+		}
+	}
+}
+
+hugel,187,172,6	script	Guide Rich King#hugel	414,{
+	mes "[富王]";
+	mes "你有什么生意";
+	mes "在这个乡村？";
+	next;
+	mes "[富王]";
+	mes "这是^8B4513休格尔^000000";
+	mes "在黑森林共和国。";
+	mes "您非常荣幸能够得到像我这样伟大的人的指导。";
+	F_Navi("[富王]");
+	next;
+	while (1) {
+		switch(select("[主要设施]：[商人和助手]：从小地图上删除标记：取消")) {
+		case 1:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[教堂]：[旅馆]：[酒馆]：[机场]：[武器店]：[工具店]：[宾果游戏室]:[ 猎人公会 ]:[ 派对用品店 ]:[ 神社远征 ]:上一个菜单")) {
+				case 1:
+					callsub L_Mark, F_Navi("教会","hugel,159,113","^FF0000");
+					viewpoint 1,159,113,0,0xFF0000;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, F_Navi("客栈","hugel,101,77","^8B4513");
+					viewpoint 1,101,77,1,0x8B4513;
+					next;
+					break;
+				case 3:
+					callsub L_Mark, F_Navi("酒馆","hugel,126,65","^DAA520");
+					viewpoint 1,126,65,2,0xDAA520;
+					next;
+					break;
+				case 4:
+					callsub L_Mark, F_Navi("飞机场","hugel,178,146","^D7567F");
+					viewpoint 1,178,146,3,0xD7567F;
+					next;
+					break;
+				case 5:
+					callsub L_Mark, F_Navi("武器店","hugel,88,167","^CD5C5C");
+					viewpoint 1,88,167,4,0xCD5C5C;
+					next;
+					break;
+				case 6:
+					callsub L_Mark, F_Navi("工具店","hugel,92,163","^000080");
+					viewpoint 1,92,163,5,0x000080;
+					next;
+					break;
+				case 7:
+					callsub L_Mark, F_Navi("宾果游戏室","hugel,58,206","^800080");
+					viewpoint 1,58,206,6,0x800080;
+					next;
+					break;
+				case 8:
+					callsub L_Mark, F_Navi("猎人公会","hugel,209,224","^FF1493");
+					viewpoint 1,209,224,7,0xFF1493;
+					next;
+					break;
+				case 9:
+					callsub L_Mark, F_Navi("派对用品店","hugel,95,103","^483D8B");
+					viewpoint 1,95,103,8,0x483D8B;
+					next;
+					break;
+				case 10:
+					callsub L_Mark, F_Navi("神社远征","hugel,52,95","^834683");
+					viewpoint 1,52,95,9,0x834683;
+					next;
+					break;
+				case 11:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			set .@loop,1;
+			while (.@loop) {
+				switch(select("[ 怪物竞赛竞技场 ]:[ Cool Event Corp. 员工 ]:上一个菜单")) {
+				case 1:
+					callsub L_Mark, "^FF1493Monster Race Arena^000000";
+					viewpoint 1,60,71,10,0xFF1493;
+					next;
+					break;
+				case 2:
+					callsub L_Mark, "^DA70D6Cool Event Corp. Staff^000000";
+					viewpoint 1,88,168,11,0xDA70D6;
+					next;
+					break;
+				case 3:
+					set .@loop,0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[富王]";
+			mes "我会从你的小地图上删除这些标记。";
+			mes "我知道你很好奇，但你别再烦我了。";
+			viewpoint 2,159,113,0,0xFFFFFF;
+			viewpoint 2,101,77,1,0xFFFFFF;
+			viewpoint 2,126,65,2,0xFFFFFF;
+			viewpoint 2,178,146,3,0xFFFFFF;
+			viewpoint 2,88,167,4,0xFFFFFF;
+			viewpoint 2,92,163,5,0xFFFFFF;
+			viewpoint 2,58,206,6,0xFFFFFF;
+			viewpoint 2,209,224,7,0xFFFFFF;
+			viewpoint 2,95,103,8,0xFFFFFF;
+			viewpoint 2,52,95,9,0xFFFFFF;
+			viewpoint 2,60,71,10,0xFFFFFF;
+			viewpoint 2,88,168,11,0xFFFFFF;
+			next;
+			break;
+		case 4:
+			mes "[富王]";
+			mes "这么辛苦的工作之后，我有点饿了……";
+			mes "我很想吃点东西！";
+			close;
+		}
+	}
+	end;
+L_Mark:
+	mes "[富王]";
+	mes "我会标记位置";
+	mes "的"+getarg(0)+".";
+	mes "您想了解更多地点吗？";
+	mes "你要一直骚扰我，让我不高兴吗？";
+	return;
+}
