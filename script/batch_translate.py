@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Batch translate utility (basic testing)
+Batch translate utility
 
 Usage:
-    python -m script.batch_translate DIR [--run] [--target zh-cn]
+    python -m script.batch_translate DIR [--no-recursive] [--force]
 
-By default this script lists all .txt files (recursively). Use `--run` to invoke
-`TranslateEngine.process_file` and actually produce `.zh-cn.txt` outputs. This
-keeps a safe dry-run default for initial testing.
+This script scans `DIR` for `.txt` files (recursively by default) and translates
+missing files by writing corresponding `.zh-cn.txt` outputs. Use `--no-recursive`
+to avoid recursion and `--force` to retranslate files even if `.zh-cn.txt` exists.
 """
 import os
 import argparse
-from script.translate import TranslateEngine
+from .translate import TranslateEngine
 
 
 def find_txt_files(root, recursive=True):
