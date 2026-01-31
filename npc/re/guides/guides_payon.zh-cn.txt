@@ -3,7 +3,7 @@
 //===== Description: =========================================
 //= Guides for the city of Payon.
 //===== Changelogs: ==========================================
-//= 1.0 Initial release for Renewal [ding]
+//= 1.0 Initial release for Renewal [L0ne_W0lf]
 //= 1.1 Fixed and optimized. [Euphy]
 //= 1.2 Navigation system update. [Euphy]
 //============================================================

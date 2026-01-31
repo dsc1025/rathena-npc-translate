@@ -33,10 +33,6 @@ import argparse
 import traceback
 from tqdm import tqdm as _tqdm
 from deep_translator import GoogleTranslator as DT_GoogleTranslator
-import json
-import urllib.request
-import urllib.parse
-
 
 
 SEP = '<<<SEP>>>'
@@ -445,68 +441,14 @@ def process_file(infile, outfile, target='zh-cn', start_line=1, n_lines=0, force
         else:
             it = range(resume_idx, end_idx)
 
-        # Skip certain header blocks in output: keep closing marker for Additional Comments and Changelog
-        skip_additional_block = False
-        skip_changelog_block = False
-        skip_indices = set()
-        author_next = False
         for idx in it:
-            if idx in skip_indices:
-                continue
             line = lines[idx]
             stripped = line.strip()
 
-            # Remove the Current Version header and its following value line
-            if stripped.startswith('//===== Current Version'):
-                next_idx = idx + 1
-                if next_idx < total and lines[next_idx].lstrip().startswith('//='):
-                    skip_indices.add(next_idx)
-                continue
-
-            # Remove the Compatible With header and its following value line
-            if stripped.startswith('//===== Compatible With'):
-                next_idx = idx + 1
-                if next_idx < total and lines[next_idx].lstrip().startswith('//='):
-                    skip_indices.add(next_idx)
-                continue
-
-            # Detect By: header so the next '//=' line is the author line to replace
-            if stripped.startswith('//===== By:'):
+            # If the line is a comment (starts with '//'), copy it verbatim
+            # and do not perform any special-case header modifications.
+            if stripped.startswith('//'):
                 write_line(line)
-                author_next = True
-                continue
-
-            # If previous line indicated the author next, replace any '//=' line with 'ding'
-            if author_next:
-                if line.lstrip().startswith('//='):
-                    leading = line[:line.find('//=')]
-                    write_line(leading + '//= ding\n')
-                    author_next = False
-                    continue
-                else:
-                    author_next = False
-
-            # Detect start of Additional Comments header block and skip until its closing line
-            if stripped.startswith('//===== Additional Comments'):
-                skip_additional_block = True
-                continue
-            if skip_additional_block:
-                # If we reach the block end marker, write it and stop skipping
-                if stripped.startswith('//============================================================'):
-                    write_line(line)
-                    skip_additional_block = False
-                    continue
-                # otherwise keep skipping lines inside the Additional Comments block
-                continue
-            # Detect start of Changelog header block and skip until its closing line
-            if stripped.startswith('//===== Changelog'):
-                skip_changelog_block = True
-                continue
-            if skip_changelog_block:
-                if stripped.startswith('//============================================================'):
-                    write_line(line)
-                    skip_changelog_block = False
-                    continue
                 continue
             # Prefer mes handling
             m = mes_line_re.search(line)
