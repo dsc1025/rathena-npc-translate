@@ -1,0 +1,106 @@
+//===== rAthena Script ======================================= 
+//= General Eclage NPC.
+//===== By: ================================================== 
+//= Dastgir
+//===== Current Version: ===================================== 
+//= 2.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Eclage Town NPC
+//===== Additional Comments: ================================= 
+//= 1.0 Generic NPC place holders. [Euphy]
+//= 2.0 Converted from the official Aegis script. [Dastgir]
+//============================================================ 
+
+ecl_in02,96,22,3	script	sign#prison_inn	545,{
+	mes "[北]监狱";
+	mes "[西]诊所";
+	close;
+}
+
+ecl_in01,8,71,5	script	Eclage Guard#pri_inn	447,{
+	mes "[护卫]";
+	mes "这条路将带您前往埃克拉奇 (Eclage) 的下部。那里有一座监狱和一家诊所。";
+	close;
+}
+
+ecl_in02,164,56,3	script	Receptionist#Laphine	835,{
+	mes "[接待员]";
+	mes "欢迎来到 Eclage 诊所。";
+	next;
+	switch (select("保存地点：休息：完成对话")) {
+	case 1:
+		mes "[接待员]";
+		mes "诊所已被设置为您的保存点。不过要小心哦~";
+		savepoint "ecl_in02",162,50,1,1;
+		close;
+	case 2:
+		mes "[接待员]";
+		mes "在我们的诊所恢复您的身心。它充满了Eclage的清洁能源。";
+		mes "我们通常收取 1 Splendide Coin 的费用，但我们为旅行者提供特别折扣。您的总金额为 5,000 zeny。";
+		next;
+		switch (select("使用 Splendide Coin 支付：使用 Zeny 支付：算了")) {
+		case 1:
+			if (!countitem(6081)) {
+				mes "[接待员]";
+				mes "看来你的金币还不够。请您再检查一下您的帐户好吗？";
+				close;
+			}
+			mes "[接待员]";
+			mes "让自己像在家一样~";
+			close2;
+			delitem 6081,1; //6081
+			percentheal 100,100;
+			warp "ecl_in02",167,49;
+			end;
+		case 2:
+			if (Zeny < 5000) {
+				mes "[接待员]";
+				mes "您似乎没有足够的资源来继续。您介意再检查一下您的帐户吗？";
+				close;
+			}
+			mes "[接待员]";
+			mes "让自己像在家一样~";
+			close2;
+			Zeny = Zeny - 5000;
+			percentheal 100,100;
+			warp "ecl_in02",167,49;
+			end;
+		case 3:
+			close;
+		}
+	case 3:
+		close;
+	}
+}
+
+ecl_in02,135,45,5	script	Injured Laphine	442,{
+	mes "[受伤的拉芬]";
+	mes "呜哇...";
+	mes "我……在哪里？";
+	next;
+	mes "[医生]";
+	mes "你在诊所。不用担心。";
+	mes "我们止血并施展紧急咒语。";
+	mes "你流了很多血。你知道，那已经很接近了。";
+	next;
+	mes "[受伤的拉芬]";
+	mes "......";
+	mes "什么，不，我……我没有任何感觉……发生了什么事？";
+	next;
+	mes "[医生]";
+	mes "嗯……箭严重损坏了你的翅膀……";
+	next;
+	mes "[受伤的拉芬]";
+	mes "...你是什么意思？";
+	next;
+	mes "[医生]";
+	mes "嗯……我本来想等你康复后告诉你，但你应该知道。你不能再装饰 Yai 了。";
+	mes "换句话说，你的翅膀受伤了。箭矢穿过了机翼最关键的部位。";
+	next;
+	mes "[受伤的拉芬]";
+	mes "什么？没办法……拜托……医生！！不！！";
+	close;
+}
+ecl_in02,137,44,3	duplicate(Injured Laphine)	Doctor Laphine#doctor	441

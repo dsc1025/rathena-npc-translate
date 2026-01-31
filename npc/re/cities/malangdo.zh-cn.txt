@@ -1,0 +1,435 @@
+//===== rAthena Script ======================================= 
+//= Malangdo Town
+//===== By: ================================================== 
+//= Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.5
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Malangdo Town Script
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [Euphy]
+//= 1.1 Added entrance scripts.
+//= 1.2 Moved "Odgnalam" coordinates.
+//= 1.3 Fixed dialogues.
+//= 1.4 Dialogue edits, source iRO.
+//= 1.5 Added Izlude duplicates.
+//============================================================
+
+// Malangdo Transportation :: malangdo_go
+//============================================================
+-	script	Dolangmal	-1,{
+	if (checkquest(5091) == -1) {
+		mes "[多朗马尔]";
+		mes "嘿~！完成~这是Dogmal先生。卡卡~";
+		next;
+		mes "[多朗马尔]";
+		mes "我们被派到这里来带你去猫的天堂，^A2314B马兰多^000000。";
+		next;
+		mes "[多朗马尔]";
+		set .@s$,"Why don't you go to ^A2314BMalangdo^000000?";
+		switch(atoi(strnpcinfo(2))) {
+			case 1: mes "怎么样？拥挤的普隆德拉市固然不错，但你为什么不去我们的猫天堂^A2314B马兰多^000000呢？"; break;
+			case 2: mes "你为什么不去^A2314B马兰多^000000？那个地方比格芬好，那里只有一群单纯诚实的巫师。"; break;
+			case 3: mes "佩永的空气清新还不错，但是你为什么不去更好的地方，比如猫的天堂^A2314B马兰多^000000呢？"; break;
+			case 4: mes .@s$+"这个美丽而安静的地方比毕宿五更好，那里的时钟滴答作响，非常吵闹。"; break;
+			case 5: mes .@s$+"这个美丽而安静的地方比摩洛哥炎热和沙尘暴更好。"; break;
+			case 6: mes .@s$+"美丽的地方比朱诺还好，那里到处都是书，让人头疼。"; break;
+			case 7: mes .@s$+"这个复杂的地方比雷切尔好，那里安静得可怕。"; break;
+			case 8: mes .@s$+"安全的地方比莱特哈尔森好，那里太危险了。"; break;
+			case 9: mes .@s$+"这片海域的气味比莫拉还要好，充满了青草的味道。"; break;
+		}
+		next;
+		if(select("否：^A2314B马兰多^000000>~走~走~") == 1) {
+			mes "[多朗马尔]";
+			mes "什么！？你不想去^A2314B马兰多^000000吗？切特！";
+			next;
+			mes "[多朗马尔]";
+			mes "你真是个令人讨厌的家伙。如果你不走，你为什么要跟我说话……但是……";
+			next;
+			mes "[多朗马尔]";
+			mes "^9E1837托马斯海军上将^000000说要绑架人类...不...礼貌地带他们来？";
+			next;
+			mes "[多朗马尔]";
+			mes "无论如何，我得到了你。无论什么时候你想去，就告诉我。";
+			close;
+		}
+		mes "[多朗马尔]";
+		mes "好的！我喜欢你的态度。充满激情。";
+		next;
+		mes "[多朗马尔]";
+		mes "现在，在你去^A2314BMalangdo^000000之前，让我给你一些警告。";
+		next;
+		mes "[多朗马尔]";
+		mes "第一的！！很自然，当你到达^A2314B马兰多^000000时，你应该通知^9E1837托马斯海军上将^000000你在这里。";
+		next;
+		mes "[多朗马尔]";
+		mes "如果你不这样做，当你走过黑暗的街道时，你可能会受到可怕的野猫的攻击。";
+		next;
+		mes "[多朗马尔]";
+		mes "第二！！这个^A2314B马兰多^000000绝对是我们的猫之岛，尽管我们向人类开放。";
+		next;
+		mes "[多朗马尔]";
+		mes "我们有个性……不……不……像一只猫一样尊重我们，因为我们是猫。";
+		next;
+		mes "[多朗马尔]";
+		mes "而下一个是……";
+		next;
+		mes "Dolangmal 继续进行并发出了数百条警告。";
+		next;
+		mes "[多朗马尔]";
+		mes "好的！这些都是警告！！它们既简单又简单......对吧？你还记得他们吗？";
+		next;
+		switch(select("记住他的警告：不记得了")) {
+		case 1:
+			mes "[多朗马尔]";
+			mes "好的！不要用一张嘴咬两只老鼠。 ^9E1837托马斯海军上将^000000位于马兰多^000000船的^A2314B中心。";
+			next;
+			mes "[多朗马尔]";
+			mes "别忘了通知他您的到来。";
+			next;
+			mes "[多朗马尔]";
+			mes "好吧。去猫的天堂^A2314B马兰多^000000>~";
+			setquest 5091;
+			completequest 5091;
+			warp "malangdo",217,85;
+			close;
+		case 2:
+			mes "[多朗马尔]";
+			mes "什么！？你就不能遵守这些简单的规则吗？切特！";
+			next;
+			mes "[多朗马尔]";
+			mes "你真是个令人讨厌的家伙。如果你不能保留这些，为什么不在我们谈话时告诉我？我已经告诉过你一切了...但是...";
+			next;
+			mes "[多朗马尔]";
+			mes "^9E1837托马斯海军上将^000000说要绑架人类...不...礼貌地带他们来？";
+			next;
+			mes "[多朗马尔]";
+			mes "无论如何，我得到了你。你什么时候想去就告诉我吧。";
+			close;
+		}
+	}
+	mes "[多朗马尔]";
+	mes "呃？你一定就是上次的那个吧……？好吧。您访问过^A2314B马兰多^000000吗？";
+	next;
+	switch(select("再带我去^A2314B马兰多^000000:我去过")) {
+	case 1:
+		mes "[多朗马尔]";
+		mes "我真的很想送你去那里，但由于政策原因我不能。很难发送已经访问过 ^A2314BMalangdo^000000 的人。";
+		next;
+		mes "[多朗马尔]";
+		mes "大致就是这样...应该是规则 53...";
+		next;
+		mes "[多朗马尔]";
+		mes "事实上，让我告诉你规则53。我是一只纵容的猫。";
+		next;
+		mes "[多朗马尔]";
+		mes "如果您想返回 ^A2314BMalangdo^000000，请在 Izlude 或 Alberta 乘船。";
+		next;
+		mes "[多朗马尔]";
+		mes "如果您享受愉快的海上之旅，您将到达猫的天堂^A2314B马兰多^000000。";
+		next;
+		mes "[多朗马尔]";
+		mes "太简单了！不是吗？嗯，再见~";
+		close;
+	case 2:
+		mes "[多朗马尔]";
+		mes "它怎么样？你喜欢它吗？我就知道。卡卡卡~";
+		next;
+		mes "[多朗马尔]";
+		mes "啊!我只是想确定一下...";
+		next;
+		mes "[多朗马尔]";
+		mes "再说一次，如果你想回到^A2314BMalangdo^000000，你知道在Izlude或Alberta哪里可以乘船吗？";
+		next;
+		mes "[多朗马尔]";
+		mes "嗯~你可能知道，因为你是个聪明人。嗯，又见面了~";
+		close;
+	}
+}
+prontera,114,77,6	duplicate(Dolangmal)	Dolangmal#1	553
+geffen,109,61,6	duplicate(Dolangmal)	Dolangmal#2	553
+payon,200,106,4	duplicate(Dolangmal)	Dolangmal#3	553
+aldebaran,170,104,4	duplicate(Dolangmal)	Dolangmal#4	553
+morocc,168,275,4	duplicate(Dolangmal)	Dolangmal#5	553
+yuno,165,122,4	duplicate(Dolangmal)	Dolangmal#6	553
+rachel,121,126,4	duplicate(Dolangmal)	Dolangmal#7	553
+lighthalzen,254,83,5	duplicate(Dolangmal)	Dolangmal#8	553
+mora,57,150,4	duplicate(Dolangmal)	Dolangmal#9	553
+
+-	script	::Odgnalam	-1,{
+	mes "这只猫正在温暖的 "+((strnpcinfo(2) == "albe")?"Alberta":"Izlude")+" 阳光下睡觉。";
+	next;
+	if(select("让他睡觉：和他说话") == 1) close;
+	mes "[我开车离开]";
+	mes "喵？啊？";
+	next;
+	if (ep13_yong1 == 0) {
+		set .@price,1000;
+		set .@s1$,"Huh! You are so annoying. Let me send you to ^A2314BMalangdo^000000 for ^0000FF1000 Zeny^000000.";
+		set .@s2$,"Money? Where is the money? You can't go anywhere without the money. Shame on you.";
+	} else if (ep13_yong1 < 60) {
+		set .@price,999;
+		set .@s1$,"You have a little relationship with fleet of cat. I'll give you special discount price ^0000FF999 Zeny^000000 to ^A2314BMalangdo^000000, because you have relationship with fleet.";
+		set .@s2$,"Where is the money? You don't have a sense of honor.";
+	} else if (ep13_yong1 > 59 && ep13_yong1 < 80) {
+		set .@price,500;
+		set .@s1$,"You gave several help to our cat's fleet so let me give you special that with 50% discount price ^0000FF500 Zeny^000000. I'll send you to ^A2314BMalangdo^000000.";
+		set .@s2$,"You don't have any money for paying 50% discount price? I can't believe it.";
+	} else {
+		mes "[我开车离开]";
+		mes "你是猫舰队的英雄。你的活动是我们之间的传奇。";
+		next;
+		mes "[我开车离开]";
+		mes "既然你是猫舰队的英雄，就让我免费送你去^A2314B马兰多^000000。";
+		next;
+		if(select("送我去马兰多！：别去。") == 1) {
+			mes "[我开车离开]";
+			mes "祝旅途愉快...好吧，出发吧~";
+			warp "malangdo",217,85;
+		}
+		close;
+	}
+	mes "[我开车离开]";
+	mes .@s1$;
+	next;
+	if(select("送我去马兰多！：别去。") == 2) close;
+	if (Zeny < .@price) {
+		mes "[我开车离开]";
+		mes "钱？钱在哪里？没有钱你哪儿也去不了。你太无耻了。";
+		close;
+	}
+	set Zeny, Zeny - .@price;
+	mes "[我开车离开]";
+	mes "让我马上发给你。走吧~";
+	warp "malangdo",217,85;
+	close;
+}
+alberta,200,151,4	duplicate(Odgnalam)	Odgnalam#albe	554
+izlude,182,218,4	duplicate(Odgnalam)	Odgnalam#iz	554	// Old coordinates: (182,192)
+izlude_a,182,218,4	duplicate(Odgnalam)	Odgnalam#iz_a	554
+izlude_b,182,218,4	duplicate(Odgnalam)	Odgnalam#iz_b	554
+izlude_c,182,218,4	duplicate(Odgnalam)	Odgnalam#iz_c	554
+izlude_d,182,218,4	duplicate(Odgnalam)	Odgnalam#iz_d	554
+
+malangdo,219,86,4	script	Kong#malang	545,{
+	mes "[金刚]";
+	mes "您在马兰多玩得开心吗？";
+	mes "该机队提供飞往伊兹鲁德和艾伯塔省的航班。";
+	next;
+	if (ep13_yong1 == 0) {
+		set .@price,1000;
+		set .@s1$, "1000 zeny";
+		set .@s2$, "Have a nice day in Malangdo.";
+		set .@no_money$, "It is difficult for free.";
+		set .@yes_money$, "Have a nice trip.";
+		mes "[金刚]";
+		mes "船费才1000泽尼，你想去哪里？";
+		next;
+	} else if (ep13_yong1 < 60) {
+		set .@price,999;
+		set .@s1$,"999 zeny";
+		set .@s2$, "Have a full of fortune day in Malangdo...";
+		set .@no_money$, "It is difficult even though you have a relationship with the fleet.";
+		set .@yes_money$, "Thanks, have a wonderful trip.";
+		mes "[金刚]";
+		mes "您与我们的舰队有联系。申请特价999 zeny。你想去哪里？";
+		next;
+	} else if (ep13_yong1 > 59 && ep13_yong1 < 80) {
+		set .@price,500;
+		set .@s1$,"500 zeny";
+		set .@s2$, "There are full of fortune and jackpot in Malangdo.";
+		set .@no_money$, "Oh my god. You don't have 500 zeny? It is difficult for free.";
+		set .@yes_money$, "Have a nice trip and come again.";
+		mes "[金刚]";
+		mes "哇~你为我们的舰队做出了很大的贡献。好吧！！特别折扣价 500 zeny。你想去哪里？";
+		next;
+	} else {
+		set .@price,0;
+		set .@s1$,"Free for the hero of our fleet!!";
+		set .@s2$, "No one objects to the hero of our fleet staying in Malangdo...";
+		mes "[金刚]";
+		mes "啊……你是我们猫舰队的传奇英雄。";
+		next;
+		mes "[金刚]";
+		mes "我们无法向我们舰队的英雄发起冲锋。你的目的地是哪里？";
+		next;
+	}
+	set .@i, select("- 伊兹鲁德目的地 --- "+.@s1$+":- 艾伯塔省目的地 --- "+.@s1$+":- 留在马兰多");
+	mes "[金刚]";
+	if (.@i == 3) {
+		mes .@s2$;
+		close;
+	}
+	if (ep13_yong1 > 80) {
+		mes "祝您旅途愉快。";
+		if (.@i == 1)
+			warp "izlude",195,212; // Old coordinates: (194,180)
+		else
+			warp "alberta",192,150;
+		close;
+	}
+	if (Zeny < .@price) {
+		mes .@no_money$;
+		close;
+	}
+	set Zeny, Zeny - .@price;
+	mes .@yes_money$;
+	if (.@i == 1)
+		warp "izlude",195,212;
+	else
+		warp "alberta",192,150;
+	close;
+}
+
+// Generic Malangdo NPCs :: malang_tre
+//============================================================
+malangdo,147,117,3	script	Innkeeper#malang	554,{
+	mes "你看到一只懒猫站在椅子上。";
+	mes "你猜这就是旅店老板。";
+	next;
+	switch(select("嗯...我可以在这里休息吗？：嘘...我可以在这里保存吗？：离开。")) {
+	case 1:
+		mes "[旅店老板]";
+		mes "呃？";
+		mes "呃，如果你给我^FF00005个Malangdo罐^000000，你当然可以使用这个吊床。";
+		next;
+		switch(select("给你：没关系。")) {
+		case 1:
+			if (countitem(12636) > 4) {
+				delitem 12636,5; //Malang_Sp_Can
+				percentheal 100,100;
+				specialeffect2 EF_HEALSP;
+				mes "[旅店老板]";
+				mes "现在放松一下。";
+				emotion ET_CHUP;
+				next;
+				warp "malangdo",140,121;
+				close;
+			}
+			mes "[旅店老板]";
+			mes "这不是慈善事业。";
+			close;
+		case 2:
+			mes "[旅店老板]";
+			mes "如果您想放松一下，请告诉我。";
+			close;
+		}
+	case 2:
+		mes "[旅店老板]";
+		mes "位置已保存。一定要多多陪伴，哈哈~";
+		savepoint "malangdo",142,118,1,1;
+		close;
+	case 3:
+		mes "[旅店老板]";
+		mes "有时你只需要放松一下。";
+		next;
+		mes "- 哇，这是有史以来最懒的猫。 -";
+		close;
+	}
+	close;
+}
+
+malangdo,151,120,3	script	Minstrel#mal	479,{
+	mes "[吟游诗人]";
+	mes "天哪，那只懒猫让我想整天睡午觉。";
+	next;
+	mes "[吟游诗人]";
+	mes "他让生活看起来如此简单。";
+	close;
+}
+
+malangdo,149,120,5	script	Wanderer#mal	485,5,1,{
+	mes "[徒步旅行者]";
+	mes "住在这里的猫们都非常有活力。";
+	mes "他们让我整天想跳舞，这很奇怪吗？";
+	mes "就是这样，就是这样~！";
+	close;
+OnTouch:
+	switch(rand(5)) {
+	case 0:
+		soundeffect "ring_of_nibelungen.wav",0;
+		break;
+	case 1:
+		soundeffect "dont_forget_me_not.wav",0;
+		break;
+	case 2:
+		soundeffect "humming.wav",0;
+		break;
+	case 3:
+		soundeffect "assassin_of_sunset.wav",0;
+		break;
+	case 4: 
+		emotion ET_DELIGHT;
+		emotion ET_DELIGHT, getnpcid(0, "Minstrel#mal");
+		break;
+	}
+	end;
+}
+
+malangdo,216,168,3	script	Cat Trainer#mal1	558,0,8,{
+	emotion ET_COOL;
+	mes "[驯猫师]";
+	mes "噢~它们柔软蓬松的尾巴和柔软的皮毛~";
+	mes "我受不了了，这就是天堂~~！！";
+	next;
+	emotion ET_KIK;
+	mes "[驯猫师]";
+	mes "我的隐藏卡^FF0000银藤果^000000可以让马兰多所有的猫成为我的奴隶~哈哈！";
+	next;
+	select("^FF0000银藤果实^000000？");
+	mes "[驯猫师]";
+	mes "这是非常罕见的物品！";
+	mes "我几乎无法得到它。";
+	mes "但这些可爱的猫咪却无法抗拒~";
+	next;
+	select("在哪里可以获得^FF0000银藤果实^000000？");
+	mes "[驯猫师]";
+	mes "当我几乎无法得到它时，我为什么要告诉你？";
+	mes "我什至不会告诉你世界上所有的乐趣~！";
+	next;
+	emotion ET_KIK;
+	mes "[驯猫师]";
+	mes "所有的马兰多猫都是我的~！";
+	mes "啊哈哈哈哈~";
+	mes "只要有足够的^FF0000银藤果实^000000我就可以成为马兰多的女王~哦哦哦！！！";
+	close;
+OnTouch:
+	emotion ET_SPARK;
+	end;
+}
+
+malangdo,164,203,3	script	Cat Trainer#mal2	853,{
+	emotion ET_COOL;
+	mes "[驯猫师]";
+	mes "噢~它们柔软蓬松的尾巴和柔软的皮毛~";
+	mes "我受不了了，这就是天堂~~！！";
+	next;
+	emotion ET_KIK;
+	mes "[驯猫师]";
+	mes "这是我的小秘密";
+	mes "^FF0000银藤果实^000000。我可以用";
+	mes "它让马兰多猫成为我的";
+	mes "奴隶们~啊哈哈哈哈~！";
+	next;
+	select("^FF0000银藤果实^000000？");
+	mes "[驯猫师]";
+	mes "嗯，我想你不知道也不足为奇。";
+	mes "这些马兰多猫无法抗拒。";
+	mes "但它太稀有，所以你不应该费心去寻找它。";
+	next;
+	select("在哪里可以获得^FF0000银藤果实^000000？");
+	mes "[驯猫师]";
+	mes "其实很简单。你只是...";
+	next;
+	mes "[驯猫师]";
+	mes "嘿，你差点让我说出我的秘密。";
+	next;
+	emotion ET_KIK;
+	mes "[驯猫师]";
+	mes "有一天，这些猫将成为我的。";
+	mes "我可以成为马兰多的国王~哦哦~！";
+	close;
+}

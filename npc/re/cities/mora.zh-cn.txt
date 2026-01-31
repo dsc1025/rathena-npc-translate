@@ -1,0 +1,1188 @@
+//===== rAthena Script ======================================= 
+//= Mora Village
+//===== By: ================================================== 
+//= Euphy
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Mora Town Script
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [SuperHulk]
+//= 1.1 Translations to English. [Flaid]
+//= 1.1a Standardized. [Euphy]
+//= 1.2 Added new NPCs. [Flaid]
+//= 1.3 Replaced with full iRO town NPCs. [Euphy]
+//= 1.4 Updated to match the official scripts. [Euphy]
+//============================================================ 
+
+// Set 1 :: mora_resident
+//============================================================
+mora,52,138,5	script	Mungmung#p	516,{
+	mes "[蒙蒙]";
+	mes "我不是客栈老板！";
+	mes "为什么人们看到我就想付钱给我？";
+	close;
+}
+
+mora,160,123,3	script	Nemnem#p	517,{
+	mes "[我不]";
+	mes "我的疼痛越来越严重";
+	mes "自从 Bifrost 出现裂缝以来。";
+	mes "年轻人，你对此负责吗？";
+	next;
+	switch(select("我当然是！：这是一个不公平的指控！")) {
+	case 1:
+		mes "[我不]";
+		mes "布拉~沃！";
+		emotion ET_COOL;
+		close;
+	case 2:
+		mes "[我不]";
+		mes "如果没有，没关系！";
+		emotion ET_PROFUSELY_SWEAT, playerattached();
+		close;
+	}
+}
+
+mora,105,104,3	script	Boaster#podo	514,{
+	mes "[夸耀者]";
+	mes "那么情况";
+	mes "处于最糟糕的状态。";
+	next;
+	mes "[莱佛士]";
+	mes "哦~！";
+	next;
+	mes "[夸耀者]";
+	mes "无聊死了，我开始哭。";
+	mes "然后我就睡着了，因为哭得太累了。";
+	mes "当我醒来时，";
+	mes "我更无聊了";
+	mes "比以前！";
+	next;
+	mes "[莱佛士]";
+	mes "哦，哦！";
+	mes "太可怕了，太可怕了。";
+	mes "怎么会这样？！";
+	next;
+	mes "[夸耀者]";
+	mes "于是情况就变成了";
+	mes "越来越严重了...";
+	mes "现在再给我一些硬币。";
+	emotion ET_PROFUSELY_SWEAT, playerattached();
+	close;
+}
+
+mora,105,100,1	script	Rangrang#p	518,{
+	mes "[让让]";
+	mes "我从来没有听过这么无聊又悲伤的故事。";
+	mes "我有种想哭的感觉！";
+	close;
+}
+
+/*
+// Disabled due to overlapping with RangRang,
+// and is not clickable on official servers.
+mora,105,100,1	script	Gurgur#p	516,{
+      mes "[古尔古尔]";
+      mes "他一直在哭，睡着了";
+      mes "然后现在醒了 210 次。";
+      mes "是不是很原始呢？";
+      mes "我想知道故事会如何结束。";
+      close;
+}
+*/
+
+mora,99,100,7	script	Decoy#podo	515,{
+	mes "[诱饵]";
+	mes "哦~！";
+	mes "就是这样";
+	mes "难以置信！";
+	mes "我很好奇，我们给他一些硬币吧！";
+	close;
+}
+
+mora,98,104,5	script	Moved Raffle#podo	516,{
+	mes "[抽奖活动]";
+	mes "这太悲伤了，太悲伤了！";
+	mes "我不知道为什么，";
+	mes "但一定很难过";
+	mes "因为其他人都这么说。";
+	close;
+}
+
+mora,102,107,5	script	Relieved Raffle#podo	517,{
+	mes "[轻松抽奖]";
+	mes "哇~！";
+	mes "这很令人兴奋。";
+	mes "他又安然无恙地醒来了！";
+	mes "嗯，我相信他下次一定会的！";
+	mes "...";
+	next;
+	mes "[轻松抽奖]";
+	mes "呃？";
+	close;
+}
+
+mora,101,107,5	script	Excited Raffle#podo	518,{
+	mes "[激动人心的抽奖]";
+	mes "哇~";
+	mes "这个故事一点也不有趣。";
+	mes "哇~！";
+	mes "但这就像我们在合唱——";
+	mes "真的很有趣。";
+	mes "哇~！";
+	close;
+}
+
+mora,103,100,5	script	Impressed Raffle#podo	518,{
+	mes "[令人印象深刻的抽奖]";
+	mes "哇！哇！";
+	close;
+}
+
+mora,123,94,7	script	Visitor to Mora#podo1	515,{
+	mes "[莫拉的访客]";
+	mes "我被困在这里是因为突然出现的裂缝。";
+	mes "哈......";
+	close;
+}
+
+mora,155,72,3	script	Visitor to Mora#podo2	513,{
+	mes "[莫拉的访客]";
+	mes "这不是一个充满欢乐的村庄吗？";
+	mes "由于 Bifrost 被封锁了，我正在考虑永久定居在这里。";
+	close;
+}
+
+mora,184,169,5	script	Worker#mo1	516,{
+	mes "[工人]";
+	mes "听说有人从迷宫森林里活着出来了。";
+	mes "不管是谁，我都想亲自见见这个人。";
+	close;
+}
+
+mora,179,155,1	script	Novice Worker#mo	516,{
+	mes "[新手]";
+	mes "我要走出迷宫森林，成为英雄！";
+	next;
+	mes "[冷漠工人]";
+	mes "我听说有人已经这样做了。";
+	next;
+	mes "[新手]";
+	mes "如果我说我就是那个人怎么办？";
+	next;
+	mes "[冷漠工人]";
+	mes "忘了它。更可信";
+	mes "说我做到了。";
+	next;
+	mes "[新手]";
+	mes "嗯，确实如此。";
+	close;
+}
+
+mora,177,157,5	script	Indifferent Worker#mo	518,{
+	mes "[新手]";
+	mes "我要走出迷宫森林，成为英雄！";
+	next;
+	mes "[冷漠工人]";
+	mes "我听说有人已经这样做了。";
+	next;
+	mes "[新手]";
+	mes "如果我说我就是那个人怎么办？";
+	next;
+	mes "[冷漠工人]";
+	mes "忘了它。更可信";
+	mes "说我做到了。";
+	next;
+	mes "[新手]";
+	mes "嗯，确实如此。";
+	close;
+}
+
+mora,108,182,5	script	Worker#mo4	516,{
+	mes "[工人]";
+	mes "远离迷宫森林。";
+	mes "永远不要出于好奇而梦想着偷看。";
+	mes "很多游客去过那里后就失踪了。";
+	close;
+}
+
+// Set 2 :: npc
+//============================================================
+mora,122,97,6	script	Relaxing Raffle#ep14_1	517,{
+	mes "[放松大王花]";
+	mes "村中心的公共浴场是莫拉村的象征。";
+	next;
+	mes "[放松大王花]";
+	mes "这不仅仅是一个简单的水坑。";
+	mes "它有着巨大的力量";
+	mes "治愈伤口。";
+	next;
+	mes "[放松大王花]";
+	mes "尝试在浴缸中行走";
+	mes "如果你想亲自看看。";
+	mes "它会缓慢但肯定地治愈你的伤口。";
+	close;
+}
+
+mora,174,171,0	script	Warehouse Worker#mo1	518,{
+	mes "[短篇]";
+	mes "我想爬梯子";
+	mes "但我的腿太短，做不到这一点。";
+	emotion ET_CRY;
+	next;
+	mes "[短篇]";
+	mes "我想知道是谁把它带到这里来的。";
+	close;
+}
+
+mora,113,185,4	script	Reading Raffle#ep14_1	516,{
+	mes "你看到了大王花";
+	mes "迷失在阅读中。";
+	next;
+	switch(select("看看他在读什么：别打扰他。")) {
+	case 1:
+		mes "对他在读的内容感到好奇";
+		mes "你从后面悄悄靠近他。";
+		mes "大王花正在低声读书。";
+		next;
+		mes "[阅读大王花]";
+		mes "塞壬要去埃雷梅斯家。";
+		mes "他要去那里借钱";
+		mes "Eremes的参考书，";
+		next;
+		mes "[阅读大王花]";
+		mes "但他也希望看到";
+		mes "他美丽的妹妹，Seiren。";
+		mes "Seiren敲响了Eremes的门";
+		mes "他的心狂跳。";
+		next;
+		mes "[阅读大王花]";
+		mes "敲！敲！敲！";
+		mes "打扰一下。有人在吗？";
+		mes "…………";
+		mes "他什么也没听到。";
+		next;
+		mes "[阅读大王花]";
+		mes "家里没人吗？";
+		mes "他又敲了敲门，";
+		mes "担心他可能有";
+		mes "这次旅行一无所获。";
+		next;
+		mes "[阅读大王花]";
+		mes "敲！敲！敲！";
+		mes "又没有回答。家里没人吗？";
+		mes "他知道这样做很不礼貌，";
+		mes "但他还是决定进入";
+		mes "等待埃雷梅斯回家。";
+		next;
+		mes "[阅读大王花]";
+		mes "塞壬打开前门";
+		mes "他的心在跳动。";
+		mes "*吱*";
+		mes "门没锁。";
+		mes "埃雷梅斯似乎离开了一段时间。";
+		next;
+		mes "[阅读大王花]";
+		mes "晴莲犹豫着进了屋。";
+		mes "当他踏进屋子的那一刻，";
+		mes "他听到水流的声音。";
+		next;
+		mes "[阅读大王花]";
+		mes "塞壬猛然回过神来，";
+		mes "又转身出去了。";
+		mes "但就在此时此刻！！";
+		next;
+		mes "[阅读大王花]";
+		mes "*砰*";
+		mes "浴室门打开，";
+		mes "一只脚冒出白色的蒸汽。";
+		next;
+		mes "[阅读大王花]";
+		mes "瑟琳的心脏几乎停止了跳动";
+		mes "一看到它。过了一会儿，";
+		mes "有人从浴室里出来，";
+		mes "身上只围着一条毛巾。";
+		next;
+		mes "[阅读大王花]";
+		mes "她的身体还湿漉漉的";
+		mes "从淋浴间...";
+		next;
+		mes "[阅读大王花]";
+		mes "*喘气*你是谁？多长时间";
+		mes "你站在那里吗？多么粗鲁啊。";
+		emotion ET_HUK;
+		next;
+		mes "大王草赶紧合上书本。";
+		mes "你很好奇接下来会发生什么";
+		mes "但你已经够粗鲁了";
+		mes "所以你就放弃吧。";
+		close;
+	case 2:
+		mes "你静静地离开这个地方";
+		mes "为了不打扰";
+		mes "沉浸在阅读中的大王花。";
+		close;
+	}
+}
+
+mora,99,65,6	script	Banana Rafflesia#ep14_1	516,{
+	mes "[香蕉大王花]";
+	mes "你想要一根香蕉吗？";
+	next;
+	switch(select("是的，我愿意。：不，谢谢。")) {
+	case 1:
+		mes "[香蕉大王花]";
+		mes "如果可以的话就拿走吧。";
+		mes "如果你成功了，你可以免费获得它。";
+		emotion ET_OK;
+		close;
+	case 2:
+		mes "[香蕉大王花]";
+		mes "嗯，我本来打算免费赠送的，";
+		mes "但如果你不想要它，我也没关系。";
+		emotion ET_HNG;
+		close;
+	}
+}
+
+mora,30,128,4	script	Relaxing Traveler#ep14_1	514,{
+	mes "[旅行者]";
+	mes "莫拉旅馆很有名";
+	mes "因其不寻常的家具。";
+	mes "蘑菇柜和苹果梳妆台...";
+	mes "他们是不是很有创意呢？";
+	next;
+	select("... ... ...");
+	mes "[旅行者]";
+	mes "抱歉……也许只有我这样……";
+	emotion ET_SORRY;
+	close;
+}
+
+mora,130,96,4	script	Relaxing Traveler#ep14_2	513,{
+	mes "[旅行者]";
+	mes "莫拉村的大王花长得很像，让人很迷惑。";
+	mes "就像看百胞胎一样……";
+	next;
+	mes "[旅行者]";
+	mes "然而！如果你仔细观察，";
+	mes "你会发现他们每个人都有个性。";
+	mes "找到它是一件有趣的事情";
+	mes "你可以在村里做。";
+	close;
+}
+
+mora,43,113,4	script	Wounded Rafflesia#ep14_1	517,{
+	mes "[受伤的抽奖]";
+	mes "呃...那是什么";
+	mes "那是在浴缸里……呃呃……";
+	mes "突然袭击……要小心啊……";
+	mes "不管里面有什么，它都非常具有攻击性。";
+	close;
+}
+
+mora,168,161,4	script	Warehouse Worker#mo2	513,{
+	mes "[活泼]";
+	mes "那边的客栈~";
+	mes "应该是我的~";
+	next;
+	mes "[活泼]";
+	mes "那边的店~";
+	mes "应该也是我的吧~";
+	next;
+	mes "[活泼]";
+	mes "仓库在这里~";
+	mes "还有里面的所有东西~";
+	mes "这些都应该是我的~";
+	mes "这些都应该是我的~";
+	next;
+	mes "[活泼]";
+	mes "啊啊啊……我想赚钱……";
+	emotion ET_CRY;
+	close;
+}
+
+mora,175,161,6	script	Warehouse Worker#mo3	518,{
+	mes "[摘录]";
+	mes "啊……这只鸭子……";
+	next;
+	mes "[摘录]";
+	mes "它那细长的红色喙...";
+	mes "还有脸颊上的红晕……";
+	mes "和它的翅膀，准备起飞";
+	mes "任何时刻...";
+	emotion ET_SHY;
+	next;
+	mes "[摘录]";
+	mes "我很想拥有它...";
+	mes "如果我偷了它会发生什么？";
+	emotion ET_HUNGRY;
+	close;
+}
+
+mora,140,186,3	script	Raffle Philosopher	517,{
+	mes "[抽奖哲学家]";
+	mes "带着一点谢意，我会告诉你一句对你的生活有帮助的名言。";
+	next;
+	if(select("给他一个感谢信：你就不能告诉我吗？") == 2) {
+		mes "[抽奖哲学家]";
+		mes "你不会不劳而获。";
+		close;
+	}
+	mes "[抽奖哲学家]";
+	mes "你愿意给我多少钱？";
+	mes "您可以用下面列出的货币向我付款。";
+	mes "输入您愿意支付的金额。如果您不想支付任何费用，请输入 0。";
+	next;
+	input .@input;
+	if (.@input == 0) {
+		mes "[抽奖哲学家]";
+		mes "所以你不想听报价​​，是吗？";
+		close;
+	} else if (.@input < 100 || .@input > 1000000) {
+		mes "[抽奖哲学家]";
+		mes "您可以支付 ^FF0000100 到 1000000^000000 之间的费用。";
+		close;
+	} else if (Zeny < .@input) {
+		mes "[抽奖哲学家]";
+		mes "那么你认为这就是我的时间的价值吗？";
+		close;
+	}
+	mes "[抽奖哲学家]";
+	mes "我要告诉你的那句话是……";
+	mes "让我们看看...等一下。";
+	set Zeny, Zeny-.@input;
+	next;
+	mes "。 。 。 。 。 。 。 。 。";
+	next;
+	mes "。 。 。 。 。 。 。 。 。";
+	next;
+	mes "。 。 。 。 。 。 。 。 。";
+	next;
+	mes "[抽奖哲学家]";
+	mes "好的！我想这就是适合你的。";
+	next;
+	mes "[抽奖哲学家]";
+	mes strcharinfo(0)+"，我要告诉你的那句话是……";
+	switch(rand(1,70)) {
+	case 1:
+		mes "没有什么比这更困难了";
+		mes "因而更加珍贵，";
+		mes "而不是能够做出决定。";
+		mes "- 拿破仑·波拿巴 -";
+		break;
+	case 2:
+		mes "有时我们长时间盯着一扇即将关闭的门，";
+		mes "我们看到开放的那家已经太晚了。";
+		mes "- 亚历山大·格雷厄姆·贝尔 -";
+		break;
+	case 3:
+		mes "既然这么痛苦，那你为什么还要继续这样做呢？";
+		mes "答案很简单。";
+		mes "因为它让我心跳加速";
+		mes "因为它让我兴奋。";
+		mes "我的身体可能会受苦，但我快乐多了";
+		mes "做我一直想做的事。";
+		mes "——比亚汉——";
+		break;
+	case 4:
+		mes "你无法说服任何人";
+		mes "在你改变自己之前。";
+		mes "- 高哲宗 -";
+		break;
+	case 5:
+		mes "永远不要后悔你所选择的。";
+		mes "- 我的美英 -";
+		break;
+	case 6:
+		mes "一个人在失败的时候还没有结束。";
+		mes "当他退出时，他就完了。";
+		mes "- 理查德·尼克松 -";
+		break;
+	case 7:
+		mes "失败是有启发性的。";
+		mes "真正有想法的人";
+		mes "从他的失败中学到了同样多的东西";
+		mes "从他的成功来看。";
+		mes "——约翰·杜威——";
+		break;
+	case 8:
+		mes "我们播种思想，收获行动；";
+		mes "我们播种我们的行动，我们收获我们的习惯；";
+		mes "我们播种习惯，收获品格；";
+		mes "我们播种我们的品格，我们收获我们的命运。";
+		mes "- 伊拉斯谟 -";
+		break;
+	case 9:
+		mes "没有比这更愚蠢的事了";
+		mes "在世界上";
+		mes "比一个人绝望。";
+		mes "- 米格尔·德·塞万提斯 -";
+		break;
+	case 10:
+		mes "谦卑是最难的";
+		mes "所有要实现的美德，";
+		mes "没有什么比欲望更难消逝";
+		mes "为自己着想。";
+		mes "- T.S. 艾略特 -";
+		break;
+	case 11:
+		mes "你必须评估自己的才能...";
+		mes "问问自己这是否会是";
+		mes "一项业余爱好或工作。";
+		mes "- 诺玛·克莱顿 -";
+		break;
+	case 12:
+		mes "以眼还眼";
+		mes "只会结束";
+		mes "让全世界都瞎了。";
+		mes "-甘地-";
+		break;
+	case 13:
+		mes "一个没有才华的人";
+		mes "渴望长寿，";
+		mes "然而一个傻瓜，如果提供永恒，";
+		mes "不知道该怎么办。";
+		mes "——索尔仁尼琴——";
+		break;
+	case 14:
+		mes "并不是因为真相太难看清，我们才会犯错误……";
+		mes "我们会犯错误，因为这对我们来说是最简单、最舒适的课程";
+		mes "就是寻求与我们的情感相符的洞察力——尤其是自私的情感。";
+		mes "——索尔仁尼琴——";
+		break;
+	case 15:
+		mes "小心一个男人";
+		mes "一本书的。";
+		mes "- 英国谚语 -";
+		break;
+	case 16:
+		mes "蜜蜂喝水酿蜜，";
+		mes "蛇喝水会产生毒液。";
+		mes "- 英国谚语 -";
+		break;
+	case 17:
+		mes "绝望是一种导致死亡的疾病。";
+		mes "- 克尔凯郭尔 -";
+		break;
+	case 18:
+		mes "没有希望地吃面包就是";
+		mes "还是要慢慢地饿死。";
+		mes "- 赛珍珠 -";
+		break;
+	case 19:
+		mes "乐观是带来成就的信念。";
+		mes "什么也做不了";
+		mes "没有希望和信心。";
+		mes "- 海伦·凯勒 -";
+		break;
+	case 20:
+		mes "深入观察自然，";
+		mes "然后你就会明白";
+		mes "一切都更好了。";
+		mes "- 阿尔伯特·爱因斯坦 -";
+		break;
+	case 21:
+		mes "人生的许多失败都是";
+		mes "没有意识到的人";
+		mes "他们有多近";
+		mes "走向成功";
+		mes "当他们放弃的时候。";
+		mes "- 托马斯·爱迪生 -";
+		break;
+	case 22:
+		mes "我有更多的乐趣并享受更多的经济成功";
+		mes "当我停止尝试时";
+		mes "得到我想要的";
+		mes "并开始帮助其他人";
+		mes "得到他们想要的。";
+		mes "- 斯宾塞·约翰逊，拉里·威尔逊 -";
+		break;
+	case 23:
+		mes "年龄就像爱情一样，是无法隐藏的。";
+		mes "- 托马斯·德克尔 -";
+		break;
+	case 24:
+		mes "我们不能成为";
+		mes "我们需要成为什么";
+		mes "保持我们本来的样子。";
+		mes "- 奥普拉·温弗瑞 -";
+		break;
+	case 25:
+		mes "转动你的伤口。";
+		mes "进入智慧。";
+		mes "- 奥普拉·温弗瑞 -";
+		break;
+	case 26:
+		mes "痛苦是人类伟大的老师。";
+		mes "- 玛丽·E·埃申巴赫 -";
+		break;
+	case 27:
+		mes "君子总是思考";
+		mes "德行；普通人";
+		mes "想着舒适。";
+		mes "——孔子——";
+		break;
+	case 28:
+		mes "快乐常常因为描述而被破坏。";
+		mes "- 司汤达 -";
+		break;
+	case 29:
+		mes "当我们结束的时候";
+		mes "不再与自己交谈。";
+		mes "这是真正思考的终结";
+		mes "以及最后孤独的开始。";
+		mes "- 爱德华·吉本 -";
+		break;
+	case 30:
+		mes "那些战胜了怀疑和恐惧的人";
+		mes "已经战胜了失败。";
+		mes "-詹姆斯·艾伦-";
+		break;
+	case 31:
+		mes "我们最大的骄傲是";
+		mes "并不是说我们永远不会失败，而是";
+		mes "当我们跌倒时，我们总是站起来。";
+		mes "——孔子——";
+		break;
+	case 32:
+		mes "当你爱一个人的时候";
+		mes "所有的恐惧都消失了。";
+		mes "当你害怕时，所有的爱都会消失。";
+		mes "- 奥修·拉杰尼希 -";
+		break;
+	case 33:
+		mes "我们潜意识的力量是巨大的；";
+		mes "我们在有意识的状态下不能做什么";
+		mes "我们可以在帮助下做";
+		mes "无意识的心灵";
+		mes "比意识更明智。";
+		mes "- 奥修·拉杰尼希 -";
+		break;
+	case 34:
+		mes "真相很简单。很简单——";
+		mes "简单到孩子都能理解。";
+		mes "其实，简单到只有小孩子才能明白。";
+		mes "除非你又变回小孩";
+		mes "你将无法理解它。";
+		mes "这是一种体验，而不是猜测。";
+		mes "- 奥修·拉杰尼希 -";
+		break;
+	case 35:
+		mes "世界上最好、最美丽的事物";
+		mes "看不见，甚至摸不着——";
+		mes "必须用心去感受它们。";
+		mes "- 海伦·凯勒 -";
+		break;
+	case 36:
+		mes "永远不要低下头。始终保持高位。";
+		mes "直视世界。";
+		mes "- 海伦·凯勒 -";
+		break;
+	case 37:
+		mes "独自一人，我们能做的事太少了；";
+		mes "我们在一起可以做很多事情。";
+		mes "- 海伦·凯勒 -";
+		break;
+	case 38:
+		mes "教育的最高成果是宽容。";
+		mes "- 海伦·凯勒 -";
+		break;
+	case 39:
+		mes "我们，我们每个人";
+		mes "只有一只翅膀的天使；";
+		mes "而我们只能飞翔";
+		mes "通过互相拥抱。";
+		mes "- 卢西亚诺·德·克雷森佐 -";
+		break;
+	case 40:
+		mes "靠等待来养活自己的人可能会饿死。";
+		mes "- 丹麦谚语 -";
+		break;
+	case 41:
+		mes "糟糕的和平是更好的";
+		mes "胜过一场美好的战争。";
+		mes "- 俄罗斯谚语 -";
+		break;
+	case 42:
+		mes "想要温暖自己的人";
+		mes "年老时必须建造";
+		mes "他年轻时的一个壁炉。";
+		mes "- 德国谚语 -";
+		break;
+	case 43:
+		mes "挑剔的人往往会选择最差的。";
+		mes "- 英国谚语 -";
+		break;
+	case 44:
+		mes "即使是神也会赔钱";
+		mes "经过三天的赌博。";
+		mes "- 中国谚语 -";
+		break;
+	case 45:
+		mes "我不怕那个男人";
+		mes "曾经练过一万种踢法的人，";
+		mes "但我害怕那个男人";
+		mes "他已经把一种踢法练习了10000次。";
+		mes "- 李小龙 -";
+		break;
+	case 46:
+		mes "被记住的最好方式";
+		mes "就是要有生活。";
+		mes "值得记住。";
+		mes "- 李小龙 -";
+		break;
+	case 47:
+		mes "认识自己就是研究自己";
+		mes "与另一个人一起行动。";
+		mes "- 李小龙 -";
+		break;
+	case 48:
+		mes "我不是其中之一，";
+		mes "谁不相信";
+		mes "一见钟情，";
+		mes "但我相信再看一遍。";
+		mes "- 李小龙 -";
+		break;
+	case 49:
+		mes "一个人永远不应该急于结婚。";
+		mes "婚姻与水果不同，";
+		mes "总是在季节里。";
+		mes "——列夫·托尔斯泰——";
+		break;
+	case 50:
+		mes "那些想要成功的人";
+		mes "会找到办法的人";
+		mes "不会找借口。";
+		mes "- 利奥·阿吉拉 -";
+		break;
+	case 51:
+		mes "动机是让你开始的动力。";
+		mes "习惯是让你坚持下去的动力。";
+		mes "- 吉姆·瑞安 -";
+		break;
+	case 52:
+		mes "生活得好的人就取得了成功，";
+		mes "经常笑，也很爱。";
+		mes "- 贝西·斯坦利 -";
+		break;
+	case 53:
+		mes "穷人花他的钱";
+		mes "并投资其余部分。";
+		mes "一个有钱人用他的钱来投资";
+		mes "并花掉剩下的钱。";
+		mes "- 吉姆·罗恩 -";
+		break;
+	case 54:
+		mes "如果你找不到成功的秘诀，";
+		mes "打开锁。";
+		mes "成功最重要的原则之一是";
+		mes "养成加倍努力的习惯。";
+		mes "- 拿破仑山 -";
+		break;
+	case 55:
+		mes "人类有";
+		mes "一种真正有效的武器，";
+		mes "那就是笑声。";
+		mes "——马克·吐温——";
+		break;
+	case 56:
+		mes "没有欢笑的一天就是浪费的一天。";
+		mes "- 查理·卓别林 -";
+		break;
+	case 57:
+		mes "今天笑得最好的人，";
+		mes "也会笑到最后。";
+		mes "- 尼采 -";
+		break;
+	case 58:
+		mes "笑声是太阳";
+		mes "将冬天从人的脸上驱走。";
+		mes "- 维克多·雨果 -";
+		break;
+	case 59:
+		mes "笑了，世界就会笑";
+		mes "与你;哭泣，并且";
+		mes "你独自哭泣。";
+		mes "- 埃拉·惠勒·威尔科克斯 -";
+		break;
+	case 60:
+		mes "你不可能生气";
+		mes "同时大笑。";
+		mes "愤怒和笑是相互排斥的";
+		mes "你有权力选择其中之一。";
+		mes "- 韦恩·戴尔 -";
+		break;
+	case 61:
+		mes "我们笑不是因为我们快乐";
+		mes "- 我们很高兴，因为我们笑了。";
+		mes "- 威廉·詹姆斯 -";
+		break;
+	case 62:
+		mes "懂得嘲笑自己的人";
+		mes "永远不会停止被逗乐。";
+		mes "- 雪莉·麦克雷恩 -";
+		break;
+	case 63:
+		mes "没有哭过的年轻人是野蛮人，";
+		mes "不笑的年长者是个傻瓜。";
+		mes "- 乔治·桑塔亚纳 -";
+		break;
+	case 64:
+		mes "我没有太多耐心";
+		mes "与美丽的事物";
+		mes "必须解释一下";
+		mes "被理解。";
+		mes "如果确实需要额外的解释";
+		mes "然后我质疑";
+		mes "是否达到了其目的。";
+		mes "- 查理·卓别林 -";
+		break;
+	case 65:
+		mes "人生是一场悲剧";
+		mes "当近距离观察时，";
+		mes "但一部喜剧";
+		mes "在远景中。";
+		mes "- 查理·卓别林 -";
+		break;
+	case 66:
+		mes "智慧最明显的标志就是持续的快乐。";
+		mes "- 米歇尔·德·蒙田 -";
+		break;
+	case 67:
+		mes "你喜欢浪费的时间";
+		mes "没有被浪费。";
+		mes "- 约翰·列侬 -";
+		break;
+	case 68:
+		mes "真正的幽默并非来自头脑，而是来自内心。";
+		mes "这不是蔑视，而是蔑视。它的本质是爱。";
+		mes "问题不在于笑声，";
+		mes "但仍然是微笑，那笑容更深。";
+		mes "- 托马斯·卡莱尔 -";
+		break;
+	case 69:
+		mes "通过幽默，你可以软化";
+		mes "一些最严重的打击";
+		mes "生活所带来的。";
+		mes "一旦你找到笑声，";
+		mes "无论多么痛苦";
+		mes "你的情况可能是，";
+		mes "你可以活下来。";
+		mes "- 比尔·科斯比 -";
+		break;
+	case 70:
+		mes "我最大的希望就是笑";
+		mes "我哭了多少次；";
+		mes "完成我的工作";
+		mes "并尝试去爱某人";
+		mes "并有勇气";
+		mes "接受爱的回报。";
+		mes "- 玛雅·安杰卢 -";
+		break;
+	}
+	next;
+	mes "[抽奖哲学家]";
+	mes "人们接受他们所听到的";
+	mes "不同。";
+	next;
+	mes "[抽奖哲学家]";
+	mes "我想知道你怎么想";
+	mes "关于我告诉你的事情。";
+	next;
+	input .@inputstr$;
+	mes "[抽奖哲学家]";
+	mes "所以你认为"+.@inputstr$+".";
+	next;
+	mes "[抽奖哲学家]";
+	mes "…………";
+	next;
+	mes "[抽奖哲学家]";
+	mes "我不知道。没有一个答案";
+	mes "对于这个问题...";
+	mes "坚持你的想法。";
+	close;
+}
+
+-	script	#mora_traveler	-1,{
+	mes "[心烦意乱的旅行者]";
+	mes "你……你敢跟我玩游戏吗？";
+	emotion ET_ANGER, getnpcid(0, "Traveler#ep14_1_1");
+	next;
+	mes "[提出问题的旅行者]";
+	mes "什么...？你有证据吗？";
+	mes "有证据吗？！！";
+	emotion ET_FRET, getnpcid(0, "Traveler#ep14_1_2");
+	next;
+	mes "[旅行者试图阻止战斗]";
+	mes "看，停下来，停下来！";
+	mes "恐怕会演变成一场大战……";
+	emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Traveler#ep14_1_3");
+	next;
+	mes "[旅行者试图阻止战斗]";
+	mes "哦！我们为什么不问";
+	mes "那里那个人……？";
+	next;
+	mes "[心烦意乱的旅行者]";
+	mes "哦是的！这是个好主意。";
+	mes "嗯~你好~";
+	mes "你在那里，旅行者！";
+	emotion ET_AHA, getnpcid(0, "Traveler#ep14_1_1");
+	next;
+	mes "他们似乎在呼唤你。";
+	next;
+	if(select("看看出了什么事：我与这件事无关。") == 2) {
+		mes "你已经上路了";
+		mes "把旅客抛在身后。";
+		close;
+	}
+	mes "["+strcharinfo(0)+"]";
+	mes "这里发生了什么事？";
+	emotion ET_QUESTION, playerattached();
+	next;
+	mes "[心烦意乱的旅行者]";
+	mes "我会告诉你什么。";
+	mes "罗斯的母亲有 10 个儿子。";
+	mes "大儿子名叫Roseone，";
+	mes "第二个玫瑰花，";
+	mes "第三个玫瑰三...";
+	mes "第九个罗瑟宁...";
+	mes "你明白它是如何工作的，对吧？";
+	emotion ET_ANGER, getnpcid(0, "Traveler#ep14_1_1");
+	next;
+	mes "[提出问题的旅行者]";
+	mes "没错，就是这样。";
+	mes "所以我问最小的那个叫什么";
+	mes "当我告诉他答案时，";
+	mes "他很生气并开始咒骂我。";
+	emotion ET_FRET, getnpcid(0, "Traveler#ep14_1_2");
+	next;
+	mes "[心烦意乱的旅行者]";
+	mes "你……你这个混蛋！";
+	mes "嘿，你觉得怎么样";
+	mes "问题的答案是？";
+	emotion ET_ANGER, getnpcid(0, "Traveler#ep14_1_1");
+	next;
+	switch(select("Roseten.:Rose.:我怎么知道呢？")) {
+	case 1:
+		mes "["+strcharinfo(0)+"]";
+		mes "这个问题的答案是罗斯顿。";
+		mes "为什么要为这么一点小事吵架呢？";
+		next;
+		mes "[心烦意乱的旅行者]";
+		mes "看？就连这位旅行者也说";
+		mes "罗斯顿就是答案。";
+		mes "你怎么敢想戏弄我？";
+		emotion ET_KIK, getnpcid(0, "Traveler#ep14_1_1");
+		next;
+		mes "[提出问题的旅行者]";
+		mes "你这个白痴……连一点线索都没有！";
+		emotion ET_FRET, getnpcid(0, "Traveler#ep14_1_2");
+		break;
+	case 2:
+		mes "["+strcharinfo(0)+"]";
+		mes "问题的答案是罗斯。";
+		mes "你说罗斯的母亲有 10 个儿子。";
+		mes "所以即使其他儿子的名字是";
+		mes "Roseone、Rosetwo、...Rosenine、";
+		mes "最小的一定是罗丝，";
+		mes "不然她就不会被称为罗丝的母亲了。";
+		next;
+		mes "[提出问题的旅行者]";
+		mes "这正是我的意思！";
+		mes "我不能和他混在一起。";
+		mes "我想我们生活在两个不同的世界。";
+		emotion ET_OK, getnpcid(0, "Traveler#ep14_1_2");
+		next;
+		mes "[心烦意乱的旅行者]";
+		mes "你这个混蛋……你做了什么？";
+		mes "从这个家伙那里得到...？";
+		emotion ET_ANGER, getnpcid(0, "Traveler#ep14_1_1");
+		break;
+	case 3:
+		mes "["+strcharinfo(0)+"]";
+		mes "我不知道。";
+		mes "尝试自己解决一下。";
+		next;
+		mes "[旅行者试图阻止战斗]";
+		mes "你这个没出息的混蛋";
+		mes "你想把这个烂摊子留给我吗？";
+		emotion ET_FRET, getnpcid(0, "Traveler#ep14_1_3");
+		break;
+	}
+	next;
+	mes "*砰*";
+	mes "您感到后脑勺突然受到撞击。";
+	mes "你的视线开始变得模糊。";
+	specialeffect2 EF_HIT1;
+	sc_start SC_BLIND,20000,0;
+	next;
+	mes "在你昏倒之前，你会感觉到有人在翻你的口袋。";
+	if (Zeny >= 5000)
+		set Zeny, Zeny-5000;
+	else
+		set Zeny, 0;
+	close2;
+	percentheal -99,0;
+	warp "mora",31,132;
+	end;
+}
+mora,140,72,4	duplicate(#mora_traveler)	Traveler#ep14_1_1	513	//Upset Traveler
+mora,138,72,6	duplicate(#mora_traveler)	Traveler#ep14_1_2	513	//Traveler That Posed the Question
+mora,139,73,4	duplicate(#mora_traveler)	Traveler#ep14_1_3	513	//Traveler Trying to Stop the Fight
+
+// Set 3 :: tre
+//============================================================
+mora,132,185,5	script	Mora Villager#sleep5	518,{
+	mes "[莫拉村民]";
+	mes "噗~噗~";
+	close;
+}
+
+mora,133,185,5	script	Mora Villager#sleep2	524,{
+	mes "[莫拉村民]";
+	mes "鼾...";
+	close;
+}
+
+mora,134,185,3	script	Mora Villager#sleep1	525,{
+	mes "[莫拉村民]";
+	mes "哼哼——";
+	close;
+}
+
+mora,132,184,5	script	Mora Villager#sleep6	522,{
+	mes "[莫拉村民]";
+	mes "哼哼——";
+	close;
+}
+
+mora,133,184,1	script	Mora Villager#sleep4	1790,{
+	mes "[莫拉村民]";
+	mes "呻吟...";
+	close;
+}
+
+mora,134,184,1	script	Mora Villager#sleep3	516,{
+	mes "[莫拉村民]";
+	mes "呼呼呼~";
+	close;
+}
+
+mora,132,183,7	script	Mora Villager#sleep7	524,{
+	mes "[莫拉村民]";
+	mes "与 Z";
+	close;
+}
+
+mora,133,183,7	script	Mora Villager#sleep8	518,{
+	mes "[莫拉村民]";
+	mes "与 Z";
+	close;
+}
+
+mora,134,183,1	script	Mora Villager#sleep9	522,{
+	mes "[莫拉村民]";
+	mes "与 Z";
+	close;
+}
+
+mora,43,127,3	script	Innkeeper#mora_inn	522,{
+	mes "[旅店老板]";
+	mes "哦~看来又多了一个冒险家呢。";
+	mes "你从哪来？";
+	next;
+	switch(select("保存游戏就行了。:我想休息一下。:我以前住的地方叫...:仓库怎么用？")) {
+	case 1:
+		mes "[旅店老板]";
+		mes "哇，这么着急干什么？";
+		mes "你才刚来这里，就要去别的地方了？";
+		next;
+		mes "[旅店老板]";
+		mes "要知道，欲速则不达。啧啧。";
+		mes "嗯，游戏已经保存了。";
+		savepoint "mora",56,143,1,1;
+		close;
+	case 2:
+		mes "[旅店老板]";
+		mes "我的天啊，我也需要休息一下。";
+		mes "汇率是5000 zeny。你想要一个房间吗？";
+		next;
+		switch(select("是：否")) {
+		case 1:
+			if (Zeny < 5000) {
+				mes "[旅店老板]";
+				mes "速率为5000z。";
+				close;
+			}
+			mes "[旅店老板]";
+			mes "请随便一点，就像在自己家一样。";
+			close2;
+			set Zeny, Zeny-5000;
+			percentheal 100,100;
+			warp "mora",32,123;
+			end;
+		case 2:
+			mes "[旅店老板]";
+			mes "如果你没钱，就去村中心的水坑里泡吧。";
+			mes "它会让你暖和起来。";
+			close;
+		}
+	case 3:
+		input .@inputstr$;
+		mes "["+strcharinfo(0)+"]";
+		mes "我来自一个叫"+.@inputstr$+".";
+		next;
+		mes "[旅店老板]";
+		mes "哦，我想我以前听说过这个地方！";
+		next;
+		if (.@inputstr$ == "Shinlim") {
+			mes "[旅店老板]";
+			mes "我听说有一座古老的塔楼，可怕的女巫把野蛮人放进一个大锅里，并对他们施展邪恶的咒语，对吗？";
+			next;
+			mes "[旅店老板]";
+			mes "更糟糕的是，谁吃了野人制成的药，谁就会回来索取更多！";
+			mes "他会四处游荡寻找塔，最终变成一个巨大的野人！";
+			emotion ET_STARE_ABOUT, playerattached();
+			next;
+		} else {
+			mes "[旅店老板]";
+			mes "听说那里有一群即使下雨下雪也起不来的小鬼，或者他们的爱人或父母叫他们！";
+			mes "而那黑云，始终在他们的上空盘旋，掀起风暴！";
+			next;
+		}
+		mes "[旅店老板]";
+		mes "多么可怕啊！";
+		close;
+	case 4:
+		mes "[旅店老板]";
+		mes "搜索我右边的蔬菜形状的抽屉。";
+		close;
+	}
+}
+
+mora,48,128,0	script	Drawer#mora_warehouse	111,{
+	if(!callfunc("F_CanOpenStorage")){
+		mes "- 你不记得如何打开仓库了。 -";
+		close;
+	}
+	mes "- 蔬菜形状的抽屉上用小写字母写着数字1 0 0。 -";
+	next;
+	switch(select("插入 100 zeny.：不执行任何操作。")) {
+	case 1:
+		if (Zeny < 100) {
+			mes "- 你身上好像没有 100 zeny。 -";
+			close;
+		}
+		set Zeny, Zeny-100;
+		openstorage;
+		close;
+	case 2:
+		mes "- 你放弃使用仓库了。 -";
+		close;
+	}
+}

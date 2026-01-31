@@ -3,18 +3,18 @@
 Batch translate utility
 
 Usage:
-    python -m script.batch_translate DIR [--no-recursive] [--force]
+    python -m script.batch_translate DIR [--recursive] [--force]
 
-This script scans `DIR` for `.txt` files (recursively by default) and translates
-missing files by writing corresponding `.zh-cn.txt` outputs. Use `--no-recursive`
-to avoid recursion and `--force` to retranslate files even if `.zh-cn.txt` exists.
+This script scans `DIR` for `.txt` files (non-recursive by default) and translates
+missing files by writing corresponding `.zh-cn.txt` outputs. Use `--recursive`
+to recurse into subfolders and `--force` to retranslate files even if `.zh-cn.txt` exists.
 """
 import os
 import argparse
 from .translate import TranslateEngine
 
 
-def find_txt_files(root, recursive=True):
+def find_txt_files(root, recursive=False):
     files = []
     if recursive:
         for dirpath, dirnames, filenames in os.walk(root):
@@ -38,7 +38,7 @@ def find_txt_files(root, recursive=True):
 def main():
     ap = argparse.ArgumentParser(description='Batch find .txt files and optionally translate (basic test)')
     ap.add_argument('root', help='Root folder to scan for .txt files')
-    ap.add_argument('--no-recursive', dest='recursive', action='store_false', help='Do not recurse into subfolders')
+    ap.add_argument('--recursive', dest='recursive', action='store_true', default=False, help='Recurse into subfolders')
     ap.add_argument('--force', action='store_true', help='Force retranslation: include files even if .zh-cn.txt exists')
     args = ap.parse_args()
 

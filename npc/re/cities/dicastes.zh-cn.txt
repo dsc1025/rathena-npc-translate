@@ -1,0 +1,717 @@
+//===== rAthena Script ======================================= 
+//= El Dicastes Town
+//===== By: ================================================== 
+//= Gennosuke Kouga, Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= El Dicastes Town Script
+//===== Additional Comments: ================================= 
+//= 1.0 First version.
+//= 1.1 Standardized. [Euphy]
+//= 1.2 Updated to match the official script. [Joseph]
+//= 1.2a Moved Guide to a separate file. [Euphy]
+//= 1.3 Updated to match official script. [SkittleNugget]
+//============================================================
+
+dicastes01,194,159,5	script	Excited Galten#a	492,{
+	mes "[兴奋的野猪]";
+	if (isequipped(2782)) {
+		mes "我无法变美";
+		mes "阿哈特的形象从我的脑海中消失了。";
+		emotion ET_THROB;
+		mes "只要我们有他，";
+		mes "Sapha 的到来只是时间问题";
+		mes "将统治这片土地。";
+		close; 
+	}
+	mes "������ �� ����";
+	mes "������ �� ��";
+	mes "������ ��";
+	mes "���� �� �С��� �� ����";
+	mes "������ �� ��";
+	close;
+}
+
+dicastes01,202,86,3	script	Sentinel#a	4_MAN_GALTUN,{
+	mes "[哨兵]";
+	if (isequipped(2782)) {
+		mes "迪卡斯特人";
+		mes "首都萨帕。";
+		mes "土地很漂亮";
+		mes "太粗糙了，很多外人进不去。哈哈";
+		next;
+		mes "[哨兵]";
+		mes "...";
+		next;
+		mes "[哨兵]";
+		mes "喂，你是外人啊！";
+		close; 
+	}
+	mes "������ �� ��С�� �� ����";
+	mes "���� �� ";
+	mes "���� �� �С��� �� ����";
+	next;
+	mes "[哨兵]";
+	mes "��";
+	next;
+	mes "[哨兵]";
+	mes "�������������";
+	close;	
+}
+
+dicastes01,194,95,5	script	Sentinel#b	450,{
+	mes "[哨兵]";
+	if (isequipped(2782)) {
+		mes "我允许你进入。";
+		mes "但如果你敢惹麻烦";
+		mes "你不会知道是什么击中了你。提防！";
+		close; 
+	}
+	mes "������ �� ��";
+	mes "���� �� ������ �� ��";
+	mes "������ �� ������ �� ��";
+	close;
+}
+
+dicastes01,234,158,0	script	Training Galten#a	450,{
+	mes "[训练加尔滕]";
+	if (isequipped(2782)) {
+		mes "我会做好一切准备";
+		mes "如果我每天坚持训练的话。";
+		close;
+	}
+	mes "������ �� ������ ��";
+	mes "�� ��";
+	next;
+	mes "不知道这意味着什么。";
+	close;
+}
+
+dicastes01,244,166,0	script	Training Galten#b	450,{
+	mes "[训练加尔滕]";
+	if (isequipped(2782)) {
+		mes "我想知道阿哈特是否知道如何";
+		mes "我正在努力训练。";
+		close; 
+	}
+	mes "������ ��";
+	mes "������ �� ������ �� ������ ��";
+	next;
+	mes "不知道这意味着什么。";
+	close;
+}
+
+dicastes01,272,166,0	script	Training Galten#c	450,{
+	mes "[训练加尔滕]";
+	if (isequipped(2782)) {
+		mes "[训练加尔滕]";
+		mes "我是萨法战士。";
+		mes "我的训练从不偷懒。";
+		close;
+	}
+	mes "������ �� ������ ��";
+	mes "������ ��";
+	next;
+	mes "不知道这意味着什么。";
+	close;
+}
+
+dicastes01,248,129,0	script	Training Galten#d	450,{
+	mes "[训练加尔滕]";
+	if (isequipped(2782)) {
+		mes "[训练加尔滕]";
+		mes "我听说这不是训练";
+		mes "除了按摩器以外的设备";
+		mes "对于像我这样的实习生来说。";
+		close; 
+	}
+	mes "������ �� ������";
+	mes "������ �� ������ ��";
+	next;
+	mes "不知道这意味着什么。";
+	close;
+}
+
+/*
+dicastes01,271,152,0	script	Training Galten#e	450,{
+	mes "[训练加尔滕]";
+	if (isequipped(2782)) {
+		mes "我会得到很好的结果";
+		mes "如果我尽力了，对吗？";
+		close;
+	}
+	mes "������ �� ������";
+	mes "����";
+	close;
+}
+*/
+
+dic_in01,349,282,4	script	Waiting Galten#in_1	492,{
+	if (isequipped(2782)) {
+		mes "[等待加尔滕]";
+		mes "这里是战斗站。";
+		mes "我们都紧张起来，准备采取行动。";
+		close;	 
+	}
+	mes "[���С� �� ��]";
+	mes "����� �� ��";
+	mes "���� �� ���� �� ������ �� ����� ��";
+	close;
+}
+
+dic_in01,370,261,1	script	Waiting Galten#in_2	492,{
+	if (isequipped(2782)) {
+		mes "[等待加尔滕]";
+		mes "无聊的。";
+		close; 
+	}
+	mes "[���С� �� ��]";
+	mes "������";
+	close;
+}
+
+dic_in01,381,261,1	script	Waiting Galten#in_3	492,{
+	if (isequipped(2782)) {
+		mes "[等待加尔滕]";
+		mes "兹兹兹...";
+		close; 
+	}
+	mes "[���С� �� ��]";
+	mes "����";
+	close;
+}
+
+dic_in01,370,282,4	script	Waiting Galten#in_4	492,{
+	if (isequipped(2782)) {
+		mes "[等待加尔滕]";
+		mes "只要我在这里，El Dicastes 就是这个世界上最宁静的地方。";
+		close; 
+	}
+	mes "[���С� �� ��]";
+	mes "�� �� ������ �� ������ �� ����� �� ��";
+	close;
+}
+
+dic_in01,354,219,4	script	Resting Galten#in_5	492,{
+	if (isequipped(2782)) {
+		mes "[休息的野猪]";
+		mes "休息总是那么甜蜜。";
+		close; 
+	}
+	mes "[������ �� ��]";
+	mes "����� �� ��� �� ��";
+	close;
+}
+
+dic_in01,365,197,1	script	Resting Galten#in_6	492,{
+	if (isequipped(2782)) {
+		mes "[休息的野猪]";
+		mes "加尔滕这样站着也能休息。";
+		next;
+		mes "[休息的野猪]";
+		mes "你说我看起来不像在休息？但我已经习惯了。";
+		close; 
+	}
+	mes "[������ �� ��]";
+	mes "���� �� ���� �� ����";
+	mes "��� �� ������ � �С��� �� �С��� �� ��";
+	close;
+}
+
+dic_in01,87,102,5	script	Resting Piom#01	454,{
+	end;
+}
+
+dic_in01,29,119,4	script	Resting Piom#04	489,{
+	if (isequipped(2782)) {
+		mes "[休息Piom]";
+		mes "为什么我想休息的时候却这么吵？";
+		close; 
+	}
+	mes "[������ �� ��]";
+	mes "������ �� ����� �� ����";
+	close;
+}
+
+dic_in01,91,113,5	script	Suspicious Piom#a	489,{
+	mes "[可疑的Piom]";
+	if (isequipped(2782)) {
+		mes "你听说过吗";
+		mes "关于阿哈特的谣言？";
+		next;
+		if(select("不！：你先。") == 1) {
+			mes "[可疑的Piom]";
+			mes "没关系。";
+			close; 
+		}
+		mes "[可疑的Piom]";
+		mes "哦，你好像知道？";
+		mes "我需要收集信息。";
+		mes "你先。";
+		mes "你听说过这个谣言吧？";
+		next;
+		if(select("有什么可疑的？：如果你不打算把它洒出来，我也不会！") == 1) {
+			mes "[可疑的Piom]";
+			mes "我只是一个非常好奇的人";
+			mes "普通皮奥姆。";
+			close; 
+		}
+		mes "[可疑的Piom]";
+		mes "我也不打算说什么！";
+		close; 
+	}
+	mes "�������������";
+	mes "�� ������ ���";
+	next;
+	if(select("不知道什么意思：是诅咒吗？？") == 2) {
+		mes "[可疑的Piom]";
+		mes "太糟糕了。";
+		close; 
+	}
+	mes "[可疑的Piom]";
+	mes "就在你的";
+	mes "方式，嘘";
+	close;
+}
+
+dic_in01,168,116,5	script	Tired Piom#c	491,{
+	mes "[累了的皮奥姆]";
+	if (isequipped(2782)) {
+		mes "如果您需要任何";
+		mes "信息，你会更好";
+		mes "猫商人比在这里闲逛更幸运。";
+		mes "但当然你必须付出代价。";
+		close; 
+	}
+	mes "������ �� ����";
+	mes "������ �� ����� ��";
+	mes "���� �� ������ �� ���� �� �� �� ��";
+	mes "������ �� ����";
+	close;
+}
+
+dic_in01,149,104,5	script	Tired Piom#b	455,{
+	mes "[累了的皮奥姆]";
+	if (isequipped(2782)) {
+		mes "我感觉好僵硬...";
+		mes "我需要再服用一剂钷。";
+		mes "我觉得效果比以前弱了";
+		mes "或者只是我？";
+		emotion ET_QUESTION;
+		close; 
+	}
+	mes "������ �� ��";
+	mes "������ �� ��� �� ����";
+	mes "���� �� ������ �� ���";
+	mes "������ ��";
+	emotion ET_QUESTION;
+	close;
+}
+
+dic_in01,341,113,3	script	Tired Piom#a	491,{
+	mes "[累了的皮奥姆]";
+	if (isequipped(2782)) {
+		mes "[累了的皮奥姆]";
+		mes "我觉得我看起来更好";
+		mes "长袍比皮革的。";
+		mes "我可能得改学针织了。";
+		mes "但采矿似乎确实适合我。";
+		next;
+		mes "[累了的皮奥姆]";
+		mes "...";
+		next;
+		emotion ET_SWEAT;
+		mes "[累了的皮奥姆]";
+		mes "我又会被拒绝吧？";
+		close; 
+	}
+	mes "���� �� ����";
+	mes "���� �� �再���� �� ��";
+	mes "���� �� ����� �� ��";
+	mes "������ �� ����� �� ����";
+	next;
+	mes "[累了的皮奥姆]";
+	mes "��";
+	next;
+	emotion ET_SWEAT;
+	mes "[累了的皮奥姆]";
+	mes "������ �� ����";
+	close;
+}
+
+dic_in01,252,103,3	script	Eating Adventurer#tre	711,{
+	mes "[饮食冒险家]";
+	mes "嘿，你身上有米德加德的紧急口粮吗？";
+	next;
+	mes "[饮食冒险家]";
+	mes "我是带着饥饿的胃来到这里的，因为我听说有一家米德加德酒吧，但我从来没有在米德加德的任何地方尝过这种食物。";
+	next;
+	mes "[饮食冒险家]";
+	mes "不，我确信米德加德没有人愿意尝试这个。";
+	next;
+	mes "[饮食冒险家]";
+	mes "我真的很想要一顿美味的热餐。";
+	mes "我经常去格芬这家很棒的小餐馆，现在我真的很想念那个地方。";
+	close;
+}
+
+dic_in01,32,54,5	script	Venknick#el_01	449,{
+	if (isequipped(2782)) {
+		mes "[文克尼克]";
+		mes "哦，感觉很清爽。";
+		mes "精制的钔是有史以来最好的。你想尝试一下吗？";
+		close; 
+	}
+	mes "[����]";
+	mes "���� �� ��";
+	mes "������ �� ������ �� ���� �� ������ �� ��?";
+	close;
+}
+
+dic_in01,372,116,3	script	Thrilled Piom#a	490,{
+	mes "[兴奋的皮奥姆]";
+	if (isequipped(2782)) {
+		mes "阿哈特就是那个";
+		mes "也只有萨法的骄傲。";
+		mes "我们有大量的钔";
+		mes "因为他！";
+		next;
+		mes "[兴奋的皮奥姆]";
+		mes "...";
+		next;
+		mes "[兴奋的皮奥姆]";
+		mes "你感觉不到他的";
+		mes "祝福？";
+		close;
+	}
+	mes "����� �� ��";
+	mes "����� �� ����";
+	mes "����� �� ���� ��";
+	mes "���� �� ������ �� ��";
+	next;
+	mes "[兴奋的皮奥姆]";
+	mes "��";
+	next;
+	mes "[兴奋的皮奥姆]";
+	mes "���������";
+	mes "����� �� ����";
+	close;
+}
+
+dic_in01,360,125,5	script	Serious Venknicka	449,{
+	mes "[严肃的文克尼克]";
+	if (isequipped(2782)) {
+		mes "钆产量突然增加。";
+		mes "为什么？";
+		mes "我必须让更多的工厂生产线运行。";
+		close; 
+	}
+	mes "������ �� ������ �� �����";
+	mes "����� ��";
+	mes "������ �� ������ ��";
+	close;
+}
+
+dic_in01,42,250,5	script	Guide#diel_1	489,{
+	if (isequipped(2782)) {
+		if (ep13_3_invite > 5) {		
+			mes "[指南]";
+			mes "我是 Dior，您为 El Dicastes 提供的亲切向导。";
+			mes "我怎么帮你？";
+			next;
+			mes "[指南]";
+			mes "您可以在此处提交民事投诉。";
+			mes "民事服务和 El Dicastes 区域由楼上的情况室管理。";
+			next;
+			mes "[指南]";
+			mes "行政办公室位于顶层，处理非常重要的事务。";
+			mes "档案室位于较低层，您可以在那里获取大量信息。";
+			next;
+			mes "[指南]";
+			mes "顺便说一句，您可以使用后面的电梯前往其他楼层。";
+			next;
+			mes "[指南]";
+			mes "哦，你没问吗？";
+			mes "但因为我是迪奥，所以我是一位友善的向导。呵呵。";
+			close; 
+		}
+		mes "- 导游用警惕的表情看着你。 -";
+		close;
+	}
+	mes "[����]";
+	mes "������ �� ����� �� ������ �� ������ ��";
+	mes "���� �� ����？";
+	next;
+	mes "[����]";
+	mes "�С��� �� ������ �� ������";
+	mes "���� �� ���� �� ���� �� ����� �� ����� �� ��";
+	next;
+	mes "[����]";
+	mes "������ �� ����� �� ������ �� ������ �� ����";
+	mes "���� �� ����";
+	next;
+	mes "[����]";
+	mes "���� �� ���� �� ���� �� �� ��";
+	next;
+	mes "[����]";
+	mes "���� �� ������ �� ��С� �� ���� �� ������ ��";
+	mes "��� �� ����� �� ����";
+	close;
+}
+
+dic_in01,335,34,5	script	Talkative Piom#a	490,{
+	mes "[健谈的Piom]";
+	if (isequipped(2782)) {	
+		mes "在我的工厂";
+		mes "我们不仅提炼钸，";
+		mes "但我们也生产各种";
+		mes "日常使用的工具。";
+		mes "我们生产战争物资";
+		mes "这里也有。";
+		close; 
+	}
+	mes "������ ��";
+	mes "������ �� ���";
+	mes "���� �� ������ ��";
+	mes "����� �� ��";
+	mes "������ �� ����� �� ��";
+	mes "���� �� ������";
+	close;
+}
+
+dic_in01,387,30,1	script	Manuk Piom#a	454,{
+	mes "[马努克·皮奥姆]";
+	if (isequipped(2782)) {
+		mes "你！我们是在马努克认识的，不是吗？";
+		mes "我是来取我订购的武器的。";
+		close; 
+	}
+	mes "����� �� ��� �� ��";
+	mes "������ �� ���� �� ���� ����";
+	close;
+}
+
+dicastes01,282,210,4	script	Free Knit#a	453,{
+	mes "[自由针织]";
+	if (isequipped(2782)) {
+		mes "只要我们有稳定的";
+		mes "钷供应";
+		mes "萨法斯可以永生。";
+		mes "我们的童年有10年，";
+		mes "这很短。";
+		close; 
+	}
+	mes "���� �� ���� ��";
+	mes "���� �� ������ �� ����� �� ����� ��";
+	mes "���� �� ���� �� ������";
+	mes "������� �� ����";
+	mes "������� ����";
+	close;
+}
+
+dicastes01,246,210,3	script	Free Venknick#a	449,{
+	mes "[免费文克尼克]";
+	if (isequipped(2782)) {
+		mes "至少我们有足够的钆。";
+		mes "看，";
+		mes "你可以看到钔";
+		mes "无论你走到哪里。";
+		next;
+		mes "[免费文克尼克]";
+		mes "？";
+		next;
+		mes "[免费文克尼克]";
+		mes "滚动的东西是宝石，";
+		mes "但你为什么对此感兴趣？";
+		close; 
+	}
+	mes "���� �� ������ �� ���";
+	mes "����";
+	mes "������ �� ����";
+	mes "������ �� ����� ��";
+	next;
+	mes "[免费文克尼克]";
+	mes "��";
+	next;
+	mes "[免费文克尼克]";
+	mes "������ �� ��� �� ���";
+	mes "������ �� ���� �� ���� ����";
+	close;
+}
+
+dicastes01,235,245,4	script	Excited Piom#a	490,{
+	if (isequipped(2782)) {
+		mes "[兴奋的Piom]";
+		mes "你见过阿哈特吗？";
+		emotion ET_DELIGHT;
+		mes "他在《El Discastes》中的受欢迎程度是惊人的！";
+		close; 
+	}
+	mes "[兴奋的Piom]";
+	mes "������ �� ������ ��";
+	emotion ET_DELIGHT;
+	mes "���� �� ���� �� ���� �� �� ��";
+	close;
+}
+
+dicastes01,284,262,3	script	Favorable Knit#a	453,{
+	mes "[喜欢的针织]";
+	if (isequipped(2782)) {
+		mes "与拉芬人不同，我们萨法斯人";
+		mes "是一个非常紧密的社区。";
+		mes "我们出生后就开始住在公共设施中。";
+		mes "这就是为什么所有 Saphas 都像家人一样。";
+		mes "我们班级之间从来没有发生过争吵。";
+		close; 
+	}
+	mes "������ �� ������ ��";
+	mes "���� �� ���� �� ��";
+	mes "���� �� ���� �� ����";
+	mes "������ �� ������ �� ����";
+	mes "������ �� ���� �� ���� ����";
+	close;
+}
+
+dicastes01,164,180,4	script	Limpy Piom#a	489,{
+	mes "[软皮奥姆]";
+	if (isequipped(2782)) {
+		mes "他们说有一个";
+		mes "与马努克辉煌号的战争正在进行中。";
+		mes "我希望一切顺利。";
+		mes "我希望一切都不会到来";
+		mes "去首都的路就在这里。";
+		emotion ET_THINK;
+		close; 
+	}
+	mes "������ �� ����";
+	mes "������ �� ��";
+	mes "������ �� ������";
+	mes "���� �� ������";
+	mes "���� �� ���� �� ����";
+	emotion ET_THINK;
+	close;
+}
+
+dicastes01,191,202,4	script	Complaining Galten#fihs	450,{
+	if (isequipped(2782)) {
+		mes "[抱怨Galten]";
+		mes "那个疯狂的范尼克总是";
+		mes "谈论那座雕像的传说。";
+		next;
+		mes "[抱怨Galten]";
+		mes "你有没有谈过";
+		mes "对他？";
+		next;
+		if(select("否：是") == 1) {
+			mes "[抱怨Galten]";
+			mes "那你不知道雕像背后的传说吗？";
+			mes "然后我就不知道该和你聊什么了。";
+			close; 
+		}
+		emotion ET_KIK, getnpcid(0, "Crazy Venknick#fihsing1");
+		mes "[抱怨Galten]";
+		mes "你也爱上了那个疯狂的男人。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "是的";
+		emotion ET_CRY, playerattached();
+		next;
+		mes "[抱怨Galten]";
+		mes "为了你好，赶紧忘掉它吧。";
+		close;
+	}
+	mes "[������ �� ]";
+	mes "���� �� ������ ��";
+	mes "������ �� ������ �� ��";
+	next;
+	mes "[������ �� ]";
+	mes "�𢱡���������";
+	mes "������ �� ��";
+	next;
+	mes "不知道这意味着什么。";
+	close;
+}
+
+dicastes01,202,197,4	script	Crazy Venknick#fihsing1	449,{
+	if (isequipped(2782)) {
+		mes "[疯狂的文克尼克]";
+		mes "只需 5000 Zeny";
+		mes "我会告诉你那个雕像背后的悲伤传说。";
+		next;
+		if(select("给予 5000 Zeny。：不给予 5000 Zeny。") == 2) {
+			mes "[疯狂的文克尼克]";
+			mes "不要带着遗憾回来。";
+			close; 
+		}
+		if (Zeny < 5000) {
+			mes "[疯狂的文克尼克]";
+			mes "我有";
+			mes "没有可分享的传奇";
+			mes "穷人。";
+			close;
+			close; 
+		}
+		set Zeny, Zeny-5000;
+		mes "[疯狂的文克尼克]";
+		mes "谢谢。";
+		emotion ET_KIK, getnpcid(0, "Complaining Galten#fihs");
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "悲伤的传说是什么？";
+		next;
+		emotion ET_THINK;
+		mes "["+strcharinfo(0)+"]";
+		mes "我问这个悲伤的传说是关于什么的！";
+		next;
+		mes "[疯狂的文克尼克]";
+		mes "我不相信传说。";
+		next;
+		emotion ET_THINK, playerattached();
+		mes "["+strcharinfo(0)+"]";
+		mes "我被骗了吗？";
+		sc_start SC_Blind,20000,0;
+		next;
+		mes "你对被欺骗感到愤怒。";
+		close; 
+	}
+	mes "[������ �� ]";
+	mes "������ �� ������";
+	mes "���� �� ���� �� ����";
+	next;
+	mes "不知道这意味着什么。";
+	close;
+}
+
+dic_in01,98,110,5	script	Worried Piom#a	489,{
+	if (isequipped(2782)) {
+		mes "[担心的皮奥姆]";
+		mes "我已经几个小时没见到我的朋友了。";
+		mes "是时候让他们拥有";
+		mes "他们的钔。唔..";
+		close;
+	}
+	mes "[担心的皮奥姆]";
+	mes "������ �� ���� �� ����";
+	mes "����� �� ���� �� ��";
+	mes "������ �� ��";
+	close;
+}
+
+dic_in01,98,96,3	script	Lost Galten#a	492,{
+	if (isequipped(2782)) {
+		mes "[失落的加尔滕]";
+		mes "我作为 Piom 人已经生活太久了";
+		mes "现在这就像一个坏习惯。";
+		mes "我发现自己一直都在这里。";
+		close;
+	}
+	mes "[失落的加尔滕]";
+	mes "����� �� ����";
+	mes "������ �� ";
+	mes "���� �� ����";
+	close;
+}
