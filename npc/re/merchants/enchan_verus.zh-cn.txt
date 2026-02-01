@@ -1,0 +1,1415 @@
+//===== rAthena Script =======================================
+//= Enchants and exchange NPCs.
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Exchangers and enchanters NPCs on Verus.
+//===== Additional Comments: =================================
+//= 1.0 Added NPCs coming along Charleston instance. [Capuche]
+//= 1.1 Added Excellion Wing/Suit trader and enchant NPCs. [Capuche]
+//============================================================
+
+// Charleston
+verus04,69,108,5	script	Mass Charleston#1	4_F_CHARLESTON01,{
+	if (!checkweight(1201,1) || (MaxWeight - Weight) < 1000) {
+		mes "^ff0000您携带的物品过多，请减少携带物品，稍后再回来。^000000";
+		close;
+	}
+	cutin "dalle01.bmp",2;
+	if (countitem(6752) < 10) {
+		if (isbegin_quest(13186) == 0) {
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "我不知道在哪里可以找到查尔斯顿组件，";
+			next;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "但如果你有10个或更多，那么我可以用工厂产品交换它们。";
+			close3;
+		}
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "在开发查尔斯顿的大众版本之前，进行了一系列的试验和错误。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "我无意贬低自己，但大众版就是大众版；它们具有成本效益且实用，但永远不如高端版本。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "一些查尔斯顿，特别是在开发阶段，配备了更先进的功能。为了研究它们，我需要更多组件。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "如果您有 10 个或更多查尔斯顿组件，那么我可以用工厂产品交换它们。";
+		close3;
+	}
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "你身上有一些不错的部分！您想用工厂生产的商品来交换吗？";
+	next;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "是集合了查尔斯顿优点的一款商品，但不能单独出售，如果带好零件可以给你换。";
+	next;
+	.@s = select( "退出。", "更换加固部件", "更换补充装置" ) - 2;
+	if (.@s == -1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "下次再见！";
+		close3;
+	}
+	setarray .@job_aft$[0], "Reinforced parts", "Supplementary device";
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "哪一部分" + .@job_aft$[.@s] + "你想选择吗？";
+	next;
+	switch(.@s) {
+	case 0:
+		setarray .@item[0],
+			20733,	// Upgrade_Part_Engine
+			22044,	// Upgrade_Part_Booster
+			2996;	// Upgrade_Part_Gun_Barrel
+		break;
+	case 1:
+		setarray .@item[0],
+			20732,	// Supplement_Part_Con
+			22043,	// Supplement_Part_Agi
+			2995;	// Supplement_Part_Dex
+		break;
+	default:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "下次再见！";
+		close;
+	}
+	// custom translation from here
+	.@index = select( "退出。", getitemname(.@item[0]) + "（服装）", getitemname(.@item[1]) + "（鞋子）", getitemname(.@item[2]) + "（配饰）" ) - 2;
+	if (.@index == -1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "下次再见！";
+		close3;
+	}
+	if (countitem(6752) < 10) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "如果你找到足够的查尔斯顿零件，可以再来找我吗？";
+		close3;
+	}
+	delitem 6752,10;	// Charleston_Parts
+	getitem .@item[.@index],1;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "将 10 " + getitemname(6752) + " 兑换为 " + .@job_aft$[.@s] + "。如果你找到更多的部分，再来找我！";
+	close3;
+}
+
+verus04,71,106,5	script	Mass Charleston#2	4_F_CHARLESTON01,{
+	disable_items;
+	if (!checkweight(1201,1)) {
+		mes "您的物品类型太多。首先减轻库存。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "库存中的物品正在压垮你。先减轻体重。";
+		close;
+	}
+	cutin "dalle01.bmp",2;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "我可以升级查尔斯顿工厂的产品。如果您有兴趣，请告诉我。";
+	next;
+	switch( select( "更多信息。", "为您的产品添加功能。", "重置产品。" ) ) {
+	case 1:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "每次升级/重置尝试花费 100,000 zeny 和 1 个 Charleston 组件。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "我还为 ^ff0000+9^000000 或以上的查尔斯顿设备提供了更广泛的升级选项。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "请放心，我的升级技术不会对物品的升级等级或装备卡造成意外损坏。";
+		close3;
+	case 2:
+		.@type_action = 1;
+		.@string$ = "Upgrading";
+		break;
+	case 3:
+		.@type_action = 2;
+		.@string$ = "Resetting";
+		break;
+	}
+	if (Zeny < 100000 || countitem(6752) < 1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "" + .@string$ + " 查尔斯顿产品的成本为 1 个查尔斯顿组件和 100,000 泽尼。请注意，所有费用都将计入您的产品" + strtolower(.@string$) + "。";
+		close3;
+	}
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "请确保您配备了要升级的设备。";
+	next;
+	.@s = select( "让我去装备一下。", "鞋类", "服装", "衣服", "配饰" ) - 2;
+	if (.@s == -1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "当然可以，做完之后请回来。";
+		close3;
+	}
+	if (Zeny < 100000 || countitem(6752) < 1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "商品升级所需的东西似乎不够！";
+		close3;
+	}
+	setarray .@eq_num[0], EQI_SHOES, EQI_GARMENT, EQI_ARMOR, EQI_ACC_R;
+
+	.@part = .@eq_num[.@s];
+	.@item_id = getequipid(.@part);
+	.@refine = getequiprefinerycnt(.@part);
+	setarray .@card_saved[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	copyarray .@card[0], .@card_saved[0], 4;
+
+	switch(.@item_id) {
+	case -1:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "因为是定制升级一定要穿装备。";
+		close3;
+	case 15111:	// Upgrade_Part_Plate
+		.@en_type = 3;
+		.@en_type_9 = 1;
+		.@max_slot = 1;
+		break;
+	case 20733:	// Upgrade_Part_Engine
+		.@en_type = 4;
+		.@en_type_9 = 5;
+		.@max_slot = 1;
+		break;
+	case 22044:	// Upgrade_Part_Booster
+		.@en_type = 6;
+		.@en_type_9 = 7;
+		.@max_slot = 1;
+		break;
+	case 2996:	// Upgrade_Part_Gun_Barrel
+		.@en_type = 8;
+		.@en_type_9 = 8;
+		.@max_slot = 2;
+		break;
+	case 15110:	// Supplement_Part_Str
+		.@en_type = 3;
+		.@en_type_9 = 2;
+		.@max_slot = 1;
+		break;
+	case 20732:	// Supplement_Part_Con
+		.@en_type = 4;
+		.@en_type_9 = 5;
+		.@max_slot = 1;
+		break;
+	case 22043:	// Supplement_Part_Agi
+		.@en_type = 6;
+		.@en_type_9 = 7;
+		.@max_slot = 1;
+		break;
+	case 2995:	// Supplement_Part_Dex
+		.@en_type = 8;
+		.@en_type_9 = 8;
+		.@max_slot = 2;
+		break;
+	default:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "^990099" + getequipname(.@part) + "^000000??";
+		mes "我对这个装备不感兴趣。";
+		close3;
+	}
+
+	switch(.@type_action) {
+	case 1:	// Add abilities
+		if (.@refine >= 9) {
+			setarray .@menu_en_type$[1],
+				"Attack enhancement",
+				"Defense enhancement",
+				"Acceleration enhancements",
+				"Garment upgrade",
+				"Advanced Garment upgrade",
+				"Shoes upgrade",
+				"Advanced Shoes upgrade",
+				"Accessory upgrade";
+			if (.@menu_en_type$[.@en_type] == "" || .@menu_en_type$[.@en_type_9] == "") {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "有什么不对劲！";
+				close3;
+			}
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "这是相当级别的强化装备，这种类型可以赋予强化扩展性能，从以下系列中选择理想的强化吧！";
+			next;
+			if (select( .@menu_en_type$[.@en_type], .@menu_en_type$[.@en_type_9] ) == 2)
+				.@en_type = .@en_type_9;
+		}
+		if (.@card[3] < 1 && .@max_slot < 4) {
+			.@slot = 4;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "我将升级第一个能力。现有的升级等级和卡牌不会被损坏。您想继续吗？";
+			next;
+			if (select( "我稍后回来。", "继续。" ) == 1) {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "没问题。如果你改变主意就回来吧。";
+				close3;
+			}
+		}
+		else if (.@card[2] < 1 && .@max_slot < 3) {
+			.@slot = 3;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "我将升级第二个能力。现有的升级等级和卡牌不会被损坏。";
+			next;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "虽然有轻微的失败机会，但在这种情况下现有的升级级别将被重置。你想做什么？";
+			next;
+			if (select( "我稍后回来。", "继续。" ) == 1) {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "没问题。如果你改变主意就回来吧。";
+				close3;
+			}
+		}
+		else if (.@card[1] < 1 && .@max_slot < 2) {
+			.@slot = 2;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "我将升级第三个能力。此最高升级阶段有可能^990000销毁设备或重置其现有升级级别。^000000 您想继续吗？";
+			next;
+			if (select( "我稍后回来。", "继续。" ) == 1) {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "没问题。如果你改变主意就回来吧。";
+				close3;
+			}
+		}
+		else if (.@card[0] < 1 && .@max_slot < 1)
+			.@slot = 1;
+		else {
+			cutin "dalle02.bmp",2;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "该装备已升级至最高等级。请带点别的东西。";
+			close3;
+		}
+		switch(.@en_type) {
+		case 1:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 300;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 11) .@en_name = 4700;	// Strength1
+			else if (.@r < 21) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 36) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 51) .@en_name = 4811;	// Fighting_Spirit1
+			else if (.@r < 61) .@en_name = 4701;	// Strength2
+			else if (.@r < 71) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 86) .@en_name = 4833;	// Expert_Archer2
+			else if (.@r < 101) .@en_name = 4810;	// Fighting_Spirit2
+			else if (.@r < 111) .@en_name = 4700;	// Strength1
+			else if (.@r < 121) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 132) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 143) .@en_name = 4811;	// Fighting_Spirit1
+			else if (.@r < 151) .@en_name = 4701;	// Strength2
+			else if (.@r < 159) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 167) .@en_name = 4833;	// Expert_Archer2
+			else if (.@r < 175) .@en_name = 4810;	// Fighting_Spirit2
+			else if (.@r < 182) .@en_name = 4702;	// Strength3
+			else if (.@r < 189) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 190) .@en_name = 4834;	// Expert_Archer3
+			else if (.@r < 191) .@en_name = 4809;	// Fighting_Spirit3
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 207) .@en_name = 4700;	// Strength1
+			else if (.@r < 213) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 221) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 229) .@en_name = 4811;	// Fighting_Spirit1
+			else if (.@r < 238) .@en_name = 4701;	// Strength2
+			else if (.@r < 247) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 260) .@en_name = 4810;	// Fighting_Spirit2
+			else if (.@r < 273) .@en_name = 4833;	// Expert_Archer2
+			else if (.@r < 280) .@en_name = 4702;	// Strength3
+			else if (.@r < 287) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 289) .@en_name = 4834;	// Expert_Archer3
+			else if (.@r < 291) .@en_name = 4809;	// Fighting_Spirit3
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 2:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 310;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 11) .@en_name = 4740;	// Vitality1
+			else if (.@r < 21) .@en_name = 4791;	// Def3
+			else if (.@r < 36) .@en_name = 4933;	// Tolerance_Not1
+			else if (.@r < 51) .@en_name = 4861;	// MHP1
+			else if (.@r < 61) .@en_name = 4741;	// Vitality2
+			else if (.@r < 71) .@en_name = 4792;	// Def6
+			else if (.@r < 86) .@en_name = 4934;	// Tolerance_Not2
+			else if (.@r < 101) .@en_name = 4862;	// MHP2
+			else if (.@r < 111) .@en_name = 4740;	// Vitality1
+			else if (.@r < 121) .@en_name = 4791;	// Def3
+			else if (.@r < 132) .@en_name = 4933;	// Tolerance_Not1
+			else if (.@r < 143) .@en_name = 4861;	// MHP1
+			else if (.@r < 151) .@en_name = 4741;	// Vitality2
+			else if (.@r < 159) .@en_name = 4792;	// Def6
+			else if (.@r < 167) .@en_name = 4934;	// Tolerance_Not2
+			else if (.@r < 173) .@en_name = 4862;	// MHP2
+			else if (.@r < 179) .@en_name = 4742;	// Vitality3
+			else if (.@r < 185) .@en_name = 4793;	// Def9
+			else if (.@r < 188) .@en_name = 4935;	// Tolerance_Not3
+			else if (.@r < 191) .@en_name = 4867;	// MHP3
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 207) .@en_name = 4740;	// Vitality1
+			else if (.@r < 213) .@en_name = 4791;	// Def3
+			else if (.@r < 221) .@en_name = 4933;	// Tolerance_Not1
+			else if (.@r < 229) .@en_name = 4861;	// MHP1
+			else if (.@r < 238) .@en_name = 4741;	// Vitality2
+			else if (.@r < 247) .@en_name = 4792;	// Def6
+			else if (.@r < 258) .@en_name = 4934;	// Tolerance_Not2
+			else if (.@r < 269) .@en_name = 4862;	// MHP2
+			else if (.@r < 276) .@en_name = 4742;	// Vitality3
+			else if (.@r < 283) .@en_name = 4793;	// Def9
+			else if (.@r < 287) .@en_name = 4867;	// MHP3
+			else if (.@r < 291) .@en_name = 4935;	// Tolerance_Not3
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 3:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 310;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 11) .@en_name = 4860;	// Evasion3
+			else if (.@r < 21) .@en_name = 4750;	// Luck1
+			else if (.@r < 36) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 51) .@en_name = 4730;	// Agility1
+			else if (.@r < 61) .@en_name = 4762;	// Evasion6
+			else if (.@r < 71) .@en_name = 4751;	// Luck2
+			else if (.@r < 86) .@en_name = 4872;	// Attack_Delay_2
+			else if (.@r < 101) .@en_name = 4731;	// Agility2
+			else if (.@r < 111) .@en_name = 4860;	// Evasion3
+			else if (.@r < 121) .@en_name = 4750;	// Luck1
+			else if (.@r < 132) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 143) .@en_name = 4730;	// Agility1
+			else if (.@r < 151) .@en_name = 4762;	// Evasion6
+			else if (.@r < 159) .@en_name = 4751;	// Luck2
+			else if (.@r < 166) .@en_name = 4872;	// Attack_Delay_2
+			else if (.@r < 173) .@en_name = 4731;	// Agility2
+			else if (.@r < 180) .@en_name = 4763;	// Evasion12
+			else if (.@r < 187) .@en_name = 4752;	// Luck3
+			else if (.@r < 191) .@en_name = 4732;	// Agility3
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 207) .@en_name = 4860;	// Evasion3
+			else if (.@r < 213) .@en_name = 4750;	// Luck1
+			else if (.@r < 221) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 229) .@en_name = 4730;	// Agility1
+			else if (.@r < 239) .@en_name = 4762;	// Evasion6
+			else if (.@r < 249) .@en_name = 4751;	// Luck2
+			else if (.@r < 261) .@en_name = 4872;	// Attack_Delay_2
+			else if (.@r < 273) .@en_name = 4731;	// Agility2
+			else if (.@r < 280) .@en_name = 4763;	// Evasion12
+			else if (.@r < 287) .@en_name = 4752;	// Luck3
+			else if (.@r < 291) .@en_name = 4732;	// Agility3
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 4:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 310;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 8) .@en_name = 4700;	// Strength1
+			else if (.@r < 17) .@en_name = 4701;	// Strength2
+			else if (.@r < 24) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 33) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 40) .@en_name = 4730;	// Agility1
+			else if (.@r < 47) .@en_name = 4731;	// Agility2
+			else if (.@r < 54) .@en_name = 4740;	// Vitality1
+			else if (.@r < 63) .@en_name = 4741;	// Vitality2
+			else if (.@r < 69) .@en_name = 4750;	// Luck1
+			else if (.@r < 77) .@en_name = 4751;	// Luck2
+			else if (.@r < 83) .@en_name = 4710;	// Inteligence1
+			else if (.@r < 91) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 101) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 111) .@en_name = 4700;	// Strength1
+			else if (.@r < 121) .@en_name = 4701;	// Strength2
+			else if (.@r < 131) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 141) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 149) .@en_name = 4730;	// Agility1
+			else if (.@r < 158) .@en_name = 4731;	// Agility2
+			else if (.@r < 164) .@en_name = 4740;	// Vitality1
+			else if (.@r < 170) .@en_name = 4741;	// Vitality2
+			else if (.@r < 177) .@en_name = 4750;	// Luck1
+			else if (.@r < 184) .@en_name = 4751;	// Luck2
+			else if (.@r < 187) .@en_name = 4710;	// Inteligence1
+			else if (.@r < 190) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 192) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 207) .@en_name = 4700;	// Strength1
+			else if (.@r < 213) .@en_name = 4701;	// Strength2
+			else if (.@r < 220) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 227) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 237) .@en_name = 4730;	// Agility1
+			else if (.@r < 247) .@en_name = 4731;	// Agility2
+			else if (.@r < 257) .@en_name = 4740;	// Vitality1
+			else if (.@r < 267) .@en_name = 4741;	// Vitality2
+			else if (.@r < 271) .@en_name = 4750;	// Luck1
+			else if (.@r < 276) .@en_name = 4751;	// Luck2
+			else if (.@r < 281) .@en_name = 4710;	// Inteligence1
+			else if (.@r < 286) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 291) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 5:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 310;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 9) .@en_name = 4701;	// Strength2
+			else if (.@r < 16) .@en_name = 4702;	// Strength3
+			else if (.@r < 25) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 32) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 41) .@en_name = 4731;	// Agility2
+			else if (.@r < 46) .@en_name = 4732;	// Agility3
+			else if (.@r < 55) .@en_name = 4741;	// Vitality2
+			else if (.@r < 62) .@en_name = 4742;	// Vitality3
+			else if (.@r < 70) .@en_name = 4751;	// Luck2
+			else if (.@r < 76) .@en_name = 4752;	// Luck3
+			else if (.@r < 84) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 90) .@en_name = 4712;	// Inteligence3
+			else if (.@r < 95) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 101) .@en_name = 4833;	// Expert_Archer2
+			else if (.@r < 111) .@en_name = 4701;	// Strength2
+			else if (.@r < 121) .@en_name = 4702;	// Strength3
+			else if (.@r < 131) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 141) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 149) .@en_name = 4731;	// Agility2
+			else if (.@r < 157) .@en_name = 4732;	// Agility3
+			else if (.@r < 163) .@en_name = 4741;	// Vitality2
+			else if (.@r < 169) .@en_name = 4742;	// Vitality3
+			else if (.@r < 176) .@en_name = 4751;	// Luck2
+			else if (.@r < 183) .@en_name = 4752;	// Luck3
+			else if (.@r < 185) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 187) .@en_name = 4712;	// Inteligence3
+			else if (.@r < 189) .@en_name = 4833;	// Expert_Archer2
+			else if (.@r < 191) .@en_name = 4834;	// Expert_Archer3
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 207) .@en_name = 4701;	// Strength2
+			else if (.@r < 213) .@en_name = 4702;	// Strength3
+			else if (.@r < 220) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 227) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 237) .@en_name = 4731;	// Agility2
+			else if (.@r < 247) .@en_name = 4732;	// Agility3
+			else if (.@r < 257) .@en_name = 4741;	// Vitality2
+			else if (.@r < 261) .@en_name = 4742;	// Vitality3
+			else if (.@r < 266) .@en_name = 4751;	// Luck2
+			else if (.@r < 271) .@en_name = 4752;	// Luck3
+			else if (.@r < 276) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 281) .@en_name = 4712;	// Inteligence3
+			else if (.@r < 286) .@en_name = 4832;	// Expert_Archer1
+			else if (.@r < 291) .@en_name = 4833;	// Expert_Archer2
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 6:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 310;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 11) .@en_name = 4700;	// Strength1
+			else if (.@r < 21) .@en_name = 4701;	// Strength2
+			else if (.@r < 31) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 41) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 51) .@en_name = 4730;	// Agility1
+			else if (.@r < 61) .@en_name = 4731;	// Agility2
+			else if (.@r < 71) .@en_name = 4740;	// Vitality1
+			else if (.@r < 81) .@en_name = 4741;	// Vitality2
+			else if (.@r < 91) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 101) .@en_name = 4815;	// Spell1
+			else if (.@r < 111) .@en_name = 4700;	// Strength1
+			else if (.@r < 121) .@en_name = 4701;	// Strength2
+			else if (.@r < 132) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 143) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 151) .@en_name = 4730;	// Agility1
+			else if (.@r < 159) .@en_name = 4731;	// Agility2
+			else if (.@r < 169) .@en_name = 4740;	// Vitality1
+			else if (.@r < 179) .@en_name = 4741;	// Vitality2
+			else if (.@r < 185) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 191) .@en_name = 4815;	// Spell1
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 209) .@en_name = 4700;	// Strength1
+			else if (.@r < 217) .@en_name = 4701;	// Strength2
+			else if (.@r < 225) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 233) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 244) .@en_name = 4730;	// Agility1
+			else if (.@r < 255) .@en_name = 4731;	// Agility2
+			else if (.@r < 265) .@en_name = 4740;	// Vitality1
+			else if (.@r < 275) .@en_name = 4741;	// Vitality2
+			else if (.@r < 283) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 291) .@en_name = 4815;	// Spell1
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 7:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 200;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 101;
+				.@en_brk2 = 310;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 11) .@en_name = 4702;	// Strength3
+			else if (.@r < 21) .@en_name = 4701;	// Strength2
+			else if (.@r < 31) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 41) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 51) .@en_name = 4732;	// Agility3
+			else if (.@r < 61) .@en_name = 4731;	// Agility2
+			else if (.@r < 71) .@en_name = 4742;	// Vitality3
+			else if (.@r < 81) .@en_name = 4741;	// Vitality2
+			else if (.@r < 86) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 91) .@en_name = 4872;	// Attack_Delay_2
+			else if (.@r < 96) .@en_name = 4815;	// Spell1
+			else if (.@r < 101) .@en_name = 4814;	// Spell2
+			else if (.@r < 111) .@en_name = 4702;	// Strength3
+			else if (.@r < 121) .@en_name = 4701;	// Strength2
+			else if (.@r < 132) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 143) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 151) .@en_name = 4732;	// Agility3
+			else if (.@r < 159) .@en_name = 4731;	// Agility2
+			else if (.@r < 169) .@en_name = 4742;	// Vitality3
+			else if (.@r < 179) .@en_name = 4741;	// Vitality2
+			else if (.@r < 182) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 185) .@en_name = 4815;	// Spell1
+			else if (.@r < 188) .@en_name = 4872;	// Attack_Delay_2
+			else if (.@r < 191) .@en_name = 4814;	// Spell2
+			else if (.@r < 201) .@en_name = 0;
+			else if (.@r < 209) .@en_name = 4702;	// Strength3
+			else if (.@r < 217) .@en_name = 4701;	// Strength2
+			else if (.@r < 225) .@en_name = 4722;	// Dexterity3
+			else if (.@r < 233) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 244) .@en_name = 4732;	// Agility3
+			else if (.@r < 255) .@en_name = 4731;	// Agility2
+			else if (.@r < 265) .@en_name = 4742;	// Vitality3
+			else if (.@r < 275) .@en_name = 4741;	// Vitality2
+			else if (.@r < 279) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 283) .@en_name = 4815;	// Spell1
+			else if (.@r < 287) .@en_name = 4872;	// Attack_Delay_2
+			else if (.@r < 291) .@en_name = 4814;	// Spell2
+			else if (.@r < 296) .@en_name = 0;
+			else if (.@r < 301) .@en_name = 9;
+			else .@en_name = 0;
+			break;
+		case 8:
+			if (.@slot == 4) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 100;
+			}
+			else if (.@slot == 3) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 111;
+			}
+			else if (.@slot == 2) {
+				.@en_brk1 = 1;
+				.@en_brk2 = 111;
+			}
+			else {
+				mes "[马萨诸塞州查尔斯顿]";
+				mes "发生未知错误。";
+				close3;
+			}
+			.@r = rand( .@en_brk1, .@en_brk2 );
+			if (.@r < 11) .@en_name = 4700;	// Strength1
+			else if (.@r < 21) .@en_name = 4701;	// Strength2
+			else if (.@r < 31) .@en_name = 4720;	// Dexterity1
+			else if (.@r < 41) .@en_name = 4721;	// Dexterity2
+			else if (.@r < 50) .@en_name = 4730;	// Agility1
+			else if (.@r < 59) .@en_name = 4731;	// Agility2
+			else if (.@r < 69) .@en_name = 4740;	// Vitality1
+			else if (.@r < 79) .@en_name = 4741;	// Vitality2
+			else if (.@r < 89) .@en_name = 4710;	// Inteligence1
+			else if (.@r < 99) .@en_name = 4711;	// Inteligence2
+			else if (.@r < 100) .@en_name = 4869;	// Attack_Delay_1
+			else if (.@r < 101) .@en_name = 4815;	// Spell1
+			else .@en_name = 0;
+			break;
+		default:
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "发生未知错误。";
+			close3;
+		}
+		if (Zeny < 100000 || countitem(6752) < 1) {
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "商品升级所需的东西似乎不够！";
+			close3;
+		}
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@item_id) ||
+				callfunc("F_IsEquipCardHack", .@part, .@card_saved[0], .@card_saved[1], .@card_saved[2], .@card_saved[3]) ||
+				callfunc("F_IsEquipRefineHack", .@part, .@refine)) {
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "发生未知错误。";
+			close3;
+		}
+
+		.@card[.@slot-1] = .@en_name;
+		delitem 6752,1;	// Charleston_Parts
+		Zeny -= 100000;
+		delequip .@part;
+
+		switch(.@en_name) {
+		case 0:
+			cutin "dalle02.bmp",2;
+			specialeffect2 EF_SHIELDCHARGE;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "由于力量平衡不匹配，既定的现有能力就被破坏了。很不幸，但请下次再试一次。";// unknown text
+			getitem2 .@item_id,1,1,.@refine,0, .@card[0], .@card[1], .@card[2], .@card[3];
+			close3;
+		case 9:
+			cutin "dalle04.bmp",2;
+			specialeffect2 EF_SUI_EXPLOSION;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "这！";
+			mes "抱歉，设备已被毁坏。";// unknown text
+			close3;
+		default:
+			specialeffect2 EF_REPAIRWEAPON;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "^990000套接字" + .@slot + "^000000 将升级。";
+			getitem2 .@item_id,1,1,.@refine,0, .@card[0], .@card[1], .@card[2], .@card[3];
+			close3;
+		}
+	case 2:	// Reset
+		// Note: the NPC doesn't check if the equipment is already enhanced
+		if (getiteminfo(.@card[0], ITEMINFO_SUBTYPE) == CARD_ENCHANT) .@card[0] = 0;
+		if (getiteminfo(.@card[1], ITEMINFO_SUBTYPE) == CARD_ENCHANT) .@card[1] = 0;
+		if (getiteminfo(.@card[2], ITEMINFO_SUBTYPE) == CARD_ENCHANT) .@card[2] = 0;
+		if (getiteminfo(.@card[3], ITEMINFO_SUBTYPE) == CARD_ENCHANT) .@card[3] = 0;
+		specialeffect2 EF_REPAIRWEAPON;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "重置产品的能力。";
+		delitem 6752,1;	// Charleston_Parts
+		Zeny -= 100000;
+		delequip .@part;
+		getitem2 .@item_id,1,1,.@refine,0, .@card[0], .@card[1], .@card[2], .@card[3];
+		close3;
+	dfault:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "发生未知错误。";
+		close3;
+	}
+	end;
+}
+
+verus04,63,112,4	script	Mass Charleston#3	4_F_CHARLESTON01,{
+	if (!checkweight(1201,1) || (MaxWeight - Weight) < 1000) {
+		mes "^ff0000您携带的物品过多，请减少携带物品，稍后再回来。^000000";
+		close;
+	}
+	cutin "dalle03.bmp",2;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "呃，我有顾客吗？激活推销员模式...";
+	next;
+	cutin "dalle01.bmp",2;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "查尔斯顿工厂畅销商品：^FF0000升级零件板^000000和^FF0000补充零件Str^000000现已发售！";
+	next;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "仅适用于^FF00003,999,999^000000 zeny！为自己配备超高性能的动作装备！";
+	next;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "还提供^FF0000Pilebunker^000000^FF0000升级^000000服务！";
+	next;
+	switch( select( "谈话。", "更换升级部件。", "更换补充设备。", "升级 Pilebunker。" ) ) {
+	case 1:
+		if (isbegin_quest(13186) == 0) {
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "查尔斯顿工厂关闭，但其技术和产品仍然保留在我们手中。";
+			next;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "哦，你没听到这个消息吗？哎呀，我的错。请忘记我说过的话。";
+			close3;
+		}
+		cutin "dalle03.bmp",2;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "我是大众版查尔斯顿。我什至没有得到序列号。谁知道我被复制了多少份？可能是一百，甚至可能是一千。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "原来的查尔斯顿就站在那儿，但是……";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "当查尔斯顿 1 号和 2 号逃离工厂时，它们已严重受损。那天发生的战斗令人难以置信。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "我仍然记得查尔斯顿一号和二号摧毁了维博士的无数生物，就像昨天一样。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "他们还摧毁了维博士按照他的命令改装的大众版查尔斯顿。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "当然，还有其他人——比如我们这里从事产品升级工作的人——很幸运地逃脱了维博士的魔掌，并遇到了查尔斯顿一号，他拯救了我们所有人。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "乘坐改装后的查尔斯顿3号逃亡后，我们来到了这里。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "你知道，当我们到达时，这个地方已经一片狼藉。我们与它的毁灭无关。也许...";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "抱歉我跑偏了。无论如何，这就是问题所在。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "查尔斯顿 1 号和 2 号被严重损坏。他们试图互相修复，但无济于事。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "他们意识到自己已经受到无法修复的损坏。他们尽可能地抢救了许多零件，并用一种​​操作系统构建了一个机身。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "这就是新建的身体。他们责怪自己造成了工厂的破坏，并希望修复它。我担心他们的数据已损坏或丢失了重要的内存。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "数据特征更多地体现了Charleston 2的特点，而操作系统的访问方式则与Charleston 1更加相似。Charleston 1总是比较感性的。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "我不知道新的查尔斯顿是查尔斯顿1号还是查尔斯顿2号。我什至说不出它最怀念或记得什么。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "她一直责怪自己丢失了数据，让朋友们失望了。每次我们试图安慰她时";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "她会说她没有心或脑子来记住或知道。我不知道她是否知道";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "人类的记忆会随着时间的推移而褪色、扭曲或美化。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "人类从错误和失败中学习。我从工厂里那些名为^FF0000书籍^000000的纸质存储设备中读取到了这一点。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "工厂^FF0000南翼^000000有一个小型书房。后来，这里被改造成机器人研发室。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "也许查尔斯顿人比我们其他人更像人类。我只是希望她不要这么难过。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "我感觉操作系统太拥挤了，以至于我大喊大叫。也许我需要整理我的记忆碎片。";
+		close3;
+	case 2:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "升级零件板";
+		mes "等级：铠甲，坚不可摧。";
+		mes "-10% 来自小型和中型怪物的伤害。";
+		mes "升级至 +7 时，大型怪物造成的伤害 -10%。";
+		mes "升级至 +9 时，中小型怪物造成的额外伤害 -5%。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "重量：300";
+		mes "所需等级：100";
+		callsub S_Buy, 15111;	// Upgrade_Part_Plate
+	case 3:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "补充部分Str";
+		mes "攻击力+5%！";
+		mes "每升级4级，攻击力+1%。";
+		mes "与活力/敏捷/敏捷辅助设备一起使用以获得最佳效果。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "重量：200";
+		mes "所需等级：100";
+		callsub S_Buy, 15110;	// Supplement_Part_Str
+	case 4:
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "查尔斯顿工厂最后的杰作！您在其他任何地方都找不到如此精美的设备。";
+		next;
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "要升级 Pilebunker，";
+		mes "^FF00001 堆垛机^000000,";
+		mes "^FF0000300 凹痕铁板^000000,";
+		mes "需要 ^FF000015 个损坏的引擎^000000。";
+		next;
+		switch( select( "打桩机 S", "打桩机 P", "打桩机 T" ) ) {
+		case 1:
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "皮勒邦克 S";
+			mes "类别：钝器";
+			mes "攻击力：400";
+			mes "每升级 2 级，攻击速度加成。";
+			next;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "重量：300";
+			mes "武器等级：4";
+			mes "所需等级：130";
+			mes "仅限机械师。配有 1 个卡插槽。";
+			.@item_id = 16030;	// Pilebuncker_S
+			break;
+		case 2:
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "皮勒邦克 P";
+			mes "类别：钝器";
+			mes "攻击力：450";
+			mes "每升级一级，攻击力+5。";
+			next;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "重量：400";
+			mes "武器等级：4";
+			mes "所需等级：130";
+			mes "仅限机械师。";
+			.@item_id = 16031;	// Pilebuncker_P
+			break;
+		case 3:
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "皮勒邦克 T";
+			mes "类别：钝器";
+			mes "攻击力：400";
+			mes "每个升级级别的 SP 成本为 -1%。";
+			next;
+			mes "[马萨诸塞州查尔斯顿]";
+			mes "重量：350";
+			mes "武器等级：4";
+			mes "所需等级：130";
+			mes "仅限机械师。配有 1 个卡插槽。";
+			.@item_id = 16032;	// Pilebuncker_T
+			break;
+		}
+		break;
+	}
+	next;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "您真的要升级^FF0000" + getitemname(.@item_id) + "^000000吗？";
+	next;
+	if (select( "我建议你重新考虑一下。", "购买。" ) == 1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "这是一个不错的选择，但您仍然需要谨慎做出决定。";
+		close;
+	}
+	if (countitem(6751) > 299 && countitem(6750) > 14 && countitem(1549) > 0) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "你不会后悔的！她是查尔斯顿工厂！";
+		delitem 6751,300;	// Distorted_Iron_Plate
+		delitem 6750,15;	// Wrong_Engine
+		delitem 1549,1;		// Pilebuncker
+		getitem .@item_id,1;
+		close3;
+	}
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "升级材料不足。";
+	close3;
+
+S_Buy:
+	.@item_id = getarg(0);
+	mes "^FF0000仅限机械师^000000";
+	mes "^FF0000价格：3,999,999 女性^000000";
+	next;
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "您真的想购买^FF0000" + getitemname(.@item_id) + "^000000吗？";
+	next;
+	if (select( "我建议你重新考虑一下。", "购买。" ) == 1) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "这是一个不错的选择，但您仍然需要谨慎做出决定。";
+		close3;
+	}
+	//if (Zeny >= 3999998) {// typo?
+	if (Zeny >= 3999999) {
+		mes "[马萨诸塞州查尔斯顿]";
+		mes "你不会后悔的！她是查尔斯顿工厂！";
+		Zeny -= 3999999;
+		getitem .@item_id,1;
+		close3;
+	}
+	mes "[马萨诸塞州查尔斯顿]";
+	mes "好商品价值并不罕见，请确认您的口袋深度！";
+	close3;
+}
+
+
+// Excellion
+verus04,161,222,4	script	Grandpa picking up scrap iron	1_M_HOF,{
+	switch( isbegin_quest(12368) ) {
+	case 0:
+		mes "[爷爷捡废铁]";
+		mes "有两块废铁我看价值不斐波那契就捡起来卖到回收站，结果不愿意跟我处理。";
+		next;
+		mes "[爷爷捡废铁]";
+		mes "因为不是铁？每次资源回收都不愿意买，很伤脑筋！";
+		close;
+	case 1:
+		mes "[爷爷捡废铁]";
+		mes "嘿！你刚才是不是跟那个垃圾说话了？还是我失去了视力？";
+		close;
+	case 2:
+		mes "[爷爷捡废铁]";
+		mes "我的天啊！那不能卖到回收站！";
+		close;
+	}
+}
+
+verus04,163,219,4	script	PLUTO_09#pa0829	4_SCR_AT_ROBOTS,{
+	disable_items;
+	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 10000) {
+		mes "^ff0000您携带的物品过多，请减少携带物品，稍后再回来。^000000";
+		close;
+	}
+	if (isbegin_quest(12368) < 2) {
+		mes "^0000ff虽然LCD仍然暗淡，但似乎不再工作了。^000000";
+		close;
+	}
+	mes "^0000ff当奇怪的恐龙图案出现时，进入介绍屏幕。^000000";
+	next;
+	mes "[PLUTO_09]";
+	mes "" + strcharinfo(0) + ",";
+	mes "你好。我怎么帮你？";
+	next;
+	switch( select( "注意", "用旧燃料和巨大的金属废料交换装备。", "用于生产附魔的设计图纸" ) ) {
+	case 1:
+		mes "^0000ff出现恐龙前进画面并描述可爱的女孩声音。^000000";
+		next;
+		mes "[PLUTO_09]";
+		mes "新 PLUTO_09 诞生已有 100 年了。";
+		next;
+		mes "[PLUTO_09]";
+		mes "带上巨大的金属废料和旧燃料可以帮助你制作对你有用的装备哦~";
+		next;
+		mes "[PLUTO_09]";
+		mes "你想制作附魔装备吗？你把坦克带来！我可以为你设计一个附魔。哦，祝你好运。";
+		next;
+		mes "[PLUTO_09]";
+		mes "这就是恐龙童话里出现的霸王龙，非常漂亮……（继续出现无聊的恐龙故事）";
+		next;
+		mes "^0000ff在这个介绍画面中，推测机器人制造者的心理状态极其不稳定。^000000";
+		close;
+	case 2:
+		setarray .@id[0],20773,15128; // Excelion_Wing, Excelion_Suit
+		mes "[PLUTO_09]";
+		mes "生产设备需要^0000ff10个巨大的金属废料和5个旧燃料^000000。";
+		next;
+		switch( select( "辞职。", "制作" + getitemname(.@id[0]), "制作" + getitemname(.@id[1]) ) ) {
+		case 1:
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			close;
+		case 2:
+			.@item_id = .@id[0];
+			break;
+		case 3:
+			.@item_id = .@id[1];
+			break;
+		}
+		if (countitem(6961) < 10 || countitem(6962) < 5) {
+			mes "[PLUTO_09]";
+			mes "我已经讲过生产设备需要^0000ff10个" + getitemname(6961) + "和5个" + getitemname(6962) + "^000000，你还不够。";
+			close;
+		}
+		specialeffect EF_SPELLBREAKER;
+		delitem 6962,5;// OldTank
+		delitem 6961,10;// LargeScrap
+		getitem .@item_id,1;
+		mes "[PLUTO_09]";
+		mes "你的装备已经准备好了。我们来看看是否合适。";
+		close;
+	case 3:
+		while(1) {
+			if (countitem(6962) < 5)
+				.@string$ = "^aaaaaaInsufficient fuel for making design drawings.^000000";
+			else
+				.@string$ = "Production design (^ff0000 success rate 30%^000000)";
+			mes "[PLUTO_09]";
+			mes "如果你给我5个" + getitemname(6962) + "，我可以做设计图纸的制作看看！";
+			mes "----------";
+			mes "^0000ff小恐龙在屏幕上跑来跑去。^000000";
+			next;
+			if (select( "辞职。", .@string$ ) == 1) {
+				mes "^0000ff恐龙正在吃东西后​​就结束了。^000000";
+				close;
+			}
+			.@fail = false;
+			.@reac_rnd = rand(1,10000);
+			if (.@reac_rnd < 26)		.@en_name = 6977;	// Reactor_A_STR_
+			else if (.@reac_rnd < 51)	.@en_name = 6978;	// Reactor_A_INT_
+			else if (.@reac_rnd < 251)	.@en_name = 6979;	// Reactor_A_DEF_
+			else if (.@reac_rnd < 326)	.@en_name = 6981;	// Reactor_A_ATK_
+			else if (.@reac_rnd < 401)	.@en_name = 6982;	// Reactor_A_MATK_
+			else if (.@reac_rnd < 601)	.@en_name = 6980;	// Reactor_A_AVOI_
+			else if (.@reac_rnd < 801)	.@en_name = 6983;	// Reactor_A_MHP_
+			else if (.@reac_rnd < 1001)	.@en_name = 6984;	// Reactor_A_MSP_
+			else if (.@reac_rnd < 1151)	.@en_name = 6986;	// Reactor_A_ASPD_
+			else if (.@reac_rnd < 1401)	.@en_name = 6975;	// Reactor_Cure_201_
+			else if (.@reac_rnd < 1551)	.@en_name = 6976;	// Reactor_Cure_202_
+			else if (.@reac_rnd < 1751)	.@en_name = 6973;	// Reactor_Cure_101_
+			else if (.@reac_rnd < 1851)	.@en_name = 6974;	// Reactor_Cure_102_
+			else if (.@reac_rnd < 1901)	.@en_name = 6985;	// Reactor_A_FROZ_
+			else if (.@reac_rnd < 2101)	.@en_name = 6970;	// Reactor_T_WATER_
+			else if (.@reac_rnd < 2301)	.@en_name = 6971;	// Reactor_T_GROUND_
+			else if (.@reac_rnd < 2501)	.@en_name = 6969;	// Reactor_T_FIRE_
+			else if (.@reac_rnd < 2701)	.@en_name = 6972;	// Reactor_T_WIND_
+			else if (.@reac_rnd < 2776)	.@en_name = 6966;	// Reactor_P_WATER_
+			else if (.@reac_rnd < 2851)	.@en_name = 6967;	// Reactor_P_GROUND_
+			else if (.@reac_rnd < 2926)	.@en_name = 6965;	// Reactor_P_FIRE_
+			else if (.@reac_rnd < 3001)	.@en_name = 6968;	// Reactor_P_WIND_
+			else {
+				.@fail = true;
+				.@reac_rnd2 = rand(1,13000);
+				if (.@reac_rnd2 < 2)
+					.@en_name = 969;	// Gold
+				else if (.@reac_rnd2 < 1002)
+					.@en_name = 999;	// Steel
+				else if (.@reac_rnd2 < 3002)
+					.@en_name = 998;	// Iron
+				else if (.@reac_rnd2 < 8002)
+					.@en_name = 1002;	// Iron_Ore
+				else
+					.@en_name = 7054;	// Brigan
+			}
+			if (countitem(6962) < 5)
+				mes "^0000ff图为恐龙默默地看着空碗，可能是材料不足时的错误信息！^000000";
+			else {
+				specialeffect EF_SPELLBREAKER;
+				delitem 6962,5;// OldTank
+				getitem .@en_name,1;
+				mes "[PLUTO_09]";
+				if (.@fail)
+					mes "可惜的是，设计失败了。";
+				else
+					mes "太好了，设计完成了。";
+			}
+			next;
+		}
+		end;
+	default:
+		mes "^0000ff屏幕显示恐龙可能无法理解该命令的嚎叫。^000000";
+		close;
+	}
+	end;
+}
+
+verus04,165,217,4	script	MARS_01#pa0829	4_SCR_MT_ROBOTS,{
+	disable_items;
+	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 10000) {
+		mes "^ff0000您携带的物品过多，请减少携带物品，稍后再回来。^000000";
+		close;
+	}
+	switch( isbegin_quest(12368) ) {
+	case 0:
+		mes "液晶屏模糊不清，可能是受到惊吓或高兴而剧烈晃动，或许是由于电量不足而无法完成演示。";
+		next;
+		if (select( "忽略它即可。", "按下每个按钮。" ) == 1) {
+			mes "它可能是一种随处可见的预废机器人，不需要太多关注。";
+			close;
+		}
+		mes "[??????]";
+		mes "你好！我是MARS_01，一个探索机器人。目前，我已进入休眠模式以节省电量。相关功能设置如下。";
+		next;
+		if (select( "中断机器", "燃油供应" ) == 1) {
+			mes "发出微弱的声音后，机器人重新进入休眠模式。";
+			close;
+		}
+		mes "[MARS_01]";
+		mes "我们是超动力机器人，只要有老油1就可以让我和同伴PLUTO拥有90%以上的力量。";
+		next;
+		mes "[MARS_01]";
+		mes "如果您发现旧燃料，请将燃料插入屏幕底部的口中，这样您就可以解除休眠模式。";
+		setquest 12368;	// Operate the old robot
+		close;
+	case 1:
+		if (countitem(6962) < 1) {
+			mes "[MARS_01]";
+			mes "如果您找到1" + getitemname(6962) + "，请将燃油插入屏幕底部的口中，这样您就可以解除休眠模式。";
+			close;
+		}
+		mes "也许我们在寻找燃料时没电了。我们应该加燃料吗？";
+		next;
+		if (select( "退出。", "加入燃料" ) == 1) {
+			mes "旧机器人可能没电了，根本没有反应。";
+			close;
+		}
+		mes "加入燃油后，声屏打开。";
+		npctalk "哇哇哇？！它动了！！！", "爷爷捡废铁";
+		next;
+		mes "[MARS_01]";
+		mes "启动检查系统，确认各部件的损坏情况。";
+		next;
+		mes "[MARS_01]";
+		mes "功率计10%，仪表板正常，车身骨架13%，挖矿作业良好。";
+		next;
+		mes "[MARS_01]";
+		mes "Pluto_09开始为采矿辅助机器人注入能量。";
+		npctalk "能源响应已确认。它正在发挥作用。", "PLUTO_09#pa0829";
+		next;
+		mes "[MARS_01]";
+		mes "谢谢你让我开始，我会把让我开始的人重新定位为经理。";
+		next;
+		select("输入名称。");
+		mes "[MARS_01]";
+		mes "" + strcharinfo(0) + ",";
+		mes "你好！燃油已充满。";
+		delitem 6962,1;// OldTank
+		completequest 12368;
+		close;
+	case 2:
+		break;
+	}
+	mes "[MARS_01]";
+	mes "" + strcharinfo(0) + ",";
+	mes "你好！我可以帮你吗？";
+	next;
+	switch( select( "注意", "增强" + getitemname(20773), "增强" + getitemname(15128) ) ) {	// Excelion_Wing, Excelion_Suit
+	case 1:
+		mes "^0000ff很快又出现指令。^000000";
+		next;
+		mes "[MARS_01]";
+		mes "在等待新主人的同时，我们不断更新到最新版本。";
+		next;
+		mes "[MARS_01]";
+		mes "如果你带上aak Seri Wong推进翼，aak Seri Wong夹克装备并强化设计，我会根据设计强化装备。";
+		next;
+		mes "[MARS_01]";
+		mes "根据作业的标准设计图纸，作业过程中设备不会受到损坏，但最大升级次数会根据设备类型的不同而变化。";
+		next;
+		mes "[MARS_01]";
+		mes "欢迎再次回来~";
+		close;
+	case 2:
+		.@part = EQI_GARMENT;
+		break;
+	case 3:
+		.@part = EQI_ARMOR;
+		break;
+	}
+	// <item ID required>, <item enchant ID>, <max number of this enchant on armor>, <max number of this enchant on garment>, <enchant on first slot only>
+	setarray .@list[0],
+		6965, 4970, 1,0,3,	// Reactor_P_FIRE_		Reactor_P_FIRE
+		6966, 4971, 1,0,3,	// Reactor_P_WATER_		Reactor_P_WATER
+		6967, 4972, 1,0,3,	// Reactor_P_GROUND_	Reactor_P_GROUND
+		6968, 4973, 1,0,3,	// Reactor_P_WIND_		Reactor_P_WIND
+		6969, 4974, 0,3,0,	// Reactor_T_FIRE_		Reactor_T_FIRE
+		6970, 4975, 0,3,0,	// Reactor_T_WATER_		Reactor_T_WATER
+		6971, 4976, 0,3,0,	// Reactor_T_GROUND_	Reactor_T_GROUND
+		6972, 4977, 0,3,0,	// Reactor_T_WIND_		Reactor_T_WIND
+		6973, 4978, 3,3,0,	// Reactor_Cure_101_	Reactor_Cure_101
+		6974, 4979, 3,3,0,	// Reactor_Cure_102_	Reactor_Cure_102
+		6975, 4980, 3,3,0,	// Reactor_Cure_201_	Reactor_Cure_201
+		6976, 4981, 3,3,0,	// Reactor_Cure_202_	Reactor_Cure_202
+		6977, 4982, 1,0,0,	// Reactor_A_STR_		Reactor_A_STR
+		6978, 4983, 1,0,0,	// Reactor_A_INT_		Reactor_A_INT
+		6979, 4984, 3,3,0,	// Reactor_A_DEF_		Reactor_A_DEF
+		6980, 4985, 1,1,0,	// Reactor_A_AVOI_		Reactor_A_AVOI
+		6981, 4986, 3,3,0,	// Reactor_A_ATK_		Reactor_A_ATK
+		6982, 4987, 3,3,0,	// Reactor_A_MATK_		Reactor_A_MATK
+		6983, 4988, 3,3,0,	// Reactor_A_MHP_		Reactor_A_MHP
+		6984, 4989, 3,3,0,	// Reactor_A_MSP_		Reactor_A_MSP
+		6985, 4990, 1,0,0,	// Reactor_A_FROZ_		Reactor_A_FROZ
+		6986, 4991, 1,1,0;	// Reactor_A_ASPD_		Reactor_A_ASPD
+	.@size = getarraysize(.@list);
+
+	for ( .@i = 0; .@i < .@size; .@i += 5 ) {
+		if (countitem(.@list[.@i]) < 1)
+			.@menu$ += sprintf( "^aaaaaa%s (Missing)^000000:", getitemname(.@list[.@i]) );
+		else
+			.@menu$ += sprintf( "%s:", getitemname(.@list[.@i]) );
+	}
+	mes "[MARS_01]";
+	mes "" + strcharinfo(0) + ",";
+	mes "选择您想要使用的附魔！";
+	next;
+	.@s = select("辞职。：" + .@menu$) - 2;
+	if (.@s < 0) {
+		mes "[MARS_01]";
+		mes "迄今为止。";
+		close;
+	}
+	.@s *= 5;
+	.@item_req = .@list[.@s];
+	.@item_enchant_id = .@list[.@s+1];
+	.@first_slot_only = .@list[.@s+4];
+
+	.@equip_id = getequipid(.@part);
+	.@equip_refine = getequiprefinerycnt(.@part);
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+
+	if (countitem(.@item_req) < 1) {
+		mes "[MARS_01]";
+		mes "迄今为止。";
+		close;
+	}
+	if (.@part == EQI_ARMOR)
+		.@max_num_enchant = .@list[.@s+2];
+	else if (.@part == EQI_GARMENT)
+		.@max_num_enchant = .@list[.@s+3];
+	else {
+		mes "[MARS_01]";
+		mes "请联系管理员。";
+		close;
+	}
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine)) {
+		mes "[MARS_01]";
+		mes "你把你的装备卸下来了吗？";
+		close;
+	}
+
+	if (.@card[0] > 0 && .@item_enchant_id == .@card[0]) { .@slot_sum++; }
+	if (.@card[1] > 0 && .@item_enchant_id == .@card[1]) { .@slot_sum++; }
+	if (.@card[2] > 0 && .@item_enchant_id == .@card[2]) { .@slot_sum++; }
+	if (.@card[3] > 0 && .@item_enchant_id == .@card[3]) { .@slot_sum++; }
+
+	if (.@max_num_enchant < 1) {
+		mes "[MARS_01]";
+		mes "您选择的设计与设备不兼容。";
+		close;
+	}
+	if (.@first_slot_only > 0 && .@card[3] != 0) {
+		mes "[MARS_01]";
+		mes "此设计只是第一次强化使用，但设备还有其他性能，请使用其他设计进行强化！";
+		close;
+	}
+	if (.@slot_sum >= .@max_num_enchant) {
+		mes "[MARS_01]";
+		mes "附魔的最大数量为" + .@max_num_enchant + "。该物品已达到上限。";
+		close;
+	}
+	if (.@card[1] != 0) {
+		mes "[MARS_01]";
+		mes "装备数量已达到上限。";
+		close;
+	}
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine)) {
+		mes "[MARS_01]";
+		mes "如果设备将被拆除，请特别注意。";
+		close;
+	}
+
+	switch( .@equip_id ) {
+	case 20773:	// Excelion_Wing
+	case 15128:	// Excelion_Suit
+		break;
+	default:
+		mes "[MARS_01]";
+		mes "产品没有序列号，不符合规格的产品无法强化。";
+		close;
+	}
+	mes "[MARS_01]^0000ff";
+	mes "选择" + getequipname(.@part) + " + " + getitemname(.@item_req) + ",";
+	mes "^000000------------------";
+	mes "您选择的设计可以升级到装备上限^0000ff" + .@max_num_enchant + "，同样的设计，^000000到目前为止，已增强^0000ff" + .@slot_sum + "倍^000000，您想继续吗？";
+	next;
+	if (select( "我会考虑一下...", "继续。" ) == 1) {
+		mes "[MARS_01]";
+		mes "下次需要我的时候再来吧~";
+		close;
+	}
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine))
+		close;
+
+	if (.@card[3] == 0) {
+		.@enchant_count = 1;
+		.@card[3] = .@item_enchant_id;
+	}
+	else if (.@card[2] == 0) {
+		.@enchant_count = 2;
+		.@card[2] = .@item_enchant_id;
+	}
+	else if (.@card[1] == 0) {
+		.@enchant_count = 3;
+		.@card[1] = .@item_enchant_id;
+	}
+	else {
+		mes "[MARS_01]";
+		mes "装备已达到强化上限您好！";
+		close;
+	}
+	specialeffect2 EF_REPAIRWEAPON;
+	mes "[MARS_01]";
+	if (.@enchant_count < 5)
+		mes "第一台设备已升级^990000" + .@enchant_count + "次^000000。";
+	else
+		mes "用于附加性能装备^990000^000000升级。";	// never displayed
+
+	delitem .@item_req, 1;
+	delequip .@part;
+	getitem2 .@equip_id,1,1,.@equip_refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+	close;
+}

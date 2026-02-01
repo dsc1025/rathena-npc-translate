@@ -1,0 +1,240 @@
+//===== rAthena Script =======================================
+//= Quest NPCs related to episode 14.3
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//- Others NPCs related to ep14.3
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//= 1.1 Move the Dimensional Travel Quest npcs in another
+//		file. [Capuche]
+//============================================================
+
+moro_vol,91,105,1	script	Eclage Teleporter#143_1	PORTAL,{
+	mes "[多菲]";
+	mes "该传送器连接到 Eclage。";
+	mes "一旦我们的行动结束，它就会被摧毁，但目前我们离不开它。";
+	next;
+	mes "使用传送器移动到埃克拉吉。";
+	next;
+	if (select( "移至 Eclage。", "取消。" ) == 2) {
+		mes "不要使用传送器。";
+		close;
+	}
+	mes "搬到埃克拉奇。";
+	close2;
+	warp "ecl_in01",38,96;
+	end;
+}
+
+ecl_in01,38,98,1	script	Interdimensional Device#ecl	PORTAL,{
+	if (ep14_3_newerabs < 10) {
+		mes "[护卫]";
+		mes "这个传送器与最近发现的魔神藏身处相连。";
+		mes "只有那些被允许进入藏身处的人才能使用这个传送器。";
+		close;
+	}
+	mes "这个传送器与最近发现的魔神藏身处相连。";
+	mes "你想使用它吗？";
+	next;
+	if (select( "前往魔神的藏身处。", "退出。" ) == 2) {
+		mes "不要使用传送器。";
+		close;
+	}
+	mes "使用传送器移动到魔神的藏身之处。";
+	close2;
+	warp "moro_vol",91,102;
+	end;
+}
+
+ecl_in01,40,96,3	script	Eclage Guard#143_6	4_M_FAIRYSOLDIER,{
+	mes "[护卫]";
+	mes "我可以怎样帮助您？";
+	next;
+	switch( select( "那个传送器是什么？", "这里怎么这么拥挤？", "魔神的藏身处？", "再见。" ) ) {
+	case 1:
+		mes "[护卫]";
+		mes "它与最近发现的魔神藏身处有关。";
+		mes "它经过科学设计，可以将用户直接发送到他的藏身处所在的次元裂缝。";
+		next;
+		mes "[护卫]";
+		mes "许多战士已经离开了藏身之处。";
+		mes "只要摩洛哥存在，世界树就不安全。我要加入远征队。";
+		close;
+	case 2:
+		mes "[护卫]";
+		mes "原来魔神从摩洛哥逃到了我们这个维度。";
+		mes "他必须受到对付，要么被放逐回他的王国，要么被消灭。";
+		next;
+		mes "[护卫]";
+		mes "如果你想加入远征队打败魔神，那就使用这个传送器吧。";
+		mes "它会直接带你到远征营。";
+		close;
+	case 3:
+		mes "[护卫]";
+		mes "你知道次元裂缝，不是吗？最近有消息称，裂缝是由维度通道组成的。";
+		mes "我们现在可以使用这些通道来探索裂缝内部。";
+		next;
+		mes "[护卫]";
+		mes "原本裂缝是魔神为了帮助他逃跑而创造的，";
+		mes "所以人们认为调查裂缝可以找到他。";
+		next;
+		mes "[护卫]";
+		mes "确实如此；最后他的藏身之处被发现了。";
+		mes "他的踪迹和魔兵主要出现在中央的巨山周围。";
+		next;
+		mes "[护卫]";
+		mes "如果您想了解更多详细信息，那么您应该访问实际站点。";
+		mes "只要使用那边的传送器就可以了。";
+		close;
+	case 4:
+		mes "[护卫]";
+		mes "愿世界之树祝福你。";
+		close;
+	}
+}
+
+// Others
+ecl_in01,44,99,1	script	Combat Laphine#143_4	4_M_FAIRYSOLDIER2,{
+	mes "[战斗拉芬娜]";
+	mes "我很紧张。";
+	close;
+}
+
+ecl_in01,46,99,1	script	Combat Laphine#143_5	4_M_FAIRYSOLDIER2,{
+	mes "[战斗拉芬娜]";
+	mes "我希望我能全身而退。";
+	close;
+}
+
+ecl_in01,48,99,1	script	Combat Laphine#143_6	4_M_FAIRYSOLDIER2,{
+	mes "[战斗拉芬娜]";
+	mes "唔...";
+	close;
+}
+ecl_in01,44,97,1	script	Combat Laphine#143_7	4_F_FAIRYSOLDIER,{
+	mes "[战斗拉芬娜]";
+	mes "嘘。";
+	close;
+}
+
+ecl_in01,46,97,1	script	Combat Laphine#143_8	4_F_FAIRYSOLDIER,{
+	mes "[战斗拉芬娜]";
+	mes "哇哈哈哈，是时候让我发光了！";
+	close;
+}
+
+ecl_in01,48,97,1	script	Combat Laphine#143_9	4_F_FAIRYSOLDIER,{
+	mes "[战斗拉芬娜]";
+	mes "当我决定参军时，我一定是疯了。哎呀，为什么真理之门要建得那么高呢？";
+	close;
+}
+
+ecl_in01,46,102,3	script	Commander Laphine#143_1	4_M_FAIRYSOLDIER,5,5,{
+	mes "[拉芬指挥官]";
+	mes "邪恶必须被消灭在屁股上。";
+	mes "你们是来自米德加德大陆的不速之客。";
+	next;
+	mes "[拉芬指挥官]";
+	mes "如果你是我们自己或世界树的毁灭者，那么我们会毫不犹豫地与你战斗。";
+	close;
+
+OnTouch_:
+	if (.talk == 0) {
+		.talk = 1;
+		npctalk "指挥官：士兵们，你们的训练终于到了发挥作用的时候了！";
+		sleep 2000;
+		npctalk "啊！", "战斗拉芬#143_4";
+		npctalk "啊！", "战斗拉芬#143_5";
+		npctalk "啊！", "战斗拉芬#143_6";
+		npctalk "啊!", "战斗拉芬#143_7";
+		npctalk "啊！", "战斗拉芬#143_8";
+		npctalk "啊！", "战斗拉芬#143_9";
+		sleep 2000;
+		npctalk "指挥官：刚才有人在呜咽吗？";
+		sleep 3000;
+		npctalk "指挥官：不要让辉煌前进基地的战友们失望！";
+		sleep 3000;
+		npctalk "指挥官：保持专注！我们要干掉魔神！";
+		sleep 2000;
+		npctalk "是啊是啊。", "战斗拉芬#143_7";
+		sleep 2000;
+		npctalk "...", "战斗拉芬#143_4";
+		npctalk "啊...", "战斗拉芬#143_5";
+		npctalk "...", "战斗拉芬#143_6";
+		npctalk "...", "战斗拉芬#143_8";
+		sleep 3000;
+		npctalk "指挥官：啊，突然看不清了……";
+		.talk = 0;
+	}
+	end;
+}
+
+ecl_in01,37,90,3	script	Magic Scholar Lemony#14	4_F_FAIRY2,{
+	mes "[柠檬]";
+	mes "您读过最新一期的《通往真理之门》杂志吗？";
+	mes "Avant 的新传送器真的出现在其中吗？";
+	next;
+	mes "[阿曼迪]";
+	mes "是的，只是基本原理和与人类相关的信息。";
+	mes "我不太明白这一切。";
+	next;
+	mes "[柠檬]";
+	mes "我想知道这是否意味着阿凡特最终决定继续他对研究活动的兴趣。";
+	next;
+	mes "[柠檬]";
+	mes "嘿，人类。";
+	mes "你在偷听我们说话吗？好吧，虽然我们并不是在讨论秘密。";
+	next;
+	mes "[柠檬]";
+	mes "哦，对了。你也去那里吗？";
+	mes "要知道，最近才发现了创造部分时空裂缝的魔神的藏身处。";
+	next;
+	mes "[柠檬]";
+	mes "如果你好奇的话，就用那个传送器到那边的藏身处。";
+	mes "将会有一场精彩的表演值得观看。";
+	mes "哦，你要知道，你可能会丢掉自己的生命。 *傻笑*";
+	next;
+	mes "[阿曼迪]";
+	mes "莱蒙，你真的需要努力改善你的个性。";
+	mes "啧啧。";
+	close;
+}
+
+ecl_in01,35,89,6	script	Magic Scholar Armandi#1	4_M_FAIRYKID6,{
+	mes "[阿曼迪]";
+	mes "我希望跨维度装置不会给世界带来沉重的损失。";
+	mes "顺便说一句，Avant 总是让我感到惊讶。";
+	next;
+	mes "[柠檬]";
+	mes "嗯，我讨厌那个人。";
+	next;
+	mes "[阿曼迪]";
+	mes "前卫可能令人厌恶，";
+	mes "但他在他所做的事情上是最棒的。";
+	next;
+	mes "[柠檬]";
+	mes "对此，我同意。";
+	mes "只有他才能实现这种传送装置。";
+	mes "他为什么要帮助市长呢？";
+	next;
+	mes "[阿曼迪]";
+	mes "当我问他时，他咕哝了一些关于悔改的话。";
+	mes "我只能猜测这与市长的出生有关。";
+	next;
+	mes "[阿曼迪]";
+	mes "我还想问更多，但他却轻蔑地看着我。";
+	mes "唉，这样的混蛋被认为是魔法科学中最好的，这太不公平了。";
+	next;
+	mes "[柠檬]";
+	mes "你总是可以努力学习来打败他。";
+	close;
+}
+
+// Placeholder (unknown scripts)
+// ecl_in01,47,92,0	script	#ecl_buff_N	HIDDEN_WARP_NPC
+// ecl_in01,48,44,0	script	#ecl_buff_S	HIDDEN_WARP_NPC
+// ecl_in01,23,68,0	script	#ecl_buff_W	HIDDEN_WARP_NPC
+// ecl_in01,48,67,0	script	#ecl_orb_buff	HIDDEN_WARP_NPC
+// ecl_in01,71,67,0	script	#ecl_buff_E	HIDDEN_WARP_NPC
+// ecl_in01,47,27,0	script	#mgate03	HIDDEN_WARP_NPC
+

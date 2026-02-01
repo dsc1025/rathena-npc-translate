@@ -1,0 +1,82 @@
+//===== rAthena Script =======================================
+//= NPCs related to Glastheim (Nightmare)
+//===== By: ==================================================
+//= Ridley8819
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Additional Comments: =================================
+//= 1.0 Initial release [Ridley8819]
+//= 1.1 Dialogue cleanup [Aleos]
+//============================================================
+
+glast_01,195,273,3	script	Hugin's follower#1	2_F_MAGICMASTER,{
+	mes "[休金的追随者]";
+	mes "我无法像休金大师那样在时间和维度之间移动，但我可以假装可以。";
+	next;
+	mes "[休金的追随者]";
+	mes "是什么让这个格拉斯海姆充满了如此强大的黑暗力量？";
+	next;
+	if( select( "我不在乎：这很有趣，请告诉我更多" ) == 2 ){
+		mes "[休金的追随者]";
+		mes "感谢休金，我找到了进入这个充满强大黑暗力量的古格拉斯海姆的方法。";
+		next;
+		mes "[休金的追随者]";
+		mes "你怎么说？你想探索那里吗？";
+		next;
+		if( select( "对我来说没有探索：我真的很想探索！" ) == 2 ){
+			mes "[休金的追随者]";
+			mes "当然可以，但这不是免费服务！我必须得到一些回报。呵呵...";
+			next;
+			mes "[休金的追随者]";
+			mes "我可以送你去两个地方。您希望我送您去哪个地方？";
+			next;
+			switch( select( "取消：修道院墓地（Lv100~130）- 5000z：二楼走廊（Lv140以上）- 10000z" ) ){
+				case 1:
+					mes "[休金的追随者]";
+					mes "好吧，你什么时候改变主意就回来吧。我想你会有很多话要跟我聊……";
+					close;
+				case 2:
+					.@map$ = "gl_chyard_";
+					.@x = 148;
+					.@y = 144;
+					.@zeny = 5000;
+					break;
+				case 3:
+					.@map$ = "gl_cas02_";
+					.@x = 104;
+					.@y = 31;
+					.@zeny = 10000;
+					break;
+			}
+			if( Zeny < .@zeny ){
+				mes "[休金的追随者]";
+				mes "什么？您期望这项服务是免费的吗？";
+				close;
+			}
+			Zeny -= .@zeny;
+			warp .@map$, .@x, .@y;
+			end;
+		}
+	}
+	mes "[休金的追随者]";
+	mes "好吧，如果你对此不感兴趣，没关系。";
+	close;
+}
+
+gl_chyard_,148,149,4	script	Hugin's Follower#n_gh1	123,{
+	mes "[休金的追随者]";
+	mes "你想回来吗？";
+	mes "好吧，我们离开这里吧。";
+	next;
+	if( select( "我不是故意跟你说话的：请带我离开这里" ) == 1 ){
+		mes "[休金的追随者]";
+		mes "好吧，只要你想离开就告诉我。";
+		close;
+	}
+	warp "glast_01", 210, 269;
+	end;
+}
+
+gl_cas02_,104,36,4	duplicate(Hugin's Follower#n_gh1)	Hugin's Follower#n_gh2	123

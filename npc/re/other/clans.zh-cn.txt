@@ -1,0 +1,632 @@
+//===== rAthena Script =======================================
+//= Clan masters
+//===== Description: =========================================
+//= The clan master NPCs that allow you to join and leave
+//= one of the clans.
+//===== Changelogs: ==========================================
+//= 1.0 Initial release. [Lemongrass]
+//= 1.1 iRO translation. [RagnarokNova]
+//= 1.2 Dialogue cleanup. [Aleos]
+//= 1.3 Added clan helper. [exneval]
+//============================================================
+
+prontera,138,183,7	script	Clan Helper	703,{
+	mes "[部落助手]";
+	mes "您想在不加入公会的情况下建立联系吗？";
+	next;
+	mes "[部落助手]";
+	mes "找不到适合自己的完美公会？";
+	next;
+	mes "[部落助手]";
+	mes "您可以自由加入或离开部落！加入吧！";
+	next;
+	mes "[部落助手]";
+	mes "现在，进来见见王国最优秀氏族的主人吧！";
+	close;
+}
+
+prt_in,33,114,5	script	Raffam Oranpere	10058,{
+	cutin "laperm01.bmp", 2;
+	mes "[拉法姆·奥兰佩尔]";
+	mes "你好！我是拉法姆，符文米德加特王国^3131FF剑族^000000的主人。";
+	next;
+	switch( select( "部落信息：加入。：离开。" ) ){
+		case 1:
+			switch( select( "什么是氏族？：关于剑氏族：取消。" ) ){
+				case 1:
+					mes "[拉法姆·奥兰佩尔]";
+					mes "^3131FF氏族^000000是王国运营的一种公会。";
+					mes "他们不参与围攻，因此成员可以随时自由加入/离开。";
+					next;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "我希望我们能加入围攻。我很想骑着我的龙飞过去，烧死挡在我路上的所有人！";
+					mes "哎呀，太激动了！";
+					next;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "如果没有部落适合您的口味，请加入我们。";
+					mes "新会员将获得^3131FF免费统计奖金^000000。";
+					next;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "近战统计数据如名称^3131FF剑族^000000所示提供，但并非所有成员都是近战职业。";
+					mes "不要有压力，相信我吧！";
+					next;
+					cutin "laperm02.bmp", 2;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "多样性的差异创造了乐趣。";
+					mes "这些奇怪的人在聚会上从来不会让我感到厌烦。";
+					next;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "谁知道您可能会在族群中遇到您的灵魂伴侣？哈哈！";
+					break;
+				case 2:
+					mes "[拉法姆·奥兰佩尔]";
+					mes "^3131FF剑族^000000主要支持近战冒险者。";
+					mes "免费加入^FF0000<STR+1、VIT+1、MHP+30、MSP+10>^000000！";
+					next;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "请记住，没有参与围攻。";
+					mes "你应该联系其他公会来进行围攻。";
+					next;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "有问题吗？";
+					mes "很高兴加入我吗？哈哈！";
+					break;
+				case 3:
+					break;
+			}			
+			break;
+		case 2:
+			mes "[拉法姆·奥兰佩尔]";
+			mes "哦，你要加入吗？不错的选择！";
+			mes "让我们检查一下军团政策，然后开始办理入会手续。";
+			next;
+			mes "[拉法姆·奥兰佩尔]";
+			mes "^3131FF部落成员^000000不能参加围攻。";
+			mes "新会员将获得以下统计奖励：^FF0000<STR+1、VIT+1、MHP+30、MSP+10>^000000。";
+			mes "到目前为止你和我在一起吗？";
+			next;
+			if( select( "是的。：没有。" ) == 1 ){
+				mes "[拉法姆·奥兰佩尔]";
+				mes "您可以随时加入和离开部落，但如果您^FF0000超过两周没有登录^000000，您将被^FF0000开除^000000。";
+				mes "族长的存在是有原因的，就像我一样。";
+				mes "明白了吗？";
+				next;
+				if( select( "是的。：没有。" ) == 1 ){
+					mes "[拉法姆·奥兰佩尔]";
+					mes "太好了，请在这里签上您的名字进行注册。";
+					next;
+					input .@name$;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "所以，你是^3131FF" + strcharinfo( 0 ) + "^000000！好名字！";
+					mes "让我给你登记一下。";
+					next;
+					if( getcharid( 2 ) ){
+						mes "[拉法姆·奥兰佩尔]";
+						mes "离开当前公会后回来加入。";
+						close3;
+					}else if( getcharid( 5 ) != 0 ){
+						cutin "laperm04.bmp", 2;
+						mes "[拉法姆·奥兰佩尔]";
+						mes "呃？哦，你在部落中。";
+						mes "别惹我，这不酷！";
+					}else{
+						cutin "laperm02.bmp", 2;
+						if (clan_join(SWORDCLAN)) {
+							sc_start2 SC_SWORDCLAN, INFINITE_TICK, 0, SWORDCLAN;
+							mes "[拉法姆·奥兰佩尔]";
+							mes "欢迎来到^3131FF剑族^000000！";
+							mes "您可以使用^3131FFCtrl+G^000000查看战队信息。";
+							mes "竭诚为您服务！";
+						} else
+							mes "发生错误。";
+					}
+				}else{
+					mes "[拉法姆·奥兰佩尔]";
+					mes "呃，哦。让我们回到最初。";
+				}
+			}else{
+				cutin "laperm03.bmp", 2;
+				mes "[拉法姆·奥兰佩尔]";
+				mes "呃，哦。让我们回到最初。";
+			}
+			break;
+		case 3:
+			cutin "laperm01.bmp", 2;
+			mes "[拉法姆·奥兰佩尔]";
+			mes "你想离开吗？";
+			mes "没问题。希望你能找到更合适的部落。";
+			mes "准备好提款了吗？";
+			next;
+			if( select( "继续：取消。" ) == 1 ){
+				if( getcharid( 5 ) == 0 ){
+					cutin "laperm04.bmp", 2;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "等等，你不在我们身边！呃，别让我向你喷火！";
+				}else if( getcharid( 5 ) != SWORDCLAN ){
+					cutin "laperm04.bmp", 2;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "嘿，如果你想离开的话，就和你的行会会长谈谈吧。";
+				}else{
+					if (clan_leave()) {
+						sc_end SC_SWORDCLAN;
+						mes "[拉法姆·奥兰佩尔]";
+						mes "好的，完成了。但我们不要成为陌生人，好吗？";
+						mes "有你真好！";
+					} else
+						mes "发生错误。";
+				}
+			}
+			break;
+	}
+	close2;
+	cutin "", 255;
+	end;
+
+OnInit:
+	sc_start2 SC_SWORDCLAN, INFINITE_TICK, 0, SWORDCLAN, 10000, SCSTART_NOAVOID, getnpcid(0);
+	end;
+}
+
+prt_in,35,114,5	script	Devon Aire	10059,{
+	cutin "debon01.bmp", 2;
+	mes "[戴文·艾尔]";
+	mes "我是德文，^3131FF电弧魔杖部落^000000的主人。";
+	next;
+	switch( select( "部落信息：加入。：离开。" ) ){
+		case 1:
+			switch( select( "什么是氏族？：关于 Arc Wand 氏族：取消。" ) ){
+				case 1:
+					mes "[戴文·艾尔]";
+					mes "^3131FF氏族^000000由王国管理，不像其他氏族那样是私人管理的。";
+					mes "我管理其中之一。";
+					next;
+					cutin "debon02.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "...";
+					mes "那表情是怎么回事？你有问题吗？";
+					next;
+					cutin "birman01.bmp", 2;
+					mes "[伯曼·艾尔]";
+					mes "兄弟，你吓到了一个潜在的会员，客气一点。";
+					next;
+					cutin "debon02.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "...";
+					next;
+					cutin "debon01.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "如果您正在寻找合适的位置，请加入。我们提供^3131FF免费奖励统计数据^000000。但没有围攻参与。";
+					next;
+					mes "[戴文·艾尔]";
+					mes "大多数成员都是进攻性法师职业，正如名称^3131FFArc Wand Clan^000000所暗示的那样，但这不是必需的。";
+					next;
+					cutin "debon02.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "...嘿，沙姆·鲁米。";
+					mes "别再打我兄弟了，去干活吧。";
+					next;
+					cutin "sham03.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "任何！";
+					next;
+					cutin "debon02.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "……哼！";
+					mes "听着，弩族的主人很邪恶。";
+					next;
+					cutin "sham02.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "超越我，德文！请勿散布谣言！";
+					next;
+					cutin "birman01.bmp", 2;
+					mes "[伯曼·艾尔]";
+					mes "哈哈。停止吧。你们两个正在大吵大闹。";
+					mes "来吧，伙计们回去工作吧。";
+					break;
+				case 2:
+					cutin "debon01.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "^3131FF电弧魔杖氏族^000000主要支援进攻型法师职业。";
+					mes "我们为新会员提供^FF0000<INT+1、DEX+1、MHP+30、MSP+10>^000000。不要要求更多；这是王国的统治。";
+					next;
+					mes "[戴文·艾尔]";
+					mes "^3131FF部落成员^000000无法参加围攻。";
+					mes "如果你喜欢围攻，那就加入正规公会吧。";
+					next;
+					mes "[戴文·艾尔]";
+					mes "仅此而已。没有问题。";
+					break;
+				case 3:
+					break;
+			}
+			break;
+		case 2:
+			cutin "debon01.bmp", 2;
+			mes "[戴文·艾尔]";
+			mes "...";
+			mes "让我们检查一下军团政策，然后开始办理入会手续。";
+			next;
+			mes "[戴文·艾尔]";
+			mes "^3131FF部落成员^000000不能参加围攻。";
+			mes "新会员将获得以下统计奖励：^FF0000<INT+1、DEX+1、MHP+30、MSP+10>^000000。";
+			mes "到目前为止你和我在一起吗？";
+			next;
+			if( select( "是的。：没有。" ) == 1 ){
+				mes "[戴文·艾尔]";
+				mes "您可以随时加入和离开部落，但如果您^FF0000超过两周没有登录^000000，您将被^FF0000开除^000000。";
+				mes "你同意？";
+				next;
+				if( select( "是的。：没有。" ) == 1 ){
+					mes "[戴文·艾尔]";
+					mes "在这里签上你的名字。";
+					next;
+					input .@name$;
+					mes "[戴文·艾尔]";
+					mes "^3131FF" + strcharinfo( 0 ) + "^000000.....";
+					mes "好，我请你进来。";
+					next;
+					if( getcharid( 2 ) ){
+						mes "[戴文·艾尔]";
+						mes "先离开你的公会加入我的氏族，呃。";
+						close3;
+					}else if( getcharid( 5 ) != 0 ){
+						cutin "debon03.bmp", 2;
+						mes "[戴文·艾尔]";
+						mes "您已经加入部落了。你开玩笑吧？！";
+						mes "哦，我也可以很有趣——火柱！";
+					}else{
+						if (clan_join(ARCWANDCLAN)) {
+							sc_start2 SC_ARCWANDCLAN, INFINITE_TICK, 0, ARCWANDCLAN;
+							mes "[戴文·艾尔]";
+							mes "您已加入^3131FF电弧魔杖部落^000000。";
+							next;
+							mes "[戴文·艾尔]";
+							mes "您可以使用^3131FFCtrl+G^000000查看战队信息。";
+							mes "所以以后别再打扰我了。";
+							next;
+							mes "[戴文·艾尔]";
+							mes "就这样。经常拜访或被驱逐。被解雇了。";
+						} else
+							mes "发生错误。";
+					}
+				}else{
+					mes "[戴文·艾尔]";
+					mes "那我就不要你了";
+				}
+			}else{
+				mes "[戴文·艾尔]";
+				mes "天哪，再听听政策。";
+			}
+			break;
+		case 3:
+			mes "[戴文·艾尔]";
+			mes "想离开是吗？";
+			mes "我明白了，这是关于围攻的。如果不是，为什么……没关系。";
+			mes "我会处理您的提款。";
+			next;
+			if( select( "继续：取消。" ) == 1 ){
+				if( getcharid( 5 ) == 0 ){
+					cutin "debon03.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "顽皮的孩子值得拥有好的 Jupitel Thunder。";
+				}else if( getcharid( 5 ) != ARCWANDCLAN ){
+					cutin "debon02.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "你找错了树。去找你的族长。";
+				}else{
+					if (clan_leave()) {
+						sc_end SC_ARCWANDCLAN;
+						mes "[戴文·艾尔]";
+						mes "您已退出氏族。";
+						mes "现在离开。我不想再说话了";
+					} else
+						mes "发生错误。";
+				}
+			}		
+			break;
+	}
+	close2;
+	cutin "", 255;
+	end;
+
+OnInit:
+	sc_start2 SC_ARCWANDCLAN, INFINITE_TICK, 0, ARCWANDCLAN, 10000, SCSTART_NOAVOID, getnpcid(0);
+	end;
+}
+
+prt_in,37,114,5	script	Berman Aire	10060,{
+	cutin "birman01.bmp", 2;
+	mes "[伯曼·艾尔]";
+	mes "很高兴见到你。我是伯曼·艾尔，^3131FF黄金狼牙族^000000的主人。";
+	mes "我也是德文·艾尔的哥哥。德文看上去很坚强，但心地善良。";
+	next;
+	switch( select( "部落信息：加入。：离开。" ) ){
+		case 1:
+			switch( select( "什么是氏族？：关于金狼牙氏族：取消。" ) ){
+				case 1:
+					mes "[伯曼·艾尔]";
+					mes "^3131FF氏族^000000是由王国建立的，旨在帮助冒险家联系和共享信息。";
+					next;
+					mes "[伯曼·艾尔]";
+					mes "因为王国管理着氏族，所以没有围攻参与，但至少成员获得了^3131FF统计奖励^000000。";
+					mes "统计奖励很小，但对于初级冒险家来说非常有用。";
+					next;
+					mes "[伯曼·艾尔]";
+					mes "我们被命名为^3131FF金狼牙氏族^000000，但我们不会根据班级来歧视申请者。";
+					mes "该名称只是为了帮助您轻松选择您的部落。";
+					next;
+					cutin "sham02.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "伯曼，解释得够多了。我们去格拉斯特海姆闲逛吧。";
+					next;
+					cutin "debon03.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "... 嘿。";
+					next;
+					cutin "sham03.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "哦，你吓到我了。";
+					mes "伯曼，有空的话给我打电话！~";
+					next;
+					cutin "birman03.bmp", 2;
+					mes "[伯曼·艾尔]";
+					mes "哈哈哈，我为他们的争吵道歉。";
+					next;
+					cutin "birman01.bmp", 2;
+					mes "[伯曼·艾尔]";
+					mes "您有问题吗？";
+					mes "如果你厌倦了独自旅行，那就加入我们吧！您可以随时加入或离开部落。";
+					break;
+				case 2:
+					mes "[伯曼·艾尔]";
+					mes "^3131FF金狼牙族^000000主要帮助支援班。";
+					mes "我们为新会员提供^FF0000<INT+1、LUK+1、MHP+30、MSP+10>^000000。";
+					next;
+					mes "[伯曼·艾尔]";
+					mes "正如我之前告诉你的，氏族不能加入围攻，因为他们已经属于王国。";
+					mes "如果你想加入围城，那么我建议你加入一个正规的公会。";
+					next;
+					mes "[伯曼·艾尔]";
+					mes "你现在明白部落是什么意思了吗？";
+					break;
+				case 3:
+					break;
+			}
+			break;
+		case 2:
+			mes "[伯曼·艾尔]";
+			mes "伟大的！";
+			mes "让我们检查一下军团政策，然后开始办理入会手续。";
+			next;
+			mes "[伯曼·艾尔]";
+			mes "^3131FF部落成员^000000不能参加围攻。";
+			mes "作为我们的新会员，您将获得以下统计奖励：^FF0000<INT+1、LUK+1、MHP+30、MSP+10>^000000。";
+			mes "你同意？";
+			next;
+			if( select( "是的。：没有。" ) == 1 ){
+				mes "[伯曼·艾尔]";
+				mes "您可以随时加入和离开部落，但如果您^FF0000超过两周没有登录^000000，您将被^FF0000开除^000000。";
+				mes "您同意在部落中保持良好的声誉吗？";
+				next;
+				if( select( "是的。：没有。" ) == 1 ){
+					mes "[伯曼·艾尔]";
+					mes "现在，请在这里写下您的名字。";
+					next;
+					input .@name$;
+					mes "[伯曼·艾尔]";
+					mes "^3131FF" + strcharinfo( 0 ) + "^000000！多好的名字啊！";
+					mes "好吧，那么...";
+					next;
+					if( getcharid( 2 ) ){
+						mes "[伯曼·艾尔]";
+						mes "哦，不。";
+						mes "为了加入，您首先必须离开当前的公会。";
+						close3;
+					}else if( getcharid( 5 ) != 0 ){
+						mes "[伯曼·艾尔]";
+						mes "您已经加入部落了。";
+						mes "你只是很困惑，对吧？";
+					}else{
+						if (clan_join(GOLDENMACECLAN)) {
+							sc_start2 SC_GOLDENMACECLAN, INFINITE_TICK, 0, GOLDENMACECLAN;
+							cutin "birman02.bmp", 2;
+							mes "[伯曼·艾尔]";
+							mes "欢迎来到^3131FF黄金狼牙氏族^000000！";
+							next;
+							mes "[伯曼·艾尔]";
+							mes "您可以使用^3131FFCtrl+G^000000查看战队信息。";
+							next;
+							mes "[伯曼·艾尔]";
+							mes "请记住我给您的一些注意事项，并享受您的部落活动！";
+						} else
+							mes "发生错误。";
+					}
+				}
+			}
+			break;
+		case 3:
+			mes "[伯曼·艾尔]";
+			mes "有相遇，就有别离。";
+			mes "我希望您在^3131FF金狼牙氏族^000000度过了愉快的时光。";
+			mes "现在，我应该处理您的提款吗？";
+			next;
+			if( select( "继续：取消。" ) == 1 ){
+				if( getcharid( 5 ) == 0 ){
+					mes "[伯曼·艾尔]";
+					mes "如果不先加入部落，您就无法离开该部落。";
+				}else if( getcharid( 5 ) != GOLDENMACECLAN ){
+					mes "[伯曼·艾尔]";
+					mes "抱歉，我无法将你从其他部落中删除……";
+				}else{
+					if (clan_leave()) {
+						sc_end SC_GOLDENMACECLAN;
+						mes "[伯曼·艾尔]";
+						mes "处理好了。";
+						mes "随时返回^3131FF金狼牙族^000000。我会在这里。";
+					} else
+						mes "发生错误。";
+				}
+			}
+			break;
+	}
+	close2;
+	cutin "", 255;
+	end;
+
+OnInit:
+	sc_start2 SC_GOLDENMACECLAN, INFINITE_TICK, 0, GOLDENMACECLAN, 10000, SCSTART_NOAVOID, getnpcid(0);
+	end;
+}
+
+prt_in,39,114,5	script	Shaam Rumi	10027,{
+	cutin "sham01.bmp", 2;
+	mes "[沙姆·鲁米]";
+	mes "你好呀！我是沙姆，^3131FF弩族^000000的主人";
+	mes "我能为你做什么？";
+	next;
+	switch( select( "部落信息：加入。：离开。" ) ){
+		case 1:
+			switch( select( "什么是氏族？：关于十字弓氏族：取消。" ) ){
+				case 1:
+					mes "[沙姆·鲁米]";
+					mes "氏族是由符文米德加特王国建立的，目的是……";
+					mes "Raffam，为什么我们的^3131FF部落^000000是被创造出来的？";
+					next;
+					cutin "laperm01.bmp", 2;
+					mes "[拉法姆·奥兰佩尔]";
+					mes "你上课睡觉了吗？天哪。";
+					mes "部落帮助孤独的冒险家相互联系并共享信息。";
+					next;
+					cutin "sham01.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "啊哈，明白了！谢谢你，船长！";
+					mes "你也听到了，对吧？";
+					next;
+					mes "[沙姆·鲁米]";
+					mes "由王国本身管理的氏族不允许参加围攻，但好消息是成员会获得一些^3131FF统计奖金^000000。";
+					next;
+					mes "[沙姆·鲁米]";
+					mes "如果你想知道^3131FF弩族^000000是否只招募弓箭手，不，不是。";
+					mes "所有氏族都接受所有课程。您可以选择最适合您需求的一种。";
+					next;
+					cutin "sham02.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "这应该涵盖了所有需要知道的事情。";
+					mes "伯曼，我们去格拉斯特海姆玩吧。";
+					next;
+					cutin "debon03.bmp", 2;
+					mes "[戴文·艾尔]";
+					mes "你...";
+					next;
+					cutin "sham03.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "哦，可怕！你对你弟弟的保护力太强了。";
+					break;
+				case 2:
+					mes "[沙姆·鲁米]";
+					mes "^3131FFCrossbow Clan^000000 非常适合远程职业。";
+					next;
+					mes "[沙姆·鲁米]";
+					mes "呃，让我查一下部落手册。啊，我们为新会员提供统计奖励：^FF0000<DEX+1、AGI+1、MHP+30、MSP+10>^000000。";
+					next;
+					mes "[沙姆·鲁米]";
+					mes "氏族不得参与围攻；你应该加入一个私人公会来代替围攻。";
+					mes "部落是为那些讨厌被束缚的冒险家准备的。";
+					next;
+					mes "[沙姆·鲁米]";
+					mes "您有问题吗？";
+					break;
+				case 3:
+					break;
+			}
+			break;
+		case 2:
+			mes "[沙姆·鲁米]";
+			mes "哦，是吗？不错的选择！";
+			mes "让我们检查一下军团政策，然后开始办理入会手续。";
+			next;
+			mes "[沙姆·鲁米]";
+			mes "^3131FF部落成员^000000不能参加围攻。";
+			mes "作为我们的新会员，您将获得以下统计奖励：^FF0000<DEX+1、AGI+1、MHP+30、MSP+10>^000000。";
+			mes "你同意？";
+			next;
+			if( select( "是的。：没有。" ) == 1 ){
+				mes "[沙姆·鲁米]";
+				mes "您可以随时加入和离开部落，但如果您^FF0000超过两周没有登录^000000，您将被^FF0000开除^000000。";
+				mes "您保证会保持良好的信誉吗？";
+				next;
+				if( select( "是的。：没有。" ) == 1 ){
+					mes "[沙姆·鲁米]";
+					mes "好的，在这里写下你的名字。";
+					next;
+					input .@name$;
+					mes "[沙姆·鲁米]";
+					mes "^3131FF" + strcharinfo( 0 ) + "^000000..！";
+					mes "呃，你的文笔还需要加强。让我处理您的申请。";
+					next;
+					if( getcharid( 2 ) ){
+						mes "[沙姆·鲁米]";
+						mes "你和公会的事情解决了吗？";
+						close3;
+					}else if( getcharid( 5 ) != 0 ){
+						mes "[沙姆·鲁米]";
+						mes "呃，你已经加入部落了。嘿，这不好笑。";
+					}else{
+						if (clan_join(CROSSBOWCLAN)) {
+							sc_start2 SC_CROSSBOWCLAN, INFINITE_TICK, 0, CROSSBOWCLAN;
+							cutin "sham02.bmp", 2;
+							mes "[沙姆·鲁米]";
+							mes "欢迎来到^3131FF弩氏族^000000！";
+							next;
+							cutin "sham01.bmp", 2;
+							mes "[沙姆·鲁米]";
+							mes "您可以使用^3131FFCtrl+G^000000查看战队信息。";
+							next;
+							mes "[沙姆·鲁米]";
+							mes "不要与其他族人打架。保持社交。";
+							mes "如果你需要帮助，可以随时悄悄告诉我，好吗？再见！";
+						} else
+							mes "发生错误。";
+					}
+				}else{
+					mes "[沙姆·鲁米]";
+					mes "那就好吧。我只是要去玩玩。";
+				}
+			}else{
+				mes "[沙姆·鲁米]";
+				mes "啊，你需要时间考虑这个吗？没问题。";
+			}
+			break;
+		case 3:
+			mes "[沙姆·鲁米]";
+			mes "为什么，你找到更好的氏族了吗？";
+			mes "我很失望，但这是你的决定。让我来处理您的提款事宜。";
+			next;
+			if( select( "继续：取消。" ) == 1 ){
+				if( getcharid( 5 ) == 0 ){
+					cutin "sham04.bmp", 2;
+					mes "[沙姆·鲁米]";
+					mes "我不能让你离开——你根本就不是我的族人！";
+				}else if( getcharid( 5 ) != CROSSBOWCLAN ){
+					mes "[沙姆·鲁米]";
+					mes "抱歉，我不干涉其他部落的事情。";
+				}else{
+					if (clan_leave()) {
+						sc_end SC_CROSSBOWCLAN;
+						mes "[沙姆·鲁米]";
+						mes "完成了。";
+						mes "如果你想念我们，请不要犹豫回来，好吗？";
+					} else
+						mes "发生错误。";
+				}
+			}
+			break;
+	}
+	close2;
+	cutin "", 255;
+	end;
+
+OnInit:
+	sc_start2 SC_CROSSBOWCLAN, INFINITE_TICK, 0, CROSSBOWCLAN, 10000, SCSTART_NOAVOID, getnpcid(0);
+	end;
+}

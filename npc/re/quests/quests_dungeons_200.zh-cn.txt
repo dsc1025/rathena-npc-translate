@@ -1,0 +1,1931 @@
+//===== rAthena Script =======================================
+//= New dungeons
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//===== Changelog: ===========================================
+//= 1.0 Added sp_rudus4 quests. [Capuche]
+//= 1.1 Added nif_dun01 and nif_dun02 quests. [Capuche]
+//= 1.2 Added amicitia1 and amicitia2 quests. [Capuche]
+//============================================================
+
+// sp_rudus4
+pub_cat,94,43,5	script	Yulma#rudus4	4_F_ANYA,{
+	if (BaseLevel < 200) {
+		mes "[尤玛]";
+		mes "呃……你是谁？";
+		mes "抱歉，我不擅长记住人的面孔！但我认为你还不够资格询问我在这里的工作。";
+		next;
+		mes "- 这是一个可以在200级或更高级别执行的任务-";
+		close;
+	}
+	switch( isbegin_quest(16521) ) {
+	case 0:
+		emotion ET_SMILE;
+		mes "[尤玛]";
+		mes "哦，" + strcharinfo(0) + "。你来这里喝一杯吗？";
+		mes "我刚刚做了一笔生意，进展顺利。";
+		next;
+		select( "它是做什么用的？" );
+		mes "[尤玛]";
+		mes "你知道秘密之翼和我们的叛军一直在追踪幻象非法实验的踪迹吧？";
+		next;
+		mes "[尤玛]";
+		mes "与此同时，我找到了通往鲁杜斯四楼的路。";
+		next;
+		switch( select( "嗯，我知道。", "Rudus 在哪里？" ) ) {
+		case 1:
+			emotion ET_DELIGHT;
+			mes "[尤玛]";
+			mes "呵呵，能和" + strcharinfo(0) + ".";
+			break;
+		case 2:
+			emotion ET_SURPRISE;
+			mes "[尤玛]";
+			mes "什么，你忘记了多少次了？";
+			mes "这里是幻象废弃实验后创作出来的失败作品的地方。";
+			next;
+			mes "[尤玛]";
+			mes "还记得早上吗？小男孩住的地方。";
+			mes "他在一楼，而鲁杜斯本身则在二楼和三楼。";
+			break;
+		}
+		next;
+		mes "[尤玛]";
+		mes "顺便说一句，Rudus的4楼还蛮神奇的……";
+		mes "不知何故，在鲁杜斯被遗弃的测试对象中，似乎只有特别强大的人才被聚集起来。";
+		next;
+		mes "[尤玛]";
+		mes "秘密之翼的研究人员表示，经过科目之间的激烈竞争，最强的科目似乎已经落户于此。";
+		next;
+		mes "[尤玛]";
+		mes "好吧，实际上，我不确定它有多复杂！";
+		mes "看来秘密之翼的研究人员需要研究那里的实体。";
+		next;
+		mes "[尤玛]";
+		mes "所以我想找人来帮助我。";
+		mes "准确地说是你，" + strcharinfo(0) + "！";
+		next;
+		mes "[尤玛]";
+		mes "你需要工作吗？我什么都知道了~";
+		mes "如果你有想法，就去Rudus 3楼吧。";
+		next;
+		mes "[尤玛]";
+		mes "<NAVI>[Pion]<INFO>sp_rudus3,380,42,0,101,0</INFO></NAVI>控制着通往四楼的路径。";
+		mes "去告诉他是我派你来的，看看是否值得来！";
+		setquest 16521;
+		close2;
+		navigateto("sp_rudus3",380,42);
+		end;
+	case 1:
+		mes "[尤玛]";
+		mes "你需要工作吗？我什么都知道了~";
+		mes "如果你有想法，就去Rudus 3楼吧。";
+		next;
+		mes "[尤玛]";
+		mes "<NAVI>[Pion]<INFO>sp_rudus3,380,42,0,101,0</INFO></NAVI>控制着通往四楼的路径。";
+		mes "去告诉他是我派你来的，看看是否值得来！";
+		close;
+	case 2:
+		break;
+	}
+	if (isbegin_quest(16522) == 1) {
+		mes "[尤玛]";
+		mes "哦，你去了鲁杜斯的四楼。它怎么样？";
+		mes "皮安过得还好吗？受试者是否觉得有点值得战斗？";
+		next;
+		mes "[尤玛]";
+		mes "那你帮我研究一下秘密翼的人吧。";
+		mes "我一直在寻找人来猎杀它们，因为我自己还不足以捕捉和研究怪物。";
+		next;
+		select( "问我是否可以打猎" );
+		emotion ET_KEK;
+		mes "[尤玛]";
+		mes "哦，我差点忘了。";
+		mes "如果你把这个芯片贴在你身体的某个地方并捕捉它们，研究人员就可以接收数据。";
+		next;
+		mes "[尤玛]";
+		mes "新材料，环保，无毒，安全材料，让您不用担心。";
+		mes "您想把它挂在哪里？";
+		next;
+		select( "耳垂", "颈后", "手背", "额头" );
+		mes "[尤玛]";
+		mes "好的，我会把它贴好，这样就不会打扰你了。";
+		mes "好吧，那就这样吧……";
+		completequest 16522;
+		next;
+	}
+	mes "[尤玛]";
+	mes "今天请好好照顾我！";
+	mes "那么，您今天想帮助进行哪类研究呢？";
+	next;
+	switch( select("深渊孤独", "转变与进化", "数据备份", "没有帮助" ) ) {
+	case 1:
+		switch( checkquest(16523,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[尤玛]";
+			mes "秘密之翼的研究人员正在休息。";
+			mes "那么，" + strcharinfo(0) + "，休息一下再回来怎么样？";
+			next;
+			mes "[尤玛]";
+			mes "Rudus的4楼不是一个方便进出的舒适地方。";
+			mes "让我们好好休息，做好充分的准备去工作吧！";
+			close;
+		case 2:
+			erasequest 16523;
+			break;
+		}
+		switch( checkquest(16524,HUNTING) ) {
+		case -1:
+			mes "[尤玛]";
+			mes "一个只有强者才能生存并咬弱者的地方......";
+			mes "就像一个又深又黑的孤独深坑。";
+			next;
+			emotion ET_SWEAT;
+			mes "[尤玛]";
+			mes "嗯，我不知道！";
+			mes "我的工作是满足研究人员的要求。";
+			next;
+			mes "[尤玛]";
+			mes "研究人员想知道 Rudus 的主题与分布在四楼的主题有何不同。";
+			next;
+			emotion ET_PROFUSELY_SWAT;
+			mes "[尤玛]";
+			mes "到底是失去了原来的形态，经过实验之后，它是否发生了变化。";
+			mes "<FONT SIZE = 9>嗯……这些研究人员看起来也有点危险？我认为对于像我这样的人来说，所有研究人员都是如此。</FONT>";
+			next;
+			mes "[尤玛]";
+			mes "无论如何，您想要收集<FONT COLOR = 0000CD>Dolorian、Plagarion 和Deadre</FONT> 数据。";
+			mes "如果我们每人狩猎 10 个人怎么办？";
+			next;
+			if (select( "我会来打猎", "我拒绝" ) == 2) {
+				mes "[尤玛]";
+				mes "我们已经是同一条船上的战友了~？";
+				mes "是吗，同志？再想一想！";
+				close;
+			}
+			mes "[尤玛]";
+			mes "好吧，如果你去打猎，并且从打猎中收集数据。";
+			mes "而且我的零用钱还会不断积累！";
+			setquest 16524;
+			close;
+		case 0:
+		case 1:
+			mes "[尤玛]";
+			mes "Secret Wing 研究人员想要收集<FONT COLOR = 0000CD>Dolorian、Plagarion 和Deadre</FONT> 数据。";
+			mes "如果我们每人狩猎 10 个人怎么办？";
+			close;
+		case 2:
+			mes "[尤玛]";
+			mes "今天的狩猎看来很成功！";
+			mes "" + strcharinfo(0) + "，你怎么知道我今天给你戴的芯片起作用了。";
+			next;
+			emotion ET_DELIGHT;
+			mes "[尤玛]";
+			mes "我每次都会看到它，但每次都令人惊叹，芯片是如何工作的。";
+			mes "好吧，我应该为你今天所做的工作付钱给你。";
+			next;
+			mes "[尤玛]";
+			mes "给你！";
+			mes "那么既然你已经完成了你的工作，就好好休息一下吧。明天也请多多关照~";
+			erasequest 16524;
+			setquest 16523;
+			getexp 15915940,11141160;	// TODO: the amount has been changed with the monster update
+			close;
+		}
+		end;
+	case 2:
+		switch( checkquest(16525,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[尤玛]";
+			mes "秘密之翼的研究人员已经下班了。";
+			mes "那么，" + strcharinfo(0) + "，休息一下再回来怎么样？";
+			next;
+			mes "[尤玛]";
+			mes "Rudus的4楼不是一个方便进出的舒适地方。";
+			mes "你也好好休息，做好充分准备去工作吧！";
+			close;
+		case 2:
+			erasequest 16525;
+			break;
+		}
+		switch( checkquest(16526,HUNTING) ) {
+		case -1:
+			mes "[尤玛]";
+			mes "第 4 层实体 Giant Caput 和 Venedi 与其他层实体相比有很大改变";
+			mes "变得巨大，或者隐藏更多的毒液......";
+			next;
+			emotion ET_PROFUSELY_SWAT;
+			mes "[尤玛]";
+			mes "研究人员似乎对这些人很感兴趣。";
+			mes "这就是为什么我要求你去猎杀它们。";
+			mes "<FONT SIZE = 9>嗯...我们为什么不这样做呢？上面一定有什么复杂的事情。我不知道。</FONT>";
+			next;
+			mes "[尤玛]";
+			mes "您能分别猎杀 15 个<FONT COLOR = 0000CD>巨人卡普特和维内迪</FONT>吗？";
+			mes "数据会自动收集，因此您只需专注于狩猎即可。";
+			next;
+			if (select( "我会追捕他们", "我拒绝" ) == 2) {
+				mes "[尤玛]";
+				mes "我们已经是同一条船上的战友了~？";
+				mes "是吗，同志？再想一想！";
+				close;
+			}
+			mes "[尤玛]";
+			mes "好啦，去努力狩猎吧！";
+			mes "我的奖金取决于你的表现！";
+			setquest 16526;
+			close;
+		case 0:
+		case 1:
+			mes "[尤玛]";
+			mes "您能分别猎杀 15 个<FONT COLOR = 0000CD>巨人卡普特和维内迪</FONT>吗？";
+			mes "数据会自动收集，因此您只需专注于狩猎即可。";
+			close;
+		case 2:
+			mes "[尤玛]";
+			mes "你过得还好吗？你打猎安全回来了。";
+			mes "请告诉我今天研究人员辛苦了。";
+			next;
+			mes "[尤玛]";
+			mes "看起来已经收集到了很好的数据。";
+			mes "那么我应该为你今天所做的工作付钱给你。";
+			next;
+			mes "[尤玛]";
+			mes "给你！";
+			mes "今天辛苦了，好好休息再回来吧。明天我们一起努力吧！";
+			erasequest 16526;
+			setquest 16525;
+			getexp 15176970,11001900;	// TODO: the amount has been changed with the monster update
+			close;
+		}
+		end;
+	case 3:
+		switch( checkquest(16527,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[尤玛]";
+			mes "研究人员说他现在已经退出了。芯片保养一天一次就够了！";
+			mes "那么，" + strcharinfo(0) + "，休息一下再回来怎么样？";
+			next;
+			mes "[尤玛]";
+			mes "Rudus的4楼不是一个方便进出的舒适地方。";
+			mes "让我们好好休息，做好充分的准备去工作吧！";
+			close;
+		case 2:
+			erasequest 16527;
+			break;
+		}
+		switch( isbegin_quest(16528) ) {
+		case 0:
+			mes "[尤玛]";
+			mes "哦，顺便问一下，薯片粘得好吗？";
+			mes "它不会持续那么久...";
+			next;
+			mes "[尤玛]";
+			mes "我必须备份并格式化我收集的数据，以便我可以接收新数据，但我没有能力这样做......";
+			next;
+			mes "[尤玛]";
+			mes "我给你介绍一位目前在该领域的研究员，你想直接去吗？";
+			mes "他大概是为了观察怪物而伪装的，不过我会给你位置的，你去看看吧！";
+			next;
+			if (select( "找他", "别找他" ) == 2) {
+				mes "[尤玛]";
+				mes "只和我一起工作不是很令人沮丧吗？";
+				mes "与该领域的研究人员见面并不是一个坏主意......";
+				close;
+			}
+			mes "[尤玛]";
+			mes "是的！只与我见面以交付工作不是很令人沮丧吗？";
+			next;
+			mes "[尤玛]";
+			mes "我正在去见他的路上，如果你有什么问题，可以直接问他！";
+			mes "听说<NAVI>[研究员]<INFO>sp_rudus4,192,204,0,101,0</INFO></NAVI>主要在Rudus四楼中心附近挖掘。";
+			setquest 16528;
+			close;
+		case 1:
+			mes "[尤玛]";
+			mes "我正在去见秘翼研究员的路上，有什么问题可以直接问他！";
+			mes "听说<NAVI>[研究员]<INFO>sp_rudus4,192,204,0,101,0</INFO></NAVI>主要在Rudus四楼中心附近挖掘。";
+			close;
+		case 2:
+			mes "[尤玛]";
+			mes "你去过那里吗？你说了一点吗？";
+			mes "研究员隐藏得好吗？";
+			next;
+			mes "[尤玛]";
+			mes "他以隐藏得很好而闻名，尽管他没有隐藏的技巧。";
+			mes "这就是你在外地的原因。";
+			next;
+			mes "[尤玛]";
+			mes "因为这也是一份工作……自从我安全地取代了他，上级就让我来管津贴。";
+			next;
+			mes "[尤玛]";
+			mes "嗯，你也回到我身边真是太好了！";
+			mes "那么祝你有美好的一天，明天见！";
+			erasequest 16528;
+			erasequest 16540;
+			setquest 16527;
+			getexp 15000000,11000000;
+			close;
+		}
+		end;
+	case 4:
+		mes "[尤玛]";
+		mes "呃，你不会吗？";
+		mes "我热切地等待着" + strcharinfo(0) + "！";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(16524,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(16526,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(16528) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16523,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16525,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16527,PLAYTIME) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 200 && (checkquest(16524,HUNTING) == -1 && checkquest(16523,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 200 && (checkquest(16526,HUNTING) == -1 && checkquest(16525,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 200 && (isbegin_quest(16528) == 0 && checkquest(16527,PLAYTIME) == -1)" );
+	end;
+}
+
+sp_rudus3,380,42,3	script	Pion#rudus4	4_M_REBELLION3,{
+	switch( isbegin_quest(16521) ) {
+	case 0:
+		emotion ET_SLEEPY;
+		mes "[介子]";
+		mes "兹兹...哇！";
+		mes "对不起，先生！不用再工作了！";
+		next;
+		mes "[介子]";
+		mes "Seup、Ha-am...沿着这个斜坡是一个访问控制区域。";
+		mes "人们不得进入。";
+		next;
+		select("我不是一个普通人。" );
+		mes "[介子]";
+		mes "是的？啊……啊不！" + strcharinfo(0) + "！";
+		mes "那……不过，我一个人还是不能让你进来。";
+		close;
+	case 1:
+		emotion ET_SLEEPY;
+		mes "[介子]";
+		mes "兹兹...哇！";
+		mes "打扰一下！不用再工作了！";
+		next;
+		mes "[介子]";
+		mes "哎呀……啊，这绝对不是口水";
+		mes "这是一滴闪烁着激情和努力的汗水。";
+		next;
+		mes "[介子]";
+		mes "嗯，嗯。这个斜坡的入口现在被限制了......";
+		mes "这是怎么回事？";
+		next;
+		if (select( "我想去Rudus 4楼。", "指出工作态度。" ) == 2) {
+			mes "[介子]";
+			mes "哦，你的工作态度有问题吗？";
+			mes "萨，有些人可能会睡觉！";
+			next;
+			mes "[介子]";
+			mes "我只睡了一会儿！";
+			mes "真的吗！";
+			close;
+		}
+		mes "[介子]";
+		mes "四楼？我就在那里掌控着...";
+		mes "啊，你是来看子弹喵的尤尔玛的吗？";
+		next;
+		mes "[介子]";
+		mes "那么你应该通过它。";
+		mes "如果您想查看四楼的标本并帮助解决研究请求，请返回<NAVI>[Yulma]<INFO>pub_cat,94,43,0,101,0</INFO></NAVI>并询问。";
+		next;
+		mes "[介子]";
+		mes "我把你搬到四楼。";
+		close2;
+		completequest 16521;
+		setquest 16522;
+		warp "sp_rudus4",370,156;
+		end;
+	case 2:
+		break;
+	}
+	emotion ET_SLEEPY;
+	mes "[介子]";
+	mes "兹兹……嗯！施，对不起！";
+	mes "你确定要去鲁杜斯四楼吗？";
+	next;
+	if (select( "移动", "不要移动" ) == 2) {
+		mes "[介子]";
+		mes "我懂了。哈姆....";
+		close;
+	}
+	mes "[介子]";
+	mes "我来搬你吧小心！";
+	close2;
+	warp "sp_rudus4",370,156;
+	end;
+
+OnInit:
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(16521) == 1" );
+	end;
+}
+
+sp_rudus4,192,204,3	script	Secret Wing Researcher#rudu	4_SOIL,{
+	mes "[秘密之翼研究员]";
+	mes "好的。现场工作。";
+	mes "你必须观察很多怪物。";
+	next;
+	emotion ET_HUK;
+	mes "[秘密之翼研究员]";
+	mes "……哈！";
+	mes "你是怎么认出我的？";
+	next;
+	if (isbegin_quest(16528) == 1) {
+		mes "[秘密之翼研究员]";
+		mes "哦，再看看，" + strcharinfo(0) + ".";
+		mes "我接到一个电话。您是来更新芯片的吗？";
+		next;
+		mes "[秘密之翼研究员]";
+		mes "让我们看看...让我们买一些筹码。";
+		mes "嗯...连接我的机器...数据为空...";
+		next;
+		emotion ET_BEST;
+		mes "[秘密之翼研究员]";
+		mes "好吧，就是这样！数据很干净而且非常好。我再贴一下。";
+		next;
+		mes "[秘密之翼研究员]";
+		mes "因为这也是一份工作，<NAVI>[Yulma]<INFO>pub_cat,94,43,0,101,0</INFO></NAVI>回来时会给你少量津贴。";
+		mes "我一直都亏欠你。好工作！";
+		completequest 16528;
+		setquest 16540;
+		close;
+	}
+	emotion ET_KEK;
+	mes "[秘密之翼研究员]";
+	mes "邪恶的！如果你假装知道，怪物就会来！";
+	mes "离开！";
+	close;
+
+OnInit:
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(16528) == 1" );
+	end;
+}
+
+
+// nif_dun
+moc_para01,14,19,7	script	Old scholar#lv200	2_M_SAGE_OLD,{
+	if (BaseLevel < 200) {
+		mes "[老学者]";
+		mes "我想做更多的研究，但如果我真的有生命危险的话……";
+		next;
+		mes "[老学者]";
+		mes "我别无选择，只能聘请一位坚强而真诚的冒险家。唔...";
+		next;
+		mes "[老学者]";
+		mes "我觉得200级就够了……说起来容易，但那不是那种容易找到的人。";
+		close;
+	}
+	switch( isbegin_quest(8640) ) {
+	case 0:
+		if (isbegin_quest(8639) == 0) {
+			mes "[老学者]";
+			mes "噢，噢，天哪。我一直在寻找的坚强而真诚的冒险家出现在这里了。";
+			mes "您愿意帮助我进行研究吗？";
+			next;
+			.@s = select( "听请求", "可疑..." );
+			mes "[老学者]";
+			mes "即使我用眼睛看你，我也一眼就认出了你的技能，请做点什么……！";
+			if (.@s == 2)
+				close;
+			mes "...？";
+			mes "什么？你会帮我吗？";
+			next;
+			mes "[老学者]";
+			mes "不，就这样了……大家都拒绝了，于是悬着的话语就卡在了我的嘴里。";
+			mes "感谢您的合作。";
+			next;
+			select( "你们还是合作吧..." );
+			mes "[老学者]";
+			mes "来吧，就是这样。当然，像你这样有才华的人可以去尼福尔海姆。";
+			mes "当然，我的日子已经不多了，现在去也不是时候，也不能及时回来。";
+			next;
+			mes "[老学者]";
+			mes "根据最近的消息来源……在尼福尔海姆的黑暗深处，死者举行了一场宴会，";
+			mes "以我们无法想象的形式。";
+			mes "但无处可听到更多相关信息。";
+			next;
+			mes "[老学者]";
+			mes "无论如何你很快就会知道，但我现在很好奇。";
+			mes "你能看一下吗？我会给你很多例子。";
+			next;
+			if (select( "这就够了。我可以回来吗？", "如果我不能回来怎么办？" ) == 2) {
+				mes "[老学者]";
+				mes "你根本不会想到，以你现在的水平，你已经回不来了……";
+				mes "如果你还是那么小心的话，好吧。准备好后就回来吧。";
+				close;
+			}
+			setquest 8639;
+			mes "[加里姆·斯普林菲尔德]";
+			mes "谢谢。原来我忘了自我介绍。";
+			mes "我叫加里姆·斯普林菲尔德。";
+			mes "我在贤者城堡工作了很长时间……现在退休了，想在这里度过一段闲暇时光，也提出一些要求……";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "放松...";
+			next;
+			mes "[加里姆·斯普林菲尔德]";
+			mes "好的。这是值得的。";
+			mes "满足闲散老人的一个愿望。";
+			mes "那我就等好消息吧。";
+			close;
+		}
+		mes "[加里姆·斯普林菲尔德]";
+		mes "你在干什么？快点吧。";
+		close;
+	case 1:
+		mes "[加里姆·斯普林菲尔德]";
+		mes "啊？你真的去过尼福尔海姆深处的宴会厅吗？";
+		mes "你活着回来了？";
+		mes "好吧，告诉我你的故事。";
+		next;
+		mes "[加里姆·斯普林菲尔德]";
+		mes "嗯嗯……我明白了！";
+		mes "我有这样的准备，以后去就不会害怕了！";
+		next;
+		mes "[加里姆·斯普林菲尔德]";
+		mes "研究将永远持续下去......！";
+		completequest 8640;
+		close;
+	case 2:
+		mes "[加里姆·斯普林菲尔德]";
+		mes "我觉得死后还能做研究，所以感觉好多了。";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "BaseLevel >= 200 && isbegin_quest(8639) == 0 && isbegin_quest(8640) == 0" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8640) == 1" );
+	end;
+}
+
+niflheim,164,102,3	script	Tired looking dead#lv20	4_F_NFDEADMGCIAN,{
+	switch( isbegin_quest(8640) ) {
+	case 0:
+		switch( isbegin_quest(8639) ) {
+		case 0:
+			mes "[看起来累死了]";
+			mes "哈姆...";
+			mes "我睡不着";
+			mes "死了也睡不着有什么好烦恼的？";
+			mes "我们去睡一会儿吧...";
+			mes "我会因为噪音而死。";
+			close;
+		case 1:
+			mes "[看起来累死了]";
+			mes "哈姆...";
+			mes "啊？什么？我不跟小贩打交道。";
+			next;
+			if (select( "你脸色不好", "安静的回去吧" ) == 2) {
+				mes "[看起来累死了]";
+				mes "哦，我确实想问你是否有安眠药...但我已经死了...你不会听到我的...嗯。";
+				close;
+			}
+			mes "[看起来累死了]";
+			mes "呃，你怎么知道？";
+			mes "我的脸色一定很差吧……";
+			mes "你有安眠药吗？";
+			next;
+			select("我不是瘾君子" );
+			mes "[看起来累死了]";
+			mes "啊……对不起。我误会了。所有走到这一步的人都是奇怪的孩子或贩毒者，所以我把他们赶了出去。";
+			next;
+			mes "[看起来累死了]";
+			mes "对了……你怎么知道我累了？我的肤色看起来有那么差吗？";
+			next;
+			mes "[看起来累死了]";
+			mes "事实上，我已经死了一段时间了，但我最近才来到尼福尔海姆。所以我决定睡在这个房子里......";
+			mes "我晚上睡不着，因为隔壁太吵了。";
+			next;
+			mes "[看起来累死了]";
+			mes "不，是虽然我已经死了，但隔壁很吵，无法入睡的痛苦。";
+			mes "哦，不是隔壁。他们都逃跑了。";
+			mes "这么便宜是有原因的";
+			next;
+			mes "[看起来累死了]";
+			mes "是的，<NAVI>[那里]<INFO>尼夫海姆,148,124,0,101,0</INFO></NAVI>";
+			mes "那边疯狂的村民……他们每天都在举办宴会。";
+			next;
+			mes "[看起来累死了]";
+			mes "我每天都在那里，每天！！";
+			next;
+			mes "[看起来累死了]";
+			mes "哈……我知道，就算是每天，也是有固定时间的。";
+			mes "顺便说一下……如果你是一个酒鬼，活着的时候会按时回家，那么即使死了你也会这么做吗？";
+			next;
+			mes "[看起来累死了]";
+			mes "我……死了，所以我只想安静地睡觉……";
+			mes "希望宴会结束后，他们能够回过神来。";
+			next;
+			select( "宴会是..." );
+			mes "[看起来累死了]";
+			mes "是的……你看起来很强壮，而且还有酒精……他们死了，所以这很神奇。";
+			mes "如果你能让那些沉醉于神通一夜的人安静下来，我会奖励你。";
+			mes "是的，当然是每天。";
+			next;
+			mes "[米拉]";
+			mes "我是米拉。我现在是尼福尔海姆的居民。";
+			mes "请帮助我入睡，亲爱的。";
+			erasequest 8639;
+			setquest 8640;
+			close;
+		case 2:
+			end;
+		}
+		end;
+	case 1:
+	case 2:
+		mes "[米拉]";
+		mes "是的，谢谢你回来。";
+		mes "哈姆...";
+		mes "为了我和我的邻居......为了睡个好觉。";
+		next;
+		if (select( "听取请求。", "拒绝。" ) == 2) {
+			mes "[米拉]";
+			mes "如果你很忙的话你就不能这样做...";
+			mes "啊，毕竟活着的人是听不到那个声音的。这是只有死者才知道的我的痛苦……";
+			npctalk "另一个死者：吵闹！睡一会儿吧！", "#lv200althema", bc_self;
+			npctalk "又一个死者：他真的睡不着！", "#lv200althema2", bc_self;
+			close;
+		}
+		mes "[米拉]";
+		mes "亲爱的生命，谢谢你的怜悯。";
+		mes "这是一个豪华的设施，有宴会厅和歌剧院，但每一个都有点不同。";
+		mes "看在你的好意上，我会请求那种技能……";
+		next;
+		switch( select( "他看起来很可爱", "那不是乐器", "弹钢琴", "头发凌乱的家伙", "带着洋娃娃的", "叫醒他们", "停下来" ) ) {
+		case 1:
+			switch( checkquest(8642,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我想他们今天已经受够了。";
+				mes "我希望你明天有时间的话可以帮助我。";
+				close;
+			case 2:
+				erasequest 8642;
+				break;
+			}
+			switch( checkquest(8641,HUNTING) ) {
+			case -1:
+				mes "[米拉]";
+				mes "它们看起来很可爱……但它们非常吵闹。";
+				mes "^0000FF" + getmonsterinfo("GHOST_CUBE", MOB_NAME) + "^000000,";
+				mes "^0000FF" + getmonsterinfo("路德_GAL", MOB_NAME) + "^000000";
+				next;
+				mes "[米拉]";
+				mes "我希望你能打败 15 " + getmonsterinfo("GHOST_CUBE", MOB_NAME) + "";
+				mes "以及他们的 15 个伙伴" + getmonsterinfo("LUDE_GAL", MOB_NAME) + "，他们经常出没于死者的宴会厅，";
+				mes "使他们成为圣日。";
+				next;
+				if (select( "我接受", "我今天很忙" ) == 2) {
+					mes "[米拉]";
+					mes "嗯...";
+					mes "是啊……好吧，我不会因为睡不着而死……";
+					mes "我已经死了";
+					close;
+				}
+				mes "[米拉]";
+				mes "谢谢你的好心。";
+				mes "愿生者慈悲有福！";
+				setquest 8641;
+				close;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我希望你能打败 15 " + getmonsterinfo("GHOST_CUBE", MOB_NAME) + "";
+				mes "以及他们的 15 个伙伴" + getmonsterinfo("LUDE_GAL", MOB_NAME) + "，他们经常出没于死者的宴会厅，";
+				mes "使他们成为圣日。";
+				close;
+			case 2:
+				mes "[米拉]";
+				mes "基亚，你听到他们一路尖叫了吗？";
+				mes "多亏了你，我想我今天可以睡得更深了……";
+				mes "明天我还得再经历一次这场骚动。";
+				mes "谢谢。";
+				erasequest 8641;
+				setquest 8642;
+				// getexp 15642570,10949790;	// pre-rebalance
+				getexp 20300909,14210636;	// rebalance (unknown jexp, 70% of baseexp)
+				close;
+			}
+			end;
+		case 2:
+			switch( checkquest(8645,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我想他们今天已经受够了。";
+				mes "我希望你明天有时间的话可以帮助我。";
+				close;
+			case 2:
+				erasequest 8645;
+				break;
+			}
+			switch( checkquest(8644,HUNTING) ) {
+			case -1:
+				mes "[米拉]";
+				mes "它被称为^0000FF" + getmonsterinfo("BRUTAL_MURDERER", MOB_NAME) + "^000000。";
+				mes "他们手里拿着刀……";
+				mes "太大声了，哪里都敲不到！";
+				next;
+				mes "[米拉]";
+				mes "我希望你能打败 10 个" + getmonsterinfo("BRUTAL_MURDERER", MOB_NAME) + "";
+				mes "以及他们的 10 个伙伴" + getmonsterinfo("GAN_CEANN", MOB_NAME) + "，他们经常出没于死者的宴会厅，";
+				mes "使他们成为圣日。";
+				next;
+				if (select( "我接受", "我今天很忙" ) == 2) {
+					mes "[米拉]";
+					mes "嗯...";
+					mes "是啊……好吧，我不会因为睡不着而死……";
+					mes "我已经死了。";
+					close;
+				}
+				mes "[米拉]";
+				mes "谢谢你的好心。";
+				mes "愿生者慈悲有福！";
+				setquest 8644;
+				close;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我希望你能打败 10 个" + getmonsterinfo("BRUTAL_MURDERER", MOB_NAME) + "";
+				mes "以及他们的 10 个伙伴" + getmonsterinfo("GAN_CEANN", MOB_NAME) + "，他们经常出没于死者的宴会厅，";
+				mes "使他们成为圣日。";
+				close;
+			case 2:
+				mes "[米拉]";
+				mes "基亚，你听到他们的菜刀和头盔一路飞到这里的声音了吗？";
+				mes "多亏了你，我想我今天可以睡得更深了……";
+				mes "谢谢。";
+				erasequest 8644;
+				setquest 8645;
+				// getexp 10756120,7541880;	// pre-rebalance
+				getexp 14106860,9874802;	// rebalance (unknown jexp, 70% of baseexp)
+				close;
+			}
+			end;
+		case 3:
+			switch( checkquest(8648,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我想他们今天已经受够了。";
+				mes "我希望你明天有时间的话可以帮助我。";
+				close;
+			case 2:
+				erasequest 8648;
+				break;
+			}
+			switch( isbegin_quest(8647) ) {
+			case 0:
+				mes "[米拉]";
+				mes "如果你走进死者的宴会厅那里，就会有一架钢琴。";
+				mes "当活人敲击它时，它实际上会尖叫。";
+				mes "会很有趣吗？";
+				next;
+				mes "[米拉]";
+				mes "弹奏<NAVI>[钢琴]<INFO>nif_dun01,140,​​202,0,101,0</INFO></NAVI>";
+				mes "死者的宴会厅。";
+				mes "不存在歌曲请求之类的事情。";
+				next;
+				if (select( "我接受", "我今天很忙" ) == 2) {
+					mes "[米拉]";
+					mes "嗯...";
+					mes "是啊……好吧，我不会因为睡不着而死……";
+					mes "我已经死了";
+					close;
+				}
+				mes "[米拉]";
+				mes "谢谢你的好心。";
+				mes "愿生者慈悲有福！";
+				setquest 8647;
+				close;
+			case 1:
+				mes "[米拉]";
+				mes "弹奏<NAVI>[钢琴]<INFO>nif_dun01,140,​​202,0,101,0</INFO></NAVI>";
+				mes "死者的宴会厅。";
+				mes "不存在歌曲请求之类的事情。";
+				close;
+			case 2:
+				mes "[米拉]";
+				mes "哈哈哈，你听到了吗？就像酒精一样……不，如果你喝了魔法并且表现得像鹰一样，那就是这样。";
+				mes "多亏了你，我想我今天可以睡得更深了……";
+				mes "谢谢。";
+				erasequest 8647;
+				erasequest 8649;
+				setquest 8648;
+				getexp 10000000,7500000;
+				close;
+			}
+			end;
+		case 4:
+			if (BaseLevel < 240) {
+				mes "[米拉]";
+				mes "嗯...不。";
+				mes "现在留给你还为时过早...";
+				mes "我会等你达到240级。";
+				mes "我有时间。";
+				close;
+			}
+			switch( checkquest(8651,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我想他们今天已经受够了。";
+				mes "我希望你明天有时间的话可以帮助我。";
+				close;
+			case 2:
+				erasequest 8651;
+				break;
+			}
+			switch( isbegin_quest(8650) ) {
+			case 0:
+			case 1:
+				switch( checkquest(8650,HUNTING) ) {
+				case -1:
+					mes "[米拉]";
+					mes "我的意思是，有一些孩子叫做^0000FF" + getmonsterinfo("DISGUISER", MOB_NAME) + "^000000。";
+					mes "他们的头发就像被炸弹击中一样，看起来很兴奋。";
+					mes "^0000FF" + getmonsterinfo("BLUEMOON_LOLI_RURI", MOB_NAME) + "^000000，和扫把头发的男生在一起，声音不能那么大。";
+					next;
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "15 ^0000FF" + getmonsterinfo("DISGUISER", MOB_NAME) + "^000000 和 15 ^0000FF" + getmonsterinfo("BLUEMOON_LOLI_RURI", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					next;
+					if (select( "我接受", "我今天很忙" ) == 2) {
+						mes "[米拉]";
+						mes "嗯...";
+						mes "是啊……好吧，我不会因为睡不着而死……";
+						mes "我已经死了";
+						close;
+					}
+					mes "[米拉]";
+					mes "谢谢你的好心。";
+					mes "愿生者慈悲有福！";
+					setquest 8650;
+					close;
+				case 0:
+				case 1:
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "15 ^0000FF" + getmonsterinfo("DISGUISER", MOB_NAME) + "^000000 和 15 ^0000FF" + getmonsterinfo("BLUEMOON_LOLI_RURI", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					close;
+				case 2:
+					mes "[米拉]";
+					mes "呵呵，我能听到炸弹头一路扬尘的声音。";
+					mes "多亏了你，我今天才能睡个好觉。";
+					mes "谢谢。明天再见。";
+					completequest 8650;
+					setquest 8651;
+					getexp 44984725,31489308;	// rebalance (unknown jexp, 70% of baseexp)
+					close;
+				}
+				end;
+			case 2:
+				switch( checkquest(8652,HUNTING) ) {
+				case -1:
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "15 ^0000FF" + getmonsterinfo("DISGUISER", MOB_NAME) + "^000000 和 15 ^0000FF" + getmonsterinfo("BLUEMOON_LOLI_RURI", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					next;
+					if (select( "我接受", "我今天很忙" ) == 2) {
+						mes "[米拉]";
+						mes "嗯...";
+						mes "是啊……好吧，我不会因为睡不着而死……";
+						mes "我已经死了";
+						close;
+					}
+					mes "[米拉]";
+					mes "谢谢你的好心。";
+					mes "愿生者慈悲有福！";
+					setquest 8652;
+					close;
+				case 0:
+				case 1:
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "15 ^0000FF" + getmonsterinfo("DISGUISER", MOB_NAME) + "^000000 和 15 ^0000FF" + getmonsterinfo("BLUEMOON_LOLI_RURI", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					close;
+				case 2:
+					mes "[米拉]";
+					mes "呵呵，我能听到炸弹头一路扬尘的声音。";
+					mes "多亏了你，我今天才能睡个好觉。";
+					mes "谢谢。明天再见。";
+					erasequest 8652;
+					setquest 8651;
+					getexp 44984725,31489308;	// rebalance (unknown jexp, 70% of baseexp)
+					close;
+				}
+				end;
+			}
+			end;
+		case 5:
+			if (BaseLevel < 240) {
+				mes "[米拉]";
+				mes "嗯...不。";
+				mes "现在留给你还为时过早...";
+				mes "我会等你达到240级。";
+				mes "我有时间。";
+				close;
+			}
+			switch( checkquest(8654,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我想他们今天已经受够了。";
+				mes "我希望你明天有时间的话可以帮助我。";
+				close;
+			case 2:
+				erasequest 8654;
+				break;
+			}
+			switch( isbegin_quest(8653) ) {
+			case 0:
+			case 1:
+				switch( checkquest(8653,HUNTING) ) {
+				case -1:
+					mes "[米拉]";
+					mes "如果你看看那里倒塌的歌剧院，";
+					mes "你会看到那些带着娃娃的。有" + getmonsterinfo("GROTE", MOB_NAME) + "和" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "^000000...";
+					mes "所有带着娃娃的人都很吵。";
+					next;
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "10 个 ^0000FF" + getmonsterinfo("GROTE", MOB_NAME) + "^000000 和 10 个 ^0000FF" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					next;
+					if (select( "我接受", "我今天很忙" ) == 2) {
+						mes "[米拉]";
+						mes "嗯...";
+						mes "是啊……好吧，我不会因为睡不着而死……";
+						mes "我已经死了";
+						close;
+					}
+					mes "[米拉]";
+					mes "谢谢你的好心。";
+					mes "愿生者慈悲有福！";
+					setquest 8653;
+					close;
+				case 0:
+				case 1:
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "10 个 ^0000FF" + getmonsterinfo("GROTE", MOB_NAME) + "^000000 和 10 个 ^0000FF" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					close;
+				case 2:
+					mes "[米拉]";
+					mes "Kyak-kyak-kyak-kyak-kyak-kyak-kyak，你到底做了什么？";
+					mes "不久前，" + getmonsterinfo("GROTE", MOB_NAME) + "和" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "回家说不会再发出声音了。";
+					mes "当然不是。他们明天还会再来。";
+					mes "谢谢。明天见。";
+					completequest 8653;
+					setquest 8654;
+					getexp 29944101,20960871;	// rebalance (unknown jexp, 70% of baseexp)
+					close;
+				}
+				end;
+			case 2:
+				switch( checkquest(8655,HUNTING) ) {
+				case -1:
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "10 个 ^0000FF" + getmonsterinfo("GROTE", MOB_NAME) + "^000000 和 10 个 ^0000FF" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					next;
+					if (select( "我接受", "我今天很忙" ) == 2) {
+						mes "[米拉]";
+						mes "嗯...";
+						mes "是啊……好吧，我不会因为睡不着而死……";
+						mes "我已经死了";
+						close;
+					}
+					mes "[米拉]";
+					mes "谢谢你的好心。";
+					mes "愿生者慈悲有福！";
+					setquest 8655;
+					close;
+				case 0:
+				case 1:
+					mes "[米拉]";
+					mes "希望你能展现出火辣的味道";
+					mes "10 个 ^0000FF" + getmonsterinfo("GROTE", MOB_NAME) + "^000000 和 10 个 ^0000FF" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "^000000";
+					mes "困扰着倒塌的歌剧院。";
+					close;
+				case 2:
+					mes "[米拉]";
+					mes "Kyak-kyak-kyak-kyak-kyak-kyak-kyak，你到底做了什么？";
+					mes "不久前，" + getmonsterinfo("GROTE", MOB_NAME) + "和" + getmonsterinfo("PIERROTZOIST", MOB_NAME) + "回家说不会再发出声音了。";
+					mes "当然不是。他们明天还会再来。";
+					mes "谢谢。明天见。";
+					erasequest 8655;
+					setquest 8654;
+					getexp 29944101,20960871;	// rebalance (unknown jexp, 70% of baseexp)
+					close;
+				}
+				end;
+			}
+			end;
+		case 6:
+			if (BaseLevel < 240) {
+				mes "[米拉]";
+				mes "嗯...不。";
+				mes "现在留给你还为时过早...";
+				mes "我会等你达到240级。";
+				mes "我有时间。";
+				close;
+			}
+			switch( checkquest(8657,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[米拉]";
+				mes "我想他们今天已经受够了。";
+				mes "我希望你明天有时间的话可以帮助我。";
+				close;
+			case 2:
+				erasequest 8657;
+				break;
+			}
+			switch( isbegin_quest(8656) ) {
+			case 0:
+				mes "[米拉]";
+				mes "粉碎了……不，别这么说。";
+				mes "如果你去倒塌的歌剧院，你会发现框架里有鬼魂。";
+				mes "但他们连身体都没有……";
+				mes "亲爱的，打鼾了。";
+				next;
+				mes "[米拉]";
+				mes "<NAVI>[幽灵说话]<INFO>nif_dun02,37,221,0,101,0</INFO></NAVI>";
+				mes "和<NAVI>[打鼾]<INFO>nif_dun02,249,221,0,101,0</INFO></NAVI>";
+				mes "在死者的宴会厅内，扭动你的鼻子。";
+				mes "你需要让他们平静下来。";
+				next;
+				if (select( "我接受", "我今天很忙" ) == 2) {
+					mes "[米拉]";
+					mes "嗯...";
+					mes "是啊……好吧，我不会因为睡不着而死……";
+					mes "我已经死了";
+					close;
+				}
+				mes "[米拉]";
+				mes "谢谢你的好心。";
+				mes "愿生者慈悲有福！";
+				setquest 8656;
+				close;
+			case 1:
+				if (isbegin_quest(8658) == 0 || isbegin_quest(8659) == 0) {
+					mes "[米拉]";
+					mes "<NAVI>[幽灵说话]<INFO>nif_dun02,37,221,0,101,0</INFO></NAVI>";
+					mes "和<NAVI>[打鼾]<INFO>nif_dun02,249,221,0,101,0</INFO></NAVI>";
+					mes "在死者的宴会厅内，扭动你的鼻子。";
+					mes "你需要让他们平静下来。";
+					close;
+				}
+				mes "[米拉]";
+				mes "……我已经吃不下去了……";
+				mes "...乡巴佬。";
+				mes "哦，你去过吗？我不知不觉就睡着了。";
+				mes "一路上听到鼾声实在是太烦人了……";
+				next;
+				mes "[米拉]";
+				mes "看来活着的人听力不好。";
+				mes "不管怎样，今天谢谢你。";
+				mes "睡眠是宝贵的...";
+				mes "趁你还活着，就睡够了。";
+				erasequest 8656;
+				erasequest 8658;
+				erasequest 8659;
+				setquest 8657;
+				getexp 13000000,9100000;	// rebalance (unknown jexp, 70% of baseexp)
+				close;
+			case 2:
+				end;
+			}
+			end;
+		case 7:
+			mes "[米拉]";
+			mes "如果你很忙的话你就不能这样做...";
+			mes "啊，毕竟活着的人是听不到那个声音的。这是只有死者才知道的我的痛苦……";
+			npctalk "另一个死者：吵闹！睡一会儿吧！", "#lv200althema", bc_self;
+			npctalk "又一个死者：他真的睡不着！", "#lv200althema2", bc_self;
+			close;
+		}
+		end;
+	}
+	end;
+
+OnInit:
+	// prerequisite
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8639) == 1" );
+
+	// daily
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(8641,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(8644,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8647) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(8650,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(8652,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(8653,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(8655,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(8656) == 1 && isbegin_quest(8658) == 1 && isbegin_quest(8659) == 1" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(8642,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(8645,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(8648,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(8651,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(8654,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(8657,PLAYTIME) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 200 && (checkquest(8641,HUNTING) == -1 && checkquest(8642,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 200 && (checkquest(8644,HUNTING) == -1 && checkquest(8645,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 200 && (isbegin_quest(8647) == 0 && checkquest(8648,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 240 && (checkquest(8650,HUNTING) == -1 && checkquest(8651,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 240 && isbegin_quest(8650) == 2 && checkquest(8652,HUNTING) == -1 && checkquest(8651,PLAYTIME) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 240 && (checkquest(8653,HUNTING) == -1 && checkquest(8654,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 240 && isbegin_quest(8653) == 2 && checkquest(8655,HUNTING) == -1 && checkquest(8654,PLAYTIME) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 240 && (isbegin_quest(8656) == 0 && checkquest(8657,PLAYTIME) == -1)" );
+	end;
+}
+
+niflheim,160,106,3	duplicate(dummy_npc)	#lv200althema	CLEAR_NPC
+niflheim,165,105,3	duplicate(dummy_npc)	#lv200althema2	CLEAR_NPC
+
+
+niflheim,143,125,6	script	Funny Gatekeeper's Friend#lv20	LUDE_GAL,{
+	npctalk "搞笑看门人的朋友：唱歌~整晚~或者永远~", "", bc_self;
+	end;
+}
+
+niflheim,145,126,6	script	Angry Gatekeeper#lv200	GHOST_CUBE,{
+	npctalk "愤怒的守门人：凯-看！活的！玩！不用去！", "", bc_self;
+	npctalk "搞笑看门人的朋友：不用离开！和我们一起玩吧！", "有趣的看门人的朋友#lv20", bc_self;
+	end;
+}
+
+nif_dun01,140,202,3	script	Piano#lv200	CLEAR_NPC,{
+	if (isbegin_quest(8647) == 1) {
+		mes "我听不到任何声音，但周围的死者似乎在骚动。";
+		mes "我们向米拉汇报吧。";
+		completequest 8647;
+		setquest 8649;
+		npctalk "叮叮当当……噼啪！", "钢琴#lv200", bc_self;
+		npctalk "活着睡觉！呀呀呀！", "激动人心的大提琴#lv200", bc_self;
+		npctalk "活人会弹钢琴！", "跳舞大提琴#lv200", bc_self;
+		npctalk "天哪，他真的不会玩……", "安静的大提琴#lv200", bc_self;
+		npctalk "怎么会这样……", "陌生人大提琴#lv200", bc_self;
+		npctalk "你破坏了气氛！", "快乐大提琴#lv200", bc_self;
+		npctalk "钢琴哦！！！", "严肃的低音提琴#lv2", bc_self;
+		npctalk "钢琴惊呆了……", "光滑的竖琴#lv200", bc_self;
+		close;
+	}
+	// note: no text
+	end;
+
+OnInit:
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(8647) == 1" );
+	end;
+}
+nif_dun01,133,198,3	duplicate(dummy_npc)	Exciting Cello#lv200	CLEAR_NPC
+nif_dun01,138,195,3	duplicate(dummy_npc)	Dancing Cello#lv200	CLEAR_NPC
+nif_dun01,153,195,3	duplicate(dummy_npc)	Quiet Cello#lv200	CLEAR_NPC
+nif_dun01,152,198,3	duplicate(dummy_npc)	Stranger Cello#lv200	CLEAR_NPC
+nif_dun01,157,198,3	duplicate(dummy_npc)	Happy Cello#lv200	CLEAR_NPC
+nif_dun01,156,202,3	duplicate(dummy_npc)	Serious Contrabass#lv2	CLEAR_NPC
+nif_dun01,133,201,3	duplicate(dummy_npc)	Sleek Harp#lv200	CLEAR_NPC
+
+nif_dun01,148,43,3	script	Helpful Gatekeeper#240	DISGUISER,{
+	if (BaseLevel < 240) {
+		npctalk "乐于助人的看门人：嗯嗯嗯。你没有足够的修饰来通过这里。", "", bc_self;
+		npctalk "沉默的看门人：……说明你的等级太低了。", "沉默的看门人#240", bc_self;
+		end;
+	}
+	npctalk "乐于助人的看门人：嗯嗯嗯。山，上去吧。不能下来。", "", bc_self;
+	npctalk "沉默的看门人：……意思是欢迎。", "沉默的看门人#240", bc_self;
+	end;
+}
+
+nif_dun01,143,43,7	script	Silent Gatekeeper#240	GROTE,{
+	npctalk "沉默的守门人：……", "", bc_self;
+	end;
+}
+
+nif_dun02,37,221,3	script	Sleep Talking Ghost#lv240	CLEAR_NPC,3,3,{
+	if (isbegin_quest(8656) == 1) {
+		switch( isbegin_quest(8659) ) {
+		case 0:
+			setquest 8659;
+			mes "我扭动了画面中鬼魂的鼻子。";
+			mes "没有任何触碰，但鬼魂不再说话了。";
+			npctalk "???????!", "", bc_self;
+			if (isbegin_quest(8658) == 1)
+				mes "我们去向米拉汇报吧。";
+			close;
+		case 1:
+			mes "刚才说的鬼魂不见了，另一个鬼魂正在睡觉。";
+			close;
+		default:
+			end;
+		}
+	}
+	end;
+
+OnTouch:
+	if (isbegin_quest(8659) == 0) {
+		npctalk "我也想吃。。看起来很好吃的样子。。", "", bc_self;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(8656) == 1 && isbegin_quest(8659) == 0" );
+	end;
+}
+
+nif_dun02,249,221,3	script	Snoring Ghost#lv240	CLEAR_NPC,3,3,{
+	if (isbegin_quest(8656) == 1) {
+		switch( isbegin_quest(8658) ) {
+		case 0:
+			setquest 8658;
+			mes "我扭动了画面中鬼魂的鼻子。";
+			mes "没有碰触，但鬼魂停止了鼾声。";
+			npctalk "什么时候！", "", bc_self;
+			if (isbegin_quest(8659) == 1)
+				mes "我们去向米拉汇报吧。";
+			close;
+		case 1:
+			mes "打呼噜的鬼魂已经不见踪影，另一个鬼魂正在睡觉。";
+			close;
+		default:
+			end;
+		}
+	}
+	end;
+
+OnTouch:
+	if (isbegin_quest(8658) == 0)
+		npctalk "多罗隆 多罗隆...", "", bc_self;
+	end;
+
+OnInit:
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(8656) == 1 && isbegin_quest(8658) == 0" );
+	end;
+}
+
+
+// amicitia1
+ein_fild08,158,96,3	script	Lana#ami	4_M_ILYA,{
+	if (BaseLevel < 215) {
+		mes "[拉娜]";
+		mes "除此之外，它是危险的，因此除了超过一定级别的冒险家之外，访问受到限制。";
+		next;
+		mes "- 该区域可从 215 级或更高级别进入 -";
+		close;
+	}
+	mes "[拉娜]";
+	mes "您想去 Amicitia 综合实验室一楼吗？";
+	next;
+	if (select( "去", "停留" ) == 2) {
+		mes "[拉娜]";
+		mes "好的。那就祝你有个愉快的冒险吧。";
+		close;
+	}
+	mes "[拉娜]";
+	mes "好的。我会把你转到 Amicitia 综合实验室。";
+	close2;
+	warp "amicitia1",242,244;
+	end;
+}
+
+pub_cat,86,33,5	script	Ansuriya#ami	4_F_REBELLION2,{
+	if (BaseLevel < 215) {
+		mes "[安苏里亚]";
+		mes "哦，你是上次行动的英雄。";
+		mes "很荣幸在这样的地方遇见你。我可以请你喝一杯吗？";
+		next;
+		mes "- 这是一个可以在215级或更高级别执行的任务-";
+		close;
+	}
+	if (isbegin_quest(16529) == 0) {
+		mes "[安苏里亚]";
+		mes "哦，你是上次行动的英雄。";
+		mes "很荣幸在这样的地方遇见你。我可以请你喝一杯吗？";
+		next;
+		mes "[非洲菊]";
+		mes "哇，" + strcharinfo(0) + "！我可以得到签名吗？";
+		mes "这是一种荣幸！呵呵~";
+		next;
+		mes "[安苏里亚]";
+		mes "来，请喝一杯热带苏格拉特！";
+		mes "哦，你对热带索格拉特还好吗？";
+		next;
+		mes "[非洲菊]";
+		mes "我喜欢巧克力牛奶。";
+		next;
+		mes "[安苏里亚]";
+		mes "你用你的钱买它。";
+		mes "顺便问一下 Gerbena，Amicitia 团队怎么样？";
+		next;
+		emotion ET_PROFUSELY_SWAT, getnpcid(0,"Gerbena#ami");
+		mes "[非洲菊]";
+		mes "嗯，那是……我现在已经整理完了。";
+		mes "不过，由于成员总数较少，所以部署的叛军数量确实有点少。";
+		next;
+		mes "[安苏里亚]";
+		mes "嗯，我该怎么办？非洲菊。你想去吗？";
+		next;
+		emotion ET_SWEAT, getnpcid(0,"Gerbena#ami");
+		mes "[非洲菊]";
+		mes "啊，看一下。我和所有员工的头都快掉下来了。";
+		next;
+		mes "[安苏里亚]";
+		mes "我应该怎么办？我们每层楼需要两队......";
+		next;
+		emotion ET_AHA, getnpcid(0,"Gerbena#ami");
+		mes "[非洲菊]";
+		mes "你是一个英雄。";
+		mes "你能帮助我们吗？";
+		next;
+		emotion ET_QUESTION;
+		mes "[安苏里亚]";
+		mes "格贝娜，你突然在说什么啊！";
+		next;
+		mes "[非洲菊]";
+		mes "不，英雄在上次行动中被分配了与叛乱有关的任务。";
+		mes "所以我想知道这次你是否可以再次向我申请......";
+		next;
+		emotion ET_SURPRISE;
+		mes "[安苏里亚]";
+		mes "呃！是的。";
+		mes "冒险家。你怎么认为？";
+		next;
+		select( "听听发生了什么……" );
+		mes "[安苏里亚]";
+		mes "哦是的。就是这样的顺序。";
+		mes "别的不说，我们在艾因布洛赫周围发现了一个新实验室。";
+		next;
+		mes "[安苏里亚]";
+		mes "名称是<FONT COLOR=0000CD>Amicitia General Lab</FONT>。根据雷肯伯提供的资料，据说是维尔纳研究所的姐妹实验室。";
+		next;
+		mes "[安苏里亚]";
+		mes "看起来它并没有进行非常非法的实验，而是专注于将奇美拉培养成人造人的研究，但据说在地下魔力工厂发生爆炸后就被废弃了。";
+		next;
+		mes "[安苏里亚]";
+		mes "它之所以受到调查，是因为该废弃实验室的管理员之一是维尔纳。";
+		next;
+		mes "[安苏里亚]";
+		mes "调查的结果是，正在培育的嵌合体因爆炸事故而失控，变成了怪物而无人看管。";
+		next;
+		mes "[安苏里亚]";
+		mes "我不知道这是被忽视还是故意的。";
+		next;
+		mes "[安苏里亚]";
+		mes "它距离城市不远，因此出于安全原因，Rebellion 负责组织这次活动……正如您所听到的，我们因缺乏工作人员而遇到麻烦。";
+		next;
+		mes "[非洲菊]";
+		mes "在您的帮助下，我们可以让清理变得更容易！";
+		next;
+		mes "[安苏里亚]";
+		mes "好的。你能帮我征服吗？";
+		next;
+		if (select( "帮助", "不帮助" ) == 2) {
+			mes "[安苏里亚]";
+			mes "啊……对不起。";
+			mes "这是我们的工作，我们只是寻求帮助。";
+			next;
+			mes "[安苏里亚]";
+			mes "你一定有自己的事情要做！";
+			mes "我们将尝试自己解决这个问题。";
+			close;
+		}
+		mes "[非洲菊]";
+		mes "很荣幸与您合作！";
+		next;
+		mes "[安苏里亚]";
+		mes "感谢您的合作！";
+		mes "咱们再组个团吧……";
+		next;
+		mes "[安苏里亚]";
+		mes "您愿意单独执行任务还是与叛军的任务团队一起执行任务？";
+		next;
+		select( "我一个人很舒服" );
+		mes "[安苏里亚]";
+		mes "如果是这样，让我们​​将叛乱任务组合并为一个，而英雄的单独任务……咕咕咕。";
+		mes "唉，为什么只有我一个人这么想。非洲菊，帮帮我！";
+		next;
+		mes "[非洲菊]";
+		mes "哎呀，是的！";
+		setquest 16529;
+		completequest 16529;
+		next;
+	}
+	mes "[安苏里亚]";
+	mes "英雄，这些是我们想向 Amicitia 询问你的事情。";
+	mes "您想为其中哪一个提供帮助？";
+	next;
+	switch( select( "土与火", "水与风", "维尔纳的痕迹", "别帮忙" ) ) {
+	case 1:
+		switch( checkquest(16530,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[安苏里亚]";
+			mes "现在，叛军部队正在跟进。";
+			mes "没关系，英雄，再休息一会儿就好了。";
+			next;
+			mes "[安苏里亚]";
+			mes "感谢您对我们如此积极。";
+			mes "天亮之后你能回来吗？";
+			close;
+		case 2:
+			erasequest 16530;
+			break;
+		}
+		switch( checkquest(16531,HUNTING) ) {
+		case -1:
+			mes "[安苏里亚]";
+			mes "我想请您在文化中的嵌合体中寻找<FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_AMITERA", MOB_NAME) + "和" + getmonsterinfo("CHIMERA_FILLIA", MOB_NAME) + "</FONT>。";
+			next;
+			mes "[安苏里亚]";
+			mes "你马上就能认出它们，因为土和火的属性特征看起来比现有实体强得多。";
+			mes "其实与其说是人造人，不如说是怪物……";
+			next;
+			mes "[安苏里亚]";
+			mes "尽管养殖设施遭到破坏，但个体数量仍在不断增加，所以我想请您每种猎杀大约15个标本！";
+			next;
+			if (select( "打猎", "不要打猎" ) == 2) {
+				mes "[安苏里亚]";
+				mes "唔？你改变主意了吗？";
+				next;
+				mes "[安苏里亚]";
+				mes "好吧，那么！我们必须重新组织！啊。";
+				mes "英雄，你为什么不冷静地考虑一下呢？";
+				close;
+			}
+			mes "[安苏里亚]";
+			mes "非常感谢您的支持。这两种类型的嵌合体可能会在封闭实验室 Amicitia 的底层漫游。";
+			next;
+			mes "[安苏里亚]";
+			mes "请不要让嵌合体离开实验室。";
+			setquest 16531;
+			close;
+		case 0:
+		case 1:
+			mes "[安苏里亚]";
+			mes "<FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_AMITERA", MOB_NAME) + " 和 " + getmonsterinfo("CHIMERA_FILLIA", MOB_NAME) + "</FONT> 将在封闭实验室 Amicitia 的一楼漫游。";
+			next;
+			mes "[安苏里亚]";
+			mes "请各狩猎 15 个。";
+			close;
+		case 2:
+			mes "[安苏里亚]";
+			mes "你去过那里吗？你已经完成了我提到的所有任务。";
+			next;
+			mes "[安苏里亚]";
+			mes "叛乱部队也在值班。";
+			mes "多亏那位英雄提前一步组织了，看来进去更容易了。";
+			next;
+			mes "[安苏里亚]";
+			mes "不愧是英雄所期待的。在叛乱组织之外，很少有人能够如此真诚和干净地工作。";
+			mes "如果你明天也能参加任务，我将不胜感激。";
+			erasequest 16531;
+			setquest 16530;
+			getexp 17726670,12408690;	// TODO: the amount has been changed with the monster update
+			close;
+		}
+		end;
+	case 2:
+		switch( checkquest(16532,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[安苏里亚]";
+			mes "现在，叛军部队正在跟进。";
+			mes "没关系，英雄，再休息一会儿就好了。";
+			next;
+			mes "[安苏里亚]";
+			mes "感谢您对我们如此积极。";
+			mes "天亮之后你能回来吗？";
+			close;
+		case 2:
+			erasequest 16532;
+			break;
+		}
+		switch( checkquest(16533,HUNTING) ) {
+		case -1:
+			mes "[安苏里亚]";
+			mes "我想请你在正在培养的嵌合体中寻找<FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_LITUS", MOB_NAME) + "和" + getmonsterinfo("CHIMERA_VANILAQUS", MOB_NAME) + "</FONT>。";
+			next;
+			mes "区分它们并不困难，因为它们已经变异成了清晰可见风和水属性的外观。";
+			next;
+			mes "[安苏里亚]";
+			mes "即使没有养殖设施的帮助，个体数量也会持续增加，因此请每只猎杀 15 只。";
+			next;
+			if (select( "打猎", "不要打猎" ) == 2) {
+				mes "[安苏里亚]";
+				mes "唔？你改变主意了吗？";
+				next;
+				emotion ET_KEK;
+				mes "[安苏里亚]";
+				mes "好吧，那么！我们必须重新组织！啊。";
+				mes "英雄，你为什么不冷静地考虑一下呢？";
+				close;
+			}
+			mes "[安苏里亚]";
+			mes "非常感谢您的支持。这两种嵌合体都呆在封闭实验室 Amicitia 的一楼。";
+			next;
+			mes "[安苏里亚]";
+			mes "请不要让嵌合体离开实验室。";
+			setquest 16533;
+			close;
+		case 0:
+		case 1:
+			mes "[安苏里亚]";
+			mes "<FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_LITUS", MOB_NAME) + "和" + getmonsterinfo("CHIMERA_VANILAQUS", MOB_NAME) + "</FONT>住在封闭实验室Amicitia的一楼。";
+			next;
+			mes "[安苏里亚]";
+			mes "请各狩猎 15 个。";
+			close;
+		case 2:
+			mes "[安苏里亚]";
+			mes "任务完成，确认。";
+			mes "现在部署叛军。";
+			next;
+			mes "[安苏里亚]";
+			mes "感谢大侠提前一步组织，我们就能顺利进入了。";
+			mes "非常感谢。";
+			next;
+			mes "[安苏里亚]";
+			mes "与 Rebellion 之外的人一起工作，这是我第一次感到如此合适。";
+			mes "勇者，你也想参加明天的任务吗？";
+			setquest 16532;
+			erasequest 16533;
+			getexp 17724090,12406890;	// TODO: the amount has been changed with the monster update
+			close;
+		}
+		end;
+	case 3:
+		switch( checkquest(16534,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[安苏里亚]";
+			mes "现在，叛军部队正在跟进。";
+			mes "没关系，英雄，再休息一会儿就好了。";
+			next;
+			mes "[安苏里亚]";
+			mes "感谢您对我们如此积极。";
+			mes "天亮之后你能回来吗？";
+			close;
+		case 2:
+			erasequest 16534;
+			break;
+		}
+		switch( isbegin_quest(16535) ) {
+		case 0:
+			mes "[安苏里亚]";
+			mes "这是一个高安全性的工作，所以我只想拜托英雄帮个忙。";
+			next;
+			mes "[安苏里亚]";
+			mes "我不想通过尽可能多的人的嘴，所以叛军部队被排除在这项工作之外。";
+			next;
+			mes "[安苏里亚]";
+			mes "没别的事，就是在废弃实验室 Amicitia 的一楼找到<FONT COLOR = 0000CD>维尔纳的踪迹</FONT>。";
+			next;
+			mes "[安苏里亚]";
+			mes "Amicitia的哪一部分是由维尔纳管理的，他进行了什么样的实验等等……";
+			mes "如果有什么事情对研究所产生了影响，请来找我。";
+			next;
+			mes "[安苏里亚]";
+			mes "文件、文件、数据！一切都很好。";
+			mes "你愿意陪我去吗？";
+			next;
+			if (select( "我会去", "我不会去" ) == 2) {
+				mes "[安苏里亚]";
+				mes "没关系。但也很烦人...";
+				next;
+				mes "[安苏里亚]";
+				mes "如果您能保守这一请求，我将不胜感激。";
+				close;
+			}
+			mes "[安苏里亚]";
+			mes "好的。找到它并不容易……有什么痕迹吗，所以请只带一个回来找我。";
+			mes "那么，我要向你表示感谢。";
+			setquest 16535;
+			close;
+		case 1:
+			mes "[安苏里亚]";
+			mes "找到它并不容易……有什么痕迹吗，所以请只带一个回来找我。";
+			mes "那么，我要向你表示感谢。";
+			close;
+		case 2:
+			mes "[安苏里亚]";
+			mes "有发现什么痕迹吗？";
+			mes "您来对地方了。这张便条是维尔纳的手写。";
+			next;
+			mes "[安苏里亚]";
+			mes "谢谢。我们会将此事交给秘密特工进行调查。";
+			mes "那么你的辛勤工作就应该得到回报。";
+			next;
+			mes "[安苏里亚]";
+			mes "谢谢你明天回来和我一起工作。";
+			mes "因为我不能把这件事交给任何人。";
+			erasequest 16535;
+			erasequest 16545;
+			setquest 16534;
+			getexp 17000000,12000000;
+			close;
+		}
+		end;
+	case 4:
+		mes "[安苏里亚]";
+		mes "唔？你改变主意了吗？";
+		next;
+		mes "[安苏里亚]";
+		mes "好吧，那么！我们必须重新组织！啊。";
+		mes "英雄，你为什么不冷静地考虑一下呢？";
+		close;
+	}
+	close;
+
+OnInit:
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(16531,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(16533,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "isbegin_quest(16535) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16530,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16532,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16534,PLAYTIME) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 215 && (checkquest(16531,HUNTING) == -1 && checkquest(16530,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 215 && (checkquest(16533,HUNTING) == -1 && checkquest(16532,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 215 && (isbegin_quest(16535) == 0 && checkquest(16534,PLAYTIME) == -1)" );
+	end;
+}
+
+amicitia1,57,242,3	script	Something#ami1	4_GC109,{
+	if (isbegin_quest(16535) == 1) {
+		mes "[有东西]";
+		mes "地板上有东西。我们要仔细看看吗？";
+		next;
+		mes "[有东西]";
+		mes "研究备忘录的字迹工整。维尔纳的笔迹正是这样。";
+		next;
+		mes "[有东西]";
+		mes "让我们把它拿过来检查一下。";
+		setquest 16545;
+		completequest 16535;
+		close2;
+		initnpctimer;
+		disablenpc();
+		end;
+	}
+	mes "[有东西]";
+	mes "有东西掉在地板上。";
+	mes "看起来这只是垃圾。";
+	close;
+
+OnTimer300000:	// unknown timer
+	stopnpctimer;
+	enablenpc();
+	end;
+}
+amicitia1,152,159,3	duplicate(Something#ami1)	Something#ami2	4_GC109
+amicitia1,262,139,3	duplicate(Something#ami1)	Something#ami3	4_GC109
+amicitia1,36,106,3	duplicate(Something#ami1)	Something#ami4	4_GC109
+amicitia1,244,49,3	duplicate(Something#ami1)	Something#ami5	4_GC109
+
+
+// amicitia2
+pub_cat,89,32,3	script	Gerbena#ami	4_M_REBELLION2,{
+	if (BaseLevel < 230) {
+		mes "[非洲菊]";
+		mes "哇，" + strcharinfo(0) + "！我可以得到签名吗？";
+		mes "这是一种荣幸！呵呵~";
+		next;
+		mes "- 这是一个可以在230级或更高级别执行的任务-";
+		close;
+	}
+	mes "[非洲菊]";
+	mes "英雄，Amicitia实验室二楼有一个人造人强化培养室。";
+	mes "他们正在创造更强大的变异嵌合体。";
+	next;
+	mes "[非洲菊]";
+	mes "很可怜，但如果它们被从实验室释放出来，造成的伤害将超乎你的想象。";
+	mes "你能帮我清理这些嵌合体吗？";
+	next;
+	switch( select( "仿与真", "自然变化", "无济于事" ) ) {
+	case 1:
+		switch( checkquest(16536,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[非洲菊]";
+			mes "今天你已经去过了吗？如果是的话，休息一下怎么样？";
+			mes "如果你的身体过度劳累，你可能会表现不佳。";
+			next;
+			mes "[非洲菊]";
+			mes "天亮后回来和我们一起工作！";
+			close;
+		case 2:
+			erasequest 16536;
+			break;
+		}
+		switch( checkquest(16537,HUNTING) ) {
+		case -1:
+			mes "[非洲菊]";
+			mes "他们在孵化器中所做的一些工作是大规模生产突变嵌合体。";
+			next;
+			mes "[非洲菊]";
+			mes "他们对变异人造人进行了重新变异，进一步增强了攻击性。";
+			next;
+			mes "[非洲菊]";
+			mes "请分别寻找 15 个 <FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_NAPEO", MOB_NAME) + " 和 " + getmonsterinfo("CHIMERA_GALENSIS", MOB_NAME) + "</FONT>。";
+			mes "两者都是模仿人类形态的生物，但又添加了强大的奇美拉属性改造。";
+			next;
+			mes "[非洲菊]";
+			mes "实验室关闭且无人值守已经有一段时间了。";
+			mes "快速狩猎会让我感觉更舒服。";
+			next;
+			if (select( "帮助狩猎", "不要狩猎" ) == 2) {
+				mes "[非洲菊]";
+				mes "啊，你改口了！";
+				mes "格贝娜心碎了！";
+				next;
+				mes "[非洲菊]";
+				mes "但这是我们单方面的要求。";
+				mes "就算你拒绝，我们也没办法……";
+				close;
+			}
+			mes "[非洲菊]";
+			mes "您能帮助我们是我们的荣幸！";
+			mes "我可以和英雄一起参加吗？";
+			next;
+			mes "[安苏里亚]";
+			mes "他不喜欢这样。他一个人做更舒服，冷静点，格尔贝娜。";
+			next;
+			mes "[非洲菊]";
+			mes "啊!请帮我照顾一下！！";
+			setquest 16537;
+			close;
+		case 0:
+		case 1:
+			mes "[非洲菊]";
+			mes "请分别寻找 15 个 <FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_NAPEO", MOB_NAME) + " 和 " + getmonsterinfo("CHIMERA_GALENSIS", MOB_NAME) + "</FONT>。";
+			mes "两者都是模仿人类形态的生物，但又添加了强大的奇美拉属性改造。";
+			close;
+		case 2:
+			mes "[非洲菊]";
+			mes "现在幻象部队已部署并继续执行任务。";
+			mes "多亏了这位英雄，很容易就能进入并制服奇美拉。";
+			next;
+			mes "[非洲菊]";
+			mes "呃，我也想亲眼看看英雄的精彩战斗……";
+			mes "也许有一天我会有机会见到你？";
+			next;
+			mes "[非洲菊]";
+			mes "如果你同意的话，为什么不明天回来和我们一起工作呢？";
+			erasequest 16537;
+			setquest 16536;
+			getexp 37253672,26077570;	// rebalance (unknown jexp, 70% of baseexp)
+			close;
+		}
+		end;
+	case 2:
+		switch( checkquest(16538,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[非洲菊]";
+			mes "今天你已经去过了吗？如果是的话，休息一下怎么样？";
+			mes "如果你的身体过度劳累，你可能会表现不佳。";
+			next;
+			mes "[非洲菊]";
+			mes "天亮后回来和我们一起工作！";
+			close;
+		case 2:
+			erasequest 16538;
+			break;
+		}
+		switch( checkquest(16539,HUNTING) ) {
+		case -1:
+			mes "[非洲菊]";
+			mes "强化培养室的人造人中，有变异奇美拉·拉瓦特和变异奇美拉·福尔戈尔。";
+			next;
+			mes "[非洲菊]";
+			mes "它看起来与现有的Homunculus Dieter和Homunculus Bayeri相似，但它们有很大不同。";
+			mes "它与人造人的不同之处在于，它可以自我繁殖，并且无需主人即可做出决定。";
+			next;
+			mes "[非洲菊]";
+			mes "你无法拯救他们或做任何事情。所有人，每一个都必须被杀死。";
+			next;
+			mes "[非洲菊]";
+			mes "那么，英雄，您愿意帮我们狩猎 15 个 <FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_LAVA", MOB_NAME) + " 和 " + getmonsterinfo("CHIMERA_FULGOR", MOB_NAME) + "</FONT> 吗？";
+			next;
+			if (select( "帮助狩猎", "不要狩猎" ) == 2) {
+				mes "[非洲菊]";
+				mes "啊，你改口了！";
+				mes "格贝娜心碎了！";
+				next;
+				mes "[非洲菊]";
+				mes "但这是我们单方面的要求。";
+				mes "就算你拒绝，我们也没办法……";
+				close;
+			}
+			mes "[非洲菊]";
+			mes "您能帮助我们是我们的荣幸！";
+			mes "我可以和英雄一起参加吗？";
+			next;
+			mes "[安苏里亚]";
+			mes "他说他不喜欢。他一个人做更舒服，冷静点，格尔贝娜。";
+			next;
+			mes "[非洲菊]";
+			mes "啊!请帮我照顾一下！！";
+			setquest 16539;
+			close;
+		case 0:
+		case 1:
+			mes "[非洲菊]";
+			mes "英雄，你能分别狩猎 15 个 <FONT COLOR = 0000CD>" + getmonsterinfo("CHIMERA_LAVA", MOB_NAME) + " 和 " + getmonsterinfo("CHIMERA_FULGOR", MOB_NAME) + "</FONT> 吗？";
+			mes "你无法拯救他们或做任何事情。所有人，每一个都必须被杀死。";
+			close;
+		case 2:
+			mes "[非洲菊]";
+			mes "是的！任务完成，确认。现在，幻境大军来了！";
+			mes "多亏了你，他们才能轻松进入并制服奇美拉。";
+			next;
+			mes "[非洲菊]";
+			mes "呃，我也想亲眼看看英雄的华丽战斗……";
+			mes "也许有一天我会有机会见到你？";
+			next;
+			mes "[非洲菊]";
+			mes "如果你同意的话，为什么不明天回来和我们一起工作呢？";
+			erasequest 16539;
+			setquest 16538;
+			getexp 37325968,26128177;	// rebalance (unknown jexp, 70% of baseexp)
+			close;
+		}
+		end;
+	case 3:
+		mes "[非洲菊]";
+		mes "啊，你改口了！";
+		mes "格贝娜心碎了！";
+		next;
+		mes "[非洲菊]";
+		mes "但这是我们单方面的要求。";
+		mes "就算你拒绝，我们也没办法……";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(16537,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(16539,HUNTING) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16536,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(16538,PLAYTIME) == 2" );
+
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 230 && (checkquest(16537,HUNTING) == -1 && checkquest(16536,PLAYTIME) == -1)" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 230 && (checkquest(16539,HUNTING) == -1 && checkquest(16538,PLAYTIME) == -1)" );
+	end;
+}

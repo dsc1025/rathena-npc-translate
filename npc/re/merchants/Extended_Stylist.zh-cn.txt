@@ -1,0 +1,117 @@
+//===== rAthena Script ======================================= 
+//= Stylist Extension - (Style UI)
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [JohnnyPlayy]
+//===== Description: ========================================= 
+// Texts from this script were translated according to KRO
+//============================================================
+//= Stylist of Alberta
+//===================================================
+
+alberta_in,55,142,7	script	Stylist#alberta	4_F_02,{
+	mes "[甜蜜的维罗妮卡]";
+	mes "欢迎来到维罗妮卡美容院，重生为世界级造型师。呵呵。";
+	next;
+	switch(select("改变你的风格：结束对话")) {
+	case 1:
+		close2;
+		openstylist();
+		end;
+	case 2:
+		next;
+		mes "[甜蜜的维罗妮卡]";
+		mes "每个人都有追求美丽的权利……希望你找到适合自己的风格。";
+		close;
+	}
+}
+
+//= Stylist of Prontera
+//===================================================
+prt_in,243,168,4	script	Stylist#prontera	4_F_02,{
+	mes "[乔沃维奇]";
+	mes "欢迎。我是乔沃维奇，来自普隆德拉的著名造型师。我怎么帮你？";
+	next;
+	switch(select("改变你的风格：结束对话")) {
+	case 1:
+		close2;
+		openstylist();
+		end;
+	case 2:
+		mes "[乔沃维奇]";
+		mes "欢迎您再次光临哦~";
+		close;
+	}
+}
+
+//= Stylist of Lighthalzen
+//===================================================
+lhz_in02,100,143,4	script	Stylist#lhz	2_M_DYEINGER,{
+	mes "[沙米王子]";
+	mes "我作为世界上最伟大的造型师之一回来了。我是沙米王子，也是一名专业造型师，我不得不说，我很幸运有这样的才华！ <3";
+	next;
+	switch(select("改变你的风格：结束对话")) {
+	case 1:
+		close2;
+		openstylist();
+		end;
+	case 2:
+		mes "[沙米王子]";
+		mes "你是说你不喜欢这种时尚吗？这怎么可能！";
+		close;
+	}
+}
+
+//= Stylist of Lasagna
+//===================================================
+lasagna,134,113,3	script	Stylist#lasagna	4_DR_F_02,{
+	mes "[龙沙]";
+	mes "如果你是一个为时尚而生、为时尚而死的 Doram，请相信我。随着音乐的节拍~";
+	next;
+	switch(select("改变你的风格：结束对话")) {
+	case 1:
+		close2;
+		openstylist();
+		end;
+	case 2:
+		mes "[龙沙]";
+		mes "没有坏天气这样的事情，对吧？有一天我希望你相信我。";
+		mes "我是 Lonza，我可以给您带来惊人的改变，让您变得时尚，所以随时来拜访我。";
+		close;
+	}
+}
+
+//= Stylist of Rachel
+//===================================================
+ra_in01,186,148,5	script	Stylist#rachel	4_F_MASK1,{
+	mes "[伊索]";
+	mes "呵呵，欢迎光临。我是伊索，<Shook Shook-Store>的造型师。";
+	next;
+	switch(select("改变你的风格：结束对话")) {
+	case 1:
+		close2;
+		openstylist();
+		end;
+	case 2:
+		mes "[伊索]";
+		mes "有什么想剪的吗？";
+		close;
+	}
+}
+
+//= Stylist of Yuno
+//===================================================
+yuno_in04,186,21,1	script	Stylist#yuno	4_M_BARBER,{
+	mes "[马克西]";
+	mes "很高兴见到你，我的客人。您愿意将您的变身工作交给黑森林最好的造型师 Maxi 吗？";
+	next;
+	switch(select("改变你的风格：结束对话")) {
+	case 1:
+		close2;
+		openstylist();
+		end;
+	case 2:
+		mes "[马克西]";
+		mes "随时回来。";
+		close;
+	}
+}

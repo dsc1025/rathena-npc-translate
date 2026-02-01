@@ -1,0 +1,6516 @@
+//===== rAthena Script =======================================
+//= Phantasmagorika Quests (episodes 15.2).
+//===== Description: =========================================
+//= [Official Conversion]
+//--- Memory Record Daily Quests:
+//- 'Help Her'
+//- 'Air Purifier'
+//- 'Grape Harvest'
+//- 'Subdue Hysterical Patients'
+//- 'Daily Necessities Transport'
+//--- Others Quests:
+//- Final part of the Phantasmagorika Main Quest
+//- 'Vestige' (part 3 of 'To Phantasmagorika!')
+//- 'Krotzel's Request'
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//= 2.0 Updated using Aegis files [Capuche]
+//============================================================
+
+// Main quest
+moc_para01,133,170,4	script	Commander Arquien#e152a1	4_F_EDEN_MASTER,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 无法进行任务，因为你拥有太多物品。 -";
+		close;
+	}
+	if (ep15_1_atnad == 0) {
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "[阿尔奎恩指挥官]";
+		mes "啊？我不知道你是谁，但未经允许不要进来。";
+		mes "我希望你能立即离开。";
+		close3;
+	}
+	if (ep15_1_atnad < 3) {
+		if (ep15_1_atnad == 1) {
+			mes "[阿尔奎恩指挥官]";
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "哦，你就是那个著名的" + strcharinfo(0) + "？";
+			mes "我应该请你喝点茶什么的，但我没有茶。";
+			mes "对此感到抱歉。";
+			next;
+			mes "[阿尔奎恩指挥官]";
+			mes "我先自我介绍一下。我是伊甸集团的创始人和指挥官阿奎恩·尼罗·阿特纳德。";
+			mes "我的名字很复杂，所以你可以叫我尼罗。";
+			next;
+			switch( select( "你为什么来见我？", "你的中间名？" ) ) {
+			case 1:
+				cutin "Arquien_n_atnad03.bmp",2;
+				mes "[尼罗河]";
+				mes "呵呵，进入正题了吗？";
+				mes "我对此表示欢迎。";
+				mes "你知道最近城里流传的最大的谣言是什么吗？";
+				break;
+			case 2:
+				mes "[尼罗河]";
+				mes "这是我小时候妈妈给我起的名字。";
+				mes "听起来比我该死的父亲给我起的名字感觉更好，好吗？";
+				next;
+				mes "[尼罗河]";
+				mes "与其被别人的个人生活所娱乐，你为什么不专注于其他事情呢？";
+				mes "这些天他们谈论了很多。";
+				break;
+			}
+			next;
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "[尼罗河]";
+			mes "正确的。关于 Juperos 的扩展挖掘。";
+			mes "他们已经尽可能多地挖掘了。";
+			mes "人们不是已经很久没有把它翻过来，声称它是某种未知的机械文明，是科学力量的产物吗？";
+			next;
+			mes "[尼罗河]";
+			mes "那么.. 为什么他们现在要为挖掘活动进行宣传和招募？";
+			mes "你没看到班办公室张贴的招募启事吗？";
+			next;
+			mes "[尼罗河]";
+			mes "首先这是我们掌握的信息。";
+			mes "在 Juperos 地区发现了一条新通道。";
+			mes "所以我们认为这是 Juperos 的另一个区域......";
+			next;
+			mes "[尼罗河]";
+			mes "令人惊讶的是，新发现的区域与 Juperos 相连，但它是另一个形式不同的地点。";
+			mes "这次发掘的目标就是那个新发现的区域。";
+			next;
+			cutin "Arquien_n_atnad04.bmp",2;
+			mes "[尼罗河]";
+			mes "什么...是...名字。啊..我不知道。";
+			mes "它通常被称为“Phantasmagorika”计划。";
+			mes "Lighthalzen 的 Rekenber 是挖掘招募和支持的赞助商。";
+			next;
+			select("所以？");
+			mes "[尼罗河]";
+			mes "啊？没那么有趣吗？";
+			mes "我应该停在这里吗？";
+			mes "我做好了准备，因为拉希姆推荐了你。";
+			next;
+			if (select( "请继续。", "请停止。" ) == 2) {
+				cutin "Arquien_n_atnad02.bmp",2;
+				mes "[尼罗河]";
+				mes "好吧，我没兴趣向也不感兴趣的人透露更多信息。";
+				mes "您不是唯一在 Eden Group 注册的人。";
+				next;
+				mes "[尼罗河]";
+				mes "我应该请拉希姆给我推荐其他人。";
+				mes "我明白了，所以现在就继续吧。";
+				ep15_1_atnad = 2;
+				close3;
+			}
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "[尼罗河]";
+			mes "当然。我们也想参加Phantasmagorika。";
+		}
+		else {
+			cutin "Arquien_n_atnad02.bmp",2;
+			mes "[尼罗河]";
+			mes "……什么，你现在又感兴趣了？";
+			next;
+			if (select("是的","不。") == 2) {
+				cutin "Arquien_n_atnad01.bmp",2;
+				mes "[尼罗河]";
+				mes "如你所愿。";
+				close3;
+			}
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "[尼罗河]";
+			mes "我应该继续说吗？";
+			mes "我们也想参加Phantasmagorika。";
+		}
+		mes "当然是以伊甸集团的名义。";
+		next;
+		mes "[尼罗河]";
+		mes "尽管我们主要作为客​​户和实施者之间的经纪人运作";
+		mes "我们不能永远和摩洛哥在一起。";
+		next;
+		mes "[尼罗河]";
+		mes "拉希姆认为，我们可以以此为契机进一步推进。";
+		mes "通过这项工作，我们在那段时间结识了许多像你这样的冒险家和强大的战士，并建立了联系。";
+		next;
+		cutin "Arquien_n_atnad03.bmp",2;
+		mes "[尼罗河]";
+		mes "我是说我们想利用你的人力。我们不是很擅长引进人才吗？啊哈哈哈哈哈哈~";
+		next;
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "事实上，臭名昭著的傲慢雷肯伯向我们提出了要求。";
+		mes "他们需要大量的人力，所以需要我们作为中间人。";
+		next;
+		mes "[尼罗河]";
+		mes "不错的提议。老实说这是一个很好的机会。";
+		mes "我们介绍人并获得报酬，你工作并获得报酬。";
+		next;
+		select("想参加幻境活动吗？");
+		mes "[尼罗河]";
+		mes "可以这样概括。";
+		mes "基本上你正在参与遗址挖掘工作，但是";
+		mes "您也可以提供个人帮助。";
+		next;
+		mes "[尼罗河]";
+		mes "如果你参加了发掘小组，你能帮我确认一下吗？";
+		mes "您将从 Rahim 那里听到更多详细信息。";
+		next;
+		mes "[尼罗河]";
+		mes "我想要一件事。";
+		mes "目前有多个发掘团队和组织参与Phantasmagorika的发掘。";
+		mes "我希望你在拉希姆介绍的挖掘团队中工作。";
+		next;
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "[尼罗河]";
+		mes "并且，当您与挖掘团队^4d4dff一起工作时，请询问有关最后一次探索^000000的信息。";
+		mes "拉希姆将为您提供详细信息。";
+		next;
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "这是隔壁的房间，因此您可以在那里获取详细信息。";
+		mes "另外，如果你发现任何事情请告诉我。你不需要告诉其他人。";
+		mes "马上回到这里。知道了？";
+		ep15_1_atnad = 3;
+		erasequest 7607;// Eden Group Leader
+		setquest 7608;// Atnad Excavation Team 1
+		close3;
+	}
+	if (ep15_1_atnad == 3) {
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "[尼罗河]";
+		mes "拉希姆正在隔壁房间等着。";
+		mes "他是第一个开始这项工作的人，因此请向他了解详细信息。";
+		close3;
+	}
+	if (ep15_1_atnad == 4) {
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "嘿，你现在认真开始了吗？";
+		mes "那你来这里做什么？赶紧跑吧！";
+		next;
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "[尼罗河]";
+		mes "跑开去帮我看看那个自以为是的医生。";
+		mes "啊……他不会是又饿又弱吧？啊？";
+		mes "观察并告诉我。";
+		next;
+		mes "[尼罗河]";
+		mes "现在-！现在就走吧！";
+		close3;
+	}
+	if (ep15_1_atnad < 21) {
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "挖掘队的工作怎么样？";
+		mes "..拉希姆做得很好吧？";
+		next;
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "[尼罗河]";
+		mes "……老头子。他过得好吗？什么？他是吗？或许此时此刻的表现很可笑，也很幼稚。";
+		mes "该死！我不知道。出去！";
+		close3;
+	}
+	if (ep15_1_atnad == 21) {
+		cutin "Arquien_n_atnad03.bmp",2;
+		mes "[尼罗河]";
+		mes "啊？这是怎么回事？";
+		mes "如果是有关报告，我会通过卢克获得。";
+		mes "听说你工作很努力？";
+		next;
+		mes "[尼罗河]";
+		mes "感谢您在 Atnad 挖掘机和 Eden Group 的地位越来越好，所以这很棒。";
+		mes "……如果不是我那该死的父亲就好了。";
+		next;
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "无论如何，你为什么来？";
+		mes "你知道最后的探索了吗？";
+		next;
+		mes "[尼罗河]";
+		mes "他叫你做点什么回来？";
+		mes "什么，那是？";
+		next;
+		input .@string$;
+		while(.@string$ != "Record Player" && .@string$ != "record player" && .@string$ != "Record player") {
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "[尼罗河]";
+			mes "我不确定你在说什么，但是..";
+			mes "他叫你把它带回来？";
+			mes "我为什么要这么做？";
+			next;
+			mes "[尼罗河]";
+			mes "确切地告诉我你要拿回的是什么。";
+			next;
+			input .@string$;
+		}
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "[尼罗河]";
+		mes "嗯...电唱机？";
+		mes "他居然记得家里有这样的东西？";
+		next;
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "[尼罗河]";
+		mes "我不知道这会对你的职位产生怎样的影响，但是...";
+		mes "我不这么认为？";
+		mes "拒绝！";
+		ep15_1_atnad = 22;
+		close3;
+	}
+	if (ep15_1_atnad == 22) {
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "[尼罗河]";
+		mes "......";
+		next;
+		mes "[尼罗河]";
+		mes "......";
+		mes "........";
+		next;
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "[尼罗河]";
+		mes "该死的。";
+		mes "好的。我得到了它。";
+		mes "我有电唱机。";
+		mes "如果你有记忆记录，请给我！";
+		next;
+		if (countitem(6757) < 1) {
+			cutin "Arquien_n_atnad04.bmp",2;
+			mes "[尼罗河]";
+			mes "什么？不？";
+			mes "嗯..这很糟糕，";
+			mes "想要一台电唱机。";
+			mes "带来记忆唱片播放器！";
+			close3;
+		}
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "嗯..是这个吗？";
+		mes "看起来会很合适。";
+		mes "你是说这是从那个地方出来的？";
+		mes "但这可能有点困难。";
+		next;
+		mes "[尼罗河]";
+		mes "我愚蠢的父亲因为在外面太忙，所以不关心家里的事情。";
+		mes "难道他没有注意到这样的事情吗？";
+		next;
+		mes "[尼罗河]";
+		mes "哼。不幸的是，我认为有人故意拆开了这份记忆记录。";
+		mes "它不会只用一件来运行。";
+		mes "我至少需要五个。";
+		next;
+		mes "[尼罗河]";
+		mes "嗯..";
+		mes "好的。那么我们就这样做吧。";
+		mes "我会带着电唱机去挖掘现场。";
+		next;
+		mes "[尼罗河]";
+		mes "您在此期间收集剩余的记忆记录。";
+		mes "可能是有人故意这样做的，所以碎片会散落各处。";
+		next;
+		mes "[尼罗河]";
+		mes "我说的你明白吗？";
+		mes "那么我们在维鲁斯见吧。";
+		erasequest 7644;// Record Player
+		setquest 7645;// Piece of Memory Record
+		ep15_1_atnad = 23;
+		close3;
+	}
+	if (ep15_1_atnad == 23) {
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "收集^4d4dff内存记录^000000等5个东西。";
+		mes "他们会隐藏在维鲁斯周围的某个地方，祝你好运。";
+		next;
+		mes "[尼罗河]";
+		mes "..你..我去挖掘现场..";
+		mes "对我父亲保密..";
+		mes "..嗯..";
+		mes "好吧，没有什么特殊理由要保守秘密。";
+		mes "随你所愿吧。";
+		close3;
+	}
+	cutin "Arquien_n_atnad01.bmp",2;
+	mes "[尼罗河]";
+	mes "出于好奇，我自己不会去那里。";
+	mes "我自己也是一个忙碌的人。";
+	close3;
+}
+
+lhz_in01,277,234,3	script	Rekenber Guard#e152i01	4_M_LGTGUARD,{
+	mes "[雷肯贝尔守卫]";
+	if (ep15_1_atnad < 31) {
+		mes "很抱歉，未经批准您不能进一步进入。";
+		close;
+	}
+	mes "您是 Atnad 挖掘团队的成员。";
+	mes "我会引导你进去。";
+	close2;
+	warp "lhz_in01",275,241;
+	end;
+}
+
+lhz_in01,275,251,3	script	Luke Lapez#ep152i01	4_M_EDEN_GUARDER,{
+	cutin "looke_rapez04.bmp", 0;
+	mes "[卢克]";
+	mes "什。我只是来当护送的。";
+	close2;
+	cutin "",255;
+	npctalk "该死的护卫就这么多了……", "卢克·拉佩兹#ep152i01";
+	setpcblock PCBLOCK_NPC, true;
+	sleep2 500;
+	setpcblock PCBLOCK_NPC, false;
+	emotion ET_FRET, getnpcid(0, "Commander Arquien#ep152i");
+	emotion ET_THINK, getnpcid(0, "Luke Lapez#ep152i01");
+	end;
+}
+
+lhz_in01,270,257,4	script	Rekenber Chairman#e152i	4_M_REKENBER,{
+	if (ep15_1_atnad < 31)
+		end;
+	if (ep15_1_atnad == 31) {
+		cutin "ep15_rekenber01.bmp",0;
+		mes "[雷肯伯主席]";
+		mes "我是雷肯伯的董事长。";
+		mes "我邀请你来。";
+		next;
+		mes "[雷肯伯主席]";
+		mes "我听过很多，也熟悉阿特纳德挖掘队的活动。";
+		mes "作为一家公司，我们正在取得许多重大成果。";
+		mes "谢谢你。";
+		next;
+		mes "[雷肯伯主席]";
+		mes "我邀请你的原因......";
+		mes "您可能已经认识团队领导 Atnad 博士。";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "难道……";
+		next;
+		cutin "ep15_rekenber01.bmp",0;
+		mes "[雷肯伯主席]";
+		mes "这就是你所预测的。";
+		mes "这是关于你一直努力收集的记忆记录内容。";
+		next;
+		mes "[雷肯伯主席]";
+		mes "我们计划处理通过记忆记录已知的内容和记忆记录本身的文字，就好像它从未发生过一样。";
+		mes "对此，希望您予以配合。";
+		next;
+		select("你说什么？");
+		mes "[雷肯伯主席]";
+		mes "如果这个消息被泄露出去，公司愿意以礼待你们的挖掘队。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "治疗？礼貌？";
+		mes "你想卖什么！";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "到底是什么原因让人们无法了解这座埋在地下的城市的过去！";
+		mes "你是谁，竟然做出这样的事！";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我们是通过过去寻找真理和事实的人。";
+		mes "你现在是想堵住自己的眼睛和耳朵吗？";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[首席秘书]";
+		mes "相反，我们将授予您与记忆记录相关的一切的唯一权利。";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "你现在在说什么？";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[首席秘书]";
+		mes "我们并不是要停止你的工作。";
+		mes "我们并不是说丢弃您找到的所有信息。";
+		mes "然而，我们想要的是……";
+		next;
+		mes "[首席秘书]";
+		mes "我想埋葬我和你之间的故事。";
+		mes "你不记得了吗？";
+		mes "我们可能很熟悉。";
+		mes "虽然我确实做了一些准备。";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "...现在我觉得你看起来很熟悉..";
+		mes "尤佩罗斯！";
+		mes "是的，我在 Juperos 见过你。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "那次你做到了……在看起来像通道的裂缝中……";
+		mes "……你袭击我了！";
+		mes "你这个混蛋..因为你..!!";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "呵呵。我遇到了破坏我家庭的罪魁祸首。";
+		mes "这是注定的吗？";
+		next;
+		select("家庭毁灭是什么意思？");
+		mes "[耳朵]";
+		mes "时间、那次事故或者无论你怎么称呼它。";
+		mes "当我在 Juperos 挖掘过程中发现一个看似人为的障碍物时..";
+		mes "伊恩突然消失了。";
+		emotion ET_SURPRISE, getnpcid(0, "Commander Arquien#ep152i");
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "当我醒来时，发现自己身处朱诺的一间汽车旅馆房间里。";
+		mes "我什至不知道已经过去了多少时间。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "该男子前往挖掘现场周围查看，一周多后没有回来……";
+		mes "你觉得我们怎么想？";
+		mes "我们想知道他是否遭遇了不幸的事故。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "每当想起那段时光，我就咬牙切齿。";
+		mes "因为当时的记忆很模糊..";
+		mes "我像个疯子一样紧紧抓住 Juperos。";
+		next;
+		cutin "ep15_tatio02.bmp",0;
+		mes "[首席秘书]";
+		mes "……对此我感到很抱歉。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "袭击我的人就是你吧？";
+		mes "我失败的那一周发生了什么？";
+		mes "……之后，我开始追寻一种我不确定是梦还是幻觉的幻觉。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我盲目地绕过Juperos。";
+		mes "失去了我的团队成员......甚至忘记了我有一个家庭和一个可以回去的家。";
+		next;
+		cutin "Arquien_n_atnad01.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "……你为什么这么做？";
+		mes "请告诉我。首席秘书。";
+		mes "你为什么攻击父亲？";
+		next;
+		cutin "ep15_tatio03.bmp",0;
+		mes "[首席秘书]";
+		mes "那是..因为医生当时看到了不该看到的东西。";
+		mes "维鲁斯城还没有准备好被揭露。";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "什么？！真的！！！";
+		mes "那么我当时发现的是通往维鲁斯的通道？！";
+		next;
+		cutin "Arquien_n_atnad02.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "不不等等等。";
+		mes "父亲，请跟我讲一会儿。";
+		mes "我只需要一点时间。";
+		next;
+		mes "我不知道发生了什么事。";
+		mes "我们应该先听阿纳德的意见吗？";// cross line?
+		ep15_1_atnad = 32;
+		close3;
+	}
+	if (ep15_1_atnad == 32) {
+		cutin "ep15_rekenber02.bmp",0;
+		mes "[雷肯伯主席]";
+		mes "....我们能做什么。";
+		mes "我们会等待。请发言。";
+		close3;
+	}
+	cutin "ep15_rekenber01.bmp",0;
+	mes "[雷肯伯主席]";
+	mes "主席的工作就是在这种时候什么也不做。";
+	mes "……就是这样。";
+	close3;
+}
+
+lhz_in01,267,257,5	script	Chief Secretary#e152i01	4_M_TATIO,{
+	if (ep15_1_atnad < 31) {
+		cutin "ep15_tatio01.bmp",0;
+		mes "[首席秘书]";
+		mes "....";
+		close3;
+	}
+	if (ep15_1_atnad == 31) {
+		mes "[首席秘书]";
+		cutin "ep15_tatio01.bmp",0;
+		mes "董事长已经等了很久了。";
+		mes "我也是。";
+		close3;
+	}
+	if (ep15_1_atnad == 32) {
+		mes "[首席秘书]";
+		cutin "ep15_tatio01.bmp",0;
+		mes "你大吃一惊吗？";
+		mes "我也是。我不认为人们的生活会如此紧密地联系在一起。";
+		mes "无论如何，那位年轻女士...";
+		next;
+		cutin "ep15_tatio03.bmp",0;
+		mes "[首席秘书]";
+		mes "..有良好的坚强态度。";
+		mes "真的。";
+		mes "请发言。";
+		mes "我将等待。";
+		close3;
+	}
+	if (ep15_1_atnad == 33) {
+		mes "[首席秘书]";
+		cutin "ep15_tatio01.bmp",0;
+		mes "我看到又轮到我了。";
+		mes "我将正式向您介绍。";
+		mes "维鲁斯城最后的幸存者塔蒂奥.W.W.00H-1";
+		mes "就叫他塔蒂奥吧。";
+		next;
+		npctalk "什么？！", "伊恩·阿特纳德#ep152i01";
+		mes "[塔蒂奥]";
+		mes "不透露公司记忆记录的内容。";
+		mes "在Juperos攻击你只是因为我想这么做。";
+		next;
+		cutin "ep15_tatio02.bmp",0;
+		mes "[塔蒂奥]";
+		mes "为了告诉你这一点，我别无选择，只能透露我的身份。";
+		mes "我已经为此做好了准备，但是……感觉不太好。";
+		next;
+		cutin "",255;
+		mes "每个人似乎都被这个重大新闻吓呆了。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "我就是你发现的记忆记录中的塔蒂奥。";
+		mes "而Atnad就是Lasse Atnad，Atnad博士的曾祖父。";
+		next;
+		cutin "ep15_tatio03.bmp",0;
+		mes "[塔蒂奥]";
+		mes "莱塞是造就我的人之一，也是我的朋友。";
+		mes "我想保护我的不死机体所在的维鲁斯……";
+		next;
+		mes "[塔蒂奥]";
+		mes "我当时就犯下了这种无礼行为。";
+		mes "最重要的是，我还隐瞒了医生所看到的内容......";
+		mes "我稍微操纵了他的记忆。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "这就是为什么你有一周的间隔。";
+		mes "我照顾了你四天，然后把你送到了朱诺的汽车旅馆。";
+		next;
+		cutin "ep15_tatio02.bmp",0;
+		mes "[塔蒂奥]";
+		mes "如果我知道你是拉塞的后裔，我就不会那么做。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "维鲁斯城很长很长。以前曾经和Juperos并肩..";
+		mes "作为一座具有科学文明的伟大科学城，没有人能超越它。";
+		next;
+		mes "[塔蒂奥]";
+		mes "虽然一场不幸的事故，让它变成了现在这个样子。";
+		mes "我没有死，因为我是由机器制成的，所以我只是看着维鲁斯。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "这个故事。主席知道吗？";
+		mes "等待。他已经知道我打赌了。这不是他叫我们来这里的原因吗？";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "没错。";
+		mes "主席知道我和维鲁斯城的秘密。";
+		mes "这个秘密全世界只有两个人知道。";
+		next;
+		mes "[塔蒂奥]";
+		mes "啊，不。创始人之一 Janet Zerter 也知道这一点。";
+		mes "也是维鲁斯城的后裔之一。";
+		next;
+		cutin "ep15_tatio02.bmp",0;
+		mes "[塔蒂奥]";
+		mes "……现在你明白我之前的建议了吗？";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "哦哦好吧...";
+		mes "虽然开放，维鲁斯城仍然是你想要保护的地方……我明白了。";
+		mes "这就是为什么记忆记录...";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "那么这个城市的其他数据不就这样了吗？";
+		mes "你试图隐藏它，以防止你和我的名字被泄露并成为公共问题，对吗？";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "不适合这个世界文明的量子级核心技术已经被废弃了。";
+		mes "就像致命武器不落入儿童手中一样。";
+		next;
+		mes "[塔蒂奥]";
+		mes "虽然大部分数据都因意外丢失了......";
+		mes "现在剩下的东西你可能会收获很多。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "你为什么透露它？";
+		mes "应该把它紧紧包裹起来。";
+		mes "就像你对我做的那样。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "..说实话，第一个原因是因为那段时间的能量风暴，我无法轻易接近实验室。";
+		next;
+		mes "[塔蒂奥]";
+		mes "因为虽然我不知道能量风暴消失的原因，";
+		mes "我评估了一下，觉得不太危险。";
+		next;
+		mes "[塔蒂奥]";
+		mes "揭示这一点的正确时机已经到来。";
+		mes "这个地方也开始懂得什么是科学和工程。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "..有些事情值得怀疑，但没关系。";
+		mes "我想，即使有这样的机会，我也应该感到满足了。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "我感谢您的理解。";
+		mes "我将授予您对记忆记录的独家权利。";
+		mes "但信息的披露和时机必须在这里决定。";
+		next;
+		mes "[塔蒂奥]";
+		mes "还有……为了避免影响我们的子孙";
+		mes "我们也应该保守这个秘密。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "我明白这一点。";
+		mes "然后我会像现在一样处理记忆记录的收集工作。";
+		mes "我将决定直接报告还是不通过您报告。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "就是这样，对吧？";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[塔蒂奥]";
+		mes "没错。";
+		mes "事实上，实际工作并没有太大变化。";
+		mes "啊还有...";
+		mes "作为 Atnad 挖掘团队的一员，勤奋工作。";
+		mes "" + strcharinfo(0) + "我会给你一个小奖励。";
+		getexp 4500000,3000000;
+		ep15_1_atnad = 34;
+		next;
+		mes "[塔蒂奥]";
+		mes "记忆记录的内容对我来说是珍贵的回忆。";
+		mes "……就像翻阅我的日记一样。所以希望大家以后多多保重。";
+		close3;
+	}
+	cutin "ep15_tatio03.bmp",0;
+	mes "[塔蒂奥]";
+	mes "……希望一切顺利……";
+	close3;
+}
+
+lhz_in01,272,255,3	script	Ian Atnad#ep152i01	4_M_IAN,{
+	if (ep15_1_atnad < 31)
+		end;
+	mes "[伊恩·阿特纳德]";
+	if (ep15_1_atnad == 31) {
+		cutin "verus_ian01.bmp",2;
+		mes "你现在到了吗？";
+		mes "看来大家都已经聚集了。";
+		mes "那么，让我们看看您要对每个人说些什么。";
+		close3;
+	}
+	if (ep15_1_atnad == 32) {
+		cutin "verus_ian01.bmp",2;
+		mes "那么，你想说什么？";
+		mes "到底是怎么回事，你在这个重要的时刻却打断了我的电话。";
+		next;
+		cutin "Arquien_n_atnad01.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "刚才那个男人说的话，是你失踪的事情吗？";
+		mes "这就是你多年来在外面奔走的原因。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[首席秘书]";
+		mes "不..不是那个..";
+		mes "我和医生在一起的时间只有四天。";
+		next;
+		cutin "Arquien_n_atnad04.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "在你说你被困在某个地方一周之前！";
+		mes "还像着了鬼一样到处乱跑！";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "那个..那个..！";
+		mes "别把我对我的领域的热情当成一个逃跑的幽灵！";
+		mes "当时我想我要去寻找一些关于我祖父的事情。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我看到的地方..我对那个地方的记忆...";
+		mes ".....";
+		mes "...？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "等一下。你现在是在怪我吗？";
+		mes "我给家里写信了，你却没有回信！";
+		next;
+		cutin "Arquien_n_atnad04.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "因为地址不清楚，所有的信都被退回了！";
+		mes "你何必说大话呢！";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "你不是把房子卖了，还把我所有的信都寄回来了吗！";
+		mes "你等不了几年就卖掉房子然后消失吗？！";
+		mes "你有什么话要对自己说的！";
+		next;
+		mes "由于父女之间的争吵，局势变得过热。";
+		mes "奥雷斯和秘书一脸尴尬。";
+		next;
+		select("桌子该不该翻？");
+		cutin "Arquien_n_atnad01.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "那是什么声音..";
+		mes "呃……话说回来，那位秘书不是这整个事件的主要始作俑者吗？";
+		mes "发生了什么？";
+		ep15_1_atnad = 33;
+		close3;
+	}
+	if (ep15_1_atnad == 33) {
+		cutin "verus_ian01.bmp",2;
+		mes "我们总是失去重点。";
+		mes "你不应该问他为什么先攻击我吗？";
+		mes "我们请听听他是怎么说的。女儿。";
+		close3;
+	}
+	cutin "verus_ian01.bmp",2;
+	mes "一下子听到一个令人惊讶的故事会让人感到困惑，但是";
+	mes "同时它也是一种宣泄。";
+	mes "嗯..我明白了。我懂了。";
+	close3;
+}
+
+lhz_in01,267,255,7	script	Aures#ep152i01	4_M_OLDSCHOLAR,{
+	if (ep15_1_atnad == 31) {
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "现在你在这里。";
+		mes "舒服地坐在这里。";
+		mes "虽然坐在公司厕所上可能会不舒服。";
+		next;
+		mes "[耳朵]";
+		mes "看到他们两个在一起很有趣。";
+		mes "看来你不能欺骗血液。";
+		mes "看看他们说话多么相似。";
+		close3;
+	}
+	cutin "verus_aures.bmp",0;
+	mes "[耳朵]";
+	mes "我讨厌打架，但是……看到他们在一起很有趣。是的。";
+	close3;
+}
+
+lhz_in01,272,251,3	script	Commander Arquien#ep152i	4_F_EDEN_MASTER,{
+	if (ep15_1_atnad < 31)
+		end;
+	if (ep15_1_atnad == 31) {
+		mes "[阿尔奎恩]";
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "让我们看看你是否聚集了我们所有人来给我们讲一些夸张的故事。";
+		close3;
+	}
+	if (ep15_1_atnad == 32) {
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "那么，你想说什么？";
+		mes "到底是怎么回事，你在这个重要的时刻却打断了我的电话。";
+		next;
+		cutin "Arquien_n_atnad01.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "刚才那个男人说的话，是你失踪的事情吗？";
+		mes "这就是你多年来在外面奔走的原因。";
+		next;
+		cutin "ep15_tatio01.bmp",0;
+		mes "[首席秘书]";
+		mes "不..不是那个..";
+		mes "我和医生在一起的时间只有四天。";
+		next;
+		cutin "Arquien_n_atnad04.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "在你说你被困在某个地方一周之前！";
+		mes "还像着了鬼一样到处乱跑！";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "那个..那个..！";
+		mes "别把我对我的领域的热情当成一个逃跑的幽灵！";
+		mes "当时我以为我要去寻找一些关于我祖父的事情。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我看到的地方..我对那个地方的记忆...";
+		mes ".....";
+		mes "...？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "等一下。你现在是在怪我吗？";
+		mes "我给家里写信了，你却没有回信！";
+		next;
+		cutin "Arquien_n_atnad04.bmp",0;
+		mes "[阿尔奎恩]";
+		mes "因为地址不清楚，所有的信都被退回了！";
+		mes "你何必说大话呢！";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "你不是把房子卖了，还把我所有的信都寄回来了吗！";
+		mes "你等不了几年就卖掉房子然后消失吗？！";
+		mes "你有什么话要对自己说的！";
+		next;
+		mes "由于父女之间的争吵，局势变得过热。";
+		mes "奥雷斯和秘书一脸尴尬。";
+		next;
+		select("桌子该不该翻？");
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "[阿尔奎恩]";
+		mes "那是什么声音..";
+		mes "呃……话说回来，那位秘书不是这整个事件的主要始作俑者吗？";
+		mes "发生了什么？";
+		ep15_1_atnad = 33;
+		close3;
+	}
+	if (ep15_1_atnad == 33) {
+		mes "[阿尔奎恩]";
+		mes "……我们继续听那个秘书说吧。";
+		mes "如果再给我胡说八道，我就要把这家公司翻了。";
+		close3;
+	}
+	cutin "Arquien_n_atnad02.bmp",2;
+	mes "[阿尔奎恩]";
+	mes "那么他的意思是说，我们可以通过收集、聆听记忆记录来了解秘书的糗事？";
+	mes "这有点有趣。";
+	next;
+	cutin "Arquien_n_atnad03.bmp",2;
+	mes "[阿尔奎恩]";
+	mes "你在干什么？";
+	mes "我们现在回去吧。";
+	mes "这座城市对自己来说太好了。";
+	close3;
+}
+
+
+// Part 3 : Vestige - ep15_2_underbs
+verus01,221,65,5	script	Du#Verus	4_M_REDMAN,{
+	if (ep15_1_atnad < 19)	// extra check
+		end;
+	mes "[你]";
+	if (ep15_2_bslast < 2) {
+		if (ep15_1_elb < 15) {
+			mes "调查应该冷静地进行……";
+			cutin "bu_du3.bmp",2;
+			close3;
+		}
+		if (ep15_2_bslast == 0) {
+			mes "这不是一团糟吗？";
+			mes "呼呼，差点就进去了！";
+			mes "我讨厌这些访问协议。";
+			cutin "bu_du3.bmp",2;
+			next;
+			mes "[标记]";
+			mes "我认为这是安全所需的基本协议。";
+			cutin "bu_mark3.bmp",0;
+			next;
+			mes "[你]";
+			mes "你们，看看这个！";
+			cutin "bu_du2.bmp",2;
+			next;
+			mes "[你]";
+			mes "这不是一团糟吗？";
+			next;
+			mes "[标记]";
+			mes "嘿...";
+			mes "你刚才不是说过吗？";
+			cutin "bu_mark3.bmp",0;
+			next;
+			mes "[阿尔夫]";
+			mes "嘿。";
+			mes "忘掉这个吧，让我们开始调查吧。";
+			cutin "bu_alp1.bmp",2;
+			next;
+			mes "[狨猴]";
+			mes "顺便说一句，我想我知道为什么只有这个地方被封锁了。";
+			cutin "ep143_tasta.bmp",2;
+			next;
+			mes "[狨猴]";
+			mes "这里没有完好的建筑物，地面的裂缝也比其他区域严重得多……";
+			next;
+			mes "[狨猴]";
+			mes "更不用说这些怪物了……";
+			cutin "ep143_tahuk.bmp",2;
+			next;
+			mes "[狨猴]";
+			mes "看来他们只能在这里找到，所以有些不对劲……";
+			next;
+			mes "[你]";
+		}
+		mes "正确的！";
+		mes "我们的工作就是对此进行调查！";
+		cutin "bu_du2.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "想想看，之前路过的人确实说过中心有一个令人难以置信的装置……";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[标记]";
+		mes "那么我们先来研究一下这部分。";
+		cutin "bu_mark1.bmp",0;
+		if (ep15_2_bslast == 0) {
+			setquest 11381;// Vestige
+			ep15_2_bslast = 1;
+		}
+		close3;
+	}
+	mes "调查应该冷静地进行……";
+	cutin "bu_du3.bmp",2;
+	close3;
+}
+
+verus01,151,173,3	script	Fruit#Verus	4_F_FRUIT,{
+	if (ep15_2_bslast < 2) {
+		mes "[水果]";
+		mes "呜呜呜！！！";
+		mes "看到这个了吗？";
+		mes "就在这里！！！！";
+		cutin "EP15_2_fru_2.bmp",2;
+		next;
+		mes "[水果]";
+		mes "是不是看起来有什么东西要旋转起来？！";
+		mes "哈哈！";
+		if (ep15_2_bslast == 0)
+			close3;
+		next;
+		mes "[水果]";
+		mes "我希望我能把整个东西带到我的实验室！";
+		mes "我只能看着...";
+		cutin "EP15_2_fru_3.bmp",2;
+		next;
+		mes "[水果]";
+		mes "所以我在想...";
+		mes "我在这里很忙，所以我没能去他们说的地下掩体就在下面。";
+		cutin "EP15_2_fru_2.bmp",2;
+		next;
+		mes "[水果]";
+		mes "你想去吗？";
+		next;
+		mes "[水果]";
+		mes "有人告诉你所有的调查要点，这并不常见吧？";
+		next;
+		mes "[水果]";
+		mes "我也不是要求你免费工作！";
+		mes "如果您带回有趣的结果，将会获得奖励！";
+		next;
+		mes "[水果]";
+		mes "你怎么认为？";
+		next;
+		if (select( "辞职。", "做吧。" ) == 1) {
+			mes "[水果]";
+			mes "呃……";
+			cutin "EP15_2_fru_1.bmp",2;
+			close3;
+		}
+		mes "[水果]";
+		mes "雅虎！！！";
+		mes "如果你走一点路，可能就会有人指导你。";
+		next;
+		mes "[水果]";
+		mes "我期待你带回来很多有趣的东西。";
+		// completequest 11381;	// completed officially
+		erasequest 11381;// Vestige
+		setquest 11382;// Vestige
+		ep15_2_bslast = 2;
+		close3;
+	}
+	if (ep15_2_bslast == 2) {
+		mes "[水果]";
+		mes "雅虎！！！";
+		mes "如果你走一点路，可能就会有人指导你。";
+		cutin "EP15_2_fru_2.bmp",2;
+		next;
+		mes "[水果]";
+		mes "我期待你带回来很多有趣的东西。";
+		close3;
+	}
+	if (ep15_2_bslast < 9) {
+		mes "[水果]";
+		mes "怎么样，调查有进展了吗？";
+		mes "虽然是地下碉堡，但规模可不是开玩笑的！";
+		cutin "EP15_2_fru_3.bmp",2;
+		next;
+		mes "[水果]";
+		mes "不会丢了吧？";
+		close3;
+	}
+	if (checkweight(1119,3) == 0) {
+		mes "- 你携带的物品太多，无法继续任务 -";
+		close;
+	}
+	if (checkquest(11380,HUNTING) == 2) {
+		mes "[水果]";
+		mes "啊啊啊！！！";
+		mes "惊人的！！！";
+		cutin "EP15_2_fru_2.bmp",2;
+		next;
+		mes "[水果]";
+		mes "所以？所以？然后呢？";
+		mes "快点！告诉我更多！";
+		erasequest 11380;// Last Room
+		getexp 200000,0;
+		getitem 6827,1;// Normal_Parts
+		getitem 6828,1;// Gravity_Parts
+		close3;
+	}
+	mes "[水果]";
+	mes "嗯……还有什么更有趣的吗？";
+	cutin "EP15_2_fru_1.bmp",2;
+	next;
+	if (select( "贸易货物。", "辞职。" ) == 1) {
+		mes "[水果]";
+		mes "我给你装备，换取17个完好的机器部件！";
+		next;
+		switch( select( "失控芯片", "损坏芯片1", "损坏芯片2" ) ) {
+		case 1:
+			mes "[水果]";
+			mes "失控筹码为 HIT + 50、FLEE + 50、MSP - 50%";
+			next;
+			mes "[水果]";
+			mes "与破碎芯片 1 和破碎芯片 2 一起装备时，您将获得无限的移动加速度。";
+			next;
+			mes "[水果]";
+			mes "ATK和MATK+50。如果头盔精炼度为9，则影响MSP+50%，MHP+10%。";
+			.@item_id = 18997;	// Riot_Chip
+			break;
+		case 2:
+			mes "[水果]";
+			mes "破碎芯片 1 具有 STR + 4。如果装备破碎芯片 2，则具有 STR + 8、INT+ 8 效果。";
+			.@item_id = 28326;	// Broken_Chip_1
+			break;
+		case 3:
+			mes "[水果]";
+			mes "破损芯片2具有INT + 4。如果装备破损芯片1，则具有STR + 8，INT + 8效果。";
+			.@item_id = 28327;	// Broken_Chip_2
+			break;
+		}
+		next;
+		if (select( "交换", "退出。" ) == 1) {
+			if (countitem(6827) < 17) {
+				mes "[水果]";
+				mes "不够！！！";
+				close3;
+			}
+			delitem 6827,17;// Normal_Parts
+			getitem .@item_id,1;
+			close3;
+		}
+		// continue
+	}
+	mes "[水果]";
+	mes "这不是你想要的吗？";
+	close3;
+}
+
+un_bunker,100,96,3	script	Mark#Bunker Entrance	4_M_BLUEMAN,{
+	if (ep15_2_bslast == 2 || ep15_2_bslast == 3) {
+		if (ep15_2_bslast == 2) {
+			mes "与上部相比，这部分保存得非常原始。";
+			mes "但这股恶心的味道......";
+			cutin "bu_mark4.bmp",0;
+			next;
+			mes "[标记]";
+			mes "在其他区域看不到的亡灵在这个区域很容易就能看到。";
+			next;
+			mes "[标记]";
+			mes "如果你看看这个地方的结构......";
+			mes "或者说条件，我认为这个地方是为了用作掩体而建造的。";
+			next;
+			mes "[狨猴]";
+			mes "那么这就意味着……亡灵……";
+			cutin "ep143_tahuk.bmp",2;
+			next;
+			mes "[美琪]";
+			mes "诶诶诶诶！！！！";
+			cutin "bu_maggi4.bmp",2;
+			next;
+			mes "[标记]";
+		}
+		mes "首先冷静下来可能是个好主意……彻底环顾四周。";
+		cutin "bu_mark1.bmp",0;
+		next;
+		mes "[你]";
+		mes "噢……噢……好吧！";
+		mes "这……这……这东西……是……没什么……";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "然后，让我们单独环顾四周，并在发现有价值的东西时发送信号。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[你]";
+		mes "哇……等等！！";
+		mes "既然危险，一起走不是更好吗？";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[你]";
+		mes "嘿！";
+		mes "看！";
+		mes "别离开我！";
+		mes "嘿！！！";
+		next;
+		mes "[你]";
+		mes "等我！！！！！";
+		if (ep15_2_bslast == 2) {
+			completequest 11382;
+			setquest 11383;// Vestige
+			ep15_2_bslast = 3;
+		}
+		close3;
+	}
+	mes "[标记]";
+	mes "这令人作呕的气味是什么？";
+	cutin "bu_mark4.bmp",0;
+	close3;
+}
+
+un_bunker,363,171,3	script	Alph#Entrance	4_M_BLACKMAN,{
+	if (ep15_2_bslast < 3) {
+		mes "[阿尔夫]";
+		mes "可疑的地方太多了……";
+		cutin "bu_alp3.bmp",2;
+		close3;
+	}
+	if (ep15_2_bslast == 3) {
+		mes "[阿尔夫]";
+		mes "一...";
+		mes "你在这里...";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "我还没发出信号，你也是因为有一种奇怪的感觉才来这里的吗？";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "很久以前...";
+		mes "...";
+		next;
+		mes "[阿尔夫]";
+		mes "不不。";
+		mes "让我们打电话给其他人并开始调查吧。";
+		cutin "bu_alp2.bmp",2;
+		next;
+		switch( select( "退出。", "调查。" ) ) {
+		case 1:
+			mes "[阿尔夫]";
+			mes "...";
+			mes "别忘了我们的目标是调查……";
+			cutin "bu_alp1.bmp",2;
+			close3;
+		case 2:
+			mes "[阿尔夫]";
+			mes "我刚刚发出了信号，所以其他人很快就会到达。";
+			cutin "bu_alp1.bmp",2;
+			next;
+			mes "[你]";
+			mes "啊啊啊啊！！！";
+			mes "你们这些无耻的混蛋滚开！！！！";
+			cutin "bu_du5.bmp",2;
+			next;
+			mes "[标记]";
+			mes "安静...";
+			cutin "bu_mark3.bmp",0;
+			next;
+			mes "[真实性]";
+			mes "这个房间有什么特别的地方吗？";
+			cutin "EP15_2_brt_3.bmp",2;
+			next;
+			mes "[你]";
+			mes "哦！刚才门口那个女人？";
+			mes "你为什么会在这么危险的地方？";
+			cutin "bu_du5.bmp",2;
+			next;
+			mes "[真实性]";
+			mes "哦？";
+			mes "你没听见吗？";
+			mes "那..";
+			cutin "EP15_2_brt_5.bmp",2;
+			next;
+			mes "[狨猴]";
+			mes "想想看，那个女孩确实说过可能会有向导。";
+			cutin "ep143_tasmi.bmp",2;
+			next;
+			mes "[阿尔夫]";
+			mes "....一...";
+			mes "有没有...";
+			cutin "bu_alp1.bmp",2;
+			next;
+			mes "[标记]";
+			mes "不管怎样，看来大家都在这里了，我们进去吧。";
+			cutin "bu_mark1.bmp",0;
+			next;
+			mes "[阿尔夫]";
+			mes "正确的...";
+			mes "有一股不好的能量，要小心...";
+			cutin "bu_alp1.bmp",2;
+			completequest 11383;
+			setquest 11384;// Vestige
+			ep15_2_bslast = 4;
+			close2;
+			warp "un_bunker",385,83;
+			end;
+		}
+	}
+	mes "[阿尔夫]";
+	mes "这个房间里还有更多的东西需要调查吗？";
+	cutin "bu_alp1.bmp",2;
+	next;
+	if (select( "退出。", "进去。" ) == 1) {
+		mes "[阿尔夫]";
+		mes "...";
+		mes "别忘了我们的目标是调查……";
+		close3;
+	}
+	mes "[阿尔夫]";
+	mes "正确的...";
+	mes "有一股不好的能量，要小心...";
+	close2;
+	warp "un_bunker",385,83;
+	end;
+}
+
+un_bunker,388,86,3	script	Alph#Entrance2	4_M_BLACKMAN,{
+	if (ep15_2_bslast == 4) {
+		mes "[阿尔夫]";
+		mes "正如预期的那样..";
+		mes "只是这个房间的布局与其他房间不同......";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[标记]";
+		mes "我懂了。";
+		mes "有一扇门似乎不属于一个非常不自然的地方。";
+		cutin "bu_mark1.bmp",0;
+		next;
+		mes "[狨猴]";
+		mes "……除了自己进去调查之外，没有别的办法吗？";
+		cutin "ep143_taang.bmp",2;
+		next;
+		mes "[你]";
+		mes "收费！！！！！";
+		cutin "bu_du5.bmp",2;
+		completequest 11384;
+		setquest 11385;// Vestige
+		ep15_2_bslast = 5;
+		close2;
+		warp "un_myst",11,206;
+		end;
+	}
+	mes "[阿尔夫]";
+	mes "不自然的房间…不自然的门…";
+	cutin "bu_alp1.bmp",2;
+	next;
+	if (select( "退出。", "进去。" ) == 1) {
+		mes "[阿尔夫]";
+		mes "...";
+		close3;
+	}
+	mes "[阿尔夫]";
+	mes "哈...";
+	close2;
+	warp "un_myst",11,206;
+	end;
+}
+
+un_myst,27,208,5	script	Verity#Myst	4_F_BERRYTEA,{
+	mes "[真实性]";
+	mes "这个空间令人窒息。";
+	mes "我的头已经开始抽痛了。";
+	cutin "EP15_2_brt_3.bmp",2;
+	next;
+	if (ep15_2_bslast == 5 || ep15_2_bslast == 6) {
+		mes "[狨猴]";
+		mes "这个空间是什么？";
+		mes "看来它的建造质量很差，不能用作碉堡……";
+		cutin "ep143_tasta.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "恶心的味道变得更严重了……";
+		cutin "bu_alp5.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "那里好像还有一扇门，我们去看看吧。";
+		cutin "ep143_tasta.bmp",2;
+		if (ep15_2_bslast == 5) {
+			completequest 11385;
+			setquest 11386;// Vestige
+			ep15_2_bslast = 6;
+			close3;
+		}
+		next;
+	}
+	if (ep15_2_bslast == 6)
+		.@string$ = "Move to the door.";
+	else
+		.@string$ = "Quit.";
+	if (select( .@string$, "离开。" ) == 1) {
+		mes "[真实性]";
+		mes "……应该带点止痛药来缓解头痛。";
+		cutin "EP15_2_brt_4.bmp",2;
+		close3;
+	}
+	mes "[真实性]";
+	mes "你要放弃调查吗？";
+	cutin "EP15_2_brt_4.bmp",2;
+	close2;
+	warp "un_bunker",300,166;
+	end;
+}
+
+un_myst,56,206,0	script	#myst_1	WARPNPC,1,1,{
+	end;
+OnTouch:
+	//if (ep15_2_bslast < 5) {	// typo ?
+	if (ep15_2_bslast < 6) {
+		mes "- 无法进入该地点 -";
+		close2;
+		warp "un_bunker",300,166;
+		end;
+	}
+	if (ep15_2_bslast == 6) {
+		mes "- 看起来没有锁，而是被什么东西挡住了。-";
+		next;
+		if (select( "打破它。", "辞职。" ) == 2) {
+			mes "[你]";
+			mes "你想独自离开这样的地方吗？";
+			cutin "bu_du1.bmp",2;
+			close3;
+		}
+		mes "[你]";
+		mes "好吧，那么……";
+		mes "一！";
+		mes "二！";
+		mes "三！";
+		cutin "bu_du5.bmp",2;
+		completequest 11386;
+		setquest 11387;// Vestige
+		ep15_2_bslast = 7;
+		ep15_2_bsmemo = 1;
+		close2;
+	}
+	ep15_2_bsmemo = 1;
+	warp "un_myst",81,190;
+	end;
+}
+
+un_myst,100,190,3	script	Du#Hall	4_M_REDMAN,{
+	if (ep15_2_bslast == 7 || ep15_2_bslast == 8) {
+		if (ep15_2_bslast == 7) {
+			mes "[你]";
+			mes "哇……这是什么地方？";
+			cutin "bu_du1.bmp",2;
+			next;
+			mes "[标记]";
+			mes "这真是一个可疑的地方……";
+			mes "没想到地堡内竟然还有这样的空间……";
+			cutin "bu_mark1.bmp",0;
+			next;
+			mes "[美琪]";
+			mes "啊……啊……";
+			cutin "bu_maggi3.bmp",2;
+			next;
+			mes "[狨猴]";
+			mes "考虑到它的用途，它似乎是随意制作的……嗯……";
+			cutin "ep143_tasta.bmp",2;
+			next;
+			mes "[美琪]";
+			mes "那个……门……";
+			cutin "bu_maggi3.bmp",2;
+			next;
+			mes "[阿尔夫]";
+			mes "这是一个秘密空间，有一种微妙之处......";
+			cutin "bu_alp3.bmp",2;
+			next;
+			mes "[美琪]";
+			mes "靠……靠……";
+			cutin "bu_maggi3.bmp",2;
+			next;
+			mes "[你]";
+			mes "玛吉你在发什么呆？";
+			cutin "bu_du2.bmp",2;
+			next;
+			mes "[美琪]";
+			mes "门被卡住了。";
+			cutin "bu_maggi4.bmp",2;
+			next;
+			mes "[你]";
+			mes "呃？";
+			cutin "bu_du5.bmp",2;
+			next;
+			mes "[标记]";
+			mes "什么？！？！？";
+			cutin "bu_mark4.bmp",0;
+			next;
+			mes "[你]";
+			mes "啊啊！！！";
+			mes "这是真的吗？！";
+			cutin "bu_du5.bmp",2;
+			next;
+		}
+		mes "[你]";
+		mes "我们都被困在这里了吗？";
+		next;
+		mes "[标记]";
+		mes "等等，让我们冷静地思考一下这个问题。";
+		cutin "bu_mark4.bmp",0;
+		next;
+		mes "[真实性]";
+		mes "哦不，我们该怎么办...";
+		cutin "EP15_2_brt_5.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "啊...";
+		cutin "bu_alp2.bmp",2;
+		next;
+		mes "[真实性]";
+		mes "既然没有办法出去，我们是不是应该再往里面走呢？";
+		cutin "EP15_2_brt_4.bmp",2;
+		next;
+		mes "[你]";
+		mes "等等……想想维蒂吧！";
+		mes "你说你是向导，却不知道出路？";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[真实性]";
+		mes "这是我第一次深入这么深的地方……";
+		mes "没有别的办法了！";
+		cutin "EP15_2_brt_6.bmp",2;
+		if (ep15_2_bslast == 7) {
+			completequest 11387;
+			setquest 11388;// Vestige
+			ep15_2_bslast = 8;
+		}
+		close3;
+	}
+	mes "[你]";
+	mes "哇……这是什么地方？";
+	cutin "bu_du1.bmp",2;
+	next;
+	mes "[标记]";
+	mes "这真是一个可疑的地方……";
+	mes "没想到地堡内竟然还有这样的空间……";
+	cutin "bu_mark1.bmp",0;
+	close3;
+}
+
+un_myst,333,206,3	script	Weird piece#01	4_GC109,{
+	if (ep15_2_bslast < 8) {
+		mes "有一块很奇怪。";
+		close;
+	}
+	if (ep15_2_bsmemo == 1) {// A
+		mes "我已经记不清自己进入这个地方已经有多久了。";
+		mes "在这黑暗中，我的时间感变得迟钝，人们也很快变得疲倦。";
+		next;
+		mes "他们在不了解外界情况的情况下谈论逃跑……这是正确的选择吗？";
+		next;
+		mes "但我们已经迷失了回去的路。";
+		mes "是的……这不是逃避。";
+		mes "只是为了生存而逃离……";
+		next;
+		mes "我们还能坚持跑多久？";
+		close2;
+		if (ep15_2_bslast < 9) {
+			completequest 11388;
+			setquest 11389;// Vestige
+		}
+		warp "un_myst",260,204;
+		ep15_2_bsmemo = 2;
+		end;
+	}
+	if (ep15_2_bsmemo == 2) {
+		mes "尽管我已经做好了准备，但情况正在恶化。";
+		mes "我只能说，如果我留在那个地方，我就活不下去了。";
+		next;
+		mes "希望...";
+		next;
+		mes "许多人已经失去了希望……";
+		close2;
+		warp "un_myst",260,204;
+		ep15_2_bsmemo = 3;
+		end;
+	}
+	mes "根据计算，我们现在应该已经出去了，但只剩下泥土了。";
+	next;
+	mes "计算可能是错误的，我们可能会陷入原地踏步。";
+	mes "感觉不对。";
+	next;
+	mes "不..";
+	mes "从那天起我就没有感到安心。";
+	close2;
+	warp "un_myst",347,138;
+	if (ep15_2_bsmemo == 3)
+		ep15_2_bsmemo = 4;
+	end;
+}
+
+un_myst,182,137,3	script	Weird piece#02	4_GC109,{
+	if (ep15_2_bsmemo < 4) {
+		mes "有一块很奇怪。";
+		close;
+	}
+	if (ep15_2_bsmemo == 4) {// B
+		mes "我可能已经达到了极限。";
+		mes "我必须责怪我过度劳累的身体现在没有听我的话。";
+		next;
+		mes "幸存者的数量正在减少。";
+		next;
+		mes "像这样...";
+		mes "我以为我见证了结局是业力……";
+		mes "也许这就是我的自私吧。";
+		mes "我想我已经没有这样的时间了..";
+		close2;
+		warp "un_myst",86,136;
+		ep15_2_bsmemo = 5;
+		end;
+	}
+	if (ep15_2_bsmemo == 5) {
+		mes "现在连走路都困难了。";
+		next;
+		mes "一旦我自信地声称我将领导我们所有人......";
+		mes "我发现自己很可悲，因为自己成为了负担，更不用说提供帮助了。";
+		next;
+		mes "一切都是遗憾。";
+		mes "我开始的一切...";
+		mes "我的一切...";
+		close2;
+		warp "un_myst",86,136;
+		ep15_2_bsmemo = 6;
+		end;
+	}
+	if (ep15_2_bsmemo == 6) {
+		mes "还不如放弃我...";
+		close2;
+		warp "un_myst",86,136;
+		ep15_2_bsmemo = 7;
+		end;
+	}
+	mes "我睡觉的天数比我现在醒着的天数还要多。";
+	next;
+	mes "我突然在越来越模糊的意识中想象出他的脸。";
+	next;
+	mes "塔蒂奥...";
+	next;
+	mes "一个对我很贴心的人，尽管我只关心我的工作。";
+	next;
+	mes "哈……人……";
+	mes "我无法忍受过去的耻辱，因为我认为他只是一个成功的项目。";
+	next;
+	mes "虽然我无法控制自己可能会死在这里……";
+	mes "如果只是向他道歉的话……";
+	mes "只要能凑出一句甜言蜜语，我就有求生的想法了。";
+	next;
+	mes "..是否可以？";
+	close2;
+	warp "un_myst",14,92;
+	if (ep15_2_bsmemo == 7)
+		ep15_2_bsmemo = 8;
+	end;
+}
+
+un_myst,214,86,3	script	Weird piece#03	4_GC109,{
+	if (ep15_2_bsmemo < 8) {
+		mes "有一块很奇怪。";
+		close;
+	}
+	if (ep15_2_bsmemo < 16) {
+		if (ep15_2_bsmemo == 8)// C
+			mes "01001000010001010100110001001100010011110101011101001111010100100100110001000100";
+		else if (ep15_2_bsmemo == 9)
+			mes "01001001010000010100110101000110010010010100111001000101";
+		else if (ep15_2_bsmemo == 10)
+			mes "@#$​​%&!#...";
+		else if (ep15_2_bsmemo == 11)
+			mes "调试";
+		else if (ep15_2_bsmemo == 12) {
+			mes "文件...错误...恢复...";
+			mes "操作...范围...25%...30%...35%.......";
+		}
+		else if (ep15_2_bsmemo == 13)
+			mes "45%...50%...最少的正常操作可能启动安全模式操作";
+		else if (ep15_2_bsmemo == 14)
+			mes "60% 移动速度正常。身体机能正常。";
+		else if (ep15_2_bsmemo == 15)
+			mes "70% 大部分语言功能恢复。轻微的败血性贫血症状，但似乎很快就会痊愈。";
+		close2;
+		warp "un_myst",160,89;
+		ep15_2_bsmemo++;
+		end;
+	}
+	if (ep15_2_bsmemo == 16) {
+		mes "尽管没有适当的准备，80％的手术还是相当成功的。";
+		mes "计划在此成功的基础上对其余幸存者进行治疗。";
+		close2;
+		warp "un_myst",209,33;
+		ep15_2_bsmemo = 17;
+		end;
+	}
+	mes "98% 检测到腐败部门。";
+	mes "为了更有效的操作，我复制了内存芯片并构建了“T_W_O_002b”。";
+	mes "复制过程中似乎丢失了一些数据......";
+	close2;
+	warp "un_myst",209,33;
+	end;
+}
+
+un_myst,209,42,3	script	Tamarin#Lastroom Entrance	4_M_TAMARIN,{
+	if (checkweight(1119,3) == 0) {
+		mes "- 你携带的物品太多，无法继续任务 -";
+		close;
+	}
+	mes "[狨猴]";
+	mes "……看来最后的幸存者还在这里徘徊……";
+	cutin "ep143_taang.bmp",2;
+	next;
+	mes "[狨猴]";
+	mes "出于某种原因，我害怕打开隔壁的门。";
+	next;
+	if (ep15_2_bsmemo == 17) {
+		select("打开门。");
+		if (ep15_2_bslast < 9) {
+			ep15_2_bslast = 9;
+			ep15_2_bsmemo = 18;
+			completequest 11389;// Vestige
+			getexp 0,1000000;
+			getitem 6827,1;// Normal_Parts
+			getitem 6828,1;// Gravity_Parts
+		}
+		close2;
+		warp "un_myst",142,38;
+		end;
+	}
+	.@s = select( "打开门。", "到外面去。" ) - 1;
+	mes "[狨猴]";
+	mes "有一种苦涩的感觉……";
+	close2;
+	if (.@s == 0)
+		warp "un_myst",142,38;
+	else
+		warp "un_bunker",98,91;
+	end;
+}
+
+verus01,123,181,3	script	Verity#Warper	4_F_BERRYTEA,{
+	mes "[真实性]";
+	mes "你好。";
+	mes "你来这里是为了调查地下掩体吗？";
+	cutin "EP15_2_brt_2.bmp", 2;
+	next;
+	switch( select( "是", "否。", "使用重力安全装置" ) ) {
+	case 1:
+		mes "[真实性]";
+		mes "下面看起来很危险，所以请小心。";
+		cutin "EP15_2_brt_1.bmp",2;
+		next;
+		mes "[真实性]";
+		mes "如果你考虑到在其他地区没有见过的怪物的出现，有些东西......";
+		cutin "EP15_2_brt_3.bmp",2;
+		close2;
+		warp "un_bunker",98,91;
+		end;
+	case 2:
+		break;
+	case 3:
+		mes "[真实性]";
+		mes "利用重力安全装置，您可以轻松到达最后一个房间的入口。";
+		cutin "EP15_2_brt_1.bmp",2;
+		next;
+		if (select( "使用。", "退出。" ) == 1) {
+			mes "[真实性]";
+			if (countitem(6828) < 1) {
+				mes "我发现你没有随身携带重力安全装置。";
+				close3;
+			}
+			delitem 6828,1;// Gravity_Parts
+			close2;
+			warp "un_myst",142,38;
+			end;
+		}
+		break;
+	}
+	mes "[真实性]";
+	mes "是这样吗？";
+	mes "嗯...";
+	cutin "EP15_2_brt_1.bmp",2;
+	close3;
+}
+
+
+// Others
+verus03,167,257,5	script	Access Controller Damhw#atnd02	4_M_LGTGUARD,{
+	.@visible_name$ = strnpcinfo(1);
+	if (.@visible_name$ == "Access Controller Damhw")
+		.@npc_name$ = "Damhwa";
+	else if (.@visible_name$ == "Access Controller Geuma")
+		.@npc_name$ = "Geuman";
+	else
+		.@npc_name$ = "Gyuhwa";
+
+	switch( isbegin_quest(7641) ) {
+	case 0:
+		mes "[" + .@npc_name$ + "]";
+		mes "抱歉，只有获得许可的挖掘团队成员才可以进入。";
+		mes "如果您与当前的挖掘团队一起努力工作，就会获得许可证。";
+		close;
+	case 1:
+		mes "[" + .@npc_name$ + "]";
+		mes "此地点仅可由获得许可的会员访问。";
+		mes "你从哪里来？";
+		next;
+		if (select("我来自 atnad 挖掘", "为什么我被禁止？") == 1) {
+			mes "[" + .@npc_name$ + "]";
+			mes "啊。您是 Atnad 挖掘团队的成员。";
+			mes "是的，我已经确认你在名单上。";
+			mes "Atnad 挖掘机获准进入。";
+			next;
+			select("为什么禁止访问？");
+		}
+		mes "[" + .@npc_name$ + "]";
+		mes "维鲁斯城分为四大块。";
+		mes "你可知道？";
+		next;
+		mes "[" + .@npc_name$ + "]";
+		mes "目前开放的区域是城镇和广场。";
+		mes "虽然原因不明，但这个地方已被关闭并禁止。";
+		next;
+		mes "[" + .@npc_name$ + "]";
+		mes "在挖掘机招聘前的独立公司调查中，";
+		mes "我们发现这里发生了大爆炸，为了检查该地区的安全，";
+		mes "需要一段时间的检查。";
+		next;
+		mes "[" + .@npc_name$ + "]";
+		mes "除了危险的地形和危险的可能性之外，目前这个地方并不被认为是一个巨大的风险。";
+		mes "受到广场等机器的攻击，因此仅限挖掘队进入。";
+		next;
+		mes "[" + .@npc_name$ + "]";
+		mes "请注意，该许可证还包括西部连接的区域。";
+		next;
+		mes "[" + .@npc_name$ + "]";
+		mes "无论如何，既然被允许了，那么从现在开始就可以自由进入了。";
+		mes "那么我期待会有好的结果！";
+		completequest 7641;// Access Permitted (note : player can enter in verus01 without this quest)
+		close;
+	case 2:
+		mes "[" + .@npc_name$ + "]";
+		mes "研究和调查进展如何？";
+		mes "禁区内的机器非常危险，请小心。";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7641) == 1" );
+	end;
+}
+verus03,172,257,3	duplicate(Access Controller Damhw#atnd02)	Access Controller Gyuhw#atnd03	4_M_LGTGUARD
+verus03,52,250,5	duplicate(Access Controller Damhw#atnd02)	Access Controller Geuma#atnd01	4_M_LGTGUARD
+
+verus03,55,245,3	script	Rekenber Scholar#e152a01	2_M_MOLGENSTEIN,{
+	mes "[雷肯伯学者]";
+	mes "嗯..这个机器好像是用来追踪什么东西的。";
+	mes "你怎么认为？";
+	next;
+	mes "[雷肯伯技术员]";
+	mes "我也这么认为。";
+	mes "该屏幕可能指示其正在跟踪或检测的物体的位置或状况。";
+	next;
+	mes "[雷肯伯学者]";
+	mes "大概是在展示这片禁区的情况吧？";
+	mes "根据刚才内部的情况推测是不可能直接进入的。";
+	next;
+	mes "[雷肯伯技术员]";
+	mes "大概是这样。";
+	mes "仅凭肉眼观察，我们就可以假设发生了大爆炸。";
+	mes "那么外面的人为什么要安装这样的东西....";
+	next;
+	mes "[雷肯伯学者]";
+	mes "是的。就是要了解一下内部情况。";
+	mes "也许..发生了一场大事故，所以可能是为了寻找幸存者..";
+	next;
+	mes "[雷肯伯技术员]";
+	mes "的确。你可能是对的。";
+	mes "而我们的角色就是找出这里发生的事情的秘密。";
+	close;
+
+}
+verus03,55,243,3	duplicate(Rekenber Scholar#e152a01)	Rekenber technician#e152a02	4_M_REPAIR
+
+verus03,59,250,7	script	Coral Excavation team C#e152a03	2_M_SAGE_B,{
+	mes "[塞西尔]";
+	mes "嘿，科贝尔。如果我们想被选为优秀发掘队的话……！";
+	next;
+	mes "[科贝尔]";
+	mes "成为..？";
+	next;
+	mes "[塞西尔]";
+	mes "就是要弄清楚这些未知机械装置的身份！";
+	next;
+	mes "[科贝尔]";
+	mes "什么？这是怎么发生的？";
+	mes "我们根本就不是工程学专业的！";
+	next;
+	mes "[塞西尔]";
+	mes "这个地方充满了机器！如果我们分析它们，我们就能像 Atnad 挖掘机一样获得认可！";
+	next;
+	mes "[科贝尔]";
+	mes "啊哈！确实如此。";
+	mes "但我认为 Atnad 挖掘机就在附近……？";
+	next;
+	mes "[塞西尔]";
+	mes "哈！我们的研究目标无法被发现。这是你我之间的秘密！";
+	next;
+	mes "[科贝尔]";
+	mes "就这样吧~";
+	close;
+}
+verus03,61,250,7	duplicate(Coral Excavation team C#e152a03)	Coral Excavation team C#e152a04	4_M_ALCHE_C
+
+
+//- Krotzel's Request
+verus02,79,31,4	script	Krotzel#1	4_F_HUWOMAN,{
+	if (ep15_1_atnad < 19)
+		end;
+	mes "[克罗泽尔]";
+	switch(ep15_2_brigan) {
+	case 0:
+		mes "我是《布里根月刊》的资深记者克罗泽尔！随着这个地方被曝光，许多冒险者聚集在这里。";
+		next;
+		mes "[克罗泽尔]";
+		mes "传递给一般冒险者的情报并不多。所以我们正在亲自采访冒险家！进行跑腿工作并收集信息。";
+		next;
+		mes "[克罗泽尔]";
+		mes "如果您有好的信息，请给我们。如果这是一条很好的信息，我们可以给您一个小奖励。";
+		next;
+		mes "[克罗泽尔]";
+		mes "我们是谁？我们是每月布里根的冒险队 2...";
+		next;
+		mes "[克罗泽尔]";
+		mes "...？";
+		next;
+		mes "[克罗泽尔]";
+		mes "大家都去哪儿了？哈，屁股好痛！冒险二队由两名资深记者、一名资深记者和一名见习记者组成，共四人。";
+		next;
+		mes "[克罗泽尔]";
+		mes "我负责采访和编故事，我的同事负责摄影。资深前辈担任向导。作为一本专门从事冒险的杂志，我们经常报道危险的地方。";
+		next;
+		mes "[克罗泽尔]";
+		mes "虽然我并不完全缺乏战斗经验，但我的强项是报告！但大家到底去哪儿了呢？有人可能会认为我们是在去野餐！";
+		ep15_2_brigan = 1;
+		close;
+	case 1:
+		mes "我最担心的是预备党员。他还是个新人，所以什么都不知道。很有可能他是跟着这位老前辈的。如果可以的话，你能找到他吗？";
+		next;
+		if (select( "寻找见习记者", "太忙" ) == 1) {
+			mes "[克罗泽尔]";
+			mes "太感谢了。如果他跟着老前辈的话，说不定就到了废墟区域了。我看到他清澈的眼睛看着学长。";
+			next;
+			mes "[克罗泽尔]";
+			mes "我会在这个地区四处看看。你不用带他来。虽然是试用期，但他应该懂得自己干活！当你找到他时请告诉我他在哪里。";
+			close2;
+			setquest 13195;// Monthly Brigan
+			ep15_2_brigan = 2;
+			end;
+		}
+		close;
+	case 2:
+		mes "如果她跟着老前辈的话，说不定就到了废墟区域了。如果你找到她，请告诉我她在哪里。";
+		close;
+	case 3:
+		mes "正如我所想。我很高兴他至少安全了。如果可以的话，你也能找到我的同事 Sunny Kim 吗？";
+		next;
+		mes "[克罗泽尔]";
+		mes "自从加入以来我们相处得很好，最终组成了一个团队，所以我不禁感到担心。";
+		next;
+		mes "[克罗泽尔]";
+		mes "她一来到这里就开始唱起这里的建筑风格，所以她会在这个地区周围转转。";
+		close2;
+		setquest 13196;// Monthly Brigan
+		ep15_2_brigan = 4;
+		end;
+	case 4:
+		mes "自从加入以来我们相处得很好，最终组成了一个团队，所以我不禁感到担心。";
+		next;
+		mes "[克罗泽尔]";
+		mes "他一来到这里就开始歌颂这里的建筑风格，所以他就会围绕这个地区。我求求你。";
+		close;
+	case 5:
+		mes "我认为人们担心是没有帮助的。最后一位资深记者，灰熊·格里尔斯！指定生存记者！";
+		next;
+		mes "[克罗泽尔]";
+		mes "这个绰号之所以流传下来，是因为他在任何地方都幸存下来，但说实话，他没有战斗天赋。他只是幸运而已。";
+		next;
+		mes "[克罗泽尔]";
+		mes "虽然我认为他会安全……你能查到他在哪里吗？他大概跑到了那里的废墟里了……";
+		close2;
+		setquest 13197;// Monthly Brigan
+		ep15_2_brigan = 6;
+		end;
+	case 6:
+		mes "找到我灰熊·格里尔斯，一位能在任何地方生存的资深记者。我想他可能就在东边的废墟里……";
+		next;
+		mes "[克罗泽尔]";
+		mes "现在想想，他和我前段时间采访过的一位公会会长很像。纵然跳入险境又无论如何都会回来……本来就更容易避开危险！";
+		close;
+	case 7:
+		mes "好的！所以每个人都是安全的。每个人都会自己创建一条新闻，对吧？";
+		next;
+		mes "[克罗泽尔]";
+		mes "如果他们明天不回来我就去找他们。";
+		close2;
+		setquest 13199;// Krotzel's Request - Complete
+		getexp 1500000,1000000;
+		ep15_2_brigan = 8;
+		end;
+	default:
+		break;
+	}
+	switch( checkquest(13199,PLAYTIME) ) {
+	case -1:
+	case 2:
+		switch( isbegin_quest(13198) ) {
+		case 0:
+			mes "你就是我上次遇到的冒险者！我们的团队成员还没有回来，所以我很担心。如果可以的话，你能检查一下他们是否安全吗？";
+			next;
+			switch( select( "寻找团队成员", "现在不是好时机", "Converse" ) ) {
+			case 1:
+				mes "[克罗泽尔]";
+				mes "他们都有专业的心态，所以如果他们还没有完成工作，就看看他们是否安全。";
+				if (isbegin_quest(13199) > 0)
+					erasequest 13199;// Krotzel's Request - Complete
+				setquest 13195;// Monthly Brigan
+				setquest 13196;// Monthly Brigan
+				setquest 13197;// Monthly Brigan
+				setquest 13198;// Monthly Brigan : Krotzel's Request
+				close;
+			case 2:
+				mes "[克罗泽尔]";
+				mes "我会等你。";
+				close;
+			case 3:
+				mes "[克罗泽尔]";
+				mes "什么是每月 Brigan？你知道。可以从怪物那里获得的战利品。它不是宝石，但可以提供可观的收入。对于冒险家来说，这就像甘甜的雨。";
+				next;
+				mes "[克罗泽尔]";
+				mes "老板的目标就是这个。这不是冒险家的大奖，但让我们制作一本可以提供甜蜜信息的杂志吧！显然这就是目的。";
+				close;
+			}
+			end;
+		case 1:
+			if (isbegin_quest(13195) > 0 || isbegin_quest(13196) > 0 || isbegin_quest(13197) > 0) {
+				mes "我应该检查一下每个人是否都安全。请找出并看看这三个人是否都在努力工作。";
+				close;
+			}
+			mes "好吧，今天我们都很安全。因为我们是冒险二队！谢谢您的帮助！";
+			close2;
+			erasequest 13198;// Monthly Brigan : Krotzel's Request
+			setquest 13199;// Krotzel's Request - Complete
+			getexp 1000000,500000;
+			end;
+		case 2:
+			mes "[克罗泽尔]";
+			mes "我应该检查一下每个人是否都安全。";
+			close;
+		}
+		end;
+	case 0:
+	case 1:
+		mes "看来他们还在工作。我很担心，但我应该专注于我的工作！我们是每月一次的 Brigan Adventure 团队 2！";
+		close;
+	}
+}
+
+verus02,134,169,4	script	Photo Journalist#1	4_F_GON,{
+	if (ep15_2_brigan < 4 || ep15_2_brigan == 6 || ep15_2_brigan == 7) {
+		mes "[桑尼·金]";
+		mes "《布里根月刊》的资深摄影记者……啊哈！怪物不断袭来！很危险！";
+		close;
+	}
+	if (ep15_2_brigan == 4) {
+		mes "[桑尼·金]";
+		mes "克罗策尔？啊，你是说我的搭档。我仍然需要捕捉很酷的建筑风格和怪物。告诉她我很好。";
+		close2;
+		erasequest 13196;// Monthly Brigan
+		ep15_2_brigan = 5;
+		end;
+	}
+	if (ep15_2_brigan == 5) {
+		mes "[桑尼·金]";
+		mes "我以为我在地面上做了很多工作，但我印象深刻！我会把这一切都抓在掌心里！";
+		close;
+	}
+	switch( select( "询问是否安全", "有什么可以帮忙的吗？", "Converse" ) ) {
+	case 1:
+		mes "[桑尼·金]";
+		if (isbegin_quest(13196) == 0) {
+			mes "这座令人难以置信的建筑是如何位于地下的？我知道的越多我就越好奇。";
+			close;
+		}
+		mes "当然！我在底层经历过很多挣扎！我还在拍照。告诉她我准备好后就走。";
+		close2;
+		erasequest 13196;
+		end;
+	case 2:
+		mes "[桑尼·金]";
+		switch( checkquest(13203,PLAYTIME) ) {
+		case -1:
+		case 2:
+			switch( checkquest(13202,HUNTING) ) {
+			case -1:
+				mes "你有什么想法可以帮助我成为一名正义的冒险者吗？";
+				next;
+				if (select( "帮助摄影记者 Sunny Kim", "拒绝" ) == 1) {
+					mes "[桑尼·金]";
+					mes "拍摄炫酷的建筑、动态的怪物和冒险家！我正在拍摄两个主题的照片，但你可以帮我制作一个！";
+					next;
+					mes "[桑尼·金]";
+					mes "帮我处理一下周围的怪物。我会把它拍成照片！然后我就可以安心地拍摄该地区了！";
+					if (isbegin_quest(13203))
+						erasequest 13203;// Photo Journalist's Request - Complete
+					setquest 13202;// Monthly Brigan : Photo Journalist's Request
+				}
+				close;
+			case 0:
+			case 1:
+				mes "所以你必须站在那里对付怪物！如果可能的话，进行动态和大幅度的运动！照片需要一个正确的概念。";
+				close;
+			case 2:
+				mes "感谢你们，我想一定会创作出一部伟大的作品！我会回去拍摄建筑照片。";
+				erasequest 13202;// Monthly Brigan : Photo Journalist's Request
+				setquest 13203;// Photo Journalist's Request - Complete
+				getexp 1000000,500000;
+				close;
+			}
+		case 0:
+		case 1:
+			mes "我拍了很多照片，但我需要时间来确认它们。其中一些可能失焦，或者我可能需要更好的照片，所以下次。";
+			close;
+		}
+	case 3:
+		mes "[桑尼·金]";
+		mes "我不能总是拍出很棒的照片。摄影是关于瞬间的。但你可以把这一刻保存很长时间。这就是摄影的魅力！";
+		close;
+	}
+}
+
+verus01,41,103,4	script	Exhausted Journalist#1	52,{
+	if (ep15_2_brigan < 6) {
+		mes "[格里尔斯]";
+		mes "哈哈，你是冒险家吗？我是灰熊·格里尔斯！喜欢冒险的记者。";
+		close;
+	}
+	if (ep15_2_brigan == 6) {
+		mes "[格里尔斯]";
+		mes "克罗泽尔担心吗？别开玩笑了。我是资深记者格里兹利·格里尔斯！我正在享受冒险！告诉她不要担心。";
+		close2;
+		erasequest 13197;// Monthly Brigan
+		ep15_2_brigan = 7;
+		end;
+	}
+	if (ep15_2_brigan == 7) {
+		mes "[格里尔斯]";
+		mes "现在我很困惑自己到底是记者还是冒险家。我什至因为能够在任何地方生存而获得了生存之王的绰号！";
+		close;
+	}
+	switch( select( "询问是否安全", "有什么可以帮忙的吗？", "Converse" ) ) {
+	case 1:
+		mes "[格里尔斯]";
+		if (isbegin_quest(13197) == 0) {
+			mes "只不过这个地方比我想象的还要危险！我因努力逃跑而感到饥饿。我希望有东西吃。";
+			close;
+		}
+		mes "我正在享受冒险！告诉她不要担心。虽然我有点饿了...";
+		close2;
+		erasequest 13197;// Monthly Brigan
+		end;
+	case 2:
+		mes "[格里尔斯]";
+		switch( checkquest(13205,PLAYTIME) ) {
+		case -1:
+		case 2:
+			if (isbegin_quest(13204) == 0) {
+				mes "这没什么大不了的，但是你有时间吗？";
+				next;
+				if (select( "帮助生存记者格里尔斯", "拒绝" ) == 1) {
+					mes "[格里尔斯]";
+					mes "由于逃跑，我根本吃不下东西。一整天！我注意到这些吃金属的虫子。";
+					next;
+					mes "[格里尔斯]";
+					mes "我需要尝尝这些虫子的味道。我想这也将是一个好消息！生存之王的烤金属虫子！这就是标题！";
+					setquest 13204;// Monthly Brigan : Grylls' Request
+				}
+				close;
+			}
+			if (countitem(11597) < 30) {
+				mes "一种会啃咬金属的虫子。我想知道味道如何。我很好奇！这就是我无法放弃记者职业的原因。";
+				close;
+			}
+			mes "我现在就做饭！一想到味道就流口水了！";
+			delitem 11597,30;// Iron_Bug
+			erasequest 13204;// Monthly Brigan : Grylls' Request
+			if (isbegin_quest(13205) > 0)
+				erasequest 13205;
+			setquest 13205;// Grylls' Request - Complete
+			getexp 1000000,500000;
+			close;
+		case 0:
+		case 1:
+			mes "我有点忙着煮这些虫子。你也想吃一口吗？";
+			close;
+		}
+	case 3:
+		mes "[格里尔斯]";
+		mes "令人惊奇的是，居然还有啃金属的虫子！但它们一定是珍贵蛋白质和高营养的良好来源！";
+		close;
+	}
+}
+
+verus01,172,146,4	script	Lame Journalist#1	4_M_HUBOY,{
+	if (ep15_2_brigan < 2 || ep15_2_brigan > 3 && ep15_2_brigan < 8) {
+		mes "[新秀记者]";
+		mes "你好！我是新秀记者特拉普！月刊《布里根的冒险队2》！即使有危险，我也会报道这些故事！";
+		close;
+	}
+	if (ep15_2_brigan == 2) {
+		mes "[新秀记者]";
+		mes "你好！我是特拉普！月刊布里根冒险小队2的最新成员！我的前辈担心吗？我会报道这个故事并回来！";
+		close2;
+		erasequest 13195;// Monthly Brigan
+		ep15_2_brigan = 3;
+		end;
+	}
+	if (ep15_2_brigan == 3) {
+		mes "[新秀记者]";
+		mes "请告诉她不要那么担心！我现在也是一名记者了！不过，如果您有时间，我希望您能帮我做点什么。我的意思是稍后。";
+		close;
+	}
+	switch( select( "询问是否安全", "有什么可以帮忙的吗？", "Converse" ) ) {
+	case 1:
+		mes "[新秀记者]";
+		if (isbegin_quest(13195) == 0) {
+			mes "格里尔斯被称为生存之王！因为他即使在最极端的地区也能生存！我想成为那样的酷记者。";
+			close;
+		}
+		mes "她真的很关心我！告诉她格里尔斯的工作一完成我就跟去！";
+		close2;
+		erasequest 13195;// Monthly Brigan
+		end;
+	case 2:
+		mes "[新秀记者]";
+		switch( checkquest(13201,PLAYTIME) ) {
+		case -1:
+		case 2:
+			switch( checkquest(13200,HUNTING) ) {
+			case -1:
+				mes "我鼓起勇气跟着他，但这很危险。如果可以的话你能帮我吗？";
+				next;
+				if (select( "帮助新秀记者特拉普", "拒绝" ) == 1) {
+					mes "[新秀记者]";
+					mes "请为我消灭怪物吧！我已经尽力了，但我还是不习惯。我求你了。";
+					if (isbegin_quest(13201))
+						erasequest 13201;
+					setquest 13200;
+				}
+				close;
+			case 0:
+			case 1:
+				mes "因为“生存之王”的绰号，我以为灰熊擅长战斗，但他实际上只擅长生存。怪物一出现，他就如风一般消失了。";
+				close;
+			case 2:
+				mes "已经消灭掉这么多了吗？我还没说完，但谢谢你！";
+				erasequest 13200;// Monthly Brigan : Rookie's Request
+				setquest 13201;// Rookie's Request - Complete
+				getexp 1000000,500000;
+				close;
+			}
+		case 0:
+		case 1:
+			mes "我正在为成为一名专业生存记者而努力奋斗！即使...不是现在，但请稍后再回来，如果您同意的话！";
+			close;
+		}
+	case 3:
+		mes "[新秀记者]";
+		mes "实现世界的真相和正义，是记者的使命！不管遇到什么困难和环境，我们都要保护他们两个！";
+		close;
+	}
+}
+
+
+// Memory record
+un_bunker,382,335,3	script	Box#e152p00	4_ENERGY_BLUE,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	.@npc_name$ = strnpcinfo(1);
+	if (ep15_1_atnad == 27 && countitem(6824) < 5) {
+		if (.@npc_name$ == "Box")
+			mes "这是一个松散密封的盒子。";
+		else if (.@npc_name$ == "Under desk")
+			mes "桌子下面有东西闪闪发亮。";
+		else if (.@npc_name$ == "Machine Remains") {
+			mes "随机的机器残骸堆成一堆。";
+			mes "在静止的机器残骸中可以看到一个熟悉的物体。";
+		}
+		else if (.@npc_name$ == "Thicket") {
+			mes "尽管在地下和内部，灌木丛仍在生长。";
+			mes "灌木丛下有东西在闪闪发光。";
+		}
+		else if (.@npc_name$ == "Organized food tray")
+			mes "食物托盘整齐地叠放在一起。";
+		else if (.@npc_name$ == "Document pile") {
+			mes "各种文件和办公用品堆成一堆。";
+			mes "大部分文字已损坏且难以阅读。";
+		}
+		next;
+		if (select( "充分检查。", "退出。" ) == 2) {
+			mes "决定调查别的事情。";
+			close;
+		}
+		progressbar "ffff00",3;
+		disablenpc();
+		initnpctimer;
+		if (.@npc_name$ == "Box") {
+			mes "在盒子里发现了一份记忆记录。";
+			mes "它似乎是在包裹其他东西时掉落的。";
+		}
+		else if (.@npc_name$ == "Under desk")
+			mes "找到了记忆记录。";
+		else if (.@npc_name$ == "Machine Remains")
+			mes "在机器残骸中发现内存记录。";
+		else if (.@npc_name$ == "Thicket")
+			mes "在灌木丛中发现了一份记忆记录。";
+		else if (.@npc_name$ == "Organized food tray") {
+			mes "在整齐堆放的食物托盘之间发现了一份记忆记录。";
+			mes "整理食物托盘时它掉下来了吗？";
+		}
+		else if (.@npc_name$ == "Document pile") {
+			mes "在成堆的文件中发现了一份记忆记录。";
+			mes "看来是有人故意藏在那里的。";
+		}
+		getitem 6824,1;	// Lab_Memory_Record
+		close;
+	}
+	if (countitem(6824) > 4) {
+		if (.@npc_name$ == "Box")
+			mes "这个盒子里的记忆记录已经被收集起来了。";
+		else if (.@npc_name$ == "Under desk") {
+			mes "收集了足够的内存记录。";
+			mes "无需继续爬行和搜索。";
+		}
+		else if (.@npc_name$ == "Machine Remains") {
+			mes "收集了足够的内存记录。";
+			mes "不再需要翻阅垃圾堆。";
+		}
+		else if (.@npc_name$ == "Thicket") {
+			mes "收集了足够的内存记录。";
+			mes "无需继续穿过灌木丛。";
+		}
+		else if (.@npc_name$ == "Organized food tray") {
+			mes "收集了足够的内存记录。";
+			mes "无需一一检查食物托盘。";
+		}
+		else if (.@npc_name$ == "Document pile") {
+			mes "收集了足够的内存记录。";
+			mes "不再需要翻阅一堆文件。";
+		}
+		close;
+	}
+	if (isbegin_quest(7652) != 1) {
+		mes "没有发现什么特别的。";
+		close;
+	}
+	mes "通过搜索可能会发现一些东西。";
+	next;
+	if (select( "充分检查。", "退出。" ) == 2) {
+		mes "决定调查别的事情。";
+		close;
+	}
+	progressbar "ffff00",3;
+	disablenpc();
+	initnpctimer;
+	mes "找到了记忆记录。";
+	getitem 6824,1;	// Lab_Memory_Record
+	close;
+
+OnTimer30000:
+	enablenpc();
+	stopnpctimer;
+	end;
+}
+un_bunker,87,167,3	duplicate(Box#e152p00)	Under desk#e152p01	4_ENERGY_BLUE
+un_bunker,316,243,3	duplicate(Box#e152p00)	Under desk#e152p02	4_ENERGY_BLUE
+un_bunker,103,175,3	duplicate(Box#e152p00)	Under desk#e152p03	4_ENERGY_BLUE
+
+un_bunker,50,292,3	duplicate(Box#e152p00)	Machine Remains#e152p04	4_ENERGY_BLUE
+un_bunker,57,314,3	duplicate(Box#e152p00)	Machine Remains#e152p05	4_ENERGY_BLUE
+un_bunker,128,314,3	duplicate(Box#e152p00)	Machine Remains#e152p06	4_ENERGY_BLUE
+un_bunker,143,308,3	duplicate(Box#e152p00)	Machine Remains#e152p07	4_ENERGY_BLUE
+un_bunker,147,287,3	duplicate(Box#e152p00)	Machine Remains#e152p08	4_ENERGY_BLUE
+
+un_bunker,245,360,3	duplicate(Box#e152p00)	Thicket#e152p09	4_ENERGY_BLUE
+un_bunker,286,348,3	duplicate(Box#e152p00)	Thicket#e152p10	4_ENERGY_BLUE
+un_bunker,331,375,3	duplicate(Box#e152p00)	Thicket#e152p11	4_ENERGY_BLUE
+
+un_bunker,321,305,3	duplicate(Box#e152p00)	Organized food tray#e152p12	4_ENERGY_BLUE
+un_bunker,287,304,3	duplicate(Box#e152p00)	Organized food tray#e152p13	4_ENERGY_BLUE
+
+un_bunker,288,263,3	duplicate(Box#e152p00)	Document pile#e152p14	4_ENERGY_BLUE
+un_bunker,280,243,3	duplicate(Box#e152p00)	Document pile#e152p15	4_ENERGY_BLUE
+
+verus02,60,30,1	script	Strewn paper#e152a01	4_ENERGY_BLUE,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 无法进行任务，因为你拥有太多物品。 -";
+		close;
+	}
+	if (isbegin_quest(7645) == 0 && isbegin_quest(7650) == 0 && ep15_1_atnad != 19) {
+		mes "没有发现什么特别的。";
+		close;
+	}
+	else if (ep15_1_atnad == 19 && countitem(6757) < 1)
+		callsub(S_Type, 1);
+	else if (ep15_1_atnad == 20) {
+		mes "决定将堆中找到的‘记忆记录’交给伊恩·阿特纳德博士。";
+		mes "现在只剩下一张难以阅读的纸。";
+		close;
+	}
+	else if (ep15_1_atnad == 23 && countitem(6757) < 5)
+		callsub(S_Type, 2);
+	else if (countitem(6757) > 4) {
+		mes "收集了足够的内存记录。";
+		mes "不再需要翻阅垃圾堆。";
+		close;
+	}
+	else if (isbegin_quest(7650) == 1 && countitem(6757) < 5)
+		callsub(S_Type, 3);
+	mes "没有发现什么特别的。";
+	close;
+
+OnTimer60000:
+	stopnpctimer;
+	enablenpc();
+	end;
+
+S_Type:
+	.@type = getarg(0):
+	if (.@type == 3)
+		mes "通过搜索可能会发现一些东西。";
+	else {
+		mes "各种文件和办公用品堆成一堆。";
+		mes "大部分文字已损坏且难以阅读。";
+	}
+	next;
+	if (select( "充分检查。", "退出。" ) == 2) {
+		mes "决定调查别的事情。";
+		close;
+	}
+	progressbar "ffff00",3;
+	disablenpc();
+	initnpctimer;
+	getitem 6757,1;// Memory_Record
+
+	switch(.@type) {
+	case 1:
+		mes "当您翻阅杂乱的文件和办公用品时，您发现了一个以前从未见过的物体。";
+		mes "^4d4dff需要检查它是否有足够的研究价值才能带回给Ian Atnad博士。^000000";
+		erasequest 7642;// Explore Research facilities
+		setquest 7643;// Mysterious Piece
+		ep15_1_atnad = 20;
+		close;
+	case 2:
+		mes "在成堆的文件中发现了一份记忆记录。";
+		mes "看来是有人故意藏在那里的。";
+		close;
+	case 3:
+		mes "找到了记忆记录。";
+		close;
+	}
+	end;
+}
+verus02,178,32,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a02	4_ENERGY_BLUE
+verus02,102,135,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a03	4_ENERGY_BLUE
+verus02,42,37,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a04	4_ENERGY_BLUE
+verus02,155,64,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a05	4_ENERGY_BLUE
+verus02,80,129,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a06	4_ENERGY_BLUE
+verus02,29,129,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a07	4_ENERGY_BLUE
+verus02,125,85,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a08	4_ENERGY_BLUE
+verus02,51,237,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a09	4_ENERGY_BLUE
+verus02,160,150,3	duplicate(Strewn paper#e152a01)	Strewn paper#e152a10	4_ENERGY_BLUE
+
+verus04,172,149,3	script	Commander Arquien#e152v01	4_F_EDEN_MASTER,{
+	mes "[尼罗河]";
+	if (ep15_1_atnad < 23) {
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "我只是..不想让人知道我在那里..";
+		mes "如果您有事，我们就在伊甸集团办公室正式见面吧。";
+		close3;
+	}
+	switch(ep15_1_atnad) {
+	case 23:
+		if (countitem(6757) < 5) {// Memory_Record
+			cutin "Arquien_n_atnad04.bmp",2;
+			mes "你不记得我在办公室跟你说过的话吗？";
+			mes "我说如果你想玩的话，你至少需要五个。";
+			next;
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "[尼罗河]";
+			mes "其他部分应该在你第一次找到“记忆记录”的地方。";
+			mes "所以去那里彻底搜查该地区。";
+			close3;
+		}
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "你带来了吗？";
+		mes "好的。像这样把它们放在一起...";
+		mes "把它放在这里...";
+		next;
+		mes "[尼罗河]";
+		mes "好了，一切准备就绪。";
+		mes "您自己按下播放开关。";
+		delitem 6757,5;// Memory_Record
+		erasequest 7645;// Piece of Memory Record
+		setquest 7646;// Play Memory Record
+		ep15_1_atnad = 24;
+		emotion ET_SURPRISE, getnpcid(0,"Record player#e152a01");
+		close3;
+	case 24:
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "就是这里的桌子。";
+		mes "我已经设置好了，你就可以操作了。";
+		mes "你只需要玩它。";
+		close3;
+	case 25:
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "……内容没什么大不了的。";
+		mes "为什么……提到了 Atnad 这个名字？";
+		mes "老夫也知道吗？";
+		next;
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "不，不。他大概不知道。";
+		mes "总感觉这件事还有点道理。";
+		mes "..啊，这样的想法不是我的事。";
+		next;
+		mes "[尼罗河]";
+		mes "你去把内容告诉他。";
+		mes "还有这个记忆记录..哦..？";
+		specialeffect EF_SPELLBREAKER,AREA,"Record player#e152a01";
+		next;
+		select("刚刚发生了什么..");
+		mes "[尼罗河]";
+		mes "这是什么..?是静态的吗？";
+		mes "内容不会被删除吧？";
+		mes "这种类型叫什么。是物理记录吗？";
+		mes "我不确定，但内容本身应该没问题。";
+		mes "如果这么多消失了那就麻烦了。";
+		next;
+		mes "[尼罗河]";
+		mes "向老人复述大意，并问他为什么提到阿特纳德这个名字。";
+		erasequest 7646;// Play Memory Record
+		setquest 7647;// Report Memory Record
+		ep15_1_atnad = 26;
+		getexp 750000,500000;
+		close3;
+	case 26:
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "你还记得要点吗？";
+		mes "就去举报吧。";
+		mes "告诉他我会亲自收集这些物品。";
+		mes "他可能不会有任何问题。";
+		mes "因为老头实在是太优秀了。";
+		close3;
+	case 27:
+		if (countitem(6824) < 5) {// // Lab_Memory_Record
+			cutin "Arquien_n_atnad04.bmp",2;
+			mes "哈。那个老头..";
+			mes "他自己永远不会来这里，不是吗？";
+			mes "那么这次是实验室记忆记录？";
+			next;
+			cutin "Arquien_n_atnad03.bmp",2;
+			mes "[尼罗河]";
+			mes "我可以帮你按一下电唱机开关。";
+			mes "我不够慷慨吗？";
+			next;
+			mes "[尼罗河]";
+			mes "带回你想玩的实验室的记忆记录。";
+			mes "你知道必须收集 5 个，对吗？";
+			close3;
+		}
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "所以就是这些事情。";
+		mes "好的。";
+		mes "我感觉不太好，但工作就是工作。";
+		next;
+		mes "[尼罗河]";
+		mes "完成了。";
+		mes "只要玩一下你就会得到你想要的。";
+		mes "正确记录信息并将其传递给医生。知道了？";
+		delitem 6824,5;// Lab_Memory_Record
+		ep15_1_atnad = 28;
+		close3;
+	case 28:
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "电唱机就在我旁边。";
+		mes "自己听，自己录信息。";
+		close3;
+	case 29:
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "那么，嘎吱嘎吱的声音不是静电声，而是连接部分破裂的声音？";
+		mes "重新连接到5就可以播放了，内容会保留...";
+		mes "反正...";
+		next;
+		mes "[尼罗河]";
+		mes "..这次的内容又很奇特。";
+		mes "实验工作，是说把这里变成这个样子的实验吗？";
+		mes "我指的是实验室的记忆记录。";
+		next;
+		cutin "Arquien_n_atnad04.bmp",2;
+		mes "[尼罗河]";
+		mes "或许它对于揭开这个区域的秘密起到了很大的作用？";
+		mes "尽管其中一些发现重复了相同的内容。";
+		next;
+		select("展示一块。");
+		cutin "Arquien_n_atnad02.bmp",2;
+		mes "[尼罗河]";
+		mes "嗬..这很有趣。";
+		mes "唱片中间是否有空白？";
+		mes "这部分被打破了。";
+		mes "我从这件作品中感受到了一种巨大的邪恶设计。";
+		mes "请务必小心处理。";
+		mes "你不知道会发生什么。";
+		next;
+		cutin "Arquien_n_atnad03.bmp",2;
+		mes "[尼罗河]";
+		mes "谈论这些记忆记录。";
+		mes "听起来很有趣。";
+		mes "我要去参加，所以下次把记忆记录带给我。";
+		next;
+		mes "[尼罗河]";
+		mes "你明白我在说什么吗？";
+		mes "然后，去找老者报告这个消息。";
+		erasequest 7648;// Memory Records of the Laboratories
+		setquest 7649;// Report Memory Record Content
+		ep15_1_atnad = 30;
+		getexp 750000,500000;
+		next;
+		mes "^4d4dff您现在可以通过Arquien Nile Atnad接收收集记忆记录的每日任务。^000000";
+		close3;
+	default:
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "这是怎么回事？";
+		next;
+		switch( select( "研究设施记忆记录", "实验室记忆记录", "Converse", "我刚刚顺便过来了。" ) ) {
+		case 1:
+			mes "[尼罗河]";
+			switch( checkquest(7651,PLAYTIME) ) {
+			case -1:
+				if (isbegin_quest(7650) > 0) {
+					if (countitem(6757) < 5) {
+						mes "5 研究设施记忆记录。";
+						mes "我期待着再次听到我的祖先的消息。";
+						close3;
+					}
+					mes "你获得了所有的记忆记录。";
+					mes "我想知道有多少记忆记录有这个内容？";
+					next;
+					mes "[尼罗河]";
+					mes "我想我们没有选择收集尽可能多的信息？";
+					mes "播放唱片的准备工作完成。";
+					mes "现在只能玩了。";
+					delitem 6757,5;// Memory_Record
+					if (isbegin_quest(7654) == 0)
+						setquest 7654;// Play Research facilities Memory Records
+					close3;
+				}
+				mes "你来这里是为了收集研究设施的记忆记录吗？";
+				mes "让我们做我们一直在做的事情。";
+				mes "收集 5 个研究设施记忆记录。";
+				next;
+				mes "[尼罗河]";
+				mes "与此同时，我将准备好电唱机以便立即播放。";
+				mes "不知道这次会是什么内容呢？";
+				next;
+				if (select( "接受。","拒绝。" ) == 2) {
+					mes "[尼罗河]";
+					mes "嗯，我能做什么呢。";
+					mes "您可能也很忙，因为您必须回答每个人的问题。";
+					mes "那么稍后再见。";
+					close3;
+				}
+				mes "[尼罗河]";
+				mes "我就知道你会这么说。";
+				mes "你也对内容感到好奇吧？";
+				mes "我也会很期待的。";
+				setquest 7650;// Collect Memory Records of Research facilities
+				close3;
+			case 0:
+			case 1:
+				mes "至于收集研究设施记忆记录，我们决定每天只收集一次吧？";
+				mes "我们是否应该通过缓慢而粗暴的工作来让老人陷入焦虑？";
+				next;
+				mes "[尼罗河]";
+				mes "所以，如果过了我建议的时间，就回来吧。";
+				mes "而且你也会很累。";
+				mes "我不是那种把人推来推去的人。";
+				close3;
+			case 2:
+				erasequest 7651;// One Memory a Day
+				mes "嗯..我们应该重新开始收集记忆记录吗？";
+				mes "如果您愿意，请告诉我。";
+				mes "同时我将调整电唱机。";
+				close3;
+			}
+		case 2:
+			mes "[尼罗河]";
+			switch( checkquest(7653,PLAYTIME) ) {
+			case -1:
+				if (isbegin_quest(7652) > 0) {
+					if (countitem(6824) < 5) {
+						mes "5个实验室区域的记忆记录。";
+						mes "不知道这次多萝西女士会说什么。";
+						close3;
+					}
+					mes "我看到你已经获得了所有实验室的记忆记录。";
+					mes "我想知道有多少记忆记录有这个内容？";
+					next;
+					mes "[尼罗河]";
+					mes "我想我们没有选择收集尽可能多的信息？";
+					mes "播放唱片的准备工作完成。";
+					mes "现在只能玩了。";
+					delitem 6824,5;// Lab_Memory_Record
+					if (isbegin_quest(7655) == 0)
+						setquest 7655;// Play Laboratories Memory Records
+					close3;
+				}
+				mes "你来这里是为了收集研究设施的记忆记录吗？";
+				mes "让我们做我们一直在做的事情。";
+				mes "我的意思是^4d4dff在实验室的地下设施^000000中收集了5个实验室的记忆记录。";
+				next;
+				mes "[尼罗河]";
+				mes "与此同时，我将准备好电唱机以便立即播放。";
+				mes "不知道这次会是什么内容呢？";
+				next;
+				if (select( "接受。", "拒绝。" ) == 2) {
+					mes "[尼罗河]";
+					mes "嗯，我能做什么呢。";
+					mes "您可能也很忙，因为您必须回答每个人的问题。";
+					mes "那么稍后再见。";
+					close3;
+				}
+				mes "[尼罗河]";
+				mes "我就知道你会这么说。";
+				mes "你也对内容感到好奇吧？";
+				mes "我也会很期待的。";
+				setquest 7652;// Collect Memory Records of Laboratories
+				close3;
+			case 0:
+			case 1:
+				cutin "Arquien_n_atnad01.bmp",2;
+				mes "至于收集实验室记忆记录，我们决定每天只收集一次吧？";
+				mes "我们是否应该通过缓慢而粗暴的工作来让老人陷入焦虑？";
+				next;
+				mes "[尼罗河]";
+				mes "所以，如果过了我建议的时间，就回来吧。";
+				mes "而且你也会很累。";
+				mes "我不是那种把人推来推去的人。";
+				close3;
+			case 2:
+				erasequest 7653;// One Memory a Day 2
+				mes "嗯..我们应该重新开始收集记忆记录吗？";
+				mes "如果您愿意，请告诉我。";
+				mes "同时我将调整电唱机。";
+				close3;
+			}
+		case 3:
+			mes "[尼罗河]";
+			if (ep15_1_atnad != 30) {
+				cutin "Arquien_n_atnad02.bmp",2;
+				mes "事实上，我对父亲并没有真正的怨恨。";
+				mes "我只是想听一句道歉……";
+				close3;
+			}
+			if (ep15_2_permit == 6) {
+				mes "等等，有什么事吗？";
+				mes "那个帐篷就是挖掘队所在的地方吧？";
+				mes "好像有人来​​访？";
+				mes "现在就一起去吧！";
+				cutin "",255;
+				close;
+			}
+			mes "你想说什么？";
+			next;
+			select("关于最后的探索");
+			mes "[尼罗河]";
+			mes "啊，那个..？";
+			mes "忘记那件事吧。";
+			mes "现在想来，我需要直接听他说。";
+			next;
+			mes "[尼罗河]";
+			mes "根据奥雷斯的说法，他盲目地坚持着尤佩罗斯。";
+			mes "我想我现在可能知道他为什么这么做了。";
+			next;
+			select("或许是为了记忆记录里的内容？");
+			mes "[尼罗河]";
+			mes "这是正确的。";
+			mes "老头儿。我父亲大概也隐约知道。";
+			mes "他正在寻找他的根源。";
+			mes "虽然这是我的童年记忆，但爷爷们却有很多秘密。";
+			next;
+			cutin "Arquien_n_atnad03.bmp",2;
+			mes "[尼罗河]";
+			mes "即便如此……哈哈。我真的可以成为维鲁斯这个地区的后裔吗？";
+			mes "很可能只是同名而已。哈哈哈...";
+			close3;
+		case 4:
+			mes "[尼罗河]";
+			cutin "Arquien_n_atnad01.bmp",2;
+			mes "嘿。我没有那么多空闲时间好吗？";
+			close3;
+		}
+	}
+}
+
+verus04,170,150,3	script	Record player#e152a01	CLEAR_NPC,{
+	if (.is_playing == 1) {
+		mes "这个东西目前正在播放..";
+		close;
+	}
+	if (ep15_1_atnad == 24) {
+		.is_playing = 1;
+		mes "播放内存记录的声音信息。";
+		sleep2 1000;
+		npctalk "呼呼————Zizip——";
+		sleep2 3000;
+		npctalk "齐齐普——嘿！你在干什么？嘿，你在听吗？";
+		sleep2 3000;
+		npctalk "我在听。泽尔特。 .. 啊！你。你的声音进来了！";
+		sleep2 3000;
+		npctalk "什么？你在录音吗？为了什么？";
+		sleep2 3000;
+		npctalk "对于.. Zizizip--- 安装。啊..它将是-zizizip。";
+		sleep2 3000;
+		npctalk "哈哈哈哈哈哈你是这么想的吗？没有人能像你阿特纳德那样。你不是吗——zizzip。";
+		sleep2 1000;
+		npctalk "..阿特纳德？";
+		sleep2 3000;
+		npctalk "Zizizip--zizip..它会..哭泣---.. Bzz----";
+		sleep2 3000;
+		.is_playing = 0;
+		next;
+		ep15_1_atnad = 25;
+		mes "内存记录中的所有声音信息均已播放。";
+		close;
+	}
+	if (ep15_1_atnad == 28) {
+		.is_playing = 1;
+		mes "播放内存记录的声音信息。";
+		sleep2 1000;
+		npctalk "我是多萝西·弗洛伦斯。今天我在监控室拿到了一份记忆记录。";
+		sleep2 4000;
+		npctalk "它可能是实验当天记录的黑匣子。我会玩它！";
+		sleep2 4000;
+		npctalk "Zizip--啊..首先是静态噪音...啊。就在那里。";
+		sleep2 4000;
+		npctalk "祝你好运..";
+		sleep2 4000;
+		npctalk "（女声）哈..我后悔没有谈过恋爱。";
+		sleep2 4000;
+		npctalk "（另一个女声）啊......我应该在吃鸡肉和啤酒的时候看到这个......zizizip--";
+		sleep2 4000;
+		npctalk "啊？这就是全部吗？但这个声音。啊啊啊阿特米娅检查了她的衣服！";
+		sleep2 4000;
+		npctalk "..嗯..我明白了。当天。这就是发生的事情......";
+		sleep2 4000;
+		npctalk "点击";
+		sleep2 3000;
+		.is_playing = 0;
+		next;
+		mes "内存记录中的所有声音信息均已播放。";
+		ep15_1_atnad = 29;
+		if (countitem(22691) < 1 && countitem(22692) < 1 && countitem(22693) < 1 && countitem(22694) < 1 && countitem(22695) < 1) {
+			getitem 22691,1;// Piece_Of_Record1
+			setquest 7653;// One Memory a Day 2
+		}
+		next;
+		mes "当您尝试弹出记忆记录时，连接部分会发出破裂声并恢复到分解状态。";
+		close;
+	}
+	if (ep15_1_atnad < 30) {
+		cutin "Arquien_n_atnad01.bmp",2;
+		mes "[尼罗河]";
+		mes "你能不问就不要碰东西吗？";
+		close3;
+	}
+	.@quest_7654 = isbegin_quest(7654);// Play Research facilities Memory Records
+	if (.@quest_7654 != 1 && isbegin_quest(7655) != 1) {
+		mes "没有更多的记忆记录可供播放。";
+		close;
+	}
+	.is_playing = 1;
+	mes "播放内存记录的声音信息。";
+	sleep2 1000;
+	if (.@quest_7654 == 1) {
+		switch( rand(1,14) ) {
+		case 1:
+			npctalk "printf（你好，世界！）";
+			sleep2 4000;
+			npctalk "返回0";
+			sleep2 4000;
+			npctalk "至此已完成编码并射出 10 支箭。";
+			sleep2 4000;
+			npctalk "费迪南德";
+			break;
+		case 2:
+			npctalk "你好，塔蒂奥";
+			sleep2 4000;
+			npctalk "不知道已经过去多少年了。";
+			sleep2 4000;
+			npctalk "我想我给了你永生是一件好事。";
+			sleep2 4000;
+			npctalk "我想你知道外界探索小组的成果吧？我要住在外面。";
+			sleep2 4000;
+			npctalk "在这片科学文明只是神话的土地上，我要像原始人一样生活。";
+			sleep2 4000;
+			npctalk "我应该放弃科学并学习这种叫做魔法的东西吗？哈哈哈哈哈哈";
+			sleep2 4000;
+			npctalk "咂！别再说蠢话了！";
+			sleep2 4000;
+			npctalk "啊。。又被击中了。我的..zizizip..受伤了...zizizip";
+			break;
+		case 3:
+			npctalk "你好，塔蒂奥。你能收集并捡起它们吗？";
+			sleep2 4000;
+			npctalk "我正在为你独自一人在城市里玩耍。";
+			sleep2 4000;
+			npctalk "很抱歉把我们所有的希望和绝望都倾倒在你身上。";
+			sleep2 4000;
+			npctalk "你要在这座城市的坟墓里孤独地待多久？";
+			sleep2 4000;
+			npctalk "我决定为你隐藏记忆记录。";
+			sleep2 4000;
+			npctalk "当然我也没有忘记那些小包裹~！";
+			sleep2 4000;
+			npctalk "我希望能找到并聆听这些音乐。";
+			sleep2 4000;
+			npctalk "...您永远的伴侣。莱塞·阿特纳德.";
+			break;
+		case 4:
+			npctalk "啊测试测试..哦..它有效吗？";
+			sleep2 4000;
+			npctalk "大家好，我是软件工程师 Sukrita。";
+			sleep2 4000;
+			npctalk "今天我就来给大家介绍一下Sukuta引擎中使用Sukuta语言的注意事项。";
+			sleep2 4000;
+			npctalk "Skuta 语言可以使用全局变量和局部变量。";
+			sleep2 4000;
+			npctalk "全局变量就像魔鬼，如果你陷入了甜蜜的诱惑";
+			sleep2 4000;
+			npctalk "全局变量你会感到心悸";
+			sleep2 4000;
+			npctalk "超过 1 个字节的空间或特殊语法会导致冷汗诱发癫痫。";
+			sleep2 4000;
+			npctalk "下次我会解释 Skuta 语言的替代方案 mhm mhm";
+			sleep2 4000;
+			npctalk "Sukurita 语言是我 Sukurita 发明的。嘿嘿嘿嘿";
+			break;
+		case 5:
+			npctalk "Click-zizip 不要阻止我 Puhahaha 我会记录下来！";
+			sleep2 4000;
+			npctalk "普里哈哈哈哈哈哈";
+			sleep2 4000;
+			npctalk "我没有疯，这很有趣！这是因为它很有趣。";
+			sleep2 4000;
+			npctalk "这是笑的时候吗？";
+			sleep2 4000;
+			npctalk "啊，当然不是。不是但是呵呵呵呵";
+			sleep2 4000;
+			npctalk "……那我该哭吗？啊？这还没有给你带来希望吗？";
+			sleep2 4000;
+			npctalk "我们的希望！";
+			sleep2 4000;
+			npctalk "唠叨-！啊……这……这粉碎是Ze..Zerte……";
+			sleep2 4000;
+			npctalk "啊。天啊。你有很多事要处理。";
+			sleep2 4000;
+			npctalk "啊？这还在录音？";
+			break;
+		case 6:
+			npctalk "今天是维鲁斯市的最后一次实验，也是第4885个项目。";
+			sleep2 4000;
+			npctalk "大家都希望实验成功，纷纷到实验室去观察。";
+			sleep2 4000;
+			npctalk "除了我，他在研究设施里轮班。哈哈哈哈";
+			sleep2 4000;
+			npctalk "啊哈。现在我认为塔蒂奥也不是主要项目的成员，所以他和我一起在研究设施中。";
+			sleep2 4000;
+			npctalk "这是孤独的工作....除非有好事发生..";
+			sleep2 4000;
+			npctalk "刚刚不是有东西闪过吗？嘿！";
+			sleep2 4000;
+			npctalk "繁荣！这很酷";
+			break;
+		case 7:
+			npctalk "灾难系统屏幕上不再显示恐慌室幸存者的测量结果。";
+			sleep2 4000;
+			npctalk "到底发生了什么？";
+			sleep2 4000;
+			npctalk "到底是怎么回事？是系统错误吗？";
+			sleep2 4000;
+			npctalk "塔蒂奥说草莓博士还活着。";
+			sleep2 4000;
+			npctalk "祈祷他的心没事……";
+			break;
+		case 8:
+			npctalk "你好，我是拉塞·阿特纳德。我今天又在研究设施值夜班。";
+			sleep2 4000;
+			npctalk "啊？这是什么？阿特纳德现在在做什么？";
+			sleep2 4000;
+			npctalk "哎呀，你看不出来吗？我正在录音！";
+			sleep2 4000;
+			npctalk "在当今时代，您使用的是过时的录音机吗？录制视频。视频。";
+			sleep2 4000;
+			npctalk "这就是我的选择！请不要打扰我。哎哟你攻击了我的弱点啊哈哈哈";
+			sleep2 4000;
+			npctalk "...Zzip..单击";
+			break;
+		case 9:
+			npctalk "嘿，莱塞。我对某件事很好奇。你能回答吗？";
+			sleep2 4000;
+			npctalk "它是什么？你把我的录音机推到我脸上干什么？";
+			sleep2 4000;
+			npctalk "由于这是一次采访。我是泽特，正在努力达到生物工程的顶峰。";
+			sleep2 4000;
+			npctalk "吹嘘够了。你好奇什么？它是什么？";
+			sleep2 4000;
+			npctalk "这只是关于塔蒂奥，但他主要是变体。我听说那是弗雷萨博士的作品，对吗？";
+			sleep2 4000;
+			npctalk "是的。弗雷萨博士在来到维鲁斯市之前，曾研究过神经系统的机械替代……";
+			sleep2 4000;
+			npctalk "哦啦啦，那那对情侣是因为那份工作才认识的？";
+			sleep2 4000;
+			npctalk "大概是这样吧？塔蒂奥本人毫不犹豫地同意了人体实验，这也是理所应当的。";
+			sleep2 4000;
+			npctalk "嗯.. 那么这是单方面迷恋的结果吗？";
+			sleep2 4000;
+			npctalk "呃？你在说什么？你是怎么得出这个结论的？别人的私生活那...";
+			sleep2 4000;
+			npctalk "不看。 Fresa 将人区分为对研究有用的人和无用的人。";
+			sleep2 4000;
+			npctalk "然后有一天带来了一位丈夫，所以你知道我有多惊讶吗？！？！？！";
+			sleep2 4000;
+			npctalk "所以，你感兴趣的不是生物技术，而是弗雷萨博士的爱情生活。啊..";
+			sleep2 4000;
+			npctalk "正确的！弗雷萨！那个石头女人有情人..！！你能相信吗？";
+			sleep2 4000;
+			npctalk "我很抱歉但是。这还不够吗？";
+			sleep2 4000;
+			npctalk "嘿嘿！塔蒂奥，什么时候。做过。你来啦哈哈哈哈！！！这。这没什么！";
+			sleep2 4000;
+			npctalk "碰撞 - -！点击！";
+			break;
+		case 10:
+			npctalk "爆炸第 32 天，语音记录 Lasse Atnad。";
+			sleep2 4000;
+			npctalk "实验室内的爆炸并未停止。";
+			sleep2 4000;
+			npctalk "参与或观察实验的研究人员状况未知";
+			sleep2 4000;
+			npctalk "除非通过连接到紧急室的系统生命体。";
+			sleep2 4000;
+			npctalk "爆炸后，广场和研究设施仅部分受损。";
+			sleep2 4000;
+			npctalk "然而..一些研究人员和公民被未知的冲击波杀死了..";
+			sleep2 4000;
+			npctalk "我们目前正在利用研究设施组装探索机器人。";
+			sleep2 4000;
+			npctalk "维鲁斯市的主电源已停止，因此最少的设施由辅助能源立方体供电。";
+			sleep2 4000;
+			npctalk "能量风暴仍然使进入实验室隔离区变得不可能。";
+			sleep2 4000;
+			npctalk "大多数研究人员厌倦了在城市中的孤立，并主张对时间睡眠进行研究。";
+			sleep2 4000;
+			npctalk "..在这个坟墓里我们无法逃脱，我们梦想着回到过去。";
+			break;
+		case 11:
+			npctalk "哪一边，我是站在对研究有用的一边。";
+			sleep2 4000;
+			npctalk "当涉及到她时，这就是我存在的价值。这是我很清楚的事实。";
+			sleep2 4000;
+			npctalk "之所以无法拒绝，为什么我情不自禁地追随她，如同被海市蜃楼所引诱……";
+			sleep2 4000;
+			npctalk "因为她已经是我心的主人了……";
+			sleep2 4000;
+			npctalk "沙沙";
+			sleep2 4000;
+			npctalk "赫克..你。所以这是真的。一如既往，这是一种单向的迷恋。";
+			sleep2 4000;
+			npctalk "啊？你在看什么……呃，那不是塔蒂奥的日记吗？";
+			sleep2 4000;
+			npctalk "安静！笨蛋！如果我们被抓住怎么办！";
+			sleep2 4000;
+			npctalk "什么，你一边看一边录音？！？！？！？！";
+			break;
+		case 12:
+			npctalk "你好，塔蒂奥。";
+			sleep2 4000;
+			npctalk "大多数人都死了。";
+			sleep2 4000;
+			npctalk "尽管我为了生存而将那些人都化为尘土，但我并不感到内疚。";
+			sleep2 4000;
+			npctalk "最重要的是，我担心你独自一人。";
+			sleep2 4000;
+			npctalk "所以我决定停止绝望。";
+			sleep2 4000;
+			npctalk "明天了。当我们所有人和你一起离开这个地方的那一天......";
+			sleep2 4000;
+			npctalk "直到我们再次见面，再见。";
+			break;
+		case 13:
+			npctalk "你好。这是西尔维娅·罗兰。";
+			sleep2 4000;
+			npctalk "我的爱好是吃鸡。我喜欢啤酒~。";
+			sleep2 4000;
+			npctalk "呃……今天接手一个项目有点太过分了。";
+			sleep2 4000;
+			npctalk "老实说，这不是我感兴趣的主题。";
+			sleep2 4000;
+			npctalk "文森特也参与其中。";
+			sleep2 4000;
+			npctalk "啊.......";
+			sleep2 4000;
+			npctalk "不用等等等。我本来不想解释这一点。哦现在！！取消吧！！ - 齐齐齐齐齐";
+			break;
+		case 14:
+			npctalk "爆炸第一天，Lasse Atnad 的语音记录。";
+			sleep2 4000;
+			npctalk "实验评价为失败。自动灾害装置在韦鲁斯市投入使用。";
+			sleep2 4000;
+			npctalk "与外界隔绝，并由区域划分。";
+			sleep2 4000;
+			npctalk "系统正在快速恢复，但与外界隔绝是最大的问题。";
+			sleep2 4000;
+			npctalk "也许维萨斯城正在将自己评估为灾难的根源。";
+			sleep2 4000;
+			npctalk "与外界隔离，防止伤害蔓延，保持沉默……";
+			sleep2 4000;
+			npctalk "......该死...";
+			sleep2 4000;
+			npctalk "我不想把这种事记录下来......";
+			break;
+		}
+		sleep2 3000;
+		.is_playing = 0;
+		next;
+		mes "内存记录中的所有声音信息均已播放。";
+		erasequest 7650;// Collect Memory Records of Research facilities
+		erasequest 7654;// Play Research facilities Memory Records
+		setquest 7651;// One Memory a Day
+		if (ep15_2_permit < 5)
+			ep15_2_permit++;
+	}
+	else {
+		switch( rand(1,18) ) {
+		case 1:
+			npctalk "这是多萝西·弗洛伦斯。多萝西只知道如何洗衣服。";
+			sleep2 4000;
+			npctalk "我想用我仅有的一切来拯救人们的遗骸。";
+			sleep2 4000;
+			npctalk "这个地方有很多人。他们还活着。";
+			sleep2 4000;
+			npctalk "我希望尽可能多地保存人们的故事。";
+			sleep2 4000;
+			npctalk "我希望有人会记得我们的过去。";
+			sleep2 4000;
+			npctalk "好吧..那么...我应该先采访谁？";
+			break;
+		case 2:
+			npctalk "这是多萝西·弗洛伦斯。";
+			sleep2 4000;
+			npctalk "个人任务已在 Fresa 博士的指挥下制定。";
+			sleep2 4000;
+			npctalk "我们必须在这里生存下去，直到外面的能量风暴停止。";
+			sleep2 4000;
+			npctalk "我们决定就食物问题咨询前食堂老板梁桑。";
+			sleep2 4000;
+			npctalk "他们说我们可以坚持大约40天。";
+			sleep2 4000;
+			npctalk "这个恐慌室太棒了。";
+			break;
+		case 3:
+			npctalk "这是多萝西·弗洛伦斯。";
+			sleep2 4000;
+			npctalk "今天我们举办了一个小型聚会";
+			sleep2 4000;
+			npctalk "我们第一次收获了正在种植的植物！";
+			sleep2 4000;
+			npctalk "据生物技术经理称，至少每两周可以收获一次";
+			sleep2 4000;
+			npctalk "由于生长加速技术。";
+			sleep2 4000;
+			npctalk "今天我又可以品尝到新鲜的葡萄了。";
+			break;
+		case 4:
+			npctalk "这是多萝西·弗洛伦斯。这是第三晚。";
+			sleep2 4000;
+			npctalk "人们期待弗雷萨博士成为当前局势的领导者，并使昨天的批评变得毫无意义。";
+			sleep2 4000;
+			npctalk "生物技术工程师、机械工程师、设施经理……我们拥有我们需要的每一个人。";
+			sleep2 4000;
+			npctalk "也有像我这样地位卑微的厨房女佣。";
+			sleep2 4000;
+			npctalk "我来这里只是为了送一些衣服。";
+			sleep2 4000;
+			npctalk "我怎么就陷入这样的事情了呢？";
+			break;
+		case 5:
+			npctalk "我是多萝西·弗洛伦斯。今天我在监控室拿到了一份记忆记录。";
+			sleep2 4000;
+			npctalk "它可能是实验当天记录的黑匣子。我会玩它！";
+			sleep2 4000;
+			npctalk "Zizip--啊..首先是静态噪音...啊。就在那里。";
+			sleep2 4000;
+			npctalk "祝你好运..";
+			sleep2 4000;
+			npctalk "（女声）哈..我后悔没有谈过恋爱。";
+			sleep2 4000;
+			npctalk "（另一个女声）啊......我应该在吃鸡肉和啤酒的时候看到这个......zizizip--";
+			sleep2 4000;
+			npctalk "啊？这就是全部吗？但这个声音。啊啊啊阿特米娅检查了她的衣服！";
+			sleep2 4000;
+			npctalk "..嗯..我明白了。当天。这就是发生的事情......";
+			sleep2 4000;
+			npctalk "点击";
+			break;
+		case 6:
+			npctalk "这是多萝西·弗洛伦斯。";
+			sleep2 4000;
+			npctalk "生物学家培育的植物有一天发芽了。";
+			sleep2 4000;
+			npctalk "我应该高兴吗？";
+			sleep2 4000;
+			npctalk "这是值得高兴的事情，但是，仍然与外界没有联系。";
+			sleep2 4000;
+			npctalk "一周过去了，惊慌失措的房间里的人们唯一的喜悦……";
+			sleep2 4000;
+			npctalk "正在观察植物的发芽。";
+			break;
+		case 7:
+			npctalk "这是多萝西·弗洛伦斯。这是恐慌的房间生活的一个月。";
+			sleep2 4000;
+			npctalk "由于空气净化器坏了，人们从早上就开始忙碌。";
+			sleep2 4000;
+			npctalk "我只能袖手旁观，因为我唯一会做的就是洗衣服。";
+			sleep2 4000;
+			npctalk "幸运的是，机器狂热分子已经制造出了一种新的空气净化器";
+			sleep2 4000;
+			npctalk "所以呼吸不会有问题。";
+			sleep2 4000;
+			npctalk "真是一种解脱，不是吗？";
+			break;
+		case 8:
+			npctalk "这是多萝西。这是最后一次录音。";
+			sleep2 4000;
+			npctalk ".我不想死。呜咽..";
+			sleep2 4000;
+			npctalk "我不想和他们一样！！";
+			sleep2 4000;
+			npctalk "……我想活下去……";
+			break;
+		case 9:
+			npctalk "这是多萝西·弗洛伦斯。我正在记录这个";
+			sleep2 4000;
+			npctalk "因为必须有人留下这场可怕事故的记忆。";
+			sleep2 4000;
+			npctalk "实验发生的爆炸与外界完全隔绝。";
+			sleep2 4000;
+			npctalk "目前大部分人已疏散至恐慌室。";
+			sleep2 4000;
+			npctalk "与外界没有任何联系。";
+			sleep2 4000;
+			npctalk "暂时出去会很困难。";
+			break;
+		case 10:
+			npctalk "大家好，我是阿特。维鲁斯市的助理工程师。";
+			sleep2 4000;
+			npctalk "哈哈。。这不是很尴尬吗？";
+			sleep2 4000;
+			npctalk "我..不久前用地堡里的葡萄发酵了酒精。";
+			sleep2 4000;
+			npctalk "我们在地表失去的生命越多，地堡里的生活就越贫困。";
+			sleep2 4000;
+			npctalk "我没有分享那么多，但我旁边的那个人一定喝醉了，因为他一直粘着我。";
+			sleep2 4000;
+			npctalk "这家伙难道就没有比粘着我更好的事了吗？";
+			sleep2 4000;
+			npctalk "我属于大众派。哈哈。";
+			sleep2 4000;
+			npctalk "不过，看到那个粘人的家伙，不知怎么让我想起了那个孩子。";
+			sleep2 4000;
+			npctalk "黑色的长辫子和布满雀斑的脸......";
+			sleep2 4000;
+			npctalk "..吃！你能检查一下吗？";
+			sleep2 4000;
+			npctalk "啊..抱歉。我得去上班了。当我有机会时，我会做得更多。";
+			sleep2 4000;
+			npctalk "呃，下次继续Ate的采访吧！这就是多萝西！";
+			break;
+		case 11:
+			npctalk "这是多萝西·弗洛伦斯。爆炸发生第 50 天。";
+			sleep2 4000;
+			npctalk "经过长时间的讨论，弗雷萨博士的研究人员似乎决定";
+			sleep2 4000;
+			npctalk "穿过没有能量风暴的分区部分。";
+			sleep2 4000;
+			npctalk "他们要挖一条地下隧道离开……！";
+			sleep2 4000;
+			npctalk "我以为我们被防护墙困住了？";
+			break;
+		case 12:
+			npctalk "你好！吃！你有时间吗？";
+			sleep2 4000;
+			npctalk "你好，多萝西。这是上次的事吗？我真的必须继续吗？";
+			sleep2 4000;
+			npctalk "我确实答应了。别无选择。我当时在哪儿？";
+			sleep2 4000;
+			npctalk "那个留着黑色长辫子、满脸雀斑的孩子！";
+			sleep2 4000;
+			npctalk "啊，是的。那个孩子。他会烦人地跟着我。";
+			sleep2 4000;
+			npctalk "那时的他更加像个孩子。 ..哈..";
+			sleep2 4000;
+			npctalk "想到自己终于在维鲁斯城摆脱了他，我松了口气。";
+			sleep2 4000;
+			npctalk "直到我在实验室遇见他。哈哈，这不就是个小孩子吗？";
+			sleep2 4000;
+			npctalk "始终坦诚地表达自己的感情，不变……";
+			sleep2 4000;
+			npctalk "但那个孩子，从来没有告诉过我他喜欢我，因为他的固执。";
+			sleep2 4000;
+			npctalk "虽然这话写在脸上。";
+			sleep2 4000;
+			npctalk "像跟踪狂一样追着我。哼……哈哈哈";
+			sleep2 4000;
+			npctalk "但今天我想念你孩子。 ..呵呵。";
+			sleep2 4000;
+			npctalk "......但是那天你可能，嗯......那天......";
+			sleep2 4000;
+			npctalk "…………多萝西. ..我们停下来吧。";
+			break;
+		case 13:
+			npctalk "这是多萝西·弗洛伦斯。一个月又一周过去了。";
+			sleep2 4000;
+			npctalk "今天有坏消息。";
+			sleep2 4000;
+			npctalk "到多重防护墙外测量大气的人还没有回来。";
+			sleep2 4000;
+			npctalk "也许……他们被能量风暴吞噬了。";
+			sleep2 4000;
+			npctalk "我希望他们能再次找到自由。";
+			break;
+		case 14:
+			npctalk "这是多萝西·弗洛伦斯。爆炸第 44 天。";
+			sleep2 4000;
+			npctalk "听说防护墙内的一部分人发生了奇怪的变化。";
+			sleep2 4000;
+			npctalk "显然，这与外出有关。";
+			sleep2 4000;
+			npctalk "人们争先恐后地检查墙壁。";
+			sleep2 4000;
+			npctalk "我们会发生什么……？";
+			break;
+		case 15:
+			npctalk "-  -  -  - 砰 -  - -";
+			sleep2 4000;
+			npctalk "乌尔克..";
+			sleep2 4000;
+			npctalk "呜呜呜...";
+			sleep2 4000;
+			npctalk "为什么！为什么会发生这样的事！！！";
+			sleep2 4000;
+			npctalk "呜呜呜..";
+			sleep2 4000;
+			npctalk "-  -  - -哪个 -  - -";
+			sleep2 4000;
+			npctalk "--Zizip-啊 --doctor --之前 --zizizip-- 他 zizip- 看起来 zizip--for..";
+			sleep2 4000;
+			npctalk "——Zizizip——就是这样。";
+			sleep2 4000;
+			npctalk "-点击-";
+			sleep2 4000;
+			npctalk "嗯。医生看起来也很累。";
+			sleep2 4000;
+			npctalk "啊!这是开着的？如果把它放得太久，我会遇到麻烦的。";
+			sleep2 4000;
+			npctalk "嗯！嗯！这是香草卢德。由于某些原因，我这些天很累。";
+			sleep2 4000;
+			npctalk "我想从目前的情况来看，看到每个人的状态并不令人震惊。";
+			sleep2 4000;
+			npctalk "呼……";
+			sleep2 4000;
+			npctalk "嗡嗡..";
+			break;
+		case 16:
+			npctalk "这是多萝西·弗洛伦斯。爆炸第二天。仍然令人困惑。";
+			sleep2 4000;
+			npctalk "人们纷纷批评";
+			sleep2 4000;
+			npctalk "该项目的首席研究员兼经理弗雷萨博士。";
+			sleep2 4000;
+			npctalk "这是一场单凭个人力量无法挽救的事故。";
+			sleep2 4000;
+			npctalk "也许那些人需要有人承担责任。";
+			break;
+		case 17:
+			npctalk "这是多萝西·弗洛伦斯。";
+			sleep2 4000;
+			npctalk "昨天事件发生后，他们正在将生活必需品搬进里面。";
+			sleep2 4000;
+			npctalk "似乎值得信赖的恐慌室的一部分被什么东西污染了。";
+			sleep2 4000;
+			npctalk "我们正在搬到最干净的地区。";
+			break;
+		case 18:
+			npctalk "我的名字是文森特";
+			sleep2 4000;
+			npctalk "呃~我已经进服务器机房更换Mother Comp的主CPU了~";
+			sleep2 4000;
+			npctalk "到处都是灰尘……该死……啊，麦克风开着……";
+			sleep2 4000;
+			npctalk "让我们来看看。我要安装的设备是大约11年生产的Nana产品。它是一个昂贵的CPU。";
+			sleep2 4000;
+			npctalk "即使是很小的划痕也相当于失去几套公寓的价值。然而它现在是我的玩具了。";
+			sleep2 4000;
+			npctalk "像这样把里面的人拿出来。安装新产品。";
+			sleep2 4000;
+			npctalk "一切都完成了。这真的很简单。";
+			sleep2 4000;
+			npctalk "嘿西尔维娅想吃鸡肉吗？我想要一份加葱的..(Bzz..bzz)";
+			sleep2 4000;
+			npctalk "嗡嗡..嗡嗡";
+			break;
+		}
+		sleep2 3000;
+		.is_playing = 0;
+		next;
+		mes "内存记录中的所有声音信息均已播放。";
+		erasequest 7652;// Collect Memory Records of Laboratories
+		erasequest 7655;// Play Laboratories Memory Records
+		setquest 7653;// One Memory a Day 2
+		// memory record daily quests
+		if (countitem(22691) < 1 && countitem(22692) < 1 && countitem(22693) < 1 && countitem(22694) < 1 && countitem(22695) < 1)
+			getitem rand(22691,22695),1;// Record_Fragment
+	}
+	getexp 1500000,1000000;
+	next;
+	specialeffect EF_SPELLBREAKER;
+	mes "当您尝试弹出记忆记录时，连接部分会发出破裂声并恢复到分解状态。";
+	next;
+	cutin "Arquien_n_atnad01.bmp",2;
+	mes "[尼罗河]";
+	mes "该死。虽然只有一个内容，但每次不播放时它都会令人烦恼地中断。";
+	mes "我开始认为它是故意这样做的。";
+	mes "清理起来好麻烦..";
+	next;
+	mes "[尼罗河]";
+	mes "为什么要用那么多的科学和才华之类的东西来做这样的事情呢？";
+	mes "更不用说偶尔会有重叠。";
+	mes "感觉就像有人在诱骗我们无论如何都要了解过去。";
+	next;
+	mes "[尼罗河]";
+	mes "反正我会把这个内容单独记录下来，交给老爷子。";
+	mes "今天干得好。";
+	next;
+	mes "[尼罗河]";
+	if (ep15_2_permit != 5)
+		mes "然后明天再来。";
+	else {
+		mes "等等，有什么事吗？";
+		mes "那个帐篷就是挖掘队所在的地方吧？";
+		mes "好像有人来​​访？";
+		mes "现在就一起去吧！";
+		ep15_2_permit = 6;
+	}
+	close3;
+}
+
+
+// Bunker - ep15_2_memory
+function	script	F_time_limit_recorder	{
+	if (getarg(1,1) && checkweight(1301,1) == 0) {
+		mes "- 你携带的物品太多，无法继续任务 -";
+		close;
+	}
+	setarray .@quest_id[0], 5341,5351,5358,5363,5366;
+	for ( .@i = 0; .@i < 5; ++.@i ) {
+		switch( checkquest(.@quest_id[.@i],PLAYTIME) ) {
+		case -1:
+			set getelementofarray( getarg(0), .@i ), 0;
+			break;
+		case 0:
+		case 1:
+			set getelementofarray( getarg(0), .@i ), 1;
+			break;
+		case 2:
+			mes "你的整个身体突然变得沉重起来，你周围的时间似乎过得更快了。";
+			close2;	// custom (player can't read the text without this)
+			ep15_2_memory = 0;
+			for ( .@i = 5341; .@i <= 5369; ++.@i ) {
+				if (isbegin_quest(.@i) > 0)
+					erasequest .@i;
+			}
+			if (isbegin_quest(5370) == 1)
+				mes "你的整个身体突然变得沉重起来，你周围的时间似乎过得更快了。";
+			else {
+				mes "啊-这种温馨舒适的感觉...el.....ling";
+				if (getarg(2,1))
+					warp "un_bunker",98,91;
+				else
+					consumeitem 602;// Wing_Of_Butterfly
+			}
+			close;
+		}
+	}
+	return;
+}
+
+un_bk_q,103,147,4	script	Bunker Sayhu#EP15.2MR	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
+		emotion 46;
+		mes "[萨胡地堡]";
+		mes "首先恭喜你活下来了。我很高兴你能进防空洞。如果你在外面..";
+		next;
+		mes "[萨胡地堡]";
+		mes "...";
+		next;
+		mes "[萨胡地堡]";
+		mes "呼……即使是想想也让我头晕。我们俩都很幸运。你不这么认为吗？";
+		next;
+		select("我也这么认为。");
+		emotion 28;
+		mes "[萨胡地堡]";
+		mes "但我还是感到很同情。看起来很多人都把这次爆炸归咎于弗雷萨。";
+		next;
+		mes "[萨胡地堡]";
+		mes "爆炸不可能只是洛娜一个人的责任。";
+		next;
+		select("他的？");
+		emotion 1, playerattached();
+		mes "[萨胡地堡]";
+		mes "尽管实验失败了，但他确实是一个伟大的人。";
+		next;
+		mes "[萨胡地堡]";
+		mes "她负责在混乱的局势中计算出幸存者的数量。";
+		next;
+		mes "[萨胡地堡]";
+		mes "如果是我的话...";
+		next;
+		mes "[萨胡地堡]";
+		mes "我可能会四处闲逛，不知道现在该做什么。";
+		next;
+		mes "[萨胡地堡]";
+		mes "呃——我想我也应该去帮忙。想帮忙吗？";
+		next;
+		select("同意帮忙。");
+		emotion 15;
+		mes "[萨胡地堡]";
+		mes "真的吗？你会帮忙吗？真是松了一口气，因为我对自己去没有信心。";
+		next;
+		mes "[萨胡地堡]";
+		mes "这个房间的中央有一位神态冷酷的研究员吧？";
+		next;
+		mes "[萨胡地堡]";
+		mes "她就是实验的负责人洛娜·弗雷萨。人们通常称她为弗雷萨博士。";
+		next;
+		if (isbegin_quest(5370) == 1)
+			erasequest 5370;
+		setquest 5341;
+		setquest 5342;
+		mes "[萨胡地堡]";
+		mes "你要不要去问问她是否需要帮助？";
+		close;
+	}
+	if (.@cooldown_status_day[0] == 1) {
+		.@quest_day_1 = 
+			isbegin_quest(5342) + isbegin_quest(5343) + isbegin_quest(5344) + isbegin_quest(5345) + isbegin_quest(5346) + 
+			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
+		switch(.@quest_day_1) {
+		case 1:
+			mes "[萨胡地堡]";
+			mes "这个房间的中央有一位神态冷酷的研究员吧？";
+			next;
+			mes "[萨胡地堡]";
+			mes "你要不要去问问她是否需要帮助？";
+			close;
+		case 2:
+		case 3:
+			mes "[萨胡地堡]";
+			mes "我被要求找出有多少人会做饭。";
+			next;
+			mes "[萨胡地堡]";
+			mes "尽管防空洞又复杂又宽广，我们还是要努力。";
+			close;
+		default:
+			mes "[萨胡地堡]";
+			mes "谢谢你帮助她。";
+			next;
+			mes "[萨胡地堡]";
+			mes "是因为我们帮忙了吗？我想我看到了她脸上淡淡的微笑。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		emotion 1;
+		mes "[萨胡地堡]";
+		mes "呃？！我好像以前在防空洞里没见过你吧？";
+		next;
+		mes "[萨胡地堡]";
+		mes "啊!您是帮忙搬运新制作的空气净化装置的冒险家吗？";
+		next;
+		mes "[萨胡地堡]";
+		mes "由于那些粗心的机械师，你的工作量很大。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[萨胡地堡]";
+		mes "生物工程师成功培育了葡萄，对吗？";
+		next;
+		mes "[萨胡地堡]";
+		mes "他们说每两周至少可以收获一次葡萄？收获日可能是今天或明天。";
+		next;
+		mes "[萨胡地堡]";
+		mes "我想尽快品尝新鲜的葡萄。这几天我只吃干粮。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[萨胡地堡]";
+		mes "防空洞里流传着这样的谣言。";
+		next;
+		mes "[萨胡地堡]";
+		mes "不久前，化学物质专家和其他几个人走出了防空洞。";
+		next;
+		mes "[萨胡地堡]";
+		mes "显然，一些受污染的物质进入了防空洞。";
+		next;
+		mes "[萨胡地堡]";
+		mes "听说由于污染，抽搐的病人数量正在迅速增加。";
+		next;
+		mes "[萨胡地堡]";
+		mes "啊!这只是一个谣言！谣言！！";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[萨胡地堡]";
+		mes "看来坊间流传的传闻是真的。";
+		next;
+		mes "[萨胡地堡]";
+		mes "我听说他们正在将物资转移到洁净区 Z-2，尽管它是因为污染物而新开放的。";
+		next;
+		mes "[萨胡地堡]";
+		mes "我想我会伸出援助之手，哪怕只是一点点。";
+		close;
+	}
+	mes "[萨胡地堡]";
+	mes "很高兴认识你，我叫邦克·萨胡。";
+	close;
+}
+
+un_bk_q,93,168,4	script	Dr.Fresa#EP15.2MR	4_F_BERRYTEA,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		.@quest_day_1 = 
+			isbegin_quest(5342) + isbegin_quest(5343) + isbegin_quest(5344) + isbegin_quest(5345) + isbegin_quest(5346) + 
+			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
+		switch(.@quest_day_1) {
+		case 1:
+			emotion 17;
+			mes "[洛娜·弗雷萨]";
+			mes "对不起。现在我有点忙，有几个问题。我们可以稍后再说吗？";
+			next;
+			select("不！我的意思是..");
+			emotion 0;
+			emotion 1;
+			mes "[洛娜·弗雷萨]";
+			mes "什么？！冒险家想要帮助我吗？";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "好的。人们无法控制，因为他们感到震惊和困惑。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "如果有令人生畏的冒险家帮忙的话，控制混乱的群众会更容易。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "好的！！我同意。也正好赶上一个棘手的问题。";
+			next;
+			select("麻烦的问题？");
+			emotion 1, playerattached();
+			mes "[洛娜·弗雷萨]";
+			mes "像你这样各种专长的人员，岗位没变，很容易掌握，但其他员工就是问题了。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "当然，他们是根据各自团队的紧急情况指南采取行动的。";
+			next;
+			emotion 20;
+			mes "[洛娜·弗雷萨]";
+			mes "从这里我无法弄清楚他们在哪里以及他们在做什么。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "所以我在想如果你";
+			next;
+			.@r = rand(1,4);
+			setquest (5342 + .@r);
+			mes "[洛娜·弗雷萨]";
+			if (.@r == 1)
+				mes "你能算出^0000FF生物工程师^000000的数量吗？";
+			else if (.@r == 2)
+				mes "你能算出^0000FF机械师^000000的数量吗？";
+			else if (.@r == 3)
+				mes "你能算出^0000FF设施经理^000000的数量吗？";
+			else
+				mes "你能算出^0000FF化学物质专家^000000的人数吗？";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "我请求你帮个忙，尽管在这个又大又复杂的避难所里这并不容易。";
+			close;
+		case 2:
+			emotion 0;
+			emotion 1;
+			mes "[洛娜·弗雷萨]";
+			mes "啊？！你已经回来了？你回来得比我想象的还要早。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "我请求的恩惠..啊？！啊！！";
+			next;
+			mes "[洛娜·弗雷萨]";
+			if (isbegin_quest(5343) == 1)
+				mes "^0000FF生物工程师^000000的数量？他们说有多少人幸存下来？";
+			else if (isbegin_quest(5344) == 1)
+				mes "^0000FF机械师^000000的数量？他们说有多少人幸存下来？";
+			else if (isbegin_quest(5345) == 1)
+				mes "^0000FF设施经理^000000的数量？他们说有多少人幸存下来？";
+			else
+				mes "^0000FF化学物质专家^000000的数量？他们说有多少人幸存下来？";
+			next;
+			input(.@num,1,99);
+			mes "[洛娜·弗雷萨]";
+			mes "" + .@num + "你说的人？";
+			next;
+			emotion 20;
+			mes "[洛娜·弗雷萨]";
+			mes "这很奇怪吗？根据名单，他们从来没有达到过这个数字。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "你能再检查一下吗？";
+			close;
+		case 3:
+			emotion 0;
+			mes "[洛娜·弗雷萨]";
+			mes "啊!你在这里。避难所的内部是不是有点复杂？我向你请求的帮助..";
+			next;
+			mes "[洛娜·弗雷萨]";
+			if (isbegin_quest(5343) == 1)
+				mes "^0000FF生物工程师^000000的数量？他们说有多少人幸存下来？";
+			else if (isbegin_quest(5344) == 1)
+				mes "^0000FF机械师^000000的数量？他们说有多少人幸存下来？";
+			else if (isbegin_quest(5345) == 1)
+				mes "^0000FF设施经理^000000的数量？他们说有多少人幸存下来？";
+			else
+				mes "^0000FF化学物质专家^000000的数量？他们说有多少人幸存下来？";
+			next;
+			input(.@num,1,99);
+			if (.@num != ep15_2_memory) {
+				mes "[洛娜·弗雷萨]";
+				mes "" + .@num + "你说的人？";
+				next;
+				mes "[洛娜·弗雷萨]";
+				mes "这很奇怪吗？根据名单，他们从来没有达到过这个数字。";
+				next;
+				mes "[洛娜·弗雷萨]";
+				mes "你能再检查一下吗？";
+				close;
+			}
+			mes "[洛娜·弗雷萨]";
+			mes "真的吗？和清单上的数字大致相同。干得好。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "Sayhu 说冒险家喜欢这种东西。这是对你帮助的补偿。";
+			next;
+			mes "小圆胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			for ( .@i = 5342; .@i < 5351; ++.@i ) {
+				if (isbegin_quest(.@i) > 0)
+					erasequest .@i;
+			}
+			ep15_2_memory = 0;
+			setquest 5370;
+			getexp 750000,750000;
+			mes "[洛娜·弗雷萨]";
+			mes "干得好。我知道这很令人沮丧，但我希望你能适应防空洞里的生活，直到外面的情况变得更安全。";
+			close;
+		default:
+			mes "[洛娜·弗雷萨]";
+			mes "干得好。我知道这很令人沮丧，但我希望你能适应防空洞里的生活，直到外面的情况变得更安全。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[1] == 1 || .@cooldown_status_day[2] == 1) {
+		emotion 17;
+		mes "[洛娜·弗雷萨]";
+		mes "对不起。现在我有点忙，有几个问题。我们可以稍后再说吗？";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		.@quest_day_4 = isbegin_quest(5364) + isbegin_quest(5365);
+		if (.@quest_day_4 == 1) {
+			mes "[洛娜·弗雷萨]";
+			mes "你怎么进来的？很奇怪！";
+			close;
+		}
+		if (.@quest_day_4 == 2) {
+			emotion 17;
+			mes "[洛娜·弗雷萨]";
+			mes "对不起。现在我有点忙，有几个问题。我们可以稍后再说吗？";
+			next;
+			select("我有紧急事要告诉你。");
+			mes "[洛娜·弗雷萨]";
+			mes "什么？！到底是怎么回事？";
+			next;
+			mes "说明临时诊所的现状。";
+			next;
+			emotion 23;
+			mes "[洛娜·弗雷萨]";
+			mes "病人同时抽搐……这不好。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "我得到了它。我们需要采取措施。";
+			next;
+			if (isbegin_quest(5364) > 0)
+				erasequest 5364;
+			if (isbegin_quest(5365) > 0)
+				erasequest 5365;
+			setquest 5370;
+			getexp 750000,750000;
+			mes "小圆胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			mes "[洛娜·弗雷萨]";
+			mes "谢谢你通知我。";
+			close;
+		}
+		emotion 19;
+		mes "[洛娜·弗雷萨]";
+		mes "形势严峻，我们需要迅速采取措施。";
+		close;
+	}
+	emotion 17;
+	mes "[洛娜·弗雷萨]";
+	mes "对不起。现在我有点忙，有几个问题。我们可以稍后再说吗？";
+	close;
+}
+
+un_bk_q,213,303,4	script	Bioengineer Touring#EP15.2MR	4W_M_02,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		.@quest_day_1 = 
+			isbegin_quest(5342) + isbegin_quest(5343) + isbegin_quest(5344) + isbegin_quest(5345) + isbegin_quest(5346) + 
+			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
+		switch(.@quest_day_1) {
+		case 2:
+			if (isbegin_quest(5343) != 1) {
+				mes "[生物工程师巡演]";
+				mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+				close;
+			}
+			emotion 1;
+			mes "[生物工程师巡演]";
+			mes "啊？！你是谁？";
+			next;
+			select("我是...");
+			emotion 0;
+			mes "[生物工程师巡演]";
+			mes "啊!弗雷萨博士派你去检查幸存者分配的情况？";
+			next;
+			mes "[生物工程师巡演]";
+			mes "真是一种解脱。灾难网络不久前发生，我们刚刚确认有多少生物工程师幸存。";
+			next;
+			setquest 5347;
+			.@r = rand(19,22);
+			ep15_2_memory = .@r;
+			mes "[生物工程师巡演]";
+			mes "我们已经确认^FF0000" + .@r + "^000000生物工程师包括我自己都幸存下来。";
+			next;
+			mes "[生物工程师巡演]";
+			mes "噢耶！告诉弗雷萨博士，生物工程师正在根据紧急情况指南使用生长加速技术进行食品生产。";
+			next;
+			emotion 15;
+			mes "[生物工程师巡演]";
+			mes "我会指望你。";
+			close;
+		case 3:
+			if (isbegin_quest(5347) != 1) {
+				mes "[生物工程师巡演]";
+				mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+				close;
+			}
+			mes "[生物工程师巡演]";
+			mes "我们已经确认^FF0000" + ep15_2_memory + "^000000生物工程师包括我自己都幸存下来。";
+			next;
+			mes "[生物工程师巡演]";
+			mes "噢耶！告诉弗雷萨博士，生物工程师正在根据紧急情况指南使用生长加速技术进行食品生产。";
+			next;
+			emotion 15;
+			mes "[生物工程师巡演]";
+			mes "我会指望你。";
+			close;
+		default:
+			mes "[生物工程师巡演]";
+			mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		emotion 17;
+		mes "[生物工程师巡演]";
+		mes "等一下。您现在无法进入农场。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		.@quest_day_3 = isbegin_quest(5359) + isbegin_quest(5360) + isbegin_quest(5361) + isbegin_quest(5362);
+		switch(.@quest_day_3) {
+		case 1:
+			mes "[生物工程师巡演]";
+			mes "你在采摘葡萄吗？你辛苦了！";
+			close;
+		case 2:
+			mes "[生物工程师巡演]";
+			mes "我们刚刚完成了最后一次葡萄收获，正在为下一次葡萄收获做准备。";
+			next;
+			emotion 17;
+			mes "[生物工程师巡演]";
+			mes "如果人员进出频繁，可能会干扰工作，因此禁止出入。";
+			close;
+		default:
+			emotion 17;
+			mes "[生物工程师巡演]";
+			mes "如果人来往频繁，可能会干扰下一次收获的工作，因此将被禁止进入。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[3] == 1 || .@cooldown_status_day[4] == 1) {
+		mes "[生物工程师巡演]";
+		mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+		next;
+		emotion 17;
+		mes "[生物工程师巡演]";
+		mes "如果人来往频繁，可能会干扰下一次收获的工作，因此将被禁止进入。";
+		close;
+	}
+	mes "[生物工程师巡演]";
+	mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+	close;
+}
+
+un_bk_q,82,323,2	script	Mechanician Al#EP15.2MR	4_M_REPAIR,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		.@quest_day_1 = 
+			isbegin_quest(5342) + isbegin_quest(5343) + isbegin_quest(5344) + isbegin_quest(5345) + isbegin_quest(5346) + 
+			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
+		switch(.@quest_day_1) {
+		case 2:
+			if (isbegin_quest(5344) != 1) {
+				mes "[机械师艾尔]";
+				mes "太忙了。这就是我首先要求增加人手的原因。现在估计没什么用了";
+				close;
+			}
+			emotion 2;
+			mes "[机械师艾尔]";
+			mes "你是？";
+			next;
+			select("我是...");
+			emotion 20;
+			mes "[机械师艾尔]";
+			mes "弗雷萨？嗯？弗雷萨是谁？";
+			next;
+			mes "[机械师艾尔]";
+			mes "啊？！啊！！实验的总指挥是^0000FF洛娜·弗雷萨^000000。";
+			next;
+			mes "[机械师艾尔]";
+			mes "OK，冒险家大佬，身份确认完毕！！";
+			next;
+			mes "[机械师艾尔]";
+			mes "检查机械师幸存者人数是你的事吗？";
+			next;
+			setquest 5348;
+			ep15_2_memory = rand(14,18);
+			mes "[机械师艾尔]";
+			mes "一开始就没有多少人，对于那些没能进入避难所的可怜的混蛋来说太糟糕了。";
+			next;
+			mes "[机械师艾尔]";
+			mes "告诉弗雷萨、弗雷斯或者无论她叫什么名字，机械师正在检查";
+			next;
+			mes "[机械师艾尔]";
+			mes "根据紧急协议，防空洞内的机械系统。谢谢~";
+			close;
+		case 3:
+			if (isbegin_quest(5348) == 1) {
+				mes "[机械师艾尔]";
+				mes "^FF0000" + ep15_2_memory + "^000000 机械师​​幸存下来。";
+				next;
+				mes "[机械师艾尔]";
+				mes "告诉弗雷萨、弗雷斯或者不管她叫什么名字，机械师正在检查防空洞里的机械系统。";
+				close;
+			}
+			emotion 6;
+			mes "[机械师艾尔]";
+			mes "太忙了。这就是我首先要求增加人手的原因。现在估计没什么用了";
+			close;
+		default:
+			mes "[机械师艾尔]";
+			mes "机械师正在根据紧急情况指南检查内部机械系统是否存在异常情况。";
+			next;
+			emotion 6;
+			mes "[机械师艾尔]";
+			mes "该死的——我为什么要解释这个？你打扰了我所以走吧。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[机械师艾尔]";
+		mes "太忙了。这就是我首先要求增加人手的原因。现在估计没什么用了";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		.@quest_day_3 = isbegin_quest(5359) + isbegin_quest(5360) + isbegin_quest(5361) + isbegin_quest(5362);
+		switch(.@quest_day_3) {
+		case 2:
+			if (isbegin_quest(5360) != 1) {
+				mes "[机械师艾尔]";
+				mes "那颗葡萄适合我吗？它不是？呸呸！！";
+				close;
+			}
+			mes "[机械师艾尔]";
+			mes "什么？葡萄？你送这个吗？";
+			next;
+			emotion 23;
+			mes "[机械师艾尔]";
+			mes "是你徒手一件一件挑选的吗？";
+			next;
+			mes "[机械师艾尔]";
+			mes "你为什么要做这么麻烦的工作？您可以要求我们制造一台葡萄收割机。";
+			next;
+			mes "[机械师艾尔]";
+			mes "谢谢强硬。这就是补偿。弗雷斯表示，将对那些违背自己意愿卷入事故的冒险者进行补偿。";
+			next;
+			if (isbegin_quest(5359) > 0)
+				erasequest 5359;
+			if (isbegin_quest(5360) > 0)
+				erasequest 5360;
+			if (isbegin_quest(5361) > 0)
+				erasequest 5361;
+			if (isbegin_quest(5362) > 0)
+				erasequest 5362;
+			setquest 5370;
+			getexp 1000000,1000000;
+			mes "- 小圆形胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			mes "[机械师艾尔]";
+			mes "如果你遇到埃布里克，请告诉他感谢他送来的葡萄。";
+			close;
+		default:
+			mes "[机械师艾尔]";
+			mes "如果你遇到埃布里克，请告诉他感谢他送来的葡萄。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[机械师艾尔]";
+		mes "太忙了。这就是我首先要求增加人手的原因。现在估计没什么用了";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		.@quest_day_5 = isbegin_quest(5367) + isbegin_quest(5368) + isbegin_quest(5369);
+		switch(.@quest_day_5) {
+		case 1:
+			mes "[机械师艾尔]";
+			mes "啊？这是怎么回事？";
+			next;
+			mes "[机械师艾尔]";
+			mes "什么，这些物品不应该移到 Z-2 区而不是这里吗？带他们去那里。";
+			close;
+		case 2:
+			mes "[机械师艾尔]";
+			mes "啊？这是怎么回事？听说冒险家是用来搬运物资的？";
+			next;
+			select("埃农发来的消息..");
+			mes "[机械师艾尔]";
+			mes "埃农？商品经理埃农？他有话要给我吗？它是什么？";
+			next;
+			input .@string$;
+			if (isbegin_quest(5369) == 0)
+				setquest 5369;
+			if (.@string$ == "You idiots!! Stop wasting material with stupid machines!!")
+				ep15_2_memory = 1;
+			else
+				ep15_2_memory = 0;
+			mes "[" + strcharinfo(0) + "]";
+			mes "" + .@string$ + "";
+			next;
+			emotion 57;
+			mes "[机械师艾尔]";
+			mes "呃..呃..噗..噗..";
+			next;
+			mes "他看起来很震惊，而且很惊讶。消息已送达后，请返回 Ernon。";
+			close;
+		case 3:
+			emotion 57;
+			mes "[机械师艾尔]";
+			mes "呃..呃..噗..噗..";
+			next;
+			mes "他已经脱离困境了。消息已送达后，请返回 Ernon。";
+			close;
+		default:
+			emotion 57;
+			mes "[机械师艾尔]";
+			mes "呃..非..啊..啊！！";
+			next;
+			mes "他像受感染的病人一样抽搐。";
+			close;
+		}
+	}
+	mes "[机械师艾尔]";
+	mes "太忙了。这就是我首先要求增加人手的原因。现在估计没什么用了";
+	close;
+}
+
+un_bk_q,347,217,4	script	Facilities manager Remodeling#EP15.2MR	4_M_EINMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		.@quest_day_1 = 
+			isbegin_quest(5342) + isbegin_quest(5343) + isbegin_quest(5344) + isbegin_quest(5345) + isbegin_quest(5346) + 
+			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
+		switch(.@quest_day_1) {
+		case 2:
+			if (isbegin_quest(5345) != 1) {
+				mes "[设施经理改造]";
+				mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+				close;
+			}
+			emotion 1;
+			mes "[设施经理改造]";
+			mes "呃？！你好。第一次见到你。是什么风把你吹到这里来的？";
+			next;
+			select("说明情况。");
+			mes "[设施经理改造]";
+			mes "啊!是这样吗？你说弗雷萨？我的部门被安置在这里不久。";
+			next;
+			mes "[设施经理改造]";
+			mes "我只听说过弗雷萨这个名字。";
+			next;
+			setquest 5349;
+			.@r = rand(25,29);
+			ep15_2_memory = .@r;
+			mes "[设施经理改造]";
+			mes "无论如何，我们目前的设施经理人数是^FF0000" + .@r + "^000000。";
+			next;
+			mes "[设施经理改造]";
+			mes "可能还有其他一些人藏在某个地方，但现在有 ^FF0000" + .@r + "^000000。";
+			next;
+			mes "[设施经理改造]";
+			mes "路上告诉弗雷萨，设施管理人员正在检查其指定区域的设施，因为防空洞设施尚未真正使用。";
+			close;
+		case 3:
+			if (isbegin_quest(5349) == 1) {
+				mes "[设施经理改造]";
+				mes "当前设施管理员数量为^FF0000" + ep15_2_memory + "^000000。";
+				next;
+				mes "[设施经理改造]";
+				mes "告诉弗雷萨，设施管理人员正在检查其指定区域的设施，因为防空洞设施尚未真正使用。";
+				close;
+			}
+			mes "[设施经理改造]";
+			mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+			close;
+		default:
+			mes "[设施经理改造]";
+			mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[设施经理改造]";
+		mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		.@quest_day_3 = isbegin_quest(5359) + isbegin_quest(5360) + isbegin_quest(5361) + isbegin_quest(5362);
+		switch(.@quest_day_3) {
+		case 2:
+			if (isbegin_quest(5361) != 1) {
+				mes "[设施经理改造]";
+				mes "什么！！那个葡萄！！我已经有一些了，所以我猜它不是我的。";
+				close;
+			}
+			mes "[设施经理改造]";
+			mes "好工作。";
+			next;
+			emotion 1;
+			mes "[设施经理改造]";
+			mes "有传言说机械师打碎了一棵葡萄树，但这是真的吗？";
+			next;
+			select("根据埃布里克.");
+			mes "[设施经理改造]";
+			mes "是这样想的..机械师阿尔是一位机器至上主义者。我想这就是他成为机械师的原因。";
+			next;
+			emotion 15;
+			mes "[设施经理改造]";
+			mes "不管怎样，我会喜欢你送来的这颗葡萄。这是一种奖励。";
+			next;
+			if (isbegin_quest(5359) > 0)
+				erasequest 5359;
+			if (isbegin_quest(5360) > 0)
+				erasequest 5360;
+			if (isbegin_quest(5361) > 0)
+				erasequest 5361;
+			if (isbegin_quest(5362) > 0)
+				erasequest 5362;
+			setquest 5370;
+			getexp 1000000,1000000;
+			mes "- 小圆形胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			mes "[设施经理改造]";
+			mes "如果你遇到埃布里克，请告诉他感谢他送来的葡萄。";
+			close;
+		default:
+			mes "[设施经理改造]";
+			mes "如果你遇到埃布里克，请告诉他感谢他送来的葡萄。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理改造]";
+		mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+		close;
+	}
+	mes "[设施经理改造]";
+	mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+	close;
+}
+
+un_bk_q,86,121,4	script	Chemical Substance Specialist Karsten#EP15.2MR	4_M_ALCHE_B,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		.@quest_day_1 = 
+			isbegin_quest(5342) + isbegin_quest(5343) + isbegin_quest(5344) + isbegin_quest(5345) + isbegin_quest(5346) + 
+			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
+		switch(.@quest_day_1) {
+		case 2:
+			if (isbegin_quest(5346) != 1) {
+				mes "[化学物质专家卡斯滕]";
+				mes "我们正在按照应急预案检查防空洞内是否有有害物质。";
+				close;
+			}
+			emotion 1;
+			mes "[化学物质专家卡斯滕]";
+			mes "你是谁？";
+			next;
+			select("我是...");
+			emotion 0;
+			mes "[化学物质专家卡斯滕]";
+			mes "啊!啊!弗雷萨？我在全体会议上见过她几次。";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "我记得她是这个失败项目的负责人吗？";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "反正！！";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "不是每个人都适合当导演。在这种繁忙的情况下要清点人员。";
+			next;
+			emotion 19;
+			mes "[化学物质专家卡斯滕]";
+			mes "等一下。我清点了人数并将其写在某处。";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "是这个号码吗？那个号码？啊？！这个数字。";
+			next;
+			setquest 5350;
+			.@r = rand(8,12);
+			ep15_2_memory = .@r;
+			mes "[化学物质专家卡斯滕]";
+			mes "化学物质专家总数为^FF0000" + .@r + "^000000。妈的少了很多。";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "啊!路上告诉弗雷萨，我们正在根据紧急协议检查防空洞内是否有有害物质。";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "即使我们剩下的人不多了，我们也必须做好我们的工作。";
+			close;
+		case 3:
+			if (isbegin_quest(5350) == 1) {
+				mes "[化学物质专家卡斯滕]";
+				mes "化学物质专家总数为^FF0000" + ep15_2_memory + "^000000。";
+				next;
+				mes "[化学物质专家卡斯滕]";
+				mes "告诉弗雷萨，虽然只剩下一些了，但是我们正在检查防空洞内是否有有害物质。";
+				close;
+			}
+			mes "[化学物质专家卡斯滕]";
+			mes "我们正在按照应急预案检查防空洞内是否有有害物质。";
+			close;
+		default:
+			mes "[化学物质专家卡斯滕]";
+			mes "我们正在按照应急预案检查防空洞内是否有有害物质。";
+			close;
+		}
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		emotion 18;
+		mes "[化学物质专家卡斯滕]";
+		mes "我们的化学物质专家一如既往地生活。这种地方又不能做化学实验。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		.@quest_day_3 = isbegin_quest(5359) + isbegin_quest(5360) + isbegin_quest(5361) + isbegin_quest(5362);
+		switch(.@quest_day_3) {
+		case 2:
+			if (isbegin_quest(5362) != 1) {
+				mes "[化学物质专家卡斯滕]";
+				mes "我一直只吃干粮，所以吃新鲜的葡萄让我感觉新鲜。";
+				close;
+			}
+			mes "[化学物质专家卡斯滕]";
+			mes "这是生物工程师收获的第一颗葡萄吗？";
+			next;
+			emotion 1;
+			mes "[化学物质专家卡斯滕]";
+			mes "有传言说，一棵葡萄树被机械师砸坏了，但似乎并没有影响收成。";
+			next;
+			mes "[化学物质专家卡斯滕]";
+			mes "不管怎样谢谢。我准备这个作为补偿。";
+			next;
+			if (isbegin_quest(5359) > 0)
+				erasequest 5359;
+			if (isbegin_quest(5360) > 0)
+				erasequest 5360;
+			if (isbegin_quest(5361) > 0)
+				erasequest 5361;
+			if (isbegin_quest(5362) > 0)
+				erasequest 5362;
+			setquest 5370;
+			getexp 1000000,1000000;
+			mes "- 小圆形胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			emotion 28;
+			mes "[化学物质专家卡斯滕]";
+			mes "过去几天我只吃干粮，所以我开始吃新鲜的葡萄。";
+			close;
+		default:
+			mes "[化学物质专家卡斯滕]";
+			mes "我一直只吃干粮，所以吃新鲜的葡萄让我感觉新鲜。";
+			close;
+		}
+	}
+	emotion 18;
+	mes "[化学物质专家卡斯滕]";
+	mes "我们的化学物质专家一如既往地生活。这种地方又不能做化学实验。";
+	close;
+}
+
+un_bk_q,56,286,4	script	Mechanician Mugeosi#EP15.2MR	4_M_REPAIR,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[机械师Mugeosi]";
+		mes "你是冒险家吗？这是机器仓库。";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "它原本是一个仓库，但现在被机械师用来组装防空洞的机器。";
+		next;
+		emotion 6;
+		mes "[机械师Mugeosi]";
+		mes "您想知道机械师的总数吗？我想我不知道？";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "啊!楼上的阿尔可能知道。去阿尔吧。";
+		close;
+	}
+	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
+		mes "[机械师Mugeosi]";
+		mes "移动空气净化器的冒险？";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "你看起来很坚固，就像其他研究人员提到的那样。我打赌你可以轻松举起空气净化器！";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "我们不应该命令像你这样遭遇事故的人，但情况很紧急。";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "我们制造了一台新的空气净化装置，因为之前运行的空气净化装置不久前发生了故障。";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "我们应该以模块化的形式制作它。错误地把它变成了一个完整的整体。";
+		next;
+		emotion 18;
+		mes "[机械师Mugeosi]";
+		mes "做的时候没想到！！";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "它发生了。正确的？";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "设施经理正在为很快需要空气净化装置而大惊小怪。";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "我们现在拥有的设备无法移动空气净化装置。";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "如果我们有更多时间，我们可以制造可以运输它的机器。";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "于是我们就去请教了强大的冒险家。";
+		next;
+		select("是的，先生。");
+		emotion 18;
+		mes "[机械师Mugeosi]";
+		mes "你还不清爽吗！！";
+		next;
+		if (isbegin_quest(5370) == 1)
+			erasequest 5370;
+		setquest 5351;
+		setquest 5352;
+		mes "[机械师Mugeosi]";
+		mes "我们指望你。将五台空气净化装置带到区域 C-0、F-1、F-2、I-0、Z-0。等你准备好了就跟我说话。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		.@quest_day_2 = isbegin_quest(5352) + isbegin_quest(5353) + isbegin_quest(5354) + isbegin_quest(5355) + isbegin_quest(5356) + isbegin_quest(5357);
+		if (.@quest_day_2 > 0 && .@quest_day_2 < 6) {
+			emotion 1;
+			mes "[机械师Mugeosi]";
+			mes "您准备好搬运重物了吗？";
+			next;
+			select("把它给我。");
+			if ((MaxWeight - Weight) < 10000) {
+				mes "[机械师Mugeosi]";
+				mes "你看起来很强，但看起来很弱。你不能这样抬起空气净化装置。";
+				close;
+			}
+			getitem 6825,1;
+			mes "[机械师Mugeosi]";
+			mes "将它们运送到 C-0、F-1、F-2、I-0、Z-0 区域。顺序并不重要，请小心，因为它们是精密机器。";
+			close;
+		}
+		if (.@quest_day_2 == 6) {
+			emotion 21;
+			mes "[机械师Mugeosi]";
+			mes "干得好。空气净化装置很重，对吧？";
+			next;
+			mes "[机械师Mugeosi]";
+			mes "Sayhu说冒险家都喜欢这种东西，我应该用这个作为给你工作后的补偿。";
+			next;
+			for ( .@i = 5352; .@i < 5358; .@i++ ) {
+				if (isbegin_quest(.@i) > 0)
+					erasequest .@i;
+			}
+			ep15_2_memory = 0;
+			setquest 5370;
+			getexp 1000000,1000000;
+			mes "小圆形胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			mes "[机械师Mugeosi]";
+			mes "多亏了你，我们才克服了危机。我需要制造一台可以移动重物的机器，以防这种情况再次发生。";
+			close;
+		}
+		mes "[机械师Mugeosi]";
+		mes "干得好。我们暂时放松一下吧。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[机械师Mugeosi]";
+		mes "你尝试过生物工程师用那种生长物制成的葡萄吗？";
+		next;
+		mes "[机械师Mugeosi]";
+		mes "现在我们可以在这个昏暗黑暗的防空洞里吃到新鲜的水果了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[机械师Mugeosi]";
+		mes "你是否因为人们突然袭击而感到担心？什么？你没有被感染吧？";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[机械师Mugeosi]";
+		mes "为什么每个人都拒绝我们制造可以使运输更容易的机器？呸呸！！";
+		close;
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,212,294,6	script	Zone C-0 Facilities man#EP15.2MR	4_M_EINMAN2,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[设施经理]";
+		mes "我们正在按照应急规定对防空洞内部设施进行检查。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		switch( isbegin_quest(5353) ) {
+		case 0:
+			emotion 2;
+			mes "[设施经理]";
+			mes "哦-你在这儿吗？我正在等待。";
+			next;
+			mes "[设施经理]";
+			mes "听说冒险者都强如牛，但还是印象深刻。";
+			next;
+			if (countitem(6825) < 1) {
+				mes "[设施经理]";
+				mes "但是空气净化装置在哪里呢？你没有带最重要的东西。把它带到这里来。";
+				close;
+			}
+			delitem 6825,1;
+			setquest 5353;
+			mes "[设施经理]";
+			mes "干得好。干得好。我们已收到空气净化装置。";
+			close;
+		case 1:
+			mes "[设施经理]";
+			mes "干得好。干得好。我们已收到空气净化装置。";
+			close;
+		case 2:
+			end;	// shouldn't happen
+		}
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[设施经理]";
+		mes "你尝过生物工程师酿造的葡萄吗？";
+		next;
+		mes "[设施经理]";
+		mes "科学让我们在这个地下防空洞里享受到新鲜的葡萄，真是太神奇了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理]";
+		mes "我想空气净化器可能没什么用了，因为污染物已经渗透到防空洞里了。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[设施经理]";
+		mes "你正在经历很多事情。";
+		close;
+	}
+	mes "[设施经理]";
+	mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+	close;
+}
+
+un_bk_q,223,217,4	script	Zone F-1 Facilities man#EP15.2MR	4_M_EINMAN2,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[设施经理]";
+		mes "我们正在按照应急规定对防空洞内部设施进行检查。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		switch( isbegin_quest(5354) ) {
+		case 0:
+			emotion 15;
+			mes "[设施经理]";
+			mes "哦天哪你辛苦了。您可以将物品放在这里。";
+			next;
+			mes "[设施经理]";
+			mes "哇——我听到了谣言，但你真的很强。";
+			next;
+			mes "[设施经理]";
+			mes "即使是我们四个设施经理也很难暂时举起它。";
+			next;
+			if (countitem(6825) < 1) {
+				mes "[设施经理]";
+				mes "但是空气净化装置在哪里呢？你没有带最重要的东西。把它带到这里来。";
+				close;
+			}
+			delitem 6825,1;
+			setquest 5354;
+			mes "[设施经理]";
+			mes "不管怎样，我们已经收到了空气净化器。";
+			close;
+		case 1:
+			mes "[设施经理]";
+			mes "不管怎样，我们已经收到了空气净化器。";
+			close;
+		case 2:
+			end;	// shouldn't happen
+		}
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[设施经理]";
+		mes "你尝过生物工程师酿造的葡萄吗？";
+		next;
+		mes "[设施经理]";
+		mes "科学让我们在这个地下防空洞里享受到新鲜的葡萄，真是太神奇了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理]";
+		mes "我想空气净化器可能没什么用了，因为污染物已经渗透到防空洞里了。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[设施经理]";
+		mes "你正在经历很多事情。";
+		close;
+	}
+	mes "[设施经理]";
+	mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+	close;
+}
+
+un_bk_q,372,217,6	script	Zone F-2 Facilities man#EP15.2MR	4_M_EINMAN2,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[设施经理]";
+		mes "我们正在按照应急规定对防空洞内部设施进行检查。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		switch( isbegin_quest(5355) ) {
+		case 0:
+			emotion 1;
+			mes "[设施经理]";
+			mes "啊？！您是运送空气净化装置的冒险家吗？";
+			next;
+			if (countitem(6825) < 1) {
+				mes "[设施经理]";
+				mes "但是空气净化装置在哪里呢？你没带吗？";
+				close;
+			}
+			delitem 6825,1;
+			setquest 5355;
+			mes "[设施经理]";
+			mes "我们需要快速工作，所以将物品放在这里。";
+			close;
+		case 1:
+			mes "[设施经理]";
+			mes "我们已收到空气净化装置。";
+			close;
+		case 2:
+			end;	// shouldn't happen
+		}
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[设施经理]";
+		mes "你尝过生物工程师酿造的葡萄吗？";
+		next;
+		mes "[设施经理]";
+		mes "科学让我们在这个地下防空洞里享受到新鲜的葡萄，真是太神奇了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理]";
+		mes "我想空气净化器可能没什么用了，因为污染物已经渗透到防空洞里了。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[设施经理]";
+		mes "你正在经历很多事情。";
+		close;
+	}
+	mes "[设施经理]";
+	mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+	close;
+}
+
+un_bk_q,389,276,6	script	Zone I-0 Facilities man#EP15.2MR	4_M_EINMAN2,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[设施经理]";
+		mes "我们正在按照应急规定对防空洞内部设施进行检查。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		switch( isbegin_quest(5356) ) {
+		case 0:
+			emotion 1;
+			mes "[设施经理]";
+			mes "冒险家还没送空气净化器吗？呃？！就在这里。快点..空气净化器..";
+			next;
+			if (countitem(6825) < 1) {
+				mes "[设施经理]";
+				mes "阿啥！！怎么没带啊。现在就拿来，好吗？";
+				close;
+			}
+			delitem 6825,1;
+			setquest 5356;
+			mes "[设施经理]";
+			mes "事情很紧急。稍后我会谢谢你的。。";
+			close;
+		case 1:
+			mes "[设施经理]";
+			mes "别跟我说话。每一个小时都很宝贵。";
+			close;
+		case 2:
+			end;	// shouldn't happen
+		}
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[设施经理]";
+		mes "你尝过生物工程师酿造的葡萄吗？";
+		next;
+		mes "[设施经理]";
+		mes "科学让我们在这个地下防空洞里享受到新鲜的葡萄，真是太神奇了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理]";
+		mes "我想空气净化器可能没什么用了，因为污染物已经渗透到防空洞里了。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[设施经理]";
+		mes "你正在经历很多事情。";
+		close;
+	}
+	mes "[设施经理]";
+	mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+	close;
+}
+
+un_bk_q,291,158,4	script	Zone Z-0 Facilities man#EP15.2MR	4_M_EINMAN2,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[设施经理]";
+		mes "我们正在按照应急规定对防空洞内部设施进行检查。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		switch( isbegin_quest(5357) ) {
+		case 0:
+			emotion 21;
+			mes "[设施经理]";
+			mes "哦-你在这儿吗？我正在等待。";
+			next;
+			mes "[设施经理]";
+			mes "听说冒险者都强如牛，但还是印象深刻。";
+			next;
+			if (countitem(6825) < 1) {
+				mes "[设施经理]";
+				mes "但是空气净化装置在哪里呢？你没有带最重要的东西。把它带到这里来。";
+				close;
+			}
+			delitem 6825,1;
+			setquest 5357;
+			mes "[设施经理]";
+			mes "干得好。干得好。我们已收到空气净化装置。";
+			close;
+		case 1:
+			mes "[设施经理]";
+			mes "干得好。干得好。我们已收到空气净化装置。";
+			close;
+		case 2:
+			end;	// shouldn't happen
+		}
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[设施经理]";
+		mes "你尝过生物工程师酿造的葡萄吗？";
+		next;
+		mes "[设施经理]";
+		mes "科学让我们在这个地下防空洞里享受到新鲜的葡萄，真是太神奇了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理]";
+		mes "我想空气净化器可能没什么用了，因为污染物已经渗透到防空洞里了。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[设施经理]";
+		mes "你正在经历很多事情。";
+		close;
+	}
+	mes "[设施经理]";
+	mes "我不知道防空洞是谁装备的。但它确实制作精良且坚固。";
+	close;
+}
+
+un_bk_q,220,350,4	script	Bioengineer Ebrik#EP15.2MR	4_M_01,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[生物工程师埃布里克]";
+		mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[生物工程师埃布里克]";
+		mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+		close;
+	}
+	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
+		emotion 1;
+		mes "[生物工程师埃布里克]";
+		mes "你是来帮助我们收获葡萄的冒险家吗？很高兴见到你。";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "仅靠生物工程师没有足够的人手来收获我们为防空洞内的所有人提供所需的葡萄量。";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "所以我们最终询问了冒险家。";
+		next;
+		select("还有其他人可以提供帮助吗？");
+		mes "[生物工程师埃布里克]";
+		mes "更不用提它了。我们把采摘葡萄的任务交给了蜿蜒的机械师，然后……";
+		next;
+		emotion 16;
+		mes "[生物工程师埃布里克]";
+		mes "他们最终打碎了一棵葡萄树！！";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "我们很幸运能够在他们摧毁其他树木之前发现并阻止他们。这个想法是可怕的。";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "啊!这不是重要的。";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "我们利用生长加速来使成熟的葡萄周期性地掉落。";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "如果能在葡萄树前等一下，收集到30串葡萄就好了。";
+		next;
+		mes "[生物工程师埃布里克]";
+		mes "您可以收集更多，但收获的剩余部分会自然分解并消失。";
+		next;
+		if (isbegin_quest(5370) == 1)
+			erasequest 5370;
+		setquest 5358;
+		setquest 5359;
+		mes "[生物工程师埃布里克]";
+		mes "然后土壤肥力就会部分恢复。祝你好运。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		.@quest_day_3 = isbegin_quest(5359) + isbegin_quest(5360) + isbegin_quest(5361) + isbegin_quest(5362);
+		switch(.@quest_day_3) {
+		case 1:
+			if (countitem(6826) < 30) {
+				mes "[生物工程师埃布里克]";
+				mes "我们决定为每个团队分发一个葡萄箱。";
+				next;
+				mes "[生物工程师埃布里克]";
+				mes "一盒可容纳 30~32 束，因此请相应收集。";
+				close;
+			}
+			emotion 21;
+			mes "[生物工程师埃布里克]";
+			mes "哇，干得好。我认为冒险者比机械师的能力要强得多。";
+			next;
+			mes "[生物工程师埃布里克]";
+			mes "既然葡萄已经收获了，我们是不是应该把它们分给各个小组呢？";
+			next;
+			mes "[生物工程师埃布里克]";
+			mes "我会很粗鲁地要求你在努力工作之外再帮一个忙。";
+			next;
+			mes "[生物工程师埃布里克]";
+			mes "让我们看看..你刚刚收获的葡萄";
+			next;
+			delitem 6826, countitem(6826);
+			.@r = rand(1,3);
+			setquest (5359 + .@r);
+			mes "[生物工程师埃布里克]";
+			if (.@r == 1)
+				mes "应交付给 Mechanical AI 团队。您可以将其交给 Mugeosi。";
+			else if (.@r == 2)
+				mes "应交付给设施经理团队。您可以将其交付给 Remodeling。";
+			else
+				mes "应交付给化学物质团队。你可以把这个交给卡斯滕。";
+			next;
+			mes "[生物工程师埃布里克]";
+			mes "哦！交货后您不必回来。我们将忙于开始下一个项目。";
+			next;
+			mes "[生物工程师埃布里克]";
+			mes "接收货物的人可能会给你补偿。如果他们不这样做，你可以唠叨他们。";
+			close;
+		case 2:
+			mes "[生物工程师埃布里克]";
+			mes "你手里拿着的那个葡萄盒子";
+			next;
+			mes "[生物工程师埃布里克]";
+			if (isbegin_quest(5360) == 1)
+				mes "必须交付给 Mechanical AI 团队的 Mugeosi。";
+			else if (isbegin_quest(5361) == 1)
+				mes "必须交付给设施经理团队的改造。";
+			else
+				mes "必须交付给化学物质团队的卡斯滕。";
+			next;
+			mes "[生物工程师埃布里克]";
+			mes "补偿将由接收货物的人支付，因此您不必返回这里。";
+			close;
+		default:
+			mes "[生物工程师埃布里克]";
+			mes "我以为我告诉过你不必回来无论如何，你是怎么进去的？";
+			close;
+		}
+	}
+	mes "[生物工程师埃布里克]";
+	mes "我们生物工程师正在竭尽全力为防空洞内的人们生产食物。";
+	close;
+}
+
+un_bk_q,333,333,0	script	Grape System#EP15.2MR	HIDDEN_WARP_NPC,{
+	end;
+OnInit:
+	initnpctimer;
+	end;
+OnTimer30000:
+OnTimer210000:
+	callsub( S_Random_Grap, 240,244, 389,391, 1,2,1 );
+	end;
+OnTimer60000:
+OnTimer240000:
+	callsub( S_Random_Grap, 271,275, 389,391, 1,1,2 );
+	end;
+OnTimer90000:
+OnTimer270000:
+	callsub( S_Random_Grap, 314,318, 342,344, 2,1,1 );
+	end;
+OnTimer120000:
+OnTimer300000:
+	callsub( S_Random_Grap, 239,243, 341,343, 1,2,1 );
+	end;
+OnTimer180000:
+	callsub( S_Random_Grap, 331,333, 357,361, 1,1,2 );
+	end;
+OnTimer330000:
+	callsub( S_Random_Grap, 331,333, 357,361, 1,1,2 );
+	initnpctimer;
+	end;
+
+S_Random_Grap:
+	for ( .@i = 0; .@i < 3; ++.@i ) {
+		do {
+			.@x = rand( getarg(0), getarg(1) );
+			.@y = rand( getarg(2), getarg(3) );
+		}
+		while( !checkcell("un_bk_q",.@x,.@y,cell_chkpass) );
+		makeitem 6826, getarg(4+.@i), "un_bk_q",.@x,.@y;
+	}
+	return;
+}
+
+un_bk_q,276,243,4	script	Nurse Lapplad#EP15.2MR	4_F_BRZ_WOMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1)	// Unknown text
+		end;
+	if (.@cooldown_status_day[1] == 1)	// Unknown text
+		end;
+	if (.@cooldown_status_day[2] == 1)	// Unknown text
+		end;
+	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
+		emotion 17;
+		mes "[护士补丁]";
+		mes "对不起。你等很久了吗？正如你所看到的，有很多疑似感染患者。";
+		next;
+		select("并不真地..");
+		emotion 23;
+		mes "[护士补丁]";
+		mes "诶？！你没等吗？这很奇怪吗？你插队了吗？剪裁不好。";
+		next;
+		mes "[护士补丁]";
+		mes "如您所知，有些感染者突然表现出奇怪的现象。";
+		next;
+		emotion 10;
+		mes "[护士补丁]";
+		mes "一...";
+		next;
+		mes "[护士补丁]";
+		mes "...啊...";
+		next;
+		emotion 0;
+		mes "[护士补丁]";
+		mes "...哦！！";
+		next;
+		mes "[护士补丁]";
+		mes "我没有看到任何有问题的症状。幸运。";
+		next;
+		mes "[护士补丁]";
+		mes "由于病人突然抽搐，我们遇到了麻烦。";
+		next;
+		mes "[护士补丁]";
+		mes "看这里。连续几天睡不着觉，皮肤都脆了~";
+		next;
+		if (mobcount( "un_bk_q", "Nurse Lapplad#EP15.2MR::OnMyMobDead" ) < 1) {
+			disablenpc "Patient#EP15.2MR_01";
+			monster "un_bk_q",286,254, "Convulsing Patient", 1015,1, "Nurse Lapplad#EP15.2MR::OnMyMobDead";	// ZOMBIE
+			.mob_id[1] = $@mobid[0];
+			initnpctimer;
+		}
+		mes "咚！！巴邦！！碰撞！！";
+		next;
+		emotion 18;
+		mes "[护士补丁]";
+		mes "是的..就这样";
+		next;
+		emotion 10;
+		mes "[护士补丁]";
+		mes "……";
+		next;
+		mes "[护士补丁]";
+		mes "啊啊！！又一个抽搐的病人。";
+		next;
+		mes "[护士补丁]";
+		mes "嘿。你不是冒险家吗？你一定真的很坚强。";
+		next;
+		if (isbegin_quest(5370) == 1)
+			erasequest 5370;
+		setquest 5363;
+		setquest 5364;
+		mes "[护士补丁]";
+		mes "你能抑制住那个抽搐的病人吗？我指望你了。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		.@quest_day_4 = isbegin_quest(5364) + isbegin_quest(5365);
+		if (.@quest_day_4 == 1) {
+			if (mobcount( "un_bk_q", "Nurse Lapplad#EP15.2MR::OnMyMobDead" ) < 1) {
+				mes "[护士补丁]";
+				mes "你没有被抽搐的病人咬伤或抓伤吧？";
+				next;
+				select("为什么？");
+				mes "[护士补丁]";
+				mes "嗯~没看到什么特别的伤口。";
+				next;
+				mes "[护士补丁]";
+				mes "由于我无法弄清楚感染途径...";
+				next;
+				mes "[护士补丁]";
+				mes "我们必须为可能发生的灾难做好准备……";
+				next;
+				mes "[护士补丁]";
+				mes "无论如何，冒险家~放心，最好！";
+				next;
+				mes "[护士补丁]";
+				mes "我以前从未对同时抽搐的病人感到如此困惑。";
+				next;
+				mes "[护士补丁]";
+				mes "幸亏你在这里，轻松镇压了它。";
+				next;
+				mes "[护士补丁]";
+				mes "抱歉，您能在路上向 Fresa 报告此事吗？你知道弗雷萨是谁吗？";
+				next;
+				setquest 5365;
+				mes "[护士补丁]";
+				mes "这是一种情况，所以我请你帮个忙。";
+				close;
+			}
+			emotion 28;
+			mes "[护士补丁]";
+			mes "诶～～诶～诶～～～～～！！";
+			next;
+			mes "[护士补丁]";
+			mes "快点把那些病人拿下来！你是冒险家！！";
+			close;
+		}
+		if (.@quest_day_4 == 2) {
+			mes "[护士补丁]";
+			mes "抱歉，您能在路上向 Fresa 报告此事吗？这是一个恩惠。";
+			close;
+		}
+		mes "[护士补丁]";
+		mes "奇怪的？你是怎么进来的？应该禁止你访问..";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1)	// Unknown text
+		end;
+	// Unknown text
+	end;
+
+OnMyMobDead:
+	if (mobcount( "un_bk_q", "Nurse Lapplad#EP15.2MR::OnMyMobDead" ) < 1) {
+		killmonster "un_bk_q", "Nurse Lapplad#EP15.2MR::OnMyMobDead";
+		enablenpc "Patient#EP15.2MR_01";
+		enablenpc "Patient#EP15.2MR_02";
+		enablenpc "Patient#EP15.2MR_03";
+		enablenpc "Patient#EP15.2MR_04";
+		enablenpc "Patient#EP15.2MR_05";
+		enablenpc "Patient#EP15.2MR_06";
+		enablenpc "Patient#EP15.2MR_07";
+		stopnpctimer;
+
+		.@r = rand(1,8);
+		if (.@r == 1) setarray .@xy[0],286,254;
+		else if (.@r == 2) setarray .@xy[0],296,252;
+		else if (.@r == 3) setarray .@xy[0],316,231;
+		else if (.@r == 4) setarray .@xy[0],281,226;
+		else if (.@r == 5) setarray .@xy[0],320,249;
+		else if (.@r == 6) setarray .@xy[0],306,233;
+		else if (.@r == 7) setarray .@xy[0],310,261;
+		else
+			end;	// stop here
+		disablenpc "Patient#EP15.2MR_0" + .@r;
+		monster "un_bk_q",.@xy[0],.@xy[1], "Convulsing Patient", 1015,1, "Nurse Lapplad#EP15.2MR::OnMyMobDead";	// ZOMBIE
+		.mob_id[.@r] = $@mobid[0];
+		initnpctimer;
+		end;
+	}
+	end;
+OnTimer3000:
+	if (rand(1,3) == 3) {
+		setarray .@text$[1],
+			"Woouuu~",
+			"Wooaa~",
+			"Ha-ak-ha-ak~",
+			"Eh~",
+			"Uh- Ugh~",
+			"Eh~",
+			"Kur..urk..kekek..";
+		for ( .@i = 1; .@i < 8; ++.@i ) {
+			if (.mob_id[.@i] && unitexists(.mob_id[.@i]))
+				unittalk .mob_id[.@i], .@text$[.@i];
+		}
+	}
+	initnpctimer;
+	end;
+}
+
+un_bk_q,286,254,4	script	Patient#EP15.2MR_01	4_M_LIEMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	emotion 19;
+	mes "[患者]";
+	mes "痛。。痛。。";
+	close;
+}
+
+un_bk_q,296,252,4	script	Patient#EP15.2MR_02	4_M_DSTMANDEAD,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	mes "[患者]";
+	mes "我很好。他们无缘无故地大惊小怪。";
+	close;
+}
+
+un_bk_q,316,231,4	script	Patient#EP15.2MR_03	4_M_DIEMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	emotion 45;
+	mes "[患者]";
+	mes "由于某种原因我总是感到困倦。是因为我生病了吗？";
+	close;
+}
+
+un_bk_q,281,226,4	script	Patient#EP15.2MR_04	4_F_PATIENT,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	emotion 54;
+	mes "[患者]";
+	mes "我的脑袋一片空白..呃？你有说什么吗？";
+	close;
+}
+
+un_bk_q,320,249,4	script	Patient#EP15.2MR_05	4_M_PATIENT,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	emotion 53;
+	mes "[患者]";
+	mes "呃……感觉全身都抽筋了。";
+	close;
+}
+
+un_bk_q,306,233,4	script	Patient#EP15.2MR_06	4_M_DIEMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	emotion 43;
+	mes "[患者]";
+	mes "呃……虽然我没喝酒，但我还是觉得恶心。";
+	close;
+}
+
+un_bk_q,310,261,4	script	Patient#EP15.2MR_07	4_M_LIEMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day, 0 );
+	emotion 57;
+	mes "[患者]";
+	mes "哦，不，在我体内发现了转染子。";
+	close;
+}
+
+un_bk_q,279,294,4	script	Transportation Executive Ernon#EP15.2MR	4_M_LGTMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[交通主管埃农]";
+		mes "事故发生前，我们曾在这里运送生活必需品或研究工具之类的东西。";
+		next;
+		mes "[交通主管埃农]";
+		mes "即使作为这里的工作人员，工作也需要更多地去其他地方。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		emotion 1;
+		mes "[交通主管埃农]";
+		mes "什么？！有什么事吗？机械师和设施经理看起来很忙。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		emotion 21;
+		mes "[交通主管埃农]";
+		mes "呀~你尝过葡萄吗？";
+		next;
+		mes "[交通主管埃农]";
+		mes "在这样的地下避难设施里能种植新鲜的葡萄不是很好吗？";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[交通主管埃农]";
+		mes "有些人突然攻击别人。";
+		next;
+		mes "[交通主管埃农]";
+		mes "到底发生了什么事？";
+		close;
+	}
+	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {// start Day 5
+		emotion 1;
+		mes "[交通主管埃农]";
+		mes "从昨天开始他们就在广播中谈论了这件事，所以你知道大概的情况吧？";
+		next;
+		mes "[交通主管埃农]";
+		mes "污染物正在进入防空洞内部，因此决定将所有物资转移到化学物质专家发现的未污染区域Z-2。";
+		next;
+		mes "[交通主管埃农]";
+		mes "有人要求与冒险家一起移动货物，因为骨瘦如柴的研究人员无法提供帮助。";
+		next;
+		mes "[交通主管埃农]";
+		mes "好吧——我们先把货物搬到 Z-2 区。";
+		next;
+		mes "[交通主管埃农]";
+		mes "如果你回来的路上去机器仓库，就会有一个叫阿尔的人。告诉他";
+		next;
+		emotion 29;
+		mes "[交通主管埃农]";
+		mes "^0000FF你们这些白痴！！别再用愚蠢的机器浪费材料！！^000000。";
+		next;
+		select("呃？");
+		mes "[交通主管埃农]";
+		mes "不明白吗？告诉机器仓库里的阿尔";
+		next;
+		emotion 29;
+		mes "[交通主管埃农]";
+		mes "^0000FF你们这些白痴！！别再用愚蠢的机器浪费材料！！^000000。";
+		next;
+		if (isbegin_quest(5370) == 1)
+			erasequest 5370;
+		setquest 5366;
+		setquest 5367;
+		mes "[交通主管埃农]";
+		mes "记得把每一个后置都写对，百分百传达我的感受。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		.@quest_day_5 = isbegin_quest(5367) + isbegin_quest(5368) + isbegin_quest(5369);
+		switch(.@quest_day_5) {
+		case 1:
+			mes "[交通主管埃农]";
+			mes "先将货物运至Z-2区。";
+			next;
+			mes "[交通主管埃农]";
+			mes "回来的路上去机器仓库告诉阿尔";
+			next;
+			emotion 29;
+			mes "[交通主管埃农]";
+			mes "^0000FF你们这些白痴！！别再用愚蠢的机器浪费材料！！^000000??为我而回来。";
+			close;
+		case 2:
+			mes "[交通主管埃农]";
+			mes "你们把货物送到 Z-2 区了吗？";
+			next;
+			mes "[交通主管埃农]";
+			mes "哦！我不是还要求了一件事吗？您已将消息发送给机械师了吗？";
+			next;
+			select("还没有..");
+			mes "[交通主管埃农]";
+			mes "啊..我该怎么办..大部分货物都搬走了，我该去吗？";
+			next;
+			mes "[交通主管埃农]";
+			mes "如果我就这样留下来，那些对机器之外一无所知的白痴可能会用珍贵的组件做一些事情......";
+			next;
+			mes "[交通主管埃农]";
+			mes "我们应该做什么？我应该去吗？或者你想回去吗？";
+			next;
+			if (select( "回去。", "不要回去。" ) == 1) {
+				mes "[交通主管埃农]";
+				mes "好吧。回去。";
+				close;
+			}
+			mes "[交通主管埃农]";
+			mes "是的？我猜机器仓库有点远。";
+			next;
+			mes "[交通主管埃农]";
+			mes "既然我们快结束了，我会很快完成并离开。这是对工作的补偿。";
+			next;
+			if (isbegin_quest(5367) > 0)
+				erasequest 5367;
+			if (isbegin_quest(5368) > 0)
+				erasequest 5368;
+			if (isbegin_quest(5369) > 0)
+				erasequest 5369;
+			setquest 5370;
+			ep15_2_memory = 0;
+			getexp 500000,500000;
+			mes "- 小圆形胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			mes "[交通主管埃农]";
+			mes "虽然我们的生存由于污染物而不确定，";
+			next;
+			mes "[交通主管埃农]";
+			mes "首席研究员吩咐我们要对被爆炸卷入的冒险者们给予足够的补偿。";
+			next;
+			mes "[交通主管埃农]";
+			mes "不过不用担心。";
+			close;
+		case 3:
+			mes "[交通主管埃农]";
+			mes "你传达了我的感受吗？";
+			next;
+			mes "[交通主管埃农]";
+			mes "他们现在应该聪明起来了。他们不会再浪费宝贵的部件了，对吧？";
+			next;
+			mes "[交通主管埃农]";
+			mes "这里！这是对工作的补偿。";
+			next;
+			for ( .@i = 5367; .@i < 5370; .@i++ ) {
+				if (isbegin_quest(.@i) > 0)
+					erasequest .@i;
+			}
+			if (ep15_2_memory == 0)
+				getexp 750000,500000;
+			else
+				getexp 750000,1000000;
+			ep15_2_memory = 0;
+			setquest 5370;
+			mes "- 小圆形胶囊已渗入皮肤。感觉经验已经积累了。";
+			next;
+			mes "[交通主管埃农]";
+			mes "虽然我们的生存由于污染物而不确定，";
+			next;
+			mes "[交通主管埃农]";
+			mes "首席研究员吩咐我们要对被爆炸卷入的冒险者们给予足够的补偿。";
+			next;
+			mes "[交通主管埃农]";
+			mes "不过不用担心。";
+			close;
+		default:
+			mes "[交通主管埃农]";
+			mes "虽然我们的生存由于污染物而不确定，";
+			next;
+			mes "[交通主管埃农]";
+			mes "首席研究员吩咐我们要对被爆炸卷入的冒险者们给予足够的补偿。";
+			next;
+			mes "[交通主管埃农]";
+			mes "不过不用担心。";
+			close;
+		}
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,72,53,4	script	Distribution Chief Avrandi#EP15.2MR	4_M_TWTEAMAN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
+	if (.@cooldown_status_day[0] == 1) {
+		emotion 54;
+		mes "[发行主管阿夫兰迪]";
+		mes "能够提前撤离到防空洞内部，真是让人松了口气。";
+		next;
+		mes "[发行主管阿夫兰迪]";
+		mes "如果我们无法撤离……？我们可能不会在这里。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		emotion 1;
+		mes "[发行主管阿夫兰迪]";
+		mes "有什么问题吗？";
+		next;
+		mes "[发行主管阿夫兰迪]";
+		mes "不久前，设施管理人员正在匆忙地四处奔波。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		emotion 23;
+		mes "[发行主管阿夫兰迪]";
+		mes "这到底是怎么回事？！你吃了新鲜的葡萄吗？为什么我没能吃掉它们？为什么？";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		emotion 40;
+		mes "[发行主管阿夫兰迪]";
+		mes "这个地方肯定很安静。你为什么问？";
+		next;
+		mes "[发行主管阿夫兰迪]";
+		mes "没有多少人能走到这一步。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		.@quest_day_5 = isbegin_quest(5367) + isbegin_quest(5368) + isbegin_quest(5369);
+		switch(.@quest_day_5) {
+		case 1:
+			mes "[发行主管阿夫兰迪]";
+			mes "啊!进来吧，因为今天早上的广播，看来今天来的人很多。";
+			next;
+			mes "[发行主管阿夫兰迪]";
+			mes "你来这里是因为埃农派你来的吧？";
+			next;
+			mes "[发行主管阿夫兰迪]";
+			mes "我已经收到你带来的物品了。";
+			next;
+			setquest 5368;
+			mes "[发行主管阿夫兰迪]";
+			mes "呃-？你要收回它吗？这是很多工作。";
+			close;
+		default:
+			mes "[发行主管阿夫兰迪]";
+			mes "你正在经历很多事情。";
+			close;
+		}
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,22,279,4	script	Machine Warehouse	4_BULLETIN_BOARD2,{ end; }
+un_bk_q,22,259,4	duplicate(Machine Warehouse)	L-1 Zone#J0	4_BULLETIN_BOARD2
+un_bk_q,25,193,4	duplicate(Machine Warehouse)	J-0 Zone#L1	4_BULLETIN_BOARD2
+un_bk_q,58,185,4	duplicate(Machine Warehouse)	Control room#Left	4_BULLETIN_BOARD2
+un_bk_q,58,171,4	duplicate(Machine Warehouse)	b_Monitoring room#L1Left	4_BULLETIN_BOARD2
+un_bk_q,49,137,4	duplicate(Machine Warehouse)	B-1 Warehouse	4_BULLETIN_BOARD2
+un_bk_q,58,121,4	duplicate(Machine Warehouse)	A-0 Zone#L1	4_BULLETIN_BOARD2
+un_bk_q,71,121,4	duplicate(Machine Warehouse)	L-1 Zone#A0	4_BULLETIN_BOARD2
+un_bk_q,78,125,4	duplicate(Machine Warehouse)	H-0 Zone#Left	4_BULLETIN_BOARD2
+un_bk_q,101,122,4	duplicate(Machine Warehouse)	b_Monitoring room#A0Center	4_BULLETIN_BOARD2
+un_bk_q,122,125,4	duplicate(Machine Warehouse)	H-0 Zone#Right	4_BULLETIN_BOARD2
+un_bk_q,126,121,4	duplicate(Machine Warehouse)	L-2 Zone#A0	4_BULLETIN_BOARD2
+un_bk_q,141,115,4	duplicate(Machine Warehouse)	A-0 Zone#L2	4_BULLETIN_BOARD2
+un_bk_q,139,171,4	duplicate(Machine Warehouse)	b_Monitoring room#L2Right	4_BULLETIN_BOARD2
+un_bk_q,139,187,4	duplicate(Machine Warehouse)	Control room#Right	4_BULLETIN_BOARD2
+un_bk_q,173,193,4	duplicate(Machine Warehouse)	K-0 Zone#L2	4_BULLETIN_BOARD2
+un_bk_q,171,233,4	duplicate(Machine Warehouse)	L-2 Zone#K0	4_BULLETIN_BOARD2
+un_bk_q,278,193,4	duplicate(Machine Warehouse)	A-0 Zone#H0Left	4_BULLETIN_BOARD2
+un_bk_q,300,194,4	duplicate(Machine Warehouse)	Z-0 Zone#H0	4_BULLETIN_BOARD2
+un_bk_q,301,204,4	duplicate(Machine Warehouse)	Temporary Clinic#H0	4_BULLETIN_BOARD2
+un_bk_q,317,193,4	duplicate(Machine Warehouse)	A-0 Zone#H0Right	4_BULLETIN_BOARD2
+un_bk_q,322,203,4	duplicate(Machine Warehouse)	G-2 Zone#H0	4_BULLETIN_BOARD2
+un_bk_q,340,203,4	duplicate(Machine Warehouse)	H-0 Zone#H0	4_BULLETIN_BOARD2
+un_bk_q,349,217,4	duplicate(Machine Warehouse)	F-2 Zone#G2	4_BULLETIN_BOARD2
+un_bk_q,339,239,4	duplicate(Machine Warehouse)	Temporary Clinic#G2	4_BULLETIN_BOARD2
+un_bk_q,368,267,4	duplicate(Machine Warehouse)	I-0 Zone#G2	4_BULLETIN_BOARD2
+un_bk_q,388,266,4	duplicate(Machine Warehouse)	G-2 Zone#I0	4_BULLETIN_BOARD2
+un_bk_q,273,203,4	duplicate(Machine Warehouse)	G-1 Zone#H0	4_BULLETIN_BOARD2
+un_bk_q,260,203,4	duplicate(Machine Warehouse)	H-0 Zone#G1	4_BULLETIN_BOARD2
+un_bk_q,247,217,4	duplicate(Machine Warehouse)	F-1 Zone#G1	4_BULLETIN_BOARD2
+un_bk_q,228,217,4	duplicate(Machine Warehouse)	G-1 Zone#F1	4_BULLETIN_BOARD2
+un_bk_q,256,239,4	duplicate(Machine Warehouse)	Temporary Clinic#G1	4_BULLETIN_BOARD2
+un_bk_q,219,265,4	duplicate(Machine Warehouse)	C-0 Zone#G1	4_BULLETIN_BOARD2
+un_bk_q,214,283,4	duplicate(Machine Warehouse)	G-1 Zone#C0	4_BULLETIN_BOARD2
+un_bk_q,215,303,4	duplicate(Machine Warehouse)	Farm#C0	4_BULLETIN_BOARD2
+un_bk_q,300,184,4	duplicate(Machine Warehouse)	H-0 Zone#Z0	4_BULLETIN_BOARD2
+un_bk_q,365,167,4	duplicate(Machine Warehouse)	Z-2 Zone#Z0	4_BULLETIN_BOARD2
+un_bk_q,27,55,4	duplicate(Machine Warehouse)	Z-0 Zone#Z2	4_BULLETIN_BOARD2
+un_bk_q,230,167,4	duplicate(Machine Warehouse)	Z-1 Zone#Z0	4_BULLETIN_BOARD2
+un_bk_q,164,55,4	duplicate(Machine Warehouse)	Z-0 Zone#Z1	4_BULLETIN_BOARD2
+un_bk_q,101,92,8	duplicate(Machine Warehouse)	Off Limits#01	4_BULLETIN_BOARD2
+un_bk_q,94,92,8	duplicate(Machine Warehouse)	Off Limits#02	4_BULLETIN_BOARD2
+
+
+un_bk_q,97,84,4	script	Dimension move Portal#EP15.2MR	PORTAL,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 你携带的物品太多，无法继续任务 -";
+		close;
+	}
+	mes "[维度装置]";
+	mes "您想完成您的旅行吗？";
+	mes "回到原来的时间？";
+	mes "^FF0000如果回到原来的时间，这里的所有痕迹都会被抹去。^000000";
+	next;
+	if (select( "留在这里。", "回去。" ) == 1)
+		close;
+	mes "[维度装置]";
+	delitem 6825, countitem(6825);
+	delitem 6826, countitem(6826);
+	ep15_2_memory = 0;
+	for ( .@i = 5341; .@i <= 5370; ++.@i ) {
+		if (isbegin_quest(.@i) > 0)
+			erasequest .@i;
+	}
+	mes "你的整个身体变得沉重，时间似乎在你周围过得更快。";
+	warp "un_bunker",98,91;
+	end;
+}
+
+un_bunker,103,95,4	script	Mysterious Device#EP15.2MR1	2_BOARD2,{
+	setarray .@quest_id[0], 5341,5351,5358,5363,5366;
+	for ( .@i = 0; .@i < 5; ++.@i ) {
+		switch( checkquest(.@quest_id[.@i],PLAYTIME) ) {
+		case -1:
+			.@cooldown_status_day[.@i] = 0;
+			break;
+		case 0:
+		case 1:
+			.@cooldown_status_day[.@i] = 1;
+			break;
+		case 2:
+			.@cooldown_status_day[.@i] = 2;
+			break;
+		}
+	}
+	.@all = .@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4];
+	if (.@all == 1) {
+		mes "从这个装置中可以感受到一种神秘而强烈的驱动能量。";
+		next;
+		if (select( "忽略", "拉它" ) == 1)
+			close;
+		if (.@cooldown_status_day[0] == 1)
+			warp "un_bk_q",98,143;
+		else if (.@cooldown_status_day[1] == 1)
+			warp "un_bk_q",45,276;
+		else if (.@cooldown_status_day[2] == 1)
+			warp "un_bk_q",217,346;
+		else if (.@cooldown_status_day[3] == 1)
+			warp "un_bk_q",273,235;
+		else
+			warp "un_bk_q",275,290;
+		end;
+	}
+	else if (.@all == 2) {
+		delitem 6825, countitem(6825);
+		delitem 6826, countitem(6826);
+		ep15_2_memory = 0;
+		for ( .@i = 5341; .@i <= 5370; ++.@i ) {
+			if (isbegin_quest(.@i) > 0)
+				erasequest .@i;
+		}
+		mes "周围的时间扭曲似乎正在恢复正常。";
+		close;
+	}
+	mes "无法弄清楚该设备的用途。";
+	close;
+}
+un_bunker,102,161,4	duplicate(Mysterious Device#EP15.2MR1)	Mysterious Device#EP15.2MR2	2_BOARD2
+un_bunker,51,272,4	duplicate(Mysterious Device#EP15.2MR1)	Mysterious Device#EP15.2MR3	2_BOARD2
+un_bunker,220,342,4	duplicate(Mysterious Device#EP15.2MR1)	Mysterious Device#EP15.2MR4	2_BOARD2
+un_bunker,295,234,4	duplicate(Mysterious Device#EP15.2MR1)	Mysterious Device#EP15.2MR5	2_BOARD2
+un_bunker,279,297,4	duplicate(Mysterious Device#EP15.2MR1)	Mysterious Device#EP15.2MR6	2_BOARD2
+
+un_bk_q,100,312,6	script	Mechanician Bukal#EP15.2MR	4_M_REPAIR,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[机械师布卡尔]";
+		mes "你在清点人数吗？";
+		next;
+		mes "[机械师布卡尔]";
+		mes "我不知道。也许你可以问问那边的阿尔？";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[机械师布卡尔]";
+		mes "我指的是你现在正在移动的空气净化装置。";
+		next;
+		mes "[机械师布卡尔]";
+		mes "我做到了。是不是很棒？";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[机械师布卡尔]";
+		mes "啊！！你是冒险家。你可以去农场看看。";
+		next;
+		mes "[机械师布卡尔]";
+		mes "农场不是因为温暖才好吗？我在那里制作了温度控制装置。是不是很棒？";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[机械师布卡尔]";
+		mes "我担心人们突然袭击。";
+		next;
+		mes "[机械师布卡尔]";
+		mes "既然我们已经在这里了，我应该制作一些类似病人抑制装置的东西吗？";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[机械师布卡尔]";
+		mes "我不知道为什么每个人都拒绝可以移动重物的设备。";
+		next;
+		mes "[机械师布卡尔]";
+		mes "当他们制造新的空气净化装置时我应该做一个。";
+		close;
+	}
+	mes "[机械师布卡尔]";
+	mes "呃..我想做点什么。";
+	close;
+}
+
+un_bk_q,76,175,4	script	Researcher Grum#EP15.2MR	4_F_SCIENCE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[格鲁姆研究员]";
+		mes "那个像领导一样清点人数的女人是谁？";
+		next;
+		mes "[格鲁姆研究员]";
+		mes "如果一开始就没有实验的话，就不会发生爆炸吗？正确的？";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[格鲁姆研究员]";
+		mes "我觉得自以为是、憔悴的弗雷萨已经变了。";
+		next;
+		mes "[格鲁姆研究员]";
+		mes "和以前相比，她变得更加温暖了不是吗？";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[格鲁姆研究员]";
+		mes "弗雷萨确实改变了很多。";
+		next;
+		mes "[格鲁姆研究员]";
+		mes "今天她正在向人们分发葡萄。在过去，这是难以想象的。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[格鲁姆研究员]";
+		mes "为什么弗雷萨一个人表现得像领导者一样，却还没有采取措施？";
+		next;
+		mes "[格鲁姆研究员]";
+		mes "需要对抽搐的患者采取措施。你要像以前一样掩盖这件事吗？";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[格鲁姆研究员]";
+		mes "那么这就是正在发生的事情吗？";
+		next;
+		mes "[格鲁姆研究员]";
+		mes "当她试图半途而废时我就应该知道。";
+		close;
+	}
+	mes "[格鲁姆研究员]";
+	mes "我实在不喜欢自以为是又虚伪的弗雷萨。";
+	close;
+}
+
+un_bk_q,297,287,6	script	Adventurer Jean#EP15.2MR	4_M_HUBOY,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[冒险家吉恩]";
+		mes "呃？！你也是冒险家？";
+		next;
+		mes "[冒险家吉恩]";
+		mes "呃……看来你也很倒霉。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[冒险家吉恩]";
+		mes "你不觉得这里是想剥削我们冒险者吗？";
+		next;
+		mes "[冒险家吉恩]";
+		mes "不过自助餐厅的食物还是不错的。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[冒险家吉恩]";
+		mes "今天配菜是葡萄。";
+		next;
+		mes "[冒险家吉恩]";
+		mes "我喜欢葡萄。我想吃更多。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[冒险家吉恩]";
+		mes "我在这里认识的一个朋友被关在临时诊所里。他们发现了转染子什么的。";
+		next;
+		mes "[冒险家吉恩]";
+		mes "对于我们冒险家来说，健康的身体是一种财富。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[冒险家吉恩]";
+		mes "我在冒险的地方吃了很多不同的东西。";
+		next;
+		mes "[冒险家吉恩]";
+		mes "我认为这里的食物是最好的之一。";
+		close;
+	}
+	mes "[冒险家吉恩]";
+	mes "我在冒险的地方吃了很多不同的东西。";
+	next;
+	mes "[冒险家吉恩]";
+	mes "我认为这里的食物是最好的之一。";
+	close;
+}
+
+un_bk_q,318,299,2	script	Cafeteria Lady#EP15.2MR	4_F_CAVE1,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[自助餐厅女士]";
+		mes "对不起。我们还没有准备好分发食物。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[自助餐厅女士]";
+		mes "拿一个盘子或托盘并排队等候。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[自助餐厅女士]";
+		mes "哦，不，我们该怎么办？我们的葡萄用完了。";
+		next;
+		mes "[自助餐厅女士]";
+		mes "新葡萄应该很快就会从农场运来。你想等吗？";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[自助餐厅女士]";
+		mes "你知道那是临时诊所吗？你现在不能走那条路。";
+		next;
+		mes "[自助餐厅女士]";
+		mes "由于病人抽搐，通道被堵塞。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[自助餐厅女士]";
+		mes "你正在努力工作。";
+		close;
+	}
+	mes "[自助餐厅女士]";
+	mes "拿一个盘子或托盘并排队等候。";
+	close;
+}
+
+un_bk_q,102,97,2	script	Adventurer Breezin#EP15.2MR	4_F_BRZ_INDOLD,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[冒险家微风]";
+		mes "啊..我为什么来这里..";
+		next;
+		mes "[冒险家微风]";
+		mes "嘿，别想那样出去。因为爆炸会很危险。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[冒险家微风]";
+		mes "今天很奇怪。嘿，你也看到那边的神秘装置了吗？";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[冒险家微风]";
+		mes "我想我今天就说了三十遍了，但门口没有任何设备。";
+		next;
+		mes "[冒险家微风]";
+		mes "我渴望冒险，但外面的安全状况尚未确定，所以不要考虑出去。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[冒险家微风]";
+		mes "刚才我还无法阻止化学物质专家们出去。";
+		next;
+		mes "[冒险家微风]";
+		mes "看他们怎么还没有回来，他们肯定是死了吧？";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[冒险家微风]";
+		mes "事态已经失控。";
+		next;
+		mes "[冒险家微风]";
+		mes "哈——我应该阻止那些人离开防空洞吗？";
+		close;
+	}
+	mes "[冒险家微风]";
+	mes "今天很奇怪。嘿，你也看到那边的神秘装置了吗？";
+	close;
+}
+
+un_bk_q,313,280,8	script	Access Control Guard#EP15.2MR	4_M_HUMAN_02,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[访问控制卫士]";
+		mes "您不能进入该区域，因为该区域正在施工。";
+		next;
+		mes "[访问控制卫士]";
+		mes "据设施经理称，它将稍后用作诊所。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[访问控制卫士]";
+		mes "您不能进入该区域，因为该区域正在施工。";
+		next;
+		mes "[访问控制卫士]";
+		mes "据设施经理称，它将稍后用作诊所。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[访问控制卫士]";
+		mes "您不能进入该区域，因为该区域正在施工。";
+		next;
+		mes "[访问控制卫士]";
+		mes "据设施经理称，它将稍后用作诊所。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[访问控制卫士]";
+		mes "临时诊所仅限隔离抽搐患者进入。";
+		next;
+		mes "[访问控制卫士]";
+		mes "我请求您的理解。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[访问控制卫士]";
+		mes "临时诊所仅限隔离抽搐患者进入。";
+		next;
+		mes "[访问控制卫士]";
+		mes "我请求您的理解。";
+		close;
+	}
+	mes "[访问控制卫士]";
+	mes "目前禁止在该地区活动。";
+	next;
+	mes "[访问控制卫士]";
+	mes "我请求您的理解。";
+	close;
+}
+un_bk_q,280,280,8	duplicate(Access Control Guard#EP15.2MR)	Access Control Guard#EP15.2MR2	4_M_HUMAN_02
+un_bk_q,255,236,2	duplicate(Access Control Guard#EP15.2MR)	Access Control Guard#EP15.2MR3	4_M_HUMAN_02
+un_bk_q,298,203,4	duplicate(Access Control Guard#EP15.2MR)	Access Control Guard#EP15.2MR4	4_M_HUMAN_02
+un_bk_q,340,235,6	duplicate(Access Control Guard#EP15.2MR)	Access Control Guard#EP15.2MR5	4_M_HUMAN_02
+
+un_bk_q,98,246,8	script	Facilities manager Jiko#EP15.2MR	4_M_EINMAN2,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[设施经理Jiko]";
+		mes "啊-我不知道原因，但控制室是";
+		next;
+		mes "[设施经理Jiko]";
+		mes "损坏很多。此时它不是控制室而是仓库。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[设施经理Jiko]";
+		mes "啊，空气净化装置不属于这里。";
+		next;
+		mes "[设施经理Jiko]";
+		mes "如果我没记错的话，你得把它们送到C-0、F-1、F-2、I-0、Z-0区。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[设施经理Jiko]";
+		mes "哈-我已经打扫控制室好几天了";
+		next;
+		mes "[设施经理Jiko]";
+		mes "无论我如何组织，这个地方都无法组织起来。我想我们应该用它来存储。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[设施经理Jiko]";
+		mes "进来吧。欢迎来到仓库。";
+		next;
+		mes "[设施经理Jiko]";
+		mes "呃呃";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[设施经理Jiko]";
+		mes "这不是控制室。";
+		next;
+		mes "[设施经理Jiko]";
+		mes "是仓库！！";
+		close;
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,313,261,2	script	Nurse#EP15.2MR1	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "病人~那张椅子很高..你不头痛吗？";
+	close;
+}
+
+un_bk_q,322,249,2	script	Nurse#EP15.2MR2	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "为什么他说他抽筋了？其他患者没有这个问题。";
+	close;
+}
+
+un_bk_q,316,233,4	script	Nurse#EP15.2MR3	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "啊——我告诉过你不要假装睡觉的时候在地板上乱写乱画。";
+	close;
+}
+
+un_bk_q,304,233,4	script	Nurse#EP15.2MR4	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "你绕着象鼻跑了三十圈，你一定是病了。声称自己感觉不到头晕。真是虚张声势。";
+	close;
+}
+
+un_bk_q,283,226,2	script	Nurse#EP15.2MR5	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "啊天啊！还没有其他问题，但是为什么他说他头晕呢？";
+	close;
+}
+
+un_bk_q,284,255,4	script	Nurse#EP15.2MR6	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "那你什么意思！！哪里疼！！";
+	close;
+}
+
+un_bk_q,296,254,4	script	Nurse#EP15.2MR7	4_F_NURSE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[护士]";
+	mes "什么意思，什么都没有，你的脸都紫了。";
+	close;
+}
+
+un_bk_q,240,380,8	script	Bioengineer#EP15.2MR1	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[生物工程师]";
+	mes "看起来我们可以毫无问题地收获一号葡萄树。真是一种解脱。";
+	next;
+	mes "[生物工程师]";
+	mes "当机械师毁掉一棵树时，我的心沉了下去。";
+	close;
+}
+
+un_bk_q,274,380,8	script	Bioengineer#EP15.2MR2	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[生物工程师]";
+	mes "2号葡萄树所在的土壤似乎缺乏营养。";
+	next;
+	mes "[生物工程师]";
+	mes "我们需要准备肥料，为土壤提供更多的营养。";
+	close;
+}
+
+un_bk_q,327,360,6	script	Bioengineer#EP15.2MR3	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[生物工程师]";
+	mes "我很担心，因为 3 号葡萄树周围长着很多奇怪的东西。";
+	next;
+	mes "[生物工程师]";
+	mes "看来收获不会有问题。";
+	close;
+}
+
+un_bk_q,316,351,4	script	Bioengineer#EP15.2MR4	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[生物工程师]";
+	mes "4号葡萄树没有什么特别的问题。";
+	next;
+	mes "[生物工程师]";
+	mes "营养状态良好。收获状态良好。";
+	close;
+}
+
+un_bk_q,249,344,2	script	Bioengineer#EP15.2MR5	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[生物工程师]";
+	mes "5号葡萄树的营养太好了。";
+	next;
+	mes "[生物工程师]";
+	mes "这并不意味着收获产量会更高。";
+	close;
+}
+
+un_bk_q,103,393,4	script	Memory Record player#EP15.2MR	4_ENERGY_BLUE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "有人正在记录一个记忆记录。";
+	next;
+	if (select( "听。", "辞职。" ) == 2)
+		close;
+	while(1) {
+		mes "啊啊-一二三测试-测试-";
+		next;
+		mes "为了区分在防空洞中的生存天数，今天将被定为实验爆炸后的爆炸第一天。";
+		next;
+		mes "爆炸发生后，看到监视器上的外界情况，所有人都陷入了恐慌。";
+		next;
+		mes "但首席研究员弗雷萨博士平静地安慰了大家，并检查了有多少人幸存。";
+		next;
+		mes "包括冒险者在内的最终幸存者人数似乎为326人。";
+		next;
+		mes "下午显示外面的摄像头被损坏。看来我们已经看不到外面的情况了。";
+		next;
+		if (.@cooldown_status_day[0] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第二天";
+		next;
+		mes "针对主任兼首席研究员弗雷萨的政治迫害开始了。";
+		next;
+		mes "我的看法不同。这项研究和实验是在她的指导下进行的，但这只是一个意外。";
+		next;
+		mes "如果不是弗雷萨，他们就会把责任归咎于其他人。";
+		next;
+		mes "但尽管存在担忧，她还是以有尊严的方式处理这件事。";
+		next;
+		mes "她说解决问题比指责更重要，并且正在检查事故发生前幸存者的分配。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 3 天";
+		next;
+		mes "Fresa..她理所当然地成为了幸存者的领袖。";
+		next;
+		mes "虽然没有进行任何投票，但没有人抱怨她是领导者。";
+		next;
+		mes "前一天她听取了关于全部幸存者情况的通报。";
+		next;
+		mes "20 名生物工程师";
+		mes "16 名机械师";
+		mes "27 设施经理";
+		mes "10名化学物质专家";
+		mes "除专家外，还对幸存者的任务进行了评估，例如自助餐厅工作人员、清洁工、园丁、配送主管、卫生专业人员、事故中的冒险家。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 4 天";
+		next;
+		mes "大家的工作是根据弗雷萨前一天的汇报决定的。";
+		next;
+		mes "我们决定，包括我在内的研究人员对研究一窍不通，必须在拥有生存所需技术的人员的指导下继续在防空洞里生活。";
+		next;
+		mes "首先，化学物质专家和设施管理人员开始在防空洞中安装空气污染测量传感器。";
+		next;
+		mes "在评估氧气含量较低后，机械师开始组装空气净化装置。";
+		next;
+		mes "劳拉（Lora）曾是一名自助餐厅员工，有人就食物这一重要问题进行了咨询。";
+		next;
+		mes "根据仓库里的食物和幸存者的数量，我们评估了大约40天的生存可能。";
+		next;
+		mes "这促使生物工程师培育能够自我生产的植物。";
+		next;
+		mes "其他杂项任务是在弗雷萨的指导下下达的。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 5 天";
+		next;
+		mes "我不知道细节，但测量了避难所外的空气污染程度。";
+		next;
+		mes "据化学物质专家称，情况毫无希望。";
+		next;
+		mes "看来防空洞里的生活还要继续下去。就可以静静地工作了..";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 21 天";
+		next;
+		mes "经过几天的默默工作，生物工程师们得到了好消息。";
+		next;
+		mes "他们成功地人工发芽了一种可以自我生产的植物。";
+		next;
+		mes "幸运的是，防空洞有一个足够宽敞的仓库，可以种植植物。";
+		next;
+		mes "看来我们现在可以忘记我们的食物问题了。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 30 天";
+		next;
+		mes "防空洞里出现了一个小问题。最初制造的空气净化装置坏了。";
+		next;
+		mes "幸运的是，由于机械师未经批准而制造的空气净化装置，维持氧气浓度水平不会有任何问题。";
+		next;
+		mes "它们太重了，所以部署了冒险者，因为没有其他人能够移动它们。";
+		next;
+		if (.@cooldown_status_day[1] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 32 天";
+		next;
+		mes "今天是生物工程师种植的葡萄树的第一次收获。";
+		next;
+		mes "虽然出现了机械师毁掉一棵葡萄树的小问题";
+		next;
+		mes "防空洞里的居民正在举办一个小型聚会来庆祝丰收。";
+		next;
+		if (.@cooldown_status_day[2] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 38 天";
+		next;
+		mes "化学物质专家和一些厌倦了在防空洞里生活的冒险家离开了防空洞去测量空气。";
+		next;
+		mes "到了晚上他们还没有回来。";
+		next;
+		mes "外面的自由比黑暗的防空洞里的生活更好吗？";
+		next;
+		mes "午夜过后，剩下的化学物质专家评估他们已经死了，每个人都有短暂的默哀。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 40 天";
+		next;
+		mes "避难所周围流传着黑暗的谣言。";
+		next;
+		mes "有传言说，由于前段时间离开的人，外面的污染物侵入了防空洞。";
+		next;
+		mes "是因为污染的原因吗？有些病人突然抽搐并攻击他人。";
+		next;
+		mes "根据领导人弗雷萨的决定，对所有人进行了检查，发现有转染者的人被送往临时诊所进行隔离。";
+		next;
+		if (.@cooldown_status_day[3] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 43 天";
+		next;
+		mes "防空洞里的传闻成真了。";
+		next;
+		mes "剩下的化学物质专家确认污染物正在侵蚀防空洞";
+		next;
+		mes "弗雷萨和专家已经开始采取措施。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "爆炸第 45 天";
+		next;
+		mes "污染物的入侵不会停止。";
+		next;
+		mes "已决定将所有设备和必需品转移至污染较轻的Z-2区";
+		next;
+		mes "设施管理人员已开始在 Z-0 区安装隔断，以防止污染物进一步进入。";
+		next;
+		mes "没有更多录制内容。";
+		next;
+		if (select( "再听一遍。", "退出。" ) == 2)
+			close;
+	}
+	end;
+}
+
+un_bk_q,108,243,4	script	Discarded Mechanical Device#EP15.2MR	4_ENERGY_BLUE,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "扔在地板上的机械装置无法确定是否仍然可以运行。";
+		close;
+	}
+	mes "有人正在记录一个记忆记录。";
+	next;
+	if (select( "听。", "辞职。" ) == 2)
+		close;
+	while(1) {
+		mes "哦——这是记忆记录吗？有效吗？哦，它有效。作品！既然我很无聊，我应该尝试一下吗？";
+		next;
+		mes "我叫马索，是一位环游世界的冒险家。今天是进入防空洞的第四天？第三天？这里的氛围很奇怪，很难适应。";
+		next;
+		mes "维鲁斯城的原生人口中也有冒险者，但对待冒险者的待遇却出奇的好。";
+		next;
+		mes "人们的情绪是，冒险家是陷入无法控制的事故的人，需要得到很好的对待。";
+		next;
+		mes "作为一个一边工作一边吃、玩的冒险家，我无法忍受行动的渴望。乌尔格";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "今天是第六天吗？详细情况没有告诉冒险者，所以不太清楚，但维鲁斯市的人们看起来很阴沉。";
+		next;
+		mes "冒险家热血沸腾，想要探索一些地方，但无事可做。";
+		next;
+		mes "我环视了防空洞周围，但无论是谁设计的，他身上都没有一根艺术头发。";
+		next;
+		mes "一直看着相同的走廊和相同的房间布局并不有趣。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "今天是21号吗？维鲁斯城的人们看起来很高兴解决了粮食问题。";
+		next;
+		mes "看到那些看起来温和的研究人员四处欢呼和尖叫真是太可爱了。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "30号晚上，但因为天总是黑的，我真的不知道是晚上还是白天。我刚吃过晚饭，所以应该是晚上了。";
+		next;
+		mes "今天，我和其他冒险家一起搬动了机械师制造的非常重的空气净化装置。";
+		next;
+		mes "防空洞太大了，我不知道他们在哪里，但多亏了它，我和一些冒险家成了朋友，尤其是卡斯尔和布拉特。";
+		next;
+		mes "顺便说一句，机械师似乎有精神问题。他们因不会制造机器而大吵大闹，被警卫拖了出去。";
+		next;
+		mes "机械师有一天肯定会带来麻烦。";
+		next;
+		if (.@cooldown_status_day[1] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "今天是第 32 天，我在忙葡萄收获工作。";
+		next;
+		mes "我吃了新鲜的葡萄，因为我没什么可做的，所以我要早点睡觉了。";
+		next;
+		mes "啊..葡萄很好，我想再吃一次。他们有说每两周可以收获一次吗？";
+		next;
+		if (.@cooldown_status_day[2] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "今天是在避难所的第38天，从早上开始就开始热闹起来。";
+		next;
+		mes "今天早上，招募冒险者加入化学物质专家组，在防空洞外进行调查，许多人冒着危险自愿参加。";
+		next;
+		mes "我相信应该避免危险，但我的朋友卡斯尔和布拉特自愿这么做。";
+		next;
+		mes "嗯，我知道他们已经厌倦了在避难所里住了一段时间。";
+		next;
+		mes "过了下午他们还没有回来。维鲁斯市领袖弗雷萨断定离开的人已经死了。";
+		next;
+		mes "黎明时分，每个人都默哀了一会儿。他们都是好人，所以就这样分开令人难过。";
+		next;
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "是从第40天早上开始吗？避难所周围有一种神秘的传染病。";
+		next;
+		mes "有几个人突然袭击了附近的人，全身抽搐";
+		next;
+		mes "由于许多弱小的研究人员受伤，冒险者们被派去镇压那些抽搐的人们。";
+		next;
+		mes "有传言称，由于人们离开避难所一段时间，污染物进入了。";
+		next;
+		if (.@cooldown_status_day[3] == 1) {
+			mes "没有更多录制内容。";
+			next;
+			if (select( "再听一遍。", "退出。" ) == 2)
+				close;
+			continue;
+		}
+		if (select( "继续听。", "退出。" ) == 2)
+			close;
+		mes "第 44 天的午餐时，防空洞领导弗雷萨召集了冒险家们并进行了演讲。";
+		next;
+		mes "传闻已证实，Z-0区将建安全隔断";
+		next;
+		mes "已决定明天将必需品转移到 Z-2 区，听说他们需要冒险者的帮助。";
+		next;
+		mes "明天还要上班，所以要早点睡觉。";
+		next;
+		mes "没有更多录制内容。";
+		next;
+		if (select( "再听一遍。", "退出。" ) == 2)
+			close;
+	}
+	end;
+}
+
+un_bk_q,34,138,4	script	Warehouse Keeper Pik#EP15.2MR	4W_M_03,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[仓库管理员皮克]";
+		mes "我不知道是什么让你来到这里，但请不要碰任何东西。";
+		next;
+		mes "[仓库管理员皮克]";
+		mes "我还没有检查完库存，如果有什么东西丢失了，那就很烦人了。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[仓库管理员皮克]";
+		mes "你是一个冒险家。您不必在这里运送空气净化器。";
+		next;
+		mes "[仓库管理员皮克]";
+		mes "无论如何，这都是一个仓库。独立的空气循环系统就足够了。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[仓库管理员皮克]";
+		mes "啊啊——看仓库很烦人。";
+		next;
+		mes "[仓库管理员皮克]";
+		mes "没有人轮换我的班次";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[仓库管理员皮克]";
+		mes "呜呜呜等一下！！";
+		next;
+		mes "[仓库管理员皮克]";
+		mes "你不会是来伏击我的吧？如果没有也没关系。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[仓库管理员皮克]";
+		mes "您是来搬运物品的吗？";
+		next;
+		mes "[仓库管理员皮克]";
+		mes "我想这个仓库里的货应该不是今天的吧？据我今天所知，我们首先运送必需品。";
+		close;
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,91,283,2	script	Guard#EP15.2MR	4_M_HUMAN_02,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[守卫]";
+		mes "冒险家你好？";
+		next;
+		mes "[守卫]";
+		mes "我不知道原因，但弗雷萨把我分配到了这里。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[守卫]";
+		mes "我一直想知道为什么我被分配到这里，但现在我想我知道原因了。";
+		next;
+		mes "[守卫]";
+		mes "就是看机械师是否制造出无用的东西。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[守卫]";
+		mes "机械师偶尔想做点什么。";
+		next;
+		mes "[守卫]";
+		mes "我的工作就是阻止他们。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[守卫]";
+		mes "听说最近有病人抽搐并攻击周围的人？";
+		next;
+		mes "[守卫]";
+		mes "机械师不断地抽搐着说他们想做一些东西，所以这对我来说并不奇怪。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[守卫]";
+		mes "机械师们的痉挛已经到了极点。";
+		next;
+		mes "[守卫]";
+		mes "他们抽搐得很厉害，我可能需要再打电话。";
+		close;
+	}
+	mes "[守卫]";
+	mes "冒险家你好？";
+	close;
+}
+
+un_bk_q,56,192,4	script	Chemical Substance Specialist Kori#EP15.2MR	4_M_ALCHE_B,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[化学物质专家科里]";
+		mes "我们正在根据应急预案检查防空洞内是否有危险物质。";
+		next;
+		mes "[化学物质专家科里]";
+		mes "您想知道有多少化学物质专家吗？那就去找卡斯滕吧。应该在这儿的某个地方。";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[化学物质专家科里]";
+		mes "隔壁的房间暂时由化学物质专家使用。";
+		next;
+		mes "[化学物质专家科里]";
+		mes "我们把危险的东西藏得严严实实的，但又不碰任何东西，以防万一。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[化学物质专家科里]";
+		mes "卡斯滕给了我葡萄。";
+		next;
+		mes "[化学物质专家科里]";
+		mes "多么新鲜可口。";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[化学物质专家科里]";
+		mes "我的同事们离开防空洞去调查，还没有回来。";
+		next;
+		mes "[化学物质专家科里]";
+		mes "结论是他们已经死了，但他们真的都死了吗？我想见见我的同事。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[化学物质专家科里]";
+		mes "干得好。";
+		next;
+		mes "[化学物质专家科里]";
+		mes "我们正在努力寻找污染物的解决方案。";
+		close;
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,161,193,6	script	Adventurer Bamdaku#EP15.2MR	4_M_ALCHE_C,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	if (.@cooldown_status_day[0] == 1) {
+		mes "[冒险家巴姆达库]";
+		mes "我在巡视防空洞时发现了这个";
+		next;
+		mes "[冒险家巴姆达库]";
+		mes "但墙上有很多这样的东西。会是什么？";
+		close;
+	}
+	if (.@cooldown_status_day[1] == 1) {
+		mes "[冒险家巴姆达库]";
+		mes "我已经对此进行了 30 天的调查，但我不知道它是什么。";
+		next;
+		mes "[冒险家巴姆达库]";
+		mes "我太骄傲了，不敢去问别人。";
+		close;
+	}
+	if (.@cooldown_status_day[2] == 1) {
+		mes "[冒险家巴姆达库]";
+		mes "我已经对此进行了 32 天的调查，但我不知道它是什么。";
+		next;
+		mes "[冒险家巴姆达库]";
+		mes "呃该怎么办..我应该问别人吗？";
+		close;
+	}
+	if (.@cooldown_status_day[3] == 1) {
+		mes "[冒险家巴姆达库]";
+		mes "我已经对此进行了 40 天的调查。";
+		next;
+		mes "[冒险家巴姆达库]";
+		mes "我的自尊心现在不允许我放弃。";
+		close;
+	}
+	if (.@cooldown_status_day[4] == 1) {
+		mes "[冒险家巴姆达库]";
+		mes "距离我开始调查这个未知的事情已经过去了45天。";
+		next;
+		mes "[冒险家巴姆达库]";
+		mes "我是怎么来调查这个事情的？";
+		close;
+	}
+	// unknown text
+	end;
+}
+
+un_bk_q,248,258,2	script	Adventurer Dally#EP15.2MR	4_F_SITDOWN,{
+	callfunc( "F_time_limit_recorder", .@cooldown_status_day,1,0 );
+	mes "[冒险家达利]";
+	mes "可恶！令人沮丧";
+	next;
+	npcskill "AL_INCAGI",10,0,0;
+	mes "[冒险家达利]";
+	if (Sex == SEX_FEMALE)
+		mes "姐姐-奔跑吧~";
+	else
+		mes "兄弟快跑~";
+	close;
+}
+
+
+// GM NPC
+sec_in02,17,13,4	script	Brigan Helper#1	4_F_HUWOMAN,{
+	mes "当前的 Brigan 期是 " + ep15_2_brigan + " ，";
+	mes "编号为 " + ep15_2_brigan + " .";
+	next;
+	switch( select( "设置项", "任务", "初始化" ) ) {
+	case 1:
+		mes "要设置哪个项目？";
+		next;
+		switch( select( "布里根", "女朋友" ) ) {
+		case 1:
+			mes "brigan 的值为 " + ep15_2_brigan + ".";
+			next;
+			switch( select( "+1", "-1", "初始化" ) ) {
+			case 1:
+				mes "设置项目+1";
+				ep15_2_brigan++;
+				close;
+			case 2:
+				mes "设置项-1";
+				ep15_2_brigan--;
+				close;
+			case 3:
+				mes "新价值";
+				mes "初始化";
+				ep15_2_brigan = 0;
+				close;
+			}
+		case 2:
+			mes "女朋友的值是" + ep15_2_brigan + ".";
+			next;
+			switch( select( "+1", "-1", "取消", "任务启动 (5)" ) ) {
+			case 1:
+				mes "新价值";
+				mes "设置项目+1";
+				ep15_2_brigan++;
+				close;
+			case 2:
+				mes "新价值";
+				mes "设置项-1";
+				ep15_2_brigan++;
+				close;
+			case 3:
+				mes "新价值";
+				mes "收货前的蘑菇残渣";
+				ep15_2_brigan = 0;
+				close;
+			case 4:
+				mes "新价值";
+				mes "蘑菇渣5";
+				ep15_2_brigan = 5;
+				close;
+			}
+		}
+	case 2:
+		mes "删除所有任务";
+		for ( .@i = 13195; .@i < 13206; ++.@i ) {
+			if (isbegin_quest(.@i) > 0)
+				erasequest .@i;
+		}
+		close;
+	case 3:
+		for ( .@i = 13195; .@i < 13206; ++.@i )
+			erasequest .@i;
+		ep15_2_brigan = 0;
+		close;
+	}
+	end;
+}

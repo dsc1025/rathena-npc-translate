@@ -1,0 +1,993 @@
+//===== rAthena Script =======================================
+//= Lighthalzen rewards NPCs
+//===== Description: =========================================
+//= Enchant and reward NPCs from Bio instance/dungeon item drop.
+//===== Changelogs: ==========================================
+//= 1.0 Moved the NPCs from WolfchevLaboratory.txt. [Capuche]
+//============================================================
+
+// Weird Old Man (Rewards)
+//============================================================
+lighthalzen,342,291,4	script	Weird old man#Bio4Reward	4_M_EINOLD,{
+	if ((MaxWeight - Weight) < 2800 || !checkweight(1201, 1)) {
+		mes "^FF0000 检查您的库存。你的物品太多，无法完成任务。 ^000000";
+		close;
+	}
+	mes "[奇怪的老人]";
+	mes "哎哟，现在的年轻人，真是粗鲁无礼啊。";
+	next;
+	if (select("不理他", "和他说话") == 1) {
+		mes "[奇怪的老人]";
+		mes "你这个年轻人，真是太坏了！";
+		close;
+	}
+	mes "["+ strcharinfo(0) +"]";
+	mes "先生，你还好吗？？";
+	next;
+	mes "[奇怪的老人]";
+	mes "....??你和其他年轻人不一样。你很有礼貌！你知道我发生了什么事吗..？";
+	next;
+	switch(rand(1,2)) {
+	case 1:
+		mes "[奇怪的老人]";
+		mes "我正要去探望住在符文米德加特的儿子。实在是太远了，所以就坐飞机了。。";
+		next;
+		mes "[奇怪的老人]";
+		mes "那些年轻人......太吵了......我站着，但他们没有给我座位......他们只是大声说话，这打扰了每个人。";
+		next;
+		mes "[奇怪的老人]";
+		mes "如果我年轻10岁，我就可以给他们讲课了。";
+		next;
+		mes "[奇怪的老人]";
+		mes "噗……从来不喜欢时间的流逝……";
+		next;
+		mes "[奇怪的老人]";
+		mes "那么，你……你会怎么做？";
+		next;
+		mes "[奇怪的老人]";
+		mes "在空旷的公共场所，应当保持安静，并给年老体弱的人让座。";
+		next;
+		break;
+	case 2:
+		mes "[奇怪的老人]";
+		mes "我正要去探望住在符文米德加特的儿子。实在是太远了，所以就坐飞机了。。";
+		next;
+		mes "[奇怪的老人]";
+		mes "那些年轻人......太吵了......我站着，但他们没有给我座位......他们只是大声说话，这打扰了每个人。";
+		next;
+		mes "[奇怪的老人]";
+		mes "如果我年轻10岁，我就可以给他们讲课了。";
+		next;
+		mes "[奇怪的老人]";
+		mes "噗……从来不喜欢时间的流逝……";
+		next;
+		mes "[奇怪的老人]";
+		mes "那么，你……你会怎么做？";
+		next;
+		mes "[奇怪的老人]";
+		mes "在空旷的公共场所，应当保持安静，并给年老体弱的人让座。正确的？";
+		next;
+		mes "[奇怪的老人]";
+		mes "是不是这样啊？！";
+		next;
+		switch(rand(1,2)) {
+		case 1:
+			mes "[奇怪的老人]";
+			mes "哦，然后你知道什么......？";
+			next;
+			mes "[奇怪的老人]";
+			mes "有一次我在城里散步，一些男孩在街上吐口水，并打扰路过的女孩……啧啧！";
+			next;
+			mes "[奇怪的老人]";
+			mes "世界将走向狗..会怎样？他们做这件事的时候甚至是白天..啧啧。";
+			next;
+			switch(rand(1,2)) {
+			case 1:
+				mes "[奇怪的老人]";
+				mes "哦，然后你知道什么......？";
+				next;
+				break;
+			case 2:
+				mes "[奇怪的老人]";
+				mes "哦，然后你知道什么......？";
+				next;
+				mes "[奇怪的老人]";
+				mes "现在的年轻人都没有这么有耐心了！！！！";
+				next;
+				mes "[奇怪的老人]";
+				mes "他们经常说他们会放弃……他们说他们不能做得更多。带着这样的心态，他们将如何生活……啧啧。";
+				next;
+				mes "[奇怪的老人]";
+				mes "找工作并不容易。被录用是非常困难的，但他们甚至不能在那里呆一个星期就离开工作场所。";
+				next;
+				mes "[奇怪的老人]";
+				mes "多么不耐烦和不负责任！";
+				next;
+				mes "[奇怪的老人]";
+				mes "哦，然后你知道什么......？";
+				next;
+				break;
+			}
+		case 2:
+			mes "[奇怪的老人]";
+			mes "哦，然后你知道什么......？";
+			next;
+			break;
+		}
+	}
+	mes "^E7A43D老人一遍又一遍地说着。^000000";
+	next;
+	mes "[奇怪的老人]";
+	mes "嗯……你不像一般的年轻人，看起来也很有耐心。我喜欢那样！";
+	next;
+	mes "[奇怪的老人]";
+	mes "现在我只是一个虚弱的老人，但年轻时我是镇上有名的商人。";
+	next;
+	mes "[奇怪的老人]";
+	mes "自从我停止营业以来已经有一段时间了";
+	mes "但我的一位前客户联系我并询问我";
+	next;
+	mes "[奇怪的老人]";
+	mes "如果能给他一些不知名的东西，名字分别是‘战士意志’、‘嗜血’、‘死者之寒’。";
+	next;
+	mes "[奇怪的老人]";
+	mes "我喜欢你的礼貌，这是大多数年轻人所没有的，所以如果你能得到我的礼貌，我会给你一些我认为是我的宝贝的东西。";
+	next;
+	while(1) {
+		switch(select("当我收集它们时，我会回来", "给我看盔甲", "给我看武器")) {
+		case 1:
+			mes "[奇怪的老人]";
+			mes "好吧，年轻人。稍后见。";
+			close;
+		case 2:
+			mes "[奇怪的老人]";
+			mes "所以，你对盔甲感兴趣。";
+			next;
+			mes "[奇怪的老人]";
+			mes "这些是我拥有的盔甲。";
+			next;
+			for(.@i = 1; .@i < 8; .@i++) {
+				if (((.@i == 1 || .@i == 5) && (countitem(6469) >= 100) && (countitem(6470) >= 50) && (countitem(6471) >= 35)) || 
+				    ((.@i == 2 || .@i == 3) && (countitem(6469) >= 100) && (countitem(6470) >= 50) && (countitem(6471) >= 22)) ||
+				    ((.@i == 4 || .@i == 7) && (countitem(6469) >= 300) && (countitem(6470) >= 300) && (countitem(6471) >= 400)) ||
+				    ((.@i == 6) && (countitem(6469) >= 100) && (countitem(6470) >= 50) && (countitem(6471) >= 30))) {
+					.@armor$[.@i] = "^0000FF";
+				} else {
+					.@armor$[.@i] = "^FF0000";
+				}
+			}
+			while(1) {
+				switch(select(
+					"Show me other items.",
+					""+.@armor$[1]+"Giant Shield^000000",
+					""+.@armor$[2]+"Ancient Book of Geffenia-Water^000000",
+					""+.@armor$[3]+"Bible of Promise(2nd Vol.)^000000",
+					""+.@armor$[4]+"Salvage Cape^000000",
+					""+.@armor$[5]+"Assassin's Handcuffs^000000",
+					""+.@armor$[6]+"Green Operating Gown^000000",
+					""+.@armor$[7]+"Ancient Gold Decoration^000000"
+				)) {
+				case 1:
+					mes "[奇怪的老人]";
+					mes "看看吧。";
+					next;
+					.@break = 1;
+					break;
+				case 2:
+					mes "<<巨盾[1]>>";
+					mes "减少大型怪物5%的伤害，精炼等级为9时，伤害增加5%。";
+					mes "盾牌 / 防御力 130 / 重量 280 / 所需等级 100 / 插槽 1 / 剑士三级";
+					callsub L_Reward, 2160, 100, 50, 35; //Giant_Shield
+					break;
+				case 3:
+					mes "<<格芬尼亚古书-水[1]>>";
+					mes "INT + 1，MDEF + 2。如果原始INT点为120，MATK + 10，MHP + 800。";
+					mes "装备泪珠棒时，暴风雨、冰霜迷雾、冰霜杰克的施法百分比将降低4倍精炼等级。";
+					mes "盾牌 / 防御 30 / 重量 100 / 所需 Lv 100 / 插槽 1 / 术士";
+					callsub L_Reward, 2161, 100, 50, 22; //Geffenia_Book_Water
+					break;
+				case 4:
+					mes "<<应许圣经（第2卷）[1]>>";
+					mes "MDEF + 5，允许使用“奥丁之力”（Lv 2）。治疗技能增加 5%。";
+					mes "盾牌 / 防御 20 / 重量 50 / 所需 Lv 140 / 插槽 1 / 大主教";
+					callsub L_Reward, 2162, 100, 50, 22; //Bible_Of_Promise2
+					break;
+				case 5:
+					mes "<<打捞斗篷[0]>>";
+					mes "允许使用‘蝉蜕皮’(Lv 1)。该技能的冷却时间为30秒。装备时，使用任何技能的SP消耗量都会增加一倍，脱下时，SP-1200。";
+					mes "服装 / 防御力 1 / 重量 40 / 所需等级 130 / 插槽 0 / 大主教用";
+					callsub L_Reward, 2582, 300, 300, 400; //Salvage_Cape
+					break;
+				case 6:
+					mes "<<刺客的手铐[1]>>";
+					mes "MSP + 20、CRI + 3。装备克利须那时，ATK + 50，“音速打击”攻击力增加 50%，FLEE - 30。装备卡克拉姆 CRI + 4 时，暴击攻击力增加 40%，MHP - 10%。";
+					mes "饰品 / 防御力 3 / 重量 40 / 所需等级 100 / 插槽 1 / 用于断头台十字";
+					callsub L_Reward, 2892, 100, 50, 35; //Assassin_Handcuffs
+					break;
+				case 7:
+					mes "<<绿色手术衣[1]>>";
+					mes "DEX+1，MSP+30。装备手术刀，狩猎人型、动物型怪物时，一定概率掉落“不朽之心”、“酒精”。精炼等级影响掉落率。";
+					mes "护甲 / 防御 66 / 重量 66 / 所需 Lv 100 / 插槽 1 / 通用";
+					callsub L_Reward, 15044, 100, 50, 30; //Green_Operation_Coat
+					break;
+				case 8:
+					mes "<<古代金饰[1]>>";
+					mes "基础lv为150时，全状态+2。剑士、商人、盗贼职业攻击力+8%，魔法师、学士职业MATK+8%，治疗力+7%，弓箭手职业DEX+3，远距离攻击力+10%。";
+					mes "头盔 / 防御 7 / 位置 - 上部 / 重量 40 / 所需 Lv 100 / 插槽 1 / 用于第三职业";
+					callsub L_Reward, 18570, 300, 300, 400; //Ancient_Gold_Deco
+					break;
+				}
+				if (.@break) {
+					.@break = 0;
+					break;
+				}
+			}
+			break;
+		case 3:
+			mes "[奇怪的老人]";
+			mes "所以，你对武器感兴趣。";
+			next;
+			mes "[奇怪的老人]";
+			mes "这些是我拥有的武器。";
+			next;
+			for(.@i = 1; .@i < 15; .@i++) {
+				if (((.@i == 1) && (countitem(6469) >= 50) && (countitem(6470) >= 100) && (countitem(6471) >= 10)) ||
+				((.@i == 2) && (countitem(6469) >= 50) && (countitem(6470) >= 100) && (countitem(6471) >= 85)) ||
+				((.@i == 3 || .@i == 4 || (.@i >= 8 && .@i < 11) || .@i >= 12) && (countitem(6469) >= 50) && (countitem(6470) >= 100) && (countitem(6471) >= 35)) ||
+				((.@i == 5 || .@i == 7 || .@i == 11) && (countitem(6469) >= 50) && (countitem(6470) >= 100) && (countitem(6471) >= 40)) ||
+				((.@i == 6) && (countitem(6469) >= 300) && (countitem(6470) >= 300) && (countitem(6471) >= 400))) {
+					.@weapon$[.@i] = "^0000FF";
+				} else {
+					.@weapon$[.@i] = "^FF0000";
+				}
+			}
+			while(1) {
+				switch(select(
+					"Show me other items.",
+					""+.@weapon$[1]+"Agent Katar^000000",
+					""+.@weapon$[2]+"Guillotine Katar^000000",
+					""+.@weapon$[3]+"Ygnus Stale^000000",
+					""+.@weapon$[4]+"End Sektura^000000",
+					""+.@weapon$[5]+"Cannon Spear^000000",
+					""+.@weapon$[6]+"Giant Lance^000000",
+					""+.@weapon$[7]+"Chilly Spell Book^000000",
+					""+.@weapon$[8]+"Recovery Light^000000",
+					""+.@weapon$[9]+"Aztoe Nail^000000",
+					""+.@weapon$[10]+"Scarletto Nail^000000",
+					""+.@weapon$[11]+"Bloody Cross^000000",
+					""+.@weapon$[12]+"Catapult^000000",
+					""+.@weapon$[13]+"Big CrossBow^000000",
+					""+.@weapon$[14]+"Creeper Bow^000000"
+				)) {
+				case 1:
+					mes "[奇怪的老人]";
+					mes "看看吧。";
+					next;
+					.@break = 1;
+					break;
+				case 2:
+					mes "<<卡塔特工[1]>>";
+					mes "每 2 个原始 LUK 点可额外获得 1 个 HIT 点";
+					mes "拳刃 / 攻击力 170 / 重量 120 / 武器 Lv 3 / 所需 Lv 100 / 插槽 1 / 断头台十字";
+					callsub L_Reward, 1290, 50, 100, 10; //Agent_Katar
+					break;
+				case 3:
+					mes "<<断头台卡塔尔[1]>>";
+					mes "DEX + 2. FLEE - 30. 对人类怪物的伤害增加 50%。交叉冲击技能伤害增加 30%。";
+					mes "拳刃 / 攻击力 200 / 重量 150 / 武器 Lv 4 / 所需 Lv 140 / 插槽 1 / 断头台十字";
+					callsub L_Reward, 1291, 50, 100, 85; //Guillotine_Katar
+					break;
+				case 4:
+					mes "<<伊格纳斯·陈旧[1]>>";
+					mes "近距离攻击时，有一定几率对玩家和敌人施展燃烧状态。";
+					mes "双手斧 / 攻击力 250 / 重量 190 / 火属性 / 武器 Lv 4 / 所需 Lv 95 / 插槽 1 / 高级剑士/商人职业";
+					callsub L_Reward, 1392, 50, 100, 35; //Ygnus_Stale
+					break;
+				case 5:
+					mes "<<结束塞克图拉[1]>>";
+					mes "近距离攻击时，有一定几率对己方和敌人施放冰冻。";
+					mes "双手斧 / 攻击力 250 / 重量 190 / 水属性 / 武器 Lv 4 / 所需 Lv 95 / 插槽 1 / 高级剑士/商人职业";
+					callsub L_Reward, 1393, 50, 100, 35; //End_Sektura
+					break;
+				case 6:
+					mes "<<炮矛[1]>>";
+					mes "MSP - 100，炮枪伤害增加10%，炮枪额外攻击力相当于精炼等级3倍。";
+					mes "单手枪 / 攻击力 180 / 重量 160 / 武器 Lv 4 / 所需 Lv 100 / 插槽 1 / 皇家守卫";
+					callsub L_Reward, 1435, 50, 100, 40; //Cannon_Spear
+					break;
+				case 7:
+					mes "<<巨型枪[0]>>";
+					mes "ASPD - 10，当它起飞时，角色获得SP - 600。在使用回碰撞螺旋之前还有20秒的延迟时间。如果原STR值为120，则+ATK 300。";
+					mes "双手枪 / 攻击力 20 / 重量 2000 / 武器 Lv 4 / 所需 Lv 140 / 插槽 0 / 符文骑士";
+					callsub L_Reward, 1490, 300, 300, 400; //Giant_Lance
+					break;
+				case 8:
+					mes "<<冰冷咒语书[2]>>";
+					mes "MATK+160，DEX+1。冷箭、钻石尘的攻击力提高相当于精炼等级的3倍，这些技能的SP消耗量也增加相当于精炼等级的5倍。不可摧毁。";
+					mes "书 / 攻击力 100 / 重量 100 / 水属性 / 武器 Lv 4 / 所需 Lv 100 / 插槽 2 / 魔法师用";
+					callsub L_Reward, 1584, 50, 100, 40; //Chilly_Spell_Book
+					break;
+				case 9:
+					mes "<<恢复灯[1]>>";
+					mes "MATK+160。根据精炼等级、治疗能力和技能SP消耗而增加。坚不可摧。";
+					mes "单手杖/攻击力30/重量40/圣属性/武器Lv 4/所需Lv 110/插槽1/大主教用。";
+					callsub L_Reward, 1659, 50, 100, 35; //Recovery_Light
+					break;
+				case 10:
+					mes "<<阿兹托指甲[0]>>";
+					mes "MATK+80。物理近战攻击时，有一定几率对目标施放冰冻。几率受精炼等级影响。";
+					mes "匕首 / 攻击力 160 / 重量 50 / 风属性 / 武器 Lv 4 / 所需 Lv 110 / 插槽 0 / 高级剑士/商人/盗贼职业";
+					callsub L_Reward, 13069, 50, 100, 35; //Aztoe_Nail
+					break;
+				case 11:
+					mes "<<斯卡莱托指甲[0]>>";
+					mes "魔力+80。物理近战攻击时，有一定几率对目标施放石咒。几率受精炼等级影响。";
+					mes "匕首 / 攻击力 160 / 重量 50 / 火属性 / 武器 Lv 4 / 所需 Lv 110 / 插槽 0 / 高级剑士/商人/盗贼职业";
+					callsub L_Reward, 13070, 50, 100, 35; //Scarletto_Nail
+					break;
+				case 12:
+					mes "<<血腥十字[0]>>";
+					mes "物理近战攻击时，有一定概率自动施放“地狱火”（Lv 1）。几率受精炼等级影响。";
+					mes "狼牙棒 / 攻击力 170 / 重量 150 / 黑暗属性 / 武器 Lv 4 / 所需 Lv 100 / 插槽 0 / 高级侍僧职业";
+					callsub L_Reward, 16017, 50, 100, 40; //Bloody_Cross
+					break;
+				case 13:
+					mes "<<弹射器[2]>>";
+					mes "“三角射击”的攻击力提升相当于精炼等级2倍，技能SP消耗量也增加。";
+					mes "弓 / 攻击力 150 / 重量 110 / 武器 Lv 4 / 所需 Lv 100 / 插槽 2 / 追影者";
+					callsub L_Reward, 18109, 50, 100, 35; //Catapult
+					break;
+				case 14:
+					mes "<<大十字弓[2]>>";
+					mes "『箭雨』的攻击力提升相当于精炼等级5倍。另外技能消耗的SP也会增加，如果原来的AGI点是120，ASPD+1。";
+					mes "弓 / 攻击力 160 / 重量 90 / 武器 Lv 4 / 所需 Lv 110 / 插槽 2 / 游侠用";
+					callsub L_Reward, 18110, 50, 100, 35; //Big_CrossBow
+					break;
+				case 15:
+					mes "<<爬行弓[2]>>";
+					mes "敏捷+1，物理攻击时，有一定概率自动施展‘纤维锁’（Lv 1）。";
+					mes "弓 / 攻击力 150 / 重量 150 / 武器 Lv 3 / 所需 Lv 120 / 插槽 2 / 弓箭手第三职业";
+					callsub L_Reward, 18111, 50, 100, 35; //Creeper_Bow
+					break;
+				}
+				if (.@break) {
+					.@break = 0;
+					break;
+				}
+			}
+		}
+	}
+	close;
+
+L_Reward:
+	setarray .@amount[0], getarg(1), getarg(2), getarg(3);
+	next;
+	mes ""+ .@amount[0] +"战士的意志，"+ .@amount[1] +"渴求鲜血，"+ .@amount[2] +"交换需要亡灵之寒。";
+	next;
+	if (countitem(6469) >= .@amount[0] && countitem(6470) >= .@amount[1] && countitem(6471) >= .@amount[2]) {
+		if (select("请勿兑换", "兑换") == 1) {
+			mes "[奇怪的老人]";
+			mes "好的..";
+			close;
+		}
+		emotion ET_PROFUSELY_SWEAT;
+		progressbar "FF00FF", 2;
+		delitem 6469, .@amount[0]; //Will_Of_Warrior
+		delitem 6470, .@amount[1]; //Blood_Thirst
+		delitem 6471, .@amount[2]; //Goast_Chill
+		getitem getarg(0), 1;
+		mes "[奇怪的老人]";
+		mes "就这样吧。有时来看我，我们可以谈谈。";
+		close;
+	}
+	return;
+}
+
+// Sorcerer (Rewards)
+//============================================================
+lhz_cube,233,24,4	script	Sorcerer#Bio4Reward	4_M_UMDANCEKID,{
+	if ((MaxWeight - Weight) < 1200 || !checkweight(1201, 1)) {
+		mes "^FF0000 检查您的库存。你的物品太多，无法完成任务。 ^000000";
+		close;
+	}
+	disable_items;
+	mes "[布丁]";
+	mes "…………";
+	next;
+	switch(select("Umba umba humbaa", "你在这里做什么？", "到目前为止发现了哪些设备？", "给你，先生。")) {
+	case 1:
+		emotion ET_FRET;
+		mes "[布丁]";
+		mes "嘿，对不起，我不是安巴拉人！你太粗鲁了。";
+		close;
+	case 2:
+		mes "[布丁]";
+		mes "如你所见，我是一名训练魔法师，我的名字叫布丁。";
+		next;
+		select("....?");
+		emotion ET_FRET;
+		mes "[布丁]";
+		mes "……那张脸是什么？我开始感觉不舒服了..";
+		next;
+		emotion ET_OK;
+		mes "[布丁]";
+		mes "前几天，我在接受管教时，感觉到一种奇怪的、怪异的感觉。所以我跟着它，它把我带到了这里。";
+		next;
+		select("我懂了。");
+		mes "[布丁]";
+		mes "好吧，让我继续。如果你在我说话时打扰我，我会感到烦恼。";
+		next;
+		mes "[布丁]";
+		mes "我进入这里的实验室进行调查，天哪！我发现那些怪物就像来自“格芬地下城”的分身。里面挤满了它们。";
+		next;
+		mes "[布丁]";
+		mes "从那些怪物中，我可以找到诸如“^F2766E战士意志^000000”、“^952420嗜血^000000”和“^88C6F7死亡之寒^000000”等在其他地方找不到的稀有物品。";
+		next;
+		emotion ET_QUESTION;
+		mes "[布丁]";
+		mes "经过我自己几个小时的研究，我终于找到了使用这些物品的方法。你想知道吗？";
+		next;
+		switch(select("噢...请原谅？！", "当然，我真的很想知道。")) {
+		case 1:
+			emotion ET_HUK, playerattached();
+			emotion ET_FRET;
+			mes "[布丁]";
+			mes "天啊！你问了我什么就睡着了？好吧，反正我懒得再解释了，所以我就继续吧。";
+			next;
+			break;
+		case 2:
+			emotion ET_SMILE;
+			mes "[布丁]";
+			mes "很好，你能认真听我的故事，我很满意。那我就继续解释一下。";
+			next;
+			break;
+		}
+		mes "[布丁]";
+		mes "那些‘^F2766E战士意志^000000'和'^952420嗜血^000000'......是侵略性但又温暖的素材。";
+		next;
+		mes "[布丁]";
+		mes "所以‘^F2766E战士意志^000000'可以将特殊的力量驻留在装备的第4个插槽中，";
+		next;
+		mes "[布丁]";
+		mes "和“^952420嗜血^000000”可以将特殊力量驻留在第三个位置。";
+		next;
+		mes "[布丁]";
+		mes "然而！！！";
+		mes "'^88C6F7Chill of the Dead^000000'是冷型材质";
+		mes "允许从“^F2766E战士意志^000000”或“^952420嗜血^000000”恢复力量，从而使装备不再附魔。";
+		next;
+		mes "[布丁]";
+		mes "你怎么说？听起来不是很有趣吗？但是，有一个问题...";
+		next;
+		mes "[布丁]";
+		mes "由于这些材料只能从实验室的怪物身上找到，所以特殊的力量也可以植入到某些可以从实验室获得的装备中。";
+		next;
+		select("那么结论是什么呢？");
+		emotion ET_QUESTION, playerattached();
+		emotion ET_FRET;
+		mes "[布丁]";
+		mes "哎呀..我告诉过你在我说话的时候不要插嘴，不是吗？好吧，我会回答这个问题，因为这很重要。";
+		next;
+		mes "[布丁]";
+		mes "如果你给我带来10个“^F2766E战士意志^000000”或10个“^952420嗜血^000000”，我将为你在实验室中找到的某些装备保留一些力量。";
+		next;
+		mes "[布丁]";
+		mes "如果你对你所获得的力量不满意，请给我10个“^88C6F7死亡之寒^000000”，我会取消该力量。";
+		next;
+		mes "[布丁]";
+		mes "你怎么说？有两种选择......很好，对吧？";
+		next;
+		mes "[布丁]";
+		mes "如果你获得了‘^F2766E战士意志^000000'或'^952420嗜血^000000'，并且还获得了能够接受其力量的装备，请将它们带给我。我会等待。";
+		close;
+	case 3:
+		mes "[布丁]";
+		mes "嗯……目前为止发现的装备是……";
+		next;
+		mes "- 检查 -";
+		mes "布丁从口袋里拿出一些纸。";
+		next;
+		mes "[布丁]";
+		mes "让我看看..到目前为止发现的设备是......";
+		mes "7 种盔甲，14 种武器。";
+		next;
+		while(1) {
+			switch(select("好吧，我不需要知道更多。", "7 件盔甲", "14 件武器")) {
+			case 1:
+				mes "[布丁]";
+				mes "如果你获得了‘^F2766E战士意志^000000'或'^952420嗜血^000000'，并且还获得了能够接受其力量的装备，请将它们带给我。我会等待。";
+				close;
+			case 2:
+				mes "< 防具列表 >";
+				mes "巨盾[1]";
+				mes "格芬尼亚古书-水[1]";
+				mes "应许圣经（第2卷）[1]";
+				mes "打捞斗篷[0]";
+				mes "刺客手铐[1]";
+				mes "绿色手术衣[1]";
+				mes "古代金饰[1]";
+				next;
+				mes "[布丁]";
+				mes "到目前为止，这些都是已发现的装甲。你还想看其他东西吗？";
+				next;
+				break;
+			case 3:
+				mes "<武器列表>";
+				mes "卡塔特工[1]";
+				mes "断头刀拳头[1]";
+				mes "伊格纳斯·陈旧[1]";
+				mes "结束塞克图拉[1]";
+				mes "炮矛[1]";
+				mes "巨枪[0]";
+				mes "冰冷咒语书[2]";
+				mes "恢复灯[1]";
+				mes "阿兹托钉子[0]";
+				mes "斯卡莱托指甲[0]";
+				mes "血腥十字架[0]";
+				mes "弹射器[2]";
+				mes "大十字弓[2]";
+				mes "苦力怕弓[2]";
+				next;
+				mes "[布丁]";
+				mes "到目前为止，这些是已发现的武器。你还想看其他东西吗？";
+				next;
+				break;
+			}
+		}
+		close;
+	case 4:
+		emotion ET_SPARK;
+		mes "[布丁]";
+		mes "哦哦哦你带了吗？";
+		next;
+		break;
+	}
+	mes "[布丁]";
+	mes "好的！您想将力量集中在哪些设备上？";
+	next;
+	setarray .@parts[0], EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_TOP;
+	for(.@i = 0; .@i < 7; .@i++) {
+		if (!getequipisequiped(.@parts[.@i])) {
+			switch(.@i) {
+				case 0:
+					.@equipped$[.@i] = "^999999Armor-[Not equipped]^000000";
+					break;
+				case 1:
+					.@equipped$[.@i] = "^999999Left Hand-[Not equipped]^000000";
+					break;
+				case 2:
+					.@equipped$[.@i] = "^999999Right Hand-[Not equipped]^000000";
+					break;
+				case 3:
+					.@equipped$[.@i] = "^999999Garment-[Not equipped]^000000";
+					break;
+				case 4:
+					.@equipped$[.@i] = "^999999Accessory-[Not equipped]^000000";
+					break;
+				case 5:
+					.@equipped$[.@i] = "^999999Accessory-[Not equipped]^000000";
+					break;
+				case 6:
+					.@equipped$[.@i] = "^999999Helm-[Not equipped]^000000";
+					break;
+			}
+		} else {
+			.@equipped$[.@i] = getequipname(.@parts[.@i]);
+		}
+	}
+	switch(select("我改变了主意。", .@equipped$[0], .@equipped$[1], .@equipped$[2], .@equipped$[3], .@equipped$[4], 
+	.@equipped$[5], .@equipped$[6])) {
+	case 1:
+		mes "[布丁]";
+		mes "好吧，我很期待这样做，但当时我无能为力。";
+		close;
+	case 2:
+		if (!getequipisequiped(EQI_ARMOR)) {
+			mes "[布丁]";
+			mes "嘿..盔甲在哪里？";
+			close;
+		}
+		.@part = EQI_ARMOR;
+		break;
+	case 3:
+		if (!getequipisequiped(EQI_HAND_L)) {
+			mes "[布丁]";
+			mes "嗯..你的左手什么装备都没有。";
+			close;
+		}
+		.@part = EQI_HAND_L;
+		break;
+	case 4:
+		if (!getequipisequiped(EQI_HAND_R)) {
+			mes "[布丁]";
+			mes "嗯..你右手什么装备都没有。";
+			close;
+		}
+		.@part = EQI_HAND_R;
+		break;
+	case 5:
+		if (!getequipisequiped(EQI_GARMENT)) {
+			mes "[布丁]";
+			mes "嗯……你的长袍在哪里？";
+			close;
+		}
+		.@part = EQI_GARMENT;
+		break;
+	case 6:
+		if (!getequipisequiped(EQI_ACC_L)) {
+			mes "[布丁]";
+			mes "......配件在哪里？";
+			close;
+		}
+		.@part = EQI_ACC_L;
+		break;
+	case 7:
+		if (!getequipisequiped(EQI_ACC_R)) {
+			mes "[布丁]";
+			mes "......配件在哪里？";
+			close;
+		}
+		.@part = EQI_ACC_R;
+		break;
+	case 8:
+		if (!getequipisequiped(EQI_HEAD_TOP)) {
+			mes "[布丁]";
+			mes "嘿..你没戴头盔吗？";
+			close;
+		}
+		.@part = EQI_HEAD_TOP;
+		break;
+	}
+	.@refine_count = getequiprefinerycnt(.@part);
+	.@equip_item = getequipid(.@part);
+	setarray .@equip_card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	.@lhz_max_num = 4000;
+	if (.@equip_item == 13069 || .@equip_item == 1291 || .@equip_item == 1392 || 
+	    .@equip_item == 1393 || .@equip_item == 1435 || .@equip_item == 1490 || 
+	    .@equip_item == 13069 || .@equip_item == 13070 || .@equip_item == 16017) {
+		.@type = 1;
+		if (.@equip_item == 1490)
+			.@lhz_max_num = 4200;
+	} else if (.@equip_item == 18109 || .@equip_item == 18110 || .@equip_item == 18111) {
+		.@type = 2;
+	} else if (.@equip_item == 1584 || .@equip_item == 1659) {
+		.@type = 3;
+	} else if (.@equip_item == 2160 || .@equip_item == 2161 || .@equip_item == 2162 ||
+	           .@equip_item == 2582 || .@equip_item == 2892 || .@equip_item == 15044 || 
+	           .@equip_item == 18570) {
+		.@type = 4;
+		if (.@equip_item == 2582 || .@equip_item == 18570)
+			.@lhz_max_num = 4200;
+	} else {
+		mes "[布丁]";
+		mes "第一的！我需要检查该设备是否可以接受电源。";
+		next;
+		specialeffect2 EF_SPHERE;
+		progressbar "ffff00", 2;
+		specialeffect2 EF_SUI_EXPLOSION;
+		emotion ET_CRY;
+		mes "[布丁]";
+		mes "嗯……这件装备无法接受‘^F2766E战士意志^000000'或'^952420嗜血^000000'的力量。";
+		close;
+	}
+	emotion ET_DELIGHT;
+	mes "[布丁]";
+	mes "哦哦……这件装备可以接受‘^F2766E战士意志^000000'或者'^952420嗜血^000000'的力量。";
+	next;
+	if (countitem(6469) >= 10)
+		.@menu_in$[1] = "Dwell the power of '^F2766EWill of Warrior^000000'";
+	else
+		.@menu_in$[1] = "Not enough ^999999'Will of Warrior'^000000";
+
+	if (countitem(6470) >= 10)
+		.@menu_in$[2] = "Dwell the power of '^952420Thirst for Blood^000000'";
+	else
+		.@menu_in$[2] = "Not enough ^999999'Thirst for Blood'^000000";
+
+	if (countitem(6471) >= 10)
+		.@menu_in$[3] = "Consume the '^88C6F7Chill of the Dead^000000'";
+	else
+		.@menu_in$[3] = "Not enough ^999999'Chill of the Dead'^000000";
+	mes "[布丁]";
+	mes "好的！您希望您的设备具备哪种能力？";
+	next;
+	switch(select("我说不！我不需要那个！！", .@menu_in$[1], .@menu_in$[2], .@menu_in$[3])) {
+	case 1:
+		mes "[布丁]";
+		mes "噢..我很期待这样做，但这一切都取决于你......";
+		close;
+	case 2:
+		if (countitem(6469) < 10) {
+			mes "[布丁]";
+			mes "'^F2766E战士意志^000000'不够。您需要携带10个“^F2766E战士意志^000000”";
+			close;
+		}
+		else if (.@equip_card[3] > 0) {
+			mes "[布丁]";
+			mes "该装备已具备“^F2766E战士意志^000000”的力量。";
+			close;
+		} else {
+			.@socket_type = 4;
+		}
+		break;
+	case 3:
+		if (countitem(6470) < 10) {
+			mes "[布丁]";
+			mes "'^952420渴血^000000'不够。您需要携带 10 个“^952420嗜血^000000”";
+			close;
+		}
+		else if (.@equip_card[2] > 0) {
+			mes "[布丁]";
+			mes "该装备已具备‘^952420嗜血^000000'的力量。";
+			close;
+		} else {
+			.@socket_type = 3;
+		}
+		break;
+	case 4:
+		// Enchant Removal
+		if (countitem(6471) < 10) {
+			.@menu_clear$[1] = "^999999Not enough 'Chill of the Dead'^000000";
+			.@menu_clear$[2] = "^999999Not enough 'Chill of the Dead'^000000";
+			.@4thzptsodyd = 1;
+			.@3thzptsodyd = 1;
+		} else {
+			if (.@equip_card[3] > 0) {
+				.@menu_clear$[1] = "Remove the power of '^F2766EWill of Warrior^000000'";
+			} else {
+				.@menu_clear$[1] = "^999999There's no power to remove^000000";
+				.@4thzptsodyd = 1;
+			}
+			if (.@equip_card[2] > 0) {
+				.@menu_clear$[2] = "Remove the power of '^952420Thirst for Blood^000000'";
+			} else {
+				.@menu_clear$[2] = "^999999There's no power to remove^000000";
+				.@3thzptsodyd = 1;
+			}
+		}
+		mes "[布丁]";
+		mes "好吧，你想删除哪项权力？";
+		next;
+		.@menu = select("不，我不想删除任何内容。", .@menu_clear$[1], .@menu_clear$[2]);
+		switch(.@menu){
+		case 1:
+			mes "[布丁]";
+			mes "真的吗？好的。我得到了它..";
+			close;
+		case 2:
+		case 3:
+			if (countitem(6471) < 10) {
+				mes "[布丁]";
+				mes "'^88C6F7死亡之寒^000000'不够。您需要携带 10 个“^88C6F7死亡之寒^000000”";
+				close;
+			}
+			if ( (.@menu==3 && .@3thzptsodyd == 1) || (.@menu==2 && .@4thzptsodyd == 1) ) {
+				mes "[布丁]";
+				mes "该设备没有获得任何特殊能力。";
+				close;
+			}
+			specialeffect EF_BEGINSPELL2;
+			progressbar "ffff00", 2;
+			specialeffect2 EF_FROSTWEAPON;
+			delitem 6471, 10; //Goast_Chill
+
+			// anti-hack
+			if (callfunc("F_IsEquipIDHack", .@part, .@equip_item) || callfunc("F_IsEquipCardHack", .@part, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@refine_count))
+				close;
+
+			if (.@menu == 2)
+				.@equip_card[3] = 0;
+			else
+				.@equip_card[2] = 0;
+			delequip .@part;
+			getitem2 .@equip_item, 1, 1, .@refine_count, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3];
+			mes "[布丁]";
+			if (.@menu == 3)
+				mes "‘^952420嗜血^000000'的力量已被完美移除。";
+			else
+				mes "“^F2766E战士意志^000000”的力量已被完全移除。";
+			close;
+		}
+	}
+	mes "[布丁]";
+	mes "在我详述力量之前，让我警告你。";
+	next;
+	mes "[布丁]";
+	mes "当我沉浸在“^F2766E战士意志^000000”或“^952420嗜血^000000”的力量时，设备可能无法接受它并因此而被破坏。";
+	next;
+	mes "[布丁]";
+	mes "^9D2628如果装备被破坏，你插入的卡牌也会丢失，精炼等级也会被移除。^000000";
+	next;
+	mes "[布丁]";
+	mes "好吧。您真的希望将力量融入到设备中吗？";
+	next;
+	if (select("等等，我再考虑一下。", "当然，继续。") == 1) {
+		mes "[布丁]";
+		mes "好的。我希望再次见到你。";
+		close;
+	}
+	mes "[布丁]";
+	mes "我希望你做出了正确的决定...";
+	next;
+	if (.@socket_type >= 3) {
+		switch(.@type){
+			case 1:	// Short Distance
+				.@r = rand(1, .@lhz_max_num);
+				if      (.@r < 401)  .@enchant = 4700; //Strength1
+				else if (.@r < 441)  .@enchant = 4701; //Strength2
+				else if (.@r < 445)  .@enchant = 4702; //Strength3
+				else if (.@r < 845)  .@enchant = 4730; //Agility1
+				else if (.@r < 885)  .@enchant = 4731; //Agility2
+				else if (.@r < 889)  .@enchant = 4732; //Agility3
+				else if (.@r < 1289) .@enchant = 4740; //Vitality1
+				else if (.@r < 1329) .@enchant = 4741; //Vitality2
+				else if (.@r < 1333) .@enchant = 4742; //Vitality3
+				else if (.@r < 1523) .@enchant = 4710; //Inteligence1
+				else if (.@r < 1542) .@enchant = 4711; //Inteligence2
+				else if (.@r < 1544) .@enchant = 4712; //Inteligence3
+				else if (.@r < 1844) .@enchant = 4720; //Dexterity1
+				else if (.@r < 1874) .@enchant = 4721; //Dexterity2
+				else if (.@r < 1877) .@enchant = 4722; //Dexterity3
+				else if (.@r < 2067) .@enchant = 4750; //Luck1
+				else if (.@r < 2086) .@enchant = 4751; //Luck2
+				else if (.@r < 2088) .@enchant = 4752; //Luck3
+				else if (.@r < 2491) .@enchant = 0;
+				else if (.@r < 2891) .@enchant = 4811; //Fighting_Spirit1
+				else if (.@r < 2931) .@enchant = 4810; //Fighting_Spirit2
+				else if (.@r < 2935) .@enchant = 4809; //Fighting_Spirit3
+				else if (.@r < 3125) .@enchant = 4815; //Spell1
+				else if (.@r < 3144) .@enchant = 4814; //Spell2
+				else if (.@r < 3146) .@enchant = 4813; //Spell3
+				else if (.@r < 3148) .@enchant = 4807; //Atk_Speed1
+				else if (.@r < 3348) .@enchant = 4818; //Sharp1
+				else if (.@r < 3368) .@enchant = 4817; //Sharp2
+				else if (.@r < 3370) .@enchant = 4816; //Sharp3
+				else if (.@r < 3560) .@enchant = 4832; //Expert_Archer1
+				else if (.@r < 3579) .@enchant = 4833; //Expert_Archer2
+				else if (.@r < 3581) .@enchant = 4834; //Expert_Archer3
+				else                 .@enchant = 0;
+				break;
+			case 2:	// Long Distance
+				.@r = rand(1, .@lhz_max_num);
+				if      (.@r < 191)  .@enchant = 4700; //Strength1
+				else if (.@r < 210)  .@enchant = 4701; //Strength2
+				else if (.@r < 212)  .@enchant = 4702; //Strength3
+				else if (.@r < 612)  .@enchant = 4730; //Agility1
+				else if (.@r < 652)  .@enchant = 4731; //Agility2
+				else if (.@r < 656)  .@enchant = 4732; //Agility3
+				else if (.@r < 846)  .@enchant = 4740; //Vitality1
+				else if (.@r < 865)  .@enchant = 4741; //Vitality2
+				else if (.@r < 867)  .@enchant = 4742; //Vitality3
+				else if (.@r < 1167) .@enchant = 4710; //Inteligence1
+				else if (.@r < 1197) .@enchant = 4711; //Inteligence2
+				else if (.@r < 1200) .@enchant = 4712; //Inteligence3
+				else if (.@r < 1600) .@enchant = 4720; //Dexterity1
+				else if (.@r < 1640) .@enchant = 4721; //Dexterity2
+				else if (.@r < 1644) .@enchant = 4722; //Dexterity3
+				else if (.@r < 1834) .@enchant = 4750; //Luck1
+				else if (.@r < 1853) .@enchant = 4751; //Luck2
+				else if (.@r < 1855) .@enchant = 4752; //Luck3
+				else if (.@r < 2258) .@enchant = 0;
+				else if (.@r < 2448) .@enchant = 4811; //Fighting_Spirit1
+				else if (.@r < 2467) .@enchant = 4810; //Fighting_Spirit2
+				else if (.@r < 2469) .@enchant = 4809; //Fighting_Spirit3
+				else if (.@r < 2669) .@enchant = 4815; //Spell1
+				else if (.@r < 2689) .@enchant = 4814; //Spell2
+				else if (.@r < 2691) .@enchant = 4813; //Spell3
+				else if (.@r < 2693) .@enchant = 4807; //Atk_Speed1
+				else if (.@r < 3093) .@enchant = 4818; //Sharp1
+				else if (.@r < 3133) .@enchant = 4817; //Sharp2
+				else if (.@r < 3137) .@enchant = 4816; //Sharp3
+				else if (.@r < 3537) .@enchant = 4832; //Expert_Archer1
+				else if (.@r < 3577) .@enchant = 4833; //Expert_Archer2
+				else if (.@r < 3581) .@enchant = 4834; //Expert_Archer3
+				else                 .@enchant = 0;
+				break;
+			case 3:
+				.@r = rand(1, .@lhz_max_num);
+				if      (.@r < 301)  .@enchant = 4700; //Strength1
+				else if (.@r < 331)  .@enchant = 4701; //Strength2
+				else if (.@r < 334)  .@enchant = 4702; //Strength3
+				else if (.@r < 534)  .@enchant = 4730; //Agility1
+				else if (.@r < 554)  .@enchant = 4731; //Agility2
+				else if (.@r < 556)  .@enchant = 4732; //Agility3
+				else if (.@r < 956)  .@enchant = 4740; //Vitality1
+				else if (.@r < 996)  .@enchant = 4741; //Vitality2
+				else if (.@r < 1000) .@enchant = 4742; //Vitality3
+				else if (.@r < 1400) .@enchant = 4710; //Inteligence1
+				else if (.@r < 1440) .@enchant = 4711; //Inteligence2
+				else if (.@r < 1444) .@enchant = 4712; //Inteligence3
+				else if (.@r < 1844) .@enchant = 4720; //Dexterity1
+				else if (.@r < 1884) .@enchant = 4721; //Dexterity2
+				else if (.@r < 1888) .@enchant = 4722; //Dexterity3
+				else if (.@r < 2078) .@enchant = 4750; //Luck1
+				else if (.@r < 2097) .@enchant = 4751; //Luck2
+				else if (.@r < 2099) .@enchant = 4752; //Luck3
+				else if (.@r < 2502) .@enchant = 0;
+				else if (.@r < 2692) .@enchant = 4811; //Fighting_Spirit1
+				else if (.@r < 2711) .@enchant = 4810; //Fighting_Spirit2
+				else if (.@r < 2713) .@enchant = 4809; //Fighting_Spirit3
+				else if (.@r < 3113) .@enchant = 4815; //Spell1
+				else if (.@r < 3153) .@enchant = 4814; //Spell2
+				else if (.@r < 3157) .@enchant = 4813; //Spell3
+				else if (.@r < 3159) .@enchant = 4807; //Atk_Speed1
+				else if (.@r < 3349) .@enchant = 4818; //Sharp1
+				else if (.@r < 3368) .@enchant = 4817; //Sharp2
+				else if (.@r < 3370) .@enchant = 4816; //Sharp3
+				else if (.@r < 3560) .@enchant = 4832; //Expert_Archer1
+				else if (.@r < 3579) .@enchant = 4833; //Expert_Archer2
+				else if (.@r < 3581) .@enchant = 4834; //Expert_Archer3
+				else                 .@enchant = 0;
+				break;
+			case 4:	// Armor
+				.@r = rand(1, .@lhz_max_num);
+				if      (.@r < 301)  .@enchant = 4700; //Strength1
+				else if (.@r < 331)  .@enchant = 4701; //Strength2
+				else if (.@r < 334)  .@enchant = 4702; //Strength3
+				else if (.@r < 634)  .@enchant = 4730; //Agility1
+				else if (.@r < 664)  .@enchant = 4731; //Agility2
+				else if (.@r < 667)  .@enchant = 4732; //Agility3
+				else if (.@r < 967)  .@enchant = 4740; //Vitality1
+				else if (.@r < 997)  .@enchant = 4741; //Vitality2
+				else if (.@r < 1000) .@enchant = 4742; //Vitality3
+				else if (.@r < 1300) .@enchant = 4710; //Inteligence1
+				else if (.@r < 1330) .@enchant = 4711; //Inteligence2
+				else if (.@r < 1333) .@enchant = 4712; //Inteligence3
+				else if (.@r < 1633) .@enchant = 4720; //Dexterity1
+				else if (.@r < 1663) .@enchant = 4721; //Dexterity2
+				else if (.@r < 1666) .@enchant = 4722; //Dexterity3
+				else if (.@r < 1966) .@enchant = 4750; //Luck1
+				else if (.@r < 1996) .@enchant = 4751; //Luck2
+				else if (.@r < 1999) .@enchant = 4752; //Luck3
+				else if (.@r < 2399) .@enchant = 0;
+				else if (.@r < 2549) .@enchant = 4786; //Mdef2
+				else if (.@r < 2599) .@enchant = 4787; //Mdef4
+				else if (.@r < 2609) .@enchant = 4788; //Mdef6
+				else if (.@r < 2614) .@enchant = 4789; //Mdef8
+				else if (.@r < 2616) .@enchant = 4790; //Mdef10
+				else if (.@r < 2766) .@enchant = 4791; //Def3
+				else if (.@r < 2866) .@enchant = 4792; //Def6
+				else if (.@r < 2876) .@enchant = 4793; //Def9
+				else if (.@r < 2878) .@enchant = 4794; //Def12
+				else if (.@r < 3278) .@enchant = 0;
+				else if (.@r < 3428) .@enchant = 4859; //Evasion1
+				else if (.@r < 3478) .@enchant = 4860; //Evasion3
+				else if (.@r < 3488) .@enchant = 4762; //Evasion6
+				else if (.@r < 3498) .@enchant = 4800; //SP50
+				else if (.@r < 3734) .@enchant = 4795; //HP100
+				else if (.@r < 3834) .@enchant = 4796; //HP200
+				else if (.@r < 3884) .@enchant = 4797; //HP300
+				else                 .@enchant = 0;
+			break;
+		}
+		specialeffect EF_BEGINSPELL3;
+		progressbar "ffff00", 2;
+		if (.@socket_type == 3)
+			delitem 6470, 10; //Blood_Thirst
+		else
+			delitem 6469, 10; //Will_Of_Warrior
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@equip_item) || callfunc("F_IsEquipCardHack", .@part, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@refine_count))
+			close;
+
+		.@equip_card[(.@socket_type-1)] = .@enchant;
+		delequip .@part;
+		
+		if (.@enchant == 0){
+			specialeffect2 EF_SUI_EXPLOSION;
+			emotion ET_OTL;
+			mes "[布丁]";
+			mes "...嗯...设备无法接受的力量"+((.@socket_type==3)?"'^952420嗜血^000000'":"'^F2766E战士意志^000000'")+"它被毁了。";
+			close;
+		} else {
+			specialeffect2 EF_FIREHIT;
+			getitem2 .@equip_item, 1, 1, .@refine_count, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3];
+			emotion ET_DELIGHT;
+			mes "[布丁]";
+			mes "幸运的是，"+((.@socket_type==3)?"'^952420嗜血^000000'":"'^F2766E战士意志^000000'")+"的力量已经深深地融入到你的装备里了……";
+			close;
+		}
+	}
+	end;
+}

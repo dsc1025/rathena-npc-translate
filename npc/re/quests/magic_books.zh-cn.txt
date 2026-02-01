@@ -1,0 +1,734 @@
+//===== rAthena Script ======================================= 
+//= Magic Book Seller
+//===== By: ================================================== 
+//= Masao, Muad_Dib (translation)
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= An NPC which sells you different kinds of Magic Books.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Masao]
+//= 1.1 Optimized. [Euphy]
+//= 1.1a Updated NPC name to "Master Velofos". [Euphy]
+//= 1.1b Fixed the rand part in "Mysterious Documents" to match
+//=	 Aegis & fixed a bracket issue. [Capuche]
+//= 1.2 Updates Magic Books gained from Lea. [Aleos]
+//= 1.3 Fixes checkquest calls. [Everade]
+//= 1.4 Added EAJ_WARLOCK so that jobs after Warlock such as 
+//      Arch Mage can enter. [Mazvi]
+//============================================================ 
+
+// Main Quest :: war_book
+//============================================================
+geffen_in,176,105,4	script	Master Velofos	1_M_WIZARD,{
+	if (checkweight(1201,1) == 0) {
+		mes "你携带的物品太多了。请先在包里腾出一些空间。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "您的物品超重。请先减轻一些物品重量。";
+		close;
+	}
+	if ((Upper == 2) && (Class != Job_Baby_Warlock)) {
+		mes "[Velofos大师]";
+		mes "你是什​​么啊，宝宝？";
+		mes "我不是来照顾孩子的迷路！";
+		close;
+	}
+	if ((eaclass()&EAJ_THIRDMASK)!=EAJ_WARLOCK) {
+		mes "[Velofos大师]";
+		mes "哈哈，你也在寻求新知识吗？";
+		next;
+		mes "[Velofos大师]";
+		mes "抱歉，我的知识与你无关。";
+		close;
+	}
+	if (getskilllv(2230) < 1) {
+		mes "[Velofos大师]";
+		mes "好吧，你已经满足了所有条件，除了一个：你需要释放咒语。";
+		next;
+		mes "[Velofos大师]";
+		mes "先学咒语。我有很多话要告诉你。";
+		close;
+	}
+	mes "[Velofos大师]";
+	mes "欢迎，我的朋友。";
+	mes "恭喜您进入一个全新的魔法世界。";
+	next;
+	mes "[Velofos大师]";
+	mes "我们魔法修行者总是渴望新的知识和力量。";
+	next;
+	mes "[Velofos大师]";
+	mes "我们忍受巨大的艰辛和痛苦来实现我们想要的。当我们最终做到的时候，那种成就感是无法形容的。这就是为什么你我都选择了魔法之路。";
+	next;
+	mes "[Velofos大师]";
+	mes "顺便问一下，你今天来找我有什么事吗？";
+	next;
+	switch (select("什么都没有:你知道阅读咒语书吗?:什么是冰冻咒语?:我可以有一本魔法书吗?:我可以在没有冰冻咒语的情况下使用阅读咒语书吗?:关于终极魔法书")) {
+	case 1:
+		mes "[Velofos大师]";
+		mes "哈！你真傻。";
+		close;
+	case 2:
+		mes "[Velofos大师]";
+		mes "阅读咒语书的字面意思是“阅读咒语书”。你知道如何使用魔法书吗？";
+		next;
+		switch (select("是的，我愿意。：不，我不这样做。")) {
+		case 1:
+			mes "[Velofos大师]";
+			mes "那么，你就不需要额外的讲座了。";
+			close;
+		case 2:
+			mes "[Velofos大师]";
+			mes "魔法书是魔法卷轴的高级类型。卷轴上的咒语在使用一次后就会消失，而魔法书中的咒语可以多次施放。";
+			next;
+			mes "[Velofos大师]";
+			mes "让我们将卷轴上的咒语与电线进行比较。当金属丝用于开门或做其他事情时，它会弯曲和挤压，失去原来的形状。魔法书中的咒语更像是形状记忆合金。";
+			next;
+			mes "[Velofos大师]";
+			mes "呵呵，你现在还不知道什么是形状记忆合金吗？呃，只要记住这一点：由形状记忆合金制成的线会随着时间的推移恢复其形状。";
+			next;
+			mes "[Velofos大师]";
+			mes "与合金一样，魔法书上的咒语在使用后仍然存在，尽管重复使用该咒语需要一段恢复时间。";
+			next;
+			mes "[Velofos大师]";
+			mes "……哦，我本来不想讲太久的。无论如何，你可以使用魔法书来施放你学到的咒语。它的概念与普通法术不同。";
+			next;
+			select("有什么区别？");
+			mes "[Velofos大师]";
+			mes "你问为什么你必须把现有的咒语写在魔法书中？";
+			next;
+			mes "[Velofos大师]";
+			mes "这是个好问题。与魔法绑定有关。";
+			next;
+			mes "[Velofos大师]";
+			mes "您已经学会了释放，它允许您在实际施法之前保留四种不同元素的能量。魔法绑定与释放类似。";
+			next;
+			mes "[Velofos大师]";
+			mes "既然您已经学习了发布，那么您也能够使用魔法绑定。好吧，我们稍后再谈。";
+			next;
+			mes "[Velofos大师]";
+			mes "你知道如何保持现有的法术，然后通过释放在所需的时间施放它。";
+			next;
+			mes "[Velofos大师]";
+			mes "携带四种元素的球体也与魔法束缚有关。";
+			next;
+			mes "[Velofos大师]";
+			mes "众所周知，四种元素是火、水、风、土。能够自由地运用它们，是魔法的基本原理。";
+			next;
+			mes "[Velofos大师]";
+			mes "我们人类用火把来生火，用风扇来吹风，用碗来盛水。我们还使用粘土来制作陶器。";
+			next;
+			mes "[Velofos大师]";
+			mes "这些活动可能与魔法不同，但在使用四种元素的意义上，两者是相同的。";
+			next;
+			mes "[Velofos大师]";
+			mes "当你使用复杂的魔法咒语来召唤风暴、掉落闪电或燃烧一个区域时，这会消耗你大量的身体和精神能量。";
+			next;
+			mes "[Velofos大师]";
+			mes "当你无法束缚或控制如此强大的魔法咒语时，你的身心都会受到无法弥补的伤害。";
+			next;
+			mes "[Velofos大师]";
+			mes "这就是为什么我们使用魔法书来减轻这种负担。当你专注于绑定魔法力量时，它可以帮助召唤预施法术。";
+			next;
+			mes "[Velofos大师]";
+			mes "但有一个缺点：魔法书不能用于你还没有学过的咒语。";
+			next;
+			mes "[Velofos大师]";
+			mes "正如我之前所说，魔法书中的咒语往往会回到它们本来的样子。";
+			next;
+			mes "[Velofos大师]";
+			mes "也就是说，作为圆环者，您无法在魔法书中更改或创建咒语。";
+			next;
+			mes "[Velofos大师]";
+			mes "即使你创造了一个，它的力量也将超出你的能力。";
+			next;
+			mes "[Velofos大师]";
+			mes "为了使用阅读魔法书，你必须学习冻结魔法来束缚魔法。";
+			close;
+		}
+	case 3:
+		mes "[Velofos大师]";
+		mes "冰冻法术用于魔法绑定。它可以帮助您在圆圈中插入魔法咒语。";
+		next;
+		mes "[Velofos大师]";
+		mes "魔法圈彼此有机地运作。当你使用冰冻法术来绑定法术时，除非你施放释放法术，否则该法术不会激活。";
+		next;
+		mes "[Velofos大师]";
+		mes "当然，绑定法术会持续消耗你的法力，但它比传统的魔法法术消耗的法力要少。";
+		next;
+		mes "[Velofos大师]";
+		mes "当你使用更强大的魔法咒语时，魔法束缚会变得更加困难。";
+		next;
+		mes "[Velofos大师]";
+		mes "对于较弱的法术，你可以用你的法阵将其中的两到三个束缚起来。对于更强大的法术，也许一两个都是可能的。";
+		next;
+		mes "[Velofos大师]";
+		mes "这一切都取决于你控制法术的能力。当你第一次学习魔法绑定后，你必须尝试并体验它才能真正理解它。";
+		close;
+	case 4:
+		mes "[Velofos大师]";
+		mes "抱歉，我只有初学者的魔法书，但它们显然不适合你。你还想要一个吗？";
+		next;
+		switch (select("当然可以。：我在哪里可以找到高级书籍？")) {
+		case 1:
+			mes "[Velofos大师]";
+			mes "请去档案馆与[Lea]交谈。告诉她你需要一本我存放在那里的魔法书。";
+			next;
+			mes "[Velofos大师]";
+			mes "供您参考，她不会在没有任何回报的情况下将其提供给您。期待她向你询问一些事情！";
+			if (wm_book < 1) set wm_book, 1;
+			close;
+		case 2:
+			mes "[Velofos大师]";
+			mes "抱歉，我们的管理层最近决定限制 Multi Circlers 的 Magic Books 的可用性。这是因为他们的数量增长速度比我们预期的要快。";
+			next;
+			mes "[Velofos大师]";
+			mes "如果你努力的话，一定能找到，但我没有。";
+			next;
+			mes "[Velofos大师]";
+			mes "如果我们的管理层解除限制，您将是第一个知道的人。不用担心。";
+			close;
+		}
+	case 5:
+		mes "[Velofos大师]";
+		mes "当你尝试在不使用魔法绑定的情况下绑定魔法时，什么也不会发生，因为你没有任何东西可以容纳魔法。";
+		next;
+		mes "[Velofos大师]";
+		mes "这就像水需要一个碗才能保持原位。";
+		next;
+		mes "[Velofos大师]";
+		mes "问题是当你试图强行施展你还没有学过的咒语时。肯定会给你带来适得其反的效果。";
+		next;
+		mes "[Velofos大师]";
+		mes "当然，损害不会很严重：你会睡着或陷入混乱。这都是因为当你试图召唤并持有未学习的法术时，你的魔法书和魔法束缚的力量之间存在冲突。";
+		next;
+		mes "[Velofos大师]";
+		mes "不要只是为了看看自己会发生什么而尝试！施法时睡着了？对于我们这些魔法修行者来说，没有什么比这更羞辱的了。";
+		close;
+	case 6:
+		if ((BaseLevel > 139) && (getskilllv(2217) > 0 || getskilllv(2213) > 0)) {
+			if (mac_book < 1) {
+				mes "[Velofos大师]";
+				mes "抱歉，你能问问其他人吗？我现在有点忙。";
+				close;
+			}
+			if (mac_book == 1) {
+				mes "[Velofos大师]";
+				mes "嗯，你在寻找终极魔法书吗？谁派你来的？";
+				next;
+				select("莉亚女士。");
+				mes "[Velofos大师]";
+				mes "抱歉，关于终极魔法书的信息已经不多了。";
+				next;
+				mes "[Velofos大师]";
+				mes "米德加尔特大陆的一些学者曾经试图收集古代魔法书并复制那本书，但是……";
+				next;
+				select("但什么？");
+				mes "[Velofos大师]";
+				mes "哦，是的，也许他可能知道一些事情。";
+				next;
+				select("是的，我知道这会到来！");
+				mes "[Velofos大师]";
+				mes "我的兄弟和你一样。他对重新制作终极魔法书很感兴趣。";
+				next;
+				mes "[Velofos大师]";
+				mes "他的名字叫加尔福斯。";
+				mes "他对古代魔法书很感兴趣。";
+				next;
+				mes "[Velofos大师]";
+				mes "我没有支持他，也没有给他的研究提供任何建议，因为我认为他很快就会放弃，但是......";
+				next;
+				mes "[Velofos大师]";
+				mes "如果他发现了任何有用的东西，也许对你有帮助。";
+				next;
+				select("加尔福斯现在在哪里？");
+				mes "[Velofos大师]";
+				mes "听说他正在时空裂缝之外的探险营地附近寻找有关古代魔法书的信息。";
+				next;
+				mes "[Velofos大师]";
+				mes "如果你想见他，就得做好长途跋涉的准备。";
+				set mac_book,2;
+				close;
+			}
+			if (mac_book > 1) {
+				mes "[Velofos大师]";
+				mes "加尔福斯位于次元裂缝之外的远征营地附近。";
+				next;
+				mes "[Velofos大师]";
+				mes "如果你想见他，就得做好长途跋涉的准备。";
+				close;
+			}
+		}
+		mes "[Velofos大师]";
+		mes "哈哈，抱歉，你应该专注于强化身体，而不是创作魔法书。";
+		close;
+	}
+}
+
+geffen_in,175,112,4	script	Lea	2_F_MAGICMASTER,{
+	if (checkweight(1201,1) == 0) {
+		mes "你携带的物品太多了。请先在包里腾出一些空间。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "您的物品超重。请先减轻一些物品重量。";
+		close;
+	}
+	if (wm_book > 0 && ((eaclass()&EAJ_THIRDMASK)==EAJ_WARLOCK)) {
+		mes "[莉亚]";
+		mes "我可以怎样帮助您？";
+		next;
+		select("维罗福斯大师让我带上他的魔法书。");
+		mes "[莉亚]";
+		mes "你借书吗？";
+		next;
+		switch (select("让我想想：我想要中级魔法书。：我想要高级魔法书。：我想要终极魔法书。")) {
+		case 1:
+			mes "[莉亚]";
+			mes "没问题。";
+			close;
+		case 2:
+			mes "[莉亚]";
+			mes "啊，原来你想要中级魔法书啊。如果您支付^4d4dff贷款押金100,000z^000000，我们将借给您一本中级魔法书。";
+			next;
+			mes "[莉亚]";
+			mes "你想要一本什么样的魔法书？";
+			next;
+			set .@i, select("让我想想：魔法书（风暴阵风）：魔法书（朱红领主）：魔法书（流星风暴）")-1;
+			mes "[莉亚]";
+			if (!.@i) {
+				mes "没问题。";
+				close;
+			}
+			setarray .@Books[0],100065,100066,100067;
+			if (countitem(.@Books[.@i-1])) {
+				mes "你已经有了那本魔法书。在归还当前书籍之前，您无法借用新书。";
+				next;
+				mes "[莉亚]";
+				mes "你不知道有多少人会想要你已经拥有的这本书吗？你知道，想要多个就有点自私了。";
+				close;
+			}
+			if (Zeny > 99999) {
+				mes "感谢您的存款。该书的归还日期写在该书封底的借阅卡上。请尽量避免丢失或损坏图书，并避免赔偿。";
+				next;
+				mes "[莉亚]";
+				mes "借用终极魔法书时，中级和高级魔法书必须归还。请记住，您只是借用它们，因此请确保妥善保管这些书。";
+				Zeny -= 100000;
+				getitem .@Books[.@i-1],1; //WL_MB_SG, WL_MB_LOV, WL_MB_MS
+				close;
+			}
+			mes "^4d4dff贷款存款为100,000z^000000。押金随着魔法书的变化而调整。";
+			close;
+		case 3:
+			mes "[莉亚]";
+			mes "哦，你想要高级魔法书吗？该政策已改为无条件接受贷款存款，而不是现有的苛刻贷款条件。";
+			mes "高级魔法书^4d4dff借阅押金为500,000z^000000。";
+			next;
+			mes "[莉亚]";
+			mes "你想要一本什么样的魔法书？";
+			next;
+			set .@i, select("让我想想：魔法书（汲取生命）：魔法书（杰克·弗罗斯特）：魔法书（大地应变）：魔法书（深红岩）：魔法书（闪电链）")-1;
+			mes "[莉亚]";
+			if (!.@i) {
+				mes "没问题。";
+				close;
+			}
+			setarray .@Books[0],100068,100069,100070,100071,100072;
+			if (countitem(.@Books[.@i-1])) {
+				mes "你已经有了那本魔法书。在归还当前书籍之前，您无法借用新书。";
+				next;
+				mes "[莉亚]";
+				mes "你不知道有多少人会想要你已经拥有的这本书吗？你知道，想要多个就有点自私了。";
+				close;
+			}
+			if (Zeny > 499999) {
+				mes "感谢您的存款。该书的归还日期写在该书封底的借阅卡上。请尽量避免丢失或损坏图书，并避免赔偿。";
+				next;
+				mes "[莉亚]";
+				mes "借用终极魔法书时，中级和高级魔法书必须归还。请记住，您只是借用它们，因此请确保妥善保管这些书。";
+				Zeny -= 500000;
+				getitem .@Books[.@i-1],1; //WL_MB_DL, WL_MB_JF, WL_MB_ES, WL_MB_CR, WL_MB_CL
+				close;
+			}
+			mes "^4d4dff贷款存款为 500,000z^000000。押金随着魔法书的变化而调整。";
+			close;
+		case 4:
+			if ((BaseLevel > 139) && (mac_book < 1) && ((getskilllv(2217) > 0) || (getskilllv(2213) > 0))) {
+				mes "[莉亚]";
+				mes "难道……你刚才说的是终极魔法书？";
+				next;
+				mes "[莉亚]";
+				mes "哦，我的....";
+				mes "我不敢相信有人真的想要那本书。";
+				next;
+				select("请不要说你没有。");
+				mes "[莉亚]";
+				mes "说实话，我连终极魔法书都没见过。";
+				next;
+				mes "[莉亚]";
+				mes "如果你想了解更多关于那本书的信息，你应该询问 Velofos 大师。";
+				next;
+				mes "[莉亚]";
+				mes "很抱歉我无法为您提供更多帮助。";
+				set mac_book,1;
+				close;
+			}
+			if ((BaseLevel > 139) && (mac_book > 0) && ((getskilllv(2217) > 0) || (getskilllv(2213) > 0))) {
+				mes "[莉亚]";
+				mes "你应该向 Velofos 大师询问有关那本书的一些信息。";
+				close;
+			}
+			mes "[莉亚]";
+			mes "嗯……你为什么不在这之前多练习一会儿呢？";
+			next;
+			mes "[莉亚]";
+			mes "为了获得终极魔法书，你必须达到140级并学习泰特拉闪电和彗星。";
+			next;
+			mes "[莉亚]";
+			mes "那本书不是任何人都可以使用的，你知道吗？";
+			close;
+		}
+	}
+	mes "[莉亚]";
+	mes "欢迎来到魔法档案馆。在一定条件下，您可以从这里阅读和借阅书籍。";
+	close;
+}
+
+mid_camp,255,244,4	script	Galfos	4_M_JOB_WIZARD,{
+	if (checkweight(1201,1) == 0) {
+		mes "你携带的物品太多了。请先在包里腾出一些空间。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "您的物品超重。请先减轻一些物品重量。";
+		close;
+	}
+	if ((Upper == 2) && (Class != Job_Baby_Warlock)) {
+		mes "[加尔福斯]";
+		mes "你是什​​么啊，宝宝？";
+		mes "我不是来照顾孩子的迷路！";
+		close;
+	}
+	if ((eaclass()&EAJ_THIRDMASK)!=EAJ_WARLOCK) {
+		mes "[加尔福斯]";
+		mes "我的右臂感觉很热，而左臂感觉很冷。我永远无法适应这种奇怪的天气！";
+		close;
+	}
+	if (getskilllv(2230) < 1) {
+		mes "[加尔福斯]";
+		mes "啊，再呆在这里的话，我会遇到麻烦的。也许我已经在...";
+		close;
+	}
+	if (BaseLevel < 140 || (getskilllv(2217) < 1 && getskilllv(2213) < 1)) {
+		mes "[加尔福斯]";
+		mes "抱歉，我不会和那些还没有准备好的人说话。";
+		close;
+	}
+	if (mac_book < 2) {
+		mes "[加尔福斯]";
+		mes "你看起来很坚强，但你似乎与我没有任何关系。";
+		close;
+	}
+	if (mac_book == 2) {
+		mes "[加尔福斯]";
+		mes "是什么让你来到我身边？";
+		next;
+		select("听说你研究过究极魔法书了。");
+		mes "[加尔福斯]";
+		mes "怎么，你也有兴趣吗？";
+		mes "我不知道有人真的会对那本书感兴趣。是的，我正在研究那本魔法书。你是怎么发现的？";
+		next;
+		select("你是维洛夫的弟弟，对吧？");
+		mes "[加尔福斯]";
+		mes "是的，我是加尔福斯，维罗福斯是我的兄弟。";
+		next;
+		mes "[加尔福斯]";
+		mes "等一下，";
+		mes "老头子有推荐我给你吗？";
+		next;
+		select("这是正确的。");
+		mes "[加尔福斯]";
+		mes "哇！";
+		mes "这令人惊讶。他从来没有认真对待过我的研究。我很高兴他终于改变了主意。";
+		next;
+		mes "[加尔福斯]";
+		mes "呵呵！你的时机再好不过了：我正在寻找一个测试对象。";
+		next;
+		select("测试对象？");
+		mes "[加尔福斯]";
+		mes "坦白说，我只对创造终极魔法书感兴趣。";
+		next;
+		mes "[加尔福斯]";
+		mes "我不擅长使用魔法，更不用说我更喜欢用拳头战斗。尽管如此，我发现《魔法书》非常有趣。";
+		next;
+		mes "[加尔福斯]";
+		mes "问题是我无法使用终极魔法书，即使我做了一本。这就是为什么我无法亲自测试它。";
+		next;
+		mes "[加尔福斯]";
+		mes "这就是为什么我一直在等待像你这样的真正的魔法修行者可以帮助我测试我的终极魔法书。";
+		next;
+		select("（他在说什么？）");
+		mes "[加尔福斯]";
+		mes "我的研究快完成了";
+		mes "我需要解决最后一个问题才能创建魔法书。";
+		next;
+		mes "[加尔福斯]";
+		mes "为了制作这本古老的终极魔法书，我需要一件神器和一些咒语来融入它。";
+		next;
+		mes "[加尔福斯]";
+		mes "我已经根据古代文献完美地恢复了法术，但我仍然没有关于必要神器的信息。";
+		next;
+		mes "[加尔福斯]";
+		mes "啊，但还有一线希望！";
+		next;
+		select("（现在我们已经取得进展了！）");
+		mes "[加尔福斯]";
+		mes "哈哈...";
+		mes "在邪恶巨人的首都埃尔迪卡斯特斯有一个巨大的档案馆，那里存储着这个世界上的所有知识。";
+		next;
+		mes "[加尔福斯]";
+		mes "也许这是找到有关这本终极魔法书的神器的一些信息的地方。";
+		next;
+		mes "[加尔福斯]";
+		mes "你知道该怎么做，不是吗？尽你所能，在 El Dicastes 档案馆中查找有关神器的信息。";
+		next;
+		mes "[加尔福斯]";
+		mes "然后，创建神器并将其带给我。之后我们将讨论创建魔法书。";
+		set mac_book,3;
+		close;
+	}
+	if (mac_book == 3) {
+		mes "[加尔福斯]";
+		mes "你知道该怎么做，不是吗？尽你所能，在 El Dicastes 档案馆中查找有关神器的信息。";
+		next;
+		mes "[加尔福斯]";
+		mes "然后，创建神器并将其带给我。之后我们将讨论创建魔法书。";
+		close;
+	}
+	if (mac_book == 4) {
+		mes "[加尔福斯]";
+		mes "哦，你发现了吗";
+		mes "有什么有用的吗？";
+		next;
+		set .@i, select("我已经发现了关于彗星的一切。：我已经掌握了四旋涡的顶峰。");
+		mes "[加尔福斯]";
+		if ((.@i == 1 && countitem(100073)) || (.@i == 2 && countitem(100074))) {
+			mes "你在开玩笑吧？你已经有了这本书！";
+			close;
+		}
+		if ((.@i == 1 && checkquest(12218) == 2) || (.@i == 2 && checkquest(12219) == 2 && checkquest(12220) == 2 && checkquest(12221) == 2 && checkquest(12222) == 2)) {
+			mes "天啊，我感觉到你身上散发出不可思议的能量。这太棒了！现在我们准备制作终极魔法书了。";
+			next;
+			mes "[加尔福斯]";
+			mes "但有一个问题：我身无分文，甚至没有足够的钱购买制作这本书的工具。";
+			next;
+			mes "[加尔福斯]";
+			mes "我至少需要^0000aa500,000 zeny^000000来购买所有必要的工具。你有钱吗？";
+			next;
+			if(select("什-什么？不！：当然。") == 1) {
+				mes "[加尔福斯]";
+				mes "哦，你不知道吗？很失望，但我也无能为力。等你钱够了再回来，好吗？";
+				close;
+			}
+			mes "[加尔福斯]";
+			if (Zeny >= 500000) {
+				mes "好吧，让我们开始吧！";
+				next;
+				specialeffect2 EF_DISPELL;
+				progressbar "ffff00",4;
+				specialeffect2 EF_LORD;
+				set Zeny, Zeny - 500000;
+				getitem 100072+.@i,1; //WL_MB_CM, WL_MB_TV
+				mes "[加尔福斯]";
+				mes "天啊，我差点就失去了对这不可思议的魔法能量的控制！这是你的魔法书。";
+				next;
+				mes "[加尔福斯]";
+				mes "谢谢你让我梦想成真。如果您需要另一本书，请随时回来。";
+				close;
+			}
+			mes "嘿，我告诉你什么了？没有钱我买不到制作书的工具！";
+			close;
+		}
+		mes "你确定你找到了什么吗？看来你还没有学到我们需要的东西......";
+		close;
+	}
+	mes "[加尔福斯]";
+	mes "您还需要什么吗？";
+	close;
+}
+
+dic_in01,25,190,0	script	Mysterious Documents	CLEAR_NPC,{
+	if (isequipped(2782) < 1) {
+		mes "我最好别忘记装备我的戒指。";
+		close;
+	}
+	if (ep13_3_invite < 5) {
+		mes "当你接近这些文件时，一个看起来像档案管理员的邪恶巨人试图呼叫警卫高尔顿。你应该尽快离开这里。";
+		close;
+	}
+	if (checkquest(12165,PLAYTIME) == 1) {
+		mes "这些文件让你感到恶心。等你的胃平静下来之后再回来。";
+		close;
+	}
+	if (checkquest(12165,PLAYTIME) == 2) {
+		mes "你不再感到恶心了。现在继续应该是安全的。";
+		erasequest 12165;
+		close;
+	}
+	if ((BaseLevel < 140) || (getskilllv(2217) < 1) && (getskilllv(2213) < 1)) {
+		mes "该容器中的文件无法辨认。试图阅读它们是没有用的。";
+		close;
+	}
+	specialeffect2 EF_DISPELL;
+	progressbar "ffff00",4;
+	if (mac_book < 3) {
+		mes "你发现了有关魔法、加速度和粒子波的记录。";
+		close;
+	}
+	if (mac_book == 3) {
+		mes "你发现了有关魔法、加速度和粒子波的记录。这些文件肯定就是加尔福斯要找的文件。";
+		set mac_book, 4;
+		close;
+	}
+	if (mac_book == 4) {
+		set .@r, rand(1,10);
+		if (.@r == 1) {
+			if (getskilllv(2213) > 0) {
+				if (checkquest(12218) == 1) {
+					mes "您已经拥有该文档。";
+					close;
+				}
+				mes "^660066为了制造熔岩精华，你必须在雷神火山地下城第二层最热的地方精炼40颗燃烧之心。^000000";
+				mes "^660066你必须使用那个地方最大的力量来做到这一点。人类自古以来就用这种方法来研究魔法粒子的加速。^000000";
+				next;
+				mes "您已发现^990099熔岩精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				specialeffect2 EF_STEAL;
+				close2;
+				setquest 12218;
+				end;
+			}
+			mes "该文档中看起来没有任何有用的内容。";
+			close;
+		}
+		if (.@r == 2) {
+			if (getskilllv(2217) > 0) {
+				if (checkquest(12219) == 1) {
+					mes "您已经拥有该文档。";
+					close;
+				}
+				mes "^660066火焰精华可以在雷神火山地下城一层稳定的地面上炼制。提炼精髓需要10颗爱之煤。^000000";
+				mes "^660066根据人类的信息，这种本质构成了四大自然元素之一。^000000";
+				next;
+				mes "你已发现^990099火焰精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				specialeffect2 EF_STEAL;
+				close2;
+				setquest 12219;
+				end;
+			}
+			mes "该文档中看起来没有任何有用的内容。";
+			close;
+		}
+		if (.@r == 3) {
+			if (getskilllv(2217) > 0) {
+				if (checkquest(12220) == 1) {
+					mes "您已经拥有该文档。";
+					close;
+				}
+				mes "^660066我成功炼化了冰洞第三层深处的冰川精华。如果你想尝试一下，请准备 10 个冰心并前往以下位置。^000000";
+				next;
+				mes "你已发现^990099冰川精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				specialeffect2 EF_STEAL;
+				close2;
+				setquest 12220;
+				end;
+			}
+			mes "该文档中看起来没有任何有用的内容。";
+			close;
+		}
+		if (.@r == 4) {
+			if (getskilllv(2217) > 0) {
+				if (checkquest(12221) == 1) {
+					mes "您已经拥有该文档。";
+					close;
+				}
+				mes "^660066我在矿山地下城二层的古老岩石中提炼出了化石的精华。到目前为止，那里是所有试炼场中最稳定的地方。";
+				mes "如果你想尝试，请准备 10 个 Jubilee，然后前往地牢。祝你好运。^000000";
+				next;
+				mes "你已发现^990099化石精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				specialeffect2 EF_STEAL;
+				close2;
+				setquest 12221;
+				end;
+			}
+			mes "该文档中看起来没有任何有用的内容。";
+			close;
+		}
+		if (.@r == 5) {
+			if (getskilllv(2217) > 0) {
+				if (checkquest(12222) == 1) {
+					mes "您已经拥有该文档。";
+					close;
+				}
+				mes "^660066为了炼化风暴的本质，我拜访了风之精灵所在的昆仑隐者棋盘。";
+				mes "炼制过程很简单，但找到催化剂龙牙却很难。^000000";
+				next;
+				mes "你已发现^990099风暴精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				specialeffect2 EF_STEAL;
+				close2;
+				setquest 12222;
+				end;
+			}
+			mes "该文档中看起来没有任何有用的内容。";
+			close;
+		}
+		if (.@r == 10) {
+			mes "你突然感到恶心，而且这种恶心不会轻易消失。您应该稍后尝试查找所需的文档。";
+			setquest 12165;
+			close;
+		}
+		mes "这里看起来没什么特别的。";
+		close;
+	}
+	mes "您不再需要搜索这个地方。";
+	close;
+}
+
+function	script	Magic_Book_Essence	{
+	if (MaxWeight - Weight < 1000) {
+		mes "请减轻你的包。";
+		close;
+	}
+	.@item_req = getarg(1);
+	.@req_amount = getarg(2);
+	if (checkquest(getarg(0)) == 1 && countitem(.@item_req) >= .@req_amount) {
+		specialeffect2 EF_BLIND;
+		specialeffect2 EF_BEGINSPELL;
+		progressbar "ffff00",4;
+		delitem .@item_req,.@req_amount;
+		if (rand(2)) {
+			mes "您已使用"+ callfunc("F_InsertPlural",.@req_amount,getitemname(.@item_req)) +"创建了^999900"+ getarg(3) +" Essence^000000。";
+			next;
+			mes "^008800"+getarg(3)+"精华将永久持续，除非出现问题。^000000";
+			completequest getarg(0);
+			specialeffect2 EF_LORD;
+			close;
+		}
+		mes "^008888您未能使用"+ callfunc("F_InsertPlural",.@req_amount,getitemname(.@item_req)) +"提炼本质。^000000";
+		close;
+	}
+	if (checkquest(getarg(0)) == 2) {
+		mes "您已经在该区域创建了"+getarg(3)+" 精华。";
+		close;
+	}
+	mes "已经有人使用过这个区域了。";
+	close;
+}
+thor_v02,163,104,0	script	Powerful Lava Energy#33	CLEAR_NPC,{ callfunc "Magic_Book_Essence",12218,7097,40,"Lava"; end; }
+thor_v01,185,91,0	script	Powerful Flame Energy#33	CLEAR_NPC,{ callfunc "Magic_Book_Essence",12219,7098,10,"Flame"; end; }
+ice_dun03,137,148,0	script	Powerful Glacier Energy	CLEAR_NPC,{ callfunc "Magic_Book_Essence",12220,7561,10,"Glacier"; end; }
+ein_dun02,181,124,0	script	Powerful Fossil Energy	CLEAR_NPC,{ callfunc "Magic_Book_Essence",12221,7312,10,"Fossil"; end; }
+gon_dun02,252,198,0	script	Powerful Storm Energy#33	CLEAR_NPC,{ callfunc "Magic_Book_Essence",12222,7266,10,"Storm"; end; }

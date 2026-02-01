@@ -1,0 +1,131 @@
+//===== rAthena Script ======================================= 
+//= Enchant Grade
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [JohnnyPlayy]
+//= 1.1 Fixed small issues. [Lemongrass]
+//= 1.2 Added translation. [Asheraf]
+//= 1.3 Added paramarket NPC and warps. [Balfear]
+//= 1.4 Translated paramarket NPC. [Lemongrass]
+//============================================================
+
+grademk,34,184,4	script	Sratos#sratos	4_JP_GARM_H,{
+	mes "[斯拉托斯]";
+	mes "你好，亲爱的走进来的顾客，希望今天能有奇迹。";
+	mes "我怎么帮你？";
+	next;
+	switch( select( "提升装备等级。", "兑换Etel物品", "什么是等级提升？" ) ){
+		case 1:
+			mes "[斯拉托斯]";
+			mes "我们的客户。你想要提升装备的等级。";
+			mes "想要动动珠宝的魔力可不是一件容易的事。";
+			next;
+			mes "[斯拉托斯]";
+			mes "魔力可以当场爆炸。";
+			mes "然后那将继承魔力的武器也爆炸了！";
+			next;
+			switch( select( "我还是会这么做！", "我会考虑一下。" ) ){
+				case 1:
+					mes "[斯拉托斯]";
+					mes "祝勇敢的顾客好运！";
+					close2;
+					enchantgradeui();
+					end;
+				case 2:
+					mes "[斯拉托斯]";
+					mes "当你有勇气挑战的时候，请回来。";
+					close;
+			}
+		case 2:
+			mes "[斯拉托斯]";
+			mes "这些都是用来提升等级的宝石。";
+			mes "Etel Dust，这些珠宝将成为基础，如果你给我一小笔费用，我会把它换成 Etel 珠宝。";
+			close2;
+			callshop "EnchantGradeExchange";
+			end;
+
+		case 3:
+			mes "[斯拉托斯]";
+			mes "偶尔会发现具有大量纯粹魔法力量的不稳定珠宝。";
+			mes "我们称这些为以太宝石，对吗？";
+			next;
+			mes "[斯拉托斯]";
+			mes "你可以将以太宝石的魔力转移到其他武器上，但当然也有一定的风险。";
+			mes "它很脆弱，所以如果你不小心，流行！它会爆炸。";
+			next;
+			mes "[斯拉托斯]";
+			mes "不管怎样，如果你使用这颗以太宝石，你可以增强你所使用的武器。";
+			mes "性能变得更好。我们称之为等级提升。";
+			next;
+			mes "[斯拉托斯]";
+			mes "你也一样，如果你所喜爱的武器能更进一步成长，你会不会感到高兴呢？";
+			mes "我们是协助它的人。不过，这有点冒险。啊哈哈哈。";
+			close;
+	}
+
+OnInit:
+	setunittitle(getnpcid(0), "<Grade Enhancer>");
+	end;
+}
+
+paramk,34,184,4	script	Suribell#suribell	4_F_FRUIT,{
+	mes "[苏里贝尔]";
+	mes "愿好运永远伴随您！";
+	mes "欢迎来到Paramarket的成绩提升中心~";
+	next;
+	switch( select( "提升装备等级。", "兑换Etel物品", "什么是等级提升？" )) {
+		case 1:
+			mes "[苏里贝尔]";
+			mes "您想释放您喜爱的设备的潜力吗？";
+			mes "在对付神通的过程中也可能会发生爆炸。";
+			next;
+			mes "[苏里贝尔]";
+			mes "不过，如果你想提高你的成绩......！";
+			mes "我，苏里贝尔，会尽力的！";
+			next;
+			switch( select( "我还是会这么做！", "我会考虑一下。" ) ){
+				case 1:
+					mes "[苏里贝尔]";
+					mes "让我们手牵着手，坚定信念！咬紧牙关试试吧！";
+					close2;
+					enchantgradeui();
+					end;
+				case 2:
+					mes "[苏里贝尔]";
+					mes "好的！我们喝一杯凉水吧！";
+					close;
+			}
+		case 2:
+			mes "[苏里贝尔]";
+			mes "你需要以太宝石来提升等级！";
+			mes "如果你把伊特尔之尘和珠宝结合起来，那就没问题了！适合冒险家的埃特尔宝石已经完成！";
+			mes "您想将珠宝和埃特尔尘埃结合起来吗？";
+			close2;
+			callshop "EnchantGradeExchange";
+			end;
+		case 3:
+			mes "[苏里贝尔]";
+			mes "偶尔会发现具有大量纯粹魔法力量的不稳定珠宝。";
+			mes "我决定将这种宝石称为以太宝石。";
+			mes "WHO？我是苏瑞贝尔！";
+			next;
+			mes "[苏里贝尔]";
+			mes "以太宝石的神奇力量有时会唤醒装备隐藏的潜力。";
+			mes "我们称之为等级提升，因为它上升了一级！";
+			next;
+			mes "[苏里贝尔]";
+			mes "冒险者或许拥有自己不知道的潜力。";
+			mes "如果做错了，就有可能被毁掉的风险，但请带着信心去尝试！";
+			close;
+	}
+
+OnInit:
+	setunittitle(getnpcid(0), "<Grade Enhancer>");
+	end;
+}
+
+// = Portals
+//============================================================
+prontera,50,293,0	warp	Grademk_Int	1,1,grademk,13,172
+grademk,9,172,0	warp	Grademk_Out	1,1,prontera,50,290
+paramk,8,171,0	warp	grade_in	1,1,paramk,141,64
+paramk,145,64,0	warp	grade_out	1,1,paramk,11,171

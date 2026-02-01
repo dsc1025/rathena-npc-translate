@@ -1,0 +1,274 @@
+//===== rAthena Script =======================================
+//= Renters
+//===== Description: =========================================
+//= [Official Conversion]
+//= Renewal-specific breeder NPCs.
+//===== Changelogs: ==========================================
+//= 2.1 Moved some renters to a separate renewal file. [Daegaladh]
+//= 2.2 Updated to match the official scripts. [Euphy]
+//= 2.3 Added fourth class support. [Emistry]
+//============================================================
+
+// Dragon Breeder :: dragon
+//============================================================
+job3_rune01,88,62,5	script	Dragon Breeder	105,{
+	mes "[养龙者]";
+	if ((eaclass()&EAJ_THIRDMASK)==EAJ_RUNE_KNIGHT) {
+		mes "欢迎。你想租一条龙吗？";
+		next;
+		switch(select("是：否")) {
+		case 1:
+			//if (!getskilllv("RK_DRAGONTRAINING")) {
+			if (!getskilllv("KN_RIDING")) {
+				mes "[养龙者]";
+				mes "请先学习如何骑龙。";
+				close;
+			}
+			else if (checkdragon()) {
+				mes "[养龙者]";
+				mes "你已经拥有一条龙了。";
+				close;
+			}
+			else if (ismounting()) {
+				mes "[养龙者]";
+				mes "请移除您的现金。";
+				close;
+			}
+			setdragon;
+			close;
+		case 2:
+			mes "[养龙者]";
+			mes "我懂了。然后祝你有美好的一天。";
+			close;
+		}
+	}
+	mes "你在这里做什么？";
+	mes "只有符文骑士可以租用龙。";
+	close;
+}
+
+// Dragon/Gryphon Master :: dragon
+//============================================================
+prontera,130,213,5	script	Riding Creature Master	105,{
+	mes "[骑乘生物大师]";
+	if ((eaclass()&EAJ_THIRDMASK)==EAJ_RUNE_KNIGHT) {
+		mes "欢迎。你想租一条龙吗？";
+		next;
+		switch(select("是：否")) {
+		case 1:
+			//if (!getskilllv("RK_DRAGONTRAINING")) {
+			if (!getskilllv("KN_RIDING")) {
+				mes "[骑乘生物大师]";
+				mes "请先学习如何骑龙。";
+				close;
+			}
+			else if (checkdragon()) {
+				mes "[骑乘生物大师]";
+				mes "你已经拥有一条龙了。";
+				close;
+			}
+			else if (ismounting()) {
+				mes "[骑乘生物大师]";
+				mes "请移除您的现金。";
+				close;
+			}
+			setdragon;
+			close;
+		case 2:
+			mes "[骑乘生物大师]";
+			mes "我懂了。然后祝你有美好的一天。";
+			close;
+		}
+	}
+	if ((eaclass()&EAJ_THIRDMASK)==EAJ_ROYAL_GUARD) {
+		mes "欢迎。您想租一辆狮鹫吗？";
+		next;
+		switch(select("是：否")) {
+		case 1:
+			if (!getskilllv("KN_RIDING")) {
+				mes "[骑乘生物大师]";
+				mes "请先学习如何骑狮鹫。";
+				close;
+			}
+			else if (checkriding()) {
+				mes "[骑乘生物大师]";
+				mes "你已经拥有了一只狮鹫。";
+				close;
+			}
+			else if (ismounting()) {
+				mes "[骑乘生物大师]";
+				mes "请移除您的现金。";
+				close;
+			}
+			setriding;
+			close;
+		case 2:
+			mes "[骑乘生物大师]";
+			mes "我懂了。然后祝你有美好的一天。";
+			close;
+		}
+	}
+	mes "我来这里是为了给符文骑士和皇家卫队提供骑乘生物。";
+	close;
+}
+geffen,100,55,3	duplicate(Riding Creature Master)	Riding Creature Master#2	105
+payon,166,102,5	duplicate(Riding Creature Master)	Riding Creature Master#3	105
+aldebaran,133,109,5	duplicate(Riding Creature Master)	Riding Creature Master#4	105
+yuno,171,187,3	duplicate(Riding Creature Master)	Riding Creature Master#5	105
+rachel,106,130,5	duplicate(Riding Creature Master)	Riding Creature Master#6	105
+
+// Peco removing NPC :: dragon
+//============================================================
+prontera,125,208,5	script	Peco Peco Remover	105,{
+	mes "[士兵]";
+	mes "如果您无法从 Peco Peco 上下来";
+	mes "由于某种未知的原因，";
+	mes "请随时使用我的服务。";
+	if (checkriding()) {
+		next;
+		mes "[士兵]";
+		mes "你骑的是 Peco Peco。";
+		mes "你想下马吗？";
+		next;
+		switch(select("是：否")) {
+		case 1:
+			setriding 0;
+			mes "[士兵]";
+			mes "说说感觉如何";
+			mes "自己踩在地上";
+			mes "又脚了？";
+			close;
+		case 2:
+			mes "[士兵]";
+			mes "我懂了。请随时询问我";
+			mes "如果你改变主意。";
+			close;
+		}
+	}
+	close;
+}
+
+// Mado Gear Renter :: madogear
+//============================================================
+-	script	::mgm	-1,{
+	mes "[玛多装备装甲师]";
+	if ((eaclass()&EAJ_THIRDMASK)==EAJ_MECHANIC) {
+		mes "欢迎，机械师。";
+		mes "您想租一辆手推车还是";
+		mes "骑 Mado Gear？";
+		next;
+		switch(select("租一辆手推车：乘坐 Mado 装备：购买紧急 Mado 装备：升级冷却装置：取消")) {
+		case 1:
+			if (checkcart()) {
+				mes "[玛多装备装甲师]";
+				mes "对不起，但你已经";
+				mes "有一辆手推车。";
+				close;
+			}
+			setcart;
+			mes "[玛多装备装甲师]";
+			mes "就这样吧！";
+			close;
+		case 2:
+			if (checkmadogear()) {
+				mes "[玛多装备装甲师]";
+				mes "抱歉，但你已经";
+				mes "骑着 Mado Gear。";
+				close;
+			}
+			else if (!getskilllv("NC_MADOLICENCE")) {
+				mes "[玛多装备装甲师]";
+				mes "请先学习获得Mado Gear License的技能。";
+				close;
+			}
+			else if(ismounting()) {
+				mes "[玛多装备装甲师]";
+				mes "请移除您的现金。";
+				close;
+			}
+			setmadogear;
+			mes "[玛多装备装甲师]";
+			mes "玩得开心，请再来！";
+			close;
+		case 3:
+			mes "[玛多装备装甲师]";
+			mes "紧急 Mado 装备在紧急情况下非常有用，售价为 1,000,000 Zeny。";
+			next;
+			if (select("购买：取消") == 2) {
+				mes "[玛多装备装甲师]";
+				mes "我懂了。请随时询问我";
+				mes "如果你改变主意。";
+				close;
+			}
+			if (countitem(23277) > 0) {
+				mes "[玛多装备装甲师]";
+				mes "抱歉，您已经拥有了紧急 Mado 装备。";
+				close;
+			}
+			if (Zeny < 1000000) {
+				mes "[玛多装备装甲师]";
+				mes "抱歉，您没有足够的 Zeny 来购买紧急 Mado 装备。";
+				close;
+			}
+			Zeny -= 1000000;
+			getitem 23277,1; //Mado_Box
+			mes "[玛多装备装甲师]";
+			mes "就这样吧！";
+			close;
+		case 4:
+			mes "[玛多装备装甲师]";
+			mes "您想升级哪台设备？";
+			next;
+			if (select("冷却装置：高品质冷却器") == 1) {
+				mes "[玛多装备装甲师]";
+				mes "将冷却装置升级为高品质冷却器需要 1 个冷却装置和 2,000,000 Zeny。";
+				next;
+				.@itemid = 2804;
+				.@cost = 2000000;
+			} else {
+				mes "[玛多装备装甲师]";
+				mes "将优质冷却器升级为特殊冷却器需要1个优质冷却器和4,000,000 Zeny。";
+				next;
+				.@itemid = 2809;
+				.@cost = 4000000;
+			}
+			if (select("升级：取消") == 2) {
+				mes "[玛多装备装甲师]";
+				mes "我懂了。请随时询问我";
+				mes "如果你改变主意。";
+				close;
+			}
+			if (!countitem(.@itemid)) {
+				mes "[玛多装备装甲师]";
+				mes "抱歉，您没有 " + getitemname(.@itemid) + ".";
+				close;
+			}
+			if (Zeny < .@cost) {
+				mes "[玛多装备装甲师]";
+				mes "抱歉，您没有足够的 Zeny 来升级设备。";
+				close;
+			}
+			Zeny -= .@cost;
+			delitem .@itemid,1;
+			getitem (.@itemid == 2804 ? 2809 : 2810),1; //High_Quality_Cooler,Special_Cooler
+			mes "[玛多装备装甲师]";
+			mes "给你！你自己的" + getitemname(.@itemid) + ".";
+			close;
+		case 5:
+			close;
+		}
+	}
+	mes "我可以怎样帮助您？";
+	mes "Mado Gears 仅适用于机械师。";
+	close;
+}
+prontera,163,178,3	duplicate(mgm)	Mado Gear Armorer#prt	105
+geffen,103,55,5	duplicate(mgm)	Mado Gear Armorer#gef	105
+payon,166,106,5	duplicate(mgm)	Mado Gear Armorer#pay	105
+aldebaran,133,112,5	duplicate(mgm)	Mado Gear Armorer#alde	105
+yuno,167,187,3	duplicate(mgm)	Mado Gear Armorer#yuno	105
+rachel,106,134,5	duplicate(mgm)	Mado Gear Armorer#ra	105
+dicastes01,187,207,3	duplicate(mgm)	Mado Gear Armorer#dic	105
+manuk,273,212,5	duplicate(mgm)	Mado Gear Armorer#man	105
+splendide,180,174,5	duplicate(mgm)	Mado Gear Armorer#spl	105
+mid_camp,242,243,3	duplicate(mgm)	Mado Gear Armorer#mid	105

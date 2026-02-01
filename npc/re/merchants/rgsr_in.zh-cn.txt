@@ -1,0 +1,451 @@
+//===== rAthena Script ======================================= 
+//= Reform NPCs in rgsr_in
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [Capuche]
+//============================================================
+
+itemmall,14,50,3	script	Equipment Reform PR Agent#it01	4_F_ZONDAGIRL,{
+	mes "[装备改造公关代理]";
+	mes "你好，冒险家！";
+	mes "您现在对自己的装备不满意吗？";
+	mes "您不想尝试一种新的修改而不是任何其他常规方法吗？";
+	mes "加入伞学院！";
+	next;
+	switch( select( "走吧。", "听解释。", "退出。" ) ) {
+	case 1:
+		mes "[装备改造公关代理]";
+		mes "好的！研究所的其他设施都是保密的，无法进入，所以我们会引导您走一条特殊的道路，让外人可以进入！";
+		close2;
+		warp "rgsr_in",125,170;
+		end;
+	case 2:
+		mes "[装备改造公关代理]";
+		mes "雷根施姆研究所正在世界各地进行研究，以修改武器、装甲、配件和其他装备项目......";
+		mes "我们还在收集数据和研究改装，所以我们需要大量的冒险者装备来增加我们的改装研究。";
+		next;
+		mes "[装备改造公关代理]";
+		mes "研究正在进行中，敬请期待研究完成后尽快添加多种新设备！";
+		close;
+	case 3:
+		mes "[装备改造公关代理]";
+		mes "以后有兴趣的话就回来吧！";
+		close;
+	}
+}
+lighthalzen,99,156,3	duplicate(Equipment Reform PR Agent#it01)	Equipment Reform PR Agent#lh01	4_F_ZONDAGIRL
+
+rgsr_in,112,167,7	script	Enchant Researcher#rg02-1	MD_ED_M_SCIENCE,{
+	mes "[圆环]";
+	mes "啊？除了队长之外，我们队里还有其他人吗？";
+	mes "那就是我啦~";
+	mes "我负责附魔。";
+	mes "让我们看看你得到了什么？";
+	next;
+	if (select( "修改操作系统武器附魔", "退出" ) == 2) {
+		mes "[圆环]";
+		mes "当你需要的时候就回来吧。";
+		mes "我们需要研究。";
+		close;
+	}
+	mes "[圆环]";
+	mes "在哪里...";
+	close2;
+	item_enchant(33);
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Atnad" );
+	end;
+}
+
+rgsr_in,115,169,5	script	Weapon Researcher#rg02	MD_ED_M_SCIENCE,{
+	mes "[弗拉萨]";
+	mes "让我们看看...您是客人。";
+	mes "我喜欢那些明确自己想要什么的人。";
+	mes "可修改的项目也可以读取为 <TIPBOX>[List]<INFO>9163</INFO></TIPBOX>。";
+	mes "我会尽力回答您的任何问题。";
+	next;
+	switch( select( "灭霸武器", "操作系统武器", "退出" ) ) {
+	case 1:
+		mes "[弗拉萨]";
+		mes "^0000FF灭霸武器^000000模组在改装方式上有中低等级之分。";
+		next;
+		switch( select( "低级模组", "中级模组", "退出" ) ) {
+		case 1:
+			mes "[弗拉萨]";
+			mes "灭霸武器低阶改装。";
+			mes "^FF0000精炼等级降低5^000000，但消耗的材料更少。";
+			mes "对于 mods，武器需要精炼等级 +9 或更高。";
+			close2;
+			item_reform("Thanos_W_Reform_1");
+			end;
+		case 2:
+			mes "[弗拉萨]";
+			mes "灭霸武器中间修改。";
+			mes "^FF0000精炼等级降低1^000000，但消耗更多材料。";
+			mes "对于 mods，武器需要精炼等级 +9 或更高。";
+			close2;
+			item_reform("Thanos_W_Reform_2");
+			end;
+		case 3:
+			mes "[弗拉萨]";
+			mes "如果您需要模组，请回来。";
+			mes "欢迎您随时帮助我们进行研究。";
+			close;
+		}
+		end;
+	case 2:
+		mes "[弗拉萨]";
+		mes "^0000FF操作系统武器^000000...";
+		mes "改装时，精炼度必须达到+7以上。";
+		mes "精炼等级不降低。";
+		mes "你带东西了吗？";
+		next;
+		if (select( "转换", "退出" ) == 2) {
+			mes "[弗拉萨]";
+			mes "如果您需要模组，请回来。";
+			mes "欢迎您随时帮助我们进行研究。";
+			close;
+		}
+		mes "[弗拉萨]";
+		mes "让我们看看你带来了什么。";
+		close2;
+		item_reform("OS_Weapon_Reform");
+		end;
+	case 3:
+		mes "[弗拉萨]";
+		mes "如果您需要模组，请回来。";
+		mes "欢迎您随时帮助我们进行研究。";
+		close;
+	}
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Atnad");
+	end;
+}
+
+rgsr_in,115,180,5	script	Armor Researcher#rg02	MD_ED_M_SCIENCE,{
+	mes "[代数]";
+	mes "啊，已经走到这一步了，但是我们团队的研究还缺少实验。";
+	mes "下次我会改进一下，得到队长的许可，然后再继续。";
+	mes "好的？";
+	npctalk "鬼脸。", "", bc_self;
+	close;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Fresa" );
+	end;
+}
+
+rgsr_in,135,186, 7	script	Assistant#rg02	4_M_ALCHE_D,{
+	npctalk "助理：别碰它……很危险……", "", bc_self;
+	sleep2 300;
+	npctalk "助理：……哦…………", "助手#rg04", bc_self;
+	npctalk "助理：放心吧，没什么的……", "助手#rg03", bc_self;
+	end;
+}
+
+rgsr_in,135,189,5	script	Assistant#rg03	4_M_REPAIR,{
+	npctalk "助理：……工资……给我吧……？然后问一些不必要的问题...", "", bc_self;
+	npctalk "助理：当然……", "助手#rg02", bc_self;
+	end;
+}
+
+rgsr_in,137,187,3	script	Assistant#rg04	4_F_HUWOMAN,{
+	npctalk "助理：不，不是那个……就是这样。就是这样...", "", bc_self;
+	sleep2 300;
+	npctalk "助理：希克……这几乎是一个重要的日子……你没有看到他，是吗？", "助手#rg02", bc_self;
+	npctalk "网格： ？", "矿石研究员#rg02", bc_self;
+	end;
+}
+
+rgsr_in,146,169,3	script	Assistant#rg05	4_M_REPAIR,{
+	npctalk "助理：安静……我……", "", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Licht");
+	end;
+}
+
+rgsr_in,146,167,3	script	Assistant#rg06	4_M_REPAIR,{
+	npctalk "助理：我们的领导是一个很棒的人。我还年轻...", "", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Licht");
+	end;
+}
+
+rgsr_in,144,170,5	script	Assistant#rg07	4_M_REPAIR,{
+	npctalk "助理：嘿，这个数据真是太棒了。我跟着你是明智的。", "", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Licht");
+	end;
+}
+
+rgsr_in,106,167,5	script	Assistant#rg11	4_M_REPAIR,{
+	npctalk "助理：我们做更多研究后一天可以搬到更大的实验室吗？", "", bc_self;
+	sleep2 300;
+	npctalk "助理：……杭。", "助手#rg10", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Atnad" );
+	end;
+}
+
+rgsr_in,109,167,3	script	Assistant#rg10	4_M_REPAIR,{
+	npctalk "助理：……我是。", "", bc_self;
+	sleep2 300;
+	npctalk "助手：冒险家，请小心行走。大楼很旧，地板有点吱吱作响。", "助手#rg11", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Atnad" );
+	end;
+}
+
+rgsr_in,146,178,3	script	Assistant#rg20	4_M_REPAIR,{
+	npctalk "助理：如有任何问题，请询问我们的领导。", "", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Atnad" );
+	end;
+}
+
+rgsr_in,143,180,5	script	Assistant#rg21	4_M_REPAIR,{
+	npctalk "助理：外面是不是有点吵？", "", bc_self;
+	sleep2 200;
+	npctalk "助理：我希望我能搬到一个隔音好的地方。", "助手#rg20", bc_self;
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Atnad" );
+	end;
+}
+
+rgsr_in,131,187,5	script	Ore Researcher#rg02	MD_ED_M_SCIENCE,{
+	mes "[网格]";
+	mes "快点。";
+	mes "这是一个低预算的实验室，所以总是这样。";
+	mes "我和我的助手精炼了这个实验室中使用的宝石。收费。";
+	next;
+	switch( select( "查看兑换列表", "您兑换什么？", "退出" ) ) {
+	case 1:
+		mes "[网格]";
+		mes "让我们来看看...";
+		mes "现在就有这些东西了。";
+		next;
+		switch( select( "宝石精炼", "顶级矿石兑换", "购买额外矿石", "取消" ) ) {
+		case 1:
+			mes "[网格]";
+			mes "宝石提炼。";
+			close2;
+			callshop("barter_rgsr_in_1");
+			end;
+		case 2:
+			mes "[网格]";
+			mes "顶级矿石交易所。";
+			close2;
+			callshop("barter_rgsr_in_2");
+			end;
+		case 3:
+			mes "[网格]";
+			mes "矿石不够？然后还有一些我专门收集的东西...";
+			mes "你有暗影解构吗？";
+			close2;
+			callshop("barter_rgsr_in_3");
+			end;
+		case 4:
+			mes "[网格]";
+			mes "如果你有什么需要，就再来吧。";
+			close;
+		}
+		end;
+	case 2:
+		mes "[网格]";
+		mes "正如我们在研究中看到的那样，这些材料非常稀有。我们团队雇佣了冒险者，但材料却无法与我们需要的数量相比。";
+		mes "所以当冒险者带着材料来的时候，他们决定提供相应的研究价值。";
+		next;
+		mes "[网格]";
+		mes "幸运的是，我们进行了研究，来找我们的冒险家提供了使用我们技术的材料。";
+		mes "如果您想修改某些内容，只需携带所提供的材料即可。";
+		next;
+		mes "[网格]";
+		mes "你是一个冒险家，所以你知道这意味着什么吗？";
+		close;
+	case 3:
+		mes "[网格]";
+		mes "如果你有什么需要，就再来吧。";
+		close;
+	}
+}
+
+rgsr_in,137,178,3	script	Accessories Researcher#rg02	MD_ED_M_SCIENCE,{
+	mes "[冠军]";
+	mes "最后，我和一位冒险家交谈，请他确认我的研究，是你吗？";
+	mes "不幸的是，我们的团队还没有做足够的事情来实现这一目标。";
+	next;
+	mes "[冠军]";
+	mes "它仍然不完整。";
+	mes "下次得到船长的许可后再见。";
+	close;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Zerter");
+	end;
+}
+
+rgsr_in,136,171,5	script	Special Equipment Researcher#rg02	MD_ED_M_SCIENCE,{
+	mes "[堆栈]";
+	mes "看到Team Licht 的表现了吗？";
+	mes "我们为这个实验室感到自豪。";
+	mes "您想修改哪一项？";
+	mes "可修改的项目位于<TIPBOX>[列表]<INFO>9166</INFO></TIPBOX>中。";
+	next;
+	switch( select( "非标装甲", "非标武器", "退出" ) ) {
+	case 1:
+		mes "[堆栈]";
+		mes "^0000FF非标准装甲^000000，改装方式有下级、中级、上级。";
+		mes "不可精炼的铠甲只能进行上层改造。";
+		next;
+		switch( select( "下级模组", "中级模组", "上级模组", "退出" ) ) {
+		case 1:
+			mes "[堆栈]";
+			mes "护甲降低模组？好的。";
+			mes "^FF0000精炼等级降低5^000000，但消耗的材料更少。";
+			mes "而改装时，装备的精炼度必须达到+9以上。";
+			close2;
+			item_reform("C_Armor_Reform_1");
+			end;
+		case 2:
+			mes "[堆栈]";
+			mes "装甲中级模组？好的。";
+			mes "^FF0000精炼等级降低1^000000，但消耗更多材料。";
+			mes "而改装时，装备的精炼度必须达到+9以上。";
+			close2;
+			item_reform("C_Armor_Reform_2");
+			end;
+		case 3:
+			mes "[堆栈]";
+			mes "装甲上部模组？好的。";
+			mes "^FF0000精炼等级增加1^000000，但消耗更多材料。";
+			mes "而改装时，装备的精炼度必须达到+9以上。";
+			mes "^FF0000不可精炼装备^000000也可以进行高级改装，但精炼等级不会增加。";
+			close2;
+			item_reform("C_Armor_Reform_3");
+			end;
+		case 4:
+			mes "[堆栈]";
+			mes "已经要去了吗？";
+			mes "您需要看到更多我们的优秀表现！";
+			close;
+		}
+	case 2:
+		mes "[堆栈]";
+		mes "^0000FF非标准武器^000000，改装方法有下级、中级、上级。";
+		next;
+		switch( select( "下级模组", "中级模组", "上级模组", "退出" ) ) {
+		case 1:
+			mes "[堆栈]";
+			mes "武器低级模组？好的。";
+			mes "^FF0000精炼等级降低5^000000，但消耗的材料更少。";
+			mes "而改装时，装备的精炼度必须达到+9以上。";
+			close2;
+			item_reform("C_Weapon_Reform_1");
+			end;
+		case 2:
+			mes "[堆栈]";
+			mes "武器中级模组？好的。";
+			mes "^FF0000精炼等级降低1^000000，但消耗更多材料。";
+			mes "而改装时，装备的精炼度必须达到+9以上。";
+			close2;
+			item_reform("C_Weapon_Reform_2");
+			end;
+		case 3:
+			mes "[堆栈]";
+			mes "武器高级模组？好的。";
+			mes "^FF0000精炼等级增加1^000000，但消耗更多材料。";
+			mes "而改装时，装备的精炼度必须达到+9以上。";
+			close2;
+			item_reform("C_Weapon_Reform_3");
+			end;
+		case 4:
+			mes "[堆栈]";
+			mes "已经要去了吗？";
+			mes "您需要看到更多我们的优秀表现！";
+			close;
+		}
+		end;
+	case 3:
+		mes "[堆栈]";
+		mes "已经要去了吗？";
+		mes "您需要看到更多我们的优秀表现！";
+		close;
+	}
+	end;
+
+OnInit:
+	setunittitle( getnpcid(0), "Team Licht");
+	end;
+}
+
+rgsr_in,128,174,5	script	Director#rg02	1_M_LIBRARYMASTER,{
+	mes "[导演]";
+	mes "...快点。";
+	mes "你来的时候可能已经听过解释了，但是要简单介绍一下这个地方，还有很长的路要走。我们正在努力将许多武器、盔甲、配件等改造成不同的东西。";
+	next;
+	mes "[导演]";
+	mes "削减改造装备的精炼度是必要的，但为了获得更大的威力，却是一个劳作。";
+	next;
+	mes "[导演]";
+	mes "研究正在进行中，因此尚不知道某些东西会在何时何地突然完成并提供给冒险家。";
+	mes "是……只要数据收集起来，就会有某种情况。";
+	next;
+	mes "[导演]";
+	mes "而这一次，Licht 团队实现了这一目标。";
+	mes "如果您有兴趣，请查看进行了哪些研究。";
+	next;
+	mes "[导演]";
+	mes "每个人都喜欢安静，所以不要大声说话。";
+	close;
+}
+
+rgsr_in,122,160,5	script	Exit Guard#rg01	4_M_LGTGUARD,{
+	mes "[出口守卫]";
+	mes "你完成了吗？";
+	mes "^FF0000返回莱特哈尔森^000000？";
+	next;
+	if (select( "返回。", "剩余工作。" ) == 2) {
+		mes "[出口守卫]";
+		mes "完成后请随时告诉我们。";
+		close;
+	}
+	mes "[出口守卫]";
+	mes "让我带你走回去的路吧。";
+	close2;
+	warp "lighthalzen",101,156;
+	end;
+}
+
+rgsr_in,129,160,3	script	Exit Guard#rg02	4_M_LGTGUARD,{
+	mes "[出口守卫]";
+	mes "你完成了吗？";
+	mes "^FF0000返回道具商城^000000？";
+	next;
+	if (select( "返回。", "剩余工作。" ) == 2) {
+		mes "[出口守卫]";
+		mes "完成后请随时告诉我们。";
+		close;
+	}
+	mes "[出口守卫]";
+	mes "让我带你走回去的路吧。";
+	close2;
+	warp "itemmall",16,47;
+	end;
+}

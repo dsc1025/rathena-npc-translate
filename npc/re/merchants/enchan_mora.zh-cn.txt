@@ -1,0 +1,1781 @@
+//===== rAthena Script ======================================= 
+//= Mora Enchants
+//===== By: ================================================== 
+//= Euphy
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Adds enchantments to various items in exchange for
+//= Mora coins.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Euphy]
+//= 1.1 Optimized. [Euphy]
+//= 1.1a Bug fixes. [Lemongrass]
+//= 1.2 Bug fixes (bugreport:7930) [DeadlySilence]
+//============================================================ 
+
+// Arch Bishop Enchants :: coin_arc
+//============================================================
+mora,88,89,5	script	Keeper of Secrets#pa082	495,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	disable_items;
+	if (countitem(6380) < 10) {
+		mes "[诡计]";
+		mes "大主教的圣物是为了防御和支持！";
+		next;
+		mes "[诡计]";
+		mes "像其他守护者一样，他们可以用硬币交换他们的遗物，所以收集莫拉硬币！";
+		next;
+		mes "[诡计]";
+		mes "如果你收集了10个以上的金币就来找我交易吧！";
+		close;
+	}
+	mes "[诡计]";
+	mes "借着光！你看起来已经准备好获取我们的遗物了。";
+	next;
+	mes "[诡计]";
+	mes "戒指、鞋子、披肩、长袍、盾牌或武器。";
+	mes "选择六种圣物中的一种来接收。";
+	next;
+	mes "[诡计]";
+	mes "我会根据天气和心情，随机给你两种装备中的一种。";
+	next;
+	mes "[诡计]";
+	mes "我只需要你的 10 枚莫拉币就可以给你一件圣物！";
+	next;
+	switch(select("我认为我还没有准备好。:我准备好交换我的莫拉硬币了。:交换我的戒指。")) {
+	case 1:
+		mes "[诡计]";
+		mes "下次见！";
+		close;
+	case 2:
+		mes "[诡计]";
+		// What does this even mean? (custom dialogue below)
+		//mes "You influence what part are you?";
+		mes "你想要什么样的遗物？";
+		next;
+		switch(select("我还没准备好:戒指:鞋子:披肩:长袍:盾牌:武器")) {
+		case 1:
+			mes "[诡计]";
+			mes "随光而去。";
+			close;
+		case 2:
+			if (countitem(2864) || countitem(2865) || countitem(2866)) {
+				mes "[诡计]";
+				mes "只要拥有一枚戒指，您就可以访问我们的遗物！";
+				close;
+			}
+			if (Class == Job_Arch_Bishop || Class == Job_Arch_Bishop_T || Class == Job_Baby_Arch_Bishop) {
+				setarray .@items[0],2864,2865,2866; //Light_Of_Cure,Seal_Of_Cathedral,Ring_Of_Archbishop
+				break;
+			} else {
+				mes "[诡计]";
+				mes "我们更愿意只与大主教打交道。";
+				close;
+			}
+		case 3:
+			setarray .@items[0],2471,2472; //Shoes_Of_Affection,Shoes_Of_Judgement
+			break;
+		case 4:
+			setarray .@items[0],2569,2570; //Shawl_Of_Affection,Shawl_Of_Judgement
+			break;
+		case 5:
+			setarray .@items[0],15029,15030; //Robe_Of_Affection,Robe_Of_Judgement
+			break;
+		case 6:
+			setarray .@items[0],2156; //Bible_Of_Promise1
+			break;
+		case 7:
+			setarray .@items[0],1657,16013; //Wand_Of_Affection,Mace_Of_Judgement
+			break;
+		}
+		set .@item, .@items[rand(getarraysize(.@items))];
+		delitem 6380,10; //Mora_Coin
+		getitem .@item,1;
+		mes "[诡计]";
+		mes "您已获得^aa00aa"+getitemname(.@item)+"^000000。愿圣光的祝福与你同在。";
+		close;
+	case 3:
+		if (Class == Job_Arch_Bishop || Class == Job_Arch_Bishop_T || Class == Job_Baby_Arch_Bishop) {
+			mes "[诡计]";
+			mes "对于那些无法控制戒指的人，我们将戒指兑换成硬币。";
+			next;
+			mes "[诡计]";
+			mes "看来你有能力控制戒指，所以我无法将它兑换成硬币。";
+			close;
+		}
+		     if (countitem(2864)) set .@item,2864; //Light_Of_Cure
+		else if (countitem(2865)) set .@item,2865; //Seal_Of_Cathedral
+		else if (countitem(2866)) set .@item,2866; //Ring_Of_Archbishop
+		else {
+			mes "[诡计]";
+			mes "你改变了什么吗？";
+			close;
+		}
+		mes "[诡计]";
+		mes "您有一个"+getitemname(.@item)+"。您真的想用它换 10 莫拉币吗？";
+		next;
+		switch(select("我还没准备好：交换我的"+getitemname(.@item))) {
+		case 1:
+			mes "[诡计]";
+			mes "如果您改变主意，请再次过来。";
+			close;
+		case 2:
+			delitem .@item,1;
+			getitem 6380,10; //Mora_Coin
+			mes "[诡计]";
+			mes "我认为这是一笔平等的交易。";
+			close;
+		}
+	}
+}
+
+mora,96,74,5	script	Master of Relics#pa0829	495,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	disable_items;
+	mes "[遗物]";
+	mes "我增强了神圣大主教使用的圣物，需要 2 莫拉币和圣物才能让我尝试增强它。";
+	next;
+	switch(select("请提供更多详细信息。：请增强我的遗物。")) {
+	case 1:
+		mes "[遗物]";
+		mes "让我简单解释一下，只要 2 个莫拉币和遗物，我就可以为您提供该遗物上的一个附魔。";
+		next;
+		mes "[遗物]";
+		mes "即使这个遗物已经被附魔，我们也会在不检查其状态的情况下重新附魔它。";
+		next;
+		mes "[遗物]";
+		mes "所以如果你已经附魔了圣物，请将其放在安全的地方然后再回来。";
+		next;
+		mes "[遗物]";
+		mes "啊，还有一件事！但我也有可能会失败，如果发生这种情况，圣物就会永远丢失。";
+		close;
+	case 2:
+		mes "[遗物]";
+		mes "好吧，如果失败了，你可以从 Artifice 那里得到一个新的遗物。";
+		next;
+		mes "[遗物]";
+		mes "如果你有一个幸运仪式，你应该现在就使用它！";
+		next;
+		set .@select, select("等一下！：治愈之光：大教堂印记：大主教戒指：慈爱之鞋：审判之鞋：慈爱披肩：审判披肩：慈爱长袍：审判长袍：约定圣经第一卷：慈爱魔杖：审判权杖");
+		switch(.@select) {
+		case 1:
+			mes "[遗物]";
+			mes "当然。与光同行。";
+			close;
+		case 2:
+		case 3:
+		case 4:
+			setarray .@items[0],2864,2865,2866; //Light_Of_Cure,Seal_Of_Cathedral,Ring_Of_Archbishop
+			setarray .@special[0],4803,4804,4805; //Highness_Heal_3sec,Coluceo_Heal30,Heal_Amount2
+			set .@item, .@items[.@select-2];
+			set .@sp, .@special[.@select-2];
+			set .@enchant_type,1;
+			break;
+		case 5:
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+			setarray .@items[0],2471,2472,2569,2570,15029,15030,2156; //Shoes_Of_Affection,Shoes_Of_Judgement,Shawl_Of_Affection,Shawl_Of_Judgement,Robe_Of_Affection,Robe_Of_Judgement,Bible_Of_Promise1
+			set .@item, .@items[.@select-5];
+			set .@enchant_type,2;
+			break;
+		case 12:
+			set .@item,1657; //Wand_Of_Affection
+			set .@enchant_type,3;
+			break;
+		case 13:
+			set .@item,16013; //Mace_Of_Judgement
+			set .@enchant_type,4;
+			break;
+		}
+		if (countitem(6380) < 2 || countitem(.@item) == 0) {
+			mes "[遗物]";
+			mes "只需 2 个莫拉币，我就可以通过多种方式强化你的圣物！";
+			close;
+		}
+		specialeffect2 EF_REPAIRWEAPON;
+		delitem 6380,2; //Mora_Coin
+		delitem .@item,1;
+		switch(.@enchant_type) {
+		case 1:
+			set .@i, rand(1,1487);
+			if (.@i <= 1024) {
+				// Basic combinations
+				// (raw: .@i increments by 16, 4 repeats)
+				setarray .@enchant_slot2[0],4711,4720,4721,4740; //Inteligence2,Dexterity1,Dexterity2,Vitality1
+				setarray .@enchant_slot3[0],.@sp,4799,4766,4788; //[sp],HP500,Atk2,Mdef6
+				setarray .@enchants[2],
+					.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+					.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+			}
+			else if (.@i <= 1040) setarray .@enchants[2],.@sp,.@sp; //[sp] [sp]
+			else if (.@i <= 1487) {
+				mes "[遗物]";
+				mes "有时事情并没有按照你想要的方式发展。我希望你下次一切都会好起来。到那时，再见。";
+				close;
+			}
+			break;
+		case 2:
+			set .@i, rand(1,1487);
+			if (.@i <= 1024) {
+				// Basic combinations
+				// (raw: .@i increments by 16)
+				setarray .@enchant_slot1[0],4710,4711,4720,4721; //Inteligence1,Inteligence2,Dexterity1,Dexterity2
+				setarray .@enchant_slot2[0],4711,4720,4721,4740; //Inteligence2,Dexterity1,Dexterity2,Vitality1
+				setarray .@enchant_slot3[0],4764,4799,4766,4788; //Critical5,HP500,Atk2,Mdef6
+				setarray .@enchants[1],
+					.@enchant_slot1[rand(getarraysize(.@enchant_slot1))],
+					.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+					.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+			}
+			else if (.@i <= 1026) setarray .@enchants[1],4761,4761,4761; //Matk2 Matk2 Matk2
+			else if (.@i <= 1028) setarray .@enchants[1],4712,4713,4713; //Inteligence3 Inteligence4 Inteligence4
+			else if (.@i <= 1030) setarray .@enchants[1],4712,4761,4761; //Inteligence3 Matk2 Matk2
+			else if (.@i <= 1032) setarray .@enchants[1],4712,4713,4761; //Inteligence3 Inteligence4 Matk2
+			else if (.@i <= 1034) setarray .@enchants[1],4722,4723,4723; //Dexterity3 Dexterity4 Dexterity4
+			else if (.@i <= 1036) setarray .@enchants[1],4722,4703,4703; //Dexterity3 Strength4 Strength4
+			else if (.@i <= 1038) setarray .@enchants[1],4722,4767,4767; //Dexterity3 Atk3 Atk3
+			else if (.@i <= 1040) setarray .@enchants[1],4767,4767,4767; //Atk3 Atk3 Atk3
+			else if (.@i <= 1487) {
+				mes "[遗物]";
+				mes "有时事情并没有按照你想要的方式发展。我希望你下次一切都会好起来。到那时，再见。";
+				close;
+			}
+			break;
+		case 3:
+			set .@i, rand(1,2852);
+			if (.@i <= 1984) {
+				// Basic combinations
+				// (raw: .@i increments by 31, 4 repeats)
+				setarray .@enchant_slot2[0],4720,4740,4741,4801; //Dexterity1,Vitality1,Vitality2,SP100
+				setarray .@enchant_slot3[0],4710,4711,4721,4760; //Inteligence1,Inteligence2,Dexterity2,Matk1
+				setarray .@enchants[2],
+					.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+					.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+			}
+			else if (.@i <= 1986) setarray .@enchants[2],4761,4761; //Matk2 Matk2
+			else if (.@i <= 1988) setarray .@enchants[2],4761,4723; //Matk2 Dexterity4
+			else if (.@i <= 1990) setarray .@enchants[2],4761,4714; //Matk2 Inteligence5
+			else if (.@i <= 1992) setarray .@enchants[2],4714,4714; //Inteligence5 Inteligence5
+			else if (.@i <= 1994) setarray .@enchants[2],4714,4723; //Inteligence5 Dexterity4
+			else if (.@i <= 1996) setarray .@enchants[2],4723,4723; //Dexterity4 Dexterity4
+			else if (.@i <= 2852) {
+				mes "[遗物]";
+				mes "有时事情并没有按照你想要的方式发展。我希望你下次一切都会好起来。到那时，再见。";
+				close;
+			}
+			break;
+		case 4:
+			set .@i, rand(1,2852);
+			if (.@i <= 1984) {
+				// Basic combinations
+				// (raw: .@i increments by 31, 4 repeats)
+				setarray .@enchant_slot2[0],4720,4740,4741,4701; //Dexterity1,Vitality1,Vitality2,Strength2
+				setarray .@enchant_slot3[0],4700,4701,4721,4767; //Strength1,Strength2,Dexterity2,Atk3
+				setarray .@enchants[2],
+					.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+					.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+			}
+			else if (.@i <= 1986) setarray .@enchants[2],4767,4767; //Atk3 Atk3
+			else if (.@i <= 1988) setarray .@enchants[2],4767,4723; //Atk3 Dexterity4
+			else if (.@i <= 1990) setarray .@enchants[2],4767,4704; //Atk3 Strength5
+			else if (.@i <= 1992) setarray .@enchants[2],4704,4704; //Strength5 Strength5
+			else if (.@i <= 1994) setarray .@enchants[2],4704,4723; //Strength5 Dexterity4
+			else if (.@i <= 1996) setarray .@enchants[2],4723,4723; //Dexterity4 Dexterity4
+			else if (.@i <= 2852) {
+				mes "[遗物]";
+				mes "有时事情并没有按照你想要的方式发展。我希望你下次一切都会好起来。到那时，再见。";
+				close;
+			}
+			break;
+		}
+		getitem2 .@item,1,1,0,0,0,.@enchants[1],.@enchants[2],.@enchants[3];
+		mes "[遗物]";
+		mes "强化很顺利，你很幸运！";
+		close;
+	}
+}
+
+// Warlock Enchants :: coin_warrock
+//============================================================
+mora,104,76,4	script	Guardian of Artifacts#p	495,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (countitem(6380) < 10) {
+		mes "[神器守护者]";
+		mes "我的工作是看守术士的远古神器。";
+		next;
+		mes "[神器守护者]";
+		mes "嗯，其实这没什么大不了的。我以几枚莫拉币的价格将文物赠送给那些值得拥有它们的人。";
+		next;
+		mes "[神器守护者]";
+		mes "当你有10个或更多金币时，你可以和我交易。稍后见。";
+		close;
+	}
+	mes "[神器守护者]";
+	mes "哇~我看到你已经准备好接受术士的远古神器了。";
+	next;
+	mes "[神器守护者]";
+	mes "您可以从四种类型的项目中进行选择：";
+	mes "法杖、球体、鞋子和长袍。";
+	next;
+	mes "[神器守护者]";
+	mes "每种类型有四个选项，但可用的项目会根据我的心情每天变化。";
+	next;
+	mes "[神器守护者]";
+	mes "您想用莫拉币购买神器吗？";
+	next;
+	if(select("也许稍后...我还有事要做。：是的，我愿意。") == 1) {
+		mes "[神器守护者]";
+		mes "好的，那么稍后见。";
+		close;
+	}
+	mes "[神器守护者]";
+	mes "您想购买什么类型的商品？";
+	next;
+	switch(select("退出：鞋子：宝珠：长袍：法杖")) {
+	case 1:
+		mes "[神器守护者]";
+		mes "好的，那么稍后见。";
+		close;
+ 	case 2:
+		setarray .@items[0],2467,2468,2469,2470; //Golden_Rod_Shoes,Aqua_Shoes,Crimson_Shoes,Forest_Shoes
+		set .@plural,1;
+		break;
+	case 3:
+		setarray .@items[0],2859,2860,2861,2862; //Golden_Rod_Orb,Aqua_Orb,Crimson_Orb,Forest_Orb
+		break;
+	case 4:
+		setarray .@items[0],15025,15026,15027,15028; //Golden_Rod_Robe,Aqua_Robe,Crimson_Robe,Forest_Robe
+		break;
+	case 5:
+		setarray .@items[0],2007,2008,2009,2010; //Golden_Rod_Staff,Aqua_Staff,Crimson_Staff,Forest_Staff
+		break;
+	}
+	if (countitem(6380) < 10) {
+		mes "[神器守护者]";
+		mes "当你有足够的金币时，请回来吗？";
+		close;
+	}
+	set .@item, .@items[rand(getarraysize(.@items))];
+	delitem 6380,10; //Mora_Coin
+	getitem .@item,1;
+	mes "[神器守护者]";
+	mes "我今天有 ^aa00aa"+getitemname(.@item)+"^000000 可用。我希望"+((.@plural)?"他们":"它")+"会派上用场......";
+	close;
+}
+
+mora,99,93,5	script	Artifact Crafter#pa0829	495,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	disable_items;
+	mes "[神器工匠]";
+	mes "我的工作是为文物注入新的力量。如果您有足够的金币，您可以强化以下物品之一。";
+	next;
+	if(select("告诉我更多信息：我想要加固我的物品。") == 1) {
+		mes "[神器工匠]";
+		mes "让我解释一下。一次强化需要花费两枚金币。";
+		next;
+		set .@info_only,1;
+	}
+	mes "[神器工匠]";
+	mes "而且，无论是否已经强化，我都会对这个项目进行处理。";
+	next;
+	mes "[神器工匠]";
+	mes "因此，如果您有一件根据您的喜好而强化的神器，请将其放在安全的地方然后再回来。";
+	next;
+	mes "[神器工匠]";
+	mes "还有一点，如果强化失败，神器就会被毁掉。请记住这一点。";
+	if (.@info_only)
+		close;
+	next;
+	set .@select, select("也许下次吧。:金棒法杖:水色法杖:猩红法杖:森林法杖:金棒鞋子:水色鞋子:猩红鞋子:森林鞋子:金棒宝珠:水色宝珠:猩红宝珠:森林宝珠:金杖长袍:水色长袍:猩红长袍:森林长袍");
+	switch(.@select) {
+	case 1:
+		mes "[神器工匠]";
+		mes "如你所愿。";
+		close;
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+		setarray .@items[0],2007,2008,2009,2010; //Golden_Rod_Staff,Aqua_Staff,Crimson_Staff,Forest_Staff
+		set .@enchant_type,1;
+		break;
+	case 6:
+	case 7:
+	case 8:
+	case 9:
+		setarray .@items[0],2467,2468,2469,2470; //Golden_Rod_Shoes,Aqua_Shoes,Crimson_Shoes,Forest_Shoes
+		set .@enchant_type,2;
+		break;
+	case 10:
+	case 11:
+	case 12:
+	case 13:
+		setarray .@items[0],2859,2860,2861,2862; //Golden_Rod_Orb,Aqua_Orb,Crimson_Orb,Forest_Orb
+		set .@enchant_type,2;
+		break;
+	case 14:
+	case 15:
+	case 16:
+	case 17:
+		setarray .@items[0],15025,15026,15027,15028; //Golden_Rod_Robe,Aqua_Robe,Crimson_Robe,Forest_Robe
+		set .@enchant_type,2;
+		break;
+	}
+	set .@item, .@items[(.@select-2)%4];
+	if (countitem(6380) < 2 || countitem(.@item) == 0) {
+		mes "[神器工匠]";
+		mes "在我开始工作之前，你必须有 2 个莫拉币和一个需要强化的物品。";
+		close;
+	}
+	specialeffect2 EF_REPAIRWEAPON;
+	delitem 6380,2; //Mora_Coin
+	delitem .@item,1;
+	switch(.@enchant_type) {
+	case 1:
+		set .@i, rand(1,2847);
+		if (.@i <= 1984) {
+			// Basic combinations
+			// (raw: .@i increments by 31, 4 repeats)
+			setarray .@enchant_slot2[0],4720,4796,4710,4801; //Dexterity1,HP200,Inteligence1,SP100
+			setarray .@enchant_slot3[0],4786,4760,4711,4721; //Mdef2,Matk1,Inteligence2,Dexterity2
+			setarray .@enchants[2],
+				.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+				.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+		}
+		else if (.@i <= 1986) setarray .@enchants[2],4713,4761; //Inteligence4 Matk2
+		else if (.@i <= 1988) setarray .@enchants[2],4713,4713; //Inteligence4 Inteligence4
+		else if (.@i <= 1990) setarray .@enchants[2],4761,4761; //Matk2 Matk2
+		else if (.@i <= 1992) setarray .@enchants[2],4761,4713; //Matk2 Inteligence4
+		else if (.@i <= 2847) {
+			mes "[神器工匠]";
+			mes "哦不...它坏了...好吧，它发生了。下次好运。";
+			close;
+		}
+		break;
+	case 2:
+		set .@i, rand(1,2858);
+		if (.@i <= 1984) {
+			// Basic combinations
+			// (raw: .@i increments by 31)
+			setarray .@enchant_slot1[0],4710,4711,4720,4721; //Inteligence1,Inteligence2,Dexterity1,Dexterity2
+			setarray .@enchant_slot2[0],4720,4796,4710,4801; //Dexterity1,HP200,Inteligence1,SP100
+			setarray .@enchant_slot3[0],4786,4760,4711,4721; //Mdef2,Matk1,Inteligence2,Dexterity2
+			setarray .@enchants[1],
+				.@enchant_slot1[rand(getarraysize(.@enchant_slot1))],
+				.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+				.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+		}
+		else if (.@i <= 1986) setarray .@enchants[1],4712,4713,4761; //Inteligence3 Inteligence4 Matk2
+		else if (.@i <= 1988) setarray .@enchants[1],4712,4713,4713; //Inteligence3 Inteligence4 Inteligence4
+		else if (.@i <= 1990) setarray .@enchants[1],4712,4761,4761; //Inteligence3 Matk2 Matk2
+		else if (.@i <= 1992) setarray .@enchants[1],4712,4761,4713; //Inteligence3 Matk2 Inteligence4
+		else if (.@i <= 1994) setarray .@enchants[1],4722,4713,4761; //Dexterity3 Inteligence4 Matk2
+		else if (.@i <= 1996) setarray .@enchants[1],4722,4713,4713; //Dexterity3 Inteligence4 Inteligence4
+		else if (.@i <= 1998) setarray .@enchants[1],4722,4761,4761; //Dexterity3 Matk2 Matk2
+		else if (.@i <= 2000) setarray .@enchants[1],4722,4761,4713; //Dexterity3 Matk2 Inteligence4
+		else if (.@i <= 2858) {
+			mes "[神器工匠]";
+			mes "哦不...它坏了...好吧，它发生了。下次好运。";
+			close;
+		}
+		break;
+	}
+	getitem2 .@item,1,1,0,0,0,.@enchants[1],.@enchants[2],.@enchants[3];
+	mes "[神器工匠]";
+	mes "看来我的努力是成功的。";
+	close;
+}
+
+// Rune Knight, Guillotine Cross, & Ranger Enchants :: new_artifact
+//============================================================
+mora,152,97,5	script	Guardian of Power#pa082	515,{
+	if (checkweight(1201,1) == 0) {
+		mes "在继续之前，请减少库存中的物品数量。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "您的库存过多。";
+		close;
+	}
+	if (countitem(6380) < 10) {
+		mes "[力量守护者]";
+		mes "我为符文骑士、断头台十字架和游骑兵提供古代神器，以帮助他们执行任务。";
+		next;
+		mes "[力量守护者]";
+		mes "有些守护者会给莫拉村硬币，你可以用这些硬币来交换这些文物。";
+		next;
+		mes "[力量守护者]";
+		mes "如果你收集了 10 个或更多莫拉币，那么我可以用它们换取神器。";
+		close;
+	}
+	mes "[力量守护者]";
+	mes "我想你已经准备好接受古代文物了。";
+	next;
+	mes "[力量守护者]";
+	mes "根据您指定的类，有各种可用的工件。";
+	next;
+	mes "[力量守护者]";
+	mes "^ff0000请谨慎选择，因为这些工件并不容易获得^000000。那么你想要什么课程呢？";
+	next;
+	setarray .@jobs$[0],"Rune Knight","Guillotine Cross","Ranger";
+	set .@job, select("取消：符文骑士：断头台 十字架：游侠")-2;
+	if (.@job == -1) {
+		mes "[力量守护者]";
+		mes "到时候再跟我说吧。";
+		close;
+	}
+	mes "[力量守护者]";
+	mes .@jobs$[.@job]+"？";
+	mes "你想要哪件神器？";
+	next;
+	switch(.@job) {
+	case 0: // Rune Knight
+		setarray .@items[0],2475,2476,2574,2575;
+		set .@i, select("取消: 乌尔的护腿 (鞋子): 普兹的护腿 (鞋子): 乌尔的斗篷 (服装): 普兹的斗篷 (服装)")-2;
+		break;
+	case 1: // Guillotine Cross
+		setarray .@items[0],2477,2478,2577,2578;
+		set .@i, select("取消:Sapha 鞋 (鞋):Nab 鞋 (鞋):Sapha 兜帽 (服装):Nab 兜帽 (服装)")-2;
+		break;
+	case 2: // Ranger
+		setarray .@items[0],2479,2480,2580,2581;
+		set .@i, select("取消:白翼靴子(鞋):黑翼靴子(鞋):白翼斗篷(服装):黑翼斗篷(服装)")-2;
+		break;
+	}
+	if (.@i == -1) {
+		mes "[力量守护者]";
+		mes "到时候再跟我说吧。";
+		close;
+	}
+	if (countitem(6380) < 10) {
+		mes "[力量守护者]";
+		mes "我不是告诉过你要带正确数量的莫拉币吗？";
+		close;
+	}
+	delitem 6380,10; //Mora_Coin
+	getitem .@items[.@i],1;
+	mes "[力量守护者]";
+	mes "感谢您的 10 枚莫拉币。这是您的 "+.@jobs$[.@job]+" 工作的工件。每当你获得更多莫拉币时就回来。";
+	close;
+}
+
+mora,148,98,3	script	Artifact Researcher#new	521,{
+	if (checkweight(1201,1) == 0) {
+		mes "在继续之前，请减少库存中的物品数量。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "您的库存过多。";
+		close;
+	}
+	disable_items;
+	mes "[神器研究员]";
+	mes "很高兴见到你。";
+	mes "我在莫拉研究古代文物和文物。冒险家的新发现让这个村庄对我来说非常兴奋。";
+	next;
+	switch(select("告诉我更多...：赋予神器能力。：重置增强能力。")) {
+	case 1:
+		mes "[神器研究员]";
+		mes "莫拉村发现了新的文物，你没有听到这个消息吗？";
+		next;
+		mes "[神器研究员]";
+		mes "如果你遇到任何这些神器，就可以从中提取隐藏的力量。";
+		next;
+		mes "[神器研究员]";
+		mes "我将继续对这些文物进行研究。我们的研究人员正在使用莫拉币作为我们服务的报酬......";
+		next;
+		mes "[神器研究员]";
+		mes "我提供服务以 100,000 zeny 和 1 Mora Coin 为文物提供能力。";
+		next;
+		mes "[神器研究员]";
+		mes "我的服务最好的部分是，您在这些工件中拥有的任何增强功能都不会受到损害。";
+		close;
+	case 2:
+		set @mora_enchant_select,1;
+		break;
+	case 3:
+		set @mora_enchant_select,2;
+		break;
+	}
+	if (Zeny < 100000 || countitem(6380) == 0) {
+		mes "[神器研究员]";
+		mes "我不会免费提供这些服务，朋友。 100,000 zeny 和 1 Mora 硬币。这是不是要求太多了？";
+		close;
+	}
+	mes "[神器研究员]";
+	mes "好吧，那你准备好了吗？在我开始做这件事之前，你想让我增强什么样的装备？";
+	next;
+	set .@i, select("我没有佩戴装备：1。武器：2。鞋子：3。服装：4。护甲：5。配饰")-2;
+	if (.@i == -1) {
+		mes "[神器研究员]";
+		mes "首先确保您佩戴了该设备。";
+		close;
+	}
+	setarray .@parts[0], EQI_HAND_R, EQI_SHOES, EQI_GARMENT, EQI_ARMOR, EQI_ACC_L;
+	set .@part, .@parts[.@i];
+	if (!getequipisequiped(.@part)) {
+		mes "[神器研究员]";
+		mes "首先确保您佩戴了该设备。";
+		close;
+	}
+	set .@equip_id, getequipid(.@part);
+	set @mora_equip_part, .@part;
+
+	//callsub L_Socket,<enchant type>,<bonus enchant type>,<4-x enchants possible>;
+	// Enchant types:
+	//   [1]ATK [2]CRIT [3]EVA [4]Healer [5]Spell 1 [6]Assist 1 [7]Assist 2 [8]STR [9]Range [10]Physical [11]Spell 2
+	switch(.@part) {
+	case EQI_HAND_R:
+		switch(.@equip_id) {
+			case 1660: callsub L_Socket,4,5,1;  //Wand_Of_Affection2
+			case 2011: callsub L_Socket,5,11,1; //Golden_Rod_Staff2
+			case 2012: callsub L_Socket,5,11,1; //Aqua_Staff2
+			case 2013: callsub L_Socket,5,11,1; //Crimson_Staff2
+			case 2014: callsub L_Socket,5,11,1; //Forest_Staff2
+			case 16018: callsub L_Socket,1,5,1; //Mace_Of_Judgement2
+		}
+		break;
+	case EQI_SHOES:
+		switch(.@equip_id) {
+			case 2475: callsub L_Socket,6,8,1;  //Ur_Greave
+			case 2476: callsub L_Socket,6,10,1; //Peuz_Greave
+			case 2477: callsub L_Socket,6,2,1;  //Sabah_Shoes
+			case 2478: callsub L_Socket,6,1,1;  //Nab_Shoes
+			case 2479: callsub L_Socket,6,2,1;  //White_Wing_Boots
+			case 2480: callsub L_Socket,6,1,1;  //Black_Wing_Boots
+		}
+		break;
+	case EQI_GARMENT:
+		switch(.@equip_id) {
+			case 2574: callsub L_Socket,3,8,1; //Ur_Manteau
+			case 2575: callsub L_Socket,3,2,1; //Peuz_Manteau
+			case 2577: callsub L_Socket,3,2,1; //Sabah_Hood
+			case 2578: callsub L_Socket,3,2,1; //Nab_Hood
+			case 2580: callsub L_Socket,3,1,1; //White_Wing_Manteau
+			case 2581: callsub L_Socket,3,1,1; //Black_Wing_Manteau
+		}
+		break;
+	case EQI_ARMOR:
+		switch(.@equip_id) {
+			case 15036: callsub L_Socket,8,1,1;  //Ur_Plate
+			case 15037: callsub L_Socket,10,2,1; //Peuz_Plate
+			case 15038: callsub L_Socket,2,10,1; //Sabah_Cloth
+			case 15039: callsub L_Socket,1,2,1;  //Nab_Cloth
+			case 15042: callsub L_Socket,2,9,1;  //White_Wing_Suits
+			case 15043: callsub L_Socket,1,9,1;  //Black_Wing_Suits
+		}
+		break;
+	case EQI_ACC_L:
+		switch(.@equip_id) {
+			case 2883: callsub L_Socket,6,0,2; //Ur_Seal
+			case 2884: callsub L_Socket,6,0,2; //Peuz_Seal
+			case 2886: callsub L_Socket,6,0,2; //Sabah_Ring
+			case 2887: callsub L_Socket,6,0,2; //Nab_Ring
+			case 2890: callsub L_Socket,6,0,2; //White_Wing_Brooch
+			case 2891: callsub L_Socket,6,0,2; //Black_wing_Brooch
+		}
+		break;
+	}
+	mes "[神器研究员]";
+	mes "^990099"+getequipname(.@part)+"^000000??";
+	mes "真想研究一下这个装备……";
+	set @mora_equip_part,0;
+	close;
+
+L_Socket:
+	set .@select, @mora_enchant_select;
+	set .@enchant_type, getarg(0);
+	.@bonus_enchant = getarg(1);
+	.@allowed_slot = getarg(2);
+	set .@part, @mora_equip_part;
+	set .@equip_id, getequipid(.@part);
+	set .@equip_name$, getitemname(.@equip_id);
+	set .@equip_refine, getequiprefinerycnt(.@part);
+	setarray .@equip_card[0], getequipcardid(.@part,0),getequipcardid(.@part,1),getequipcardid(.@part,2),getequipcardid(.@part,3);
+	set @mora_equip_part,0;
+	set @mora_enchant_select,0;
+
+	if (.@select == 1) {
+		// If refine is +9 or higher, unlock bonus enchant type.
+		if (.@equip_refine >= 9 && .@bonus_enchant > 0) {
+			if (.@enchant_type < 1 || .@enchant_type > 11 || .@bonus_enchant > 11) {
+				mes "[神器研究员]";
+				mes "嗯嗯，出了点问题。";
+				close;
+			}
+			setarray .@enchant_type$[1],"ATK Type","Critical Type","Evasion Type","Healer Type","Spell Ability 1","Assist Ability 1","Assist Ability 2","Strength","Range Type","Physical Type","Spell Ability 2";
+			mes "[神器研究员]";
+			mes "这对装备来说是一个相当大的强化。在这种情况下，可以授予扩展增强功能。您想增强哪项统计数据？";
+			next;
+			switch(select(.@enchant_type$[.@enchant_type],.@enchant_type$[.@bonus_enchant])) {
+			case 1:
+				break;
+			case 2:
+				set .@enchant_type, .@bonus_enchant;
+				break;
+			}
+		}
+		if (.@equip_card[3] == 0 && .@allowed_slot < 4) {
+			set .@slot,4;
+			mes "[神器研究员]";
+			mes "努力进一步强化能力。之前的执行不会受到影响。您想继续吗？";
+		} else if (.@equip_card[2] == 0 && .@allowed_slot < 3) {
+			set .@slot,3;
+			mes "[神器研究员]";
+			mes "尝试第二次增强。之前的执行不会受到影响。";
+			next;
+			mes "[神器研究员]";
+			mes "我这次尝试现在可能有失败的机会。您想继续吗？";
+		} else if (.@equip_card[1] == 0 && .@allowed_slot < 2) {
+			set .@slot,2;
+			mes "[神器研究员]";
+			mes "让我们开始第三个增强。我可以在这个阶段给出最好的统计数据，但请记住，^990000现在有机会破坏工件，并且以前的增强将被删除^000000。继续？";
+		} else {
+			mes "[神器研究员]";
+			mes "这件神器已经被强化到了极限。在目前的状态下，进一步的增强是不可能的。";
+			close;
+		}
+		next;
+		if(select("我稍后回来：请继续！") == 1) {
+			mes "[神器研究员]";
+			mes "如果你改变主意，请回来。";
+			close;
+		}
+		switch(.@enchant_type) {
+		case 1: //Attack
+			     if (.@slot == 4) set .@i, rand(1,525);
+			else if (.@slot == 3) set .@i, rand(301,655);
+			else if (.@slot == 2) set .@i, rand(451,750);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4700; //Strength1
+			else if (.@i < 201) set .@enchant,4811; //Fighting_Spirit1
+			else if (.@i < 301) set .@enchant,4819; //Atk1
+			else if (.@i < 351) set .@enchant,4701; //Strength2
+			else if (.@i < 401) set .@enchant,4810; //Fighting_Spirit2
+			else if (.@i < 451) set .@enchant,4766; //Atk2
+			else if (.@i < 476) set .@enchant,4702; //Strength3
+			else if (.@i < 501) set .@enchant,4809; //Fighting_Spirit3
+			else if (.@i < 526) set .@enchant,4767; //Atk3
+			else if (.@i < 626) set .@enchant,0;
+			else if (.@i < 641) set .@enchant,4703; //Strength4
+			else if (.@i < 656) set .@enchant,4808; //Fighting_Spirit4
+			else if (.@i < 661) set .@enchant,4704; //Strength5
+			else if (.@i < 666) set .@enchant,4820; //Fighting_Spirit5
+			else if (.@i < 668) set .@enchant,4705; //Strength6
+			else if (.@i < 670) set .@enchant,4821; //Fighting_Spirit6
+			else set .@enchant,9;
+			break;
+		case 2: //Critical
+			     if (.@slot == 4) set .@i, rand(1,470);
+			else if (.@slot == 3) set .@i, rand(201,610);
+			else if (.@slot == 2) set .@i, rand(381,750);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4750; //Luck1
+			else if (.@i < 201) set .@enchant,4700; //Strength1
+			else if (.@i < 261) set .@enchant,4751; //Luck2
+			else if (.@i < 321) set .@enchant,4701; //Strength2
+			else if (.@i < 351) set .@enchant,4752; //Luck3
+			else if (.@i < 381) set .@enchant,4702; //Strength3
+			else if (.@i < 411) set .@enchant,4764; //Critical5
+			else if (.@i < 441) set .@enchant,4818; //Sharp1
+			else if (.@i < 471) set .@enchant,4752; //Luck3
+			else if (.@i < 571) set .@enchant,0;
+			else if (.@i < 586) set .@enchant,4753; //Luck4
+			else if (.@i < 601) set .@enchant,4754; //Luck5
+			else if (.@i < 606) set .@enchant,4765; //Critical7
+			else if (.@i < 611) set .@enchant,4817; //Sharp2
+			else if (.@i < 616) set .@enchant,4703; //Strength4
+			else if (.@i < 618) set .@enchant,4816; //Sharp3
+			else set .@enchant,9;
+			break;
+		case 3: //Evasion
+			     if (.@slot == 4) set .@i, rand(1,525);
+			else if (.@slot == 3) set .@i, rand(301,670);
+			else if (.@slot == 2) set .@i, rand(451,800);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4859; //Evasion1
+			else if (.@i < 201) set .@enchant,4750; //Luck1
+			else if (.@i < 301) set .@enchant,4730; //Agility1
+			else if (.@i < 351) set .@enchant,4860; //Evasion3
+			else if (.@i < 401) set .@enchant,4751; //Luck2
+			else if (.@i < 451) set .@enchant,4731; //Agility2
+			else if (.@i < 476) set .@enchant,4731; //Agility2
+			else if (.@i < 501) set .@enchant,4752; //Luck3
+			else if (.@i < 526) set .@enchant,4732; //Agility3
+			else if (.@i < 626) set .@enchant,0;
+			else if (.@i < 641) set .@enchant,4762; //Evasion6
+			else if (.@i < 656) set .@enchant,4753; //Luck4
+			else if (.@i < 671) set .@enchant,4733; //Agility4
+			else if (.@i < 676) set .@enchant,4763; //Evasion12
+			else if (.@i < 681) set .@enchant,4754; //Luck5
+			else if (.@i < 683) set .@enchant,4734; //Agility5
+			else set .@enchant,9;
+			break;
+		case 4: //Healer
+			     if (.@slot == 4) set .@i, rand(1,375);
+			else if (.@slot == 3) set .@i, rand(201,535);
+			else if (.@slot == 2) set .@i, rand(301,650);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4710; //Inteligence1
+			else if (.@i < 201) set .@enchant,4720; //Dexterity1
+			else if (.@i < 251) set .@enchant,4711; //Inteligence2
+			else if (.@i < 301) set .@enchant,4721; //Dexterity2
+			else if (.@i < 326) set .@enchant,4805; //Heal_Amount2
+			else if (.@i < 351) set .@enchant,4712; //Inteligence3
+			else if (.@i < 376) set .@enchant,4722; //Dexterity3
+			else if (.@i < 476) set .@enchant,0;
+			else if (.@i < 491) set .@enchant,4760; //Matk1
+			else if (.@i < 506) set .@enchant,4850; //Heal_Amount3
+			else if (.@i < 521) set .@enchant,4713; //Inteligence4
+			else if (.@i < 536) set .@enchant,4723; //Dexterity4
+			else if (.@i < 541) set .@enchant,4761; //Matk2
+			else if (.@i < 546) set .@enchant,4851; //Heal_Amount4
+			else if (.@i < 548) set .@enchant,4806; //Matk3
+			else if (.@i < 550) set .@enchant,4852; //Heal_Amount5
+			else set .@enchant,9;
+			break;
+		case 5: //Spell 1
+			     if (.@slot == 4) set .@i, rand(1,600);
+			else if (.@slot == 3) set .@i, rand(401,760);
+			else if (.@slot == 2) set .@i, rand(401,766);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4710; //Inteligence1
+			else if (.@i < 201) set .@enchant,4720; //Dexterity1
+			else if (.@i < 301) set .@enchant,4795; //HP100
+			else if (.@i < 401) set .@enchant,4815; //Spell1
+			else if (.@i < 451) set .@enchant,4711; //Inteligence2
+			else if (.@i < 501) set .@enchant,4721; //Dexterity2
+			else if (.@i < 551) set .@enchant,4796; //HP200
+			else if (.@i < 601) set .@enchant,4814; //Spell2
+			else if (.@i < 701) set .@enchant,0;
+			else if (.@i < 716) set .@enchant,4712; //Inteligence3
+			else if (.@i < 731) set .@enchant,4722; //Dexterity3
+			else if (.@i < 746) set .@enchant,4797; //HP300
+			else if (.@i < 761) set .@enchant,4813; //Spell3
+			else if (.@i < 763) set .@enchant,4713; //Inteligence4
+			else if (.@i < 765) set .@enchant,4723; //Dexterity4
+			else if (.@i < 767) set .@enchant,4812; //Spell4
+			else set .@enchant,9;
+			break;
+		case 6: //Assist 1
+			     if (.@slot == 4) set .@i, rand(1,520);
+			else if (.@slot == 3) set .@i, rand(321,720);
+			else if (.@slot == 2) set .@i, rand(521,850);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 81)  set .@enchant,4792; //Def6
+			else if (.@i < 161) set .@enchant,4787; //Mdef4
+			else if (.@i < 241) set .@enchant,4801; //SP100
+			else if (.@i < 321) set .@enchant,4796; //HP200
+			else if (.@i < 371) set .@enchant,4700; //Strength1
+			else if (.@i < 421) set .@enchant,4720; //Dexterity1
+			else if (.@i < 471) set .@enchant,4730; //Agility1
+			else if (.@i < 521) set .@enchant,4740; //Vitality1
+			else if (.@i < 621) set .@enchant,0;
+			else if (.@i < 646) set .@enchant,4793; //Def9
+			else if (.@i < 671) set .@enchant,4788; //Mdef6
+			else if (.@i < 696) set .@enchant,4802; //SP150
+			else if (.@i < 721) set .@enchant,4797; //HP300
+			else if (.@i < 731) set .@enchant,4701; //Strength2
+			else if (.@i < 741) set .@enchant,4721; //Dexterity2
+			else if (.@i < 751) set .@enchant,4731; //Agility2
+			else set .@enchant,9;
+			break;
+		case 7: //Assist 2
+			     if (.@slot == 4) set .@i, rand(1,520);
+			else if (.@slot == 3) set .@i, rand(321,720);
+			else if (.@slot == 2) set .@i, rand(521,850);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 81)  set .@enchant,4792; //Def6
+			else if (.@i < 161) set .@enchant,4787; //Mdef4
+			else if (.@i < 241) set .@enchant,4801; //SP100
+			else if (.@i < 321) set .@enchant,4796; //HP200
+			else if (.@i < 371) set .@enchant,4710; //Inteligence1
+			else if (.@i < 421) set .@enchant,4720; //Dexterity1
+			else if (.@i < 471) set .@enchant,4730; //Agility1
+			else if (.@i < 521) set .@enchant,4740; //Vitality1
+			else if (.@i < 621) set .@enchant,0;
+			else if (.@i < 646) set .@enchant,4793; //Def9
+			else if (.@i < 671) set .@enchant,4788; //Mdef6
+			else if (.@i < 696) set .@enchant,4802; //SP150
+			else if (.@i < 721) set .@enchant,4797; //HP300
+			else if (.@i < 731) set .@enchant,4711; //Inteligence2
+			else if (.@i < 741) set .@enchant,4721; //Dexterity2
+			else if (.@i < 751) set .@enchant,4741; //Vitality2
+			else set .@enchant,9;
+			break;
+		case 8: //Strength
+			     if (.@slot == 4) set .@i, rand(1,525);
+			else if (.@slot == 3) set .@i, rand(301,685);
+			else if (.@slot == 2) set .@i, rand(451,800);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4740; //Vitality1
+			else if (.@i < 201) set .@enchant,4797; //HP300
+			else if (.@i < 301) set .@enchant,4791; //Def3
+			else if (.@i < 351) set .@enchant,4741; //Vitality2
+			else if (.@i < 401) set .@enchant,4798; //HP400
+			else if (.@i < 451) set .@enchant,4792; //Def6
+			else if (.@i < 476) set .@enchant,4742; //Vitality3
+			else if (.@i < 501) set .@enchant,4793; //Def9
+			else if (.@i < 526) set .@enchant,4799; //HP500
+			else if (.@i < 626) set .@enchant,0;
+			else if (.@i < 641) set .@enchant,4742; //Vitality3
+			else if (.@i < 656) set .@enchant,4743; //Vitality4
+			else if (.@i < 671) set .@enchant,4794; //Def12
+			//else if (.@i < 686) set .@enchant,01; // ??
+			else if (.@i < 688) set .@enchant,4744; //Vitality5
+			//else if (.@i < 690) set .@enchant,02; // ??
+			else set .@enchant,9;
+			break;
+		case 9: //Range
+			     if (.@slot == 4) set .@i, rand(1,470);
+			else if (.@slot == 3) set .@i, rand(201,610);
+			else if (.@slot == 2) set .@i, rand(321,750);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4750; //Luck1
+			else if (.@i < 201) set .@enchant,4720; //Dexterity1
+			else if (.@i < 261) set .@enchant,4751; //Luck2
+			else if (.@i < 321) set .@enchant,4721; //Dexterity2
+			else if (.@i < 351) set .@enchant,4752; //Luck3
+			else if (.@i < 381) set .@enchant,4722; //Dexterity3
+			else if (.@i < 411) set .@enchant,4764; //Critical5
+			else if (.@i < 441) set .@enchant,4832; //Expert_Archer1
+			else if (.@i < 471) set .@enchant,4753; //Luck4
+			else if (.@i < 571) set .@enchant,0;
+			else if (.@i < 586) set .@enchant,4723; //Dexterity4
+			else if (.@i < 601) set .@enchant,4833; //Expert_Archer2
+			else if (.@i < 606) set .@enchant,4765; //Critical7
+			else if (.@i < 611) set .@enchant,4834; //Expert_Archer3
+			else if (.@i < 616) set .@enchant,4724; //Dexterity5
+			else if (.@i < 618) set .@enchant,4835; //Expert_Archer4
+			else set .@enchant,9;
+			break;
+		case 10: //Physical
+			     if (.@slot == 4) set .@i, rand(1,600);
+			else if (.@slot == 3) set .@i, rand(401,800);
+			else if (.@slot == 2) set .@i, rand(601,930);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4791; //Def3
+			else if (.@i < 201) set .@enchant,4730; //Agility1
+			else if (.@i < 301) set .@enchant,4750; //Luck1
+			else if (.@i < 401) set .@enchant,4795; //HP100
+			else if (.@i < 451) set .@enchant,4792; //Def6
+			else if (.@i < 501) set .@enchant,4731; //Agility2
+			else if (.@i < 551) set .@enchant,4751; //Luck2
+			else if (.@i < 601) set .@enchant,4796; //HP200
+			else if (.@i < 701) set .@enchant,0;
+			else if (.@i < 726) set .@enchant,4793; //Def9
+			else if (.@i < 751) set .@enchant,4732; //Agility3
+			else if (.@i < 776) set .@enchant,4752; //Luck3
+			else if (.@i < 801) set .@enchant,4797; //HP300
+			else if (.@i < 816) set .@enchant,4733; //Agility4
+			else if (.@i < 831) set .@enchant,4753; //Luck4
+			else if (.@i < 833) set .@enchant,4807; //Atk_Speed1
+			else set .@enchant,9;
+			break;
+		case 11: //Spell 2
+			     if (.@slot == 4) set .@i, rand(1,600);
+			else if (.@slot == 3) set .@i, rand(401,760);
+			else if (.@slot == 2) set .@i, rand(401,766);
+			else {
+				mes "[神器研究员]";
+				mes "发生未知错误。";
+				close;
+			}
+			     if (.@i < 101) set .@enchant,4711; //Inteligence2
+			else if (.@i < 201) set .@enchant,4721; //Dexterity2
+			else if (.@i < 301) set .@enchant,4796; //HP200
+			else if (.@i < 401) set .@enchant,4814; //Spell2
+			else if (.@i < 451) set .@enchant,4712; //Inteligence3
+			else if (.@i < 501) set .@enchant,4722; //Dexterity3
+			else if (.@i < 551) set .@enchant,4760; //Matk1
+			else if (.@i < 601) set .@enchant,4813; //Spell3
+			else if (.@i < 701) set .@enchant,0;
+			else if (.@i < 716) set .@enchant,4713; //Inteligence4
+			else if (.@i < 731) set .@enchant,4723; //Dexterity4
+			else if (.@i < 746) set .@enchant,4761; //Matk2
+			else if (.@i < 761) set .@enchant,4812; //Spell4
+			else if (.@i < 763) set .@enchant,4714; //Inteligence5
+			else if (.@i < 765) set .@enchant,4724; //Dexterity5
+			else if (.@i < 767) set .@enchant,4806; //Matk3
+			else set .@enchant,9;
+			break;
+		default:
+			mes "[神器研究员]";
+			mes "嗯，我想我错了......";
+			close;
+		}
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) ||
+		    callfunc("F_IsEquipRefineHack", .@part, .@equip_refine) ||
+		    callfunc("F_IsEquipCardHack", .@part, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]))
+			close;
+
+		if (.@equip_card[3] == 0 && .@allowed_slot < 4) {
+			set .@equip_card[3],.@enchant;
+		} else if (.@equip_card[2] == 0 && .@allowed_slot < 3) {
+			set .@equip_card[2],.@enchant;
+			if (.@enchant == 0) {
+				set .@equip_card[3],0;
+			}
+		} else if (.@equip_card[1] == 0 && .@allowed_slot < 2) {
+			set .@equip_card[1],.@enchant;
+			if (.@enchant == 0) {
+				set .@equip_card[2],0;
+				set .@equip_card[3],0;
+			}
+		} else {
+			mes "[神器研究员]";
+			mes "我认为文物有一个增强的限制。";
+			close;
+		}
+		if (Zeny < 100000 || countitem(6380) == 0) {
+			mes "[神器研究员]";
+			mes "除非你支付费用，否则我不会做这项工作。";
+			close;
+		}
+		delitem 6380,1; //Mora_Coin
+		set Zeny, Zeny-100000;
+		delequip .@part;
+		if (.@enchant == 9) {
+			specialeffect2 EF_SUI_EXPLOSION;
+			mes "[神器研究员]";
+			mes "这！";
+ 			mes "我……对不起，设备已经被毁了。";
+			close;
+		}
+		if (.@enchant == 0) {
+			specialeffect2 EF_SHIELDCHARGE;
+			mes "[神器研究员]";
+			mes "由于力量平衡不匹配，既定的现有能力就被破坏了。很不幸，但请下次再试一次。";
+		} else {
+			specialeffect2 EF_REPAIRWEAPON;
+			mes "[神器研究员]";
+			// Replacing original dialogue since it doesn't make sense.
+			//mes "The artifact ^990000"+.@slot+" will have the first enhancement retained.";
+			mes "我已成功增强了套接字 "+.@equip_name$+" 处的工件 ^000000"+.@slot+".";
+		}
+
+//		GetNonSlotItemSock2 .@equip_refine .@equip_id .@equip_card[0] .@equip_card[1] .@equip_card[2] .@equip_card[3]
+		getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+
+		close;
+	} else if (.@select == 2) {
+		if (Zeny < 100000 || countitem(6380) == 0) {
+			mes "[神器研究员]";
+			mes "如果你想要这些服务，就必须付费。";
+			close;
+		}
+		specialeffect2 EF_REPAIRWEAPON;
+		mes "[神器研究员]";
+		mes "能力提升依然存在。";
+		delitem 6380,1; //Mora_Coin
+		set Zeny, Zeny-100000;
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine))
+			close;
+
+		delequip .@part;
+
+//		GetNonSlotItemSock2 .@equip_refine .@equip_id .@equip_card[0] .@equip_card[1] .@equip_card[2] .@equip_card[3]
+		for ( .@i = getiteminfo(.@equip_id, ITEMINFO_SLOT); .@i < MAX_SLOTS; .@i++ ) {
+			if (getiteminfo(.@equip_card[.@i], ITEMINFO_SUBTYPE) == CARD_ENCHANT)
+				.@equip_card[.@i] = 0;// Armor Enchant System
+		}
+		getitem2 .@equip_id,1,1,.@equip_refine,0,.@equip_card[0],.@equip_card[1],.@equip_card[2],.@equip_card[3];
+
+		close;
+	}
+}
+
+// Arch Bishop & Warlock Empowering :: relic_change
+//============================================================
+mora,124,82,4	script	Artifact Collector#blan	522,{
+	if (checkweight(1201,1) == 0) {
+		mes "在继续之前，请减少库存中的物品数量。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "您的库存过多。";
+		close;
+	}
+	disable_items;
+	emotion ET_DELIGHT;
+	mes "那些莫拉文物看起来非常完美！";
+	mes "但我知道您希望他们变得更好！";
+	next;
+	mes "[神器收藏家]";
+	mes "问候冒险家。在我告诉您如何增强您的神器之后，我们很快就会成为好朋友！";
+	next;
+	switch(select("让我们这样做吧！：赋予神器力量？：不，不适合我！")) {
+	case 1:
+		break;
+	case 2:
+		emotion ET_OK;
+		mes "[神器收藏家]";
+		mes "看来你对性格的判断很到位。";
+		next;
+		mes "[神器收藏家]";
+		mes "200 多年来，我一直在莫拉从事 Artifacts 工作。努力获得完美的+9！";
+		next;
+		select("咕噜……+9？！");
+		emotion ET_HUK, playerattached();
+		mes "[神器收藏家]";
+		mes "我的任务就是收集旧物，提炼出精华！";
+		next;
+		emotion ET_CRY;
+		mes "[神器收藏家]";
+		mes "寻找完美的神器供我实验是我一生的工作。";
+		mes "另外，看到我们祖先遗产的奇迹也令人欣慰。";
+		next;
+		select("我知道这会很有趣。");
+		emotion ET_GOODBOY;
+		mes "[神器收藏家]";
+		mes "谢谢你人类。";
+		next;
+		mes "[神器收藏家]";
+		mes "我已经这样做了 200 多年，老实说，现成的供应已经消失了，Artificer 和 Artifact Crafter 不会再与我交易了......";
+		next;
+		emotion ET_THINK;
+		mes "[神器收藏家]";
+		mes "但也许即将到来的人类可以带来一些新的库存！";
+		next;
+		select("人类……库存？");
+		emotion ET_QUESTION, playerattached();
+		mes "[神器收藏家]";
+		mes "是的！如果人类能给我带来新的神器，我就能实现我的终极成就！";
+		next;
+		select("最终成就？");
+		emotion ET_QUESTION, playerattached();
+		emotion ET_OK;
+		mes "[神器收藏家]";
+		mes "耐心点，我们会做到这一点...";
+		next;
+		mes "[神器收藏家]";
+		mes "我是一名收藏家，但我最大的成就是为一些文物赋予了更大的力量！";
+		mes "到目前为止，我只完善了几种神器类型的能力。";
+		next;
+		mes "[神器收藏家]";
+		mes "你可能就是帮助我完成计划的人。";
+		next;
+		emotion ET_OTL;
+		mes "[神器收藏家]";
+		mes "哦，我多么喜欢命运有时的运作方式......";
+		next;
+		mes "[神器收藏家]";
+		mes "+1、+2、+3、+4、+5、+6 这些改进不足以对我的工艺起作用。";
+		next;
+		emotion ET_OTL;
+		mes "[神器收藏家]";
+		mes "但是+7！ +7 很罕见，而且强度勉强足以在我的制作尝试中发挥作用。";
+		next;
+		select("我又要被欺负了...");
+		emotion ET_SCRATCH, playerattached();
+		mes "[神器收藏家]";
+		mes "你是对的！我知道你们人类帮助朋友是很自然的事，即使朋友没有要求......";
+		next;
+		select("我不确定是否...");
+		emotion ET_QUESTION, playerattached();
+		mes "[神器收藏家]";
+		mes "我当然会接受你的帮助！  找我...";
+		next;
+		mes "- 金棒法杖 -";
+		mes "- 水族工作人员 -";
+		mes "- 深红法杖 -";
+		mes "- 森林工作人员 -";
+		mes "- 慈悲之杖 -";
+		mes "- 审判之锤 -";
+		next;
+		select("还要别的吗？");
+		emotion ET_QUESTION, playerattached();
+		mes "[神器收藏家]";
+		mes "除了+7之外，神器上还需要一些非常具体的附魔来帮助催化这一过程。";
+		next;
+		mes "[神器收藏家]";
+		mes "如果缺少+7或特定的附魔，我就无法做到这一点。";
+		next;
+		select("那么炼器会被保留吗？");
+		emotion ET_HUK, playerattached();
+		emotion ET_FRET;
+		mes "[神器收藏家]";
+		mes "不，但你会得到更好的回报！";
+		next;
+		mes "[神器收藏家]";
+		mes "现在您对我正在寻找的文物有更多的疑问吗？";
+		next;
+		emotion ET_QUESTION;
+		mes "[神器收藏家]";
+		mes "去问吧！";
+		next;
+		setarray .@artifacts[0],1657,16013,2007,2008,2009,2010;
+		setarray .@empowered[0],1660,16018,2011,2012,2013,2014;
+		while(1) {
+			set .@i, select("我认为我不感兴趣：仁慈法杖：审判之锤：金棒法杖：水色法杖：猩红法杖：森林法杖")-2;
+			if (.@i == -1) {
+				emotion ET_QUESTION;
+				mes "[神器收藏家]";
+				mes "好吧，也许有一天你会的。";
+				close;
+			}
+			mes "[神器收藏家]";
+			mes getitemname(.@artifacts[.@i])+"当然必须精炼到+7或更高，我才能将其提炼成结界。";
+			next;
+			switch(.@i) {
+			case 0:
+				setarray .@enchants[0],4761,4723,4714;
+				set .@str$, "MATK+2%, DEX+4, INT+5";
+				break;
+			case 1:
+				setarray .@enchants[0],4767,4723,4704;
+				set .@str$, "ATK+3%, DEX+4, STR+5";
+				break;
+			default:
+				setarray .@enchants[0],4761,4713;
+				set .@str$, "MATK+2%, INT+4";
+				break;
+			}
+			mes "[神器收藏家]";
+			mes "它还必须带有以下任何一个附魔："+.@str$+" 才能由我制作。";
+			next;
+			select(getitemname(.@empowered[.@i])+"属性？");
+			callsub L_ShowInfo, .@empowered[.@i];
+			mes "[神器收藏家]";
+			mes "但如果你真的得到了一个，请让我继续努力，我求你了。";
+			next;
+		}
+	case 3:
+		mes "[神器收藏家]";
+		mes "祝你自己度过美好的一天。再见~";
+		close;
+	}
+	emotion ET_SPARK;
+	mes "[神器收藏家]";
+	mes "让我看看你给我带来了什么。";
+	next;
+	if (!getequipisequiped(EQI_HAND_R)) {
+		emotion ET_FRET;
+		mes "[神器收藏家]";
+		mes "我不知道你想做什么......我无法增强你没有的东西。";
+		close;
+	}
+	set .@equip_id, getequipid(EQI_HAND_R);
+	.@equip_refine = getequiprefinerycnt(EQI_HAND_R);
+	setarray .@equip_card[0], getequipcardid(EQI_HAND_R,0), getequipcardid(EQI_HAND_R,1), getequipcardid(EQI_HAND_R,2),getequipcardid(EQI_HAND_R,3);
+	switch(.@equip_id) {
+	case 2007: //Golden_Rod_Staff
+	case 2008: //Aqua_Staff
+	case 2009: //Crimson_Staff
+	case 2010: //Forest_Staff
+		if (.@equip_card[2] == 4761 || .@equip_card[3] == 4761 || //Matk2
+		    .@equip_card[2] == 4713 || .@equip_card[3] == 4713)   //Inteligence4
+			set .@empowered,.@equip_id+4; //Golden_Rod_Staff2,Aqua_Staff2,Crimson_Staff2,Forest_Staff2
+		break;
+	case 1657: //Wand_Of_Affection
+		if (.@equip_card[2] == 4761 || .@equip_card[3] == 4761 || //Matk2
+		    .@equip_card[2] == 4714 || .@equip_card[3] == 4714 || //Inteligence5
+		    .@equip_card[2] == 4723 || .@equip_card[3] == 4723)   //Dexterity4
+			set .@empowered,1660; //Wand_Of_Affection2
+		break;
+	case 16013: //Mace_Of_Judgement
+		if (.@equip_card[2] == 4723 || .@equip_card[3] == 4723 || //Dexterity4
+		    .@equip_card[2] == 4704 || .@equip_card[3] == 4704 || //Strength5
+		    .@equip_card[2] == 4767 || .@equip_card[3] == 4767)   //Atk3
+			set .@empowered,16018; //Mace_Of_Judgement2
+		break;
+	default:
+		emotion ET_FRET;
+		mes "[神器收藏家]";
+		mes "你拥有的武器不是我可以使用的神器之一。";
+		close;
+	}
+	if (.@equip_refine < 7) {
+		emotion ET_FRET;
+		mes "[神器收藏家]";
+		mes "我必须坚持神器的精炼度至少要+7！";
+		close;
+	}
+	if (!.@empowered) {
+		emotion ET_FRET;
+		mes "[神器收藏家]";
+		mes "这些属性不适用于我的研究过程，请尝试重新随机排列它们。";
+		close;
+	}
+	emotion ET_SEXY;
+	mes "[神器收藏家]";
+	mes "我激动得浑身发麻！";
+	mes "你给了我我需要的一切！！";
+	next;
+	emotion ET_OK;
+	mes "[神器收藏家]";
+	mes "如果您准备好了，我将向您展示我可以用您的 +" + .@equip_refine + " 神器做什么！";
+	next;
+	mes "[神器收藏家]";
+	mes "我要把你的^FF0000"+getequipname(EQI_HAND_R)+"^000000拿来交换，你准备好了吗？";
+	next;
+	switch(select("NOOO!:是的，我准备好了！:之后会怎样？")) {
+	case 1:
+		emotion ET_FRET;
+		mes "[神器收藏家]";
+		mes "你一定是在开玩笑......你让我充满希望......";
+		close;
+	case 2:
+		break;
+	case 3:
+		callsub L_ShowInfo, .@empowered;
+		mes "[神器收藏家]";
+		mes "你确定要继续吗？";
+		next;
+		if(select("不，我不：是的，做吧！") == 1) {
+			emotion ET_FRET;
+			mes "[神器收藏家]";
+			mes "你一定是在开玩笑......你让我充满希望......";
+			close;
+		}
+		break;
+	}
+	emotion ET_SMILE;
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", EQI_HAND_R, .@equip_id) || callfunc("F_IsEquipCardHack", EQI_HAND_R, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]) || callfunc("F_IsEquipRefineHack", EQI_HAND_R, .@equip_refine))
+		close;
+
+	delequip EQI_HAND_R;
+	getitem .@empowered,1;
+	mes "[神器收藏家]";
+	mes "就完美完成了，你会很高兴的！再见朋友~";
+	close;
+
+L_ShowInfo:
+	mes "[神器收藏家]";
+	mes getitemname(getarg(0));
+	switch(getarg(0)) {
+	case 1660: //Wand_Of_Affection2
+		mes "一只手法杖/攻击：30";
+		mes "体重：50/任何性别";
+		mes "仅限大主教";
+		mes "武器等级：4 / ^ff0000所需等级：130^000000";
+		mes "加息 + 180，智力 + 4。";
+		mes "增加 20% 治疗加成。";
+		mes "如果与长袍、鞋子和慈悲长袍一起穿着，治疗加成额外增加 45%，“治疗”的 SP 消耗增加 50。";
+		mes "受到近距离物理攻击时，会以一定的概率产生Lv.1沉默。";
+		mes "执行通关、赞美、赞美技能后，取消3秒的延迟。";
+		break;
+	case 16018: //Mace_Of_Judgement2
+		mes "狼牙棒/攻击：170";
+		mes "体重：120/任何性别";
+		mes "仅限大主教";
+		mes "武器等级：4 / ^ff0000所需等级：130^000000";
+		mes "远足 + 180，力量 + 2，智力 + 2。";
+		mes "物理攻击和魔法攻击有一定几率对恶魔系怪物造成40%的伤害，持续7秒。";
+		mes "如果与审判手套、鞋子和披肩一起佩戴，对不死生物的伤害提高 30%。";
+		mes "增加阿多拉玛斯的伤害200%，增加阿多拉玛斯的SP消耗量30。";
+		break;
+	case 2011: //Golden_Rod_Staff2
+		mes "法杖/攻击：30";
+		mes "体重：90/任何性别";
+		mes "仅限术士";
+		mes "武器等级：4 / ^ff0000所需等级：130^000000";
+		mes "智力 + 5，HIK + 270。";
+		mes "木星雷霆伤害增加 30%。";
+		mes "与金袍、金鞋、金珠一起穿戴时，风系魔法伤害增加 60%。";
+		mes "降低土系魔法伤害 60%，对土系魔法伤害降低 50%。";
+		break;
+	case 2012: //Aqua_Staff2
+		mes "法杖/攻击：30";
+		mes "体重：90/任何性别";
+		mes "仅限术士";
+		mes "武器等级：4 / ^ff0000所需等级：130^000000";
+		mes "智力 + 5，HIK + 270。";
+		mes "冷箭和冰霜潜行者伤害提高 30%。";
+		mes "如果与水色长袍、鞋子和宝珠一起穿着，水系魔法伤害提高 60%。";
+		mes "风系魔法伤害降低 60%，风系抗性降低 50%。";
+		break;
+	case 2013: //Crimson_Staff2
+		mes "法杖/攻击：30";
+		mes "体重：90/任何性别";
+		mes "仅限术士";
+		mes "武器等级：4 / ^ff0000所需等级：130^000000";
+		mes "智力 + 5，HIK + 270。";
+		mes "火焰箭和火球伤害提高 30%。";
+		mes "如果与深红长袍、鞋子和宝珠一起穿着，火焰魔法伤害提高 60%。";
+		mes "水系魔法伤害降低 60%，水系抗性降低 50%。";
+		break;
+	case 2014: //Forest_Staff2
+		mes "法杖/攻击：30";
+		mes "体重：90/任何性别";
+		mes "仅限术士";
+		mes "武器等级：4 / ^ff0000所需等级：130^000000";
+		mes "智力 + 5，HIK + 270。";
+		mes "大地之刺和天堂之驱的伤害提高 30%。";
+		mes "如果与森林长袍、鞋子和宝珠一起穿着，土系魔法伤害提高 60%。";
+		mes "火焰魔法伤害降低 60%，火焰抗性降低 50%。";
+		break;
+	}
+	next;
+	return;
+}
+
+// Other Enchants :: sangjo
+//============================================================
+function	script	F_Mora_Enchant	{
+	specialeffect2 EF_REPAIRWEAPON;
+	progressbar "ffff00",3;
+	delitem 6380,5; //Mora_Coin
+	if (countitem(getarg(0)) < 1)
+		return 0;
+	delitem getarg(0),1;
+	set .@i, rand(1,4568);
+	if (.@i <= 3168) {
+		// Basic combinations
+		// (raw: .@i increments by 11)
+		setarray .@enchant_slot1[0],4766,4767,4764,4765,4762,4763,4760,4761; //Atk2,Atk3,Critical5,Critical7,Evasion6,Evasion12,Matk1,Matk2
+		setarray .@enchant_slot2[0],4720,4721,4710,4711,4750,4751; //Dexterity1,Dexterity2,Inteligence1,Inteligence2,Luck1,Luck2
+		setarray .@enchant_slot3[0],4700,4701,4730,4731,4740,4741; //Strength1,Strength2,Agility1,Agility2,Vitality1,Vitality2
+		setarray .@enchants[1],
+			.@enchant_slot1[rand(getarraysize(.@enchant_slot1))],
+			.@enchant_slot2[rand(getarraysize(.@enchant_slot2))],
+			.@enchant_slot3[rand(getarraysize(.@enchant_slot3))];
+	}
+	else if (.@i <= 3179) setarray .@enchants[1],4761,4720,4700; //Matk2 Dexterity1 Strength1
+	else if (.@i <= 3181) setarray .@enchants[1],4761,4712,4712; //Matk2 Inteligence3 Inteligence3
+	else if (.@i <= 3183) setarray .@enchants[1],4765,4732,4732; //Critical7 Agility3 Agility3
+	else if (.@i <= 3185) setarray .@enchants[1],4763,4752,4753; //Evasion12 Luck3 Luck4
+	else if (.@i <= 3187) setarray .@enchants[1],4763,4742,4742; //Evasion12 Vitality3 Vitality3
+	else if (.@i <= 3189) setarray .@enchants[1],4763,4722,4722; //Evasion12 Dexterity3 Dexterity3
+	else if (.@i <= 3191) setarray .@enchants[1],4742,4742,4742; //Vitality3 Vitality3 Vitality3
+	else if (.@i <= 3193) setarray .@enchants[1],4761,4722,4722; //Matk2 Dexterity3 Dexterity3
+	else if (.@i <= 3195) setarray .@enchants[1],4767,4702,4702; //Atk3 Strength3 Strength3
+	else if (.@i <= 3197) setarray .@enchants[1],4763,4732,4732; //Evasion12 Agility3 Agility3
+	else if (.@i <= 4568) return 0;
+
+	getitem2 getarg(0),1,1,0,0,0,.@enchants[1],.@enchants[2],.@enchants[3];
+	return 1;
+}
+mora,105,176,4	script	Master Tailor#pa0829	509,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (countitem(6380) < 5 || countitem(15024) < 1) {
+		mes "[裁缝大师]";
+		mes "通过我的触摸，我可以将典型的军队衬垫变成一件艺术品。我是裁缝大师凯，用军装衬垫创作艺术。";
+		next;
+		mes "[裁缝大师]";
+		mes "嗯，名字里有什么？如果你带上^ff00005个莫拉币和一个陆军衬垫^000000，我可以把你的军队衬垫变成一件艺术品。";
+		if (countitem(6380)) {
+			next;
+			mes "[裁缝大师]";
+			mes "我碰巧有一些军用衬垫库存。您想买一个吗？价格为 1 莫拉币。这么便宜。";
+			next;
+			switch(select("也许下次吧。：我现在就买一个。")) {
+	 		case 1:
+				mes "[裁缝大师]";
+				mes "好吧，我明白了。";
+				mes "如果您改变主意，请回来买一件。";
+				close;
+			case 2:
+				delitem 6380,1; //Mora_Coin
+				getitem 15024,1; //Army_Padding
+				mes "[裁缝大师]";
+				mes "这里是。";
+				mes "它非常漂亮而且蓬松。请回来。";
+				close;
+			}
+		}
+		close;
+	}
+	mes "[裁缝大师]";
+	mes "您是来为您的军装增添艺术气息的吗？";
+	next;
+	switch(select("请告诉我更多信息：是的，我有。")) {
+	case 1:
+		mes "[裁缝大师]";
+		mes "典型的军用衬垫不够保暖。皮肤感觉很粗糙而且看起来不太好。还有艺术价值？它几乎没有。";
+		next;
+		mes "[裁缝大师]";
+		mes "不过，我将用天鹅绒线绣它，并为其添加三个选项。";
+		next;
+		mes "[裁缝大师]";
+		mes "给我带来^8888005个莫拉币^000000和一个陆军衬垫，我们可以一起添加一些艺术！";
+		close;
+	case 2:
+		mes "[裁缝大师]";
+		mes "我告诉你以防万一——我会用你的军用衬垫做任何我需要做的事情，无论它是全新的还是之前已经修补过的。";
+		next;
+		mes "[裁缝大师]";
+		mes "因此，如果您随身携带了符合您喜好的军用衬垫，请将其放在安全的地方然后再回来。";
+		next;
+		mes "[裁缝大师]";
+		mes "另一件事 - 一旦我无法添加艺术，它就变得无法使用......在这种情况下你需要购买一个新的。";
+		next;
+		switch(select("来吧，急什么？：好的！我们开始做吧！！")) {
+		case 1:
+			mes "[裁缝大师]";
+			mes "你这人怎么回事？";
+			mes "村民们让我够忙的了。";
+			close;
+		case 2:
+			if (countitem(6380) < 5 || countitem(15024) == 0) {
+				mes "[裁缝大师]";
+				mes "您似乎没有拥有所需的一切。";
+				next;
+				mes "[裁缝大师]";
+				mes "在我开始工作之前，你必须携带 5 个莫拉币和一个陆军衬垫。";
+				close;
+			}
+			if (callfunc("F_Mora_Enchant",15024) == 0) {
+				mes "[裁缝大师]";
+				mes "哦......";
+				mes "我不敢相信我搞砸了。";
+				next;
+				mes "[裁缝大师]";
+				mes "我想单独待一会儿。离开！";
+				close;
+			}
+			mes "[裁缝大师]";
+			mes "我的艺术看起来很棒。";
+			close;
+		}
+	}
+}
+
+mora,123,177,6	script	Pendant Crafter#pa0829	509,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (countitem(6380) < 5 || countitem(2858) == 0) {
+		mes "[吊坠工匠]";
+		mes "我的工作是打磨守护者吊坠中的石头，然后在上面雕刻出具有特殊力量的符号。";
+		next;
+		mes "[吊坠工匠]";
+		mes "这一过程赋予守护者吊坠比普通配饰更多的力量。";
+		next;
+		mes "[吊坠工匠]";
+		mes "如果你有兴趣，我可以用^ff00005莫拉币^000000来加工你的吊坠。当然，你需要有守护者吊坠，这样我才能和你一起工作。";
+		close;
+	}
+	mes "[吊坠工匠]";
+	mes "你是来升级守护者吊坠的吗？";
+	next;
+	switch(select("请告诉我更多信息：是的，我有。")) {
+	case 1:
+		mes "[吊坠工匠]";
+		mes "我的工作是打磨守护者吊坠中的石头，然后在上面雕刻出具有特殊力量的符号。";
+		next;
+		mes "[吊坠工匠]";
+		mes "这一过程赋予守护者吊坠比普通配饰更多的力量。";
+		next;
+		mes "[吊坠工匠]";
+		mes "如果你有兴趣，我可以用^ff00005莫拉币^000000来加工你的吊坠。当然，你需要有守护者吊坠，这样我才能和你一起工作。";
+		close;
+	case 2:
+		mes "[吊坠工匠]";
+		mes "我告诉你以防万一——";
+		mes "如果我对之前升级过的守护者吊坠进行操作，它就会失去原来的力量。";
+		next;
+		mes "[吊坠工匠]";
+		mes "更糟糕的是，它可能会失去力量，变成一个普通的吊坠。当然，石头不像布料那样容易损坏，因此您不会丢失吊坠本身。";
+		next;
+		switch(select("来吧，急什么？：好的！我们开始做吧！！")) {
+		case 1:
+			mes "[吊坠工匠]";
+			mes "当你不着急的时候就回来吧。我总是有很多空闲时间。";
+			close;
+		case 2:
+			if (countitem(6380) < 5 || countitem(2858) == 0) {
+				mes "[吊坠工匠]";
+				mes "您似乎没有拥有所需的一切。";
+				next;
+				mes "[吊坠工匠]";
+				mes "在我开始工作之前，你必须携带 5 枚莫拉币和守护者吊坠。";
+				close;
+			}
+			if (callfunc("F_Mora_Enchant",2858) == 0) {
+				getitem 2858,1; //Pendant_Of_Guardian
+				mes "[吊坠工匠]";
+				mes "什么~！！";
+				mes "这到底是怎么回事啊！！";
+				close;
+			}
+			mes "[吊坠工匠]";
+			mes "看来我做到了！";
+			close;
+		}
+	}
+}
+
+mora,134,166,4	script	Bulberry Westhood#pa0829	509,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (countitem(6380) < 5 || countitem(2568) == 0) {
+		mes "[桑葚西区]";
+		mes "我是 Bulberry Westhood，致力于保持优质头巾的传统。";
+		next;
+		mes "[桑葚西区]";
+		mes "我只经营优质商品，而不是市场上随意购买的围巾。";
+		next;
+		mes "[桑葚西区]";
+		mes "如果你有任何你认为质量足够高的东西，请用^ff00005莫拉币^000000来找我。";
+		next;
+		mes "[桑葚西区]";
+		mes "我可以用自己的双手来提高它的高品质。";
+		close;
+	}
+	mes "[桑葚西区]";
+	mes "这样您就有了一条洛基围巾 1042 特别版。您确实对质量有独到的眼光。我可以立即开始工作吗？";
+	next;
+	switch(select("我不明白：是的，请。")) {
+	case 1:
+		mes "[桑葚西区]";
+		mes "就像我说的，我只经营优质商品 - 而不是市场上随机的围巾。";
+		next;
+		mes "[桑葚西区]";
+		mes "你的这条洛基围巾太棒了。这是带有洛基徽章的限量版产品！";
+		next;
+		mes "[桑葚西区]";
+		mes "我的专长是以很小的代价释放出隐藏的力量……";
+		mes "5 莫拉硬币。";
+		next;
+		mes "[桑葚西区]";
+		mes "如果你改变主意就回来吧。";
+		close;
+	case 2:
+		mes "[桑葚西区]";
+		mes "我告诉你以防万一——";
+		mes "如果我对之前升级过的洛基围巾进行操作，它就会失去原来的力量。";
+		next;
+		mes "[桑葚西区]";
+		mes "更糟糕的是，它可能会失去所有的力量，变成一条普通的围巾。";
+		next;
+		mes "[桑葚西区]";
+		mes "当然，洛基的围巾是优质物品，因此您在此过程中不会丢失围巾本身。";
+		next;
+		switch(select("也许稍后，先生……：我想拥有一件优质物品！")) {
+		case 1:
+			mes "[桑葚西区]";
+			mes "哈...！";
+			mes "你说“稍后”，当你可以立即得到最优质的物品时？好吧，按你自己的方式去做吧。";
+			close;
+		case 2:
+			if (countitem(6380) < 5 || countitem(2568) == 0) {
+				mes "[桑葚西区]";
+				mes "看起来你没有得到你需要的一切。";
+				next;
+				mes "[桑葚西区]";
+				mes "您必须拥有 5 个莫拉币和一条洛基围巾，才能获得最优质的物品。";
+				close;
+			}
+			if (callfunc("F_Mora_Enchant",2568) == 0) {
+				getitem 2568,1; //Muffler_Of_Roki
+				mes "[桑葚西区]";
+				mes "啊啊啊啊啊，这不可能！";
+				mes "我的！我的洛基围巾！......";
+				next;
+				mes "[桑葚西区]";
+				mes "哦，我为我的无耻行为道歉。我太难过了。";
+				next;
+				mes "[桑葚西区]";
+				mes "幸运的是，在我开始研究它之前，它仍然处于原始状态。它没有撕裂或拉伸。毕竟这是一件优质商品。呵呵呵呵~";
+				close;
+			}
+			mes "[桑葚西区]";
+			mes "哇~任务完成！";
+			close;
+		}
+	}
+}

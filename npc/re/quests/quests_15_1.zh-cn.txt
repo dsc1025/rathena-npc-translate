@@ -1,0 +1,6688 @@
+//===== rAthena Script =======================================
+//= Phantasmagorika Quests (episodes 15.1).
+//===== Description: =========================================
+//= [Official Conversion]
+//--- Quests list:
+//- Phantasmagorika Main Quest
+//- Wandering Bard Quest
+//- Police Quests
+//- 'New Power Source'
+//- 'To Phantasmagorika!'
+//- 'Looking for the Traces' (part 2 of 'To Phantasmagorika!')
+//===== Changelogs: ==========================================
+//= 1.0 Initial release [Capuche]
+//= 1.1 Fixed NPC names [zackdreaver]
+//= 2.0 Updated using Aegis files [Capuche]
+//============================================================
+
+prontera,121,77,3	script	Phantasmagorika Spokesperson#prt::spokesperson	4_F_ZONDAGIRL,4,4,{
+	mes "[发言人]";
+	mes "再会。";
+	mes "雷肯贝尔正在招募冒险家，以进行在朱佩罗斯新发现的幻影遗迹进行的挖掘项目。";
+	next;
+	mes "[发言人]";
+	mes "如果你有兴趣，就来吧。";
+	mes "挖掘所需的一切都将由雷肯贝尔提供。";
+	next;
+	mes "[发言人]";
+	mes "与我们一起在朱佩罗斯新发现的废墟中冒险，";
+	mes "一座古老的城市，其科学知识推动了现代文明的发展。";
+	next;
+	mes "[发言人]";
+	mes "如果您想加入，请组建挖掘团队并填写申请表。";
+	next;
+	switch( select( "挖掘队？申请？", "Phantasmagorika？", "再见。" ) ) {
+	case 1:
+		mes "[发言人]";
+		mes "我们正在招募挖掘机团队来研究新发现的遗迹 Phantasmagorika。";
+		mes "该项目需要各个领域的专业知识，因此我们决定招聘";
+		mes "挖掘机团队而不是个人。";
+		next;
+		mes "[发言人]";
+		mes "您可以注册挖掘项目，";
+		mes "并尽力帮助我们。";
+		mes "注册挖掘机可获得特殊优惠和商品";
+		next;
+		mes "[发言人]";
+		mes "以换取他们在废墟中发现的信息。我们将利用这些信息来研究废墟。";
+		mes "即使您未能找到有用的信息，我们也会奖励您的参与。";
+		next;
+		mes "[发言人]";
+		mes "如果您想加入该项目，请前往伊甸集团提交申请。";
+		close;
+	case 2:
+		mes "[发言人]";
+		mes "朱佩罗斯刚刚发现了一个古代遗址。";
+		mes "它隐藏在一条长隧道的尽头。";
+		next;
+		mes "[发言人]";
+		mes "雷肯伯已将该站点命名为^4d4dffPhantasmagorika^000000";
+		mes "并开始挖掘。";
+		next;
+		mes "[发言人]";
+		mes "我们希望找到比 Juperos 地区发现的更先进的玛多装备和更高水平的科学知识。";
+		close;
+	case 3:
+		mes "[发言人]";
+		mes "雷肯贝尔正在寻找有才华的冒险家来挖掘幻影。";
+		mes "欢迎随时加入我们！";
+		mes "我们需要你！";
+		close;
+	}
+	end;
+
+OnTouch_:
+	.@npc$ = strnpcinfo(2);
+	if (getd( "." + .@npc$ ) == 1)
+		end;
+	setd "." + .@npc$, 1;
+	sleep 3000;
+	npctalk "发言人：正在招募冒险者，进行幻境的发掘。";
+	sleep 17000;
+	setd "." + .@npc$, 0;
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 140 && isbegin_quest(7610) == 0" );
+	end;
+}
+morocc,208,287,3	duplicate(spokesperson)	Phantasmagorika Spokesperson#moc	4_F_ZONDAGIRL,4,4
+payon,174,113,3	duplicate(spokesperson)	Phantasmagorika Spokesperson#pay	4_F_ZONDAGIRL,4,4
+geffen,135,64,3	duplicate(spokesperson)	Phantasmagorika Spokesperson#gef	4_F_ZONDAGIRL,4,4
+alberta,119,65,3	duplicate(spokesperson)	Phantasmagorika Spokesperson#alb	4_F_ZONDAGIRL,4,2
+
+moc_para01,31,14,0	script	#atnevt01	HIDDEN_WARP_NPC,1,1,{
+	end;
+OnTouch:
+	if (countitem(6219) < 1 && countitem(22508) < 1)	// Para_Team_Mark, Para_Team_Mark_
+		end;
+	if (ep15_1_atnad == 0 && BaseLevel > 139) {
+		cutin "laime_evenor01.bmp",2;
+		mes "[秘书莱姆·埃文纳]";
+		mes "欢迎回来，";
+		mes "" + strcharinfo(0) + "。我不知道没有你我们如何生存。";
+		next;
+		mes "[秘书莱姆·埃文纳]";
+		mes "你听说过吗？";
+		mes "朱佩罗斯刚刚发现了一个古代遗址。";
+		mes "雷肯贝尔正在招募冒险者来挖掘这个地方，";
+		next;
+		mes "[秘书莱姆·埃文纳]";
+		mes "我们决定加入其中。";
+		mes "船长想见你就此事。";
+		next;
+		select("我不知道你有队长。");
+		cutin "laime_evenor02.bmp",2;
+		mes "[秘书莱姆·埃文纳]";
+		mes "什么，你以为我一个人在经营这个演出吗？";
+		mes "先生——我的意思是，船长很少对任何事情感到兴奋，而这是罕见的情况之一。你应该见见她。";
+		next;
+		cutin "laime_evenor01.bmp",2;
+		mes "[秘书莱姆·埃文纳]";
+		mes "她的办公室位于二楼最左边。";
+		ep15_1_atnad = 1;
+		setquest 7607;	// Eden Group Leader
+		close3;
+	}
+	end;
+}
+
+moc_para01,38,175,5	script	Secretary Lime Evenor#evtat01	4_F_EDEN_OFFICER,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	mes "[秘书莱姆·埃文纳]";
+	if (countitem(6219) < 1 && countitem(22508) < 1) {
+		cutin "laime_evenor01.bmp",2;
+		mes "您需要先加入伊甸集团。";
+		close3;
+	}
+	if (BaseLevel < 140) {
+		cutin "laime_evenor01.bmp",2;
+		mes "我有时也会来这里参加一些生意。";
+		mes "其实中央房间是我的。";
+		close3;
+	}
+	switch(ep15_1_atnad) {
+	case 0:
+		cutin "laime_evenor01.bmp",2;
+		mes "欢迎回来，";
+		mes "" + strcharinfo(0) + "。我不知道没有你我们如何生存。";
+		next;
+		mes "[秘书莱姆·埃文纳]";
+		mes "你听说过吗？";
+		mes "朱佩罗斯刚刚发现了一个古代遗址。";
+		mes "雷肯贝尔正在招募冒险者来挖掘这个地方，";
+		next;
+		mes "[秘书莱姆·埃文纳]";
+		mes "我们决定加入其中。";
+		mes "船长想见你就此事。";
+		next;
+		select("我不知道你有队长。");
+		cutin "laime_evenor02.bmp",2;
+		mes "[秘书莱姆·埃文纳]";
+		mes "什么，你以为我一个人在经营这个演出吗？";
+		mes "先生——我的意思是，船长很少对任何事情感到兴奋，而这是罕见的情况之一。你应该见见她。";
+		next;
+		cutin "laime_evenor01.bmp",2;
+		mes "[秘书莱姆·埃文纳]";
+		mes "她的办公室位于二楼最左边。";
+		ep15_1_atnad = 1;
+		setquest 7607;// Eden Group Leader
+		close3;
+	case 1:
+	case 2:
+		cutin "laime_evenor03.bmp",2;
+		mes "船长正在等你。";
+		mes "她的办公室在离这里最左边的地方。";
+		mes "稍后再见。";
+		close3;
+	case 3:
+		cutin "laime_evenor03.bmp",2;
+		mes "看来队长的一切都很顺利。";
+		mes "我们去中央房间吧，好吗？";
+		mes "我们有一位客人正在等待";
+		mes "与我们谈论某事。";
+		close3;
+	case 4:
+		cutin "laime_evenor01.bmp",2;
+		mes "我会在这里为你加油。";
+		mes "不用担心支持。";
+		mes "我会确保你得到你需要的一切。";
+		close3;
+	default:
+		cutin "laime_evenor01.bmp",2;
+		mes "到目前为止，挖掘工作似乎进展顺利。";
+		mes "阿特纳德博士感兴趣的项目也在雷肯伯的雷达范围内；应该给予高度评价。";
+		next;
+		mes "[秘书莱姆·埃文纳]";
+		mes "感谢您帮助医生专注于工作。";
+		mes "继续做好工作。";
+		close3;
+	}
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 140 && isbegin_quest(7607) == 0 && ep15_1_atnad < 3" );
+	end;
+}
+
+moc_para01,174,165,3	script	Lime Evenor#atnd02	4_F_EDEN_OFFICER,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	mes "[石灰]";
+	switch(ep15_1_atnad) {
+	case 0:
+		cutin "laime_evenor01.bmp",2;
+		mes "该房间仅供员工使用。";
+		mes "如果您需要休息的地方，请使用隔壁的房间。";
+		break;
+	case 1:
+	case 2:
+		cutin "laime_evenor01.bmp",2;
+		mes "船长就在隔壁房间。";
+		mes "它在左边。";
+		mes "请先与船长交谈。";
+		break;
+	case 3:
+		cutin "laime_evenor01.bmp",2;
+		mes "" + strcharinfo(0) + "。请这边来。";
+		mes "让我向您介绍";
+		mes "阿特纳德发掘队的考古学家奥雷斯。";
+		next;
+		mes "[石灰]";
+		mes "奥雷斯博士，我是" + strcharinfo(0) + "，他将在Phantasmagorika中为您提供帮助。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "很高兴见到你。我的名字是奥雷斯。";
+		mes "我团队的每个成员都年老体弱。我们确实需要一些像你这样的年轻血液。";
+		mes "欢迎加入团队。";
+		next;
+		cutin "laime_evenor01.bmp",2;
+		mes "[石灰]";
+		mes "看来队长的一切都很顺利。";
+		mes "你的工作很简单：";
+		mes "只要帮助奥雷斯博士和他的阿特纳德挖掘小组就可以了。";
+		next;
+		mes "[石灰]";
+		mes "我预计你大部分时间都会花在跑腿上";
+		mes "做一些需要体力的事情，因为团队的所有成员都已经过了巅峰期。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "这是正确的。我们大家都退休很久了。";
+		mes "这次挖掘可能是我们死前进行的最后一次挖掘。";
+		next;
+		mes "[耳朵]";
+		mes "如果Lime没有帮助我们，我们就会在那个地方的入口处改变主意。";
+		next;
+		cutin "laime_evenor01.bmp",2;
+		mes "[石灰]";
+		mes "请不要这么说。";
+		mes "你们是我见过的最有经验的考古学家。";
+		mes "顺便问一下，阿特纳德博士怎么样？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "阿特纳德？别让我开始。";
+		mes "他和他女儿一样固执，甚至更固执。";
+		mes "当她无法收到父亲的消息时，她清算了自己的遗产并离开了。";
+		next;
+		mes "[耳朵]";
+		mes "他已经很多年没有和家人保持联系了。当他得知自己的房子被卖掉后，";
+		mes "他猛烈抨击并退出网络，";
+		mes "他还在生她的气。";
+		next;
+		cutin "laime_evenor01.bmp",2;
+		mes "[石灰]";
+		mes "我们陷入了他们的心理游戏之中。";
+		next;
+		switch( select( "他们是谁？", "请言归正传。" ) ) {
+		case 1:
+			cutin "verus_aures.bmp",0;
+			mes "[耳朵]";
+			mes "让我告诉你。当Lime来到我们身边时，";
+			mes "我们都奇怪，伊甸集团这样的名企，怎么会支持我们这些乌合之众的老人呢？";
+			mes "后来我们才知道他们是父女。";
+			next;
+			select("父亲和女儿？ WHO？");
+			cutin "laime_evenor03.bmp",2;
+			mes "[石灰]";
+			mes "哦，队长没告诉你吗？";
+			mes "她的父亲是阿特纳德挖掘队的队长。";
+			next;
+			mes "[石灰]";
+			mes "当我第一次建议我们加入这个项目时";
+			mes "她想支持阿纳德挖掘队。";
+			mes "起初我更多地考虑的是合并团队。";
+			next;
+			mes "[石灰]";
+			mes "雷肯伯负责项目的财务方面，而我们负责人力方面。";
+			mes "然后我意识到团队的领导者是我老板的父亲。";
+			next;
+			cutin "laime_evenor04.bmp",2;
+			mes "[石灰]";
+			mes "我想尽我所能来支持球队，";
+			mes "但他们之间不稳定的关系却成为了阻碍。";
+			next;
+			cutin "verus_aures.bmp",0;
+			mes "[耳朵]";
+			mes "伊恩，我是说老阿特纳德，张开双臂欢迎你的提议。";
+			mes "当他意识到你的船长是他的女儿时，他勃然大怒。";
+			next;
+			mes "[耳朵]";
+			mes "我不明白挂机。";
+			mes "我的意思是，天哪，她是他的女儿。";
+			mes "我认为你应该在两者之间进行调解。";
+			next;
+			cutin "laime_evenor01.bmp",2;
+			mes "[石灰]";
+			mes "我希望这次合作能够成为他们彼此和解的机会。";
+			mes "好吧，我们现在应该转移到该站点。";
+			break;
+		case 2:
+			cutin "laime_evenor03.bmp",2;
+			mes "[石灰]";
+			mes "的确。在我们出发之前，我们先来谈谈我们在现场可以期待什么。";
+			break;
+		}
+		next;
+		cutin "laime_evenor03.bmp",2;
+		mes "[石灰]";
+		mes "奥雷斯，卢克会跟你一起去。";
+		mes "" + strcharinfo(0) + "，只要你准备好了，就可以去Phantasmagorika。";
+		next;
+		mes "[石灰]";
+		mes "它可以通过 Juperos 访问，";
+		mes "所以先移动到Juno，然后从那里到达Juperos的入口。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "雷肯伯一直在整个非洲大陆推广这个项目，";
+		mes "并且成功地吸引了比你想象的更多的人。";
+		mes "只要寻找一大群人，你就不会错过这个地方。当你到达那里时见。";
+		next;
+		cutin "laime_evenor01.bmp",2;
+		mes "[石灰]";
+		mes "一切对你来说都应该很容易，";
+		mes "不过你必须向雷肯伯登记才能进行挖掘。";
+		mes "您可以注册为个人挖掘机，但我更希望您作为 Atnad 挖掘团队的成员进行注册。";
+		next;
+		mes "[石灰]";
+		mes "注册完成后，您就可以开始为 Atnad 挖掘团队工作，";
+		mes "其他一切都会迎刃而解。";
+		mes "谢谢你这样做。";
+		ep15_1_atnad = 4;
+		completequest 7608;// Atnad Excavation Team 1
+		setquest 7609;// Atnad Excavation Team 2
+		break;
+	case 4:
+		cutin "laime_evenor01.bmp",2;
+		mes "发掘地点与Juperos相连，";
+		mes "所以你应该先迁移到 Juperos。";
+		mes "挖掘项目已得到广泛推广，因此您不难找到代表。";
+		break;
+	default:
+		cutin "laime_evenor02.bmp", 2;
+		mes "发掘现场情况如何？";
+		mes "唉，为什么伊恩就不能原谅他的女儿呢？";
+		break;
+	}
+	close3;
+}
+
+moc_para01,172,164,5	script	Archaeologist Aures#atnd02	4_M_OLDSCHOLAR,{
+	if (ep15_1_atnad < 4) {
+		cutin "laime_evenor01.bmp",2;
+		mes "[石灰]";
+		mes "对不起，但他是我们的客人。";
+		mes "而这个办公室仅供伊甸集团员工使用。";
+		mes "隔壁房间就是宿舍。";;
+	}
+	else if (ep15_1_atnad == 4) {
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "我会在挖掘现场再次见到你，好吗？";
+		mes "伊甸集团为我雇了一名护卫，所以我会和他一起旅行。";
+		mes "现场见。";
+	}
+	else {
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "哦，你来了。";
+		mes "我经常来这里。";
+		mes "我为卢克感到难过，因为他因为我而不得不经常出差。";
+		next;
+		mes "[耳朵]";
+		mes "有一个我可以随时来的地方真是太好了。自从我有一个可以称之为家的地方以来已经很多年了。";
+		mes "哈哈哈哈！";
+		mes "我会在发掘现场见。";
+	}
+	close3;
+}
+
+moc_para01,178,167,3	script	Luke Lapez#atnd03	4_M_EDEN_GUARDER,{
+	mes "[卢克]";
+	if (ep15_1_atnad < 4) {
+		cutin "looke_rapez02.bmp",0;
+		mes "嘿，莱姆。";
+		mes "我们有一位客人。";
+		mes "...";
+	}
+	else if (ep15_1_atnad == 4) {
+		cutin "looke_rapez02.bmp",0;
+		mes "...";
+		mes "我没什么可对你说的。";
+	}
+	else {
+		cutin "looke_rapez04.bmp",0;
+		mes "唔...";
+	}
+	close3;
+}
+
+ver_eju,114,40,4	script	Manager Michelle#atnd05	4_M_LGTGUARD,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	mes "[经理米歇尔]";
+	if (ep15_1_atnad < 4) {
+		mes "等待。你是哪个发掘队的？";
+		mes "……你是独立的。";
+		mes "你是独立注册的吗？你有推荐人吗？";
+		next;
+		mes "[经理米歇尔]";
+		mes "我不这么认为。";
+		mes "抱歉，您必须有推荐人或属于挖掘团队。";
+		mes "各种各样的人来到挖掘现场寻找工作。";
+		next;
+		mes "[经理米歇尔]";
+		mes "哦是的。 ^4d4dffEden Group^000000 是最容易获得推荐的地方。";
+		mes "如果您符合资格，那么集团将向我们推荐您参与挖掘项目。";
+		next;
+		mes "[经理米歇尔]";
+		mes "现在，为了您的安全，请退后一步。";
+		close;
+	}
+	if (ep15_1_atnad == 4) {
+		if (checkquest(7611,HUNTING) == -1) {
+			mes "等待。";
+			mes "您是幻影发掘项目的参与者吗？";
+			next;
+			select("是的。");
+			mes "[经理米歇尔]";
+			mes "让我查一下名单。";
+			mes "你的名字是..." + strcharinfo(0) + "。啊，你来了。";
+			mes "你是伊甸集团的，好吧。";
+			next;
+			mes "[经理米歇尔]";
+			mes "挖掘地点位于隧道的另一端。";
+			mes "进入后，您需要在中央指挥中心正式登记。";
+			next;
+			mes "[经理米歇尔]";
+			mes "哦，帮我一个忙。";
+			mes "朱佩罗斯遗迹的怪物已经迁移到隧道中，";
+			mes "他们正在失控。";
+			next;
+			mes "[经理米歇尔]";
+			mes "你能帮我们照顾他们吗？包括这里周围的人。";
+			mes "我给你写一封推荐信，你就可以去中央指挥中心领取奖励了。";
+			setquest 7611;// Passage Cleaning
+			close;
+		}
+		mes "只要清除隧道里的怪物，";
+		mes "并向中央指挥中心报告。";
+		mes "感谢您的帮助。";
+		close;
+	}
+	if (isbegin_quest(7610) == 0) {
+		mes "[经理米歇尔]";
+		mes "您正在寻找新工作吗？";
+		mes "如果你更喜欢体力劳动，";
+		mes "你总能为我消灭怪物。";
+		close;
+	}
+	switch( checkquest(7612,PLAYTIME) ) {
+	case -1:
+		switch( checkquest(7611,HUNTING) ) {
+		case -1:
+			mes "你能再帮我一次吗？";
+			mes "你知道，消灭隧道里和这个区域周围的怪物。";
+			mes "这次你直接向我汇报就可以了，不用再去中央指挥中心了。";
+			mes "感谢您的帮助。";
+			setquest 7611;// Passage Cleaning
+			close;
+		case 0:
+		case 1:
+			mes "把隧道里和这里周围的一些处理掉就行了。";
+			mes "我很高兴你喜欢这份工作。";
+			next;
+			mes "[经理米歇尔]";
+			mes "完成后可以向我汇报";
+			mes "或者去中央指挥中心的路易斯。";
+			mes "感谢您的帮助。";
+			close;
+		case 2:
+			mes "哦，消灭怪物干得好。";
+			mes "我们的士兵将感谢你的帮助。";
+			mes "请收下这个小小的感谢信。";
+			mes "我希望它对你有用。";
+			erasequest 7611;// Passage Cleaning
+			setquest 7612;// Passage Cleaning - Down
+			getexp 1500000,1000000;
+			close;
+		}
+	case 0:
+	case 1:
+		mes "谢谢你清理了隧道里的怪物。";
+		mes "如果你能继续这样做，我将不胜感激。";
+		close;
+	case 2:
+		mes "您正在寻找新工作吗？";
+		mes "如果你更喜欢体力劳动，";
+		mes "你总能为我消灭怪物。";
+		erasequest 7612;// Passage Cleaning - Down
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7611) == 0 && ep15_1_atnad == 4" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7612) == 0" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(7611,HUNTING) == 2" );
+	end;
+}
+
+verus04,182,168,5	script	Receptionist Nara#atnd06	4_F_HUWOMAN,{
+	mes "[奈良]";
+	if (ep15_1_atnad < 4) {
+		mes "你好。";
+		mes "感谢您使用Phantasmagorika发掘接待处。";
+		mes "你有推荐人吗？或者您是挖掘队的成员？";
+		next;
+		mes "[奈良]";
+		mes "哦，也没有。";
+		mes "抱歉，我不能让你注册。";
+		mes "我们确实需要挖掘机，但我们有标准。";
+		next;
+		switch( select( "我现在就想注册。", "我稍后再回来。" ) ) {
+		case 1:
+			if (BaseLevel > 139) {
+				mes "[奈良]";
+				mes "要么你有推荐，要么你必须是挖掘团队的成员。";
+				mes "对不起。";
+				mes "嗯...";
+				next;
+				mes "[奈良]";
+				mes "如果您不知道哪里可以获得推荐或挖掘团队，";
+				mes "您可以随时加入^4d4dffEden Group^000000。";
+				next;
+				mes "[奈良]";
+				mes "如果您以前曾在该集团工作过，那么获得其推荐就不会有问题。";
+				close;
+			}
+			mes "[奈良]";
+			mes "嗯...";
+			mes "抱歉，我的手被绑住了。";
+			mes "此刻这个地方对你来说太危险了。";
+			next;
+			mes "[奈良]";
+			mes "当你变得更有经验时请回来。";
+			mes "您必须至少达到 140 级才能向我们注册。";
+			mes "这是必要的，否则我们就会有一群乌合之众的挖掘机新手。";
+			mes "对不起。";
+			close;
+		case 2:
+			mes "[奈良]";
+			mes "与官方挖掘团队一起回来，或带上推荐人。";
+			close;
+		}
+	}
+	if (ep15_1_atnad == 4) {
+		mes "你好。";
+		mes "感谢您使用Phantasmagorika发掘接待处。";
+		mes "你有推荐人吗？或者您是挖掘队的成员？";
+		next;
+		select("我来自伊甸集团。");
+		mes "[奈良]";
+		mes "来自伊甸集团，得到了。";
+		mes "我可以知道你的名字吗？" + strcharinfo(0) + "...";
+		mes "啊，你来了。";
+		next;
+		mes "[奈良]";
+		mes "你是一个独立挖掘小组的成员。";
+		mes "你属于哪个发掘队？";
+		next;
+		input .@string$;
+		mes "[奈良]";
+		if (.@string$ != "Atnad" && .@string$ != "Atnad Excavation" && .@string$ != "Atnad Excavation Team") {
+			mes "..." + .@string$ + "...？";
+			mes "你确定这是正确的吗？";
+			mes "因为我在名单上找不到这个名字。";
+			next;
+			mes "[奈良]";
+			mes "请再次检查。";
+			close;
+		}
+		mes "阿纳德……阿纳德……";
+		mes "哦，我找到了。";
+		mes "有了你" + strcharinfo(0) + "，团队勉强通过了最低成员要求。";
+		mes "哦，我们不歧视小团体。不用担心。";
+		next;
+		mes "[奈良]";
+		mes "听从挖掘队长的指挥，";
+		mes "您还可以承担中央指挥中心提供的任务。";
+		next;
+		mes "[奈良]";
+		mes "如有特殊活动，我们会通知您。";
+		mes "如果你受伤或疲惫不堪，你可以随时使用指挥中心待命的治疗师。";
+		next;
+		mes "[奈良]";
+		mes "Rekenber 为您提供在挖掘现场工作时所需的一切。";
+		mes "作为回报，我们希望您专注于揭开埋藏在 Phantasmagorika 中的秘密。";
+		mes "祝你挖掘顺利。";
+		erasequest 7609;// Atnad Excavation Team 2
+		setquest 7610;// Registered Excavator
+		completequest 7610;// Registered Excavator
+		ep15_1_atnad = 5;
+		getexp 300000,300000;
+		close;
+	}
+	if (ep15_1_atnad == 5) {
+		mes "现在您可以无限制地访问该区域。";
+		mes "如果您在挖掘或探索时遇到问题，请随时告诉我们。";
+		next;
+		mes "[奈良]";
+		mes "您的注册已处理。如果您需要帮助或指示，请与路易斯指挥官联系。";
+		mes "他还会为你提供一些讨伐怪物的任务。";
+		next;
+		mes "[奈良]";
+		mes "祝你好运！";
+		close;
+	}
+	mes "你今天怎么样？";
+	mes "继续做好工作。";
+	close;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7610) == 0 && BaseLevel >= 140" );
+	end;
+}
+
+verus04,179,165,5	script	Commander Louis#atnd07	4_M_LGTGUARD,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	mes "[路易斯]";
+	if (ep15_1_atnad < 5) {
+		mes "将自己注册为正式挖掘机，否则您将被护送出场地。";
+		mes "您可以在接待处登记。";
+		close;
+	}
+	mes "你是阿特纳德挖掘队的一员。";
+	mes "我可以怎样帮助您？";
+	next;
+	switch( select( "报告挖掘结果。", "关于清理隧道。", "关于怪物讨伐。", "什么都没有。" ) ) {
+	case 1:
+		mes "[路易斯]";
+		if (ep15_1_atnad == 12) {
+			if (isbegin_quest(7617) != 1 || countitem(6748) < 1) {
+				mes "您想报告结果吗？";
+				mes "……报告上肯定有阿特纳德考古团团长的印章！";
+				next;
+				mes "[路易斯]";
+				mes "像这样的信息基本上都会被做成一个文件。";
+				mes "抱歉打扰您了。";
+				mes "阿特纳德考古团的内容捡起来。一定很有趣，我们很期待！";
+				close;
+			}
+			mes "啊，你们小组的发掘成果。";
+			mes "我可以看到你们的团队一直专注于核心。";
+			next;
+			mes "[路易斯]";
+			mes "主席对你们的团队特别感兴趣。";
+			mes "继续努力，你会收到他的消息。";
+			next;
+			mes "[路易斯]";
+			mes "感谢您今天的辛勤工作。";
+			mes "明天见。";
+			next;
+			mes "[路易斯]";
+			mes "哦，等等。";
+			mes "你的团队正在广播中。";
+			mes "让我帮您接通电话。";
+			next;
+			mes "[伊恩·阿特纳德的声音]";
+			mes "*噼啪声* 嘿... *噼啪声* 新秀...";
+			mes "*噼啪声*怎么了……这个……";
+			mes "*噼啪声*我听不到......";
+			mes "菜鸟... *噼啪声* 把你的屁股放过来... *噼啪声*";
+			mes "哼！ *嘟*";
+			next;
+			mes "[路易斯]";
+			mes "抱歉，信号通常不会那么差。";
+			mes "我猜医生正在找你。";
+			mes "你应该走了。";
+			delitem 6748,1;// Excavator_Repoet
+			erasequest 7617;// Turning In Excavation Report
+			setquest 7623;// Atnad's Summon
+			ep15_1_atnad = 13;
+			getexp 300000,300000;
+			close;
+		}
+		if (ep15_1_atnad == 13) {
+			mes "这是一次简短的调查，但您的团队已经取得了如此多的成就。";
+			next;
+			mes "[路易斯]";
+			mes "当其他学者和发掘者只能进行粗浅的观察时，";
+			mes "你的团队取得了一些技术发现。";
+			next;
+			mes "[路易斯]";
+			mes "我会把这件事报告给主席，让你们的团队得到特殊的福利。";
+			mes "我期待您的下一次报告。";
+			close;
+		}
+		if (isbegin_quest(7618) == 1) {
+			mes "高层管理人员感兴趣的是";
+			mes "进一步了解您的发现。";
+			mes "希望你能继续给我们带来惊喜。";
+			close;
+		}
+		if (isbegin_quest(7617) != 1 || countitem(6748) < 1) {
+			mes "您是来报告每日结果的吗？";
+			mes "请给我一份有你们领导签名的报告。";
+			next;
+			mes "[路易斯]";
+			mes "留下记录总是安全的。";
+			mes "报告准备好后立即带来。";
+			mes "读你的报告总是让我很兴奋。";
+			close;
+		}
+		mes "啊，你们小组的发掘成果。";
+		mes "我可以看到你们的团队一直专注于核心。";
+		next;
+		mes "[路易斯]";
+		mes "主席对你们的团队特别感兴趣。";
+		mes "继续努力，你会收到他的消息。";
+		next;
+		mes "[路易斯]";
+		mes "感谢您今天的辛勤工作。";
+		mes "明天见。";
+		delitem 6748,1;// Excavator_Repoet
+		erasequest 7617;// Turning In Excavation Report
+		setquest 7618;// Reporting the Results - Down
+		getexp 300000,300000;
+		close;
+	case 2:
+		mes "[路易斯]";
+		switch( checkquest(7612,PLAYTIME) ) {
+		case -1:
+			switch( checkquest(7611,HUNTING) ) {
+			case -1:
+				mes "啊，你来得正是时候。";
+				mes "隧道和废墟中的怪物越来越多。";
+				mes "雇佣兵已请求增援。";
+				next;
+				if (select( "我去。", "拒绝。" ) == 2) {
+					mes "[路易斯]";
+					mes "当然，你的首要任务是挖掘。";
+					mes "我会去找别人。";
+					close;
+				}
+				mes "[路易斯]";
+				mes "好的。";
+				mes "先感谢您。";
+				mes "完成后，你可以将结果报告给东部遗迹的米歇尔经理。";
+				mes "狩猎快乐。";
+				setquest 7611;// Passage Cleaning
+				close;
+			case 0:
+			case 1:
+				mes "谢谢。";
+				mes "穿过隧道并消灭里面的怪物。";
+				mes "完成后，请将结果报告给东部遗迹的米歇尔经理。";
+				close;
+			case 2:
+				mes "你处理过隧道和废墟里的怪物吗？";
+				mes "我们的雇佣兵会很高兴的。";
+				mes "他们要求增援已经有一段时间了。哈哈哈！";
+				next;
+				mes "[路易斯]";
+				mes "感谢您的辛勤工作。";
+				mes "请去休息一下，以便继续挖掘任务。";
+				erasequest 7611;// Passage Cleaning
+				setquest 7612;// Passage Cleaning - Down
+				getexp 1500000,1000000;
+				close;
+			}
+		case 0:
+		case 1:
+			mes "我们的雇佣兵可以对付隧道和废墟中的怪物。";
+			mes "但感谢您对网站安全的关心。";
+			close;
+		case 2:
+			erasequest 7612;// Passage Cleaning - Down
+			mes "您担心隧道和废墟中的怪物吗？";
+			mes "如果你休息好了，我就可以派你去执行讨伐任务。";
+			next;
+			mes "[路易斯]";
+			mes "如果你打算出去，不妨接一石二鸟的任务。";
+			mes "并且可以将结果报告给东部遗迹的米歇尔经理。";
+			close;
+		}
+	case 3:
+		mes "[路易斯]";
+		switch( checkquest(7614,PLAYTIME) ) {
+		case -1:
+			switch( checkquest(7613,HUNTING) ) {
+			case -1:
+				mes "啊，你来得正是时候。";
+				mes "广场上出现了威胁机器。";
+				mes "工人们要求组建一支战斗部队。";
+				next;
+				if (select( "我去。", "拒绝。" ) == 2) {
+					mes "[路易斯]";
+					mes "当然，你的首要任务是挖掘。";
+					mes "我会去找别人。";
+					close;
+				}
+				mes "[路易斯]";
+				mes "好的。";
+				mes "先感谢您。";
+				mes "请小心！";
+				setquest 7613;// Eliminating Risks
+				close;
+			case 0:
+			case 1:
+				mes "谢谢。";
+				mes "广场是大部分挖掘工作正在进行的地方。";
+				mes "如果你能从你摧毁的机器中找到一些东西那就太好了。";
+				close;
+			case 2:
+				mes "事情似乎已经尘埃落定了。";
+				mes "工人们很快就会恢复工作。";
+				mes "他们不是战士，所以在这种时候他们通常会很被动。";
+				next;
+				mes "[路易斯]";
+				mes "感谢您的辛勤工作。";
+				mes "我们的工作人员将感谢您保证他们的安全。";
+				erasequest 7613;// Eliminating Risks
+				setquest 7614;// Eliminating Risks - Down
+				getexp 1500000,1000000;
+				close;
+			}
+		case 0:
+		case 1:
+			mes "我还有其他志愿者在主要挖掘点广场上照顾怪物。";
+			mes "你应该休息。";
+			close;
+		case 2:
+			erasequest 7614;// Eliminating Risks - Down
+			mes "您是否担心主要挖掘点的机器？";
+			mes "确实，他们中的一些人非常敏感且具有攻击性，";
+			mes "我同意他们正在威胁我们的工作。";
+			next;
+			mes "[路易斯]";
+			mes "如果你能照顾好他们，那么我就可以正式把任务交给你了，";
+			mes "所以你会得到相应的奖励。雷肯伯从不认为您的服务是理所当然的。";
+			close;
+		}
+	case 4:
+		mes "[路易斯]";
+		mes "是这样吗？";
+		mes "如果您发现任何异常情况请告诉我。";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7610) == 2 && isbegin_quest(7611) == 0 && isbegin_quest(7612) == 0" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7613) == 0 && isbegin_quest(7614) == 0" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(7613,HUNTING) == 2 && isbegin_quest(7614) == 0" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7618) == 0 && isbegin_quest(7617) == 1" );
+	end;
+}
+
+verus04,176,161,5	script	Healer Miyo#atnd08	4_F_ACOLYTE,{
+	mes "[美代]";
+	mes "请进来。";
+	mes "你哪里受伤了？";
+	next;
+	.@s = select( "HP/SP 完全恢复 5,000 z", "HP/SP 半恢复 2,000 z" );
+	if (isbegin_quest(7610) > 0)
+		setarray .@cost[1],4500,1800;
+	else
+		setarray .@cost[1],5000,2000;
+	if (Zeny < .@cost[.@s]) {
+		mes "[美代]";
+		mes "...看看你和你";
+		mes "付不起治疗费？";
+		close;
+	}
+	Zeny = Zeny - .@cost[.@s];
+	npcskill "AL_HEAL",(10/.@s),(99/.@s),(99/.@s);
+	percentheal (100 / .@s), (100 / .@s);
+	mes "[美代]";
+	mes "哦，你累坏了。";
+	mes "让我恢复" + ( .@s == 1 ? "您的全部" : "部分" ) + "能量。";
+	mes "我为官方挖掘机提供 10% 的折扣。";
+	mes "微笑，你会感觉更好。";
+	close;
+}
+
+verus04,141,193,5	script	Archaeologist Aures#atnd09	4_M_OLDSCHOLAR,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	switch(ep15_1_atnad) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+		mes "老考古学家背对着你，正在做某事。";
+		mes "你不应该打扰他。";
+		close;
+	case 4:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "啊，欢迎。";
+		mes "我一直在等你。";
+		mes "首先，你应该去中央指挥中心登记。";
+		next;
+		mes "[耳朵]";
+		mes "你的名字已经在名单上了。去中心检查一下就可以了。";
+		mes "否则您将无法完全访问该区域。";
+		next;
+		mes "[耳朵]";
+		mes "完成后就回来。我将向您介绍其他成员。";
+		mes "继续。";
+		close3;
+	case 5:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "啊，你回来了。";
+		mes "向我们的领导人伊恩·阿特纳德问好。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "...新秀。";
+		mes "我没有时间陪新手。把他们送回去！";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "你又这么做了。";
+		mes "我们现在老了。我们需要帮助！";
+		mes "别再这么固执了。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "……嘿，菜鸟。";
+		mes "是我女儿派你来监视我的吗？";
+		mes "告诉我！";
+		next;
+		if (select( "我是来帮忙的。", "我不知道你在说什么。" ) == 2) {
+			cutin "verus_ian02.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			mes "嗯？你不知道我女儿是谁吗？";
+			mes "好吧，我们应该就这样。";
+			next;
+		}
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "这意味着你知道我女儿是谁。";
+		mes "你真的认为你能和我一起工作吗？";
+		mes "知道我是谁吗？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "好吧，好吧。";
+		mes "让我们开始工作吧。";
+		mes "我想知道你是否能听从我的命令。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "伊恩，你很无助。";
+		mes "好吧，欢迎加入我们的团队，年轻的冒险家。";
+		mes "我们正在计划的一些事情对体力来说是具有挑战性的，更不用说危险了。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "足够的。新人，过来一下。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "对不起。";
+		mes "你最好走吧。";
+		mes "别让他让你心烦意乱。";
+		ep15_1_atnad = 6;
+		close3;
+	case 6:
+	case 7:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "感谢您对伊恩的耐心等待。";
+		mes "他并不总是这样。";
+		mes "他是故意的。";
+		close3;
+	case 8:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "如果你处理完了他的话，我可以借用你的帮助。";
+		mes "我们团队里又多了一名成员。";
+		next;
+		mes "[耳朵]";
+		mes "他前往广场调查遗骸。";
+		mes "他是一个名叫^4d4dffLloyd^000000的年轻人。";
+		mes "我派卢克跟他一起去保证他的安全";
+		next;
+		mes "[耳朵]";
+		mes "但我想知道劳埃德的调查取得了多大进展。";
+		mes "你能去看看他吗？";
+		mes "谢谢。";
+		completequest 7619;// Assisting the Excavation Team
+		setquest 7620;// Young Blood?
+		ep15_1_atnad = 9;
+		close3;
+	case 9:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "劳埃德一定在维鲁斯中央广场的某个地方。";
+		mes "寻找卢克。他应该在劳埃德附近。";
+		next;
+		mes "[耳朵]";
+		mes "他是除了你之外唯一的年轻成员。";
+		mes "我们团队的其他成员和我一样大，无法成行。";
+		next;
+		mes "[耳朵]";
+		mes "请好好照顾";
+		mes "劳埃德。";
+		close3;
+	case 10:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "劳埃德怎么样了？";
+		mes "啊，原来你是在帮他啊。";
+		next;
+		mes "[耳朵]";
+		mes "谢谢";
+		mes "为了您的辛勤工作。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "他们来这里是为了我们工作。";
+		mes "别再感谢他们了。";
+		mes "他们已经被宠坏了。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "叹息，你能停下来吗？";
+		mes "*摇头*";
+		close3;
+	case 11:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "啊，你回来了。";
+		mes "劳埃德怎么样了？";
+		mes "他想在那里露营。";
+		mes "会不会太危险了？我想卢克可以保证他的安全。";
+		next;
+		mes "[耳朵]";
+		mes "请这边来。";
+		mes "我在等你的时候写了一份报告。";
+		mes "我要你把它交给中央指挥中心的路易斯指挥官。";
+		next;
+		mes "[耳朵]";
+		mes "这可能是一个简单的差事，";
+		mes "但这给了你一个结识指挥官的机会。";
+		next;
+		mes "[耳朵]";
+		mes "我们已经老了，所以不在乎名利。你不一样。";
+		mes "赢得雷肯伯的青睐";
+		mes "可以走很长的路。";
+		erasequest 7622;// Good News!
+		setquest 7617;// Turning In Excavation Report
+		ep15_1_atnad = 12;
+		getitem 6748,1;// Excavator_Repoet
+		close3;
+	case 12:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "请将该报告交给路易斯指挥官。";
+		mes "每天写报告是一件苦差事，但仍然是一项重要的差事。";
+		next;
+		mes "[耳朵]";
+		mes "我注意到路易斯一直在看着我们。我希望这是一个好兆头。";
+		close3;
+	case 13:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "你提交报告了吗？";
+		mes "好的。";
+		mes "你现在可以休息一下了。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "不，你不能！";
+		mes "你还有工作要做！";
+		mes "快到这里来吧！";
+		close3;
+	case 14:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "我有时不理解他。";
+		mes "我为你感到难过。";
+		mes "我希望我能帮忙。";
+		next;
+		mes "[耳朵]";
+		mes "也许其他年轻人可以给你更好的建议。";
+		mes "^4d4dff你为什么不咨询劳埃德或卢克？^000000";
+		next;
+		mes "[耳朵]";
+		mes "唉，他真是像头骡子一样顽固。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "我听到了。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "然后停止它";
+		mes "并停止骚扰他们。";
+		mes "这件事伊甸集团知道了一定会不高兴的。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "伊甸集团？ *哼哼*谁在乎呢？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "你很无助。";
+		mes "我真的非常非常对不起他。";
+		mes "你真的应该和那两个人谈谈。";
+		close3;
+	case 15:
+	case 16:
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "所以你已经找到一些线索了，是吗？";
+		mes "嗯，连我都兴奋了。";
+		close3;
+	default:
+		switch( checkquest(7618,PLAYTIME) ) {
+		case -1:
+			if (isbegin_quest(7617) == 1) {
+				cutin "verus_aures.bmp",0;
+				mes "[耳朵]";
+				mes "请将该报告交给路易斯指挥官。";
+				mes "每天写报告是一件苦差事，但仍然是一项重要的差事。";
+				next;
+				mes "[耳朵]";
+				mes "我注意到路易斯一直在看着我们。我希望这是一个好兆头。";
+				close3;
+			}
+			if ((checkquest(7616,PLAYTIME) == 0 || checkquest(7616,PLAYTIME) == 1) && (checkquest(7629,PLAYTIME) == 0 || checkquest(7629,PLAYTIME) == 1)) {
+				cutin "verus_aures.bmp",0;
+				mes "[耳朵]";
+				mes "你回来得正是时候。";
+				mes "我对你带来的电源控制设备的研究取得了一些进展。";
+				next;
+				mes "[耳朵]";
+				mes "我刚刚写完一篇关于它的报告";
+				mes "以及劳埃德正在研究的能源。";
+				next;
+				mes "[耳朵]";
+				mes "这是报告。";
+				mes "请^4d4dff把它带给路易斯";
+				mes "在指挥中心^000000。";
+				setquest 7617;// Turning In Excavation Report
+				getitem 6748,1;// Excavator_Repoet
+				close3;
+			}
+			cutin "verus_aures.bmp",0;
+			mes "[耳朵]";
+			mes "Ian 正在研究电源控制设备。";
+			mes "劳埃德正在研究这些设备的电源。";
+			next;
+			mes "[耳朵]";
+			mes "好吧，这让我承担了整理文件的琐碎任务。";
+			mes "你能帮助那两个人吗？";
+			next;
+			mes "[耳朵]";
+			mes "我们越快收集研究材料，我们就能越快报告。";
+			close3;
+		case 0:
+		case 1:
+			cutin "verus_aures.bmp",0;
+			mes "[耳朵]";
+			mes "你提交报告了吗？";
+			mes "可能是一件简单的事情，";
+			mes "但这给了你一个结识指挥官的机会。";
+			next;
+			mes "[耳朵]";
+			mes "我们已经老了，所以不在乎名利。你不一样。";
+			mes "赢得雷肯伯的青睐可以大有帮助。";
+			next;
+			mes "[耳朵]";
+			mes "因此，让您从现在开始提交报告。";
+			close3;
+		case 2:
+			erasequest 7618;// Reporting the Results - Down
+			mes "[耳朵]";
+			mes "是时候我们再写一份报告了。";
+			mes "我会在学习完电源控制器件之后再做。";
+			close3;
+		}
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7619) == 0" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(7617) == 0 && isbegin_quest(7618) == 0 && (checkquest(7616,PLAYTIME) == 0 || checkquest(7616,PLAYTIME) == 1) && (checkquest(7629,PLAYTIME) == 0 || checkquest(7629,PLAYTIME) == 1)" );
+	end;
+}
+
+verus04,144,193,3	script	Ian Atnad#ep152	4_M_IAN,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 无法进行任务，因为你拥有太多物品。 -";
+		close;
+	}
+	mes "[伊恩·阿特纳德]";
+	switch(ep15_1_atnad) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		cutin "verus_ian01.bmp",2;
+		mes "……这让人分心。";
+		close3;
+	case 5:
+		cutin "verus_ian01.bmp",2;
+		mes "你到底闲逛是为了什么？";
+		mes "这到底是谁？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "伊恩，你为什么这样？";
+		mes "这位年轻的冒险者是伊甸集团派来的。";
+		mes "他是来帮助我们的。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "..嗯...菜鸟。";
+		mes "我不需要这样的恩惠，把它们送回去吧！";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "我看他又做出这样的举动了。。";
+		mes "你觉得一群老人能轻松完成这个任务吗？";
+		mes "别再那么固执地寻求改变了。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "..嘿，菜鸟。";
+		mes "你是来按照我女儿的命令监视我的吗？";
+		mes "是这样吗？";
+		next;
+		if (select( "只是来帮忙。", "这对我来说是新闻。" ) == 2) {
+			cutin "verus_ian02.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			mes "哼？你没听说过我女儿的事吗？";
+			mes "那我就没必要再提这种废话了。";
+		}
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "……所以你知道我和我女儿的关系吗？";
+		mes "那么你想保持沉默，只做你的工作吗？";
+		mes "你试图不让自己卷入其中吗？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "好的。";
+		mes "然后我会命令你立即做一些你真正需要的事情。";
+		mes "让我们看看你能在多大程度上遵循我的指示。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "这家伙……他到底是这样的。";
+		mes "不管怎样，既然我们在这里，我也愿意为您服务。";
+		mes "恐怕我们想做的工作有点危险。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "别废话了，过来吧，Rookie。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "对此感到抱歉。";
+		mes "我们先走吧。";
+		mes "我支持你。";
+		ep15_1_atnad = 6;
+		close3;
+	case 6:
+		cutin "verus_ian01.bmp",2;
+		mes "那么，你说你会帮助我们工作？";
+		mes "然后让我们看看你做得如何。";
+		mes "离开这个区域再往里面走就会有一个广场。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "将会有来自高度先进文明的机器。";
+		mes "有一个必不可少的装置可以使机器运转。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "目前，有一个东西暂时被称为^4d4dff操作控制设备^000000，因为它仍在调查中。";
+		mes "调查机器并收集 20 个操作控制装置。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我会看看你工作得有多好。";
+		setquest 7615;// Core Collection
+		ep15_1_atnad = 7;
+		close3;
+	case 7:
+		if (countitem(6749) < 20) {// Power_Control_Device
+			cutin "verus_ian01.bmp",2;
+			mes "20个电源控制装置。";
+			mes "被那个所谓的大人物推荐的人应该没问题吧？";
+			mes "嗯。";
+			close3;
+		}
+		cutin "verus_ian02.bmp",2;
+		mes ".. 嗯..";
+		mes "别因此而沾沾自喜！";
+		mes "我们将用它来进行研究。";
+		mes "交出你拥有的一切。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "哈哈..这家伙一如既往的僵硬。";
+		mes "对出色的工作说一声感谢有那么难吗？";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "滚开你！";
+		mes "为什么你老是干涉。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "这是这个老人为数不多的乐趣之一，那又能怎样呢。";
+		mes "我反而会感谢你。";
+		mes "不管怎样，谢谢你的麻烦。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "您将来可能会专注于此类工作。";
+		mes "我们想研究这些操作装置，但不知道这些机器有多可怕。";
+		next;
+		mes "[耳朵]";
+		mes "我很快就会写报告，所以我也会向你寻求帮助。";
+		delitem 6749, countitem(6749);// Power_Control_Device
+		erasequest 7615;// Core Collection
+		setquest 7619;// Assisting the Excavation Team
+		getexp 750000,500000;
+		ep15_1_atnad = 8;
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "你们两个相处得很好。";
+		mes "离开！";
+		close3;
+	case 8:
+		cutin "verus_ian01.bmp",2;
+		mes "……我还是不相信你。";
+		mes "有一种东西叫契约，所以我希望你安静地继续工作。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "你期待着我能说出一句感谢的话...";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "嘿。离开那个顽固的家伙，到这里来一会儿！";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "……呃……你在做什么？去！";
+		close3;
+	case 9:
+	case 10:
+	case 11:
+	case 12:
+		cutin "verus_ian01.bmp",2;
+		mes "....你..";
+		mes "你为什么不去找点事情做而不是去玩呢？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我再说一遍，";
+		mes "我不认为你来这里只是为了帮助我们。";
+		mes "我确信阿奎恩在图谋不轨。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "……嗯。";
+		mes "完成你正在做的事情后，请尽快回到我身边。";
+		close3;
+	case 13:
+		cutin "verus_ian01.bmp",2;
+		mes "你寄完报告回来了吗？";
+		mes "时机很好。";
+		mes "给我带点吃的。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "这里不是口粮供应……那是什么？";
+		mes "天气又热又闷，找点好吃的来刺激一下食欲吧。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "嘿伙计。您在这里寻找什么样的美食？";
+		mes "就拿路易斯带来的东西吧。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "啊，你别插手这件事。";
+		mes "这个是新手自己处理的。";
+		mes "给我找一道^4d4dff吃起来简单又多汁爽口、回味干净的美味^000000！";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "如果你找到了我想要的东西，那么我会听你的一个愿望。";
+		mes "你来这里不是希望得到什么吗？";
+		next;
+		cutin "",255;
+		mes "为了向伊恩·阿特纳德询问^4d4dff最后的探索^000000";
+		mes "看来必须要找到一种^4d4dff吃起来简单、多汁爽口、余味干净的美味佳肴^000000了。";
+		erasequest 7623;// Atnad's Summon
+		setquest 7624;// In Search of a Delicacy
+		ep15_1_atnad = 14;
+		close;
+	case 14:
+	case 15:
+		cutin "verus_ian03.bmp",2;
+		mes "你要让我重复一遍吗？";
+		mes "给我找一道^4d4dff吃起来简单又多汁、清爽、余味干净的美味^000000";
+		mes "我会给你你想要的。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "如果你用你那愚蠢的头脑很难找到它，那么至少试着问问别人吧！";
+		mes "适合我口味的东西。";
+		close3;
+	case 16:
+		cutin "verus_ian01.bmp",2;
+		if (countitem(11519) < 1) {// Beef_Toast
+			mes "..嗯。";
+			mes "放弃？";
+			mes "你真的是吗？";
+			mes "我没看出你是一个会轻易放弃的人……？";
+			next;
+			mes "[伊恩·阿特纳德]";
+			mes "如果我的要求太难了，我会收回它。";
+			mes "但是，你必须离开这个挖掘队。";
+			next;
+			cutin "",255;
+			mes "我必须在某个地方找到丢失的牛肉吐司。";
+			close;
+		}
+		mes "嗯..是这个吗？";
+		mes "......我确实可以在工作期间方便地吃这个，而不需要单独的银器。";
+		mes "..新鲜煮熟的肉的味道。";
+		next;
+		mes "伊恩擦了擦手，慢慢地开始吃牛肉吐司。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "一...";
+		mes "……！";
+		mes "这……这味道！";
+		mes "充满了细碎牛肉的多汁！";
+		mes "我能尝到直火的味道..！";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "异国情调的水果和蔬菜融入了油的微妙油腻感！";
+		mes "...！";
+		next;
+		select("尝试一下包裹在外面的叶子。");
+		cutin "verus_ian04.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "确实..这个也可以吃。";
+		mes "丰富的多汁和新鲜的沙拉..甜美的水果..";
+		mes "新鲜的收尾味道将这一切包裹起来......！";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "...孩子..";
+		mes "不错。";
+		mes "你已经满足了我提出的所有条件。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我别无选择。";
+		mes "好吧。我预测有你想要的东西。";
+		mes "承诺就是承诺。你想从我处得到些什么？";
+		next;
+		select("了解最后的探索");
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "……就是这样。";
+		mes "我懂了....";
+		mes "谈论这个……给我一些时间思考。";
+		mes "....";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我也需要时间来组织它。";
+		mes ".......";
+		mes "稍后再回来。";
+		mes "请。";
+		delitem 11519,1;// Beef_Toast
+		erasequest 7626;// Delicacy for Him
+		setquest 7627;// Last Exploration
+		ep15_1_atnad = 17;
+		close3;
+	case 17:
+	case 18:
+	case 19:
+		cutin "verus_ian01.bmp",2;
+		mes "你到了吗？";
+		mes "你适应挖掘现场了吗？";
+		mes "那么这次又是什么呢。";
+		next;
+		switch( select( "关于发掘项目", "Converse", "取消" ) ) {
+		case 1:
+			callsub S_Daily;
+			close3;
+		case 2:
+			cutin "verus_ian04.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			if (ep15_1_atnad == 17) {
+				mes "很高兴你在这里。";
+				mes "实验室和研究设施的准入许可明显下降。";
+				mes "所以我们计划扩大调查范围..";
+				next;
+				select("最后的探索呢！");
+				cutin "verus_ian01.bmp",2;
+				mes "[伊恩·阿特纳德]";
+				mes "..最后的探索，并不多。";
+				mes "探索地点是Juperos。";
+				mes "有各种各样的目标，但是..";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "我深知，这是我人生的一个重大转折点。";
+				mes "我感觉脑子里有雾。";
+				mes "我想我会在这里找到另一个转折点。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "但这只是一种感觉。";
+				mes "我不认为我一直在寻找的地方和这个地方有关系。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "那你暂时不帮我吗？";
+				mes "....";
+				next;
+				select("我别无选择。");
+				mes "[伊恩·阿特纳德]";
+				mes "是的，这是最后一个任务。";
+				mes "阿奎安也必须知道。";
+				mes "我们很快就会开始，所以当你准备好后再回来。";
+				ep15_1_atnad = 18;
+				close3;
+			}
+			if (ep15_1_atnad == 18) {
+				cutin "verus_ian01.bmp",2;
+				mes "因为你的行动，我们的挖掘队的处境已经好了很多。";
+				mes "感谢您，我们获得了探索封闭区域的许可。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "所以我们正在努力扩大调查范围。";
+				mes "但被关闭似乎是有原因的。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "那个区域似乎有很多对生物体反应敏感的机器。";
+				mes "而且，还有一层特殊的能量。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "首先查看研究设施区域。";
+				mes "如果有什么奇怪的地方请告诉我。";
+				erasequest 7627;// Last Exploration
+				setquest 7641;// Access Permitted
+				setquest 7642;// Explore Research facilities
+				ep15_1_atnad = 19;
+				ep15_2_permit = 1;
+				close3;
+			}
+			cutin "verus_ian01.bmp",2;
+			mes "他们说研究设施区与从广场右侧向上的道路相连。";
+			mes "好吧，如果你到了那里，公司混蛋就会在那里限制访问。";
+			next;
+			mes "[伊恩·阿特纳德]";
+			mes "如果你发现了什么值得冒着危险去追求的东西，请立即回来告诉我！";
+			close3;
+		case 3:
+			cutin "verus_ian01.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			mes "让我们环顾四周，而不仅仅是工作。";
+			mes "这种机会很少见。";
+			close3;
+		}
+	case 20:
+		cutin "verus_ian01.bmp",2;
+		mes "你终于来了。";
+		mes "那么，你有结果了吗？";
+		next;
+		if (countitem(6757) < 1) {	// todo missing text
+			close3;
+		}
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "嗯……？什..什么。你手里那是什么？！";
+		mes "这……怎么可能。";
+		mes "我没想到我会在这里看到这个……？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "啊？它是什么？";
+		mes "看起来你的眼睛都要掉出来了。";
+		mes "让我分享一下惊喜吧。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "这..这是。";
+		mes "是记忆记录..你不是跟我说过一次吗？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "我的曾祖父母有一些看起来像这样的东西......";
+		mes "它是一种记录语音和声音的记录介质。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "哦……是魔法吗？";
+		mes "我知道一些图片魔法可以保存肉眼看到的图像。";
+		mes "有类似的东西吗？";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "不，这不是魔法的应用。";
+		mes "这纯粹是科学的产物。我见过我的曾祖父母用它来听歌曲或录制声音。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "在我年轻的时候，我认为这只是我曾祖父母的一个类似玩具的发明......";
+		mes "现在我想知道他们为什么不宣布这项技术。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "这是我很小的时候的记忆，但看起来就是这样。";
+		mes "..我们可以通过它知道内存记录的内容吗？";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "我需要那个！我懂了！";
+		mes "那..";
+		mes "...啊....";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "嘿。你还好吗？";
+		mes "你家里不是有可以破译的设备吗？";
+		next;
+		mes "[耳朵]";
+		mes "你..啊..";
+		mes "我懂了。啊哈哈哈哈..";
+		mes "这个家伙。你不知道你的房子在哪里吗？";
+		mes "啊哈哈哈哈！";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "....你不是说Arquien处置了房子吗..？";
+		mes "只要我们有电唱机，我们就能很容易地弄清楚。";
+		next;
+		select("..什么？你为什么看着我？");
+		mes "[伊恩·阿特纳德]";
+		mes "你就是那孩子的线人！";
+		mes "所以去那里把^4d4dff电唱机^000000带回来。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "我懂了。现在能轻松地与她交谈的人就是你。";
+		mes "如果可以的话，我们想请您这样做。";
+		erasequest 7643;// Mysterious Piece
+		setquest 7644;// Record Player
+		ep15_1_atnad = 21;
+		close3;
+	case 21:
+		cutin "verus_ian01.bmp",2;
+		mes "找到那个孩子阿尔奎恩，把电唱机带回来。";
+		mes "她至少必须给我这么多。";
+		close3;
+	case 22:
+	case 23:
+	case 24:
+	case 25:
+		cutin "verus_ian03.bmp",2;
+		mes "我无法判断那个孩子在做什么。";
+		mes "如果她对我有意见，请让她来直接跟我说！";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "……她到底为什么不肯给！";
+		mes "那你每次都要去听吗？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "嗯，这也不错。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "是的，还不错。";
+		mes "不是！";
+		mes "无论如何.. 既然结果是这样，你一定要带上它。好的？";
+		close3;
+	case 26:
+		cutin "verus_ian01.bmp",2;
+		mes "这次你看到一些结果了吗？";
+		next;
+		select("告诉他记忆记录的内容。");
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "……你有没有可能听错了？";
+		mes "为什么那里提到阿特纳德？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "你永远不知道。";
+		mes "既然你家里有记录之物，难道你就是这个城市的后裔？";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "我是……这个城市的后裔……维鲁斯？";
+		mes "那为什么现在这个地方又被揭露了呢？";
+		mes "我们不应该早点知道这个地方吗？";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "不不。很奇怪。";
+		mes "这就是为什么 Juperos.. 这就是为什么 Juperos 对我来说并不陌生，所以我抓住了它。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "如果我的祖先是这座城市的……他们为什么要保守秘密？";
+		next;
+		select("我们不知道。");
+		mes "[伊恩·阿特纳德]";
+		mes "是的.. 是的。我们当然不知道。";
+		mes "看来我们必须找到更多的记忆记录才能了解更多。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "抱歉，但是……你去了研究设施，对吗？";
+		mes "你知道实验室附近发现的巨大地下设施吗？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "第一次听说？";
+		mes "……那个地下设施里似乎也发现了记忆记录之类的东西。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "让我们在其他人开始感兴趣之前采取主动。";
+		mes "其他人无论如何也无法破译这些信息。";
+		next;
+		cutin "verus_ian03.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "而且，如果我们收集足够的记忆记录......";
+		mes "前往阿尔奎恩并找出……呃……内容。";
+		mes "你明白吗？";
+		erasequest 7647;// Report Memory Record
+		setquest 7648;// Memory Records of the Laboratories
+		ep15_1_atnad = 27;
+		close3;
+	case 27:
+		cutin "verus_ian01.bmp",2;
+		mes "如果你走到广场区域西北侧的连接路径，你就会发现禁区。";
+		mes "我们有挖掘许可证，您可以进入。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "但我听说有些奇怪的机器人表现得很具有攻击性，所以要小心。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "找到通往地下设施的入口路径后回来。";
+		mes "请记住^4d4dff从实验室收集记忆记录是目标^000000。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "至少五个？我们需要五个人才能破译它，对吗？";
+		mes "收集它们并前往阿尔奎恩。";
+		close3;
+	case 28:
+	case 29:
+		cutin "verus_ian03.bmp",2;
+		mes "这次也一样！";
+		mes "为什么……为什么那个孩子会这样！";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "什么？她也想参加这个项目？";
+		mes "她会定期破译记忆记录并发送结果..？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "……她为什么要这么做。而且这么突然..？";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "看来她也意识到了什么。";
+		mes "这不是好事吗？";
+		mes "父女俩可以和睦相处，弄清楚祖先的过去。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "...是吗？难道就没有别的办法了吗？";
+		mes "不管怎样，你去看看结果吧。";
+		mes "你必须检查 Arquien 的做法是否正确。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "我们还需要有人来收集记忆记录吗？";
+		mes "啊哈哈哈哈哈哈";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "嗯，这话不假……";
+		mes "无论如何，一起走吧。";
+		close3;
+	case 30:
+		if (ep15_2_permit == 6) {
+			cutin "verus_ian01.bmp",2;
+			mes "你到了吗？";
+			mes "其实我一直在等待。";
+			next;
+			select("有什么问题吗？");
+			mes "[伊恩·阿特纳德]";
+			mes "有事吗？有问题。";
+			mes "有什么事情是非常错误的。";
+			next;
+			cutin "ep15_tatio01.bmp",0;
+			mes "[雷肯伯首席秘书]";
+			mes "你好？";
+			mes "我是雷肯伯秘书处的首席秘书，W.H.";
+			mes "我一直在等待。";
+			next;
+			select("雷肯贝尔主席的秘书？");
+			mes "[雷肯伯首席秘书]";
+			mes "没错。";
+			mes "我为雷肯伯主席服务。";
+			next;
+			cutin "verus_ian02.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			mes "那么，威风凛凛的董事长秘书在这种地方做什么呢？";
+			mes "我以为有关发掘的报告是单独发送的？";
+			next;
+			cutin "ep15_tatio01.bmp",0;
+			mes "[雷肯伯首席秘书]";
+			mes "主席想见见大家。";
+			mes "您可以随时来参观位于 Rihrtarzen 的总部。";
+			next;
+			mes "[雷肯伯首席秘书]";
+			mes "如果能尽快去参观就更好了..";
+			mes "我们要求暂时不公开记忆记录的内容。";
+			next;
+			cutin "verus_ian03.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			mes "这是为什么？";
+			mes "我们为什么要这样做？";
+			next;
+			cutin "ep15_tatio01.bmp",0;
+			mes "[雷肯伯首席秘书]";
+			mes "嗯..我想我知道你要说什么，但是...";
+			mes "只能说时机尚未成熟。";
+			next;
+			mes "[雷肯伯首席秘书]";
+			mes "我们也邀请您讨论该问题的细节。";
+			mes "所以最好尽快去拜访，不是吗？";
+			mes "我们会等待。";
+			next;
+			cutin "verus_aures.bmp",0;
+			mes "[耳朵]";
+			mes "这里发生了什么事..";
+			mes "嘿伊恩，你是不是站在公司的对立面了？";
+			next;
+			cutin "verus_ian01.bmp",2;
+			mes "[伊恩·阿特纳德]";
+			mes "我不知道！";
+			mes "无论如何我们都应该去，因为他们告诉我们去。";
+			mes "嘿，你。";
+			next;
+			select("我？");
+			mes "[伊恩·阿特纳德]";
+			mes "是的。你。";
+			mes "他们说你必须陪我们。";
+			mes "我们在雷肯贝尔公司总部见面吧。";
+			mes "像这样的事情还是赶紧处理比较好。";
+			ep15_1_atnad = 31;
+			close3;
+		}
+		cutin "verus_ian01.bmp",2;
+		mes "我暂时将破译记忆记录的工作交给你和阿尔奎恩。";
+		mes "既然你说你不会再问最后的探索了..";
+		mes "今天是什么日子？";
+		next;
+		if (select( "关于发掘项目", "关于记忆记录" ) == 1) {
+			callsub S_Daily;
+			close3;
+		}
+		mes "[伊恩·阿特纳德]";
+		if (isbegin_quest(7649) != 1) {
+			cutin "verus_ian01.bmp",2;
+			mes "仔细想想，这样的结构也不错。";
+			mes "记忆记录中记录的内容才是重要的。";
+			next;
+			mes "[伊恩·阿特纳德]";
+			mes "因为我不用动一根手指就能得到结果..";
+			mes "……好……我会积极思考。是的。";
+			close3;
+		}
+		cutin "verus_ian01.bmp",2;
+		mes "我无法弄清楚阿奎恩在想什么。";
+		mes "如果我能带回电唱机就更好了。";
+		next;
+		cutin "verus_ian02.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "什么？她也想参加这个项目？";
+		mes "她会定期破译记忆记录并发送结果..？";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "奇怪的是，她以前甚至连梦想工作都讨厌，现在变成这样了。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "看来她也意识到了什么。";
+		mes "这不是好事吗？";
+		mes "父女俩可以和睦相处，弄清楚祖先的过去。";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "...是这样吗？难道就没有别的办法了吗？";
+		mes "无论如何，看来我们需要你的帮助。";
+		mes "你必须检查 Arquien 的做法是否正确。";
+		next;
+		cutin "verus_aures.bmp",0;
+		mes "[耳朵]";
+		mes "我们还需要有人来收集记忆记录吗？";
+		mes "啊哈哈哈哈哈哈";
+		next;
+		cutin "verus_ian01.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "嗯，这话不假……";
+		mes "^4d4dff暂时与Arquien合作。^000000";
+		erasequest 7649;// Report Memory Record Content
+		close3;
+	case 31:
+	case 32:
+	case 33:
+		cutin "verus_ian01.bmp",2;
+		mes "你在干什么？赶快。";
+		mes "^4d4dff雷肯伯总部位于莱特哈尔岑^000000。";
+		mes "你继续往前走。我们在那里见面吧。";
+		close3;
+	default:
+		cutin "verus_ian01.bmp",2;
+		mes "你永远不知道会发生什么。";
+		mes "我想我应该对记忆记录的专有权感到高兴。";
+		mes "今天是什么日子？";
+		next;
+		select("关于发掘工程");
+		callsub S_Daily;
+		close3;
+	}
+	end;
+
+S_Daily:
+	mes "[伊恩·阿特纳德]";
+	mes "挖掘工程？";
+	mes "..您是指电源控制设备吗？";
+	next;
+	mes "[伊恩·阿特纳德]";
+	switch( checkquest(7616,PLAYTIME) ) {// Core Collection - Down
+	case -1:
+		if (isbegin_quest(7615) == 0) {// Core Collection
+			cutin "verus_ian01.bmp",2;
+			mes "你说的是今天的工作吗？";
+			mes "这可能是显而易见的，但它是寻找电源控制设备。";
+			mes "...";
+			mes "..如果您不愿意，则不必这样做。";
+			next;
+			if (select( "我会寻找电源控制设备。", "太难了。" ) == 1) {
+				mes "[伊恩·阿特纳德]";
+				mes "你？你肯定说你会自己找到他们？";
+				mes "我没有理由拒绝这个提议。";
+				mes "既然你说了你自己做。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "这次也收集 20 个电力控制装置。";
+				mes "如果我们能解开电源控制器件的秘密……";
+				mes "我们应该能够修复损坏的并自己使用它们，对吗？";
+				mes "这会很有趣。";
+				next;
+				mes "[伊恩·阿特纳德]";
+				mes "...而且..我感觉我已经看到了它..感觉我会知道它。";
+				mes "就像我会记得一样。如果我研究再研究，直到它深深地印在我的脑海里，我相信一定会有所收获。";
+				setquest 7615;// Core Collection
+				return;
+			}
+			mes "[伊恩·阿特纳德]";
+			mes "如果你不是来这里工作，那就走吧。";
+			mes "你分散了我的注意力。";
+			return;
+		}
+		if (countitem(6749) < 20) {// Power_Control_Device
+			mes "总是一样的。";
+			mes "它是^4d4dff20 个电源控制器件^000000。";
+			mes "既然我们已经在这里了，我想把这件事做好，所以尽量不要搞砸。";
+			return;
+		}
+		mes "你又答对了。";
+		mes "....";
+		mes "你在看什么？";
+		mes "放下你带来的东西然后离开。";
+		next;
+		mes "[伊恩·阿特纳德]";
+		mes "……这次一定好好用，不弄坏了。";
+		mes "让我们也慢慢进入恢复阶段。";
+		delitem 6749, countitem(6749);// Power_Control_Device
+		erasequest 7615;// Core Collection
+		setquest 7616;// Core Collection - Down
+		getexp 1500000,1000000;
+		return;
+	case 0:
+	case 1:
+		mes "我们现在正在研究它。";
+		mes "我们有可能在实验中让它变得毫无用处。";
+		mes "无论如何，我现在很忙，所以让我一个人静一静吧。";
+		return;
+	case 2:
+		erasequest 7616;// Core Collection - Down
+		mes "我们之前回收的电源控制装置都坏了。";
+		mes "他们无法承受所有的实验。";
+		mes "就像现在的那些一样。";
+		next;
+		cutin "verus_ian04.bmp",2;
+		mes "[伊恩·阿特纳德]";
+		mes "阿尔奎安也是这样。";
+		mes "……因为她承受不了……";
+		mes "...呼..";
+		return;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(7616) && ep15_1_atnad > 16" );
+	end;
+}
+
+//- Wandering Bard Quest
+verus03,129,21,5	script	Wandering Bard#ep15	1_M_BARD,{
+function checkstatusquest;
+
+	if (BaseLevel < 99) {
+		mes "[流浪吟游诗人]";
+		mes "这是非常危险的，";
+		mes "最好离开这里";
+		mes "前面即将面对";
+		mes "极度死亡的危险。";
+		close;
+	}
+	mes "[流浪吟游诗人]";
+	if (isbegin_quest(4295) == 2) {// Wandering Bard
+		mes "我已经告诉过你了";
+		mes "我想告诉你的一切。";
+		mes "我希望我们能在其他地方再次见面。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "直到那时，";
+		mes "保持安全。";
+		mes "我要离开去别的地方";
+		mes "寻找新的故事来讲述。";
+		mes "你会上你的路，我也会上我的路。";
+		close;
+	}
+
+	switch( checkquest(4296,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "我现在没有故事要告诉你。";
+		mes "我正在努力让自己的心休息一下。";
+		mes "你为什么不走";
+		mes "休息一会儿？";
+		close;
+	case 2:
+		erasequest 4296;
+		break;
+	}
+
+	setarray .@quest_id[0],
+		4297,	// Bard's Story: Some Corporation
+		4298,	// Bard's Story: The President
+		4299,	// Bard's Story: a Scholar in Juno
+		4300,	// Bard's Story: a Mad Scientist
+		4301,	// Bard's Story: Hugel
+		4302;	// Bard's Story: Odin Temple
+	.@size_quest_id = getarraysize(.@quest_id);
+
+	for ( .@i = 0; .@i < .@size_quest_id; .@i++ ) {
+		switch( isbegin_quest(.@quest_id[.@i]) ) {
+		case 0:
+			.@quest_undone[.@size_undone] = .@quest_id[.@i];
+			.@size_undone++;
+			continue;
+		case 1:
+			break;
+		case 2:
+			.@total += 2;
+			continue;
+		}
+		break;
+	}
+
+	if (.@i < .@size_quest_id) {
+		mes "冒险家，";
+		mes "什么故事";
+		mes "你带我来了吗？";
+		next;
+		if (checkstatusquest(.@quest_id[.@i]) == 0) {
+			mes "^ff0000您尚未满足完成任务的要求。^000000";
+			next;
+			if (select( "返回任务。", "结束对话。" ) == 2) {
+				mes "[流浪吟游诗人]";
+				mes "请注意安全。";
+				close;
+			}
+			mes "[流浪吟游诗人]";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "还没有完成这项任务。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "稍后再回来，";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "暂时再见。";
+			erasequest .@quest_id[.@i];
+			if (.@quest_id[.@i] == 4297)	// actually this quest is the only one to give a delay
+				setquest 4296;// Take a Break
+			close;
+		}
+		mes "- Tell your story. -";
+		next;
+		mes "[流浪吟游诗人]";
+		switch( .@quest_id[.@i] ) {
+		case 4297:
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "更重要的是，";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "因为已经太晚了。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "我一开始心情就不太好。";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			break;
+		case 4298:
+			mes "黑森林似乎是";
+			mes "分成";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "政治阴谋没有多大意义";
+			mes "像我这样的流浪艺术家。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "不过，我为你感到骄傲：";
+			mes "你已经认识总统了";
+			mes "并为他执行了一项秘密任务。";
+			mes "我也很高兴看到你归来。";
+			break;
+		case 4299:
+			mes "学者就是这样一种奇怪的人。";
+			mes "我无法想象他们会感到多么快乐";
+			mes "在研究这样的事情时。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "当然，对于某些人来说";
+			mes "我寻找新故事";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			mes "我不在乎，只要我有";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "欢迎回来。";
+			mes "我真的很喜欢你的这个故事。";
+			break;
+		case 4300:
+			mes "只有神才知道";
+			mes "谁是对的";
+			mes "谁错了。";
+			mes "我相信这也适用于那些科学家。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "如果你问我，";
+			mes "我不能说哪一方是对的，哪一方是错的。";
+			mes "你可以吗？";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "欢迎回来。";
+			mes "我真的很喜欢你的这个故事。";
+			break;
+		case 4301:
+			mes "技术的进步并不总是意味着";
+			mes "旧的破坏。";
+			mes "技术本身无法进步。";
+			mes "医学也不能";
+			mes "和生活研究。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "一，";
+			mes "至少我是这么听说的。";
+			mes "......忘了我说过的话。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "广大民众";
+			mes "只喜欢听美好结局";
+			mes "所以让我们重点关注";
+			mes "故事的积极方面，";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "欢迎回来。";
+			mes "而不是";
+			mes "黑暗，";
+			mes "令人沮丧的。";
+			break;
+		case 4302:
+			mes "我不确定是否有同样的事情";
+			mes "不会发生";
+			mes "在这个发掘现场";
+			mes "因为连我都感觉到有危险的阴影笼罩在上面。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "关于你最后见到的人，";
+			mes "一...";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "没关系。我什至不应该这么说。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "我们只能观看";
+			mes "各派相互勾结";
+			mes "并希望";
+			mes "最好的。";
+			mes "作为一名吟游诗人，我的职责只是向公众传播信息。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "我很高兴看到你完整地回归。";
+			mes "谢谢你";
+			mes "为了这样一个有价值的故事。";
+			break;
+		}
+		next;
+		mes "[流浪吟游诗人]";
+		if (.@total == 10) {
+			mes "叹气，我讨厌说这个，";
+			mes "但这将是最后一次";
+			mes "我们互相分享故事。";
+			mes "谢谢你告诉我所有这些有趣的故事。";
+			next;
+			mes "[流浪吟游诗人]";
+			mes "请收下这个。";
+			mes "我希望";
+			mes "它会对你有用。";
+			mes "我希望我们能在其他地方再次见面。";
+			completequest .@quest_id[.@i];
+			setquest 4295;// Wandering Bard
+			completequest 4295;
+			getitem 12263,5;// Comp_Battle_Manual
+			next;
+			mes "[流浪吟游诗人]";
+			mes "我必须离开";
+			mes "寻找新的故事。";
+			mes "你会上你的路，我也会上我的路。";
+			mes "确保安全。";
+			close;
+		}
+		completequest .@quest_id[.@i];
+		setquest 4296;// Take a Break
+		mes "请给我一些时间。";
+		mes "我想创作一首新歌";
+		mes "根据你刚才告诉我的故事。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "在此期间你应该休息并重新组合。";
+		close;
+	}
+	.@r = rand(.@size_undone);
+	setquest .@quest_undone[.@r];
+	mes "听听我的故事。";
+	next;
+	mes "[流浪吟游诗人]";
+	switch( .@quest_undone[.@r] ) {
+	case 4297:
+		mes "在黑森林共和国，";
+		mes "科学战胜魔法的地方，";
+		mes "一个巨大的人类公司";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "据传正在进行研究";
+		mes "其目的是崇高的，但同时也是值得怀疑的。";
+		mes "你知道吗";
+		mes "公司紧闭的大门后面到底发生了什么？";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "你应该";
+		mes "进一步了解该公司正在做什么。";
+		mes "请小心。";
+		close;
+	case 4298:
+		mes "你认识总统吗";
+		mes "黑森林共和国？";
+		mes "通常，像你我这样的平民";
+		mes "做梦也想不到会见到如此杰出的人物，";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "但有传言说你可以";
+		mes "如果您可以在 Lighthalzen 找到他的联系人。";
+		mes "不仅可以见到总统，";
+		mes "但你可以解锁一些新的冒险。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "寻找他的联系方式，";
+		mes "其他一切都会迎刃而解。";
+		mes "谁知道？";
+		mes "你一生中的冒险可能正在等待着你。";
+		close;
+	case 4299:
+		mes "我想知道这些研究人员在哪里";
+		mes "都来自.";
+		mes "他们一定是";
+		mes "来自全球各地，";
+		mes "寻求发现未知的刺激。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "我认为最勇敢的人是";
+		mes "学者和研究人员，";
+		mes "就像朱诺图书馆的那些......";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "哦，说到朱诺图书馆，";
+		mes "我知道有一位学者";
+		mes "谁做了同样类型的研究，";
+		mes "你知道，";
+		mes "整天看着奇怪的东西。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "你应该";
+		mes "与那位学者交谈。";
+		mes "他可能会让你看到一个全新的世界。";
+		close;
+	case 4300:
+		mes "这些人是不是";
+		mes "互相帮助？";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "传言有一个疯狂的科学家";
+		mes "在朱诺号，一群人正在";
+		mes "试图阻止他危险的研究。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "我想说这种说法是有偏见的。";
+		mes "也许这位科学家是健全的，";
+		mes "那些人很危险。";
+		mes "谁知道？不过，如果我是你，我会避开他们两个。";
+		close;
+	case 4301:
+		mes "学者们。他们的研究界限在哪里？";
+		mes "像你我这样的漂​​泊者";
+		mes "我不关心这个世界，我对此感到高兴。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "在胡格尔那里，有一位学者";
+		mes "据传他沉迷于一项危险的实验。";
+		mes "我想让你去了解一下";
+		mes "他追求的是什么：";
+		mes "幸福或空洞的野心。";
+		close;
+	case 4302:
+		mes "我也见过同样的风景";
+		mes "很久以前，";
+		mes "当奥丁神殿";
+		mes "被首先发现。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "哦，这让我想起了";
+		mes "的故事关于";
+		mes "两个——不，三个与奥丁神殿有关的人。";
+		next;
+		mes "[流浪吟游诗人]";
+		mes "不知道Hugel的招牌还有吗";
+		mes "招募挖掘机。";
+		mes "你愿意去看看吗？";
+		mes "当你回来时我想听听那些挖掘机背后的故事。";
+		close;
+	}
+	end;
+
+function checkstatusquest {
+	switch( getarg(0) ) {
+	case 4297:
+		if (lhz_curse >= 31)// Cursed Spirit Quest
+			return true;
+		break;
+	case 4298:
+		if (lhz_boss >= 43)// President Quest
+			return true;
+		break;
+	case 4299:
+		if (yuno_hist >= 10)// Juperos Ruins History Quest
+			return true;
+		break;
+	case 4300:
+		if (metto_q >= 9)// Metto Quest
+			return true;
+		break;
+	case 4301:
+		if (hg_bio >= 9)// Biological Weapon Quest
+			return true;
+		break;
+	case 4302:
+		if (hg_odin >= 60)// Odin Temple Excavation Quest
+			return true;
+		break;
+	}
+	return false;
+}
+}
+
+//- Police Quests
+verus04,133,212,4	script	Police Chief Kesler#EP15_1	2_M_SWORDMASTER,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续。 -";
+		close;
+	}
+	.@playtime_5318 = checkquest(5318,PLAYTIME);	// Come Back Tomorrow
+	.@quest_5309 = isbegin_quest(5309);				// Police Chief's Request
+	if (.@playtime_5318 == 2) {
+		erasequest 5318;
+		mes "[警察局长凯斯勒]";
+		mes "很高兴见到你。我是凯斯勒，幻影警察局长。";
+		emotion ET_DELIGHT;
+	}
+	else {
+		mes "[警察局长凯斯勒]";
+		mes "欢迎来到幻幻警察。";
+		emotion ET_PROFUSELY_SWEAT;
+	}
+	next;
+	if (countitem(6753) < 1)// Sign_Of_Destruction
+		.@menu$[0] = "What should I beware while in Phantasmagorika";
+	else
+		.@menu$[1] = "I brought Doom Tokens.";
+	switch( select( "幻影警察？", "有什么我可以帮忙的吗？", .@menu$[0], .@menu$[1], "什么也没有。" ) ) {
+	case 1:
+		emotion ET_SCRATCH;
+		mes "[警察局长凯斯勒]";
+		mes "哦，你想了解我们^4E9867幻影警察^000000吗？为什么，谢谢。没有多少人对我们所做的事情感兴趣。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "您可能想知道为什么这样一个新网站需要一个警察部门。嗯，有一个正当的理由。";
+		next;
+		select("那是什么？");
+		mes "[警察局长凯斯勒]";
+		mes "你听说过^F8081E末日祈祷^000000吗？";
+		next;
+		emotion ET_FRET;
+		mes "[警察局长凯斯勒]";
+		mes "他们是一个宣扬世界末日的邪教组织。他们以神的名义进行破坏。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "他们最近才出现在《Phantasmagorika》中，但他们已经造成了如此大的破坏，以至于学者和雇佣兵已经组织了这个警察部队。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "^F8081E末日祈祷^000000主要出现在^82ABE9维鲁斯中央广场^000000周围。如果您遇到他们，请随时给他们上一两课。";
+		next;
+		emotion ET_SMILE;
+		mes "[警察局长凯斯勒]";
+		mes "哈哈哈，我们人手不够。";
+		close;
+	case 2:
+		if (isbegin_quest(5309) == 0) {
+			mes "[警察局长凯斯勒]";
+			if (BaseLevel < 140) {
+				mes "我理解你的热情，但你现在应该专注于你的训练。";
+				next;
+				emotion ET_SORRY;
+				mes "[警察局长凯斯勒]";
+				mes "幻境比你想象的更危险。";
+				close;
+			}
+			if (.@playtime_5318 == 0 || .@playtime_5318 == 1) {
+				mes "感谢您主动提供帮助，但我们可以自己处理。";
+				close;
+			}
+			if (isbegin_quest(5304) == 0) {
+				emotion ET_HUK;
+				mes "对不起，你说什么？";
+				next;
+				select("有什么我可以帮忙的吗？");
+			}
+			mes "[警察局长凯斯勒]";
+			mes "哇，你是第一个提供帮助的人。我们分散开来，同时处理末日祈祷和其他所有事情。";
+			next;
+			mes "[警察局长凯斯勒]";
+			mes "我还没来得及了解单位成员在工作上遇到的困难。";
+			next;
+			mes "[警察局长凯斯勒]";
+			mes "你能参观一下幻境并与警察交谈吗？";
+			next;
+			if (select( "当然。", "也许以后吧。" ) == 2) {
+				emotion ET_CRY;
+				mes "[警察局长凯斯勒]";
+				mes "哦，我以为你想帮忙。";
+				close;
+			}
+			setquest 5309;// Police Chief's Request
+			mes "[警察局长凯斯勒]";
+			mes "谢谢。";
+			close;
+		}
+		if (isbegin_quest(5310) == 0 || isbegin_quest(5311) == 0 || isbegin_quest(5312) == 0 || isbegin_quest(5313) == 0) {
+			emotion ET_QUESTION;
+			mes "你还没有和所有成员见过面。";
+			next;
+			mes "[警察局长凯斯勒]";
+			mes "有空的话请回来。";
+			close;
+		}
+		mes "你已经见过我所有的成员了。谢谢。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "我很高兴他们——Salgran、Gerev、Seiden 和 Piffs——都没有遇到问题。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "请收下这个小礼物以表达我的谢意。";
+		next;
+		for ( .@quest_id = 5309; .@quest_id <= 5313; .@quest_id++ )
+			erasequest .@quest_id;
+		for ( .@quest_id = 5314; .@quest_id <= 5317; .@quest_id++ ) {
+			if (isbegin_quest(.@quest_id) == 2) {
+				erasequest .@quest_id;
+				.@success++;
+			}
+		}
+		setquest 5318;// Come Back Tomorrow
+		getexp 200000 + (200000 * .@success),0;
+		mes "[警察局长凯斯勒]";
+		mes "如果你明天不忙的话，可以再回来帮我吗？";
+		close;
+	case 3:
+		emotion ET_HUK;
+		mes "[警察局长凯斯勒]";
+		mes "哦，你是第一次来幻境吗？";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "该网站最近才被发现，因此相当安全。我想不出你应该担心什么...";
+		next;
+		emotion ET_HUK;
+		mes "[警察局长凯斯勒]";
+		mes "哦，记住这一点——有一件事。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "这个^82ABE9维鲁斯挖掘场^000000是安全的，但如果你打算搬到^82ABE9维鲁斯中央广场^000000，那么请确保你做好最坏的打算。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "顺便说一句，这个遗址的挖掘刚刚开始，里面的所有东西都必须保留在原处，直到挖掘结束。";
+		next;
+		emotion ET_FRET;
+		mes "[警察局长凯斯勒]";
+		mes "但那些末日付款者却让这一切变得不可能。呸! %$#@#$#@";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "我太担心他们了，快秃了。我一开始就没有太多头发。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "...";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "嗯，不是故意要吐槽我的头发。";
+		next;
+		emotion ET_OK;
+		mes "[警察局长凯斯勒]";
+		mes "请注意不要破坏本网站中发现的任何内容。";
+		close;
+	case 4:
+		if (isbegin_quest(5304) == 2) {
+			mes "[警察局长凯斯勒]";
+			mes "哦，你刚才不是带了一些末日令牌吗？";
+			next;
+			mes "[警察局长凯斯勒]";
+			mes "我猜你还没有离开？你一定喜欢呆在这里。我也是。哈哈哈哈！";
+			while(1) {
+				next;
+				switch( select( "我可以用 Doom 换取什么", "给予 Doom 代币。", "什么也没有。" ) ) {
+				case 1:
+					mes "[警察局长凯斯勒]";
+					mes "我记得当你第一次带来末日代币时就告诉过你这一点，但是好吧，我不介意再告诉你一次。";
+					next;
+					mes "[警察局长凯斯勒]";
+					mes "末日代币可以与挖掘现场常见的包装信封进行交换。";
+					next;
+					mes "[警察局长凯斯勒]";
+					mes "学者们发现，打开信封后会激活各种效果。";
+					next;
+					mes "[警察局长凯斯勒]";
+					mes "效果的持续时间很短，但总比没有好。";
+					continue;
+				case 2:
+					.@amount = countitem(6753);// Sign_Of_Destruction
+					.@r = (.@amount > 2) ? .@amount : (.@amount - 2);
+					.@reward_amount = rand(.@r, .@amount);
+					delitem 6753, .@amount;
+					getitem 22611, .@reward_amount;// Packed_Envelope
+					mes "[警察局长凯斯勒]";
+					mes "你带来了" + .@amount + "末日代币。我可以给你" + .@reward_amount + " 包装信封。";
+					next;
+					mes "[警察局长凯斯勒]";
+					mes "谢谢你，并继续努力。";
+					close;
+				case 3:
+					emotion ET_SCRATCH;
+					mes "[警察局长凯斯勒]";
+					mes "呃，你不是说你有末日代币吗？";
+					close;
+				}
+			}
+		}
+		emotion ET_HUK;
+		mes "[警察局长凯斯勒]";
+		mes "哦，末日祈祷携带着这个^F8081E末日令牌^000000。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "你在哪里找到这个的？";
+		next;
+		select("告诉他你在哪里找到的。");
+		emotion ET_THANKS;
+		mes "[警察局长凯斯勒]";
+		mes "非常感谢您帮助我们维护公共和平。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "你应该得到奖励，但我想不出什么好东西。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "嗯...";
+		next;
+		emotion ET_SURPRISE;
+		mes "[警察局长凯斯勒]";
+		mes "哦，我有一个主意！给我带来^F8081E末日代币^000000，我会用^4E9867包装信封^000000来交换它们。";
+		next;
+		select("包装信封？");
+		mes "[警察局长凯斯勒]";
+		mes "这是挖掘现场经常发现的信封。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "学者们发现，信封打开后会激活各种效果。";
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "您想立即用包装信封交换您的末日代币吗？或者你可以稍后再做。";
+		next;
+		if (select( "现在就交换。", "稍后再进行。" ) == 2) {
+			mes "[警察局长凯斯勒]";
+			mes "当然，没问题。 Doom 代币没有过期日期。";
+		}
+		else {
+			.@amount = countitem(6753);// Sign_Of_Destruction
+			delitem 6753, .@amount;
+			getitem 22611, .@amount;// Packing_Envelope
+			mes "[警察局长凯斯勒]";
+			mes "为了换取你的" + .@amount + "末日代币，我给了你" + .@amount + "包装信封。";
+		}
+		setquest 5304;// Police Chief Kesler
+		completequest 5304;
+		next;
+		mes "[警察局长凯斯勒]";
+		mes "感谢您对末日祈祷的持续支持。";
+		close;
+	case 5:
+		emotion ET_STARE_ABOUT;
+		mes "[警察局长凯斯勒]";
+		mes "这是我告诉每位新访客的第一件事：如果您看到^F8081E末日祈祷^000000，请立即向最近的警察局报告。";
+		close;
+	default:
+		mes "[警察局长凯斯勒]";
+		mes "发生错误。如果重试后还是一样，请截图询问操作。";
+		close;
+	}
+}
+
+verus03,36,113,4	script	Police Officer Salgran#EP15	2_M_THIEFMASTER,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续。 -";
+		close;
+	}
+	.@quest_5305 = isbegin_quest(5305);// Police Officer Salgran
+	.@quest_5309 = isbegin_quest(5309);// Police Chief's Request
+	.@quest_5310 = isbegin_quest(5310);// Salgran's Problem
+	.@quest_5314 = isbegin_quest(5314);// Salgran's Request
+	.@quest_5315 = isbegin_quest(5315);// Gerev's Request
+	.@quest_5316 = isbegin_quest(5316);// Seiden's Request
+	.@quest_5317 = isbegin_quest(5317);// Piffs's Request
+	.@playtime_5318 = checkquest(5318,PLAYTIME);
+
+	if (.@quest_5309 != 1) {
+		if (isbegin_quest(5305) == 0) {
+			specialeffect EF_SLEEPATTACK;
+			mes "[萨尔格兰警官]";
+			mes "兹兹……兹兹……";
+			next;
+			emotion ET_PROFUSELY_SWEAT;
+			mes "[萨尔格兰警官]";
+			mes "陈总，对不起！";
+			next;
+			mes "他在睡梦中说话。";
+			close;
+		}
+		mes "[萨尔格兰警官]";
+		mes "对吗？这里什么都没有吗，你也什么都没有吗？";
+		close;
+	}
+	if (.@quest_5315 == 1 || .@quest_5316 == 1 || .@quest_5317 == 1) {
+		if (isbegin_quest(5305) == 0) {
+			specialeffect EF_SLEEPATTACK;
+			mes "[萨尔格兰警官]";
+			mes "兹兹……兹兹……";
+			next;
+			emotion ET_PROFUSELY_SWEAT;
+			mes "[萨尔格兰警官]";
+			mes "陈总，对不起！";
+			next;
+			mes "他在睡梦中说话。";
+			close;
+		}
+		if (isbegin_quest(5310) == 0) {
+			mes "[萨尔格兰警官]";
+			mes "您此时正在不同的部门工作。当你完成那里的工作后就回来。";
+			close;
+		}
+		mes "[萨尔格兰警官]";
+		mes "您是否在其他领域提供其他帮助？";
+		close;
+	}
+	if (.@quest_5310 != 0) {
+		mes "[萨尔格兰警官]";
+		mes "你还没向队长汇报吗？我告诉过你我所在的领域一切都很好。";
+		close;
+	}
+	switch(.@quest_5314) {
+	case 0:
+		if (.@quest_5305 == 0) {
+			specialeffect EF_SLEEPATTACK;
+			select("打扰一下。");
+			emotion ET_HUK;
+			mes "[萨尔格兰警官]";
+			mes "Ch-凯斯勒酋长！我、我没有打瞌睡！";
+			next;
+			emotion ET_THINK;
+			mes "[萨尔格兰警官]";
+			mes "...";
+			next;
+			mes "[萨尔格兰警官]";
+			mes "哎呀，你又不是酋长。你是谁？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "是你们幻境中的首领派我来的。";
+			next;
+			emotion ET_SEXY;
+			mes "[萨尔格兰警官]";
+			mes "谢天谢地，他自己没有来。他一定很忙吧？欢迎。你能帮我做点什么吗？";
+			next;
+			if (select( "帮助。", "也许下次吧。" ) == 2) {
+				emotion ET_OHNO;
+				setquest 5305;// Police Officer Salgran
+				completequest 5305;// Police Officer Salgran
+				setquest 5310;// Salgran's Problem
+				mes "[萨尔格兰警官]";
+				mes "你一定很忙。好吧，那就告诉酋长，我所在的区域一切都很好。";
+				close;
+			}
+			mes "[萨尔格兰警官]";
+			mes "谢谢！我肩负着一些繁琐的职责，我需要你的帮助。";
+			next;
+			mes "[萨尔格兰警官]";
+			mes "你知道末日祈祷就在我们中间，不是吗？";
+			next;
+			mes "[萨尔格兰警官]";
+			mes "他们到处乱放非法宣传传单，无论他们用什么纸，它都会像口香糖一样粘在地上。";
+			next;
+			mes "[萨尔格兰警官]";
+			mes "我需要在传单永久粘合之前将其除去。";
+			next;
+			mes "[萨尔格兰警官]";
+			mes "如果您在网站上看到它们，您能摆脱它们吗？他们让我很头疼。";
+			next;
+			if (select( "好的", "下一次吧。" ) == 2) {
+				emotion ET_OHNO;
+				setquest 5305;// Police Officer Salgran
+				completequest 5305;// Police Officer Salgran
+				setquest 5310;// Salgran's Problem
+				mes "[萨尔格兰警官]";
+				mes "你一定很忙。好吧，那就告诉酋长，我所在的区域一切都很好。";
+				close;
+			}
+			setquest 5314;
+			mes "[萨尔格兰警官]";
+			mes "谢谢。处理掉 10 张非法传单后回来。";
+			close;
+		}
+		emotion ET_WRAP;
+		mes "[萨尔格兰警官]";
+		mes "欢迎回来。酋长又派你来了吗？";
+		next;
+		emotion ET_QUESTION;
+		mes "[萨尔格兰警官]";
+		mes "太好了，你能再次帮我处理掉那些非法传单吗？";
+		next;
+		if (select( "帮助。", "也许下次吧。" ) == 1) {
+			setquest 5314;
+			mes "[萨尔格兰警官]";
+			mes "谢谢。处理掉 10 张非法传单后回来。";
+			close;
+		}
+		setquest 5310;// Salgran's Problem
+		mes "[萨尔格兰警官]";
+		mes "你一定很忙。好吧，那就告诉酋长，我所在的区域一切都很好。";
+		close;
+	case 1:
+		mes "[萨尔格兰警官]";
+		mes "哇，我以为你一分钟前就走了，结果你已经回来了。非法传单你处理掉了吗？";
+		next;
+		switch( select( "我做到了。", "我在哪里可以找到它们？", "我可以不这样做吗？", "没关系。" ) ) {
+		case 1:
+			mes "[萨尔格兰警官]";
+			if (checkquest(5314,HUNTING) == 2) {
+				mes "哦，干得好！酋长永远不会忘记一个恩惠。根据他的心情，他可能会给你更丰厚的回报。";
+				completequest 5314;
+				if (isbegin_quest(5305) == 0) {
+					setquest 5305;
+					completequest 5305;
+				}
+				setquest 5310;
+				close;
+			}
+			emotion ET_OHNO;
+			mes "哼，当然没人能这么快。我要求你们扔掉至少10张非法传单。";
+			close;
+		case 2:
+			emotion ET_HUK;
+			mes "[萨尔格兰警官]";
+			mes "它们在《幻境》中随处可见。你不能看不到他们。";
+			next;
+			emotion ET_SCRATCH;
+			mes "[萨尔格兰警官]";
+			mes "您有某种视力问题吗？你不可能错过他们。";
+			close;
+		case 3:
+			erasequest 5314;
+			if (isbegin_quest(5305) == 0) {
+				setquest 5305;
+				completequest 5305;
+			}
+			setquest 5310;
+			mes "[萨尔格兰警官]";
+			mes "我想说不，但我不能强迫你。去告诉酋长我所在的区域一切都很好。";
+			close;
+		case 4:
+			emotion ET_SCRATCH;
+			mes "[萨尔格兰警官]";
+			mes "你真傻。";
+			close;
+		}
+	case 2:
+		end;
+	}
+	mes "[萨尔格兰警官]";
+	mes "你还没向队长汇报吗？我告诉过你我所在的领域一切都很好。";
+	close;
+}
+
+verus03,116,36,6	script	Police Officer Gerev#EP15_1D	4_M_ALCHE_A,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续。 -";
+		close;
+	}
+	.@quest_5306 = isbegin_quest(5306);// Police Officer Gerev
+	.@quest_5309 = isbegin_quest(5309);// Police Chief's Request
+	.@quest_5311 = isbegin_quest(5311);// Gerev's Problem
+	.@quest_5314 = isbegin_quest(5314);// Salgran's Request
+	.@quest_5315 = isbegin_quest(5315);// Gerev's Request
+	.@quest_5316 = isbegin_quest(5316);// Seiden's Request
+	.@quest_5317 = isbegin_quest(5317);// Piffs's Request
+	.@playtime_5318 = checkquest(5318,PLAYTIME);
+
+	mes "[格列夫警官]";
+	if (.@quest_5309 != 1) {
+		if (isbegin_quest(5306) == 0) {
+			emotion ET_OTL;
+			mes "呃，我能感觉到内心的压力在积聚……呃，这个地方让我得了溃疡！";
+			next;
+			mes "他痛苦地揪着头发。";
+			close;
+		}
+		emotion ET_DELIGHT;
+		mes "我现在感觉好多了。请告诉凯斯勒酋长，我所在的区域一切都很好。";
+		close;
+	}
+	if (.@quest_5314 == 1 || .@quest_5316 == 1 || .@quest_5317 == 1) {
+		if (isbegin_quest(5306) == 0) {
+			emotion ET_OTL;
+			mes "呃，我能感觉到内心的压力在积聚……呃，这个地方让我得了溃疡！";
+			next;
+			mes "他痛苦地揪着头发。";
+			close;
+		}
+		if (isbegin_quest(5311) == 0) {
+			emotion ET_PROFUSELY_SWEAT;
+			mes "呃，我胃痉挛。完成当前任务后回来。";
+			close;
+		}
+		mes "[格列夫警官]";
+		mes "您在其他领域提供帮助吗？太棒了……我只是要求没有压力……";
+		close;
+	}
+	if (.@quest_5311 != 0) {
+		emotion ET_DELIGHT;
+		mes "我现在感觉好多了。请告诉凯斯勒酋长，我所在的区域一切都很好。";
+		close;
+	}
+	switch(.@quest_5315) {
+	case 0:
+		if (.@quest_5306 == 0) {
+			emotion ET_CONFUSE;
+			mes "啊，我的笔呢？我出站的时候就拿到了。是那些机器人从我这里偷走了它吗？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "检查你的耳朵后面。";
+			next;
+			emotion ET_HUK;
+			mes "[格列夫警官]";
+			mes "犯错？我不记得把它放在那里了。";
+			next;
+			emotion ET_QUESTION;
+			mes "[格列夫警官]";
+			mes "哎呀，抱歉。我可以怎样帮助您？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "是你们幻境中的首领派我来的。";
+			next;
+			emotion ET_FRET;
+			mes "[格列夫警官]";
+			mes "啊，凯斯勒酋长派你来的。如果我不认识他，我还以为他太忙了，没时间来看我。不过我敢打赌我比他还忙。";
+			next;
+			if (select( "我可以帮忙。", "抱歉我帮不上忙。" ) == 2) {
+				if (isbegin_quest(5306) == 0) {
+					setquest 5306;
+					completequest 5306;
+				}
+				setquest 5311;// Gerev's Problem
+				mes "[格列夫警官]";
+				mes "你愿意帮助酋长，但不愿意帮助我。为什么不呢，因为我不是酋长？";
+				next;
+				emotion ET_STARE;
+				mes "[格列夫警官]";
+				mes "*哼哼*去告诉凯斯勒酋长我所在的区域一切都很安静。";
+				close;
+			}
+			emotion ET_BIGTHROB;
+			mes "[格列夫警官]";
+			mes "你确定吗？因为我真的很讨厌失望。";
+			next;
+			mes "[格列夫警官]";
+			mes "如你所知，末日祈祷就在我们中间。呃，一想到它们就让我咬牙切齿。";
+			next;
+			mes "[格列夫警官]";
+			mes "昨天我走过他们的一个陷阱，扭伤了脚踝，";
+			next;
+			mes "[格列夫警官]";
+			mes "最重要的是发生在我身上的一切。";
+			next;
+			mes "[格列夫警官]";
+			mes "唉，你能解除他们的陷阱吗？";
+			next;
+			if (select( "当然可以。", "下一次吧。" ) == 2) {
+				emotion ET_FRET;
+				if (isbegin_quest(5306) == 0) {
+					setquest 5306;
+					completequest 5306;
+				}
+				setquest 5311;
+				mes "[格列夫警官]";
+				mes "*哼哼*我就知道。去告诉凯斯勒酋长我所在的区域一切都很安静。";
+				close;
+			}
+			setquest 5315;
+			mes "[格列夫警官]";
+			mes "谢谢。请解除 Phantasmagorika 中安装的 10 个陷阱。";
+			next;
+			mes "[格列夫警官]";
+			mes "如果你能先除掉我附近的那些人，我将不胜感激。";
+			close;
+		}
+		mes "又好。是局长派你来的吗？";
+		next;
+		mes "[格列夫警官]";
+		mes "如果你不忙的话，你能解除散布在幻境中的末日祈祷者陷阱吗？";
+		next;
+		if (select( "当然。", "下一次吧。" ) == 1) {
+			setquest 5315;
+			ep15_1_mang = 0;
+			mes "[格列夫警官]";
+			mes "谢谢。请解除 Phantasmagorika 中安装的 10 个陷阱。";
+			close;
+		}
+		emotion ET_SCRATCH;
+		setquest 5311;
+		mes "[格列夫警官]";
+		mes "你也一样忙吧？不用担心。我还有其他冒险者在帮助我。请告诉凯斯勒酋长我所在的部门一切都很好。";
+		close;
+	case 1:
+		emotion ET_HUK;
+		mes "哇，你已经解除了所有陷阱了吗？";
+		next;
+		switch( select( "我做到了！", "陷阱在哪里？", "我手头有更紧迫的事情。", "没关系。" ) ) {
+		case 1:
+			if (ep15_1_mang >= 10) {
+				completequest 5315;// Gerev's Request
+				if (isbegin_quest(5306) == 0) {
+					setquest 5306;
+					completequest 5306;
+				}
+				setquest 5311;// Gerev's Problem
+				ep15_1_mang = 0;
+				mes "[格列夫警官]";
+				mes "谢谢。我感觉好多了，因为我知道我周围的陷阱越来越少了。请告诉凯斯勒酋长，我所在的区域一切都很好。";
+				close;
+			}
+			emotion ET_OTL;
+			mes "[格列夫警官]";
+			mes "我已经到了崩溃的边缘了。你不必推动。";
+			next;
+			mes "[格列夫警官]";
+			mes "你还没有完成 10 个陷阱的解除。我可以看到我面前有一个。你为什么不从那开始呢？";
+			close;
+		case 2:
+			emotion ET_STARE;
+			mes "[格列夫警官]";
+			mes "哦不，你根本没有看到任何陷阱吗？";
+			next;
+			mes "[格列夫警官]";
+			mes "寻找？？？写在地上。这是末日祈祷者的签名。";
+			next;
+			mes "[格列夫警官]";
+			mes "我可以看到一个就在我面前。呃，我的胃...";
+			next;
+			mes "[格列夫警官]";
+			mes "我一定又紧张了。我感觉我的胃很紧...";
+			close;
+		case 3:
+			erasequest 5315;// Gerev's Request
+			ep15_1_mang = 0;
+			if (isbegin_quest(5306) == 0) {
+				setquest 5306;
+				completequest 5306;
+			}
+			setquest 5311;
+			close;
+		case 4:
+			emotion ET_OTL;
+			mes "[格列夫警官]";
+			mes "……什、什么？呃……我、我的胃……";
+			close;
+		}
+	case 2:
+		end;
+	}
+}
+
+verus03,81,241,6	script	Police Officer Seiden#EP15_1	4_M_ORIENT02,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续。 -";
+		close;
+	}
+	.@quest_5307 = isbegin_quest(5307);// Police Officer Seiden
+	.@quest_5309 = isbegin_quest(5309);// Police Chief's Request
+	.@quest_5312 = isbegin_quest(5312);// Seiden's Problem
+	.@quest_5314 = isbegin_quest(5314);// Salgran's Request
+	.@quest_5315 = isbegin_quest(5315);// Gerev's Request
+	.@quest_5316 = isbegin_quest(5316);// Seiden's Request
+	.@quest_5317 = isbegin_quest(5317);// Piffs's Request
+	.@playtime_5318 = checkquest(5318,PLAYTIME);
+
+	if (.@quest_5309 != 1) {
+		if (isbegin_quest(5307) == 0) {
+			mes "[警官正电]";
+			mes "*轻笑*我知道你是谁，但我不想和你说话。";
+			next;
+			mes "他很令人毛骨悚然。";
+			close;
+		}
+		emotion ET_KIK;
+		mes "[警官正电]";
+		mes "*轻笑*小心不要激怒任何人。";
+		close;
+	}
+	if (.@quest_5314 == 1 || .@quest_5315 == 1 || .@quest_5317 == 1) {
+		if (isbegin_quest(5307) == 0) {
+			mes "[警官正电]";
+			mes "*轻笑*我知道你是谁，但我不想和你说话。";
+			next;
+			mes "他很令人毛骨悚然。";
+			close;
+		}
+		if (isbegin_quest(5312) == 0) {
+			emotion ET_KIK;
+			mes "[警官正电]";
+			mes "*咯咯*...一颗心不能用，否则会很烦人。*咯咯*...";
+			close;
+		}
+		emotion ET_KIK;
+		mes "[警官正电]";
+		mes "*咯咯*一次尝试一件事，否则Phantasmagorika的诅咒就会降临在你身上。";
+		close;
+	}
+	if (.@quest_5312 != 0) {
+		emotion ET_KIK;
+		mes "[警官正电]";
+		mes "*轻笑*小心不要激怒任何人。";
+		close;
+	}
+	switch(.@quest_5316) {
+	case 0:
+		if (.@quest_5307 == 0) {
+			emotion ET_KIK;
+			mes "[警官正电]";
+			mes "*轻笑*酋长派你来的。我知道，因为我一直在等待。";
+			next;
+			emotion ET_SURPRISE, playerattached();
+			mes "[" + strcharinfo(0) + "]";
+			mes "？！";
+			next;
+			mes "[警官正电]";
+			mes "别问我怎么知道的——我有我的消息来源。让我们切入正题吧。";
+			next;
+			mes "[警官正电]";
+			mes "如果你愿意而且不忙的话，我可以需要你的帮助。";
+			next;
+			if (select( "当然。", "现在不要。" ) == 2) {
+				emotion ET_SCRATCH;
+				if (isbegin_quest(5307) == 0) {
+					setquest 5307;
+					completequest 5307;
+				}
+				setquest 5312;// Seiden's Problem
+				mes "[警官正电]";
+				mes "我不明白。我的朋友发誓这对人们来说从来没有失败过，嗯……哦，好吧，告诉凯斯勒酋长，我这边一切都很好。";
+				close;
+			}
+			emotion ET_KIK;
+			mes "[警官正电]";
+			mes "*咯咯笑*我知道。啊，忘了我说过的话吧。";
+			next;
+			mes "[警官正电]";
+			mes "我在做我的工作时遇到了一些困难。";
+			next;
+			mes "[警官正电]";
+			mes "末日祈祷者向我们扔石头，我担心他们可能会伤害无辜的人。";
+			next;
+			mes "[警官正电]";
+			mes "你能捡起在幻境中看到的石头吗？现在10块石头就够了。继续这样做，总有一天我们会解决所有这些问题。";
+			next;
+			if (select( "我会回来的。", "下一次吧。" ) == 2) {
+				emotion ET_SCRATCH;
+				if (isbegin_quest(5307) == 0) {
+					setquest 5307;
+					completequest 5307;
+				}
+				setquest 5312;// Seiden's Problem
+				mes "[警官正电]";
+				mes "我不明白。我的朋友发誓这对人们来说从来没有失败过，嗯……哦，好吧，告诉凯斯勒酋长，我这边一切都很好。";
+				close;
+			}
+			emotion ET_KIK;
+			setquest 5316;
+			ep15_1_mang = 0;
+			mes "[警官正电]";
+			mes "*咯咯笑*鹅卵石不算数。请携带 10 颗大小足以适合您手的石头。";
+			close;
+		}
+		emotion ET_KIK;
+		mes "[警官正电]";
+		mes "*咯咯*我想是时候了。";
+		next;
+		mes "[警官正电]";
+		mes "*咯咯*请像上次一样清除Phantasmagorika的石头。";
+		next;
+		if (select( "当然。", "下一次吧。" ) == 1) {
+			setquest 5316;
+			ep15_1_mang = 0;
+			mes "[警官正电]";
+			mes "鹅卵石不算数。请携带 10 颗大小足以适合您手的石头。";
+			close;
+		}
+		setquest 5312;
+		mes "[警官正电]";
+		mes "你还很忙吧？不用担心。只要告诉凯斯勒酋长我所在的区域一切都很安静。";
+		close;
+	case 1:
+		emotion ET_KIK;
+		mes "[警官正电]";
+		mes "*咯咯*你把所有的石头都捡起来了吗？";
+		next;
+		switch( select( "我做到了。", "他们在哪里？", "我没有时间陪他们。", "没关系。" ) ) {
+		case 1:
+			emotion ET_KIK;
+			mes "[警官正电]";
+			if (ep15_1_mang < 10) {
+				if (countitem(7049) < 10)
+					mes "*咯咯*他们在哪里？把它们捡起来，否则受害者的灵魂将永远困扰着你。";
+				else
+					mes "*咯咯*环顾四周——到处都是石头。那么你在哪里找到这块石头呢？";
+				close;
+			}
+			if (countitem(7049) < 10) {
+				mes "*咯咯*石头在哪里？请把它们带给我。";
+				close;
+			}
+			delitem 7049,10;// Stone
+			ep15_1_mang = 0;
+			completequest 5316;
+			if (isbegin_quest(5307) == 0) {
+				setquest 5307;
+				completequest 5307;
+			}
+			setquest 5312;
+			mes "[警官正电]";
+			mes "*咯咯笑*谢谢。目前，遇难者的灵魂已得到安息。";
+			close;
+		case 2:
+			emotion ET_KIK;
+			mes "[警官正电]";
+			mes "*咯咯*石头到处都是。";
+			next;
+			mes "[警官正电]";
+			mes "搜寻地面。 *轻笑*我真的必须告诉你吗？";
+			close;
+		case 3:
+			emotion ET_KIK;
+			erasequest 5316;
+			ep15_1_mang = 0;
+			if (isbegin_quest(5307) == 0) {
+				setquest 5307;
+				completequest 5307;
+			}
+			setquest 5312;
+			mes "[警官正电]";
+			mes "*笑一笑*请将您的石头放在远离交通的地方。当心受害者的灵魂！";
+			close;
+		case 4:
+			emotion ET_KIK;
+			mes "[警官正电]";
+			mes "*咯咯笑*明白了。继续做好工作。";
+			close;
+		}
+	case 2:
+		end;
+	}
+}
+
+verus03,127,36,4	script	???#EP15_1D_01	4_CRACK,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	.@quest_5315 = isbegin_quest(5315);// Gerev's Request
+	.@quest_5316 = isbegin_quest(5316);// Seiden's Request
+	if (.@quest_5315 == 1 || .@quest_5316 == 1) {
+		if (.@quest_5315 == 1) {
+			if (ep15_1_mang >= 10) {
+				mes "你解除了所有必须解除的陷阱。";
+				close;
+			}
+			emotion ET_SURPRISE;
+			mes "这 ？？？地面上看起来很可疑。你想让我做什么？";
+			next;
+			if (select( "检查。", "留下它。" ) == 2) {
+				mes "你决定不碰可疑物体。";
+				close;
+			}
+			progressbar "00ff00",2;
+			if (rand(2))
+				mes "你已经决定这没什么了。";
+			else {
+				mes "你解除了末日祈祷的所有陷阱。";
+				ep15_1_mang++;
+			}
+		}
+		else {
+			if (ep15_1_mang > 9) {
+				mes "你捡起了 10 块大石头。带他们去见警察。";
+				close;
+			}
+			mes "你发现了一块半埋在地下的石头。你想把它捡起来吗？";
+			next;
+			if (select( "捡起来。", "留下它。" ) == 2) {
+				mes "你已经决定离开鹅卵石。";
+				close;
+			}
+			if (rand(2))
+				mes "这颗鹅卵石太小，投掷时不会造成严重损坏。";
+			else {
+				mes "你捡起了一块危险的大石头。";
+				getitem 7049,1;
+				ep15_1_mang++;
+			}
+		}
+		close2;
+		initnpctimer;
+		disablenpc();
+	}
+	end;
+
+OnTimer30000:
+OnTimer60000:
+OnTimer90000:
+OnTimer120000:
+	if (rand(1,2) != 1)
+		end;
+OnTimer150000:
+	enablenpc();
+	stopnpctimer;
+	end;
+}
+verus03,119,17,4	duplicate(???#EP15_1D_01)	???#EP15_1D_02	4_CRACK
+verus03,163,33,4	duplicate(???#EP15_1D_01)	???#EP15_1D_03	4_CRACK
+verus03,207,47,4	duplicate(???#EP15_1D_01)	???#EP15_1D_04	4_CRACK
+verus03,225,245,4	duplicate(???#EP15_1D_01)	???#EP15_1D_05	4_CRACK
+verus03,169,181,4	duplicate(???#EP15_1D_01)	???#EP15_1D_06	4_CRACK
+verus03,122,139,4	duplicate(???#EP15_1D_01)	???#EP15_1D_07	4_CRACK
+verus03,80,230,4	duplicate(???#EP15_1D_01)	???#EP15_1D_08	4_CRACK
+verus03,42,105,4	duplicate(???#EP15_1D_01)	???#EP15_1D_09	4_CRACK
+verus03,99,235,4	duplicate(???#EP15_1D_01)	???#EP15_1D_10	4_CRACK
+verus03,81,207,4	duplicate(???#EP15_1D_01)	???#EP15_1D_11	4_CRACK
+verus03,226,243,4	duplicate(???#EP15_1D_01)	???#EP15_1D_12	4_CRACK
+verus03,148,144,4	duplicate(???#EP15_1D_01)	???#EP15_1D_13	4_CRACK
+verus03,74,44,4	duplicate(???#EP15_1D_01)	???#EP15_1D_14	4_CRACK
+verus03,20,54,4	duplicate(???#EP15_1D_01)	???#EP15_1D_15	4_CRACK
+verus03,74,212,4	duplicate(???#EP15_1D_01)	???#EP15_1D_16	4_CRACK
+verus03,42,47,4	duplicate(???#EP15_1D_01)	???#EP15_1D_17	4_CRACK
+verus03,80,195,4	duplicate(???#EP15_1D_01)	???#EP15_1D_18	4_CRACK
+verus03,134,72,4	duplicate(???#EP15_1D_01)	???#EP15_1D_19	4_CRACK
+verus03,45,45,4	duplicate(???#EP15_1D_01)	???#EP15_1D_20	4_CRACK
+verus03,115,235,4	duplicate(???#EP15_1D_01)	???#EP15_1D_21	4_CRACK
+verus03,76,194,4	duplicate(???#EP15_1D_01)	???#EP15_1D_22	4_CRACK
+verus03,166,32,4	duplicate(???#EP15_1D_01)	???#EP15_1D_23	4_CRACK
+verus03,121,42,4	duplicate(???#EP15_1D_01)	???#EP15_1D_24	4_CRACK
+verus03,141,36,4	duplicate(???#EP15_1D_01)	???#EP15_1D_25	4_CRACK
+
+verus04,202,258,4	script	Police Officer Piffs#EP15_1	4_M_SAGE_C,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续。 -";
+		close;
+	}
+	.@quest_5308 = isbegin_quest(5308);// Police Officer Piffs
+	.@quest_5309 = isbegin_quest(5309);// Police Chief's Request
+	.@quest_5313 = isbegin_quest(5313);// Piffs's Problem
+	.@quest_5314 = isbegin_quest(5314);// Salgran's Request
+	.@quest_5315 = isbegin_quest(5315);// Gerev's Request
+	.@quest_5316 = isbegin_quest(5316);// Seiden's Request
+	.@quest_5317 = isbegin_quest(5317);// Piffs's Request
+	.@playtime_5318 = checkquest(5318,PLAYTIME);
+
+	mes "[警察皮夫斯]";
+	if (.@quest_5309 != 1) {
+		if (isbegin_quest(5308) == 0) {
+			emotion ET_HUNGRY;
+			mes "*嗯嗯*";
+			mes "嗯，这肉真好吃！";
+			next;
+			mes "他正在嚼肉。";
+			close;
+		}
+		mes "[警察皮夫斯]";
+		mes "别担心。我会保证这个地区的安全。";
+		close;
+	}
+	if (.@quest_5314 == 1 || .@quest_5315 == 1 || .@quest_5316 == 1) {
+		if (isbegin_quest(5308) == 0) {
+			emotion ET_HUNGRY;
+			mes "*嗯嗯*";
+			mes "嗯，这肉真好吃！";
+			next;
+			mes "他正在嚼肉。";
+			close;
+		}
+		if (isbegin_quest(5313) == 0) {
+			mes "[警察皮夫斯]";
+			mes "您也在帮助其他领域吗？那就趁你不忙的时候来帮帮我吧！";
+			close;
+		}
+		emotion ET_BEST;
+		mes "天啊，你同时在多个部门工作吗？你是超人。";
+		close;
+	}
+	if (.@quest_5313 != 0) {
+		emotion ET_BEST;
+		mes "放心，我在这儿。";
+		close;
+	}
+	switch(.@quest_5317) {
+	case 0:
+		if (.@quest_5308 == 0) {
+			emotion ET_HUNGRY;
+			mes "*好吃好吃*美味！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "打扰一下。";
+			next;
+			emotion ET_HUK;
+			mes "[警察皮夫斯]";
+			mes "哎呀。";
+			mes "我很抱歉;我不应该在公共场合吃零食。";
+			next;
+			mes "[警察皮夫斯]";
+			mes "你好。我的名字是皮夫斯，我是一名圣人。我是来研究幻境的。";
+			next;
+			mes "[警察皮夫斯]";
+			mes "是局长派你来的吗？这太棒了。";
+			next;
+			emotion ET_QUESTION;
+			mes "[警察皮夫斯]";
+			mes "我的一些补给品快用完了，但我不能让我的岗位无人看管。你能帮助我吗？";
+			next;
+			if (select("当然可以。", "现在不要。") == 2) {
+				if (isbegin_quest(5308) == 0) {
+					setquest 5308;// Police Officer Piffs
+					completequest 5308;
+				}
+				setquest 5313;// Piffs's Problem
+				mes "[警察皮夫斯]";
+				mes "我明白。不过，如果你改变主意，请回到我身边。";
+				close;
+			}
+			mes "[警察皮夫斯]";
+			mes "哈哈哈哈，谢谢。";
+			next;
+			mes "[警察皮夫斯]";
+			mes "这个区域相当安全，但我驻扎在广场的同事很容易因为末日祈祷而受伤。";
+			next;
+			mes "[警察皮夫斯]";
+			mes "我需要为他们采集草药，但就像我说的，我不能让我的岗位无人看管。";
+			next;
+			mes "[警察皮夫斯]";
+			mes "我知道这个地方哪里长着一些好药草。你能帮我收集一下吗？";
+		}
+		else {
+			mes "哈哈哈！又好。是局长派你来的吗？";
+			next;
+			mes "[警察皮夫斯]";
+			mes "如果你不忙的话，我想请你多采集一些草药。可以吗？";
+		}
+		next;
+		if (select( "当然。", "下一次吧。" ) == 1) {
+			setquest 5317;// Piffs's Request
+			mes "[警察皮夫斯]";
+			mes "谢谢。看看灌木丛周围，你会看到一些草药。我不需要超过10个。";
+			close;
+		}
+		if (isbegin_quest(5308) == 0) {
+			setquest 5308;// Police Officer Piffs
+			completequest 5308;
+		}
+		setquest 5313;// Piffs's Problem
+		mes "[警察皮夫斯]";
+		mes "我明白。不过，如果你改变主意，请回到我身边。";
+		close;
+	case 1:
+		emotion ET_QUESTION;
+		mes "欢迎回来。你找到所有的草药了吗？";
+		next;
+		switch( select( "就这样。", "我在哪里可以找到它们？", "我手头有更紧迫的事情。", "没关系。" ) ) {
+		case 1:
+			mes "[警察皮夫斯]";
+			if (ep15_1_mang > 9 && countitem(6754) > 9) {
+				delitem 6754,10;// Collected_Medicinal_Herbs
+				ep15_1_mang = 0;
+				completequest 5317;
+				setquest 5313;
+				if (isbegin_quest(5308) == 0) {
+					setquest 5308;
+					completequest 5308;
+				}
+				mes "谢谢你帮我储备草药。";
+				next;
+				mes "[警察皮夫斯]";
+				mes "这种药草闻起来很香。我认为它可以很好地装饰肉......*咳咳*我并不是说我想吃它。";
+			}
+			else {
+				mes "你说你采集的草药在哪里？";
+				next;
+				mes "[警察皮夫斯]";
+				mes "不，我不吃草药。我只是想为我的同事保留库存。";
+			}
+			close;
+		case 2:
+			mes "[警察皮夫斯]";
+			mes "哪里可以找到草药？";
+			next;
+			mes "[警察皮夫斯]";
+			mes "看看灌木丛周围，你会看到一些草药。";
+			close;
+		case 3:
+			changequest 5317,5313;
+			if (isbegin_quest(5308) == 0) {
+				setquest 5308;
+				completequest 5308;
+			}
+			ep15_1_mang = 0;
+			if (countitem(6754)) {
+				delitem 6754, countitem(6754);// Collected_Medicinal_Herbs
+				mes "[警察皮夫斯]";
+				mes "我已经把你采集的药草拿走了。事到如今，你得赶紧先离开了！";
+				close;
+			}
+			mes "[警察皮夫斯]";
+			mes "你现在可以离开了。我会向酋长传达消息。";
+			close;
+		case 4:
+			mes "[警察皮夫斯]";
+			mes "别忘了我需要10种草药。";
+			close;
+		}
+	case 2:
+		end;
+	}
+}
+
+verus04,187,219,4	script	Thicket#EP15_1D_01	4_CREEPER,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	if (isbegin_quest(5317) == 1) {// Piffs's Request
+		if (ep15_1_mang > 9) {
+			mes "这种灌木丛在幻境中随处可见。";
+			close;
+		}
+		mes "这片灌木丛里似乎藏着一些草药。你想让我做什么？";
+		next;
+		if (select( "收集药草。", "留下它。" ) == 2) {
+			mes "你已经决定忘记它。";
+			close;
+		}
+		progressbar "00ff00",2;
+		if (rand(2))
+			mes "灌木丛中没有发现草药。";
+		else {
+			ep15_1_mang++;
+			getitem 6754,1;// Collected_Herb
+			mes "采集了草药。";
+		}
+		close2;
+		disablenpc();
+		initnpctimer;
+	}
+	end;
+
+OnTimer60000:
+OnTimer120000:
+OnTimer180000:
+OnTimer240000:
+	if (rand(1,2) != 1)
+		end;
+OnTimer300000:
+	enablenpc();
+	stopnpctimer;
+	end;
+}
+verus04,167,206,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_02	4_CREEPER
+verus04,198,198,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_03	4_CREEPER
+verus04,143,205,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_04	4_CREEPER
+verus04,125,265,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_05	4_CREEPER
+verus04,92,203,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_06	4_CREEPER
+verus04,97,204,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_07	4_CREEPER
+verus04,85,189,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_08	4_CREEPER
+verus04,64,191,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_09	4_CREEPER
+verus04,55,185,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_10	4_CREEPER
+verus04,42,185,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_11	4_CREEPER
+verus04,29,189,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_12	4_CREEPER
+verus04,40,223,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_13	4_CREEPER
+verus04,32,240,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_14	4_CREEPER
+verus04,27,243,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_15	4_CREEPER
+verus04,34,248,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_16	4_CREEPER
+verus04,52,251,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_17	4_CREEPER
+verus04,72,247,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_18	4_CREEPER
+verus04,75,243,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_19	4_CREEPER
+verus04,81,252,4	duplicate(Thicket#EP15_1D_01)	Thicket#EP15_1D_20	4_CREEPER
+
+//- New Power Source
+verus03,107,177,3	script	Luke Lapez#atnd09	4_M_EDEN_GUARDER,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	mes "[卢克]";
+	if (ep15_1_atnad < 14) {
+		cutin "looke_rapez04.bmp",0;
+		mes "别担心他。";
+		mes "他知道自己在做什么。";
+		close3;
+	}
+	if (ep15_1_atnad == 14) {
+		cutin "looke_rapez02.bmp",0;
+		mes "...？";
+		mes "有趣的。";
+		mes "他想要一些即食的、多汁的、清爽的、味道干净的东西吗？";
+		next;
+		cutin "looke_rapez03.bmp",0;
+		mes "[卢克]";
+		mes "嗯，我有一个主意。给我一些食材，我给你做点东西。";
+		mes "我很确定它符合要求。";
+		next;
+		mes "[卢克]";
+		mes "问题是";
+		mes "成分很难找到。";
+		mes "我在穿越维度时学会了这个食谱。";
+		next;
+		cutin "looke_rapez04.bmp",0;
+		mes "[卢克]";
+		mes "好吧，你必须找到成分：";
+		mes "2 个肉、1 个莫拉橘子和 1 个香蕉。你能得到它们吗？";
+		next;
+		cutin "looke_rapez02.bmp",0;
+		mes "[卢克]";
+		mes "有些果实生长在^4d4dff迷雾森林迷宫^000000附近。";
+		mes "你必须努力寻找他们。";
+		erasequest 7624;// In Search of a Delicacy
+		setquest 7625;// Count On Me
+		ep15_1_atnad = 15;
+		close3;
+	}
+	if (ep15_1_atnad == 15) {
+		if (countitem(517) < 2 || countitem(11520) < 1 || countitem(513) < 1) {
+			cutin "looke_rapez04.bmp",0;
+			mes "你忘了配料吗？";
+			mes "2 个肉、1 个莫拉橘子和 1 个香蕉。";
+			next;
+			mes "[卢克]";
+			mes "有些果实生长在^4d4dff迷雾森林迷宫^000000附近。";
+			mes "...";
+			close3;
+		}
+		cutin "looke_rapez02.bmp",0;
+		mes "这应该足够了。";
+		mes "我有一段时间没煮了，但菜谱就在我脑子里。";
+		next;
+		mes "[卢克]";
+		mes "完毕。";
+		mes "这种食物应该符合你告诉我的所有条件。";
+		next;
+		cutin "",255;
+		mes "卢克给了你莫拉的特色食物，牛肉吐司。";
+		mes "它完全符合伊恩所说的他想要的一切。";
+		delitem 517,2;	// Meat
+		delitem 11520,1;// Mora_Mandarin
+		delitem 513,1;	// Banana
+		getitem 11519,1;// Beef_Toast
+		erasequest 7625;// Count On Me
+		setquest 7626;// Delicacy for Him
+		ep15_1_atnad = 16;
+		close;
+	}
+	if (ep15_1_atnad == 16) {
+		cutin "looke_rapez01.bmp",0;
+		mes "*咯咯笑*";
+		mes "如果您需要更多，从莫拉村购买会更容易。";
+		mes "不惜一切代价赢得那位老人的青睐。";
+		next;
+		mes "[卢克]";
+		mes "否则你将找不到船长想要的答案。";
+		mes "祝你好运。";
+		close3;
+	}
+	cutin "looke_rapez03.bmp",0;
+	mes "这个地方很无聊，就像其他地方一样。";
+	mes "难道没有更强的怪物吗？";
+	next;
+	cutin "",255;
+	mes "[劳埃德]";
+	mes "别这么说。";
+	mes "你会给我们带来厄运。";
+	mes "我是一只勇敢的猫，但我的爪子根本抓不到那些。";
+	next;
+	cutin "looke_rapez01.bmp",0;
+	mes "[卢克]";
+	mes "好吧好吧。";
+	mes "但不用担心。";
+	mes "我并不傻。";
+	mes "我永远不会让我的指控陷入危险。";
+	close3;
+}
+
+verus03,103,177,5	script	Machinist Lloyd#atnd09	4_M_BOSSCAT,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	mes "[劳埃德]";
+	if (ep15_1_atnad < 9) {
+		mes "你是";
+		mes "因为我是猫而看不起我。";
+		mes "啧啧。";
+		mes "你们人类真是太肤浅了。";
+		next;
+		mes "[劳埃德]";
+		mes "只要保持距离，管好自己的事就可以了。";
+		mes "只要你不窃取我的劳动成果，你我就都可以。";
+		close;
+	}
+	if (ep15_1_atnad == 9) {
+		mes "你瞧不起我，因为我是一只猫。";
+		next;
+		select("你是劳埃德吗？");
+		mes "[劳埃德]";
+		mes "是的。这是怎么回事？";
+		mes "啊？奥雷斯派你来的？";
+		mes "来检查我的进度吗？";
+		next;
+		mes "[劳埃德]";
+		mes "哦，我有麻烦了。";
+		mes "我一定要不辜负他的期望";
+		mes "但我的研究一直停滞不前。";
+		next;
+		mes "[劳埃德]";
+		mes "嘿，你能帮忙吗";
+		mes "我有什么东西？";
+		next;
+		switch( select( "当然。", "猫在这里做什么？", "没有。" ) ) {
+		case 1:
+			break;
+		case 2:
+			mes "[劳埃德]";
+			mes "与马兰多岛的许多人不同，我一直对新技术和文化感兴趣。";
+			mes "我在公司工作，我学会了炼金术。";
+			next;
+			mes "[劳埃德]";
+			mes "当我听到维鲁斯城被发现的消息时，我来到了维鲁斯城。有人告诉我，我必须加入挖掘队才能进城。";
+			next;
+			mes "[劳埃德]";
+			mes "奥雷斯帮助我进去了。";
+			mes "我也是 Atnad 挖掘团队的成员。";
+			next;
+			break;
+		case 3:
+			cutin "looke_rapez04.bmp",0;
+			mes "[卢克]";
+			mes "抱歉打扰，";
+			mes "但你来自伊甸集团，是来帮助挖掘队的。";
+			next;
+			mes "[卢克]";
+			mes "你的工作是帮助劳埃德。";
+			mes "你不能说不。";
+			next;
+			cutin "",255;
+			mes "[劳埃德]";
+			mes "他是对的！";
+			mes "你有义务帮助我进行研究！";
+			next;
+			break;
+		}
+		mes "[劳埃德]";
+		mes "让我们切入正题吧。";
+		mes "嘿，人类的帮助。";
+		mes "准备10个空玻璃瓶，";
+		mes "并收集在机器人残骸周围发现的凝聚能量。";
+		next;
+		mes "[劳埃德]";
+		mes "这个地方到处都是坏掉的机器人和机器。";
+		mes "在他们附近发现了物理能量云。";
+		next;
+		mes "[劳埃德]";
+		mes "只需将空瓶子靠近能量，它就会进入瓶子中。";
+		mes "给我来10瓶。";
+		next;
+		mes "[劳埃德]";
+		mes "我会等待。";
+		erasequest 7620;// Young Blood?
+		setquest 7621;// Bottling the Energy
+		ep15_1_atnad = 10;
+		close;
+	}
+	if (ep15_1_atnad == 10) {
+		if (countitem(6756) < 10) {// Condensed_Energy
+			mes "这个地方到处都是坏掉的机器人和机器。";
+			mes "在他们附近发现了物理能量云。";
+			next;
+			mes "[劳埃德]";
+			mes "只需将空瓶子靠近能量，它就会进入瓶子中。";
+			mes "给我来10瓶。";
+			next;
+			mes "[劳埃德]";
+			mes "如果你必须问两次，你一定比你看起来更蠢。";
+			close;
+		}
+		mes "哦，这就够了。";
+		mes "你很厉害。";
+		mes "我对你的评价又上升了一个档次。";
+		next;
+		mes "[劳埃德]";
+		mes "你让我的工作变得更轻松了。";
+		mes "终于，我可以对奥雷斯有用了。";
+		mes "如果我找到能量凝聚的原因及其可能的应用，也许";
+		next;
+		mes "[劳埃德]";
+		mes "我和伊恩可以重新激活这个地方的机器人。";
+		mes "这就是我们一直想要的。";
+		next;
+		mes "[劳埃德]";
+		mes "告诉奥雷斯我正在取得进步。";
+		mes "干得好，人类。";
+		mes "我期待再次使用你们的服务。";
+		delitem 6756,10;// Condensed_Energy
+		erasequest 7621;// Bottling the Energy
+		setquest 7622;// Good News!
+		ep15_1_atnad = 11;
+		close;
+	}
+	if (ep15_1_atnad > 10 && ep15_1_atnad < 17) {
+		mes "很快我就会每天都需要你的服务。";
+		mes "别担心，为团队带一份吧。";
+		close;
+	}
+	switch( checkquest(7629,PLAYTIME) ) {
+	case -1:
+		if (isbegin_quest(7628) == 0) {
+			mes "你知道该怎么做：收集凝聚的能量。";
+			mes "你会为我做的，不是吗？";
+			next;
+			if (select( "当然可以。","拒绝。" ) == 2) {
+				mes "[劳埃德]";
+				mes "怎么，你还有别的事要做吗？";
+				mes "那么好吧，";
+				mes "我会请卢克带我到处走走。";
+				next;
+				cutin "looke_rapez01.bmp",0;
+				mes "[卢克]";
+				mes "我以为你永远不会问！";
+				mes "我一直渴望采取一些行动。";
+				close3;
+			}
+			mes "[劳埃德]";
+			mes "你所要做的就是收集自然聚集在机器人和机器残余物周围的能量。";
+			mes "我每天需要10瓶。";
+			setquest 7628;// New Power Source
+			close;
+		}
+		if (countitem(6756) < 10) {
+			mes "你所要做的就是收集自然聚集在机器人和机器残余物周围的能量。";
+			mes "我每天需要10瓶。";
+			close;
+		}
+		mes "我想我喜欢你！";
+		mes "不过，不如奥雷斯和卢克那么多。";
+		mes "好吧，我会好好利用这股能量的。";
+		next;
+		mes "[劳埃德]";
+		mes "明天再来。";
+		mes "好吧，你不妨每天这个时候回来。";
+		mes "你不能说不。";
+		mes "我需要你。";
+		delitem 6756,10;// Cohesive_Energy
+		changequest 7628,7629;// Tomorrow for Tomorrow's Energy
+		getexp 150000,1000000;
+		close;
+	case 0:
+	case 1:
+		mes "我正在分析收集到的能量。";
+		mes "...";
+		next;
+		mes "[劳埃德]";
+		mes "你浓密吗？";
+		mes "这意味着我想一个人呆着！";
+		close;
+	case 2:
+		erasequest 7629;
+		mes "嗯，也许我需要找到一种特殊的存储方法。";
+		mes "能量就那么容易消散。";
+		next;
+		mes "[劳埃德]";
+		mes "我需要更多瓶能量。";
+		mes "你好吗？";
+		mes "您准备好为团队挑选一名了吗？";
+		close;
+	}
+}
+verus03,127,145,0	script	Machine Remnant#atnd01	4_ENERGY_RED,3,3,{
+	if (checkweight(1301,3) == 0) {
+		mes "- 您携带的物品过多，无法继续任务。 -";
+		close;
+	}
+	if (isbegin_quest(7621) != 1 && isbegin_quest(7628) != 1) {
+		mes "此时你不需要收集更多的能量。";
+		close;
+	}
+	if (countitem(6756) > 9)// Condensed_Energy
+		mes "你有足够的^4d4dff凝聚能量^000000。";
+	else if (countitem(713) < 1)
+		mes "收集凝聚能量需要^4d4dff空瓶^000000。";
+	else {
+		mes "在破碎的金属碎片之间可以看到厚厚的能量云。";
+		mes "将一个空瓶子靠近云的波动边缘以收集能量。";
+		next;
+		progressbar "00ff00",3;
+		delitem 713,1;// Empty Bottle
+		getitem 6756,1;// Condensed_Energy
+		mes "凝聚能量！";
+		initnpctimer;
+		disablenpc();
+	}
+	close;
+
+OnTimer30000:
+	stopnpctimer;
+	enablenpc();
+	end;
+
+OnTouch_:
+	if (isbegin_quest(7621) == 1 || isbegin_quest(7628) == 1)
+		specialeffect EF_LEVEL99_4;
+	end;
+}
+verus03,84,152,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd02	4_ENERGY_RED,3,3
+verus03,104,181,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd03	4_ENERGY_RED,3,3
+verus03,204,202,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd04	4_ENERGY_RED,3,3
+verus03,219,199,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd05	4_ENERGY_RED,3,3
+verus03,260,194,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd06	4_ENERGY_RED,3,3
+verus03,198,181,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd07	4_ENERGY_RED,3,3
+verus03,207,115,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd08	4_ENERGY_RED,3,3
+verus03,54,78,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd09	4_ENERGY_RED,3,3
+verus03,24,74,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd10	4_ENERGY_RED,3,3
+verus03,41,121,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd11	4_ENERGY_RED,3,3
+verus03,62,120,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd12	4_ENERGY_RED,3,3
+verus03,44,195,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd13	4_ENERGY_RED,3,3
+verus03,124,61,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd14	4_ENERGY_RED,3,3
+verus03,168,229,3	duplicate(Machine Remnant#atnd01)	Machine Remnant#atnd15	4_ENERGY_RED,3,3
+
+ver_eju,116,43,5	script	Rekenber Mercenary#atd01	4_GEFFEN_09,{
+	switch( rand(0,2) ) {
+		case 0: npctalk "他们不会停止来。"; end;
+		case 1: npctalk "请小心。"; end;
+		case 2: npctalk "..."; end;
+	}
+}
+
+ver_eju,125,40,1	script	Rekenber Mercenary#atd02	4_GEFFEN_03,{
+	switch( rand(0,2) ) {
+		case 0: npctalk "援军在哪里？"; end;
+		case 1: npctalk "呃，我真的需要休息一下。"; end;
+		case 2: npctalk "呃，这些可憎之物！"; end;
+	}
+}
+
+ver_eju,117,35,7	script	Rekenber Mercenary#atd03	4_GEFFEN_08,{
+	switch( rand(0,2) ) {
+		case 0: npctalk "这很无聊。"; end;
+		case 1: npctalk "如果您是挖掘机，请穿过隧道。"; end;
+		case 2: npctalk "你最好小心一点。"; end;
+	}
+}
+
+ver_eju,15,151,3	script	Rekenber Guard#atd04	4_M_LGTGUARD,{
+	mes "[雷肯贝尔守卫]";
+	mes "你要去Phantasmagorika吗？";
+	mes "可能很难找到。让我给你一些指导。";
+	next;
+	mes "[雷肯贝尔守卫]";
+	mes "沿着路一路向上，然后向西南方向行驶。";
+	mes "让我在你的小地图上标记位置。";
+	viewpoint 1,113,36,0,0x4DFF00;
+	next;
+	mes "[雷肯贝尔守卫]";
+	mes "这个地方充满了可怕的怪物，就像旧朱佩罗斯的其他地方一样。";
+	mes "旅途中注意安全。";
+	close;
+}
+
+juperos_01,48,243,5	script	Rekenber Guard#atd05	4_M_LGTGUARD,{
+	mes "[雷肯贝尔守卫]";
+	mes "你要去Phantasmagorika吗？";
+	mes "可能很难找到。让我给你一些指导。";
+	next;
+	mes "[雷肯贝尔守卫]";
+	mes "一直向东走，然后沿着路向南走。你会在角落看到一个巨大的雕像。";
+	mes "让我在你的小地图上标记位置。";
+	viewpoint 1,242,87,0,0x4DFF00;
+	next;
+	mes "[雷肯贝尔守卫]";
+	mes "谁知道雕像后面有一个隐藏的地方？我们找到它纯属运气。";
+	mes "通往该地点的道路很危险。请您出行安全。";
+	close;
+}
+
+juperos_01,242,91,3	script	Rekenber Guard#atd06	4_M_LGTGUARD,{
+	mes "[雷肯贝尔守卫]";
+	mes "您是 Phantasmagorika 项目的参与者吗？";
+	mes "这是东部新发现的遗址的入口。";
+	next;
+	mes "[雷肯贝尔守卫]";
+	mes "入口的另一边有一个导游，可以引导您前往挖掘现场。";
+	mes "请在怪物袭击你之前进入。";
+	next;
+	mes "[雷肯贝尔守卫]";
+	mes "哦，入口的另一边挤满了好斗的机器人。";
+	mes "你最好做好心理准备。";
+	close;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 140 && isbegin_quest(7610) == 0" );
+	end;
+}
+
+yuno_fild07,211,179,5	script	Excavator Guide#atd07	4_M_LGTGUARD,{
+	mes "[挖掘机指南]";
+	mes "您是 Phantasmagorika 项目的参与者吗？";
+	mes "如您所知，您正处于 Juperos 的入口处。";
+	next;
+	mes "[挖掘机指南]";
+	mes "我来这里是为了引导你前往与 Juperos 内部相连的挖掘现场。";
+	next;
+	mes "[挖掘机指南]";
+	mes "里面还有更多的指南，";
+	mes "这样您就可以在迷路时轻松找到它们。";
+	next;
+	mes "[挖掘机指南]";
+	mes "感谢您为人类发展做出的贡献。祝你好运。";
+	close;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 140 && isbegin_quest(7610) == 0" );
+	end;
+}
+
+verus04,194,165,5	script	Rekenber Guard#ver01	4_M_LGTGUARD,{
+	mes "[雷肯贝尔守卫]";
+	mes "您是挖掘组的成员吗？";
+	mes "我们的主席亲自命令我们注意您的安全，以便您可以专注于挖掘工作。";
+	close;
+}
+verus04,203,171,3	script	Rekenber Guard#ver02	4_M_LGTGUARD,{
+	mes "[雷肯贝尔守卫]";
+	mes "我们来这里是为了支持您对维鲁斯城的挖掘。";
+	mes "如果您遇到任何问题，请告诉我们。";
+	close;
+}
+verus04,171,267,3	script	Rekenber Guard#ver03	4_M_LGTGUARD2,{
+	mes "[雷肯贝尔守卫]";
+	if (Sex == SEX_MALE)
+		mes "我讨厌使用便携式沐浴裤，但我的膀胱似乎不能容纳太多东西。你呢？";
+	else
+		mes "确认！嘘！别靠近！我正在为我未来的新娘拯救自己！";
+	close;
+}
+verus04,218,217,5	script	Geologist#ver04	4_M_HUGRANFA,{
+	mes "[地质学家]";
+	mes "嗯，建筑物被石墙压碎了。";
+	mes "剩下的几乎都被粉碎成粉末了。";
+	next;
+	mes "[助理]";
+	mes "是的，教授。";
+	next;
+	mes "[地质学家]";
+	mes "与这堵石墙相比，村庄所在的地形是在不同时期形成的。至少这是我的初步评估。";
+	next;
+	mes "[助理]";
+	mes "是的，教授。";
+	next;
+	mes "[地质学家]";
+	mes "地下村落看起来并不是人造的，虽然我无法想象它是如何自然形成的。你怎么认为？";
+	next;
+	mes "[助理]";
+	mes "是的，教授。";
+	next;
+	mes "[地质学家]";
+	mes "……你到底有没有在听我说话？";
+	next;
+	mes "[助理]";
+	mes "是的，教授。";
+	next;
+	mes "[地质学家]";
+	mes "叹。";
+	mes "我们去吃午饭吧。";
+	next;
+	mes "[助理]";
+	mes "是的，教授！";
+	close;
+}
+verus04,217,216,5	duplicate(Geologist#ver04)	Student#ver05	4_M_HUMAN_01
+
+verus04,50,193,3	script	Scholar#ver06	4_M_HUMERCHANT,{
+	mes "[学者]";
+	mes "黑森林可能是米德加德三个州中科学最先进的一个，但它仍然无法与这个地方相媲美。";
+	next;
+	mes "[学者]";
+	mes "Juperos 也是如此。如果这个地方的科学知识传到黑森林的话，威力可能会大得多。";
+	next;
+	mes "[学者]";
+	mes "当然，这是基于我的推测，这里的居民也是黑森林人。";
+	close;
+}
+verus04,127,243,3	script	Pierrot#ver07	4_M_PIERROT,{
+	mes "[皮埃罗]";
+	mes "我感觉自己快要疯了，被困在这个密闭的空间里。";
+	mes "嘿，我用我的杂耍球算算你今天的算命怎么样？";
+	next;
+	if (select( "当然。", "不，谢谢。" ) == 2)
+		close;
+	mes "[皮埃罗]";
+	mes "好的，选择你喜欢的颜色。";
+	mes "你选择的颜色会告诉我你的命运。";
+	next;
+	.@s = select( "红色", "蓝色", "黄色", "绿色" );
+	mes "[皮埃罗]";
+	mes "咚咚咚！你今天的财运！";
+	mes "让我把幸运纸放进球里吧...";
+	next;
+	mes "[皮埃罗]";
+	mes "今天是...";
+	next;
+	mes "[皮埃罗]";
+	switch(.@s) {
+	case 1:
+		mes "同样无聊的一天，就像昨天和前天一样。";
+		mes "只有积极的思考才能让你摆脱这种恐惧。微笑并善待他人，也许幸运女神会照亮你的一天。";
+		break;
+	case 2:
+		mes "嗯，你不应该起床。无论你走到哪里，麻烦都会随之而来。";
+		mes "我强烈建议您在避难所呆上一天。睡一觉就能消除霉运。";
+		break;
+	case 3:
+		mes "这不是糟糕的一天，但你必须努力工作才能享受好运。";
+		mes "前往挖掘现场并挖一些泥土。你可能会发现一些宝藏。";
+		break;
+	case 4:
+		mes "你一生中最幸运的一天！无论你走到哪里，你都会找到财富和朋友。";
+		mes "也许你会发现一些埋藏在这个地方的历史文物。那会很棒吧？";
+		break;
+	}
+	next;
+	mes "[皮埃罗]";
+	mes "你喜欢我的读书吗？或者你讨厌它？";
+	mes "你的未来是灵活的——你可以随心所欲地塑造它。";
+	mes "不要太兴奋或太沮丧。只要专注于你的目标即可。";
+	next;
+	mes "[皮埃罗]";
+	mes "好吧，如果你想再读一遍，请回来。";
+	close;
+}
+
+verus04,180,209,3	script	Excavator#tre01	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "这栋房子的主人一定是维鲁斯城的重要人物。";
+	mes "在这个房间里发现了成堆的官方文件。";
+	next;
+	mes "[挖掘机]";
+	mes "大多数文件都包含轻微的民事投诉，例如水问题和邻居纠纷。";
+	mes "然而，所有文件都包含缩写 OX。我不知道它们是名称还是某种缩写。";
+	close;
+}
+verus04,202,181,3	script	#tre02	CLEAR_NPC,{
+	mes "- 大楼入口处有明显的磨损痕迹，表明受到源源不断的车流的影响。门上写着 YHT 和 DO NOT YELL。 -";
+	close;
+}
+// tre03 ?
+verus04,121,188,3	script	Excavator#tre04	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "这栋楼家具齐全，但没有有人居住的迹象。";
+	mes "也许主人住在其他地方，比如避暑别墅之类的。";
+	close;
+}
+verus04,119,177,3	script	#tre05	CLEAR_NPC,{
+	mes "- ZERT... 写在门上。其余的文字看起来像是用石头刮掉的。-";
+	close;
+}
+verus04,85,145,3	script	#tre06	CLEAR_NPC,{
+	mes "- 门上写着+1。这意味着什么？ -";
+	close;
+}
+verus04,83,131,3	script	Excavator#tre07	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "这所房子的主人一定是一位舞者。她的衣柜里装满了闪闪发光的舞台服装。";
+	mes "从他们的身材来看，对于一个女人来说，她一定很高。我想知道她长什么样子。";
+	close;
+}
+verus04,71,118,3	script	#tre08	CLEAR_NPC,{
+	mes "- 门上写着KDY。从内部向外蔓延到入口的黑烟条纹表明经常发生爆炸。 -";
+	close;
+}
+verus04,71,131,3	script	#tre09	CLEAR_NPC,{
+	mes "- 门上写着KJH。入口墙上点缀着包含时间和数字的小方格纸。 -";
+	close;
+}
+verus04,71,145,3	script	#tre10	CLEAR_NPC,{
+	mes "- 门上写着 PKY。房子周围散落着空酒瓶。 -";
+	close;
+}
+verus04,39,123,3	script	#tre11	CLEAR_NPC,{
+	mes "- 门上写着 DGDG'S BOARD。这意味着什么？ -";
+	close;
+}
+verus04,17,145,3	script	#tre12	CLEAR_NPC,{
+	mes "- 门上写着“太阳”。 -";
+	close;
+}
+verus04,16,166,5	script	Excavator#tre13	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "*咳咳*这所房子的主人是一个囤积者。";
+	mes "很多书。很多猫毛球。好多刺客的图啊*咳嗽咳嗽*";
+	close;
+}
+verus04,118,159,5	script	Excavator#tre14	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "这房子里长满了红蘑菇。它们可以食用吗？为什么他们只在这所房子里被发现？楼主是自己种的吗？";
+	close;
+}
+verus04,123,143,3	script	#tre15	CLEAR_NPC,{
+	mes "- 门上写着“MARES”，还有各种似乎象征着海盗的图画。 -";
+	close;
+}
+verus04,72,168,3	script	#tre16	CLEAR_NPC,{
+	mes "- 门上写着 LMH，边缘画着一串心形图案。 -";
+	close;
+}
+verus04,91,168,3	script	#tre17	CLEAR_NPC,{
+	mes "- 门上写着MISA。建筑物周围散落着各种玩具武器。 -";
+	close;
+}
+verus04,50,197,3	script	Excavator#tre18	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "...";
+	next;
+	mes "[挖掘机]";
+	mes "这所房子里有各种各样的照片，所有照片的主人都是不同的男人。";
+	mes "我觉得很好奇。";
+	close;
+}
+verus04,34,197,3	script	#tre19	CLEAR_NPC,{
+	mes "- 门上写着 ELTOHC。门的中央是一个画着圆圈的W。这可能是主人最喜欢的信。 -";
+	close;
+}
+verus04,17,245,3	script	#tre20	CLEAR_NPC,{
+	mes "- 门上写着“LEONA'S BIRD HEAVEN”。不出所料，房子周围散落着鸟羽毛。 -";
+	close;
+}
+verus04,13,262,3	script	#tre21	CLEAR_NPC,{
+	mes "- 门上写着“KURAT”。建筑墙壁上散落着手绘的头骨。 -";
+	close;
+}
+verus04,28,262,3	script	#tre22	CLEAR_NPC,{
+	mes "- 门上写着KSY。一张带有世纪表演的海报！它被大胆地印在入口墙上。 -";
+	close;
+}
+verus04,54,256,3	script	#tre23	CLEAR_NPC,{
+	mes "- 门上写着“BIBIC & MORZIP'S LOVE HOUSE”。这所房子里一定住过一对夫妇。 -";
+	close;
+}
+verus04,31,236,3	script	Excavator#tre24	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "这所房子的主人一定是一位收藏家。有很多穿着奇怪衣服的女人的照片。";
+	next;
+	mes "[挖掘机]";
+	mes "你看到门上画的SKM了吗？这让我想起另一栋门上画着心形的房子。";
+	mes "我希望这不是那些幼稚的习俗之一。你知道，将某人标记为他们的。";
+	close;
+}
+verus04,62,230,3	script	#tre25	CLEAR_NPC,{
+	mes "- 门上写着HDY。 -";
+	close;
+}
+verus04,80,230,3	script	#tre26	CLEAR_NPC,{
+	mes "- 门上写着麸皮。房子的一侧立着一排排空瓶子。 -";
+	close;
+}
+verus04,79,265,3	script	#tre27	CLEAR_NPC,{
+	mes "- 门上写着 KYH。这栋建筑的状况比附近其他建筑要好。-";
+	close;
+}
+verus04,96,267,3	script	#tre28	CLEAR_NPC,{
+	mes "- 门上写着 YAOB，还画着圆形毛茸茸的动物。 -";
+	close;
+}
+verus04,133,267,3	script	Excavator#tre29	4_M_HUMAN_01,{
+	mes "[挖掘机]";
+	mes "这座房子疑似属于一对名叫SSUL和SINYC的夫妇。";
+	mes "房子里充满了令人难以置信的东西。里面的一切都非常华丽。";
+	close;
+}
+verus04,152,267,3	script	#tre30	CLEAR_NPC,{
+	mes "- 门上写有“LMS”，边缘写有“Composition Specialist”。 -";
+	close;
+}
+verus04,168,267,3	script	#tre30_	CLEAR_NPC,{
+	mes "- 门上写着KJK。 -";
+	close;
+}
+verus04,190,265,3	script	#tre31	CLEAR_NPC,{
+	mes "- 门上写着LJH。大楼的墙壁上贴满了许多杂货店的贴纸。 -";
+	close;
+}
+verus04,172,234,3	script	#tre32	CLEAR_NPC,{
+	mes "- 门上写着YG。透过窗户可以看到一张微笑婴儿的大照片。 -";
+	close;
+}
+verus04,204,235,3	script	#tre33	CLEAR_NPC,{
+	mes "- 门上写着CHJ。 -";
+	close;
+}
+
+verus04,91,252,5	script	Archaeologist#tevt01	4_M_6THPRIN1,10,10,{
+	mes "[考​​古学家]";
+	mes "有时，我们会聚在一起聊天。";
+	mes "共享信息是工作的一部分。";
+	close;
+
+OnTouch_:
+	if (.ontalk == 1)
+		end;
+	.ontalk = 1;
+	sleep 3000;
+	npctalk "我怀疑这座维鲁斯城有特殊用途。", "考古学家#tevt01";
+	sleep 5000;
+	npctalk "你怎么知道这个地方叫维鲁斯？", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "哦，这个名字被发现写在广场的各个里程碑和墙壁上。", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "真实城市、真实城镇、真实广场……", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "有两个地区仍然无法进入。", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "哦，那两个需要许可。你知道很多。", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "我刚刚从镇上一所房子里找到的地图上弄清楚了这一点。", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "这个地方由四个区域组成，目前只有城镇和广场可供探索。", "考古学家#tevt01";
+	sleep 5000;
+	npctalk "我们最好更加努力，否则我们的探索可能会仅限于这一领域。", "考古学家#tevt01";
+	sleep 5000;
+	npctalk "如果这真的是一座规划城市，那么规划是什么呢？", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "Einbech 纯粹是为了采矿目的而建造的。这座城市可能有这样的特殊用途。", "科学家#tevt05";
+	sleep 5000;
+	npctalk "这一定和技术研究、实验有关。", "科学家#tevt05";
+	sleep 5000;
+	npctalk "我从镇上找到的日记和日记中推断出这一点。", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "这些期刊和日记大部分属于学者和科学家。", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "关键是这个古老的文明拥有一些非常先进的科学。", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "它可能根本就不古老。这可能是一件深不可测的事情。", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "我们来这里是为了解开谜团，为了人类更美好的未来！", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "*哼哼*最终雷肯伯夺走了一切。", "科学家#tevt05";
+	sleep 5000;
+	npctalk "但核心发现和挖掘工作是由所有相关组织共同承担的。", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "我们能做的，只是做当下能做的最好的事情。", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "但我不禁认为雷肯伯有一个不可告人的议程。我并不是要表现出不感激，但是……", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "现在让我们关注现在。", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "除了我们个人的研究课题之外，我们为什么不分享我们找到的所有信息？", "考古学家#tevt01";
+	sleep 5000;
+	npctalk "我同意。", "文明研究员#tevt04";
+	sleep 1000;
+	npctalk "好的。", "科学家#tevt05";
+	sleep 5000;
+	npctalk "嗯，你知道今天午餐吃什么吗​​？", "科学家#tevt05";
+	sleep 3000;
+	npctalk "一...", "考古学家#tevt01";
+	sleep 5000;
+	npctalk "一些冷冻食品。我只想吃昨天省下的面包。", "文明研究员#tevt04";
+	sleep 5000;
+	npctalk "唉，雷肯伯如果愿意的话也可以吝啬。", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "为什么？冷冻食品有什么问题？", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "来，试试我的。", "历史学家#tevt02";
+	sleep 5000;
+	npctalk "你也可以带走我的。", "考古学家#tevt01";
+	sleep 5000;
+	npctalk "或者我的。", "科学家#tevt05";
+	sleep 3000;
+	npctalk "...", "新挖掘机#tevt03";
+	sleep 5000;
+	npctalk "嗯，你们不饿吗？", "新挖掘机#tevt03";
+	sleep 5000;
+	sleep 5000;
+	npctalk "是否有可能它被冷冻了，因为否则味道不好？", "新挖掘机#tevt03";
+	sleep 35000;
+	.ontalk = 0;
+	end;
+}
+
+verus04,89,251,5	script	Historian#tevt02	4_TOWER_07,{
+	mes "[历史学家]";
+	mes "我的工作中最困难的事情是什么？";
+	mes "当我被迫吃赞助商提供的糟糕午餐时。";
+	next;
+	mes "[历史学家]";
+	mes "事实上，自从我来到维鲁斯城以来，情况就一直如此。";
+	mes "今天也不例外。";
+	close;
+}
+
+verus04,91,248,7	script	New Excavator#tevt03	4_TOWER_04,{
+	mes "[新挖掘机]";
+	mes "我有很多东西要学，而且我学得很快。";
+	mes "目前，我主要做的是体力活。";
+	next;
+	mes "[新挖掘机]";
+	mes "我得到免费食物、睡觉的地方和金钱。我还能要求什么？";
+	close;
+}
+
+verus04,94,251,3	script	Civilization Researcher#tevt04	4_TOWER_16,{
+	mes "[文明研究员]";
+	mes "我以为这是 Juperos 的一部分。";
+	mes "我现在正在重新考虑这个理论。";
+	next;
+	mes "[文明研究员]";
+	mes "Verus 与 Juperos 相似，但又有所不同。";
+	mes "它的一切都在某种程度上更加精致和复杂。";
+	close;
+}
+
+verus04,94,248,1	script	Scientist#tevt05	4_M_SAGE_C,{
+	mes "[科学家]";
+	mes "这座城市的机械工程水平令人惊叹。";
+	mes "没有任何魔法的痕迹。";
+	next;
+	mes "[科学家]";
+	mes "但我担心的是：";
+	mes "快速发展和突然引入先进技术可能弊大于利。";
+	close;
+}
+
+verus04,116,220,0	script	#ep15_1elb	PORTAL,{
+	mes "^FF0000- 注意 -";
+	mes "- 为了您的安全，-";
+	mes "- 避免跑步 -";
+	mes "- 或跳跃 -";
+	mes "- 在里面的时候。 -^000000";
+	close;
+}
+
+verus04,153,193,8	script	Merchant#ep15_1el10	4_F_CAPEGIRL,{
+	mes "[商人]";
+	mes "嗬嗬嗬！";
+	mes "我是第一个来的，所以我占据了最好的位置！";
+	close;
+}
+
+verus04,155,197,5	script	Adventurer ?#ep15_1el11	4_M_LGTPOOR,{
+	mes "[冒险家？]";
+	mes "*肚子咕咕叫*";
+	mes "哇哦，我饿了……";
+	next;
+	mes "[冒险家]";
+	mes "但我没钱买菜...";
+	close;
+}
+
+verus04,150,193,3	script	Adventurer#ep15_1el12	4_M_DIEMAN,{
+	mes "[让·巴尔让]";
+	mes "呃，为了一块面包我被敲了19次。";
+	close;
+}
+
+verus04,102,246,3	script	Adventurer#ep15_1el13	4_M_RACHMAN2,{
+	mes "[冒险家]";
+	mes "蘑菇是从岩石里长出来的。";
+	mes "多么坚韧啊！";
+	close;
+}
+
+verus04,16,157,3	script	Adventurer#ep15_1el14	4_M_MIDDLE1,{
+	mes "[冒险家]";
+	mes "啊！";
+	mes "很多路都被堵住了！";
+	close;
+}
+
+// missing #ep15_1el15 - 18
+verus04,104,120,3	script	Cow#ep15_1el19	4_BULL,{
+	mes "[牛]";
+	mes "*哞*";
+	close;
+}
+
+verus04,111,215,5	script	Adventurer#ep15_1el20	4_F_SHABBY,{
+	mes "[冒险家]";
+	mes "呵呵。 *流口水*";
+	mes "这个地方太不可思议了！";
+	close;
+}
+
+verus04,111,211,3	script	Adventurer#ep15_1el21	4_F_KHGIRL,{
+	mes "[冒险家]";
+	mes "这个网站太棒了。";
+	mes "难怪雷肯伯为何对此呼吁。";
+	close;
+}
+
+verus04,113,235,5	script	Adventurer#ep15_1el22	4_M_PECOKNIGHT,{
+	mes "[冒险家]";
+	mes "我想找到一些很棒的东西！";
+	close;
+}
+
+verus04,124,220,8	script	Adventurer#ep15_1el23	4_M_HUMERCHANT,{
+	mes "[冒险家]";
+	mes "即将到来的时代将是你的。";
+	close;
+}
+
+verus04,135,213,4	script	Sign#EP15_1DCenter	4_BOARD3,{
+	mes "[警告]";
+	mes "Phantasmagorika 的游客请注意，";
+	next;
+	mes "[警告]";
+	mes "人们经常在这个地区看到一个名为“末日祈祷”的邪教组织。";
+	next;
+	mes "[警告]";
+	mes "如果您是该团体骚扰的受害者或目击者，请向 Phantasmagorika 警察局举报。";
+	mes "- 幻境警察局长 -";
+	close;
+}
+verus04,204,260,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DNorth	4_BOARD3
+verus03,83,241,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DSouth	4_BOARD3
+verus03,38,114,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DEast	4_BOARD3
+verus03,116,39,4	duplicate(Sign#EP15_1DCenter)	Sign#EP15_1DWest	4_BOARD3
+
+
+verus04,96,195,5	script	Adventurer Cat#ep15_1el18	4_CAT_REST,{
+	mes "[冒险家猫]";
+	mes "我必须投资...门...te...";
+	mes "兹兹……兹兹……";
+	close;
+}
+verus04,96,194,5	script	Adventurer Cat#ep15_1el17	4_CAT_REST,{
+	mes "[冒险家猫]";
+	mes "*咕噜声*";
+	mes "*喵*";
+	close;
+}
+verus04,96,193,5	script	Adventurer Cat#ep15_1el16	4_CAT_REST,{
+	mes "[冒险家猫]";
+	mes "由于某种原因，我无法站起来。";
+	mes "*喵*";
+	close;
+}
+verus04,96,192,5	script	Adventurer Cat#ep15_1el15	4_CAT_REST,{
+	mes "[冒险家猫]";
+	mes "我有一个好地方。";
+	mes "*咕噜声*";
+	close;
+}
+
+yuno_fild07,218,154,3	script	Adventurer#ep15_1el01	4_M_ARUNA_NFM1,{
+	mes "[冒险家]";
+	mes "啊!";
+	mes "我想看看！";
+	mes "为什么我进不去？！";
+	close;
+}
+yuno_fild07,218,159,5	script	Adventurer#ep15_1el02	4_M_KHBOY,{
+	mes "[冒险家]";
+	mes "好的！";
+	mes "这次，我要写一篇关于Phantasmagorika的实地考察报告。";
+	next;
+	mes "[冒险家]";
+	mes "琼斯教授会给我留下深刻的印象，他会给我 A+。 *咯咯笑*";
+	close;
+}
+yuno_fild07,221,157,3	script	Adventurer#ep15_1el03	4_M_CHN8GUEK,{
+	mes "[冒险家]";
+	mes "呵呵！";
+	mes "心灵健全，身体健全！";
+	close;
+}
+yuno_fild07,221,155,8	script	Adventurer#ep15_1el04	4_M_ALCHE_B,{
+	mes "[冒险家]";
+	mes "我最好带上足够去幻境之旅所需的药剂。";
+	close;
+}
+yuno_fild07,217,155,5	script	Adventurer#ep15_1el05	4_F_ROGUE,{
+	mes "[冒险家]";
+	mes "雷肯伯的支持给我留下了深刻的印象。";
+	mes "一...";
+	close;
+}
+yuno_fild07,225,166,3	script	Merchant#ep15_1el06	4_CAT_DOWN,{
+	mes "[商人]";
+	mes "哦哦！";
+	mes "我为我的生意找到了一个完美的地点！";
+	close;
+}
+yuno_fild07,225,144,1	script	Adventurer#ep15_1el07	1_M_ORIENT01,{
+	mes "[冒险家]";
+	mes "电梯？黑森林的科学进步令人惊叹！";
+	close;
+}
+yuno_fild07,217,149,3	script	Adventurer#ep15_1el08	4_F_JOB_BLACKSMITH,{
+	mes "[冒险家]";
+	mes "一个古老的文明。这听起来是不是很不可思议？";
+	mes "我感觉我能听到古老的机器运转时发出巨大的叮当声。";
+	next;
+	mes "[冒险家]";
+	mes "*梦幻般的眼睛*";
+	mes "*张开嘴*";
+	close;
+}
+yuno_fild07,224,152,3	script	Adventurer#ep15_1el09	4_M_SITDOWN,{
+	mes "[冒险家]";
+	mes "哎呀，这里已经挤满了人！";
+	mes "光是看着这些人就让我感到疲倦。";
+	close;
+}
+
+// ep15_1_elbs - To Phantasmagorika!
+yuno_fild07,216,157,5	script	Guide Elisha#ep15_1bs2	4_F_ZONDAGIRL,{
+	mes "[以利沙]";
+	mes "就在刚才还工作得很好。";
+	mes "对不起。";
+	mes "我得请技术人员来。请改用楼梯。";
+	next;
+	mes "[以利沙]";
+	mes "^0000FF幻影从朱佩罗斯遗迹外的东南门穿过隧道向南。^000000";
+	next;
+	mes "[以利沙]";
+	mes "中心喷泉附近有电梯门。你能检查一下电梯出了什么事吗？";
+	close;
+OnInit:
+	disablenpc "Guide Elisha#ep15_1bs2";
+	end;
+}
+
+/* Illogical
+verus04,1,1,5	script	Halo#ep15_1_elyo	4_M_DIEMAN,{
+	end;
+OnEnable:
+	enablenpc "Halo#ep15_1_elyo";
+	donpcevent "Fallen Man#ep15_1_elyo::OnDisable";
+	end;
+OnInit:
+	disablenpc "Halo#ep15_1_elyo";
+	end;
+}
+*/
+
+verus04,115,221,5	script	Fallen Man#ep15_1_elyo	4_M_DIEMAN,{
+	if (checkweight(1119,3) == 0) {
+		mes "- 你携带的物品太多，无法继续任务 -";
+		close;
+	}
+	.@name$ = strcharinfo(0);
+	mes "- 有人死了！ -";
+	next;
+	mes "- 不幸的是，死去的人卡在了电梯门里，开合的电梯不断地粘在他身上.. -";
+	next;
+	mes "[" + .@name$ + "]";
+	mes "你还好吗？";
+	next;
+	mes "[堕落之人]";
+	mes "......";
+	next;
+	mes "[" + .@name$ + "]";
+	mes "你能听到我吗？";
+	next;
+	mes "[堕落之人]";
+	mes "...请别打扰我...";
+	next;
+	mes "[" + .@name$ + "]";
+	mes "什么？";
+	next;
+	mes "[堕落之人]";
+	mes "我没事，放开我吧..";
+	next;
+	mes "[" + .@name$ + "]";
+	mes "但你看起来并不像什么都没有...";
+	mes "在这里等一下，";
+	mes "我会帮助你。";
+	next;
+	mes "[堕落之人]";
+	mes "只是告诉你我不...嘿！我的腰！！！";
+	next;
+	mes "[" + .@name$ + "]";
+	mes "......";
+	next;
+	mes "[" + .@name$ + "]";
+	mes "我帮你找医生！";
+	next;
+	mes "[堕落之人]";
+	mes "对不起，谢谢。";
+	next;
+	.@time = checkquest(11377,PLAYTIME);
+	if (.@time > 1)
+		erasequest 11377;
+	if (checkweight(1119,3) == 0) {
+		mes "- 你携带的物品太多，无法继续任务 -";
+		close;
+	}
+	if (.@time == 1)
+		mes "后来，躺在担架上的男生不好意思了，突然抓住了我的手。";
+	else {
+		mes "后来，躺在担架上的男孩一脸尴尬，突然把一个小水果放到了我手里。";
+		if (isbegin_quest(11377) == 0)
+			setquest 11377;
+		if (isbegin_quest(11376) == 0)
+			getitem 522,1;// Fruit_Of_Mastela
+		else {
+			erasequest 11376;
+			getitem 522,2;// Fruit_Of_Mastela
+		}
+	}
+	// donpcevent "Halo#ep15_1_elyo::OnEnable";
+	donpcevent "Fallen Man#ep15_1_elyo::OnDisable";
+	close;
+
+OnDisable:
+	disablenpc "Fallen Man#ep15_1_elyo";
+	disablenpc "Guide Elisha#ep15_1bs2";
+
+ 	enablenpc "Guide Elisha#ep15_1bs";
+	enablenpc "Guide Scarlet#ep15_1bs";
+	enablenpc "Du#ep15_1elb";
+	enablenpc "Mark#ep15_1elb";
+	enablenpc "Tamarin#ep15_1elb";
+	enablenpc "Alph#ep15_1elb";
+	enablenpc "Maggi#ep15_1elb";
+	// disablenpc "Halo#ep15_1_elyo";
+	stopnpctimer;
+	end;
+OnEnable:
+	enablenpc "Fallen Man#ep15_1_elyo";
+	enablenpc "Guide Elisha#ep15_1bs2";
+
+	disablenpc "Guide Elisha#ep15_1bs";
+	disablenpc "Guide Scarlet#ep15_1bs";
+	disablenpc "Du#ep15_1elb";
+	disablenpc "Mark#ep15_1elb";
+	disablenpc "Tamarin#ep15_1elb";
+	disablenpc "Alph#ep15_1elb";
+	disablenpc "Maggi#ep15_1elb";
+	initnpctimer;
+	end;
+OnTimer3600000:
+	donpcevent "Fallen Man#ep15_1_elyo::OnDisable";
+	stopnpctimer;
+	end;
+OnInit:
+	disablenpc "Fallen Man#ep15_1_elyo";
+	end;
+}
+
+yuno_fild07,216,157,5	script	Guide Elisha#ep15_1bs	4_F_ZONDAGIRL,{
+	if (isbegin_quest(11376) > 0) {
+		mes "[以利沙]";
+		mes "诡异的！！电梯怎么突然又动了？";
+		mes "也许下面的人有事可做？";
+		erasequest 11376;
+		close;
+	}
+	.@name$ = strcharinfo(0);
+	if (checkquest(11377,PLAYTIME) > 1)
+		erasequest 11377;
+	if (ep15_1_atnad < 4) {
+		mes "[以利沙]";
+		mes "我的公司 Rekenber 与 Eden Group 合作";
+		mes "用于^0000FFPhantasmagorika挖掘项目^000000。";
+		next;
+		mes "[以利沙]";
+		mes "新发现的古人遗产：幻境！";
+		mes "联系^0000FF伊甸集团^000000加入其Phantasmagorika挖掘项目！";
+		close;
+	}
+	mes "[以利沙]";
+	mes "再会。";
+	mes "请说出您的姓名，以便我检查您的注册情况。";
+	emotion ET_THROB;
+	next;
+	switch( select( "说出你的名字。", "询问注册事宜。", "结束对话。" ) ) {
+	case 1:
+		mes "[以利沙]";
+		switch(ep15_1_elb) {
+		case 0:
+		case 1:
+			mes "嗯，让我们看看...";
+			mes "抱歉，你不在名单上。您能检查一下您的注册状态吗？";
+			emotion ET_PROFUSELY_SWEAT;
+			close;
+		case 2:
+			mes "你已经回来了。";
+			emotion ET_THROB;
+			next;
+			mes "[以利沙]";
+			mes "让我们来看看...";
+			mes "啊，我找到你的名字了。";
+			mes "您想立即^0000FF前往Phantasmagorika^000000吗？";
+			next;
+			if (select( "不。", "是的。" ) == 1) {
+				mes "[以利沙]";
+				mes "祝你有美好的一天。";
+				emotion ET_THROB;
+				close;
+			}
+			mes "[以利沙]";
+			mes "让我带你去Phantasmagorika。";
+			next;
+			mes "[以利沙]";
+			mes "为了您的安全，请避免在室内奔跑或跳跃。";
+			next;
+			mes "[以利沙]";
+			mes "准备好？";
+			mes "祝您探索安全！";
+			emotion ET_THROB;
+			next;
+			mes "^FF0000- 嘟嘟-！ -";
+			mes "- 服务暂时不可用。 -^000000";
+			emotion ET_HUK, playerattached();
+			next;
+			mes "[以利沙]";
+			mes "一？";
+			mes "你能稍等一下吗？";
+			emotion ET_PROFUSELY_SWEAT;
+			next;
+			mes "^FF0000- 嘟嘟-！ -";
+			mes "- 服务暂时不可用。 -^000000";
+			emotion ET_HUK, playerattached();
+			next;
+			mes "[以利沙]";
+			mes "一...";
+			mes "有什么问题吗？";
+			mes "请给我一点时间。";
+			emotion ET_PROFUSELY_SWEAT;
+			next;
+			mes "^FF0000- 嘟嘟-！ -";
+			mes "- 服务暂时不可用。 -^000000";
+			emotion ET_HUK, playerattached();
+			next;
+			mes "[以利沙]";
+			mes "呃哦。";
+			mes "是不是出问题了？";
+			mes "不可能！";
+			emotion ET_HUK;
+			next;
+			mes "^FF0000- 嘟嘟-！ -";
+			mes "- 服务暂时不可用。 -^000000";
+			emotion ET_HUK, playerattached();
+			next;
+			mes "[以利沙]";
+			mes "对不起，" + .@name$ + ".";
+			mes "我知道您已注册该服务，但目前无法使用。";
+			mes "对于由此带来的不便，我们深表歉意。";
+			emotion ET_PROFUSELY_SWEAT;
+			emotion ET_HUK, playerattached();
+			next;
+			mes "[以利沙]";
+			mes "就在刚才还工作得很好。";
+			mes "对不起。";
+			mes "我得请技术人员来。请改用楼梯。";
+			next;
+			mes "[以利沙]";
+			mes "^0000FF幻影从朱佩罗斯遗迹外的东南门穿过隧道向南。^000000";
+			next;
+			mes "[以利沙]";
+			mes "中心喷泉附近有电梯门。你能检查一下电梯出了什么事吗？";
+			mes "我对这一切感到非常抱歉。";
+			emotion ET_CRY;
+			ep15_1_elb = 3;
+			completequest 11364;
+			setquest 11365;
+			close;
+		case 3:
+			mes "就在刚才还工作得很好。";
+			mes "对不起。";
+			mes "我得请技术人员来。请改用楼梯。";
+			next;
+			mes "[以利沙]";
+			mes "^0000FF幻影从朱佩罗斯遗迹外的东南门穿过隧道向南。^000000";
+			next;
+			mes "[以利沙]";
+			mes "中心喷泉附近有电梯门。你能检查一下电梯出了什么事吗？";
+			mes "我对这一切感到非常抱歉。";
+			emotion ET_CRY;
+			close;
+		case 4:
+			mes "对不起。";
+			mes "目前电梯已出现故障。";
+			close;
+		default:
+			break;
+		}
+		if (checkquest(11377,PLAYTIME) > 1)
+			erasequest 11377;
+		if (checkquest(11377,PLAYTIME) == -1) {
+			if (rand(1,100) == 77) {
+				mes "上帝！怎么又来了！！！";
+				mes "这个坏电梯总是坏的！每天！！！";
+				setquest 11376;
+				donpcevent "Fallen Man#ep15_1_elyo::OnEnable";
+				close;
+			}
+		}
+		mes "让我们来看看...";
+		mes "A...B...C...D...E...F...啊，就在那里！";
+		emotion ET_PROFUSELY_SWEAT;
+		next;
+		mes "[以利沙]";
+		mes "" + .@name$ + "，您的注册已被确认。";
+		mes "您想搬到Phantasmagorika吗？";
+		emotion ET_THROB;
+		next;
+		if (select( "不", "是的" ) == 1) {
+			mes "[以利沙]";
+			mes "祝你有美好的一天。";
+			close;
+		}
+		mes "[以利沙]";
+		mes "让我带你去Phantasmagorika。";
+		next;
+		mes "[以利沙]";
+		mes "为了您的安全，请避免在室内奔跑或跳跃。";
+		next;
+		mes "[以利沙]";
+		mes "准备好？";
+		mes "祝您探索安全！";
+		close2;
+		warp "verus04",122,217;
+		end;
+	case 2:
+		mes "[以利沙]";
+		mes "*清清喉咙*";
+		mes "此功能由 ^0000FFRekenber^000000 提供";
+		next;
+		mes "[以利沙]";
+		mes "前往^0000FF伊甸集团^000000的成员，以安全运送他们前往^0000FFPhantasmagorika^000000。";
+		next;
+		mes "[以利沙]";
+		mes "要使用此设施，您必须是^0000FF注册参加Phantasmagorika挖掘项目^000000的Eden集团成员。";
+		next;
+		mes "[以利沙]";
+		mes "只要您是伊甸集团的注册挖掘机，就可以在^0000FF雷肯贝尔公司总部^000000登记使用该设施。";
+		if (ep15_1_elb > 1)
+			close;
+		next;
+		if (select( "结束对话。", "询问路线。" ) == 1) {
+			mes "[以利沙]";
+			mes "我的公司 Rekenber 与 Eden Group 合作";
+			mes "用于^0000FFPhantasmagorika挖掘项目^000000。";
+			next;
+			mes "[以利沙]";
+			mes "新发现的古人遗产：幻境！";
+			mes "联系^0000FF伊甸集团^000000加入其Phantasmagorika挖掘项目！";
+			close;
+		}
+		mes "[以利沙]";
+		mes "如需登记使用该设施，请访问^0000FF位于Lighthalzen的Rekenber公司总部，并在一楼主入口西侧的咨询台^000000与Leitner交谈。";
+		next;
+		mes "[以利沙]";
+		mes "整个登记过程可能听起来很麻烦，但使用电梯是值得的。";
+		if (ep15_1_elb == 0) {
+			ep15_1_elb = 1;
+			setquest 11363;// To Phantasmagorika!
+		}
+		close;
+	case 3:
+		mes "[以利沙]";
+		mes "我的公司 Rekenber 与 Eden Group 合作";
+		mes "用于^0000FFPhantasmagorika挖掘项目^000000。";
+		next;
+		mes "[以利沙]";
+		mes "新发现的古人遗产：幻境！";
+		mes "联系^0000FF伊甸集团^000000加入其Phantasmagorika挖掘项目！";
+		close;
+	}
+	end;
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "!isbegin_quest(11363)" );
+	end;
+}
+
+lhz_in01,75,209,3	script	Leitner#ep15_1bs	4_LGTSCIENCE,{
+	mes "[莱特纳]";
+	switch(ep15_1_elb) {
+	case 0:
+		mes "嘿嘿！";
+		mes "是什么风把你吹到这里来的，亲爱的？";
+		mes "如果你想找一个可以依靠的肩膀，我就在这里。";
+		emotion ET_CHUP;
+		close;
+	case 1:
+		mes "嘿嘿！";
+		mes "是什么风把你吹到这里来的，亲爱的？";
+		mes "如果你想找一个可以依靠的肩膀，我就在这里。";
+		emotion ET_CHUP;
+		next;
+		select("询问注册流程。");
+		mes "[莱特纳]";
+		mes "哦。";
+		mes "我应该知道的。";
+		mes "你是说去Phantasmagorika的电梯吧？";
+		emotion ET_THINK;
+		next;
+		mes "[莱特纳]";
+		mes "当我第一次得到这份工作时，电梯是私人的，我只能蹲着。";
+		next;
+		mes "[莱特纳]";
+		mes "然后，管理层向公众开放了，我的生活就陷入了地狱。";
+		next;
+		mes "[莱特纳]";
+		mes "啊，为什么是我？！";
+		mes "再见，平静的日子！";
+		mes "我太忙了，几乎没有时间陪女士们。";
+		emotion ET_HELP;
+		next;
+		mes "[莱特纳]";
+		mes "不管怎样，我们让你注册一下。我想回到我的休息时间。";
+		mes "呃...在这里写下您的名字，并在旁边放上您的指纹。";
+		mes "完毕。容易吧？";
+		next;
+		mes "[莱特纳]";
+		mes "我知道，我知道；为什么电梯向公众开放时要额外加一个台阶？";
+		next;
+		mes "^0000FF- 嘟嘟-！ -";
+		mes "- 以下用户 -";
+		mes "- 已注册。 -^000000";
+		next;
+		mes "[莱特纳]";
+		mes "好吧，";
+		mes "你可以走了。";
+		mes "现在您可以使用电梯了。";
+		ep15_1_elb = 2;
+		completequest 11363;// To Phantasmagorika!
+		setquest 11364;
+		close;
+	case 2:
+		mes "我知道，我知道；为什么电梯向公众开放时要额外加一个台阶？";
+		next;
+		mes "[莱特纳]";
+		mes "现在您可以使用电梯了。";
+		close;
+	default:
+		mes "电梯几乎每天都会坏，可能是载人太多了。";
+		mes "啊，我需要休息。叹。";
+		emotion ET_HELP;
+		close;
+	}
+}
+
+verus04,119,220,3	script	Guide Scarlet#ep15_1bs	4_M_TELEPORTER,{
+	if (isbegin_quest(11376) > 0) {
+		mes "[猩红色]";
+		mes "嘿！已经解决了！";
+		mes "嘿……抱歉，我不应该笑，但是真的很有趣……哦……";
+		erasequest 11376;
+		close;
+	}
+	.@name$ = strcharinfo(0);
+	mes "[猩红色]";
+	switch(ep15_1_elb) {
+	case 0:
+	case 1:
+	case 2:
+		mes "*清清喉咙*";
+		mes "此功能由 ^0000FFRekenber^000000 提供";
+		next;
+		mes "[猩红色]";
+		mes "前往^0000FF伊甸集团^000000的成员，以安全运送他们前往^0000FFPhantasmagorika^000000。";
+		next;
+		mes "[猩红色]";
+		mes "要使用此设施，您必须是^0000FF注册参加Phantasmagorika挖掘项目^000000的Eden集团成员。";
+		next;
+		mes "[猩红色]";
+		mes "只要您是伊甸集团的注册挖掘机，就可以在^0000FF雷肯贝尔公司总部^000000登记使用该设施。";
+		next;
+		mes "[猩红色]";
+		mes "注册后，请在使用该设施之前仔细检查您的注册状态。";
+		close;
+	case 3:
+		mes "你在电梯里做了什么？";
+		emotion ET_FRET;
+		next;
+		mes "[猩红色]";
+		mes "我告诉过你不要在电梯里跑跳！";
+		next;
+		mes "[猩红色]";
+		mes "我不敢相信你把门砸碎了！";
+		next;
+		mes "[标记]";
+		mes "这是我的错。";
+		mes "我应该严格控制他。";
+		emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Mark#ep15_1elb");
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[你]";
+		mes "你怎么能指望我相信这样一台劣质机器呢？";
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du3.bmp",2;
+		next;
+		mes "[标记]";
+		mes "足够的！";
+		mes "向这位女士道歉！";
+		emotion ET_FRET, getnpcid(0, "Mark#ep15_1elb");
+		cutin "bu_mark4.bmp",0;
+		next;
+		mes "[你]";
+		mes "但他开始了……";
+		cutin "bu_du3.bmp",2;
+		next;
+		mes "[标记]";
+		mes "......";
+		emotion ET_FRET, getnpcid(0, "Mark#ep15_1elb");
+		cutin "bu_mark4.bmp",0;
+		next;
+		mes "[狨猴]";
+		mes "我告诉过你别跳了！";
+		emotion ET_HUK, getnpcid(0, "Tamarin#ep15_1elb");
+		cutin "ep143_taang.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "你们，";
+		mes "停止战斗。";
+		mes "地板感觉不稳定，很危险。";
+		emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Alph#ep15_1elb");
+		cutin "bu_alp2.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "我们都应该下车并打电话给技术人员...";
+		cutin "",255;
+		next;
+		mes "^FF0000- 轰鸣声 -^000000";
+		emotion ET_HUK;
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		emotion ET_HUK, getnpcid(0, "Mark#ep15_1elb");
+		emotion ET_HUK, getnpcid(0, "Tamarin#ep15_1elb");
+		emotion ET_HUK, getnpcid(0, "Alph#ep15_1elb");
+		emotion ET_HUK, getnpcid(0, "Maggi#ep15_1elb");
+		next;
+		mes "[美琪]";
+		mes "啊啊啊——！";
+		emotion ET_HUK, getnpcid(0, "Maggi#ep15_1elb");
+		cutin "bu_maggi4.bmp",2;
+		next;
+		mes "[你]";
+		mes "哇！";
+		mes "地板嘎嘎作响！";
+		emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "停止！";
+		mes "大家都别动！";
+		mes "否则我们可能会跌入谷底！";
+		emotion ET_HUK;
+		cutin "",255;
+		next;
+		mes "[猩红色]";
+		mes "嘿，";
+		mes "你！";
+		mes "帮助！";
+		emotion ET_HELP;
+		next;
+		mes "[猩红色]";
+		mes "这电梯太不稳定了，我们谁都动不了。";
+		mes "你能给我们带来一些东西来^0000FF支撑地板^000000吗？";
+		next;
+		mes "[猩红色]";
+		mes "我们没有时间等待技术人员！";
+		mes "我们只需要Juperos的迪米克斯^000000的^FF000030块二手铁板！";
+		next;
+		mes "[猩红色]";
+		mes "请帮助我们！";
+		ep15_1_elb = 4;
+		completequest 11365;
+		setquest 11366;
+		close;
+	case 4:
+		mes "小心！";
+		mes "大家别动！";
+		next;
+		mes "[你]";
+		mes "哇——！";
+		mes "我们就要摔倒在地了！";
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "别这么说！";
+		mes "这是你的错！";
+		emotion ET_FRET, getnpcid(0, "Tamarin#ep15_1elb");
+		cutin "ep143_taang.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "你们两个都安静！";
+		mes "如果你移动一寸，我们都会死！";
+		emotion ET_HUK;
+		cutin "",255;
+		next;
+		if (countitem(7319) < 30) {
+			mes "[猩红色]";
+			mes "这电梯太不稳定了，我们谁都动不了。";
+			mes "你能给我们带来一些东西来^0000FF支撑地板^000000吗？";
+			next;
+			mes "[猩红色]";
+			mes "我们没有时间等待技术人员！";
+			mes "我们只需要Juperos的迪米克斯^000000的^FF000030块二手铁板！";
+			next;
+			mes "[猩红色]";
+			mes "请帮助我们！";
+			close;
+		}
+		mes "[猩红色]";
+		mes "你带了废铁板吗？";
+		mes "请小心地把它们一一推到这里。";
+		delitem 7319,30;// Old_Steel_Plate
+		ep15_1_elb = 5;
+		completequest 11366;
+		next;
+		mes "[猩红色]";
+		mes "它们可能不会坚持太久，但这仍然足以让我们摆脱困境。";
+		next;
+		select("推入用过的铁板。");
+		mes "[猩红色]";
+		mes "现在，下车吧！";
+		mes "盘子撑不了多久了！";
+		next;
+		mes "[你]";
+		mes "感谢各位大神！";
+		mes "在这里，玛吉！";
+		mes "拉着我的手，下来。";
+		cutin "bu_du4.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "呼...";
+		mes "我很高兴没有人受伤。";
+		mes "我会让这一切过去";
+		mes "但再也不会了！";
+		cutin "",255;
+		next;
+		mes "[猩红色]";
+		mes "和" + .@name$ + "， 太感谢了。";
+		mes "如果不是你，我们可能会遇到大麻烦。";
+		emotion ET_THANKS;
+		next;
+		mes "[猩红色]";
+		mes "我刚收到以利沙的消息。";
+		mes "因为电梯坏了所以你必须步行，对吗？";
+		next;
+		mes "[猩红色]";
+		mes "对于给您带来的不便，我们深表歉意。";
+		mes "目前电梯已恢复运行。如果你想上去请告诉我。";
+		next;
+		mes "[标记]";
+		mes "哇！ " + .@name$ + "，你救了我们。";
+		mes "唉，真不知道他什么时候才能长大。";
+		emotion ET_THANKS, getnpcid(0, "Mark#ep15_1elb");
+		cutin "bu_mark2.bmp",0;
+		next;
+		mes "[美琪]";
+		mes "*抽泣* *打嗝*";
+		mes "谢谢... *抽泣* *打嗝*";
+		mes "我很害怕！哇-！";
+		emotion ET_THANKS, getnpcid(0, "Maggi#ep15_1elb");
+		cutin "bu_maggi4.bmp",2;
+		next;
+		mes "[你]";
+		mes "...对不起。";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "谢谢。";
+		mes "唉，我不想想象如果你" + .@name$ + "当时没有经过的话会发生什么。";
+		emotion ET_THANKS, getnpcid(0, "Tamarin#ep15_1elb");
+		cutin "ep143_tasmi.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "...谢谢。";
+		cutin "bu_alp1.bmp",2;
+		emotion ET_THANKS, getnpcid(0, "Alph#ep15_1elb");
+		next;
+		mes "[狨猴]";
+		mes "顺便说一句，你不觉得奇怪吗";
+		mes "新发现的废墟中是否安装了电梯并正在运行？";
+		cutin "ep143_tasta.bmp",2;
+		next;
+		mes "[标记]";
+		mes "出色地，";
+		mes "雷肯伯赞助了这次发掘，这对我来说是一个足够好的理由。";
+		cutin "bu_mark1.bmp",0;
+		next;
+		mes "[???]";
+		mes "朱佩罗斯下的废墟。这不是很令人兴奋吗？";
+		cutin "",255;
+		next;
+		mes "[你]";
+		mes "这是！";
+		mes "没有人不知道这座废墟是什么时候建成的。";
+		mes "我们走吧！我想成为第一个知道的人！";
+		cutin "bu_du2.bmp",2;
+		next;
+		mes "[标记]";
+		mes "冷静下来！";
+		mes "你没学过吗？你差点把电梯弄坏了！";
+		emotion ET_FRET, getnpcid(0, "Mark#ep15_1elb");
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[猩红色]";
+		mes "当心！";
+		mes "地板还是不稳定！";
+		cutin "",255;
+		close;
+	default:
+		mes "再会。";
+		mes "请说出您的姓名，以便我检查您的注册情况。";
+		next;
+		if (select( "说出你的名字。", "结束对话。" ) == 2) {
+			mes "[猩红色]";
+			mes "祝你有美好的一天。";
+			close;
+		}
+		mes "[猩红色]";
+		mes "嗯...";
+		mes "是的，" + .@name$ + "，您的注册已得到确认。";
+		mes "您想搬到 Juperos 的入口吗？";
+		next;
+		if (select( "不", "是的" ) == 1) {
+			mes "[猩红色]";
+			mes "祝你有美好的一天。";
+			close;
+		}
+		mes "[猩红色]";
+		mes "准备好？";
+		mes "祝您探索安全！";
+		close2;
+		warp "yuno_fild07",230,156;
+		end;
+	}
+}
+
+function	script	excavator_part2	{
+	mes "[你]";
+	mes "嗯...";
+	mes "这个地方看起来并不像我想象的那么令人兴奋。";
+	cutin "bu_du3.bmp",2;
+	next;
+	mes "[标记]";
+	mes "你期待什么？";
+	emotion ET_THINK, getnpcid(0, "Mark#ep15_1elb");
+	cutin "bu_mark1.bmp",0;
+	next;
+	mes "[你]";
+	mes "你知道，";
+	mes "我以为里面会充满惊人的宝藏。";
+	cutin "bu_du2.bmp",2;
+	next;
+	mes "[标记]";
+	mes "如果是这样的话，其他人可能会比我们先一步。";
+	cutin "bu_mark2.bmp",0;
+	next;
+	mes "[阿尔夫]";
+	mes "一...";
+	mes "这个地方看起来可能不太像，但建筑风格和材料和我在米德加德看到的不太一样。";
+	cutin "bu_alp1.bmp",2;
+	next;
+	mes "[阿尔夫]";
+	mes "或者在Juperos。";
+	next;
+	mes "[你]";
+	mes "哇！";
+	mes "小伙伴们快来看看这个喷泉吧！";
+	emotion ET_HUK, getnpcid(0, "Fountain#ep15_1elb");
+	cutin "bu_du2.bmp",2;
+	setquest 11367;// Looking for the Traces
+	ep15_1_elb = 6;
+	return;
+}
+
+verus04,117,219,0	script	Alph#ep15_1elb	4_M_BLACKMAN,{
+	switch(ep15_1_elb) {
+	case 0:
+	case 1:
+	case 2:
+		mes "[阿尔夫]";
+		mes "挖掘，这是个好题材。";
+		emotion ET_THINK;
+		cutin "bu_alp4.bmp",2;
+		close3;
+	case 3:
+		mes "[阿尔夫]";
+		mes "......";
+		mes "S-停止移动。";
+		emotion ET_PROFUSELY_SWEAT;
+		cutin "bu_alp2.bmp",2;
+		next;
+		mes "[你]";
+		mes "哇啊啊——！";
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "你在电梯里做了什么？";
+		mes "我告诉过你不要在电梯里跑跳！";
+		emotion ET_HUK, getnpcid(0, "Guide Scarlet#ep15_1bs");
+		cutin "",255;
+		close;
+	case 4:
+		mes "[阿尔夫]";
+		mes "S-停止移动。";
+		mes "楼、楼……";
+		emotion ET_PROFUSELY_SWEAT;
+		cutin "bu_alp2.bmp",2;
+		close3;
+	case 5:
+		excavator_part2();
+		close3;
+	case 6:
+		mes "[阿尔夫]";
+		mes "喷泉呢？";
+		emotion ET_HUK, getnpcid(0, "Fountain#ep15_1elb");
+		cutin "bu_alp1.bmp",2;
+		close3;
+	default:
+		mes "[阿尔夫]";
+		mes "...谢谢。";
+		cutin "bu_alp1.bmp",2;
+		close3;
+	}
+}
+
+verus04,115,220,5	script	Du#ep15_1elb	4_M_REDMAN,{
+	switch(ep15_1_elb) {
+	case 0:
+	case 1:
+	case 2:
+		mes "[你]";
+		mes "冒险家，";
+		mes "我们走吧！";
+		cutin "bu_du2.bmp",2;
+		close3;
+	case 3:
+		mes "[你]";
+		mes "哇啊啊——！";
+		emotion ET_HUK;
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[你]";
+		mes "请有人做点什么！";
+		next;
+		mes "[猩红色]";
+		mes "你在电梯里做了什么？";
+		mes "我告诉过你不要在电梯里跑跳！";
+		emotion ET_HUK, getnpcid(0, "Guide Scarlet#ep15_1bs");
+		cutin "",255;
+		close;
+	case 4:
+		mes "[你]";
+		mes "哇——！";
+		mes "我们就要摔倒在地了！";
+		emotion ET_HUK;
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "别这么说！";
+		mes "这是你的错！";
+		emotion ET_HUK, getnpcid(0, "Tamarin#ep15_1elb");
+		cutin "ep143_tahuk.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "你们两个都安静！";
+		mes "如果你移动一寸，我们都会死！";
+		emotion ET_HUK, getnpcid(0, "Guide Scarlet#ep15_1bs");
+		cutin "",255;
+		close;
+	case 5:
+		excavator_part2();
+		close3;
+	case 6:
+		mes "[你]";
+		mes "哇！";
+		mes "小伙伴们快来看看这个喷泉吧！";
+		emotion ET_HUK, getnpcid(0, "Fountain#ep15_1elb");
+		cutin "bu_du2.bmp",2;
+		close3;
+	default:
+		mes "[你]";
+		mes "冒险需要勇气和好奇心！";
+		cutin "bu_du2.bmp",2;
+		close3;
+	}
+}
+
+verus04,117,220,3	script	Maggi#ep15_1elb	4_F_PINKWOMAN,{
+	switch(ep15_1_elb) {
+	case 0:
+	case 1:
+	case 2:
+		mes "[美琪]";
+		mes "幻境。多么漂亮的名字啊！";
+		cutin "bu_maggi2.bmp",2;
+		close3;
+	case 3:
+		mes "[美琪]";
+		mes "哇啊啊——！！！";
+		emotion ET_HUK;
+		cutin "bu_maggi4.bmp",2;
+		next;
+		mes "[你]";
+		mes "哇啊啊——！";
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "你在电梯里做了什么？";
+		mes "我告诉过你不要在电梯里跑跳！";
+		emotion ET_HUK, getnpcid(0, "Guide Scarlet#ep15_1bs");
+		cutin "",255;
+		close;
+	case 4:
+		mes "[美琪]";
+		mes "哇啊啊——！！！";
+		emotion ET_HUK;
+		cutin "bu_maggi4.bmp",2;
+		close3;
+	case 5:
+		excavator_part2();
+		close3;
+	case 6:
+		mes "[美琪]";
+		mes "杜满胆醋。";
+		mes "喷泉有什么好玩的？";
+		emotion ET_HUK, getnpcid(0, "Fountain#ep15_1elb");
+		cutin "bu_maggi1.bmp",2;
+		close3;
+	default:
+		mes "[美琪]";
+		mes "*抽泣* *打嗝*";
+		mes "谢谢... *抽泣* *打嗝*";
+		mes "我很害怕！哇-！";
+		emotion ET_CRY;
+		cutin "bu_maggi4.bmp",2;
+		close3;
+	}
+}
+
+verus04,115,221,5	script	Mark#ep15_1elb	4_M_BLUEMAN,{
+	switch(ep15_1_elb) {
+	case 0:
+	case 1:
+	case 2:
+		mes "[标记]";
+		mes "幻境。";
+		mes "我迫不及待地想了解更多关于这个地方的信息。";
+		cutin "bu_mark1.bmp",0;
+		next;
+		mes "[标记]";
+		mes "它是在朱佩罗斯附近发现的，但据信属于不同的文明。";
+		cutin "bu_mark2.bmp",0;
+		close3;
+	case 3:
+		mes "[标记]";
+		mes "当心！";
+		emotion ET_HUK;
+		cutin "bu_mark4.bmp",0;
+		next;
+		mes "[你]";
+		mes "哇啊啊——！";
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "你在电梯里做了什么？";
+		mes "我告诉过你不要在电梯里跑跳！";
+		emotion ET_HUK, getnpcid(0, "Guide Scarlet#ep15_1bs");
+		cutin "",255;
+		close;
+	case 4:
+		mes "[标记]";
+		mes "天哪，杜！";
+		mes "你这样会让我心脏病发作的！";
+		emotion ET_FRET;
+		cutin "bu_mark3.bmp",0;
+		close3;
+	case 5:
+		excavator_part2();
+		close3;
+	case 6:
+		mes "[标记]";
+		mes "喷泉呢？";
+		emotion ET_HUK, getnpcid(0, "Fountain#ep15_1elb");
+		cutin "bu_mark3.bmp",0;
+		close3;
+	default:
+		mes "[标记]";
+		mes "哇！ " + strcharinfo(0) + "，你救了我们。";
+		mes "唉，真不知道他什么时候才能长大。";
+		cutin "bu_mark3.bmp",0;
+		close3;
+	}
+}
+
+verus04,116,219,5	script	Tamarin#ep15_1elb	4_M_TAMARIN,{
+	switch(ep15_1_elb) {
+	case 0:
+	case 1:
+	case 2:
+		mes "[狨猴]";
+		mes "如此规模的挖掘工程应该会吸引大量人群。";
+		cutin "ep143_tasta.bmp",2;
+		close3;
+	case 3:
+		mes "[狨猴]";
+		mes "我告诉过你别跳了！";
+		emotion ET_HUK;
+		cutin "ep143_tahuk.bmp",2;
+		next;
+		mes "[你]";
+		mes "哇啊啊——！";
+		emotion ET_HUK, getnpcid(0, "Du#ep15_1elb");
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[猩红色]";
+		mes "你在电梯里做了什么？";
+		mes "我告诉过你不要在电梯里跑跳！";
+		emotion ET_HUK, getnpcid(0, "Guide Scarlet#ep15_1bs");
+		cutin "",255;
+		close;
+	case 4:
+		mes "[狨猴]";
+		mes "啊啊，";
+		mes "一切都不会对我有利！";
+		emotion ET_CRY;
+		cutin "ep143_tahuk.bmp",2;
+		close3;
+	case 5:
+		excavator_part2();
+		close3;
+	case 6:
+		mes "[狨猴]";
+		mes "嗯，杜是不是在喷泉里发现了什么东西？";
+		emotion ET_HUK, getnpcid(0, "Fountain#ep15_1elb");
+		cutin "ep143_tasmi.bmp",2;
+		close3;
+	default:
+		mes "[狨猴]";
+		mes "谢谢。";
+		mes "唉，我不想想象如果你" + strcharinfo(0) + "当时没有经过的话会发生什么。";
+		cutin "ep143_tasmi.bmp",2;
+		close3;
+	}
+}
+
+verus04,116,226,0	script	Fountain#ep15_1elb	HIDDEN_NPC,{
+	if (ep15_1_elb == 6) {
+		mes "[你]";
+		mes "看，我擦了一下，它闪闪发光！";
+		cutin "bu_du2.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "你为什么就不能听听我们的意见呢？";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "别再把时间浪费在这么愚蠢的事情上了！";
+		cutin "ep143_taang.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "一...";
+		mes "等待。";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "看，它不像是被深埋在地下几个世纪了。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "你说得对。在所有的污垢和污垢之下，它看起来太干净了。";
+		cutin "ep143_tasta.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "让我们来看看...";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "一...";
+		mes "太干净了。我对此无话可说。";
+		cutin "bu_alp2.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "如果这个喷泉曾经被使用过，它的底部应该会留下某种沉积物，但实际上根本没有。就好像水一下子就被抽干了一样。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "很长一段时间后，沉积物可能会自然消失。";
+		next;
+		mes "[阿尔夫]";
+		mes "让我们四处寻找其他东西。";
+		next;
+		mes "[狨猴]";
+		mes "左边那些杂物怎么样？";
+		emotion ET_HUK, getnpcid(0, "Sundries#ep15_1elb");
+		cutin "ep143_tasta.bmp",2;
+		ep15_1_elb = 7;
+		completequest 11367;
+		setquest 11368;
+		close3;
+	}
+	if (ep15_1_elb == 7) {
+		mes "[阿尔夫]";
+		mes "让我们四处寻找其他东西。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "左边那些杂物怎么样？";
+		emotion ET_HUK, getnpcid(0, "Sundries#ep15_1elb");
+		cutin "ep143_tasta.bmp",2;
+		close3;
+	}
+	mes "- 看似普通的喷泉 -";
+	mes "- 里面什么也没有。 -";
+	close;
+}
+
+verus04,95,238,0	script	Sundries#ep15_1elb	HIDDEN_NPC,{
+	if (ep15_1_elb == 7) {
+		mes "[阿尔夫]";
+		mes "嗯...";
+		mes "一切看起来都太干净了。";
+		mes "这个网站看起来并不像我们想象的那么古老。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "除了那些成堆的坏机器之外，没有什么看起来太特别的了。";
+		next;
+		mes "[阿尔夫]";
+		mes "看看左边的树。";
+		emotion ET_HUK, getnpcid(0, "Tree#ep15_1elb");
+		ep15_1_elb = 8;
+		completequest 11368;
+		setquest 11369;// Looking for the Traces
+		close3;
+	}
+	if (ep15_1_elb == 8) {
+		mes "[阿尔夫]";
+		mes "看左边的树。";
+		cutin "bu_alp1.bmp",2;
+		emotion ET_HUK, getnpcid(0, "Tree#ep15_1elb");
+		close3;
+	}
+	mes "- 地上散落着杂物。 -";
+	close;
+}
+
+verus04,79,249,0	script	Tree#ep15_1elb	HIDDEN_NPC,{
+	if (ep15_1_elb == 8) {
+		mes "[你]";
+		mes "自从我们到达以来我一直在想：树木不需要阳光才能生长吗？";
+		cutin "bu_du1.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "*喘气*";
+		mes "杜，这是我听过你说过的最聪明的话。";
+		cutin "ep143_tahuk.bmp",2;
+		next;
+		mes "[你]";
+		mes "你说什么？";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[标记]";
+		mes "这棵树是怎么长在地下的？";
+		mes "没有阳光。";
+		cutin "bu_mark1.bmp",0;
+		next;
+		mes "[美琪]";
+		mes "看上去并没有着魔的样子。";
+		cutin "bu_maggi1.bmp",2;
+		next;
+		mes "[你]";
+		mes "哦，看这里！";
+		mes "门前站着一个奇怪的东西！";
+		emotion ET_HUK, getnpcid(0, "Signboard#ep15_1elb");
+		cutin "bu_du2.bmp",2;
+		ep15_1_elb = 9;
+		completequest 11369;
+		setquest 11370;
+		close3;
+	}
+	if (ep15_1_elb == 9) {
+		mes "[你]";
+		mes "哦，看这里！";
+		mes "门前站着一个奇怪的东西！";
+		emotion ET_HUK, getnpcid(0, "Signboard#ep15_1elb");
+		cutin "bu_du2.bmp",2;
+		close3;
+	}
+	mes "一棵高大、翠绿的树。";
+	mes "它看起来没什么特别的，除了它生长在地下。";
+	close;
+}
+
+verus04,62,255,0	script	Signboard#ep15_1elb	HIDDEN_NPC,{
+	if (ep15_1_elb == 9) {
+		mes "[标记]";
+		mes "嘿！";
+		mes "别再流浪了！这个地方可能很危险！";
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[你]";
+		mes "冒险需要勇气和好奇心！";
+		cutin "bu_du2.bmp",2;
+		next;
+		mes "[你]";
+		mes "我也不会让其他人夺走所有的宝物！";
+		cutin "bu_du1.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "上次你这么说的时候，你已经住院一个月了。";
+		cutin "ep143_taang.bmp",2;
+		next;
+		mes "[你]";
+		mes "这一次，不一样了！";
+		mes "另外，那些杀不死我的只会让我变得更强大。确实如此！";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[标记]";
+		mes "你这是妄想症。";
+		cutin "bu_mark4.bmp",0;
+		next;
+		mes "[阿尔夫]";
+		mes "哦，";
+		mes "等待。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "看看大楼后面。";
+		mes "有一条路通向上方。";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[你]";
+		mes "我去";
+		mes "无论我的直觉引导我到哪里！";
+		mes "哇哈哈哈！";
+		cutin "bu_du2.bmp",2;
+		next;
+		mes "[标记]";
+		mes "你，停下来！";
+		mes "你没听到我说话吗？！";
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[标记]";
+		mes "咕噜！";
+		mes "他失控了。";
+		next;
+		mes "[美琪]";
+		mes "标记，";
+		mes "杜已经做到了这一点。";
+		cutin "bu_maggi1.bmp",2;
+		next;
+		mes "[标记]";
+		mes "咕噜！";
+		mes "那个笨蛋！";
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[标记]";
+		mes "我们最好在失去他之前追上他。";
+		cutin "bu_mark1.bmp",0;
+		ep15_1_elb = 10;
+		completequest 11370;
+		setquest 11371;
+		close3;
+	}
+	if (ep15_1_elb == 10) {
+		mes "[阿尔夫]";
+		mes "看看大楼后面。";
+		mes "有一条路通向上方。";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[你]";
+		mes "我去";
+		mes "无论我的直觉引导我到哪里！";
+		mes "哇哈哈哈！";
+		cutin "bu_du2.bmp",2;
+		next;
+		mes "[标记]";
+		mes "你，停下来！";
+		mes "你没听到我说话吗？！";
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[标记]";
+		mes "咕噜！";
+		mes "他失控了。";
+		next;
+		mes "[美琪]";
+		mes "标记，";
+		mes "杜已经做到了这一点。";
+		cutin "bu_maggi1.bmp",2;
+		next;
+		mes "[标记]";
+		mes "咕噜！";
+		mes "那个笨蛋！";
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[标记]";
+		mes "我们最好在失去他之前追上他。";
+		cutin "bu_mark1.bmp",0;
+		close3;
+	}
+	mes "- 门被堵住了。 -";
+	close;
+}
+
+verus03,46,23,3	script	Du#ep15_1elb03	4_M_REDMAN,{
+	if (ep15_1_elb == 10) {
+		mes "[你]";
+		mes "哇...";
+		mes "我以为这个地方会和上一个地方一样，但里面已经挤满了机器。";
+		emotion ET_HUK;
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[你]";
+		mes "这些和 Juperos 中的一样吗？";
+		cutin "bu_du1.bmp",2;
+		next;
+		mes "[你]";
+		mes "这个地方和Juperos有什么关系？";
+		next;
+		mes "[你]";
+		mes "在那里，我看到另一个喷泉，看起来和上一个很相似。";
+		mes "你想去看看吗？";
+		cutin "bu_du2.bmp",2;
+		ep15_1_elb = 11;
+		completequest 11371;
+		setquest 11372;
+		close3;
+	}
+	if (ep15_1_elb == 11) {
+		mes "[你]";
+		mes "在那里，我看到另一个喷泉，看起来和上一个很相似。";
+		mes "你想去看看吗？";
+		cutin "bu_du2.bmp",2;
+		close3;
+	}
+	mes "[你]";
+	mes "这个地方和Juperos有什么关系？";
+	close;
+}
+
+verus03,44,65,0	script	Fountain#ep15_1elb03	HIDDEN_NPC,{
+	if (ep15_1_elb == 11) {
+		mes "[阿尔夫]";
+		mes "嗯...";
+		mes "这个地方干净得令人不安。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "所有建筑都保存完好。你认为业主们发生了什么？";
+		cutin "ep143_tasta.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "如果他们死了，他们不会被埋葬或留在这里腐烂。如果他们离开了……好吧，我认为他们没有离开。";
+		cutin "bu_alp3.bmp",2;
+		next;
+		mes "[美琪]";
+		mes "我尝试用魔法阅读，";
+		mes "但无济于事。";
+		cutin "bu_maggi1.bmp",2;
+		next;
+		mes "[你]";
+		mes "于是线索就消失了。";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[标记]";
+		mes "......";
+		cutin "bu_mark3.bmp",0;
+		next;
+		mes "[你]";
+		mes "哎哟!你为什么打我？";
+		cutin "bu_du4.bmp",2;
+		next;
+		mes "[标记]";
+		mes "我会走北边的路。稍后去那里见我。";
+		cutin "bu_mark2.bmp",0;
+		next;
+		mes "[标记]";
+		mes "密切关注杜；他很容易就走开了。";
+		cutin "bu_mark4.bmp",0;
+		ep15_1_elb = 12;
+		completequest 11372;
+		setquest 11373;
+		close3;
+	}
+	if (ep15_1_elb == 12) {
+		mes "[标记]";
+		mes "我会走北边的路。稍后去那里见我。";
+		cutin "bu_mark2.bmp",0;
+		next;
+		mes "[标记]";
+		mes "密切关注杜；他很容易就走开了。";
+		cutin "bu_mark4.bmp",0;
+		close3;
+	}
+	mes "- 看似普通的喷泉 -";
+	mes "- 里面什么也没有。 -";
+	close;
+}
+
+verus03,88,237,3	script	Mark#ep15_1elb03	4_M_BLUEMAN,{
+	if (ep15_1_elb == 12) {
+		mes "[标记]";
+		mes "你看到我们前面的巨型机器了吗？";
+		mes "与第一处不同的是，这里布满了巨型机器。";
+		cutin "bu_mark1.bmp",0;
+		next;
+		mes "[标记]";
+		mes "建筑物倒塌。地面到处都塌陷了。";
+		next;
+		mes "[标记]";
+		mes "我在那里找到了一条路，尽管它被堵住了。";
+		next;
+		mes "[标记]";
+		mes "这可不是什么好兆头。";
+		cutin "bu_mark4.bmp",0;
+		next;
+		mes "[标记]";
+		mes "哦，狨猴！";
+		mes "别去那里！";
+		cutin "bu_mark1.bmp",0;
+		emotion ET_HUK;
+		emotion ET_HUK, getnpcid(0, "Tamarin#ep15_1elb03");
+		ep15_1_elb = 13;
+		completequest 11373;
+		setquest 11374;
+		close3;
+	}
+	if (ep15_1_elb == 13) {
+		mes "[标记]";
+		mes "哦，狨猴！";
+		mes "别去那里！";
+		cutin "bu_mark1.bmp",0;
+		emotion ET_HUK;
+		emotion ET_HUK, getnpcid(0, "Tamarin#ep15_1elb03");
+		close3;
+	}
+	mes "[标记]";
+	mes "你看到我们前面的巨型机器了吗？";
+	mes "与第一处不同的是，这里布满了巨型机器。";
+	cutin "bu_mark1.bmp",0;
+	close3;
+}
+
+verus03,51,256,3	script	Tamarin#ep15_1elb03	4_M_TAMARIN,{
+	mes "[狨猴]";
+	mes "看看那边。";
+	mes "那部分地方完全被毁了。";
+	cutin "ep143_tahuk.bmp",2;
+	if (ep15_1_elb == 13 || ep15_1_elb == 14) {
+		next;
+		mes "[狨猴]";
+		mes "玛吉，那边怎么样？";
+		cutin "ep143_tasta.bmp",2;
+		emotion ET_HUK, getnpcid(0, "Maggi#ep15_1elb03");
+		if (ep15_1_elb == 13) {
+			ep15_1_elb = 14;
+			completequest 11374;
+			setquest 11375;
+		}
+	}
+	close3;
+}
+
+verus03,35,254,3	script	Maggi#ep15_1elb03	4_F_PINKWOMAN,{
+	if (ep15_1_elb == 14) {
+		mes "[美琪]";
+		mes "哦。";
+		mes "这边的路也被堵住了。";
+		cutin "bu_maggi1.bmp",2;
+		next;
+		mes "[美琪]";
+		mes "我感觉到另一边有某种电流";
+		mes "但我不能确切地说出是什么。";
+		cutin "bu_maggi3.bmp",2;
+		next;
+		mes "[美琪]";
+		mes "感觉不像是活物";
+		mes "但它仍然很强。";
+		cutin "bu_maggi1.bmp",2;
+		next;
+		mes "[你]";
+		mes "一。";
+		mes "我真的不想去那里。";
+		cutin "bu_du3.bmp",2;
+		next;
+		mes "[狨猴]";
+		mes "...！";
+		mes "这是第一次。你赢得了“红毛野猪”的绰号，因为你从未停止奔跑。";
+		cutin "ep143_tahuk.bmp",2;
+		next;
+		mes "[你]";
+		mes "没有人这么叫我！";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[你]";
+		mes "我有更酷的昵称！叫我那些！";
+		next;
+		mes "[阿尔夫]";
+		mes "的。";
+		mes "不要侮辱野猪。";
+		mes "他们的所有部分，从头到脚，都是有用的。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "也很好吃。";
+		cutin "bu_alp4.bmp",2;
+		next;
+		mes "[你]";
+		mes "这不是重点！";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[标记]";
+		mes "杜的本能从来没有背叛过我们。我们应该避开这条道路。";
+		mes "对吧，野猪？";
+		cutin "bu_mark2.bmp",0;
+		next;
+		mes "[你]";
+		mes "咕噜！";
+		mes "我说";
+		mes "别这么叫我！";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[阿尔夫]";
+		mes "道路被堵住了，如果幻境挖掘队没有清理的话，那一定是有原因的。在我们找到更多相关信息之前，让我们避开它。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[你]";
+		mes "你别取笑我啊！";
+		cutin "bu_du5.bmp",2;
+		next;
+		mes "[标记]";
+		mes "我同意。";
+		mes "我们先检查一下其他地方。";
+		ep15_1_elb = 15;
+		completequest 11375;
+		getexp 1000000,0;
+		cutin "bu_mark2.bmp",0;
+		close3;
+	}
+	if (ep15_1_elb == 15) {
+		mes "[阿尔夫]";
+		mes "道路被堵住了，如果幻境挖掘队没有清理的话，那一定是有原因的。在我们找到更多相关信息之前，让我们避开它。";
+		cutin "bu_alp1.bmp",2;
+		next;
+		mes "[标记]";
+		mes "我同意。";
+		mes "我们先检查一下其他地方。";
+		cutin "bu_mark2.bmp",0;
+		close3;
+	}
+	mes "[美琪]";
+	mes "空气中弥漫着危险。我能从骨头里感觉到它。";
+	cutin "bu_maggi3.bmp",2;
+	close3;
+}
+
+verus04,144,239,3	shop	Tool Merchant#verus	4_M_DEWMAN,611:-1,504:-1,656:-1,601:-1,602:-1,610:-1
+
+// ep15_1_moc_nk - Reward Coordinator
+morocc,54,190,5	script	Reward Coordinator	4_M_SAGE_C,{
+	for ( .@i = 5252; .@i <= 5264; .@i += 2 ) {
+		if (isbegin_quest(.@i) == 1)
+			erasequest .@i;
+	}
+	if (isbegin_quest(5269) == 1)
+		erasequest 5269;
+	if (isbegin_quest(5275) == 1)
+		erasequest 5275;
+
+	if (countitem(6688) > 0)
+		delitem 6688, countitem(6688);	// Wood_
+	if (countitem(6688) > 0)
+		delitem 6687, countitem(6687);	// LongRopes
+	if (countitem(6686) > 0)
+		delitem 6686, countitem(6686);	// Brick
+	mes "[奖励协调员]";
+	mes "所以，嗯...我...";
+	mes "我想我被派到这里了";
+	mes "到...到...让我想想...";
+	mes "哦，是的，支持莫罗克的修复工作。";
+	next;
+	mes "[奖励协调员]";
+	mes "修复工作已经完成，";
+	mes "但我仍然";
+	mes "完成对志愿者的奖励。";
+	next;
+	mes "[奖励协调员]";
+	mes "那么，今天我能为您提供什么帮助呢？";
+	next;
+	switch( select( "领取奖励。", "贡献券自动售货机可以做什么？", "结束对话。" ) ) {
+	case 1:
+		for ( .@i = 5251; .@i <= 5263; .@i += 2 ) {
+			if (isbegin_quest(.@i) == 1)
+				.@moc_on++;
+		}
+		if (isbegin_quest(5265) == 1 || isbegin_quest(5266) == 1 || isbegin_quest(5267) == 1 || isbegin_quest(5268) == 1)
+			.@moc_on++;
+		if (isbegin_quest(5270) == 1 || isbegin_quest(5271) == 1 || isbegin_quest(5272) == 1 || isbegin_quest(5273) == 1 || isbegin_quest(5274) == 1)
+			.@moc_on++;
+		if (.@moc_on > 0) {
+			mes "[奖励协调员]";
+			mes "为了认可您的信用，";
+			mes "我们将授予您证书。";
+			mes "证书可以在旁边的自动售货机上使用。";
+			getitem 6685, .@moc_on;	// MoroccMerit
+			for ( .@i = 5251; .@i < 5275; .@i++ ) {
+				if (isbegin_quest(.@i) == 1)
+					completequest .@i;
+			}
+			close;
+		}
+		mes "[奖励协调员]";
+		mes "你还没有完成你的任务";
+		mes "或者从未接受过。请检查您的任务历史记录。";
+		close;
+	case 2:
+		mes "[奖励协调员]";
+		mes "看到我旁边的自动售货机了吗？";
+		mes "您可以在机器上使用您的证书";
+		mes "获得经验值和各种物品交换。";
+		next;
+		mes "[奖励协调员]";
+		mes "欲了解更多详情，请点击自动售货机。";
+		close;
+	case 3:
+		mes "[奖励协调员]";
+		mes "嗯，所以...";
+		mes "你为什么";
+		mes "可以跟我谈谈吗？";
+		next;
+		mes "[奖励协调员]";
+		mes "哇，我讨厌这沙风。";
+		mes "它留下了我漂亮的衣服";
+		mes "沙质和令人讨厌的感觉。";
+		close;
+	}
+}
+
+morocc,43,191,5	script	Announcement#moc_re	4_BOARD3,{
+	if (ep14_3_mocrank > $@2012_ep14_moc_most) {
+		$@2012_ep14_moc_most = ep14_3_mocrank;
+		$@2012_ep14_moc_mostname$ = strcharinfo(0);
+	}
+	mes "[莫罗克修复项目总监Paek]";
+	mes "目前最大的贡献者是";
+	mes "大冒险家" + $@2012_ep14_moc_mostname$ + ",";
+	mes "到目前为止，他总共做出了 " + $@2012_ep14_moc_most + " 贡献。";
+	mes "我要代表整个城市向这位冒险家致谢。";
+	close;
+}
+
+morocc,52,197,6	script	Contribution Certificate Vending Machine#ep14_3	2_VENDING_MACHINE1,{
+	if (checkweight(1301,1) == 0) {
+		mes "- 您携带的物品过多，无法继续对话 -";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[自动售货机管理员]";
+		mes "您好~不要随意触摸自动售货机。";
+		close;
+	}
+	mes "[贡献证书自动售卖机]";
+	mes "- 选择您想要的项目。 -";
+	mes "当前贡献证书：" + countitem(6685) + "";
+	next;
+	switch( select(
+		"Do not exchange.",
+		"[1] EXP -(1)",
+		"[2] Job Agency Recommendation -(1)",
+		"[3] 20 Condensed White Potions -(10)",
+		"[4] 10 Red Gemstones -(20)",
+		"[5] 10 Yellow Gemstones -(20)",
+		"[6] 1 Sadagui -(20)",
+		"[7] 1 Yggdrasil Dust -(20)",
+		"[8] 1 Snow Flip -(20)",
+		"[9] 1 Peony Mami -(20)",
+		"[10] 1 Blue Potion -(30)",
+		"[11] 1 Great Nature -(50)",
+		"[12] 1 Rough Wind -(50)",
+		"[13] 1 Mystic Frozen -(50)",
+		"[14] 1 Flame Heart -(50)",
+		"[15] 1 Yggdrasil Seed -(100)" ) ) {
+	case 1:
+		close;
+	case 2:
+		mes "[贡献证书自动售卖机]";
+		mes "你想要经验吗？";
+		next;
+		while(1) {
+			if (select("是的。", "不。") == 2) {
+				mes "[贡献证书自动售卖机]";
+				mes "感谢您使用自动售货机。";
+				close;
+			}
+			if (countitem(6685) < 1) {
+				mes "[贡献证书自动售卖机]";
+				mes "证书不够。";
+				next;
+				mes "[贡献证书自动售卖机]";
+				mes "感谢您使用自动售货机。";
+				close;
+			}
+			delitem 6685,1;	// MoroccMerit
+			if (BaseLevel > 79 && BaseLevel < 91)
+				getexp 10000,0;
+			else if (BaseLevel > 90 && BaseLevel < 101)
+				getexp 15000,0;
+			else if (BaseLevel > 100 && BaseLevel < 111)
+				getexp 20000,0;
+			else if (BaseLevel > 110 && BaseLevel < 121)
+				getexp 25000,0;
+			else if (BaseLevel > 120 && BaseLevel < 131)
+				getexp 30000,0;
+			else if (BaseLevel > 130 && BaseLevel < 141)
+				getexp 35000,0;
+			else if (BaseLevel > 140 && BaseLevel < 151)
+				getexp 40000,0;
+			else
+				getexp 45000,0;
+			mes "[贡献证书自动售卖机]";
+			mes "您想继续兑换吗？";
+			next;
+		}
+		end;
+	case 3:
+		mes "[贡献证书自动售卖机]";
+		mes "您想要职业介绍所推荐吗？";
+		next;
+		while(1) {
+			if (select("是的。", "不。") == 2) {
+				mes "[贡献证书自动售卖机]";
+				mes "感谢您使用自动售货机。";
+				close;
+			}
+			if (countitem(6685) < 1) {
+				mes "[贡献证书自动售卖机]";
+				mes "证书不够。";
+				next;
+				mes "[贡献证书自动售卖机]";
+				mes "感谢您使用自动售货机。";
+				close;
+			}
+			delitem 6685,1;	// MoroccMerit
+			if (BaseLevel > 79 && BaseLevel < 91)
+				getexp 0,10000;
+			else if (BaseLevel > 90 && BaseLevel < 101)
+				getexp 0,12000;
+			else if (BaseLevel > 100 && BaseLevel < 111)
+				getexp 0,5000;
+			else if (BaseLevel > 110 && BaseLevel < 121)
+				getexp 0,7000;
+			else if (BaseLevel > 120 && BaseLevel < 131)
+				getexp 0,9000;
+			else if (BaseLevel > 130 && BaseLevel < 141)
+				getexp 0,11000;
+			else if (BaseLevel > 140 && BaseLevel < 151)
+				getexp 0,13000;
+			else
+				getexp 0,13000;
+			mes "[贡献证书自动售卖机]";
+			mes "您想继续兑换吗？";
+			next;
+		}
+		end;
+	case 4:  callsub( S_Exchange, 10,   547, 20 );	// White_Slim_Potion
+	case 5:  callsub( S_Exchange, 20,   716, 10 );	// Red_Gemstone
+	case 6:  callsub( S_Exchange, 20,   715, 10 );	// Yellow_Gemstone
+	case 7:  callsub( S_Exchange, 20, 12814,  1 );	// Slapping_Herb
+	case 8:  callsub( S_Exchange, 20, 12815,  1 );	// Yggdrasil_Dust
+	case 9:  callsub( S_Exchange, 20, 12812,  1 );	// Snow_Flip
+	case 10: callsub( S_Exchange, 20, 12813,  1 );	// Peony_Mommy
+	case 11: callsub( S_Exchange, 30,   505,  1 );	// Blue_Potion
+	case 12: callsub( S_Exchange, 50,   997,  1 );	// Great_Nature
+	case 13: callsub( S_Exchange, 50,   996,  1 );	// Rough_Wind
+	case 14: callsub( S_Exchange, 50,   995,  1 );	// Mistic_Frozen
+	case 15: callsub( S_Exchange, 50,   994,  1 );	// Flame_Heart
+	case 16: callsub( S_Exchange, 100,  608,  1 );	// Seed_Of_Yggdrasil
+	default:
+		mes "[贡献证书自动售卖机]";
+		mes "故障。";
+		close;
+	}
+	end;
+
+S_Exchange:
+	.@item_id = getarg(1);
+	mes "[贡献证书自动售卖机]";
+	mes "你想要" + getitemname(.@item_id) + "？";
+	next;
+	while(1) {
+		if (select("是的。", "不。") == 2) {
+			mes "[贡献证书自动售卖机]";
+			mes "感谢您使用自动售货机。";
+			close;
+		}
+		if (countitem(6685) < getarg(0)) {
+			mes "[贡献证书自动售卖机]";
+			mes "证书不够。";
+			next;
+			mes "[贡献证书自动售卖机]";
+			mes "感谢您使用自动售货机。";
+			close;
+		}
+		delitem 6685, getarg(0);	// MoroccMerit
+		getitem .@item_id, getarg(2);
+		mes "[贡献证书自动售卖机]";
+		mes "您想继续兑换吗？";
+		next;
+	}
+	end;
+}
+
+
+// Doom Prayers event on verus04
+verus04,2,2,0	script	Sneak attack timer#EP15_1D	HIDDEN_WARP_NPC,{
+	end;
+OnTimer60000:
+	if (rand(1,2) == 1)
+		initnpctimer "Perishing blessing society#EP15_1D";
+	end;
+OnTimer3600000:
+OnInit:
+	initnpctimer;
+	end;
+}
+
+verus04,3,3,4	script	Perishing blessing society#EP15_1D	CLEAR_NPC,{
+	if (callfunc("F_GM_NPC",1854,0,0,9999) < 1)
+		end;
+	mes "[小帮手]";
+	mes "第15.1集";
+	mes "我是幻影保安队任务的小帮手。您需要帮助吗？";
+	next;
+	while(1) {
+		switch( select( "查看角色状态", "任务设置", "活动操作", "结束NPC" ) ) {
+		case 1:
+			mes "5304(中)" + isbegin_quest(5304) + "/ 5312(中)" + isbegin_quest(5312) + "";
+			mes "5305(中)" + isbegin_quest(5305) + "/ 5313(中)" + isbegin_quest(5313) + "";
+			mes "5306(中)" + isbegin_quest(5306) + "/ 5314(高)" + checkquest(5314,HUNTING) + "";
+			mes "5307(中)" + isbegin_quest(5307) + "/ 5315(中)" + isbegin_quest(5315) + "";
+			mes "5308(中)" + isbegin_quest(5308) + "/ 5316(中)" + isbegin_quest(5316) + "";
+			mes "5309(中)" + isbegin_quest(5309) + "/ 5317(中)" + isbegin_quest(5317) + "";
+			mes "5310(中)" + isbegin_quest(5310) + " / 5318(T)" + checkquest(5318,PLAYTIME) + "";
+			mes "5311(中)" + isbegin_quest(5311) + "/ (N) 正常 (H) 时间 (T) 时间";
+			next;
+			continue;
+		case 2:
+			mes "[小帮手]";
+			mes "任务设置。";
+			mes "等级限制140。";
+			mes "没有达到140的，可能无法执行任务。";
+			next;
+			switch( select( "重置冷却时间", "设置为奖励前", "物品描述", "任务初始化" ) ) {
+			case 1:
+				mes "[小帮手]";
+				mes "仅删除 23 小时的冷却时间。";
+				next;
+				select("消除");
+				erasequest 5318;
+				mes "[小帮手]";
+				mes "已删除。";
+				next;
+				continue;
+			case 2:
+				mes "[小帮手]";
+				mes "请在设置为奖励之前选择是否接受..";
+				next;
+				if (isbegin_quest(5304) == 0) {
+					setquest 5304;
+					completequest 5304;
+				}
+				setquest 5309;
+				setarray .@name$[0], "Salgran", "Gerev", "Seiden", "Piffs";
+				for ( .@i = 0; .@i < 4; ++.@i ) {
+					if (select( "警官" + .@name$[.@i] + "请询问O", "警官" + .@name$[.@i] + "请询问X" ) == 1) {
+						.@id = 5314 + .@i;
+						if (isbegin_quest(.@id) == 0)
+							setquest .@id;
+						if (isbegin_quest(.@id) == 1)
+							completequest .@id;
+					}
+					.@id = 5305 + .@i;
+					if (isbegin_quest(.@id) == 0) {
+						setquest .@id;
+						completequest .@id;
+					}
+					setquest (5310 + .@i);
+				}
+				mes "[小帮手]";
+				mes "完毕。";
+				next;
+				continue;
+			case 3:
+				mes "[小帮手]";
+				mes "此任务将确认任务和访客。请收到任务后使用该功能。";
+				next;
+				switch( select( "移除陷阱", "收集石头", "收集草药。", "结束NPC" ) ) {
+				case 1:
+					mes "[小帮手]";
+					mes "设置为陷阱已被移除的状态。";
+					next;
+					select("设置");
+					ep15_1_mang = 10;
+					continue;
+				case 2:
+					mes "[小帮手]";
+					mes "设置为已完成的石头状态。";
+					next;
+					select("设置");
+					ep15_1_mang = 10;
+					getitem 7049,10;// Stone
+					continue;
+				case 3:
+					mes "[小帮手]";
+					mes "设置为已完成采药的状态。";
+					next;
+					select("设置");
+					ep15_1_mang = 10;
+					getitem 6754,10;// Collected_Herb
+					continue;
+				case 4:
+					mes "[小帮手]";
+					mes "再见~";
+					close;
+				}
+				end;
+			case 4:
+				mes "[小帮手]";
+				mes "末日预言者 vs. Phantasmagorika 安全小组任务初始化。";
+				next;
+				select("任务初始化");
+				ep15_1_mang = 0;
+				delitem 7049, countitem(7049);// Stone
+				getitem 6754, countitem(6754);// Collected_Herb
+				for ( .@i = 5304; .@i <= 5318; ++.@i ) {
+					if (isbegin_quest(.@i) > 0)
+						erasequest .@i;
+				}
+				mes "[小帮手]";
+				mes "已初始化。";
+				next;
+				continue;
+			}
+			end;
+		case 3:
+			mes "[小帮手]";
+			mes "调整突发活动路段，无需确认实施，请评估后再使用。";
+			next;
+			switch( select( "活动开始", "活动结束", "控制计时器开始", "控制计时器结束" ) ) {
+			case 1:
+				mes "[小帮手]";
+				mes "突然活动开始，当前地图数量有" + getmapusers("verus04") + "人，释放的怪物只有15+" + getmapusers("verus04") + "而已。";
+				next;
+				select("开始");
+				initnpctimer "Perishing blessing society#EP15_1D";
+				mes "[小帮手]";
+				mes "突然的任务开始。";
+				next;
+				continue;
+			case 2:
+				mes "[小帮手]";
+				mes "突发任务结束一旦选择，即使实际上正在进行，也会强制结束。";
+				next;
+				select("结尾");
+				donpcevent "Perishing blessing society#EP15_1D::OnStop";
+				mes "[小帮手]";
+				mes "任务突然结束。";
+				next;
+				continue;
+			case 3:
+				mes "[小帮手]";
+				mes "将控制突然活动的计时器设置为“开”。尚未确认，操作时请注意。";
+				next;
+				select("开始");
+				initnpctimer "Sneak attack timer#EP15_1D";
+				mes "[小帮手]";
+				mes "突发活动计时器已启动。";
+				next;
+				continue;
+			case 4:
+				mes "[小帮手]";
+				mes "将控制突然活动的计时器设置为“关闭”。尚未确认，操作时请注意。";
+				next;
+				select("结尾");
+				stopnpctimer "Sneak attack timer#EP15_1D";
+				mes "[小帮手]";
+				mes "突发活动计时器已结束。";
+				next;
+				continue;
+			}
+			end;
+		case 4:
+			mes "[小帮手]";
+			mes "再见~";
+			close;
+		}
+	}
+	end;
+
+OnTimer1000:
+	.@count = 10 + getmapusers("verus04");
+	.@label$ = "Perishing blessing society#EP15_1D::OnMyMobDead";
+    monster "verus04",0,0,"Doom Prayers Believer",3158,.@count, .@label$;	// RUIN_BELIEVER2
+    monster "verus04",0,0,"Ruin Grace Believer",3157,5, .@label$;			// RUIN_BELIEVER1
+	copyarray .mob_id[0], $@mobid[0], 5;
+
+	mapannounce "verus04", "Police Officer Piffs: The Doom Prayers have stricken!", bc_map,0xFFFF00;
+	end;
+OnTimer3000:
+	mapannounce "verus04", "Police Chief Kesler: Attention all police officers, stop the Doom Prayers before they destroy the excavation site!", bc_map,0xFFFF00;
+	end;
+OnTimer30000:
+	mapannounce "verus04", "Doom Prayers Executive: Destroy and bring the end of the world! Destroy and be saved!", bc_map,0xFFFF00;
+	end;
+OnTimer60000:
+	mapannounce "verus04", "Police Officer Piffs: Argh, Doom Prayers! Where do they keep coming from?!", bc_map,0xFFFF00;
+	callsub( S_String,
+		"Doom Prayers Executive : *Chuckle*...Near the time of demise.",
+		"Doom Prayers Executive : Let it be destroyed!!",
+		"Doom Prayers Executive : All throwing stones and throwing it!!",
+		"Doom Prayers Executive : Only when we can die can we get salvation.",
+		"Doom Prayers Executive : There are so many unnecessary people! Attack~~!!"
+	);
+OnTimer120000:
+	mapannounce "verus04", "Police Chief Kesler: Everyone, do not retreat! Don't let them destroy the excavation site!", bc_map,0xFFFF00;
+	callsub( S_String,
+		"Doom Prayers Executive : There are so many unnecessary people! Attack~~!!",
+		"Doom Prayers Executive : *Chuckle*...Near the time of demise.",
+		"Doom Prayers Executive : Let it be destroyed!!",
+		"Doom Prayers Executive : All throwing stones and throwing it!!",
+		"Doom Prayers Executive : Only when we can die can we get salvation."
+	);
+OnTimer180000:
+	mapannounce "verus04", "Police Officer Piffs: Those Doom Prayers underestimate us.", bc_map,0xFFFF00;
+	callsub( S_String,
+		"Doom Prayers Executive : Only when we can die can we get salvation.",
+		"Doom Prayers Executive : There are so many unnecessary people! Attack~~!!",
+		"Doom Prayers Executive : *Chuckle*...Near the time of demise.",
+		"Doom Prayers Executive : Let it be destroyed!!",
+		"Doom Prayers Executive : All throwing stones and throwing it!!"
+	);
+OnTimer240000:
+	mapannounce "verus04", "Police Chief Kesler: The guys who died in the attack thought we were bullied!", bc_map,0xFFFF00;
+	callsub( S_String,
+		"Doom Prayers Executive : All throwing stones and throwing it!!",
+		"Doom Prayers Executive : Only when we can die can we get salvation.",
+		"Doom Prayers Executive : There are so many unnecessary people! Attack~~!!",
+		"Doom Prayers Executive : *Chuckle*...Near the time of demise.",
+		"Doom Prayers Executive : Let it be destroyed!!"
+	);
+OnTimer300000:
+	// fallthrough
+OnStop:
+	stopnpctimer;
+	killmonster "verus04", "Perishing blessing society#EP15_1D::OnMyMobDead";
+	mapannounce "verus04", "Police Chief Kesler: Adventurers, the Doom Prayers have been driven out of Phantasmagorika. They're no longer a threat to your safety.", bc_map,0xFFFF00;
+	end;
+OnMyMobDead:
+	if (mobcount( "verus04", "Perishing blessing society#EP15_1D::OnMyMobDead" ) < 1) {
+		mapannounce "verus04", "Doom Prayers Executive: Damn! This time can only be a temporarily retreat!!!", bc_map,0xFFFF00;
+		donpcevent "Perishing blessing society#EP15_1D::OnStop";
+	}
+	end;
+S_String:
+	for ( .@i = 0; .@i < 5; ++.@i ) {
+		if (unitexists(.mob_id[.@i]) == true)
+			unittalk .mob_id[.@i], getarg(.@i);
+	}
+	end;
+}

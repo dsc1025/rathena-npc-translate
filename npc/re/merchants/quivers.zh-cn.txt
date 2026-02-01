@@ -1,0 +1,152 @@
+//===== rAthena Script =======================================
+//= Arrow Quivers
+//===== By: ==================================================
+//= Muad_Dib (Prometheus Project); L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Turns arrows into Arrow Quivers.
+//= Breakdown of Subroutine "S_BuyQuiver"
+//= arg(0): Type of Arrow to be packaged (item ID).
+//= arg(1): How many of each 'getarg(0)' arrow per quiver.
+//= arg(2): The cost of making a 'getarg(0)' quiver.
+//= arg(3): The quiver given by the NPC (item ID).
+//===== Additional Comments: =================================
+//= 1.0 Added Mora NPC. [Euphy]
+//= 1.1 Updated to match the official scripts. [Euphy]
+//= 1.2 Update regarding the Barter Shop [JohnnyPlayy, Capuche]
+//============================================================
+
+// Mora :: ep14_1_tre
+//============================================================
+mora,106,117,3	script	Quiver Maker#mora	4_M_RAFLE_GR,{
+	if (checkweight(1201,1) == 0) {
+		mes "[箭袋制造者]";
+		mes "你身上带的东西太多了。";
+		mes "在你的库存中腾出一些空间然后再回来。我会告诉你一些有趣的事情。";
+		close;
+	}
+	if (MaxWeight - Weight < 2000) {
+		mes "[箭袋制造者]";
+		mes "你似乎对这些事情感到厌倦了。";
+		mes "在你的库存中腾出一些空间然后再回来。我会告诉你一些有趣的事情。";
+		close;
+	}
+	mes "[箭袋制造者]";
+	mes "莫拉村民询问什么是好的箭袋。他们只是不知道世界是如何运转的。";
+	mes "难怪他们对箭袋一无所知——整天把果酱涂在叶子上。";
+	next;
+	if (getbattleflag("feature.barter")) {
+		.@menu$ = "I want arrows";
+	}
+	switch( select("请给我做一个箭袋。", .@menu$, "什么是箭袋？") ) {
+	case 1:
+		if (getbattleflag("feature.barter")) {
+			mes "[箭袋制造者]";
+			mes "终于，有人知道了箭袋的真正价值。我会为那些知道它的价值的人做这件事。";
+			close2;
+			callshop "Quiver_Archer", 1;
+			end;
+		}
+		mes "[箭袋制造者]";
+		mes "终于有人欣赏了！";
+		mes "我可以制作精灵箭袋和狩猎箭袋。";
+		mes "你需要哪一个？";
+		next;
+		switch(select("精灵箭袋：狩猎箭袋：我不需要箭袋。")) {
+		case 1: callsub S_BuyQuiver,1773,500,500,12575; //Arrow_Of_Elf_Cntr
+		case 2: callsub S_BuyQuiver,1774,500,500,12576; //Hunting_Arrow_Cntr
+		case 3:
+			mes "[箭袋制造者]";
+			mes "你可以在我旁边的工具商人那里买箭。";
+			close;
+		}
+		end;
+	case 2:
+		if (getbattleflag("feature.barter")) {
+			mes "[箭袋制造者]";
+			mes "我不卖普通箭。这些是只能在这里购买的手工箭头。你真的会认识到它的价值吗？";
+			close2;
+			callshop "Catch_Arrows", 1;
+		}
+		end;
+	case 3:
+		mes "[箭袋制造者]";
+		mes "一支箭可能又细又轻，但携带成百上千支箭就像携带一整根木头一样。";
+		next;
+		mes "[箭袋制造者]";
+		mes "但是，当您有箭袋时，您可以将箭头放入其中，从而节省重量和空间。";
+		mes "如果你有兴趣，我给你缝一张。";
+		close;
+	}
+	end;
+
+S_BuyQuiver:
+	.@item_req = getarg(0);
+	.@req_amount = getarg(1);
+	if (countitem(getarg(0)) < .@req_amount) {
+		mes "[箭袋制造者]";
+		mes "带上超过"+ .@req_amount +" "+ getitemname(.@item_req) +" 我会让你颤抖。";
+		close;
+	}
+	mes "[箭袋制造者]";
+	mes "哦，我看到你有"+ getitemname(.@item_req) +"在你手里！";
+	mes "您有兴趣使用箭袋吗？真是太方便了！";
+	mes "如果你有兴趣，我可以用"+ .@req_amount +"这些箭头换取其中一个箭袋，换取^FF3131"+getarg(2)+" zeny^000000。";
+	next;
+	switch(select("交易你拥有的所有箭头：只获得一箭袋：不要交易")) {
+	case 1:
+		set .@arrows, countitem(.@item_req);
+		set .@quiver, .@arrows / .@req_amount;
+		set .@arrows_used, .@quiver * .@req_amount;
+		set .@arrow_zeny01, .@quiver * getarg(2);
+		mes "您拥有的箭头数量：^3131FF"+.@arrows+"^000000";
+		mes "可用箭袋数量：^3131FF"+.@quiver+"^000000";
+		mes "交易所需的 Zeny : ^3131FF"+.@arrow_zeny01+" zeny^000000";
+		next;
+		mes "贸易？";
+		next;
+		if(select("交易：不进行交易") == 2) {
+			mes "[箭袋制造者]";
+			mes "嘿嘿，你不会怀疑我的技术吧？";
+			close;
+		}
+		break;
+	case 2:
+		set .@quiver, 1;
+		set .@arrows_used, .@req_amount;
+		set .@arrow_zeny01, getarg(2);
+		set .@zeny_mes,1;
+		break;
+	case 3:
+		mes "[箭袋制造者]";
+		mes "嘿嘿，你不会怀疑我的技术吧？";
+		close;
+	}
+	if (Zeny < .@arrow_zeny01) {
+		mes "[箭袋制造者]";
+		if (.@zeny_mes == 1)
+			mes "我说就为了你收人币，你还不肯花？";
+		else
+			mes "你真的不希望白白得到一件杰作，不是吗？";
+		close;
+	}
+	mes "[箭袋制造者]";
+	mes "嘿，你来了。";
+	mes "有^3131FF一些你需要知道的^000000 - 试着记住它。";
+	mes "^FF0000当你的负担超过70%时，你不能使用箭袋。^000000";
+	mes "你最好记住这一点，否则以后你可能会遇到麻烦。";
+	set Zeny, Zeny-.@arrow_zeny01;
+	delitem .@item_req,.@arrows_used;
+	getitem getarg(3),.@quiver;
+	close;
+}
+
+//= Basic Shops
+//============================================================
+
+//= Arrows
+-	marketshop	Catch_Arrows	HIDDEN_NPC,1773:5:-1,1774:5:-1

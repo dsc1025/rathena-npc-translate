@@ -1,0 +1,481 @@
+//===== rAthena Script =======================================
+//= Horror Toy Factory merchants
+//===== Description: =========================================
+//= [Official Conversion]
+//= Horror Toy Factory enchants / exchange in xmas
+//===== Changelogs: ==========================================
+//= 1.0 First version. Uses official script structure and text
+//=     from iRO. [Capuche]
+//============================================================
+
+xmas,240,291,3	script	Billy The Golden Hands#1	4_F_05,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "你拥有的物品种类太多了。减少项目排序后重试。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "你的负担太重了，所以你不能再继续下去了。请减轻重量后重试。";
+		close;
+	}
+	mes "[金手比利]";
+	mes "呼呼。你带了一些硬币吗？如果你有硬币，我愿意卖掉任何东西，除了我的灵魂。";
+	next;
+
+	setarray .@xm_item[0],
+		22534, 100,		// Closedmind_Box
+		18848, 500,		// Lush_Rose
+		19687, 1000,	// C_Lush_Rose
+		19686, 500,		// C_SantaHairband
+		19701, 500,		// C_Red_Bonnet
+		13442, 1000,	// Old_Parasol
+		11563, 7,		// Hot_Tee
+		11564, 5,		// Sweet_Canape
+		523,   1,		// Holy_Water
+		12020, 1;		// Water_Of_Darkness
+
+	.@s = ( select( "取消", "关闭心灵宝箱（100币）", "Lush Rose（500币）", "C Lush Rose（1000币）", "C圣诞老人发带（500币）", "C红色帽子（500币）", "旧阳伞（1000）金币）", "热茶（7币）", "甜食（5币）", "圣水（1币）", "黑暗之水（1币）" ) -2 ) * 2;
+	if (.@s == -2) {
+		mes "[金手比利]";
+		mes "哈哈，你有没有什么顾忌什么的？好吧，那么。当你改变主意时，随时再来。";
+		close;
+	}
+	if (countitem(7642) >= .@xm_item[.@s+1]) {
+		mes "[金手比利]";
+		mes "您需要^0000ff" + .@xm_item[.@s+1] + "^000000血腥硬币来购买^0000ff" + getitemname(.@xm_item[.@s]) + "^000000。你要买吗？";
+		next;
+		if (select( "取消", "购买" ) == 1) {
+			mes "[金手比利]";
+			mes "哈哈，你真是个善变的朋友。如果你真的决定买的话，就再来吧。";
+			close;
+		}
+		if (countitem(7642) >= .@xm_item[.@s+1]) {
+			delitem 7642,.@xm_item[.@s+1];// Bloody_Coin
+			getitem .@xm_item[.@s], 1;
+			mes "[金手比利]";
+			mes "你已经付出了代价。我期待再次见到您。！";
+			close;
+		}
+	}
+	mes "[金手比利]";
+	mes "您需要^0000ff" + .@xm_item[.@s+1] + "^000000血腥硬币来购买^0000ff" + getitemname(.@xm_item[.@s]) + "^000000。你还缺他们。";
+	close;
+}
+
+
+xmas,240,297,3	script	Vagrant Cain#1	4_M_06,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "你拥有的物品种类太多了。减少项目排序后重试。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "你的负担太重了，所以你不能再继续下去了。请减轻重量后重试。";
+		close;
+	}
+	mes "[流浪该隐]";
+	mes "哦，我确信你来这里是因为你不喜欢平凡。跟我说话吧。如果你准备了合理的费用和适当的材料，我会做任何事情。";
+	next;
+	.@s = select( "我没有想要的东西。", "我想要席琳的丝带。", "我正在寻找高贵十字。", "我想要邪灵手套。" );
+	switch(.@s) {
+	case 1:
+		mes "[流浪该隐]";
+		mes "是的，是的。一开始大家都说像你一样。稍后见。";
+		close;
+	case 2:
+		.@string$[0] = "Ho~ You are looking for a very unique headgear, my friend. You have great discernment.";
+		.@string$[1] = "I need ^0000ff1000 ^000000Bloody Coins and ^0000ff+9 or greater Lush Rose^000000 for ^0000ffCeline's Ribbon^000000. Do you have enough materials?";
+		.@string$[2] = "You should prepare ^0000ff1000 ^000000Bloody Coins and one ^0000ff +9 or greater Lush Rose^000000 for ^0000ffCeline's Ribbon^000000. Don't forget!";
+		.@string$[3] = "Are you really going to trade them? ^ff0000The refine levels, effects, and card of the item will disappear and you cannot get a refund^000000. Please consider it!";
+		break;
+	case 3:
+		.@string$[0] = "Ho~ You are looking for a very precious weapon, my friend. You have great discernment.";
+		.@string$[1] = "I need ^0000ff2000 ^000000Bloody Coins and one ^0000ffGrand Cross (slot)^000000 for ^0000ffNoble Cross^000000. Do you have enough materials?";
+		.@string$[2] = "You should prepare ^0000ff 2000 ^000000Bloody Coins and one ^0000ff Grand Cross (slot)^000000 for ^0000ffNoble Cross^000000. Don't forget!";
+		.@string$[3] = "Are you really going to trade them? ^ff0000The refine levels, effects, and card of the item will disappear and you cannot get a refund^000000. Please consider it!";
+		break;
+	case 4:
+		.@string$[0] = "Ho~ You are looking for a very rare accessory, my friend. You have great discernment.";
+		.@string$[1] = "I need ^0000ff1000 ^000000Bloody Coins, one ^0000ffHurt Mind, Kind Heart, and Red Lantern ^000000each for ^0000ffEvilspirit Gloves^000000. Do you have enough materials?";
+		.@string$[2] = "You should prepare ^0000ff1000 ^000000Bloody Coins, one ^0000ffHurt Mind, Kind Heart, and Red Lantern ^000000each for ^0000ffEvilspirit Gloves^000000. Don't forget!";
+		.@string$[3] = "Are you really going to trade them? ^ff0000The effects, and card of the item will disappear and you cannot get a refund^000000. Besides, if you have the same sort of things, I don't know which one will be chosen. Think about that.";
+		break;
+	}
+	mes "[流浪该隐]";
+	mes .@string$[0];
+	next;
+	mes "[流浪该隐]";
+	mes .@string$[1];
+	next;
+	if (select( "我现在没有", "我会立即交易它" ) == 1) {
+		mes "[流浪该隐]";
+		mes "准备好后就回来吧。让我提醒您一下材料。";
+		next;
+		mes "[流浪该隐]";
+		mes .@string$[2];
+		close;
+	}
+	mes "[流浪该隐]";
+	mes .@string$[3];
+	next;
+	if (select( "下次我会尝试", "立即兑换" ) == 1) {
+		mes "[流浪该隐]";
+		mes "好吧，你决心已定。希望我们下次还能见面，呵呵。";
+		close;
+	}
+	switch(.@s) {
+	case 2:
+		mes "[流浪该隐]";
+		if (getequipid(EQI_HEAD_TOP) != 18848)// Lush_Rose
+			mes "你戴的帽子不是 Lush Rose。把我告诉你的正确材料带给我，kukuku。";
+		else if (getequiprefinerycnt(EQI_HEAD_TOP) < 9)
+			mes "你戴的帽子没有精炼到+9或更高。你不能用它进行交易。";
+		else if (countitem(7642) < 1000)
+			mes "好吧，你缺少血腥硬币。您需要恰好收集 1000 个。少于这个..这是没有办法的。";
+		else {
+			delitem 7642,1000;// Bloody_Coin
+			delequip EQI_HEAD_TOP;
+			getitem 18849,1;// Celines_Ribbon
+			mes "交易已经完成。看看它。";// custom
+		}
+		close;
+	case 3:
+		mes "[流浪该隐]";
+		if (getequipid(EQI_HAND_R) != 1540)// Grand_Cross_
+			mes "你右手上的东西不是Grand Cross（插槽）。把我告诉你的正确的事情带给我，库库。";
+		else if (countitem(7642) < 2000)
+			mes "好吧，你缺少血腥硬币。您需要恰好收集 2000 个。少于这个..这是没有办法的。";
+		else {
+			delitem 7642,2000;// Bloody_Coin
+			delequip EQI_HAND_R;
+			getitem 16029,1;// Noble_Cross
+			mes "交易已经完成。看看它。";// custom
+		}
+		close;
+	case 4:
+		mes "[流浪该隐]";
+		if (countitem(7642) > 999 && countitem(2977) > 0 && countitem(2978) > 0 && countitem(2976) > 0) {
+			delitem 7642,1000;// Bloody_Coin
+			delitem 2977,1;// Hurt_Mind
+			delitem 2978,1;// KindHeart
+			delitem 2976,1;// Red_Lantern
+			getitem 2980,1;// Evilspirit_Gloves
+			mes "交易已经完成。看看它。";// custom
+		}
+		else {
+			mes "你没有足够的材料。";
+			next;
+			mes "[流浪该隐]";
+			mes "你应该为^0000ff邪灵手套^000000准备^0000ff1000个^000000血币，一个^0000ff伤害心灵，善良的心和红灯笼^000000各一个。";
+		}
+		close;
+	}
+}
+
+xmas,240,294,3	script	Black Beard Joe#pa0829	4_M_05,{
+	disable_items;
+	if (checkweight(1201,1) == 0) {
+		mes "你拥有的物品种类太多了。减少项目排序后重试。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 10000) {
+		mes "你的负担太重了，所以你不能再继续下去了。请减轻重量后重试。";
+		close;
+	}
+	mes "[黑胡子乔]";
+	mes "呵呵，人类的贪婪自然是无欲无求的。你想让我做什么？";
+	next;
+	switch( select( "你能为我做什么？", "附魔玩具厂配件", "附魔玩具厂武器", "附魔玩具厂头饰", "附魔玩具厂鞋子" ) ) {
+	case 1:
+		mes "[黑胡子乔]";
+		mes "我该怎么办？这真的很简单。你只要给我带来血腥硬币，我就会得到它们并为你的配饰附魔。";
+		next;
+		mes "[黑胡子乔]";
+		mes "我每次尝试都会获得 15 血腥币。每 15 个金币我就会附魔 1 个槽位。当然，3是最大的。";
+		next;
+		mes "[黑胡子乔]";
+		mes "嗯，很自然，随着升级等级的提高，破坏率也会越高。我建议你停止第一次或第二次尝试，嘻嘻。";
+		close;
+	case 2:
+		.@eq_num = EQI_ACC_R;
+		break;
+	case 3:
+		.@eq_num = EQI_HAND_R;
+		break;
+	case 4:
+		.@eq_num = EQI_HEAD_TOP;
+		break;
+	case 5:
+		.@eq_num = EQI_SHOES;
+		break;
+	}
+	.@item_id = getequipid(.@eq_num);
+	.@refine = getequiprefinerycnt(.@eq_num);
+	setarray .@card[0],
+		getequipcardid(.@eq_num,0),
+		getequipcardid(.@eq_num,1),
+		getequipcardid(.@eq_num,2),
+		getequipcardid(.@eq_num,3);
+
+	switch(.@item_id) {
+	case 2976:	// Red_Lantern
+	case 2977:	// Hurt_Mind
+	case 2978:	// KindHeart
+	case 2980:	// Evilspirit_Gloves
+		.@sc_type = 1;// acc
+		break;
+	case 2486:	// Shadow_Walk_
+	case 18848:	// Lush_Rose
+	case 18849:	// Celines_Ribbon
+		.@sc_type = 2;// armor
+		break;
+	case 13442:	// Old_Parasol
+		.@sc_type = 3;// weapon
+		break;
+	case 16029:	// Noble_Cross
+		mes "[黑胡子乔]";// custom
+		mes "哦，你装备了^0000ff高贵十字^000000！这东西需要找别人附魔才行。";
+		next;
+		mes "[黑胡子乔]";
+		mes "我已经尝试了几次，但没有运气。";
+		next;
+		mes "[黑胡子乔]";
+		mes "如果你想为这件武器附魔，请在马兰多岛找到^0000ffMayomayo^000000！他应该能够做到。";
+		close;
+	default:
+		break;
+	}
+	switch(.@eq_num) {
+	case EQI_ACC_R:
+		mes "[黑胡子乔]";
+		mes "你可以从2种类型中选择一种，每次尝试的费用是15血腥币。我会在附魔之前把它们弄好。";
+		next;
+		.@enchant_type = select( "退出", "STR/AGI/DEX 中的随机统计之一", "INT/VIT/DEX 中的随机统计" ) - 1;// enchant_type [1-2]
+		mes "[黑胡子乔]";
+		if (.@enchant_type == 0) {
+			mes "好吧，你愿意的话再来吧，库库。";
+			close;
+		}
+		if (.@sc_type < 1) {
+			mes "该设备不是来自玩具厂。我只能处理玩具厂的物品。";
+			close;
+		}
+		if (.@card[3] == 0) {
+			.@slot_num = 3;
+			mes "好吧，我们来试试第一个附魔吧。通常，它们没有损坏。成功率大约95%？";
+			.@string$ = "You blow hot and cold, this fickle friend.!";
+		}
+		else if (.@card[2] == 0) {
+			.@slot_num = 2;
+			mes "嗬～第二结界。现在它变得危险了。成功率约为70%。你想继续吗？如果失败，整个配件就会被炸毁。";// custom
+			.@string$ = "You blow hot and cold, this fickle friend.!";
+		}
+		else if (.@card[1] == 0) {
+			.@slot_num = 1;
+			mes "这是最后的结界。你会继续吗？此时，^ff0000成功率低于50%^000000。当然，如果能成功那就太好了……嗯，我会遵循你的决定，但记住这一点。";// custom
+			.@string$ = "Wise! The third enchantment is too greedy.";// custom translation
+		}
+		else {
+			mes "嗬~这已经达到顶峰了。更高的附魔是不可能的，所以要满足并好好利用它。";// custom
+			close;
+		}
+		break;
+	case EQI_HAND_R:
+		mes "[黑胡子乔]";
+		if (.@sc_type < 1) {
+			mes "该设备不是来自玩具厂。我只能处理玩具厂的物品。";
+			close;
+		}
+		.@enchant_type = 3;
+		.@slot_num = 3;
+		mes "我只为武器附魔一次。没有失败，所以你可以将其视为奖励效果，te-hee。";
+		.@string$ = "You blow hot and cold, this fickle friend.!";
+		break;
+	case EQI_HEAD_TOP:
+	case EQI_SHOES:
+		mes "[黑胡子乔]";
+		if (.@sc_type < 1) {
+			mes "该设备不是来自玩具厂。我只能处理玩具厂的物品。";
+			close;
+		}
+		if (.@card[3] == 0) {
+			.@slot_num = 3;
+			.@enchant_type = 4;
+			mes "好的。让我们开始第一个附魔吧。我会添加一种特殊的战斗效果。当然，你不必害怕，因为没有失败，kuku。";
+		}
+		else if (.@card[2] == 0) {
+			.@slot_num = 2;
+			.@enchant_type = 5;
+			mes "第二个结界。我将增强之前的状态之一。也不会有失败的情况，所以不用担心，kukuku";// custom
+		}
+		else {
+			mes "嗬~这已经达到顶峰了。更高的附魔是不可能的，所以要满足并好好利用它。";// custom
+			close;
+		}
+		.@string$ = "You blow hot and cold, this fickle friend.!";
+		break;
+	default:
+		mes "[黑胡子乔]";
+		mes "我不迷恋这个！";// custom
+		close;
+	}
+	next;
+	if (select( "我稍后会回来", "请这样做" ) == 1) {
+		mes "[黑胡子乔]";
+		mes .@string$;
+		close;
+	}
+	mes "[黑胡子乔]";
+	if (.@slot_num == 3)
+		setarray .@range[0],550,1050;
+	else if (.@slot_num == 2)
+		setarray .@range[0],450,1125;
+	else if (.@slot_num == 1)
+		setarray .@range[0],1,1161;
+	else {
+		mes "有问题，请再回来！";// custom
+		close;
+	}
+	.@enchant = 9;
+	switch(.@enchant_type) {
+	case 1:
+		.@r = rand(.@range[0],.@range[1]);
+			 if (.@r < 601)  .@enchant = 0;
+		else if (.@r < 701)  .@enchant = 4700;	// Strength1
+		else if (.@r < 801)  .@enchant = 4730;	// Agility1
+		else if (.@r < 901)  .@enchant = 4720;	// Dexterity1
+		else if (.@r < 951)  .@enchant = 4701;	// Strength2
+		else if (.@r < 1001) .@enchant = 4731;	// Agility2
+		else if (.@r < 1051) .@enchant = 4721;	// Dexterity2
+		else if (.@r < 1076) .@enchant = 4702;	// Strength3
+		else if (.@r < 1101) .@enchant = 4732;	// Agility3
+		else if (.@r < 1126) .@enchant = 4722;	// Dexterity3
+		else if (.@r < 1138) .@enchant = 4703;	// Strength4
+		else if (.@r < 1150) .@enchant = 4733;	// Agility4
+		else if (.@r < 1162) .@enchant = 4723;	// Dexterity4
+		else .@enchant = 9;
+		break;
+	case 2:
+		.@r = rand(.@range[0],.@range[1]);
+			 if (.@r < 601)  .@enchant = 0;
+		else if (.@r < 701)  .@enchant = 4710;	// Inteligence1
+		else if (.@r < 801)  .@enchant = 4740;	// Vitality1
+		else if (.@r < 901)  .@enchant = 4720;	// Dexterity1
+		else if (.@r < 951)  .@enchant = 4711;	// Inteligence2
+		else if (.@r < 1001) .@enchant = 4741;	// Vitality2
+		else if (.@r < 1051) .@enchant = 4721;	// Dexterity2
+		else if (.@r < 1076) .@enchant = 4712;	// Inteligence3
+		else if (.@r < 1101) .@enchant = 4742;	// Vitality3
+		else if (.@r < 1126) .@enchant = 4722;	// Dexterity3
+		else if (.@r < 1138) .@enchant = 4713;	// Inteligence4
+		else if (.@r < 1150) .@enchant = 4743;	// Vitality4
+		else if (.@r < 1162) .@enchant = 4723;	// Dexterity4
+		else .@enchant = 9;
+		break;
+	case 3:
+		.@r = rand(1,2555);
+			 if (.@r < 301)  .@enchant = 4820;	// Fighting_Spirit5
+		else if (.@r < 501)  .@enchant = 4821;	// Fighting_Spirit6
+		else if (.@r < 601)  .@enchant = 4822;	// Fighting_Spirit7
+		else if (.@r < 651)  .@enchant = 4823;	// Fighting_Spirit8
+		else if (.@r < 676)  .@enchant = 4824;	// Fighting_Spirit9
+		else if (.@r < 686)  .@enchant = 4825;	// Fighting_Spirit10
+		else if (.@r < 986)  .@enchant = 4816;	// Sharp3
+		else if (.@r < 1086) .@enchant = 4843;	// Sharp4
+		else if (.@r < 1096) .@enchant = 4844;	// Sharp5
+		else if (.@r < 1396) .@enchant = 4760;	// Matk1
+		else if (.@r < 1496) .@enchant = 4761;	// Matk2
+		else if (.@r < 1506) .@enchant = 4806;	// Matk3
+		else if (.@r < 1806) .@enchant = 4872;	// Attack_Delay_2
+		else if (.@r < 2006) .@enchant = 4873;	// Attack_Delay_3
+		else if (.@r < 2106) .@enchant = 4881;	// Attack_Delay_4
+		else if (.@r < 2116) .@enchant = 4807;	// Atk_Speed1
+		else if (.@r < 2416) .@enchant = 4827;	// Spell6
+		else if (.@r < 2516) .@enchant = 4828;	// Spell7
+		else if (.@r < 2546) .@enchant = 4829;	// Spell8
+		else if (.@r < 2556) .@enchant = 4830;	// Spell9
+		else .@enchant = 9;
+		break;
+	case 4:
+		.@r = rand(1,1950);
+			 if (.@r < 301)  .@enchant = 4810;	// Fighting_Spirit2
+		else if (.@r < 401)  .@enchant = 4809;	// Fighting_Spirit3
+		else if (.@r < 451)  .@enchant = 4808;	// Fighting_Spirit4
+		else if (.@r < 471)  .@enchant = 4820;	// Fighting_Spirit5
+		else if (.@r < 771)  .@enchant = 4818;	// Sharp1
+		else if (.@r < 871)  .@enchant = 4817;	// Sharp2
+		else if (.@r < 891)  .@enchant = 4816;	// Sharp3
+		else if (.@r < 991)  .@enchant = 4760;	// Matk1
+		else if (.@r < 1011) .@enchant = 4761;	// Matk2
+		else if (.@r < 1311) .@enchant = 4869;	// Attack_Delay_1
+		else if (.@r < 1411) .@enchant = 4872;	// Attack_Delay_2
+		else if (.@r < 1461) .@enchant = 4873;	// Attack_Delay_3
+		else if (.@r < 1481) .@enchant = 4881;	// Attack_Delay_4
+		else if (.@r < 1781) .@enchant = 4813;	// Spell3
+		else if (.@r < 1881) .@enchant = 4812;	// Spell4
+		else if (.@r < 1931) .@enchant = 4826;	// Spell5
+		else if (.@r < 1951) .@enchant = 4827;	// Spell6
+		else .@enchant = 9;
+		break;
+	case 5:
+		.@r = rand(1,1970);
+			 if (.@r < 301)  .@enchant = 4700;	// Strength1
+		else if (.@r < 401)  .@enchant = 4701;	// Strength2
+		else if (.@r < 451)  .@enchant = 4702;	// Strength3
+		else if (.@r < 471)  .@enchant = 4730;	// Agility1
+		else if (.@r < 771)  .@enchant = 4731;	// Agility2
+		else if (.@r < 871)  .@enchant = 4732;	// Agility3
+		else if (.@r < 891)  .@enchant = 4710;	// Inteligence1
+		else if (.@r < 991)  .@enchant = 4711;	// Inteligence2
+		else if (.@r < 1011) .@enchant = 4712;	// Inteligence3
+		else if (.@r < 1311) .@enchant = 4720;	// Dexterity1
+		else if (.@r < 1411) .@enchant = 4721;	// Dexterity2
+		else if (.@r < 1461) .@enchant = 4722;	// Dexterity3
+		else if (.@r < 1481) .@enchant = 4740;	// Vitality1
+		else if (.@r < 1781) .@enchant = 4741;	// Vitality2
+		else if (.@r < 1881) .@enchant = 4742;	// Vitality3
+		else if (.@r < 1931) .@enchant = 4750;	// Luck1
+		else if (.@r < 1951) .@enchant = 4751;	// Luck2
+		else if (.@r < 1971) .@enchant = 4752;	// Luck3
+		else .@enchant = 9;
+		break;
+	default:
+		break;
+	}
+	if (.@enchant == 9) {
+		mes "有问题，请再回来！";// custom
+		close;
+	}
+	if (.@card[3] == 0 && .@sc_type < 4)
+		.@index_slot = 3;
+	else if (.@card[2] == 0 && .@sc_type < 3)
+		.@index_slot = 2;
+	else if (.@card[1] == 0 && .@sc_type < 2)
+		.@index_slot = 1;
+	else {
+		mes "我不知道这是什么，但我想这不是我能处理的事情。";// custom
+		close;
+	}
+	if (countitem(7642) > 14) {// Bloody_Coin
+		delitem 7642,15;// Bloody_Coin
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@eq_num, .@item_id) || callfunc("F_IsEquipCardHack", .@eq_num, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@eq_num, .@refine))
+			close;
+
+		delequip .@eq_num;
+		if (.@enchant == 0) {
+			mes "哎哟!可怜的你，结界失败了，你的装备也坏了，天啊！";
+			close2;
+			specialeffect2 EF_LORD;
+			end;
+		}
+		.@card[ .@index_slot ] = .@enchant;
+		getitem2 .@item_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+		mes "嗯..成功了。看看它。";
+		specialeffect2 EF_REPAIRWEAPON;
+		close;
+	}
+	mes "嗯..顺便说一句，你需要填满血腥币。您甚至无法支付费用。";
+	close;
+}

@@ -1,0 +1,361 @@
+//===== rAthena Script =======================================
+//= Kagerou/Oboro Equipment Quests
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Quests for Kagerou/Oboro weapons and armor.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Euphy]
+//= 1.1 Little clean-up. [Capuche]
+//============================================================
+
+// Armor and Weapon NPCs :: kaboro_gearmix
+//============================================================
+que_ng,21,72,6	script	Master Armor Craftsman	4_M_RASWORD,{
+	mes "[乔]";
+	mes "你如何定义胜利？";
+	mes "为了击倒敌人...";
+	mes "然而，最重要的是……";
+	mes "永远不要让自己跌倒！";
+	next;
+	mes "[乔]";
+	mes "为此，你必须更好地保护自己。";
+	mes "当你阻碍“自己”的保护时，你就无法保护“他人”。";
+	next;
+	if(select("组合装甲。：结束对话。") == 2) {
+		mes "[乔]";
+		mes "谨慎也是战斗中的重要美德。";
+		close;
+	}
+	switch(select("狼护臂[1]：月牙护臂[1]：忍者鳞甲[1]：黑暗中的黑暗[1]：退出。")) {
+	case 1:
+		mes "[乔]";
+		mes "狼臂铠……一件野兽般的铠甲。";
+		next;
+		callsub L_Select,2172;
+		if (countitem(2171) > 0 && countitem(6252) > 9) {  //custom translation
+			delitem 2171,1; //Fox_Armguard
+			delitem 6252,10; //Wolf_Blood
+			getitem 2172,1; //Wolf_Armguard
+			mes "[乔]";
+			mes "你感受到狼的本性了吗？";
+			mes "既狂野又迷人……";
+			close;
+		}
+		break;
+	case 2:
+		mes "[乔]";
+		mes "新月护臂...美丽而力量的东西...但同样如此。";
+		next;
+		callsub L_Select,2173;
+		if (countitem(2171) > 0 && countitem(7321) > 99) {  //custom translation
+			delitem 2171,1; //Fox_Armguard
+			delitem 7321,100; //Fragment_Of_Crystal
+			getitem 2173,1; //Crescent_Armguard
+			mes "[乔]";
+			mes "这样的美...";
+			mes "仿佛全身都充满了魔力。";
+			close;
+		}
+		break;
+	case 3:
+		mes "[乔]";
+		mes "忍者鳞甲……据说，传说中的忍者曾经佩戴过它。";
+		next;
+		callsub L_Select,15054;
+		if (countitem(7451) > 29 && countitem(7562) > 29 && countitem(6091) > 29) {  //custom translation
+			delitem 7451,30; //Scale_Of_Red_Dragon
+			delitem 7562,30; //Ice_Scale
+			delitem 6091,30; //Dark_Red_Scale
+			getitem 15054,1; //Ninja_Scale_Armor
+			mes "[乔]";
+			mes "这确实是传说中的铠甲……";
+			mes "虽然我不相信传说...";
+			close;
+		}
+		break;
+	case 4:
+		mes "[乔]";
+		mes "影王铠甲……是为了保护他人而生的。";
+		next;
+		callsub L_Select,15055;
+		if (countitem(15056) > 0 && countitem(6089) > 9) {  //custom translation
+			delitem 15056,1; //Special_Ninja_Suit_
+			delitem 6089,10; //Piece_Of_Darkness
+			getitem 15055,1; //Tenebris_Latitantes
+			mes "[乔]";
+			mes "如何？";
+			mes "铠甲看起来不是有两个吗？";
+			close;
+		}
+		break;
+	case 5:
+		close;
+	}
+	mes "[乔]";
+	mes "你没有足够的成分。";
+	mes "再看看...";
+	close;
+
+L_Select:
+	.@string1$ = "Check Ingredients.";
+	.@string2$ = "Check Stats.";
+	while(1) {
+		switch(select(.@string1$,.@string2$,"合并。","退出。")) {
+		case 1:
+			.@string1$ = "";
+			callsub L_Ingredients, getarg(0);
+			break;
+		case 2:
+			.@string2$ = "";
+			callsub L_Stats, getarg(0);
+			break;
+		case 3:
+			callsub L_Combine;
+			return;
+		case 4:
+			mes "[乔]";
+			mes "看来你需要更多时间来决定。";
+			close;
+		}
+	}
+
+L_Ingredients:
+	mes "[乔]";
+	switch (getarg(0)) {
+	case 2172:	//Wolf_Armguard
+		mes "要制作^ff0000狼护臂，您需要1个狐护臂和10个狼之血^000000。";
+		mes "你能感觉到吗？狼血的悸动……";
+		break;
+	case 2173:	//Crescent_Armguard
+		mes "要制作^ff0000月牙护臂，您需要1个狐狸护臂和100个水晶碎片^000000。";
+		mes "其上，将刻出一道如水晶般美丽剔透的月牙。";
+		break;
+	case 15054:	//Ninja_Scale_Armor
+		mes "制作^ff0000忍者鳞甲，需要30片火龙鳞片、30片冰鳞片以及30片暗红鳞片^000000。";
+		mes "你可以感受到它的传奇力量。";
+		break;
+	case 15055:	//Tenebris_Latitantes
+		mes "要制作^ff0000暗影王铠甲，您需要一套带有插槽的特殊忍者套装和 10 个黑暗碎片^000000。";
+		mes "它用黑暗抹去了存在本身……";
+		break;
+	}
+	next;
+	return;
+
+L_Stats:
+	mes "[" + getitemname(getarg(0)) + "]";
+	switch (getarg(0)) {
+	case 2172:	//Wolf_Armguard
+		mes "有5秒的机会。 ATK+100，近战攻击时逃跑-50。";
+		mes "盾牌类型，防御 45，插槽 1";
+		mes "所需等级 100，仅限忍者类型";
+		break;
+	case 2173:	//Crescent_Armguard
+		mes "每次增强后技能延迟减少 2%。";
+		mes "盾牌类型，防御 70，插槽 1";
+		mes "所需等级 100，仅限忍者类型";
+		break;
+	case 15054:	//Ninja_Scale_Armor
+		mes "MHP+15%, MSP-30%";
+		mes "装甲类型，防御 90，插槽 1";
+		mes "所需等级 100，仅限忍者类型";
+		break;
+	case 15055:	//Tenebris_Latitantes
+		mes "有机会激活 Lvl。 1 幻象 - 受到近战攻击时出现阴影。";
+		mes "装甲类型，防御 60，插槽 1";
+		mes "所需等级 100，仅限忍者类型";
+		break;
+	}
+	next;
+	return;
+
+L_Combine:
+	mes "[乔]";
+	mes "确保^ff0000您手头有正确的原料和设备^000000。";
+	mes "以后再哭也没有用。";
+	next;
+	switch(select("结合：退出。")) {
+	case 1:
+		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
+			mes "- 坚持，稍等！！ -";
+			mes "- 您无法接收物品 -";
+			mes "——因为你带的东西太多了。 -";
+			mes "- 请再试一次 -";
+			mes "- 减轻你的负担之后。 -";
+			close;
+		}
+		return;
+	case 2:
+		mes "[乔]";
+		mes "看来你需要更多时间来决定。";
+		close;
+	}
+	end;
+}
+
+que_ng,23,70,3	script	Master Weapon Craftsman	4_DST_SOLDIER,{
+	mes "[基]";
+	mes "进攻是最好的防御手段。";
+	mes "一把强大的武器会让你真正完整。";
+	next;
+	mes "[基]";
+	mes "当然，如果手头有一些特别的东西就更好了。";
+	next;
+	if(select("组合武器：结束对话。") == 2) {
+		mes "[基]";
+		mes "过于小心有时可能会致命。";
+		close;
+	}
+	switch(select("罗刹匕首[1]:三胜月[1]:风魔飞舞花瓣[2]:退出。")) {
+	case 1:
+		mes "[基]";
+		mes "罗刹匕首只有经过大量训练后才能使用。";
+		next;
+		callsub L_Select,13076;
+		if (countitem(13013) > 0 && countitem(718) > 0) {  //custom translation
+			delitem 13013,1; //Murasame_
+			delitem 718,1; //Dark_Red_Jewel
+			getitem 13076,1; //Raksasa_Dagger
+			mes "[基]";
+			mes "啊...";
+			mes "多么美丽的光泽啊……";
+			close;
+		}
+		mes "[基]";
+		mes "嗯...你的钱还不足以制作一把罗刹匕首。";
+		break;
+	case 2:
+		mes "[基]";
+		mes "三桂……新月般美丽的曲线……";
+		mes "能够制作它们的人并不多。";
+		next;
+		callsub L_Select,13078;
+		if (countitem(13015) > 0 && countitem(727) > 0) {  //custom translation
+			delitem 13015,1; //Hakujin_
+			delitem 727,1; //White_Jewel
+			getitem 13078,1; //Mikatsuki
+			mes "[基]";
+			mes "确实很漂亮...";
+			mes "我很幸运能够亲眼目睹如此华丽的匕首。";
+			close;
+		}
+		mes "[基]";
+		mes "嗯...你的钱不够做三胜。";
+		break;
+	case 3:
+		mes "[基]";
+		mes "呼玛旋转花瓣……你见过旋转的花瓣吗？";
+		next;
+		callsub L_Select,13313;
+		if (countitem(13304) > 0 && countitem(7156) > 99) {  //custom translation
+			delitem 13304,1; //Huuma_Calm_Mind
+			delitem 7156,100; //Broken_Shuriken
+			getitem 13313,1; //Huuma_Swirling_Petal
+			mes "[基]";
+			mes "飞翔……花瓣！！";
+			close;
+		}
+		mes "[基]";
+		mes "嗯……你的钱不足以制作呼玛旋转花瓣。";
+		break;
+	case 4:
+		close;
+	}
+	mes "你为什么不再检查一下？";
+	mes "有些人就是无法放弃他们所拥有的东西。";
+	close;
+
+L_Select:
+	.@string1$ = "Check Ingredients.";
+	.@string2$ = "Check Stats.";
+	while(1) {
+		switch(select(.@string1$,.@string2$,"合并。","退出。")) {
+		case 1:
+			.@string1$ = "";
+			callsub L_Ingredients, getarg(0);
+			break;
+		case 2:
+			.@string2$ = "";
+			callsub L_Stats, getarg(0);
+			break;
+		case 3:
+			callsub L_Combine;
+			return;
+		case 4:
+			mes "[基]";
+			mes "仔细想想~~";
+			close;
+		}
+	}
+
+L_Ingredients:
+	mes "[基]";
+	switch (getarg(0)) {
+	case 13076:	//Raksasa_Dagger
+		mes "对于^ff0000罗刹匕首，您需要 1 个带 2 个插槽的村雨和 1 个石榴石^000000。";
+		mes "石榴石赋予罗刹匕首独特的颜色。";
+		break;
+	case 13078:	//Mikatsuki
+		mes "对于^ff0000Mikatsuki，您需要一个带有插槽的白神和一个蛋白石^000000。";
+		mes "蛋白石发出半透明的光芒。";
+		break;
+	case 13313:	//Huuma_Swirling_Petal
+		mes "想要获得^ff0000风魔飞旋花瓣，需要1把风魔静心手里剑和100枚破碎手里剑^000000。";
+		mes "似乎需要太多的手里剑……但为了美丽的飘动效果，它是必不可少的。";
+		break;
+	}
+	next;
+	return;
+
+L_Stats:
+	mes "[" + getitemname(getarg(0)) + "]";
+	switch (getarg(0)) {
+	case 13076:	//Raksasa_Dagger
+		mes "智力+3 徒步+100。";
+		mes "匕首型，攻击力120，插槽1";
+		mes "所需等级 110，仅限忍者类型";
+		break;
+	case 13078:	//Mikatsuki
+		mes "MATK+120，技能使用时波动施法和SP使用量减少5%。";
+		mes "匕首型，攻击力50，武器等级。 4 插槽 1";
+		mes "所需等级 100，仅限忍者类型";
+		break;
+	case 13313:	//Huuma_Swirling_Petal
+		mes "MATK+50，风魔飘花瓣技能伤害提升20%。";
+		mes "手里剑型，攻击力150";
+		mes "武器等级3、插槽2";
+		mes "所需等级 110，仅限忍者类型";
+		break;
+	}
+	next;
+	return;
+
+L_Combine:
+	mes "[基]";
+	mes "确保^ff0000您手头有正确的原料和设备^000000。";
+	mes "一旦完成，就无法撤消。";
+	next;
+	switch(select("结合：退出。")) {
+	case 1:
+		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
+			mes "- 坚持，稍等！！ -";
+			mes "- 您无法接收物品 -";
+			mes "——因为你带的东西太多了。 -";
+			mes "- 请再试一次 -";
+			mes "- 减轻你的负担之后。 -";
+			close;
+		}
+		return;
+	case 2:
+		mes "[基]";
+		mes "仔细想想~~";
+		close;
+	}
+	end;
+}

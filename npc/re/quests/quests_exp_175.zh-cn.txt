@@ -1,0 +1,920 @@
+//===== rAthena Script =======================================
+//= Quests EXP
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//--- NPC quests related to new dungeons.
+//===== Changelog: ===========================================
+//= 1.0 Initial release of Glast Heim Abyss quests. [OptimusM]
+//= 1.1 Corrections here and there. [Capuche]
+//= 1.2 Initial release of Magma Dungeon 3 quests. [Capuche]
+//= 1.3 Initial release of Einbech Dungeon 3 quests. [Capuche]
+//============================================================
+
+glast_01,191,273,3	script	Magician Nillem#glabyss01	4_M_JOB_WIZARD,{
+	if (BaseLevel < 175) {
+		mes "[尼勒姆]";
+		mes "你在这里做什么？";
+		mes "没错，我正在等待一位强大的冒险者来满足我的好奇心！";
+		next;
+		mes "[尼勒姆]";
+		mes "如果你达到175级，你就是我命中注定的对手——��";
+		close;
+	}
+	mes "[尼勒姆]";
+	mes "我想我有了一个伟大的发现，所以你为什么不跟我一起去呢？";
+	next;
+	switch( select( "走吧！", "请解释一下。", "我发现的", "拒绝。" )) {
+	case 1:
+		mes "[尼勒姆]";
+		mes "这是我的宝贝！";
+		mes "你要和我一起跳入深渊！我无能为力，但L-O-V-E你。";
+		close2;
+		warp "gl_cas01_",200,26;
+		end;
+	case 2:
+		mes "[尼勒姆]";
+		mes "如你所知，我是一名出色的宫廷巫师，对吗？";
+		mes "一个在维度上能干这干那的天才巫师！";
+		next;
+		mes "[尼勒姆]";
+		mes "格拉斯特海姆中央城堡附近传来了奇怪魔法力量的报告。";
+		mes "我来这里调查并发现了它。";
+		next;
+		mes "[尼勒姆]";
+		mes "一周次元裂缝！";
+		mes "要知道，这位天才巫师，擅长连接维度裂缝。";
+		next;
+		mes "[尼勒姆]";
+		mes "于是我强行连接进去了......";
+		mes "一段停止流动的时间……嗯……很难解释……";
+		next;
+		mes "[尼勒姆]";
+		mes "不管怎样，被困已久的生物潮水般的向我涌来！";
+		next;
+		mes "[尼勒姆]";
+		mes "我几乎在那里 D - i - e - d 。";
+		mes "所以我正在寻找冒险家加入我的这次探险。";
+		close;
+	case 3:
+		mes "[尼勒姆]";
+		mes "是的，这里没有使命，但好奇心伴随着发现！";
+		mes "在我告诉你之前，你已经注意到我想和你做一些事情，我的——亲爱的——。";
+		next;
+		switch( select( "一个空的东西", "一个高冰点的东西", "一个像镜子的东西", "好吧，我没事。" )) {
+		case 1:
+			mes "[尼勒姆]";
+			mes "在这个次元的裂缝之外，还有空物……";
+			mes "^0000FF被污染的Raydric^000000和^0000FF被污染的Raydric弓箭手^000000...";
+			mes "污染";
+			next;
+			mes "[尼勒姆]";
+			mes "^0000FF20 受污染的射线^000000,";
+			mes "^0000FF20 名受污染的射线弓箭手^000000!!打败他们然后回来。那么这位天才巫师就会研究它。";
+			mes "宝贝你觉得怎么样？";
+			next;
+			if (select( "这并不难。", "我很忙。" ) == 2) {
+				mes "[尼勒姆]";
+				mes "如果你很忙，你就帮不了我。";
+				mes "但是亲爱的，请在您有空闲时间时帮助我！";
+				close;
+			}
+			switch( checkquest(8542,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[尼勒姆]";
+				mes "我今天问你太多了，亲爱的。";
+				mes "相反，明天你将分享另一个新发现。好的 -？";
+				close;
+			case 2:
+				mes "^4d4dff - 你可以再次执行这个任务。再次与法师尼勒姆交谈以接受它。 - ^000000";
+				erasequest 8542;
+				break;
+			}
+			switch( checkquest(8541,HUNTING) ) {
+			case -1:
+				mes "[尼勒姆]";
+				mes "那是我的宝贝！";
+				mes "由于魔法的诡异，很难看出那里的影响。";
+				mes "如果你完成了任务，我们就先离开那里然后——然后检查——！";
+				setquest 8541;
+				close;
+			case 0:
+			case 1:
+				mes "[尼勒姆]";
+				mes "^0000FF20 受污染的射线^000000,";
+				mes "^0000FF20 名受污染的射线弓箭手^000000。";
+				mes "呜呼，你对空东西的效果不感到兴奋吗？";
+				close;
+			case 2:
+				mes "[尼勒姆]";
+				mes "哈~这里就很明显了。你能给我看看你的……武器和……盔甲吗？唔...";
+				mes "嗯！！";
+				mes "哈哈，真是世纪大发现啊！";
+				next;
+				select( "你得到什么？" );
+				mes "[尼勒姆]";
+				mes "很难向你解释，但简而言之，你 - 做了 - ！！";
+				mes "但这还不够，所以请明天再做一次。";
+				erasequest 8541;
+				setquest 8542;
+				getexp 8142552,5674080;
+				close;
+			}
+			end;
+		case 2:
+			mes "[尼勒姆]";
+			mes "有些东西的冰点很高，超出了这个空间的裂缝。";
+			mes "^0000FF冰冻石像鬼^000000和^0000FF越狱^000000...";
+			next;
+			mes "[尼勒姆]";
+			mes "^0000FF5 冰冻石像鬼^000000,";
+			mes "^0000FF5 越狱者^000000!!打败他们然后回来。那么这位天才巫师就会研究它。";
+			mes "宝贝你觉得怎么样？";
+			next;
+			if (select( "这并不难。", "我很忙。" ) == 2) {
+				mes "[尼勒姆]";
+				mes "如果你很忙，你就帮不了我。";
+				mes "但是亲爱的，请在您有空闲时间时帮助我！";
+				close;
+			}
+			switch( checkquest(8545,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[尼勒姆]";
+				mes "我今天问你太多了，亲爱的。";
+				mes "相反，明天你将分享另一个新发现。好的 -？";
+				close;
+			case 2:
+				mes "^4d4dff - 你可以再次执行这个任务。再次与法师尼勒姆交谈以接受它。 - ^000000";
+				erasequest 8545;
+				break;
+			}
+			switch( checkquest(8544,HUNTING) ) {
+			case -1:
+				mes "[尼勒姆]";
+				mes "那是我的宝贝！";
+				mes "由于魔法的诡异，很难看出那里的影响。";
+				mes "如果你完成了任务，我们就先离开那里然后——然后检查——！";
+				setquest 8544;
+				close;
+			case 0:
+			case 1:
+				mes "[尼勒姆]";
+				mes "^0000FF5 冰冻石像鬼^000000,";
+				mes "^0000FF5 越狱者^000000!!";
+				mes "呜呼，你对高冰点的东西不感到兴奋吗？";
+				close;
+			case 2:
+				mes "[尼勒姆]";
+				mes "哈~这里就很明显了。你能给我看看你的……武器和……盔甲吗？唔...";
+				mes "嗯！！";
+				mes "哈哈，真是世纪大发现啊！";
+				next;
+				select( "你得到什么？" );
+				mes "[尼勒姆]";
+				mes "很难向你解释，但简而言之，你 - 做了 - ！！";
+				mes "但这还不够，所以请明天再做一次。";
+				erasequest 8544;
+				setquest 8545;
+				getexp 2036754,1425726;
+				close;
+			}
+			end;
+		case 3:
+			mes "[尼勒姆]";
+			mes "在这个次元的裂缝之外，还有彼此的镜子。";
+			mes "^0000FF冰幽灵^000000和^0000FF火焰幽灵^000000...";
+			mes "看上去完全不同，但维度裂缝却十分未知。";
+			next;
+			mes "[尼勒姆]";
+			mes "^0000FF10个冰幽灵^000000,";
+			mes "^0000FF10个火焰幽灵^000000!!打败他们然后回来。那么这位天才巫师就会研究它。";
+			mes "宝贝你觉得怎么样？";
+			next;
+			if (select( "这并不难。", "我很忙。" ) == 2) {
+				mes "[尼勒姆]";
+				mes "如果你很忙，你就帮不了我。";
+				mes "但是亲爱的，请在您有空闲时间时帮助我！";
+				close;
+			}
+			switch( checkquest(8548,PLAYTIME) ) {
+			case -1:
+				break;
+			case 0:
+			case 1:
+				mes "[尼勒姆]";
+				mes "我今天问你太多了，亲爱的。";
+				mes "相反，明天你将分享另一个新发现。好的 -？";
+				close;
+			case 2:
+				mes "^4d4dff - 你可以再次执行这个任务。再次与法师尼勒姆交谈以接受它。 - ^000000";
+				erasequest 8548;
+				break;
+			}
+			switch( checkquest(8547,HUNTING) ) {
+			case -1:
+				mes "[尼勒姆]";
+				mes "那是我的宝贝！";
+				mes "由于魔法的诡异，很难看出那里的影响。";
+				mes "如果你完成了任务，我们就先离开那里然后——然后检查——！";
+				setquest 8547;
+				close;
+			case 0:
+			case 1:
+				mes "[尼勒姆]";
+				mes "^0000FF10个冰幽灵^000000,";
+				mes "^0000FF10个火焰幽灵^000000!!";
+				mes "呜呼，你对《镜子之物》不感到兴奋吗？";
+				close;
+			case 2:
+				mes "[尼勒姆]";
+				mes "哈~这里就很明显了。你能给我看看你的……武器和……盔甲吗？唔...";
+				mes "嗯！！";
+				mes "哈哈，真是世纪大发现啊！";
+				next;
+				select( "你得到什么？" );
+				mes "[尼勒姆]";
+				mes "很难向你解释，但简而言之，你 - 做了 - ！！";
+				mes "但这还不够，所以请明天再做一次。";
+				erasequest 8547;
+				setquest 8548;
+				getexp 4138800,2897160;
+				close;
+			}
+			end;
+		case 4:
+			mes "[尼勒姆]";
+			mes "那里，那里。亲爱的，你是对的。";
+			mes "如果你累了，就休息一下。";
+			mes "不要强迫自己——！";
+			close;
+		}
+		end;
+	case 4:
+		mes "[尼勒姆]";
+		mes "噢，我的甜心，你今天太刻薄了。";
+		mes "尼勒姆是萨阿德。 *泪水*";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8541,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8544,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8547,HUNTING) == 2" );
+
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8542,PLAYTIME) == -1 && checkquest(8541,HUNTING) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8545,PLAYTIME) == -1 && checkquest(8544,HUNTING) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8548,PLAYTIME) == -1 && checkquest(8547,HUNTING) == -1" );
+
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8542,PLAYTIME) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8545,PLAYTIME) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8548,PLAYTIME) == 2" );
+	end;
+}
+
+gl_cas01_,205,36,5	script	Magician Nillem#glabyss02	4_M_JOB_WIZARD,{
+	mes "[尼勒姆]";
+	mes "呜呼！每当我来到这里我都很兴奋！";
+	mes "我喜欢这种凄凉！";
+	next;
+	if (select( "我们离开这里吧！", "我想四处看看。" ) == 2) {
+		mes "[尼勒姆]";
+		mes "再见！";
+		close;
+	}
+	mes "[尼勒姆]";
+	mes "当然！";
+	mes "我们——出去——出去——！";
+	close2;
+	warp "glast_01",191,270;
+	end;
+}
+
+
+// mag_dun03
+yuno_fild03,38,146,5	script	Lily Blanc	-1,{
+	if (BaseLevel < 175) {
+		mes "[莉莉]";
+		mes "...？";
+		mes "……呃，我想卫兵不会让你进去的……";
+		next;
+		mes "[莉莉]";
+		mes "如果你有资格进入诺格路第三层，你会接受任务吗？";
+		mes "我们需要做很多工作。";
+		mes "守卫说175级就够了...";
+		close;
+	}
+	mes "[莉莉]";
+	mes "友好的冒险家，您介意帮我们研究一下我们的会议报告吗？";
+	mes "只有冒险家的眼光才是我们生存的唯一出路。";
+	next;
+	switch( select( "听取请求", "可疑...", "拒绝" ) ) {
+	case 1:
+		mes "[莉莉]";
+		mes "慷慨的冒险家！谢谢。";
+		mes "请求地点在诺格路三楼，我还不能进去的地方，但会议想要一份报告……";
+		next;
+		setarray .@quest_list[1], 8550, 8553, 8556, 8559;
+		.@s = select( "引发异常进化的经销商", "消灭变成现实的噩梦", "检查密度", "小东西崩溃", "下次" );
+
+		if (.@s < 5) {
+			.@quest_first = .@quest_list[.@s];
+			.@quest_delay = .@quest_first + 1;
+			.@quest_daily = .@quest_first + 2;
+
+			callsub( S_CheckDelay, .@quest_delay );
+
+			if (isbegin_quest(.@quest_first) < 2)
+				.@quest_ongoing = .@quest_first;
+			else
+				.@quest_ongoing = .@quest_daily;
+		}
+
+		switch( .@s ) {
+		case 1:
+			switch( checkquest(.@quest_ongoing,HUNTING) ) {
+			case -1:
+				if (.@quest_ongoing == .@quest_first) {
+					mes "[莉莉]";
+					mes "我们的医生说，怪物在不同的地方生活时，它们的特征和外观都会改变……";
+					mes "博士和我也是……因为战斗不是我的专业。";
+					next;
+					mes "[莉莉]";
+					mes "所以在这里...让我们看看。";
+					mes "^0000FF有报告称" + getmonsterinfo("DELETER2_H", MOB_NAME) + "和" + getmonsterinfo("DELETER1_H", MOB_NAME) + "^000000导致了异常进化。";
+					mes "但由于他们的性格凶猛，我根本无法接近他们……";
+					next;
+				}
+				mes "[莉莉]";
+				mes "闹鬼在诺格路三楼，";
+				mes "^0000FF杀死 15 " + getmonsterinfo("DELETER1_H", MOB_NAME) + "^000000";
+				mes "和 15 ^0000FF" + getmonsterinfo("DELETER2_H", MOB_NAME) + "^000000 并告诉我它们有多难。";
+				callsub( S_Give, .@quest_ongoing );
+			case 0:
+			case 1:
+				mes "[莉莉]";
+				mes "闹鬼在诺格路三楼，";
+				mes "^0000FF杀死 15 " + getmonsterinfo("DELETER1_H", MOB_NAME) + "^000000";
+				mes "和 15 ^0000FF" + getmonsterinfo("DELETER2_H", MOB_NAME) + "^000000 并告诉我它们有多难。";
+				close;
+			case 2:
+				mes "[莉莉]";
+				mes "它怎么样？";
+				mes "它与空中或地面删除器有何不同？";
+				next;
+				mes "[莉莉]";
+				mes "嗯……你还好吗？";
+				mes "嗯嗯。好的";
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 4852278,3396600 );
+			}
+			end;
+		case 2:
+			switch( checkquest(.@quest_ongoing,HUNTING) ) {
+			case -1:
+				if (.@quest_ongoing == .@quest_first) {
+					mes "[莉莉]";
+					mes "" + getmonsterinfo("NIGHTMARE_TERROR_H", MOB_NAME) + " 是一场顽固的噩梦恐怖……";
+					mes "我只见过噩梦恐怖。光是看着它，我就浑身僵硬，无法动弹。虽然教授把我拉了出去……";
+					next;
+					mes "[莉莉]";
+					mes "所以在这里...让我们看看。";
+				}
+				else {
+					mes "[莉莉]";
+				}
+				mes "闹鬼在诺格路三楼，";
+				mes "^0000FF击败10个" + getmonsterinfo("NIGHTMARE_TERROR_H", MOB_NAME) + "^000000并告诉我这有多难。";
+				callsub( S_Give, .@quest_ongoing );
+			case 0:
+			case 1:
+				mes "[莉莉]";
+				mes "诺格路三楼闹鬼";
+				mes "^0000FF 击败 10 个 " + getmonsterinfo("NIGHTMARE_TERROR_H", MOB_NAME) + "^000000 并告诉我这有多难。";
+				close;
+			case 2:
+				mes "[莉莉]";
+				mes "它怎么样？";
+				mes "这和普通的噩梦恐惧有什么不同？";
+				next;
+				mes "[莉莉]";
+				mes "呃……真的吗？";
+				mes "我该怎么办……天啊。这是真的吗？";
+				mes "嗯嗯。好的";
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 1661868,1163304 );
+			}
+			end;
+		case 3:
+			switch( checkquest(.@quest_ongoing,HUNTING) ) {
+			case -1:
+				if (.@quest_ongoing == .@quest_first) {
+					mes "[莉莉]";
+					mes "我听说熔岩傀儡和" + getmonsterinfo("LAVA_GOLEM_H", MOB_NAME) + ".";
+				}
+				else {
+					mes "[莉莉]";
+				}
+				mes "诺格路三楼闹鬼";
+				mes "^0000FF击败10个" + getmonsterinfo("LAVA_GOLEM_H", MOB_NAME) + "^000000并告诉我密度差异。";
+				callsub( S_Give, .@quest_ongoing );
+			case 0:
+			case 1:
+				mes "[莉莉]";
+				mes "诺格路三楼闹鬼";
+				mes "^0000FF击败10个" + getmonsterinfo("LAVA_GOLEM_H", MOB_NAME) + "^000000并告诉我密度差异。";
+				close;
+			case 2:
+				mes "[莉莉]";
+				mes "它怎么样？";
+				mes "它和熔岩傀儡有什么不同？";
+				next;
+				mes "[莉莉]";
+				mes "嗯……没错。外壳...";
+				mes "是的？脚底？的确...";
+				mes "嗯嗯。好的";
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 1590396,1113275 );
+			}
+			end;
+		case 4:
+			switch( checkquest(.@quest_ongoing,HUNTING) ) {
+			case -1:
+				if (.@quest_ongoing == .@quest_first) {
+					mes "[莉莉]";
+					mes "" + getmonsterinfo("EXPLOSION_H", MOB_NAME) + " 和 " + getmonsterinfo("BLAZZER_H", MOB_NAME) + " 据说比普通爆炸和开拓者更好地崩溃。";
+					mes "……我们的教授。";
+					next;
+					mes "[莉莉]";
+					mes "闹鬼在诺格路三楼，";
+					mes "^0000FF杀死 10 个 " + getmonsterinfo("EXPLOSION_H", MOB_NAME) + "^000000";
+					mes "^0000FF 和 10 " + getmonsterinfo("BLAZZER_H", MOB_NAME) + "^000000 并告诉他们他们的感受。";
+					mes "你不必碰它。光看一眼就知道了...";
+				}
+				else {
+					mes "[莉莉]";
+					mes "闹鬼在诺格路三楼，";
+					mes "^0000FF杀死 10 个 " + getmonsterinfo("EXPLOSION_H", MOB_NAME) + "^000000";
+					mes "^0000FF 和 10 " + getmonsterinfo("BLAZZER_H", MOB_NAME) + "^000000 并告诉他们他们的感受。";
+				}
+				callsub( S_Give, .@quest_ongoing );
+			case 0:
+			case 1:
+				mes "[莉莉]";
+				mes "闹鬼在诺格路三楼，";
+				mes "^0000FF杀死 10 个 " + getmonsterinfo("EXPLOSION_H", MOB_NAME) + "^000000";
+				mes "^0000FF 和 10 " + getmonsterinfo("BLAZZER_H", MOB_NAME) + "^000000 并告诉他们他们的感受。";
+				close;
+			case 2:
+				mes "[莉莉]";
+				mes "它怎么样？";
+				mes "它与 Explosion 或 Blazer 有什么不同？";
+				next;
+				mes "[莉莉]";
+				mes "嗯……没错。经过...";
+				mes "还比较脆……";
+				mes "哈哈，灰尘多了。";
+				mes "嗯嗯。好的";
+				callsub( S_SetDelay, .@quest_ongoing, .@quest_first, .@quest_delay, 3251388,2275966 );
+			}
+			end;
+		case 5:
+			mes "[莉莉]";
+			mes "啊...";
+			mes "我什么时候才能逃脱教授的魔法……";
+			close;
+		}
+		end;
+	case 2:
+		mes "[莉莉]";
+		mes "如你所见，我只是一个无能的圣人。";
+		mes "我服务的教授有点固执……我的意思是，必须有人调查。";
+		next;
+		mes "[莉莉]";
+		mes "但我仍然不被允许进入诺格路三楼。";
+		mes "我是怎么到入口的，他们说永远不让我进去。";
+		mes "没错……不是贤者可以融入的地方。";
+		next;
+		mes "[莉莉]";
+		mes "那我能做什么呢？为什么所有的吟游诗人不只唱他们所看到和听到的？";
+		mes "有些人听说过这个或那个，其他人也告诉过我，所以一定是这样。";
+		next;
+		mes "[莉莉]";
+		mes "不用担心。向教授报告时会用冒险者的名字……";
+		mes "是的..." + strcharinfo(0) + ".";
+		mes "好的。";
+		next;
+		mes "[莉莉]";
+		mes "有一个将成为研究材料的怪物列表，所以如果您有兴趣，请检查任务。";
+		close;
+	case 3:
+		mes "[莉莉]";
+		mes "哦，不……！";
+		mes "慷慨的冒险家，请把我从教授的魔法中解放出来吧……！";
+		close;
+	}
+	end;
+
+S_CheckDelay:
+	switch( checkquest(getarg(0),PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[莉莉]";
+		mes "您已经完成了今天的报告。";
+		mes "你能帮我做明天的报告吗...？";
+		close;
+	case 2:
+		erasequest getarg(0);
+		break;
+	}
+	return;
+
+S_Give:
+	next;
+	if (select( "我接受。", "我很忙。" ) == 2) {
+		mes "[莉莉]";
+		mes "本来，研究就是坚持。";
+		mes "你不忙的时候帮帮我吧。";
+		close;
+	}
+	mes "[莉莉]";
+	mes "谢谢你！";
+	mes "我会在这里等你。";
+	setquest getarg(0);
+	close;
+
+S_SetDelay:
+	.@quest_ongoing = getarg(0);
+	.@quest_first = getarg(1);
+	.@quest_delay = getarg(2);
+	next;
+	mes "[莉莉]";
+	mes "感谢您的友好解释。";
+	mes "但我认为仅凭这一点你还不能理解整个故事。尽管这是要求调查的美妙之处......";
+	mes "明天我再问你。";
+	if (.@quest_ongoing == .@quest_first)
+		completequest .@quest_ongoing;
+	else
+		erasequest .@quest_ongoing;
+	setquest .@quest_delay;
+	getexp getarg(3), getarg(4);
+	close;
+
+OnInit:
+	setunitdata getnpcid(0), UNPC_CLASS, JOB_SAGE;
+	setunitdata getnpcid(0), UNPC_SEX, SEX_FEMALE;
+	setunitdata getnpcid(0), UNPC_HAIRCOLOR, 6;
+	setunitdata getnpcid(0), UNPC_HAIRSTYLE, 22;
+	setunitdata getnpcid(0), UNPC_HEADTOP, 316;
+
+	// completed first quest
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8550,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8553,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8556,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8559,HUNTING) == 2" );
+
+	// completed daily
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8552,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8555,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8558,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8561,HUNTING) == 2" );
+
+	// timeout
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8551,PLAYTIME) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8554,PLAYTIME) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8557,PLAYTIME) == 2" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "checkquest(8560,PLAYTIME) == 2" );
+
+	// not started first quest
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8550) == 0 && checkquest(8551,PLAYTIME) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8553) == 0 && checkquest(8553,PLAYTIME) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8556) == 0 && checkquest(8555,PLAYTIME) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8559) == 0 && checkquest(8557,PLAYTIME) == -1" );
+
+	// not started daily
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8550) == 2 && isbegin_quest(8552) == 0 && checkquest(8551,PLAYTIME) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8553) == 2 && isbegin_quest(8555) == 0 && checkquest(8554,PLAYTIME) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8556) == 2 && isbegin_quest(8558) == 0 && checkquest(8557,PLAYTIME) == -1" );
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(8559) == 2 && isbegin_quest(8561) == 0 && checkquest(8560,PLAYTIME) == -1" );
+	end;
+}
+
+
+// ein_dun03
+einbech,143,244,3	script	Apprentice Researcher Sally#extdq01	4_F_LGTGIRL,{
+	if (BaseLevel < 180) {
+		mes "[莎莉]";
+		mes "你好，冒险家！";
+		mes "请给我介绍一位才华横溢的冒险家！";
+		mes "这是一件非常非常重要的事情，关系到我的工作……！";
+		next;
+		mes "^4d4dff有180级以上的任务^000000";
+		close;
+	}
+	if (checkquest(7879,HUNTING) == 2) {
+		mes "[莎莉]";
+		mes "我们能够为" + getmonsterinfo("有毒", MOB_NAME) + "和" + getmonsterinfo("有毒", MOB_NAME) + "收集足够的数据！";
+		erasequest 7879;
+		setquest 7880;
+		getexp 27512240,19258560;
+		next;
+	}
+	if (checkquest(7881,HUNTING) == 2) {
+		mes "[莎莉]";
+		mes "我已经为 " + getmonsterinfo("MINERAL_G", MOB_NAME) + " 和 " + getmonsterinfo("MINERAL_R", MOB_NAME) + " 收集了足够的数据！";
+		erasequest 7881;
+		setquest 7882;
+		getexp 27836640,19485600;
+		next;
+	}
+	if (checkquest(7883,HUNTING) == 2) {
+		mes "[莎莉]";
+		mes "" + getmonsterinfo("MINERAL_W", MOB_NAME) + " 和 " + getmonsterinfo("MINERAL_P", MOB_NAME) + " 的数据如下。这非常有帮助。";
+		erasequest 7883;
+		setquest 7884;
+		getexp 27838400,19486880;
+		next;
+	}
+	if (checkquest(7885,HUNTING) == 2) {
+		mes "[莎莉]";
+		mes "" + getmonsterinfo("ABYSSMAN", MOB_NAME) + "的数据总是让人惊叹。";
+		erasequest 7885;
+		setquest 7886;
+		getexp 6938800,4857160;
+		next;
+	}
+	if (checkquest(7887,HUNTING) == 2) {
+		mes "[莎莉]";
+		mes "您已成功获取" + getmonsterinfo("JEWELIANT", MOB_NAME) + "和" + getmonsterinfo("PORCELLIO_W", MOB_NAME) + "数据！";
+		erasequest 7887;
+		setquest 7888;
+		getexp 13854240,9697960;
+		next;
+	}
+	mes "[莎莉]";
+	mes "这种可怜的学徒期什么时候才能结束呢？";
+	next;
+	mes "[莎莉]";
+	mes "我迫切地寻求一位才华横溢的冒险家的帮助。";
+	mes "就像你一样！";
+	mes "您愿意帮助保护这位可怜的见习研究员的工作吗？";
+	next;
+	switch( select( "新毒物研究", "特殊矿物研究1", "特殊矿物研究2", "深渊研究", "地雷虫研究", "你为什么要这样做？" ) ) {
+	case 1:
+		switch( checkquest(7880,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "嗯，别太过分了。";
+			mes "机会总是来的。";
+			close;
+		case 2:
+			erasequest 7880;
+			break;
+		}
+		switch( checkquest(7879,HUNTING) ) {
+		case -1:
+			mes "[莎莉]";
+			mes "我需要数据来研究在艾因贝克矿山迷宫中新发现的毒气怪物。";
+			mes "以这里的人力很难对付占领矿洞的怪物，所以我们必须两者都对付。";
+			next;
+			mes "[莎莉]";
+			mes "我正在收集数据，而冒险家正在与^4d4dff" + getmonsterinfo("有毒", MOB_NAME) + "和" + getmonsterinfo("有毒", MOB_NAME) + "^000000战斗。";
+			mes "这不是很划算吗？";
+			next;
+			if (select( "收到请求", "被拒绝" ) == 2) {
+				mes "[莎莉]";
+				mes "没关系。";
+				mes "世界很广阔，冒险家也很多。";
+				close;
+			}
+			mes "[莎莉]";
+			mes "那么请处理出现在<<<CLR1>>>埃因贝克矿山地下城三层<<<CLR2>>>的^4d4dff" + getmonsterinfo("有毒", MOB_NAME) + "和" + getmonsterinfo("有毒", MOB_NAME) + "^000000！";
+			setquest 7879;
+			close;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "" + getmonsterinfo("有毒", MOB_NAME) + "和" + getmonsterinfo("有毒", MOB_NAME) + "位于Einbech矿井地牢的三楼。";
+			mes "对于我这样的普通人来说很难对付，所以我得躲起来看你做事然后收集数据。";
+			close;
+		case 2:
+			end;
+		}
+		end;
+	case 2:
+		switch( checkquest(7882,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "嗯，别太过分了。";
+			mes "机会总是来的。";
+			close;
+		case 2:
+			erasequest 7882;
+			break;
+		}
+		switch( checkquest(7881,HUNTING) ) {
+		case -1:
+			mes "[莎莉]";
+			mes "矿物质有多种类型。这次我们要研究的矿物是^4d4dff" + getmonsterinfo("MINERAL_G", MOB_NAME) + "和" + getmonsterinfo("MINERAL_R", MOB_NAME) + "^000000。";
+			mes "让我们在控制个体数量的同时收集研究所需的数据吧！";
+			next;
+			if (select( "收到请求", "被拒绝" ) == 2) {
+				mes "[莎莉]";
+				mes "没关系。";
+				mes "世界很广阔，冒险家也很多。";
+				close;
+			}
+			mes "[莎莉]";
+			mes "那么请照顾出现在埃因贝克矿山地下城<<<CLR1>>>第三层<<<CLR2>>>的^4d4dff" + getmonsterinfo("MINERAL_G", MOB_NAME) + "和" + getmonsterinfo("MINERAL_R", MOB_NAME) + "^000000！";
+			setquest 7881;
+			close;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "" + getmonsterinfo("MINERAL_G", MOB_NAME) + " 和 " + getmonsterinfo("MINERAL_R", MOB_NAME) + " 位于 Einbech 矿井地牢的三楼。";
+			mes "小心，它们很危险。";
+			close;
+		case 2:
+			end;
+		}
+		end;
+	case 3:
+		switch( checkquest(7884,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "嗯，别太过分了。";
+			mes "机会总是来的。";
+			close;
+		case 2:
+			erasequest 7884;
+			break;
+		}
+		switch( checkquest(7883,HUNTING) ) {
+		case -1:
+			mes "[莎莉]";
+			mes "矿物质有多种类型。这次我们要研究的矿物是^4d4dff" + getmonsterinfo("MINERAL_W", MOB_NAME) + "和" + getmonsterinfo("MINERAL_P", MOB_NAME) + "s^000000。";
+			mes "让我们在控制个体数量的同时收集研究所需的数据吧！";
+			next;
+			if (select( "收到请求", "被拒绝" ) == 2) {
+				mes "[莎莉]";
+				mes "没关系。";
+				mes "世界很广阔，冒险家也很多。";
+				close;
+			}
+			mes "[莎莉]";
+			mes "那么请照顾出现在埃因贝克矿山地下城<<<CLR1>>>第三层<<<CLR2>>>的^4d4dff" + getmonsterinfo("MINERAL_W", MOB_NAME) + "和" + getmonsterinfo("MINERAL_P", MOB_NAME) + "^000000！";
+			setquest 7883;
+			close;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "" + getmonsterinfo("MINERAL_W", MOB_NAME) + " 和 " + getmonsterinfo("MINERAL_P", MOB_NAME) + " 位于 Einbech 矿井地牢的三楼。";
+			mes "小心，它们很危险。";
+			close;
+		case 2:
+			end;
+		}
+		end;
+	case 4:
+		switch( checkquest(7886,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "嗯，别太过分了。";
+			mes "机会总是来的。";
+			close;
+		case 2:
+			erasequest 7886;
+			break;
+		}
+		switch( checkquest(7885,HUNTING) ) {
+		case -1:
+			mes "[莎莉]";
+			mes "如果你凝视深渊，据说深渊是被吃掉的，而不是被喵喵叫的。";
+			mes "我认为流行的名字" + getmonsterinfo("深渊人", MOB_NAME) + "也是这样。";
+			mes "所以我们需要来自^4d4dff" + getmonsterinfo("ABYSSMAN", MOB_NAME) + "^000000的数据。";
+			next;
+			if (select( "收到请求", "被拒绝" ) == 2) {
+				mes "[莎莉]";
+				mes "没关系。";
+				mes "世界很广阔，冒险家也很多。";
+				close;
+			}
+			mes "[莎莉]";
+			mes "那么，请照顾出现在<<<CLR1>>>艾因贝克矿山迷宫第3层<<<CLR2>>>的^4d4dff" + getmonsterinfo("ABYSSMAN", MOB_NAME) + "^000000！";
+			setquest 7885;
+			close;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "" + getmonsterinfo("ABYSSMAN", MOB_NAME) + " 位于 Einbech 地牢的三楼。";
+			mes "小心，它们很危险。";
+			close;
+		case 2:
+			end;
+		}
+		end;
+	case 5:
+		switch( checkquest(7888,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "嗯，别太过分了。";
+			mes "机会总是来的。";
+			close;
+		case 2:
+			erasequest 7888;
+			break;
+		}
+		switch( checkquest(7887,HUNTING) ) {
+		case -1:
+			mes "[莎莉]";
+			mes "特殊的昆虫生活在像地牢这样的黑暗地方。";
+			mes "这次要采集的数据是^4d4dff" + getmonsterinfo("PORCELLIO_W", MOB_NAME) + "和" + getmonsterinfo("JEWELIANT", MOB_NAME) + "^000000，也称为Mineworms。";
+			mes "和普通的Porcellio有很大不同吗？";
+			next;
+			if (select( "收到请求", "被拒绝" ) == 2) {
+				mes "[莎莉]";
+				mes "没关系。";
+				mes "世界很广阔，冒险家也很多。";
+				close;
+			}
+			mes "[莎莉]";
+			mes "那么，就请照顾出现在《艾因贝克矿山迷宫》第3层《CLR2》的《^4d4dff>" + getmonsterinfo("PORCELLIO_W", MOB_NAME) + "和" + getmonsterinfo("JEWELIANT", MOB_NAME) + "^000000吧！";
+			setquest 7887;
+			close;
+		case 0:
+		case 1:
+			mes "[莎莉]";
+			mes "" + getmonsterinfo("PORCELLIO_W", MOB_NAME) + "和" + getmonsterinfo("JEWELIANT", MOB_NAME) + "位于Einbech矿井地牢的三楼。";
+			mes "小心，它们很危险。";
+			close;
+		case 2:
+			end;
+		}
+		end;
+	case 6:
+		mes "[莎莉]";
+		mes "嗯？那就是成为一名全职员工！";
+		mes "不久前，我作为见习研究员加入了 Regenschrum，但这就是我被任命的目的。";
+		mes "这是关于收集采矿怪物的数据，所以我的评估取决于此。";
+		next;
+		mes "[莎莉]";
+		mes "而且总部也不断有抱怨，询问如何处理地雷怪物。";
+		mes "在收集数据的同时，它还规范了个体的数量。这个评价是双赢，双赢！";
+		close;
+	}
+	end;
+
+OnInit:
+	// completed
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(7879,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(7881,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(7883,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(7885,HUNTING) == 2" );
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(7887,HUNTING) == 2" );
+
+	// timeout
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(7880,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(7882,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(7884,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(7886,PLAYTIME) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(7888,PLAYTIME) == 2" );
+
+	// not started
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 180 && isbegin_quest(7879) == 0 && checkquest(7880,PLAYTIME) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 180 && isbegin_quest(7881) == 0 && checkquest(7882,PLAYTIME) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 180 && isbegin_quest(7883) == 0 && checkquest(7884,PLAYTIME) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 180 && isbegin_quest(7885) == 0 && checkquest(7886,PLAYTIME) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "BaseLevel >= 180 && isbegin_quest(7887) == 0 && checkquest(7888,PLAYTIME) == -1" );
+	end;
+}
+
+einbech,156,243,3	script	Need help#exsk	1_M_SMITH,{
+	mes "[橄榄色]";
+	mes "订单源源不断地涌来，在那里工作的每个人都在逃跑……这是一件大事，一件大事。";
+	close;
+}
+
+einbech,154,244,5	script	Need help#exsk_	4_F_JOB_BLACKSMITH,{
+	mes "[阿特里亚]";
+	mes "毕竟这样我学剑会更快一些！我只用了10年镐，所以我很快就会学会它。";
+	close;
+}

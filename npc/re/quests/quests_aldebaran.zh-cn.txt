@@ -1,0 +1,109 @@
+//===== rAthena Script =======================================
+//= NPCs related to Aldebaran Clock Tower (Nightmare)
+//===== By: ==================================================
+//= Ridley8819
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Additional Comments: =================================
+//= 1.0 Initial release [Ridley8819]
+//= 1.1 Dialogue cleanup [Aleos]
+//============================================================
+
+c_tower1,232,222,5	script	Belljamin Button#ct	968,{
+	mes "[贝尔杰明按钮]";
+	mes "这里的怪物能够控制时间。";
+	if( BaseLevel < 150 ){
+		mes "当你达到^0000FF150级^000000时回来。";
+		close;
+	}
+	mes "时间、记忆、环境……一切都可以在这里扭曲。";
+	next;
+	mes "[贝尔杰明按钮]";
+	mes "我求你不要再问更多了。这可能会使您的生命处于危险之中。";
+	next;
+	.@menu = select("不要问:去扭曲塔2层:去扭曲塔3层");
+	switch(.@menu){
+		case 1:
+			break;
+		case 2:
+		case 3:
+			if( .@menu == 2 ){
+				.@map$ = "c_tower2_";
+				.@x = 268;
+				.@y = 26;
+			}else{
+				.@map$ = "c_tower3_";
+				.@x = 65;
+				.@y = 147;
+			}
+			mes "[贝尔杰明按钮]";
+			mes "请谨慎选择。";
+			next;
+			mes "[贝尔杰明按钮]";
+			mes "我需要^0000FF10,000z^000000才能让你进去。这是一个非常危险的地方。";
+			next;
+			switch( select( "退出：付10,000z：你为什么需要钱？" ) ){
+				case 1:
+					break;
+				case 2:
+					if( Zeny < 10000 ){
+						mes "[贝尔杰明按钮]";
+						mes "真的吗？你没钱还叫我带你去？";
+						close;
+					}
+					Zeny -= 10000;
+					mes "[贝尔杰明按钮]";
+					mes "我不确定你将如何记录在那里的时间，但请尽可能小心。";
+					close2;
+					warp .@map$, .@x, .@y;
+					end;
+				case 3:
+					mes "[贝尔杰明按钮]";
+					mes "为了冒险者们的安全，我整天都在这里。我总是提醒他们注意危险。这就是为什么我需要某种形式的付款。";
+					emotion ET_SWEAT;
+					close;
+			}
+			break;
+	}
+	mes "[贝尔杰明按钮]";
+	mes "唷...你做了一个很好的选择。这个地方很残酷，所以你应该回到安全的地方。";
+	close;
+}
+
+c_tower2_,274,26,3	script	Belljamin Button#nct1	962,{
+	mes "[贝尔杰明按钮]";
+	mes "也许你以前见过我？";
+	next;
+	mes "[贝尔杰明按钮]";
+	mes "你在不同的地方，以不同的面貌看到了我。";
+	next;
+	if( select( "你是谁？：带我离开这里！" ) == 1 ){
+		mes "[贝尔杰明按钮]";
+		mes "你能向我解释一下你看到了什么、做了什么吗？";
+		next;
+		mes "[贝尔杰明按钮]";
+		mes "我也是。你也可能是失踪者之一。不知道，没有目的，也没有想法。";
+		next;
+		mes "[贝尔杰明按钮]";
+		mes "是时候回去了。请大家更加珍惜自己的时间。";
+		next;
+		if( select( "再停留一点：请带我回去" ) == 1 ){
+			mes "[贝尔杰明按钮]";
+			mes "你一定很喜欢这个地方。好吧，做你想做的事吧。";
+			close;
+		}
+	}else{
+		mes "[贝尔杰明按钮]";
+		mes "是时候继续前进了。你有最喜欢的饮料吗？";
+		next;
+	}
+	mes "[贝尔杰明按钮]";
+	mes "想想杯子里的饮料。用勺子慢慢搅拌杯子，并观察饮料颜色的变化。";
+	close2;
+	warp "c_tower1", 235, 223;
+	end;
+}
+
+c_tower3_,59,148,5	duplicate(Belljamin Button#nct1)	Belljamin Button#nct2	574

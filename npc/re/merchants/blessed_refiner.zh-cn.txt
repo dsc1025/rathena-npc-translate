@@ -1,0 +1,191 @@
+//===== rAthena Script ======================================= 
+//= Blessed Refiner
+//===== Description: =========================================
+//= [Official Conversion]
+//= Refiners that use Blessed ores to refine equipment.
+//= Upon failure, the equipment is not destroyed. The success
+//= rate is identical to that for Enriched ores.
+//= - "Blacksmith Dister" only refines from +6~12.
+//= NOTE: This NPC is currently disabled on official servers.
+//===== Changelog: ===========================================
+//= 1.0 First version. [Euphy]
+//= 1.1 Removed re-roll behavior. [Secret]
+//============================================================
+
+// Main NPC :: new_smelting612
+//============================================================
+-	script	::BlacksmithDister	-1,{
+	disable_items;
+	mes "[铁匠区]";
+	mes "在这个竞争激烈的社会，我们必须与众不同才能生存！";
+	mes "我只精炼+6~12级的装备。";
+	next;
+	mes "[铁匠区]";
+	mes "我需要^ff9999祝福Oridecon^000000作为武器，以及^ff9999祝福Elunium^000000作为盔甲。";
+	mes "失败的精炼^FF0000不会破坏或降低精炼等级^000000。";
+	next;
+	mes "[铁匠区]";
+	mes "怎么样？你想精进吗？";
+	next;
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for(set .@i,1; .@i<=10; set .@i,.@i+1)
+		set .@menu$, .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[Unequipped]" ) +":";
+	set .@part, .@indices[ select(.@menu$) ];
+	if (!getequipisequiped(.@part)) {
+		mes "[铁匠区]";
+		switch(.@part) {
+		case EQI_HEAD_TOP:
+			mes "我是铁匠，不是发型师。";
+			break;
+		case EQI_ARMOR:
+			mes "用我的锤子，我会让你成为天上的星星。";
+			break;
+		case EQI_HAND_L:
+		case EQI_HAND_R:
+			mes "制作假手不是我的专长。";
+			break;
+		case EQI_GARMENT:
+			mes "把物品拿出来我可以精炼它！";
+			break;
+		case EQI_SHOES:
+			mes "这股怪味是从哪里来的？";
+			break;
+		case EQI_ACC_L:
+		case EQI_ACC_R:
+			mes "配件在哪里？";
+			break;
+		case EQI_HEAD_MID:
+			mes "你要我炼制什么？";
+			break;
+		case EQI_HEAD_LOW:
+			mes "啊？你想让我做什么？";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[铁匠区]";
+		mes "该物品无法精炼。";
+		close;
+	}
+	.@equip_id = getequipid(.@part);
+	.@itemtype = getiteminfo( .@equip_id, ITEMINFO_TYPE );
+	.@equip_refine = getequiprefinerycnt(.@part);
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+
+	if (.@equip_refine < 6 || .@equip_refine > 12) {
+		mes "[铁匠区]";
+		mes "该装备已精炼至"+.@equip_refine+"。我只处理精炼度从+6到+12的物品！";
+		close;
+	}
+	if( .@itemtype == IT_ARMOR ){
+		.@equip_lv = getequiparmorlv( .@part );
+		.@type$ = "Armor";
+
+		switch(.@equip_lv) {
+			case 1:
+				set .@price,20000;
+				set .@material,6439; //Unbreakable_Def
+				break;
+			default:
+				// TODO:
+				close;
+		}
+	}else if( .@itemtype == IT_WEAPON ){
+		.@equip_lv = getequipweaponlv( .@part );
+		.@type$ = "Weapon";
+
+		switch( .@equip_lv ){
+			case 1:
+				set .@price,1000;
+				set .@material,6438; //Unbreakable_Weap
+				break;
+			case 2:
+				set .@price,2000;
+				set .@material,6438; //Unbreakable_Weap
+				break;
+			case 3:
+				set .@price,20000;
+				set .@material,6438; //Unbreakable_Weap
+				break;
+			case 4:
+				set .@price,40000;
+				set .@material,6438; //Unbreakable_Weap
+				break;
+			default:
+				// TODO:
+				close;
+		}
+	}else{
+		// TODO:
+		close;
+	}
+	set .@ore$,"^ff9999Blessed "+.@type$+" Ore^000000";
+	mes "[铁匠区]";
+	mes "此"+.@type$+"已细化为"+.@equip_refine+"。为了精炼它，我需要 "+.@ore$+" 和 "+callfunc("F_InsertComma",.@price)+" zeny 精炼费。";
+	mes "您想继续吗？";
+	next;
+	if(select("是：否") == 2) {
+		mes "[铁匠区]";
+		mes "我很忙，别跟我开玩笑！";
+		close;
+	}
+	if (getequippercentrefinery(.@part) < 100) {
+		mes "[铁匠区]";
+		mes "这"+.@type$+"经过多次细化。虽然失败后它不会消失，"+.@ore$+"将会消失！";
+		next;
+		mes "[铁匠区]";
+		mes "当然，炼化费是不会退还的！您想继续吗？";
+		next;
+		if(select("是：否") == 2) {
+			mes "[铁匠区]";
+			mes "好的。如果失败的话我也会很难过。";
+			close;
+		}
+	}
+	if (countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[铁匠区]";
+		mes "材料不足。";
+		mes "要精炼等级"+.@equip_lv+" "+.@type$+"，我需要"+.@ore$+"和"+callfunc("F_InsertComma",.@price)+" zeny精炼费。";
+		close;
+	}
+	delitem .@material,1;
+	set Zeny, Zeny-.@price;
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine))
+		close;
+
+	mes "[铁匠区]";
+	mes "塔克！塔克！塔克！";
+	if (getequippercentrefinery(.@part, true) > rand(100)) {
+		specialeffect EF_BLESSING;
+		successrefitem .@part;
+		next;
+		mes "[铁匠区]";
+		mes "哈哈哈哈哈哈！！！";
+		next;
+		mes "[铁匠区]";
+		mes "Refine大获成功~哈哈哈！";
+		close;
+	}
+	specialeffect EF_CURSEATTACK;
+	specialeffect2 EF_SUI_EXPLOSION;
+	next;
+	emotion (!rand(5))?ET_ANGER:ET_HUK;
+	mes "[铁匠区]";
+	mes "哦，我的天啊！！！！";
+	next;
+	mes "[铁匠区]";
+	mes "哦！虽然它受到了祝福"+.@ore$+"保留设备...";
+	next;
+	mes "[铁匠区]";
+	mes "当我失败的时候我的心情会变得更糟！";
+	close;
+}
+prt_in,52,56,3	duplicate(BlacksmithDister)	Blacksmith Dister#prt	826
+payon,148,172,3	duplicate(BlacksmithDister)	Blacksmith Dister#pay	826
+alberta_in,20,56,3	duplicate(BlacksmithDister)	Blacksmith Dister#alb	826
+yuno_in01,175,18,3	duplicate(BlacksmithDister)	Blacksmith Dister#yuno	826
+ein_in01,26,82,3	duplicate(BlacksmithDister)	Blacksmith Dister#ein	826
+lhz_in02,280,15,3	duplicate(BlacksmithDister)	Blacksmith Dister#lhz	826

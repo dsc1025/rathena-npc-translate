@@ -1,0 +1,3335 @@
+//===== rAthena Script =======================================
+//= Dungeon Signposts - Monster Info
+//===== Description: =========================================
+//= [Official Conversion]
+//= Informations Boards about monsters.
+//===== Changelogs: ==========================================
+//= 1.0 Initial release. [Capuche] [Cydh]
+//= 1.0.1 Typos clean up. [Aleos]
+//============================================================
+
+function	script	F_AvenBoard	{
+	.@mo_board = select( "按楼层查找怪物",
+					"Monster Information Retrieval System",
+					( countitem(909) == 30000 ? "Request" : "" ),
+					"Cancel" );
+	if (.@mo_board == 1)
+		return 1;
+	else if (.@mo_board == 2) {
+		while(1) {
+			mes "[怪物信息检索系统]";
+			mes "这就是怪物信息检索系统。可以搜索该迷宫中出现的怪物的信息。搜索时输入怪物名称，包括空格。";
+			next;
+			input .@inputstr$;
+			setarray .@element$[0],"Neutral","Water","Earth","Fire","Wind","Poison","Holy","Shadow","Ghost","Undead";
+			setarray .@size$[0],"Medium","Small","Big";
+			setarray .@race$[0],"Formless","Undead","Animal","Plant","Insect","Fish","Demon","Demihuman","Angel","Dragon";
+			.@size = getargcount();
+			.@i = 0;
+			while( .@i < .@size && getarg(.@i+1,"") != .@inputstr$ ) .@i += 3;
+			mes "[怪物信息检索系统]";
+			mes "现在正在寻找";
+			next;
+			mes "[怪物信息检索系统]";
+			mes "搜索已完成。";
+			mes "现在显示搜索结果。";
+			next;
+			mes "[怪物信息检索系统]";
+			if (.@i >= .@size) {
+				mes "没有关于该怪物的信息。";
+				mes "请检查您的怪物名称。";
+			}
+			else {
+				.@mob_id = getarg(.@i);
+				mes "- 姓名 ："+ getarg(.@i+1);
+				mes "- 元素 ："+ .@element$[ getmonsterinfo(.@mob_id,MOB_ELEMENT) ];
+				mes "- 尺寸 ："+ .@size$[ getmonsterinfo(.@mob_id,MOB_SIZE) ];
+				mes "- 种族 ："+ .@race$[ getmonsterinfo(.@mob_id,MOB_RACE) ];
+				mes "--------------------------------^FD8D02";
+				mes getarg(.@i+2);
+			}
+			next;
+			mes "[怪物信息检索系统]";
+			mes "您想搜索其他怪物信息吗？";
+			next;
+			if (select( "搜索","取消" ) == 1)
+				continue;
+			mes "[怪物信息检索系统]";
+			mes "怪物搜索系统现在将关闭。";
+			next;
+			return 2;
+		}
+	}
+	else if (.@mo_board == 3) {
+		mes "会出现请求的信息 - 如果出现就没有问题";
+		next;
+		return 3;
+	}
+	else if (.@mo_board == 4)
+		close;
+	else {
+		mes "操作错误。";
+		close;
+	}
+}
+
+function	script	F_InfoBoard	{
+	next;
+	mes "[冒险者团]";
+	mes "想了解更多怪物信息";
+	mes "怪物信息检索系统";
+	mes "必须使用。";
+	next;
+	return;
+}
+
+cmd_fild08,326,357,0	script	Signpost#Ant Hell 1	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[蚂蚁地狱]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1005,"Familiar","Familiar is a aggressive bat creature that can cause problems for the unaware adventurer.",
+			1097,"Ant Egg","Not a threat by itself, but it will hatch a variety of giant ants.",
+			1105,"Deniro","This greedy worker ant will not attack on sight but will eat up items dropped nearby.",
+			1160,"Piere","This greedy worker ant will not attack on sight but will eat up items dropped nearby.",
+			1095,"Andre","This greedy worker ant will not attack on sight but will eat up items dropped nearby.",
+			1176,"Vitata","This larger variety of insect produces honey and royal jelly for the colony.",
+			1121,"Giearth","This small, demonic pixie can be found in limited numbers in this dungeon.",
+			1289,"Maya Purple","This ant Queen rare spawn monster will drop valuable minerals when killed, but should be approached with caution.",
+			1147,"Maya","Found in the second level of Ant Hell dungeon, this MVP is a more powerful version of Maya Purple." );
+		if (.@mo_board == 1) {
+			mes "[蚂蚁地狱]";
+			mes "蚂蚁地狱地牢里充满了巨大的昆虫，当一只昆虫受到攻击时，其他昆虫可能会加入战斗。";
+			next;
+			while(1) {
+				switch( select( "蚂蚁地狱B1","蚂蚁地狱B2","取消" ) ) {
+				case 1:
+					mes "[蚂蚁地狱B1]";
+					mes "------------ 怪物 ------------";
+					mes "熟悉的(24)";
+					mes "蚂蚁蛋(28)";
+					mes "德尼罗(31)";
+					mes "彼得(32)";
+					mes "安德烈(33)";
+					mes "葡萄园(35)";
+					mes "吉斯(42)";
+					mes "玛雅紫(81)";
+					mes "--------------------------------";
+					next;
+					mes "<玛雅紫？和玛雅有什么区别！谁知道手--我想知道葡萄杀死探险家。>";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[蚂蚁地狱B2]";
+					mes "------------ 怪物 ------------";
+					mes "熟悉的(24)";
+					mes "蚂蚁蛋(28)";
+					mes "德尼罗(31)";
+					mes "彼得(32)";
+					mes "安德烈(33)";
+					mes "葡萄园(35)";
+					mes "吉斯(42)";
+					mes "--------------------------------";
+					next;
+					mes "<蚂蚁女王！怪物玛雅老大！我觉得这很恶心——嗯？玛雅没有得到两个？好吧，我明白了。放下石头！ - 玛雅爱葡萄探险家>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+cmd_fild08,341,84,0	duplicate(Signpost#Ant Hell 1)	Signposts#Ant Hell2	2_BULLETIN_BOARD
+
+gef_tower,55,142,0	script	Signposts#Geffen Dungeon	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[格芬地牢]";
+		mes "警告！格芬地牢由 3 个关卡组成，对于新冒险者来说太危险了。请向冒险者团提供信息提示，以修改信息。";
+		mes "推荐60~70级左右的玩家使用。";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1077,"Poison Spore","An aggressive mushroom creature, it is recommended to carry green herbs to counteract it's toxic special attack.",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1035,"Hunter Fly","The bane of early acolytes, this deadly flying insect is found in dark, fetid places...",
+			1015,"Zombie","The ubiquitous Undead creature, the zombie is weak alone but can be a threat in large numbers.",
+			1036,"Ghoul","A more ancient variant of the zombie, hundreds of years of death have made them a tougher enemy.",
+			1130,"Jakk","This terrifying gourd-headed monster can surprise with a fire or curse attack.",
+			1111,"Drainliar","A big, ugly Familiar. This red menace is an unwelcome presence in many dark dungeons .",
+			1061,"Nightmare","Do not attempt to ride this ghostly horse.",
+			1204,"Ogretooth","An enchanted sword gone wrong.",
+			1179,"Whisper","Ghost monster that appears to be covered in a bed cover. Normal weapons are ineffective against its spiritual body.",
+			1109,"Deviruchi","An apprentice demon, relatively inexperienced in demonosity.",
+			1143,"Marionette","A puppeteer's worst nightmare, the Marionette can unleash fire or freezing spells.",
+			1046,"Doppelganger","Demons that steal other people's appearance. If you see a swordsman coming up behind you, check to make sure it's not an evil monster first.",
+			1389,"Dracula","These MVP vampires do not sparkle.^000000" );
+		if (.@mo_board == 1) {
+			mes "[格芬地牢]";
+			mes "您想阅读地牢的哪一部分？";
+			next;
+			while(1) {
+				switch( select( "格芬地牢 B1","格芬地牢 B2","格芬地牢 B3","取消" ) ) {
+				case 1:
+					mes "[格芬地牢 B1]";
+					mes "------------ 怪物 ------------";
+					mes "毒孢子(26)";
+					mes "波波林(30),";
+					mes "猎蝇(63)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[格芬地牢 B2]";
+					mes "------------ 怪物 ------------";
+					mes "僵尸(17)";
+					mes "排水者(47)";
+					mes "食尸鬼(61)";
+					mes "夹克(63)";
+					mes "噩梦(69)";
+					mes "食人魔之牙(114)";
+					mes "--------------------------------";
+					next;
+					mes "<这个地牢是罕见的产卵剑怪物食人魔牙的家园。>";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[格芬地牢 B3]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "食尸鬼(61)";
+					mes "猎蝇(63)";
+					mes "噩梦(69)";
+					mes "德维鲁奇(93)";
+					mes "木偶(90)";
+					mes "--------------------------------";
+					next;
+					mes "<恶魔小马、可爱恶魔和傀儡恶魔的家园。如果你喜欢恶魔，你应该进来。>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+glast_01,372,298,0	script	Signposts#Glastheim	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[格拉斯海姆]";
+		mes "Glast Heim 是一个巨大的地下城，有无数的关卡。推荐70~130级冒险家使用。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1036,"Ghoul","Corpse that is revived by Unholy Necromancer's curse. It ambushes nearby living creatures and devours their corpses to satiate its hunger, but because it's a reanimated corpse, it is unable to feel satisfied.^000000",
+			1186,"GiantWhisper","Adventurer's tips are needed.",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1195,"Rideword","Magic Tome brought to life with demon's powers. It does not possess emotions or a mind of its own, programmed to rely on its instincts to attack living creatures.",
+			1143,"Marionette","Demon with the appearance of a marionette doll used in puppet theatre. Normal weapons are ineffective against its spiritual body.^000000",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1203,"Mysteltainn","It appears to be a sealed demon blade, but it's actually being sealed by a chain type monster. It manipulates the chained sword to attack.",
+			1208,"Wanderer","Stray Samurai that is revived as an Undead monster. It attacks using previously mastered swordsmanship techniques, precise enough to slice flying insects in half.",
+			1219,"Abysmal Knight","Demon knight that serves the owner of legendary labyrinth. It is very powerful and brutal.",
+			1320,"Owl Duke","Owl Baron's sibling that wears a blue manteau. It enjoys rainy days.",
+			1295,"Owl Baron","Bird monster that wears red manteau. Getting fooled by its gentleman appearance will result in being ambushed by fierce magic attacks.",
+			1194,"Arclouze","Monster with hardened shell. It rolls its body to attack with its shell.",
+			1275,"Alice","Automatic doll tasked with various chores in the castle. Its main priority is to clean the vicinity, however it will attack intruders with a steel broom stick.",
+			1204,"Ogretooth","Adventurer's tips are needed.",
+			1179,"Whisper","Ghost monster that appears to be covered in a bed cover. Normal weapons are ineffective against its spiritual body.^000000",
+			1015,"Zombie","Dead soul trapped by unholy necromancer in a rotting corpse, cursed to live without being able to feel pain. Its impurity is capable of inflicting poison.^000000",
+			1209,"Cramp","Rodent found living deep within the dungeon. Its appearance is similar to Tarou, however it is much more vicious and its teeth poisonous.",
+			1268,"Bloody Knight","A soul of a valorous knight, cursed to be trapped within the bloody armor as a monster. It is powerful enough to lead the Castle's Chivalry.",
+			1035,"Hunter Fly","A bright crimson red Chonchon. Its agility is 3 times higher than a Chonchon and possess much more attack. Player captured Chonchon Pet cannot compare to Hunter Fly! 'Chonchon and ...' name will undoubtedly be popular amongst the pet keepers...^000000",
+			1253,"Gargoyle","Low ranking Demon with big wings. It utilizes its flying capabilities to attack in the air.",
+			1260,"Dark Frame","Mirror possessed by a demon. It hangs by the walls until someone walks nearby to look into the mirror, or it will wander around looking for its prey.",
+			1163,"Raydric","An infantry soul cursed to be trapped within the armor as a monster. Its sole purpose is to drive away intruders in the castle.",
+			1276,"Raydric Archer","An archer soul cursed to be trapped within the armor as a monster. Unlike Raydric, Raydric Archer uses bows to attack from afar.",
+			1192,"Wraith","Malevolent person cursed to become an Undead monster after death. It believes that sacrificing living creatures will revive it, and quietly as for unfortunate sacrifice in a dark corner.",
+			1201,"Rybio","Monster that was in charge of torturing inmates in an old prison. It always used mask to conceal its face in fear of reprisal.",
+			1310,"Majoruros","Monster with an appearance of a cow. It swings its hammer much more fiercely than a Minorous.",
+			1281,"Sageworm","These worms possess much more intellect, being worshipped as a god by other worms. It's a passive monster that will only attack with its encyclopedia when it senses danger.",
+			1196,"Skel Prisoner","Once an unjustly incarcerated prisoner, only its regret remained after its death as a monster.",
+			1207,"Sting","Monster covered in mud; its attacks are long and hard to dodge. Be cautious around this monster.",
+			1117,"Evil Druid","Once a proud high priest corrupted and turned into a monster by Demon's schemes. It maintains its strength as a former high priest.",
+			1257,"Injustice","Adventurer's tips are needed.",
+			1197,"Zombie Prisoner","Once a dead corpse of a prisoner in a castle that has revived as an Undead monster. No longer satisfied with resenting those that incarcerated it, it now resents all living creatures.",
+			1200,"Zealotus","A lady from a demon tribe. Its dominant nature forces humans to serve her as slaves. Its whip rarely misses its target when swung.",
+			1132,"Khalitzburg","A knight's soul cursed to be trapped within the armor as a monster. Its formidable strength remains as a former knight.",
+			1267,"Carat","Demon with an appearance of a Pierrot. It's seen walking on top of a circus ball like a Pierrot but...",
+			1202,"Phendark","Prison Advisor. It wore a mask to shape its face at birth, and it enjoys twisting people's minds.",
+			1283,"Chimera","Magical Beast made from various different monster parts. Its only purpose is to murder and destroy targets with powerful attacks.",
+			1198,"Dark Priest","Adventurer's tips are needed.",
+			1263,"Wind Ghost","Adventurer's tips are needed.",
+			1302,"Dark Illusion","Dark Lord's guard. It summons meteors from the sky as if to destroy the world.",
+			1272,"Dark Lord","Powerful Demon King. It is unable to utilize its full power, but it's still powerful enough to destroy normal adventurers with a motion of its hand." );
+		if (.@mo_board == 1) {
+			mes "[格拉斯海姆]";
+			mes "地牢由数个地下层组成，通过古老的隧道连接起来。做好应对不死族或内部恶魔怪物攻击的准备。";
+			next;
+			while(1) {
+				switch( select( "取消","格拉斯海姆室内","格拉斯海姆 B1 层","格拉斯海姆 B2 层","格拉斯海姆骑士 B1","格拉斯海姆骑士 B2","格拉斯海姆圣修道院","格拉斯海姆墓地","格拉斯海姆洞穴B1","格拉斯特海姆洞穴 B2","格拉斯特海姆地下监狱 B1","格拉斯特海姆地下监狱 B2","格拉斯特海姆涵洞 B1","格拉斯特海姆涵洞 B2","格拉斯特海姆涵洞 B3","格拉斯特海姆涵洞 B4","格拉斯特海姆楼梯" ) ) {
+				case 2:
+					mes "[格拉斯海姆室内]";
+					mes "------------ 怪物 ------------";
+					mes "鼠尾草(70)";
+					mes "骑行词(74)";
+					mes "暗框(76)";
+					mes "木偶(90)";
+					mes "爱丽丝(100)";
+					mes "流浪者(120)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[格拉斯海姆 B1 级]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "鼠尾草(70)";
+					mes "骑行词(74)";
+					mes "暗框(76)";
+					mes "猫头鹰公爵(92)";
+					mes "爱丽丝(100)";
+					mes "克拉(103)";
+					mes "猫头鹰男爵(120)";
+					mes "--------------------------------";
+					mes "中六点 - B2 层";
+					mes "中9点、3点、大1点-监狱B1下";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[格拉斯海姆 B2 级]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(59)";
+					mes "奇美拉(70)";
+					mes "骑行词(74)";
+					mes "邪恶德鲁伊(80)";
+					mes "雷德里克弓箭手(82)";
+					mes "爱丽丝(100)";
+					mes "食人魔之牙(114)";
+					mes "雷德里克(115)";
+					mes "哈利茨堡(118)";
+					mes "流浪者(120)";
+					mes "深渊骑士(122)";
+					mes "我的帐篷(130)";
+					mes "--------------------------------";
+					mes "大六点钟-B1层";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[格拉斯海姆骑士B1]";
+					mes "------------ 怪物 ------------";
+					mes "巨语(66)";
+					mes "骑行词(74)";
+					mes "雷德里克弓箭手(82)";
+					mes "爱丽丝(100)";
+					mes "雷德里克(115)";
+					mes "哈利茨堡(118)";
+					mes "深渊骑士(122)";
+					mes "--------------------------------";
+					mes "大9点、12点、3点——侠义B2";
+					mes "中间2点钟位置-涵洞B2";
+					F_InfoBoard;
+					continue;
+				case 6:
+					mes "[格拉斯海姆骑士B2]";
+					mes "------------ 怪物 ------------";
+					mes "雷德里克弓箭手(82)";
+					mes "爱丽丝(100)";
+					mes "雷德里克(115)";
+					mes "血腥骑士(116)";
+					mes "哈利茨堡(118)";
+					mes "深渊骑士(122)";
+					mes "我的帐篷(130)";
+					mes "--------------------------------";
+					mes "大9点、12点、3点——侠义B1";
+					F_InfoBoard;
+					continue;
+				case 7:
+					mes "[格拉斯海姆圣修道院]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "食尸鬼(61)";
+					mes "幽灵(77)";
+					mes "邪恶德鲁伊(80)";
+					mes "黑暗幻象(96)";
+					mes "黑暗牧师(98)";
+					mes "--------------------------------";
+					mes "大11点、5点——墓地";
+					F_InfoBoard;
+					continue;
+				case 8:
+					mes "[格拉斯海姆教堂墓地]";
+					mes "------------ 怪物 ------------";
+					mes "僵尸(17)";
+					mes "模仿者(56)";
+					mes "食尸鬼(61)";
+					mes "猎蝇(63)";
+					mes "幽灵(77)";
+					mes "邪恶德鲁伊(80)";
+					mes "黑魔王(96)MVP";
+					mes "--------------------------------";
+					mes "大12点、6点——圣修道院";
+					mes "大9点-涵洞B2";
+					next;
+					mes "<黑暗领主相当高。黑暗幻象也很高。 ... 该死的.. - 短探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 9:
+					mes "[格拉斯海姆洞穴 B1]";
+					mes "------------ 怪物 ------------";
+					mes "刺(104)";
+					mes "弧形罩(107)";
+					mes "--------------------------------";
+					mes "大11点-涵洞B4";
+					mes "大五点钟——B2洞";
+					F_InfoBoard;
+					continue;
+				case 10:
+					mes "[格拉斯海姆洞穴 B2]";
+					mes "------------ 怪物 ------------";
+					mes "石像鬼(100)";
+					mes "市长 (107)";
+					mes "--------------------------------";
+					mes "大2点钟-B1洞";
+					F_InfoBoard;
+					continue;
+				case 11:
+					mes "[格拉斯海姆地下监狱B1]";
+					mes "------------ 怪物 ------------";
+					mes "猎蝇(63)";
+					mes "僵尸囚犯(89)";
+					mes "不公正(95)";
+					mes "瑞比奥(98)";
+					mes "--------------------------------";
+					mes "大1点钟-监狱下B2";
+					mes "大8点钟-B1层";
+					F_InfoBoard;
+					continue;
+				case 12:
+					mes "[格拉斯海姆地下监狱B2]";
+					mes "------------ 怪物 ------------";
+					mes "猎蝇(63)";
+					mes "抽筋(82)";
+					mes "斯凯尔囚徒(91)";
+					mes "不公正(95)";
+					mes "瑞比奥(98)";
+					mes "彭达克 (102)";
+					mes "狂热者(105)";
+					mes "--------------------------------";
+					mes "大11点-涵洞B1";
+					mes "大五点钟-监狱下B1";
+					F_InfoBoard;
+					continue;
+				case 13:
+					mes "[格拉斯海姆涵洞 B1]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "石像鬼(100)";
+					mes "弧形罩(107)";
+					mes "--------------------------------";
+					mes "大1点钟-监狱下B2";
+					mes "大8点-涵洞B2";
+					F_InfoBoard;
+					continue;
+				case 14:
+					mes "[格拉斯海姆涵洞 B2]";
+					mes "------------ 怪物 ------------";
+					mes "抽筋(82)";
+					mes "石像鬼(100)";
+					mes "--------------------------------";
+					mes "大11点-涵洞B1";
+					mes "大1点-涵洞B3";
+					mes "大三点钟 - 楼梯地牢";
+					mes "大5点钟-侠义B1";
+					mes "大7点钟-监狱下B2";
+					mes "大十点钟 - 墓地";
+					F_InfoBoard;
+					continue;
+				case 15:
+					mes "[格拉斯海姆涵洞 B3]";
+					mes "------------ 怪物 ------------";
+					mes "石像鬼(100)";
+					mes "刺(104)";
+					mes "--------------------------------";
+					mes "大12点-涵洞B2";
+					mes "大7点-涵洞B4";
+					F_InfoBoard;
+					continue;
+				case 16:
+					mes "[格拉斯海姆涵洞 B4]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "石像鬼(100)";
+					mes "安诺利亚(109)";
+					mes "--------------------------------";
+					mes "大11点-涵洞B3";
+					mes "7点半-B1洞";
+					F_InfoBoard;
+					continue;
+				case 17:
+					mes "[格拉斯海姆楼梯]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "风鬼(80)";
+					mes "雷德里克弓箭手(82)";
+					mes "--------------------------------";
+					mes "中-涵洞B2";
+					mes "大七点钟 - 格拉斯海姆球场";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+yuno_fild03,37,143,0	script	Signposts#Nogg Road	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[岩浆地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1381,"Grizzly","Bear that inhabits magma flowing regions. Its furs appear as if it's on fire. It will be popular amongst the fur lovers.",
+			1072,"Kaho","Demon covered in flames. Its attacks are flashy, but it's actually a low ranking demon with fairly weak attack.",
+			1383,"Explosion","Bat that inhabits magma flowing regions. It no longer possesses supersonic scream in exchange for near perfect eyesight and the ability to emit bright light.",
+			1367,"Blazer","Fireball monster. Skeletal frame maintains its shape.",
+			1366,"Lava Golem","Golem formed from hardened magma. It possesses powerful strength.",
+			1387,"Gig","Scorpion inhabitant of this humid place. It takes shelter from the heat by digging into the sand. Its sting is coated with paralyzing poison.",
+			1382,"Diabolic","Appears to be a cute little demon, however it's actually a horrible demon with a hobby of pushing people into the fire.",
+			1384,"Deleter (Sky)","One of the magma region inhabitants, Fire Dragon Petite. Its head is disproportionately large, preventing it from flying.",
+			1385,"Deleter (Ground)","One of the magma region inhabitants, Earth Dragon Petite.",
+			1379,"Nightmare Terror","Its name follows its literal meaning. It feeds on other creatures' terror and becomes stronger." );
+		if (.@mo_board == 1) {
+			mes "[岩浆地牢]";
+			mes "诺格路是一个B2地下城，里面住着凶猛的怪物。没有经验的冒险者不应该进入这个地方。而且副本内的道路非常狭窄，要小心，不要给其他玩家带来不便。";
+			next;
+			while(1) {
+				switch( select( "岩浆地牢 B1","岩浆地牢 B2","取消" ) ) {
+				case 1:
+					mes "[岩浆地牢B1]";
+					mes "------------ 怪物 ------------";
+					mes "灰熊(66)";
+					mes "建筑(98)";
+					mes "爆炸(100)";
+					mes "西装外套(101)";
+					mes "熔岩傀儡(103)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[岩浆地牢B2]";
+					mes "------------ 怪物 ------------";
+					mes "演出(100)";
+					mes "西装外套(101)";
+					mes "恶魔(104)";
+					mes "删除器（天空）(105)";
+					mes "删除器（地面）(105)";
+					mes "噩梦恐怖(107)";
+					mes "--------------------------------";
+					next;
+					mes "<B1太热了..B2也很热，但没有B1那么热~ - 融化的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+mjolnir_02,76,362,0	script	Signposts#Mjolnir Dead	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[雷神之锤死坑]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1175,"Tarou","Rodent that inhabits dark places. It possesses white and plushy furs.",
+			1005,"Familiar","Colonial bat that inhabits dark caves. Its small fangs are sharp enough to suck blood from nearby creatures.",
+			1145,"Martin","Underground inhabitant, mole. It usually lives in a small tunnel, sometimes coming out of the tunnel to look for food.",
+			1169,"Skel Worker","Miner that died in an unfortunate accident in a mine. Their unyielding will to dig the mines have been embedded into their skeletal bodies, turning them into monsters.",
+			1121,"Giearth","Underground Pixie inhabitant. It collects minerals and processes them for a living. It will remain passive as long as adventurers don't touch them. This monster appears in several dungeons such as Mjolnir Dead Pit and Ant Hell.",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1151,"Myst","Monster with an appearance of Poisonous Gas. It's actual identity is unknown, however it is speculated to be a mass of microorganisms.",
+			1209,"Cramp","Rodent found living deep within the dungeon. Its appearance is similar to Tarou, however it is much more vicious and its teeth poisonous." );
+		if (.@mo_board == 1) {
+			mes "[雷神之锤死坑]";
+			mes "Mjolnir Dead Pit 是一个由 B3 层组成的地下城。这个地方是专为初级到中级冒险家设计的。冒险家可能想访问这个地下城来获取各种矿石。在这个地下城里可以找到各种矿石。";
+			next;
+			while(1) {
+				switch( select( "雷神锤死坑 B1","雷神锤死坑 B2","雷神锤死坑 B3","取消" ) ) {
+				case 1:
+					mes "[雷神之锤死坑 B1]";
+					mes "------------ 怪物 ------------";
+					mes "太郎(22)";
+					mes "熟悉的(24)";
+					mes "马丁(39)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[雷神之锤死坑 B2]";
+					mes "------------ 怪物 ------------";
+					mes "马丁(39)";
+					mes "吉斯(42)";
+					mes "骨干工人(44)";
+					mes "排水者(47)";
+					mes "--------------------------------";
+					next;
+					mes "<地牢的B2实际上是由斯凯尔工人建造的迷宫般的隧道。小心不要在迷宫中迷路。我没有遇到任何问题，但你可能有一些问题。 - 专家导航员探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[雷神之锤死坑 B3]";
+					mes "------------ 怪物 ------------";
+					mes "马丁(39)";
+					mes "吉斯(42)";
+					mes "骨干工人(44)";
+					mes "神秘岛(49)";
+					mes "抽筋(82)";
+					mes "--------------------------------";
+					next;
+					mes "<怪物经常成群结队地包围着你。这种事经常发生！我很高兴我带了飞翼。唷~ - 衣衫褴褛的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+prt_fild01,139,369,0	script	Signposts#Prontera_Laby	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[迷宫之森]";
+		mes "一个曲折的迷宫，里面有不同级别的怪物。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1002,"Poring","Jelly creature that can be found in just about anywhere. This monster is very passive and weak, perfect for beginners. It has a tendency to eat any items that come across.",
+			1145,"Martin","Underground inhabitant, mole. It usually lives in a small tunnel, sometimes coming out of the tunnel to look for food.",
+			1042,"Steel Chonchon","One of Chonchon type monster, possessing hard shells. It loves to quickly collect items on the ground.",
+			1035,"Hunter Fly","A bright crimson red Chonchon. Its agility is 3 times higher than a Chonchon and possess much more attack. Player captured Chonchon Pet cannot compare to Hunter Fly! 'Chonchon and ...' name will undoubtedly be popular amongst the pet keepers...^000000",
+			1037,"Side Winder","One headed snake. It uses its tail like its head to confuse the enemies.",
+			1090,"Mastering","A mutated giant poring. It wanders around with other Porings.",
+			1120,"Ghostring","A dead poring that turned into a Ghost monster due to powerful ghost's influence. Normal weapons are ineffective against this monster.",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1063,"Lunatic","A rodent with soft furs commonly seen around the world. Its favorite food is a carrot.",
+			1008,"Pupa","Chrysalis of a soon to be Creamy. Its skin is elastic and sturdy, but it's unable to move.",
+			1011,"Chonchon","Common insect type monster that can be seen in many places. Fly Wings dropped by this monster have the same effect as Acolyte skill: Teleport.",
+			1007,"Fabre","Creamy in larvae stage. This monster is perfect for new adventurers to fight. It sometimes turns into a chrysalis.",
+			1052,"Rocker","This monster enjoys playing violin peacefully. It loves music just as much as humans.",
+			1025,"Boa","Adventurer's tips are needed.",
+			1174,"Stainer","Ladybug with rainbow colored shell. Its shell is highly sought after as an ingredient for decorations.",
+			1018,"Creamy","Creamy is the final form reached when Fabre successfully goes through evolution.",
+			1103,"Caramel","Hedgehog monster. It has docile personality, but it hates being touched. It uses sharp needles on its back to attack.",
+			1060,"Bigfoot","Bear monster living deep within the cave. Due to its gluttonous trait, it's fat. It is very lazy in nature, spending most of its time sleeping, however it becomes ferocious when provoked. Adventurers will not find this monster a threat as long as they avoid provoking it.",
+			1056,"Smokie","Raccoon monster living deep within the forest, unaware of the outside world. It occasionally transforms into a human being by using the leaf on its head.",
+			1128,"Horn","Giant Beetle monster. It concentrates solely on its business, disregarding what other creatures' are up to. When it feels danger, it uses scissor shaped horn on its head to repel the enemy.",
+			1104,"Coco","Mischievous animal that's regularly seen deep within the forest. This monster is known to have similar intelligence as a human, and at times it even pranks on them. Its favorite food is a Banana.",
+			1057,"Yoyo","Tiny squirrel monster. It's not strong, but its agility may prove to be too difficult for beginners.",
+			1013,"Wolf","Wolf monster commonly seen in most Midgard areas. It preys on small animals. It's fear for humans makes it passive around humans.",
+			1100,"Argos","This giant spider is able to prey on other creatures by using its webs to trap them, or by simply walking on the ground to chase them.",
+			1166,"Savage","Boar, an inhabitant of the forest. It's simple minded, however when it's unstoppable when it's attacking. It is generally docile.",
+			1114,"Dustiness","Moth type monster with fairly hard body. It's usually found within dark reaches of the cave, however it can also sometimes be found in Mt. Mjolnir.",
+			1099,"Argiope","Giant Larva monster. It attacks with poison tipped canines.",
+			1243,"Sasquatch","Bear found in Lutie area. It has very vicious personality and attacks all adventurers on sight. Due to the living environment, its furs are as white as snow.",
+			1306,"Leib Olmai","Bear with extremely vicious personality. Its body is covered with numerous scars from various fights with other creatures.",
+			1088,"Vocal","Leader of Rocker monsters. Its voice is very melodic, earning the respect of Rocker monsters. It carries around a violin as a weapon.",
+			1101,"Baphomet Jr.","Adventurer's tips are needed.",
+			1215,"Stem Worm","This monster is a Worm Tail variant. Its tail is much more stronger than worm tail's.",
+			1139,"Mantis","Adventurer's tips are needed.",
+			1294,"Killer Mantis","This monster is a Mantis variant. It is much stronger than a mantis.",
+			1214,"Choco","Adventurer's tips are needed.",
+			1093,"Eclipse","This monster is a Lunatic variant. It is bigger and stronger than a normal Lunatic. It is extremely vicious and commands other lunatics to attack nearby adventurers.",
+			1092,"Vagabond Wolf","A lone stray wolf separated from its pack. It commands other stray wolves to attack nearby creatures.",
+			1039,"Baphomet","Demon living deep within the forest. It considers humans as insignificant. It uses a scythe as a weapon, which is sharp enough to cut numerous trees in one blow. It has yet to use its scythe to repel intruders." );
+		if (.@mo_board == 1) {
+			mes "[迷宫之森]";
+			mes "迷宫之森由B3层组成，1、2、B3层居住着各种怪物。在冒险进入这个地牢之前，请做好充分准备。";
+			next;
+			while(1) {
+				switch( select( "迷宫之森B1","迷宫之森B2","迷宫之森B3","取消" ) ) {
+				case 1:
+					mes "[迷宫之森B1]";
+					mes "------------ 怪物 ------------";
+					mes "波利(1)";
+					mes "疯子(3)";
+					mes "蛹(4)";
+					mes "春川(5)";
+					mes "法布尔(6)";
+					mes "摇杆(15)";
+					mes "蟒蛇(18)";
+					mes "染色剂(21)";
+					mes "奶油味(23)";
+					mes "焦糖(25)";
+					mes "大脚怪(29)";
+					mes "燕尾服(29)";
+					mes "波波灵(30)";
+					mes "喇叭(32)";
+					mes "可可(38)";
+					mes "悠悠(38)";
+					mes "马丁(39)";
+					mes "狼(45)";
+					mes "阿尔戈斯(47)";
+					mes "钢铁雄鸡(48)";
+					mes "巧克力(48)";
+					mes "野蛮人(59)";
+					mes "灰尘(62)";
+					mes "猎蝇(63)";
+					mes "螳螂(65)";
+					mes "侧卷绕机(70)";
+					mes "金银花(75)";
+					mes "流浪狼(93)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[迷宫之森B2]";
+					mes "------------ 怪物 ------------";
+					mes "大脚怪(29)";
+					mes "波波灵(30)";
+					mes "大脚野人(72)";
+					mes "奥尔麦面包(87)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[迷宫之森B3]";
+					mes "------------ 怪物 ------------";
+					mes "声乐(18)";
+					mes "波波灵(30)";
+					mes "日食(31)";
+					mes "母带处理(42)";
+					mes "小巴风特(57)";
+					mes "猎蝇(63)";
+					mes "螳螂(65)";
+					mes "侧卷绕机(70)";
+					mes "茎虫(84)";
+					mes "鬼环(90)";
+					mes "杀手螳螂(91)";
+					mes "流浪狼(93)";
+					mes "--------------------------------";
+					next;
+					mes "<看看那些小巴风特，你不觉得巴风特很有活力吗？不？ - 嫉妒的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+mjolnir_12,40,18,0	script	Signposts#Alde_Laby	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[迷宫之森]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1002,"Poring","Jelly creature that can be found in just about anywhere. This monster is very passive and weak, perfect for beginners. It has a tendency to eat any items that come across.",
+			1145,"Martin","Underground inhabitant, Mole. It usually lives in a small tunnel, sometimes coming out of the tunnel to look for food.",
+			1042,"Steel Chonchon","One of Chonchon type monster, possessing hard shells. It loves to quickly collect items on the ground.",
+			1035,"Hunter Fly","A bright crimson red Chonchon. Its agility is 3 times higher than a Chonchon and possess much more attack. Player captured Chonchon Pet cannot compare to Hunter Fly! 'Chonchon and ...' name will undoubtedly be popular amongst the pet keepers...^000000",
+			1037,"Side Winder","One headed snake. It uses its tail like its head to confuse the enemies.",
+			1090,"Mastering","A mutated giant poring. It wanders around with other Porings.",
+			1120,"Ghostring","A dead poring that turned into a Ghost monster due to powerful ghost's influence. Normal weapons are ineffective against this monster.",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1063,"Lunatic","A rodent with soft furs commonly seen around the world. Its favorite food is a carrot.",
+			1008,"Pupa","Chrysalis of a soon to be Creamy. Its skin is elastic and sturdy, but its unable to move.",
+			1011,"Chonchon","Common insect type monster that can be seen in many places. Fly Wings dropped by this monster have the same effect as Acolyte skill: Teleport.",
+			1007,"Fabre","Creamy in Larvae stage. This monster is perfect for new adventurers to fight. It sometimes turns into a chrysalis.",
+			1052,"Rocker","This monster enjoys playing violin peacefully. It loves music just as much as humans.",
+			1025,"Boa","Adventurer's tips are needed.",
+			1174,"Stainer","Ladybug with rainbow colored shell. Its shell is highly sought after as an ingredient for decorations.",
+			1018,"Creamy","Creamy is the final form reached when Fabre successfully goes through evolution.",
+			1103,"Caramel","Hedgehog monster. It has docile personality, but it hates being touched. It uses sharp needles on its back to attack.",
+			1060,"Bigfoot","Bear monster living deep within the cave. Due to its gluttonous trait, it's fat. It is very lazy in nature, spending most of its time sleeping, however it becomes ferocious when provoked. Adventurers will not find this monster a threat as long as they avoid provoking it.",
+			1056,"Smokie","Raccoon monster living deep within the forest, unaware of the outside world. It occasionally transforms into a human being by using the leaf on its head.",
+			1128,"Horn","Giant Beetle monster. It concentrates solely on its business, disregarding what other creatures' are up to. When it feels danger, it uses scissor shaped horn on its head to repel the enemy.",
+			1104,"Coco","Mischievous animal that's regularly seen deep within the forest. This monster is known to have similar intelligence as a human, and at times it even pranks on them. Its favorite food is a Banana.",
+			1057,"Yoyo","Tiny squirrel monster. It's not strong, but its agility may prove to be too difficult for beginners.",
+			1013,"Wolf","Wolf monster commonly seen in most Midgard areas. It preys on small animals. It's fear for humans makes it passive around humans.",
+			1100,"Argos","This giant spider is able to prey on other creatures by using its webs to trap them, or by simply walking on the ground to chase them.",
+			1166,"Savage","Boar, an inhabitant of the forest. It's simple minded, however when it's unstoppable when it's attacking. It is generally docile.",
+			1114,"Dustiness","Moth type monster with fairly hard body. It's usually found within dark reaches of the cave, however it can also sometimes be found in Mt. Mjolnir.",
+			1099,"Argiope","Giant Larva monster. It attacks with poison tipped canines.",
+			1243,"Sasquatch","Bear found in Lutie area. It has very vicious personality and attacks all adventurers on sight. Due to the living environment, its furs are as white as snow.",
+			1306,"Leib Olmai","Bear with extremely vicious personality. Its body is covered with numerous scars from various fights with other creatures.",
+			1088,"Vocal","Leader of Rocker monsters. Its voice is very melodic, earning the respect of Rocker monsters. It carries around a violin as a weapon.",
+			1101,"Baphomet Jr.","Adventurer's tips are needed.",
+			1215,"Stem Worm","This monster is a Worm Tail variant. Its tail is much more stronger than worm tail's.",
+			1139,"Mantis","Adventurer's tips are needed.",
+			1294,"Killer Mantis","This monster is a Mantis variant. It is much stronger than a mantis.",
+			1214,"Choco","Adventurer's tips are needed.",
+			1093,"Eclipse","This monster is a Lunatic variant. It is bigger and stronger than a normal Lunatic. It is extremely vicious and commands other lunatics to attack nearby adventurers.",
+			1092,"Vagabond Wolf","A lone stray wolf separated from its pack. It commands other stray wolves to attack nearby creatures.",
+			1039,"Baphomet","Demon living deep within the forest. It considers humans as insignificant. It uses scythe as a weapon, which is sharp enough to cut numerous trees in one blow. It has yet to use its scythe to repel intruders." );
+		if (.@mo_board == 1) {
+			mes "[迷宫之森]";
+			mes "迷宫之森由B3层组成，1、2、B3层居住着各种怪物。在冒险进入这个地牢之前，请做好充分准备。";
+			next;
+			while(1) {
+				switch( select( "迷宫之森B1","迷宫之森B2","迷宫之森B3","取消" ) ) {
+				case 1:
+					mes "[迷宫之森B1]";
+					mes "------------ 怪物 ------------";
+					mes "波利(1)";
+					mes "疯子(3)";
+					mes "蛹(4)";
+					mes "春川(5)";
+					mes "法布尔(6)";
+					mes "摇杆(15)";
+					mes "蟒蛇(18)";
+					mes "染色剂(21)";
+					mes "奶油味(23)";
+					mes "焦糖(25)";
+					mes "大脚怪(29)";
+					mes "燕尾服(29)";
+					mes "波波灵(30)";
+					mes "喇叭(32)";
+					mes "可可(38)";
+					mes "悠悠(38)";
+					mes "马丁(39)";
+					mes "狼(45)";
+					mes "阿尔戈斯(47)";
+					mes "钢铁雄鸡(48)";
+					mes "巧克力(48)";
+					mes "野蛮人(59)";
+					mes "灰尘(62)";
+					mes "猎蝇(63)";
+					mes "螳螂(65)";
+					mes "侧卷绕机(70)";
+					mes "金银花(75)";
+					mes "流浪狼(93)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[迷宫之森B2]";
+					mes "------------ 怪物 ------------";
+					mes "燕尾服(29)";
+					mes "波波灵(30)";
+					mes "大脚野人(72)";
+					mes "奥尔麦面包(87)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[迷宫之森B3]";
+					mes "------------ 怪物 ------------";
+					mes "声乐(18)";
+					mes "波波灵(30)";
+					mes "日食(31)";
+					mes "母带处理(42)";
+					mes "小巴风特(57)";
+					mes "猎蝇(63)";
+					mes "螳螂(65)";
+					mes "侧卷绕机(70)";
+					mes "茎虫(84)";
+					mes "鬼环(90)";
+					mes "杀手螳螂(91)";
+					mes "流浪狼(93)";
+					mes "--------------------------------";
+					next;
+					mes "<看看那些小巴风特，你不觉得巴风特很有活力吗？不？ - 嫉妒的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+moc_fild19,107,101,0	script	Signposts#Sphinx	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[狮身人面像]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1146,"Matyr","King's protector, gatekeeper. Dog is used as a medium to summon the gatekeeper using forbidden magic. Its body is covered in dark mist and it is very agile.",
+			1178,"Zerom","Morocc natives were drafted to help with the construction of the Sphinx. They were cursed to become a monster and protect the Sphinx for all eternity.",
+			1164,"Requiem","Morocc natives were drafted to help with the construction of the Sphinx. They were cursed to become a monster and protect the Sphinx for all eternity.",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1140,"Marduk","Augur of Morocc Natives. It controls cursed Morocc natives to protect King's Tomb.",
+			1154,"Pasana","Protector of the Pyramid. In order to continue to protect the now deceased king, it has willingly received the curse of the Pyramid.",
+			1149,"Minorous","Unknown creature living deep within the labyrinth. It is not on friendly term with Orcs, but they rarely come across each other. When it encounters a creature, it will chase down the target and attack with its giant hammer.",
+			1098,"Anubis","Adventurer's tips are needed.",
+			1037,"Side Winder","One headed snake. It uses its tail like its head to confuse the enemies.",
+			1157,"Pharaoh","King of the Pyramid. As a king of ancient kingdom, its body now lies within royal coffin." );
+		if (.@mo_board == 1) {
+			mes "[狮身人面像]";
+			mes "狮身人面像由地下 5 层组成。这个地下城的难度适合中级到专家级的冒险家。该地下城中的所有怪物都具有攻击性，因此建议冒险者在紧急情况下有逃生的方法。";
+			next;
+			while(1) {
+				switch( select( "Sphinx B1","Sphinx B2","Sphinx B3","Sphinx B4","Sphinx B5","取消" ) ) {
+				case 1:
+					mes "[狮身人面像B1]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "数学(58)";
+					mes "零(70)";
+					mes "安魂曲(71)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[狮身人面像B2]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "数学(58)";
+					mes "零(70)";
+					mes "安魂曲(71)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[狮身人面像B3]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "数学(58)";
+					mes "马杜克(73)";
+					mes "坟墓(79)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[狮身人面像B4]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "未成年人(58)";
+					mes "坟墓(79)";
+					mes "阿努比斯(105)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[狮身人面像B5]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "数学(58)";
+					mes "侧卷绕机(70)";
+					mes "坟墓(79)";
+					mes "法老(85)";
+					mes "阿努比斯(105)";
+					mes "--------------------------------";
+					next;
+					mes "<卖法老面具~哎呀..抱歉，看到法老，我就想起了一个吟游诗人的牵强故事。 - 冰冻探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+aldebaran,136,133,0	script	Signposts#Clock Tower	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[钟楼地下城]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1195,"Rideword","Magic Tome brought to life with demon's powers. It does not possess emotions or a mind of its own, programmed to rely on its instincts to attack living creatures.",
+			1199,"Punk","Giant mold monster. It usually floats around and attacks any nearby creatures in hopes of multiplying itself.",
+			1102,"Bathory","Demon worshipping witch. It flies around in the air and attacks with a crystal ball. Surprisingly, it loves cute things.",
+			1270,"Tower Keeper","Magical creature created to maintain Clock Tower. It is passive, however it will retaliate against any hostile actions against Clock Tower inhabitants.",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1269,"Clock","Old Grandfather clock that turned into a monster. It is passive against humans since it spent countless years with them.",
+			1377,"Elder","Once an elder of magic association. It delved too deep into magic, turning into a magical monster that attack adventurers on sight.",
+			1193,"Alarm","Magically powered alarm clock with the sole purpose of protecting Clock Tower. It will attack any intruders within Clock Tower.",
+			1320,"Owl Duke","Owl Baron's sibling that wears a blue manteau. It enjoys rainy days.",
+			1179,"Whisper","Ghost Monster that appears to be covered in a bed cover. Normal weapons are ineffective against its spiritual body.^000000",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1194,"Arclouze","Monster with hardened shell. It rolls its body to attack with its shell.",
+			1211,"Brilight","Ladybug mysteriously transformed into a vicious bug. It inhabits dark areas and attacks nearby adventurers.",
+			1189,"Orc Archer","Adventurer's tips are needed.",
+			1213,"High Orc","Elite orc warrior that possess enhanced physical and mental qualities compared to a normal orc. It periodically attacks nearby village due to its brutal nature.",
+			1209,"Cramp","Rodent found living deep within the dungeon. Its appearance is similar to Tarou, however it is much more vicious and its teeth poisonous.",
+			1216,"Penomena","It looks similar to a hydra, but it is capable of moving and its attacks are much stronger. Underestimating it will result in quick death. Be cautious around this monster.",
+			1131,"Joker","Creature created from countless experiments by demons. It's main priority is to repel invaders." );
+		if (.@mo_board == 1) {
+			mes "[钟楼地下城]";
+			mes "钟楼地下城由地下B4层和地下B4层组成。地牢内的扭曲点很复杂，将冒险者送到随机的位置。小心不要在地牢内迷路。";
+			next;
+			while(1) {
+				switch( select( "地下B1","地下B2","地下B3","地下B4","地下B1","地下B2","地下B3","地下B4","取消" ) ) {
+				case 1:
+					mes "[钟楼地牢底层B1]";
+					mes "------------ 怪物 ------------";
+					mes "骑行词(74)";
+					mes "朋克(82)";
+					mes "巴斯里(86)";
+					mes "守塔人(90)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[钟楼地牢底层B2]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "时钟(81)";
+					mes "朋克(82)";
+					mes "守塔人(90)";
+					mes "长者(92)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[钟楼地下城底层B3]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "警报(88)";
+					mes "守塔人(90)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[钟楼地下城底层B4]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "时钟(81)";
+					mes "警报(88)";
+					mes "守塔人(90)";
+					mes "猫头鹰公爵(92)";
+					mes "长者(92)";
+					mes "--------------------------------";
+					next;
+					mes "<猫头鹰公爵的闪电很痛！ - 破产探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[钟楼地下城地下B1层]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "弧形罩(107)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 6:
+					mes "[钟楼地下城地下B2层]";
+					mes "------------ 怪物 ------------";
+					mes "明亮(71)";
+					mes "兽人弓箭手(78)";
+					mes "高等兽人(81)";
+					mes "弧形罩(107)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 7:
+					mes "[钟楼地下城地下B3层]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "抽筋(82)";
+					mes "现象(85)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 8:
+					mes "[钟楼地下城地下B4层]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "巴斯里(86)";
+					mes "小丑(90)";
+					mes "--------------------------------";
+					next;
+					mes "<Bathory..是奶奶吗？女孩？如果是个女孩就更好了？你不同意吗？ - 星沙狩猎探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+gef_fild10,69,340,0	script	Signposts#Orc Dungeon	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[兽人地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1005,"Familiar","Colonial bat that inhabits dark caves. Its small fangs are sharp enough to suck blood from nearby creatures.",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1042,"Steel Chonchon","One of Chonchon type monster, possessing hard shells. It loves to quickly collect items on the ground",
+			1153,"Orc Zombie","Orc Warrior corpse has been revived as an Undead monster. It moves very slowly.",
+			1152,"Orc Skeleton","Skeletal Orc warrior corpse has been revived as an Undead monster. It uses weapons that was once used when it was still alive. This monster is stronger than a normal orc warrior.",
+			1177,"Zenorc","Orc variant, residing deep within underground cave. It will devour anything in sight to satisfy its appetite. It is passive against adventurers.",
+			1189,"Orc Archer","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[兽人地牢]";
+			mes "兽人地牢共有 2 层。这个迷宫中出现的怪物虽然个体并不强大，但冒险者可能会被数量压倒。圣元素武器将使冒险者在这个地下城中的生活变得更加轻松。您还可以使用牧师技能阿斯佩西奥。";
+			next;
+			while(1) {
+				switch( select( "兽人地下城 B1","兽人地下城 B2","取消" ) ) {
+				case 1:
+					mes "[兽人地下城B1]";
+					mes "------------ 怪物 ------------";
+					mes "熟悉的(24)";
+					mes "排水者(47)";
+					mes "钢铁雄鸡(48)";
+					mes "兽人僵尸(51)";
+					mes "兽人骷髅(53)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[兽人地下城B2]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "钢铁雄鸡(48)";
+					mes "兽人骷髅(53)";
+					mes "泽诺克(54)";
+					mes "兽人弓箭手(78)";
+					mes "--------------------------------";
+					next;
+					mes "<为什么会有这么多怪物？？太多了…… - 恼怒的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+jupe_cave,35,57,0	script	Signposts#Juperos Ruins	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[朱佩罗斯废墟]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1677,"Venatu (Green)","Automatic walking machine guards created by ancient machinery civilization. It uses 2 vulcan cannons in its arms to attack.",
+			1676,"Venatu (Purple)","Automatic walking machine guards created by ancient machinery civilization. It uses 2 vulcan cannons in its arms to attack.",
+			1678,"Venatu (Orange)","Automatic walking machine guards created by ancient machinery civilization. It uses destructive shock cannons to attack.",
+			1679,"Venatu (Blue)","Automatic walking machine guards created by ancient machinery civilization. It uses destructive shock cannons to attack.",
+			1670,"Dimik (Green)","Automatic walking machine guards created by ancient machinery civilization. It fires 2 vulcan cannons to attack.",
+			1671,"Dimik (Blue)","Automatic walking machine guards created by ancient machinery civilization. It fires 2 vulcan cannons to attack.",
+			1672,"Dimik (Orange)","Automatic walking machine guards created by ancient machinery civilization. It fires 2 vulcan cannons to attack.",
+			1673,"Dimik (Red)","Automatic walking machine guards created by ancient machinery civilization. It fires 2 vulcan cannons to attack.",
+			1365,"Apocalipse","Ancient weapon. It was created as a guard and it will remain passive until threatened. It regularly scans the area with its various faces.",
+			1668,"Archdam","Ancient Machine suit. It appears to be piloted automatically by a software, rather than manually.",
+			1685,"Vesper","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[朱佩罗斯废墟]";
+			mes "Juperos 遗迹由 2 层（可正常进入）和 1 层中心层（需完成特定挑战才能进入）组成。";
+			next;
+			while(1) {
+				switch( select( "Juperos 遗址 B1","Juperos 遗址 B2","Juperos 遗址中心","取消" ) ) {
+				case 1:
+					mes "[朱佩罗斯遗址B1]";
+					mes "------------ 怪物 ------------";
+					mes "威尼托（绿色）(113)";
+					mes "威尼托（紫色）(113)";
+					mes "狩猎（橙）(113)";
+					mes "威尼托（蓝色）(113)";
+					mes "迪米克（绿色）(116)";
+					mes "迪米克（蓝色）(116)";
+					mes "迪米克（橙色）(116)";
+					mes "迪米克（红）(116)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[朱佩罗斯遗址B2]";
+					mes "------------ 怪物 ------------";
+					mes "威尼托（绿色）(113)";
+					mes "威尼托（紫色）(113)";
+					mes "狩猎（橙）(113)";
+					mes "威尼托（蓝色）(113)";
+					mes "启示录(121)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[朱佩罗斯遗址中心]";
+					mes "------------ 怪物 ------------";
+					mes "威尼托（绿色）(113)";
+					mes "威尼托（紫色）(113)";
+					mes "狩猎（橙）(113)";
+					mes "迪米克（绿色）(116)";
+					mes "迪米克（蓝色）(116)";
+					mes "迪米克（橙色）(116)";
+					mes "迪米克（红）(116)";
+					mes "阿奇达姆(119)";
+					mes "--------------------------------";
+					next;
+					mes "<无论谁正在读这篇文章！你见过 MVP 怪物 Vesper 吗？我不明白！怎么就这么畜生呢？到底怎么可能…… - 怀疑探险家葡萄的阴谋>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+izlu2dun,111,87,0	script	Signposts#Izlude	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[伊兹鲁德海底隧道]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1068,"Hydra","Anemone monster. Despite the appearance, it is rooted deep within the area, and uses the rooted tentacles to attack nearby creatures.",
+			1161,"Plankton","Small organism monster seen floating in the water. This monster is usually preyed on by other sea creatures.",
+			1070,"Kukre","Worm monster. Its agility is surprisingly fast when scouring for objects on the ground.",
+			1141,"Marina","Jellyfish monster with surprisingly strong tentacles that allow it to swim or walk on land. Its tentacles are used in various ways.",
+			1066,"Vadon","Crayfish monster that's usually seen around beach. Its body is covered with hard shell, protecting it from attacks.",
+			1067,"Cornutus","Conch monster. It usually lives within its hard shell. This monster is usually seen around Izlude beach areas.",
+			1144,"Marse","Marine inhabitant, squid monster. It spins its body rapidly to use its two tentacles as whips to attack.",
+			1044,"Obeaune","Mermaid monster. Its hair is always pointed up, disturbing other creatures in the vicinity. It will attack adventurers on sight.",
+			1264,"Merman","Ambitious Merman monster with ambition to rule over surface world. It's usually seen deep under the ocean or caves in beach areas.",
+			1142,"Marine Sphere","Spherical monster seen wandering around aimlessly within the ocean. When it feels threatened, it will self destruct.",
+			1158,"Phen","Fish monster that live deep within the ocean. This fish is highly sought after for dining purposes.",
+			1045,"Marc","Seahorse monster. It's covered in thick husks and may prove to be a formidable opponent for unsuspecting adventurers.",
+			1069,"Swordfish","Swordfish monster. It uses supersonic waves to attack.",
+			1108,"Deviace","Devilfish monster. It will remain passive as long as adventurers don't provoke it.",
+			1065,"Strouf","King of the Merman monsters. Although it is able to order Mermen around, it is not much stronger than a Merman.",
+			2201,"Lamp Ray","Adventurer's tips are needed.",
+			2204,"Squidgitte","Adventurer's tips are needed.",
+			2203,"Octo Pot","Adventurer's tips are needed.",
+			2198,"King Kray","Adventurer's tips are needed.",
+			2202,"Kraken","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[伊兹鲁德海底隧道]";
+			mes "比亚兰岛的海底隧道共有 6 层。这个地下城适合初学者到专家冒险家。这个副本中的怪物大多是水属性，因此拥有风属性武器会很有帮助。";
+			next;
+			while(1) {
+				switch( select( "伊兹鲁德海底隧道 B1","伊兹鲁德海底隧道 B2","伊兹鲁德海底隧道 B3","伊兹鲁德海底隧道 B4","伊兹鲁德海底隧道 B5","伊兹鲁德海底隧道 B6","取消" ) ) {
+				case 1:
+					mes "[伊兹鲁德海底隧道B1]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "浮游生物(40)";
+					mes "库克雷(42)";
+					mes "码头(42)";
+					mes "野生(45)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[伊兹鲁德海底隧道B2]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "浮游生物(40)";
+					mes "库克雷(42)";
+					mes "码头(42)";
+					mes "野生(45)";
+					mes "戴绿帽子 (48)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[伊兹鲁德海底隧道B3]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "火星(47)";
+					mes "戴绿帽子 (48)";
+					mes "奥博讷(53)";
+					mes "人鱼(60)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[伊兹鲁德海底隧道B4]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "海洋领域(51)";
+					mes "芬(52)";
+					mes "马克(56)";
+					mes "剑鱼(57)";
+					mes "人鱼(60)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[伊兹鲁德海底隧道B5]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "海洋领域(51)";
+					mes "剑鱼(57)";
+					mes "偏差(60)";
+					mes "人鱼(60)";
+					mes "节(61)";
+					mes "--------------------------------";
+					next;
+					mes "<这是哪里？你不知道吗？你害怕吗？这绝对是在水下，但我可以呼吸。难道我的鳃是凭空长出来的吗？ - 愚蠢的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 6:
+					mes "[伊兹鲁德海底隧道B6]";
+					mes "------------ 怪物 ------------";
+					mes "雷伊灯(110)";
+					mes "乌贼(113)";
+					mes "章鱼锅(115)";
+					mes "克雷王(117)";
+					mes "--------------------------------";
+					next;
+					mes "<海妖是乌贼？但为什么它有章鱼腿？！一个..惊人的..？ - 参观探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+xmas,147,311,0	script	Signposts#Toy Factory	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[玩具厂]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1002,"Poring","Jelly creature that can be found just about anywhere. This monster is very passive and weak, perfect for beginners. It has a tendency to eat any items that come across.",
+			1113,"Drops","Poring monster that's adapted to the desert environment. As usual, it will devour any items on sight.",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1265,"Cookie (Green)","Pixie monster that works at the toy factory in Lutie. It loves pranks. It will assist other cookie monsters in the vicinity.",
+			1242,"Marin","Poring monster that's adapted to frigid environment in Lutie. Unlike other Poring monsters, it will not devour items on sight.",
+			1246,"Cookie (Red)","Pixie monster that works at the toy factory in Lutie. It loves pranks.",
+			1249,"Myst Case","Present Box monster that can be seen inside the Toy Factory dungeon. Unlike the Mimic, this present box monster is actually alive. It will remain passive as long as it is not provoked.",
+			1090,"Mastering","A mutated giant Poring. It wanders around with other Porings.",
+			1250,"Chepet","This monster appears to be a little girl holding a monstrous doll, however the doll is the main body. It attacks by using the matchstick to create fire.",
+			1096,"Angeling","Final form of Poring monster at the end of the evolution! Despite its cute appearance, it's very strong. It strongly dislikes humans.",
+			1248,"Cruiser","Guard of the toy factory in Lutie. It wields shotgun as a weapon.",
+			1251,"Stormy Knight","Boss monster from the legendary story that's passed down the generations in Lutie. It's known to appear with blizzard and destroy everything on sight." );
+		if (.@mo_board == 1) {
+			mes "[玩具厂]";
+			mes "玩具厂共有 2 层楼。地牢内有时会出现强大的怪物。该地下城适合休闲冒险体验，但需谨慎。";
+			next;
+			while(1) {
+				switch( select( "玩具厂B1","玩具厂B2","取消" ) ) {
+				case 1:
+					mes "[玩具厂B1]";
+					mes "------------ 怪物 ------------";
+					mes "波利(1)";
+					mes "掉落物(2)";
+					mes "波波灵(30)";
+					mes "饼干（绿色）(35)";
+					mes "马林(37)";
+					mes "饼干（红）(37)";
+					mes "神秘案件(39)";
+					mes "母带处理(42)";
+					mes "奇特(42)";
+					mes "钓鱼(77)";
+					mes "--------------------------------";
+					next;
+					mes "<你觉得波瑞可爱吗？如果你遇见了Angeling，你会改变主意吗？很喜欢骚扰人。初学者要小心Angeling！小心点！就这样吧~ - 兽人蒙面探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[玩具厂B2]";
+					mes "------------ 怪物 ------------";
+					mes "饼干（绿色）(35)";
+					mes "饼干（红）(37)";
+					mes "神秘案件(39)";
+					mes "巡洋舰(41)";
+					mes "--------------------------------";
+					next;
+					mes "<我纯粹出于好奇而接近了一个新怪物。 I actually witnessed it.红鼻子暴风骑士脚上圣诞袜，征战饼干怪兽！！我可能会成为它的粉丝。 - 戴厚手套的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+alb2trea,75,101,0	script	Signposts#Sunken Ship	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[沉船]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1068,"Hydra","Anemone monster. Despite the appearance, it is rooted deep within the area, and uses the rooted tentacles to attack nearby creatures.",
+			1179,"Whisper","Ghost monster that appears to be covered in a bed cover. Normal weapons are ineffective against its spiritual body.^000000",
+			1070,"Kukre","Worm monster. Its agility is surprisingly fast when scouring for objects on the ground.",
+			1071,"Pirate Skeleton","Dead sailors revived as an Undead monster. It still wears previously worn pirate bandana on its skull.",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1216,"Penomena","It looks similar to a Hydra, but it is capable of moving and its attacks are much stronger. Underestimating it will result in quick death. Be cautious around this monster.",
+			1120,"Ghostring","A mutated giant poring. It wanders around with other Porings.",
+			1143,"Marionette","Demon with the appearance of a marionette doll used in puppet theatre. Normal weapons is ineffective against its spiritual body.^000000",
+			1208,"Wanderer","Stray Samurai that is revived as an Undead monster. It attacks using previously mastered swordsmanship techniques, precise enough to slice flying insects in half.",
+			1112,"Drake","Attempted to find phantom treasures but ended up dying in the process, Pirate King. Due to its strong regret, the pirates were cursed to walk the world of the living as an Undead. It protects its treasures from adventurers." );
+		if (.@mo_board == 1) {
+			mes "[沉船]";
+			mes "沉船并未完全淹没在水中，总共可以进入 2 层楼。尽管地图很大，但这个地下城中却出现了许多怪物。在地牢内要小心。";
+			next;
+			while(1) {
+				switch( select( "沉船B1","沉船B2","取消" ) ) {
+				case 1:
+					mes "[沉船B1]";
+					mes "------------ 怪物 ------------";
+					mes "毒孢子(26)";
+					mes "九头蛇(34)";
+					mes "耳语(34)";
+					mes "库克雷(42)";
+					mes "海盗骷髅(48)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[沉船B2]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "耳语(34)";
+					mes "库克雷(42)";
+					mes "海盗骷髅(48)";
+					mes "模仿者(56)";
+					mes "现象(85)";
+					mes "鬼环(90)";
+					mes "木偶(90)";
+					mes "流浪者(120)";
+					mes "--------------------------------";
+					next;
+					mes "<鬼魂一看到我就跑了..它一定是害羞了。这艘沉船的前船长也非常粗鲁。噗~！ - 嫉妒船长的帽子，探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+comodo,327,177,0	script	Signposts#Comodo East	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[方便东洞，毛]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1068,"Hydra","Anemone monster. Despite the appearance, it is rooted deep within the area, and uses the rooted tentacles to attack nearby creatures.",
+			1034,"Thara Frog","Frog monster that loves dark and wet places. It may be too hard of an opponent for a beginner adventurer.",
+			1064,"Megalodon","Fish skeleton monster revived with magic. It still acts like a fish as an Undead.",
+			1255,"Nereid","Worm monster that lives inside the cave. Its eye sight is horrible, relying solely on sense of smell to detect nearby prey." );		
+		if (.@mo_board == 1) {
+			mes "[方便东洞，毛]";
+			mes "毛东洞是一条通向帕普奇查森林的隧道。这个地方因备受追捧的卡片、塔拉蛙和九头蛇而广受欢迎。如果您急需放松，请访问这个地方。";
+			next;
+			mes "[方便东洞，毛]";
+			mes "------------ 怪物 ------------";
+			mes "九头蛇(34)";
+			mes "塔拉青蛙(40)";
+			mes "巨齿鲨(46)";
+			mes "海女星(98)";
+			mes "--------------------------------";
+			next;
+			mes "<塔拉青蛙..这只是一只青蛙吧？呃..它看起来很丑.. - 青蛙爱探险家葡萄>";
+			next;
+		}
+	}
+}
+
+comodo,31,217,0	script	Signposts#Comodo West	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[卡鲁科莫多西洞]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1264,"Merman","Ambitious Merman monster with ambition to rule over surface world. It's usually seen deep under the ocean or caves in beach areas.",
+			1256,"Pest","Monster with unknown origin. It attacks by spinning its sharp eyelids.",
+			1255,"Nereid","Worm monster that lives inside the cave. Its eye sight is horrible, relying solely on sense of smell to detect nearby prey.",
+			1148,"Medusa","Monster with snakes as its hair. Looking directly into its eyes may cause your body to petrify.",
+			1583,"Tao Gunka","MVP monster with large, round face and crude expression. Most adventurers run away from this monster in fear. Despite its appearance, it's fairly strong." );
+		if (.@mo_board == 1) {
+			mes "[卡鲁科莫多西洞]";
+			mes "这个地下城引入了美杜莎怪物，如果你看着它的眼睛，你一定会变成石头。这个山洞里没有其他出口。";
+			next;
+			mes "[卡鲁科莫多西洞]";
+			mes "------------ 怪物 ------------";
+			mes "人鱼(60)";
+			mes "害虫(89)";
+			mes "海女星(98)";
+			mes "美杜莎(102)";
+			mes "--------------------------------";
+			next;
+			mes "<陶冈卡？那个长着大脸的怪物？有多强？很弱..非常弱..哦!!它可能对你来说很强大.. - 拖钓探险家葡萄>";
+			next;
+		}
+	}
+}
+
+comodo,178,354,0	script	Signposts#Comodo North	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[科莫多北洞，卢旺达]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1068,"Hydra","Anemone monster. Despite the appearance, it is rooted deep within the area, and uses the rooted tentacles to attack nearby creatures.",
+			1274,"Megalith","Stone statue monster that can be seen in Comodo areas. It moves rocks in the vicinity to attack.",
+			1279,"Tri Joint","This creature has existed for millennia. It's usually found in dark caves.",
+			1278,"Stalactic Golem","Evolved Golem monster. Its body is covered with stalactite and it's much stronger than a normal Golem.",
+			1255,"Nereid","Worm monster that lives inside the cave. Its eye sight is horrible, relying solely on sense of smell to detect nearby prey." );
+		if (.@mo_board == 1) {
+			mes "[科莫多北洞，卢旺达]";
+			mes "冒险家可以通过阮德洞穴到达乌巴拉。静态傀儡怪物只能在这个洞穴中看到。";
+			next;
+			mes "[科莫多北洞，卢旺达]";
+			mes "------------ 怪物 ------------";
+			mes "九头蛇(34)";
+			mes "巨石(65)";
+			mes "三联(66)";
+			mes "静态傀儡(68)";
+			mes "海女星(98)";
+			mes "--------------------------------";
+			next;
+			mes "<静止傀儡？呼~我为什么来这里？啊!没错，我来这里就是为了去Umbala..!! - 路过探险家葡萄>";
+			next;
+		}
+	}
+}
+
+pay_arche,39,134,0	script	Signposts#Payon Cave	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[佩永洞穴]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1015,"Zombie","Dead soul trapped by unholy necromancer in a rotting corpse, cursed to live without being able to feel pain. Its impurity is capable of inflicting poison.",
+			1005,"Familiar","Colonial bat that inhabits dark caves. Its small fangs are sharp enough to suck blood from nearby creatures.",
+			1076,"Skeleton","Skeleton filled with regret. This Undead monster is aggressive.",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1028,"Soldier Skeleton","Skeleton soldier can only be seen deep inside the dungeon, where sunlight would never reach. Unlike Skeleton Archers, it attacks with dual swords.",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.",
+			1016,"Archer Skeleton","Skeleton Archer can only be seen deep inside the dungeon, where sunlight would never reach. This monster's quivers does not run out of arrows.",
+			1116,"Eggyra","Egg monster. Its shell are harder than Pecopeco Egg's shell. It loiters around the dungeon aimlessly.",
+			1020,"Mandragora","Adventurer's tips are needed.",
+			1068,"Hydra","Anemone monster. Despite the appearance, it is rooted deep within the area, and uses the rooted tentacles to attack nearby creatures.",
+			1277,"Greatest General","Once a guardian of a town. It was since long forgotten by the people. This monster is aggressive and attacks passing by adventurers, but it's unable to move.",
+			1188,"Bongun","Male Kyonshi who have willingly become a monster in order to protect Munak.",
+			1026,"Munak","Dead girl's spirit resides within the dead body, turning it into a Kyonshi monster. It sucks blood from nearby creatures.",
+			1180,"Nine Tail","Nine tailed fox. It's much smarter than a normal fox, and it's unknown whether it is able to transform into a human or not.",
+			1129,"Horong","Fire monster with an appearance of Dokebi light. Origin of this monster is unknown.",
+			1110,"Dokebi","Demon monster that can only be seen near Payon areas. It sometimes riddles passing by adventurers.",
+			1301,"Am Mut","Monster from Payon Legend. It looks like a small kid, however it is known to harrass passing by adventurers.",
+			1290,"Skeleton General","Once a general that protected Payon Castle. After its death, it's become a monster who wander around the Payon Cave.",
+			1186,"GiantWhisper","Adventurer's tips are needed.",
+			1170,"Sohee","Virgin woman who've died a sad death. It can only be found near Payon area and it's passive.",
+			1307,"Cat O'Nine Tails","9 tailed Demon. It uses the bell to lure and attack humans.",
+			1150,"Moonlight Flower","Medium rank Demon, queen of foxes. Underestimating its cute appearance will result in death." );		
+		if (.@mo_board == 1) {
+			mes "[佩永洞穴]";
+			mes "Payon Cave共有5层。大多数怪物都是不死族或恶魔。圣属性武器在这个地下城中将会发挥作用。";
+			next;
+			while(1) {
+				switch( select( "佩永洞 B1","佩永洞 B2","佩永洞 B3","佩永洞 B4","佩永洞 B5","取消" ) ) {
+				case 1:
+					mes "[佩永洞穴B1]";
+					mes "------------ 怪物 ------------";
+					mes "僵尸(17)";
+					mes "熟悉的(24)";
+					mes "骷髅(27)";
+					mes "波波灵(30)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[佩永洞穴B2]";
+					mes "------------ 怪物 ------------";
+					mes "士兵骷髅(34)";
+					mes "排水者(47)";
+					mes "弓箭手骷髅(50)";
+					mes "埃吉拉(53)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[佩永洞穴 B3]";
+					mes "------------ 怪物 ------------";
+					mes "曼德拉草(13)";
+					mes "波波灵(30)";
+					mes "士兵骷髅(34)";
+					mes "九头蛇(34)";
+					mes "弓箭手骷髅(50)";
+					mes "爱(58)";
+					mes "奉军(59)";
+					mes "九尾(72)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[佩永洞穴 B4]";
+					mes "------------ 怪物 ------------";
+					mes "曼德拉草(13)";
+					mes "九头蛇(34)";
+					mes "最伟大的将军(55)";
+					mes "爱(58)";
+					mes "奉军(59)";
+					mes "昭熙(64)";
+					mes "巨语(66)";
+					mes "九尾(72)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[佩永洞穴B5]";
+					mes "------------ 怪物 ------------";
+					mes "弓箭手骷髅(50)";
+					mes "最伟大的将军(55)";
+					mes "喇叭(66)";
+					mes "多克比(68)";
+					mes "九尾(72)";
+					mes "我静音(76)";
+					mes "骷髅将军(88)";
+					mes "--------------------------------";
+					next;
+					mes "<九尾猫穿了内衣，但我没穿。嘿你在那边，别只是看！！ - 极度尴尬的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+moc_ruins,61,164,0	script	Signposts#Pyramid	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[金字塔]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1005,"Familiar","Colonial bat that inhabits dark caves. Its small fangs are sharp enough to suck blood from nearby creatures.",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1028,"Soldier Skeleton","Skeleton soldier can only be seen deep inside the dungeon, where sunlight would never reach. Unlike Skeleton Archers, it attacks with dual swords.",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1016,"Archer Skeleton","Skeleton Archer can only be seen deep inside the dungeon, where sunlight would never reach. This monster's quivers does not run out of arrows.",
+			1041,"Mummy","Mummy monster found within the forgotten pyramid. It sometimes appears with Verit monster, surprising nearby adventurer. It's an aggressive monster.",
+			1029,"Isis","Mutated female servant who was buried alive with a king's deceased body. It transformed into a snake monster. It still remains loyal to the king.",
+			1032,"Verit","Mummified pet that was once a companion of a human. It will devour any items on sight.",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1146,"Matyr","King's protector, gatekeeper. Dog is used as a medium to summon the gatekeeper using forbidden magic. Its body is covered in dark mist and it is very agile.",
+			1297,"Ancient Mummy","Ancient Mummy was once a high ranking official. Unlike a normal mummy, it's wrapped in high quality crimson bandages.",
+			1149,"Minorous","Unknown creature living deep within the labyrinth. It is not on friendly term with Orcs, but they rarely come across each other. When it encounters a creature, it will chase down the target and attack with its giant hammer.",
+			1194,"Arclouze","Monster with hardened shell. It rolls its body to attack with its shell.",
+			1038,"Osiris","King of the Pyramid. It was once worshipped as the solar god by its people, however it's now just a strong MVP monster.",
+			1511,"Amon Ra","MVP monster that attacks while seated in the chair. This MVP feels like it could be another king of the pyramid. What's happening behind its chair?" );
+		if (.@mo_board == 1) {
+			mes "[金字塔]";
+			mes "金字塔由地下B4层和地下B3层组成。这个地下城适合初学者到专家冒险家。盗贼公会位于地下B1层。";
+			next;
+			while(1) {
+				switch( select( "金字塔底层B1","金字塔底层B2","金字塔底层B3","金字塔底层B4","金字塔地下B2","金字塔地下B3","取消" ) ) {
+				case 1:
+					mes "[金字塔底层B1]";
+					mes "------------ 怪物 ------------";
+					mes "熟悉的(24)";
+					mes "波波灵(30)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[金字塔底层B2]";
+					mes "------------ 怪物 ------------";
+					mes "波波灵(30)";
+					mes "士兵骷髅(34)";
+					mes "排水者(47)";
+					mes "弓箭手骷髅(50)";
+					mes "木乃伊(55)";
+					mes "伊希斯(59)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[金字塔底层B3]";
+					mes "------------ 怪物 ------------";
+					mes "排水者(47)";
+					mes "是(52)";
+					mes "木乃伊(55)";
+					mes "模仿者(56)";
+					mes "数学(58)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[金字塔底层B4]";
+					mes "------------ 怪物 ------------";
+					mes "木乃伊(55)";
+					mes "模仿者(56)";
+					mes "数学(58)";
+					mes "伊希斯(59)";
+					mes "古代木乃伊(114)";
+					mes "--------------------------------";
+					next;
+					mes "<金字塔之王！我应该给他换绷带。随着时间的推移，他的绷带已经变成紫色。他很危险吗？没关系～没关系～ - 绷带背着探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[金字塔地下B2层]";
+					mes "------------ 怪物 ------------";
+					mes "是(52)";
+					mes "木乃伊(55)";
+					mes "未成年人(58)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 6:
+					mes "[金字塔地下B3层]";
+					mes "------------ 怪物 ------------";
+					mes "是(52)";
+					mes "模仿者(56)";
+					mes "弧形罩(107)";
+					mes "古代木乃伊(114)";
+					mes "--------------------------------";
+					next;
+					mes "<有一个 MVP 怪物坐在椅子上攻击。他一定很懒。它甚至没有离开原地。有时会出现这种情况。 - 懒惰的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+/// adven_board02.sc
+
+hu_fild05,188,210,0	script	Signpost#Abyss Lake	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[深渊湖地下城]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1216,"Penomena","It looks similar to a hydra, but it is capable of moving and its attacks are much stronger. Underestimating it will result in quick death. Be cautious around this monster.",
+			1699,"Ancient Mimic","Adventurer's tips are needed.",
+			1721,"Dragon Egg","Adventurer's tips are needed.",
+			1715,"Novus (Red)","Adventurer's tips are needed.",
+			1718,"Novus (Yellow)","Adventurer's tips are needed.",
+			1714,"Ferus (Red)","Adventurer's tips are needed.",
+			1717,"Ferus (Green)","Adventurer's tips are needed.",
+			1713,"Acidus (Gold)","Adventurer's tips are needed.",
+			1716,"Acidus (Blue)","Adventurer's tips are needed.",
+			1720,"Hydrolancer","Adventurer's tips are needed.",
+			1719,"Detardeurus","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[深渊湖地下城]";
+			mes "深渊湖副本由B3层组成，副本中的怪物大多是龙族。在冒险进入这个地牢之前，请做好准备。";
+			next;
+			while(1) {
+				switch( select( "深渊湖地下城 B1","深渊湖地下城 B2","深渊湖地下城 B3","取消" ) ) {
+				case 1:
+					mes "[深渊湖地下城B1]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "诺维斯（红色）(84)";
+					mes "现象(85)";
+					mes "诺维斯（黄色）(90)";
+					mes "古代模仿者(112)";
+					mes "龙蛋(119)";
+					mes "费鲁斯（红）(126)";
+					mes "费鲁斯（绿色）(126)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[深渊湖地下城B2]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "诺维斯（红色）(84)";
+					mes "诺维斯（黄色）(90)";
+					mes "古代模仿者(112)";
+					mes "龙蛋(119)";
+					mes "费鲁斯（红）(126)";
+					mes "酸（金）(130)";
+					mes "Acidus (蓝色)(130)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[深渊湖地下城B3]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "古代模仿者(112)";
+					mes "龙蛋(119)";
+					mes "水枪(121)";
+					mes "费鲁斯（红）(126)";
+					mes "费鲁斯（绿色）(126)";
+					mes "酸（金）(130)";
+					mes "Acidus (蓝色)(130)";
+					mes "--------------------------------";
+					next;
+					mes "<Detardeurus is so big!!是不是看起来很强？如果你不感兴趣，没关系。 - 渴望骑龙的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+einbech,142,250,0	script	Signpost#Einbech Dungeon	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[艾因贝克地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1619,"Porcellio","Tiny larva monster. Despite its size, it's surprisingly strong.",
+			1620,"Noxious","Crimson Smog monster. This monster cannot be truly defeated.",
+			1621,"Venomous","Green Dust monster. This monster cannot be truly defeated.",
+			1616,"Pitman","Hard working tiny pixie miners. It uses a pickaxe to attack.",
+			1622,"Teddy Bear","Cute stuffed teddy bear monster. It lures unsuspecting creatures with charm and attacks them with a walking stick.",
+			1617,"Waste Stove","It looks like an extremely old stove at first glance. When adventurers approach it carelessly, it will attack.",
+			1614,"Mineral","Mineral monster. It sometimes hides in the ground and ambushes passing by adventurer.",
+			1615,"Obsidian","Small black crystal monster that excel in close; combat. It sometimes hides in the ground and ambushes passing by adventurer.",
+			1618,"Ungoliant","Giant earwig monster. It uses pincers to attack.",
+			1623,"RSX-0806","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[艾因贝克地牢]";
+			mes "艾因贝克地下城共有两层，出现在这个地下城中的怪物大部分都是无形的。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "艾因贝克地下城 1f","艾因贝克地下城 2f","取消" ) ) {
+				case 1:
+					mes "[艾因贝克地下城 1f]";
+					mes "------------ 怪物 ------------";
+					mes "波尔切利奥(85)";
+					mes "有毒(87)";
+					mes "有毒(87)";
+					mes "皮特曼(90)";
+					mes "垃圾炉(92)";
+					mes "昂哥立安特(94)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[艾因贝克地下城2f]";
+					mes "------------ 怪物 ------------";
+					mes "泰迪熊(91)";
+					mes "垃圾炉(92)";
+					mes "矿物(96)";
+					mes "黑曜石(97)";
+					mes "--------------------------------";
+					next;
+					mes "<RSX-0806 ...这个名字很复杂。 - 智能探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+ra_fild01,228,330,0	script	Signpost#Ice Cave	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[冰穴]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1782,"Roween","Adventurer's tips are needed.",
+			1776,"Siroma","Adventurer's tips are needed.",
+			1780,"Muscipular","Adventurer's tips are needed.",
+			1778,"Gazeti","Adventurer's tips are needed.",
+			1789,"Iceicle","Adventurer's tips are needed.",
+			1775,"Snowier","Adventurer's tips are needed.",
+			1777,"Ice Titan","Adventurer's tips are needed.",
+			1779,"Ktullanux","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[冰穴]";
+			mes "冰窟由B3层组成，地下城内的怪物大多是水属性。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "冰洞B1","冰洞B2","冰洞B3","取消" ) ) {
+				case 1:
+					mes "[冰洞B1]";
+					mes "------------ 怪物 ------------";
+					mes "罗温(95)";
+					mes "贫困 (98)";
+					mes "肌肉发达(105)";
+					mes "报纸(106)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[冰洞B2]";
+					mes "------------ 怪物 ------------";
+					mes "贫困 (98)";
+					mes "冰柱(100)";
+					mes "雪地(103)";
+					mes "报纸(106)";
+					mes "冰泰坦(110)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[冰穴B3]";
+					mes "------------ 怪物 ------------";
+					mes "冰柱(100)";
+					mes "雪地(103)";
+					mes "报纸(106)";
+					mes "冰泰坦(110)";
+					mes "--------------------------------";
+					next;
+					mes "<稀有怪物Ktullanux..叹息..即使它的名字很复杂..Ktullanux刨冰味道如何？ - 冰刨饥饿的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+ve_fild03,172,239,0	script	Signpost#Thor Volcano	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[雷神火山地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1072,"Kaho","Demon covered in flames. Its attacks are flashy, but it's actually a low ranking demon with fairly weak attack.",
+			1836,"Magmaring","Adventurer's tips are needed.",
+			1838,"Knocker","Adventurer's tips are needed.",
+			1837,"Imp","Adventurer's tips are needed.",
+			1830,"Bow Guardian","Adventurer's tips are needed.",
+			1829,"Sword Guardian","Adventurer's tips are needed.",
+			1833,"Kasa","Adventurer's tips are needed.",
+			1839,"Byorgue","Adventurer's tips are needed.",
+			1831,"Salamander","Adventurer's tips are needed.",
+			1832,"Ifrit","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[雷神火山地牢]";
+			mes "雷神火山副本由B3层组成，该副本中出现的怪物大多是火属性的。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "雷神火山地牢 B1","雷神火山地牢 B2","雷神火山地牢 B3","取消" ) ) {
+				case 1:
+					mes "[雷神火山地下城 B1]";
+					mes "------------ 怪物 ------------";
+					mes "岩浆(110)";
+					mes "小鬼(129)";
+					mes "弓守护者(132)";
+					mes "剑卫(133)";
+					mes "国家(135)";
+					mes "拜约格(135)";
+					mes "蝾螈(138)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[雷神火山地牢 B2]";
+					mes "------------ 怪物 ------------";
+					mes "建筑(98)";
+					mes "岩浆(110)";
+					mes "门环(126)";
+					mes "小鬼(129)";
+					mes "弓守护者(132)";
+					mes "剑卫(133)";
+					mes "蝾螈(138)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[雷神火山地牢 B3]";
+					mes "------------ 怪物 ------------";
+					mes "弓守护者(132)";
+					mes "剑卫(133)";
+					mes "国家(135)";
+					mes "拜约格(135)";
+					mes "蝾螈(138)";
+					mes "--------------------------------";
+					next;
+					mes "<年轻的探索者~你怎么在雷神火山副本~你为什么哭~哇~哇~伊芙利特好烫~——雷神桑拿代表探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+odin_tem01,111,141,0	script	Signpost#Odin Temple	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[奥丁神殿]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1692,"Breeze","Adventurer's tips are needed.",
+			1697,"Plasma (Blue)","Adventurer's tips are needed.",
+			1695,"Plasma (Green)","Adventurer's tips are needed.",
+			1696,"Plasma (Purple)","Adventurer's tips are needed.",
+			1694,"Plasma (Red)","Adventurer's tips are needed.",
+			1693,"Plasma (Yellow)","Adventurer's tips are needed.",
+			1752,"Skogul","Adventurer's tips are needed.",
+			1753,"Frus","Adventurer's tips are needed.",
+			1754,"Skeggiold (Black)","Adventurer's tips are needed.",
+			1755,"Skeggiold (Blue)","Adventurer's tips are needed.",
+			1765,"Valkyrie","Adventurer's tips are needed.",
+			1751,"Valkyrie Randgris","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[奥丁神殿]";
+			mes "奥丁神殿由3个区域组成，这里出现的怪物大多移动速度很快。做好被多个怪物伏击的准备。";
+			next;
+			while(1) {
+				switch( select( "奥丁神殿西","奥丁神殿南","奥丁神殿北","取消" ) ) {
+				case 1:
+					mes "[奥丁神殿西]";
+					mes "------------ 怪物 ------------";
+					mes "微风(92)";
+					mes "等离子（蓝色）(115)";
+					mes "等离子（绿色）(116)";
+					mes "等离子（紫色）(117)";
+					mes "等离子（红）(118)";
+					mes "等离子（黄）(119)";
+					mes "斯科古尔(126)";
+					mes "弗鲁斯(128)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[奥丁神殿南]";
+					mes "------------ 怪物 ------------";
+					mes "等离子（黄）(119)";
+					mes "斯科古尔(126)";
+					mes "弗鲁斯(128)";
+					mes "斯凯吉欧德（黑色）(131)";
+					mes "斯凯吉奥尔德（蓝色）(131)";
+					mes "女武神(141)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[奥丁神殿北]";
+					mes "------------ 怪物 ------------";
+					mes "等离子（黄）(119)";
+					mes "斯科古尔(126)";
+					mes "弗鲁斯(128)";
+					mes "斯凯吉欧德（黑色）(131)";
+					mes "斯凯吉奥尔德（蓝色）(131)";
+					mes "女武神(141)";
+					mes "--------------------------------";
+					next;
+					mes "<女武神兰德格里斯，我多么想被你柔软的翅膀包裹着——梦幻探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+malangdo,77,238,0	script	Signpost#Starlight Reef	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[星光礁]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1073,"Crab","Crustaceans monster that can be seen commonly around beach. It's not strong, but its hardened shell may prove to be difficult to cut through.",
+			1074,"Shellfish","Creature that can be seen commonly around the beach. It uses its legs to attack.",
+			1266,"Aster","Aquatic creature, Aster. It's personality is rather docile.",
+			2199,"Siorava","Adventurer's tips are needed.",
+			2197,"Red Eruma","Adventurer's tips are needed.",
+			2208,"Wild Rider","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[星光礁]";
+			mes "星光礁引入了相当弱的怪物。小心红色 Eruma 怪物，因为它会帮助附近的其他怪物。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				if (select( "星光礁","取消" ) == 2)
+					break;
+				mes "[星光礁]";
+				mes "------------ 怪物 ------------";
+				mes "螃蟹(43)";
+				mes "贝类(50)";
+				mes "紫菀(50)";
+				mes "西奥拉瓦(87)";
+				mes "红埃鲁玛(91)";
+				mes "狂野骑士(95)";
+				mes "--------------------------------";
+				next;
+				mes "<狂野骑士..？啊？它是一只猫吗？猫为什么骑在剑鱼上？ - 安装在挑剔的探险家葡萄上>";
+				F_InfoBoard;
+			}
+		}
+	}
+}
+
+/// adven_board03.sc
+
+gefenia01,61,173,0	script	Signpost#Geffenia1	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[格芬尼亚]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1204,"Ogretooth","Adventurer's tips are needed.",
+			1205,"Executioner","It appears to be a sealed demon blade, but it's actually being sealed by a chain type monster. It manipulates the chained sword to attack.",
+			1371,"False Angel","Demon with an appearance of an angel. It lures humans and takes their life.",
+			1268,"Bloody Knight","A soul of a valorous knight, cursed to be trapped within the bloody armor as a monster.It is powerful enough to leading the Castle's Chivalry.",
+			1292,"Mini Demon","Tiny Demon. It's appearance is somewhat cute, but it is quite vicious. It attacks with a lance in its hands and summons reinforcements.",
+			1390,"Violy","Its violin performance is melodic, but painful at times.",
+			1370,"Succubus","Female demon. Lures males and sucks their life energy.",
+			1374,"Incubus","Male demon. Lures females and sucks their life energy.",
+			1219,"Abysmal Knight","Demon Knight that serves the owner of legendary labyrinth. It is very powerful and brutal.",
+			1203,"Mysteltainn","It appears to be a sealed demon blade, but it's actually being sealed by a chain type monster. It manipulates the chained sword to attack." );
+		if (.@mo_board == 1) {
+			mes "[格芬尼亚部分"+ charat( strnpcinfo(2),8 ) +"]";
+			mes "古代精灵失落的城市格芬尼亚由 4 个部分组成。这个地牢中出现的大多数怪物都很强大，所以在冒险进入这个地牢之前要做好准备。";
+			next;
+			while(1) {
+				switch( select( "Geffenia 第 1 部分","Geffenia 第 2 部分","Geffenia 第 3 部分","Geffenia 第 4 部分","取消" ) ) {
+				case 1:
+					mes "[格芬尼亚第 1 部分]";
+					mes "------------ 怪物 ------------";
+					mes "刽子手(101)";
+					mes "虚假天使(105)";
+					mes "食人魔之牙(114)";
+					mes "血腥骑士(116)";
+					mes "迷你恶魔(117)";
+					mes "中提琴(118)";
+					mes "魅魔(118)";
+					mes "梦魇(120)";
+					mes "深渊骑士(122)";
+					mes "我的帐篷(130)";
+					mes "--------------------------------";
+					next;
+					continue;
+				case 2:
+					mes "[格芬尼亚第 2 部分]";
+					mes "------------ 怪物 ------------";
+					mes "刽子手(101)";
+					mes "虚假天使(105)";
+					mes "食人魔之牙(114)";
+					mes "血腥骑士(116)";
+					mes "迷你恶魔(117)";
+					mes "中提琴(118)";
+					mes "魅魔(118)";
+					mes "梦魇(120)";
+					mes "深渊骑士(122)";
+					mes "我的帐篷(130)";
+					mes "--------------------------------";
+					next;
+					continue;
+				case 3:
+					mes "[格芬尼亚第 3 节]";
+					mes "------------ 怪物 ------------";
+					mes "刽子手(101)";
+					mes "虚假天使(105)";
+					mes "食人魔之牙(114)";
+					mes "血腥骑士(116)";
+					mes "迷你恶魔(117)";
+					mes "中提琴(118)";
+					mes "魅魔(118)";
+					mes "梦魇(120)";
+					mes "深渊骑士(122)";
+					mes "我的帐篷(130)";
+					mes "--------------------------------";
+					next;
+					continue;
+				case 4:
+					mes "[格芬尼亚第 4 节]";
+					mes "------------ 怪物 ------------";
+					mes "刽子手(101)";
+					mes "虚假天使(105)";
+					mes "食人魔之牙(114)";
+					mes "血腥骑士(116)";
+					mes "迷你恶魔(117)";
+					mes "中提琴(118)";
+					mes "魅魔(118)";
+					mes "梦魇(120)";
+					mes "深渊骑士(122)";
+					mes "我的帐篷(130)";
+					mes "--------------------------------";
+					next;
+					mes "<嘿梦魇～看看……呃……——尴尬的探险家葡萄>";
+					next;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+gefenia02,120,108,0	duplicate(Signpost#Geffenia1)	Signpost#Geffenia2	2_BULLETIN_BOARD
+gefenia03,131,201,0	duplicate(Signpost#Geffenia1)	Signpost#Geffenia3	2_BULLETIN_BOARD
+gefenia04,130,95,0	duplicate(Signpost#Geffenia1)	Signpost#Geffenia4	2_BULLETIN_BOARD
+
+nameless_n,259,213,0	script	Signpost#Nameless Island	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[无名岛圣修道院]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1036,"Ghoul","Corpse that is revived by Unholy Necromancer's curse. It ambushes nearby living creatures and devours their corpses to satiate its hunger, but because it's a reanimated corpse, it is unable to feel satisfied.^000000",
+			1866,"Hell Poodle","Adventurer's tips are needed.",
+			1867,"Banshee","Adventurer's tips are needed.",
+			1869,"Flame Skull","Adventurer's tips are needed.",
+			1865,"Ragged Zombie","Adventurer's tips are needed.",
+			1864,"Zombie Slaughter","Adventurer's tips are needed.",
+			1870,"Necromancer","Adventurer's tips are needed.",
+			2107,"Fallen Bishop Hibram","Adventurer's tips are needed.",
+			1873,"Beelzebub","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[无名岛圣修道院]";
+			mes "无名岛圣修道院共有三层，这个地下城中出现的怪物大多是不死族或恶魔。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "无名岛圣修道院 1F","无名岛圣修道院 2F","无名岛圣修道院 3F","取消" ) ) {
+				case 1:
+					mes "[无名岛圣修道院一楼]";
+					mes "------------ 怪物 ------------";
+					mes "食尸鬼(61)";
+					mes "地狱贵宾犬(115)";
+					mes "火焰头骨(121)";
+					mes "衣衫褴褛的僵尸(123)";
+					mes "僵尸屠杀(124)";
+					mes "女妖(130)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[无名岛圣修道院2F]";
+					mes "------------ 怪物 ------------";
+					mes "火焰头骨(121)";
+					mes "衣衫褴褛的僵尸(123)";
+					mes "僵尸屠杀(124)";
+					mes "死灵法师(133)";
+					mes "--------------------------------";
+					next;
+					mes "<你知道主教倒下时有多可怕吗..？ Hibram..我看到了.. - 众所周知的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[无名岛圣修道院3F]";
+					mes "------------ 怪物 ------------";
+					mes "火焰头骨(121)";
+					mes "女妖(130)";
+					mes "死灵法师(133)";
+					mes "--------------------------------";
+					next;
+					mes "<别西卜不是钢铁 Chonchon，因为 Chonchon 很弱。 ... ... ... 逃跑！ - 逃离探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+lhz_cube,234,97,0	script	Signpost#Somatology	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[人体学实验室]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1613,"Metaling","At first glance, it seems like a normal poring monster, but it's actually made of machinery parts.",
+			1627,"Anopheles","Almost invisible to the naked eye. Adventurers are often attacked by this monster without realizing it.",
+			1682,"Remover","Former member of Einbroch fire fighters. After an unfortunate accident in a mine, it's become a vicious monster.",
+			1653,"Wickebine Tres","Unknown Thief with unknown age and motive. Broke into the laboratory for unknown reason, but was quickly apprehended and became a specimen. It's known to be a vicious monster with surprisingly femininity.",
+			1655,"Errende Ebecee","Boy who once tread on the road as an Acolyte. Unfortunately, it has fallen prey to the schemes of an unknown group and turned into a specimen.",
+			1657,"Laurell Weinder","Once a gifted Magician who had a bright future ahead of him. Unfortunately it was involved in bio experiment and turned into a specimen.",
+			1654,"Armeyer Dinze","Merchant girl who believe in the methodology of time and money. She met a travelling Swordsman one day and started accompanying her.",
+			1656,"Kavach Icarus","A former Hunter, but he was quickly subdued and became Renkenber's specimen. He now walks amongst other specimen in the Somatology Laboratory.",
+			1681,"Gemini-S58","Unknown creature that have gone through mutation. It enjoys its male appearance.",
+			1652,"Egnigem Cenia","Once a carefree wandering knight. She met a merchant girl during one of her travels, but they were caught by Renkenber to be used as specimen.",
+			1635,"Eremes Guile","Former Assassin Cross who wanted to be faster than any other assassins. His ambitions lead him to become a specimen for bio experiment.",
+			1637,"Margaretha Sorin","Former High Priestess who had travelled to Lighthalzen to train. Shortly after her departure, she was subdued by Renkenber and she was turned into a specimen.",
+			1638,"Cecil Damon","Former Sniper who co-existed with the environment. However, after becoming a specimen for bio experiment, her personality went under a shocking change.",
+			1639,"Kathryne Keyron","Former High Wizard who had graduated from wizard school at an early age. Her talent caught Rekenber's attention and ended up being captured as a specimen.",
+			1634,"Seyren Windsor","Former Lord Knight who was famously known for his valor. While he was protecting a nearby adventurer, he was subdued and became a specimen.",
+			1636,"Howard Alt-Eisen","Former Mastersmith who had been tricked into becoming a specimen on his own accord. While he was alive, he had no interest in anything but weapon smithing.",
+			1658,"Boss Egnigem Cenia","Former Knight who was famously known by the adventurers. In order to reveal Renkenber's schemes, she willingly let herself be taken into the laboratory, but she could not escape her fate.",
+			1640,"Lord Knight Seyren","Adventurer's tips are needed.",
+			1641,"Assassin Cross Eremes","Adventurer's tips are needed.",
+			1643,"High Priest Margaretha","Adventurer's tips are needed.",
+			1644,"Sniper Cecil","Adventurer's tips are needed.",
+			1645,"High Wizard Kathryne","Adventurer's tips are needed.",
+			1648,"Master Smith Howard","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[人体学实验室]";
+			mes "体学实验室共有三层，出现的怪物大多是亚人。这些怪物非常强大，所以一定要和其他冒险家一起探索。";
+			next;
+			while(1) {
+				switch( select( "躯体实验室 1F","躯体实验室 2F","躯体实验室 3F","取消" ) ) {
+				case 1:
+					mes "[人体学实验室1F]";
+					mes "------------ 怪物 ------------";
+					mes "金属加工(81)";
+					mes "按蚊(95)";
+					mes "卸妆剂(121)";
+					mes "威克宾特雷斯(132)";
+					mes "伦德·埃贝西(133)";
+					mes "劳雷尔·温德尔(133)";
+					mes "阿迈耶丁泽(134)";
+					mes "卡瓦奇伊卡洛斯(135)";
+					mes "双子座-S58(135)";
+					mes "埃格尼格姆塞尼娅(136)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[人体学实验室2F]";
+					mes "------------ 怪物 ------------";
+					mes "卸妆剂(121)";
+					mes "威克宾特雷斯(132)";
+					mes "伦德·埃贝西(133)";
+					mes "劳雷尔·温德尔(133)";
+					mes "阿迈耶丁泽(134)";
+					mes "卡瓦奇伊卡洛斯(135)";
+					mes "双子座-S58(135)";
+					mes "埃格尼格姆塞尼娅(136)";
+					mes "埃雷梅斯·古尔(140)";
+					mes "--------------------------------";
+					next;
+					mes "<甚至还有这样的地方..对人体标本进行实验..MVP Egnigem Cenia...她是.. - 泪流满面的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[人体学实验室3F]";
+					mes "------------ 怪物 ------------";
+					mes "埃雷梅斯·古尔(140)";
+					mes "玛格丽特·索林(140)";
+					mes "塞西尔·达蒙(141)";
+					mes "凯瑟琳·凯伦(141)";
+					mes "塞伦温莎(142)";
+					mes "霍华德·阿尔特·艾森(142)";
+					mes "--------------------------------";
+					next;
+					mes "<我终于到了这里..谁在进行这些实验..他们对这些人做了什么？ Eremes.. Margaretha.. Cecil.. Kathryne.. Seyren.. Howard.. ... - 极度泪流满面的探险家 Grape>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+ra_temin,31,316,0	script	Signpost#Holy Ground	2_BULLETIN_BOARD,{
+	if ((MISC_QUEST & 8192) == 0) {
+		mes "圣地";
+		mes "- 大祭司哲德 -";
+		close;
+	}
+	while(1) {
+		mes "[圣地]";
+		mes "只有获得大祭司哲德许可的人才可以进入这个地牢。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1632,"Gremlin","Adventurer's tips are needed.",
+			1633,"Beholder","Adventurer's tips are needed.",
+			1773,"Hodremlin","Adventurer's tips are needed.",
+			1771,"Vanberk","Adventurer's tips are needed.",
+			1772,"Isilla","Adventurer's tips are needed.",
+			1774,"Seeker","Adventurer's tips are needed.",
+			1770,"Echio","Adventurer's tips are needed.",
+			1769,"Agav","Adventurer's tips are needed.",
+			1768,"Gloom Under Night","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[圣地]";
+			mes "圣地共有5层，出现在这个地牢中的怪物使用魔法技能。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "圣地1F","圣地2F","圣地3F","圣地4F","圣地5F","取消" ) ) {
+				case 1:
+					mes "[圣地1F]";
+					mes "------------ 怪物 ------------";
+					mes "小魔怪(118)";
+					mes "旁观者(120)";
+					mes "霍德雷姆林(122)";
+					mes "范伯克(123)";
+					mes "与父亲 (124)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[圣地2F]";
+					mes "------------ 怪物 ------------";
+					mes "小魔怪(118)";
+					mes "旁观者(120)";
+					mes "霍德雷姆林(122)";
+					mes "范伯克(123)";
+					mes "与父亲 (124)";
+					mes "探索者(124)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[圣地3F]";
+					mes "------------ 怪物 ------------";
+					mes "小魔怪(118)";
+					mes "旁观者(120)";
+					mes "霍德雷姆林(122)";
+					mes "探索者(124)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[圣地4F]";
+					mes "------------ 怪物 ------------";
+					mes "霍德雷姆林(122)";
+					mes "探索者(124)";
+					mes "埃奇奥(126)";
+					mes "龙舌兰(128)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[圣地5F]";
+					mes "------------ 怪物 ------------";
+					mes "霍德雷姆林(122)";
+					mes "与父亲 (124)";
+					mes "探索者(124)";
+					mes "埃奇奥(126)";
+					mes "龙舌兰(128)";
+					mes "--------------------------------";
+					next;
+					mes "<夜幽的眼睛好圆好可爱。我想让它成为我的宠物..但是它的驯服物品是什么？那时我可能无法驯服它.. - 充满希望的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+yuno_fild08,82,178,2	script	Signpost#Robot Factory	4_BULLETIN_BOARD2,{
+	if (countitem(7509) > 0) {// Luxurious Keycard
+		mes "- 您的^0000FF豪华钥匙卡^000000与路标产生共鸣并发现新信息。 -";
+		next;
+	}
+	else {
+		mes "基尔海尔学院的学生不能进入这里。";
+		close;
+	}
+	while(1) {
+		mes "[机器人工厂]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1275,"Alice","Automatic doll tasked with various chores in the castle. Its main priority is to clean the vicinity, however it will attack intruders with a steel broom stick.",
+			1738,"Constant","Adventurer's tips are needed.",
+			1736,"Aliot","Adventurer's tips are needed.",
+			1737,"Aliza","Adventurer's tips are needed.",
+			1735,"Alicel","Adventurer's tips are needed.",
+			1733,"Kiel","Adventurer's tips are needed.",
+			1734,"Kiel-D-01","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[机器人工厂]";
+			mes "机器人工厂共有两层，这里出现的怪物大多是无形的。不断的怪物自我毁灭以击退任何入侵者，所以要小心。";
+			next;
+			while(1) {
+				switch( select( "机器人工厂1F","机器人工厂2F","取消" ) ) {
+				case 1:
+					mes "[机器人工厂一楼]";
+					mes "------------ 怪物 ------------";
+					mes "爱丽丝(100)";
+					mes "常数(108)";
+					mes "阿里奥特(112)";
+					mes "艾丽莎(112)";
+					mes "艾莉赛尔(115)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[机器人工厂2F]";
+					mes "------------ 怪物 ------------";
+					mes "喜欢(90)";
+					mes "常数(108)";
+					mes "阿里奥特(112)";
+					mes "艾丽莎(112)";
+					mes "艾莉赛尔(115)";
+					mes "--------------------------------";
+					next;
+					mes "<我不知道为什么基尔有两种类型。基尔和基尔-D-01...基尔-D-01 是两者的更新版本..我是否应该要求基尔也为我制作一个机器人？ - 贪婪的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+tha_t01,142,78,0	script	Guide#Thanatos1	CLEAR_NPC,{
+	mes "[塔纳托斯塔指南]";
+	if (thana_tower == 0) {
+		mes "塔纳托斯塔共有 12 层，但只有 3 层向公众开放。如果您想晋级，您必须与“^0000FFRenkenber^000000”签订合同。";
+		next;
+		mes "[塔纳托斯塔指南]";
+		mes "据资料显示，共有12层。在进入这个地牢之前，请做好应对各种情况的准备......";
+		next;
+		mes "[公开公告]";
+		mes "请不要碰它。只有那些与“^0000FFRenkenber^000000”签订合同的人才能进步。";
+		emotion ET_HUK;
+		close;
+	}
+	mes "塔纳托斯塔共有 12 层，但只有 3 层向公众开放。如果你想晋级，你必须与‘^0000FFRenkenber^000000'签订合同。";
+	next;
+	mes "[塔纳托斯塔指南]";
+	mes "据资料显示，共有12层。在进入这个地牢之前，请做好应对各种情况的准备。";
+	next;
+	while(1) {
+		mes "[塔纳托斯塔指南]";
+		mes "您已与“^0000FFRenkenber^000000”签订了合同，现已提供以下信息。如需修改信息，请联系冒险家集团或“^0000FFRenkenber^000000”并提供信息提示。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1195,"Rideword","Magic Tome brought to life with demon's powers. It does not possess emotions or a mind of its own, programmed to rely on its instincts to attack living creatures.",
+			1377,"Elder","Once an elder of magic association. It delved too deep into magic, turning into a magical monster that attack adventurers on sight.",
+			1275,"Alice","Automatic doll tasked with various chores in the castle. Its main priority is to clean the vicinity, however it will attack intruders with a steel broom stick.",
+			1699,"Ancient Mimic","Adventurer's tips are needed.",
+			1320,"Owl Duke","Owl Baron's sibling that wears a blue manteau. It enjoys rainy days.",
+			1295,"Owl Baron","Bird monster that wears red manteau. Getting fooled by its gentleman appearance will result in being ambushed by fierce magic attacks.",
+			1698,"Death Word","Adventurer's tips are needed.",
+			1697,"Plasma (Blue)","Adventurer's tips are needed.",
+			1695,"Plasma (Green)","Adventurer's tips are needed.",
+			1696,"Plasma (Purple)","Adventurer's tips are needed.",
+			1694,"Plasma (Red)","Adventurer's tips are needed.",
+			1693,"Plasma (Yellow)","Adventurer's tips are needed.",
+			1707,"Dolor of Thanatos","Adventurer's tips are needed.",
+			1706,"Maero of Thanatos","Adventurer's tips are needed.",
+			1705,"Despero of Thanatos","Adventurer's tips are needed.",
+			1704,"Odium of Thanatos","Adventurer's tips are needed.",
+			1702,"Baroness of Retribution","Adventurer's tips are needed.",
+			1703,"Lady Solace","Adventurer's tips are needed.",
+			1701,"Mistress of Shelter","Adventurer's tips are needed.",
+			1700,"Dame of Sentinel","Adventurer's tips are needed.",
+			1708,"Memory of Thanatos","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[塔纳托斯塔指南]";
+			mes "请选择合适的楼层来获取怪物信息。";
+			next;
+			while(1) {
+				switch( select( "取消","Thanatos 大楼 1F","Thanatos 大楼 2F","Thanatos 大楼 3F","Thanatos 大楼 4F","Thanatos 大楼 5F","Thanatos 大楼 6F","Thanatos 大楼7F","Thanatos 大厦 8F","Thanatos 大厦 9F","Thanatos 大厦 10F","Thanatos 大厦 11F","Thanatos 大厦 12F","Thanatos 大厦顶层" ) ) {
+				case 2:
+					mes "[塔纳托斯大厦1楼]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "爱丽丝(100)";
+					mes "等离子（绿色）(116)";
+					mes "索莱斯女士(123)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[塔纳托斯塔2楼]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "长者(92)";
+					mes "爱丽丝(100)";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "等离子（蓝色）(116)";
+					mes "报应男爵夫人(121)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[塔纳托斯塔3楼]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "长者(92)";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "等离子（紫色）(117)";
+					mes "庇护所女主人(125)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 5:
+					mes "[塔纳托斯大厦4楼]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "骑行词(74)";
+					mes "猫头鹰公爵(92)";
+					mes "长者(92)";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "等离子（红）(118)";
+					mes "猫头鹰男爵(120)";
+					mes "哨兵女士(127)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 6:
+					mes "[塔纳托斯大厦5楼]";
+					mes "------------ 怪物 ------------";
+					mes "猫头鹰公爵(92)";
+					mes "长者(92)";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "等离子（蓝色）(115)";
+					mes "等离子（绿色）(116)";
+					mes "等离子（紫色）(117)";
+					mes "等离子（红）(118)";
+					mes "猫头鹰男爵(120)";
+					mes "塔纳托斯的痛苦(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 7:
+					mes "[塔纳托斯大厦 6F]";
+					mes "------------ 怪物 ------------";
+					mes "猫头鹰公爵(92)";
+					mes "长者(92)";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "等离子（蓝色）(115)";
+					mes "等离子（绿色）(116)";
+					mes "等离子（紫色）(117)";
+					mes "等离子（红）(118)";
+					mes "猫头鹰男爵(120)";
+					mes "塔纳托斯的马罗(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 8:
+					mes "[塔纳托斯大厦7楼]";
+					mes "------------ 怪物 ------------";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "报应男爵夫人(121)";
+					mes "索莱斯女士(123)";
+					mes "庇护所女主人(125)";
+					mes "哨兵女士(127)";
+					mes "塔纳托斯的绝望(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 9:
+					mes "[塔纳托斯大厦8楼]";
+					mes "------------ 怪物 ------------";
+					mes "古代模仿者(112)";
+					mes "死语(114)";
+					mes "报应男爵夫人(121)";
+					mes "索莱斯女士(123)";
+					mes "庇护所女主人(125)";
+					mes "哨兵女士(127)";
+					mes "塔纳托斯之恨(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 10:
+					mes "[塔纳托斯大厦9楼]";
+					mes "------------ 怪物 ------------";
+					mes "等离子（红）(118)";
+					mes "报应男爵夫人(121)";
+					mes "索莱斯女士(123)";
+					mes "庇护所女主人(125)";
+					mes "哨兵女士(127)";
+					mes "塔纳托斯之恨(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 11:
+					mes "[塔纳托斯大厦10楼]";
+					mes "------------ 怪物 ------------";
+					mes "等离子（蓝色）(115)";
+					mes "报应男爵夫人(121)";
+					mes "索莱斯女士(123)";
+					mes "庇护所女主人(125)";
+					mes "哨兵女士(127)";
+					mes "塔纳托斯的马罗(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 12:
+					mes "[塔纳托斯大厦11楼]";
+					mes "------------ 怪物 ------------";
+					mes "等离子（绿色）(116)";
+					mes "报应男爵夫人(121)";
+					mes "索莱斯女士(123)";
+					mes "庇护所女主人(125)";
+					mes "哨兵女士(127)";
+					mes "塔纳托斯的绝望(129)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 13:
+					mes "[塔纳托斯大厦12楼]";
+					mes "------------ 怪物 ------------";
+					mes "等离子（黄）(119)";
+					mes "报应男爵夫人(121)";
+					mes "索莱斯女士(123)";
+					mes "庇护所女主人(125)";
+					mes "哨兵女士(127)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 14:
+					mes "[塔纳托斯塔顶层]";
+					mes "------------ 怪物 ------------";
+					mes "- 需要冒险家的提示 -";
+					mes "--------------------------------";
+					next;
+					mes "<这里太空了..我千里迢迢来到这里，但这里什么都没有.. - 愤怒的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+tha_t01,156,78,0	duplicate(Guide#Thanatos1)	Guide#Thanatos2	CLEAR_NPC
+
+prt_fild05,278,220,0	script	Signpost#Culvert	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[边境涵洞]";
+		mes "普隆德拉涵洞只有获得符文中加尔特王国许可的冒险者才能进入。";
+		mes "-- 冒险者团 --";
+		next;
+		if ((MISC_QUEST & 8) == 0) {
+			mes "[边境涵洞]";
+			mes "普隆德拉涵洞只有在普隆德拉骑士团签署了志愿者表格的冒险家才能进入。您愿意去签署志愿者表格吗？";
+			next;
+			switch( select( "志愿者","不做志愿者" ) ) {
+			case 1:
+				mes "[边境涵洞]";
+				mes "你将被扭曲为普隆德拉骑士精神。";
+				next;
+				warp "prontera",49,342;
+				break;
+			case 2:
+				mes "[边境涵洞]";
+				mes "普隆德拉骑士团正在招募勇敢的冒险家。";
+				close;
+			}
+		}
+		.@mo_board = callfunc( "F_AvenBoard",
+			1111,"Drainliar","Colonial bat that inhabits dark caves. It uses its big, sharp teeth to attack nearby creatures and sucks in blood. It's bigger than a Familiar.^000000",
+			1077,"Poison Spore","An aggressive mushroom creature, it is recommended to carry green herbs to counteract it's toxic special attack.",
+			1209,"Cramp","Rodent found living deep within the dungeon. Its appearance is similar to Tarou, however it is much more vicious and has poisonous teeth.",
+			1161,"Plankton","Small organism monster seen floating in the water. This monster is usually preyed on by other sea creatures.",
+			1175,"Tarou","Rodent that inhabits dark places. It possesses white and plushy furs.",
+			1005,"Familiar","Colonial bat that inhabits dark caves. Its small fangs are sharp enough to suck blood from nearby creatures.",
+			1014,"Spore","Mushroom monster. It leaps very rhythmically, attracting attention from passing adventurers.",
+			1048,"Thief Bug Egg","Thief Bug Egg. It turns into Thief Bug monster once it hatches.",
+			1051,"Thief Bug","This monster is usually seen in small, damp places. It's movement is rather fast, and it devours any items on sight.",
+			1053,"Female Thief Bug","Female Thief Bug. It's movement is fast and it devours any items on sight.",
+			1054,"Male Thief Bug","Male Thief Bug. It's movement is fast and attacks approaching adventurers.",
+			1086,"Golden Thief Bug","MVP thief bug monster with its body covered in gold. This monster is much stronger than other thief bug monsters." );
+		if (.@mo_board == 1) {
+			mes "[边境涵洞]";
+			mes "普隆德拉涵洞由 B4 层组成。这个地下城适合初级冒险家，这里出现的大多数怪物都会帮助其他同名的怪物。";
+			next;
+			while(1) {
+				switch( select( "临街涵洞 1F","临街涵洞 2F","临街涵洞 3F","临街涵洞 4F","取消" ) ) {
+				case 1:
+					mes "[边境涵洞1F]";
+					mes "------------ 怪物 ------------";
+					mes "贼虫蛋(20)";
+					mes "盗虫(21)";
+					mes "太郎(22)";
+					mes "熟悉的(24)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[边境涵洞2F]";
+					mes "------------ 怪物 ------------";
+					mes "孢子(18)";
+					mes "贼虫蛋(20)";
+					mes "盗虫(21)";
+					mes "太郎(22)";
+					mes "熟悉的(24)";
+					mes "女贼虫(28)";
+					mes "浮游生物(40)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[边境涵洞3F]";
+					mes "------------ 怪物 ------------";
+					mes "贼虫蛋(20)";
+					mes "盗虫(21)";
+					mes "太郎(22)";
+					mes "熟悉的(24)";
+					mes "毒孢子(26)";
+					mes "女贼虫(28)";
+					mes "男盗虫(30)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 4:
+					mes "[边境涵洞4F]";
+					mes "------------ 怪物 ------------";
+					mes "贼虫蛋(20)";
+					mes "盗虫(21)";
+					mes "女贼虫(28)";
+					mes "男盗虫(30)";
+					mes "排水者(47)";
+					mes "金贼虫(65)";
+					mes "抽筋(82)";
+					mes "--------------------------------";
+					next;
+					mes "<普隆德拉涵洞 4F 里生活着一只闪亮的虫子。它的名字叫金贼虫。普隆德拉污水系统经常被这个怪物堵塞。呃~好恶心啊- 恼怒的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+tur_dun01,158,241,0	script	Signpost#Turtle Island	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[海龟岛]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1256,"Pest","Monster with an unknown origin. It attacks by spinning its sharp eyelids.",
+			1314,"Permeter","One of the most docile turtles on Turtle Island. Small trees grow on its shell.",
+			1316,"Solider","Turtle with small castle walls on its shell.",
+			1319,"Freezer","Turtle with ice spikes on its shell.",
+			1318,"Heater","Heat emitting turtle. Its shell is always hot to the touch. It could be used as a heater during winter.",
+			1315,"Assaulter","Turtle assassin. It can throw its shell carapace like a shuriken.",
+			1312,"Turtle General","King of Turtle Island. It's known to have lived for over thousand years." );
+		if (.@mo_board == 1) {
+			mes "[海龟岛]";
+			mes "海龟岛共有三层，这里出现的怪物大多是凶猛的。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "海龟岛","海龟村","海龟宫","取消" ) ) {
+				case 1:
+					mes "[海龟岛]";
+					mes "------------ 怪物 ------------";
+					mes "害虫(89)";
+					mes "单位(90)";
+					mes "士兵(92)";
+					mes "冰柜(94)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[海龟岛 - 海龟村]";
+					mes "------------ 怪物 ------------";
+					mes "单位(90)";
+					mes "冰柜(94)";
+					mes "取暖器(98)";
+					mes "突击者(100)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[海龟岛-海龟宫]";
+					mes "------------ 怪物 ------------";
+					mes "单位(90)";
+					mes "冰柜(94)";
+					mes "取暖器(98)";
+					mes "突击者(100)";
+					mes "--------------------------------";
+					next;
+					mes "<乌龟以长寿而闻名，对吗？龟将军几岁了？ - 年轻的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+/// adven_board04.sc
+
+ama_dun01,233,14,0	script	Signpost#Amatsu Dungeon	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[天松地下城]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1129,"Horong","Fire monster with an appearance of Dokebi light. Origin of this monster is unknown.",
+			1404,"Miyabi Doll","Popular doll amongst the girls with the ability to move. You can sometimes see its face behind all the hair.",
+			1403,"Firelock Soldier","Ancient soldier from the eastern kingdom.",
+			1401,"Shinobi","Ancient ninja from far eastern kingdom. It is capable of transforming or hiding itself.",
+			1375,"The Paper","Slim paper monster. Its edges are much sharper than a knife.",
+			1405,"Tengu","Ghost from far eastern kingdom. It sometimes blends in with the humans or pranks on them.",
+			1402,"Poisonous Toad","Toad monster. It possesses paralyzing poison.",
+			1492,"Samurai Specter","Little child MVP that summons Samurai spirit under his control. Samurai spirit is forced to obey every command." );
+		if (.@mo_board == 1) {
+			mes "[天松地下城]";
+			mes "天松地下城共有 3 层。这个地下城的迷宫非常复杂，无法使用飞翼。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "天松迷宫 - 榻榻米迷宫","天松迷宫 - 地下森林的战场","天松迷宫 - 天松地下神社","取消" ) ) {
+				case 1:
+					mes "[天松地下城 - 榻榻米迷宫]";
+					mes "------------ 怪物 ------------";
+					mes "宫娃娃(85)";
+					mes "火枪士兵(88)";
+					mes "忍者(95)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[天松迷宫-地下森林的战场]";
+					mes "------------ 怪物 ------------";
+					mes "喇叭(66)";
+					mes "宫娃娃(85)";
+					mes "毒蟾蜍(87)";
+					mes "火枪士兵(88)";
+					mes "忍者(95)";
+					mes "论文(97)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[天松地下城 - 天松地下神社]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "宫娃娃(85)";
+					mes "火枪士兵(88)";
+					mes "忍者(95)";
+					mes "论文(97)";
+					mes "天狗(98)";
+					mes "--------------------------------";
+					next;
+					mes "<武士幽灵非常粗鲁。我想通过给他名片来向他介绍自己，但他对此不高兴……噗——沮丧的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+gonryun,155,198,0	script	Signpost#Kunlun Dungeon	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[昆仑地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1415,"Baby Leopard","Cute little baby leopard, but it's vicious.",
+			1413,"Hermit Plant","Plant that's very healthy for the body. It may be hard for people to eat this.",
+			1417,"Zipper Bear","It looks like a normal bear at first glance, but it has a zipper on its back. There's no way to know what's inside it.",
+			1410,"Enchanted Peach Tree","Living Peach Tree. Peaches grown on this tree is too hard to eat.",
+			1408,"Bloody Butterfly","Butterfly that lures with its mystical appearance and sucks their blood. It emits sweet odor from its wings.",
+			1412,"Taoist Hermit","Cloud riding hermit. It loves playing checkers.",
+			1416,"Evil Nymph","Fairy monster, otherwise known as angel in western kingdom. It enjoys making accessories with beads.",
+			1418,"Evil Snake Lord","Giant snake monster. Its white skin looks very mysterious. It's rumored that its caligraphy is legendary." );
+		if (.@mo_board == 1) {
+			mes "[昆仑地牢]";
+			mes "昆仑地牢共有三层。蜂王浆和枯枝物品可以从这个地下城的怪物那里获得。";
+			next;
+			while(1) {
+				switch( select( "昆仑地下城-昆仑女王神殿","昆仑地下城 - 隐士的跳棋","昆仑地下城-阿卡迪亚","取消" ) ) {
+				case 1:
+					mes "[昆仑地牢-昆仑女王神殿]";
+					mes "------------ 怪物 ------------";
+					mes "拉链熊(90)";
+					mes "魔桃树(92)";
+					mes "血色蝴蝶(94)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[昆仑地牢 - 隐士的跳棋]";
+					mes "------------ 怪物 ------------";
+					mes "小豹子(68)";
+					mes "魔桃树(92)";
+					mes "血色蝴蝶(94)";
+					mes "道士(96)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[昆仑地下城-阿卡迪亚]";
+					mes "------------ 怪物 ------------";
+					mes "隐士植物(90)";
+					mes "道士(96)";
+					mes "邪恶仙女(97)";
+					mes "--------------------------------";
+					next;
+					mes "<邪蛇君的书法真的很厉害吗？我去那里看了一下..但是我看不到它的书法.. - 健忘探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+louyang,37,276,0	script	Signpost#Luoyang Dungeon	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[洛阳地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1191,"Mimic","Adventurer's tips are needed.",
+			1026,"Munak","Dead girl's spirit resides within the dead body, turning it into a Kyonshi monster. It sucks blood from nearby creatures.",
+			1129,"Horong","Fire monster with an appearance of Dokebi light. Origin of this monster is unknown.",
+			1381,"Grizzly","Bear that inhabits magma flowing regions. Its furs appear as if it's on fire. It will be popular amongst the fur lovers.",
+			1037,"Side Winder","One headed snake. It uses its tail like its head to confuse the enemies.",
+			1306,"Leib Olmai","Bear with extremely vicious personality. Its body is covered with numerous scars from various fights with other creatures.",
+			1517,"Jing Guai","Monster that looks like it's a tiger costume. It barks like a dog.",
+			1516,"Mi Gao","Sand monster. It creates a sand pillar to attack.",
+			1514,"Zhu Po Long","It looks like a long dragon mask. It might be possible to spot this monster during festivals.",
+			1519,"Green Maiden","Cute little female martial artist, but it's actually possessed by a mature female martial artist.",
+			1512,"Yao Jun","Kyounshi monster. It seems somewhat proficient in martial arts.",
+			1513,"Mao Guai","Evil cat spirit in human clothing. It walks on two legs like a human and attacks with a fan in its hands.",
+			1518,"White Lady","This MVP monster lures nearby adventurers with its beauty. Some adventurers become enchanted by its scream." );
+		if (.@mo_board == 1) {
+			mes "[洛阳地牢]";
+			mes "洛阳地下城共有三层，这里出现的怪物往往会在数量上压倒冒险者。在冒险进入这个地牢之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "Luoyang Dungeon - Suei Long Gon","洛阳城——皇家陵墓","洛阳地牢——皇陵内部","取消" ) ) {
+				case 1:
+					mes "[洛阳地牢-隋龙昆]";
+					mes "------------ 怪物 ------------";
+					mes "喇叭(66)";
+					mes "灰熊(66)";
+					mes "侧卷绕机(70)";
+					mes "Jing Guai(80)";
+					mes "Mi Gao(83)";
+					mes "奥尔麦面包(87)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[洛阳城-皇陵]";
+					mes "------------ 怪物 ------------";
+					mes "模仿者(56)";
+					mes "爱(58)";
+					mes "Zhu Po Long(82)";
+					mes "Yao Jun(87)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[洛阳地牢-皇陵内]";
+					mes "------------ 怪物 ------------";
+					mes "Zhu Po Long(82)";
+					mes "绿少女(82)";
+					mes "Yao Jun(87)";
+					mes "毛怪(89)";
+					mes "--------------------------------";
+					next;
+					mes "<白娘子..她..美丽..她善良..如果不是绿少女的话..噗——沮丧的探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+ayo_fild02,279,147,0	script	Signpost#Ayothaya	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[大城地下城]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1179,"Whisper","Ghost monster that appears to be covered in a bed cover. Normal weapons are ineffective against its spiritual body.^000000",
+			1036,"Ghoul","Corpse that is revived by Unholy Necromancer's curse. It ambushes nearby living creatures and devours their corpses to satiate its hunger, but because it's a reanimated corpse, it is unable to feel satisfied.^000000",
+			1586,"Leaf Cat","Cat monster wearing leaves as clothing. Its cute appearance is popular amongst the adventurers.",
+			1587,"Kraben","Obnoxious monster. It attacks with what appears to be 2 giant pots.",
+			1584,"Tamruan","Sword wielding status-like monster. It wears powerful armor to protect itself.",
+			1688,"Lady Tanee","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[大城地下城]";
+			mes "Ayothaya 地牢共有 2 层。可以在迷宫中发现这个地牢中的怪物。";
+			next;
+			while(1) {
+				switch( select( "大城地下城 - 古代神社迷宫","大城地下城 - 古代神社内部","取消" ) ) {
+				case 1:
+					mes "[大城地下城 - 古代神社迷宫]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "食尸鬼(61)";
+					mes "叶猫(64)";
+					mes "克拉本(70)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[大城地下城 - 古代神社内部]";
+					mes "------------ 怪物 ------------";
+					mes "耳语(34)";
+					mes "克拉本(70)";
+					mes "淡鲁安(73)";
+					mes "--------------------------------";
+					next;
+					mes "<哦塔妮大人，别害羞就跑吧~ - 来接我吧~探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+mosk_fild02,187,251,0	script	Signpost#Moscovia	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[莫斯科维亚地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1031,"PoPoring","Elder sibling of Poring found in swamp areas. Its body is comprised of poisonous substance and it's sturdier than a Poring.",
+			1139,"Mantis","Adventurer's tips are needed.",
+			1880,"Wood Goblin","Adventurer's tips are needed.",
+			1881,"Les","Adventurer's tips are needed.",
+			1884,"Mavka","Adventurer's tips are needed.",
+			1883,"Uzhas","Adventurer's tips are needed.",
+			1882,"Baba Yaga","Adventurer's tips are needed.",
+			1885,"Gopinch","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[莫斯科维亚地牢]";
+			mes "莫斯科维亚地下城由 3 个区域组成，每个区域都会引入被动型和攻击型怪物。在冒险进入该区域之前做好准备。";
+			next;
+			while(1) {
+				switch( select( "莫斯科维亚地下城 - 森林","莫斯科维亚地下城 - 森林深处","莫斯科维亚地下城 - 森林深处","取消" ) ) {
+				case 1:
+					mes "[莫斯科地下城 - 森林]";
+					mes "------------ 怪物 ------------";
+					mes "波波灵(30)";
+					mes "螳螂(65)";
+					mes "木妖精(81)";
+					mes "(82)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[莫斯科维亚地牢 - 森林深处]";
+					mes "------------ 怪物 ------------";
+					mes "木妖精(81)";
+					mes "(82)";
+					mes "乌扎斯(85)";
+					mes "巴巴雅嘎(87)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 3:
+					mes "[莫斯科维亚地牢 - 森林深处]";
+					mes "------------ 怪物 ------------";
+					mes "马夫卡(84)";
+					mes "乌扎斯(85)";
+					mes "巴巴雅嘎(87)";
+					mes "--------------------------------";
+					next;
+					mes "<Gopinch 是 3 头的吗？是的，我只是告诉你它有 3 个头。 - 一头探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+bra_dun01,208,109,0	script	Signpost#Brasilis	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[巴西利斯地牢]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1068,"Hydra","Anemone monster. Despite the appearance, it is rooted deep within the area, and uses the rooted tentacles to attack nearby creatures.",
+			1070,"Kukre","Worm monster. Its agility is surprisingly fast when scouring for objects on the ground.",
+			1141,"Marina","Jellyfish monster with surprisngly strong tentacles that allow it to swim or walk on land. Its tentacles are used in various ways.",
+			2070,"Piranha","Adventurer's tips are needed.",
+			2069,"Iara","Adventurer's tips are needed.",
+			2068,"Boitata","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[巴西利斯地牢]";
+			mes "巴西利斯地下城共有两层，该地下城中出现的怪物大多是水元素。风元素武器在这个地下城中将证明是非常有用的。";
+			next;
+			while(1) {
+				switch( select( "巴西利斯地牢入口","巴西利斯地牢内部","取消" ) ) {
+				case 1:
+					mes "[巴西利斯地牢入口]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "库克雷(42)";
+					mes "码头(42)";
+					mes "食人鱼(75)";
+					mes "再次(79)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[巴西利斯地牢内部]";
+					mes "------------ 怪物 ------------";
+					mes "九头蛇(34)";
+					mes "库克雷(42)";
+					mes "码头(42)";
+					mes "食人鱼(75)";
+					mes "再次(79)";
+					mes "--------------------------------";
+					next;
+					mes "<有一个名叫博伊塔塔的怪物发出铃声。为什么会发出这么大的噪音？ - 误以为它是宠物狗 - 探险家葡萄>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+
+dew_dun01,294,158,0	script	Signpost#Dewata_Krakatau	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[喀拉喀托火山]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1305,"Ancient Worm","Ancient worm monster that can only be found in ancient ruins. It rapidly spins its body to attack.",
+			1311,"Gullinbursti","Boar monster. It's very vicious, but its meat is one of the sought after delicacy.",
+			2152,"Comodo","Adventurer's tips are needed.",
+			2156,"Leak","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[喀拉喀托火山]";
+			mes "德瓦塔火山只有获得贾蒂部落许可的冒险家才能进入。出现在这个地方的所有怪物都具有攻击性。只有经验丰富的冒险家才应该来这里冒险。";
+			next;
+			mes "[喀拉喀托火山]";
+			mes "------------ 怪物 ------------";
+			mes "舒适(81)";
+			mes "远古蠕虫(83)";
+			mes "金笔(89)";
+			mes "--------------------------------";
+			next;
+			mes "<可怕的 MVP 泄露生活在喀拉喀托火山中。这有什么可怕的呢？ - 比可怕更可爱（？）探险家葡萄>";
+			next;
+			mes "[冒险者团]";
+			mes "想了解更多怪物信息";
+			mes "怪物信息检索系统";
+			mes "必须使用。";
+			next;
+		}
+	}
+}
+
+dew_fild01,51,61,0	script	Signpost#Dewata_Istana	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[王宫洞穴]";
+		mes "为了让冒险者能够轻松地环游世界，从各个冒险者那里收集到的信息被公开。请向冒险者团提供信息提示，以修改信息。";
+		mes "-- 冒险者团 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			1301,"Am Mut","Monster from Payon Legend. It looks like a small kid, however it is known to harrass passing by adventurers.",
+			1309,"Gajomart","Popularly known as Dokebi flame in eastern countries. It's exact identity is unknown.",
+			2154,"Banaspaty","Adventurer's tips are needed.",
+			2155,"Butoijo","Adventurer's tips are needed." );
+		if (.@mo_board == 1) {
+			mes "[王宫洞穴]";
+			mes "Monsters that appear in Istana Cave are all aggressive.只有经验丰富的冒险家才应该来这里冒险。";
+			next;
+			mes "[王宫洞穴]";
+			mes "------------ 怪物 ------------";
+			mes "我静音(76)";
+			mes "佳卓超市(81)";
+			mes "巴纳斯帕蒂(85)";
+			mes "布托伊城(88)";
+			mes "--------------------------------";
+			next;
+			mes "德瓦塔 (Dewata) 的贾蒂 (Jaty) 部落在这里举行实力比拼。 - 勇敢的探险家葡萄>";
+			next;
+			mes "[冒险者团]";
+			mes "想了解更多怪物信息";
+			mes "怪物信息检索系统";
+			mes "必须使用。";
+			next;
+		}
+	}
+}
+
+/// adven_board05.sc
+
+dic_dun01,30,208,0	script	Signpost#Kamidal	2_BULLETIN_BOARD,{
+	while(1) {
+		mes "[卡米达尔隧道]";
+		mes "走遍世界各地的冒险家，结合从公众那里收集到的信息。";
+		mes "-- 冒险家提示 --";
+		next;
+		.@mo_board = callfunc( "F_AvenBoard",
+			2088,"Uni-horn Scaraba Egg","Adventurer's tip is required.",
+			2089,"Horn Scaraba Egg","Adventurer's tip is required.",
+			2090,"Antler Scaraba Egg","Adventurer's tip is required.",
+			2091,"Rake Horn Scaraba Egg","Adventurer's tip is required.",
+			2083,"Uni-horn Scaraba","Adventurer's tip is required.",
+			2084,"Horn Scaraba","Adventurer's tip is required.",
+			2085,"Antler Scaraba","Adventurer's tip is required.",
+			2086,"Rake Horn Scaraba","Adventurer's tip is required.",
+			2304,"Queen Scaraba","Adventurer's tip is required." );
+		if (.@mo_board == 1) {
+			mes "[卡米达尔隧道]";
+			mes "这条隧道共有两层，这里出现的怪物大多是昆虫类的。";
+			next;
+			while(1) {
+				switch( select( "Kamidal 隧道","Scaraba Hall","取消" ) ) {
+				case 1:
+					mes "[卡米达尔隧道]";
+					mes "------------ 怪物 ------------";
+					mes "独角甲虫蛋(125)";
+					mes "角甲虫蛋(126)";
+					mes "独角甲虫(130)";
+					mes "角甲虫(134)";
+					mes "--------------------------------";
+					F_InfoBoard;
+					continue;
+				case 2:
+					mes "[甲虫大厅]";
+					mes "------------ 怪物 ------------";
+					mes "鹿角金龟子蛋(127)";
+					mes "耙子甲虫蛋(128)";
+					mes "鹿角甲虫(136)";
+					mes "耙子甲虫(139)";
+					mes "--------------------------------";
+					next;
+					mes "<MVP 圣甲虫女王...你必须探索才能找到它。>";
+					F_InfoBoard;
+					continue;
+				}
+				break;
+			}
+		}
+	}
+}
+dic_fild01,27,83,0	duplicate(Signpost#Kamidal)	Signpost#Kamidal Exit	2_BULLETIN_BOARD

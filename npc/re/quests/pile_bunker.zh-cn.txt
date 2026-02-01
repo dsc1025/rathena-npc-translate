@@ -1,0 +1,124 @@
+//===== rAthena Script ======================================= 
+//= Pile Bunker Quest
+//===== By: ================================================== 
+//= JayPee Mateo
+//===== Current Version: ===================================== 
+//= 2.2
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= 1.0 A Pile Bunker quest based on iRO WiKi. [JayPee Mateo]
+//= 2.0 Rewrited the Script a little so it looks a bit better. [Masao]
+//= 2.1 Switched to official script, coded by Gennosuke Kouga. [Euphy]
+//= 2.2 Updated to match the official script. [Euphy]
+//============================================================ 
+
+// Main NPC :: mech_book
+//============================================================
+yuno,179,174,4	script	Gomer	851,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
+		mes "[戈篾]";
+		mes "你背负着这么多。放下一些行李然后回到我身边。";
+		close;
+	}
+	if (countitem(1549)) {
+		mes "[戈篾]";
+		mes "那么 Pilebunker 对你来说怎么样？";
+		close;
+	}
+	if (Class != Job_Mechanic && Class != Job_Mechanic_T && Class != Job_Baby_Mechanic) {
+		mes "[戈篾]";
+		mes "我是一名退休的机械师，我不认为我和你有任何关系。";
+		close;
+	}
+	mes "[戈篾]";
+	mes "所以？乘坐 Madogear 是什么感觉？";
+	mes "对于那些未能找到自己道路的人来说，这是不允许的。";
+	next;
+	mes "[戈篾]";
+	mes "我？我很久以前就退休了。因为我出了事故……受了重伤，再也不能骑车了。我对此感到不安。";
+	next;
+	mes "[戈篾]";
+	mes "所以我决定留在这里为 Madogear 锻造齿轮。";
+	mes "啊？我并不是说我对这项工作有任何抱怨。";
+	next;
+	mes "[戈篾]";
+	mes "被迫做自己不喜欢的事，没有什么比这更痛苦的了。";
+	next;
+	mes "[戈篾]";
+	mes "你知道，有些人很乐意成为道具，就像成为某人可以依靠的墙一样。";
+	next;
+	mes "[戈篾]";
+	mes "这让我感觉很好，我即将制作一个新装备。我想要你帮助我。你怎么说？";
+	next;
+	switch(select("我没那么感兴趣。：你要做什么？：你从哪里得到材料？：我带来了材料。")) {
+	case 1:
+		mes "[戈篾]";
+		mes "我无能为力";
+		mes "那么关于它。";
+		mes "下次见！";
+		close;
+	case 2:
+		mes "[戈篾]";
+		mes "嗯，一根巨大的金属棒，一击就能粉碎对手！";
+		next;
+		mes "[戈篾]";
+		mes "它看起来并不花哨，但我设计了一个弹簧装置，可以以巨大的力量进行攻击。";
+		next;
+		mes "[戈篾]";
+		mes "隐蔽性强，一旦找到机会，一击就能将对手置于死地！";
+		mes "我迫不及待地想看到它的实际应用！";
+		next;
+		mes "[戈篾]";
+		mes "如果你想象这种武器有多好，我会让你实现的。";
+		next;
+		mes "[戈篾]";
+		mes "给我带来 200 根钢、30 根软管和 1 根布洛卡。我可以用这些材料制作我刚才描述的东西。";
+		close;
+	case 3:
+		mes "[戈篾]";
+		mes "你应该能够从像狗头人这样的许多怪物那里得到钢铁。";
+		next;
+		mes "[戈篾]";
+		mes "软管更加稀有，由艾因布洛赫和莱特哈尔森周围的金属掉落。";
+		next;
+		mes "[戈篾]";
+		mes "最后，找到 Brocca 非常困难，但你应该能够做点什么。哈哈，去拿吧！";
+		close;
+	case 4:
+		if (countitem(999) < 200 || countitem(7325) < 30 || countitem(1415) < 1) {
+			mes "[戈篾]";
+			mes "我要的材料你还没有带齐。";
+			next;
+			mes "[戈篾]";
+			mes "我有一个习惯，当灵感出现时，我会放弃我一直在做的事情，尝试创造新的东西。";
+			mes "你最好快点！";
+			close;
+		} else {
+			mes "[戈篾]";
+			mes "哦，我一直在等待。你没有准时来，所以我想知道你是否忘记了。请您稍等一下。";
+			specialeffect EF_REPAIRWEAPON;
+			next;
+			mes "[戈篾]";
+			mes "完成了。你怎么认为？不错吧？虽然是我自己做的，但我不得不说做得相当不错。";
+			next;
+			mes "[戈篾]";
+			mes "结合重量、体积以及看它的颜色和光泽。它抓住了我的心！";
+			next;
+			mes "[戈篾]";
+			mes "...........";
+			next;
+			mes "[戈篾]";
+			mes "呃,稍微改进一下,就可以量产交付了.我确信我可以制作更多这样的东西，所以我会把这个送给你。";
+			next;
+			mes "[戈篾]";
+			mes "哦，事实证明我根本不需要那么多钢铁。所以在这里，把大部分都拿回来。";
+			delitem 999,50; //Steel
+			delitem 7325,30; //Tube
+			delitem 1415,1; //Skewer
+			getitem 1549,1; //Pilebuncker
+			getitem 1360,1; //Two_Handed_Axe
+			close;
+		}
+	}
+}

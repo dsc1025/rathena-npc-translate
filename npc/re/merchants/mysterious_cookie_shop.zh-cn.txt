@@ -1,0 +1,96 @@
+//===== rAthena Script ======================================= 
+//= Mysterious Cookie Shop
+//===== Changelogs: ==========================================
+//= 1.0 Initial version from replays. [Capuche]
+//============================================================
+
+malangdo,124,152,3	script	Mysterious Cookie Shop#stone	4_COOKIEHOUSE,{
+	mes "[神秘饼干店]";
+	mes "" + mesitemlink(7000) + "可以兑换任何你想要的东西。";
+	next;
+	switch( select( "^4d4dff上^000000宝石", "^1C8008中^000000宝石", "^ff0000下^000000宝石", "^9905d8服装^000000石头", "^8B4513双重效果^000000石头", "^9905d8服装^000000在“衣服”上" ) ) {
+	case 1:
+		mes "[神秘饼干店]";
+		mes "让我们看看你的里程可以变成什么石头！";
+		close2;
+		callshop( "barter_stone_top" );
+		end;
+	case 2:
+		mes "[神秘饼干店]";
+		mes "让我们看看你的里程可以变成什么石头！";
+		close2;
+		callshop( "barter_stone_mid" );
+		end;
+	case 3:
+		mes "[神秘饼干店]";
+		mes "让我们看看你的里程可以变成什么石头！";
+		close2;
+		callshop( "barter_stone_low" );
+		end;
+	case 4:
+		mes "[神秘饼干店]";
+		mes "让我们看看你的里程可以变成什么石头！";
+		close2;
+		callshop( "barter_stone_garment" );
+		end;
+	case 5:
+		mes "[神秘饼干店]";
+		mes "让我们看看你的里程可以变成什么石头！";
+		close2;
+		callshop( "barter_stone_dual" );
+		end;
+	case 6:
+		mes "[神秘饼干店]";
+		mes "用你必须的里程甩掉挂着各种衣服的晾衣绳！";
+		next;
+		switch( select( "第一条晾衣绳", "第二条晾衣绳" ) ) {
+		case 1:
+			callshop( "barter_costume_1" );
+			end;
+		case 2:
+			callshop( "barter_costume_2" );
+			end;
+		}
+	}
+}
+
+malangdo,116,152,3	script	Fashion Stone Mannequin#Models1	HIDDEN_NPC,{
+	end;
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id, UNPC_CLASS, JOB_MINSTREL;
+	setunitdata .@npc_id, UNPC_SEX, 1;
+	setunitdata .@npc_id, UNPC_HAIRSTYLE, 30;
+	end;
+}
+
+malangdo,118,152,3	script	Fashion Stone Mannequin#Models2	HIDDEN_NPC,{
+	end;
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id, UNPC_CLASS, JOB_CARDINAL;
+	setunitdata .@npc_id, UNPC_CLOTHCOLOR, 3;
+	setunitdata .@npc_id, UNPC_HAIRSTYLE, 27;
+	setunitdata .@npc_id, UNPC_HEADTOP, 1550;
+	end;
+}
+
+malangdo,120,152,3	script	Fashion Stone Mannequin#Models3	HIDDEN_NPC,{
+	end;
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id, UNPC_CLASS, JOB_BIOLO;
+	setunitdata .@npc_id, UNPC_SEX, 1;
+	setunitdata .@npc_id, UNPC_HAIRSTYLE, 27;
+	end;
+}
+
+malangdo,122,152,7	script	Fashion Stone Mannequin#Models4	HIDDEN_NPC,{
+	end;
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id, UNPC_CLASS, JOB_MECHANIC;
+	setunitdata .@npc_id, UNPC_SEX, 1;
+	setunitdata .@npc_id, UNPC_HAIRSTYLE, 27;
+	end;
+}

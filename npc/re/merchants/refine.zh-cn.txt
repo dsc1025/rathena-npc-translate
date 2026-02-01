@@ -1,0 +1,701 @@
+//===== rAthena Script ======================================= 
+//= Renewal Refining NPCs
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Renewal-specific refining NPCs and material merchants.
+//===== Additional Comments: =================================
+//= 1.0 Moved some scripts to Renewal file, optimized "Austry" NPC. [Euphy]
+//= 1.0a Added 'disable_items' command. [Euphy]
+//= 1.1 Added Malangdo Refiner "Clink". [Euphy]
+//= 1.2 Added official success calculation, thanks to Helvetica.
+//=     The safe/multiple refine feature is now functional. [Euphy]
+//= 1.3 Updated to match the latest official script. [Euphy]
+//= 1.4 Added correct safe refines. [Haruna]
+//= 1.5 Added Refine UI [Atemo, Lemongrass]
+//= 1.6 Added Barter exchange npcs [Atemo]
+//============================================================
+
+// +11 and above Refiners
+//============================================================
+prt_in,90,72,5	script	Vestri#prt	4_M_DWARF,{
+	if( getbattleflag( "feature.refineui" ) ){
+		mes "[你的]";
+		mes "我是最熟练的铁匠！";
+		close2;
+		refineui();
+		end;
+	}else{
+		callfunc "refinenew","Vestri",0;
+		end;
+	}
+}
+
+morocc_in,64,41,5	duplicate(Vestri#prt)	Vestri#moc	4_M_DWARF
+payon_in01,18,132,3	duplicate(Vestri#prt)	Vestri#pay	4_M_DWARF
+
+//============================================================
+// +11 and above Refiner Function
+//============================================================
+//= To allow auto safe refining/multiple refining set the
+//= second argument to '1' in the function call.
+//= If you enable this function, be sure to edit the value of
+//= .@safe to the max safe refine in refine.yml as well.
+//=
+//= On official servers, if an item is unsuccessfully refined
+//= it will break at a 20% rate and downgrade at an 80% rate.
+//============================================================
+function	script	refinenew	{
+	.@npc_name$ = getarg(0);
+	disable_items;
+	mes "["+ .@npc_name$ +"]";
+	mes "我是有史以来最好的阿姆史密斯！";
+	mes "我不会精炼普通、无聊的物品。";
+	mes "我只精炼10级以上的物品。";
+	next;
+	mes "["+ .@npc_name$ +"]";
+	mes "无论如何，如果您的物品等级为 10 级或更高，您就可以使用我的服务。";
+	mes "你要我炼制什么？";
+	next;
+
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for(.@i = 1; .@i<=10; ++.@i) {
+		if (getequipisequiped(.@indices[.@i])) {
+			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";
+			.@equipped = 1;
+		}
+		.@menu$ = .@menu$ + ":";
+	}
+	if (.@equipped == 0) {
+		mes "["+ .@npc_name$ +"]";
+		mes "我不认为我可以精炼你拥有的任何物品......";
+		close;
+	}
+	.@part = .@indices[ select(.@menu$) ];
+
+	if (!getequipisequiped(.@part)) { //custom check
+		mes "["+ .@npc_name$ +"]";
+		mes "你没穿";
+		mes "那里有什么";
+		mes "我可以精炼。";
+		emotion ET_FRET;
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "["+ .@npc_name$ +"]";
+		mes "我不认为我可以";
+		mes "彻底完善这个项目......";
+		close;
+	}
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	if (.@refinerycnt < 10) {
+		mes "["+ .@npc_name$ +"]";
+		mes "我说过我不使用低于 10 级的物品。";
+		close;
+	}
+	if (.@refinerycnt >= 20) { //custom check
+		mes "["+ .@npc_name$ +"]";
+		mes "我无法完善这个";
+		mes "不再有。这是作为";
+		mes "精致如初！";
+		close;
+	}
+	.@refineitemid = getequipid(.@part); // save id of the item
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	.@price = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_ZENY_COST);
+	.@material = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_MATERIAL_ID);
+	.@safe = 10;
+	.@itemtype = getiteminfo( .@refineitemid, ITEMINFO_TYPE );
+	
+	if( .@itemtype == IT_WEAPON ){
+		.@article$ = "a";
+		.@type$ = "weapon";
+	}else if( .@itemtype == IT_ARMOR ){
+		.@article$ = "an";
+		.@type$ = "armor";
+	}else{
+		// TODO:
+		close;
+	}
+
+	mes "["+ .@npc_name$ +"]";
+	mes "唔" + .@article$ + " " + .@type$ + "，可以吗？";
+	mes "如果你想完善这个" + .@type$ + "，";
+	mes "我需要 1 ^003366" + getitemname(.@material) + "^000000 和 " + callfunc("F_InsertComma",.@price) + " zeny。";
+	mes "您确定要继续吗？";
+	next;
+	if (select("是：否") == 2) {
+		mes "["+ .@npc_name$ +"]";
+		mes "嗯……如果你介意的话……没关系……";
+		close;
+	}
+	if (getarg(1) != 1) {
+		if (getequippercentrefinery(.@part) < 100) {
+			mes "["+ .@npc_name$ +"]";
+			mes "这"+.@type$+"已经被细化了好几次了。";
+			mes "如果我再试一次，它可能会被毁掉。";
+			mes "肯定不会坏，但是有的可能性很小。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "您可能^FF0000降低"+.@type$+"的升级级别<<<CLR1>>>，";
+			mes "或者如果它损坏，您将丢失^FF0000任何卡^000000或添加到其中的特殊属性。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "还想让我炼化吗？";
+			mes "我想我已经给你足够的警告了。";
+			next;
+			if(select("是的。：没有。") == 2) {
+				mes "["+ .@npc_name$ +"]";
+				mes "好吧，没有挑战是一种方法......";
+				mes "没有风险……这可能是明智的。";
+				close;
+			}
+		}
+		if (countitem(.@material) < 1 || Zeny < .@price) {
+			mes "["+ .@npc_name$ +"]";
+			mes "嗯。您似乎没有足够的钱或"+getitemname(.@material)+".";
+			mes "当你拥有它们时请回来。";
+			close;
+		}
+		Zeny = Zeny - .@price;
+		delitem .@material,1;
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
+		    callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)) {
+			mes "["+ .@npc_name$ +"]";
+			emotion ET_FRET;
+			mes "等一下...";
+			mes "你以为我傻吗？！";
+			mes "你趁我不注意的时候把东西换了！离开这里！";
+			close;
+		}
+
+		if (getequippercentrefinery(.@part) > rand(100)) {
+			mes "铛！铛！铛！铛！";
+			successrefitem .@part;
+			next;
+			emotion ET_BEST;
+			mes "["+ .@npc_name$ +"]";
+			mes "好的！成功了！！！";
+			mes "我是最好的阿姆史密斯。";
+			close;
+		} else {
+			if (rand(100) < 80) {
+				mes "["+ .@npc_name$ +"]";
+				mes "铛！铛！铛！铛！";
+				downrefitem .@part,3; // Failed refine attempts decrease the item's refine level by 3
+				next;
+				emotion (!rand(5))?ET_MONEY:ET_HUK;
+				mes "["+ .@npc_name$ +"]";
+				mes "啊啊！！！";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "我的天啊！";
+				mes "升级等级下降了...";
+			} else {
+				mes "["+ .@npc_name$ +"]";
+				mes "铛！铛！铛！";
+				failedrefitem .@part;
+				next;
+				emotion (!rand(5))?ET_MONEY:ET_HUK;
+				mes "["+ .@npc_name$ +"]";
+				mes "嗯！";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "天啊！我没能提炼出东西...";
+				mes "我不是故意的！";
+			}
+			mes "即使我是有史以来最好的阿姆史密斯，我也可能会犯错误。";
+			mes "它只是不是故意的。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "下次我会做得更好！不用担心！";
+			close;
+		}
+	}
+// New +11 and above Refining Functions ========================
+	if (.@refinerycnt < .@safe) {
+		mes "["+ .@npc_name$ +"]";
+		mes "我可以将其优化到安全限制或所需的次数。这是你的选择。";
+		next;
+		.@menu2 = select("请达到安全限度。","我会决定多少次。","我改变了主意...");
+	} else
+		.@menu2 = 2;
+	switch(.@menu2){
+	case 1: 
+		.@refinecnt = .@safe - .@refinerycnt;
+		break;
+	case 2:
+		mes "["+ .@npc_name$ +"]";
+		mes "您希望我精炼您的物品多少次？";
+		next;
+		input .@refinecnt;
+		.@refinecheck = .@refinecnt + .@refinerycnt;
+		if (.@refinecnt < 1 || .@refinecheck > 20) {
+			mes "["+ .@npc_name$ +"]";
+			mes "我无法多次精炼这个物品。";
+			close;
+		}
+		if (.@refinecheck > .@safe) {
+			.@refinecheck = .@refinecheck - .@safe;
+			mes "["+ .@npc_name$ +"]";
+			mes "这将尝试将设备精炼" + .@refinecheck + "次超过安全限制。你的装备可能会被毁掉……可以吗？";
+			next;
+			if(select("是的...","不...") == 2){
+				mes "["+ .@npc_name$ +"]";
+				mes "你都这么说了……就这样吧。";
+				close;
+			}
+		}
+		break;
+	case 3:
+		mes "["+ .@npc_name$ +"]";
+		mes "你都这么说了……就这样吧。";
+		close;
+	}
+	.@fullprice = .@price * .@refinecnt;
+	mes "["+ .@npc_name$ +"]";
+	mes "这将花费您" + .@refinecnt + " " + getitemname(.@material) + " 和" + .@fullprice + " Zeny。可以吗？";
+	next;
+	if(select("是：不...") == 2){
+		mes "["+ .@npc_name$ +"]";
+		mes "你都这么说了……就这样吧。";
+		close;
+	}
+	if (countitem(.@material) < .@refinecnt || Zeny < .@fullprice) {
+		mes "["+ .@npc_name$ +"]";
+		mes "嗯。您似乎没有足够的钱或"+getitemname(.@material)+".";
+		mes "当你拥有它们时请回来。";
+		close;
+	}
+	Zeny = Zeny - .@fullprice;
+	delitem .@material,.@refinecnt;
+	while(.@refinecnt){
+		if (getequipisequiped(.@part) == 0) {
+			mes "["+ .@npc_name$ +"]";
+			mes "看这里...您没有任何物品...";
+			close;
+		}
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
+		    callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt))
+			close;
+
+		if (getequipid(.@part) != .@refineitemid || (.@menu2 == 1 && getequippercentrefinery(.@part) < 100)) {
+			mes "["+ .@npc_name$ +"]";
+			mes "叮……不，你以为我会这么蠢吗？！";
+			mes "你改变了它...";
+			mes "在我用锤子打晕你之前滚出去！！";
+			close;
+		}
+		if (getequippercentrefinery(.@part) > rand(100)) {
+			mes "铛！铛！铛！铛！";
+			successrefitem .@part;
+			.@refinecnt = .@refinecnt - 1;
+			next;
+		} else {
+			if (rand(100) < 80) {
+				mes "["+ .@npc_name$ +"]";
+				mes "铛！铛！铛！铛！";
+				downrefitem .@part,3; // Failed refine attempts decrease the item's refine level by 3
+				next;
+				emotion (!rand(5))?ET_MONEY:ET_HUK;
+				mes "["+ .@npc_name$ +"]";
+				mes "啊啊！！！";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "我的天啊！";
+				mes "升级等级下降了...";
+			} else {
+				mes "["+ .@npc_name$ +"]";
+				mes "铛！铛！铛！";
+				failedrefitem .@part;
+				next;
+				emotion (!rand(5))?ET_MONEY:ET_HUK;
+				mes "["+ .@npc_name$ +"]";
+				mes "嗯！";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "天啊！我没能提炼出东西...";
+				mes "我不是故意的！";
+			}
+			mes "即使我是有史以来最好的阿姆史密斯，我也可能会犯错误。";
+			mes "它只是不是故意的。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "下次我会做得更好！不用担心！";
+			close;
+		}
+		.@refinerycnt = getequiprefinerycnt(.@part);
+	}
+	emotion ET_BEST;
+	mes "["+ .@npc_name$ +"]";
+	mes "好的！成功了！！！";
+	mes "我是最好的铁匠。";
+	close;
+}
+
+// Ori/Elu to Carnium/Bradium Refiners
+//============================================================
+-	script	Austri#ref	-1,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 等一下 ！！ -";
+		mes "- 目前你携带的是 -";
+		mes "- 你身上带的东西太多了。 -";
+		mes "- 请再试一次 -";
+		mes "- 当你减掉一些体重后。 -";
+		close;
+	}
+	mes "[奥地利]";
+	mes "如果你给我带来3";
+	mes "Oridecon 或 Elunium";
+	mes "我可以把它们换成";
+	mes "布雷迪或卡尼厄斯。";
+	mes "给我 50,000z 就行了。";
+	next;
+	switch(select("Oridecon 到Bradium。：Elunium 到Carnium。：纯化Bradium 到Carnium。：不，谢谢。")) {
+	case 1:
+		setarray .@i[0],984,3,6224;  //Oridecon -> Bradium
+		break;
+	case 2:
+		setarray .@i[0],985,3,6223;  //Elunium -> Carnium
+		break;
+	case 3:
+		setarray .@i[0],6090,1,6223; //Purified_Bradium -> Carnium
+		break;
+	case 4:
+		mes "[奥地利]";
+		mes "唔...";
+		close;
+	}
+	if (countitem(.@i[0]) >= .@i[1] && Zeny >= 50000) {
+		delitem .@i[0],.@i[1];
+		Zeny = Zeny - 50000;
+		getitem .@i[2],1;
+		mes "[奥地利]";
+		if (.@i[0] == 6090) {
+			mes "用精钸精炼";
+			mes "可能有点贵。";
+			mes "我可以用它换一些Carnium。";
+		} else
+			mes "好的！这是您的"+getitemname(.@i[2])+".";
+		mes "拿走它并好好利用它。";
+		close;
+	}
+	mes "[奥地利]";
+	mes "你最好不要尝试";
+	mes "欺骗我，因为你";
+	mes "没有足够的钱";
+	mes "或者"+getitemname(.@i[0])+".";
+	close;
+}
+prt_in,85,71,5	duplicate(Austri#ref)	Austri#prt	826
+payon_in01,14,125,5	duplicate(Austri#ref)	Austri#pay	826
+morocc_in,60,38,5	duplicate(Austri#ref)	Austri#moc	826
+
+// Malangdo Refiner
+//============================================================
+malangdo,224,172,6	script	Clink#mal_normal	544,{
+	disable_items;
+	mes "[叮当声]";
+	mes "我的酷爸爸霍林克说我有世界上最好的精炼锤！！";
+	mes "喵喵～";
+	mes "你以为我是谁？";
+	mes "是的！！！你！！你想精炼吗？";
+	next;
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
+	for(.@i = 1; .@i<=10; set .@i,.@i+1)
+		.@menu$ = .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[Empty]" ) +":";
+	.@part = .@indices[ select(.@menu$) ];
+	if (!getequipisequiped(.@part)) {
+		mes "[叮当声]";
+		switch(.@part) {
+		case EQI_HEAD_TOP:
+			mes "爸爸说。愚蠢是无法治愈的...";
+			break;
+		case EQI_ARMOR:
+			mes "这里没什么可看的！！";
+			break;
+		case EQI_HAND_L:
+			mes "这是多么嚣张的左手啊！";
+			break;
+		case EQI_HAND_R:
+			mes "这是多么嚣张的右手啊！";
+			break;
+		case EQI_GARMENT:
+			mes "把我脸上那脏东西拿掉！！";
+			break;
+		case EQI_SHOES:
+			mes "绫~！别激怒我。";
+			break;
+		case EQI_ACC_L:
+		case EQI_ACC_R:
+			mes "配件在哪里？";
+			break;
+		case EQI_HEAD_MID:
+		case EQI_HEAD_LOW:
+			mes "你是说头部的另一个部分吗？";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[叮当声]";
+		mes "这根本没法精炼啊！！";
+		close;
+	}
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	if (.@refinerycnt >= 10) {
+		mes "[叮当声]";
+		mes "完美炼制。我这样做是为了你吗？";
+		close;
+	}
+	
+	.@refineitemid = getequipid(.@part); // save id of the item
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	.@price = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_ZENY_COST);
+	.@material = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_MATERIAL_ID);
+	.@itemtype = getiteminfo( .@refineitemid, ITEMINFO_TYPE );
+	mes "[叮当声]";
+	if( .@itemtype == IT_ARMOR ){
+		switch( getequiparmorlv( .@part ) ){
+			case 1: // Armor
+				.@type$ = "armor";
+				mes "嗯，铠甲精炼？有人喜欢你？";
+				break;
+			default:
+				// TODO:
+				close;
+		}
+	}else if( .@itemtype == IT_WEAPON ){
+		switch( getequipweaponlv( .@part ) ){
+			case 1: // Level 1 Weapon
+				.@type$ = "weapon";
+				mes "1级武器？";
+				mes "呃...烦人...好吧，我们试试...";
+				break;
+			case 2: // Level 2 Weapon
+				.@type$ = "weapon";
+				mes "2级武器？";
+				break;
+			case 3: // Level 3 Weapon
+				.@type$ = "weapon";
+				mes "哇！！ 3级武器？印象深刻~";
+				break;
+			case 4: // Level 4 Weapon
+				.@type$ = "weapon";
+				mes "哇！...4级武器~！！";
+				break;
+			default:
+				// TODO:
+				close;
+		}
+	}else{
+		// TODO:
+		close;
+	}
+	mes "您需要 ^ff9999"+getitemname(.@material)+"^000000 和 ^ff9999"+.@price+"^000000 Zeny。你有吗？";
+	next;
+	if(select("是的，我愿意！！：忘了它吧！") == 2) {
+		mes "[叮当声]";
+		mes "我就知道！！";
+		mes "我就知道你不值得尝试我的炼器神锤。";
+		close;
+	}
+	if (getequippercentrefinery(.@part) < 100) {
+		mes "[叮当声]";
+		mes "哇！！";
+		mes "这"+.@type$+"已经精致了不少了吧？";
+		mes "你知道这可能会坏掉，对吧？";
+		next;
+		mes "[叮当声]";
+		mes "如果你破坏了"+.@type$+"，你将永远无法再使用它。";
+		mes "卡牌和附魔效果...";
+		mes "^ff0000整个事情都会消失^000000。";
+		mes "还想这样吗~？";
+		next;
+		if(select("是的，我是！！：忘了它吧！") == 2) {
+			mes "[叮当声]";
+			mes "我就知道！！";
+			mes "你连这么大的一步都迈不出来。就别想炼化了...";
+			close;
+		}
+	}
+	if (countitem(.@material) == 0 || Zeny < .@price) {
+		mes "[叮当声]";
+		mes "嘿，你！！我不是告诉过你了吗";
+		mes "你需要^ff9999"+getitemname(.@material)+"^000000和^ff9999"+.@price+"^000000 Zeny??!!";
+		close;
+	}
+	delitem .@material,1;
+	Zeny = Zeny-.@price;
+
+	// anti-hack
+	if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
+		callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)) {
+		mes "[叮当声]";
+		emotion ET_FRET;
+		mes "等一下...";
+		mes "你以为我傻吗？！";
+		mes "你趁我不注意的时候把东西换了！离开这里！";
+		close;
+	}
+
+	if (getequippercentrefinery(.@part) <= rand(100)) {
+		failedrefitem .@part;
+		mes "[叮当声]";
+		mes "哭锤！！哭！！！";
+		next;
+		switch(rand(1,5)) {
+			case 1: emotion ET_CRY; break;
+			case 2: emotion ET_PROFUSELY_SWEAT; break;
+			case 3: emotion ET_KEK; break;
+			case 4: emotion ET_SCRATCH; break;
+			case 5: emotion ET_BIGTHROB; break;
+		}
+		mes "[叮当声]";
+		mes "啊？！我失败了？！";
+		next;
+		mes "[叮当声]";
+		mes "啊啊～全都～破了……？可惜啦~";
+		next;
+		mes "[叮当声]";
+		mes "嘿...！！再给我一份。";
+		mes "这是不可能的。";
+		mes "我的锤子怎么会炼化失败呢？";
+		close;
+	}
+	successrefitem .@part;
+	mes "[叮当声]";
+	mes "哭锤！！哭！！！";
+	next;
+	emotion ET_CHUP;
+	mes "[叮当声]";
+	mes "好的！！完美的！！";
+	mes "没有什么是我不能精炼的";
+	mes "用这把特殊的锤子。";
+	mes "你可以夸我！！";
+	mes "多么美好的一天啊！！";
+	close;
+}
+
+// Renewal barter shops
+-	script	refine_barter_init	-1,{
+	end;
+OnInit:
+	if (getbattleflag("feature.barter")) {
+		unloadnpc "Vurewell";
+		unloadnpc "Begnahd";
+		unloadnpc "Sade";
+		unloadnpc "Kahlamanlith";
+		unloadnpc "Dilemma";
+		unloadnpc "Tirehaus";
+		unloadnpc "Krugg";
+		unloadnpc "Dietrich";
+		unloadnpc "Hakhim";
+		unloadnpc "Abdula";
+		unloadnpc "Xenophon";
+		unloadnpc "Delight";
+		unloadnpc "Matestein";
+		unloadnpc "Fruel";
+
+		npcshopupdate "market_refine_prt_in",1010,200,999999;
+		npcshopupdate "market_refine_payon",1010,200,999999;
+		npcshopupdate "market_refine_morocc_in",1010,200,999999;
+		npcshopupdate "market_refine_alberta_in",1010,200,999999;
+		npcshopupdate "market_refine_yuno_in01",1010,200,999999;
+		npcshopupdate "market_refine_ein_in01",1010,200,999999;
+		npcshopupdate "market_refine_lhz_in02",1010,200,999999;
+		
+		npcshopupdate "market_refine_prt_in",1011,1000,999999;
+		npcshopupdate "market_refine_payon",1011,1000,999999;
+		npcshopupdate "market_refine_morocc_in",1011,1000,999999;
+		npcshopupdate "market_refine_alberta_in",1011,1000,999999;
+		npcshopupdate "market_refine_yuno_in01",1011,1000,999999;
+		npcshopupdate "market_refine_ein_in01",1011,1000,999999;
+		npcshopupdate "market_refine_lhz_in02",1011,1000,999999;
+	}
+	else {
+		unloadnpc "market_refine_prt_in";
+		unloadnpc "market_refine_payon";
+		unloadnpc "market_refine_morocc_in";
+		unloadnpc "market_refine_alberta_in";
+		unloadnpc "market_refine_yuno_in01";
+		unloadnpc "market_refine_ein_in01";
+		unloadnpc "market_refine_lhz_in02";
+
+		unloadnpc "Dietrich#ns_prt";
+		unloadnpc "Pauline";
+	}
+	end;
+}
+
+-	marketshop	market_refine_prt_in	-1,1010:-1:999999,1011:-1:999999
+-	marketshop	market_refine_payon	-1,1010:-1:999999,1011:-1:999999
+-	marketshop	market_refine_morocc_in	-1,1010:-1:999999,1011:-1:999999
+-	marketshop	market_refine_alberta_in	-1,1010:-1:999999,1011:-1:999999
+-	marketshop	market_refine_yuno_in01	-1,1010:-1:999999,1011:-1:999999
+-	marketshop	market_refine_ein_in01	-1,1010:-1:999999,1011:-1:999999
+-	marketshop	market_refine_lhz_in02	-1,1010:-1:999999,1011:-1:999999
+
+prt_in,63,69,3	script	Dietrich#ns_prt	4_M_02,{
+	mes "[" + strnpcinfo(1) + "]";
+	mes "我们出售和交换用于冶炼的各种矿石。";
+	next;
+	switch( select( "查看基础冶炼矿石", "查看高级冶炼矿石", "查看以太冶炼矿石", "取消" ) ) {
+	case 1:
+		mes "[" + strnpcinfo(1) + "]";
+		mes "Phracon 和 Emveretarcon 可用于熔炼低级武器。";
+		close2;
+		callshop "market_refine_" + strnpcinfo(4);
+		end;
+	case 2:
+		mes "[" + strnpcinfo(1) + "]";
+		mes "我们正在提纯铊石或奥里德孔石，或者用钆或卡钇交换它们。";
+		close2;
+		callshop "barter_refine_1";
+		end;
+	case 3:
+		mes "[" + strnpcinfo(1) + "]";
+		mes "我们将Etel Dust添加到现有的冶炼矿石中，并用含醚的冶炼矿石替代它们。";
+		close2;
+		callshop "barter_refine_2";
+		end;
+	case 4:
+		mes "[" + strnpcinfo(1) + "]";
+		mes "如果你缺少熔炼材料，随时来。";
+		close;
+	}
+	end;
+
+OnInit:
+	setunittitle getnpcid(0), "<Responsible for smelting products>";
+	end;
+}
+payon,137,178,5	duplicate(Dietrich#ns_prt)	Hakhim#2	4_M_ORIENT01
+morocc_in,72,32,3	duplicate(Dietrich#ns_prt)	Abdula#2	4W_M_03
+alberta_in,21,63,5	duplicate(Dietrich#ns_prt)	Xenophon#ns_albe	4_M_02
+yuno_in01,164,27,4	duplicate(Dietrich#ns_prt)	Delight#2	4_M_ORIENT01
+ein_in01,18,82,5	duplicate(Dietrich#ns_prt)	Matestein#2	4_M_02
+lhz_in02,281,24,5	duplicate(Dietrich#ns_prt)	Fruel#2	4_M_02
+
+// Shadowdecon/Zelunium exchange npcs
+prt_in,64,57,3	script	Pauline	4_M_02,{
+	mes "[" + strnpcinfo(1) + "]";
+	mes "您有" + mesitemlink( 25728 ) + " 或" + mesitemlink( 25730 ) + " 吗？";
+	mes "我们将它们兑换成精炼品，用作冶炼品。";
+	close2;
+	callshop "barter_refine_3";
+	end;
+}
+payon,142,179,3	duplicate(Pauline)	Jihu	4_M_ORIENT01
+morocc_in,64,37,3	duplicate(Pauline)	Marik	4W_M_03
+alberta_in,24,63,5	duplicate(Pauline)	Satana	4_M_02
+yuno_in01,164,31,6	duplicate(Pauline)	Dimir	4_M_ORIENT01
+lhz_in02,275,23,5	duplicate(Pauline)	Nemil	4_M_02
+ein_in01,30,88,5	duplicate(Pauline)	Galan	4_M_02

@@ -1,0 +1,90 @@
+//===== rAthena Script =======================================
+//= Merchants from new dungeons for Level 175
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//--- Merchants related to new dungeons.
+//===== Changelog: ===========================================
+//= 1.0 Initial release of Einbech Dungeon 3 merchants. [Capuche]
+//============================================================
+
+einbech,149,257,4	script	Site manager Elmen#extdq0	4_TOWER_16,{
+	if (checkweight(25814,100) == 0 || checkweight(1201,1) == 0 || (MaxWeight - Weight) < 10000) {
+		mes "- 您无法继续，因为您的物品太多。 -";
+		close;
+	}
+	mes "[埃尔曼]";
+	mes "你好。冒险家。";
+	mes "如果您来这里是为了购买 Dynite 采矿设备或将矿石精炼成 Dynite，那么您来对地方了。";
+	next;
+	switch( select( "动力精炼", "动力商店", "动力装备交换" ) ) {
+	case 1:
+		npctalk "Elmen：你一次最多可以精炼 100 颗 Dynite。机器很小。", "", bc_self;
+		mes "[埃尔曼]";
+		mes "" + mesitemlink(25814) + "精炼矿石。";
+		mes "" + mesitemlink(25809) + " ^777777（当前 " + countitem(25809) + "）^000000";
+		mes "" + mesitemlink(25810) + " ^777777（当前 " + countitem(25810) + "）^000000";
+		mes "" + mesitemlink(25811) + " ^777777（当前 " + countitem(25811) + "）^000000";
+		mes "" + mesitemlink(25812) + " ^777777（当前 " + countitem(25812) + "）^000000";
+		mes "" + mesitemlink(25813) + " ^777777（当前 " + countitem(25813) + "）^000000";
+		mes "您需要五种矿石中的每一种。";
+		next;
+		input .@val;
+		if (.@val > 100) {
+			mes "[埃尔曼]";
+			mes "对不起。冒险家。";
+			mes "动力精炼一次只能精炼到100个？机器很小，所以没有什么帮助。请理解。";
+			close;
+		}
+		if (.@val == 0) {
+			mes "[埃尔曼]";
+			mes "取消？";
+			mes "如果您需要Dynite的精炼，请随时找到。没有我，没有人能做到这一点。";
+			close;
+		}
+		if (countitem(25809) < .@val || countitem(25810) < .@val || countitem(25811) < .@val || countitem(25812) < .@val || countitem(25813) < .@val) {
+			mes "[埃尔曼]";
+			mes "嘿！这就为难彼此了，炼制所需的材料不是已经用完了吗？材料！";
+			close;
+		}
+		specialeffect EF_REPAIRWEAPON;
+		progressbar_npc "FFFF00",1;
+		delitem 25809,.@val;	// Ein_REDIUM
+		delitem 25810,.@val;	// Ein_RINDIUM
+		delitem 25811,.@val;	// Ein_ODIUM
+		delitem 25812,.@val;	// Ein_PURDIUM
+		delitem 25813,.@val;	// Ein_WHIDIUM
+		getitem 25814,.@val;	// Ein_DYNITE
+		mes "[埃尔曼]";
+		mes "" + .@val + " 达尼特已被精炼。今天真是完美啊！";
+		close;
+	case 2:
+		mes "[埃尔曼]";
+		mes "有各种配件和改装许可证。购买前请仔细查看您想要的东西。";
+		close2;
+		callshop "barter_ein_dun03";
+		end;
+	case 3:
+		mes "[埃尔曼]";
+		mes "我可以用 Dynite 交换装备，但它已经在一个密封的盒子里了。";
+		mes "给我 50 个^4d4dff炸药^000000，我将为你打开一个^4d4dff武器箱^000000。";
+		next;
+		mes "[埃尔曼]";
+		mes "我不知道会发生什么，但质量很好。您想打开它吗？";
+		next;
+		if (select( "闭上眼睛交换。", "不要交换。" ) == 2) {
+			mes "[埃尔曼]";
+			mes "哎呀，这太浪费了，这是一笔划算的交易。";
+			close;
+		}
+		if (countitem(25814) < 50) {
+			mes "[埃尔曼]";
+			mes "你没有足够的 Dynite 朋友。";
+			mes "我不知道会出现什么，所以很难以这个价格去任何地方买到这种设备。";
+			close;
+		}
+		delitem 25814,50;
+		// unknown text
+		getgroupitem(IG_EIN_1HITEMBOX);
+		end;
+	}
+}

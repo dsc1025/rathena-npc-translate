@@ -1,0 +1,243 @@
+//===== rAthena Script =======================================
+//= Cute Pet Manager
+//===== By: ==================================================
+//= Z3R0
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Exchanges Hunted Items for Tames
+//===== Additional Comments: =================================
+//= 1.0 First / Optimized Version
+//= 1.1 Little clean-up & added a delitem. [Capuche]
+//============================================================
+
+// 1st NPC
+-	script	CPM1	-1,{
+	
+	set .@npc$, "[Cute Pet Manager]";
+	
+	setarray .@tame_id[0],619,620,622,623,624,627,628,629,630;
+	setarray .@tame_amount[0],3,3,3,3,3,3,3,3,3;
+	setarray .@hunt_id[0],909,909,705,916,935,919,919,940,921;
+	setarray .@hunt_amount[0],500,600,500,500,500,500,600,500,500;
+	setarray .@mob_id[0],1002,1113,1063,1049,1011,1167,1107,1052,1014;
+	set .@tame_gets, 3;
+
+	if (cpm_one == .@tame_gets) {
+		mes "[可爱的宠物经理]";
+		mes "您已经兑换了";
+		mes .@tame_amount + "驯服物品的时间。";
+		mes "你不能再交换了。";
+		next;
+		
+		mes "[可爱的宠物经理]";
+		mes "除了我之外，还有其他人";
+		mes "可爱的宠物经理。如果你想";
+		mes "为了驯服其他宠物，我建议";
+		mes "你去看看他们。";
+		close;
+	}
+	
+	callfunc "cute_pet_manager",.@tame_id,.@tame_amount,.@hunt_id,.@hunt_amount,.@mob_id,cpm_one,.@tame_gets,.@hunt_id2,.@hunt_amount2;
+
+}
+
+// 2nd NPC
+-	script	CPM2	-1,{
+	
+	set .@npc$, "[Cute Pet Manager]";
+	
+	setarray .@tame_id[0],621,625,632,631,633,634,635,636,659,637,639,640;
+	setarray .@tame_amount[0],2,2,2,2,2,2,2,2,2,2,2,2;
+	setarray .@hunt_id[0],938,935,925,7033,945,942,931,901,1094,1021,936,1035;
+	setarray .@hunt_amount[0],500,600,500,300,500,500,500,500,500,500,500,500;
+	setarray .@mob_id[0],1031,1042,1019,1077,1056,1057,1023,1026,1188,1110,1029;
+	set .@tame_gets, 2;
+
+	if (cpm_two == .@tame_gets) {
+		mes "[可爱的宠物经理]";
+		mes "您已经兑换了";
+		mes .@tame_amount + "驯服物品的时间。";
+		mes "你不能再交换了。";
+		next;
+		
+		mes "[可爱的宠物经理]";
+		mes "除了我之外，还有其他人";
+		mes "可爱的宠物经理。如果你想";
+		mes "为了驯服其他宠物，我建议";
+		mes "你去看看他们。";
+		close;
+	}
+	
+	callfunc "cute_pet_manager",.@tame_id,.@tame_amount,.@hunt_id,.@hunt_amount,.@mob_id,cpm_two,.@tame_gets,.@hunt_id2,.@hunt_amount2;
+
+}
+
+// 3rd NPC
+-	script	CPM3	-1,{
+	
+	set .@npc$, "[Cute Pet Manager]";
+	
+	setarray .@tame_id[0],638,626,641,661,660,642;
+	setarray .@tame_amount[0],1,1,1,1,1,1;
+	setarray .@hunt_id[0],1020,943,1038,7047,1970,923;
+	setarray .@hunt_amount[0],600,600,600,500,1,100;
+	setarray .@hunt_id2[0],0,0,0,0,7017,0;
+	setarray .@hunt_amount2[0],0,0,0,0,20,0;
+	setarray .@mob_id[0],1170,1035,1109,1275,1200,1101;
+	set .@tame_gets, 1;
+
+	if (cpm_three == .@tame_gets) {
+		mes "[可爱的宠物经理]";
+		mes "您已经兑换了";
+		mes .@tame_amount + "驯服物品的时间。";
+		mes "你不能再交换了。";
+		next;
+		
+		mes "[可爱的宠物经理]";
+		mes "除了我之外，还有其他人";
+		mes "可爱的宠物经理。如果你想";
+		mes "为了驯服其他宠物，我建议";
+		mes "你去看看他们。";
+		close;
+	}
+	
+	callfunc "cute_pet_manager",.@tame_id,.@tame_amount,.@hunt_id,.@hunt_amount,.@mob_id,cpm_three,.@tame_gets,.@hunt_id2,.@hunt_amount2;
+
+}
+
+function	script	cute_pet_manager	{
+	// getarg(0) -> .@tame_id Array
+	// getarg(1) -> .@tame_amount Array
+	// getarg(2) -> .@hunt_id Array
+	// getarg(3) -> .@hunt_amount Array
+	// getarg(4) -> .@mob_id Array
+	// getarg(5) ->  Attempt Variable
+	// getarg(6) -> .@tame_gets Variable
+	// getarg(7) -> .@hunt_id2 Array
+	// getarg(8) -> .@hunt_amount2 Array
+
+	mes "[可爱的宠物经理]";
+	mes "你好~！我是可爱的宠物经理";
+	mes "谁负责公共关系";
+	mes "全新升级的可爱宠物系统。";
+	next;
+	
+	mes "[可爱的宠物经理]";
+	mes "如果您有任何疑问";
+	mes "萌宠系统我来指导你。";
+	mes "让我知道哪个驯服";
+	mes "你想要的物品，";
+	mes "那我就告诉你怪物";
+	mes "你可以用该物品来驯服。";
+	next;
+	
+	mes "[可爱的宠物经理]";
+	mes "我还将解释什么材料";
+	mes "您需要携带";
+	mes "获得驯服物品。";
+	next;
+	
+	mes "[可爱的宠物经理]";
+	mes "如果你已经带了材料";
+	mes "来交换驯服物品，";
+	mes "我可以立即用它来兑换驯服物品。";
+	next;
+	
+	mes "[可爱的宠物经理]";
+	mes "但是，有一个限制";
+	mes "用于交换驯服物品。";
+	mes "你只能获得驯服物品";
+	mes getarg(6) + "次。所以请确保";
+	mes "你们已经交换过多少次了。";
+	next;
+	
+	mes "[可爱的宠物经理]";
+	mes "那么，您想要哪种驯服物品？";
+	mes "请从列表中选择一项。";
+	next;
+	
+	// Create Menu System
+	set .@size, getarraysize(getarg(0));
+	for (set .@a, 0; .@a < .@size; set .@a, .@a + 1)
+		set .@menu$, .@menu$ + (.@menu$ == "" ? "" : ":") + getitemname(getelementofarray(getarg(0), .@a));
+	
+	// Query Player Choice
+	set .@choice, select(.@menu$) - 1;
+
+	// Store Variables (Less Lookup)
+	set .@tame_id, getelementofarray(getarg(0), .@choice);
+	set .@tame_amount, getelementofarray(getarg(1), .@choice);
+	set .@hunt_id, getelementofarray(getarg(2), .@choice);
+	set .@hunt_amount, getelementofarray(getarg(3), .@choice);
+	set .@mob_id, getelementofarray(getarg(4), .@choice);
+	set .@hunt_id2, getelementofarray(getarg(7), .@choice);
+	set .@hunt_amount2, getelementofarray(getarg(8), .@choice);
+
+	// dispbottom "Tame ID: " + .@tame_id;
+	// dispbottom "Tame Amount: " + .@tame_amount;
+	// dispbottom "Hunt ID: " + .@hunt_id;
+	// dispbottom "Hunt Name: " + getitemname(.@hunt_id);
+	// dispbottom "Hunt Amount: " + .@hunt_amount;
+	// dispbottom "Mob ID: " + .@mob_id;
+	if (.@hunt_id2) { 
+		// dispbottom "Hunt ID2: " + .@hunt_id2;
+		// dispbottom "Hunt Amount2: " + .@hunt_amount2;
+		set .@hunt2_count, countitem(.@hunt_id2);
+	}
+	if (countitem(.@hunt_id) >= .@hunt_amount && countitem(6083) > 0 && .@hunt2_count >= .@hunt_amount2) {
+		mes "[可爱的宠物经理]";
+		mes "啊，你已经集齐了所有物品";
+		mes "和你的朋友。你现在可以";
+		mes "兑换" + getitemname(.@tame_id) + ".";
+		mes "你想和我交换吗？";
+		next;
+		if  (select("交换：不交换") == 2) { 
+			mes "[可爱的宠物经理]";
+			mes "你不这么认为吗？你会再次回来的。";
+			close;
+		}
+		delitem .@hunt_id, .@hunt_amount;
+		delitem 6083, 1;
+		if (.@hunt_id2)
+			delitem .@hunt_id2, .@hunt_amount2;
+		set getarg(5), getarg(5) + 1;
+		getitem .@tame_id, .@tame_amount;
+		
+		mes "[可爱的宠物经理]";
+		mes "明智的选择。";
+		mes "我希望你和你的宠物和睦相处。";
+		close;
+	} else {
+		mes "[可爱的宠物经理]";
+		mes "你已经选择了" + getitemname(.@tame_id) + ".";
+		mes "你可以用它来驯服";
+		mes "^FF0000" + getmonsterinfo(.@mob_id, MOB_NAME) + "^000000怪物。";
+		next;
+		mes "[可爱的宠物经理]";
+		mes "带上^FF0000" + .@hunt_amount + " " + getitemname(.@hunt_id) + "^000000" + (.@hunt_id2 ? "、^FF0000" + .@hunt_amount2 + " " + getitemname(.@hunt_id2) : "") + " ^000000 和 ^FF00001 Dolly 胶囊^000000";
+		mes "然后你可以交换它们";
+		mes "对于" + getitemname(.@tame_id) + ".";
+		close;
+	}
+}
+
+// NPC Duplicates
+prontera,67,212,5	duplicate(CPM1)	Cute Pet Manager#1	4_M_ALCHE_C
+prontera,242,92,3	duplicate(CPM2)	Cute Pet Manager#2	4_M_ALCHE_C
+prontera,179,92,3	duplicate(CPM3)	Cute Pet Manager#3	4_M_ALCHE_C
+
+geffen,180,125,5	duplicate(CPM1)	Cute Pet Manager#4	4_M_ALCHE_C
+geffen,152,66,3	duplicate(CPM2)	Cute Pet Manager#5	4_M_ALCHE_C
+geffen,197,95,3	duplicate(CPM3)	Cute Pet Manager#6	4_M_ALCHE_C
+
+morocc,115,83,5	duplicate(CPM1)	Cute Pet Manager#7	4_M_ALCHE_C
+morocc,218,130,3	duplicate(CPM2)	Cute Pet Manager#8	4_M_ALCHE_C
+morocc,236,225,3	duplicate(CPM3)	Cute Pet Manager#9	4_M_ALCHE_C
+
+payon,109,278,5	duplicate(CPM1)	Cute Pet Manager#10	4_M_ALCHE_C
+payon,157,124,3	duplicate(CPM2)	Cute Pet Manager#11	4_M_ALCHE_C
+payon,85,237,3	duplicate(CPM3)	Cute Pet Manager#12	4_M_ALCHE_C

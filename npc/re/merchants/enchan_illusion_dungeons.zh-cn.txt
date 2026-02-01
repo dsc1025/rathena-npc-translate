@@ -1,0 +1,937 @@
+//===== rAthena Script =======================================
+//= Episode 16.2 - Illusion Enchants
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Illusion series related merchants and enchanters
+// Note:
+// - Some dialog are missing in Illusion of Luanda exchange NPC.
+//===== Changelog: ===========================================
+//= 1.0 Initial release of Illusion of Moonlight [crazyarashi]
+//= 1.1 Cleanup and improvements [Everade]
+//= 1.2 Added Illusion of Vampire enchanter [Capuche]
+//= 1.3 Added Illusion of Frozen enchanter [Capuche]
+//= 1.4 Added Illusion of Turtle enchanter [Capuche]
+//= 1.5 Added Illusion of Luanda enchanter [Capuche]
+//= 1.6 Added Illusion of Underwater exchange [Capuche]
+//= 1.7 Added Illusion of Twins enchanter [Capuche]
+//= 1.8 Added Illusion Merchant [Haydrich]
+//= 1.9 Added Illusion of Teddy Bear exchange [Atemo]
+//============================================================
+
+//============================================================
+//= Illusion of Moonlight
+//============================================================
+pay_d03_i,160,45,3	script	Gemcutter#ilp20	4_TOWER_17,3,3,{
+	mes "[ 宝石切割者 ]";
+	mes "你跟我有事吗？";
+	next;
+	switch( select( "你在这里做什么？", "升级装备" ) ) {
+	case 1:
+		mes "[ 宝石切割者 ]";
+		mes "我来到了破败的村庄，";
+		mes "寻找一些材料。接触到一些奇怪的光，现在我在这里。";
+		next;
+		mes "[ 宝石切割者 ]";
+		mes "我决定再坚持一段时间。我想只要我靠近这个士兵我就会安全。";
+		mes "我有一个建议给你。我想要一些只有在这个地方才能找到的材料。";
+		next;
+		mes "[ 宝石切割者 ]";
+		mes "把它们给我拿来，作为交换，我会改进你的装备。如您所知，我只能改进某些类型。";
+		next;
+		mes "[ 宝石切割者 ]";
+		mes "如果您有兴趣，我们可以讨论讨价还价的细节。";
+		close;
+	case 2:
+		mes "[ 宝石切割者 ]";
+		mes "确保^0000FF你的装备至少精炼到+9^000000然后再把它交给我。";
+		mes "这是我的升级服务对您的设备产生明显影响的最低要求。";
+		next;
+		mes "[ 宝石切割者 ]";
+		mes "确保您^0000FF配备了您想要改进的物品。^000000";
+		mes "否则我无法评价它的状况。";
+		next;
+		mes "[ 宝石切割者 ]";
+		mes "正如您可能已经猜到的，您的装备在此之后将会变成新的东西。";
+		mes "换句话说，^0000FF它将失去当前的精炼等级、卡牌和结界。^000000";
+		next;
+		mes "[ 宝石切割者 ]";
+		mes "而且我需要^0000FF幻象石和一些其他材料^000000来升级你的装备。";
+		mes "选择您想要的物品，我会告诉您我需要什么。";
+		close2;
+		callshop( "barter_ill_moonlight" );
+		end;
+	}
+	end;
+
+OnTouch:
+	if (illusion_moonlight > 7)
+		npctalk "这是一个什么样的地方？", "", bc_self;
+	end;
+}
+
+
+//============================================================
+//= Illusion of Vampire
+//============================================================
+gef_dun01,139,228,3	script	Great Merchant#illgef	4_M_HUMERCHANT,{
+	mes "[大商人]";
+	mes "冒险家，你有^0000cd幻象石^000000吗？如果你有^0000cd武器、一件铠甲^000000或^0000cd精炼等级9或更高的饰品^000000，";
+	mes "那么我可以用一些幻石和其他材料来换取更好的东西。";
+	next;
+	mes "[大商人]";
+	mes "那么，你想要什么？";
+	next;
+	switch( select( "兑换幻象装备", "什么是幻象石？", "我可以强化交换的物品吗？", "取消" ) ) {
+	case 1:
+		specialeffect EF_HFLIMOON3;
+		emotion ET_BEST;
+		mes "[大商人]";
+		mes "好好利用它，等找到更多幻石就来找我！ *咯咯笑*";
+		close2;
+		callshop( "barter_ill_vampire" );
+		end;
+	case 2:
+		mes "[大商人]";
+		mes "你问什么是^0000cd幻象石^000000？嗯...我认为没有人确切知道它们是什么。";
+		next;
+		mes "[大商人]";
+		mes "我只知道它们很稀有，只有在一些特殊的地方才能找到，我是来给我的客户收集的。";
+		next;
+		mes "[大商人]";
+		mes "My clients want to figure out what these stones are.他们付给我很多钱";
+		next;
+		mes "[大商人]";
+		mes "这样我就可以为像你这样的冒险家提供^0000cd昂贵的装备来换取石头^000000，并且仍然可以获得利润。";
+		next;
+		mes "[大商人]";
+		mes "带上^0000cd一件精炼装备、幻象石^000000以及这里独有的各种材料。我会^0000cd为你升级装备、武器、盔甲或配件？^000000。";
+		next;
+		mes "[大商人]";
+		mes "这对我们双方都有好处。如果您对我的建议感兴趣，请告诉我。";
+		close;
+	case 3:
+		mes "[大商人]";
+		mes "所以，你想要强化你获得的装备。你很彻底。我喜欢那样！";
+		next;
+		mes "[大商人]";
+		mes "不久前，一个路过此地的冒险家告诉我，普隆德拉的一位药剂师用幻象石来炼制幻象装备。";
+		next;
+		mes "[大商人]";
+		mes "看来幻石在各地都是一个热门话题。每个人都想知道他们是什么。";
+		next;
+		mes "[大商人]";
+		mes "如果你想精炼装备，就去镇公所附近的<NAVI>幻术师<INFO>prontera,90,115,000,0,</INFO></NAVI>。";
+		close;
+	case 4:
+		mes "[大商人]";
+		mes "你找到你喜欢的东西了吗？如果您需要什么，请随时告诉我。";
+		close;
+	}
+	end;
+}
+
+//============================================================
+//= Illusion of Frozen
+//============================================================
+
+// illusion exchange npc - trade items for illusion gears
+ice_dun02,153,18,3	script	Illusion Stone Research	4_M_ALCHE_B,{
+	disable_items;
+	mes "[幻象石研究员]";
+	mes "啊，幻石真是神秘啊……";
+	next;
+	switch( select( "你在这里做什么？", "升级装备", "取消" ) ) {
+	case 1:
+		mes "[幻象石研究员]";
+		mes "我来这里是为了寻找一些研究所需的幻象石。";
+		next;
+		mes "[幻象石研究员]";
+		mes "这个山洞很神秘，但我的实力还不够，无法独自探索。";
+		mes "如果你进去的话，可以帮我买点东西吗？";
+		next;
+		mes "[幻象石研究员]";
+		mes "作为交换，我会改进你的装备。";
+		mes "你怎么说？";
+		close;
+	case 2:
+		mes "[幻象石研究员]";
+		mes "确保^4d4dff你的装备至少精炼到+9^000000然后再把它交给我。";
+		mes "确保您^4d4dff配备了您想要改进的物品^000000。";
+		next;
+		mes "[幻象石研究员]";
+		mes "正如您可能已经猜到的，您的装备在此之后将会变成新的东西。";
+		mes "换句话说，^4d4dff它将失去当前的精炼和升级级别。^000000";
+		next;
+		mes "[幻象石研究员]";
+		mes "而且我需要^4d4dff幻象石和一些其他材料^000000来升级你的装备。";
+		mes "选择您想要的商品。我会告诉你我需要什么。";
+		close2;
+		callshop( "barter_ill_frozen" );
+		end;
+	case 3:
+		mes "[幻象石研究员]";
+		mes "只是很难得到..";
+		close;
+	}
+	end;
+}
+
+
+// illusion enhancing - enhance the illusion gears
+// note: unknown enhance rate
+prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 2000) {
+		mes "我超重了。我最好先减轻一下我的包。";
+		close;
+	}
+	disable_items;
+	if (isbegin_quest(12415) == 0) {
+		mes "[幻象附魔师]";
+		mes "哦，你有幻术装备吗？";
+		next;
+		select("不，我连幻术装备是什么都不知道。");
+		mes "[幻象附魔师]";
+		mes "哎呀，对不起。我应该先自我介绍一下。";
+		next;
+		mes "[幻象附魔师]";
+		mes "我是一名化学家，专门研究在冒险者中流传的幻象石。";
+		next;
+		select("幻象石？");
+		mes "[幻象附魔师]";
+		mes "你不知道，不是吗？它们是当今最热门的趋势。";
+		next;
+		select("我不关心趋势。");
+		mes "[幻象附魔师]";
+		mes "你一定听说过最近到处涌现的奇怪地方。幻象石只能在那些地方找到，";
+		next;
+		mes "[幻象附魔师]";
+		mes "它们的原子结构与我见过的任何矿物都不同。 *Blah Blah* ...他们的化学链... *Blah Blah*";
+		next;
+		select("（呃哦，他走神了！）");
+		mes "[幻象附魔师]";
+		mes "反正用幻石兑换或者购买的装备我都可以附魔。我称它们为幻象装备。";
+		next;
+		select("（他对名字没有任何意义。）");
+		mes "[幻象附魔师]";
+		mes "这件装备至少对幻象石有正面反应，或者说有可能附魔成功。";
+		next;
+		mes "[幻象附魔师]";
+		mes "探索幻象世界，收集幻象石，并用它们兑换装备。我可以给你附魔装备。";
+		next;
+		mes "[幻象附魔师]";
+		mes "这对我们双方都有好处。我的学习需要幻象石，你的冒险需要强大的装备。";
+		next;
+		mes "[幻象附魔师]";
+		mes "也就是说，我的服务不是免费的。它需要一些幻象石和 Zeny。";
+		next;
+		mes "[幻象附魔师]";
+		mes "如果您有兴趣，您想如何获得我的服务的会员资格？这样你就可以得到折扣了！";
+		next;
+		if (select( "当然！", "不感兴趣。" ) == 2) {
+			mes "[幻象附魔师]";
+			mes "好的，但是如果你改变主意请告诉我。";
+			close;
+		}
+		mes "[幻象附魔师]";
+		mes "好的，那我就把你添加到我的会员列表中。我希望下次见到你时你能有一些幻象装备。";
+		setquest 12415;
+		completequest 12415;
+		close;
+	}
+	mes "[幻象附魔师]";
+	mes "我可以附魔幻象装备。";
+	next;
+	switch( select( "你收费多少？", "为幻象装备添加属性。", "重置附魔的幻象装备。" ) ) {
+	case 1:
+		mes "[幻象附魔师]";
+		mes "首先告诉你，我只能对某些类型的幻象装备进行附魔。";
+		next;
+		mes "[幻象附魔师]";
+		mes "最多可以附魔 2 个插槽，每个插槽需要 5 颗幻象石。您可以随时重置附魔的幻象装备。";
+		next;
+		mes "[幻象附魔师]";
+		mes "附魔永远不会失败，但重置有时会失败。即使是现代科学也无法改变这一点。";
+		next;
+		mes "[幻象附魔师]";
+		mes "根据您选择的成功机会，重置需要不同数量的 Zeny。如果您想查看可用的付款选项，请选择菜单。";
+		close;
+	case 2:
+		.@reset = false;
+		break;
+	case 3:
+		.@reset = true;
+		break;
+	}
+	setarray .@location[0], EQI_HAND_R, EQI_ARMOR, EQI_SHOES, EQI_GARMENT, EQI_ACC_R, EQI_ACC_L, EQI_HEAD_TOP, EQI_HAND_L;
+	.@s = select( "右手武器", "盔甲", "鞋子", "服装", "右手饰品", "左饰品", "头盔（上）", "左手武器/盾牌" ) - 1;
+	.@loc = .@location[.@s];
+	.@eq_id = getequipid(.@loc);
+
+	switch(.@eq_id) {
+	// Illusion of Moonlight
+		case 15195:	// Puente_Robe_IL
+		case 16063:	// Long_Mace_IL
+		case 19209:	// Nurse_Cap_IL
+		case 20838:	// Muffler_IL
+		case 19210:	// Apple_Of_Archer_IL
+		case 22133:	// Shoes_IL
+		case 26007:	// Spectral_Spear_IL
+		case 26109:	// Staff_Of_Bordeaux_IL
+		case 28725:	// Moonlight_Sword_IL
+	// Illusion of Vampire
+		case 28022:	// Infiltrator_IL
+		case 28023:	// Ghoul_Leg_IL
+		case 2039:	// Wizardy_Staff_IL
+		case 18149:	// Balistar_IL
+		case 28612:	// Book_Of_The_Apo_IL
+		case 20840:	// Cape_Of_Ancient_Lord_IL
+		case 28508:	// Skul_Ring_IL
+		case 28509:	// Ring_IL
+	// Illusion of Frozen
+		case 1846:	// Combo_Battle_Glove_IL
+		case 13337:	// Huuma_Flutter_Snow_IL
+		case 19223:	// Cap_IL
+		case 28922:	// Herald_Of_GOD_IL
+		case 20847:	// Clack_Of_Servival_IL
+	// Illusion of Teddy bear
+		case 28745:	// Illusion_Counter_Dagger
+		case 28244:	// Illusion_Gate_Keeper_DD
+		case 2051:	// Illusion_Survivor's_Staff
+		case 22190:	// Illusion_Boots
+		case 19344:	// Illusion_Hot_blooded_Headband
+	// Illusion of Turtle
+		case 13469:	// Illusion_Immaterial_Sword
+		case 1326:	// Illusion_War_Axe
+		case 32005:	// Illusion_Pole_Axe
+		case 13338:	// Illusion_Wing_Shuriken
+		case 16065:	// Illusion_Iron_Driver
+		case 19247:	// Illusion_Fancy_Flower
+	// Illusion of Twins
+		case 450182:	// Sprint_Mail_IL
+		case 470066:	// Sprint_Shoes_IL
+		case 490120:	// Sprint_Ring_IL
+		case 490121:	// Sprint_Glove_IL
+		case 550030:	// Thorn_Staff_IL
+		case 550031:	// Dea_Staff_IL
+		case 530015:	// Gelerdria_IL
+		case 500030:	// Excalibur_IL
+		case 620010:	// Doom_Slayer_IL
+		case 510034:	// Ancient_Dagger_IL
+		case 460017:	// Guard_IL
+		case 460018:	// Siver_Guard_IL
+	// Illusion of Luanda
+		case 28626:	// Illusion_Tablet
+		case 18174:	// Illusion_Hunter_Bow
+		case 19366:	// Illusion_Goibne_Helm
+		case 15348:	// Illusion_Goibne_Armor
+		case 20923:	// Illusion_Goibne_Spaulders
+		case 22192:	// Illusion_Goibne's_Greaves
+	// Illusion of Labyrinth
+		case 19428:	// Illusion_Morpheus's_Hood
+		case 20948:	// Illusion_Morpheus's_Shawl
+		case 32238:	// Illusion_Morpheus's_Ring
+		case 32239:	// Illusion_Morpheus's_Bracelet
+		case 28254:	// Illusion_Butcher
+		case 21050:	// Illusion_Tae_Goo_Lyeon
+		case 32301:	// Illusion_Gold_Lux
+		case 28762:	// Illusion_Bazerald
+	// Illusion of underwater
+		case 570008:	// Electronic_Guitar_IL
+		case 580008:	// Electric_Eel_IL
+		case 630006:	// Brionac_IL
+		case 610012:	// KatarOfCold_Icicle_IL
+		case 600011:	// Death_Guidance_IL
+		case 630007:	// Zephyrus_IL
+		case 450144:	// Saint_Robe_IL
+		case 450145:	// Water_Sprits_Armor_IL
+		case 450146:	// Chain_Mail_IL
+		case 400053:	// Morrigane's_Helm_IL
+		case 480054:	// Morrigane's_Manteau_IL
+		case 490069:	// Morrigane's_Belt_IL
+		case 490070:	// Morrigane's_Pendant_IL
+			break;
+		case -1:
+			mes "[幻象附魔师]";
+			mes "您必须在所选位置配备物品才能对其进行附魔。";
+			close;
+		default:
+			mes "[幻象附魔师]";
+			mes "这个装备并不是来自于奇幻的幻想世界。我很生气你竟然把它给我看了。";
+			close;
+	}
+
+	for ( .@i = 0; .@i < MAX_ITEM_RDM_OPT-1; ++.@i ) {
+		if (getequiprandomoption(.@loc, .@i, ROA_ID) > 0) {
+			mes "^ff0000检查该设备的随机选项。该装备无法附魔。^000000";
+			close;
+		}
+	}
+
+	.@weapon_lvl = getequipweaponlv(.@loc);
+	.@loc_enchant = .@loc;	// variable for enhancing function
+
+	switch(.@weapon_lvl) {
+	case 0:
+		break;
+	case 1:
+	case 2:
+	case 3:
+		if (.@loc_enchant == EQI_HAND_L)
+			.@loc_enchant = EQI_HAND_R;	// the equipment is a weapon so the enchantments must be for weapons
+		break;
+	default:	// illusion weapon level 4 can't be enhanced
+		mes "[幻象附魔师]";
+		mes "这是所有幻象装备中最好的。当今时代还没有任何技术可以让它着迷。即使是最熟练的魔法师也无法做到这一点。";
+		next;
+		mes "[幻象附魔师]";
+		mes "好吧，除非他愿意拿自己的身心健康冒险。";
+		next;
+		mes "[幻象附魔师]";
+		mes "但谁知道呢？也许有一天你会遇到一个有足够天赋来处理这些珍贵设备的人。";
+		close;
+	}
+
+	.@refine = getequiprefinerycnt(.@loc);
+	.@card[0] = getequipcardid(.@loc,0);
+	.@card[1] = getequipcardid(.@loc,1);
+	.@card[2] = getequipcardid(.@loc,2);
+	.@card[3] = getequipcardid(.@loc,3);
+
+	switch(.@reset) {
+	case false:
+		.@item_req = 25271;	// IllusionStone
+		.@item_req_count = 5;
+
+		if (.@card[2] > 0 && .@card[3] > 0) {
+			mes "[幻象附魔师]";
+			mes "这件装备的附魔已经到了最大极限。";
+			close;
+		}
+		if (.@weapon_lvl > 0) {
+			mes "[幻象附魔师]";
+			mes "您想添加什么样的效果？";
+			next;
+			.@weapon_enchant_type = select( "近战", "远程", "魔法" );
+		}
+		mes "[幻象附魔师]";
+		if (.@card[3] > 0) {
+			.@slot = 2;
+			.@string$ = "second";
+		}
+		else {
+			.@slot = 3;
+			.@string$ = "first";
+		}
+		mes "我会尝试为你的物品附魔" + .@string$ + "能力。 ^ff0000其现有的精炼等级和卡牌不会受到损坏。即使此尝试失败，它也不会被破坏。^000000 您想继续吗？";
+		next;
+		if (select( "我稍后会回来。", "当然！" ) == 1) {
+			mes "[幻象附魔师]";
+			mes "没问题。如果你改变主意就回来吧。";
+			close;
+		}
+		if (countitem(.@item_req) < .@item_req_count) {
+			mes "[幻象附魔师]";
+			mes "该项目需要 " + .@item_req_count + " " + getitemname(.@item_req) + "，而您没有提供我需要的全部内容。";
+			close;
+		}
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@loc, .@eq_id) || callfunc("F_IsEquipCardHack", .@loc, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@loc, .@refine))
+			close;
+
+		.@card[.@slot] = callsub( S_Enchant, .@loc_enchant, .@slot, .@weapon_enchant_type );
+		delitem .@item_req, .@item_req_count;
+		delequip .@loc;
+		getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
+		mes "[幻象附魔师]";
+		mes "完成了。请检查。";
+		specialeffect2 EF_REPAIRWEAPON;
+		close;
+
+	case true:
+		if (!F_IsCharm(.@card[2]) || !F_IsCharm(.@card[3])) {
+			mes "[幻象附魔师]";
+			mes "只有完全附魔的物品才能重置。请给它附魔两次，如果你还想重置它，就拿来给我。";
+			close;
+		}
+		mes "[幻象附魔师]";
+		mes "您的重置机会会有所不同，具体取决于您支付的 Zeny 金额。你想做什么？";
+		next;
+		.@s = select( "我稍后回来。", "100,000 Zeny (50%)", "200,000 Zeny (60%)", "300,000 Zeny (70%)", "400,000 Zeny (80%)", "500,000 Zeny (90%)" ) - 1;
+		if (.@s == 0) {
+			mes "[幻象附魔师]";
+			mes "没问题。如果你改变主意就回来吧。";
+			close;
+		}
+		.@cost = 100000 * .@s;
+		.@rate = 40 + 10 * .@s;
+
+		if (Zeny < .@cost) {
+			mes "[幻象附魔师]";
+			mes "你没有足够的钱。";
+			close;
+		}
+
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@loc, .@eq_id) || callfunc("F_IsEquipCardHack", .@loc, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@loc, .@refine))
+			close;
+
+		Zeny -= .@cost;
+		delequip .@loc;
+		if (rand(100) < .@rate) {
+			getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],0,0;
+			mes "[幻象附魔师]";
+			mes "完成了。请检查。";
+			specialeffect2 EF_REPAIRWEAPON;
+			close;
+		}
+		mes "[幻象附魔师]";
+		mes "啊，那真是不幸。嗯，你不可能总是那么幸运。";
+		specialeffect2 EF_LORD;
+		close;
+	}
+	end;
+
+S_Enchant:
+	.@slot = getarg(1);
+	switch( getarg(0)) {	// location
+	case EQI_HAND_R:
+		switch( getarg(2)) {// weapon enchant type
+		case 1:// Melee
+			switch( .@slot ) {
+			case 2:
+			case 3:
+				// <item ID>, <rate> (unknown)
+				setarray .@item[0],
+					4700, 1,	// Strength1
+					4701, 1,	// Strength2
+					4702, 1,	// Strength3
+					4703, 1,	// Strength4
+					4720, 1,	// Dexterity1
+					4721, 1,	// Dexterity2
+					4722, 1,	// Dexterity3
+					4723, 1,	// Dexterity4
+					4750, 1,	// Luck1
+					4751, 1,	// Luck2
+					4752, 1,	// Luck3
+					4753, 1,	// Luck4
+					4808, 1,	// Fighting_Spirit4
+					4809, 1,	// Fighting_Spirit3
+					4810, 1,	// Fighting_Spirit2
+					4811, 1,	// Fighting_Spirit1
+					4820, 1,	// Fighting_Spirit5
+					29081, 1,	// Expect1Lv
+					29082, 1,	// Expect2Lv
+					29083, 1,	// Expect3Lv
+					29084, 1,	// Expect4Lv
+					29085, 1,	// Expect5Lv
+					29061, 1,	// Ambition1Lv
+					29062, 1,	// Ambition2Lv
+					29063, 1,	// Ambition3Lv
+					29064, 1,	// Ambition4Lv
+					29065, 1,	// Ambition5Lv
+					4807, 1,	// Atk_Speed1
+					4842, 1;	// Atk_Speed2
+				break;
+			default:
+				return 0;
+			}
+			break;
+		case 2:// Ranged
+			switch( .@slot ) {
+			case 2:
+			case 3:
+				// <item ID>, <rate>
+				setarray .@item[0],
+					4730, 1,	// Agility1
+					4731, 1,	// Agility2
+					4732, 1,	// Agility3
+					4733, 1,	// Agility4
+					4720, 1,	// Dexterity1
+					4721, 1,	// Dexterity2
+					4722, 1,	// Dexterity3
+					4723, 1,	// Dexterity4
+					4750, 1,	// Luck1
+					4751, 1,	// Luck2
+					4752, 1,	// Luck3
+					4753, 1,	// Luck4
+					4807, 1,	// Atk_Speed1
+					4842, 1,	// Atk_Speed2
+					4832, 1,	// Expert_Archer1
+					4833, 1,	// Expert_Archer2
+					4834, 1,	// Expert_Archer3
+					4835, 1,	// Expert_Archer4
+					4836, 1,	// Expert_Archer5
+					29091, 1,	// ArchLine1Lv
+					29092, 1,	// ArchLine2Lv
+					29093, 1,	// ArchLine3Lv
+					29094, 1,	// ArchLine4Lv
+					29095, 1,	// ArchLine5Lv
+					29071, 1,	// Tab1Lv
+					29072, 1,	// Tab2Lv
+					29073, 1,	// Tab3Lv
+					29074, 1,	// Tab4Lv
+					29075, 1;	// Tab5Lv
+				break;
+			default:
+				return 0;
+			}
+			break;
+		case 3:// Magic
+			switch( .@slot ) {
+			case 2:
+			case 3:
+				// <item ID>, <rate>
+				setarray .@item[0],
+					4710, 1,	// Inteligence1
+					4711, 1,	// Inteligence2
+					4712, 1,	// Inteligence3
+					4713, 1,	// Inteligence4
+					4720, 1,	// Dexterity1
+					4721, 1,	// Dexterity2
+					4722, 1,	// Dexterity3
+					4723, 1,	// Dexterity4
+					4750, 1,	// Luck1
+					4751, 1,	// Luck2
+					4752, 1,	// Luck3
+					4753, 1,	// Luck4
+					4812, 1,	// Spell4
+					4813, 1,	// Spell3
+					4814, 1,	// Spell2
+					4815, 1,	// Spell1
+					4826, 1,	// Spell5
+					4805, 1,	// Heal_Amount2
+					4850, 1;	// Heal_Amount3
+				break;
+			default:
+				return 0;
+			}
+			break;
+		default:
+			return 0;
+		}
+		break;
+	case EQI_ARMOR:
+	case EQI_SHOES:
+	case EQI_GARMENT:
+	case EQI_HAND_L:
+	case EQI_HEAD_TOP:
+		switch( .@slot ) {
+		case 2:
+		case 3:
+			// <item ID>, <rate>
+			setarray .@item[0],
+				4700, 700,	// Strength1
+				4701, 600,	// Strength2
+				4702, 500,	// Strength3
+				4703, 200,	// Strength4
+				4740, 700,	// Vitality1
+				4741, 600,	// Vitality2
+				4742, 500,	// Vitality3
+				4743, 200,	// Vitality4
+				4710, 700,	// Inteligence1
+				4711, 600,	// Inteligence2
+				4712, 500,	// Inteligence3
+				4713, 200,	// Inteligence4
+				4750, 700,	// Luck1
+				4751, 600,	// Luck2
+				4752, 500,	// Luck3
+				4753, 200,	// Luck4
+				4994, 10,	// Rune of Strength Lv 1
+				4995, 10,	// Rune of Strength Lv 2
+				4997, 10,	// Rune of Agility Lv 1
+				4998, 10,	// Rune of Agility Lv 2
+				29009, 10,	// Rune of Vitality Lv 1
+				29010, 10,	// Rune of Vitality Lv 2
+				29000, 10,	// Rune of Intellect Lv 1
+				29001, 10,	// Rune of Intellect Lv 2
+				29003, 10,	// Rune of Dexterity Lv 1
+				29004, 10,	// Rune of Dexterity Lv 2
+				29006, 10,	// Rune of Luck Lv 1
+				29007, 10,	// Rune of Luck Lv 2
+				4861, 700,	// MHP1
+				4862, 600,	// MHP2
+				4867, 440,	// MHP3
+				4868, 100,	// MHP4
+				4992, 10,	// HPAbsorb1_Supplement_Reactor
+				4993, 10,	// SPAbsorb1_Supplement_Reactor
+				29208, 10,	// SP_Absorption_2
+				29210, 10;	// HP_Absorption_23
+			break;
+		default:
+			return 0;
+		}
+		break;
+	case EQI_ACC_L:
+	case EQI_ACC_R:
+		switch( .@slot ) {
+		case 2:
+		case 3:
+			// <item ID>, <rate>
+			setarray .@item[0],
+				4700, 576,	// Strength1
+				4701, 460,	// Strength2
+				4702, 115,	// Strength3
+				4703, 11,	// Strength4
+				4730, 576,	// Agility1
+				4731, 460,	// Agility2
+				4732, 115,	// Agility3
+				4733, 11,	// Agility4
+				4740, 576,	// Vitality1
+				4741, 460,	// Vitality2
+				4742, 115,	// Vitality3
+				4743, 11,	// Vitality4
+				4710, 576,	// Inteligence1
+				4711, 460,	// Inteligence2
+				4712, 115,	// Inteligence3
+				4713, 11,	// Inteligence4
+				4720, 576,	// Dexterity1
+				4721, 460,	// Dexterity2
+				4722, 115,	// Dexterity3
+				4723, 11,	// Dexterity4
+				4750, 576,	// Luck1
+				4751, 460,	// Luck2
+				4752, 115,	// Luck3
+				4753, 11,	// Luck4
+				4928, 576,	// SP10
+				4870, 460,	// SP25
+				4800, 345,	// SP50
+				4871, 115,	// SP75
+				4801, 11,	// SP100
+				4795, 576,	// HP100
+				4796, 460,	// HP200
+				4797, 345,	// HP300
+				4798, 115,	// HP400
+				4799, 11;	// HP500
+			break;
+		default:
+			return 0;
+		}
+		break;
+	default:
+		return 0;
+	}
+	.@size = getarraysize(.@item);
+	for ( .@i = 0; .@i < .@size; .@i += 2 )
+		.@total_rate += .@item[.@i+1];
+	.@r = rand(.@total_rate);
+	for ( .@i = 0; .@i < .@size; .@i += 2 ) {
+		.@rate_tmp += .@item[.@i+1];
+		if (.@r < .@rate_tmp)
+			break;
+	}
+	return .@item[.@i];
+
+OnTouch:
+	if (isbegin_quest(12415) == 0)
+		npctalk "幻术师：如果你对幻术装备感兴趣就来跟我聊聊吧！", "", bc_self;
+	end;
+}
+
+
+//============================================================
+//= Illusion of Turtle
+//============================================================
+
+// Exchange npc
+alberta,226,28,3	script	Equipment Researcher	4_TOWER_15,{
+	.@illusion_stone_name$ = getitemname(25271);
+
+	mes "[装备研究员]";
+	mes "我是一个研究的人" + .@illusion_stone_name$ + "增强盔甲和武器。";
+	mes "如果你有我研究所需的材料，你不给我吗？";
+	mes "如果你给我一些装备和材料，我就用它们来换我的强化装备。";
+	next;
+	switch( select( "你在这里做什么？", "交换装备" ) ) {
+	case 1:
+		mes "[装备研究员]";
+		mes "我正在研究如何使用" + .@illusion_stone_name$ + "来强化装备。";
+		mes "我要去那个地方" + .@illusion_stone_name$ + "被发现了，我好不容易才回来。";
+		next;
+		mes "[装备研究员]";
+		mes "我想我遇到了一个女孩...";
+		mes "无论如何，在那之后，我就找不到回去的路了。";
+		mes "在这里，我们从冒险家那里获得研究材料" + .@illusion_stone_name$ + "，我会提供增强型设备。";
+		close;
+	case 2:
+		mes "[装备研究员]";
+		mes "我可以兑换哪些装备？等一下。我会让你知道的。";
+		next;
+		mes "[装备研究员]";
+		mes "作为材料，可以携带^0000CD精炼到+9以上的现有装备。^000000";
+		mes "我需要一些^0000CD" + .@illusion_stone_name$ + "和其他材料。^000000";
+		next;
+		mes "[装备研究员]";
+		mes "当然，我们正在为您提供新装备，所以不要忘记所有现有的^0000CD熔炼和结界^000000都会消失。";
+		mes "那么，你想要什么样的武器呢？";
+		close2;
+		callshop( "barter_ill_turtle" );
+		end;
+	}
+}
+
+
+//============================================================
+//= Illusion of Luanda
+//============================================================
+
+// Exchange npc
+com_d02_i,234,266,6	script	Village Soap#Lu	4_M_ORIENT01,{
+	mes "[乡村肥皂]";
+	mes "我也为为村子努力奋斗的冒险者们加油了。我可以让你的装备变得更强吗？清单上有你想要的东西吗？";
+	next;
+	if (select( "看幻象装备", "取消" ) == 2) {
+		mes "[乡村肥皂]";
+		mes "请稍后再来。只要把材料带来，我就给你做。";
+		close;
+	}
+	mes "[乡村肥皂]";
+	mes "谁做的？随身携带它可能对您有用。";
+	close2;
+	callshop( "barter_ill_luanda" );
+	end;
+}
+
+
+//============================================================
+//= Illusion of Underwater
+//============================================================
+
+iz_d04_i,134,228,4	script	Horen#Horen	4_M_BIBI,{
+	if (checkweight(1201,3) == 0) {
+		mes "由于您的项目太多，对话无法继续。";
+		mes "请清理您的库存并重试。";
+		close;
+	}
+	mes "[听到]";
+	mes "你好。如果你有这里的稀有材料，我可以强化你的装备。";
+	next;
+	mes "[听到]";
+	mes "您想看看可升级的装备吗？";
+	next;
+	if (select( "是的", "不" ) == 2) {
+		mes "[听到]";
+		mes "有兴趣就回来吧。";
+		close;
+	}
+	mes "[听到]";
+	mes "种类有很多，慢慢来吧。如果你想要什么，我可以立即增强它。";
+	close2;
+	callshop( "barter_ill_underwater" );
+	end;
+}
+
+//============================================================
+//= Illusion of Twins
+//============================================================
+// ant_d02_i,175,186,3	script	From#iltw	MECHANIC,{
+ant_d02_i,175,186,3	script	From#iltw	HIDDEN_NPC,{
+	if (checkweight(1201,3) == 0) {
+		mes "- 你无法继续任务，因为你的物品太多。 -";
+		close;
+	}
+	mes "[来自]";
+	mes "我感觉我快要疯了。";
+	mes "这是因为我的心情。我是人类，你不会弄错的。";
+	mes "如果你在这里得到很多，我会帮助你。";
+	mes "你想增强你的装备吗？";
+	close2;
+	callshop( "barter_ill_twins" );
+	end;
+
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id, UNPC_CLASS, 4058;
+	setunitdata .@npc_id, UNPC_SEX, SEX_MALE;
+	setunitdata .@npc_id, UNPC_CLOTHCOLOR, 1;
+	setunitdata .@npc_id, UNPC_HAIRSTYLE, 11;
+	setunitdata .@npc_id, UNPC_HAIRCOLOR, 6;
+	end;
+}
+
+//============================================================
+//= Illusion Merchant
+//============================================================
+-	marketshop	market_resonance_stone	-1,100003:2000000:99999,100004:2000000:99999
+prontera,88,113,5	script	Illusion Merchant#0829	HIDDEN_NPC,{
+	mes "[幻象商人]";
+	mes "我正在出售两个我自己制作的随机可选武器授予卷轴。您可以选择您喜欢的付款方式。";
+	next;
+	switch( select( "使用 Zeny 购买。", "使用幻象石购买" )) {
+		case 1:
+			mes "[幻象商人]";
+			mes "我希望你喜欢它。";
+			close2;
+			callshop "market_resonance_stone";
+			end;
+		case 2:
+			mes "[幻象商人]";
+			mes "我希望你喜欢它。";
+			close2;
+			callshop "resonance_stone_barter";
+			end;
+	}
+OnInit:
+	.@npc_id = getnpcid(0);
+	setunitdata .@npc_id,UNPC_CLASS, JOB_MAGE_HIGH;
+	setunitdata .@npc_id,UNPC_SEX,SEX_FEMALE;
+	setunitdata .@npc_id,UNPC_HEADTOP,142;
+	setunitdata .@npc_id,UNPC_HEADMIDDLE,92;
+	setunitdata .@npc_id,UNPC_HAIRSTYLE,2;
+	setunitdata .@npc_id,UNPC_HAIRCOLOR,2;
+
+	// Restock
+	npcshopupdate "market_resonance_stone",100003,2000000,99999;
+	npcshopupdate "market_resonance_stone",100004,2000000,99999;
+	end;
+}
+
+
+//============================================================
+//= Illusion of Teddy Bear
+//============================================================
+
+ein_d02_i,177,158,3	script	Bear Wanting Illusion Stone#ITB	4_NASARIAN,{
+	.@item_name$ = getitemname(25271); // IllusionStone
+	mes "[熊想要" + .@item_name$ + "]";
+	mes "如果你给我一个" + .@item_name$ + "，我会为你做一些好事！";
+	next;
+	switch( select( "来这里的原因", "好东西[幻象装备]", "退出" ) ) {
+	case 1:
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "我不知道为什么...！";
+		mes "其他泰迪熊都在排队，所以我也排队了！";
+		mes "哇啊啊啊！！！";
+		mes "我不知道它在这里！";
+		next;
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "一只带有" + .@item_name$ + "的泰迪熊！";
+		mes "强的！";
+		mes "我没有任何" + .@item_name$ + "！";
+		mes "更少...更强...";
+		next;
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "什么是" + .@item_name$ + "？";
+		mes "我不知道，但我想要一些！";
+		close;
+	case 2:
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "让你充分利用你所拥有的！";
+		next;
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "如果你想做得好，请将精炼到^ff0000+9或更高的装备。一切都会消失……哈哈？^000000";
+		next;
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "^ff0000" + .@item_name$ + "^000000！！！" + .@item_name$ + "是最重要的，但是……还需要其他材料。";
+		mes "每一件好事都需要另一件好事。";
+		next;
+		close2;
+		callshop( "barter_ill_teddy" );
+		end;
+	case 3:
+		mes "[熊想要" + .@item_name$ + "]";
+		mes "好的...";
+		close;
+	}
+	end;
+}

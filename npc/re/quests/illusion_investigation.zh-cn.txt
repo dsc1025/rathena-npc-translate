@@ -1,0 +1,1555 @@
+//===== rAthena Script =======================================
+//= Illusion Investigation
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= NPCs that give hunting quests in Illusion dungeons in exchange for experience.
+//===== Changelog: ===========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+prt_in,136,34,3	script	Commander Joel#joel	1_M_ORIENT01,{
+	if (BaseLevel < 100) {
+		mes "[乔尔指挥官]";
+		mes "您好，请问您来这里做什么生意？";
+		next;
+		mes "[乔尔指挥官]";
+		mes "如果你想加入幻象搜查团，那你的技能还不够。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "达到一定等级后请再次访问。";
+		next;
+		mes "^4d4dff== 您必须达到 100 级或更高级别才能加入。 ==^000000";
+		close;
+	}
+	if (isbegin_quest(3470) == 0) {
+		mes "[乔尔指挥官]";
+		mes "大家好，我是乔尔，幻象调查团的团长。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "你听说过或经历过幻觉吗？";
+		next;
+		mes "[乔尔指挥官]";
+		mes "迄今为止，幻觉已在世界各地被发现，并为公众所了解。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "由于很容易获得稀有材料，这里也被许多冒险家用作狩猎场。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "而且，幻境中的怪物都是以前从未发现过的新怪物，而且幻境中的怪物正在异常繁殖。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "尽管许多冒险者狩猎幻境中存在的怪物来获取材料，但人口恢复速度如此之快的原因尚未查明。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "我们幻象调查组就是为了揭开幻象之谜而组织的，首先我们决定弄清楚幻象内部怪物的生态。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "我们发现所有的幻象都会受到维度裂缝的影响。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "我一直在猜测这可能与次元裂缝有关，但从这次调查的结果来看，一切都清楚了。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "还有很多冒险者带着目的来到幻境，所以怪物数量还算幸运地维持着。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "如果没有人踏足那里，那就非常危险，因为怪物可能会超出饱和度并入侵其他区域。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "因此，具体人数仍在调查中，目前每个幻象都分配了一名调查员。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "我们正在招募能够控制幻境中怪物数量的成员。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "如果你是一名冒险家，你似乎足够强大来胜任这个角色......";
+		next;
+		mes "[乔尔指挥官]";
+		mes "你愿意加入幻象调查组，和我们一起调查幻象吗？";
+		next;
+		if (select( "我要加入", "我会考虑一下" ) == 2) {
+			mes "[乔尔指挥官]";
+			mes "非常有意义。";
+			next;
+			mes "[乔尔指挥官]";
+			mes "在告诉我之前请先考虑一下。";
+			close;
+		}
+		mes "[乔尔指挥官]";
+		mes "好的，不客气！！";
+		next;
+		mes "[乔尔指挥官]";
+		mes "手续很简单，请在这里填写承诺书...";
+		next;
+		mes "[乔尔指挥官]";
+		mes "在这里...请签名。";
+		next;
+		mes "[乔尔指挥官]";
+		mes ".";
+		next;
+		mes "[乔尔指挥官]";
+		mes "..";
+		next;
+		mes "[乔尔指挥官]";
+		mes "...";
+		next;
+		mes "[乔尔指挥官]";
+		mes "是的，你已经成为幻影调查团的一员了，欢迎再次光临！";
+		next;
+		mes "[乔尔指挥官]";
+		mes "如果你在冒险中有时间的话，我希望你能顺便去看看位于各地的幻象，并帮助我进行调查。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "派出的调查员将指导您。";
+		next;
+		mes "[乔尔指挥官]";
+		mes "那么我希望你有愉快的一天";
+		close2;
+		setquest 3470;
+		completequest 3470;
+		end;
+	}
+	mes "[乔尔指挥官]";
+	mes "我想，多亏了你，冒险家，调查会变得更加容易。";
+	next;
+	mes "[乔尔指挥官]";
+	mes "新的幻象将会再次出现。";
+	next;
+	mes "[乔尔指挥官]";
+	mes "每一个新的发现都需要我们花很多时间去适应";
+	next;
+	mes "[乔尔指挥官]";
+	mes "这项调查至少将有助于缩短这一时间。";
+	next;
+	mes "[乔尔指挥官]";
+	mes "谢谢您并期待未来更多的活动。";
+	close;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "isbegin_quest(3470) == 0" );
+	end;
+}
+
+prt_in,136,29,3	script	Member Zenhi#zenhi	4_F_KHELLY,{
+	mes "[成员Zenhi]";
+	mes "你好~~!!";
+	next;
+	mes "[成员Zenhi]";
+	mes "幻象调查团正在一点点壮大。";
+	next;
+	mes "[成员Zenhi]";
+	mes "会员越多，我们能做的事情就越多，对吗？";
+	close;
+}
+
+prt_in,121,36,6	script	Member Zenian#zenian	4_F_HUWOMAN,{
+	mes "[成员泽尼安]";
+	mes "大家好，我是 Zenian，团队的新成员。";
+	next;
+	mes "[成员泽尼安]";
+	mes "我很早就关注次元裂缝现象了。显然，尽管有多次征服，怪物还是不断出现。";
+	next;
+	mes "[成员泽尼安]";
+	mes "事实证明，这种现象在幻象中也存在，所以我决定加入幻象调查组。";
+	next;
+	mes "[成员泽尼安]";
+	mes "祝你未来好运！！";
+	close;
+}
+
+prt_in,124,21,1	script	 Member link#yeonsu	4_M_DEWWOMAN,{
+	mes "[会员链接]";
+	mes "很高兴认识你，这是欢迎调查团队。";
+	next;
+	mes "[会员链接]";
+	mes "调查幻象中怪物的生态系统......";
+	next;
+	mes "[会员链接]";
+	mes "还有……我觉得可能和次元裂缝有关。";
+	next;
+	mes "[会员链接]";
+	mes "希望此时正在努力的大家都能平安归来，无事发生。";
+	close;
+}
+
+pay_d03_i,149,34,5	script	Girocker#ziroker	4_M_ORIENT02,{
+	if (BaseLevel < 100)
+		end;
+	if (isbegin_quest(3470) == 0) {
+		mes "[Giro摇杆]";
+		mes "你好！！";
+		next;
+		mes "[Giro摇杆]";
+		mes "我是幻觉调查团的J-吉洛克。";
+		next;
+		mes "[Giro摇杆]";
+		mes "呃……真的来到了这种地方……希望冒险者们也能帮帮我……";
+		next;
+		mes "[Giro摇杆]";
+		mes "你还没有加入调查组。";
+		next;
+		mes "[Giro摇杆]";
+		mes "你愿意和我一起调查这里的怪物吗？一定会很有意义的！！";
+		next;
+		mes "[Giro摇杆]";
+		mes "请向普隆德拉调查员<NAVI>[乔尔]<INFO>prt_in,136,34,</INFO></NAVI>申请会员资格，来吧！";
+		close;
+	}
+	if (isbegin_quest(3446) == 0) {
+		mes "[Giro摇杆]";
+		mes "你好！！";
+		next;
+		mes "[Giro摇杆]";
+		mes "我是幻觉调查团的J-吉洛克。";
+		next;
+		mes "[Giro摇杆]";
+		mes "呃……来到这种地方……";
+		next;
+		mes "[Giro摇杆]";
+		mes "我平时总是假装很勇敢，但我想我是意识到了我暗恋的成员Elysia。";
+		next;
+		mes "[Giro摇杆]";
+		mes "其实我是比谁都胆小的人……哎呀";
+		next;
+		mes "[Giro摇杆]";
+		mes "无论如何……我负责调查这个地方。";
+		next;
+		mes "[Giro摇杆]";
+		mes "你听说过乔尔船长的调查吗？冒险家，你必须独自猎杀100只怪物。";
+		next;
+		mes "[Giro摇杆]";
+		mes "你愿意参与对这个地方的调查吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[Giro摇杆]";
+			mes "那我是不是该去问问其他冒险者呢……";
+			close;
+		}
+		mes "[Giro摇杆]";
+		mes "我喜欢它！";
+		next;
+		mes "[Giro摇杆]";
+		mes "只要在这里杀死 100 个任意类型的怪物即可。";
+		next;
+		mes "[Giro摇杆]";
+		mes "那就小心点吧！";
+		close2;
+		setquest 3446;
+		completequest 3446;
+		setquest 3447;
+		end;
+	}
+	switch( checkquest(3448,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[Giro摇杆]";
+		mes "啊，今天的调查就到此为止了。";
+		next;
+		mes "[Giro摇杆]";
+		mes "明天就会恢复，所以如果你能负担得起的话，如果你能来帮我调查一下，我将不胜感激！";
+		close;
+	case 2:
+		erasequest 3448;
+		break;
+	}
+	switch( checkquest(3447,HUNTING) ) {
+	case -1:
+		mes "[Giro摇杆]";
+		mes "您好，请问您今天是来协助调查的吗？";
+		next;
+		mes "[Giro摇杆]";
+		mes "内容和上次一样。";
+		next;
+		mes "[Giro摇杆]";
+		mes "如果你杀死100个任意类型的怪物，你愿意参加吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[Giro摇杆]";
+			mes "如果你今天能帮我的话那就太好了...";
+			close;
+		}
+		mes "[Giro摇杆]";
+		mes "我喜欢它！";
+		next;
+		mes "[Giro摇杆]";
+		mes "只要在这里杀死 100 个任意类型的怪物即可。";
+		next;
+		mes "[Giro摇杆]";
+		mes "那就小心点吧！";
+		close2;
+		setquest 3447;
+		end;
+	case 0:
+	case 1:
+		mes "[Giro摇杆]";
+		mes "杀死 100 个任意类型的怪物。";
+		close;
+	case 2:
+		mes "[Giro摇杆]";
+		mes "你平安回来了！";
+		next;
+		mes "[Giro摇杆]";
+		mes "好吧……那么嗯……我得等一段时间看看会产生多少怪物。";
+		next;
+		mes "[Giro摇杆]";
+		mes "剩下的就交给我吧！！谢谢！！";
+		close2;
+		erasequest 3447;
+		setquest 3448;
+		getexp 2500000,2500000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 100 && isbegin_quest(3470) == 2 && isbegin_quest(3446) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3447,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3446) == 2 && checkquest(3448,PLAYTIME) == -1 && checkquest(3447,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3448,PLAYTIME) == 2" );
+	end;
+}
+
+ice_dun02,142,18,5	script	Elysia#elisia	4_F_OPERATION,{
+	if (BaseLevel < 120) {
+		mes "[艾丽西亚]";
+		mes "哦，这里的寒冷一定很难受吧？";
+		next;
+		mes "[艾丽西亚]";
+		mes "等你热一点了再回来。";
+		next;
+		mes "^4d4dff== 这是 120 级或更高级别的任务。 ==^000000";
+		close;
+	}
+	if (isbegin_quest(3470) == 0) {
+		mes "[艾丽西亚]";
+		mes "你好~";
+		next;
+		mes "[艾丽西亚]";
+		mes "我是幻觉调查组的艾丽西亚~";
+		next;
+		mes "[艾丽西亚]";
+		mes "这里真的很冷...";
+		next;
+		mes "[艾丽西亚]";
+		mes "我想向冒险家求助……";
+		next;
+		mes "[艾丽西亚]";
+		mes "你还没有加入调查组。";
+		next;
+		mes "[艾丽西亚]";
+		mes "如果不介意的话，不如加入幻影调查兵团吧？那你就帮帮我吧！！！";
+		next;
+		mes "[艾丽西亚]";
+		mes "请向普隆德拉指挥官<NAVI>[乔尔]<INFO>prt_in,136,34,</INFO></NAVI>申请会员资格，来吧！";
+		close;
+	}
+	if (isbegin_quest(3449) == 0) {
+		mes "[艾丽西亚]";
+		mes "你好~";
+		next;
+		mes "[艾丽西亚]";
+		mes "我是幻觉调查组的艾丽西亚~";
+		next;
+		mes "[艾丽西亚]";
+		mes "这里真的很冷...";
+		next;
+		mes "[艾丽西亚]";
+		mes "没想到自己会一个人被送到这么危险的地方……我想和吉洛克一起去……";
+		next;
+		mes "[艾丽西亚]";
+		mes "好吧，就算有吉罗克，他也是个胆小鬼，所以我有能力保护他……";
+		next;
+		mes "[艾丽西亚]";
+		mes "你假装勇敢...但我已经注意到了";
+		next;
+		mes "[艾丽西亚]";
+		mes "吉洛克在废弃的村庄里安全地进行调查吗？我很担心。";
+		next;
+		mes "[艾丽西亚]";
+		mes "嗯……其实现在还不是担心冒险家吉洛克的时候。你能帮助我吗？";
+		next;
+		mes "[艾丽西亚]";
+		mes "你听说这是对怪物数量如何维持的调查吗？很多冒险者来这里狩猎，但是有点缺乏。";
+		next;
+		mes "[艾丽西亚]";
+		mes "当你激烈地对付怪物时，很容易算出它们的数量。你呢？你愿意参与对这个地方的调查吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[艾丽西亚]";
+			mes "是的，没错……";
+			next;
+			mes "[艾丽西亚]";
+			mes "那我就再瑟瑟发抖一会儿吧……";
+			close;
+		}
+		mes "[艾丽西亚]";
+		mes "哦是的！！谢谢！！";
+		next;
+		mes "[艾丽西亚]";
+		mes "进入后，杀死100个任意类型的怪物。";
+		next;
+		mes "[艾丽西亚]";
+		mes "期待你火辣的狩猎技巧~~！！";
+		close2;
+		setquest 3449;
+		completequest 3449;
+		setquest 3450;
+		end;
+	}
+	switch( checkquest(3451,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[艾丽西亚]";
+		mes "啊，我想今天就够了！！";
+		next;
+		mes "[艾丽西亚]";
+		mes "明天以后如果来的话，还有别的事要做呢~";
+		close;
+	case 2:
+		erasequest 3451;
+		break;
+	}
+	switch( checkquest(3450,HUNTING) ) {
+	case -1:
+		mes "[艾丽西亚]";
+		mes "啊，很高兴认识你！！你今天是来帮忙调查的吗？";
+		next;
+		mes "[艾丽西亚]";
+		mes "你的帮助和上次一样~";
+		next;
+		mes "[艾丽西亚]";
+		mes "如果你杀死100个任意类型的怪物，你愿意参加吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[艾丽西亚]";
+			mes "好吧……我会继续冷得瑟瑟发抖……";
+			close;
+		}
+		mes "[艾丽西亚]";
+		mes "谢谢";
+		next;
+		mes "[艾丽西亚]";
+		mes "进入后，杀死100个任意类型的怪物。";
+		next;
+		mes "[艾丽西亚]";
+		mes "那就小心点吧！";
+		close2;
+		setquest 3450;
+		end;
+	case 0:
+	case 1:
+		mes "[艾丽西亚]";
+		mes "杀死 100 只怪物，无论其类型如何。";
+		close;
+	case 2:
+		mes "[艾丽西亚]";
+		mes "你已经完成了吗？果然如你所料，做得很火爆~";
+		next;
+		mes "[艾丽西亚]";
+		mes "那我就给你做剩下的研究~";
+		next;
+		mes "[艾丽西亚]";
+		mes "感谢您的辛勤工作。希望我们能再次见面！！";
+		close2;
+		erasequest 3450;
+		setquest 3451;
+		getexp 6000000,6000000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 120 && isbegin_quest(3470) == 2 && isbegin_quest(3449) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3450,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3449) == 2 && checkquest(3451,PLAYTIME) == -1 && checkquest(3450,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3451,PLAYTIME) == 2" );
+	end;
+}
+
+gef_d01_i,122,237,3	script	Radimir#ridimir	8_F,{
+	if (BaseLevel < 130)
+		end;
+	if (isbegin_quest(3470) == 0) {
+		mes "[拉基米尔]";
+		mes "你好，冒险家";
+		next;
+		mes "[拉基米尔]";
+		mes "我是幻觉调查局的拉迪米尔。";
+		next;
+		mes "[拉基米尔]";
+		mes "被送到这么阴森的地方说实话我很害怕";
+		next;
+		mes "[拉基米尔]";
+		mes "我想让你一起调查，但是……你还没有加入调查组。";
+		next;
+		mes "[拉基米尔]";
+		mes "你愿意和我一起做一些有意义的事情吗？";
+		next;
+		mes "[拉基米尔]";
+		mes "如果您有兴趣，请与普隆德拉的指挥官<NAVI>[乔尔]<INFO>prt_in,136,34,</INFO></NAVI>会面，并加入调查小组并返回。";
+		close;
+	}
+	if (isbegin_quest(3452) == 0) {
+		mes "[拉基米尔]";
+		mes "你好，冒险家";
+		next;
+		mes "[拉基米尔]";
+		mes "我是幻觉调查局的拉迪米尔。";
+		next;
+		mes "[拉基米尔]";
+		mes "被送到这么阴森的地方说实话我很害怕";
+		next;
+		mes "[拉基米尔]";
+		mes "但我一直对幻觉现象很感兴趣，当调查组成立时，我就积极申请加入。";
+		next;
+		mes "[拉基米尔]";
+		mes "因为还没有人弄清楚";
+		next;
+		mes "[拉基米尔]";
+		mes "这只是当前调查的开始，但这肯定是伟大的第一步";
+		next;
+		mes "[拉基米尔]";
+		mes "因此，恐惧是可以通过意志来克服的。";
+		next;
+		mes "[拉基米尔]";
+		mes "调查准备工作已经完成，现在正在等待能够调整怪物等级的人。";
+		next;
+		mes "[拉基米尔]";
+		mes "那你呢，为什么不参与调查呢？你加入调查组就是为了这个吧？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[拉基米尔]";
+			mes "我会留在这里";
+			close;
+		}
+		mes "[拉基米尔]";
+		mes "好的。";
+		next;
+		mes "[拉基米尔]";
+		mes "只要在这里杀死 100 个任意类型的怪物即可。";
+		next;
+		mes "[拉基米尔]";
+		mes "越早越好。";
+		next;
+		mes "[拉基米尔]";
+		mes "那我就等着你吧。";
+		close2;
+		setquest 3452;
+		completequest 3452;
+		setquest 3453;
+		end;
+	}
+	switch( checkquest(3454,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[拉基米尔]";
+		mes "今天就这样。";
+		next;
+		mes "[拉基米尔]";
+		mes "如果按照目前的趋势，我想我们一天左右就可以恢复调查。那就请来吧。";
+		close;
+	case 2:
+		erasequest 3454;
+		break;
+	}
+	switch( checkquest(3453,HUNTING) ) {
+	case -1:
+		mes "[拉基米尔]";
+		mes "您好，请问您今天是来协助调查的吗？";
+		next;
+		mes "[拉基米尔]";
+		mes "请按当时的情况执行操作。";
+		next;
+		mes "[拉基米尔]";
+		mes "你想参加杀死100个任意类型怪物的任务吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[拉基米尔]";
+			mes "你的行为毫无意义，我很失望。";
+			close;
+		}
+		mes "[拉基米尔]";
+		mes "谢谢";
+		next;
+		mes "[拉基米尔]";
+		mes "杀死 100 个任意类型的怪物。";
+		next;
+		mes "[拉基米尔]";
+		mes "那我就等着你吧。";
+		close2;
+		setquest 3453;
+		end;
+	case 0:
+	case 1:
+		mes "[拉基米尔]";
+		mes "杀死 100 个任意类型的怪物。";
+		close;
+	case 2:
+		mes "[拉基米尔]";
+		mes "你很快就过来了，谢谢。";
+		next;
+		mes "[拉基米尔]";
+		mes "这使得计算数字变得更容易。";
+		next;
+		mes "[拉基米尔]";
+		mes "我会尽快完成剩下的工作并向调查组汇报。感谢您的辛勤工作。";
+		close2;
+		erasequest 3453;
+		setquest 3454;
+		getexp 10000000,10000000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 130 && isbegin_quest(3470) == 2 && isbegin_quest(3452) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3453,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3452) == 2 && checkquest(3454,PLAYTIME) == -1 && checkquest(3453,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3454,PLAYTIME) == 2" );
+	end;
+}
+
+ein_d02_i,161,180,5	script	Machoko#machoco	8_F_GIRL,{
+	if (BaseLevel < 150)
+		end;
+	if (isbegin_quest(3470) == 0) {
+		mes "[猛男]";
+		mes "你好！！！";
+		next;
+		mes "[猛男]";
+		mes "我是幻觉调查组的真町子~";
+		next;
+		mes "[猛男]";
+		mes "我很想被派到这个地方，但我很幸运。";
+		next;
+		mes "[猛男]";
+		mes "这些该死的泰迪熊~~泰迪熊……";
+		next;
+		mes "[猛男]";
+		mes "但这对我来说是不可能的……我的实力还不够……但是你还没有加入调查组……";
+		next;
+		mes "[猛男]";
+		mes "您可以前往普隆德拉的指挥官 <NAVI>[Joel]<INFO>prt_in,136,34,</INFO></NAVI> 进行注册。快来这里报名吧~";
+		close;
+	}
+	if (isbegin_quest(3455) == 0) {
+		mes "[猛男]";
+		mes "你好！！！";
+		next;
+		mes "[猛男]";
+		mes "我是幻觉调查组的真町子~";
+		next;
+		mes "[猛男]";
+		mes "我很想被派到这个地方，但我很幸运。";
+		next;
+		mes "[猛男]";
+		mes "这些该死的泰迪熊~~泰迪熊……";
+		next;
+		mes "[猛男]";
+		mes "但这对我来说是不可能的...我没有足够的力量...他看起来很轻松...但他是如此强大...";
+		next;
+		mes "[猛男]";
+		mes "我以为我一个人就能搞定……我太掉以轻心了……呵呵……";
+		next;
+		mes "[猛男]";
+		mes "我不知不觉地猛烈攻击，又被打了一顿……差点死了……";
+		next;
+		mes "[猛男]";
+		mes "我才刚刚回过神来……我觉得可以调查一下，不过你看起来有点厉害？";
+		next;
+		mes "[猛男]";
+		mes "那么帮助我...我需要有人来控制那些恶毒的泰迪熊...";
+		next;
+		mes "[猛男]";
+		mes "怎么样？你想参与调查吗？？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[猛男]";
+			mes "是的……来到这里之后我就快要崩溃了……就像一个没有血和泪的人一样……";
+			close;
+		}
+		mes "[猛男]";
+		mes "好的！我们走吧！！";
+		next;
+		mes "[猛男]";
+		mes "去打掉100个左右，来吧，不管什么类型，看到就炸掉！！";
+		next;
+		mes "[猛男]";
+		mes "我……根本动不了……在这里……我会等……";
+		close2;
+		setquest 3455;
+		completequest 3455;
+		setquest 3456;
+		end;
+	}
+	switch( checkquest(3457,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[猛男]";
+		mes "嗯，今天不再了";
+		next;
+		mes "[猛男]";
+		mes "一天后回来！！";
+		close;
+	case 2:
+		erasequest 3457;
+		break;
+	}
+	switch( checkquest(3456,HUNTING) ) {
+	case -1:
+		mes "[猛男]";
+		mes "哦，很高兴认识你！欢迎回来！";
+		next;
+		mes "[猛男]";
+		mes "你一定是因为身体发痒才来这里的。";
+		next;
+		mes "[猛男]";
+		mes "今天你想再次参加这里的调查工作吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[猛男]";
+			mes "什么……那你为什么来？？";
+			close;
+		}
+		mes "[猛男]";
+		mes "当然，事情应该是这样的";
+		next;
+		mes "[猛男]";
+		mes "不管是什么类型，只要打败 100 个然后把他们带回来就可以了。";
+		next;
+		mes "[猛男]";
+		mes "我会等你的，所以快点吧！！";
+		close2;
+		setquest 3456;
+		end;
+	case 0:
+	case 1:
+		mes "[猛男]";
+		mes "去打掉100个左右，来吧，不管什么类型，看到就炸掉！！";
+		close;
+	case 2:
+		mes "[猛男]";
+		mes "我一直在等你...快点完成并回来...";
+		next;
+		mes "[猛男]";
+		mes "嗯...但仅此而已...嗯...是的！好的！！";
+		next;
+		mes "[猛男]";
+		mes "剩下的就交给我吧！！我会将结果报告给调查组，现在你可以去休息了。";
+		next;
+		mes "[猛男]";
+		mes "谢谢~~";
+		close2;
+		erasequest 3456;
+		setquest 3457;
+		getexp 17500000,12500000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 150 && isbegin_quest(3470) == 2 && isbegin_quest(3455) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3456,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3455) == 2 && checkquest(3457,PLAYTIME) == -1 && checkquest(3456,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3457,PLAYTIME) == 2" );
+	end;
+}
+
+tur_d03_i,125,186,5	script	Orian#orian	4_M_LGTPOOR,{
+	if (BaseLevel < 150)
+		end;
+	if (isbegin_quest(3470) == 0) {
+		mes "[奥里安]";
+		mes "你好！";
+		next;
+		mes "[奥里安]";
+		mes "我是奥里安，幻象调查团的合同工。";
+		next;
+		mes "[奥里安]";
+		mes "其实这不是我想要的东西……但是我需要钱……";
+		next;
+		mes "[奥里安]";
+		mes "如果你能帮助我就好了……可以吗？";
+		next;
+		mes "[奥里安]";
+		mes "呃，但是你还没有加入调查组。";
+		next;
+		mes "[奥里安]";
+		mes "请向普隆德拉指挥官<NAVI>[乔尔]<INFO>prt_in,136,34,</INFO></NAVI>申请会员资格，来吧！";
+		close;
+	}
+	if (isbegin_quest(3458) == 0) {
+		mes "[奥里安]";
+		mes "你好！";
+		next;
+		mes "[奥里安]";
+		mes "我是奥里安，幻象调查团的合同工。";
+		next;
+		mes "[奥里安]";
+		mes "光明调查组是新成立的组织，人手肯定有些不足。我看到一则公告说他们将雇用兼职合同工。";
+		next;
+		mes "[奥里安]";
+		mes "其实我对幻想不感兴趣……我忙着谋生。";
+		next;
+		mes "[奥里安]";
+		mes "呵呵……都是钱的事，等我发工资了就去买一套新衣服。";
+		next;
+		mes "[奥里安]";
+		mes "但即便如此也不容易……我一直在等待像你这样的调查员来，因为我认为我自己会非常困难。";
+		next;
+		mes "[奥里安]";
+		mes "如果你能帮助我就好了……可以吗？";
+		next;
+		mes "[奥里安]";
+		mes "你愿意参与这次幻觉调查吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[奥里安]";
+			mes "啊……终于找到调查员了……啊……我要钱……";
+			close;
+		}
+		mes "[奥里安]";
+		mes "哦，谢谢你";
+		next;
+		mes "[奥里安]";
+		mes "请从这里上一层，到荒凉的古阳宫去。";
+		next;
+		mes "[奥里安]";
+		mes "请杀死那里的 100 个怪物，无论类型如何。";
+		next;
+		mes "[奥里安]";
+		mes "我会在这里等你。祝您旅途平安！！";
+		close2;
+		setquest 3458;
+		completequest 3458;
+		setquest 3459;
+		end;
+	}
+	switch( checkquest(3460,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[奥里安]";
+		mes "你现在不适合做研究。";
+		next;
+		mes "[奥里安]";
+		mes "我想明天就可以了，你明天之后可以回来吗？";
+		close;
+	case 2:
+		erasequest 3460;
+		break;
+	}
+	switch( checkquest(3459,HUNTING) ) {
+	case -1:
+		mes "[奥里安]";
+		mes "你好，你是唯一能帮助我的人......";
+		next;
+		mes "[奥里安]";
+		mes "我们需要做的和上次一样......";
+		next;
+		mes "[奥里安]";
+		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[奥里安]";
+			mes "哎呀...";
+			next;
+			mes "[奥里安]";
+			mes "哭泣.....";
+			close;
+		}
+		mes "[奥里安]";
+		mes "哎呀……谢谢……";
+		next;
+		mes "[奥里安]";
+		mes "前往荒凉射箭场并杀死 100 个任意类型的怪物。";
+		next;
+		mes "[奥里安]";
+		mes "那么要小心...";
+		close2;
+		setquest 3459;
+		end;
+	case 0:
+	case 1:
+		mes "[奥里安]";
+		mes "在荒凉射箭场消灭 100 只任意类型的怪物。";
+		close;
+	case 2:
+		mes "[奥里安]";
+		mes "你平安回家了。";
+		next;
+		mes "[奥里安]";
+		mes "呃……你拿下来的速度比我预想的要快很多。你……你是高手？？";
+		next;
+		mes "[奥里安]";
+		mes "这应该会使其余的工作变得更容易。";
+		next;
+		mes "[奥里安]";
+		mes "谢谢你们~谢谢你们的辛苦付出！！";
+		close2;
+		erasequest 3459;
+		setquest 3460;
+		getexp 22500000,16000000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 150 && isbegin_quest(3470) == 2 && isbegin_quest(3458) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3459,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3458) == 2 && checkquest(3460,PLAYTIME) == -1 && checkquest(3459,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3460,PLAYTIME) == 2" );
+	end;
+}
+
+ant_d02_i,167,184,5	script	Sheshin#sesin	1_M_MOC_LORD,{
+	if (BaseLevel < 160)
+		end;
+	if (isbegin_quest(3470) == 0) {
+		mes "[方形]";
+		mes "很高兴见到你。";
+		next;
+		mes "[方形]";
+		mes "我是幻觉调查队的舍辛。";
+		next;
+		mes "[方形]";
+		mes "我以为我的战斗力足以调查这里……但我想我错了。";
+		next;
+		mes "[方形]";
+		mes "这里的怪物比我想象的要强大得多。";
+		next;
+		mes "[方形]";
+		mes "啊...我真的为自己感到骄傲...但是我需要帮助...嗯...";
+		next;
+		mes "[方形]";
+		mes "冒险家还没有加入幻象调查队。";
+		next;
+		mes "[方形]";
+		mes "你想加入虚幻调查组吗？探索未知的现象不是很令人兴奋吗？";
+		next;
+		mes "[方形]";
+		mes "如果您想报名，请前往普隆德拉见指挥官<NAVI>[Joel]<INFO>prt_in,136,34,</INFO></NAVI>。";
+		close;
+	}
+	if (isbegin_quest(3507) == 0) {
+		mes "[方形]";
+		mes "很高兴见到你。";
+		next;
+		mes "[方形]";
+		mes "我是幻觉调查队的舍辛。";
+		next;
+		mes "[方形]";
+		mes "我过去曾作为大陆卫队成员活跃。当时我的任务是探索魔王莫罗克的力量所造成的次元裂缝。";
+		next;
+		mes "[方形]";
+		mes "我猜测，到处出现的幻象，一定程度上与空间裂缝的力量有关。";
+		next;
+		mes "[方形]";
+		mes "乔尔指挥官正式宣布，幻象是由次元裂缝引起的现象。";
+		next;
+		mes "[方形]";
+		mes "很快，一个新的幻象被发现了，是的……就在这里";
+		next;
+		mes "[方形]";
+		mes "我加入幻象调查组是因为我想亲眼看看，而现在我就在这里。";
+		next;
+		mes "[方形]";
+		mes "但我遇到了一个小问题...";
+		next;
+		mes "[方形]";
+		mes "我以为我的战斗力足以调查这里……但我想我错了。";
+		next;
+		mes "[方形]";
+		mes "这里的怪物比我想象的要强大得多。";
+		next;
+		mes "[方形]";
+		mes "啊……我真的伤害了我的自尊心……但我需要帮助……";
+		next;
+		mes "[方形]";
+		mes "嗯……我觉得对于冒险者来说这已经足够了……";
+		next;
+		mes "[方形]";
+		mes "我感觉你的力量比我大得多。";
+		next;
+		mes "[方形]";
+		mes "你愿意帮我调查一下这个领域的幻象吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[方形]";
+			mes "这对冒险者来说一定是一个好机会……";
+			close;
+		}
+		mes "[方形]";
+		mes "好的。";
+		next;
+		mes "[方形]";
+		mes "请杀死这里的 100 个任意类型的怪物。";
+		next;
+		mes "[方形]";
+		mes "那么，请小心出行，不要受伤。";
+		close2;
+		setquest 3507;
+		completequest 3507;
+		setquest 3508;
+		end;
+	}
+	switch( checkquest(3509,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[方形]";
+		mes "今天您不必再做任何研究。";
+		next;
+		mes "[方形]";
+		mes "如果你愿意的话明天可以回来吗？";
+		close;
+	case 2:
+		erasequest 3509;
+		break;
+	}
+	switch( checkquest(3508,HUNTING) ) {
+	case -1:
+		mes "[方形]";
+		mes "欢迎，你来这里是为了帮助调查幻象，对吗？";
+		next;
+		mes "[方形]";
+		mes "你可以像上次一样做同样的事情。";
+		next;
+		mes "[方形]";
+		mes "如果你杀死100个任意类型的怪物，你愿意参加吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[方形]";
+			mes "可惜，可悲的是，我还是缺乏力量。";
+			close;
+		}
+		mes "[方形]";
+		mes "好的。";
+		next;
+		mes "[方形]";
+		mes "那么，请小心出行，不要受伤。";
+		close2;
+		setquest 3508;
+		end;
+	case 0:
+	case 1:
+		mes "[方形]";
+		mes "杀死 100 个任意类型的怪物。";
+		close;
+	case 2:
+		mes "[方形]";
+		mes "我明白了……你很快就结束了并回来了。";
+		next;
+		mes "[方形]";
+		mes "我需要进一步调查，看看这里的现象是否也受到了次元裂缝的影响。";
+		next;
+		mes "[方形]";
+		mes "从现在开始我会自己做这个工作。";
+		next;
+		mes "[方形]";
+		mes "非常感谢你的帮助";
+		close2;
+		erasequest 3508;
+		setquest 3509;
+		getexp 27000000,18000000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 160 && isbegin_quest(3470) == 2 && isbegin_quest(3507) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3508,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3507) == 2 && checkquest(3509,PLAYTIME) == -1 && checkquest(3508,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3509,PLAYTIME) == 2" );
+	end;
+}
+
+com_d02_i,253,232,3	script	Cassis#kesis	4_M_KHBOY,{
+	if (BaseLevel < 160)
+		end;
+	if (isbegin_quest(3470) == 0) {
+		mes "[卡西斯]";
+		mes "你好。";
+		next;
+		mes "[卡西斯]";
+		mes "我是幻象调查团的卡西斯。";
+		next;
+		mes "[卡西斯]";
+		mes "虽然这个地方充满了怪物，但我在这里还是感觉很舒服。";
+		next;
+		mes "[卡西斯]";
+		mes "我听说其中一位调查员要来帮忙……是你吗？";
+		next;
+		mes "[卡西斯]";
+		mes "哦，那不是真的。你又不是调查组的成员……嗯。";
+		next;
+		mes "[卡西斯]";
+		mes "你也想加入虚幻搜查队吗？你想调查奇怪的现象吗？";
+		next;
+		mes "[卡西斯]";
+		mes "不介意的话，请向普隆德拉的指挥官<NAVI>[Joel]<INFO>prt_in,136,34,</INFO></NAVI>申请会员来吧！";
+		close;
+	}
+	if (isbegin_quest(3461) == 0) {
+		mes "[卡西斯]";
+		mes "你好";
+		next;
+		mes "[卡西斯]";
+		mes "我是幻象调查团的卡西斯。";
+		next;
+		mes "[卡西斯]";
+		mes "虽然这个地方充满了怪物，但我在这里还是感觉很舒服。";
+		next;
+		mes "[卡西斯]";
+		mes "我不喜欢与人打交道。在加入调查组之前，我在普隆德拉经营一家商店……";
+		next;
+		mes "[卡西斯]";
+		mes "我不喜欢拥挤的感觉，所以很难忍受……我想，对于我的性格来说，见到很多人会带来压力。";
+		next;
+		mes "[卡西斯]";
+		mes "虽然这个地方到处都是怪物，但是我在这里还是感觉很舒服，至少怪物不会跟我说话。";
+		next;
+		mes "[卡西斯]";
+		mes "嗯，顺便说一句，我听说其中一名调查员要来帮忙……我想那就是你吧？";
+		next;
+		mes "[卡西斯]";
+		mes "你听过乔尔船长的一般信息吗？你只需要毫不犹豫地发挥你的战斗力！！";
+		next;
+		mes "[卡西斯]";
+		mes "你愿意参与对这个地方的调查吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[卡西斯]";
+			mes "呃，那调查组来的到底是谁……？";
+			close;
+		}
+		mes "[卡西斯]";
+		mes "好的，谢谢";
+		next;
+		mes "[卡西斯]";
+		mes "只要杀死这里存在的任何类型的 100 只怪物即可。";
+		next;
+		mes "[卡西斯]";
+		mes "那么祝你好运。";
+		close2;
+		setquest 3461;
+		completequest 3461;
+		setquest 3462;
+		end;
+	}
+	switch( checkquest(3463,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[卡西斯]";
+		mes "今天的调查已经完成。";
+		next;
+		mes "[卡西斯]";
+		mes "如果明天你也能来就好了……如果有时间的话请顺便过来一下。";
+		close;
+	case 2:
+		erasequest 3463;
+		break;
+	}
+	switch( checkquest(3462,HUNTING) ) {
+	case -1:
+		mes "[卡西斯]";
+		mes "您好，请问您今天是来协助调查的吗？";
+		next;
+		mes "[卡西斯]";
+		mes "内容和上次一样。";
+		next;
+		mes "[卡西斯]";
+		mes "如果你杀死 100 个任意类型的怪物，你愿意参加吗";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[卡西斯]";
+			mes "如果你今天能帮我的话那就太好了...";
+			close;
+		}
+		mes "[卡西斯]";
+		mes "我喜欢它！";
+		next;
+		mes "[卡西斯]";
+		mes "进入后，杀死100个任意类型的怪物。";
+		next;
+		mes "[卡西斯]";
+		mes "那就小心点吧！";
+		close2;
+		setquest 3462;
+		end;
+	case 0:
+	case 1:
+		mes "[卡西斯]";
+		mes "杀死 100 个任意类型的怪物。";
+		close;
+	case 2:
+		mes "[卡西斯]";
+		mes "欢迎，你已经完成了！";
+		next;
+		mes "[卡西斯]";
+		mes "你真的很努力。有没有什么地方受伤了？";
+		next;
+		mes "[卡西斯]";
+		mes "剩下的就交给我吧。谢谢";
+		close2;
+		erasequest 3462;
+		setquest 3463;
+		getexp 29000000,19600000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 160 && isbegin_quest(3470) == 2 && isbegin_quest(3461) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3462,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3461) == 2 && checkquest(3463,PLAYTIME) == -1 && checkquest(3462,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3463,PLAYTIME) == 2" );
+	end;
+}
+
+/*
+prt_fild01,131,364,5	script	Terrian#terian	4W_M_02,{
+	if (BaseLevel < 170) {
+		mes "[特里安]";
+		mes "天气真好。";
+		next;
+		mes "[特里安]";
+		mes "天气很好，但是你的水平很低。";
+		next;
+		mes "^4d4dff== 这是 170 级或更高级别的任务。 ==^000000";
+		close;
+	}
+	if (isbegin_quest(3470) == 0) {
+		mes "[特里安]";
+		mes "天气很好";
+		next;
+		mes "[特里安]";
+		mes "我是幻象调查团的泰瑞安人。";
+		next;
+		mes "[特里安]";
+		mes "冒险家，你对轮回理论有何看法？";
+		next;
+		mes "[特里安]";
+		mes "我认为幻象中似乎出现了一种与轮回理论非常接近的现象。";
+		next;
+		mes "[特里安]";
+		mes "为了调查此事，我成为了幻觉调查组的一员。";
+		next;
+		mes "[特里安]";
+		mes "冒险者，你也想和我一起吗？呃……不过你还不是幻象调查团的一员。";
+		next;
+		mes "[特里安]";
+		mes "如果您不介意，请向普隆德拉的指挥官<NAVI>[Joel]<INFO>prt_in,136,34,</INFO></NAVI>申请会员资格。";
+		close;
+	}
+	if (isbegin_quest(3467) == 0) {
+		mes "[特里安]";
+		mes "天气很好";
+		next;
+		mes "[特里安]";
+		mes "我是幻象调查团的泰瑞安人。";
+		next;
+		mes "[特里安]";
+		mes "冒险家，你对轮回理论有何看法？";
+		next;
+		mes "[特里安]";
+		mes "我认为幻象中似乎出现了一种与轮回理论非常接近的现象。";
+		next;
+		mes "[特里安]";
+		mes "为了调查此事，我成为了幻觉调查组的一员。";
+		next;
+		mes "[特里安]";
+		mes "冬天花朵凋谢后，春天又会再次绽放。它们总是在花谢、凋落的地方绽放。";
+		next;
+		mes "[特里安]";
+		mes "动物也是如此，每一种的外貌千差万别，但几百年来人们发现，始终存在着完全相同的外貌。";
+		next;
+		mes "[特里安]";
+		mes "这是轮回理论的核心，需要很长时间的观察和研究。";
+		next;
+		mes "[特里安]";
+		mes "但在幻境这样的地方，怪物却在以异常的速度繁殖。";
+		next;
+		mes "[特里安]";
+		mes "不，准确的说，当幻境中的怪物数量减少之后，怪物的数量恢复得很快。";
+		next;
+		mes "[特里安]";
+		mes "因为怪物物体恢复的速度非常快，所以这是一个很好的机会，可以让我检查一下幻象调查组所要求的‘物体持久性’，以及它们是否转世。";
+		next;
+		mes "[特里安]";
+		mes "您愿意加入我们这项有意义的调查吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[特里安]";
+			mes "我们只能等其他调查员来了……";
+			close;
+		}
+		mes "[特里安]";
+		mes "谢谢";
+		next;
+		mes "[特里安]";
+		mes "为了确定个体的恢复速度，我们需要尽快减少怪物的数量。";
+		next;
+		mes "[特里安]";
+		mes "请在扭曲迷宫森林地下城击败 100 只任意类型的怪物后返回，可通过这里前面的入口进入。";
+		next;
+		mes "[特里安]";
+		mes "那我就等着你吧。";
+		close2;
+		setquest 3464;
+		completequest 3464;
+		setquest 3465;
+		end;
+	}
+	switch( checkquest(3466,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[特里安]";
+		mes "对于今天的调查来说，这已经足够了。";
+		next;
+		mes "[特里安]";
+		mes "明天人口就会完全恢复，所以如果你有能力的话，如果你能来帮我调查一下，我将不胜感激。";
+		close;
+	case 2:
+		erasequest 3466;
+		break;
+	}
+	switch( checkquest(3465,HUNTING) ) {
+	case -1:
+		mes "[特里安]";
+		mes "您好，您今天是来帮忙调查的吗？";
+		next;
+		mes "[特里安]";
+		mes "执行的内容与上次相同。";
+		next;
+		mes "[特里安]";
+		mes "如果你杀死100个任意类型的怪物，你愿意参加吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[特里安]";
+			mes "抱歉，也许我应该向其他人寻求帮助......";
+			close;
+		}
+		mes "[特里安]";
+		mes "谢谢";
+		next;
+		mes "[特里安]";
+		mes "为了确定个体的恢复速度，我们需要尽快减少怪物的数量。";
+		next;
+		mes "[特里安]";
+		mes "请在扭曲迷宫森林地下城击败 100 只任意类型的怪物后返回，可通过这里前面的入口进入。";
+		close2;
+		setquest 3465;
+		end;
+	case 0:
+	case 1:
+		mes "[特里安]";
+		mes "杀死 100 个任意类型的怪物。";
+		close;
+	case 2:
+		mes "[特里安]";
+		mes "谢谢你这么快回来。";
+		next;
+		mes "[特里安]";
+		mes "感谢您的工作，数据收集变得前所未有的简单。";
+		next;
+		mes "[特里安]";
+		mes "我会尽快将结果发送给调查组，谢谢！！";
+		close2;
+		erasequest 3465;
+		setquest 3466;
+		getexp 35000000,22750000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 170 && isbegin_quest(3470) == 2 && isbegin_quest(3464) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3465,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3464) == 2 && checkquest(3466,PLAYTIME) == -1 && checkquest(3465,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3466,PLAYTIME) == 2" );
+	end;
+}
+*/
+
+iz_d04_i,127,224,5	script	Lister#ristar	4_F_01,{
+	if (BaseLevel < 180) {
+		mes "[列表]";
+		mes "你好";
+		next;
+		mes "[列表]";
+		mes "我的研究工作需要帮助，所以我正在寻找合适的帮手。";
+		next;
+		mes "[列表]";
+		mes "你还不是合适的人，抱歉。";
+		next;
+		mes "^4d4dff== 这是 180 级或更高级别的任务。 ==^000000";
+		close;
+	}
+	if (isbegin_quest(3470) == 0) {
+		mes "[列表]";
+		mes "你好~";
+		next;
+		mes "[列表]";
+		mes "我是活跃于幻觉调查组的莉斯塔。";
+		next;
+		mes "[列表]";
+		mes "我已经有一段时间没有和师父一起下到深海了。";
+		next;
+		mes "[列表]";
+		mes "我一直很努力，但我想师父还是不认可我。";
+		next;
+		mes "[列表]";
+		mes "正好幻象调查组说需要调查这里的深海，我就赶紧申请了。";
+		next;
+		mes "[列表]";
+		mes "如果我们作为调查组的一员，能多了解一点点关于这里深海的信息，相信师父一定会很高兴的！";
+		next;
+		mes "[列表]";
+		mes "你愿意跟我一起去吗？";
+		next;
+		mes "[列表]";
+		mes "呃，但是你还没有加入调查组。";
+		next;
+		mes "[列表]";
+		mes "请向普隆德拉指挥官<NAVI>[乔尔]<INFO>prt_in,136,34,</INFO></NAVI>申请会员资格，来吧！";
+		close;
+	}
+	if (isbegin_quest(3467) == 0) {
+		mes "[列表]";
+		mes "你好~";
+		next;
+		mes "[列表]";
+		mes "我是活跃于幻觉调查组的莉斯塔。";
+		next;
+		mes "[列表]";
+		mes "我已经有一段时间没有和师父一起下到深海了。";
+		next;
+		mes "[列表]";
+		mes "我一直很努力，但我想师父还是不认可我。";
+		next;
+		mes "[列表]";
+		mes "正好幻象调查组说需要调查这里的深海，我就赶紧申请了。";
+		next;
+		mes "[列表]";
+		mes "如果我们作为调查组的一员，能多了解一点点关于这里深海的信息，相信师父一定会很高兴的！";
+		next;
+		mes "[列表]";
+		mes "我焦急地等待着会员帮我调查，结果真的很顺利~";
+		next;
+		mes "[列表]";
+		mes "你想参与这次深海调查吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[列表]";
+			mes "我就这样被忽视了……被主人承认是不对的……";
+			close;
+		}
+		mes "[列表]";
+		mes "哦，谢谢你！";
+		next;
+		mes "[列表]";
+		mes "前往深渊海底洞穴的下层地下城，击败 100 只任意类型的怪物。";
+		next;
+		mes "[列表]";
+		mes "那就小心点吧！";
+		close2;
+		setquest 3467;
+		completequest 3467;
+		setquest 3468;
+		end;
+	}
+	switch( checkquest(3469,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[列表]";
+		mes "今天的内容就到这里结束吧。";
+		next;
+		mes "[列表]";
+		mes "我明天应该就可以回去工作了，到时候你能再跟我聊聊吗？";
+		close;
+	case 2:
+		erasequest 3469;
+		break;
+	}
+	switch( checkquest(3468,HUNTING) ) {
+	case -1:
+		mes "[列表]";
+		mes "你好，今天你愿意和我一起做一些研究吗？";
+		next;
+		mes "[列表]";
+		mes "就照上次做的做吧！";
+		next;
+		mes "[列表]";
+		mes "如果你杀死100个任意类型的怪物，你愿意参加吗？";
+		next;
+		if (select( "参加", "不参加" ) == 2) {
+			mes "[列表]";
+			mes "今天……我……无能……弟子……";
+			close;
+		}
+		mes "[列表]";
+		mes "好的！知道了";
+		next;
+		mes "[列表]";
+		mes "前往深渊海底洞穴的下层，杀死 100 只任意类型的怪物。";
+		next;
+		mes "[列表]";
+		mes "那就小心点吧！";
+		close2;
+		setquest 3468;
+		end;
+	case 0:
+	case 1:
+		mes "[列表]";
+		mes "杀死 100 个任意类型的怪物。";
+		close;
+	case 2:
+		mes "[列表]";
+		mes "它怎么样？下层的怪物真的很强吗？？";
+		next;
+		mes "[列表]";
+		mes "你辛苦了……那我就得小心下去了。";
+		next;
+		mes "[列表]";
+		mes "剩下的我会做的，非常感谢！！";
+		close2;
+		erasequest 3468;
+		setquest 3469;
+		getexp 65000000,45000000;
+		end;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, "BaseLevel >= 180 && isbegin_quest(3470) == 2 && isbegin_quest(3467) == 0" );
+
+	questinfo( QTYPE_QUEST2, QMARK_YELLOW, "checkquest(3468,HUNTING) == 2" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "isbegin_quest(3467) == 2 && checkquest(3469,PLAYTIME) == -1 && checkquest(3468,HUNTING) == -1" );
+	questinfo( QTYPE_DAILYQUEST, QMARK_YELLOW, "checkquest(3469,PLAYTIME) == 2" );
+	end;
+}

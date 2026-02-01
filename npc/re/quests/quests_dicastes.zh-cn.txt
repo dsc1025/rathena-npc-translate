@@ -1,0 +1,7640 @@
+//===== rAthena Script =======================================
+//= El Dicastes Quest NPCs
+//===== By: ==================================================
+//= Gennosuke Kouga, Muad_Dib
+//===== Current Version: =====================================
+//= 2.3
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Quest NPCs related to Dewata:
+//== Sapha's Visit, Doha's Secrect Order, Frede's Request,
+//== Department Quests, Document Quests,
+//== Chesire's Call, Cat Paw's Enchantment
+//== Cat Paw Agent
+//===== Additional Comments: =================================
+//= 1.0 First version. 14107 lines, oh, the pain...
+//= 1.1 Standardized and reduced by 7000+ lines. [Euphy]
+//= 1.2 Further optimization. [Euphy]
+//= 1.2a Small bug fix. [Euphy]
+//= 1.3 Temporarly disabled Izlude Fish Tail?#33 NPC because of
+//= 	the new Izlude Town Map. [Masao]
+//= 1.4 Fixed minor typos. [Joseph]
+//= 1.5 Removed "Mysterious Documents" duplicated in magic_books. [Euphy]
+//= 1.6 Fixed missing checks for quest: Sapha's Visit. [Joseph]
+//= 1.7 Updated to match the official script. [Joseph]
+//= 1.8 Optimized and fixed invalid checkquest. [Joseph]
+//= 1.8a Disabled "Fish Tails" until Izlude RE coordinates are found. [Euphy]
+//= 1.8b Updated "Calyon" NPC and fixed a check. [Euphy]
+//= 1.9 Updated "Fish Tails" with RE coordinates.
+//= 1.9a Minor fix. [Joseph]
+//= 2.0 Fixed variables. [Joseph]
+//= 2.1 Added reset option to "Kareka". [Euphy]
+//= 2.2 Added Izlude duplicates. [Euphy]
+//= 2.3 Added GM management NPCs. [Euphy]
+//============================================================
+
+// Entrance
+//============================================================
+manuk,321,182,5	script	Entrance Manager#ep133	450,{
+	if (!isequipped(2782)) {
+		mes "[普通野猪]";
+		mes "�����？ ������...";
+		mes "���� �� ?";
+		mes "���..？";
+		close;
+	}
+	if (ep13_3_invite >= 4) {
+		mes "[入口经理]";
+		mes "您正在访问首都埃尔迪卡斯特斯吗？";
+		next;
+		if(select("是的。：没有。") == 2) {
+			mes "[入口经理]";
+			mes "下次再用隧道。";
+			close; 
+		}
+		mes "[入口经理]";
+		mes "当心。";
+		close2;
+		warp "dic_dun01",33,212; 
+		end; 
+	}
+	mes "[入口经理]";
+	mes "对不起。";
+	mes "我不能让你过去，因为你不是萨法人。";
+	close;
+}
+
+dic_dun01,266,113,5	script	Curious Sapha#ep13_3_	449,{
+	if (!isequipped(2782)) {
+		mes "[好奇的萨法]";
+		mes "����� �� ��？";
+		next;
+		mes "- 一个字都听不懂。 -";
+		close;
+	}
+	mes "[好奇的萨法]";
+	mes "你好？";
+	next;
+	switch(select("你在这里做什么？：购买研究项目。：你好！：我想帮助你的研究。")) {
+	case 1:
+		mes "[好奇的萨法]";
+		mes "你看到那边那个肮脏的义务警员了吗？";
+		next;
+		mes "[好奇的萨法]";
+		mes "他跌入圣甲虫大厅后遭到了圣甲虫的袭击。";
+		mes "即使周围有其他人，他也是唯一受到攻击的人。";
+		next;
+		mes "[好奇的萨法]";
+		mes "我认为他滑倒并跌倒在圣甲虫女王的分泌物上。我以为这是一场意外，正在调查此事。";
+		next;
+		mes "[好奇的萨法]";
+		mes "如果研究结果正确的话，那么圣甲虫对气味非常敏感。";
+		mes "或者说他们为此疯狂。就好像他们正在失去它一样......";
+		next;
+		mes "[好奇的萨法]";
+		mes "我是来研究女王分泌物成分和圣甲虫之间的关系的。";
+		mes "所以我把它做成了香水，方便携带。";
+		next;
+		mes "[好奇的萨法]";
+		mes "我或许可以利用这款香水对圣甲虫的反应，在研究上取得进展。";
+		close;
+	case 2:
+		if (checkweight(1201,1) == 0) {
+			mes "[好奇的萨法]";
+			mes "看来你空间不够啊";
+			close;
+		}
+		if (MaxWeight - Weight < 2000) {
+			mes "[好奇的萨法]";
+			mes "你的行李看起来已经太重了。";
+			close;
+		}
+		mes "[好奇的萨法]";
+		mes "您想购买圣甲虫香水吗？送回家的礼物？";
+		mes "嗯，它已经成为一种稀有的香水了。";
+		next;
+		mes "[好奇的萨法]";
+		mes "我给你一笔交易，每张卖 500 Zeny。但是，尽量不要带着它进入圣甲虫大厅。";
+		mes "你想要几个？您最多可以购买 100 个。";
+		next;
+		input .@input;
+		set .@deal, 500 * .@input;
+		if (.@deal == 0) {
+			mes "[好奇的萨法]";
+			mes "你改变主意了吗？";
+			close; 
+		}
+		if (Zeny < .@deal) {
+			mes "[好奇的萨法]";
+			mes "你没有足够的钱。";
+			close; 
+		}
+		mes "[好奇的萨法]";
+		mes "你会买吗"+.@input+"？";
+		next;
+		if(select("是：否") == 2) {
+			mes "[好奇的萨法]";
+			mes "你改变主意了吗？";
+			close;
+		}
+		set Zeny, Zeny - .@deal;
+		getitem 6437,.@input; //Scaraba_Perfume
+		mes "[好奇的萨法]";
+		mes "干得好。圣甲虫可能会聚集在你周围，所以不要在圣甲虫大厅附近使用它。";
+		close;
+	case 3:
+		mes "[好奇的萨法]";
+		mes "你好？你一定是个旅行者。这个地方很危险，所以请找到离开这个隧道的路。";
+		close;
+	case 4:
+		mes "[好奇的萨法]";
+		mes "你有什么有用的信息吗？";
+		mes "请告诉我！";
+		input .@str$;
+		next;
+		mes "[好奇的萨法]";
+		mes "它显示^0000FF"+.@str$+"^000000。";
+		next;
+		switch(rand(1,3)) {
+		case 1:
+			mes "[好奇的萨法]";
+			mes "这是很棒的信息！";
+			mes "我必须开始研究。";
+			close;
+		case 2:
+			mes "[好奇的萨法]";
+			mes "我已经知道这些信息了，但我真的很感谢你千里迢迢来到这里告诉我。";
+			close;
+		case 3:
+			mes "[好奇的萨法]";
+			mes "嗯……你也这么认为吗？";
+			mes "我对你的信息有些疑问。我会考虑一下。";
+			close;
+		}
+	}
+}
+
+sec_in02,16,43,5	script	Scaraba Dungeon Entrance	449,{
+	callfunc "F_GM_NPC";
+	mes "让你进入地牢。";
+	mes "如果密码正确就可以通过。";
+	if (callfunc("F_GM_NPC",1854,0) == 1) {
+		set ep13_3_secret,6;
+		getitem 2782,1; //Ring_Of_Wise_King
+		getitem 6437,2; //Scaraba_Perfume
+		mes "设置完成";
+	} else
+		mes "密码错误";
+	close;
+}
+
+// Vigilantes
+//============================================================
+-	script	Vigilante#main	-1,{
+	if (compare(strnpcinfo(0),"ep133_26")) {
+		if (!isequipped(2782)) {
+			mes "[守望者]";
+			mes "���� �� ������？";
+			mes "������ �� ������ ��������...";
+			next;
+			mes "治安维持者说了些什么，然后摇了摇头。";
+			mes "从他将盾牌举在身前的坚定姿势来看，似乎是一种负面反应。";
+			close;
+		}
+		mes "[守望者]";
+		mes "马努克就在我们前面。";
+		mes "您要去马努克吗？";
+		next;
+		if (select("是的。：没有。") == 1) {
+			mes "[守望者]";
+			mes "我会送你去马努克。";
+			close2;
+			warp "manuk",326,180;
+			end;
+		}
+		mes "[守望者]";
+		mes "祝你好运。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "[守望者]";
+		mes "���� �� ������？";
+		mes "������ �� ������ ��������...";
+		mes "......！";
+		next;
+		mes "无法与他沟通。";
+		close;
+	}
+	if (ep13_3_secret < 6) {
+		mes "下面的区域因危险而受到限制。";
+		mes "我不能让你过去，因为你是作为客人来到这里的。";
+		mes "请沿着隧道前往首都。";
+		close;
+	}
+	mes "[守望者]";
+	mes "你需要山洞里的东西吗？";
+	next;
+	if (select("是的。：没有。") == 1) {
+		mes "[守望者]";
+		mes "当心。";
+		close2;
+		warp "dic_dun02",101,142;
+		end;
+	}
+	mes "[守望者]";
+	mes "请靠边站，因为这很危险。";
+	mes "你不知道那些圣甲虫什么时候会开始横冲直撞。";
+	close;
+
+}
+dic_dun01,286,104,5	duplicate(Vigilante#main)	Vigilante#ep133_23	450
+dic_dun01,294,106,3	duplicate(Vigilante#main)	Vigilante#ep133_24	492
+dic_dun01,30,216,5	duplicate(Vigilante#main)	Vigilante#ep133_26	492
+
+dic_dun01,284,102,5	script	Dirty Vigilante#ep13_3	450,{
+	if (!isequipped(2782)) {
+		mes "[守望者]";
+		mes "�����������������������������С���。";
+		mes "......！";
+		next;
+		mes "一个字都听不懂。";
+		close;
+	}
+	if (ep13_3_secret < 6) {
+		mes "[守望者]";
+		mes "嘿！这里不适合像你这样的菜鸟。";
+		mes "那些甲虫可以把你抢走！";
+		close;
+	}
+	if (countitem(6437)) {
+		mes "[守望者]";
+		mes "你需要山洞里的东西吗？";
+		next;
+		if (select("是的。：没有。") == 1) {
+			mes "[守望者]";
+			mes "呃，这是什么味道？";
+			mes "当心。圣甲虫分泌物的气味被其他圣甲虫闻到了。";
+			next;
+			if (select("喷香水后进入：请勿进入，因为这很危险。") == 1) {
+				if (!countitem(6437)) {
+					mes "- 你的圣甲虫香水不见了。 -";
+					close;
+				}
+				mes "[守望者]";
+				mes "好的。那么祝你好运。当心。";
+				delitem 6437,1; //Scaraba_Perfume
+				close2;
+				warp "dic_dun03",101,142;
+				end;
+			}
+		}
+		mes "[守望者]";
+		mes "请靠边站，因为这很危险。";
+		mes "你不知道那些圣甲虫什么时候会开始横冲直撞。";
+		close;
+	}
+	mes "[守望者]";
+	mes "唷，发生什么事了？！为什么他们都在我身上？";
+	next;
+	mes "[守望者]";
+	mes "我已经很倒霉了，掉进了甲虫大厅，浑身都沾满了可怕的^FF0000恶臭^000000，我的头开始疼了！";
+	next;
+	mes "- 治安维持者一边抱怨着，一边擦去圣甲虫的痕迹。";
+	close;
+}
+
+mid_camp,216,246,0	script	#ep133_event03	139,2,2,{
+	end;
+OnTouch_:
+	if (ep13_3_secret == 23) {
+		donpcevent "Suspicious Guy#ep133_::OnEnable";
+		cutin "ep13_loki01",2;
+		mes "[低声]";
+		mes "嘿。";
+		mes "你是遇见新任命的迪卡斯特部长的人类吗？";
+		mes "他长什么样？";
+		next;
+		mes "你感到自己因此受到压力";
+		mes "可疑的家伙并开始自愿谈论阿哈特。";
+		next;
+		cutin "ep13_loki02",2;
+		mes "[黑衣人​​]";
+		mes "...真的吗？";
+		mes "你终于找到了。";
+		set ep13_3_secret, 24;
+		next;
+		cutin "",255;
+		donpcevent "Suspicious Guy#ep133_::OnDisable";
+		mes "黑衣男子突然消失了。";
+		mes "那是谁？";
+		close;
+	}
+	end;
+}
+
+mid_camp,218,250,3	script	Suspicious Guy#ep133_	494,{
+	mes "[可疑人物]";
+	mes ".....";
+	hideonnpc strnpcinfo(0);
+	close;
+OnInit:
+OnDisable:
+	hideonnpc strnpcinfo(0);
+OnEnable:
+	hideoffnpc "Suspicious Guy#ep133_";
+	end;
+}
+
+-	script	Guard#ep133_11	492,{
+	if (!isequipped(2782)) {
+		mes "[首都守卫]";
+		mes "���� �� ������？";
+		mes "......！";
+		next;
+		mes "- 无法与他沟通。 -";
+		close;	
+	}
+	if (ep13_3_invite < 5) {
+		mes "[首都守卫]";
+		mes "未经许可，其他种族不得进入该城市。";
+		mes "请回去吧。";
+		close;
+	}
+	else if (ep13_3_invite == 5) {
+		mes "[首都守卫]";
+		mes "未经许可，其他种族不得进入该城市。";
+		mes "请回去吧。";
+		next;
+		mes "[首都守卫]";
+		mes "嗯？你是人类。";
+		mes "如果你穿过那条隧道，你就是受拉维尔的邀请来到这里的？";
+		next;
+		select("是的。");
+		mes "[首都守卫]";
+		mes "难怪维汉纳斯认可你。";
+		mes "明白了。";
+		mes "我批准您的入学，并将指导您在 El Dicastes 中首先应该做什么。";
+		next;
+		mes "[首都守卫]";
+		mes "首先进入要塞，";
+		mes "并在位于北部最高位置的 Dicastes Diel 处登记。";
+		mes "您必须先注册才能自由行动。";
+		next;
+		mes "[首都守卫]";
+		mes "如果你沿着这里向北走，你就会看到迪尔。";
+		mes "你不会迷路的。";
+		mes "您需要在 Diel 公共服务中心找到登记窗口。";
+		close2;
+		warp "dicastes01",199,41;
+		end;
+	}
+	else if (ep13_3_invite > 5) {
+		mes "[首都守卫]";
+		mes "您要返回 El Dicastes 吗？";
+		next;
+		set .@m, select("是的。去城堡：不。") - 1;
+		mes "[首都守卫]";
+		mes "祝你好运。";
+		close2;
+		if (!.@m) warp "dicastes01",199,41;
+		end;
+	}
+	mes "[首都守卫]";
+	mes "发生了未知的情况。案件" + strnpcinfo(2);
+	mes "请向GM询问。";
+	close;
+}
+dic_fild01,146,281,5	duplicate(Guard#ep133_11)	Capital City Guard#1	492
+dic_fild01,153,281,3	duplicate(Guard#ep133_11)	Capital City Guard#2	450
+
+dic_in01,254,119,0	script	Item Storage#01	844,{
+	mes "这是物品存储。";
+	mes "纸上写着一些字。";
+	next;
+	mes "+ 谢伊的珍贵保险箱 +";
+	mes "对于那些想要使用这个保险箱的人！";
+	mes "1.我做的饭好吃吗？";
+	mes "2.你的基本功够多了吧？";
+	mes "3. 请为^0000FF500 Zeny^000000！";
+	next;
+	mes "你必须投入一些硬币才能使用它。";
+	mes "投入硬币：你愿意吗";
+	mes "投入 500 Zeny？";
+	next;
+	if(select("使用安全：没门。")==2) {
+		mes "["+strcharinfo(0)+"]";
+		mes "我稍后会用它。";
+		close; 
+	}
+	if (Zeny < 500) {
+		mes "泽尼不够。";
+		close; 
+	}
+	set Zeny, Zeny-500;
+	close2;
+	openstorage;
+	end;
+}
+
+sec_in02,10,42,1	script	13.3 Related Reset	449,{
+	callfunc "F_GM_NPC";
+	mes "[重置]";
+	mes "重置所有任务窗口，包括 13.3 的每日任务和地图任务。";
+	freeloop(1);
+	for(set .@i,12099; .@i<=12216; set .@i,.@i+1) {
+		if (checkquest(.@i) > -1)
+			erasequest .@i;
+	}
+	freeloop(0);
+	close;
+}
+
+// Civil Services
+//============================================================
+function	script	que_dic	{
+	.@type = getarg(0);
+	if (!.@type) {
+		if (checkquest(getarg(1),HUNTING) != 2) return;
+		mes getarg(3); 
+	}
+	else if (.@type == 1) {
+		if (checkquest(getarg(1)) == -1) return;
+		if (countitem(getarg(3)) < getarg(4)) {
+			mes "看来你的金额不够。";
+			close; 
+		}
+		mes getarg(5); 
+		mes getarg(6,"");
+		delitem getarg(3), getarg(4); 
+	}
+	else if (.@type == 2) {
+		for(set .@i,1; .@i<getargcount(); set .@i,.@i+1) {
+			if (checkquest(getarg(.@i)) >= 0)
+				erasequest getarg(.@i);
+		}
+		return;
+	}
+	getexp getarg(2),0;
+	erasequest getarg(1);
+	specialeffect2 EF_STEAL;
+	getitem 6304,1;
+	close;
+}
+
+dic_in01,48,263,5	script	Hunting Dept. 1 Manager	449,{
+	if (checkweight(1201,1) == 0) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[狩猎一部经理]";
+		mes "嗯...你在做什么？跟我有什么关系吗？";
+		close;
+	}
+	if (checkquest(12159,PLAYTIME) == -1) {
+		mes "[狩猎一部经理]";
+		mes "所以你没有得到";
+		mes "还没有任何请求。";
+		mes "拉庞特会有痔疮";
+		mes "的请求并可能给出";
+		mes "你一个。尝试去见见他。";
+		close;
+	}
+	else if (checkquest(12159,PLAYTIME) == 2) {
+		mes "[狩猎一部经理]";
+		mes "现有请求的时间限制已过。";
+		next;
+		mes "[狩猎一部经理]";
+		mes "如果发现任何不完整的请求，将视为您失败并删除该请求。";
+		next;
+		mes "[狩猎一部经理]";
+		mes "现有的请求记录被删除后，你可以得到新的请求，去看看Laponte。";
+		que_dic(2,12099,12100,12101,12102,12103,12104,12105,12159);
+		close;
+	}
+	mes "[狩猎一部经理]";
+	mes "欢迎。";
+	mes "我怎么帮你？";
+	next;
+	select("我完成了请求。");
+	mes "[狩猎一部经理]";
+	mes "啊...";
+	mes "您的请求完成了吗？";
+	mes "我先查一下你的记录。";
+	next;
+	mes "[狩猎一部经理]";
+	set .@s$, "Oh, you completed all your requests. Confirmation complete.";
+	que_dic(0,12099,4000,.@s$);
+	que_dic(0,12100,49000,.@s$);
+	que_dic(0,12101,18000,.@s$);
+	que_dic(0,12102,45000,.@s$);
+	que_dic(0,12103,4000,.@s$);
+	que_dic(0,12104,73000,.@s$);
+	que_dic(0,12105,59000,.@s$);
+	mes "一....." + strcharinfo(0) + "";
+	mes "如果您对请求撒谎，您就会有麻烦......";
+	close;
+}
+
+dic_in01,51,266,6	script	Hunting Dept. 2 Manager	449,{
+	if (checkweight(1201,1) == 0) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 100) {
+		mes "[狩猎二部经理]";
+		mes "哈哈，你还需要再训练一点才能和我一起工作。";
+		close;
+	}
+	if (checkquest(12160,PLAYTIME) == -1) {
+		mes "[狩猎二部经理]";
+		mes "所以你没有得到";
+		mes "还没有任何请求。";
+		mes "卡利波会长痔疮";
+		mes "的请求并可能给出";
+		mes "你一个。尝试找到他。";
+		close;
+	}
+	else if (checkquest(12160,PLAYTIME) == 2) {
+		mes "[狩猎二部经理]";
+		mes "卡利波似乎对你还有另一个要求。";
+		next;
+		mes "[狩猎二部经理]";
+		mes "我将删除所有其他记录，包括您之前尚未完成的 Kalipo 请求。";
+		next;
+		mes "[狩猎二部经理]";
+		mes "您的请求历史记录现已清除。请访问卡利波。";
+		que_dic(2,12106,12107,12108,12109,12110,12111,12160);
+		close;
+	}
+	mes "[狩猎二部经理]";
+	mes "欢迎。";
+	mes "我怎么帮你？";
+	next;
+	select("我完成了请求。");
+	mes "[狩猎二部经理]";
+	mes "啊...";
+	mes "您的请求完成了吗？";
+	mes "我先查一下你的记录。";
+	next;
+	mes "[狩猎二部经理]";
+	set .@s$, "Oh, you completed all your requests. Confirmation complete.";
+	que_dic(0,12106,77000,.@s$);
+	que_dic(0,12107,47000,.@s$);
+	que_dic(0,12108,50000,.@s$);
+	que_dic(0,12109,53000,.@s$);
+	que_dic(0,12110,30000,.@s$);
+	que_dic(0,12111,42000,.@s$);
+	mes "嗯.." + strcharinfo(0) + "";
+	mes "请再次检查您的请求历史记录。我们的文件有差异。";
+	close;
+}
+
+dic_in01,51,270,7	script	Supply Dept. 1 Manager	449,{
+	if (checkweight(1201,1) == 0) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[供应一部经理]";
+		mes "你必须足够强大才能对付供应一部。";
+		close;
+	}
+	if (checkquest(12161,PLAYTIME) == -1) {
+		mes "[供应一部经理]";
+		mes "所以你没有得到";
+		mes "还没有任何请求。";
+		mes "普拉会有痔疮";
+		mes "的请求并可能给出";
+		mes "你一个。尝试去见见他。";
+		close;
+	}
+	else if (checkquest(12161,PLAYTIME) == 2) {
+		mes "[供应一部经理]";
+		mes "普拉正在找你。";
+		next;
+		mes "[供应一部经理]";
+		mes "我删除了与先前请求相关的所有记录。去见普拉。";
+		next;
+		que_dic(2,12117,12118,12119,12120,12121,12122,12123,12124,12125,12126,12161);
+		close;
+	}
+	mes "[供应一部经理]";
+	mes "欢迎。";
+	mes "我怎么帮你？";
+	next;
+	select("我完成了请求。");
+	mes "[供应一部经理]";
+	mes "啊...";
+	mes "您的请求完成了吗？";
+	mes "我先查一下你的记录。";
+	next;
+	mes "[供应一部经理]";
+	set .@s$, "It's done. You can't start any other request till tomorrow, why don't you go to the famous pub and rest?";
+	que_dic(1,12117,26300,6086,6,.@s$);
+	que_dic(1,12118,25600,6090,3,.@s$);
+	que_dic(1,12119,51100,6073,16,.@s$);
+	que_dic(1,12120,26300,1037,6,.@s$);
+	que_dic(1,12121,79900,7032,26,.@s$);
+	que_dic(1,12122,26300,6075,6,.@s$);
+	que_dic(1,12123,79900,7326,26,.@s$);
+	que_dic(1,12124,53000,12353,1,.@s$);
+	que_dic(1,12125,56700,936,18,.@s$);
+	que_dic(1,12126,37500,954,11,.@s$);
+	mes "找不到任何记录...";
+	mes "没什么...我没什么可以说的^990000请求已完成！^000000。";
+	close;
+}
+
+dic_in01,48,273,8	script	Supply Dept. 2 Manager	449,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[供应二部经理]";
+		mes "没办法，供应二部的工作你这个孱弱的身体是受不了的。";
+		close;
+	}
+	if (checkquest(12162,PLAYTIME) == -1) {
+		mes "[供应二部经理]";
+		mes "所以你没有得到";
+		mes "还没有任何请求。";
+		mes "特拉吉​​斯会有痔疮";
+		mes "的请求并可能给出";
+		mes "你一个。尝试去见见他。";
+		close;
+	}
+	else if (checkquest(12162,PLAYTIME) == 2) {
+		mes "[供应二部经理]";
+		mes "我删除了与先前请求相关的所有记录。特拉吉​​斯正在找你，所以快点去见他吧。";
+		next;
+		que_dic(2,12127,12128,12129,12130,12131,12132,12133,12134,12135,12136,12162);
+		close;
+	}
+	mes "[供应二部经理]";
+	mes "欢迎。";
+	mes "我怎么帮你？";
+	next;
+	select("我完成了请求。");
+	mes "[供应二部经理]";
+	mes "啊...";
+	mes "您的请求完成了吗？";
+	mes "我先查一下你的记录。";
+	next;
+	mes "[供应二部经理]";
+	set .@s$, "" + strcharinfo(0) + ", you handle your requests quite well. You are not like the pub owner who just sends requests here every day.";
+	que_dic(1,12127,65300,6023,5,.@s$);
+	que_dic(1,12128,65300,6020,21,.@s$);
+	que_dic(1,12129,82800,1042,27,.@s$);
+	que_dic(1,12130,79900,912,26,.@s$);
+	que_dic(1,12131,42800,943,13,.@s$);
+	que_dic(1,12132,51100,6041,16,.@s$);
+	que_dic(1,12133,79900,7100,26,.@s$);
+	que_dic(1,12134,37500,7198,11,.@s$);
+	que_dic(1,12135,51100,7188,16,.@s$);
+	que_dic(1,12136,31000,518,2,.@s$);
+	mes "我想为您完成一个请求，但您现在没有任何进展。";
+	close;
+}
+
+dic_in01,43,273,1	script	Transport Dept. 1 Mgr	449,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[交通一部经理]";
+		mes "你没有资格。以你的体力在交通一部干不了一天的。";
+		close;
+	}
+	if (checkquest(12163,PLAYTIME) == -1) {
+		mes "[交通一部经理]";
+		mes "所以你没有得到";
+		mes "还没有任何请求。";
+		mes "卡里昂会有桩";
+		mes "的请求并可能给出";
+		mes "你一个。尝试去见见他。";
+		close;
+	}
+	else if (checkquest(12163,PLAYTIME) == 2) {
+		mes "[交通一部经理]";
+		mes "我删除了与先前请求相关的所有记录。卡里昂正在找你，所以赶快去见他吧。";
+		next;
+		que_dic(2,12137,12138,12139,12140,12141,12142,12143,12144,12145,12146,12147,12163);
+		close;
+	}
+	mes "[交通一部经理]";
+	mes "欢迎。";
+	mes "我怎么帮你？";
+	next;
+	select("我完成了请求。");
+	mes "[交通一部经理]";
+	mes "啊...";
+	mes "您的请求完成了吗？";
+	mes "我先查一下你的记录。";
+	next;
+	mes "[交通一部经理]";
+	set .@s$, "Quantity check finished. Ahhh, you going to rest? Then why don't you visit the famous pub of the Capital? They have no yummy food though....";
+	que_dic(1,12137,30000,7143,4,.@s$);
+	que_dic(1,12138,25000,744,5,.@s$);
+	que_dic(1,12139,47500,748,1,.@s$);
+	que_dic(1,12140,27500,736,15,.@s$);
+	que_dic(1,12141,27000,746,10,.@s$);
+	que_dic(1,12142,27500,740,15,.@s$);
+	que_dic(1,12143,21600,925,50,.@s$);
+	que_dic(1,12144,21400,965,50,.@s$);
+	que_dic(1,12145,20900,964,20,.@s$);
+	que_dic(1,12146,22400,911,30,.@s$);
+	que_dic(1,12147,20800,910,40,.@s$);
+	mes "嗯……你想让我做什么？";
+	next;
+	mes "[交通一部经理]";
+	mes "....";
+	next;
+	mes "[交通一部经理]";
+	mes "你没有什么是我能应付的...";
+	close;
+}
+
+dic_in01,40,270,2	script	Transport Dept. 2 Mgr	449,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[交通二部经理]";
+		mes "你没有资格。以你的体力在交通二部干不了一天的。";
+		close;
+	}
+	if (checkquest(12164) == -1) {
+		mes "[交通二部经理]";
+		mes "所以你没有得到";
+		mes "还没有任何请求。";
+		mes "莫尔图卡会有痔疮";
+		mes "的请求并可能给出";
+		mes "你一个。尝试去见见他。";
+		close;
+	}
+	else if (checkquest(12164,PLAYTIME) == 2) {
+		mes "[交通二部经理]";
+		mes "我删除了与先前请求相关的所有记录。莫尔图卡正在找你，所以快点去见他吧。";
+		next;
+		que_dic(2,12148,12149,12150,12151,12152,12153,12154,12155,12156,12157,12158,12164);
+		close;
+	}
+	mes "[交通二部经理]";
+	mes "欢迎。";
+	mes "我怎么帮你？";
+	next;
+	select("我完成了请求。");
+	mes "[交通二部经理]";
+	mes "啊...";
+	mes "您的请求完成了吗？";
+	mes "我先查一下你的记录。";
+	next;
+	mes "[交通二部经理。]";
+	set .@s$, "Well received. One less thing to worry about now.";
+	que_dic(1,12148,23000,528,100,.@s$);
+	que_dic(1,12149,20750,512,100,.@s$);
+	que_dic(1,12150,20750,515,100,.@s$);
+	que_dic(1,12151,20750,535,100,.@s$);
+	que_dic(1,12152,24500,516,50,.@s$);
+	que_dic(1,12153,20750,513,100,.@s$);
+	que_dic(1,12154,21250,517,50,.@s$);
+	que_dic(1,12155,24000,737,20,.@s$);
+	que_dic(1,12156,20037,747,5,.@s$);
+	que_dic(1,12157,23000,6265,2,.@s$);
+	que_dic(1,12158,23000,6264,2,.@s$);
+	mes "这是我在这个部门工作 200 年来第一次有人回来完成一个请求而没有开始任何请求。";
+	close;
+}
+
+
+dic_in01,40,193,1	script	Papyrus#0001	453,{
+	if (!checkweight(1201,1)) {
+		mes "您的库存中有太多物品。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "你的库存太重了。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了...";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "即使您可以阅读这些文档，您也不需要它们。看来你还没有得到足够的训练";
+		close;
+	}
+	set .@map_hi, rand(1,4);
+	mes "[纸莎草纸]";
+	if (.@map_hi == 1) mes "欢迎，我是Papyrus，这里档案室的经理。";
+	else if (.@map_hi == 2) mes "访问档案室的冒险者数量增加";
+	else if (.@map_hi == 3) mes "这就是古代萨法祖先创造历史的地方";
+	else mes "档案室拥有超越米德加德和阿斯加德的超凡知识";
+	next;
+	if (countitem(6308) > 29) {
+		mes "[纸莎草纸]";
+		mes "噢……你带回了很多不为人知的遗物";
+		next;
+		mes "[纸莎草纸]";
+		mes "我们用 11 个 Sapha 证书交换 30 个未知文物。你想交换吗？";
+		next;
+		if (select("下一次：立即兑换") == 1) {
+			mes "[纸莎草纸]";
+			mes "好吧，随你的便吧。如果你改变主意我就在这里";
+			close;
+		}
+		mes "[纸莎草纸]";
+		mes "好的，这是您的 11 项 Sapha 认证。";
+		delitem 6308,30; //Unidentified_Relic
+		getitem 6304,11; //Sapa_Feat_Cert
+		close;
+	}
+	if (countitem(6308) > 2) {
+		mes "[纸莎草纸]";
+		mes "哇~";
+		mes "你发现了一个未知的遗迹。";
+		mes "您想用它换取 1 个 Sapha 认证吗？";
+		next;
+		if (select("下一次：立即兑换") == 1) {
+			mes "[纸莎草纸]";
+			mes "好吧，随你的便吧。如果你改变主意我就在这里";
+			close;
+		}
+		mes "[纸莎草纸]";
+		mes "好的，这是您的 1 Sapha 认证。";
+		delitem 6308,3; //Unidentified_Relic
+		getitem 6304,1; //Sapa_Feat_Cert
+		close;
+	}
+	mes "[纸莎草纸]";
+	mes "我怎么帮你？";
+	next;
+	switch (select("这个地方是做什么用的？ :如何查看文档？:什么是未知文物？")) {
+		case 1:
+			mes "[纸莎草纸]";
+			mes "这是一个重要的地方，保存着我们远古祖先以来收集的各种文物的数据。";
+			next;
+			mes "[纸莎草纸]";
+			mes "可以说它类似于人类的博物馆。花点时间浏览一下我们的古代记录。";
+			next;
+			mes "[纸莎草纸]";
+			mes "您永远不会知道是否会找到吸引您冒险目光的东西。";
+			break;
+		case 2:
+			mes "[纸莎草纸]";
+			mes "有些文档是用古萨法语言编写的，因此人们很难查看所有文档。";
+			next;
+			mes "[纸莎草纸]";
+			mes "你可以在我站的左边找到最近的文档。";
+			mes "您还可以对您感兴趣的文档做笔记。";
+			next;
+			mes "[纸莎草纸]";
+			mes "如果你能用你在这里的笔记带回你在探索时碰巧发现的任何未知遗迹，我将不胜感激。";
+			break;
+		case 3:
+			mes "[纸莎草纸]";
+			mes "未知文物是指尚未被证实的文物，对我们来说是有价值的研究资料。";
+			next;
+			mes "[纸莎草纸]";
+			mes "我们很多研究人员都在通过远古遗迹来研究生与死、宇宙的诞生与灭绝";
+			next;
+			mes "[纸莎草纸]";
+			mes "如果你找到并带给我一件未知的遗物，作为交换，你每带来一个^9900993个未知遗物^000000，我就会给你^9900991个Sapha认证^000000。";
+			next;
+			mes "[纸莎草纸]";
+			mes "如果你带了^99009930件遗物^000000，我将用它来兑换^99009911个Sapha认证^000000。";
+			break;
+	}
+	close;
+}
+
+// Document Packages
+//============================================================
+-	script	Document Package#main	-1,{
+	function	eldicastes_dp;
+	if (isequipped(2782) < 1) {
+		mes "你无法理解所写的内容。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "这个文档档案对于任何有足够冒险家经验的人来说似乎没有任何价值。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "当您尝试打开并阅读文档时，Sapha 经理会示意给 Guard Galten 打电话。我们快点离开这里吧。";
+		close;
+	}
+	if (checkquest(12165,PLAYTIME) == 2) {
+		mes "感觉好一点了";
+		erasequest 12165;
+		close;
+	}
+	else if (checkquest(12165,PLAYTIME) != -1) {
+		mes "呃……光是盯着文档就感觉头晕。冷却后会回来";
+		close;
+	}
+	specialeffect2 EF_DISPELL;
+	progressbar "ffff00",4;
+	set .@doc,rand(1,70);
+	if (.@doc > 50 && .@doc <= 60) {
+		mes "没有任何文件看起来有什么异常。";
+		close;
+	} else if (.@doc > 60 && .@doc <= 70) {
+		mes "你突然感到恶心。你感觉这种情况不会很快消失。找到文件还需要等待。";
+		setquest 12165;
+		close; 
+	}
+	else if (.@doc == 1) eldicastes_dp(12209,"Horn","Hard wedge-like horn from some insects. Doesn't have much practical use.","");
+	else if (.@doc == 2) eldicastes_dp(12195,"Horrendous Mouth","Tooth from a dead body.","Important material for research on time of death and health conditions. Useful in discovering human ecology.");
+	else if (.@doc == 3) eldicastes_dp(12186,"Orc's Fangs","Green skinned monster living in the woods. The creature is humanlike but is very hostile to humans.","Known to have a friendly relationship between the two races long ago.");
+	else if (.@doc == 4) eldicastes_dp(12172,"Frog Eggs","An egg from an amphibian living in warm areas. Unknown if this egg can hatch in Manuk's cold regions.","");
+	else if (.@doc == 5) eldicastes_dp(12208,"Snail's Shells","Hard Carapace that protects the body of a huge snail. Creature fun to research out of pure curiousity.","");
+	else if (.@doc == 6) eldicastes_dp(12188,"Powder of Butterfly","Powder from the winged insects from Midgard. Some humans use it for makeup or medicine.","");
+	else if (.@doc == 7) eldicastes_dp(12167,"Reptile Tongue","Tongue of a monster living in the desert terrain of Midgard. Often used as medicine after drying.","");
+	else if (.@doc == 8) eldicastes_dp(12168,"Scorpion Tail","Poisonous reptile tail from a creature living in the deserts.","Records say that humans can lose their life when attacked.");
+	else if (.@doc == 9) eldicastes_dp(12173,"Jellopy","Unknown substance in Manuk regions but found throughout Midgard.","Research required to see possibilities on using it for construction material.");
+	else if (.@doc == 10) eldicastes_dp(12166,"Tree Root","Humans are using this for firewood or construction material. Found commonly in the woods of Midgard.","");
+	else if (.@doc == 11) eldicastes_dp(12169,"Stem","There is nothing like Midgard plants in Manuk.","These plants are used for food and medicine and some are even poisonous.");
+	else if (.@doc == 12) eldicastes_dp(12170,"Pointed Scale","Stem from a bumpy life form. Research required as the usage is unknown.","");
+	else if (.@doc == 13) eldicastes_dp(12171,"Resin","Sap from an old tree collected and solidified. Very valuable in the human world.","");
+	else if (.@doc == 14) eldicastes_dp(12174,"Fish Tail","Humans eat meat called fish.","Can be used as important food supply for foreign adventurers visiting in the city.");
+	else if (.@doc == 15) eldicastes_dp(12175,"Worm Peeling","They say some Worm Peelings are valuable.","But this is based on the human's standard of value. Research required.");
+	else if (.@doc == 16) eldicastes_dp(12176,"Gill","There are Midgard creatures that live in the sea and breathe through gills.","Further research on their ecology will be useful.");
+	else if (.@doc == 17) eldicastes_dp(12177,"Tooth of Bat","Traces of a nocturnal creature unknown to Manuk. Not a strong creature from the size of its teeth.","");
+	else if (.@doc == 18) eldicastes_dp(12178,"Fluff","Many of Midgard creatures are covered with soft hair.","Hair can be used as great cold protection. Further research required.");
+	else if (.@doc == 19) eldicastes_dp(12179,"Chrysalis","Large insect sack that is alive and contains who knows what.","Not active at all but the life structure within it is very unique and worth researching.");
+	else if (.@doc == 20) eldicastes_dp(12180,"Feather of Birds","Bird feather located throughout Midgard.","The feathers aren't great for cold protection but can be used as decorative accessories or tools for writing.");
+	else if (.@doc == 21) eldicastes_dp(12181,"Talon","Pointy talon convenient for making holes or simple accessories.","Very useful with the nails from large creatures from Manuk.");
+	else if (.@doc == 22) eldicastes_dp(12182,"Sticky Webfoot","Strange body structure found from Midgard amphibians. Evolved to better adapt to ocean life.","");
+	else if (.@doc == 23) eldicastes_dp(12183,"Animal Skin","Leather from a mammal.","Very warm and soft and can be used in various ways. Processed in Midgard and valuable.");
+	else if (.@doc == 24) eldicastes_dp(12184,"Wolf Claw","Claw from a creature called wolf.","Usage is unknown but many curious Saphas are taking an interest in it.");
+	else if (.@doc == 25) eldicastes_dp(12185,"Mushroom Spore","Spores from a mushroom found throughout Midgard.","Looks like it can be cultivated here with a little research.");
+	else if (.@doc == 26) eldicastes_dp(12187,"Evil Horn","Item made from Evil Horns that appear in areas that aren't holy.","Sold at a high price but doesn't seem to be practical.");
+	else if (.@doc == 27) eldicastes_dp(12214,"Cactus Needle","Surface of a plant that survives in deserts with almost no moisture.","");
+	else if (.@doc == 28) eldicastes_dp(12189,"Bill of Birds","Pointy bill convenient for making holes or simple accessories. Looks similar to bird claws.","");
+	else if (.@doc == 29) eldicastes_dp(12190,"Snake Scale","Scales from a reptile that moves without legs.","Scales are shed from the creature and are used for simple craftwork.");
+	else if (.@doc == 30) eldicastes_dp(12191,"Insect Feeler","Bug feeler from an insect with keen nerves.","Research subject for its unique structure different from Manuk creatures.");
+	else if (.@doc == 31) eldicastes_dp(12192,"Immortal Heart","Heart that never stops beating. Obtained from mystical creatures called mermaids.","The driving force of the heart is still unknown and worth researching.");
+	else if (.@doc == 32) eldicastes_dp(12193,"Rotten Bandage","Bandage used for dead bodies. Looks like humans believed in the dead coming back for their bodies.","");
+	else if (.@doc == 33) eldicastes_dp(12194,"Decayed Nail","Nail from a dead body. Important material for research on time of death and health conditions.","Useful in discovering human ecology.");
+	else if (.@doc == 34) eldicastes_dp(12215,"Stone Heart","They say a huge stone in a dead area in Midgard moves by itself.","The heart of the huge stone would be a rare research subject.");
+	else if (.@doc == 35) eldicastes_dp(12196,"Tentacle","Feeler from ocean creatures. Unlike those from insects, these show active movement.","");
+	else if (.@doc == 36) eldicastes_dp(12197,"Shell","Shell protecting insects or crustacean creatures.","These creatures have a shell surrounding their skin and are very flexible in movement. Worth researching.");
+	else if (.@doc == 37) eldicastes_dp(12198,"Scale Shell","Shiny scales found from some reptiles.","The fluorescent substance contained on the surface can be used in various places.");
+	else if (.@doc == 38) eldicastes_dp(12199,"Venom Canine","Canine tooth with poison. Humans use this to make weapons for killing.","");
+	else if (.@doc == 39) eldicastes_dp(12200,"Sticky Mucus","Sticky liquid with a bit of viscosity left.","Can be used as key material for construction and currently is used for some Manuk architecture style. Commonly found throughout Midgard.");
+	else if (.@doc == 40) eldicastes_dp(12201,"Bee Sting","Stinger taken from a living insect.","Some humans use it for medical treatment for its medicinal effect.");
+	else if (.@doc == 41) eldicastes_dp(12202,"Grasshopper's Leg","Back legs of an insect that can leap far. Fun to research its structure.","");
+	else if (.@doc == 42) eldicastes_dp(12203,"Royal Jelly","A kind of wonder drug collected from a queen bee.","Humans love this but no efficacy found for Manuk.");
+	else if (.@doc == 43) eldicastes_dp(12204,"Yoyo Tail","Tail from a humanlike creature.","Research on why humans do not have this trace on them would be amusing but would hurt current alliance with the humans.");
+	else if (.@doc == 44) eldicastes_dp(12205,"Solid Shell","Shell evolved by some kind of environmental factor.","This can be great material to make various tool or armory.");
+	else if (.@doc == 45) eldicastes_dp(12206,"Yam","Edible when ripe, yellow food.","Humans like this very much. Haven't tried it yet but smells like ripe sweet Potatoes.");
+	else if (.@doc == 46) eldicastes_dp(12207,"Raccoon Leaf","They say there is an animal that can change its form with this pasted on it.","Worth research to validate if this rumor is true.");
+	else if (.@doc == 47) eldicastes_dp(12210,"Bear's Footskin","Humans collect hunted bear paws.","Usage is unknown. The humans that collect the paws are subjects for research.");
+	else if (.@doc == 48) eldicastes_dp(12211,"Feather","Warm hair as soft as downy hair.","Must be used for cold protection. Collectable throughout Midgard.");
+	else if (.@doc == 49) eldicastes_dp(12212,"Red Herb","Kind of medicinal red plant.","Humans use this to make recovery medicine. Plant worth researching.");
+	else if (.@doc == 50) eldicastes_dp(12213,"Carrot","Red colored plant. Pub owner requests it all the time. Worth research.","");
+	close;
+
+	function	eldicastes_dp	{
+		if (checkquest(getarg(0)) >= 0) {
+			mes "您已找到已有的文档。";
+			close;
+		}
+		mes "^660066"+getarg(2)+"^000000";
+		mes "^660066"+getarg(3)+"^000000";
+		next;
+		mes "您已找到有关 ^990099"+getarg(1)+"^000000 的文档。请在^800080任务窗口^000000中查看详细信息。";
+		specialeffect2 EF_STEAL;
+		setquest getarg(0);
+		close; 
+	}
+}
+dic_in01,31,192,0	duplicate(Document Package#main)	Document Package#0001	844
+dic_in01,31,187,0	duplicate(Document Package#main)	Document Package#0002	844
+dic_in01,25,192,0	duplicate(Document Package#main)	Document Package#0003	844
+dic_in01,25,187,0	duplicate(Document Package#main)	Document Package#0004	844
+
+// Unknown Relics
+//============================================================
+function	script	unknown_d	{
+	if (checkquest(getarg(0)) == -1) {
+		mes "可以看到一些挖掘的痕迹。";
+		close;
+	}
+	specialeffect2 EF_SPRINKLESAND;
+	specialeffect2 EF_BEGINSPELL_N1;
+	progressbar "ffff00",4;
+	erasequest getarg(0);
+	mes "您可以找到有关"+getitemname(getarg(1))+".";
+	specialeffect2 EF_STEAL;
+	getitem getarg(1),rand(1,4);
+	if (!rand(2)) {
+		next;
+		mes "此外，你还获得了一件未知的圣物，可以向萨法斯报告。";
+		specialeffect2 EF_STEAL;
+		getitem 6308,1; //Unidentified_Relic
+	}
+	close;
+}
+pay_fild03,144,95,0	script	Tree Roots	844,{ unknown_d(12166,902); }
+prt_fild09,371,255,0	script	Reptile Tongues	844,{ unknown_d(12167,903); }
+prt_fild09,352,241,0	script	Scorpion Tails	844,{ unknown_d(12168,904); }
+pay_fild02,177,108,0	script	Stems	844,{ unknown_d(12169,905); }
+pay_fild02,105,113,0	script	Pointed Scales	844,{ unknown_d(12170,906); }
+pay_fild01,152,171,0	script	Resin	844,{ unknown_d(12171,907); }
+gef_fild01,104,111,0	script	Spawn	844,{ unknown_d(12172,908); }
+prt_fild08,299,332,0	script	Jellopy	844,{ unknown_d(12173,909); }
+izlude,136,160,0	script	Fish Tails	844,{ unknown_d(12174,1023); }	// Old coordinates: (132,136)
+izlude_a,136,160,0	script	Fish Tails#a	844,{ unknown_d(12174,1023); }
+izlude_b,136,160,0	script	Fish Tails#b	844,{ unknown_d(12174,1023); }
+izlude_c,136,160,0	script	Fish Tails#c	844,{ unknown_d(12174,1023); }
+izlude_d,136,160,0	script	Fish Tails#d	844,{ unknown_d(12174,1023); }
+prt_fild05,303,169,0	script	Worm Peelings	844,{ unknown_d(12175,955); }
+iz_dun03,155,165,0	script	Gills	844,{ unknown_d(12176,956); }
+mjo_dun01,222,226,0	script	Tooth of Bat	844,{ unknown_d(12177,913); }
+prt_fild06,182,290,0	script	Fluff	844,{ unknown_d(12178,914); }
+prt_fild06,127,85,0	script	Chrysalis	844,{ unknown_d(12179,915); }
+moc_fild07,201,360,0	script	Feather of Bird	844,{ unknown_d(12180,916); }
+moc_fild12,116,122,0	script	Talons	844,{ unknown_d(12181,917); }
+prt_fild04,315,245,0	script	Sticky Webfoot	844,{ unknown_d(12182,918); }
+mjolnir_08,108,99,0	script	Animal Skin	844,{ unknown_d(12183,919); }
+moc_fild03,175,201,0	script	Wolf Claws	844,{ unknown_d(12184,920); }
+pay_fild08,188,153,0	script	Mushroom Spores	844,{ unknown_d(12185,921); }
+gef_fild03,251,109,0	script	Orc's Fangs	844,{ unknown_d(12186,922); }
+c_tower2,170,9,0	script	Evil Horns	844,{ unknown_d(12187,923); }
+gef_fild05,111,96,0	script	Powder of Butterfly	844,{ unknown_d(12188,924); }
+moc_fild11,237,273,0	script	Bill of Birds	844,{ unknown_d(12189,925); }
+pay_fild06,306,233,0	script	Snake Scales	844,{ unknown_d(12190,926); }
+pay_fild07,126,49,0	script	Insect Feelers	844,{ unknown_d(12191,928); }
+iz_dun02,112,96,0	script	Immortal Hearts	844,{ unknown_d(12192,929); }
+moc_pryd02,134,112,0	script	Rotten Bandages	844,{ unknown_d(12193,930); }
+moc_pryd02,36,75,0	script	Decayed Nails	844,{ unknown_d(12194,957); }
+moc_pryd02,148,184,0	script	Horrendous Mouths	844,{ unknown_d(12195,958); }
+iz_dun01,210,77,0	script	Tentacles	844,{ unknown_d(12196,962); }
+iz_dun01,191,92,0	script	Shells	844,{ unknown_d(12197,935); }
+mjolnir_04,191,154,0	script	Scale Shells	844,{ unknown_d(12198,936); }
+mjolnir_04,162,168,0	script	Venom Canines	844,{ unknown_d(12199,937); }
+prt_fild02,102,97,0	script	Sticky Mucus	844,{ unknown_d(12200,938); }
+mjolnir_09,99,100,0	script	Bee Stings	844,{ unknown_d(12201,939); }
+prt_fild07,76,122,0	script	Grasshopper's Legs	844,{ unknown_d(12202,940); }
+prt_fild03,64,35,0	script	Royal Jelly	844,{ unknown_d(12203,526); }
+prt_fild03,180,163,0	script	Yoyo Tails	844,{ unknown_d(12204,942); }
+prt_fild03,226,170,0	script	Solid Shells	844,{ unknown_d(12205,943); }
+prt_fild03,262,201,0	script	Nice Sweet Potato	844,{ unknown_d(12206,549); }
+prt_fild03,284,190,0	script	Raccoon Leaf	844,{ unknown_d(12207,945); }
+gef_fild09,67,46,0	script	Snail's Shells	844,{ unknown_d(12208,946); }
+prt_fild03,366,237,0	script	Horns	844,{ unknown_d(12209,947); }
+pay_fild07,269,164,0	script	Bear's Footskin	844,{ unknown_d(12210,948); }
+prt_fild02,142,116,0	script	Feathers	844,{ unknown_d(12211,949); }
+prt_fild02,97,209,0	script	Red Herbs	844,{ unknown_d(12212,507); }
+prt_fild02,280,328,0	script	Carrots	844,{ unknown_d(12213,515); }
+moc_fild01,169,62,0	script	Cactus Needles	844,{ unknown_d(12214,952); }
+cmd_fild08,324,163,0	script	Stone Hearts	844,{ unknown_d(12215,953); }
+
+dic_in01,138,225,3	script	Diel Guard#ep133_19	492,{
+	if (!isequipped(2782)) {
+		mes "[迪尔守卫]";
+		mes "���� �� ������？";
+		mes "������ �� ������ ��������...";
+		mes "......！";
+		next;
+		mes "无法与他沟通。";
+		close;
+	}
+	if (ep13_3_secret < 13) {
+		mes "[迪尔守卫]";
+		mes "你不能走得更远。";
+		mes "这是最高部长的办公室。";
+		mes "只有获得许可的人才能进入。";
+		mes "请回去吧。";
+		close;
+	}
+	else if (ep13_3_secret == 13) {
+		mes "[迪尔守卫]";
+		mes "请停下来。";
+		mes "只有获得许可的人才能进入。";
+		next;
+		if (select("我得到许可了：回去吧。") == 1) {
+			mes "[迪尔守卫]";
+			mes "等待...";
+			mes strcharinfo(0) + "……啊……我在名单上看到你的名字了。";
+			mes "对不起。";
+			mes "请通过。";
+			close2;
+			warp "dic_in01",241,177;
+			end;
+		}
+		mes "[迪尔守卫]";
+		mes "叹...";
+		mes "请理解。";
+		mes "有很多人试图与部长会面。";
+		mes "这就是为什么安全性很重。";
+		close;
+	}
+	else if (ep13_3_secret > 13) {
+		mes "[迪尔守卫]";
+		mes "啊，你是" + strcharinfo(0) + "..";
+		mes "我收到阿哈特的命令，随时让你通过。";
+		mes "请上去。";
+		close2;
+		warp "dic_in01",241,177;
+		end;
+	}
+	mes "[迪尔守卫]";
+	mes "你不能走得更远。";
+	mes "这是最高部长的办公室。";
+	mes "只有获得许可的人才能进入。";
+	mes "请回去吧。";
+	close;
+}
+
+dic_in01,242,182,0	script	Elevator#5f_to_4f	844,{
+	select("行政办公室");
+	warp "dic_in01",138,221;
+	end;
+}
+
+dic_in01,263,193,3	script	Diel Guard#ep133_20	450,{
+	if (!isequipped(2782)) {
+		mes "[迪尔守卫]";
+		mes "���� �� ������？";
+		mes "������ �� ������ ��������...";
+		mes "......！";
+		next;
+		mes "无法与他沟通。";
+		close;
+	}
+	if (ep13_3_secret < 13) {
+		mes "[迪尔守卫]";
+		mes "请停下来。";
+		mes "你不能走得更远。";
+		close;
+	}
+	else if ((ep13_3_secret > 11) && (ep13_3_secret < 19)) {
+		mes "[迪尔守卫]";
+		mes "你是来见阿哈特的吗？";
+		mes "你在名单上。";
+		close2;
+		warp "dic_in01",299,251;
+		end;
+	}
+	else if (ep13_3_secret > 18) {
+		if (ep13_3_ahtdayq == 1) {
+			mes "[迪尔守卫]";
+			mes "你刚办完阿哈特的事回来吗？";
+			mes "他正在里面等着。";
+			mes "请进去。";
+		}
+		else if (countitem(6304) > 0) {
+			mes "[迪尔守卫]";
+			mes "你是来见阿哈特的吗？";
+			mes "你在名单上。";
+			mes "请进去。";
+			delitem 6304,1; //Sapa_Feat_Cert
+		}
+		else {
+			mes "[迪尔守卫]";
+			mes "您需要 1 个漏洞利用认证才能满足 Ahat。";
+			mes "至少这对你来说是一种特殊的待遇。";
+			close;
+		}
+		close2;
+		warp "dic_in01",299,251;
+		end;
+	}
+	mes "[迪尔守卫]";
+	mes "这是禁区。";
+	mes "您需要获得许可才能进一步进行。";
+	close;
+}
+
+dic_in01,299,268,0	script	#ep133_event01	139,4,4,{
+	end;
+OnTouch:
+	if (ep13_3_secret == 13) {
+		mes "一进房间就有人";
+		mes "压低你的头，迫使你鞠躬。";
+		soundeffect "wander_man_move.wav",0;
+		sc_start SC_Blind,60000,0;
+		next;
+		mes "[铃声]";
+		mes "很好，柴郡。";
+		mes "你是来看我的吗？";
+		next;
+		mes "[铃声]";
+		mes "抬起你的头，靠近一点。";
+		mes "对话应该通过眼神交流进行。";
+		next;
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),1;
+		mes "听到阿哈特的声音你抬起头";
+		mes "但你看到一个穿着高级萨法服装的人类出现在你面前。";
+		sc_end SC_Blind;
+		emotion ET_HUK, playerattached();
+		set ep13_3_secret, 14;
+		erasequest 7198;
+		close2;
+		cutin "",255;
+	}
+	end;
+}
+
+dic_in01,294,276,5	script	Secret Adjutant#ep133_2	498,{
+	// if ((GetInventoryRemainCount 1301 3 == 2) || (GetInventoryRemainCount 1301 3 == 3)) {
+	if ((MaxWeight - Weight) < 1000) {
+		mes "- 你可以携带太多物品来继续任务。 -";
+		close;
+	}
+	cutin "ep13_cheshire_h",0;
+	if (ep13_3_secret < 16) {
+		mes "[柴郡]";
+		mes "........";
+		mes "........哼。";
+		close2;
+	}
+	else if (ep13_3_secret == 16) {
+		mes "- 柴郡静静地站在阿哈特旁边，他的头和脸都蒙着头巾。";
+		mes "一瞬间你会看到柴郡臀部后面有一条尾巴。 -";
+		next;
+		select("尾巴？");
+		mes "[柴郡]";
+		mes "你在看什么？！";
+		mes "你说的是什么尾巴。";
+		next;
+		select("你曾经靠近过三角形吗？");
+		mes "[柴郡]";
+		mes ".. 嘿，你在说什么？";
+		mes "你想说什么？";
+		next;
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "" + strcharinfo(0) + "....";
+		mes "你所需要做的就是听从柴郡的命令。";
+		mes "不要问愚蠢的问题。这是命令。";
+		mes "柴郡。继续。";
+		next;
+		cutin "ep13_cheshire_h",0;
+		mes "[柴郡]";
+		mes "嗯..这就是你需要做的。";
+		mes "城南有一条巨大的裂缝。";
+		mes "有许多..";
+		mes "裂缝附近发生事故。";
+		next;
+		mes "[柴郡]";
+		mes "我需要你去清除所有痕迹。";
+		mes "你会发现^4d4dff凝结的血迹、法术残留物和皮肤碎片^000000。";
+		next;
+		mes "[柴郡]";
+		mes "在没有人知道的情况下清除它们。";
+		mes "把它们带到这里，而不是把它们扔到任何地方。";
+		mes "每样至少带回 10 个。";
+		set ep13_3_secret, 17;
+		setquest 7199;
+		next;
+		mes "[柴郡]";
+		mes "你一定不能被任何人看到。";
+		mes "你不能告诉萨法斯一家。";
+		mes "工作绝对保密！";
+		close2;
+	}
+	else if (ep13_3_secret == 17) {
+		if (countitem(6306) > 9 && countitem(6305) > 9 && countitem(6307) > 9) {
+			mes "[柴郡]";
+			mes "..... ..你";
+			mes "很有用，不是吗？";
+			mes "这就是今天的全部内容。";
+			mes "我们需要一点一点地工作，这样我们就不会引起注意。";
+			delitem 6306,10; //Solid_Bloodstain
+			delitem 6305,10; //Frozen_Skin_Piece
+			delitem 6307,10; //Suspicious_Magic_Stone
+			set ep13_3_secret, 18;
+			erasequest 7199;
+			setquest 7200;
+			set ep13_3_ahtdayq, 2;
+			close2;
+		}
+		else {
+			mes "[柴郡]";
+			mes "擦掉裂缝附近的各种痕迹。";
+			mes "你的工作是收集并带回凝结的血迹、魔法咒语的残余物和皮肤碎片。";
+			next;
+			mes "[柴郡]";
+			mes "这不可能在一天内完成，因此请每种至少带回 10 个。";
+			mes "知道了？";
+			close2;
+		}
+	}
+	else if (ep13_3_secret == 18) {
+		mes "[柴郡]";
+		mes "你的工作由我来完成。";
+		mes "你有什么东西要给阿哈特吗？";
+		close2;
+	}
+	else {
+		if (ep13_3_ahtdayq == 1) {
+			if ((countitem(6306) > 9) && (countitem(6305) > 9) && (countitem(6307) > 9)) {
+				mes "[柴郡]";
+				mes "好的。确认的。";
+				mes "好的。";
+				mes "你使用了漏洞利用认证来到达这里，不是吗？";
+				mes "我会把它还给你。";
+				next;
+				mes "[柴郡]";
+				mes "明天我们将再次这样做。";
+				mes "阿哈特似乎非常信任你。";
+				mes "让我们做到最好。";
+				delitem 6306,10; //Solid_Bloodstain
+				delitem 6305,10; //Frozen_Skin_Piece
+				delitem 6307,10; //Suspicious_Magic_Stone
+				set ep13_3_ahtdayq, 2;
+				getitem 6304,1; //Sapa_Feat_Cert
+				getexp 70000,0;
+				getexp 0,30000;
+				erasequest 7201;
+				setquest 7200;
+				close2;
+			}
+			else {
+				mes "[柴郡]";
+				mes "一如既往，从这里往北去裂缝附近收集痕迹。";
+				mes "凝结的血迹、一块冰冻的皮肤、奇异的魔法石……";
+				mes "各 10 个。";
+				close2;
+			}
+		}
+		else if (ep13_3_ahtdayq == 2) {
+			if (checkquest(7200,PLAYTIME) == 0 || checkquest(7200,PLAYTIME) == 1) {
+				mes "[柴郡]";
+				mes "还不是现在。";
+				mes "我们必须仔细计划裂缝附近的清理工作。";
+				mes "稍后再回来。";
+				close2;
+			}
+			else if (checkquest(7200,PLAYTIME) == 2) {
+				mes "[柴郡]";
+				mes "今天回到工作岗位。";
+				mes "凝结的血迹、一块冰冻的皮肤、奇异的魔法石……";
+				mes "悄悄地把他们带回来。";
+				next;
+				mes "[柴郡]";
+				mes "像往常一样收集 10 个。";
+				mes "知道了？";
+				set ep13_3_ahtdayq, 1;
+				if (checkquest(7200,PLAYTIME) >= 0) erasequest 7200;
+				setquest 7201;
+				next;
+				mes "您收到了来自柴郡的清理裂缝区域的请求。";
+				mes "阿哈特和柴郡仍然没有任何线索。";
+				close2;
+			}
+			else {
+				mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+				mes "向GM请求帮助。";
+				close2;
+			}
+		}
+		else {
+			mes "这绝对不能发生。Case5";
+			mes "向GM请求帮助。";
+			close2;
+		}
+	}
+	cutin "",255;
+	end;
+}
+
+dic_in01,300,280,5	script	Minister Ahat#ep133_21	493,{
+	// if ((GetInventoryRemainCount 1301 3 == 2) || (GetInventoryRemainCount 1301 3 == 3)) {
+	if ((MaxWeight - Weight) < 1000) {
+		mes "- 你可以携带太多物品来继续任务。 -";
+		close;
+	}
+	if (ep13_3_secret < 13) {
+		mes "[阿哈特部长]";
+		mes "WHO？";
+		mes "我不记得允许你进入。";
+		close2;
+		warp "dic_in01",262,191;
+		end;
+	}
+	else if (ep13_3_secret == 13) {
+		mes "一旦你试图接近阿哈特，就会有人";
+		mes "压低你的头，迫使你鞠躬。";
+		soundeffect "wander_man_move.wav",0;
+		SC_Start SC_Blind,60000,0;
+		next;
+		mes "[铃声]";
+		mes "很好，柴郡。";
+		mes "你是来看我的吗？";
+		next;
+		mes "[铃声]";
+		mes "抬起你的头，靠近一点。";
+		mes "对话应该通过眼神交流进行。";
+		next;
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "听到阿哈特的声音你抬起头";
+		mes "但你看到一个穿着高级萨法服装的人类出现在你面前。";
+		SC_End SC_Blind;
+		emotion ET_HUK, playerattached();
+		set ep13_3_secret, 14;
+		erasequest 7198;
+		close2;
+	}
+	else if (ep13_3_secret == 14) {
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "惊讶吗？";
+		mes "因为我看起来像你一样是人类？";
+		next;
+		select("你不是萨法？：人类？！！！！！！：漂亮..！！：好帅..！");
+		mes "[帽子]";
+		mes "哈哈哈……这样就好了。";
+		mes "我知道你忍不住对我的外表感到惊讶。";
+		mes "我在你眼里怎么样？";
+		next;
+		mes "[帽子]";
+		mes "一个完美的男人？";
+		mes "完美女性？";
+		mes "没关系。";
+		next;
+		mes "[帽子]";
+		mes "你在你面前看到的人不是我。";
+		mes "对谎言说谎。";
+		mes "摇曳反射中的幻象。";
+		next;
+		mes "[帽子]";
+		mes "只是你固定概念中记忆中的一个图像。";
+		mes "深入观察你的内心深处。";
+		next;
+		mes "阿哈特的声音在你耳边悦耳地响起。";
+		mes "他所说的每一个音节都会对你的身体产生影响。";
+		next;
+		mes "你看到远处有人对你微笑......";
+		next;
+		mes "[柔和的声音]";
+		mes "谁是主人？";
+		next;
+		mes "- 阿哈特似乎正在施展强大的咒语。";
+		mes "这或许才是他真正的能力。 -";
+		next;
+		select("别这样！：恶魔走开！");
+		mes "[帽子]";
+		mes "..无用的抵抗...";
+		mes "但这有时很有趣。";
+		mes "我随时可以对你施咒。";
+		next;
+		mes "[帽子]";
+		mes "现在..抬起你的头，看着我的眼睛..";
+		mes "....";
+		next;
+		while (.@ahtlove < 4) {
+			set .@ahtlove, .@ahtlove + 1;
+			mes "- 阿哈特再次试图催眠你。";
+			mes "他一定是因为一遍又一遍地这样做而抹去了自己的痕迹。-";
+			next;
+			if (.@ahtlove == 1) {
+				select("用意志力去克服。");
+				mes "[帽子]";
+				mes "有趣。";
+				mes "你不觉得吗，柴郡？";
+				mes "哈哈哈。努力获得..这会很有趣..";
+				next;
+			}
+			else if (.@ahtlove == 2) {
+				select("你闭上眼睛..");
+				mes "[帽子]";
+				mes "不，不……你不能关闭它们。";
+				mes "柴郡。";
+				next;
+				mes "- 订单一经发出";
+				mes "阿哈特的助手来了，让你盯着阿哈特看。-";
+				next;
+			}
+			else if (.@ahtlove == 3) {
+				select("尝试唱一首歌。");
+				mes "[帽子]";
+				mes "人类很有趣。";
+				mes "但你需要听我的，所以我会让你安静一会儿。";
+				next;
+				mes "[帽子]";
+				mes "反抗是没有用的。";
+				mes "一切都交给我吧。";
+				next;
+			}
+			else {
+				select("尝试扭转身体。");
+				mes "[帽子]";
+				mes "有趣。";
+				mes "你不觉得吗，柴郡？";
+				mes "哈哈哈。努力获得..这会很有趣..";
+				next;
+				mes "[帽子]";
+				mes "停止吧，因为你看起来很可怜​​。";
+				mes "放松一下，释放我的咒语吧。";
+				next;
+			}
+		}
+		mes "[帽子]";
+		mes "你在反抗。";
+		mes "所以你不只是来到这里。";
+		mes "让我们看看你能忍受多少。";
+		next;
+		mes "[帽子]";
+		mes "谁是你的主人？";
+		next;
+		if (select("假装中了魔咒：好吧，你告诉我") == 1) {
+			mes "- 你开始表现得好像被催眠了一样。";
+			mes "阿哈特看起来很满意。 -";
+			next;
+		}
+		else {
+			mes "[" + strcharinfo(0) + "]";
+			mes "你！！！";
+			mes "我恋爱了！";
+			mes "我会为你而死！";
+			next;
+			mes "- 你开始表现得好像被催眠了一样。-";
+			next;
+			mes "[帽子]";
+			mes "……啊，不。";
+			mes "没必要自杀";
+			mes "现在你已经被我迷住了。";
+			mes "....";
+			next;
+		}
+		mes "[帽子]";
+		mes "你对我来说是谁？";
+		next;
+		if (select("脚凳！：忠诚的仆人。") == 1) {
+			mes "[帽子]";
+			mes "我不需要脚凳。";
+			mes "一分钟后我们再聊吧。";
+		}
+		else {
+			mes "[帽子]";
+			mes "我懂了。";
+			mes "你是我忠实的仆人。";
+			mes "我的手和脚。";
+		}
+		set ep13_3_secret, 15;
+		close2;
+	}
+	else if (ep13_3_secret == 15) {
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "我忠实的邪恶仆人。";
+		mes "靠近一点。";
+		next;
+		if (select("我在做什么？：你的愿望就是我的命令。") == 1) {
+			mes "[帽子]";
+			mes "你是不是很固执啊。";
+			mes "我的咒语对你不起作用？";
+			mes "或者说已经坏掉了..";
+			mes "或者是因为你的体力还没有恢复。";
+			next;
+			mes "- 阿哈特施展了另一个强大的咒语。-";
+			next;
+			mes "[帽子]";
+			mes "谁是你的主人？";
+			next;
+			select("我的师父是阿哈特。");
+		}
+		mes "[帽子]";
+		mes "好的。现在您可以自由出入。";
+		mes "从现在开始你就为我工作。";
+		next;
+		mes "[帽子]";
+		mes "这是你的第一个任务。";
+		mes "埃尔迪卡斯特以南出现了一道次元裂缝。你知道吗？";
+		next;
+		mes "[帽子]";
+		mes "裂缝周围有很多痕迹。";
+		mes "你的任务是找到这些痕迹并删除它们。";
+		next;
+		mes "[帽子]";
+		mes "柴郡，让他知道这次任务的细节。";
+		mes "^4d4dff因为我还没有完全觉醒，所以施展咒语让我感到非常疲倦。^000000";
+		next;
+		mes "[帽子]";
+		mes "你现在将谈论我们与纳迦人的会面。";
+		mes "告诉他们我看起来像萨法人，总是独自在办公室工作。";
+		next;
+		mes "[帽子]";
+		mes "永远不要谈论柴郡。";
+		mes "柴郡从来不在这里。";
+		mes "从现在开始你必须听从柴郡的命令。";
+		mes "现在就去吧。";
+		next;
+		mes "- 阿哈特还没有怀疑任何事情。";
+		mes "他似乎相信他的咒语已经完成。 -";
+		set ep13_3_secret, 16;
+		close2;
+	}
+	else if (ep13_3_secret == 16) {
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "从现在开始你必须听从柴郡的命令。";
+		mes "现在就去吧。";
+		next;
+		mes "- 阿哈特还没有怀疑任何事情。";
+		mes "他似乎相信他的咒语已经完成。 -";
+		close2;
+	}
+	else if (ep13_3_secret == 17) {
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "柴郡的订单对于未来的计划很重要。";
+		mes "不要犯任何错误，也不要留下可能通向我的痕迹。";
+		mes "这是你们主人的命令。";
+		close2;
+	}
+	else if (ep13_3_secret == 18) {
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "你有话要说吗？";
+		mes "你在裂缝区域做得很好。";
+		next;
+		select("那些是什么？");
+		mes "[帽子]";
+		mes "出色地...";
+		mes "你现在不需要知道。";
+		mes "或者可能永远不需要知道。";
+		mes "嗬嗬。";
+		next;
+		mes "[帽子]";
+		mes "你的剑将指向哪里..";
+		mes "认识的那一天..";
+		mes "现在离开我吧，因为我累了。";
+		next;
+		mes "[帽子]";
+		mes "我仍然是迪卡斯特的雅鲁特人，还有成堆的工作要做。";
+		mes "因为仅靠一张面包很难让所有人都满意。";
+		next;
+		mes "[帽子]";
+		mes "这是对你的行为的奖励。";
+		mes "没什么，但我希望你喜欢它。";
+		set ep13_3_secret, 19;
+		getitem 2790,1; //Bradium_Brooch
+		close2;
+	}
+	else {
+		cutin (Sex == SEX_MALE?"ep13_ahat_f":"ep13_ahat_m"),2;
+		mes "[帽子]";
+		mes "暂时听从柴郡的命令，清理裂缝附近的区域。";
+		next;
+		mes "-阿哈特仍然认为你被她迷住了。";
+		mes "让我们听从柴郡的命令，表现得正常吧。 -";
+		close2;
+	}
+	cutin "",255;
+	end;
+}
+
+dic_in01,138,188,0	script	#ep133_event02	139,4,4,{
+OnTouch_:
+	if (ep13_3_secret == 19) {
+		if (!isequipped(2782)) {
+			mes "[安静的声音]";
+			mes "………………";
+			mes "………………";
+		}
+		else {
+			mes "[安静的声音]";
+			mes "对不起。";
+			mes "一会儿。";
+		}
+		close2;
+		warp "dic_in01",155,188; 
+	}
+	end;
+}
+
+dic_in01,158,188,3	script	Jarute HesLanta#ep133_2	451,{
+	if (!isequipped(2782)) {
+		mes "[雅鲁特·赫斯兰塔]";
+		mes "���� �� ������？";
+		mes "������ �� ������ ��������...";
+		mes "......！";
+		next;
+		mes "无法与他沟通。";
+		mes "萨法的部长看上去毫无希望。";
+		mes "做出放弃的表情。";
+		next;
+		select("他是要我离开吗？：还是对某件事没有任何线索？");
+		mes "我跟着部长做的动作，然后部长叹了口气，点点头。";
+		close2;
+		warp "dic_in01",144,188;
+		end;
+	}
+	if (ep13_3_secret < 19) {
+		mes "[赫斯兰塔]";
+		mes "你来自米德加德探险队。";
+		mes "我听说过很多关于你在这里活跃的故事。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "啊，有点远了不是吗？";
+		mes "这个房间和走廊之间有一堵看不见的墙。";
+		mes "但我当然可以自由走动。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "没有什么可以威胁到迪尔，但我们竖起了这堵墙以防万一。";
+		mes "顺便说一句，这并不神奇，而是由磁场造成的。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "哦不，我说太多了。";
+		mes "对不起。来这里的人并不多。我很兴奋。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "你是来帮助阿哈特的吗？";
+		mes "哈哈..祝你好运。";
+		close;
+	}
+	else if (ep13_3_secret == 19 || ep13_3_secret == 20) {
+		if (ep13_3_secret == 19) {
+			mes "[赫斯兰塔]";
+			mes "很抱歉突然带你来这里。";
+			mes "但我想检查一下某人。";
+			next;
+			mes "[赫斯兰塔]";
+			mes "Jarute.. 在你看来，Ahat 是什么样子？";
+			next;
+			set .@m, select("我不明白你的问题：我的主人。") - 1;
+			if (.@m) {
+				mes "[赫斯兰塔]";
+				mes "……嗯……？";
+				mes "你做？我想我犯了一个错误。";
+				mes "对不起。";
+				next;
+				mes "HesLanta 对我的回复感到不安。";
+				mes "他的表情复杂而阴沉。";
+				set ep13_3_secret, 20;
+				close;
+			}
+			mes "[赫斯兰塔]";
+			mes "我会重新表述我的问题。";
+			mes "你有没有发现阿哈特有什么奇怪的地方？";
+			next;
+			select("你为什么问？");
+			mes "[赫斯兰塔]";
+			mes "好吧，因为我不信任阿哈特。";
+			mes "阿哈特身上有太多奇怪的事情。";
+			next;
+			select("你可以这么说吗？");
+		}
+		else if (ep13_3_secret == 20) {
+			mes "[赫斯兰塔]";
+			mes "啊，抱歉。";
+			mes "你出不去？";
+			mes "它就是这样设计的。";
+			mes "我送你出去";
+			next;
+			select("之前我是开玩笑的。");
+			mes "[" + strcharinfo(0) + "]";
+			mes "我也想了解阿哈特。";
+			mes "我想和你谈谈他。";
+			mes "但我这样说话你是不是太没有防备了？";
+			next;
+		}
+		mes "[赫斯兰塔]";
+		mes "出色地。你是阿哈特的仆人吗？";
+		mes "那么这也很奇怪。";
+		mes "为什么阿哈特会使用非萨法人作为仆人？";
+		mes "你为什么服务阿哈特？";
+		next;
+		select("如果我伤害了你怎么办？");
+		mes "[赫斯兰塔]";
+		mes "如果可以的话尝试一下。";
+		mes "我的办公室很特别，你不能离开这里。";
+		mes "也没有人可以进来帮助你。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "但这个房间对任何人开放。";
+		mes "如果你有任何伤害我的恶意，那么勇敢的加尔滕斯就会来";
+		mes "并给你一个教训。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "另一件事。如果事情发展成这样，那么你和阿哈特就没有机会了。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我现在正冒着生命危险";
+		mes "揭开阿哈特的身份。";
+		mes "萨法并不惧怕死亡。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "如果我死在你手里";
+		mes "只要我说出真相，我就不会后悔。";
+		next;
+		select("好的。停止吧。");
+		mes "[赫斯兰塔]";
+		mes "现在你明白了。";
+		mes "我再问你一下。";
+		mes "你有发现阿哈特的任何可疑之处吗？";
+		next;
+		mes "[赫斯兰塔]";
+		mes "除了拉维尔之外，阿哈特几乎从未见过其他人。";
+		mes "但他允许你去探望他就意味着有事情发生了。";
+		next;
+		select("他对我施了咒语。");
+		mes "[赫斯兰塔]";
+		mes "催眠？他为什么要这么做？";
+		mes "等等，这意味着你中了阿哈特的咒语……！！";
+		mes "哦不！";
+		next;
+		select("不！：不是这样的！");
+		mes "[" + strcharinfo(0) + "]";
+		mes "我没有中咒！";
+		mes "我只是假装我是。我也在调查阿哈特！";
+		next;
+		mes "[赫斯兰塔]";
+		mes "啊？这意味着什么？";
+		mes "你现在在行动吗？";
+		next;
+		mes "你取出在裂缝附近发现的痕迹。";
+		mes "并开始解释阿哈特命令你做什么。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "...你经历过那件事..";
+		mes "他很奇怪。";
+		mes "我只以为他是避免诅咒的Sapha同事。";
+		mes "所以一切都是从裂缝开始的。";
+		next;
+		select("他是人类。");
+		mes "[" + strcharinfo(0) + "]";
+		mes "El Dicastes 直到最近才允许人类参观。";
+		mes "为什么人类会取代萨法·雅鲁特？";
+		next;
+		mes "[赫斯兰塔]";
+		mes "人类？";
+		mes "他是萨法人。而且是一位非常美丽和高贵的人。";
+		mes "当我们第一次在裂缝处发现他时。我们都这么想。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "唯一逃脱诅咒的萨法。";
+		mes "因为Ahat 不使用Bradium。";
+		mes "我们的种族将因这个诅咒而变得僵硬并死亡";
+		mes "但他精致、优雅、美丽。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "当大地裂开时，一道明亮的光芒从这里向北发出巨大的轰鸣声。";
+		mes "而这个美丽的萨法就是在裂缝旁边被发现的。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "他不是迪卡斯特的萨法人。";
+		mes "我们带他去了拉维尔，明智的拉维尔得出了结论。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "当我们来到这里躲避神的诅咒时，";
+		mes "我们找到了一个幸运的没有被诅咒的朋友。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "阿哈特（Ahat）在获得拉维尔（Ravail）的信任后登上了现在的位置。";
+		mes "他的工作能力令人惊叹。";
+		mes "他是完美的萨法。";
+		set ep13_3_secret, 21;
+		next;
+		mes "赫斯兰塔说完这句话后开始陷入沉思。";
+		close;
+	}
+	else if (ep13_3_secret == 21) {
+		mes "[赫斯兰塔]";
+		mes "啊，抱歉。";
+		mes "我在想。";
+		mes "破解..催眠术..以及你向我展示的证据。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我不知道你为什么认为阿哈特是人类，但是";
+		mes "这也可能是他咒语的一部分。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "他施展咒语的原因..";
+		mes "是为了清理裂缝附近的痕迹。";
+		mes "他选择了一个非萨法，你..";
+		next;
+		mes "[赫斯兰塔]";
+		mes "因为我们萨法斯绝对不能知道裂缝痕迹。";
+		mes "这意味着，阿哈特是..";
+		mes "^4d4dff清理他从裂缝开始的痕迹^000000。";
+		next;
+		select("从裂缝中抹去自己的痕迹！！");
+		mes "[赫斯兰塔]";
+		mes "是的。";
+		mes "他试图掩盖与裂缝有关的事情。";
+		mes "但它是什么？";
+		next;
+		mes "[赫斯兰塔]";
+		mes "当阿哈特第一次在裂缝附近被发现时，他^4d4dff没有记忆^000000。";
+		mes "这不奇怪吗？";
+		next;
+		mes "[赫斯兰塔]";
+		mes "当我听到你的故事时，我只会越来越怀疑。";
+		mes "但为什么我不能同意这个故事是......";
+		next;
+		mes "[赫斯兰塔]";
+		mes "阿哈特是纯洁的。";
+		mes "他确实是在为 Sapha 和 Dicastes 工作。";
+		next;
+		select("那你为什么要调查阿哈特？");
+		mes "[赫斯兰塔]";
+		mes "Ahat 很忠诚，并且正在为 Sapha 社区创造奇迹。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "拉维尔受到其他萨法斯的信任和欢迎";
+		mes "正在将迪卡斯特的权力集中到一处。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "力量集中在阿哈特身上。";
+		mes "权力应该平均分配到各个部门。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "这样大家就可以互相监督、检查了……";
+		mes "并尽力不走错路";
+		mes "这就是我们能够共同生活的方式。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "但如果权力集中在一处并且使用不当呢？";
+		mes "所有行政事务均由阿哈特决定。那他只要点头或者摇头又能做什么呢？";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我对此感到害怕。";
+		mes "他很漂亮。但美丽总是伴随着荆棘。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "阿哈特慢慢地成为了中心。";
+		mes "如果他手里拿着的不是面包而是一把剑的话……";
+		mes ".......";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我太情绪化了。";
+		mes "对不起。";
+		mes "听了你的故事，我的心情现在很复杂。";
+		next;
+		select("你了解柴郡吗？");
+		mes "[赫斯兰塔]";
+		mes "你说的是助理吧？";
+		mes "是的，我这样做，但大多数萨法人不这样做。";
+		mes "阿哈特附近的每个人都知道柴郡。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "^4d4dff柴郡是阿哈特带来的一只猫科动物^000000。";
+		mes "阿哈特照顾了受伤的柴郡并把他带到了身边。";
+		mes "我们周围有猫，所以我们并没有太看重他。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "因为这片土地是他们的第二故乡。";
+		mes "其他地方可能还有其他猫科动物。";
+		mes "但他总是用头巾遮住脸，因为他看起来与萨法斯不同。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "但你为什么要问？";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "没有什么。";
+		mes "我只是个人好奇。";
+		mes "你现在要做什么？";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我将继续关注阿哈特。";
+		mes "直到我知道真相为止。";
+		next;
+		mes "你试着总结一下你和 HesLanta 谈论的内容，而他则在思考问题。";
+		next;
+		while (1) {
+			if (.@yes == 5) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "总结一下。";
+				mes "报案的强盗是柴郡。";
+				mes "柴郡是阿哈特的仆人，他们与裂缝有关。";
+				mes "他们试图在裂缝处隐藏某物或某人";
+				mes "而这裂缝，正是魔王莫罗克所创造的！";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "啊哈特是邪恶领主吗？";
+				mes "不...";
+				mes "这太令人难以置信了。";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "我必须要回远征营去多哈报到！";
+				set ep13_3_secret, 22;
+				setquest 7203;
+				close;
+			}
+			else if (.@yes == 0) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "首先报告的罪魁祸首是..";
+				next;
+				switch (select("柴郡:Ahat:BK")) {
+					case 1:
+						mes "[" + strcharinfo(0) + "]";
+						mes "那是柴郡";
+						mes "柴郡是一只猫科动物。";
+						mes "头巾是用来遮住他的耳朵的。";
+						set .@yes, .@yes + 1;
+						break;
+					case 2:
+						mes "[" + strcharinfo(0) + "]";
+						mes "啊哈特？不可能是他。";
+						mes "阿哈特与证人信息不符。";
+						mes "让我们重新思考一下。";
+						break;
+					case 3:
+						mes "[" + strcharinfo(0) + "]";
+						mes "比克？";
+						mes "废话";
+						mes "让我们重新思考一下。";
+						break;
+				}
+				next;
+			}
+			else if (.@yes == 1) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "柴郡为什么要试图窃取这份报告？";
+				next;
+				if (select("不知道：让3个国家之间的冲突变得更糟") == 1) {
+					mes "[" + strcharinfo(0) + "]";
+					mes "目前我们还不知道真正的原因。";
+					mes "但柴郡会从中得到什么好处呢？";
+				}
+				else {
+					mes "[" + strcharinfo(0) + "]";
+					mes "给三个国家带来冲突？";
+					mes "柴郡将从中得到什么？";
+				}
+				set .@yes, .@yes + 1;
+				next;
+			}
+			else if (.@yes == 2) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "柴郡的主人是阿哈特。";
+				mes "所以他的所有举动都是为了..";
+				next;
+				if (select("柴郡正在自己谋划。：一定是阿哈特在命令他。") == 1) {
+					mes "[" + strcharinfo(0) + "]";
+					mes "柴郡任意？";
+					mes "你确定吗？";
+				}
+				else {
+					mes "[" + strcharinfo(0) + "]";
+					mes "是的。一定是阿哈特命令了他。";
+					mes "但阿哈特为什么要这么做呢？";
+					mes "三个国家之间发生冲突？还是报告内容？";
+					set .@yes, .@yes + 1;
+				}
+				next;
+			}
+			else if (.@yes == 3) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "让我们想一想。";
+				mes "啊哈特从裂缝中出来了。";
+				mes "并且在此之前没有任何记录。";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "并试图抹去裂缝附近发现的所有痕迹。";
+				mes "阿哈特想要消除……";
+				next;
+				if (select("阿哈特自己：摩洛哥因为裂缝？") == 1) {
+					mes "[" + strcharinfo(0) + "]";
+					mes "是的，阿哈特可能是他自己的痕迹。";
+					mes "萨法斯想要隐瞒一些事情，这就是他们雇用我的原因";
+					mes "不属于任何势力的人都可以作为傀儡来为他做肮脏的勾当。";
+				}
+				else {
+					mes "[" + strcharinfo(0) + "]";
+					mes "有点戏剧性，但我们不能排除邪恶领主摩洛哥。";
+					mes "因为那裂缝是邪主莫罗克亲手造成的。";
+				}
+				set .@yes, .@yes + 1;
+				next;
+			}
+			else if (.@yes == 4) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "啊哈特和裂纹，然后是摩洛哥..";
+				mes "我可以看出它们之间存在关系，但我无法确定。";
+				mes "在探险队的报告中...";
+				next;
+				if (select("三个国家之间的冲突内容..：关于邪恶领主摩洛哥的内容..") == 1) {
+					mes "[" + strcharinfo(0) + "]";
+					mes "三个国家之间发生了一些冲突。";
+					mes "但是..我不认为这一切加起来？";
+					mes "让我们想一想。";
+				}
+				else {
+					mes "[" + strcharinfo(0) + "]";
+					mes "是的。有来自紫锥菊领导的追踪小组的报告。";
+					mes "这是关于邪恶领主摩洛哥的。";
+					set .@yes, .@yes + 1;
+				}
+				next;
+			}
+			else {
+				mes "[" + strcharinfo(0) + "]";
+				mes "哦不。我不知道。";
+				mes "让我们想一想。";
+				set .@yes, 0;
+				next;
+			}
+		}
+	}
+	else if (ep13_3_secret == 22) {
+		cutin "ep13_heslanta",2;
+		mes "[赫斯兰塔]";
+		mes "你做出了决定。";
+		mes "你现在要做什么？";
+		mes "如果可能的话，请帮助阿哈特并密切关注他。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "每当他成为威胁时，我都会准备好与他对抗。";
+		mes "这是我现在能做的最好的事情了。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我只希望不要发生悲伤的事情。";
+		mes "........";
+		next;
+		mes "[赫斯兰塔]";
+		mes "很抱歉耽误您的时间。我现在就送你出去。";
+		mes "今天很高兴能与您交谈。";
+		next;
+		switch (select("我也是。")) {
+		}
+		mes "[赫斯兰塔]";
+		mes "我们的见面要保密，好吗？";
+		mes "哈哈哈。";
+		close2;
+		warp "dic_in01",144,188;
+		cutin "",255;
+		end;
+	}
+	set .@yessay, rand(1,3);
+	if (.@yessay == 1) {
+		mes "[赫斯兰塔]";
+		mes "我很累，因为今天的工作太多了。";
+		mes "拉维尔只能偏爱阿哈特，因为这一切都是他自己做的。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "我也必须尽力而为。";
+		mes "我不想做得比阿哈特少。";
+		mes "我的意思是在很多方面。";
+		close;
+	}
+	else if (.@yessay == 2) {
+		mes "[赫斯兰塔]";
+		mes "阿哈特有时会和柴郡一起散步。";
+		mes "他们不会走太远，但经常在黎明时分前往乔希森林。";
+		next;
+		mes "[赫斯兰塔]";
+		mes "如果幸运的话，你可以看到他走路。";
+		mes "如果你的好奇心得到满足的话，柴郡走路时会穿着方便的衣服。";
+		close;
+	}
+	mes "[赫斯兰塔]";
+	mes "你总是起床走动。";
+	mes "我一直在看阿哈特。";
+	mes "你觉得我做得太过分了吗？";
+	next;
+	mes "[赫斯兰塔]";
+	mes "不，我希望我错了。";
+	mes "但这种未知的焦虑让我对阿哈特更加怀疑。";
+	next;
+	mes "[赫斯兰塔]";
+	mes "怀疑某人是非常悲惨和悲伤的。";
+	mes "如果你永远无法与任何人分享悲伤，那就更糟糕了。";
+	next;
+	if (select("你很好。:那就放弃吧。") == 1) {
+		mes "[赫斯兰塔]";
+		mes "真的吗？";
+		mes "我感觉好多了。";
+		mes "这就是所谓的纵容吧？";
+		close;
+	}
+	mes "[赫斯兰塔]";
+	mes "对不起。";
+	mes "我一定占用了你很多时间。";
+	mes "我必须变得更加坚强。";
+	close;
+}
+
+dicastes01,223,190,1	script	Calyon#pa8029	453,{
+	if (checkweight(1201,1) == 0) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	mes "[卡里翁]";
+	if (BaseLevel < 80) {
+		mes "哈哈，等你多练练再回来吧。我没有适合你的要求。";
+		close;
+	}
+	if (checkquest(12163,PLAYTIME) == 2) {
+		mes "与运营部门的^800080运输部 1 经理^000000 计算您的请求活动，然后返回。";
+		close;
+	} else if (checkquest(12163,PLAYTIME) != -1) {
+		mes "我们这一天就结束了。您可以向运营处的^800080运输部 1 经理^000000 汇报。祝你好运。";
+		close;
+	}
+	mes "欢迎。";
+	mes "是什么风把你吹到这里来的？";
+	next;
+	if(select("请向我解释该请求。", "请给我一个请求。") == 1) {
+		mes "[卡里翁]";
+		mes "运输一、二部";
+		mes "带来稀有物品";
+		mes "不可用的";
+		mes "这里。";
+		next;
+		mes "[卡里翁]";
+		mes "它是其中之一";
+		mes "关键部门";
+		mes "获得丰富的物资";
+		mes "主要来自米德加德大陆。";
+		next;
+		mes "[卡里翁]";
+		mes "请随时来看我";
+		mes "一旦你准备好了。";
+		close;
+	}
+	mes "[卡里翁]";
+	mes "最后，我对你有一个请求。这是一件很重要的事情，所以我需要你集中注意力。";
+	next;
+	set .@calyonrequest,rand(1,11);
+	mes "[卡里翁]";
+	if (.@calyonrequest == 1) {
+		setquest 12139;
+		setquest 12163;
+		mes "高级大臣最近正在寻找米德加尔特的产品——枯萎玫瑰。";
+		mes "不确定这是否是一个好礼物，但有些人看到他把它戴在头上并炫耀。";
+		next;
+		mes "[卡里翁]";
+		mes "所以...我知道这个要求很难，但请给我带一朵不凋谢的玫瑰。这只是你我之间的事情。";
+		next;
+		mes "您收到了名为^800080尊重品味^000000的请求。";
+	} else if (.@calyonrequest == 2) {
+		setquest 12137;
+		setquest 12163;
+		mes "工业研究中心正在研究有效提炼钆的方法，但始终缺乏试验材料。";
+		next;
+		mes "[卡里翁]";
+		mes "听说冒险者都市里有一个商人，出售玻璃管。我需要其中 4 个。";
+		next;
+		mes "您收到了名为^800080实验工具^000000的请求。";
+	} else if (.@calyonrequest == 3) {
+		setquest 12138;
+		setquest 12163;
+		mes "酒吧老板说他想给所有 Sapha 的常客送一份礼物。";
+		next;
+		mes "[卡里翁]";
+		mes "但又不知道该送什么。如果你在米德加德看到什么有趣的礼物，能带5个回来吗？";
+		next;
+		mes "您收到了名为^800080精美礼品样品^000000的请求。";
+	} else if (.@calyonrequest == 4) {
+		setquest 12140;
+		setquest 12163;
+		mes "来自酒吧老板的请求。他说他不能为常客使用一次性叶子盘子。";
+		next;
+		mes "[卡里翁]";
+		mes "他要从米德加德购买 15 个实心白色瓷器。";
+		next;
+		mes "您已收到名为^800080由常规^000000提供的请求。";
+	} else if (.@calyonrequest == 5) {
+		setquest 12141;
+		setquest 12163;
+		mes "我有一个个人请求。听说米德加尔特有一种圆形的透明工艺品。";
+		mes "我认为它们被称为玻璃珠。";
+		next;
+		mes "[卡里翁]";
+		mes "我们这里有类似的制造品，但与那里精致的球体相比没有什么。";
+		mes "请给我拿 10 个。";
+		next;
+		mes "您收到了名为^800080特殊包^000000的请求。";
+	} else if (.@calyonrequest == 6) {
+		setquest 12142;
+		setquest 12163;
+		mes "嗯...我不知道如何开始。高级大臣向米德加德请求傀儡。";
+		mes "我不知道它是什么，但既然是高级大臣要求的，那么它一定有一个非常重要的目的。";
+		next;
+		mes "[卡里翁]";
+		mes "请携带 15 个。";
+		next;
+		mes "您收到了名为^800080危险请求^000000的请求。";
+	} else if (.@calyonrequest == 7) {
+		setquest 12143;
+		setquest 12163;
+		mes "我听说这里的许多同事都流行一种用米德加德的鸟嘴制成的音乐配件的趋势。";
+		next;
+		mes "[卡里翁]";
+		mes "我正在考虑将它们分发到运营大楼内。";
+		mes "你能买 50 个并带回来吗？";
+		next;
+		mes "您收到了名为^800080奇怪趋势^000000的请求。";
+	} else if (.@calyonrequest == 8) {
+		setquest 12144;
+		setquest 12163;
+		mes "酒吧老板说他想用一种叫做蛤壳的东西来装饰酒吧。";
+		mes "请带回大约 50 个。";
+		next;
+		mes "[卡里翁]";
+		mes "我不知道他会如何使用它们，但我认为在与许多冒险者相识后，他有一种非常独特的品味。";
+		next;
+		mes "您收到了名为^800080未知用法^000000的请求。";
+	} else if (.@calyonrequest == 9) {
+		setquest 12145;
+		setquest 12163;
+		mes "我们自己没有美食，但许多冒险家似乎很喜欢饮食的艺术。";
+		mes "所以酒吧老板需要一个盘子来盛装他的新菜品。";
+		next;
+		mes "[卡里翁]";
+		mes "他要了20个蟹壳。";
+		mes "我不知道在哪里可以买到它们，但是……祝你好运。";
+		next;
+		mes "您收到了名为^800080其他世界美食^000000的请求。";
+	} else if (.@calyonrequest == 10) {
+		setquest 12146;
+		setquest 12163;
+		mes "我认为 Midgard 最有用的物品是 Scells。";
+		next;
+		mes "[卡里翁]";
+		mes "使用 Scells 填充建筑物中的任何裂缝或孔洞，然后将研磨过的 Garlet 混合并涂抹在其上，建筑物的维护既快速又简单。";
+		mes "你能带回30个吗？";
+		next;
+		mes "您收到了名为^800080填充裂缝^000000的请求。";
+	} else if (.@calyonrequest == 11) {
+		setquest 12147;
+		setquest 12163;
+		mes "Garlets 是建筑维护的一个要素。";
+		mes "它是建筑中最重要的材料之一。";
+		next;
+		mes "[卡里翁]";
+		mes "在 Garlets 出现之前，我们粉碎并使用了 Zargons，但它们已经变得很难获得。";
+		mes "请带回 40 个。";
+		next;
+		mes "您收到了名为^800080粘合剂材料^000000的请求。";
+	}
+	mes "您可以通过打开^800080任务窗口^000000来检查请求的详细信息以及向谁报告。";
+	close;
+}
+
+dicastes01,211,178,2	script	Moltuka#pa0829	453,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[莫尔图卡]";
+		mes "哈哈，等你多练练再回来吧。我没有适合你的要求。";
+		close;
+	}
+	if (checkquest(12164,PLAYTIME) == 2) {
+		mes "[莫尔图卡]";
+		mes "您见过运营部门的^990099运输二部经理^000000吗？在您清除请求历史记录后，我会给您一个新的请求。";
+		close;
+	}
+	else if (checkquest(12164,PLAYTIME) != -1) {
+		mes "[莫尔图卡]";
+		mes "我现在对你没有任何要求。完成所有请求后，向运营处的^990099运输部 2 经理^000000 报告。";
+		close;
+	}
+	mes "[莫尔图卡]";
+	mes "欢迎。";
+	mes "是什么风把你吹到这里来的？";
+	next;
+	if (select("请向我解释该请求。：请给我一个请求。") == 1) {
+		mes "[莫尔图卡]";
+		mes "你宁愿去见Calyon，让他向你解释交通1,2部门的情况。";
+		next;
+		mes "[莫尔图卡]";
+		mes "因为我不善言谈。";
+		close;
+	}
+	mes "[莫尔图卡]";
+	mes "请求...是的，有一些。等一下。";
+	next;
+	mes "[莫尔图卡]";
+	mes "……（翻找）";
+	next;
+	mes "[莫尔图卡]";
+	mes "…………（沙沙声）";
+	next;
+	set .@tut_13, rand(1,11);
+	if (.@tut_13 == 1) {
+		setquest 12148;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "如果我们想抓住它们，那些塔塔乔的速度非常快，这是相当困难的。";
+		next;
+		mes "[莫尔图卡]";
+		mes "所以这里的加尔滕人用怪物饲料来引诱它们。据说有高手干这个活，请拿100个怪物的饲料。";
+		next;
+		mes "我收到了一个名为^880088塔塔乔狩猎诱饵^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12148;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 2) {
+		setquest 12149;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "酒吧老板想要一些苹果来学习如何做饭。";
+		next;
+		mes "[莫尔图卡]";
+		mes "但我从未听说米德加尔特有哪个冒险者喜欢他的食物。不管怎样，他说他会尝试，所以给他买 100 个苹果。";
+		next;
+		mes "我收到了一个名为^880088剑术练习^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12149;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 3) {
+		setquest 12150;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "这是酒吧老板的请求。他想要一些带红色的蔬菜，以便做出色彩缤纷的菜肴。";
+		next;
+		mes "[莫尔图卡]";
+		mes "嗯……胡萝卜，是吗？无论如何，在你们的土地上它被称为这个名字......我真的没有任何期望。对不起。之前我只是在说自己。请准备100个。";
+		next;
+		mes "我收到了一个名为^880088漂亮的红色蔬菜^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12150;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 4) {
+		setquest 12151;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "据说酒吧里发生了爆炸。人们说这是因为一种叫南瓜的蔬菜在火上被彻底烤熟了。";
+		next;
+		mes "[莫尔图卡]";
+		mes "对于这次事件，南瓜已经没有剩下了。因此，如果您能找到 100 个南瓜，我们将不胜感激。";
+		next;
+		mes "我收到了一个请求，名为^880088酒吧老板的坚韧^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12151;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 5) {
+		setquest 12152;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "酒吧老板要求……他想念小时候常吃的红薯。他想要 50 个红薯。";
+		next;
+		mes "[莫尔图卡]";
+		mes "我能理解他，因为他长期不在家。恰巧你来到了米德加德，请尝试去获取它们。";
+		next;
+		mes "我收到了一个请求，名为^880088尝尝家常菜^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12152;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 6) {
+		setquest 12153;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "酒吧老板想煮一些奇怪的东西。他说这是烤香蕉，但我认为他以前做过类似的东西......";
+		next;
+		mes "[莫尔图卡]";
+		mes "嗯，我记不太清了。无论如何...你需要得到 100 根香蕉。";
+		next;
+		mes "我收到了一个请求，名为^880088燃烧时有害植物^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12153;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 7) {
+		setquest 12154;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "这个请求来自酒吧老板。他想要一些肉。";
+		next;
+		mes "[莫尔图卡]";
+		mes "他的请求方向没有其他内容。 50块就足够了。我想知道他是否真的在经营他的生意......";
+		next;
+		mes "我收到了一个名为 ^880088Unexpectedly Normal^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12154;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 8) {
+		setquest 12155;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "我想送一份礼物给酒吧老板。这是个人请求，因此您不必为此感到压力。几天前，我看到酒吧老板对所有坏掉的勺子感到沮丧。";
+		next;
+		mes "[莫尔图卡]";
+		mes "看来是他自己做的，我觉得他可怜，所以我想让你去买20个黑色的勺子，这些勺子可以在米德加尔特购买。";
+		next;
+		mes "我收到了一份请求，名为^880088爱心礼物^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12155;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 9) {
+		setquest 12156;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "高级大臣想要用米德加德水晶制成的镜子。马努坎镜子有很多，但他似乎更喜欢米德加德的镜子。";
+		next;
+		mes "[莫尔图卡]";
+		mes "我其实有点担心，但对于我们“明智”的部长来说，这肯定是有原因的。";
+		next;
+		mes "我收到了一个名为 ^880088 尊重品味 2^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12156;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 10) {
+		setquest 12157;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "酒馆老板这次有要求。他想要 2 个菠萝，并想让你知道……";
+		next;
+		mes "[莫尔图卡]";
+		mes "我可能会尝试制作一种特别的鸡尾酒。我有信心做到这一点，因为我确实炼出了好毒。";
+		next;
+		mes "我收到了一个名为 ^880088 酒吧老板的解决方案 ^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12157;
+		setquest 12164;
+		end;
+	}
+	else if (.@tut_13 == 11) {
+		setquest 12158;
+		setquest 12164;
+		mes "[莫尔图卡]";
+		mes "再次......酒吧老板的要求。他想要 2 个甜瓜，并想让你知道……";
+		next;
+		mes "[莫尔图卡]";
+		mes "我可能会尝试制作一种特别的鸡尾酒。我有信心做到这一点，因为我确实炼出了好毒。";
+		next;
+		mes "我收到了一个请求，名为^880088酒吧老板的愤怒^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close2;
+		setquest 12158;
+		setquest 12164;
+		end;
+	}
+}
+
+dicastes01,175,217,5	script	Kalipo#pa0829	453,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 100) {
+		mes "[现在]";
+		mes "哈哈哈，还有很多其他冒险者伸出援手。下次见。";
+		close;
+	}
+	if (checkquest(12160,PLAYTIME) == 2) {
+		mes "[现在]";
+		mes "请检查后回来";
+		mes "先前向^990099狩猎部2经理^000000提出的请求。";
+		close;
+	}
+	else if (checkquest(12160,PLAYTIME) > -1) {
+		mes "[现在]";
+		mes "我没有任何额外的要求。请向运营处的^990099狩猎部2经理^000000报告请求完成情况。";
+		close;
+	}
+	mes "[现在]";
+	mes "欢迎。";
+	mes "你来这里是为了请求吗？";
+	next;
+	if (select("请向我解释该请求。：请给我一个请求。") == 1) {
+		mes "[现在]";
+		mes "正如你所知道的那样";
+		mes "拉庞特向你解释了";
+		mes "已经";
+		mes "我只能为你提供";
+		mes "每天一个请求。";
+		next;
+		mes "[现在]";
+		mes "一定";
+		mes "你会变得更有趣";
+		mes "请求，之后";
+		mes "你提高你的水平";
+		mes "不要感觉不好";
+		mes "一开始的简单请求";
+		close;
+	}
+	mes "[现在]";
+	mes "我会检查名单";
+	mes "今天收到的请求。";
+	next;
+	mes "[现在]";
+	mes "唔..";
+	mes "我其实有东西";
+	mes "正好适合你。";
+	next;
+	set .@tut_lv, (BaseLevel);
+	set .@rand, rand(100,BaseLevel);
+	if (.@rand < 109) {
+		setquest 12106;
+		setquest 12160;
+		mes "[现在]";
+		mes "我们去拉平的侦察兵正遭到看起来像小孩的可爱怪物的攻击。";
+		next;
+		mes "[现在]";
+		mes "所以我们不可避免地需要猎杀他们，而你就是猎杀他们的人，因为你不是拉平人。";
+		next;
+		mes "我收到了一个请求，名为^990099花上的孩子^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 112) {
+		setquest 12107;
+		setquest 12160;
+		mes "[现在]";
+		mes "你知道那朵看起来像孩子的花，Pinguicula吗？人们说那朵花有一个突变体。";
+		next;
+		mes "[现在]";
+		mes "他们非常暴力和好斗，因此拉平的军队被派去杀死他们。请在它们蔓延到整个地区之前检查并治疗它。";
+		next;
+		mes "我收到了一个名为^990099扭曲的爱^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 116) {
+		setquest 12108;
+		setquest 12160;
+		mes "[现在]";
+		mes "一些矿物收集者失踪了，这似乎肯定是猪笼草完成的。";
+		next;
+		mes "[现在]";
+		mes "猪笼草与曼陀罗相似。我们必须做点什么来保护人们免受更多伤害。";
+		next;
+		mes "我收到了一个名为^990099危险植物移除^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 119) {
+		setquest 12109;
+		setquest 12160;
+		mes "[现在]";
+		mes "他们发现了蜈蚣幼虫的栖息地。我们现在可以把它们移走，这样蜈蚣妈妈就会减少。";
+		next;
+		mes "[现在]";
+		mes "你会找到他们并杀死他们吗？你必须小心它们周围的蜈蚣妈妈。";
+		next;
+		mes "我收到了一个名为^990099幼虫消灭^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 124) {
+		setquest 12110;
+		setquest 12160;
+		mes "[现在]";
+		mes "矿工们前往尼德霍格的巢穴，据报道矿工们遭到了奇怪的东西的袭击。";
+		next;
+		mes "[现在]";
+		mes "据说那是人形水，但一定是邪物，并非水灵。也许尼德霍格地下城就是起源，请前往那里确认一下。";
+		next;
+		mes "我收到了一个名为^990099水之恶魔^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else {
+		setquest 12111;
+		setquest 12160;
+		mes "[现在]";
+		mes "塔塔乔斯本来是美丽的鸟，而且它们会飞。但自从他们定居在这里没有天敌之后，他们就开始肥胖、懒惰，";
+		next;
+		mes "[现在]";
+		mes "最后它们变成了现在这样，丑陋的鸟儿。你将成为他们的好天敌。";
+		next;
+		mes "我收到了一个名为^990099丑脸鸟^000000的请求，您可以通过打开^990099任务窗口^000000来查看请求的详细信息以及向谁报告。";
+		close;
+	}
+}
+
+dicastes01,187,230,5	script	Laponte#pa0829	453,{
+	if (checkweight(1201,1) == 0) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[拉庞特]";
+		mes "哈哈哈，还有很多其他冒险者伸出援手。下次见。";
+		close;
+	}
+	if (checkquest(12159,PLAYTIME) > -1 && checkquest(12159,PLAYTIME) < 2) {
+		mes "[拉庞特]";
+		mes "我没有任何额外的要求。请向运营处的^990099狩猎部 1 经理^000000报告请求已完成。";
+		close;
+	}
+	else if (checkquest(12159,PLAYTIME) == 2) {
+		mes "[拉庞特]";
+		mes "请检查后回来";
+		mes "先前向^990099狩猎部1经理^000000提出的请求。";
+		close;
+	}
+	mes "[拉庞特]";
+	mes "欢迎。";
+	mes "你来这里是为了请求吗？";
+	next;
+	if (select("请向我解释该请求。：请给我一个请求。") == 1) {
+		mes "[拉庞特]";
+		mes "我负责分配";
+		mes "其他部门的要求";
+		mes "与狩猎有关";
+		mes "怪物到";
+		mes "冒险家。";
+		next;
+		mes "[拉庞特]";
+		mes "每个冒险家都是随机分配的";
+		mes "每天一个请求";
+		mes "以及请求的范围";
+		mes "分配的仅限于";
+		mes "冒险者的修行等级。";
+		next;
+		mes "[拉庞特]";
+		mes "分配高级作业";
+		mes "给冒险家们";
+		mes "提高他们的战斗技巧";
+		mes "所以如果";
+		mes "你的前几个请求很小。";
+		close;
+	}
+	mes "[拉庞特]";
+	mes "我会检查名单";
+	mes "今天收到的请求。";
+	next;
+	mes "[拉庞特]";
+	mes "唔..";
+	mes "我其实有东西";
+	mes "正好适合你。";
+	next;
+	set .@rand, rand(97,BaseLevel);
+	if (.@rand < 103) {
+		setquest 12099;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "这是一个非常小的请求。据报道，在 Yggdrasilberry 树根附近孵化的幼龙也在附近孵化。";
+		next;
+		mes "[拉庞特]";
+		mes "消除幼龙很重要，但我们不能忽视，消除根本原因将防止将来再次出现此请求。";
+		next;
+		mes "我收到了一个名为^880088删除根本原因^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 109) {
+		setquest 12100;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "最近收到报告称在拉平营地附近目击了一种未知的巨大飞虫。";
+		next;
+		mes "[拉庞特]";
+		mes "我们不知道这种昆虫的感染会传播多远，因此请消灭尽可能多的昆虫。";
+		next;
+		mes "我收到了一个名为^880088暴力飞虫^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 115) {
+		setquest 12101;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "这是来自在矿井工作的同事的消息。";
+		next;
+		mes "[拉庞特]";
+		mes "生活在 Yggdrasilberry 树根附近的幼龙正在破坏矿井附近的土地。如果我们不注意的话，就会很危险。";
+		next;
+		mes "[拉庞特]";
+		mes "请消灭 Yggdrasilberry 附近的幼龙。";
+		next;
+		mes "我收到了一个名为^880088工作干扰^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 118) {
+		setquest 12102;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "在拉平营地附近的沼泽中发现了一个名为纳迦的新种族。";
+		next;
+		mes "[拉庞特]";
+		mes "问题是他们是原始知识分子，而且是暴力的。";
+		next;
+		mes "[拉庞特]";
+		mes "如果他们扩大殖民地，我们将来会和他们发生很多冲突。请去消灭成年纳迦。";
+		next;
+		mes "我收到了一个名为 ^880088Intelligent Snakes^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 121) {
+		setquest 12103;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "我们不断收到关于在拉平基地附近目击传说中的带翼白马的报告。";
+		next;
+		mes "[拉庞特]";
+		mes "您能亲自去看看吗？ ...";
+		next;
+		mes "[拉庞特]";
+		mes "这可能是幻觉，所以请务必用手触摸它，以确保它是活的生物。";
+		next;
+		mes "我收到了一个名为^880088传奇生物^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@rand < 125) {
+		setquest 12104;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "蜈蚣的繁殖是另一个问题，而且它们的食欲也威胁着自己的生存。";
+		next;
+		mes "[拉庞特]";
+		mes "它们吸收钫矿物并破坏我们的矿场";
+		next;
+		mes "[拉庞特]";
+		mes "我们的许多 Sapha 同事都死于蜈蚣之手。请消灭他们。";
+		next;
+		mes "我收到了一个名为^880088有食欲的昆虫^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else {
+		setquest 12105;
+		setquest 12159;
+		mes "[拉庞特]";
+		mes "得到报告称矿山中的钔原料矿物是活的。";
+		next;
+		mes "[拉庞特]";
+		mes "看起来拉的原始矿物被一个古老的咒语变成了傀儡，现在我们可能需要关闭我们的矿山。你能去消灭他们吗？";
+		next;
+		mes "我收到了一个名为 ^880088Moving Rocks^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+}
+
+dicastes01,208,230,3	script	Pura#pa0829	453,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[普拉]";
+		mes "没关系。";
+		mes "我们并没有那么不幸得到你的帮助。";
+		close;
+	}
+	if (checkquest(12161,PLAYTIME) == 2) {
+		mes "[普拉]";
+		mes "您是否已经见过运营部门的^990099供应部 1 经理^000000？在您清除请求历史记录后，我会给您一个新的请求。";
+		close;
+	}
+	else if (checkquest(12161,PLAYTIME) > -1) {
+		mes "[普拉]";
+		mes "我现在对你没有任何要求。完成所有请求后，向运营部门的^990099供应部 1 经理^000000 报告。";
+		close;
+	}
+	mes "[普拉]";
+	mes "欢迎。";
+	mes "是什么风把你吹到这里来的？";
+	next;
+	if (select("请向我解释该请求。：请给我一个请求。") == 1) {
+		mes "[普拉]";
+		mes "冒险家们帮帮我吧";
+		mes "交付各种物品";
+		mes "在这里生产到";
+		mes "的其他部分";
+		mes "区域。";
+		next;
+		mes "[普拉]";
+		mes "没有限制";
+		mes "去工作但是";
+		mes "有些工作比其他工作困难。";
+		next;
+		mes "[普拉]";
+		mes "请随时来看我";
+		mes "一旦你准备好了。";
+		close;
+	}
+	mes "[普拉]";
+	mes "我会检查名单";
+	mes "今天收到的请求。";
+	next;
+	mes "[普拉]";
+	mes "唔..";
+	mes "我其实有东西";
+	mes "正好适合你。";
+	next;
+	set .@tut_13, rand(1,10);
+	if (.@tut_13 == 1) {
+		setquest 12117;
+		setquest 12161;
+		mes "[普拉]";
+		mes "他们说，这个地区很久以前就是一片湿地。但由于某些原因，这些年来环境逐渐发生了变化。";
+		next;
+		mes "[普拉]";
+		mes "拉平营地附近有一块土地至今仍保存完好。你能带回枯花样品吗？这将是研究环境变化的一个很好的样本。";
+		next;
+		mes "我收到了一个名为^880088枯花^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 2) {
+		setquest 12118;
+		setquest 12161;
+		mes "[普拉]";
+		mes "钆精炼机械坏了，现在我们向在矿场工作的同事供应精炼钆短缺。";
+		next;
+		mes "[普拉]";
+		mes "所以我们正在利用我们所有的冒险家来帮助收集精炼的钔。请从Bradium Golem中带回3个精炼的Bradiums。";
+		next;
+		mes "我收到了一个名为^880088欢迎矿物^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 3) {
+		setquest 12119;
+		setquest 12161;
+		mes "[普拉]";
+		mes "我有一个请求，要引进16根龙鬃。";
+		next;
+		mes "[普拉]";
+		mes "龙鬃毛只会由天龙人掉落，数量很少，而且非常有价值。它被用于我们的旗帜、衣服和野战设备的本土设计中。";
+		next;
+		mes "我收到了一个名为 ^880088Valuable Textile^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 4) {
+		setquest 12120;
+		setquest 12161;
+		mes "[普拉]";
+		mes "这是酒馆对来自异世界的人们的食物的请求。他们希望龙尾能够用作野外食物的烹饪原料，并且可以广泛储存。";
+		next;
+		mes "[普拉]";
+		mes "所以人类就是这样的。请带回 6 个。";
+		next;
+		mes "我收到了一个名为 ^880088Curious Meat^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 5) {
+		setquest 12121;
+		setquest 12161;
+		mes "[普拉]";
+		mes "由于下雪，出城的道路现在是一条危险的结冰道路。";
+		next;
+		mes "[普拉]";
+		mes "撒上一些蛋壳会有帮助，而且我们需要很多蛋壳。大约26左右就可以了。";
+		next;
+		mes "我收到了一个名为^880088清除积雪的材料^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 6) {
+		setquest 12122;
+		setquest 12161;
+		mes "[普拉]";
+		mes "钍加工机械在使用时会散发出巨大的热量，并且不能用任何水来稳定。";
+		next;
+		mes "[普拉]";
+		mes "因此，我们将水元素从融化的雪中获得的结晶泪滴混合在一起。这是我们每天需要的材料，所以请带回 6 个。";
+		next;
+		mes "我收到了一个名为^880088最佳冷却器材料^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 7) {
+		setquest 12123;
+		setquest 12161;
+		mes "[普拉]";
+		mes "供应经理紧急要求使用油漆来维护整个城市的建筑。";
+		next;
+		mes "[普拉]";
+		mes "他可以使用从水元素那里得到的荧光液来制作足够的颜料。请带回26个容器。";
+		next;
+		mes "我收到了一个名为^880088最佳油漆^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 8) {
+		setquest 12124;
+		setquest 12161;
+		mes "[普拉]";
+		mes "部长房间内价值不菲的水瓶坏了。他们将无法找到是谁干的，因为每天都有很多游客。";
+		next;
+		mes "[普拉]";
+		mes "你能给我带来水元素的这个贵重物品吗？我只需要1个。";
+		next;
+		mes "我收到了一个名为^880088稀有价值^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 9) {
+		setquest 12125;
+		setquest 12161;
+		mes "[普拉]";
+		mes "近卫军的盔甲衬里用品已经全部用完。";
+		next;
+		mes "[普拉]";
+		mes "Naga 的鳞片外壳是完美的衬里材料。请带回18个。";
+		next;
+		mes "我收到了一个名为^880088军械库材料^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else {
+		setquest 12126;
+		setquest 12161;
+		mes "[普拉]";
+		mes "我收到了一份请求，名为提供给警卫指挥官的装甲衬里材料。它们与普通衬里不同。";
+		next;
+		mes "[普拉]";
+		mes "请给我带来 11 片闪亮的娜迦鳞片。我认为这不会给你带来太多麻烦。";
+		next;
+		mes "我收到了一个名为^880088高级军械库材料^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	close;
+}
+
+dicastes01,225,211,3	script	Tragis#pa0829	453,{
+	if (!checkweight(1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (!isequipped(2782)) {
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "我对说话没有信心，因为你什么也听不懂。";
+		close;
+	}
+	if (ep13_3_invite < 6) {
+		mes "即使当你试图说话时，萨法也会与你保持距离。看来他拜访了加尔滕守卫。是时候该走了。";
+		close;
+	}
+	if (BaseLevel < 80) {
+		mes "[悲剧]";
+		mes "以你的水平来找要求，是一件很尴尬的事情，你知道吗？";
+		close;
+	}
+	if (checkquest(12162,PLAYTIME) == 2) {
+		mes "[悲剧]";
+		mes "与运营部门的^990099供应 2 部经理^000000 计算您的请求活动，然后返回。";
+		close;
+	}
+	else if (checkquest(12162,PLAYTIME) > -1) {
+		mes "[悲剧]";
+		mes "我现在对你没有任何要求。完成所有请求后，向运营部的^990099供应部 2 经理^000000 报告。";
+		close;
+	}
+	mes "[悲剧]";
+	mes "欢迎。";
+	mes "是什么风把你吹到这里来的？";
+	next;
+	if (select("请向我解释该请求。：请给我一个请求。") == 1) {
+		mes "[悲剧]";
+		mes "Pura 将解释有关供应工作的细节。正如你所看到的，我太忙了。";
+		close;
+	}
+	mes "[悲剧]";
+	mes "我刚刚收到一个请求。幸好我们没有人浪费时间。";
+	next;
+	set .@tut_13, rand(1,10);
+	if (.@tut_13 == 1) {
+		setquest 12127;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "是时候为矿井主管修理喇叭了。";
+		next;
+		mes "[悲剧]";
+		mes "因为那些喇叭是控制矿工所必需的。山茱萸的神秘号角是完美的小号材料，请购买5件。";
+		next;
+		mes "我收到了一个名为 ^880088Supervisor's Tool^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 2) {
+		setquest 12128;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "似乎没有足够的毛皮供冒险者使用。";
+		next;
+		mes "[悲剧]";
+		mes "有必要从塔塔乔那里得到一些毛皮。 21块就够了。";
+		next;
+		mes "我收到了一个名为^880088供暖准备^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 3) {
+		setquest 12129;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "酒吧要求收集 27 条虫腿。";
+		next;
+		mes "[悲剧]";
+		mes "他们不想透露他们需要它们的原因。不管怎样，谢谢你。";
+		next;
+		mes "我收到了一个名为^880088可疑食物^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 4) {
+		setquest 12130;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "扎尔贡在这里的居民中很受欢迎。它是一个美丽的圆形球，当其粉末与水混合时可以用作粘合剂。";
+		next;
+		mes "[悲剧]";
+		mes "听说这是冒险者之地很常见的材料。你想买一些吗？ 26个Zargons就足够了。";
+		next;
+		mes "我收到了一个名为^880088有用材料^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 5) {
+		setquest 12131;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "有一个要求是找到一种材料用于每个季度的建筑维修工作。";
+		next;
+		mes "[悲剧]";
+		mes "请获得13个实心贝壳，可从蜈蚣和蜈蚣幼虫中获得。这对于修复工作非常有用。";
+		next;
+		mes "我收到了一份名为^880088建筑必需材料^000000的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 6) {
+		setquest 12132;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "有一个要求是找到一种材料用于每个季度的建筑维修工作。";
+		next;
+		mes "[悲剧]";
+		mes "你需要获得 16 根坚固的藤蔓，这些藤蔓可以从猪笼草中获得。它是建筑修复工作的重要材料。";
+		next;
+		mes "我收到了一个名为 ^880088 建筑必需材料 2^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 7) {
+		setquest 12133;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "出于装饰目的，守卫需要许多锋利的叶子。其他一些冒险者也开始搜寻。";
+		next;
+		mes "[悲剧]";
+		mes "他们需要相当多的叶子，所以他们想要你提供 26 片锋利的叶子。我知道这很难。祝你好运！";
+		next;
+		mes "我收到了您的请求，名为^880088装饰布置^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 8) {
+		setquest 12134;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "由于来自外部的冒险者众多，酒吧老板陷入了困境。";
+		next;
+		mes "[悲剧]";
+		mes "他希望有一个可以简单、即时使用的器具，比如宽大的叶子。";
+		next;
+		mes "我收到了一个名为 ^880088 即时容器 ^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else if (.@tut_13 == 9) {
+		setquest 12135;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "我的身上发生过几次袭击。一定是那些猪笼草试图攻击矿工。";
+		next;
+		mes "[悲剧]";
+		mes "为了制作药物，我们需要 16 根棕色根。找到并带来它们。";
+		next;
+		mes "我收到了一个请求，名为^880088药品不足^000000。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+	else {
+		setquest 12136;
+		setquest 12162;
+		mes "[悲剧]";
+		mes "酒吧老板过来责怪你们胃口这么大。";
+		next;
+		mes "[悲剧]";
+		mes "他说他没有更多的蜂蜜和水果库存了。 2罐蜂蜜就足以安抚他了。";
+		next;
+		mes "我收到了一个名为 ^880088Honey robber^000000 的请求。您可以通过打开^990099任务窗口^000000来检查请求的详细信息以及向谁报告。";
+		close;
+	}
+}
+
+// Doha's Secret Orders
+//============================================================
+mid_campin,168,170,3	script	Inspector Doha#ep133	59,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
+		mes "- 你可以携带太多物品来继续任务。 -";
+		close;
+	}
+	if (ep13_3_secret < 1) {
+		mes "[多哈]";
+		mes "它是什么？";
+		mes "你看起来跟我没有任何关系。";
+		mes "如果你不这样做，请立即离开。";
+		close;
+	}
+	else if (ep13_3_secret == 1) {
+		mes "[多哈]";
+		mes "谁在问？";
+		mes "如果您走错房间，请立即离开。";
+		next;
+		if (select("来见检查员。：抱歉。") == 1) {
+			mes "[多哈]";
+			mes "我？";
+			mes "你就是队长说的那个人吗？";
+			mes "叫什么名字...";
+			mes strcharinfo(0) + "？";
+			next;
+			mes "[多哈]";
+			mes "嗯..我不知道为什么选择你，但我想他们足够信任你。";
+			mes "我听说你被选中去参观萨法首府埃尔迪卡斯特斯。";
+			next;
+			mes "[多哈]";
+			mes "关于这次访问，我有一个秘密任务要交给你。";
+			mes "更像是一个命令。";
+			next;
+			mes "[多哈]";
+			mes "我是因为举报事件从本国派来的督察。";
+			mes "我们正在努力调查所报告案件背后的真相。";
+			next;
+			select("举报案件？");
+			mes "[多哈]";
+			mes "你没听说过吗？";
+			mes "我以为你已经知道了..";
+			mes "那你不是当时收集报告的人吗？";
+			next;
+			mes "[多哈]";
+			mes "之前派遣探险队时";
+			mes "有一个关于我们各个类别的研究成果的综合报告";
+			mes "携带这份报告回国的信使遭到袭击。";
+			next;
+			mes "[多哈]";
+			mes "幸运的是报告没有被完全窃取";
+			mes "经过千辛万苦的修复，我们确实得到了报告。";
+			mes "重要的是这件事是谁干的。";
+			next;
+			mes "[多哈]";
+			mes "如您所知，这里的探险队是 3 个国家的联盟。";
+			mes "而且我们的关系并不好。";
+			mes "这就是为什么希巴·阿吉普被队长和高层管理人员任命为负责人，因为他不属于任何国家。";
+			next;
+			mes "[多哈]";
+			mes "但重要的是哪个国家是幕后黑手";
+			mes "当我们必须促进和平与合作时，他们为什么要这样做呢？";
+			next;
+			mes "[多哈]";
+			mes "所以我才被派到这里来调查。";
+			mes "在调查过程中我发现了一个意想不到的信息。";
+			next;
+			mes "[多哈]";
+			mes "你认识猫商吗？";
+			mes "他们也在附近做生意。";
+			mes "猫商之一";
+			mes "把这个信息泄露给我了。";
+			next;
+			mes "[多哈]";
+			mes "我正在调查被认为是袭击发生的地点";
+			mes "当我遇到一只猫时。嗯..我不知道我还应该称呼他们什么。";
+			next;
+			mes "[多哈]";
+			mes "但事实证明，我很幸运能够遇到这只猫。";
+			mes "因为他竟然是这起案件的证人。";
+			next;
+			select("证人！：谁干的？");
+			mes "[多哈]";
+			mes "叹...";
+			mes "他确实目睹了这起案件，但我得到的描述是……";
+			mes "起初很怀疑。";
+			next;
+			mes "[多哈]";
+			mes "嗯……猫用自己的话说道。";
+			mes "他可能是我们中的一员，因为他非常敏捷。";
+			next;
+			select("同一种族？猫？");
+			mes "[多哈]";
+			mes "是的。";
+			mes "我亲耳听到猫这么说。";
+			mes "他说他回到那个地方看看是不是他失踪的朋友。";
+			next;
+			mes "[多哈]";
+			mes "嗯……说得太多了，喉咙都肿了。";
+			mes "等我休息一下之后再继续吧。";
+			mes "我想我需要一杯水。";
+			set ep13_3_secret, 2;
+			close;
+		}
+		mes "[多哈]";
+		mes "谢谢。";
+		mes "我现在有点累了。";
+		mes "我希望下次能见到你。";
+		close;
+	}
+	else if (ep13_3_secret == 2) {
+		mes "[多哈]";
+		mes "哇......他们说这是雪原上的雪融化的水。";
+		mes "非常清爽，你不同意吗？";
+		mes "....";
+		next;
+		mes "[多哈]";
+		mes "然后回到故事。";
+		mes "于是我问那只猫为什么认为它是自己的同类。";
+		next;
+		mes "[多哈]";
+		mes "他说袭击者有一条漂亮的尾巴和迷人的耳朵。";
+		mes "很难相信。";
+		next;
+		select("这是一只猫？");
+		mes "[多哈]";
+		mes "不，我也问过同样的问题。";
+		mes "他说袭击者看起来更像我。";
+		mes "准确地说，是指像人类一样。";
+		next;
+		mes "[多哈]";
+		mes "是的。一个人类男性。";
+		mes "他说^4d4dff攻击者有迷人的耳朵和光滑而词汇丰富的尾巴^000000！";
+		next;
+		select("这能是一种爱好吗？");
+		mes "[多哈]";
+		mes "你说的是普隆德拉流行的凯蒂乐队吗？";
+		mes "如果一个成年雄性穿着其中一件……还有一条尾巴？";
+		next;
+		if (select("他是乔装的吗？：品味应该受到尊重。") == 1) {
+			mes "[多哈]";
+			mes "我同意。";
+			mes "我认为其中一个国家是幕后黑手。";
+			mes "老实说，我认为萨法和拉平都不会从中得到任何好处。";
+			next;
+			mes "[多哈]";
+			mes "我想这只是一种隐藏你的方式。";
+			mes "伪装成猫，就是这样！";
+			next;
+		}
+		else {
+			mes "[多哈]";
+			mes "....................";
+			mes "............当然";
+			mes "不同的品味应该得到尊重。";
+			next;
+			mes "[多哈]";
+			mes "....咳咳。";
+			mes "我的结论是";
+			mes "有人为了隐藏自己的来历而进行了可笑的伪装！";
+			next;
+		}
+		mes "[多哈]";
+		mes "所以我们现在需要做的是";
+		mes "找一个长着猫耳朵的人。";
+		mes "但我不太确定他现在会戴上它们。";
+		next;
+		mes "[多哈]";
+		mes "但正如猫商所说，我们不应该排除他可能来自第三方的可能性。";
+		mes "那么他的动机可能是什么。";
+		next;
+		mes "[多哈]";
+		mes "在事情变得太复杂之前，让我们先从简单的开始。";
+		mes "我听说您正在访问萨法首府埃尔迪卡斯特斯。";
+		next;
+		mes "[多哈]";
+		mes "无论是猫还是狗";
+		mes "请尝试收集有关兽耳家伙的信息。";
+		next;
+		mes "[多哈]";
+		mes "我将从这里继续搜寻和调查Manuk和Splendide。";
+		mes "我需要你在旅途中以及在埃尔迪卡斯特斯进行调查。";
+		next;
+		mes "[多哈]";
+		mes "这是一个非常重要的使命。";
+		mes "三个国家之间存在微妙的冲突";
+		mes "并且可能存在未知第三方的可能性。";
+		next;
+		mes "[多哈]";
+		mes "以及为什么攻击者只是进行干预而不是窃取整个报告。";
+		mes "我们需要达到目的。";
+		next;
+		mes "[多哈]";
+		mes "请带回一些线索。旅途中遇到的任何事情";
+		mes "如果您有任何线索，请向我报告。";
+		set ep13_3_secret, 3;
+		changequest 7185,7186;
+		close;
+	}
+	else if (ep13_3_secret == 3) {
+		mes "[多哈]";
+		mes "我会调查 Manuk 和 Splendide。";
+		mes "所以你必须在《El Dicastes》中寻找线索。";
+		next;
+		mes "[多哈]";
+		mes "关于那个长着动物耳朵的家伙。";
+		mes "这将是一项艰巨的任务，但我知道你会做得很好。";
+		close;
+	}
+	else if (ep13_3_secret > 3 && ep13_3_secret < 22) {
+		mes "[多哈]";
+		mes "调查进展如何？";
+		mes "请尽力而为。";
+		mes "不打破国家之间的平行关系。";
+		close;
+	}
+	else if (ep13_3_secret == 22) {
+		if (countitem(6306) && countitem(6305) && countitem(6307)) {
+			mes "[多哈]";
+			mes "调查进展如何？";
+			mes "你有什么显赫的地位吗？";
+			next;
+			mes "您分享了有关 Diel、Cheshire、Ahat 和维度裂缝的详细信息。";
+			mes "你给了他一块血块、贝壳和一块魔法石作为证据。";
+			next;
+			mes "[多哈]";
+			mes "唔..";
+			mes "事实上，我向所有前往 El Dicastes 的其他人赋予了同样的使命。";
+			next;
+			mes "[多哈]";
+			mes "他们都带来了基于假设的信息。";
+			mes "这意味着你的证据与其他证据没有太大不同。";
+			next;
+			mes "[多哈]";
+			mes "至少我们发现了一件事。";
+			mes "至少我们现在知道袭击者不是米德加德三个国家的人。";
+			mes "但这只是一个假设。";
+			next;
+			mes "[多哈]";
+			mes "报告的详细内容将由上级当局核实，并给出下一步的时间表。";
+			mes "谢谢。";
+			next;
+			mes "[多哈]";
+			mes "请吃这个。";
+			mes "这是对您迄今为止的服务的奖励。";
+			mes "这是你在另一个世界所经历的苦难所应得的。";
+			delitem 6306,1; //Solid_Bloodstain
+			delitem 6305,1; //Frozen_Skin_Piece
+			delitem 6307,1; //Suspicious_Magic_Stone
+			set ep13_3_secret, 23;
+			getitem 2553,1; //Dragon_Manteau
+			erasequest 7202;
+			completequest 7203;
+			next;
+			mes "[多哈]";
+			mes "....";
+			mes "萨法和拉平，无论哪一个。";
+			mes "我有更紧急的事情。";
+			next;
+			select("你能再说一遍吗？");
+			mes "[多哈]";
+			mes "..？";
+			mes "我什么也没说。";
+			mes "我猜你听错了。";
+			mes "你现在要离开吗？因为我要整理一份报告。";
+			close;
+		}
+		mes "您缺少与报告一起提交的证据：";
+		mes "凝结的血迹、一块冰冻的皮肤、奇异的魔法石。";
+		mes "您将必须再次收集这些物品。";
+		close;
+	}
+	mes "[多哈]";
+	mes "目前的政策不会有任何改变。";
+	mes "国土将继续审查您的报告内容。";
+	mes "[多哈]";
+	mes "我们现在能做的就是";
+	mes "尽力而为吧？";
+	mes "他说这很友善，但他的眼神有种“出去干活”的样子。";
+	close;
+}
+
+dic_in01,245,119,4	script	Shay#ep133_13	884,{
+	// if ((GetInventoryRemainCount 1301 3 == 2) || (GetInventoryRemainCount 1301 3 == 3)) {
+	if ((MaxWeight - Weight) < 1000) {
+		mes "- 你可以携带太多物品来继续任务。 -";
+		close;
+	}
+	cutin "ep13_shy",2;
+	mes "[谢伊]";
+	switch (rand(1,5)) {
+		case 1: mes ".. 缅甸弗龙。"; break;
+		case 2: mes "什么？"; break;
+		case 3: mes "无聊的。它是什么？"; break;
+		case 4: mes "叹息......准备好订购了吗？"; break;
+		case 5:
+			mes "又一次失败？";
+			mes "我在自言自语。别打扰。";
+			mes "你想要什么？";
+			break;
+	}
+	next;
+	switch (select("命令：谈话：没关系。")) {
+		case 1:
+			mes "[谢伊]";
+			mes "会是什么？";
+			mes "我有从摩洛哥飞来的热带 Sograt 和 Vermilion on the Beach。";
+			mes "不过有点贵。";
+			next;		
+			if (select("热带 Sorgrat - 2000z：海滩上的朱红 - 2000z：还有其他吗？") == 3) {
+				mes "[谢伊]";
+				mes "这里..";
+				mes "……嗯……";
+				mes "不。";
+				break;
+			}
+			setarray .@str$[1], "Tropical Sorgrat","Vermillion on the Beach.";
+			setarray .@item[1], 12112,12113;
+			if (Zeny > 1999) {
+				mes "[谢伊]";
+				mes "这是您的"+.@str$[@menu]+".";
+				set Zeny, Zeny - 2000;
+				getitem .@item[@menu],1; //Tropical_Sograt
+				break;
+			}
+			mes "[谢伊]";
+			mes .@str$[@menu]+"是 2000 Zeny。";
+			mes "什么东西这么贵？";
+			mes "然后你尝试把它一路带到这里。";
+			break;
+	case 2:
+		if (ep13_3_invite < 6) {
+			mes "[谢伊]";
+			mes "如果您还没有在 Diel 注册，您最好尽快注册。";
+			mes "这是开始接收请求并保证您在这里安全的唯一方法。";
+			next;
+			mes "[谢伊]";
+			mes "避免外交麻烦之外的冲突";
+			mes "尊重双方的协议总是更好的选择。";
+			mes "你不同意吗？";
+			break;
+		}
+		else {
+			if (ep13_3_secret < 3) {
+				mes "[谢伊]";
+				mes "没那么忙，但我不想这么做。";
+				break;
+			}
+			else if (ep13_3_secret == 3) {
+				mes "[谢伊]";
+				mes "我不想谈论私人事情。";
+				mes "但你还有什么疑问吗？";
+				next;
+				switch (select("告诉我你自己：关于萨法：关于其他种族：....嗯..")) {
+					case 1:
+						mes "[谢伊]";
+						mes "我？";
+						mes ".如果你问我的名字，它写在我的徽章上。";
+						mes "是谢伊。";
+						next;
+						select("不是那个");
+						mes "[谢伊]";
+						mes "唔。那我是不是应该给你讲讲我是如何在这里定居的故事呢？";
+						mes "第一个申请加急的人在这里";
+						mes "刺客所在的地方。";
+						next;
+						mes "[谢伊]";
+						mes "我就是其中之一。";
+						mes "这就是我如何比其他人先到达这个地方";
+						mes "探险营地的基地就是这样搭建起来的。";
+						next;
+						mes "[谢伊]";
+						mes "但你知道。";
+						mes "我以为我会回到家乡并退休。";
+						mes "但 El Dicastes 联系了我。";
+						next;
+						mes "[谢伊]";
+						mes "他们问我是否可以在外面开辟一个让我们感到舒适的地方。";
+						mes "他们也很体贴地把它建造成米德加德风格。";
+						next;
+						mes "[谢伊]";
+						mes "所以框架和风格，";
+						mes "建筑师被请进来..";
+						mes "然后我发现自己管理着整个项目？";
+						next;
+						mes "[谢伊]";
+						mes "和...";
+						mes "我就是这样来到这里的。";
+						mes "从那时起我就一直在这里了！";
+						next;
+						mes "[谢伊]";
+						mes "我不记得我原来的工作是什么。";
+						mes "卡塔尔上有点生锈了，我猜......";
+						next;
+						mes "谢伊突然露出了孤独的表情，对自己的处境深深叹了口气。";
+						mes "看起来很累。";
+						break;
+					case 2:
+						mes "[谢伊]";
+						mes "这里？";
+						mes "你被萨法斯包围着。";
+						mes "......";
+						next;
+						mes "[谢伊]";
+						mes "你问我什么？";
+						mes "只要问问路过的 Sapha 就知道了。";
+						mes "问“你是什么”。";
+						break;
+					case 3:
+						mes "[谢伊]";
+						mes "其他种族？";
+						mes "谈论萨法？";
+						next;
+						if (select("带猫耳: 带蝴蝶翅膀") == 1) {
+							mes "[谢伊]";
+							mes "猫？";
+							mes "你说的是猫商人吗？";
+							mes "他们在首都门外扎营。";
+							next;
+							mes "[谢伊]";
+							mes "他们甚至在探险营地附近采矿和捕鱼。";
+							mes "他们目前正在努力扩大业务";
+							next;
+							mes "[谢伊]";
+							mes "嗯..比他们大？";
+							mes "没有把握。没听说过。";
+							mes "你为什么不^4d4dff问问Sapha在这附近吗？^000000";
+							set ep13_3_secret, 4;
+							erasequest 7186;
+							setquest 7187;
+							break;
+						}
+						mes "[谢伊]";
+						mes "蝴蝶翅膀？你是在说拉平吗？";
+						mes "不认识他们？";
+						mes "你真是一无所有。";
+						next;
+						mes "[谢伊]";
+						mes "如果您想了解 Rapine，请前往 Splendide。";
+						mes "他们粗犷而坚韧。";
+						break;
+					case 4:
+						mes "[谢伊]";
+						mes "什么...";
+						mes "我没那么忙，但别打扰我太多。";
+						break;
+				}
+				break;
+			}
+			else if (ep13_3_secret == 4) {
+				mes "[谢伊]";
+				mes "现在是什么情况？";
+				mes "有运气吗？";
+				next;
+				setarray .@ward$, 
+					"7188","The Knits at the square are interested in Ahat.",
+					"7189","I heard from Pioms that most of the Saphas are interested in the minister.",
+					"7190","Galtens are interested in the Cat Merchant for their cat ears.";
+				mes "[" + strcharinfo(0) + "]";
+				mes "我正在尝试整理我收集到的信息。";
+				for (set .@size, getarraysize(.@ward$); .@i < .@size; set .@i, .@i + 2)
+					if (checkquest(atoi(.@ward$[.@i])) >= 0) {
+						set .@sealall, .@sealall + 1;
+						mes .@ward$[.@i+1];
+					}
+				if (!.@sealall) mes "但我应该如何处理收集到的信息呢？";
+				next;
+				if (.@sealall < 3) {
+					mes "[" + strcharinfo(0) + "]";
+					mes "呻吟...";
+					mes "[谢伊]";
+					mes "你看起来很失落，好像一切都不再有意义了。";
+					mes "他们的解决办法很简单，就是到处打听。";
+					next;
+					mes "[谢伊]";
+					mes "工厂、操场、广场等地方都有很多萨法斯人在工作。";
+					mes "城堡外面也有猫商人。";
+					break;
+				}
+				mes "[" + strcharinfo(0) + "]";
+				mes "大家";
+				mes "这几天都在说部长啊！";
+				mes "这阿哈特到底是怎么回事。";
+				next;
+				mes "[谢伊]";
+				mes "我什至没有见过部长。";
+				mes "我听很多人说他很漂亮。";
+				next;
+				mes "[谢伊]";
+				mes "反正........";
+				mes "试试这个。";
+				mes "我已经为此工作了一段时间，希望这可以出现在菜单上。";
+				next;
+				mes "- 谢伊放置了一个烤馅饼，馅饼的底部是用胡萝卜制成的。";
+				mes "上面放着一些看起来像苹果或香蕉的东西。";
+				mes "您立即认为尝试风险太大。 ？";
+				next;
+				select("切碎的成分是...");
+				mes "[谢伊]";
+				mes "一个苹果派。";
+				mes "我用香蕉装饰它。";
+				mes "看起来不像，但这是苹果派。";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "但为什么馅饼里有胡萝卜呢？";
+				mes "而且没有一丝苹果的味道。";
+				next;
+				mes "[谢伊]";
+				mes "停止！！！！！！！！！！！！！";
+				specialeffect2 EF_HIT1;
+				specialeffect2 EF_HIT2;
+				percentheal -30,0;
+				next;
+				mes "-谢伊很不高兴，扔了一些又粘又臭的东西。";
+				mes "馅饼离开谢伊的手掌，正好落在你的脸上。 -";
+				next;
+				mes "[谢伊]";
+				mes "哎呀..哼..哼..";
+				mes "呼……叹息……";
+				mes "...........";
+				next;
+				mes "[谢伊]";
+				mes "S..对不起。艾洛告诉我要帮你，但是..";
+				mes ".......";
+				mes "我无法自拔。";
+				next;
+				mes "[谢伊]";
+				mes "哈..猫商里有一只叫BK的猫。";
+				mes "他可能有你想要的信息。";
+				mes "...去...见见BK。";
+				next;
+				mes "[谢伊]";
+				mes "如果他不理你，请告诉他^4d4dff谢伊的特殊饮料将被送到^000000。";
+				set ep13_3_secret, 5;
+				erasequest 7188;
+				erasequest 7189;
+				erasequest 7190;
+				changequest 7187,7191;
+				break;
+			}
+			else if (ep13_3_secret > 4 && ep13_3_secret < 9) {
+				mes "[谢伊]";
+				mes "你可以在门外找到猫商人。";
+				mes "他们看起来就像是一小群流浪者。";
+				mes "从大门东南方向你会看到他们的帐篷。";
+				next;
+				mes "[谢伊]";
+				mes "BK 是那里保存信息的那个。";
+				mes "他将能够帮助你。";
+				break;
+			}
+			else if (ep13_3_secret == 9) {
+				mes "[谢伊]";
+				mes "你说BK说过这句话？";
+				mes "所以它是...";
+				mes "我确实认为阿哈特比平常漂亮。";
+				next;
+				mes "[谢伊]";
+				mes "但根据我在这家酒吧听到的萨法斯的故事";
+				mes "他们都有不同版本的阿哈特。";
+				next;
+				mes "[谢伊]";
+				mes "但BK说Ahat不是Sapha？";
+				mes "这仅仅意味着不是外表不同，而是可能是完全不同的种族。";
+				next;
+				mes "[谢伊]";
+				mes "我们只能调查。";
+				mes "他们说他是从裂缝中出来的，所以让我们调查一下裂缝。";
+				next;
+				mes "[谢伊]";
+				mes "但这里也有裂缝？";
+				mes "..太多的不幸。";
+				mes "有点悲伤。";
+				set ep13_3_secret, 10;
+				changequest 7192,7193;
+				break;
+			}
+			else if (ep13_3_secret == 10) {
+				mes "[谢伊]";
+				mes "最好去现场。";
+				mes "因为见到大臣是很困难的。";
+				next;
+				mes "[谢伊]";
+				mes "这里的裂缝一定是在摩洛哥裂缝出现的时候产生的。";
+				mes "如果他这么做了。";
+				next;
+				mes "[谢伊]";
+				mes "你会在 El Dicastes 东北方向发现一条裂缝。";
+				mes "尝试在那里调查。";
+				break;
+			}
+			else if (ep13_3_secret == 11) {
+				mes "[谢伊]";
+				mes "有运气吗？";
+				next;
+				setarray .@quest, 7194,7195,7196;
+				setarray .@item, 6306,6305,6307;
+				setarray .@str$, "bloodstain","frozen piece of skin","strange magical stone fragment";
+				
+				for (set .@size, getarraysize(.@item); .@i < .@size; set .@i, .@i + 1) {
+					if (countitem(.@item[.@i])) {
+						mes "- 你展示从裂缝附近收集的" + .@str$[.@i] + "。-";
+						set .@crack, 1;
+						next;
+						break;
+					}
+				}
+				if (!.@crack) {
+					mes "- 您没有任务所需的物品。案例3";
+					mes "如果你的任务物品被毁了，请向GM请求帮助。-";
+					break;
+				}
+				mes "[谢伊]";
+				mes "..我没想到会这样。";
+				mes "那么阿哈特是谁？";
+				mes "……我闻到了一股鱼腥味。";
+				next;
+				mes "[谢伊]";
+				mes "我不知道，因为我还没有亲眼见过阿哈特，但是";
+				mes "我们必须弄清楚这一切意味着什么。";
+				next;
+				select("你相信BK吗？");
+				mes "[谢伊]";
+				mes "至少BK没有说谎。";
+				mes "我认识的BK从不说谎。";
+				mes "为什么在裂缝附近发现这些？";
+				mes "为什么阿哈特靠近裂缝..";
+				next;
+				select("您想亲自见面吗？");
+				mes "[谢伊]";
+				mes "你不能只是在他身上跳华尔兹。";
+				mes "对于我们这样的外人来说，想要见到他就更加困难了。";
+				mes "嗯...";
+				next;
+				mes "[谢伊]";
+				mes "我们可以尝试收集的漏洞利用认证。";
+				mes "做过大事的人就有机会见到大臣。";
+				next;
+				mes "[谢伊]";
+				mes "Cat 商人还收集了漏洞认证。他们希望亲自会见部长，以便洽谈业务。";
+				next;
+				mes "[谢伊]";
+				mes "您可以通过处理整个城市的请求来获得漏洞利用认证。";
+				mes "如果你想见阿哈特部长...";
+				next;
+				mes "[谢伊]";
+				mes "您至少需要 ^4d4dff3 个漏洞利用认证^000000。";
+				mes "前往 ^4d4dff 在 Diel^000000 询问更多信息。";
+				next;
+				mes "[谢伊]";
+				mes "在迪尔登记冒险者的萨法。";
+				mes "他的名字是^4d4dffRhawyne^000000。问他。";
+				next;
+				select("你们没有Sapha的漏洞利用认证吗？");
+				mes "[谢伊]";
+				mes "................";
+				mes "你以为我有那么自由吗？";
+				mes "我不是收到请求的人，而是我提出请求的人！";
+				next;
+				mes "[谢伊]";
+				mes "啧。";
+				mes "首先，想想你必须做什么。";
+				mes "通过收集漏洞认证来认识 Ahat。";
+				mes "然后又发现疑问他和裂缝之间到底是什么关系。";
+				set ep13_3_secret, 12;
+				for (set .@i, 0; .@i < getarraysize(.@quest); set .@i, .@i + 1)
+					if (checkquest(.@quest[.@i]) >= 0) erasequest .@quest[.@i];
+				setquest 7197;
+				break;
+			}
+			else if (ep13_3_secret == 12) {
+				mes "[谢伊]";
+				mes "从收集漏洞认证开始。";
+				mes "您需要至少 3 项证明才能与部长会面。";
+				next;
+				mes "[谢伊]";
+				mes "获得认证后，请前往戴尔冒险家接待处提出与部长会面的请求。";
+				mes "罗恩会帮助你的。";
+				break;
+			}
+			else if (ep13_3_secret == 13) {
+				mes "[谢伊]";
+				mes "那么..你得到允许了吗？";
+				mes "我也很好奇这个阿哈特角色是谁。";
+				next;
+				mes "[谢伊]";
+				mes "好的。我会准备一些食物，直到你回来。";
+				mes "几天前我刚刚发现了这个神奇的巧克力食谱。";
+				next;
+				select("哦..不..");
+				mes "[谢伊]";
+				mes "当我在摩洛哥的时候。";
+				mes "你看到公会的一位同事以前做过巧克力吗？";
+				mes "我认为这会很简单，因为他正在做。";
+				next;
+				select("所以.....");
+				mes "[谢伊]";
+				mes "等你尝尝。";
+				mes "现在，开始吧。";
+				break;
+			}
+			else if ((ep13_3_secret > 13) && (ep13_3_secret < 17)) {
+				mes "[谢伊]";
+				mes "部长怎么样？";
+				next;
+				if (select("奇怪……：……美丽……") == 1) {
+					mes "[谢伊]";
+					mes "所以..多么奇怪。";
+					mes "..是好是坏？";
+					mes "不，那不重要。试着记住你在那里的目的。";
+					break;
+				}
+				mes "[谢伊]";
+				mes "啊？真的吗？";
+				mes "即使种族不同，你也能分辨出美丽。";
+				mes "你工作而不是梦想他的外表。";
+				break;
+			}
+			else if ((ep13_3_secret > 16) && (ep13_3_secret < 19)) {
+				mes "[谢伊]";
+				mes "唔...";
+				mes "清理裂缝区域？";
+				mes "听起来很奇怪。";
+				mes "有什么东西闻起来有鱼腥味。";
+				next;
+				mes "[谢伊]";
+				mes "别忘了带回证据。";
+				mes "并假装你被催眠了。";
+				mes "好的。这是我们的秘密。";
+				next;
+				mes "[谢伊]";
+				mes "有趣的是事情是如何发生的。";
+				mes "不过你确实很健谈。";
+				mes "你正在告诉我一切。啧。";
+				break;
+			}
+			else if (ep13_3_secret > 18 && ep13_3_secret < 22) {
+				mes "[谢伊]";
+				mes "你可知道？";
+				mes "还有一位技艺高超的雅鲁特人。";
+				mes "名字是赫斯兰塔。";
+				next;
+				mes "[谢伊]";
+				mes "他有时会回来分享他的故事。";
+				mes "但我认为他也有一个故事要讲。";
+				next;
+				mes "[谢伊]";
+				mes "这只是一个想法，但是";
+				mes "与阿哈特附近的人交谈也许也不错。";
+				next;
+				mes "[谢伊]";
+				mes "与名叫赫斯兰塔的雅鲁特人交谈怎么样？";
+				mes "无论如何，你也没有什么可失去的。";
+				break;
+			}
+			else if (ep13_3_secret == 22) {
+				mes "[谢伊]";
+				mes "你怎么又来了？";
+				mes "你在工作吗？";
+				next;
+				if (select("任务完成！：特意来谢谢你。") == 1) {
+					mes "[谢伊]";
+					mes "真的吗？";
+					mes "对你有好处。";
+					mes ".....";
+					mes "使命。好久没听过这个词了";
+					next;
+					mes "[谢伊]";
+					mes "现在走吧。";
+					mes "我很忙。";
+					mes "今天有新成分上市。";
+					mes "现在就去吧。";
+					break;
+				}
+				mes "[谢伊]";
+				mes "如果你那么感激的话，请把我所有的新菜品都吃到最后一口。";
+				next;
+				select("啊，那就是嗯……");
+				mes "[谢伊]";
+				mes "啊？迷路。";
+				mes "忘恩负义....";
+				break;
+			}
+			set .@shysay, rand(1,3);
+			if (.@shysay == 1) {
+				mes "[谢伊]";
+				mes "你想要什么？";
+				next;
+				switch (select("告诉我你自己：关于 Sapha：....嗯..")) {
+					case 1:
+						mes "[谢伊]";
+						mes "我？";
+						mes "我之前不是告诉过你了吗？";
+						next;
+						select("没有..");
+						mes "[谢伊]";
+						mes "不，我之前已经告诉过你我的故事了。";
+						mes "不过既然你记性不好，我就再告诉你一次。";
+						next;
+						mes "[谢伊]";
+						mes "唔。那我是不是应该给你讲讲我是如何在这里定居的故事呢？";
+						mes "第一个申请加急的人在这里";
+						mes "刺客所在的地方。";
+						next;
+						mes "[谢伊]";
+						mes "我就是其中之一。";
+						mes "这就是我如何比其他人先到达这个地方";
+						mes "探险营地的基地就是这样搭建起来的。";
+						next;
+						mes "[谢伊]";
+						mes "但你知道。";
+						mes "我以为我会回到家乡并退休。";
+						mes "但 El Dicastes 联系了我。";
+						next;
+						mes "[谢伊]";
+						mes "他们问我是否可以在外面开辟一个让我们感到舒适的地方。";
+						mes "他们也很体贴地把它建造成米德加德风格。";
+						next;
+						mes "[谢伊]";
+						mes "所以框架和风格，";
+						mes "建筑师被请进来..";
+						mes "然后我发现自己管理着整个项目？";
+						next;
+						mes "[谢伊]";
+						mes "和...";
+						mes "我就是这样来到这里的。";
+						mes "从那时起我就一直在这里了！";
+						next;
+						mes "[谢伊]";
+						mes "我不记得我原来的工作是什么。";
+						mes "卡塔尔上有点生锈了，我猜......";
+						next;
+						mes "谢伊突然露出了孤独的表情，对自己的处境深深叹了口气。";
+						mes "看起来很累。";
+						break;
+					case 2:
+						mes "[谢伊]";
+						mes "这里？";
+						mes "你被萨法斯包围着。";
+						mes "......";
+						next;
+						mes "[谢伊]";
+						mes "你问我什么？";
+						mes "只要问问路过的 Sapha 就知道了。";
+						mes "问“你是什么”。";
+						break;
+					case 3:
+						mes "[谢伊]";
+						mes "什么...";
+						mes "我没那么忙，但别打扰我太多。";
+						break;
+				}
+				break;
+			}
+			else if (.@shysay == 2) {
+				mes "[谢伊]";
+				mes "你现在带来了什么？";
+				mes ".........";
+				mes "什么？不？";
+				next;
+				mes "[谢伊]";
+				mes "啧……无聊。";
+				break;
+			}
+			else {
+				mes "[谢伊]";
+				mes "为什么草莓巧克力这么难做？";
+				mes "为什么我的巧克力会散开？";
+				next;
+				mes "[谢伊]";
+				mes "还有这个巧克力派。";
+				mes "我怎样才能把它烤成恰到好处的金黄色？";
+				mes "为什么不能是白色或黑色？";
+				mes "重要的不是馅饼。这就是巧克力。";
+				next;
+				mes "[谢伊]";
+				mes "我的同事是怎么做到的？";
+				mes "............";
+				mes "……女孩子喜欢这样吗？";
+				next;
+				if (select("他们通常喜欢自制巧克力。：不。只有外星人。") == 1) {
+					mes "[谢伊]";
+					mes "我懂了。";
+					mes "所以...";
+					mes "你结婚了吗？";
+					break;
+				}
+				mes "[谢伊]";
+				mes "你一个人，对吧？";
+				mes "....";
+				mes "对不起。";
+				mes "我们在同一条船上。";
+				break;
+			}
+		}
+	case 3:
+		mes "[谢伊]";
+		mes "适合自己。";
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+}
+
+dicastes01,207,210,5	script	Walking Knit#ep133_15	449,{
+	if (!isequipped(2782)) {
+		mes "[针织]";
+		mes "������";
+		mes "����������������������";
+		next;
+		mes "无法与他沟通。";
+		close;
+	}
+	if (ep13_3_secret == 4) {
+		mes "[针织]";
+		mes "欢迎，人类。";
+		mes "我终于习惯了遇见像你这样的其他种族。";
+		next;
+		if (select("除了人类之外还有其他种族吗？：你在做什么？") == 1) {
+			mes "[针织]";
+			mes "你来之前就有拉平了。";
+			mes "当然仍然有。";
+			mes "但他们是在卡米达尔山脉上空。";
+			next;
+			mes "[针织]";
+			mes "然后是猫..";
+			mes "啊，你看到城堡前的那群猫了吗？";
+			mes "与我们不同，它们真的很柔软，很可爱。";
+			next;
+			if (checkquest(7188) >= -1) {
+				mes "[针织]";
+				mes "尤其是他们的耳朵和尾巴！";
+				next;
+				select("你见过这个人吗？");
+				mes "[针织]";
+				mes "呃？啊？";
+				mes "男人？人类男性？";
+				mes "长着猫耳朵的人类男性？";
+				mes "没听说过这样的事..";
+				next;
+				mes "[针织]";
+				mes "人类真了不起！";
+				mes "根本没想到……！";
+				mes ".....";
+				next;
+				mes "[针织]";
+				mes "但他们真的很可爱。";
+				mes "那些可爱的猫..";
+				next;
+				mes "[针织]";
+				mes "但即使对于萨法人来说，阿哈特也很可爱。";
+				mes "....如果我的头发像一棵干燥的冬天树..";
+				mes "阿哈特的头发就像早春的新芽......";
+				next;
+				mes "[针织]";
+				mes "我不敢相信他是如何为 Dicastes 工作的";
+				mes "并且仍然保持这么好的头发。";
+				mes "我几乎可以看到光芒。";
+				next;
+				mes "[针织]";
+				mes "啊……他的皮肤是神圣的。";
+				mes "但他从未从迪卡斯特迪尔高处的办公室出来。";
+				next;
+				mes "[针织]";
+				mes "但我想这对阿哈特的肤色会更好......";
+				mes "像戴尔的水晶鸟一样保持温暖和安全，而不是在冬天外出！";
+				next;
+				mes "- 继续谈论阿哈特。";
+				mes "我认为我不会得到更多信息。 -";
+				setquest 7188;
+				close;
+			}
+			mes "[针织]";
+			mes "他们真的很可爱。";
+			mes "那些可爱的猫..";
+			next;
+			mes "[针织]";
+			mes "但即使对于萨法人来说，阿哈特也很可爱。";
+			mes "....如果我的头发像一棵干燥的冬天树..";
+			mes "阿哈特的头发就像早春的新芽......";
+			next;
+			mes "[针织]";
+			mes "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊..";
+			close;
+		}
+		mes "[针织]";
+		mes "如你所见，我正在散步。";
+		mes "我应该时不时地走走，以防止自己变得僵硬。";
+		mes "我真的不喜欢变得僵硬。";
+		close;
+	}
+	mes "[针织]";
+	mes "你不觉得猫很神奇吗？";
+	mes "我听说你来自哪里，你有宠物..";
+	next;
+	mes "[针织]";
+	mes "可以饲养其他生物吗？";
+	mes "他们想要那个吗？";
+	mes "这是一个很难的问题..";
+	close2;
+}
+
+dicastes01,112,248,5	script	Resting Piom#ep133_16	491,{
+	mes "[Piom]";
+	if (!isequipped(2782)) {
+		mes "���� �� ����？";
+		mes "��~！";
+		mes "���������������!!!";
+		next;
+		mes "无法与他沟通。";
+		close;
+	}
+	if (ep13_3_secret == 4) {
+		mes "[Piom]";
+		mes "呼..我需要休息。";
+		mes "啊？你是……人类！";
+		mes "你为什么在这里？";
+		next;
+		if (checkquest(7189) >= -1) {
+			select("关于一个长着猫耳朵的人..");
+			mes "[Piom]";
+			mes "哈哈哈哈！！！";
+			mes "哈哈哈哈！！！";
+			mes "最近有很多人问这个问题。";
+			mes "和猫商有冲突吗？";
+			next;
+			mes "[Piom]";
+			mes "哈哈……有趣。";
+			mes "长着猫耳朵的人类。从来没有听说过这样的事情。";
+			mes "但你似乎是新来的。";
+			next;
+			mes "[Piom]";
+			mes "不要把时间浪费在这样荒谬的事情上";
+			mes "就是这样！我认为你是对的人。";
+			next;
+			mes "[Piom]";
+			mes "部长留在 Diel 的顶端";
+			mes "尝试会见部长。";
+			mes "他是一个很棒的人。";
+			mes "所有萨法斯的榜样！";
+			next;
+			mes "[Piom]";
+			mes "如果您住在 El Dicastes，您需要了解 Saphas，对吗？";
+			mes "不要花时间和像我这样的尘土飞扬的皮奥姆在一起，去见见阿哈特吧。";
+			mes "你会爱他的。";
+			next;
+			mes "- 继续谈论阿哈特。";
+			mes "我认为我不会得到更多信息。 -";
+			setquest 7189;
+			close;
+		}
+		mes "[Piom]";
+		mes "不要跟着猫到处走";
+		mes "去见见阿哈特。";
+		mes "他真的很漂亮。";
+		close;
+	}
+	mes "[Piom]";
+	mes "如你所见，我正在休息。";
+	mes "我喜欢我的工作，但它太累了。";
+	mes "但我比当一名针织工时更快乐。";
+	next;
+	mes "[Piom]";
+	mes "我无法正常思考。";
+	mes "我不喜欢处理针织品所做的文件。";
+	mes "但随后加尔滕斯就必须携带重型武器。";
+	next;
+	mes "[Piom]";
+	mes "我做的最后一件事是开采并提炼钆";
+	mes "我喜欢它！";
+	mes "并认为我的工作让每个人都保持健康";
+	mes "是有回报的。";
+	close;
+}
+
+dicastes01,249,140,3	script	Training Galten#ep133_17	450,{
+	if (!isequipped(2782)) {
+		mes "[加尔顿]";
+		mes "������ �� ������";
+		mes "������";
+		next;
+		mes "无法与他沟通。";
+		close;
+	}
+	if (ep13_3_secret == 4) {
+		mes "[加尔顿]";
+		mes "嗯……又是平静的一天。";
+		mes "唔？你不是刚刚才来的外地人吗？";
+		mes "你来参观训练场了吗？";
+		next;
+		if (checkquest(7190) >= -1) {
+			select("关于一个长着猫耳朵的人..");
+			mes "[加尔顿]";
+			mes "猫耳朵？";
+			mes "有这样的人吗？";
+			mes "人类就是这样的吗？";
+			next;
+			mes "[加尔顿]";
+			mes "什么？不？";
+			mes "那你为什么要看他..";
+			mes "你为什么不去见见阿哈特而不是浪费你的时间。";
+			next;
+			mes "[加尔顿]";
+			mes "任何一个想要变强的人";
+			mes "应该会见阿哈特。";
+			mes "他是一个非常强大的萨法。";
+			next;
+			mes "[加尔顿]";
+			mes "他可能是一个正在处理成堆文件的雅鲁特人";
+			mes "但他一定隐藏了自己的力量！";
+			next;
+			mes "[加尔顿]";
+			mes "人人都说阿哈特像娇嫩的春芽";
+			mes "但我不同意！";
+			mes "我以前从未见过比萨法更强的人。";
+			mes "但我不太明白为什么他没有成为加尔滕人......";
+			next;
+			mes "- 继续谈论阿哈特。";
+			mes "我认为我不会得到更多信息。 -";
+			setquest 7190;
+			close;
+		}
+		mes "[加尔顿]";
+		mes "过早...";
+		mes "他是一个强大的萨法。";
+		mes "他可能是一位正在处理成堆文件的部长";
+		mes "但他一定隐藏了自己的力量！";
+		next;
+		mes "[加尔顿]";
+		mes "人人都说阿哈特像娇嫩的春芽";
+		mes "但我不同意！";
+		mes "我以前从未见过比萨法更强的人。";
+		mes "但我不太明白为什么他没有成为加尔滕人......";
+		next;
+		mes "[加尔顿]";
+		mes "或许他身体强壮，但内心却很温暖。";
+		mes "但你永远不知道...";
+		close;
+	}
+	mes "[加尔顿]";
+	mes "看来你是一位经验丰富的冒险家。";
+	mes "我想试试你";
+	mes "..哈哈哈";
+	mes "只是开玩笑。我不能与来我们土地的客人战斗。";
+	close;
+}
+
+dic_fild01,231,174,5	script	BK#ep133_18	496,{
+	if (ep13_3_secret < 3) {
+		mes "[BK]";
+		mes "哈。我是猫商的信息收集员。";
+		mes "有什么问题都可以问我...但是..";
+		mes "喵……你看，我不是一只容易相处的猫。";
+		next;
+		mes "[BK]";
+		mes "走开哈";
+		close;
+	}
+	else if ((ep13_3_secret == 3) || (ep13_3_secret == 4)) {
+		mes "[BK]";
+		mes "嗯...";
+		mes "它是什么？";
+		mes "……哦，首都萨法的人类。";
+		mes "喵...";
+		next;
+		if (select("关于猫耳朵的男人：你是什么？") == 1) {
+			mes "[BK]";
+			mes "哈，我是BK。猫商人臭名昭著的信息收集者。";
+			mes "但我没有任何信息可以与你分享。";
+			next;
+			mes "[BK]";
+			mes "你看，我不是一只容易相处的猫。";
+			mes "喵……喵";
+			mes "喵..猫耳朵。哈哈哈..听说过一些..喵..";
+			next;
+			mes "[BK]";
+			mes "我不告诉你~！";
+			close;
+		}
+		mes "[BK]";
+		mes "哈。我是猫商的信息收集员。";
+		mes "有什么问题都可以问我...但是..";
+		mes "喵……你看，我不是一只容易相处的猫。";
+		close;
+	}
+	else if (ep13_3_secret == 5) {
+		mes "[BK]";
+		mes "哈。我是猫商的信息收集员。";
+		mes "..............";
+		mes "我不会只向任何人透露信息。";
+		mes "喵...";
+		next;
+		mes "- 猫商组的BK很难。";
+		mes "谢伊让你做什么？-";
+		next;
+		input .@inputstr$;
+		if (.@inputstr$ == "Shay's special drink will be delivered" || .@inputstr$ == "Shay's special drink will be delivered.") {
+			mes "[" + strcharinfo(0) + "]";
+			mes "唔。如果你不配合的话";
+			mes "谢伊的特制饮料将会被送来。";
+			mes "谢伊本人！";
+			next;
+			mes "[BK]";
+			mes "什么？！";
+			mes "你想要什么。";
+			mes "你为什么骚扰我。";
+			mes "欺负……呜呜";
+			emotion ET_CRY;
+			next;
+			mes "[BK]";
+			mes "好的。我会配合的。";
+			mes "但有一些条件。";
+			mes "首先，你必须告诉谢伊我和你合作。";
+			next;
+			mes "[BK]";
+			mes "第二，要会见部长，拓展业务。";
+			mes "但需要利用认证才能见到他。";
+			next;
+			mes "[BK]";
+			mes "因此，我将出售我的信息以获取漏洞利用认证。";
+			mes "当你准备好时告诉我。";
+			set ep13_3_secret, 6;
+			close;
+		}
+		mes "[" + strcharinfo(0) + "]";
+		mes "" + .@inputstr$ + "……？";
+		mes "嗯..我认为你错了？";
+		mes "那是什么..";
+		next;
+		mes "[BK]";
+		mes "什么。你这是在威胁我吗？";
+		mes "喵..你还不够了解我~!!";
+		close;
+	}
+	else if (ep13_3_secret == 6) {
+		mes "[BK]";
+		mes "...那么你想知道什么？";
+		next;
+		switch (select("关于其他猫科动物种族")) {
+		}
+		mes "[BK]";
+		mes "猫科动物？你是在问我们猫吗？";
+		mes "嗯~";
+		mes "不知道比赛..但是..哈哈..";
+		next;
+		mes "- BK 要求提供漏洞利用认证。 -";
+		next;
+		if (select("没办法：给。") == 1) {
+			mes "[BK]";
+			mes "哼";
+			mes "我们达成了协议。";
+			mes "向 BK 提供 Sapha 的漏洞利用证明。";
+			close;
+		}
+		if (countitem(6304)) {
+			mes "[BK]";
+			mes "哈哈。。不错不错。";
+			mes "我对我们种族之外的事情一无所知";
+			mes "但我确实看到^4d4dff有一个长着可爱耳朵的人一直在访问Dicastes Diel^000000。";
+			next;
+			mes "[BK]";
+			mes "我什至看到他单独会见了^4d4dff新部长^000000。";
+			mes "呵呵...";
+			mes "使满意？";
+			delitem 6304,1; //Sapa_Feat_Cert
+			set ep13_3_secret, 7;
+			next;
+			mes "- BK 说了这句话，并从你手中夺走了漏洞利用认证。";
+			mes "提到了多哈兽耳人的信息！-";
+			close;
+		}
+		mes "[BK]";
+		mes "我会给你信息";
+		mes "然后你给我一个漏洞利用认证";
+		mes "很棒的团队合作，你同意吗？";
+		next;
+		mes "[BK]";
+		mes "如果你想知道我的信息，你必须给我一个漏洞利用认证。";
+		close;
+	}
+	else if (ep13_3_secret == 7 || ep13_3_secret == 8) {
+		if (ep13_3_secret == 7) {
+			mes "[BK]";
+			mes "……我刚才不是跟你说过猫耳朵男人的事了吗？";
+			mes "我在迪尔见过他和牧师在一起。";
+			next;
+			if (select("关于拉维尔？：部长是谁？") == 1) {
+				mes "[BK]";
+				mes "拉维尔任最高部长。";
+				mes "有点像酋长。";
+				mes "他们也称他为长老。";
+				mes "我们会称他为领袖吗？";
+				next;
+				mes "[BK]";
+				mes ".......啊.........";
+				mes "我应该在回答之前获得漏洞利用认证。";
+				close;
+			}
+			mes "[BK]";
+			mes "臭名昭著的";
+			mes "^4d4dff啊帽子^000000。";
+			mes "新任部长...";
+			mes "（BK搓前爪）";
+			next;
+			if (select("给个认证吧：不行。") == 2) {
+				mes "[BK]";
+				mes "不不不，违反合同。";
+				mes "如果你不给我认证我无话可说。";
+				close;
+			}
+			if (!countitem(6304)) {
+				mes "[BK]";
+				mes "如果你不给我认证我无话可说。";
+				close;
+			}
+			mes "[BK]";
+			mes "新部长不是附近的人。";
+			mes "下面有一条巨大的裂缝。";
+			next;
+			mes "[BK]";
+			mes "新部长在裂缝^000000附近被捡起^4d4dff。";
+			mes "他一定是外星人！";
+			delitem 6304,1; //Sapa_Feat_Cert
+			set ep13_3_secret, 8;
+			next;
+			select("你觉得怎么样？");
+		}
+		else if (ep13_3_secret == 8) {
+			mes "[BK]";
+			mes "现在是什么情况？";
+			mes "另一个部长的故事？";
+			next;
+			if (select("部长是外星人？：没什么……") == 2) {
+				mes "[BK]";
+				mes "喵~";
+				mes "我以为你把谢伊的食物带到这里作为奖励。";
+				mes "（BK想到这里就浑身发抖）";
+				next;
+				mes "[BK]";
+				mes "哎哟…";
+				mes "我什至无法想象。";
+				mes "...........哈！别告诉谢伊这个！";
+				close;
+			}
+		}
+		if (countitem(6304)) {
+			mes "[BK]";
+			mes "因为他不是萨法！";
+			next;
+			select("他不是萨法人吗？");
+			mes "[BK]";
+			mes "是的。";
+			mes "但这不奇怪吗。";
+			mes "这里所有的萨法人都认为他是一个美丽的萨法人……";
+			mes "但我从远处见过他，但他并没有。";
+			next;
+			mes "[BK]";
+			mes "对我来说，他是一只猫科动物。";
+			mes "他甚至可能是我失去的朋友。";
+			next;
+			mes "[BK]";
+			mes "好吧，我不明白为什么，因为所有 Saphas";
+			mes "很漂亮。";
+			delitem 6304,1; //Sapa_Feat_Cert
+			set ep13_3_secret, 9;
+			changequest 7191,7192;
+			next;
+			mes "- BK 说了这句话，并从你手中夺走了漏洞利用认证。";
+			mes "令人震惊的信息，萨法部长阿哈特不是萨法人！-";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "……我必须找出答案。";
+			mes "..他说在裂缝附近...";
+			mes "我应该和谢伊谈谈吗？";
+			close;
+		}
+		mes "- BK 在我的问题上举起前爪。";
+		mes "粉色果冻状的爪子正在请求漏洞利用认证。-";
+		close;
+	}
+	else if (ep13_3_secret == 9) {
+		mes "[BK]";
+		mes "为什么你总是回来？";
+		mes "如果你对新任部长感到好奇，为什么不自己去裂缝呢？";
+		mes "你会在那里找到一些东西，因为他来自那里。喵";
+		close;
+	}
+	mes "[BK]";
+	mes "喵~";
+	mes "我以为你把谢伊的食物带到这里作为奖励。";
+	mes "（BK想到这里就浑身发抖）";
+	next;
+	mes "[BK]";
+	mes "哎哟…";
+	mes "我什至无法想象。";
+	mes "...........哈！别告诉谢伊这个！";
+	close;
+}
+
+-	script	ep133_crack#main	-1,{
+	// if ((GetInventoryRemainCount 1301 3 == 2) || (GetInventoryRemainCount 1301 3 == 3)) {
+	if ((MaxWeight - Weight) < 1000) {
+		mes "- 你可以携带太多物品来继续任务。 -";
+		close;
+	}
+	set .@n$, strnpcinfo(1);
+	setarray .@npc$, 	"Rock Pile",	"Dirt Pile",	"Split Earth";
+	setarray .@item, 	6307,			6306,			6305;
+	for (set .@size, getarraysize(.@npc$); .@i < .@size; set .@i, .@i + 1)
+		if (.@n$ == .@npc$[.@i]) set .@type, .@i;
+	
+	if (ep13_3_secret == 10) {
+		if (.@npc$[.@type] == "Rock Pile") {
+			mes "由于地壳运动不稳定，周围有许多岩石堆。";
+			mes "这个石堆也是其中之一。";
+
+		}
+		else if (.@npc$[.@type] == "Dirt Pile") {
+			mes "裂缝附近有几堆土。";
+			mes "这是其中之一。";
+		}
+		else if (.@npc$[.@type] == "Split Earth") {
+			mes "地表因次元裂缝的冲击而裂开。";
+			mes "裂开的大地坚硬而冰冷，看起来就像锋利的刀片。";
+		}
+		mes "看不出有什么可疑的东西。";
+		next;
+		set .@menu$, (.@npc$[.@type] == "Rock Pile")? "Try to knock down the rock pile.:Study the pile closely." : "Stomp on it with your feet.:Poke around in the dirt pile.";
+		if (select(.@menu$) == 1) {
+			if (.@npc$[.@type] == "Rock Pile") mes "击倒构成岩石堆的鹅卵石并将其展开。";
+			else if (.@npc$[.@type] == "Dirt Pile") mes "你踩在挖出的土堆上，把地面弄平。";
+			else if (.@npc$[.@type] == "Split Earth") mes "你踩在干燥、裂开的表面上，使地面平坦。";
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			close;
+		}
+		if (.@npc$[.@type] == "Rock Pile") {
+			mes "你从小石头碎片中感受到邪恶的能量。";
+			mes "看起来并不自然，但更像是附近强大魔法咒语的残留物。";
+			mes "你感受到邪恶的能量。这和阿哈特有什么关系吗？";
+			mes "你收集了一块散发出奇怪能量的石头。";
+		}
+		else if (.@npc$[.@type] == "Dirt Pile") {
+			mes "你在泥土堆周围探查，发现泥土里凝结着血迹。";
+			mes "你感受到邪恶的能量。这和阿哈特有什么关系吗？";
+			mes "你收集凝结的血迹。";
+		}
+		else if (.@npc$[.@type] == "Split Earth") {
+			mes "锋利的裂纹表面上有一些东西被霜粘住了。";
+			mes "你仔细一看，发现它看起来就像是在地上爬行的生物的皮肤。";
+			mes "你感受到邪恶的能量。这和阿哈特有什么关系吗？";
+			mes "你收集凝结的血迹。";
+		}
+		set ep13_3_secret, 11;
+		getitem .@item[.@type], 1;
+		erasequest 7193;
+		setquest 7194;		
+		donpcevent strnpcinfo(0)+"::OnDisable";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "嗯..我可能需要和谢伊讨论这些。";
+		close;
+	}
+	else if (ep13_3_secret == 11) {
+		mes "[" + strcharinfo(0) + "]";
+		if (.@npc$[.@type] == "Rock Pile") mes "这是你捡到奇怪的魔法石的地方。";
+		else if (.@npc$[.@type] == "Dirt Pile") mes "从这里的泥土堆中收集凝结的血迹。";
+		else if (.@npc$[.@type] == "Split Earth") mes "这是发现冰冻皮肤的地方。";
+		mes "也感觉到周围有一股奇异的能量。";
+		mes "我们回酒吧和谢伊谈谈吧。";
+		close;
+	}
+	else if (ep13_3_secret == 17) {
+		if (countitem(.@item[.@type]) < 10) {
+			if (.@npc$[.@type] == "Rock Pile") {
+				mes "由于地壳运动不稳定，周围有许多岩石堆。";
+				mes "这是其中之一。";
+				mes "你从小石头碎片中感受到邪恶的能量。";
+			}
+			else if (.@npc$[.@type] == "Dirt Pile") {
+				mes "裂缝附近有几堆土。";
+				mes "这是其中之一。";
+				mes "你在泥土堆下面发现了凝结的血迹。";
+			}
+			else if (.@npc$[.@type] == "Split Earth") {
+				mes "次元裂缝附近的地表因某种冲击而裂开。";
+				mes "这是其中之一。";
+				mes "锋利的裂纹表面上有一些东西被霜粘住了。";
+			}
+			getitem .@item[.@type], 1;
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			next;
+			if (.@npc$[.@type] == "Rock Pile") mes "你收集石头碎片。";
+			else if (.@npc$[.@type] == "Dirt Pile") mes "收集血迹。";
+			else if (.@npc$[.@type] == "Split Earth") mes "收集一块皮肤。";
+			if (countitem(.@item[.@type]) == 10) {
+				mes "为柴郡收集的足够了，但是";
+				mes "您可能还需要更多信息来单独报告。";
+				if (checkquest(7202) == -1) setquest 7202;
+				close;
+			}
+			mes "收集到的钱不足以满足柴郡的要求。";
+			close;
+		}
+		else if (countitem(.@item[.@type]) == 10) {
+			if (checkquest(7202) >= 0) {
+				setarray .@str$, "stone fragments","bloodstains","pieces of skin";
+				mes "需要更多" + .@str$[.@type] + "向多哈远征营报告。";
+			}
+			else {
+				if (.@npc$[.@type] == "Rock Pile") mes "需要更多的石头碎片向探险营地的多哈报告。";
+				else if (.@npc$[.@type] == "Dirt Pile") mes "您已经为柴郡收集了足够的钱，但还需要更多的钱来向多哈报告。";
+				else if (.@npc$[.@type] == "Split Earth") mes "您已经为柴郡收集了足够的皮肤碎片，但需要更多的皮肤来向多哈报告。";
+				setquest 7202;
+			}
+			if (.@npc$[.@type] == "Rock Pile") mes "你收集了另一块散发出奇怪魔法力量的石头碎片。";
+			else if (.@npc$[.@type] == "Dirt Pile") mes "你从一堆泥土中收集到另一块凝结的血迹。";
+			else if (.@npc$[.@type] == "Split Earth") mes "你在裂开的大地裂缝中收集了另一块被霜冻住的皮肤。";	
+			getitem .@item[.@type], 1;
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			close;
+		}
+		mes "无需收集更多。";
+	}
+	if (ep13_3_ahtdayq == 1) {
+		if (countitem(.@item[.@type]) < 10) {
+			if (.@npc$[.@type] == "Rock Pile") {
+				mes "你从小石头碎片中感受到邪恶的能量。";
+				mes "收集石头碎片，将石堆打倒并展开，使其看起来更自然。";
+			}
+			else if (.@npc$[.@type] == "Dirt Pile") {
+				mes "你在泥土堆下面发现了凝结的血迹。";
+				mes "你收集凝结的血迹，然后踩在土堆上，不留任何痕迹。";
+			}
+			else if (.@npc$[.@type] == "Split Earth") {
+				mes "锋利的裂纹表面上粘着某种皮肤的霜。";
+				mes "你收集冰冻的一块皮肤，然后踩在地上不留下任何痕迹。";
+			}
+			getitem .@item[.@type], 1;
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			close;
+		}
+		setarray .@str$, "stone fragments","bloodstains","pieces of skin";
+		mes "无需收集更多" + .@str$[.@type] + ".";
+		close;
+	}
+	mes "发现了一些东西的痕迹。";
+	mes "排列得整整齐齐。";
+	close;
+OnEnable:
+	hideoffnpc strnpcinfo(0);
+	end;
+OnDisable:
+	hideonnpc strnpcinfo(0);
+	initnpctimer;
+	end;
+OnReset:
+	hideoffnpc strnpcinfo(0);
+	stopnpctimer;
+	end;
+OnTimer60000:
+OnTimer120000:
+OnTimer180000:
+OnTimer240000:
+	if (!rand(2)) {
+		hideoffnpc strnpcinfo(0);
+		stopnpctimer;
+	}
+	end;
+
+OnTimer300000:
+	hideoffnpc strnpcinfo(0);
+	stopnpctimer;
+	end;
+}
+dic_fild02,269,55,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef1	844
+dic_fild02,236,29,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef2	844
+dic_fild02,220,34,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef3	844
+dic_fild02,228,55,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef4	844
+dic_fild02,228,63,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef5	844
+dic_fild02,210,75,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef6	844
+dic_fild02,213,35,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef7	844
+dic_fild02,171,49,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef8	844
+dic_fild02,266,44,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef9	844
+dic_fild02,174,79,0	duplicate(ep133_crack#main)	Rock Pile#ep133_ef10	844
+dic_fild02,215,85,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef1	844
+dic_fild02,207,41,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef2	844
+dic_fild02,232,41,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef3	844
+dic_fild02,245,68,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef4	844
+dic_fild02,184,63,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef5	844
+dic_fild02,207,94,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef6	844
+dic_fild02,230,71,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef7	844
+dic_fild02,188,50,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef8	844
+dic_fild02,248,36,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef9	844
+dic_fild02,206,115,0	duplicate(ep133_crack#main)	Dirt Pile#ep133_ef10	844	
+dic_fild02,194,86,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef1	844
+dic_fild02,240,51,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef2	844
+dic_fild02,176,65,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef3	844
+dic_fild02,254,45,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef4	844
+dic_fild02,178,119,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef5	844
+dic_fild02,200,81,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef6	844
+dic_fild02,205,54,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef7	844
+dic_fild02,224,74,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef8	844
+dic_fild02,244,59,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef9	844
+dic_fild02,249,43,0	duplicate(ep133_crack#main)	Split Earth#ep133_ef10	844
+
+// Frede's Request
+//============================================================
+dicastes01,117,262,0	script	Frede#13_3	491,2,2,{
+	if (isequipped(2782)) {
+		if (ep13_3_invite <= 5) {
+			mes "[和平]";
+			mes "呻吟……呻吟……";
+			close;
+		}
+		if (ep13_3_bra < 1) {
+			mes "[和平]";
+			mes "呻吟……呻吟……";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "你还好吗？";
+			mes "你看起来不太好。您需要帮助吗？";
+			next;
+			mes "[和平]";
+			mes "啊……谢谢你。";
+			mes "这是因为我的腿受伤了。";
+			next;
+			mes "[和平]";
+			mes "你介意帮我去那边的大楼吗？";
+			mes "如果我休息一下，我会感觉好一些。";
+			set ep13_3_bra, 1;
+			close2;
+			warp "dic_in01",165,101;
+			end;
+		}
+		else if (ep13_3_bra < 4) {
+			mes "[和平]";
+			mes "我累了。我们可以继续在里面说话吗？";
+			close2;
+			warp "dic_in01",165,101;
+			end;
+		}
+		else if (ep13_3_bra < 9) {
+			mes "[和平]";
+			mes "我的小恩情进展得怎么样了？";
+			mes "你处理完之后我们可以聊聊。";
+			close;
+		}
+		mes "[和平]";
+		mes "" + strcharinfo(0) + "，这些家伙说他们想找个时间见面。";
+		mes "确保你调整了你的日程安排。";
+		close;
+	}
+	mes "[和平]";
+	mes "������ ��"; 
+	mes "������ �� ��";
+	close;
+OnTouch:
+	if (isequipped(2782) && ep13_3_invite > 5 && ep13_3_bra < 1) {
+		mes "[和平]";
+		mes "呻吟……呻吟……";
+		close;
+	}
+	end;
+}
+
+dic_in01,165,104,0	script	Frede#13_3_in	454,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 1) {
+			mes "[和平]";
+			mes "兹兹……兹兹……";
+			close;
+		}
+		else if (ep13_3_bra == 1) {
+			mes "[和平]";
+			mes "呼……";
+			mes "太感谢了。";
+			mes "我很高兴在为时已晚之前拍到了^f57d7dBradium^000000。";
+			percentheal -90,0;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "呼呼……呼呼……";
+			mes "我很高兴你感觉好多了。";
+			next;
+			mes "[和平]";
+			mes "天啊！！你怎么出那么多汗啊！";
+			mes "你的脸色也有点苍白……";
+			emotion ET_HUK;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "不，没什么。";
+			mes "我只是有点累，仅此而已。";
+			next;
+			mes "[和平]";
+			mes "来，坐下来吃这个。";
+			mes "是外面的猫给我的。它对萨法斯没有多大好处，但我听说它可以帮助你们人类。";
+			set ep13_3_bra, 2;
+			setquest 11171;
+			getitem 513,1; //Banana
+			close;
+		}
+		else if (ep13_3_bra == 2) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "但你腿上的伤看起来并不新鲜。你为什么腿受伤了出来？";
+			next;
+			mes "[和平]";
+			mes "我的这条腿仍然可以走动，我想帮助村庄。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "但你应该呆在家里康复。";
+			next;
+			mes "[和平]";
+			mes "事实是，我的腿永远无法康复。";
+			mes "我只能阻止自己的伤势进一步恶化。";
+			next;
+			mes "[和平]";
+			mes "但我很庆幸我还能四处走动。";
+			mes "哈......";
+			mes "我们什么时候开始害怕‘死亡’了？";
+			next;
+			mes "[和平]";
+			mes "萨法斯从来没有生过任何“疾病”，除非发生可怕的事故，否则我们不会死。";
+			next;
+			mes "[和平]";
+			mes "这也是我们Saphas能够维持完美社区的原因。";
+			mes "我们不必贪婪。";
+			next;
+			mes "[和平]";
+			mes "但突然间，我们受到了这种流行病的打击，许多萨法人从此失去了亲人。";
+			next;
+			mes "[和平]";
+			mes "我们没有为这样的灾难做好准备。";
+			mes "一片混乱。没有人知道该怎么办，只能眼睁睁地看着他们死去。";
+			next;
+			mes "[和平]";
+			mes "这对我们来说更糟糕，因为我们从未经历过因衰老而死亡。";
+			mes "我还以为我的^f57d7d仍然是朋友^000000有一天会醒来。";
+			next;
+			mes "[和平]";
+			mes "但过了一段时间，我们意识到这是一种导致死亡的疾病，并开始寻找治疗方法，但情况已经失控。";
+			next;
+			mes "[和平]";
+			mes "我们的科学技术非常先进，但我们缺乏医学领域的知识。";
+			next;
+			mes "[和平]";
+			mes "药是在我们死了很多人之后才完成的，但还不足以彻底治愈疾病。";
+			next;
+			mes "[和平]";
+			mes "只要我不忘记带上我的钆，我就可以避免病情变得更糟。";
+			next;
+			mes "[和平]";
+			mes "我最近在村庄旁边的洞穴里做了一些^f57d7d修复工作^000000，但是我在工作时忘记带Bradium。";
+			next;
+			mes "[和平]";
+			mes "当我出城工作时，我通常会随身携带额外的钔，但在山洞里你很容易失去时间感。";
+			next;
+			mes "[和平]";
+			mes "……嗯……";
+			mes "..............";
+			next;
+			mes "[和平]";
+			mes "哦不！！！！！！！！！！！！！";
+			mes "来吧……想一下……";
+			mes "我的朋友们！！！！！！！！！！";
+			next;
+			mes "[和平]";
+			mes "我还没见过和我一起在山洞里工作的朋友们。";
+			next;
+			mes "[和平]";
+			mes "他们必须每隔几天返回一次村庄来补充他们的钆。";
+			mes "也许……他们忘记了？";
+			next;
+			mes "[和平]";
+			mes "哎呀……我该怎么办呢……";
+			mes "如果我的腿能正常活动的话，我会自己跑到那里。";
+			next;
+			mes "[和平]";
+			mes "你介意去山洞看看我的朋友们还好吗？";
+			next;
+			if (select("会做：不做不到。") == 1) {
+				mes "[和平]";
+				mes "太感谢了。";
+				mes "回村已经有一段时间了，记忆有点模糊了，";
+				next;
+				mes "[和平]";
+				mes "但你会在村庄附近发现一个^f57d7d洞穴，正在进行修理工作^000000。";
+				next;
+				mes "[和平]";
+				mes "几天前，我看到朋友们回来获取更多的钔后离开了村庄。";
+				next;
+				mes "[和平]";
+				mes "我只希望他们都健康平安。";
+				set ep13_3_bra, 4;
+				changequest 11171,11172;
+				close;
+			}
+			mes "[和平]";
+			mes "我想我对此无能为力。";
+			mes "但把我自己拖到那里。";
+			set ep13_3_bra, 3;
+			close;
+		}
+		else if (ep13_3_bra == 3) {
+			mes "[和平]";
+			mes "哎呀……我该怎么办呢……";
+			mes "如果我的腿能正常活动的话，我会自己跑到那里。";
+			next;
+			mes "[和平]";
+			mes "你介意去山洞看看我的朋友们还好吗？";
+			next;
+			if (select("会做..：不做不到。")) {
+				mes "[和平]";
+				mes "太感谢了。";
+				mes "回村已经有一段时间了，记忆有点模糊了，";
+				next;
+				mes "[和平]";
+				mes "但你会在村庄附近发现一个^f57d7d洞穴，正在进行修理工作^000000。";
+				next;
+				mes "[和平]";
+				mes "几天前，我看到朋友们回来获取更多的钔后离开了村庄。";
+				next;
+				mes "[和平]";
+				mes "我只希望他们都健康平安。";
+				set ep13_3_bra, 4;
+				changequest 11171,11172;
+				close;
+			}
+			mes "[和平]";
+			mes "我想我对此无能为力。";
+			mes "但把我自己拖到那里。";
+			close;
+		}
+		else if (ep13_3_bra == 4) {
+			setarray .@quest_id, 11159,11160,11161,11162,11163,11164;
+			for (set .@size, getarraysize(.@quest_id); .@i < .@size; set .@i, .@i + 1)
+				if (checkquest(.@quest_id[.@i]) == -1) {
+					set .@fail, 1;
+					break;
+				}
+			if (!.@fail) {
+				mes "[和平]";
+				mes "我知道他们一直在干活，忘记了回村子。";
+				mes "他们肯定缺少钔。";
+				next;
+				mes "[和平]";
+				mes "嗯..";
+				next;
+				mes "[和平]";
+				mes "很抱歉再次询问，您能给我的朋友带一些钆吗？";
+				next;
+				mes "[和平]";
+				mes "他们现在可能安全了，但他们可能会忘记并突然生病。";
+				next;
+				mes "[和平]";
+				mes "在村庄西北部的建筑物中询问^f57d7d布伊^000000，他会给你一些精炼的钆。";
+				mes "我对你感激不尽。";
+				set ep13_3_bra, 5;
+				changequest 11172,11173;
+				for (set .@i, 0; .@i < .@size; set .@i, .@i + 1)
+					erasequest .@quest_id[.@i];
+				close;
+			}
+			mes "[和平]";
+			mes "太感谢了。";
+			mes "回村已经有一段时间了，记忆有点模糊了，";
+			next;
+			mes "[和平]";
+			mes "您可以在村庄附近的洞穴中找到它们，该洞穴正在进行修复工作。";
+			next;
+			mes "[和平]";
+			mes "几天前，我看到朋友们回来获取更多的钔后离开了村庄。";
+			next;
+			mes "[和平]";
+			mes "我希望他们一切都好。";
+			mes "见到我的朋友后请回复我。";
+			close;
+		}
+		else if (ep13_3_bra == 5) {
+			mes "[和平]";
+			mes "我知道他们一直在干活，忘记了回村子。";
+			mes "他们肯定缺少钔。";
+			next;
+			mes "[和平]";
+			mes "嗯..";
+			next;
+			mes "[和平]";
+			mes "很抱歉再次询问，您能给我的朋友带一些钆吗？";
+			next;
+			mes "[和平]";
+			mes "他们现在可能安全了，但他们可能会忘记并突然生病。";
+			next;
+			mes "[和平]";
+			mes "向位于村庄西北的建筑物中的^f57d7d布伊询问^000000，他会给你一些精炼的钆。";
+			mes "我对你感激不尽。";
+			close;
+		}
+		else if (ep13_3_bra == 6) {
+			mes "[和平]";
+			mes "所以他们已经离开了布雷德姆。";
+			mes "他们需要等到其他皮奥姆或加尔滕斯回来吗？";
+			close;
+		}
+		else if (ep13_3_bra == 7) {
+			mes "[和平]";
+			mes "所以他们已经离开了布雷德姆。";
+			mes "他们需要等到其他 Piom 或 Galtens 返回吗？";
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkweight(1201,1) == 0) {
+				mes "[和平]";
+				mes "你的物品种类太多了。";
+				mes "请减少商品数量后退回。";
+				close;
+			}
+			if ((MaxWeight - Weight) < 1000) {
+				mes "[和平]";
+				mes "您的物品太多。";
+				mes "请减轻物品重量后返回。";
+				close;
+			}
+			setarray .@quest_id, 11165,11166,11167,11168,11169,11170;
+			for (set .@size, getarraysize(.@quest_id); .@i < .@size; set .@i, .@i + 1)
+				if (checkquest(.@quest_id[.@i]) == -1) {
+					set .@fail, 1;
+					break;
+				}
+			if (!.@fail) {
+				mes "[和平]";
+				mes "" + strcharinfo(0) + " 我永远欠你的情！";
+				mes "我和朋友见面后才回来！";
+				mes "泰勒需要接受治疗，但其他人都很安全。";
+				next;
+				mes "[和平]";
+				mes "我什至不想想象如果你" + strcharinfo(0) + " 不来帮忙的话会发生什么。";
+				mes "我不想再失去更多的朋友了。";
+				next;
+				mes "[和平]";
+				mes "请将此作为我的谢意和友谊的象征。";
+				mes "虽然没什么，但我想让你拥有它。";
+				mes "我们可能来自不同的种族，但我们可以成为好朋友。";
+				completequest 11176;
+				set ep13_3_bra, 9;
+				getitem 2788,1; //Bradium_Earing
+				for (set .@i, 0; .@i < .@size; set .@i, .@i + 1)
+					erasequest .@quest_id[.@i];
+				close;
+			}
+			mes "[和平]";
+			mes "请把这个钔送给我的朋友们。";
+			mes "他们必须服用这个，否则他们可能会生病。";
+			close;
+		}
+		mes "[和平]";
+		mes "" + strcharinfo(0) + "，这些家伙说他们想找个时间见面。";
+		mes "确保你清理你的日程安排。";
+		close;
+	}
+	mes "[和平]";
+	mes "������ �� ";
+	mes "������ �� ��";
+	close;
+}
+
+dic_dun01,205,43,5	script	Brian#ep13_3_	490,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 4) {
+			mes "[布莱恩]";
+			mes "如果我们做得不彻底，你永远不知道会发生什么样的事故。";
+			next;
+			mes "[布莱恩]";
+			mes "不仅创造东西很重要，定期维护也很重要。";
+			close;
+		}
+		else if (ep13_3_bra < 8) {
+			if (checkquest(11159) >= 0 || ep13_3_bra != 4) {
+				mes "[布莱恩]";
+				mes "哦……这让我想起，我来到这里已经多少天了……";
+				mes "你知道今天是什么日子吗？";
+				close;
+			}
+			mes "[布莱恩]";
+			mes "如果我们做得不彻底，你永远不知道会发生什么样的事故。";
+			next;
+			mes "[布莱恩]";
+			mes "不仅创造东西很重要，定期维护也很重要。";
+			next;
+			mes "[布莱恩]";
+			mes "唔。但是什么让一个外人来到这里呢？";
+			next;
+			mes "[布莱恩]";
+			mes "哦，你是来找弗雷德的吗？";
+			mes "他怎么样？";
+			next;
+			mes "[布莱恩]";
+			mes "我几天前见过他，但我总是担心我的老朋友。";
+			next;
+			mes "[布莱恩]";
+			mes "我希望他能够适应他的新工作。";
+			mes "我不应该担心，因为他很努力，但是......";
+			next;
+			mes "[布莱恩]";
+			mes "他已经因为过度劳累而生病了。但你不必告诉他这是我说的。";
+			next;
+			mes "[布莱恩]";
+			mes "我只希望他的病情不要变得更糟。";
+			next;
+			mes "[布莱恩]";
+			mes "哦……这让我想起，我来到这里已经多少天了……";
+			mes "你知道今天是什么日子吗？";
+			setquest 11159;
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkquest(11165) >= 0) {
+				mes "[布莱恩]";
+				mes "我已经用完了 Bradium。";
+				mes "弗雷德一直在跟我唠叨这个问题，但现在我明白为什么了。";
+				mes "哈哈。";
+				next;
+				mes "[布莱恩]";
+				mes "请告诉弗雷德，我康复后会返回村庄。";
+				close;
+			}
+			mes "[布莱恩]";
+			mes "我记得你。";
+			mes "这次是什么风把你吹到这里来的？";
+			next;
+			select("你把钪给布莱恩。");
+			mes "[" + strcharinfo(0) + "]";
+			mes "弗雷德让我把这个给你。";
+			next;
+			mes "[布莱恩]";
+			mes "想想，我的心情确实有些沉重。";
+			mes "我已经站在这里一整天了，我可能会在不知不觉中变得僵硬。";
+			next;
+			mes "[布莱恩]";
+			mes "我已经用完了 Bradium。";
+			mes "弗雷德一直在跟我唠叨这个问题，但现在我明白为什么了。";
+			mes "哈哈...";
+			next;
+			mes "[布莱恩]";
+			mes "请告诉弗雷德，我康复后会返回村庄。";
+			next;
+			setquest 11165;
+			close;
+		}
+		mes "[布莱恩]";
+		mes "你把我从不可避免的事情中救了出来。";
+		mes "如果当时我不服用Bradium，我就会被冷冻并逐渐死亡。";
+		next;
+		mes "[布莱恩]";
+		mes "我在村里康复后，现在可以工作了。";
+		mes "太感谢了。";
+		close;
+	}
+	mes "[布莱恩]";
+	mes "��������������������";
+	mes "���� �� �С�� ��";
+	mes "���� ��";
+	close;
+}
+
+dic_dun01,153,107,4	script	Tyler#13_3	489,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 4) {
+			mes "[泰勒]";
+			mes "修复了一整天后我仍然看到需要修复的东西！";
+			mes "解决需要解决的问题是合乎逻辑的！";
+			next;
+			mes "[泰勒]";
+			mes "劳动终有回报！";
+			mes "哈哈哈哈哈哈！！！！";
+			close;
+		}
+		else if (ep13_3_bra == 4) {
+			if (checkquest(11161) >= 0) {
+				mes "[泰勒]";
+				mes "如果你在村子里碰见他，请告诉他我很好，不用担心。";
+				close;
+			}
+			mes "[泰勒]";
+			mes "修复了一整天后我仍然看到需要修复的东西！";
+			mes "解决需要解决的问题是合乎逻辑的！";
+			next;
+			mes "[泰勒]";
+			mes "劳动终有回报！";
+			mes "哈哈哈哈哈哈！！！！";
+			next;
+			mes "[泰勒]";
+			mes "啊？！你是谁？";
+			mes "怎么会有一个外人在这里？";
+			next;
+			mes "[泰勒]";
+			mes "你是因为弗雷德才来的？";
+			next;
+			mes "[泰勒]";
+			mes "我不敢相信他。";
+			mes "他应该照顾好自己。";
+			next;
+			mes "[泰勒]";
+			mes "我们两个回去了。";
+			mes "他一直都是那个勤奋的人。";
+			next;
+			mes "[泰勒]";
+			mes "我们以前曾一起在小吃店工作过。";
+			mes "他总是说他想做一些与^f57d7d石头^000000或^f57d7d重金属^000000相关的事情。";
+			next;
+			mes "[泰勒]";
+			mes "但皮奥姆斯并不擅长脑力劳动，所以他正在寻找其他地方。";
+			next;
+			mes "[泰勒]";
+			mes "我们所有的朋友都申请了这份工作，因为我们可以通过在隧道中工作来从事与石头和金属有关的工作。";
+			next;
+			mes "[泰勒]";
+			mes "他现在可能正在对村里的石头进行分类，但我确信他对自己的工作很满意。";
+			next;
+			mes "[泰勒]";
+			mes "如果你在村子里碰见他，请告诉他我很好，不用担心。";
+			next;
+			mes "[泰勒]";
+			mes "你介意帮我挠背吗？";
+			mes "我身上很痒，可能是被虫子咬了。";
+			mes "但我怀疑有一只虫子大到足以咬我的背。";
+			setquest 11161;
+			close;
+		}
+		else if (ep13_3_bra < 8) {
+			mes "[泰勒]";
+			mes "如果你在村子里碰见他，请告诉他我很好，不用担心。";
+			next;
+			mes "[泰勒]";
+			mes "你介意帮我挠背吗？";
+			mes "我身上很痒，可能是被虫子咬了。";
+			mes "但我怀疑有一只虫子大到足以咬我的背。";
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkquest(11167) >= 0) {
+				mes "[泰勒]";
+				mes "哦！！我已经没有Bradium了。你怎么知道的！";
+				mes "谢谢！";
+				next;
+				mes "[泰勒]";
+				mes "即使我带了额外的东西，我总是会缺钱。";
+				mes "完成这件事后我必须回村子才能带回来更多。";
+				close;
+			}
+			mes "[泰勒]";
+			mes "我们又见面了！";
+			next;
+			mes "[泰勒]";
+			mes "我一直在等你！";
+			mes "请帮我挠背~";
+			mes "上次你帮我刮的感觉真好。";
+			next;
+			switch (select("你把钷给泰勒。")) {
+			case 1:
+			break;
+			}
+			mes "[" + strcharinfo(0) + "]";
+			mes "弗雷德让我把这个给你。";
+			next;
+			mes "[泰勒]";
+			mes "哦！！我已经没有Bradium了。你怎么知道的！";
+			mes "谢谢！";
+			next;
+			mes "[泰勒]";
+			mes "即使我带了额外的东西，我总是会缺钱。";
+			mes "完成这件事后我必须回村子才能带回来更多。";
+			setquest 11167;
+			close;
+		}
+		mes "[泰勒]";
+		mes "后来我又参观了这个村子。";
+		mes "但我背上的痒并不是虫子咬的。";
+		next;
+		mes "[泰勒]";
+		mes "如果为时已晚，可能会发生可怕的事情。";
+		mes "我必须经常去村里看看，这样我的朋友们就不会担心了。";
+		close;
+	}
+	mes "[泰勒]";
+	mes "�����";
+	mes "���� �� ������ ��";
+	mes "����� �� ";
+	close;
+}
+
+dic_dun01,235,243,0	script	John#13_3	454,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 4) {
+			mes "[约翰]";
+			mes "-消音-";
+			mes "-点击点击-";
+			next;
+			mes "[约翰]";
+			mes "-紧缩-";
+			mes "-斑点-";
+			next;
+			mes "[约翰]";
+			mes "-滑动-";
+			mes "-砰-";
+			close;
+		}
+		else if (ep13_3_bra == 4) {
+			if (checkquest(11160) >= 0) {
+				mes "[约翰]";
+				mes "那好吧...";
+				mes "没什么可担心的。";
+				next;
+				mes "[约翰]";
+				mes "不用担心。";
+				close;
+			}
+			mes "[约翰]";
+			mes "-消音-";
+			mes "-点击点击-";
+			next;
+			mes "[约翰]";
+			mes "-紧缩-";
+			mes "-斑点-";
+			next;
+			mes "[约翰]";
+			mes "-滑动-";
+			mes "-砰-";
+			next;
+			mes "[约翰]";
+			mes "什..是谁？";
+			next;
+			mes "[约翰]";
+			mes "哦，你是弗雷德的朋友吗？";
+			next;
+			mes "[约翰]";
+			mes "那好吧...";
+			mes "没什么可担心的。";
+			next;
+			mes "[约翰]";
+			mes "不用担心。";
+			next;
+			mes "[约翰]";
+			mes "-呼啸-";
+			mes "-碰杯-";
+			setquest 11160;
+			close;
+		}
+		else if (ep13_3_bra < 8) {
+			mes "[约翰]";
+			mes "那好吧...";
+			mes "没什么可担心的。";
+			next;
+			mes "[约翰]";
+			mes "不用担心。";
+			next;
+			mes "[约翰]";
+			mes "-呼啸-";
+			mes "-碰杯-";
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkquest(11166) >= 0) {
+				mes "[约翰]";
+				mes "......";
+				mes "谢谢....";
+				close;
+			}
+			mes "[约翰]";
+			mes "......";
+			next;
+			select("你把钷交给约翰。");
+			mes "[" + strcharinfo(0) + "]";
+			mes "弗雷德让我把这个给你。";
+			next;
+			mes "[约翰]";
+			mes "......";
+			mes "谢谢....";
+			setquest 11166;
+			close;
+		}
+		mes "[约翰]";
+		mes "...";
+		mes "我……现在还好吧……";
+		mes "谢谢...";
+		close;
+	}
+	mes "[约翰]";
+	mes "������ �� ��";
+	mes "���� �� ���� �� ���� �� ���� ��";
+	close;
+}
+
+dic_dun02,110,127,5	script	Rose#13_3	489,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 4) {
+			mes "[玫瑰]";
+			mes "更糟糕的是~";
+			mes "是啊~！";
+			next;
+			mes "[玫瑰]";
+			mes "嘿嘿嘿！";
+			mes "我真是太棒了！";
+			mes "这是一个完美的修复！";
+			mes "我发现我的工作没有错误！";
+			close;
+		}
+		else if (ep13_3_bra == 4) {
+			if (checkquest(11162) >= 0) {
+				mes "[玫瑰]";
+				mes "告诉他没有任何问题，只是我的工作太出色了。";
+				mes "因为我很完美。";
+				close;
+			}
+			mes "[玫瑰]";
+			mes "更糟糕的是~";
+			mes "是啊~！";
+			next;
+			mes "[玫瑰]";
+			mes "嘿嘿嘿！";
+			mes "我真是太棒了！";
+			mes "这是一个完美的修复！";
+			mes "我发现我的工作没有错误！";
+			next;
+			mes "[玫瑰]";
+			mes "你是谁！";
+			mes "你永远无法隐藏美丽。请尽量不要用强烈的目光盯着我。我知道我很漂亮。";
+			next;
+			mes "[玫瑰]";
+			mes "什么？你是代表弗雷德来的吗？";
+			mes "你的意思是你不是我的崇拜者？";
+			mes "啧……";
+			next;
+			mes "[玫瑰]";
+			mes "告诉他没有任何问题，只是我的工作太出色了。";
+			mes "因为我很完美。";
+			setquest 11162;
+			close;
+		}
+		else if ((ep13_3_bra > 4) && (ep13_3_bra < 8)) {
+			mes "[玫瑰]";
+			mes "告诉他没有任何问题，只是我的工作太出色了。";
+			mes "因为我很完美。";
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkquest(11168) >= 0) {
+				mes "[玫瑰]";
+				mes "我很快就会回村子。";
+				mes "到时候我们就可以见面啦~";
+				close;
+			}
+			mes "[玫瑰]";
+			mes "啊~";
+			mes "所以你回来是因为想我吗？";
+			next;
+			mes "[玫瑰]";
+			mes "不必害羞。";
+			mes "如果你真的有感情，种族差异应该不是问题。";
+			next;
+			select("你把钷交给罗斯。");
+			mes "[" + strcharinfo(0) + "]";
+			mes "你把钷交给罗斯。";
+			next;
+			mes "[玫瑰]";
+			mes "哇...你不应该这样做。";
+			mes "我的^f57d7d心跳^000000跳动了。";
+			mes "你已经在照顾我了。";
+			mes "呵呵呵呵";
+			next;
+			mes "[玫瑰]";
+			mes "我很快就会回村子。";
+			mes "到时候我们就可以见面啦~";
+			setquest 11168;
+			close;
+		}
+		mes "[玫瑰]";
+		mes "你在这儿吗？";
+		mes "正当我因为想念你而准备回村的时候。";
+		next;
+		mes "[玫瑰]";
+		mes "我们必须有联系吗？";
+		mes "^f57d7d哈哈哈^000000";
+		close;
+	}
+	mes "[玫瑰]";
+	mes "����� �� ��";
+	mes "������ �� ��";
+	mes "����";
+	close;
+}
+
+dic_dun01,64,107,7	script	Bain#13_3	490,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 4) {
+			mes "[沐浴]";
+			mes "你采取坚固的木材并将其竖立起来制成一根柱子。";
+			mes "很简单，不是吗？";
+			next;
+			mes "[沐浴]";
+			mes "要固定竖立的木材，您需要使用楔子将其固定到位。";
+			mes "很简单，不是吗？";
+			close;
+		}
+		else if (ep13_3_bra == 4) {
+			if (checkquest(11163) >= 0) {
+				mes "[沐浴]";
+				mes "只要告诉他我过得很好就可以了。";
+				mes "很简单，不是吗？";
+				close;
+			}
+			mes "[沐浴]";
+			mes "你采取坚固的木材并将其竖立起来制成一根柱子。";
+			mes "很简单，不是吗？";
+			next;
+			mes "[沐浴]";
+			mes "要固定竖立的木材，您需要使用楔子将其固定到位。";
+			mes "很简单，不是吗？";
+			next;
+			mes "[沐浴]";
+			mes "它是什么？您还有什么疑问吗？";
+			next;
+			mes "[沐浴]";
+			mes "弗莱德叫你来吗？";
+			mes "只要告诉他我过得很好就可以了。";
+			mes "很简单，不是吗？";
+			setquest 11163;
+			close;
+		}
+		else if (ep13_3_bra < 8) {
+			mes "[沐浴]";
+			mes "只要告诉他我过得很好就可以了。";
+			mes "很简单，不是吗？";
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkquest(11169) >= 0) {
+				mes "[沐浴]";
+				mes "但如果我不回村子去拿钹，我就会遇到麻烦。";
+				next;
+				mes "[沐浴]";
+				mes "谢谢。";
+				mes "希望再次见到您。";
+				close;
+			}
+			mes "[沐浴]";
+			mes "我发现我的肩膀上有一块深棕色的污渍。";
+			mes "它不会脱落。我得回村里接受治疗。";
+			next;
+			select("给钷。");
+			mes "[" + strcharinfo(0) + "]";
+			mes "弗雷德让我把这个给你。";
+			next;
+			mes "[沐浴]";
+			mes "我发现我的肩膀上有一块深棕色的污渍。";
+			mes "它不会脱落。我得回村里接受治疗。";
+			next;
+			mes "[沐浴]";
+			mes "但如果我不回村子去拿钹，我就会遇到麻烦。";
+			next;
+			mes "[沐浴]";
+			mes "谢谢。";
+			mes "希望再次见到您。";
+			setquest 11169;
+			close;
+		}
+		mes "[沐浴]";
+		mes "我们又见面了。";
+		mes "如果你之前没有给我钹，我就没有机会回到村子。";
+		next;
+		mes "[沐浴]";
+		mes "我永远心存感激。";
+		mes "只要你愿意，我随时都可以教你如何立柱子。";
+		next;
+		mes "[沐浴]";
+		mes "我不会把这些东西教给任何人！";
+		mes "哈哈哈！！";
+		mes "你不为此感到兴奋吗？";
+		close;
+	}
+	mes "[沐浴]";
+	mes "����� �� ";
+	mes "����� �� ��";
+	close;
+}
+
+dic_dun01,58,225,4	script	Lash#13_3	491,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 4) {
+			mes "[睫毛]";
+			mes "叹......";
+			mes "我好累...";
+			mes "但疲劳帮助我前进。";
+			next;
+			mes "[睫毛]";
+			mes "汗水、粗重的呼吸、持续的疲倦证明我是真正的萨法人。";
+			mes "我真的很喜欢它。哈哈哈哈。";
+			close;
+		}
+		else if (ep13_3_bra == 4) {
+			if (checkquest(11164) >= 0) {
+				mes "[睫毛]";
+				mes "如果你想告诉他我怎么样，看看我的前臂。上面不是写着“强”字吗？";
+				next;
+				mes "[睫毛]";
+				mes "只要告诉他你看到了什么！";
+				mes "哈哈哈哈哈哈哈！";
+				close;
+			}
+			mes "[睫毛]";
+			mes "叹......";
+			mes "我好累...";
+			mes "但疲劳帮助我前进。";
+			next;
+			mes "[睫毛]";
+			mes "汗水、粗重的呼吸、持续的疲倦证明我是真正的萨法人。";
+			mes "我真的很喜欢它。哈哈哈哈。";
+			next;
+			mes "[睫毛]";
+			mes "但你来这里做什么？";
+			mes "你想分享劳动和汗水吗？";
+			next;
+			mes "[睫毛]";
+			mes "嗯？";
+			mes "哦，你是弗雷德的使者？";
+			mes "太糟糕了。";
+			mes "从你的前臂来看，我以为你和我一样。";
+			next;
+			mes "[睫毛]";
+			mes "如果你想告诉他我怎么样，看看我的前臂。上面不是写着“强”字吗？";
+			next;
+			mes "[睫毛]";
+			mes "只要告诉他你看到了什么！";
+			mes "哈哈哈哈哈哈哈！";
+			setquest 11164;
+			close;
+		}
+		else if (ep13_3_bra < 8) {
+			mes "[睫毛]";
+			mes "如果你想告诉他我怎么样，看看我的前臂。上面不是写着“强”字吗？";
+			mes "[睫毛]";
+			mes "只要告诉他你看到了什么！";
+			mes "哈哈哈哈哈哈哈！";
+			close;
+		}
+		else if (ep13_3_bra == 8) {
+			if (checkquest(11170) >= 0) {
+				mes "[睫毛]";
+				mes "哇！！！！";
+				mes "你救了我！";
+				mes "[睫毛]";
+				mes "如果没有你，我早就化为灰烬了！";
+				close;
+			}
+			mes "[睫毛]";
+			mes "呻吟...";
+			mes "难道……这就是所谓的疲劳！";
+			mes "从来不知道我会有这种感觉。哭泣。";
+			next;
+			select("你把钷交给拉什。");
+			mes "[" + strcharinfo(0) + "]";
+			mes "弗雷德让我把这个给你。";
+			next;
+			mes "[睫毛]";
+			mes "哇！！！！";
+			mes "你救了我！";
+			next;
+			mes "[睫毛]";
+			mes "如果没有你，我早就化为灰烬了！";
+			setquest 11170;
+			close;
+		}
+		mes "[睫毛]";
+		mes "哈哈哈！！";
+		mes "你是我的救星！";
+		mes "我们的友谊不分种族，天长地久！";
+		close;
+	}
+	mes "[睫毛]";
+	mes "��������������������";
+	mes "���� �� �С�� ��";
+	mes "���� �� ";
+	mes "��";
+	mes "������ �� ��";
+	close;
+}
+
+dic_in01,349,129,5	script	Bouy#13_3	449,{
+	if (isequipped(2782)) {
+		if (ep13_3_bra < 5) {
+			mes "[煮沸]";
+			mes "这里禁止外人进入。";
+			mes "如果你不小心来到这里，请立即寻找出路。";
+			close;
+		}
+		else if (ep13_3_bra == 5) {
+			mes "[煮沸]";
+			mes "这里禁止外人进入。";
+			mes "如果你不小心来到这里，请立即寻找出路。";
+			next;
+			select("我是代表弗雷德来的。");
+			mes "[煮沸]";
+			mes "我不知道。打扰一下。";
+			mes "他让你做什么？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "他让我给他在村外洞穴里工作的朋友们送拉。";
+			next;
+			mes "[煮沸]";
+			mes "哦不。由于供应不足，我没有任何便携式钆。";
+			next;
+			mes "[煮沸]";
+			mes "现在正在炼制的钷，要过几天才能拿到。我们让外出打工回来的皮奥姆斯留在村里休息。";
+			next;
+			mes "[煮沸]";
+			mes "但我发现他们还没有回来。";
+			mes "他们现在肯定已经离开了Bradium。";
+			mes "这不好。";
+			next;
+			mes "[煮沸]";
+			mes "最坏的情况是，他们根本就回不来村子了。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "还有别的办法吗？";
+			next;
+			mes "[煮沸]";
+			mes "提炼大块铍矿物需要很长时间，但提炼小块钫会很快。";
+			next;
+			mes "[煮沸]";
+			mes "钷矿物可以在该地区的任何地方收集，但精炼件的效率较低。";
+			next;
+			mes "[煮沸]";
+			mes "您可以轻松地从附近的怪物^000000处收集^f57d7d拉金碎片。";
+			next;
+			mes "[煮沸]";
+			mes "大约^f57d7d30块Bradium^000000足以与6个人分享。";
+			set ep13_3_bra, 6;
+			changequest 11173,11174;
+			close;
+		}
+		else if (ep13_3_bra == 6) {
+			if (countitem(6319) > 29) {
+				mes "[煮沸]";
+				mes "你已经带回了钷。";
+				mes "我一直在等待加尔滕家族的回归，因为我是文克尼克，所以不习惯战斗。非常感谢。";
+				next;
+				mes "[煮沸]";
+				mes "与使用机器相比，手工精炼钆块要快得多。我只需要两个小时就能完成。"; //Official: "一个小时", but gives 2-hour quest.
+				next;
+				mes "[煮沸]";
+				mes "我去上班的时候请你休息一下。";
+				delitem 6319,30; //Small_Bradium
+				changequest 11174,11175;
+				set ep13_3_bra, 7;
+				close;
+			}
+			mes "[煮沸]";
+			mes "钷矿物可以在该地区的任何地方收集，但精炼件的效率较低。";
+			next;
+			mes "[煮沸]";
+			mes "您可以轻松地从附近的怪物^000000处收集^f57d7d拉金碎片。";
+			next;
+			mes "[煮沸]";
+			mes "大约^f57d7d30块Bradium^000000足以与6个人分享。";
+			close;
+		}
+		else if (ep13_3_bra == 7) {
+			if (checkquest(11175,PLAYTIME) > 1) {
+				mes "[煮沸]";
+				mes "我做到了！";
+				mes "我有点紧张，因为我已经很久没有做体力活了，但我认为我做得很好。";
+				mes "请把这些交给他们。";
+				set ep13_3_bra, 8;
+				changequest 11175,11176;
+				close;
+			}
+			mes "[煮沸]";
+			mes "我还在努力，所以请多休息一下。";
+			close;
+		}
+		mes "[煮沸]";
+		mes "除非我们不断消耗钷，否则萨法斯无法生存。";
+		mes "这就是为什么我们需要空间来在整个村庄注射钆。";
+		next;
+		mes "[煮沸]";
+		mes "但是那些在村外工作的人不能经常回来补充他们的Bradium，所以我们提供便携式的Bradium。";
+		next;
+		mes "[煮沸]";
+		mes "但是最近马努克地区的钆矿开采出现了问题，我们出现了供应短缺的情况。我们没有足够的东西可以给予。";
+		next;
+		mes "[煮沸]";
+		mes "这就是为什么许多在村郊工作的皮奥姆人回来获取更多物资，";
+		next;
+		mes "[煮沸]";
+		mes "而花费在交通上的时间则是拖慢工作速度的原因。";
+		next;
+		mes "[煮沸]";
+		mes "说实话，运输时间并没有多大区别，但最终会增加。";
+		next;
+		mes "[煮沸]";
+		mes "我们称之为^f57d7d奶油效果^000000。";
+		close;
+	}
+	mes "[煮沸]";
+	mes "������ �� ����� ��"; 
+	mes "����� ��";
+	mes "����� ��";
+	close;
+}
+
+// Sapha's Visit
+//============================================================
+-	script	Expedition#ep133_is	-1,{
+	if (ep13_3_invite) {
+		if (compare(strnpcinfo(1),"Maha")) {
+			mes "[很多]";
+			mes "但我确实认为萨法种族过于友善，几乎不自然。";
+			mes "估计会没事的";
+			close; 
+		}
+		mes "[本]";
+		mes "没有什么奇怪的！";
+		mes "我很想像你一样，受到很多人的尊重。";
+		next;
+		mes "[本]";
+		mes "如果我在这里工作顺利的话，我也可以参观Sapha，不是吗？";
+		close; 
+	}
+	mes "[本]";
+	mes "唔。嘿玛哈，";
+	mes "你怎么认为？";
+	mes "你认为他为什么在这里？";
+	next;
+	mes "[很多]";
+	mes "不知道。不感兴趣。";
+	next;
+	mes "[本]";
+	mes "你不觉得这个人很奇怪吗？";
+	mes "在我加入探险队之前，我从未见过他的比赛。";
+	next;
+	mes "[很多]";
+	mes "啊。真的吗？";
+	mes "那么就只有你了。";
+	mes "他来这里一定是有原因的。";
+	next;
+	mes "[本]";
+	mes "................";
+	mes "哦不，你不...";
+	next;
+	mes "[很多]";
+	mes "他们可能很快就会发布公告。";
+	mes "我们需要做的就是等待公告。";
+	mes "它会给我们答案。";
+	next;
+	if(select("这是什么？：保持沉默并倾听。") == 2) {
+		mes "[本]";
+		mes "唔...";
+		mes "确实是这样，但是你是不是想太多了？";
+		next;
+		mes "[很多]";
+		mes "我不喜欢惹上麻烦。";
+		mes "我只听从命令。";
+		mes "除此之外，并没有什么异常的地方。";
+		next;
+		mes "[很多]";
+		mes "据我所知";
+		mes "那个叫萨法的树状巨人种族很善良。";
+		mes "不会有任何麻烦。放松。";
+		close;
+	}
+	mes "[本]";
+	mes "啊？你听到我们说话了吗？";
+	mes "真的什么都没有，或者也许是什么……";
+	mes "所以...";
+	next;
+	mes "[本]";
+	mes "派往马努克的研究人员刚刚回来。";
+	mes "但...";
+	next;
+	select("但？");
+	mes "[本]";
+	mes "嗯……他们带着马努克信使回来了！";
+	mes "...来自Maoo的母亲。";
+	next;
+	if (select("他在哪里？！：这是绝密信息吗？！") == 1) {
+		mes "[本]";
+		mes "他现在就在指挥中心。";
+		mes "我们应该去那里。";
+		close;
+	}
+	mes "[本]";
+	mes "打扰一下。";
+	mes "没有命令限制或保守秘密。";
+	mes "看起来他们正在进行正式访问。";
+	next;
+	mes "[本]";
+	mes "如果我们现在去指挥中心也许能知道一些事情";
+	mes "尝试查看^4d4dffAello^000000。";
+	close;
+}
+mid_camp,220,246,5	duplicate(Expedition#ep133_is)	Expedition Guard Ben	930
+mid_camp,223,246,4	duplicate(Expedition#ep133_is)	Expedition Guard Maha	868
+
+mid_campin,93,114,3	script	Guard Aello#ep133_is03	967,{
+	if (ep13_ryu > 99 || ep13_start > 99) {
+		if (ep13_3_invite == 0) {
+			mes "[艾洛]";
+			mes "啊，你。时机很好。";
+			mes "我有紧急事要告诉你。";
+			next;
+			mes "[艾洛]";
+			mes "你知道马努克的使者在这里吗？";
+			mes "不是什么大秘密，但是..";
+			next;
+			mes "[艾洛]";
+			mes "来自马努克的萨法想和你谈谈。";
+			mes "阿吉夫说探险队的任何人都可以见到他，但是……";
+			mes "我认为有更多经验的人应该去。";
+			next;
+			mes "[艾洛]";
+			mes "我知道你的能力";
+			mes "并相信你。";
+			mes "代表团在二楼右边的房间。";
+			next;
+			mes "[艾洛]";
+			mes "前面会有一个守卫";
+			mes "只要告诉他你已获得授权即可。";
+			mes "他对人类很感兴趣，所以在与他交谈时尽量保持礼貌。";
+			set ep13_3_invite, 1;
+			setquest 7182;
+			close;
+		}
+		else if (ep13_3_invite == 1) {
+			mes "[艾洛]";
+			mes "就是二楼右边的房间。";
+			mes "房间前面有一名警卫。";
+			mes "如果你告诉他你有授权，他就会让你通过。";
+			next;
+			mes "[艾洛]";
+			mes "尽量不要提供不必要的信息";
+			mes "并且只进行闲聊。";
+			close;
+		}
+		mes "[艾洛]";
+		mes "我知道我可以依靠你。";
+		mes "你们的活动将极大地帮助我们扩大我们的领土。";
+		close;
+	}
+	mes "[艾洛]";
+	mes "我只对最熟练的人感兴趣";
+	mes "灰真空探险队中值得信赖的人。";
+	next;
+	mes "[艾洛]";
+	mes "但是..你是这里的新面孔。";
+	mes "嗯...抱歉，但你不会这么做。";
+	mes "你必须先熟悉这个营地。";
+	close;
+}
+
+mid_campin,111,120,3	script	Soldier#ep133_is04	852,{
+	if (ep13_3_invite == 1) {
+		mes "[士兵]";
+		mes "抱歉，该房间目前禁止访客进入。";
+		next;
+		if (select("我有授权。：是这样吗？") == 1) {
+			mes "[士兵]";
+			mes "你做？";
+			mes "你叫什么名字。";
+			mes "谢谢。";
+			mes "所以你是" + strcharinfo(0) + ".";
+			next;
+			mes "[士兵]";
+			mes "你现在可以进去了。";
+			close2;
+			warp "mid_campin",165,126;
+			end;
+		}
+		mes "[士兵]";
+		mes "未经艾洛许可，你不得进入。";
+		mes "没有例外。";
+		close;
+	}
+	else if (ep13_3_invite > 1) {
+		mes "[士兵]";
+		mes "你回来了。";
+		mes "你现在认识萨法使者了吗？";
+		mes "我们对您抱有很高的期望。";
+		close2;
+		warp "mid_campin",165,126;
+		end;
+	}
+	mes "[士兵]";
+	mes "对不起。";
+	mes "该房间禁止访客入内。";
+	close;
+}
+
+function	script	eldicastes_c	{
+	switch(getarg(0)) {
+		case 1:
+			mes "[猎犬]";
+			mes "我们继续吧..";
+			mes "虽然细节已经确定。";
+			next;
+			mes "[维汉努斯]";
+			mes "啊，是的。";
+			mes "我当时在哪儿？";
+			mes "啊，是的。";
+			mes "迪卡斯特人！";
+			mes "埃尔迪卡斯特斯是萨法的首府。";
+			next;
+			mes "[维汉努斯]";
+			mes "这座城市就像白雪中一颗闪闪发光的宝石。";
+			mes "马努克最初是一个为开采拉而建立的村庄。";
+			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+			next;
+			mes "[维汉努斯]";
+			mes "拉维尔拥有 El Dicastes 的所有权力";
+			mes "并根据马努克的报告做出决定。";
+			next;
+			mes "[维汉努斯]";
+			mes "来自我们以外的世界的善良种族";
+			mes "我们非常感谢你的好意";
+			mes "帮助我们并与我们合作。";
+			next;
+			mes "[维汉努斯]";
+			mes "Ravail，萨法代表";
+			mes "想邀请人类来到El Dicastes，";
+			mes "萨法的首都。";
+			next;
+			select("邀请？访问？城市？！：这是什么意思，猎犬？");
+			mes "[猎犬]";
+			mes "正如他所说。";
+			mes "我们的探险队已经帮助萨法斯人有一段时间了。";
+			mes "收集钷以维持生存或";
+			next;
+			mes "[猎犬]";
+			mes "消灭威胁他们的凶猛野兽。";
+			mes "…………";
+			next;
+			mes "[猎犬]";
+			mes "因此，他们向我们发出了正式邀请，邀请我们访问他们的首都。";
+			mes "这就是为什么我一直在挑选探险队成员前往萨法的首府埃尔迪卡斯特斯。";
+			next;
+			select("..你的意思是..");
+			mes "[维汉努斯]";
+			mes "是的。";
+			mes "这就是他的意思。";
+			mes "阿吉夫临走前也表示认可。";
+			mes "" + strcharinfo(0) + "，邀请您。";
+			next;
+			mes "[维汉努斯]";
+			mes "你很友善并尊重他人";
+			mes "礼貌、值得信赖，最重要的是，性格有趣。";
+			next;
+			mes "[维汉努斯]";
+			mes "你很完美。拉维尔也会同意的。";
+			mes "这就是我在这里的原因。";
+			next;
+			mes "[维汉努斯]";
+			mes "我邀请您来到我们的首都埃尔迪卡斯特。";
+			mes "" + strcharinfo(0) + "";
+			next;
+			select("永远不会想象。");
+			mes "[猎犬]";
+			mes "你现在不是应该已经习惯了意想不到的事情吗？";
+			mes "来吧...你不是菜鸟..哈哈。";
+			next;
+			mes "[猎犬]";
+			mes "如果你要离开，最好现在就离开。";
+			mes "一旦你准备好离开就回到我身边。";
+			mes "我会让你知道你的使命。";
+			set ep13_3_invite, 3;
+			close;
+		case 2:
+			mes "[维汉努斯]";
+			mes "首先前往马努克并与雪崩卫队将军会面。";
+			mes "雪崩将全副武装，因为他是加尔滕。";
+			mes "你不能错过他。";
+			next;
+			mes "[维汉努斯]";
+			mes "一旦你告诉雪崩你是这座城市的客人，他就会让你通过通往El Dicastes的道路。";
+			next;
+			mes "[维汉努斯]";
+			mes "没有他的批准你不能通过，所以一定要得到他的许可。";
+			mes "他会让你通过我的建议。";
+			next;
+			mes "[维汉努斯]";
+			mes "我有点兴奋。";
+			mes "讨论我们的会议将来会带来什么。";
+			mes "只希望不要像半夜的暴风雪一样。";
+			set ep13_3_invite, 4;
+			changequest 7182,7183;
+			close;
+		case 3:
+			mes "[猎犬]";
+			mes "我的名字是猎犬。";
+			mes "你是应艾罗的要求来的吗？";
+			next;
+			select("是的。他让我去见萨法。");
+			mes "[猎犬]";
+			mes "好的。你应该能和他谈谈吧？";
+			mes "我们先自我介绍一下吧？";
+			mes "这是...";
+			mes ""+strcharinfo(0)+"...";
+			next;
+			mes "[维汉努斯]";
+			mes "我的名字是维汉努斯。";
+			mes strcharinfo(0)+"..？";
+			mes "很高兴认识你。";
+			next;
+			if(select("同样在这里：树怪！")==1) {
+				mes "[维汉努斯]";
+				mes "惊人的。";
+				mes "就像猎犬一样，你们人类制作的戒指......";
+				mes "就像智慧之环。"; 
+			}
+			else {
+				mes "[猎犬]";
+				mes "你在说什么？";
+				mes "那太粗鲁了！";
+				next;
+				mes "[维汉努斯]";
+				mes "哦。怪物？";
+				mes "这是新事物。";
+				mes "猎犬。我很好。你们人类真有趣。";
+				next;
+			}
+			mes "[维汉努斯]";
+			mes "我们要跳到正题吗？";
+			mes "我来这里的原因..."; 
+			next;
+			mes "[某人的声音]";
+			mes "对不起，请稍等。";
+			enablenpc "Hibba Agip#ep133_is07";
+			next;
+			mes "[猎犬]";
+			mes "指挥官！";
+			mes "你来得这么突然。";
+			mes "有情况吗？";
+			emotion ET_HUK, getnpcid(0, "Hound#ep133_is06");
+			next;
+			mes "[希巴·阿吉普]";
+			mes "啊？没有什么。";
+			mes "有没有什么事情。";
+			mes "你不是说要派一个值得信赖的人吗？";
+			mes "我想见艾洛派来的人。";
+			next;
+			mes "[希巴·阿吉普]";
+			mes "嗯……啊。";
+			mes "是你吗？";
+			mes "我明白了，正如艾罗所解释的那样。";
+			mes "好吧，我想如果是你的话，我们会得到很好的照顾。";
+			next;
+			select("你在暗示什么？");
+			mes "[维汉努斯]";
+			mes "所以……就这样了。";
+			mes "萨法斯和人类在过去有很多不同之处。";
+			next;
+			mes "[维汉努斯]";
+			mes "你突然出现后，我们担心会与你的种族为敌";
+			mes "并且害怕你的能力。";
+			next;
+			mes "[维汉努斯]";
+			mes "但你尊重我们萨法斯";
+			mes "并帮助马努克做了很多事。";
+			mes "我们已经开始认识到人类是好人。";
+			next;
+			mes "[希巴·阿吉普]";
+			mes "是的，我们付出了努力。";
+			mes "我们也试图保持中立的态度。";
+			mes "因为作为第三方加强和解总是比在冲突中选边站队更好。";
+			next;
+			mes "[猎犬]";
+			mes "出色地..";
+			mes "我想，也不全是错的……";
+			next;
+			mes "[维汉努斯]";
+			mes "（维汉努斯微笑）";
+			mes "我们已经向拉维尔讲述了你们人类的事。";
+			mes "拉维尔是光荣的^4d4dffEl Dicastes^000000的最高长老。";
+			next;
+			select("El Dicastes？：拉维尔？");
+			mes "[希巴·阿吉普]";
+			mes "啊，抱歉打扰了。";
+			mes "我现在得走了。";
+			mes "猎犬，我同意。";
+			mes "我想他会做得很好。";
+			next;
+			mes "[希巴·阿吉普]";
+			mes "然后就和他解决了。";
+			mes "还有……啊，是的，你。";
+			mes "之后请去隔壁房间见检查员。";
+			mes "知道了？";
+			next;
+			mes "[希巴·阿吉普]";
+			mes "我现在要走了。";
+			mes "维汉努斯？我会再来看你的。";
+			mes "在与维汉努斯^000000交谈后，你应该^4d4dff与多哈督察会面。";
+			mes "那么大家再见。";
+			set ep13_3_invite, 2;
+			set ep13_3_secret, 1;
+			setquest 7185;
+			next;
+			disablenpc "Hibba Agip#ep133_is07";
+			emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Hound#ep133_is06");
+			emotion ET_PROFUSELY_SWEAT, getnpcid(0, "Sapha from Manuk");
+			mes "希巴·阿吉普指挥官说完想说的话后迅速离开了房间。";
+			mes "首先，让我们听听维汉努斯的故事。";
+			close;
+		}
+}
+
+mid_campin,168,128,3	script	Sapha from Manuk	451,{
+	if (isequipped(2782)) {
+		if (!ep13_3_invite) {
+			mes "-看起来像来自马努克的萨法信使。-";
+			next;
+			mes "[猎犬]";
+			mes "抱歉，你现在要离开吗？";
+			mes "你好像没有得到队长或者艾罗的授权？";
+			close;
+		}
+		if (ep13_3_invite == 1) {
+			mes "[萨法]";
+			mes "- 这个人看起来像马努克的萨法使者。 -";
+			mes "你只是站在那里，没有";
+			mes "知道他说的话，所以";
+			mes "旁边的探险队守卫开始说话。 -";
+			next;	
+			callfunc "eldicastes_c",3;
+		}
+		else if (ep13_3_invite == 2) {
+			mes "[维汉努斯]";
+			mes "你的指挥官就像风一样。";
+			mes "我们马努克也有这样的人。";
+			mes "他的名字叫加尔滕。他的速度如此之快，你不会注意到他盔甲的重量。";
+			next;
+			callfunc "eldicastes_c",1;
+		} 
+		else if (ep13_3_invite == 3) {
+			callfunc "eldicastes_c",2;
+		}
+		else if (ep13_3_invite == 4) {
+			mes "[维汉努斯]";
+			mes "Avalanche 将在马努克运营大楼进行。";
+			mes "一旦他批准了，你就可以使用通往首都的隧道了。";
+			mes "隧道可能有点可怕。";
+			mes "但我相信你会到达终点，因为你很坚强。";
+			close;
+		} 
+		else if (ep13_3_invite == 5) {
+			mes "[维汉努斯]";
+			mes "哦，隧道？";
+			mes "它原本是一个矿井。";
+			mes "但我们在采矿时发现自己站在了相反的一边。";
+			next;
+			mes "[维汉努斯]";
+			mes "后来我们发现了更好的地雷，这就是马努克的由来。";
+			mes "隧道经过重新规划，开辟了首都和马努克之间的道路。";
+			next;
+			mes "[维汉努斯]";
+			mes "就是这样。";
+			close; 
+		} 
+		else if (ep13_3_invite == 6) {
+			mes "[维汉努斯]";
+			mes "你收到了El Dicastes之光。";
+			mes "有了这个，您可以随时随地返回迪尔。";
+			mes "看起来像是为了您的方便而制作的物品。";
+			next;
+			mes "[维汉努斯]";
+			mes "拉维尔看起来很喜欢你。";
+			mes "El Dicastes之光使用起来很方便，无需穿过长长的隧道。";
+			next;
+			mes "[维汉努斯]";
+			mes "哦，隧道？";
+			mes "它原本是一个矿井。";
+			mes "但我们在采矿时发现自己站在了相反的一边。";
+			next;
+			mes "[维汉努斯]";
+			mes "后来我们发现了更好的地雷，这就是马努克的由来。";
+			mes "隧道经过重新规划，开辟了首都和马努克之间的道路。";
+			next;
+			mes "[维汉努斯]";
+			mes "就是这样。";
+			close;
+		}
+		mes "[维汉努斯]";
+		mes "连接马努克和首都的隧道。";
+		mes "它原本是一个矿井。";
+		mes "但我们在采矿时发现自己站在了相反的一边。";
+		next;
+		mes "[维汉努斯]";
+		mes "后来我们发现了更好的地雷，这就是马努克的由来。";
+		mes "隧道经过重新规划，开辟了首都和马努克之间的道路。";
+		next;
+		mes "[维汉努斯]";
+		mes "就是这样。";
+	}
+	mes "[萨法]";
+	mes "�����？ ������...";
+	mes "���� �� ?";
+	mes "���..？";
+	next;
+	mes "[猎犬]";
+	mes "你的翻译戒指在哪里？";
+	mes "我不会成为你的私人翻译。";
+	close;
+}
+
+mid_campin,168,125,3	script	Hound#ep133_is06	997,{
+	if (!isequipped(2782)) {
+		mes "[猎犬]";
+		mes "翻译环在哪里？";
+		mes "如果我们没有的话，我们应该创建它。";
+		mes "我想亲自发言。";
+		close;
+	}
+	if (!ep13_3_invite) {
+		mes "[猎犬]";
+		mes "抱歉，你现在要离开吗？";
+		mes "你好像没有得到队长或者艾罗的授权？";
+		close2;
+	}
+	else if (ep13_3_invite == 1) {
+		callfunc "eldicastes_c",3;
+	}
+	else if (ep13_3_invite == 2) {
+		callfunc "eldicastes_c",1;
+	} 
+	else if (ep13_3_invite == 3) {
+		callfunc "eldicastes_c",2;
+	} 
+	else if (ep13_3_invite == 4) {
+		mes "[猎犬]";
+		mes "到达马努克后，您要做的第一件事就是与雪崩卫队将军会面。";
+		mes "告诉雪崩你是维汉努斯邀请的人。";
+		next;
+		mes "[猎犬]";
+		mes "然后您将经过一个简单的确认过程，并被允许通过隧道前往首都。";
+		mes "只要有礼貌，穿过隧道就很容易。";
+		next;
+		mes "[猎犬]";
+		mes "别忘了船长说过的话。";
+		mes "多哈督察就在隔壁房间。";
+		close; 
+	}
+	else if (ep13_3_invite > 4) {
+		mes "[猎犬]";
+		mes "我刚从马努克执行长期派遣任务回来";
+		mes "并且还没有得到任何休息。";
+		mes "El Dicastes.. 一旦你的先遣队安顿下来，我就会抽出时间去拜访。";
+		next;
+		mes "[猎犬]";
+		mes "我必须在这里照顾维汉努斯。";
+		mes "我们可能会看到像维汉努斯这样的萨法斯会和我们一起生活在我们的大陆上的那一天。";
+		close;
+	}
+	mes "[猎犬]";
+	mes "我刚从马努克执行长期派遣任务回来";
+	mes "并且还没有得到任何休息。";
+	mes "El Dicastes.. 一旦你的先遣队安顿下来，我就会抽出时间去拜访。";
+	next;
+	mes "[猎犬]";
+	mes "我必须在这里照顾维汉努斯。";
+	mes "我们可能会看到像维汉努斯这样的萨法斯会和我们一起生活在我们的大陆上的那一天。";
+	close;
+}
+
+mid_campin,165,127,5	script	Hibba Agip#ep133_is07	459,{
+	mes "[希巴·阿吉普]";
+	mes "唔..？";
+	mes "我现在该走了。";
+	close2;
+OnInit:
+	disablenpc();
+	end;	
+}
+
+man_in01,315,52,3	script	Guard Captain Avalanche	450,{
+	mes "[雪崩守卫队长]";
+	if (!isequipped(2782)) {
+		mes "�����？ ������...";
+		mes "���� �� ?";
+		mes "���..？";
+		close;	
+	}
+	if (ep13_3_invite == 4) {
+		mes "[雪崩]";
+		mes "你是人类。";
+		mes "你在这里想要什么？";
+		next;
+		select("我带着维汉纳斯的邀请函来了。");
+		mes "[雪崩]";
+		mes "啊。雅鲁特·维哈努斯。";
+		mes "我以为他最好带一个警卫一起去，但是。";
+		next;
+		mes "[雪崩]";
+		mes "我猜维汉纳斯对你们人类有信任。";
+		mes "只要维汉努斯认可你我就没事。";
+		next;
+		mes "[雪崩]";
+		mes "我授权你前往首都埃尔迪卡斯特斯。";
+		mes "这座建筑外面有一条通往京城的隧道，从村子东边的山脉下去。";
+		next;
+		mes "[雪崩]";
+		mes "这是一条通往首都的隧道。没有其他绕路，因为卡米达尔山太大了。";
+		next;
+		mes "[雪崩]";
+		mes "隧道维护得很好，但有一段时间，隧道的一部分连接";
+		mes "山上最低的洞穴塌陷，并收到了野生怪物的报告。";
+		next;
+		mes "[雪崩]";
+		mes "所以我建议大家集体行动。";
+		mes "这很危险，而且可能是一段漫长的旅程。";
+		mes "这就是我现在要说的。";
+		next;
+		mes "[雪崩]";
+		mes "你回来后有什么关于首都的消息请告诉我。";
+		mes "哈哈哈..";
+		set ep13_3_invite, 5;
+		changequest 7183,7184;
+		close2;
+	}
+	else if (ep13_3_invite == 5) {
+		mes "[雪崩]";
+		mes "出了这栋楼，直奔村东山下。";
+		mes "如果你看到隧道里有士兵守卫，你就知道它在哪里了。";
+		next;
+		mes "[雪崩]";
+		mes "我希望 El Dicastes 之光能为您指明道路。";
+		close;
+	}
+	else if (ep13_3_invite == 6) {
+		mes "[雪崩]";
+		mes "哦...你有El Dicastes之光。";
+		mes "这对您的旅行会有帮助。";
+		next;
+		mes "[雪崩]";
+		mes "通往首都的道路以前是一个矿井。";
+		mes "因此，尽管隧道维护得很好，但我们还是收到了野生怪物出现的报告。";
+		next;
+		mes "[雪崩]";
+		mes "任何时候都要照顾好自己。";
+		mes "哈哈..但是你们人类非常强大。";
+		close;
+	}
+	mes "[雪崩]";
+	mes "通往首都的道路以前是一个矿井。";
+	mes "因此，尽管隧道维护得很好，但我们还是收到了野生怪物出现的报告。";
+	next;
+	mes "[雪崩]";
+	mes "任何时候都要照顾好自己。";
+	mes "哈哈……不过你们人类很强啊。";
+	close;
+}
+
+dic_in01,42,264,3	script	Adventurer Clerk#ep133	453,{
+	if (!isequipped(2782)) {
+		mes "[职员针织]";
+		mes "���� �� ������ �� ��...？";
+		mes "������ ... �� ������ �� ������...";
+		next;
+		mes "- 无法与他沟通。 -";
+		close;
+	}
+	mes "[职员罗恩]";
+	mes "我怎么帮你？";
+	next;
+	switch (select("注册为冒险家：对话：取消。")) {
+		case 1:
+			if (ep13_3_invite < 5) {
+				mes "[职员罗恩]";
+				mes "你想注册成为冒险家吗？";
+				mes "奇怪的。";
+				mes "您不在我们的访客名单上。";
+				mes "你未经允许就进入了吗？";
+				next;
+				mes "[职员罗恩]";
+				mes "所有其他未经官方许可的比赛均受到限制。";
+				mes "我会立即派人去取一份 Galten。";
+				next;
+				mes "Sapha 职员随时准备呼叫 Galten 警卫。";
+				mes "最好避免这种情况。";
+				close;
+			}
+			else if (ep13_3_invite == 5) {
+				mes "[职员罗恩]";
+				mes "你想注册成为冒险家吗？";
+				mes "我将与马努克的邀请名单进行比较。";
+				mes "你叫什么名字？";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "这是" + strcharinfo(0) + ".";
+				next;
+				mes "[职员罗恩]";
+				mes "是的.." + strcharinfo(0) + "...";
+				mes "我找到了。";
+				mes "欢迎来到萨法首府埃尔迪卡斯特斯。";
+				next;
+				mes "[职员罗恩]";
+				mes "在这里你将受到与其他萨法斯相同的待遇";
+				mes "并且可以为所欲为";
+				mes "并可以根据 Dicastes 的正式要求签订合同。";
+				next;
+				mes "[职员罗恩]";
+				mes "这是参观 El Dicastes 的小纪念品。";
+				mes "您可以随时使用它返回 El Dicastes。";
+				next;
+				set ep13_3_invite, 6;
+				getitem 2844,1; //El_Dicastes_Light
+				completequest 7184;
+				mes "[职员罗恩]";
+				mes "在皮奥姆斯住宅区的下方有一个人类特殊的地方。";
+				mes "用你们的语言称呼它...";
+				mes "酒吧。希望你能去那里参观。";
+				close;
+			}
+			mes "[职员罗恩]";
+			mes "奇怪的。";
+			mes "你不是已经注册了吗？";
+			mes "我在记录中看到你的名字。";
+			close;
+		case 2:
+			if (ep13_3_secret == 12) {
+				mes "[职员罗恩]";
+				mes "我认得你。";
+				mes "我怎么帮你？";
+				next;
+				if (select("我想见部长：没什么特别的。") == 1) {
+					mes "[职员罗恩]";
+					mes "你想见部长吗？";
+					mes "哪个部长？";
+					mes "即使有漏洞利用认证，也无法亲自与 Ravail 会面。";
+					next;
+					if (select("阿哈特：另一位部长") == 1) {
+						if (countitem(6304) > 2) {
+							mes "[职员罗恩]";
+							mes "您确实已经收集了 Sapha 的 3 个漏洞利用认证。";
+							mes "好吧。我将发送请求。";
+							next;
+							mes "[职员罗恩]";
+							mes "请乘电梯到行政办公室。";
+							mes "行政办公室旁边的走廊里还有另一部电梯。";
+							next;
+							mes "[职员罗恩]";
+							mes "这是通往高级部长办公室的独立电梯";
+							mes "您将被引导到办公室前面。";
+							delitem 6304,3; //Sapa_Feat_Cert
+							set ep13_3_secret, 13;
+							changequest 7197,7198;
+							close;
+						}
+						mes "[职员罗恩]";
+						mes "您需要 3 个 Sapha 的漏洞利用认证才能满足 Ahat。";
+						mes "你知道Sapha的漏洞利用认证是什么吗？";
+						mes "好吧，请尝试帮助 El Dicastes 周围的人收集它们。";
+						close;
+					}
+					mes "[职员罗恩]";
+					mes "另一位部长？ WHO？";
+					next;
+					select("抱歉，但我不认识其他人。");
+					mes "[职员罗恩]";
+					mes "你很难。";
+					mes "与其他萨法人不同，部长们非常忙碌。";
+					close;
+				}
+				mes "[职员罗恩]";
+				mes "今天你好奇什么？";
+				close;
+			}
+			else if (ep13_3_secret == 13) {
+				mes "[职员罗恩]";
+				mes "阿哈特（Ahat）与高级部长拉维尔（Ravail）在同一楼层。";
+				mes "乘坐电梯到行政办公室，然后您将被引导到单独的电梯前。";
+				close;
+			}
+			mes "[职员罗恩]";
+			mes "今天你好奇什么？";
+			next;
+			switch (select("关于官方请求：关于冒险家的酒馆：啊哈？：利用萨法的认证？：结束对话。")) {
+				case 1:
+					mes "[职员罗恩]";
+					mes "如果迪尔或部长们在首都的运营方面需要帮助";
+					mes "他们在公共板上张贴了通知。";
+					next;
+					mes "[职员罗恩]";
+					mes "任何可以接受这份工作的人都可以接受该请求。";
+					mes "正式注册的冒险者也可以接受工作。";
+					next;
+					mes "[职员罗恩]";
+					mes "处理请求后";
+					mes "您因帮助 El Dicastes 而获得了利用认证。";
+					next;
+					mes "[职员罗恩]";
+					mes "最好把空闲时间花在这些官方要求上。";
+					mes "因为你正在为社区做出贡献。";
+					next;
+					mes "[职员罗恩]";
+					mes "由于来自其他世界的游客的增加，";
+					mes "有些请求是针对您的。";
+					mes "你可以选择。";
+					close;
+				case 2:
+					mes "[职员罗恩]";
+					mes "冒险家酒吧的开放是为了方便像您这样的游客。";
+					mes "它位于矿区和工厂区下方的 Piom 住宅区。";
+					next;
+					mes "[职员罗恩]";
+					mes "我们以为这里的生活环境对你来说会陌生、不方便。";
+					mes "因此，我们尝试在冒险家的帮助下打造一个与您家乡相似的地方。";
+					mes "我希望你喜欢它。";
+					close;
+				case 3:
+					mes "[职员罗恩]";
+					mes "阿哈特是拉维尔之后的下一任部长。";
+					mes "为什么？";
+					mes "因为我们尊重她。";
+					next;
+					mes "[职员罗恩]";
+					mes "我该怎么说呢，我们想保护她。";
+					mes "但我不确定你们的语言中如何使用尊重。";
+					next;
+					mes "[职员罗恩]";
+					mes "阿哈特很受欢迎。";
+					mes "没有多少人见过他，而且他一直在她的房间里工作。";
+					next;
+					mes "[职员罗恩]";
+					mes "如果你想见阿哈特..好吧。";
+					mes "他确实很擅长工作，但对陌生人很害羞。";
+					next;
+					mes "[职员罗恩]";
+					mes "他不喜欢去人多的地方。";
+					mes "这就是为什么我们很少见到她。";
+					close;
+				case 4:
+					mes "[职员罗恩]";
+					mes "利用认证？";
+					mes "漏洞利用认证是为像您这样的局外人而设计的。";
+					mes "当冒险者帮助解决全城萨法斯的请求时，它们会作为奖励发放。";
+					next;
+					mes "[职员罗恩]";
+					mes "功绩认证是用来会见部长的。";
+					mes "我想，为了见到忙碌的部长，你至少必须为我们的社会做出贡献。";
+					close;
+				case 5:
+					mes "[职员罗恩]";
+					mes "当您需要帮助时，请随时提出问题。";
+					close;
+			}
+		case 3:
+			mes "[职员罗恩]";
+			mes "当您需要帮助时，请随时提出问题。";
+			close;
+	}
+}
+// Enchantment NPCs
+//============================================================
+-	script	dic_enc#main	-1,{
+	set .@re$, strnpcinfo(1);
+	set .@n$, "["+.@re$+"]";
+	if (!checkweight (1201,1)) {
+		mes "你的物品种类太多了。减少项目数量后，我们再试一次。";
+		close;
+	}
+	if ((MaxWeight - Weight) < 1000) {
+		mes "由于您的物品重量过重，无法继续。等你减掉一些体重后再试一次。";
+		close;
+	}
+	if (.@re$ == "Kareka") {
+		if (ep13_3_ring2 > 99) {
+			mes "[否]";
+			mes "您想再次升级^990099El Dicastes之光^000000吗？";
+			next;
+
+			// The reset feature was disabled in previous versions.
+			//mes "[Kareka]";
+			//mes "Ha ha ha, that is out of the question. This item is very rare and valuable so I cannot give you a new one.";
+			//close;
+
+			mes "[否]";
+			mes "重试将花费 ^9900996 Sapha 认证^000000。";
+			mes "请注意，您当前的 El Dicastes 之光将连同其所有结界一起被摧毁。";
+			next;
+			mes "[否]";
+			mes "您确定要这样做吗？";
+			next;
+			if(select("不，让我考虑一下：带上我的El Dicastes之光。") == 2) {
+				if (countitem(2844) == 0 || countitem(6304) < 6) {
+					mes "[否]";
+					mes "您需要携带El Dicastes之光和6个Sapha认证！";
+					mes "不要试图欺骗我！";
+					close;
+				}
+				mes "[否]";
+				mes "好的，让我们开始吧。";
+				mes "我将移除你的El Dicastes之光中的所有结界。";
+				mes "哈哈——！";
+				specialeffect2 EF_REPAIRWEAPON;
+				progressbar "ffff00",3;
+				delitem 6304,6; //Sapa_Feat_Cert
+				delitem 2844,1; //El_Dicastes_Light
+				getitem 2844,1; //El_Dicastes_Light
+				set ep13_3_ring2,0;
+			}
+			close;
+		}
+		if (countitem(6304) < 1) {
+			mes "[否]";
+			mes "你通过帮助整个城市收集的萨法的利用证明除了会见部长之外还有其他用途。";
+			next;
+			mes "[否]";
+			mes "如果您遇到漏洞利用认证，请回来找我。";
+			next;
+			mes "[否]";
+			mes "我可以对你的^990099El Dicastes之光^000000饰品施展额外的法术。";
+			close;
+		}
+		mes "[否]";
+		mes "你来唤醒^990099El Dicastes之光^000000无限的力量。";
+		next;
+		if (select("请解释一下：我想升级。") == 1) {
+			mes "[否]";
+			mes "听说城外的一些工匠也可以对装备施法。";
+			next;
+			mes "[否]";
+			mes "我也是这样，不过至少不会破坏装备。";
+			next;
+			mes "[否]";
+			mes "如果你带上萨法的利用认证，我会向你的^990099El Dicastes之光^000000施放1到3步的法术。";
+			next;
+			mes "[否]";
+			mes "但当然，由于这是在原有魔法的基础上添加了咒语，我不能保证你一次尝试就能得到你想要的东西。";
+			close;
+		}
+		if (countitem(2844) < 1) {
+			mes "[否]";
+			mes "要么你没有佩戴，要么你身上没有可以升级的装备。";
+			close;
+		}
+		set .@v$, "ring2";
+		set .@Items_, 2844;
+	}
+	else {
+		mes .@n$;
+		set .@cat_hi, rand(1,30);
+		if (.@cat_hi == 1) mes "这里很难找到鱼。找不到任何鱼尾，这样 Jahbong 就会忘记他正在忙碌或在看到鱼尾时生气。";
+		else if (.@cat_hi == 2) mes "呃……我昨天因为在毯子上撒尿而受到了勺子的惩罚。";
+		else if (.@cat_hi == 3) mes "有时我会梦见一个巨人拍拍我的头。但我觉得更多的是恼怒而不是害怕。";
+		else if (.@cat_hi == 4) mes "新手雅鲁特，阿哈特看起来不像萨法。";
+		else if (.@cat_hi == 5) mes "我们的人民说阿哈特看起来像一只漂亮的猫。";
+		else if (.@cat_hi == 6) mes "听说首都马努克有一位高级装备升级工匠。";
+		else if (.@cat_hi == 7) mes "呃……我觉得这些天我的声音听起来不太正常。我认为是天气。";
+		else if (.@cat_hi == 8) mes "有时我会大声喊叫，但这只是因为我心情好。无需惊慌。";
+		else if (.@cat_hi == 9) mes "当我看到一个的时候，我就有一种想用我的四只爪子跳到一堆东西上的冲动。";
+		else if (.@cat_hi == 10) mes "我的前世一定是​​一只猫。";
+		else if (.@cat_hi == 11) mes "我又梦见了巨人。我生气地挥舞着爪子，他不停地拍我。";
+		else if (.@cat_hi == 12) mes "是的！！阿哈特长得像人的传闻是真的吗？！";
+		else if (.@cat_hi == 13) mes "我在路上听说这个黑品古库拉有一朵枯萎的花。";
+		else if (.@cat_hi == 14) mes "附近有一个叫 Pinguicula 的家伙，他附近有锋利的叶子。";
+		else if (.@cat_hi == 15) mes "附近有一个叫 Pinguicula 的家伙，他附近有大叶子。";
+		else if (.@cat_hi == 16) mes "我建议从附近的 Dracos 那里获取它。但是，他们只是随机掉落它，所以你可能会空手而归......";
+		else mes "嗯...这对你来说可能不重要但是。";
+		next;
+		mes .@n$;
+		if (countitem(6304) < 1) {
+			if (.@re$ == "Brare") {
+				mes "哦... Sapha 认证不顺利吗？";
+				next;
+				mes .@n$;
+				mes "所以你没有任何...";
+				next;
+				mes .@n$;
+				mes "太悲伤了。它们非常有用，你知道...";
+				close;
+			} else if (.@re$ == "Mancho") {
+				mes "如果你在这座城市努力工作，你将获得 Sapha 的利用认证。";
+				next;
+				mes .@n$;
+				mes "如果您确实遇到其中一项认证，可以将其带给我吗？";
+				next;
+				mes .@n$;
+				mes "我们可以进行交换，您不会后悔的。";
+				close;
+			} else if (.@re$ == "Jalapeno") {
+				mes "为了与 Ahat 会面，我已经收集 Sapha 的漏洞利用认证一年了。";
+				next;
+				mes .@n$;
+				mes "但我离这个还很远，因为像我这样的低等生物需要很高的职位和一些贿赂才能见到他。";
+				next;
+				mes .@n$;
+				mes "如果您有任何 Sapha 的漏洞利用认证可供使用，请与我分享。我保证用服务回报你。你永远不会到达其他地方。";
+				close;
+			}
+		}
+		if (.@re$ == "Brare") {
+			mes "您想佩戴金钟罩显得奢华吗？";
+			set .@Items_,2843;
+			set .@v$, "ring1";
+		}
+		else if (.@re$ == "Mancho") {
+			mes "您一定对^800080野性尾巴^000000感兴趣吗？";
+			set .@Items_,2564;
+			set .@v$, "robe";
+		}
+		else if (.@re$ == "Jalapeno") {
+			mes "你是为了野性靴子而来的。我正好有给你的东西。";
+			set .@Items_,2463;
+			set .@v$, "shoe";
+		}
+		next;
+		switch(select("请解释一下。：我要重置。：我要升级。")) {
+			case 1:
+				if (.@re$ == "Brare") {
+					mes .@n$;
+					mes "唔。 ^990099金钟^000000是只授予我们人民中最优秀、最勇敢的战士的配饰。";
+					next;
+					mes .@n$;
+					mes "随机技能施放至第一步和第二步，但是";
+					next;
+					mes .@n$;
+					mes "第三次升级时存在物品损坏的风险。";
+				} else if (.@re$ == "Mancho") {
+					mes .@n$;
+					mes "你说你想让我解释一下升级的事？";
+					next;
+					mes .@n$;
+					mes "唔。 ^990099野性尾巴^000000是一件独特的物品。它看起来就像我们的尾巴。";
+					next;
+					mes .@n$;
+					mes "它不仅坚固、温暖，而且还强大到足以被魔法咒语所附魔。";
+					next;
+					mes "[曼乔]";
+					mes "嗯……它与^990099野性靴子^000000在升级第三步时损坏的风险相同。";
+				} else if (.@re$ == "Jalapeno") {
+					mes .@n$;
+					mes "你说你想让我解释一下升级的事？";
+					next;
+					mes .@n$;
+					mes "唔。 ^990099野性靴子^000000非常独特。很久以前，一位鞋匠根据我们脚的设计设计了这款产品。";
+					next;
+					mes .@n$;
+					mes "我不知道实际使用的材料，但它们的强度足以附魔最多 3 种升级魔法。";
+					next;
+					mes .@n$;
+					mes "嗯……有些确实在第三次升级时坏了，而且我确实有一些客户在发生这种情况时抱怨……喵";
+					next;
+					mes .@n$;
+					mes "……有一次我差点就死了。 （淙淙）";
+				}
+				close;
+			case 2:
+				mes .@n$;
+				if (.@re$ == "Mancho") {
+					mes "您想重置吗？";
+					mes "这涉及^990000摧毁野性尾巴^000000你正在升级并取消它的所有记录。你确定吗？";
+				}
+				else if (.@re$ == "Jalepeno") {
+					mes "重置？你确定吗？";
+					mes "这涉及^990000销毁您正在升级的野性靴子^000000并取消它的所有记录。你确定吗？";
+				}
+				else if (.@re$ == "Brare") {
+					mes "重置！！";
+					mes "这涉及^990000摧毁你正在升级的金钟^000000并取消它的所有记录。你确定吗？";
+				}
+				next;
+				if(select("也许下次吧。：请重置它。") == 1) {
+					mes .@n$;
+					mes "当你准备好时，";
+					mes "请再次回来";
+					close; 
+				}
+				if (countitem(.@Items_) < 1) {
+					mes .@n$;
+					mes "然后，先把装备取下来。";
+					close; 
+				}
+				specialeffect2 EF_OVERTHRUST;
+				mes .@n$;
+				if (.@re$ == "Brare") mes "我已经按照你的要求收集了所有设备并删除了所有记录。现在您的所有设备和记录都是干净的。";
+				else mes "我只做我被要求做的事情。我已经取回了所有设备并取消了所有记录。";
+				delitem .@Items_,1;
+				setd "ep13_3_"+.@v$, 0;
+				close;
+			case 3: break;
+		}
+		if (countitem(.@Items_) < 1) {
+			mes .@n$;
+			mes "但...";
+			mes "你身上似乎没有穿戴甚至没有携带可以升级的装备。";
+			close; 
+		}
+	}
+	if (getd("ep13_3_"+.@v$) == 0) {
+		mes .@n$;
+		mes "我正在准备";
+		mes "升级的第一步。";
+		mes "一旦装备升级";
+		mes "您无法更改升级";
+		mes "在你摧毁它之前。";
+		next;
+		mes .@n$;
+		mes "第一个升级步骤需要 ^8000801 Sapha 认证^000000。您想继续吗？";
+		set .@req, 1;
+	}
+	else if (getd("ep13_3_"+.@v$) < 9) {
+		mes .@n$;
+		mes "我正在准备";
+		mes "第二步升级。";
+		mes "一旦装备升级";
+		mes "您无法更改升级";
+		mes "在你摧毁它之前。";
+		next;
+		mes .@n$;
+		mes "第二个升级步骤需要 ^9900992 个 Sapha^000000 漏洞利用认证。您想继续吗？";
+		set .@req, 2;
+	} 
+	else if (getd("ep13_3_"+.@v$) < 69) {
+		mes .@n$;
+		mes "我正在准备";
+		mes "第三步升级。";
+		mes "一旦装备升级";
+		mes "您无法更改升级";
+		mes "在你摧毁它之前。";
+		next;
+		mes .@n$;
+		mes "而这才是最重要的，";
+		mes "设备损坏的风险";
+		mes "在第三步升级的时候就很高了！";
+		mes "并且您需要 ^9900993 个 Sapha ^000000 的漏洞利用认证才能执行此过程。";
+		next;
+		mes .@n$;
+		mes "请记住";
+		mes "这是一个微妙的过程";
+		mes "为设备注入巨大的力量。";
+		mes "你准备好了吗？";
+		set .@req, 3;
+	}
+	else if (getd("ep13_3_"+.@v$) > 68 && countitem(.@Items_)) {
+		mes .@n$;
+		mes "你已经完成了";
+		mes "第三步升级。";
+		next;
+		mes .@n$;
+		mes "如果你不喜欢";
+		mes "你的装备升级";
+		mes "我可以收回你的装备";
+		mes "并销毁所有记录";
+		mes "其中";
+		next;
+		if (select("我就用它吧：请收下。") == 1) {
+			mes .@n$;
+			mes "每当你改变主意时。";
+			mes "请再次回来";
+			close;
+		}
+		specialeffect2 EF_OVERTHRUST;
+		mes .@n$;
+		mes "我已经删除了所有以前的记录";
+		mes "重新开始的升级";
+		mes "任何无需升级的新设备";
+		mes "你带来。";
+		delitem .@Items_,1;
+		setd "ep13_3_"+.@v$, 0;
+		close;
+	}
+	else {
+		mes .@n$;
+		mes "嗯？";
+		mes "你想从我这里得到什么吗？";
+		setd "ep13_3_"+.@v$, 0;
+		close;
+	}
+	next;
+	if(select("也许下次吧：我想升级。") == 1) {
+		mes .@n$;
+		mes "当你准备好时，";
+		mes "请你再回来吧。";
+		close; 
+	}
+	if (countitem(6304) < .@req) {
+		mes .@n$;
+		mes "但您没有足够的漏洞利用认证。您需要 "+.@req+" Sapha 的漏洞利用认证才能进行"+((.@req == 3)?"第三":((.@req == 2)?"第二":"第一"))+"升级步骤。";
+		close;
+	}
+	mes .@n$;
+	mes "那么我们开始吧。";
+	next;
+	specialeffect2 EF_REPAIRWEAPON;
+	progressbar "ffff00",3;
+	delitem 6304,.@req;
+	if (getd("ep13_3_"+.@v$) == 0) {
+		if (.@re$ == "Kareka") {
+			set .@enc_en, rand(1,45);
+			setarray .@rates, 45,32,30,22,20,12,10,2;
+		}
+		else {
+			set .@enc_en, rand(1,40);
+			setarray .@rates, 40,34,30,24,20,14,10,4;
+		}
+		setarray .@var, 1,2,3,4,5,6,7,8;
+	}
+	else if (getd("ep13_3_"+.@v$) <= 8) {
+		if (.@re$ == "Kareka") {
+			set .@enc_en, rand(1,45);
+			setarray .@rates, 45,32,30,17,15,2;
+		}
+		else {
+			set .@enc_en, rand(1,30);
+			setarray .@rates, 30,24,20,14,10,4;
+		}
+		setarray .@var, 10,20,30,40,50,60;
+	}
+	else if (getd("ep13_3_"+.@v$) <= 68) {
+		if (compare(.@v$,"ring")) {
+			set .@enc_en, rand(1,90);
+			setarray .@rates, 90,62,60,32,30,2;
+			setarray .@var, 100,200,400,500,700,800;
+		}
+		else {
+			set .@crs_yong, 140 - (ep13_yong1 / 100);
+			if (.@crs_yong < 95) set .@crs_yong, 95;
+			set .@enc_en, rand(1,.@crs_yong);
+			if (.@enc_en > 90) {
+				delitem .@Items_,1;
+				setd "ep13_3_"+.@v$, 0;
+				mes .@n$;
+				if (.@re$ == "Jalepano") mes "哈哈哈。看，我告诉过你了。哎呀，抱歉。忘了我刚刚说过的话！！";
+				else if (.@re$ == "Mancho") mes "贪婪是投资失败的原因。啧啧。";
+				else if (.@re$ == "Brare") mes "哦不....!!!!!金钟到底怎么了！";
+				close;
+			}
+			setarray .@rates, 90,75,65,60,45,35,30,15,5;
+			setarray .@var, 100,200,300,400,500,600,700,800,900;
+		}
+	}
+	else {
+		mes .@n$;
+		mes "我受够了。呵呵";
+		close;
+	}
+	
+	// Enchant Constants
+	// Ex: .@dex[1]: DEX + 1 | .@cri[5]: CRI + 5 | .@eva[12]: FLEE + 12
+	set .@matk[1], 4760; set .@matk[2], 4761;
+	set .@eva[6], 4762;	set .@eva[12], 4763;
+	set .@cri[5], 4764;	set .@cri[7], 4765;
+	set .@atk[2], 4766;	set .@atk[3], 4767;
+	set .@dex[1], 4720;	set .@dex[2], 4721;	set .@dex[3], 4722;
+	set .@int[1], 4710;	set .@int[2], 4711;	set .@int[3], 4712;	
+	set .@agi[1], 4730;	set .@agi[2], 4731;	set .@agi[3], 4732;
+	
+	// Enchant attribute is determined by the digit position of variable value (ep13_3_<type>).
+	// For example, assume the variable value is 516:
+	// .@f_<slot>[<index>]
+	// slot:	2	3	4
+	// index:	5 	1 	6
+	
+	// Enchant Format
+	if (compare(.@v$,"ring")) setarray .@f_2[1],.@agi[1],.@agi[2],.@int[1],.@int[2],.@dex[1],.@dex[2];
+	else setarray .@f_2[1],.@agi[1],.@agi[2],.@agi[3],.@int[1],.@int[2],.@int[3],.@dex[1],.@dex[2],.@dex[3];
+	setarray .@f_3[1],.@agi[1],.@agi[2],.@int[1],.@int[2],.@dex[1],.@dex[2];
+	setarray .@f_4[1],.@atk[2],.@atk[3],.@cri[5],.@cri[7],.@eva[6],.@eva[12],.@matk[1],.@matk[2];
+	set .@str$, getd("ep13_3_"+.@v$) + "";
+	set .@len, getstrlen(.@str$);
+	set .@j, 4;
+	set .@c, 1;
+	while ((.@len - .@c) > -1 && getd("ep13_3_"+.@v$)) {
+		setd ".@e_"+.@j, getd(".@f_"+.@j+"["+atoi(charat(.@str$,.@len-.@c))+"]");
+		set .@c, .@c + 1;
+		set .@j, .@j - 1;
+	}
+	for (set .@size, getarraysize(.@rates); .@r <= .@size; set .@r, .@r + 1) {
+		if (.@enc_en > .@rates[.@r]) {
+			setd ".@e_"+.@j, getd(".@f_"+.@j+"["+.@r+"]");
+			break;
+		}
+	}
+	delitem .@Items_,1;
+	getitem2 .@Items_,1,1,0,0,.@e_1,.@e_2,.@e_3,.@e_4;
+	setd "ep13_3_"+.@v$, .@var[.@r-1] + getd("ep13_3_"+.@v$);
+	close;
+}
+dic_fild01,240,198,2	duplicate(dic_enc#main)	Jalapeno#pa0829	495
+dic_fild01,251,183,3	duplicate(dic_enc#main)	Brare#pa0829	495
+dic_fild01,259,172,3	duplicate(dic_enc#main)	Mancho#pa0829	495
+dic_in01,353,37,5	duplicate(dic_enc#main)	Kareka#pa0829	454
+
+dic_fild01,228,159,4	script	Jahbong#pa0829	496,{
+	mes "[贾邦]";
+	if (countitem(6304) < 1) {
+		mes "您还没有获得 Sapha 认证吗？";
+		next;
+		mes "[贾邦]";
+		mes "一旦你拥有了，就回来找我吧。我会给你一些好东西作为交换。";
+		close; 
+	}
+	set .@cattalkj,rand(1,9);
+	if (.@cattalkj == 1) mes "别碰我的背！我可能会不自觉地咬你。";
+	else if (.@cattalkj == 2) mes "酒吧老板谢伊拿走了一些东西来制作一些奇怪的东西！当心！";
+	else if (.@cattalkj == 3) mes "我们猫可以跳到我们体型的 5 倍。是不是很酷？不过，现在别让我从这里跳下去。";
+	else if (.@cattalkj == 4) mes "我必须勤于梳理才能保持美丽的皮毛。";
+	else if (.@cattalkj == 5) mes "我必须每天梳理自己，以保持皮毛闪亮蓬松。但我一开始就没有很好的皮毛。非常难过。";
+	else if (.@cattalkj == 6) mes "您应该用两只爪子获得 Sapha 认证，以示尊重。如果没有的话，没有猫值得获得认证！";
+	else if (.@cattalkj == 7) mes "我实在话不多！啊哈特看起来像……喵喵喵……抱歉。";
+	else if (.@cattalkj == 8) mes "喵~~~~~~~~~~";
+	else mes "纱线是安抚猫的好方法。";
+	next;
+	mes "[贾邦]";
+	mes "你为什么在这里？";
+	mes "Jahbong将用^8000801个Sapha认证^000000兑换^8000801件^000000！";
+	next;
+	set .@i, select("刚来看看你有什么。:我想要野性靴子！:给我野性尾巴！:给我金钟！:多少钱买你？")-1;
+	switch (.@i) {
+		case 0:
+			mes "[贾邦]";
+			mes "喵！";
+			next;
+			mes "[贾邦]";
+			mes "^8000801野性靴子^000000是适合您双脚的鞋子！买一个，那边墨西哥辣椒会帮你做的！";
+			next;
+			mes "[贾邦]";
+			mes "^8000801野性尾巴^000000相当粗糙！那边的曼乔可以帮你解决这个问题！";
+			next;
+			mes "[贾邦]";
+			mes "^8000801金钟^000000是配件。布雷尔花了 40 年时间制作这个！或者也许4年！哦，好吧，有什么需要就回来吧！";
+			next;
+			mes "[贾邦]";
+			mes "有一些疯狂的冒险家询问是否可以购买我！贾邦不卖！只要你问我就咬你！！";
+			close;
+		case 4:
+			mes "[贾邦]";
+			mes "呜呜呜！！！！！！！！！";
+			next;
+			mes "- ^800080Jahbong 发狂^000000。 -";
+			next;
+			mes "[贾邦]";
+			mes "我不是物品！！如果你像对待我一样，我不会手下留情！！";
+			next;
+			mes "- 他可能会反应极端，但 Jahbong 似乎并没有真正生气。 -";
+			close;
+		default:
+			break;
+	}
+	mes "[贾邦]";
+	mes "你真的要买东西吗？！";
+	next;
+	if (select("不：给我！！！") == 1) {
+		mes "[贾邦]";
+		mes "好的！";
+		close;
+	}
+	setarray .@items[1],2463,2564,2843;
+	mes "[贾邦]";
+	mes "干得好！";
+	delitem 6304,1;
+	getitem .@items[.@i],1;
+	close;
+}
+
+// Cat Paw Agent
+//============================================================
+moc_para01,44,19,3	script	Cat Paw Agent#gekk	496,{
+	if (BaseLevel < 70)	{
+		mes "[猫爪剂]";
+		mes "嘿，人类！你也是来提要求的吗？什么时候才能轮到我呢？";
+		next;
+		mes "[猫爪剂]";
+		mes "我们的猫爪商人小组确实需要任何可以得到的帮助。但从埃本诺手里拿着的所有请求来看，当我的请求被放到面板上时，猫爪商人就已经关门了！";
+		next;
+		mes "[猫爪剂]";
+		mes "想到我的同事们会在暴风雪中瑟瑟发抖，我的心都碎了。我希望我不会遇到麻烦，因为我对此无能为力，对吗？";
+		close;
+	}
+	if (ep13_start != 100) {
+		mes "[猫爪剂]";
+		mes "嘿，人类！你也是来提要求的吗？什么时候才能轮到我呢？";
+		next;
+		mes "[猫爪剂]";
+		mes "我们的猫爪商人小组确实需要任何可以得到的帮助。但从埃本诺手里拿着的所有请求来看，当我的请求被放到面板上时，猫爪商人就已经关门了！";
+		next;
+		mes "[猫爪剂]";
+		mes "想到我的同事们会在暴风雪中瑟瑟发抖，我的心都碎了。我希望我不会遇到麻烦，因为我对此无能为力，对吗？";
+		next;
+		if (select ("你为什么不自己收集呢？：听到这个消息我很遗憾。") == 1) {
+				emotion ET_HUK;
+				mes "[猫爪剂]";
+				mes "人类！！你是个天才！";
+				mes "你是怎么想到这个的？";
+				next;
+				mes "[盖克特工]";
+				mes "我是猫爪商人的盖克特工。";
+				mes "自从我们失去家园以来，车爪商人就在这个米德加尔特世界里漂泊了很长一段时间。";
+				next;
+				mes "[盖克特工]";
+				mes "但现在我们意识到米德加德没有我们这群人的立足之地。";
+				mes "Geck、Gyareuk 和 Gorureung 对此进行了很多思考。";
+				next;
+				mes "[盖克特工]";
+				mes "但我们终于找到了落脚的地方！";
+				mes "可能有点冷，但那里没有 Kafra 或 Jonda！";
+				mes "我们一定会在新的土地上站稳脚跟！";
+				next;
+				mes "[盖克特工]";
+				mes "但当然，我们一开始就没有任何影响力。";
+				mes "但是，我们计划为此不遗余力。";
+				next;
+				mes "[盖克特工]";
+				mes "人类！！您知道摩洛哥村和附近地区附近有一个大洞吗？";
+				mes "他们说你可以通过这个洞前往一个新的区域！";
+				next;
+				mes "[盖克特工]";
+				mes "但在尝试之前，您必须经过测试和研究才能到达目的地。";
+				mes "对我来说，我觉得费尽心思都是胡说八道！";
+				next;
+				mes "[盖克特工]";
+				mes "我们必须尽快派人开始探索该地区。";
+				mes "在人类闲逛的时候，我们的猫爪商人应该先安定下来，继续我们的研究。";
+				next;
+				if (select ("我也想去帮助商家：我没兴趣。") == 1) {
+						mes "[盖克特工]";
+						mes "你比其他人类更优秀！";
+						mes "如果您真的这么想，请在这里签名。";
+						mes "我正在收集迹象来支持嘉烈……没关系。我会让他们知道你是我的赞助商！";
+						next;
+						input .@inputstr$;
+						mes "[盖克特工]";
+						mes "" + strcharinfo(0) + "？人类的名字对我来说很奇怪。";
+						next;
+						mes "[盖克特工]";
+						mes "现在你是盖克的私人奴隶……赞助商。";
+						mes "不要问为什么您不是商家赞助商。";
+						mes "一个好人不会去探寻不该探寻的地方。";
+						next;
+						mes "[盖克特工]";
+						mes "既然你已经签约了，我们要做的就是前往另一个世界。";
+						mes "我听说人类称其为灰烬真空。";
+						mes "没有人向盖克解释为什么这么叫。";
+						next;
+						mes "[盖克特工]";
+						mes "但人类。";
+						mes "您需要付费才能进入除灰机。";
+						mes "盖克亲自送你去那里不会有任何费用，但我们必须向其他特工寻求帮助。";
+						next;
+						mes "[盖克特工]";
+						mes "因此，您需要一些钱来为帮助您的代理商购买鱼。";
+						mes "我会向你介绍一位特工，只要 50,000 zeny，他就会不问任何问题地把你送到另一个世界。";
+						next;
+						if (select ("支付 50,000 zeny：不行！") == 1) {
+								if (Zeny < 50000) {
+									mes "[盖克特工]";
+									mes "盖克学会了不要与无力付款的人打交道。";
+									close;
+								}
+								mes "[盖克特工]";
+								mes "至此，我们的合同就完成了。";
+								mes "盖克将帮助您一并到达 Ash-Vacuum。";
+								set Zeny, Zeny - 50000;
+								set ep13_start, 100;
+								next;
+								mes "[盖克特工]";
+								mes "别忘了，人类。格克之所以帮助你，是为了帮助猫爪商人在异世界打拼。";
+								next;
+								mes "[盖克特工]";
+								mes "现在，我来运送你。去右边的角落与我们的代理人会面。";
+								close2;
+								warp "moc_fild20", 342, 198;
+								end;
+						}
+						mes "[盖克特工]";
+						mes "盖克不强迫人类。";
+						mes "但我想你会改变主意的。";
+						close;
+				}
+				mes "[盖克特工]";
+				mes "你在灰真空里见过猫爪商人吗，人类？";
+				close;
+		}
+		mes "[猫爪剂]";
+		mes "但我们的猫爪商人会克服任何障碍！";
+		close;
+	}
+	mes "[盖克特工]";
+	mes "你在灰真空里见过猫爪商人吗，人类？";
+	next;
+	if (select ("给我回：我很忙") == 1) {
+		mes "[盖克特工]";
+		mes "没有时间可以浪费了，人类！";
+		mes "我马上送你回去！";
+		warp "moc_fild20", 342, 198;
+		close;
+	}
+	mes "[盖克特工]";
+	mes "嘿，人类！你不是说要帮助猫爪商人吗！";
+	close;
+}
+
+moc_fild20,368,197,3	script	Cat#to22	876,{
+	if (ep13_start != 100) {
+		mes "[猫]";
+		mes "喵～";
+		close;
+	}
+	mes "一个小猫爪特工看着你并向后方点点头。";
+	mes "看起来它想让你踩在它的背上翻墙。";
+	next;
+	if (select ("但你真可爱……：我们就这么做吧！") == 1) {
+		mes "小猫爪代理有黑色的小图案，就像印在它的白色皮毛上一样。";
+		next;
+		mes "它的身体很小，没有脚踝那么高，它的小而粗的爪子看起来像小垫子。当它看到你有多大时，向后弯曲的耳朵激起了你的保护本能。";
+		next;
+		mes "你似乎没有勇气去踩猫爪特工。";
+		emotion ET_CRY;
+		close;
+	}
+	mes "你看着猫爪特工的小背，然后尽快爬过墙，这样它就不会注意到你的体重。";
+	close2;
+	warp "moc_fild22b", 175, 159;
+	end;
+}
+
+moc_fild22b,182,179,3	script	Cat Paw Agent#Tat	495,{
+	if (ep13_start != 100) {
+		mes "[猫爪剂]";
+		mes "这个地方对我们来说毫无意义。";
+		close;
+	}
+	mes "[猫爪剂]";
+	mes "听盖克说。";
+	mes "我是猫爪商人的后起之秀，塔特。";
+	next;
+	mes "[达]";
+	mes "我听说你们提供优质的鱼来支付我们的旅费。";
+	mes "我还听说鱼很新鲜，有闪亮的金黄色鳞片。";
+	next;
+	mes "[达]";
+	mes "我通常只允许我们的猫爪商人代理人通过，但既然你是代表盖克来的，而且看你是可靠的，我会让你通过。";
+	next;
+	mes "[达]";
+	mes "你准备好了吗？";
+	next;
+	if (select ("去另一个世界！：我需要一些时间。") == 1) {
+		mes "[达]";
+		mes "别忘了你欠猫爪商人的债，人类！";
+		close2;
+		warp "mid_camp", 210, 291;
+		end;
+	}
+	mes "[达]";
+	mes "你来这里之前不是应该做好准备吗？";
+	close;
+}

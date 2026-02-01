@@ -1,0 +1,42 @@
+//===== rAthena Script ======================================= 
+//= Emperium Seller
+//===== By: ================================================== 
+//= Pokye
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Sell Emperium
+//===== Additional Comments: ================================= 
+//= 1.0 Special thanks for Balfear and Everade
+//============================================================ 
+
+prt_in,212,169,3	script	Guild Clerk	4_M_04,{
+	if (gettime(DT_DAYOFWEEK) >= 1 && gettime(DT_DAYOFWEEK) <= 6 && gettime(DT_HOUR) >= 18 && gettime(DT_HOUR) <= 23) {
+		mes "[公会职员]";
+		mes "今天分发给公会办公室的皇权已经到了。如果要购买的话，请随意下单哦~";
+		next;
+		mes "[公会职员]";
+		mes "看来今天很多人都在寻找 Emperium。这只是个人感觉。";
+		close2;                                                                                                         
+		callshop "emp_seller#slo";
+		end;
+	}
+	mes "[公会职员]";
+	mes "我们公会办公室积极支持冒险者的顺利集结。";
+	next;
+	mes "[公会职员]";
+	mes "作为其中的一部分，";
+	mes "我们每天限量销售 100 个" + mesitemlink( 714, false ) + "";
+	mes "^0000ff18:00 至 23:59^000000 从^0000ff周一至周六^000000。";
+	next;
+	mes "[公会职员]";
+	mes "请注意，我们的公会办公室并不总是出售，因为我们必须在工作时间之外跑来跑去供应 Emperium。";
+	close;
+
+OnHour00:
+	npcshopupdate "emp_seller#slo",714,0,100;
+	end;
+}
+-	marketshop	emp_seller#slo	FAKE_NPC,714:1000000:100
