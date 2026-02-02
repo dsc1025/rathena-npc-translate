@@ -1,0 +1,1091 @@
+//===== rAthena Script =======================================
+//= Instances Werner Laboratory central room.
+//===== Description: =========================================
+//- [Walkthrough conversion]
+//- Require Terra Gloria main quest.
+//- Note: For now there are 2 instances (officially one) to
+//  avoid exploit, the warp entry being the same. The first
+//  (main quest) is a solo instance and the 2nd (daily) a
+//  a party instance. The instance is a basic version,
+//  KRO added Seyren boss fight in the next updates.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+slabw01,232,91,5	duplicate(dummy_cloaked_npc)	Skia#ep162_06	4_EP16_SKIA
+slabw01,233,92,3	duplicate(dummy_cloaked_npc)	Scared researcher#ep162	4_M_ALCHE_A
+
+// Werner Laboratory central room (solo instance)
+slabw01,236,91,3	script	Rookie#ep162_04	4_M_ROOKIE,{
+	if (terra_gloria_main == 20) {
+		mes "[新秀]";
+		mes "看看这个。";
+		mes "根据设计图，这部分是与中央房间相连的……但我只看到一扇可疑的大门。";
+		next;
+		mes "[新秀]";
+		mes "难怪看起来他们有一些东西可以支持他们。";
+		mes "我们要用炸药把它炸掉吗？";
+		next;
+		cloakoffnpc( "Skia#ep162_06", getcharid(0) );
+		cloakoffnpc( "Scared researcher#ep162", getcharid(0) );
+		npctalk "等待！", "滑雪#ep162_06", bc_self;
+		mes "[滑雪]";
+		mes "不是用这么粗暴的方式！";
+		mes "嗯，当我来到这里时，我做了一个伟大的决定。";
+		mes "告诉他打开这个。";
+		next;
+		npctalk "哇！这女人还真是聪明啊！", "", bc_self;
+		npctalk "为什么……你为什么要这样对我？！", "害怕的研究员#ep162", bc_self;
+		mes "[滑雪]";
+		mes "我问他是否认识这里的路，他的回答是认识。所以我把他带到这里来。";
+		mes "他将启动中央房间的大门。";
+		next;
+		npctalk "这……就是这样做的方法。", "害怕的研究员#ep162", bc_self;
+		mes "[新秀]";
+		mes "嗯，我明白了。这就是操作方法。";
+		mes "太好了，现在我明白了。";
+		mes "我们不再需要他了。";
+		next;
+		npctalk "什...什么？！请不要杀我！", "害怕的研究员#ep162", bc_self;
+		mes "[滑雪]";
+		mes "真的吗？那我就把这位研究员带到外面的中队去。";
+		mes "关于中央房间，" + strcharinfo(0) + " 我指望你了！";
+		next;
+		cloakonnpc( "Skia#ep162_06", getcharid(0) );
+		cloakonnpc( "Scared researcher#ep162", getcharid(0) );
+		mes "[新秀]";
+		mes "哈哈，他们让我们打开了中央房间的门！";
+		mes "当你准备好进入这里时，请再次跟我说话。";
+		next;
+		mes "[新秀]";
+		mes "打开大门后，我们必须从外面看守它。";
+		mes "所以我不能和你一起进去。";
+		terra_gloria_main = 21;
+		close;
+	}
+	if (terra_gloria_main == 21) {
+		if (is_party_leader() == false) {
+			mes "^4d4dff此事件将继续进行到纪念馆。";
+			mes "请组织聚会后重试。^000000";
+			close;
+		}
+		mes "[新秀]";
+		mes "你准备好了吗？";
+		mes "如果你现在进来，我会启动大门。";
+		next;
+		if (select( "现在进入。", "不要进入。" ) == 2) {
+			mes "[新秀]";
+			mes "我们都知道我们没有时间这样做，不是吗？";
+			close;
+		}
+		mes "[新秀]";
+		mes "哇！就是这样！我总是学东西很快！";
+		mes "那么，请现在就进去吧！";
+		cloakoffnpc( "Central_room#evt_gate01", getcharid(0) );
+		instance_create("Werner Laboratory central room#1");	// officially there is only one 'Werner Laboratory central room' instance
+		close;
+	}
+	if (terra_gloria_main == 22) {
+		mes "[新秀]";
+		mes "你把东西拿回来了吗？";
+		close;
+	}
+	switch( checkquest(7742,HUNTING) ) {
+	case -1:
+		mes "[新秀]";
+		mes "我们在中央房间发现了一个奇怪的现象。我们不调查它。";
+		mes "或许里面还残留着强大的实验体。";
+		next;
+		mes "[新秀]";
+		mes "这是什么样的设施？";
+		mes "嘶嘶。";
+		mes "一旦确定正确，我可能会要求你达成和解......";
+		mes "我又得守着中央房间的大门了。";
+		close;
+	case 0:
+	case 1:
+		if (getcharid(1) < 1) {
+			mes "^4d4dff此事件将继续进行到纪念馆。";
+			mes "请组织聚会后重试。^000000";
+			close;
+		}
+		if (is_party_leader() == false) {
+			mes "[新秀]";
+			mes "如果有已经激活的门，您可以看到它。";
+			next;
+			mes "[新秀]";
+			mes "否则，请向您的政党领袖请求入场。";
+			close;
+		}
+		mes "[新秀]";
+		mes "你准备好了吗？";
+		mes "如果你现在进来，我会启动大门。";
+		next;
+		if (select( "现在进入。", "不要进入。" ) == 2) {
+			mes "[新秀]";
+			mes "我们都知道我们没有时间这样做，不是吗？";
+			close;
+		}
+		mes "[新秀]";
+		mes "哇！就是这样！我总是学东西很快！";
+		mes "那么，请现在就进去吧！";
+		cloakoffnpc( "Central_room#evt_gate01", getcharid(0) );
+		instance_create("Werner Laboratory central room#2");
+		close;
+	case 2:
+		mes "[新秀]";
+		mes "我们不确定还有多少实验对象是由艾森·沃纳那个家伙制造和放弃的。";
+		next;
+		mes "[新秀]";
+		mes "但我们就到此为止吧。";
+		close;
+	}
+	end;
+
+OnInit:
+	questinfo( QTYPE_QUEST, QMARK_YELLOW, " checkquest(7742,HUNTING) == 0 || checkquest(7742,HUNTING) == 1 " );
+	end;
+}
+
+slabw01,246,88,3	script	Central_room#evt_gate01	PORTAL,{
+	if (terra_gloria_main != 21 && terra_gloria_main < 23)
+		end;
+	if (getcharid(1) < 1 || (terra_gloria_main == 21 && is_party_leader() == false)) {
+		mes "^4d4dffMD 现在只有队伍领袖可以进入[中央房间]。^000000";
+		close;
+	}
+	mes "你可以搬到中央房间。";
+	next;
+	if (select( "进去吧。", "不要进去。" ) == 2) {
+		mes "[新秀]";
+		mes "哦……我每次都要打开它。真是太不方便了！";
+		close;
+	}
+	if (terra_gloria_main == 21)
+		.@md_name$ = "Werner Laboratory central room#1";
+	else
+		.@md_name$ = "Werner Laboratory central room#2";	// officially player without the daily hunting quest can enter in the instance, allowing to spam the instance without delay
+	switch( instance_enter(.@md_name$) ) {
+	case IE_NOMEMBER:
+		end;
+	case IE_NOINSTANCE:
+		mes "[新秀]";
+		mes "现在大门已经失灵了。这样就很危险了...";
+		mes "请稍等。";
+		close;
+	case IE_OTHER:
+		mes "发生未知错误。";
+		close;
+	case IE_OK:
+		mapannounce "slabw01", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+		// warp "1@slw",187,24;
+		end;
+	}
+	end;
+
+OnInit:
+	cloakonnpc( strnpcinfo(0) );
+	end;
+}
+
+// warps
+1@slw,187,170,0	warp	#slwwarp01	1,1,1@slw,71,32
+1@slw,71,77,0	warp	#slwwarp02	1,1,1@slw,54,134
+1@slw,55,150,0	warp	Emergency exit#exit_war	1,1,que_swat,155,58
+
+// Entrance - event type
+1@slw,187,25,0	script	#sl_evt01	HIDDEN_WARP_NPC,2,2,{
+	end;
+OnTouch:
+	if (is_party_leader() == false)
+		end;
+	disablenpc instance_npcname("#sl_evt01");
+	if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1")	// terra_gloria_main == 21
+		enablenpc instance_npcname("Eisen Werner#werner01");
+	else {
+		enablenpc instance_npcname("Guard#gard01");
+		enablenpc instance_npcname("Guard#gard02");
+		enablenpc instance_npcname("Guard#gard03");
+		enablenpc instance_npcname("Guard#gard04");
+	}
+	end;
+
+OnInstanceInit:
+	'device_state[0] = 'device_state[1] = 0;
+	'event_final = 0;
+
+	'map_slw$ = instance_mapname("1@slw");
+
+	disablenpc instance_npcname("#slwwarp01");
+	disablenpc instance_npcname("#slwwarp02");
+	disablenpc instance_npcname("Central Entrance#door");
+	disablenpc instance_npcname("Emergency exit#exit_war");
+
+	disablenpc instance_npcname("Eisen Werner#werner01");
+	disablenpc instance_npcname("Eisen Werner#werner02");
+	disablenpc instance_npcname("Eisen Werner#werner03");
+	disablenpc instance_npcname("Eisen Werner#werner04");
+	disablenpc instance_npcname("Eisen Werner#werner05");
+
+	disablenpc instance_npcname("Security device#switch01");
+	disablenpc instance_npcname("Security device#switch02");
+	disablenpc instance_npcname("Security device#switch11");
+	disablenpc instance_npcname("Security device#switch12");
+
+	disablenpc instance_npcname("Guard#gard01");
+	disablenpc instance_npcname("Guard#gard02");
+	disablenpc instance_npcname("Guard#gard03");
+	disablenpc instance_npcname("Guard#gard04");
+	disablenpc instance_npcname("Guard#gard05");
+	disablenpc instance_npcname("Guard#gard06");
+	disablenpc instance_npcname("Guard#gard07");
+
+	disablenpc instance_npcname("Seyren Windsor#seiren");
+	disablenpc instance_npcname("Pet child#boss_master");
+	disablenpc instance_npcname("#boss_master_dummy");
+	end;
+}
+
+// Room 1
+// * Samples and devices
+1@slw,174,145,3	script	Displayed sample#01	CLEAR_NPC,{
+	setarray .@sample$[0],
+		"^ff0000Purity^000000", "MT-Wxx0s57b",
+		"^4d4dffRose^000000", "MT-Wxx00b21",
+		"^4d4dffContradiction^000000", "MT-Wxx023-f1",
+		"^4d4dffJoy^000000", "OT-Wxx01-c",
+		"^4d4dffSea^000000", "MT-Wxc1c1b",
+		"^ff0000Eternity^000000", "MT-Wx267b",
+		"^4d4dffWay back home^000000", "OTM-Wxff01",
+		"^4d4dffLoneliness^000000", "MT-Wxx00c46",
+		"^4d4dffGlow^000000", "OT-Wxx4d4dff",
+		"^ff0000Dawn^000000", "MT-Wff_01v",
+		"^4d4dffTwilight^000000", "OT-Wxx00c3b",
+		"^4d4dffGirl^000000's ^ff0000dream^000000", "MT-Wxx0ax2-1";
+	.@num = (atoi(strnpcinfo(2)) - 1) * 2;
+	mes "[" + .@sample$[.@num] + "]";
+	mes "实验编号：" + .@sample$[.@num+1] + "";
+	close;
+}
+1@slw,201,145,3	duplicate(Displayed sample#01)	Displayed sample#02	CLEAR_NPC
+1@slw,174,132,3	duplicate(Displayed sample#01)	Displayed sample#03	CLEAR_NPC
+1@slw,201,132,3	duplicate(Displayed sample#01)	Displayed sample#04	CLEAR_NPC
+1@slw,174,118,3	duplicate(Displayed sample#01)	Displayed sample#05	CLEAR_NPC
+1@slw,201,118,3	duplicate(Displayed sample#01)	Displayed sample#06	CLEAR_NPC
+1@slw,174,104,3	duplicate(Displayed sample#01)	Displayed sample#07	CLEAR_NPC
+1@slw,201,104,3	duplicate(Displayed sample#01)	Displayed sample#08	CLEAR_NPC
+1@slw,174,90,3	duplicate(Displayed sample#01)	Displayed sample#09	CLEAR_NPC
+1@slw,201,90,3	duplicate(Displayed sample#01)	Displayed sample#10	CLEAR_NPC
+1@slw,174,76,3	duplicate(Displayed sample#01)	Displayed sample#11	CLEAR_NPC
+1@slw,201,76,3	duplicate(Displayed sample#01)	Displayed sample#12	CLEAR_NPC
+
+// * Events - First entrance
+1@slw,188,42,3	script	Eisen Werner#werner01	4_M_EISEN,{
+	if (is_party_leader() == false)
+		end;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "主角来了。";
+	mes "老实说，我印象深刻。没想到你会千里迢迢来到这里。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "好吧，无论如何。";
+	mes "欢迎。";
+	mes "欢迎来到艾森维尔纳的世界。";
+	next;
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "我万万没有想到，事情会突然变成这样。";
+	mes "任何。谁在乎？";
+	next;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "无论如何我已经放弃拯救这个实验室了。";
+	mes "您想看一下吗？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "有很多东西，包括维度裂缝等等。";
+	mes "在某些世界中，时间的流动是扭曲的。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "这是平行世界吗？";
+	mes "或者过去有人去过某个时刻吗？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "时间意味着什么？你有没有想过？";
+	mes "它的流动是相对的。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "那家伙现在已经停手了。";
+	mes "如果时间按照生物学规律流逝，就意味着有人变老了。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "就这样被强行阻止了。";
+	mes "在这种情况下，我们使用这样的表达式。";
+	next;
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "时间已经停止了。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "....";
+	next;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "您想进去看看吗？";
+	mes "慢慢地看看走廊。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "我会引导你。";
+	close2;
+	cutin "",255;
+	if (is_party_leader() == true) {
+		disablenpc instance_npcname("Eisen Werner#werner01");
+		enablenpc instance_npcname("Eisen Werner#werner02");
+	}
+	end;
+}
+
+1@slw,189,164,3	script	Eisen Werner#werner02	4_M_EISEN,{
+	if (is_party_leader() == false)
+		end;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "你喜欢我的工作吗？";
+	mes "我让那些傻瓜们回去重新开始。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "嗯，这并不容易。";
+	mes "......";
+	next;
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "如果那个孩子回去的话，他就不会是这样的结局了……";
+	next;
+	mes "[艾森·沃纳]";
+	mes "我的意思是，如果他停下来就好了……";
+	next;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "主席……我的意思是，那个人沉迷于过去。";
+	mes "感谢主席，我可以按照自己的意愿进行研究。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "你不好奇吗？";
+	mes "他为何如此执着于过去？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "顺便说一句，如果你想超越这个，你就必须操作左右的仪器......你能做到吗？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "由于它是一个简单的设备，我想你可以。";
+	mes "将^ff0000红色^000000更改为^4d4dff蓝色^000000。";
+	mes "并将^4d4dff蓝色^000000更改为^ff0000红色^000000。就是这样。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "如果你仔细看过我的作品，你就会明白我在说什么。";
+	mes "那么我们下一个区域见。";
+	close2;
+	cutin "",255;
+	if (is_party_leader() == true) {
+		disablenpc instance_npcname("Eisen Werner#werner02");
+		enablenpc instance_npcname("Security device#switch01");
+		enablenpc instance_npcname("Security device#switch02");
+	}
+	end;
+}
+
+1@slw,155,191,3	script	Security device#switch01	CLEAR_NPC,{
+	if (is_party_leader() == false)
+		end;
+	.@number = atoi( replacestr( strnpcinfo(2), "switch", "" ) );
+	.@type = (.@number < 10) ? 0 : 1;
+	.@npc_num = (.@number < 10) ? .@number : (.@number-10);
+	if ('device_state[.@type] & .@npc_num) {
+		mes "它已经被激活了。";
+		close;
+	}
+	callsub S_Code, .@string$, .@answer;
+	mes "有写下的安全代码。";
+	mes "[" + .@string$ + "]";
+	mes "你会输入什么？";
+	next;
+	if (select( "^ff0000" + .@string$ + "^000000", "^4d4dff" + .@string$ + "^000000" ) != .@answer) {
+		'device_state[.@type] = 0;
+		mes "设备已初始化。";
+		close;
+	}
+	if (is_party_leader() == false)
+		end;
+	'device_state[.@type] = 'device_state[.@type] | .@npc_num;
+	if ('device_state[.@type] != 3) {
+		mes "操作了安全装置。";
+		mes "看来又多了一个安全装置。";
+		close;
+	}
+	mes "操作了安全装置。";
+	mes "门现已激活。";
+	switch( .@type ) {
+	case 0:
+		enablenpc instance_npcname("#slwwarp01");
+		if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1")	// terra_gloria_main == 21
+			enablenpc instance_npcname("Eisen Werner#werner03");
+		else {
+			enablenpc instance_npcname("Guard#gard05");
+			enablenpc instance_npcname("Guard#gard06");
+			enablenpc instance_npcname("Guard#gard07");
+		}
+		break;
+	case 1:
+		if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1")
+			enablenpc instance_npcname("Eisen Werner#werner04");
+		else
+			enablenpc instance_npcname("Central Entrance#door");
+		enablenpc instance_npcname("#slwwarp02");
+		break;
+	}
+	close;
+
+S_Code:
+	setarray .@sample$[0],
+		"Purity", 2,
+		"Eternity", 2,
+		"Dawn", 2,
+		"Rose", 1,
+		"Contradiction", 1,
+		"Joy", 1,
+		"Sea", 1,
+		"Way back home", 1,
+		"Loneliness", 1,
+		"Glow", 1,
+		"Twilight", 1;
+	.@size = getarraysize(.@sample$) / 2;
+	.@r = rand(.@size) * 2;
+	set getarg(0), .@sample$[.@r];
+	set getarg(1), .@sample$[.@r+1];
+	return;
+}
+1@slw,220,191,3	duplicate(Security device#switch01)	Security device#switch02	CLEAR_NPC
+1@slw,22,61,3	duplicate(Security device#switch01)	Security device#switch11	CLEAR_NPC
+1@slw,122,61,3	duplicate(Security device#switch01)	Security device#switch12	CLEAR_NPC
+
+
+// * Events - Daily
+1@slw,188,58,3	script	Guard#gard01	3622,4,4,{
+	end;
+OnTouch:
+	.@num = atoi( replacestr( strnpcinfo(2), "gard0", "" ) );
+	getmapxy .@map$,.@x,.@y, BL_NPC;
+	switch( .@num ) {
+	case 1:	// 2 spawn area
+		npctalk ".. 哎呀，你怎么进来的？";
+		areamonster .@map$, 186,92,190,94, "Special Guard", 3622,3;	// EP16_2_MM_S_GUARDS
+		.@mob_count = 3;
+		break;
+	case 2:	// 3 spawn area
+		npctalk ".. 哎呀，你怎么进来的？";
+		areamonster .@map$, 186,142,190,143, "Special Guard", 3622,3;	// EP16_2_MM_S_GUARDS
+		areamonster .@map$, 186,160,190,162, "Special Guard", 3622,3;
+		.@mob_count = 3;
+		break;
+	case 5:
+		npctalk ".. 哎呀，你怎么进来的？";
+		.@mob_count = 3;
+		break;
+	case 3:
+		npctalk ".. 哎呀，你怎么进来的？";
+		.@mob_count = 1;
+		.@label$ = instance_npcname("#security_device_lab") + "::OnLeft1";
+		break;
+	case 4:
+		npctalk ".. 哎呀，你怎么进来的？";
+		.@mob_count = 3;
+		.@label$ = instance_npcname("#security_device_lab") + "::OnRight1";
+		break;
+	case 6:
+		npctalk "谁在那里？";
+		.@mob_count = 3;
+		.@label$ = instance_npcname("#security_device_lab") + "::OnLeft2";
+		break;
+	case 7:
+		npctalk "让我来结束你吧！";
+		.@mob_count = 3;
+		.@label$ = instance_npcname("#security_device_lab") + "::OnRight2";
+		break;
+	}
+	disablenpc();
+	areamonster .@map$, (.@x-2), (.@y-2), (.@x+2), (.@y+2), "Special Guard", 3622, .@mob_count, .@label$;	// EP16_2_MM_S_GUARDS
+	end;
+}
+1@slw,189,117,3	duplicate(Guard#gard01)	Guard#gard02	3622,4,4
+1@slw,171,167,3	duplicate(Guard#gard01)	Guard#gard03	3622,4,4
+1@slw,206,167,3	duplicate(Guard#gard01)	Guard#gard04	3622,4,4
+1@slw,70,38,5	duplicate(Guard#gard01)	Guard#gard05	3622,4,4
+1@slw,33,52,3	duplicate(Guard#gard01)	Guard#gard06	3622,4,4
+1@slw,111,52,3	duplicate(Guard#gard01)	Guard#gard07	3622,4,4
+
+1@slw,1,1,3	script	#security_device_lab	HIDDEN_WARP_NPC,{
+	end;
+OnLeft1:
+	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnLeft1" ) < 1) {
+		mapannounce 'map_slw$, "Security device L-01 has been activated.", bc_map,0xFF99;
+		enablenpc instance_npcname("Security device#switch01");
+	}
+	end;
+OnRight1:
+	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnRight1" ) < 1) {
+		mapannounce 'map_slw$, "Security device R-01 has been activated.", bc_map,0xFF99;
+		enablenpc instance_npcname("Security device#switch02");
+	}
+	end;
+OnLeft2:
+	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnLeft2" ) < 1) {
+		mapannounce 'map_slw$, "Security device L-02 has been activated.", bc_map,0xFF99;
+		enablenpc instance_npcname("Security device#switch11");
+	}
+	end;
+OnRight2:
+	if (mobcount( 'map_slw$, instance_npcname("#security_device_lab") + "::OnRight2" ) < 1) {
+		mapannounce 'map_slw$, "Security device R-02 has been activated.", bc_map,0xFF99;
+		enablenpc instance_npcname("Security device#switch12");
+	}
+	end;
+}
+
+
+// Room 2
+// * Events - First entrance
+1@slw,72,70,3	script	Eisen Werner#werner03	4_M_EISEN,{
+	if (is_party_leader() == false)
+		end;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "比你想象的容易吗？";
+	mes "接下来的安全装置都是类似的，所以我就不再解释了。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "环顾四周后，您有何感想？";
+	mes "是不是很神奇呢？";
+	mes "你去过^4d4dffVerus^000000吗？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "那就是我参考它建立的实验室。";
+	mes "这是我喜欢的类型。";
+	mes "......";
+	next;
+	mes "[艾森·沃纳]";
+	mes "这项技术与我们之前所拥有的技术完全不同。";
+	mes "我们已经使用了所有可用的东西。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "你怎么说？";
+	mes "看起来不错吗？";
+	next;
+	select("你想知道我为什么说这些话吗？");
+	mes "[艾森·沃纳]";
+	mes "嗯，那是因为你无论如何都会死在这里。";
+	mes "所以我想宣传我的成就。";
+	next;
+	select("死在这里？我？");
+	mes "[艾森·沃纳]";
+	mes "当然。你会死在这里。";
+	mes "你以为我就这么傻到一个人被留在这里吗？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "我知道你来这里是为了符文米德加特王国的事情。";
+	mes "所以我准备了一些东西。";
+	next;
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "带着巨大的轰动。";
+	mes "你会死的。就在这里。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "因此，请成为我的客人。";
+	mes "让我们前往下一个区域。";
+	close2;
+	cutin "",255;
+	if (is_party_leader() == true) {
+		disablenpc instance_npcname("Eisen Werner#werner03");
+		enablenpc instance_npcname("Security device#switch11");
+		enablenpc instance_npcname("Security device#switch12");
+	}
+	end;
+}
+
+
+// Room 3
+// * Events - First entrance
+1@slw,57,141,3	script	Eisen Werner#werner04	4_M_EISEN,{
+	if (is_party_leader() == false)
+		end;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "越过这堵墙，你将会得到一些东西。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "正确的。你把那个东西雕刻成宝石并用作皇冠上的装饰。";
+	mes "你知道它是什么吗？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "虽然是碎片，但却是尤弥尔的心脏碎片。";
+	mes "它不能与仿制品相比。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "……王国里的傻瓜甚至无法利用他们已有的力量。";
+	mes "真可惜。";
+	mes "所以我决定使用它...";
+	next;
+	mes "[艾森·沃纳]";
+	mes "你想收回它吗？这一切都取决于你的能力。";
+	mes "我并没有空手等待。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "让我再告诉你一次。不要感到惊讶。";
+	mes "不，如果你感到惊讶我会很高兴。";
+	mes "呼呼呼呼……";
+	next;
+	cutin "ep16_eisen03.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "现在，看看我准备的礼物吧。";
+	close2;
+	cutin "",255;
+	if (is_party_leader() == true) {
+		disablenpc instance_npcname("Eisen Werner#werner04");
+		enablenpc instance_npcname("Central Entrance#door");
+	}
+	end;
+}
+
+1@slw,54,146,0	script	Central Entrance#door	WARPNPC,1,1,{
+	end;
+OnTouch:
+	if (is_party_leader() == false) {
+		warp 'map_slw$,55,153;
+		end;
+	}
+	if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1") {
+		if ('event_final == 0) {
+			'event_final = 1;
+			enablenpc instance_npcname("Eisen Werner#werner05");
+		}
+		warp 'map_slw$,55,153;
+		end;
+	}
+	switch( 'event_final ) {
+	case 1:
+		mes "重播故事。";
+		close2;
+		warp 'map_slw$,55,153;
+		end;
+	case 2:
+		warp 'map_slw$,55,153;
+		end;
+	}
+	mes "在下一个区域你有两个选择。";
+	mes "如果您想重播Seyren Windsor的故事，请选择^4d4dff继续故事^000000。如果您想欣赏艾森·沃纳的杰作，请选择《CLR2》继续战斗《CLR3》。";
+	next;
+	if (select( "继续故事。", "继续战斗。" ) == 1) {
+		mes "你已经选择了故事。";
+		close2;
+		if ('event_final == 0) {
+			'event_final = 1;
+			enablenpc instance_npcname("Eisen Werner#werner05");
+		}
+		warp 'map_slw$,55,153;
+		end;
+	}
+	mes "你已经选择了战斗。";
+	close2;
+	if ('event_final == 0) {
+		'event_final = 2;
+		enablenpc instance_npcname("Pet child#boss_master");
+		enablenpc instance_npcname("#boss_master_dummy");
+	}
+	warp 'map_slw$,55,153;
+	end;
+}
+
+
+// Room Boss
+// * Story
+1@slw,56,171,3	duplicate(dummy_npc)	Seyren Windsor#seiren	4_M_SEIREN_UC
+
+1@slw,53,171,5	script	Eisen Werner#werner05	4_M_EISEN,{
+	if (is_party_leader() == false) {
+		mes "^4d4dff只有队伍领袖才能继续此事件。^000000";
+		close;
+	}
+	if (checkweight(501,1) == 0) {
+		mes "- 无法继续任务，因为你拥有太多物品。 -";
+		close;
+	}
+	.@seyren$ = instance_npcname("Seyren Windsor#seiren");
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "这里是实验室的核心，包含了我研究的一切。";
+	npctalk "这里是实验室的核心，包含了我研究的一切。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "尤弥尔的心脏碎片，掌握着构成世界的根本力量。它也蕴藏着生命的起源。";
+	npctalk "尤弥尔的心脏碎片，掌握着构成世界的根本力量。它也蕴藏着生命的起源。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "仔细看看这个。";
+	mes "你来夺回的目的是做一些了不起的事情！";
+	npctalk "仔细看看这个。你来夺回的目的是做一些了不起的事情！";
+	next;
+	mes "[艾森·沃纳]";
+	mes "由此提取的能量流入地面的魔法阵中……哈哈哈。当然，这个魔法阵已经被神奇地重新诠释了。";
+	npctalk "由此提取的能量流入地面的魔法阵中……哈哈哈。当然，这个魔法阵已经被神奇地重新诠释了。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "无论如何，能量都会进入实验体……利用那股力量，我调整了他们的时间。";
+	next;
+	cutin "ep16_eisen03.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "……当然，其中一些会因细胞破裂而死亡。哈哈！";
+	next;
+	select("这就是你想说的全部吗？");
+	unittalk getcharid(3), "" + strcharinfo(0) + " : Is that all you want to say?";
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "不！绝不！";
+	mes "你是不是已经忘记我之前跟你说过的话了？";
+	mes "我告诉过你我准备了一份礼物。";
+	next;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "某物...";
+	mes "这会让你大吃一惊。";
+	close2;
+	setpcblock PCBLOCK_NPC, true;
+	cutin "",255;
+	sleep2 3000;
+	enablenpc .@seyren$;
+	npctalk "......", .@seyren$;
+	sleep2 1000;
+	setpcblock PCBLOCK_NPC, false;
+	unittalk getcharid(3), "" + strcharinfo(0) + " : ... Seyren?!";
+	mes "[艾森·沃纳]";
+	mes "我给你准备的礼物你觉得怎么样？！";
+	mes "你满意吗？";
+	cutin "ep16_eisen01.bmp",1;
+	next;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "这家伙就是那个傻王室代表团中的一个。";
+	mes "感谢一些勇敢的人的实验，我得到了这个很棒的东西。";
+	next;
+	select("您是在谈论体内实验吗？");
+	unittalk getcharid(3), "" + strcharinfo(0) + " : Are you talking about the In Vivo Experiment?";
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "是的，完全正确。";
+	mes "嗯，除了那个家伙之外，做活体实验的人还有很多，但他是第一个勇敢地增强生物的人。";
+	next;
+	cutin "ep16_eisen01.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "使用尤弥尔的仿制心脏碎片";
+	mes "这是体内实验的一个伟大转折点。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "我试图将它应用到多种事物上。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "顺便一提....";
+	mes "你应该向它打个招呼。正确的？";
+	next;
+	mes "[艾森·沃纳]";
+	mes "啊~。这是正确的。";
+	mes "你不需要打招呼，因为你们都会死！";
+	cutin "ep16_eisen03.bmp",1;
+	next;
+	cutin "ep16_eisen02.bmp",1;
+	mes "[艾森·沃纳]";
+	mes "Seyren，护送这些客人到地狱。";
+	mes "你明白我在说什么吗？";
+	next;
+	cutin "ep16_seiren02.bmp",2;
+	mes "[塞伦]";
+	mes ".......";
+	npctalk "......", .@seyren$;
+	next;
+	cutin "ep16_evt_ws.bmp",4;
+	mes "[艾森·沃纳]";
+	mes "唔？";
+	mes "这是什么，塞伦？现在是负面阶段吗？";
+	next;
+	mes "[塞伦]";
+	mes "我感觉自己好像从漫长的睡眠中醒来。";
+	mes "也许就是为了这一天。";
+	npctalk "我感觉自己好像从漫长的睡眠中醒来。也许就是为了这一天。", .@seyren$;
+	next;
+	mes "[艾森·沃纳]";
+	mes "不要忘记你的职责，Seyren。";
+	mes "你是一个武器。你只不过是一个穿着名为塞伦·温莎的骑士服装的傀儡。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "需要我一步步解释吗？";
+	mes "移植了尤弥尔之心的傀儡后，身体无法承受力量，最终崩溃了。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "然后它的神魂复制了本体，并不断分裂。";
+	mes "在这个过程中，它的记忆、意识、灵魂、心智、自我都如沙子般散落。他们变得毫无意义。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "当我们将尤弥尔之心的假人移植到一个拥有强大精神和身体的人身上时，我们期望那个人会成为更强大的生物武器。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "我们万万没想到它会自我复制并无限分裂。结果，这次实验被认为是失败的。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "更糟糕的是，它是一个无法控制的生物，充满了愤怒。";
+	next;
+	mes "[塞伦]";
+	mes "我在这儿。";
+	npctalk "我在这儿。", .@seyren$;
+	next;
+	mes "[艾森·沃纳]";
+	mes "你知道吗？他们现在还在分裂。";
+	mes "只是模仿本体，甚至还在本体内部生长。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "既然他们现在是不完美的人，他们就想变得完美。";
+	mes "他们现在是不完美的存在，所以他们想要变得完美，而不是仅仅模仿主体，以虚像的形式活着。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "他们希望作为一个单一的实体存在。";
+	next;
+	mes "[艾森·沃纳]";
+	mes "唯一成功的实验就是你。我们现在叫你 Seyren。";
+	next;
+	cutin "ep16_seiren02.bmp",2;
+	mes "[塞伦]";
+	mes "……你的意志就这样结束了吗？";
+	npctalk "……你的意志就这样结束了吗？", .@seyren$;
+	next;
+	cutin "ep16_eisen03.bmp",0;
+	mes "[艾森·沃纳]";
+	mes "嘿，宝贝？你不能这样对我。";
+	mes "你必须服从我！";
+	next;
+	cutin "ep16_eisen02.bmp",0;
+	mes "[艾森·沃纳]";
+	mes "你不记得我是多么努力地把你从地狱里带出来吗？";
+	mes "不要被已经死去的人的意识所左右。";
+	next;
+	cutin "ep16_seiren02.bmp",2;
+	mes "[塞伦]";
+	mes "...艾森维尔纳。";
+	mes "让我再问你一次。这是你意志的终结吗？";
+	npctalk "...艾森维尔纳。让我再问你一次。这是你意志的终结吗？", .@seyren$;
+	next;
+	cutin "ep16_eisen01.bmp",0;
+	mes "[艾森·沃纳]";
+	mes "该死！";
+	mes "我没想到会这样！";
+	mes "这个世界不是一个有趣的地方吗？哈哈哈哈哈哈哈";
+	next;
+	mes "[艾森·沃纳]";
+	mes "永远不要以为我已经完成了。";
+	mes "我也不需要失败者。";
+	close2;
+	setpcblock PCBLOCK_NPC, true;
+	cutin "",255;
+	specialeffect EF_BEGINSPELL3;
+	sleep2 1000;
+	specialeffect EF_SCREEN_QUAKE;
+	sleep2 1000;
+	specialeffect EF_LORD;
+	disablenpc instance_npcname("Eisen Werner#werner05");
+	sleep2 2000;
+	setpcblock PCBLOCK_NPC, false;
+	npctalk "哦....", .@seyren$;
+	mes "[塞伦]";
+	mes "……艾森。你就这样抛弃了一切。";
+	npctalk "……艾森。你就这样抛弃了一切。", .@seyren$;
+	specialeffect2 EF_DEVIL3;
+	cutin "ep16_seiren01.bmp",2;
+	next;
+	mes "[塞伦]";
+	mes ".. 啊...";
+	npctalk ".. 啊...", .@seyren$;
+	cutin "ep16_seiren02.bmp",2;
+	next;
+	mes "[塞伦]";
+	mes "坚固性再次减弱。";
+	mes "现在，我有一条更紧急的信息要传达给你，而不是艾森。";
+	npctalk "坚固性再次减弱。现在，我有一条更紧急的信息要传达给你，而不是艾森。", .@seyren$;
+	next;
+	mes "[塞伦]";
+	mes "我已经等你很久了。";
+	mes "正如艾森所说，我是不是 Seyren 已经不再重要了。";
+	npctalk "我已经等你很久了。正如艾森所说，我是不是 Seyren 已经不再重要了。", .@seyren$;
+	next;
+	mes "[塞伦]";
+	mes "自从我有了思考的能力，我就不知道自己是谁，也不知道自己为何存在。";
+	next;
+	specialeffect2 EF_DEVIL4;
+	mes "[塞伦]";
+	mes "不断的分裂创造了无数的我自己。";
+	next;
+	mes "[塞伦]";
+	mes "这种力量与尤弥尔之心的傀儡交织在一起，它响应了我和我同伴的意愿。他们想要团结，却一再分裂。";
+	next;
+	specialeffect2 EF_DEVIL5;
+	cutin "ep16_seiren01.bmp",2;
+	mes "[塞伦]";
+	mes "到目前为止，我已经创建了多少个我自己的副本？";
+	next;
+	cutin "ep16_seiren02.bmp",2;
+	mes "[塞伦]";
+	mes "不断分裂后，我失去了自我，却又重生为原来的样子。我不认为这是巧合。";
+	next;
+	mes "[塞伦]";
+	mes "我想这一定是有原因的。";
+	next;
+	mes "[塞伦]";
+	mes "我在看了《^4d4dffTerra Gloria^000000之后才意识到这一点。";
+	mes "上天之所以给我这个机会。";
+	next;
+	specialeffect2 EF_DEVIL6;
+	cutin "ep16_seiren01.bmp",2;
+	mes "[塞伦]";
+	mes "你是来夺回这个的吗？";
+	mes "……大地消失了，只剩下星星。";
+	next;
+	specialeffect2 EF_DEVIL7;
+	cutin "ep16_seiren02.bmp",2;
+	mes "[塞伦]";
+	mes "艾森是对的。 ^4d4dff塞伦·温莎已经不在这个世界上了。^000000";
+	mes "我现在所拥有的只是不断传递某些东西的强烈意愿。";
+	next;
+	specialeffect2 EF_SCREEN_QUAKE;
+	specialeffect2 EF_DEVIL8;
+	cutin "ep16_seiren01.bmp",2;
+	mes "[塞伦]";
+	mes "也许就是那一点意志让我存在。";
+	mes "但现在已经结束了。";
+	cutin "ep16_seiren02.bmp",2;
+	next;
+	specialeffect2 EF_DEVIL9;
+	cutin "ep16_seiren01.bmp",2;
+	mes "[塞伦]";
+	mes ".....";
+	next;
+	mes "[塞伦]";
+	mes "我真的没有更多的时间了。";
+	mes "这一刻之后，^4d4dff我将再次分裂和分散。^000000。";
+	next;
+	mes "[塞伦]";
+	mes "虽然我现在还有遗嘱，但我有一条信息要告诉你。";
+	next;
+	if (instance_live_info(ILI_NAME) == "Werner Laboratory central room#1") {
+		mes "[塞伦]";
+		mes "请继续。";
+		mes "普隆德拉的骑士塞伦·温莎未能完成任务。";
+		next;
+		mes "[塞伦]";
+		mes "^4d4dff我和我所有的同伴很久以前就死了。";
+		mes "请不要把你的感情浪费在已经死去的尸体上。^000000";
+		next;
+		mes "[塞伦]";
+		mes "他们就像是披着果皮的鬼魂。";
+		mes "我很幸运能在你面前展示我的遗嘱。";
+		next;
+		mes "[塞伦]";
+		mes "它们是我和我的同伴的^4d4dff遗物^000000。";
+		mes "请把它们交给我们的家人。";
+		if (is_party_leader() == true) {
+			getitem 25179,1;	// Blessing_Star
+			getitem 23087,1;	// Small_Leather_Bag
+			erasequest 7739;// Find Star of Blessing!
+			setquest 7740;// Star of Blessing obtained
+			terra_gloria_main = 22;
+		}
+		close2;
+		setpcblock PCBLOCK_NPC, true;
+		cutin "",255;
+		specialeffect EF_ICECRASH, AREA, .@seyren$;
+		disablenpc .@seyren$;
+		// monster 'map_slw$,56,171, "Seyren", SEYREN, 1;
+		sleep2 1000;
+		specialeffect2 EF_SCREEN_QUAKE;
+		sleep2 1000;
+		setpcblock PCBLOCK_NPC, false;
+		specialeffect2 EF_SCREEN_QUAKE;
+		specialeffect2 EF_RAIN_PARTICLE2;
+		warp "que_swat",155,50;
+		end;
+	}
+	// daily
+	mes "[塞伦]";
+	mes "很高兴最后见到你。";
+	mes "谢谢你...再见。";
+	close2;
+	setpcblock PCBLOCK_NPC, true;
+	cutin "",255;
+	specialeffect EF_ICECRASH, AREA, .@seyren$;
+	cloakonnpc .@seyren$;
+	// monster 'map_slw$,56,171, "Seyren", SEYREN, 1;
+	sleep2 1000;
+	specialeffect2 EF_SCREEN_QUAKE;
+	sleep2 1000;
+	specialeffect2 EF_SCREEN_QUAKE;
+	specialeffect2 EF_RAIN_PARTICLE2;
+	setpcblock PCBLOCK_NPC, false;
+	if (is_party_leader() == true)
+		'event_final = 0;
+	mapannounce 'map_slw$, "The setting of the central room has been initialized.", bc_map,0xFF99;
+	warpparty 'map_slw$,54,134,getcharid(1),'map_slw$,2,2;
+	disablenpc .@seyren$;
+	end;
+}
+
+// * Battle
+1@slw,55,170,3	duplicate(dummy_npc)	Pet child#boss_master	3621
+
+1@slw,55,170,3	script	#boss_master_dummy	HIDDEN_WARP_NPC,5,5,{
+	end;
+OnTouch:
+	if (is_party_leader() == false)	// officially player can spawn multiple boss changing party leader
+		end;
+	setpcblock PCBLOCK_NPC, true;
+	.@npc_name$ = instance_npcname("Pet child#boss_master");
+	npctalk "你怎么敢进来！你真勇敢！", .@npc_name$;
+	sleep2 3000;
+	npctalk "能与我战斗，你一定感到很荣幸！", .@npc_name$;
+	sleep2 3000;
+	npctalk "…………", .@npc_name$;
+	sleep2 3000;
+	npctalk ".. 该死的维尔纳。为什么把我和狼混在一起？", .@npc_name$;
+	sleep2 3000;
+	npctalk "啊……总之，你已经是死人了。", .@npc_name$;
+	sleep2 3000;
+	setpcblock PCBLOCK_NPC, false;
+	disablenpc instance_npcname("#boss_master_dummy");
+	npctalk "蜜蜂准备好了！！！", .@npc_name$;
+	specialeffect EF_DANCE_BLADE_ATK, AREA, instance_npcname("Pet child#boss_master");
+	specialeffect EF_ALL_FULL_THROTTLE, AREA, instance_npcname("Pet child#boss_master");
+	donpcevent instance_npcname("#boss_master_lab") + "::OnStart";
+	mapannounce 'map_slw$, "The Magic field has been activated.", bc_map,0xFF99;
+	cloakonnpc instance_npcname("Pet child#boss_master");
+	end;
+}
+
+1@slw,1,1,3	script	#boss_master_lab	HIDDEN_WARP_NPC,5,5,{
+	end;
+OnStart:
+	enablenpc instance_npcname("#boss_master_lab");
+	if (mobcount( 'map_slw$, instance_npcname("#boss_master_lab") + "::OnMobDead" ) < 1)
+		monster 'map_slw$,55,170, "Pet child", 3621, 1, instance_npcname("#boss_master_lab") + "::OnMobDead";	// EP16_2_MM_CUTIE
+	end;
+OnMobDead:
+	if (mobcount( 'map_slw$, instance_npcname("#boss_master_lab") + "::OnMobDead" ) < 1) {
+		mapannounce 'map_slw$, "The Magic field has been eliminated. An entrance has been created.", bc_map,0xFF99;
+		enablenpc instance_npcname("Emergency exit#exit_war");
+		disablenpc instance_npcname("#boss_master_lab");
+	}
+	end;
+}

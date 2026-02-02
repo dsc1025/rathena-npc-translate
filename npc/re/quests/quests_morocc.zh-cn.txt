@@ -1,0 +1,258 @@
+//===== rAthena Script =======================================
+//= Morocc Quest NPCs
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Quest NPCs related to Morocc.
+//===== Additional Comments: =================================
+//= 1.0 First Version.
+//= 1.0a Gathered remaining dialogues. [Euphy]
+//= 1.1 Added new warpers for Satan Morocc maps. [Euphy]
+//============================================================
+
+// Stop Post Quest
+// ============================================================
+morocc,152,167,4	duplicate(William)	William#moc	89
+
+// Binoculars Quest
+// ============================================================
+morocc,169,168,4	duplicate(Alchemist)	Alchemist#moc	64
+
+// Resurrection of Satan Morocc
+// ============================================================
+-	script	Continental Guard#man	-1,{
+	mes "[大陆卫队]";
+	mes "由于检测到异常时空现象，我们收到总部的命令，封锁该区域的通道。";
+	next;
+	mes "[大陆卫队]";
+	mes "如果你真的想去下一个区域，你就要对自己的安全负责。";
+	next;
+	switch(select("没关系。：进入领域。")) {
+	case 1:
+		mes "[大陆卫队]";
+		mes "明智的选择。";
+		mes "祝您旅途平安。";
+		close;
+	case 2:
+		mes "[大陆卫队]";
+		mes "我懂了。";
+		mes "我很快就会派你去现场。";
+		close2;
+		warp "moc_fild20",208,207;
+		end;
+	}
+}
+moc_fild07,380,202,1	duplicate(Continental Guard#man)	Continental Guard#man1	852
+moc_fild11,189,360,6	duplicate(Continental Guard#man)	Continental Guard#man2	852
+prt_fild10,263,23,1	duplicate(Continental Guard#man)	Continental Guard#man3	852
+prt_fild09,95,19,1	duplicate(Continental Guard#man)	Continental Guard#man4	852
+prt_fild09,246,17,1	duplicate(Continental Guard#man)	Continental Guard#man5	852
+moc_fild13,32,171,6	duplicate(Continental Guard#man)	Continental Guard#man6	852
+moc_fild16,124,381,4	duplicate(Continental Guard#man)	Continental Guard#man7	852
+moc_fild16,333,380,4	duplicate(Continental Guard#man)	Continental Guard#man8	852
+moc_fild01,84,19,1	duplicate(Continental Guard#man)	Continental Guard#man9	852
+
+morocc,176,101,3	duplicate(Continental Official)	Continental Official#mor	754
+
+// Pyramids Nightmare Mode :: nightmare_pry
+//============================================================
+moc_prydb1,103,54,3	script	Suspicious Cat#night	547,{
+	mes "[可疑的猫]";
+	mes "我不敢相信一个妈妈可以对我做这样的事。噢，伙计，很痛。任何人都不应该知道这件事......";
+	next;
+	if(select("木乃伊？发生了什么事？：假装什么都不知道。") == 2)
+		close;
+	mes "[可疑的猫]";
+	mes "你抓住了我！ Darn it...I didn't expect my reputation as a tomb raider would get damaged like this...";
+	next;
+	mes "[可疑的猫]";
+	mes "但来吧，他们太奇怪了！他们是木乃伊！只是木乃伊，你知道吗？他们不应该那么强！";
+	next;
+	if(select("坚强的木乃伊？他们在哪儿？：结束对话。") == 2) {
+		mes "[可疑的猫]";
+		mes "哇~你不想听我的故事吗？美好的！你最好别在其他地方提到我的名字！";
+		close;
+	}
+	mes "[可疑的猫]";
+	mes "哈哈，这是一个秘密。";
+	mes "我在偷东西的时候发现的……不，我是说，只是走过金字塔。";
+	next;
+	mes "[可疑的猫]";
+	mes "当我看到一个木乃伊向我走来时，我就像“随便吧”，并不在乎。但随后他一巴掌就把我打倒了！他怎么可以这样对我这么可爱的猫！你这个裹着绷带的怪物……你等着瞧吧！";
+	next;
+	if(select("我也想去：结束谈话。") == 2)
+		close;
+	mes "[可疑的猫]";
+	mes "决不！我花了很多时间寻找那条路！";
+	next;
+	mes "[可疑的猫]";
+	mes "嗯……不过如果你坚持的话，就给我 5000 Zeny 吧。我来引导你。";
+	mes "什么~？别用那种眼神看我！你知道猫在米德加德生存有多困难吗？";
+	next;
+	mes "[可疑的猫]";
+	mes "^FF0000不过想想看，像你这样的弱者是不可能在那里生存的。如果你幸运的话也许有一秒钟？^000000";
+	mes "好吧，这不关我的事。但我还是警告过你！";
+	next;
+	switch(select("支付 5,000 zeny 并出发。：算了。")) {
+	case 1:
+		if (Zeny < 5000) {
+			mes "[可疑的猫]";
+			mes "你以为你要去哪里啊！你真是破产了！";
+			close;
+		}
+		set Zeny, Zeny-5000;
+		mes "[可疑的猫]";
+		mes "呸，这老钱是怎么回事……你没有什么闪闪发光的东西吗？！";
+		mes "啊，跟着我吧！";
+		close2;
+		warp "moc_prydn1",93,96;
+		end;
+	case 2:
+		mes "[可疑的猫]";
+		mes "天哪，你连 5000 Zeny 都没有，是吗？";
+		close;
+	}
+}
+
+moc_prydn1,94,98,3	script	Suspicious Cat#night2	547,{
+	mes "[可疑的猫]";
+	mes "趁你不看的时候，那个蠢妈咪又打我耳光了！嗅嗅……我们回去吧喵！";
+	next;
+	switch(select("返回盗贼公会：消灭真理：消灭远古木乃伊：没什么")) {
+	case 1:
+		mes "[可疑的猫]";
+		mes "对对对……我们回去吧。";
+		close2;
+		warp "moc_prydb1",100,57;
+		end;
+	case 2:
+		set .@playtime, checkquest(2290,PLAYTIME);
+		if (.@playtime == 0 || .@playtime == 1) {
+			mes "[可疑的猫]";
+			mes "看看那个维利特，他害怕我们！啊哈哈！我们安全了，至少暂时安全了！";
+			close;
+		} else if (.@playtime == 2)
+			erasequest 2290;
+		set .@hunting, checkquest(2289,HUNTING);
+		if (.@hunting == -1) {
+			mes "[可疑的猫]";
+			mes "你知道猫和狗不能和平相处吗？";
+			next;
+			mes "[可疑的猫]";
+			mes "看看那个又丑又丑的Verit。他皱着眉头，摇着尾巴，试图靠近。";
+			mes "哦，你没有尾巴，对吗？他认为我是他的眼中钉，现在还想挑起事端！";
+			next;
+			mes "[可疑的猫]";
+			mes "看看他，那么贪婪，那么流口水……我也不喜欢他的呼吸方式。我无法忍受他发出那些狼吞虎咽的声音......";
+			mes "很明显，他正等着从后面攻击我。";
+			next;
+			mes "[可疑的猫]";
+			mes "天啊，要不是我肚子疼，我真可以用力地抓他的脸！";
+			mes "嘿，我不是因为害怕马约鲁斯！";
+			next;
+			mes "[可疑的猫]";
+			mes "如果你想回家，你最好打败那只丑狗！不然他会咬你的！";
+			next;
+			switch(select("帮助他：远离")) {
+			case 1:
+				mes "[可疑的猫]";
+				mes "好，目标数量是20！祝你好运！";
+				setquest 2289;
+				close;
+			case 2:
+				mes "[可疑的猫]";
+				mes "呸！你不关心我吗？好吧，你这个叛徒！";
+				close;
+			}
+		} else if (.@hunting == 0 || .@hunting == 1) {
+			mes "[可疑的猫]";
+			mes "Verit的训练进展顺利吗？";
+			next;
+			switch(select("当然。：我想停下来。")) {
+			case 1:
+				mes "[可疑的猫]";
+				mes "好的。继续做好工作！";
+				close;
+			case 2:
+				mes "[可疑的猫]";
+				mes "什么？你太不负责任了！";
+				erasequest 2289;
+				close;
+			}
+		} else if (.@hunting == 2) {
+			mes "[可疑的猫]";
+			mes "嘿嘿，你还真是有用啊！好工作！";
+			mes "那个Verit暂时不敢来这里吧？哈哈哈！";
+			changequest 2289,2290;
+			getexp 300000,100000;
+			close;
+		}
+	case 3:
+		set .@playtime, checkquest(2291,PLAYTIME);
+		if (.@playtime == 0 || .@playtime == 1) {
+			mes "[可疑的猫]";
+			mes "好，我会好好利用你赢得的时间！但我得先解决一下肚子痛……";
+			close;
+		} else if (.@playtime == 2)
+			erasequest 2291;
+		set .@hunting, checkquest(2292,HUNTING);
+		if (.@hunting == -1) {
+			mes "[可疑的猫]";
+			mes "这里的秘境深处，应该隐藏着珍贵的宝藏！";
+			mes "我确信木乃伊的珍贵宝藏就藏在地下二层。";
+			next;
+			mes "[可疑的猫]";
+			mes "但古代木乃伊却出其不意地击中了我的头！";
+			next;
+			mes "[可疑的猫]";
+			mes "我确信他们想通过减少我的高级脑细胞来阻止我找到宝藏！！";
+			next;
+			mes "[可疑的猫]";
+			mes "他们无法阻止我！让我们去摆脱远古木乃伊吧！";
+			next;
+			mes "[可疑的猫]";
+			mes "别问为什么！我相信您也不希望那些美丽的宝藏被隐藏在黑暗中！";
+			next;
+			switch(select("帮助他：远离")) {
+			case 1:
+				mes "[可疑的猫]";
+				mes "好吧，目标数量是20！祝你好运！";
+				setquest 2292;
+				close;
+			case 2:
+				mes "[可疑的猫]";
+				mes "呸，你真是冷酷无情。";
+				close;
+			}
+		} else if (.@hunting == 0 || .@hunting == 1) {
+			mes "[可疑的猫]";
+			mes "古代木乃伊战斗进展顺利吗？";
+			next;
+			switch(select("当然。：我想停下来。")) {
+			case 1:
+				mes "[可疑的猫]";
+				mes "好的。继续做好工作！";
+				close;
+			case 2:
+				mes "[可疑的猫]";
+				mes "什么？你太不负责任了！";
+				erasequest 2292;
+				close;
+			}
+		} else if (.@hunting == 2) {
+			mes "[可疑的猫]";
+			mes "嘿嘿，你还真是有用啊！好工作！";
+			mes "那远古木乃伊一时半会也不敢来这里吧？哈哈哈！";
+			changequest 2292,2291;
+			getexp 600000,200000;
+			close;
+		}
+	case 4:
+		close;
+	}
+}

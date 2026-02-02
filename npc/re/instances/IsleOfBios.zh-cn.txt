@@ -1,0 +1,772 @@
+//===== rAthena Script =======================================
+//= Isle Of Bios
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Isle Of Bios Instance
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+moro_cav,50,64,5	script	Yellow Seed#bios	CLEAR_NPC,{
+	if (BaseLevel < 160) {
+		mes "^ff0000160级以下的角色无法进入该地下城。^000000";
+		close;
+	}
+	if (isbegin_quest(15006) == 0) {
+		mes "^ff0000你首先必须遇到流浪老人才能进入这个地下城。^000000";
+		close;
+	}
+	.@party_id = getcharid(1);
+	if (.@party_id < 1) {
+		mes "^ff0000你首先必须组建/加入至少1人的队伍才能进入这个地下城。^000000";
+		close;
+	}
+	switch( checkquest(15005,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		if (checkquest(15007,PLAYTIME) == 2) {// 5 mins to re-enter
+			mes "^ff0000自上次访问后 23 小时内无法进入该纪念地下城。^000000";
+			close;
+		}
+		switch( checkquest(15008,PLAYTIME) ) {
+		case -1:
+			break;
+		case 0:
+		case 1:
+			mes "^0000ff自上次访问后 23 小时内无法进入该纪念地下城。^000000";
+			close;
+		case 2:
+			break;
+		}
+		break;
+	case 2:
+		erasequest 15005;// Memorial Dungeon: Isle of Bios
+		erasequest 15007;// Memorial Dungeon: Isle of Bios
+		if (isbegin_quest(15008) > 0)
+			erasequest 15008;// Memorial Dungeon: Isle of Bios
+		break;
+	}
+	if (is_party_leader() == true)
+		.@create$ = "Create Memorial dungeon.";
+	switch( select( .@create$, "进入Bios岛。", "取消。" ) ) {
+	case 1:
+		instance_create("Isle of Bios");
+		mes "^ff0000创建了纪念地下城。^000000";
+		mes "^ff0000请再次单击并按 Enter 键。^000000";
+		close;
+	case 2:
+		switch( instance_enter("Isle of Bios") ) {
+		case IE_NOMEMBER:
+		case IE_NOINSTANCE:
+		case IE_OTHER:
+			if (is_party_leader(.@party_id) == false) {
+				mes "^ff0000请注意，在您上次访问后 23 小时内无法进入该纪念地下城。^000000";
+				next;
+			}
+			mes "^ff0000你的队伍领袖尚未创建时间裂缝。^000000";
+			close;
+		case IE_OK:
+			mapannounce "moro_cav", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering Isle of Bios.",bc_map,"0x00FF99";
+			if (isbegin_quest(15005) == 0) {
+				setquest 15005;// Memorial Dungeon: Isle of Bios
+				setquest 15007;// Memorial Dungeon: Isle of Bios
+			}
+			end;
+		}
+	case 3:
+		end;
+	}
+	end;
+
+OnInit:
+	while(true) {
+		sleep 500;
+		specialeffect EF_ENHANCE;
+	}
+	end;
+}
+
+moro_cav,45,60,5	script	Wandering Old Man#sara	4_M_EINOLD,{
+	if (BaseLevel < 160) {
+		mes "[流浪老人]";
+		mes "...";
+		mes "恐怕你还没有准备好。";
+		mes "你必须至少达到160级。";
+		close;
+	}
+	if (isbegin_quest(15006) == 0) {
+		mes "[流浪老人]";
+		mes "……我在哪儿？";
+		next;
+		mes "[流浪老人]";
+		mes "我不知道从什么时候开始...";
+		mes "同样的噩梦已经困扰我很长时间了。";
+		next;
+		mes "[流浪老人]";
+		mes "在我的噩梦中，魔王摩洛哥从长达一个世纪的沉睡中醒来，世界充满了黑暗和恐怖。";
+		next;
+		mes "[流浪老人]";
+		mes "我无法摆脱在那场噩梦中看到的生动画面。我像个疯子一样到处乱逛，终于到了这里。";
+		next;
+		mes "[流浪老人]";
+		mes "我在梦里看到过这个地方。这里是魔神莫罗克从沉睡中苏醒的地方。我的梦想向我展示了一个可能的未来。";
+		next;
+		mes "[流浪老人]";
+		mes "如果我的梦真的是预感的话，魔神莫罗克的力量就在那个黄色种子之中。";
+		next;
+		mes "[流浪老人]";
+		mes "我尝试进入种子，但无济于事：我只是太老了，太虚弱了。但也许你可以。";
+		next;
+		mes "[流浪老人]";
+		mes "请调查那颗黄色种子。";
+		mes "你一个人去太危险了。你应该至少带上一名同伴。";
+		setquest 15006;// Isle of Bios Exploration
+		completequest 15006;// Isle of Bios Exploration
+		close;
+	}
+	mes "[流浪老人]";
+	mes "请调查那颗黄色种子。";
+	mes "你一个人去太危险了。你应该至少带上一名同伴。";
+	close;
+}
+
+// warps
+1@dth1,291,102,0	warp2	warp1#bios1	2,2,1@dth2,17,93
+1@dth2,291,102,0	warp2	warp1#bios2	2,2,1@dth3,45,68
+
+// zone 1
+1@dth1,74,94,3	script	Grim Reaper Ankou#bios1	3029,{ end; }
+1@dth1,71,97,3	duplicate(Grim Reaper Ankou#bios1)	Zeith#bios1	4_M_GUILLOTINE
+1@dth1,67,97,5	duplicate(Grim Reaper Ankou#bios1)	Vrid#bios1	4_M_KNIGHT_BLACK
+// 1@dth1,67,97,5	script	Vrid#bios1	4_M_KNIGHT_BLACK,5,7,{// official
+
+// 1@dth1,67,97,5	script	start1#bios1	HIDDEN_WARP_NPC,{// official
+1@dth1,67,97,5	script	start1#bios1	HIDDEN_WARP_NPC,5,7,{
+	end;
+OnTouch_:
+	disablenpc instance_npcname("start1#bios1");
+	'zeith$ = instance_npcname("Zeith#bios1");
+	'vrid$ = instance_npcname("Vrid#bios1");
+	'reaper$ = instance_npcname("Grim Reaper Ankou#bios1");
+	initnpctimer;
+	npctalk "Vrid：啊，又有人来加入我们了。", 'vrid$;
+	end;
+OnTimer2500:
+	npctalk "Vrid：你也是来阻止摩洛哥复活的吗？", 'vrid$;
+	end;
+OnTimer5000:
+	npctalk "Vrid：我是 Vrid，这是来自 Prontera 的 Zeith。我们一直在世界各地旅行，为正义而战。", 'vrid$;
+	end;
+OnTimer7500:
+	npctalk "维里德：嘿，泽斯。说些什么。", 'vrid$;
+	end;
+OnTimer10000:
+	npctalk "泽斯：……", 'zeith$;
+	end;
+OnTimer12500:
+	npctalk "泽斯：我是泽斯。", 'zeith$;
+	end;
+OnTimer15000:
+	npctalk "泽斯：……", 'zeith$;
+	end;
+OnTimer17500:
+	npctalk "维里德：别理他。只有我们两个人的时候他就不那么安静了。", 'vrid$;
+	end;
+OnTimer19500:
+	npctalk "Zeith：……你对我们俩来说已经足够了。", 'zeith$;
+	end;
+OnTimer21000:
+	npctalk "Vrid：我们来只是因为下面那个老家伙一直在胡言乱语地谈论摩洛哥的复活。", 'vrid$;
+	end;
+OnTimer23500:
+	npctalk "Vrid：呃，这是什么地方？我刚摸到种子，突然风景就变了。", 'vrid$;
+	end;
+OnTimer26000:
+	npctalk "Vrid：天哪，我们在天上飞吗？！", 'vrid$;
+	end;
+OnTimer28500:
+	npctalk "？？？：*咯咯*你想知道你在哪里吗？", 'reaper$;
+	end;
+OnTimer31000:
+	npctalk "泽斯：谁在那儿？！", 'zeith$;
+	end;
+OnTimer33500:
+	enablenpc 'reaper$;
+	npctalk "死神安口：*咯咯*这就是比奥斯岛，我脑海中浮现出来的地方。", 'reaper$;
+	end;
+OnTimer36000:
+	npctalk "死神安库：你已经走进了陷阱，甘愿为我的摩洛哥大人做出牺牲。你不怕死吗？", 'reaper$;
+	end;
+OnTimer38500:
+	npctalk "维里德：呸！如果是我，我就不会心甘情愿地来了，不是吗？", 'vrid$;
+	end;
+OnTimer41000:
+	npctalk "Vrid：无论你是谁，我们都会在你之前杀掉你！", 'vrid$;
+	end;
+OnTimer43500:
+	npctalk "死神安口：别诱惑我，人类。", 'reaper$;
+	end;
+OnTimer46000:
+	npctalk "死神安口：我想看着你慢慢痛苦地死去。 *咯咯笑*", 'reaper$;
+	end;
+OnTimer48500:
+	disablenpc 'reaper$;
+	end;
+OnTimer51000:
+	npctalk "维里德：他是谁？他是想复活摩洛哥吗？", 'vrid$;
+	end;
+OnTimer53500:
+	npctalk "Vrid：我们去追他吧！泽斯，快点！", 'vrid$;
+	end;
+OnTimer54000:
+	disablenpc 'vrid$;
+	end;
+OnTimer56000:
+	npctalk "泽斯：……嗯。", 'zeith$;
+	end;
+OnTimer58500:
+	npctalk "Zeith：我讨厌跑步。", 'zeith$;
+	end;
+OnTimer61000:
+	disablenpc 'zeith$;
+	end;
+OnTimer66000:
+	stopnpctimer;
+	mapannounce 'map_dth1$, "System: Eliminate all the enemies on the island and exit through the door on the other side to move on to the next area.",bc_map,"0xFFFF00";
+	'zeith$ = 'vrid$ = 'reaper$ = "";
+	end;
+}
+
+1@dth1,1,1,0	script	mobs#bios1	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	.@label$ = instance_npcname("mobs#bios1") + "::OnMyMobDead";
+	for ( .@mob_id = 3010; .@mob_id < 3013; .@mob_id++ ) {
+		switch(.@mob_id) {
+		case 3010:		// Corrupt Orc Baby
+			setarray .@coord[0],
+				90,94, 153,76, 121,53, 135,50, 145,107, 132,126, 101,125, 119,144, 124,164, 192,145, 194,116,
+				203,131, 214,142, 196,156, 217,129, 227,150, 215,109, 240,130, 252,105, 249,144, 249,155, 232,87,
+				316,103, 245,71, 246,71, 210,62, 214,53, 211,88;
+			break;
+		case 3011:		// Corrupt Baby Desert Wolf
+			setarray .@coord[0],
+				90,94, 121,69, 153,76, 166,80, 131,101, 145,107, 108,156, 141,143, 165,130, 203,151,
+				203,162, 219,151, 203,162, 206,169, 219,171, 227,150, 238,117, 240,140, 274,104, 306,103,
+				237,80, 224,62, 233,57;
+			break;
+		case 3012:		// Corrupt Familiar
+			setarray .@coord[0],
+				143,49, 156,46, 170,67, 170,67, 131,101, 144,125, 101,125, 108,156, 135,152, 144,164,
+				184,130, 204,112, 227,150, 205,98, 225,103, 228,124, 243,106, 225,89, 297,103, 223,72,
+				232,69, 225,54, 211,73;
+			break;
+		}
+		.@size = getarraysize(.@coord);
+		for ( .@i = 0; .@i < .@size; .@i += 2 )
+			monster 'map_dth1$, .@coord[.@i], .@coord[.@i+1], "--ja--", .@mob_id,1, .@label$;
+	}
+	end;
+
+OnMyMobDead:
+	.@count = mobcount( 'map_dth1$,instance_npcname("mobs#bios1") + "::OnMyMobDead" );
+	if (.@count == 10 || .@count == 5)
+		mapannounce 'map_dth1$, "System: " + .@count + " monsters remain on the island.",bc_map,"0xFFFF00";
+	else if (.@count == 1)
+		mapannounce 'map_dth1$, "System: 1 last monster remains on the island.",bc_map,"0xFFFF00";
+	else if (.@count == 0) {
+		mapannounce 'map_dth1$, "System: You have eliminated all the monsters. Use the exit at 3 o'clock to move on to the next area.",bc_map,"0xFFFF00";
+		disablenpc instance_npcname("mobs#bios1");
+		enablenpc instance_npcname("warp1#bios1");
+		enablenpc instance_npcname("start1#bios2");
+		donpcevent instance_npcname("mobs#bios2") + "::OnStart";	// spawn at entrance
+	}
+	end;
+}
+
+// zone 2
+1@dth2,67,97,0	script	start1#bios2	HIDDEN_WARP_NPC,5,5,{
+	end;
+OnTouch_:
+	disablenpc instance_npcname("start1#bios2");
+	mapannounce 'map_dth2$, "System: Eliminate all the enemies on the island and exit through the door on the other side to move on to the next area.",bc_map,"0xFFFF00";
+	end;
+}
+
+1@dth2,1,1,0	script	mobs#bios2	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("mobs#bios2");
+	.@label$ = instance_npcname("mobs#bios2") + "::OnMyMobDead";
+	for ( .@mob_id = 3013; .@mob_id < 3016; ++.@mob_id ) {
+		switch(.@mob_id) {
+		case 3013:		// Corrupt Orc Warrior
+			setarray .@coord[0],
+				90,94, 153,76, 116,66, 133,47, 145,107, 137,134, 101,125, 119,144, 124,164, 194,116,
+				203,131, 211,88, 215,109, 214,142, 192,145, 196,156, 217,129, 227,150, 230,89, 210,62,
+				214,53, 246,71, 248,81, 252,105, 246,126, 249,144, 249,155, 316,103;
+			break;
+		case 3014:		// Corrupt Desert Wolf
+			setarray .@coord[0],
+				90,94, 121,69, 153,76, 165,84, 145,107, 131,101, 108,156, 138,140, 165,130, 203,151,
+				203,162, 219,151, 206,169, 203,162, 227,150, 222,164, 238,117, 237,80, 224,62, 233,57,
+				236,138, 274,104, 306,103;
+			break;
+		case 3015:		// Corrupt Phen
+			setarray .@coord[0],
+				142,54, 156,46, 170,67, 170,67, 131,101, 101,125, 108,156, 135,152, 144,164, 135,131,
+				184,130, 204,112, 205,98, 225,103, 225,89, 227,150, 232,69, 223,72, 212,75, 225,54,
+				247,110, 232,126, 297,103;
+			break;
+		}
+		.@size = getarraysize(.@coord);
+		for ( .@i = 0; .@i < .@size; .@i += 2 )
+			monster 'map_dth2$, .@coord[.@i], .@coord[.@i+1], "--ja--", .@mob_id,1, .@label$;
+	}
+	end;
+
+OnMyMobDead:
+	.@count = mobcount( 'map_dth2$,instance_npcname("mobs#bios2") + "::OnMyMobDead" );
+	if (.@count == 10 || .@count == 5)
+		mapannounce 'map_dth2$, "System: " + .@count + " monsters remain on the island.",bc_map,"0xFFFF00";
+	else if (.@count == 1)
+		mapannounce 'map_dth2$, "System: 1 last monster remains on the island.",bc_map,"0xFFFF00";
+	else if (.@count == 0) {
+		mapannounce 'map_dth2$, "System: You have eliminated all the monsters. Use the exit at 3 o'clock to move on to the next area.",bc_map,"0xFFFF00";
+		disablenpc instance_npcname("mobs#bios2");
+		enablenpc instance_npcname("warp1#bios2");
+		enablenpc instance_npcname("Zeith#bios3");
+		enablenpc instance_npcname("Vrid#bios3");
+		enablenpc instance_npcname("event_boss#bios3");
+	}
+	end;
+}
+
+// zone 3
+// 1@dth3,64,74,5	script	Vrid#bios3	4_M_KNIGHT_BLACK,5,7,{// official
+1@dth3,64,74,5	script	Vrid#bios3	4_M_KNIGHT_BLACK,{
+	if ('reward == 1) {
+		mes "[扭转]";
+		mes "我过来了";
+		mes "这个英雄令牌是偶然的。";
+		mes "我想把它给你。你值得拥有。";
+		next;
+		mes "[扭转]";
+		mes "让我们离开这个令人毛骨悚然的地方吧！";
+		close2;
+		getitem 6684,1;// Token Of Hero
+		if (ep14_3_isle == 0)
+			ep14_3_isle = 1;
+		if (checkquest(15007,PLAYTIME) == 0 || checkquest(15007,PLAYTIME) == 1)
+			setquest 15008;// Memorial Dungeon: Isle of Bios
+		warp "moro_cav",45,63;
+	}
+	end;
+}
+
+1@dth3,64,74,5	script	event_boss#bios3	HIDDEN_WARP_NPC,5,7,{
+	end;
+OnTouch_:
+	disablenpc instance_npcname("event_boss#bios3");
+	'party_id = getcharid(1);
+	donpcevent instance_npcname("freeze#bios3") + "::OnStart";
+	end;
+}
+
+// 1@dth3,69,67,0	script	freeze#bios3	HIDDEN_WARP_NPC,30,30,{// official
+1@dth3,1,1,0	script	freeze#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("freeze#bios3");
+	'reaper3$ = instance_npcname("Grim Reaper Ankou#bios3");
+	'zeith3$ = instance_npcname("Zeith#bios3");
+	'vrid3$ = instance_npcname("Vrid#bios3");
+	initnpctimer;
+	npctalk "Vrid：你很幸运能来到这里。当我进入那个迷宫的那一刻，我完全迷失了方向。", 'vrid3$;
+	end;
+OnTimer2500:
+	npctalk "Vrid：如果没有 Zeith，我还会在那里徘徊。谢谢，泽斯。", 'vrid3$;
+	end;
+OnTimer5000:
+	npctalk "Zeith：……有件事一直困扰着我。", 'zeith3$;
+	end;
+OnTimer7500:
+	npctalk "维里德：怎么了？", 'vrid3$;
+	end;
+OnTimer10000:
+	npctalk "Zeith：我有一种感觉，随着时间的推移，怪物变得越来越强大。", 'zeith3$;
+	end;
+OnTimer12500:
+	npctalk "Zeith：就像孩子长大成人一样。", 'zeith3$;
+	end;
+OnTimer15000:
+	npctalk "Vrid：嗯，我认为你是对的。", 'vrid3$;
+	end;
+OnTimer17500:
+	npctalk "Vrid：一开始它们都很小，然后随着时间的推移我们面临着更大更强的。", 'vrid3$;
+	end;
+OnTimer20000:
+	npctalk "Vrid：对我来说，这听起来很自然。你担心什么？", 'vrid3$;
+	end;
+OnTimer22500:
+	npctalk "Zeith：嗯，我很好奇我们现在要面对的怪物。", 'zeith3$;
+	end;
+OnTimer25000:
+	npctalk "Zeith：无论他们是原来的自我的更强版本，还是完全不同的东西。", 'zeith3$;
+	end;
+OnTimer27000:
+	enablenpc 'reaper3$;
+	end;
+OnTimer27500:
+	npctalk "死神 Ankou：*咯咯笑* 你们中至少有一个人头脑清醒。", 'reaper3$;
+	end;
+OnTimer30000:
+	npctalk "维里德：又是你？", 'vrid3$;
+	end;
+OnTimer32500:
+	npctalk "死神Ankou：你对你的下一个对手感到好奇吗？", 'reaper3$;
+	end;
+OnTimer35000:
+	npctalk "死神安库：在你前面的是一支不朽的军队。", 'reaper3$;
+	end;
+OnTimer37500:
+	npctalk "死神安口：*咯咯*出来吧，我的士兵们！", 'reaper3$;
+	end;
+OnTimer37700:
+	specialeffect EF_READYPORTAL,AREA,'reaper3$;
+	end;
+OnTimer40000:
+	for ( .@i = 1; .@i <= 3; ++.@i ) {
+		for ( .@j = 1; .@j <= 8; ++.@j )
+			enablenpc instance_npcname( "Corrupt Orc Zombie#" + .@j + "bio" + .@i );
+	}
+	end;
+OnTimer42000:
+	npctalk "维里德：闭嘴，你这个恶魔！我们没时间理你的走狗！", 'vrid3$;
+	end;
+OnTimer45000:
+	npctalk "Vrid：我会亲自除掉你！", 'vrid3$;
+	end;
+OnTimer47500:
+	npctalk "死神 Ankou：就在你身边，大嘴。", 'reaper3$;
+	end;
+OnTimer50000:
+	npctalk "死神安口：我来教你，在恐怖面前束手无策是多么可怕！", 'reaper3$;
+	end;
+OnTimer52500:
+	specialeffect EF_STORMGUST,AREA,'reaper3$;
+	end;
+OnTimer52700:
+	specialeffect EF_FREEZED,AREA,'zeith3$;
+	specialeffect EF_FREEZED,AREA,'vrid3$;
+	specialeffect EF_FIREHIT,AREA,'zeith3$;
+	specialeffect EF_FIREHIT,AREA,'vrid3$;
+	setnpcdisplay( 'vrid3$, 4_M_FROZEN_KN );
+	setnpcdisplay( 'zeith3$, 4_M_FROZEN_GC );
+
+	getpartymember 'party_id, 0, .@player_name$;
+	getpartymember 'party_id, 1, .@char_id;
+	getpartymember 'party_id, 2, .@account_id;
+	for ( .@i = 0; .@i < $@partymembercount; .@i++ ) {
+		if (isloggedin(.@account_id[.@i],.@char_id[.@i]) == true) {
+			getmapxy .@map$,.@x,.@y, BL_PC, .@player_name$[.@i];
+			if (.@map$ == 'map_dth3$ && distance(.@x,.@y,69,67) < 30)
+				sc_start SC_FREEZE,17500,0,10000, (SCSTART_NOAVOID|SCSTART_NOTICKDEF|SCSTART_NORATEDEF), .@account_id[.@i];
+		}
+	}
+	end;
+OnTimer55000:
+	npctalk "维里德：呃！什、这是怎么回事？！我、我动不了！", 'vrid3$;
+	end;
+OnTimer57500:
+	npctalk "Zeith：我、我也不能！我的脚动不了了！", 'zeith3$;
+	end;
+OnTimer60000:
+	npctalk "死神安库：在比奥斯岛上，每一天都是一生。", 'reaper3$;
+	end;
+OnTimer62500:
+	npctalk "死神安口：你一定注意到了，我的士兵们在日落之前就已经长大了。", 'reaper3$;
+	end;
+OnTimer65000:
+	npctalk "死神安库：夜幕降临后，他们已经到达了发展的最后阶段：死而复生。", 'reaper3$;
+	end;
+OnTimer67500:
+	npctalk "死神安口：没错。是时候让你体验一下死亡了。", 'reaper3$;
+	end;
+OnTimer70000:
+	npctalk "死神安口：准备好感受死亡的恐惧吧！ *咯咯笑*", 'reaper3$;
+	// note: unfreeze player
+	end;
+OnTimer72000:
+	disablenpc 'reaper3$;
+	end;
+OnTimer72500:
+	npctalk "Vrid：该死，不死族来了，但我无法战斗，因为我无法移动我的脚！", 'vrid3$;
+	end;
+OnTimer75000:
+	npctalk "Vrid：嗯，我不想死！", 'vrid3$;
+	end;
+OnTimer77500:
+	npctalk "泽斯：……呃……", 'zeith3$;
+	end;
+OnTimer80000:
+	stopnpctimer;
+	for ( .@i = 1; .@i <= 3; ++.@i ) {
+		for ( .@j = 1; .@j <= 8; ++.@j )
+			disablenpc instance_npcname( "Corrupt Orc Zombie#" + .@j + "bio" + .@i );
+	}
+	.@label$ = instance_npcname("freeze#bios3") + "::OnMyMobDead";
+	for ( .@y = 80; .@y <= 92; .@y += 6 )
+		for ( .@x = 62; .@x <= 78; .@x += 2 )
+			monster 'map_dth3$,.@x,.@y,"Corrupt Orc Zombie",3016,1, .@label$;// EP14_3_DEATH_C_MOB1
+	end;
+
+OnMyMobDead:
+	if (mobcount( 'map_dth3$,instance_npcname("freeze#bios3") + "::OnMyMobDead" ) == 0) {
+		disablenpc instance_npcname("freeze#bios3");
+		donpcevent instance_npcname("verit#bios3") + "::OnStart";
+	}
+	end;
+}
+
+1@dth3,1,1,0	script	verit#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("verit#bios3");
+	initnpctimer;
+	npctalk "Vrid：哇，你太棒了！你把他们都杀了吗？", 'vrid3$;
+	end;
+OnTimer2500:
+	npctalk "泽斯：还没有。更多即将到来！", 'zeith3$;
+	end;
+OnTimer5000:
+	stopnpctimer;
+	.@label$ = instance_npcname("verit#bios3") + "::OnMyMobDead";
+	for ( .@y = 80; .@y <= 92; .@y += 6 )
+		for ( .@x = 62; .@x <= 78; .@x += 2 )
+			monster 'map_dth3$,.@x,.@y,"Corrupt Verit",3017,1, .@label$;// EP14_3_DEATH_C_MOB2
+	end;
+
+OnMyMobDead:
+	if (mobcount( 'map_dth3$,instance_npcname("verit#bios3") + "::OnMyMobDead" ) == 0) {
+		disablenpc instance_npcname("verit#bios3");
+		donpcevent instance_npcname("megalodon#bios3") + "::OnStart";
+	}
+	end;
+}
+
+1@dth3,1,1,0	script	megalodon#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("megalodon#bios3");
+	initnpctimer;
+	npctalk "Vrid：我希望那真的是他们中的最后一个。", 'vrid3$;
+	end;
+OnTimer2500:
+	npctalk "Zeith：不，我们没那么幸运——更多的事情还在路上！", 'zeith3$;
+	end;
+OnTimer5000:
+	stopnpctimer;
+	.@label$ = instance_npcname("megalodon#bios3") + "::OnMyMobDead";
+	for ( .@y = 80; .@y <= 92; .@y += 6 )
+		for ( .@x = 62; .@x <= 78; .@x += 2 )
+			monster 'map_dth3$,.@x,.@y,"Corrupt Megalodon",3018,1, .@label$;// EP14_3_DEATH_C_MOB3
+	end;
+
+OnMyMobDead:
+	if (mobcount( 'map_dth3$,instance_npcname("megalodon#bios3") + "::OnMyMobDead" ) == 0) {
+		disablenpc instance_npcname("megalodon#bios3");
+		donpcevent instance_npcname("boss_prelude#bios3") + "::OnStart";
+	}
+	end;
+}
+
+1@dth3,1,1,0	script	boss_prelude#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc 'reaper3$;
+	initnpctimer;
+	end;
+OnTimer500:
+	npctalk "死神安口：我低估了你，或者说我的士兵没有我想象的那么强大。", 'reaper3$;
+	end;
+OnTimer3000:
+	npctalk "维里德：你在作弊！释放我们，公平战斗！", 'vrid3$;
+	end;
+OnTimer5500:
+	npctalk "死神安口：你还在说话。我会亲手杀了你，然后了事了！", 'reaper3$;
+	end;
+OnTimer7500:
+	disablenpc 'reaper3$;
+	end;
+OnTimer8000:
+	stopnpctimer;
+	donpcevent instance_npcname("boss#bios3") + "::OnStart";
+	end;
+}
+
+1@dth3,1,1,0	script	boss#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	enablenpc instance_npcname("boss#bios3");
+	monster 'map_dth3$,70,67,"Grim Reaper Ankou",3029,1, instance_npcname("boss#bios3") + "::OnMyBossDead";
+	'boss_id = $@mobid[0];
+	donpcevent instance_npcname("talk_friends#bios3") + "::OnStart";
+	donpcevent instance_npcname("talk_boss#bios3") + "::OnStart";
+	end;
+OnMyBossDead:
+	'boss_id = 0;
+	donpcevent instance_npcname("talk_friends#bios3") + "::OnStop";
+	donpcevent instance_npcname("talk_boss#bios3") + "::OnStop";
+	enablenpc 'reaper3$;
+	enablenpc 'zeith3$;
+	enablenpc 'vrid3$;
+	initnpctimer;
+	end;
+OnTimer3000:
+	npctalk "死神安口：你很强……", 'reaper3$;
+	end;
+OnTimer6500:
+	npctalk "死神安口：但我的目的已经达到了……别以为这就结束了。", 'reaper3$;
+	end;
+OnTimer8000:
+	npctalk "死神安库：摩洛哥领主很快就会回来。 *轻笑*无论你走到哪里，对死亡的恐惧都会跟着你。", 'reaper3$;
+	end;
+OnTimer10500:
+	disablenpc 'reaper3$;
+	specialeffect EF_ICECRASH,AREA,'vrid3$;
+	specialeffect EF_ICECRASH,AREA,'zeith3$;
+	setnpcdisplay( 'vrid3$, 4_M_KNIGHT_BLACK );
+	setnpcdisplay( 'zeith3$, 4_M_GUILLOTINE );
+	end;
+OnTimer13000:
+	npctalk "Vrid：啊，我终于可以动了！", 'vrid3$;
+	end;
+OnTimer16500:
+	npctalk "Zeith：哼，我为自己如此软弱感到羞愧……", 'zeith3$;
+	end;
+OnTimer18000:
+	npctalk "Vrid：呼呼，那个收割者比我和泽斯加起来还要强多了。", 'vrid3$;
+	end;
+OnTimer20500:
+	npctalk "Vrid：如果没有你，我们可能已经死了。", 'vrid3$;
+	end;
+OnTimer23000:
+	stopnpctimer;
+	npctalk "Vrid：我想给你一些东西来拯救我们的生命。当你准备好接受时再跟我说话。", 'vrid3$;
+	'reward = 1;
+	disablenpc instance_npcname("boss#bios3");
+	end;
+}
+
+1@dth3,1,1,0	script	talk_friends#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnTimer15000:
+	.@r = rand(7);
+	if (.@r == 0)
+		npctalk "Zeith：呃……我感到很无助……", 'zeith3$;
+	else if (.@r == 1)
+		npctalk "Zeith：Ankou那个家伙闻起来很危险。一旦他开始使用技能，你最好就移动。", 'zeith3$;
+	else if (.@r == 2)
+		npctalk "Vrid：嗯，很抱歉我们帮不上忙。", 'vrid3$;
+	else if (.@r == 3)
+		npctalk "Vrid：你这个骗子，公平战斗吧！", 'vrid3$;
+	else if (.@r == 4)
+		npctalk "Vrid：该死，我动不了……", 'vrid3$;
+	initnpctimer;
+	end;
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+1@dth3,1,1,0	script	talk_boss#bios3	HIDDEN_WARP_NPC,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnTimer13000:
+	.@r = rand(6);
+	if (.@r == 0)
+		unittalk 'boss_id, "Grim Reaper Ankou: *Chuckle*";
+	else if (.@r == 1)
+		unittalk 'boss_id, "Grim Reaper Ankou: Feel the fear of death!";
+	else if (.@r == 2)
+		unittalk 'boss_id, "Grim Reaper Ankou: Lord Morocc will return soon.";
+	else if (.@r == 3)
+		unittalk 'boss_id, "Grim Reaper Ankou: Is this the best you can do? Such weak creatures, you humans.";
+	initnpctimer;
+	end;;
+OnStop:
+	stopnpctimer;
+	end;
+
+OnInstanceInit:
+	'reward = 'boss_id = 0;
+	'map_dth1$ = instance_mapname("1@dth1");
+	'map_dth2$ = instance_mapname("1@dth2");
+	'map_dth3$ = instance_mapname("1@dth3");
+
+	// warps
+	disablenpc instance_npcname("warp1#bios1");
+	disablenpc instance_npcname("warp1#bios2");
+
+	// zone 1
+	disablenpc instance_npcname("Grim Reaper Ankou#bios1");
+	donpcevent instance_npcname("mobs#bios1") + "::OnStart";	// spawn at entrance
+
+	// zone 2
+	disablenpc instance_npcname("start1#bios2");
+	disablenpc instance_npcname("mobs#bios2");
+
+	// zone 3
+	disablenpc instance_npcname("event_boss#bios3");
+	disablenpc instance_npcname("freeze#bios3");
+	disablenpc instance_npcname("verit#bios3");
+	disablenpc instance_npcname("megalodon#bios3");
+	disablenpc instance_npcname("boss_prelude#bios3");
+	disablenpc instance_npcname("boss#bios3");
+	disablenpc instance_npcname("talk_friends#bios3");
+	disablenpc instance_npcname("talk_boss#bios3");
+	disablenpc instance_npcname("Vrid#bios3");
+	disablenpc instance_npcname("Zeith#bios3");
+	disablenpc instance_npcname("Grim Reaper Ankou#bios3");
+	for ( .@i = 1; .@i <= 3; ++.@i ) {
+		for ( .@j = 1; .@j <= 8; ++.@j )
+			disablenpc instance_npcname( "Corrupt Orc Zombie#" + .@j + "bio" + .@i );
+	}
+	end;
+}
+
+1@dth3,72,74,3	duplicate(Grim Reaper Ankou#bios1)	Zeith#bios3	4_M_GUILLOTINE
+1@dth3,70,67,3	duplicate(Grim Reaper Ankou#bios1)	Grim Reaper Ankou#bios3	3029
+
+1@dth3,62,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#1bio1	3016
+1@dth3,64,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#2bio1	3016
+1@dth3,66,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#3bio1	3016
+1@dth3,68,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#4bio1	3016
+1@dth3,72,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#5bio1	3016
+1@dth3,74,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#6bio1	3016
+1@dth3,76,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#7bio1	3016
+1@dth3,78,80,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#8bio1	3016
+1@dth3,62,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#1bio2	3016
+1@dth3,64,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#2bio2	3016
+1@dth3,66,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#3bio2	3016
+1@dth3,68,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#4bio2	3016
+1@dth3,72,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#5bio2	3016
+1@dth3,74,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#6bio2	3016
+1@dth3,76,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#7bio2	3016
+1@dth3,78,86,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#8bio2	3016
+1@dth3,62,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#1bio3	3016
+1@dth3,64,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#2bio3	3016
+1@dth3,66,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#3bio3	3016
+1@dth3,68,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#4bio3	3016
+1@dth3,72,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#5bio3	3016
+1@dth3,74,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#6bio3	3016
+1@dth3,76,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#7bio3	3016
+1@dth3,78,92,3	duplicate(Grim Reaper Ankou#bios1)	Corrupt Orc Zombie#8bio3	3016

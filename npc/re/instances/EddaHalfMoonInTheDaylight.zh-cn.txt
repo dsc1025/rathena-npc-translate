@@ -1,0 +1,3351 @@
+//===== rAthena Script =======================================
+//= Edda Half Moon In The Daylight
+//===== Description: =========================================
+//= [Walkthrough Conversion]
+//= Episode 16.1 - Edda Half Moon In The Daylight
+//===== Changelog: ===========================================
+//= 1.0 Initial Release [Everade]
+//= 1.1 Clean-up [Capuche]
+//============================================================
+
+rachel,174,138,6	script	High Priestess Niren#HM	4_F_MADAME,{
+	cutin "ra_gwoman",2;
+
+	if (BaseLevel < 80) {
+		mes "[Niren]";
+		mes "对不起。我现在很忙。";
+		next;
+		mes "[Niren]";
+		mes "愿芙蕾雅的祝福与你同在。";
+		close3;
+	}
+	.@player_name$ = strcharinfo(0);
+
+	if (isbegin_quest(14594) == 0) {
+		mes "[Niren]";
+		mes "冒险家，你来了。非常感谢您在百忙之中抽出时间。";
+		next;
+		mes "[Niren]";
+		mes "我之所以要求与你见面，是因为我有事要问冒险者。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "如果这是一个很长的请求……教皇出了什么事吗？";
+		next;
+		mes "[Niren]";
+		mes "首先请原谅我向您提出这样的要求。";
+		next;
+		mes "[Niren]";
+		mes "关于教皇，除了允许在圣殿中透露外，严禁公开发表任何声明。对于任何说话或听到的人来说，这都是重罪惩罚。";
+		next;
+		mes "[Niren]";
+		mes "不过，即使是这样的情况，而且冒险者也认为我是可靠的人，从现在开始就听我说的话，并且无论你是否接受请求，今天的对话你都必须绝对保密。";
+		next;
+		mes "[Niren]";
+		mes "你明白吗？";
+		next;
+		select( "我真的不知道。" );
+		mes "[Niren]";
+		mes "毕竟我觉得你是值得信赖的，所以我会相信你并告诉你。";
+		next;
+		mes "[Niren]";
+		mes "正如冒险家推测的那样，教皇最近出了点小问题。";
+		next;
+		mes "[Niren]";
+		mes "^0000cd波普的睡眠时间^000000异常，并且越来越多。";
+		next;
+		mes "[Niren]";
+		mes "起初，她开始在晚上早点睡觉，然后她开始在早上起得很晚，现在她睡得更频繁了。";
+		next;
+		mes "[Niren]";
+		mes "现在，她还在睡觉。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "她的健康有问题吗？";
+		next;
+		mes "[Niren]";
+		mes "事情不是那样的。我们也尝试了各种检查，认为教皇的健康状况可能有些异常，但除了一直睡着以外，身体状况都极其良好。";
+		next;
+		mes "[Niren]";
+		mes "但...";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "但？";
+		next;
+		mes "[Niren]";
+		mes "醒来后，她表情悲伤，时常沉浸在其他思绪中，表现出注意力不集中的情况。她就回去睡觉了。";
+		next;
+		mes "[Niren]";
+		mes "照这样下去，寺院内部的口碑也开始慢慢传播开来。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "如果不是她的健康问题，那是什么问题呢？";
+		next;
+		mes "[Niren]";
+		mes "应该是心理问题。在我看来，这似乎与她在^0000cd梦^000000中看到的东西有关。";
+		next;
+		mes "[Niren]";
+		mes "只有一次，她醒来并询问了她的^0000cd弟弟Luwmin^000000。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "那么教皇有一个家庭......？";
+		next;
+		mes "[Niren]";
+		mes "是的。然而，这是我们宗教的问题，在来到圣殿并成为教皇之前，一切都必须被冲走和遗忘。";
+		next;
+		mes "[Niren]";
+		mes "这包括与家庭的任何联系。";
+		next;
+		mes "[Niren]";
+		mes "这是一生一次的机会：作为选择的孩子出生并进入寺庙重生为身体供奉女神。";
+		next;
+		mes "[Niren]";
+		mes "因此，正式而言，教皇没有世俗家庭。";
+		next;
+		mes "[Niren]";
+		mes "当知道这一事实的教皇在梦后询问她的家庭事务时，这意味着她在梦中看到了一些东西。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "但这只是一个梦，不是吗？";
+		next;
+		mes "[Niren]";
+		mes "是的，这当然只是一个梦，但我不这么认为。这就是我们招募冒险家的原因。";
+		next;
+		mes "[Niren]";
+		mes "教皇是不允许接触圣殿里的任何人的，如果有人必须接近教皇，这个人就必须贿赂圣殿内的人或者使用其他方法。";
+		next;
+		mes "[Niren]";
+		mes "然而，由于被抓住的可能性很高，这种方法不太可能发生。";
+		next;
+		mes "[Niren]";
+		mes "保持联系而又不引起任何人怀疑的唯一方法就是梦想。似乎有人突破监视，干扰教皇的梦想。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "这可能吗？";
+		next;
+		mes "[Niren]";
+		mes "虽然无法证实，但有可能。";
+		next;
+		mes "[Niren]";
+		mes "还有一个人，就是有疑问的人。";
+		next;
+		mes "[Niren]";
+		mes "教皇的^0000cd双胞胎兄弟^000000，被^0000ff库拉纳克斯^000000封印在^0000ff冰洞^000000深处的冰中。";
+		next;
+		mes "[Niren]";
+		mes "根据最近的调查报告，正是由于库拉纳克斯的影响，它才被赋予了微弱的魔力。";
+		next;
+		mes "[Niren]";
+		mes "在一个例子中，一定存在一种特殊的联系，因为双胞胎是在某一天某一点出生的。";
+		next;
+		mes "[Niren]";
+		mes "如果通过梦的方式，意识与教皇发生了接触，那么就有可能通过梦来干预关于教皇的一切。";
+		next;
+		mes "[Niren]";
+		mes "以无意识的方式。";
+		next;
+		mes "[Niren]";
+		mes "由于现任教皇的睡眠时间越来越慢，推测有人试图抓住她，或者教皇不想叫醒自己。";
+		next;
+		mes "[Niren]";
+		mes "所以希望你们能够进入教皇的梦境，看看到底是怎么回事，发现什么问题就可以解决。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "但如何进入别人的梦想呢？";
+		next;
+		mes "[Niren]";
+		mes "通过^0000cd特殊装置^000000可以跨越梦境。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "但为什么我必须去，而不是寺庙官员呢？";
+		next;
+		mes "[Niren]";
+		mes "我无法向你提供更多细节，但阿鲁纳菲尔兹的情况不太好，尤其是神庙内部。";
+		next;
+		mes "[Niren]";
+		mes "在这种情况下，教皇目前的状态可能会被政治利用。";
+		next;
+		mes "[Niren]";
+		mes "所以教皇在试图寻找一个对双方都开放且可靠的人后，才秘密招募了冒险家。";
+		next;
+		mes "[Niren]";
+		mes "我不可避免地被要求这样做，因为我必须保住自己的职位并照顾教皇。";
+		next;
+		mes "[Niren]";
+		mes "教皇是阿鲁纳费尔兹的希望和梦想。";
+		next;
+		mes "[Niren]";
+		mes "如果她做梦的时间不断延长，那么有一天她就不会醒来，永远沉睡下去……";
+		next;
+		mes "[Niren]";
+		mes "保护梦中的教皇，并尽可能地去查明到底发生了什么。";
+		next;
+		mes "[Niren]";
+		mes "然而，因为这是一个梦，所以我不知道会发生什么。没有人知道教皇会表现什么，也不知道她会如何反应。";
+		next;
+		mes "[Niren]";
+		mes "也许真的很危险。所以请小心。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "好的。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "你想马上进入她的梦境吗？还是需要时间准备？";
+		next;
+		select( "让我做一些准备工作。" );
+		mes "[Niren]";
+		mes "好的。那么，请做好准备，当你准备好走你的梦想之路时，再次与我交谈。";
+		setquest 14594;
+		close3;
+	}
+	if (checkquest(14585,HUNTING) == 2 || checkquest(14587,HUNTING) == 2) {
+		mes "[Niren]";
+		mes "冒险家，教皇的梦想状态是什么样的？";
+		next;
+		mes "- 你详细描述了教皇和鲁敏的梦想 -";
+		next;
+		mes "[Niren]";
+		mes "这太奇怪了。所以你发现她的梦是因为她日常生活中的焦虑？";
+		next;
+		mes "[Niren]";
+		mes "我确信她醒悟过来了。";
+		next;
+		mes "[Niren]";
+		mes "冒险家，你介意我再请求你帮忙吗？";
+		next;
+		mes "[Niren]";
+		mes "你能再次陪伴教皇入梦吗？她……需要陪伴。";
+		next;
+		mes "[" + .@player_name$ + "]";
+		mes "当然。我也向教皇本人承诺过这一点。";
+		next;
+		mes "[Niren]";
+		mes "非常感谢。她被内心的恶魔所困扰......";
+		next;
+		mes "[Niren]";
+		mes "今天，是时候让你舒舒服服地放松一下了。";
+		if (checkquest(14585,HUNTING) == 2)
+			erasequest 14585;
+		else
+			erasequest 14587;
+		getexp 126000,90000;
+		close3;
+	}
+	switch( checkquest(14586,PLAYTIME) ) {
+	case -1:
+		if (!is_party_leader()) {
+			mes "[Niren]";
+			mes "……我认为这是不对的。";
+			next;
+			mes "[Niren]";
+			mes "在我们继续下一步之前，你应该先组建一个队伍。";
+			close3;
+		}
+		mes "[Niren]";
+		mes "我需要你的帮助。";
+		mes "最近，教皇开始做长梦。随着时间的推移，它们变得越来越长。";
+		next;
+		mes "[Niren]";
+		mes "也许通过进入她的梦境，我们可以找出背后的原因并安全地解决它。";
+		next;
+		if (select( "我将进入教皇的梦境。", "取消" ) == 2)
+			close3;
+		if (isbegin_quest(14594) == 1)
+			completequest 14594;
+		if (isbegin_quest(14585) == 2)
+			erasequest 14585;
+		if (isbegin_quest(14587) == 2)
+			erasequest 14587;
+		.@md_name$ = "Half Moon In The Daylight";
+		instance_create(.@md_name$);
+		close3;
+	case 0:
+	case 1:
+		mes "[Niren]";
+		mes "教皇尚未入睡。";
+		close3;
+	case 2:
+		mes "^0000ff次元空间穿梭的痕迹已经消失。您现在可以在维度之间移动。^000000";
+		erasequest 14586;
+		close3;
+	}
+}
+
+rachel,176,145,6	script	Dream#poent	PORTAL,{
+	switch( checkquest(14586,PLAYTIME) ) {
+	case -1:
+		break;
+	case 0:
+	case 1:
+		mes "[梦想之路]";
+		mes "时间裂缝不够安全，无法来回穿越。请在效果计时器结束后再次返回。";
+		close;
+	case 2:
+		mes "^0000ff次元空间穿梭的痕迹已经消失。您现在可以在维度之间移动。^000000";
+		erasequest 14586;
+		close;
+	}
+	if (!is_party_leader()) {
+		mes "[梦想之路]";
+		mes "只有党的领导人可以进入。";
+		close;
+	}
+	mes "[梦想之路]";
+	mes "大家好，我是通往梦想的路。我怎么帮你？";
+	next;
+	if (select( "让我进入你的梦境。", "取消" ) == 2) {
+		mes "[梦想之路]";
+		mes "好的，我明白了。如果您改变主意，请再次回来。";
+		close;
+	}
+	if (!is_party_leader()) {	// shouldn't happen
+		mes "[梦想之路]";
+		mes "只有党的领导人可以进入。";
+		close;
+	}
+	.@md_name$ = "Half Moon In The Daylight";
+
+	switch( instance_enter(.@md_name$) ) {
+	case IE_NOMEMBER:
+		end;
+	case IE_NOINSTANCE:
+		mes "该通道尚未激活。";
+		close;
+	case IE_OTHER:
+		mes "发生未知错误。";
+		close;
+	case IE_OK:
+		mes "[梦想之路]";
+		mes "我将开启我的梦想。";
+		mes "我希望你有一个美梦。";
+		mapannounce "rachel", "" + strcharinfo(0) + " of the party, " + getpartyname( getcharid(1) ) + ", is entering the " + .@md_name$ + ".", bc_map, 0xFF99;
+		if (BaseLevel < 130) {
+			if (isbegin_quest(14585) == 0)
+				setquest 14585;
+		} else {
+			if (isbegin_quest(14587) == 0)
+				setquest 14587;
+		}
+		setquest 14586;
+		close;
+	}
+	end;
+}
+
+//============================================================
+//== Map 1
+//============================================================
+1@pop1,50,137,3	script	Pope#1hmoon01	4_F_ARUNA_POP,{
+	if (!is_party_leader())	// shouldn't happen
+		end;
+	if ('progress != 0)
+		end;
+
+	'account_id_leader = getcharid(3);
+	if (BaseLevel > 129)
+		'mode = 1;
+	.@player_name$ = strcharinfo(0);
+
+	cutin "pop_sim",2;
+	mes "[教皇]";
+	mes ".... Niren?";
+	npctalk ".... Niren?";
+	next;
+	mes "[教皇]";
+	mes "Niren ...?";
+	next;
+	mes "[教皇]";
+	mes "我找不到蒂利比。";
+	mes "这里太……太黑了……";
+	npctalk "我什么也看不见...";
+	next;
+	mes "[教皇]";
+	mes "Niren ...?";
+	next;
+	mes "[教皇]";
+	mes ".... 你在哪 ...？";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "教皇，我在这里等你。";
+	next;
+	mes "[教皇]";
+	mes "...........";
+	mes "...........";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "教皇，请冷静。我是尼伦派来的。";
+	next;
+	mes "[教皇]";
+	mes "WHO ...？";
+	npctalk "尼伦……？";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "我是冒险家，" + .@player_name$ + ".";
+	next;
+	mes "[教皇]";
+	mes "" + .@player_name$ + "？";
+	next;
+	mes "[教皇]";
+	mes "尼伦……是她派你来的吗？";
+	next;
+	mes "[教皇]";
+	mes "尼伦在哪里？";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "妮伦忙了一阵子，就派我来了。";
+	next;
+	mes "[教皇]";
+	mes "是的……我现在想起来了。冒险家...";
+	npctalk "我记得...";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "你在做什么？";
+	next;
+	mes "[教皇]";
+	mes "蒂利比……消失了。无论我如何寻找...";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "蒂利比是谁？";
+	next;
+	mes "[教皇]";
+	mes "尼伦把娃娃给了我。我不久前也有过。";
+	next;
+	mes "[教皇]";
+	mes "我想我把娃娃丢在这里了。";
+	npctalk "你去哪儿 ...";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "让我们找到它吧。";
+	next;
+	mes "[教皇]";
+	mes "不，现在已经太晚了..";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "没关系。你一定能找到它。";
+	next;
+	mes "[教皇]";
+	mes "不……我有一个承诺。";
+	mes "我有一个人要见。";
+	npctalk "我迟到了。";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "承诺？是这里吗？";
+	next;
+	mes "[教皇]";
+	mes "就在寺庙外面……不过看起来不像提利比。";
+	next;
+	mes "[教皇]";
+	mes "找到蒂利比已经太晚了。";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "蒂尔比好像不在这里，要不去别处寻找一下？";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "我们一起来寻找吧。";
+	next;
+	cutin "POP_nor", 2;
+	mes "[教皇]";
+	mes "... 好的。";
+	next;
+	mes "[教皇]";
+	mes "你的名字，又是什么？";
+	next;
+	mes "[" + .@player_name$ + "]";
+	mes "" + .@player_name$ + ".";
+	next;
+	mes "[教皇]";
+	mes "来吧，让我们一起走吧。";
+	disablenpc();
+	enablenpc instance_npcname("#1hmoond01");	// (warp)
+	if ('progress == 0)
+		'progress = 1;
+	close3;
+
+OnInstanceInit:
+	'progress = 0;
+	'mode = 0;
+	'account_id_leader = 0;
+	'1hmoon = 0;
+	'2hmoon = 0;
+	'3hmoon = 0;
+
+	'map_pop1$ = instance_mapname("1@pop1");
+	'map_pop2$ = instance_mapname("1@pop2");
+	'map_pop3$ = instance_mapname("1@pop3");
+	end;
+}
+
+1@pop1,100,142,3	script	Pope#1hmoon03	4_F_ARUNA_POP,5,5,{
+	end;
+OnTouch:
+	if ('progress != 1)
+		end;
+	'progress = 2;
+	npctalk "向南...";
+	disablenpc();
+	enablenpc instance_npcname("#1hmoond03");	// (warp)
+	end;
+}
+
+1@pop1,100,98,3	script	Pope#1hmoon04	4_F_ARUNA_POP,{
+	if ('progress != 2)
+		end;
+	mes "[牧师]";
+	mes "尊者。";
+	npctalk "尊者", instance_npcname("牧师#1hmoon01");
+	next;
+	mes "[牧师]";
+	mes "教皇来了。";
+	npctalk "教皇来了。", instance_npcname("牧师#1hmoon02");
+	next;
+	mes "[奉献者]";
+	mes "我们一直在等待。";
+	npctalk "我们一直在等待。", instance_npcname("奉献者#1hmoon01");
+	next;
+	mes "[奉献者]";
+	mes "不尊重自己的时间也是对芙蕾雅的亵渎。请谨慎行事。";
+	npctalk "不尊重自己的时间也是对芙蕾雅的亵渎。请谨慎行事。", instance_npcname("奉献者#1hmoon03");
+	next;
+	mes "[奉献者]";
+	mes "教皇，请在公共场合举止得体。";
+	npctalk "教皇，请在公共场合举止得体。", instance_npcname("奉献者#1hmoon02");
+	next;
+	mes "[奉献者]";
+	mes "这是对教皇的不尊重！看看你自己吧！";
+	npctalk "这是对教皇的不尊重！看看你自己吧！", instance_npcname("奉献者#1hmoon04");
+	next;
+	mes "[奉献者]";
+	mes "教皇是神圣的！让我们保持这个理想。别说话！";
+	npctalk "教皇是神圣的！让我们保持这个理想。别说话！", instance_npcname("奉献者#1hmoon05");
+	next;
+	mes "[奉献者]";
+	mes "教皇是女神的容器，女神终有一天会崛起。头像应该是干净的不是理所当然的吗？";
+	npctalk "教皇是女神的容器，女神终有一天会崛起。头像应该是干净的不是理所当然的吗？", instance_npcname("奉献者#1hmoon06");
+	next;
+	mes "[牧师]";
+	mes "别闹了！教皇是一位给我们带来欢乐和希望的人，仅凭她的存在！";
+	npctalk "别闹了！教皇是一位给我们带来欢乐和希望的人，仅凭她的存在！", instance_npcname("牧师#1hmoon01");
+	next;
+	cutin "pop_sim",2;
+	mes "[教皇]";
+	mes "......我，我是......教皇......";
+	next;
+	mes "[教皇]";
+	mes "..... 我得走了....";
+	next;
+	mes "[教皇]";
+	mes "......得到了承诺......";
+	mes "保持…………";
+	next;
+	cutin "pop_sim",255;
+	mes "[奉献者]";
+	mes "一个承诺？教皇不应离开圣殿。";
+	npctalk "一个承诺？教皇不应离开圣殿。", instance_npcname("奉献者#1hmoon02");
+	next;
+	mes "[奉献者]";
+	mes "她不应该和外人接触！";
+	npctalk "外人很脏", instance_npcname("牧师#1hmoon01");
+	next;
+	mes "[奉献者]";
+	mes "教皇只能会见在圣殿中获得授权的人。";
+	npctalk "教皇只能会见在圣殿中获得授权的人。", instance_npcname("奉献者#1hmoon01");
+	next;
+	mes "[奉献者]";
+	mes "教皇需要根据我们的目标采取行动。";
+	npctalk "教皇需要根据我们的目标采取行动。", instance_npcname("奉献者#1hmoon03");
+	next;
+	mes "[牧师]";
+	mes "教皇的行为与你无关。";
+	npctalk "教皇的行为与你无关。", instance_npcname("牧师#1hmoon02");
+	next;
+	mes "[奉献者]";
+	mes "不同意就下台。";
+	npctalk "不同意就下台。", instance_npcname("奉献者#1hmoon06");
+	next;
+	mes "[奉献者]";
+	mes "安静的！你还敢违抗我们的命令？";
+	npctalk "安静的！你还敢违抗我们的命令？", instance_npcname("奉献者#1hmoon01");
+	next;
+	mes "[奉献者]";
+	mes "请听我说。你应该停止你正在做的任何事情！";
+	npctalk "请听我说。你应该停止你正在做的任何事情！", instance_npcname("牧师#1hmoon02");
+	next;
+	mes "[奉献者]";
+	mes "然而，现任教皇确实缺乏素质。";
+	npctalk "然而，现任教皇确实缺乏素质。", instance_npcname("牧师#1hmoon01");
+	next;
+	mes "[奉献者]";
+	mes "如果她不够，我们可以换掉她。难道就没有另一个完美的候选人吗？";
+	npctalk "如果她不够，我们可以换掉她。难道就没有另一个完美的候选人吗？", instance_npcname("奉献者#1hmoon04");
+	next;
+	mes "[奉献者]";
+	mes "第二代虚拟角色，同时诞生……！";
+	npctalk "第二代虚拟角色，同时诞生……！", instance_npcname("奉献者#1hmoon05");
+	next;
+	mes "[奉献者]";
+	mes "我们可能做出了错误的选择。";
+	npctalk "我们可能做出了错误的选择。", instance_npcname("奉献者#1hmoon06");
+	next;
+	mes "[奉献者]";
+	mes "如果我现在必须改变我的选择......！";
+	npctalk "如果我现在必须改变我的选择......！", instance_npcname("奉献者#1hmoon02");
+	next;
+	mes "[牧师]";
+	mes "不完美的教皇需要更换。";
+	npctalk "不完美的教皇需要更换。", instance_npcname("牧师#1hmoon02");
+	next;
+	mes "[奉献者]";
+	mes "我需要一位能倾听我担忧的教皇。";
+	npctalk "我需要一位能倾听我担忧的教皇。", instance_npcname("奉献者#1hmoon03");
+	next;
+	mes "[牧师]";
+	mes "我们不需要现任教皇。";
+	npctalk "我们不需要现任教皇。", instance_npcname("牧师#1hmoon01");
+	next;
+	mes "[奉献者]";
+	mes "教皇，不要坐以待毙，要挺身而出！";
+	npctalk "教皇，不要坐以待毙，要挺身而出！", instance_npcname("奉献者#1hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇，教皇！掌握它！";
+	unittalk getcharid(3), "" + strcharinfo(0) + ": Pope, Pope! Keep your mind up!!";
+	next;
+	disablenpc();
+	.@pop_npc$ = instance_npcname("Pope#1hmoon09");
+	enablenpc .@pop_npc$;
+	cutin "pop_sim",2;
+	mes "[教皇]";
+	mes "……我……我是……我……";
+	npctalk "……我……我是……我……", .@pop_npc$;
+	next;
+	mes "[教皇]";
+	mes "…………不需要我……？";
+	next;
+	mes "[教皇]";
+	mes "对于这些人来说，我……是什么？";
+	next;
+	mes "[教皇]";
+	mes "女神的圣器。";
+	next;
+	mes "[教皇]";
+	mes "一个不完美的存在。";
+	next;
+	mes "[教皇]";
+	mes "我是不完整的。";
+	next;
+	mes "[教皇]";
+	mes "我是一个错误决定的结果。";
+	next;
+	mes "[教皇]";
+	mes "我从一开始就没有任何资格。";
+	next;
+	mes "[教皇]";
+	mes "这不是我的座位。";
+	npctalk "这不是我的座位。", .@pop_npc$;
+	specialeffect EF_MAGICCRASHER, AREA, .@pop_npc$;
+	next;
+	mes "[教皇]";
+	mes "但这不是我想要的。";
+	npctalk "但这不是我想要的。", .@pop_npc$;
+	specialeffect EF_MAGICCRASHER, AREA, .@pop_npc$;
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇，冷静点。这一切都是一场梦。";
+	mes "你的焦虑扭曲了梦想。梦境之外，所有人都在等待着你作为教皇！";
+	next;
+	mes "[教皇]";
+	mes "梦...？";
+	next;
+	mes "[教皇]";
+	mes "但是……我……我已经做出了承诺。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "这是一个梦！";
+	next;
+	disablenpc .@pop_npc$;
+	.@pop_npc$ = instance_npcname("Pope#1hmoon10");
+	enablenpc .@pop_npc$;
+	mes "[教皇]";
+	mes "我有一个约会。我必须要见面。";
+	mes "来吧，我们必须离开这里。";
+	npctalk "我有一个约会。我必须要见面。来吧，我们必须离开这里。","教皇#1hmoon10";
+	cutin "pop_sim",255;
+	specialeffect EF_MAGICCRASHER, AREA, .@pop_npc$;
+	sleep2 1000;
+	specialeffect EF_MAGICCRASHER, AREA, .@pop_npc$;
+	sleep2 1000;
+	specialeffect EF_MAGICCRASHER, AREA, .@pop_npc$;
+	sleep2 1000;
+	specialeffect EF_4WAYBODY, AREA, .@pop_npc$;
+	specialeffect EF_ELECTRIC, AREA, .@pop_npc$;
+	sleep2 500;
+	specialeffect 1065, AREA, .@pop_npc$;
+	sleep2 1000;
+	next;
+	mes "[奉献者]";
+	mes "教皇！你在哪里？";
+	npctalk "教皇！你在哪里？", .@pop_npc$;
+	next;
+	disablenpc instance_npcname("Devotee#1hmoon01");
+	disablenpc instance_npcname("Devotee#1hmoon02");
+	disablenpc instance_npcname("Devotee#1hmoon03");
+	disablenpc instance_npcname("Devotee#1hmoon04");
+	disablenpc instance_npcname("Devotee#1hmoon05");
+	disablenpc instance_npcname("Devotee#1hmoon06");
+	enablenpc instance_npcname("Devotee#1hmoon11");
+	enablenpc instance_npcname("Devotee#1hmoon12");
+	enablenpc instance_npcname("Devotee#1hmoon13");
+	enablenpc instance_npcname("Devotee#1hmoon14");
+	enablenpc instance_npcname("Devotee#1hmoon15");
+	enablenpc instance_npcname("Devotee#1hmoon16");
+	mes "[奉献者]";
+	mes "教皇，不要离开座位！";
+	npctalk "教皇，不要离开座位！", instance_npcname("奉献者#1hmoon16");
+	next;
+	mes "[奉献者]";
+	mes "这才是教皇应该呆的地方！";
+	npctalk "这才是教皇应该呆的地方！", instance_npcname("奉献者#1hmoon12");
+	next;
+	cutin "pop_sim",2;
+	mes "[教皇]";
+	mes "其实没人需要我！";
+	next;
+	mes "[教皇]";
+	mes "没有人好好对待我！";
+	next;
+	disablenpc .@pop_npc$;
+	.@pop_npc$ = instance_npcname("Pope#1hmoon11");
+	enablenpc .@pop_npc$;
+	mes "[教皇]";
+	mes "我这里没有位置！";
+	npctalk "我这里没有位置！", .@pop_npc$;
+	cutin "pop_sim",255;
+	specialeffect EF_MAGICCRASHER, AREA, .@pop_npc$;
+	emotion ET_THINK, getnpcid(0, .@pop_npc$);
+	next;
+	sleep2 500;
+	disablenpc instance_npcname("Priest#1hmoon01");
+	disablenpc instance_npcname("Priest#1hmoon02");
+	disablenpc instance_npcname("Devotee#1hmoon11");
+	disablenpc instance_npcname("Devotee#1hmoon12");
+	disablenpc instance_npcname("Devotee#1hmoon13");
+	disablenpc instance_npcname("Devotee#1hmoon14");
+	disablenpc instance_npcname("Devotee#1hmoon15");
+	disablenpc instance_npcname("Devotee#1hmoon16");
+	enablenpc instance_npcname("Priest#1hmoon21");
+	enablenpc instance_npcname("Priest#1hmoon22");
+	enablenpc instance_npcname("Devotee#1hmoon23");
+	enablenpc instance_npcname("Devotee#1hmoon24");
+	enablenpc instance_npcname("Devotee#1hmoon25");
+	enablenpc instance_npcname("Devotee#1hmoon26");
+	enablenpc instance_npcname("Devotee#1hmoon27");
+	enablenpc instance_npcname("Devotee#1hmoon28");
+	mes "[奉献者]";
+	mes "教皇！为了您好，请留在座位上！";
+	npctalk "教皇！为了您好，请留在座位上！", instance_npcname("奉献者#1hmoon27");
+	next;
+	cutin "pop_sim",2;
+	mes "[教皇]";
+	mes "我真的得走了...";
+	next;
+	mes "[奉献者]";
+	mes "你们所有人，压制住教皇！";
+	next;
+	mes "[教皇]";
+	mes "冒险家，请...帮助我。";
+	cutin "pop_sim",255;
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "当然，教皇。请站在我身后。";
+	if ('mode == 1)
+		mercenary_create 3569,1800000; //POPE_MD_H_MERC_NORMAL
+	else
+		mercenary_create 3570,1800000; //POPE_MD_H_MERC_CASUAL
+	close2;
+	setpcblock PCBLOCK_NPC, true;
+	disablenpc .@pop_npc$;
+	enablenpc instance_npcname("Guard#1hmoon21");
+	enablenpc instance_npcname("Guard#1hmoon22");
+	npctalk "我们为了更伟大的目标而来！", instance_npcname("警卫#1hmoon21");
+	disablenpc instance_npcname("Guard#1hmoon01");
+	disablenpc instance_npcname("Guard#1hmoon02");
+	disablenpc instance_npcname("Guard#1hmoon03");
+	disablenpc instance_npcname("Guard#1hmoon04");
+	disablenpc instance_npcname("Guard#1hmoon05");
+	disablenpc instance_npcname("Guard#1hmoon06");
+	disablenpc instance_npcname("Priest#1hmoon21");
+	disablenpc instance_npcname("Priest#1hmoon22");
+	disablenpc instance_npcname("Devotee#1hmoon23");
+	disablenpc instance_npcname("Devotee#1hmoon24");
+	disablenpc instance_npcname("Devotee#1hmoon25");
+	disablenpc instance_npcname("Devotee#1hmoon26");
+	disablenpc instance_npcname("Devotee#1hmoon27");
+	disablenpc instance_npcname("Devotee#1hmoon28");
+	sleep2 1500;
+	npctalk "我们的数量超过了你，冒险家。", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	npctalk "停止！！", instance_npcname("警卫#1hmoon22");
+	npctalk "停止！！", instance_npcname("警卫#1hmoon22");
+	sleep2 1000;
+	disablenpc instance_npcname("Guard#1hmoon07");
+	disablenpc instance_npcname("Guard#1hmoon08");
+	disablenpc instance_npcname("Guard#1hmoon09");
+	disablenpc instance_npcname("Guard#1hmoon10");
+	enablenpc instance_npcname("Guard#1hmoon24");
+	enablenpc instance_npcname("Guard#1hmoon25");
+	npctalk "停止！", instance_npcname("警卫#1hmoon24");
+	npctalk "停止！", instance_npcname("警卫#1hmoon25");
+	npctalk "停止！", instance_npcname("警卫#1hmoon24");
+	npctalk "停止！", instance_npcname("警卫#1hmoon25");
+	sleep2 500;
+	enablenpc instance_npcname("Guard#1hmoon23");
+	enablenpc instance_npcname("Guard#1hmoon26");
+	npctalk "停止！！", instance_npcname("警卫#1hmoon23");
+	npctalk "停止！！", instance_npcname("警卫#1hmoon26");
+	npctalk "停止！！", instance_npcname("警卫#1hmoon23");
+	npctalk "停止！！", instance_npcname("警卫#1hmoon26");
+	sleep2 500;
+	enablenpc instance_npcname("Guard#1hmoon27");
+	enablenpc instance_npcname("Guard#1hmoon30");
+	npctalk "停止！", instance_npcname("警卫#1hmoon27");
+	npctalk "停止！", instance_npcname("警卫#1hmoon30");
+	npctalk "停止！", instance_npcname("警卫#1hmoon27");
+	npctalk "停止！", instance_npcname("警卫#1hmoon30");
+	sleep2 500;
+	enablenpc instance_npcname("Guard#1hmoon28");
+	enablenpc instance_npcname("Guard#1hmoon29");
+	npctalk "停止！", instance_npcname("警卫#1hmoon28");
+	npctalk "停止！", instance_npcname("警卫#1hmoon29");
+	npctalk "停止！", instance_npcname("警卫#1hmoon28");
+	npctalk "停止！", instance_npcname("警卫#1hmoon29");
+	sleep2 1000;
+	npctalk "你不许离开圣殿！", instance_npcname("警卫#1hmoon21");
+	npctalk "你不许离开圣殿！", instance_npcname("警卫#1hmoon21");
+	sleep2 2000;
+	npctalk "请退后一步。否则，我们将动用武力。", instance_npcname("警卫#1hmoon21");
+	npctalk "请退后一步。否则，我们将动用武力。", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	npctalk "三 ！！", instance_npcname("警卫#1hmoon21");
+	npctalk "三 ！！", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	npctalk "二 ！！", instance_npcname("警卫#1hmoon21");
+	npctalk "二 ！！", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	npctalk "一 ！！！", instance_npcname("警卫#1hmoon21");
+	npctalk "一 ！！！", instance_npcname("警卫#1hmoon21");
+	instance_announce 0, "Security Captain: From now on, the adventurer is considered our enemy!", bc_map, "0xFFFF00";
+	npctalk "从现在开始，冒险者就是我们的敌人！", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	instance_announce 0, "Security Captain: Protect the Pope and eliminate the adventurer!", bc_map, "0xFFFF00";
+	npctalk "保护教皇，消灭冒险者！", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	npctalk "保护教皇，消灭冒险者！", instance_npcname("警卫#1hmoon21");
+	sleep2 1000;
+	npctalk "保护教皇，消灭冒险者！", instance_npcname("警卫#1hmoon22");
+	sleep2 1000;
+	npctalk "保护教皇，消灭冒险者！", instance_npcname("警卫#1hmoon22");
+	sleep2 1000;
+	npctalk "哎呀先生！", instance_npcname("警卫#1hmoon23");
+	npctalk "哎呀先生！！", instance_npcname("警卫#1hmoon24");
+	npctalk "哎呀先生！", instance_npcname("警卫#1hmoon25");
+	npctalk "哎呀先生！", instance_npcname("警卫#1hmoon26");
+	npctalk "哎呀先生！！", instance_npcname("警卫#1hmoon27");
+	npctalk "哎呀先生！！", instance_npcname("警卫#1hmoon28");
+	npctalk "哎呀先生！！", instance_npcname("警卫#1hmoon29");
+	npctalk "哎呀先生！！", instance_npcname("警卫#1hmoon30");
+	sleep2 500;
+	disablenpc instance_npcname("Guard#1hmoon21");
+	disablenpc instance_npcname("Guard#1hmoon22");
+	disablenpc instance_npcname("Guard#1hmoon23");
+	disablenpc instance_npcname("Guard#1hmoon24");
+	disablenpc instance_npcname("Guard#1hmoon25");
+	disablenpc instance_npcname("Guard#1hmoon26");
+	disablenpc instance_npcname("Guard#1hmoon27");
+	disablenpc instance_npcname("Guard#1hmoon28");
+	disablenpc instance_npcname("Guard#1hmoon29");
+	disablenpc instance_npcname("Guard#1hmoon30");
+	donpcevent instance_npcname("#mob1hmoon") + "::OnStart";	// (mobs spawn)
+	setpcblock PCBLOCK_NPC, false;
+	if ('progress == 2)
+		'progress = 3;
+	end;
+}
+
+1@pop1,0,0,0	script	#mob1hmoon	139,{
+	end;
+OnStart:
+OnMyMobDead:
+	.@event$ = instance_npcname("#mob1hmoon") + "::OnMyMobDead";
+	if (mobcount('map_pop1$, .@event$) > 0)
+		end;
+	if ('mode == 0) {
+		.@guard = 3510; //Easy
+		.@fbel = 3511;
+		.@mbel = 3512;
+		.@priest = 3514;
+	}
+	else {
+		.@guard = 3518; //Hard
+		.@fbel = 3519;
+		.@mbel = 3520;
+		.@priest = 3522;
+	}
+	switch( '1hmoon ) {
+	case 0:
+		monster 'map_pop1$,99,89,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,100,81,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,96,87,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,98,87,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,101,87,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,103,87,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,96,84,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,98,84,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,101,84,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,103,84,"Temple Guard",.@guard,1, .@event$;
+		monster 'map_pop1$,101,81,"Temple Guard",.@guard,1, .@event$;
+		'1hmoon++;
+		end;
+	case 1:
+		instance_announce 0, "Guards: Do your best to stop the Pope!!", bc_map, "0xFFFF00";
+		sleep 1000;
+		instance_announce 0, "Guards: Make sure you stop the Pope!!", bc_map, "0xFFFF00";
+		areamonster 'map_pop1$,60,90,90,100,"Fanatical Worshipper",.@fbel,8, .@event$;
+		areamonster 'map_pop1$,139,90,104,90,"Enraged Worshipper",.@mbel,7, .@event$;
+		'1hmoon++;
+		end;
+	case 2:
+		instance_announce 0, "I feel a rather powerful presence...", bc_map, "0xFFFF00";
+		sleep 2000;
+		monster 'map_pop1$,99,96,"Furious High Priest",.@priest,1, .@event$;
+		.@gid = $@mobid[0];
+		'1hmoon++;
+		unittalk .@gid, "How dare you...!";
+		sleep 1500;
+		if (unitexists(.@gid))
+			unittalk .@gid, "Don't you understand where we are...?!";
+		end;
+	case 3:
+		if (playerattached()) {
+			.@merc = getmercinfo(8);
+			if (.@merc)
+				unitkill .@merc;
+		}
+		if (countitem(25087) < 1 && rand(3) == 0) {	// #todo! chance unknown
+			instance_announce 0, "The sound of something falling as the High Priest appeared can be heard.", bc_map, "0xFFFF00";
+			enablenpc instance_npcname("#dollbox01");
+			sleep 1000;
+		}
+		instance_announce 0, "The threats have disappeared. Now is the time for us to leave this place.", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#1hmoon05");
+		end;
+	}
+}
+
+1@pop1,101,91,3	script(DISABLED)	Pope#1hmoon05	4_F_ARUNA_POP,{
+	if ('progress != 3)
+		end;
+	'progress = 4;
+	setpcblock PCBLOCK_NPC, true;
+	unittalk getcharid(3), "This is dangerous. Are you sure about leaving...?";
+	sleep2 2000;
+	npctalk "你知道，已经太晚了。";
+	sleep2 2000;
+	npctalk "来吧，我们需要离开这里。";
+	sleep2 2000;
+	unittalk getcharid(3), "... Let's follow the Pope.";
+	disablenpc();
+	enablenpc instance_npcname("#1hmoond05");	// (warp)
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop1,100,16,3	script	Pope#1hmoon06	4_F_ARUNA_POP,{
+	if ('progress != 4)
+		end;
+	mes "[???]";
+	mes "噢，现在我的机会来了。";
+	npctalk "我正在等待。", instance_npcname("Luwmin#1hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "他有一头白发...";
+	mes "一个白发、肤色苍白的少年出现了。";
+	unittalk getcharid(3), "He looks the same as Pope.";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "兄弟。";
+	unittalk getcharid(3), "Brother...?";
+	next;
+	mes "[这个少年似乎就是高阶祭司尼伦提到的鲁敏。]";
+	next;
+	cutin "loo_nor",0;
+	mes "[鲁敏]";
+	mes "我听到你哭了，所以我来这里看看你。";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "我无法偷偷溜出去。";
+	next;
+	cutin "loo_sim",0;
+	mes "[鲁敏]";
+	mes "你还好吗？发生了什么？";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "是的。我现在没事了。冒险者们帮助了我。";
+	next;
+	cutin "loo_nor",0;
+	mes "[鲁敏]";
+	mes "谢谢你帮助我妹妹。我会从这里拿走它。";
+	npctalk "从这里开始就看吧。", instance_npcname("Luwmin#1hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我负责教皇的福利，直到她安全返回这里。";
+	mes "我会陪着她。";
+	unittalk getcharid(3), "I will accompany her.";
+	next;
+	cutin "loo_sim",0;
+	mes "[鲁敏]";
+	mes "......";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "我们走吧。";
+	npctalk "兄弟...", instance_npcname("教皇#1hmoon06");
+	next;
+	cutin "loo_nor",0;
+	mes "[鲁敏]";
+	mes "这些衣服很引人注目。给你换身衣服吧。";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "换衣服……？";
+	next;
+	cutin "loo_nor",0;
+	mes "[鲁敏]";
+	mes "一般小孩子都是这样穿的";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "普通衣服？";
+	next;
+	mes "[教皇]";
+	mes "好的。";
+	next;
+	cutin "pop_nor", 255;
+	disablenpc();
+	sleep2 2000;
+	enablenpc instance_npcname("Pope#1hmoon07");
+	cutin "pops_bug", 2;
+	mes "[教皇]";
+	mes "模糊...";
+	next;
+	mes "[教皇]";
+	mes "这看起来有点奇怪……";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "不，不是最不重要的。";
+	next;
+	cutin "Loo_smi",0;
+	mes "[鲁敏]";
+	mes "真的很漂亮。";
+	next;
+	cutin "pops_lau", 2;
+	mes "[教皇]";
+	mes "那是幸运的。";
+	next;
+	cutin "Loo_smi",0;
+	mes "[鲁敏]";
+	mes "我们现在就走吧。 Mom and Dad are waiting.";
+	next;
+	cutin "pops_lau", 2;
+	mes "[教皇]";
+	mes "是的。";
+	close2;
+	cutin "pops_lau", 255;
+	setpcblock PCBLOCK_NPC, true;
+	disablenpc instance_npcname("Pope#1hmoon07");
+	disablenpc instance_npcname("Luwmin#1hmoon01");
+	sleep2 2000;
+	enablenpc instance_npcname("Pope#1hmoon08");
+	emotion ET_THINK, getnpcid(0, instance_npcname("Pope#1hmoon08"));
+	sleep2 2000;
+	unittalk getcharid(3), "Pope? Didn't you just go out?";
+	sleep2 2000;
+	emotion ET_THINK, getnpcid(0, instance_npcname("Pope#1hmoon08"));
+	sleep2 2000;
+	specialeffect EF_HITBODY, AREA, instance_npcname("Pope#1hmoon08");
+	enablenpc instance_npcname("#1hmoond07");
+	disablenpc instance_npcname("Pope#1hmoon08");
+	unittalk getcharid(3), "I may be mistaken ... but I have to follow the Pope.";
+	if ('progress == 4)
+		'progress = 5;
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop1,95,99,6	duplicate(dummy_npc)	Priest#1hmoon01	4_M_TRAINEE
+1@pop1,104,99,4	duplicate(dummy_npc)	Priest#1hmoon02	4_M_TRAINEE
+1@pop1,93,97,6	duplicate(dummy_npc)	Devotee#1hmoon01	4_M_MASK
+1@pop1,106,97,4	duplicate(dummy_npc)	Devotee#1hmoon02	4_F_MASK
+1@pop1,91,95,6	duplicate(dummy_npc)	Devotee#1hmoon03	4_M_MASK
+1@pop1,108,95,4	duplicate(dummy_npc)	Devotee#1hmoon04	4_M_MASK1
+1@pop1,91,92,6	duplicate(dummy_npc)	Devotee#1hmoon05	4_M_MASK
+1@pop1,108,92,4	duplicate(dummy_npc)	Devotee#1hmoon06	4_M_MASK1
+1@pop1,89,103,5	duplicate(dummy_npc)	Guard#1hmoon01	4_M_RASWORD
+1@pop1,110,103,3	duplicate(dummy_npc)	Guard#1hmoon02	4_M_RASWORD
+1@pop1,96,83,5	duplicate(dummy_npc)	Guard#1hmoon03	4_M_RASWORD
+1@pop1,103,83,3	duplicate(dummy_npc)	Guard#1hmoon04	4_M_RASWORD
+1@pop1,96,80,5	duplicate(dummy_npc)	Guard#1hmoon05	4_M_RASWORD
+1@pop1,103,80,3	duplicate(dummy_npc)	Guard#1hmoon06	4_M_RASWORD
+1@pop1,96,77,5	duplicate(dummy_npc)	Guard#1hmoon07	4_M_RASWORD
+1@pop1,103,77,3	duplicate(dummy_npc)	Guard#1hmoon08	4_M_RASWORD
+1@pop1,96,74,5	duplicate(dummy_npc)	Guard#1hmoon09	4_M_RASWORD
+1@pop1,103,74,3	duplicate(dummy_npc)	Guard#1hmoon10	4_M_RASWORD
+1@pop1,98,17,6	duplicate(dummy_npc)	Luwmin#1hmoon01	4_M_CHILD
+
+1@pop1,97,97,6	duplicate(dummy_disabled_npc)	Devotee#1hmoon11	4_M_MASK
+1@pop1,102,97,4	duplicate(dummy_disabled_npc)	Devotee#1hmoon12	4_F_MASK
+1@pop1,97,95,6	duplicate(dummy_disabled_npc)	Devotee#1hmoon13	4_M_MASK
+1@pop1,102,95,4	duplicate(dummy_disabled_npc)	Devotee#1hmoon14	4_M_MASK1
+1@pop1,97,92,6	duplicate(dummy_disabled_npc)	Devotee#1hmoon15	4_M_MASK
+1@pop1,102,92,4	duplicate(dummy_disabled_npc)	Devotee#1hmoon16	4_M_MASK1
+1@pop1,101,94,3	duplicate(dummy_disabled_npc)	Priest#1hmoon21	4_M_TRAINEE
+1@pop1,98,94,5	duplicate(dummy_disabled_npc)	Priest#1hmoon22	4_M_TRAINEE
+1@pop1,96,92,6	duplicate(dummy_disabled_npc)	Devotee#1hmoon23	4_M_MASK
+1@pop1,103,92,4	duplicate(dummy_disabled_npc)	Devotee#1hmoon24	4_F_MASK
+1@pop1,96,90,7	duplicate(dummy_disabled_npc)	Devotee#1hmoon25	4_M_MASK
+1@pop1,103,90,1	duplicate(dummy_disabled_npc)	Devotee#1hmoon26	4_M_MASK1
+1@pop1,101,89,1	duplicate(dummy_disabled_npc)	Devotee#1hmoon27	4_M_MASK
+1@pop1,98,89,7	duplicate(dummy_disabled_npc)	Devotee#1hmoon28	4_M_MASK1
+1@pop1,99,89,7	duplicate(dummy_disabled_npc)	Guard#1hmoon21	4_M_RASWORD
+1@pop1,100,82,1	duplicate(dummy_disabled_npc)	Guard#1hmoon22	4_M_RASWORD
+1@pop1,96,87,7	duplicate(dummy_disabled_npc)	Guard#1hmoon23	4_M_RASWORD
+1@pop1,98,87,7	duplicate(dummy_disabled_npc)	Guard#1hmoon24	4_M_RASWORD
+1@pop1,101,87,1	duplicate(dummy_disabled_npc)	Guard#1hmoon25	4_M_RASWORD
+1@pop1,103,87,1	duplicate(dummy_disabled_npc)	Guard#1hmoon26	4_M_RASWORD
+1@pop1,96,84,7	duplicate(dummy_disabled_npc)	Guard#1hmoon27	4_M_RASWORD
+1@pop1,98,84,7	duplicate(dummy_disabled_npc)	Guard#1hmoon28	4_M_RASWORD
+1@pop1,101,84,1	duplicate(dummy_disabled_npc)	Guard#1hmoon29	4_M_RASWORD
+1@pop1,103,84,1	duplicate(dummy_disabled_npc)	Guard#1hmoon30	4_M_RASWORD
+1@pop1,100,98,3	duplicate(dummy_disabled_npc)	Pope#1hmoon02	4_F_ARUNA_POP
+1@pop1,100,16,3	duplicate(dummy_disabled_npc)	Pope#1hmoon07	POPE_MD_MERC_CASUAL
+1@pop1,101,16,3	duplicate(dummy_disabled_npc)	Pope#1hmoon08	4_F_ARUNA_POP
+1@pop1,100,96,3	duplicate(dummy_disabled_npc)	Pope#1hmoon09	4_F_ARUNA_POP
+1@pop1,99,94,3	duplicate(dummy_disabled_npc)	Pope#1hmoon10	4_F_ARUNA_POP
+1@pop1,100,92,3	duplicate(dummy_disabled_npc)	Pope#1hmoon11	4_F_ARUNA_POP
+
+//============================================================
+//== Map 2
+//============================================================
+1@pop2,117,221,3	script	Pope#2hmoon01	POPE_MD_MERC_CASUAL,{
+	if ('progress != 5)
+		end;
+	'progress = 6;
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "它在哪里...它在哪里？", instance_npcname("Luwmin#2hmoon01");
+	sleep2 2000;
+	unittalk getcharid(3), "...This is near High Priest Zhed's residence.";
+	sleep2 2000;
+	npctalk "哲德？那么我在这里就安全了。";
+	sleep2 2000;
+	npctalk "太晚了。我们得快点。", instance_npcname("Luwmin#2hmoon01");
+	sleep2 2000;
+	disablenpc instance_npcname("Luwmin#2hmoon01");
+	sleep2 1000;
+	npctalk "咱们走吧兄弟。";
+	sleep2 500;
+	enablenpc instance_npcname("Pope#2hmoon02");
+	enablenpc instance_npcname("Luwmin#2hmoon02");
+	disablenpc();
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop2,63,237,3	script(DISABLED)	Pope#2hmoon02	4_F_ARUNA_POP2,{
+	if ('progress != 6)
+		end;
+	mes "[鲁敏]";
+	mes "这里是神父的住所吧？";
+	next;
+	cutin "loo_nor", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我去调查一下这家伙住处的参数。";
+	next;
+	enablenpc instance_npcname("Guard#2hmoon01");
+	enablenpc instance_npcname("Guard#2hmoon02");
+	mes "[守卫]";
+	mes "停止！谁去那里？";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我们无意伤害。";
+	next;
+	mes "[守卫]";
+	mes "哦，是吗？表明你自己！";
+	npctalk "这里是谁啊！", instance_npcname("警卫#2hmoon02");
+	next;
+	mes "[守卫]";
+	mes "我们在花园里发现了入侵者！";
+	next;
+	enablenpc instance_npcname("High Priest Zhed#2hmoon");
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "D-amn，这里有什么噪音。这是怎么回事..？";
+	next;
+	cutin "RA_GMAN2", 255;
+	mes "[守卫]";
+	mes "大祭司，你的敌人派出了儿童刺客来伤害你！";
+	next;
+	mes "[守卫]";
+	mes "闯入者闯入了宅邸！！";
+	next;
+	mes "[守卫]";
+	mes "我们会处理这种情况。";
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "P-Pope，你不是教皇吗？";
+	npctalk "P-Pope，你不是教皇吗？", instance_npcname("大祭司哲德#2hmoon");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "啊...";
+	npctalk "啊...", instance_npcname("教皇#2hmoon02");
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "你从哪里来？寺庙？你对教皇做了什么？";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我正在护送教皇。";
+	unittalk getcharid(3), "I am in charge.";
+	next;
+	mes "[大祭司哲德]";
+	mes "你是……冒险家？";
+	next;
+	mes "[大祭司哲德]";
+	mes "尽管如此，教皇不应该离开圣殿。我们有严格的协议。";
+	next;
+	mes "[大祭司哲德]";
+	mes "在很多情况下，狂热的崇拜者会把事情掌握在自己手中……现在，请在为时已晚之前返回寺庙。";
+	next;
+	mes "[大祭司哲德]";
+	mes "尼伦不会想要这个..";
+	next;
+	mes "[大祭司哲德]";
+	mes "如果教皇出了什么事，那不仅仅是她个人的问题。这将是阿鲁纳费尔茨所有公民的问题！";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "难道我只是女神的器皿吗？";
+	next;
+	mes "[教皇]";
+	mes "你只是把我当成一个器皿吗？";
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "阿鲁纳费尔茨的公民从教皇那里找到安慰、灵感和希望。";
+	next;
+	mes "[大祭司哲德]";
+	mes "确保教宗的安全是我们神父的责任。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "但是哲德……有一段时间，甚至是一会儿。";
+	next;
+	mes "[教皇]";
+	mes "请帮我。请理解...";
+	npctalk "我再问你一次...", instance_npcname("教皇#2hmoon02");
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "我不会让你的安全面临任何风险。请允许我送你回寺庙。";
+	next;
+	cutin "LOO_ANG", 0;
+	mes "[鲁敏]";
+	mes "你是这里真正的危险...将一个小女孩囚禁在一些可怕的寺庙里...！";
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "这张脸……还有眼睛。你是鲁敏吗？";
+	next;
+	mes "[大祭司哲德]";
+	mes "呼、你……你怎么出去了？";
+	npctalk "呼、你……你怎么出去了？", instance_npcname("大祭司哲德#2hmoon");
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我 ...";
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "卫兵们，抓住那个男孩！";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我们最好分散在这里，以免失去他们。我们到村子里集合吧。";
+	sleep2 1000;
+	cutin "loo_smi", 255;
+	disablenpc instance_npcname("Luwmin#2hmoon02");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "这就像...";
+	npctalk "这就像...", instance_npcname("教皇#2hmoon02");
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "波普，那个男孩在那儿吗……？";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "那人...";
+	next;
+	cutin "pops_sim", 255;
+	instance_announce 0, "Guard: The Pope is here!", bc_map, "0xFFFF00";
+	sleep2 1000;
+	instance_announce 0, "Guard: Over here! Quick!!!", bc_map, "0xFFFF00";
+	sleep2 3000;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "教皇，尼伦同意你偷偷溜出神殿吗？";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "哲德！我不会放弃我的职责。只是那么一小会儿……拜托了！只是一小会儿...";
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "我们不能再在寺庙外面浪费时间了。我会亲自带你去。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我恨它。";
+	next;
+	cutin "ra_gman2", 0;
+	mes "[大祭司哲德]";
+	mes "教皇，你该走了。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我恨它！我不会去！";
+	npctalk "我恨它！", instance_npcname("教皇#2hmoon02");
+	next;
+	cutin "pops_sim", 255;
+	enablenpc instance_npcname("Guard#2hmoon03");
+	enablenpc instance_npcname("Guard#2hmoon04");
+	enablenpc instance_npcname("Guard#2hmoon05");
+	enablenpc instance_npcname("Guard#2hmoon06");
+	enablenpc instance_npcname("Guard#2hmoon07");
+	enablenpc instance_npcname("Guard#2hmoon08");
+	mes "[守卫]";
+	mes "教皇来了！";
+	npctalk "教皇在这里", instance_npcname("警卫#2hmoon03");
+	next;
+	mes "[守卫]";
+	mes "教皇，请不要反抗。我们只是在做我们的工作。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "不，我现在不走！";
+	next;
+	cutin "pops_sim", 255;
+	mes "[守卫]";
+	mes "教皇！你们一定要一起去！";
+	npctalk "教皇！你们一定要一起去！", instance_npcname("警卫#2hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我讨厌，讨厌！！";
+	npctalk "我讨厌，讨厌！！", instance_npcname("教皇#2hmoon02");
+	specialeffect EF_MAGICCRASHER, AREA, instance_npcname("Pope#2hmoon02");
+	next;
+	cutin "pops_sim", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "让教皇平静地离开。否则我就动用武力。";
+	next;
+	mes "[守卫]";
+	mes "提交！你只是一个普通的冒险家！";
+	npctalk "你只是一个普通的冒险家！", instance_npcname("警卫#2hmoon07");
+	next;
+	mes "[守卫]";
+	mes "外人不应该管我们的事！";
+	npctalk "外人不应该管我们的事！", instance_npcname("警卫#2hmoon05");
+	sleep2 500;
+	npctalk "你们所有人！住口！", instance_npcname("警卫#2hmoon04");
+	next;
+	mes "[守卫]";
+	mes "冒险家是一个敌对目标。用偏见消灭他！";
+	next;
+	mes "[守卫]";
+	mes "记住，不要伤害教皇！";
+	next;
+	mes "[守卫]";
+	mes "准备好？";
+	next;
+	mes "[守卫]";
+	mes "停下来！";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇，过来。";
+	for ( .@i = 1; .@i <= 8; ++.@i ) {
+		npctalk "停下来！", instance_npcname("警卫#2hmoon0" + .@i);
+		disablenpc instance_npcname("Guard#2hmoon0" + .@i);
+	}
+	disablenpc instance_npcname("High Priest Zhed#2hmoon");
+	disablenpc instance_npcname("Pope#2hmoon02");
+	if ('mode == 1)
+		mercenary_create 3569,1800000; //POPE_MD_H_MERC_NORMAL
+	else
+		mercenary_create 3570,1800000; //POPE_MD_H_MERC_CASUAL
+	sleep2 1000;
+	instance_announce 0, "Guard: Pope, you must return with us!", bc_map, "0xFFFF00";
+	donpcevent instance_npcname("#mob2hmoon") + "::OnStart";
+	if ('progress == 6)
+		'progress = 7;
+	close3;
+}
+
+1@pop2,69,158,3	script(DISABLED)	Pope#2hmoon03	4_F_ARUNA_POP2,{
+	if ('progress != 7)
+		end;
+	'progress = 8;
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "太感谢了。", instance_npcname("教皇#2hmoon03");
+	sleep2 1000;
+	unittalk getcharid(3), "It's nothing. I've seen worse.";
+	sleep2 1000;
+	npctalk "啊？我会在那里等你。", instance_npcname("教皇#2hmoon03");
+	sleep2 1000;
+	unittalk getcharid(3), "Okay. I hope you weren't disturbed by that incident earlier.";
+	sleep2 1000;
+	npctalk "不用担心。我很好。", instance_npcname("教皇#2hmoon03");
+	sleep2 1000;
+	enablenpc instance_npcname("#2hmoond01");
+	disablenpc instance_npcname("Pope#2hmoon03");
+	enablenpc instance_npcname("Pope#2hmoon04");
+	enablenpc instance_npcname("Luwmin#2hmoon03");
+	enablenpc instance_npcname("Puppy#2hmoon01");
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop2,56,116,5	script(DISABLED)	Pope#2hmoon04	4_F_ARUNA_POP2,{
+	if ('progress != 8)
+		end;
+	mes "[鲁敏]";
+	mes "你怎么这么晚？";
+	npctalk "纬！！", instance_npcname("小狗#2hmoon01");
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "小狗？";
+	next;
+	cutin "loo_nor", 0;
+	mes "[鲁敏]";
+	mes "是的，我发现它在没有主人的情况下徘徊......";
+	next;
+	cutin "pops_lau", 2;
+	mes "[教皇]";
+	mes "可爱的！";
+	next;
+	cutin "LOO_SMI", 0;
+	mes "[鲁敏]";
+	mes "我想也许你有兴趣养一只？";
+	next;
+	cutin "pops_lau", 2;
+	mes "[教皇]";
+	mes "当然！我们把他当作我们的宠物一起养吗？";
+	next;
+	cutin "loo_nor", 0;
+	mes "[鲁敏]";
+	mes "咱们先征得爸爸妈妈的同意吧。";
+	next;
+	cutin "pops_lau", 2;
+	mes "[教皇]";
+	mes "正确的！";
+	npctalk "你叫什么名字？", instance_npcname("教皇#2hmoon04");
+	next;
+	cutin "pops_lau", 255;
+	enablenpc instance_npcname("Friend#2hmoon01");
+	mes "[朋友]";
+	mes "你来吗？";
+	npctalk "你来吗？", instance_npcname("朋友#2hmoon01");
+	next;
+	enablenpc instance_npcname("Friend#2hmoon02");
+	sleep2 1000;
+	enablenpc instance_npcname("Friend#2hmoon03");
+	mes "[朋友]";
+	mes "我以为你今天不来了。";
+	npctalk "我以为你今天不来了。", instance_npcname("朋友#2hmoon02");
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我们...正在做某事。";
+	next;
+	cutin "loo_smi", 255;
+	mes "[朋友]";
+	mes "既然机会难得，我们就一起玩吧。然后我们就去对方家拜访~";
+	next;
+	mes "[朋友]";
+	mes "当然，让我们这样做吧。";
+	npctalk "当然，让我们这样做吧。", instance_npcname("朋友#2hmoon03");
+	next;
+	mes "[朋友]";
+	mes "我们先回家怎么样？";
+	next;
+	cutin "pops_lau", 2;
+	mes "[教皇]";
+	mes "是的 ！！！";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我得快点。爸爸妈妈应该在等我们吧。";
+	sleep2 500;
+	cutin "loo_smi", 255;
+	disablenpc instance_npcname("Pope#2hmoon04");
+	disablenpc instance_npcname("Luwmin#2hmoon03");
+	disablenpc instance_npcname("Friend#2hmoon01");
+	disablenpc instance_npcname("Friend#2hmoon02");
+	disablenpc instance_npcname("Friend#2hmoon03");
+	disablenpc instance_npcname("Puppy#2hmoon01");
+	enablenpc instance_npcname("Pope#2hmoon05");
+	enablenpc instance_npcname("Luwmin#2hmoon04");
+	enablenpc instance_npcname("Friend#2hmoon04");
+	enablenpc instance_npcname("Friend#2hmoon05");
+	enablenpc instance_npcname("Friend#2hmoon06");
+	enablenpc instance_npcname("Puppy#2hmoon02");
+	unittalk getcharid(3), "They are heading towards the Weapon Shop, I need to catch up.";
+	navigateto( "1@pop2",48,86 );
+	if ('progress == 8)
+		'progress = 9;
+	close3;
+}
+
+1@pop2,48,86,7	script(DISABLED)	Pope#2hmoon05	4_F_ARUNA_POP2,{
+	if ('progress != 9)
+		end;
+	'progress = 10;
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "你爸爸现在以制造武器为生？", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	npctalk "是的。你想见他工作吗？", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "不……我很害怕。", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	npctalk "那么他制造什么样的武器呢？", instance_npcname("Luwmin#2hmoon04");
+	sleep2 2000;
+	npctalk "我认为这是一些普通的剑之类的东西，供守卫使用。", instance_npcname("朋友#2hmoon05");
+	sleep2 2000;
+	npctalk "那很有意思。", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "为什么？你对这样的东西感兴趣吗？", instance_npcname("朋友#2hmoon05");
+	sleep2 2000;
+	npctalk "实在不知道该说什么了……", instance_npcname("朋友#2hmoon04");
+	sleep2 2000;
+	npctalk "好吧，如果你愿意，那就继续吧。", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "嘿，我们接下来去 Ra 家怎么样？", instance_npcname("朋友#2hmoon05");
+	sleep2 2000;
+	npctalk "我有一段时间没去那里了。", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	npctalk "呵呵。走吧~。", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "真的吗？但我们才刚到这里......", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	npctalk "孩子们，别忘了在黄昏前回家！", instance_npcname("#2mum01");
+	sleep2 2000;
+	npctalk "你们继续吧。我的宵禁现在开始了……", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "这么长时间后见到你们很有趣。", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "是的。那么我们明天见。", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	npctalk "是的！明天我们也像今天一样玩吧！", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "是的 ！！", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	npctalk "再见！", instance_npcname("朋友#2hmoon06");
+	sleep2 2000;
+	npctalk "再见！", instance_npcname("朋友#2hmoon04");
+	sleep2 2000;
+	npctalk "再见~", instance_npcname("朋友#2hmoon05");
+	sleep2 2000;
+	npctalk "再见~", instance_npcname("教皇#2hmoon05");
+	disablenpc instance_npcname("Friend#2hmoon06");
+	npctalk "我们走吧，伙计们？", instance_npcname("Luwmin#2hmoon04");
+	sleep2 2000;
+	npctalk "正确的！", instance_npcname("教皇#2hmoon05");
+	sleep2 2000;
+	disablenpc instance_npcname("Pope#2hmoon05");
+	disablenpc instance_npcname("Luwmin#2hmoon04");
+	disablenpc instance_npcname("Friend#2hmoon04");
+	disablenpc instance_npcname("Friend#2hmoon05");
+	disablenpc instance_npcname("Puppy#2hmoon02");
+	enablenpc instance_npcname("Pope#2hmoon08");
+	enablenpc instance_npcname("Luwmin#2hmoon07");
+	enablenpc instance_npcname("Friend#2hmoon07");
+	enablenpc instance_npcname("Friend#2hmoon08");
+	enablenpc instance_npcname("Puppy#2hmoon04");
+	unittalk getcharid(3), "The Pope is heading towards the market, I'll have to follow.";
+	navigateto( "1@pop2",89,44 );
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop2,89,44,7	script(DISABLED)	Pope#2hmoon08	4_F_ARUNA_POP2,{
+	if ('progress != 10)
+		end;
+	'progress = 11;
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "你家很干净。";
+	sleep2 2000;
+	npctalk "是不是很漂亮？", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "是的。它维护得很好。";
+	sleep2 2000;
+	npctalk "我们在这儿的时候玩个游戏吧。", instance_npcname("Luwmin#2hmoon07");
+	sleep2 1000;
+	npctalk "好主意！";
+	sleep2 2000;
+	npctalk "我们来玩“打波利”吧？", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "还是捉迷藏？", instance_npcname("朋友#2hmoon07");
+	sleep2 1000;
+	npctalk "让我们来角色扮演吧！", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "这比捉迷藏更有趣。", instance_npcname("朋友#2hmoon07");
+	sleep2 1000;
+	npctalk "就决定了！！我将成为教皇。", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "不，我想当教皇。", instance_npcname("朋友#2hmoon07");
+	sleep2 2000;
+	npctalk "我们只能有一位教皇...", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "嗯，我们还有其他角色，比如大祭司、守卫……", instance_npcname("朋友#2hmoon07");
+	sleep2 2000;
+	npctalk "你们俩都可以成为教皇！";
+	sleep2 2000;
+	npctalk "吃饭时间到了，快来吃你的美味吧！", instance_npcname("#2mum02");
+	sleep2 1000;
+	npctalk "是啊~", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "明天我们一起玩捉迷藏怎么样？";
+	sleep2 2000;
+	npctalk "同意，这样就方便多了~", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "再见~";
+	sleep2 2000;
+	npctalk "再见~", instance_npcname("朋友#2hmoon08");
+	sleep2 2000;
+	npctalk "再见~", instance_npcname("朋友#2hmoon07");
+	sleep2 2000;
+	npctalk "那么明天~";
+	disablenpc instance_npcname("Friend#2hmoon08");
+	npctalk "我们会尽快去吃我们的食物！", instance_npcname("Luwmin#2hmoon07");
+	sleep2 1000;
+	disablenpc instance_npcname("Pope#2hmoon08");
+	disablenpc instance_npcname("Luwmin#2hmoon07");
+	disablenpc instance_npcname("Friend#2hmoon07");
+	disablenpc instance_npcname("Puppy#2hmoon04");
+	enablenpc instance_npcname("Pope#2hmoon09");
+	enablenpc instance_npcname("Luwmin#2hmoon08");
+	enablenpc instance_npcname("Friend#2hmoon09");
+	enablenpc instance_npcname("Puppy#2hmoon05");
+	unittalk getcharid(3), "Now they're moving to the right, I'll just follow.";
+	navigateto( "1@pop2",136,47 );
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop2,136,47,5	script(DISABLED)	Pope#2hmoon09	4_F_ARUNA_POP2,{
+	if ('progress != 11)
+		end;
+	'progress = 12;
+	setpcblock PCBLOCK_NPC, true;
+	npctalk "兄弟！看看那个！看起来很好吃。";
+	sleep2 2000;
+	npctalk "你想吃一点吗？", instance_npcname("朋友#2hmoon09");
+	sleep2 2000;
+	npctalk "不，没关系。";
+	sleep2 2000;
+	npctalk "有客人过来吃饭总是好的。", instance_npcname("朋友#2hmoon09");
+	sleep2 2000;
+	npctalk "嗯……还是……";
+	sleep2 2000;
+	npctalk "谢谢。我会好好吃饭的", instance_npcname("Luwmin#2hmoon08");
+	sleep2 2000;
+	npctalk "兄弟？";
+	sleep2 2000;
+	npctalk "哦~我的饥饿感得到了满足~", instance_npcname("Luwmin#2hmoon08");
+	sleep2 2000;
+	npctalk "是的。走吧去吃晚饭吧。", instance_npcname("朋友#2hmoon09");
+	sleep2 2000;
+	npctalk "是的。那么我们明天见。";
+	sleep2 2000;
+	npctalk "是的。 ——我们明天再见面吧！别忘了玩捉迷藏！", instance_npcname("朋友#2hmoon09");
+	sleep2 2000;
+	npctalk "是的！并玩捉迷藏！";
+	sleep2 2000;
+	npctalk "再见~", instance_npcname("朋友#2hmoon09");
+	sleep2 2000;
+	npctalk "再见 ！！";
+	disablenpc instance_npcname("Friend#2hmoon09");
+	npctalk "今晚我们有什么活动？";
+	sleep2 2000;
+	cutin "pops_smi", 2;
+	npctalk "我们走吧。", instance_npcname("Luwmin#2hmoon08");
+	sleep2 1000;
+	disablenpc instance_npcname("Pope#2hmoon09");
+	disablenpc instance_npcname("Luwmin#2hmoon08");
+	disablenpc instance_npcname("Puppy#2hmoon05");
+	enablenpc instance_npcname("Pope#2hmoon06");
+	enablenpc instance_npcname("Luwmin#2hmoon05");
+	enablenpc instance_npcname("Puppy#2hmoon03");
+	enablenpc instance_npcname("Mom#2hmoon01");
+	enablenpc instance_npcname("Dad#2hmoon01");
+	unittalk getcharid(3), "The Pope is heading north, I'll follow.";
+	sleep2 2000;
+	cutin "", 255;
+	navigateto( "1@pop2",124,81 );
+	setpcblock PCBLOCK_NPC, false;
+	end;
+}
+
+1@pop2,124,81,5	script(DISABLED)	Pope#2hmoon06	4_F_ARUNA_POP2,{
+	if ('progress != 12)
+		end;
+	mes "[教皇]";
+	mes "妈妈！";
+	npctalk "妈妈！", instance_npcname("教皇#2hmoon06");
+	next;
+	cutin "pops_smi", 255;
+	mes "[妈妈]";
+	mes "你去哪儿？我叫你在吃饭时间之前回来。";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "对不起。下次我们会早点回家。";
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "妈妈，我们把这只小狗带回来了！";
+	next;
+	cutin "pops_smi", 255;
+	mes "[妈妈]";
+	mes "可爱的小狗。";
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "我可以提出来吗？";
+	next;
+	cutin "pops_smi", 255;
+	mes "[爸爸]";
+	mes "我不确定这是否是一个好主意......";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "是的。";
+	npctalk "是的。", instance_npcname("Luwmin#2hmoon05");
+	next;
+	cutin "loo_smi", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我想知道这是否是教皇的幻想——过正常的生活。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "这与她作为教皇的日常生活相去甚远。";
+	next;
+	mes "[???]";
+	mes "她就在那里。";
+	npctalk "她就在那里。", instance_npcname("大祭司#2hmoon01");
+	next;
+	mes "[???]";
+	mes "你是对的。那确实是她..";
+	npctalk "你是对的。那确实是她。", instance_npcname("大祭司#2hmoon02");
+	next;
+	mes "[妈妈]";
+	mes "这声音是怎么回事……？";
+	next;
+	enablenpc instance_npcname("High Priest#2hmoon01");
+	sleep2 2000;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "这次搜寻终于取得了成果。";
+	npctalk "这次搜寻终于取得了成果。", instance_npcname("大祭司#2hmoon01");
+	next;
+	enablenpc instance_npcname("High Priest#2hmoon02");
+	sleep2 2000;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "这是我们新任教皇的家。";
+	npctalk "这是我们新任教皇的家。", instance_npcname("大祭司#2hmoon02");
+	next;
+	cutin "ra_gman2", 255;
+	enablenpc instance_npcname("Devotee#2hmoon01");
+	mes "[奉献者]";
+	mes "看哪，我们的新教皇诞生了！";
+	next;
+	enablenpc instance_npcname("Devotee#2hmoon03");
+	enablenpc instance_npcname("Guard#2hmoon41");
+	enablenpc instance_npcname("Guard#2hmoon42");
+	enablenpc instance_npcname("Guard#2hmoon43");
+	enablenpc instance_npcname("Guard#2hmoon44");
+	enablenpc instance_npcname("Guard#2hmoon45");
+	enablenpc instance_npcname("Guard#2hmoon46");
+	enablenpc instance_npcname("Guard#2hmoon47");
+	enablenpc instance_npcname("Guard#2hmoon48");
+	enablenpc instance_npcname("Guard#2hmoon49");
+	sleep2 500;
+	npctalk "一定要阻止外人靠近这里！", instance_npcname("奉献者#2hmoon03");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon41");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon42");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon43");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon44");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon45");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon46");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon47");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon48");
+	npctalk "是的，先生！", instance_npcname("警卫#2hmoon49");
+	sleep2 2000;
+	disablenpc instance_npcname("Devotee#2hmoon03");
+	disablenpc instance_npcname("Guard#2hmoon41");
+	disablenpc instance_npcname("Guard#2hmoon42");
+	disablenpc instance_npcname("Guard#2hmoon43");
+	disablenpc instance_npcname("Guard#2hmoon44");
+	disablenpc instance_npcname("Guard#2hmoon45");
+	disablenpc instance_npcname("Guard#2hmoon46");
+	disablenpc instance_npcname("Guard#2hmoon47");
+	disablenpc instance_npcname("Guard#2hmoon48");
+	disablenpc instance_npcname("Guard#2hmoon49");
+	sleep2 500;
+	enablenpc instance_npcname("Devotee#2hmoon02");
+	npctalk "教宗，我们的荣耀！", instance_npcname("奉献者#2hmoon02");
+	mes "[村民]";
+	mes "你刚刚听到了吗？";
+	npctalk "你刚刚听到了吗？", instance_npcname("镇民#2hmoon02");
+	next;
+	mes "[村民]";
+	mes "没想到教皇竟然出生在我们附近！";
+	npctalk "没想到教皇竟然出生在我们附近！", instance_npcname("镇民#2hmoon03");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon01");
+	mes "[村民]";
+	mes "什么？教皇？";
+	npctalk "什么？教皇？？", instance_npcname("镇民#2hmoon01");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon02");
+	mes "[村民]";
+	mes "我们很幸运能得到这样的礼物......！";
+	npctalk "我们很幸运能得到这样的礼物......！", instance_npcname("镇民#2hmoon02");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon03");
+	mes "[村民]";
+	mes "好像是我们家隔壁住的一个小孩。我以前和她有过亲密接触……咳咳！";
+	npctalk "好像是我们家隔壁住的一个小孩。我以前和她有过亲密接触……咳咳！", instance_npcname("镇民#2hmoon03");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon04");
+	mes "[村民]";
+	mes "教皇？我是在做梦吗……？";
+	npctalk "教皇？我是在做梦吗……？", instance_npcname("镇民#2hmoon04");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon17");
+	npctalk "这就是新教皇所在的房子……？", instance_npcname("镇民#2hmoon17");
+	mes "[妈妈]";
+	mes "这是关于什么的？";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "我来寻找一个符合新教皇标准的孩子。";
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon12");
+	enablenpc instance_npcname("Townsfolk#2hmoon23");
+	npctalk "这就是新教皇的故乡……？", instance_npcname("镇民#2hmoon12");
+	sleep2 500;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "白皙的皮肤，雪白的头发，不同颜色的眼睛。毫无疑问。";
+	next;
+	npctalk "教皇，被选中的人来自这样一个破烂的街区吗？", instance_npcname("镇民#2hmoon23");
+	sleep2 500;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "我们一直在等待这个特殊的时刻！";
+	npctalk "我们一直在等待这个特殊的时刻！", instance_npcname("大祭司#2hmoon01");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon14");
+	npctalk "无疑。她确实是教皇。", instance_npcname("镇民#2hmoon14");
+	mes "[爸爸]";
+	mes "教皇？我们的孩子还只是孩子。";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon27");
+	enablenpc instance_npcname("Townsfolk#2hmoon22");
+	npctalk "或者说，这些就是新的候选人？", instance_npcname("镇民#2hmoon22");
+	sleep2 500;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "如果她失败了，我们就会把她送回这里。";
+	next;
+	npctalk "请大声一点，我听不清发生了什么！！", instance_npcname("镇民#2hmoon27");
+	sleep2 500;
+	cutin "ra_gman2", 255;
+	mes "[妈妈]";
+	mes "这些只是普通的孩子。";
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon16");
+	npctalk "我不能错过这一刻！", instance_npcname("镇民#2hmoon16");
+	sleep2 500;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "这些孩子有同样的迹象吗？";
+	npctalk "这些孩子有同样的迹象吗？", instance_npcname("大祭司#2hmoon02");
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "以前没有这样的先例..！";
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon25");
+	npctalk "腾出空间，我需要看看！", instance_npcname("镇民#2hmoon25");
+	enablenpc instance_npcname("Townsfolk#2hmoon18");
+	npctalk "赞美新教皇的诞生！", instance_npcname("镇民#2hmoon18");
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "尼伦？是你吗，尼伦？别让我和家人分开！";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "你怎么知道我的……名字？这是芙蕾雅的意愿吗？";
+	next;
+	mes "[大祭司]";
+	mes "这个女孩无疑是真正的教皇。";
+	npctalk "这个女孩无疑是真正的教皇。", instance_npcname("大祭司#2hmoon01");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon21");
+	npctalk "我认识那个孩子！我知道 ！！", instance_npcname("镇民#2hmoon21");
+	mes "[大祭司]";
+	mes "在这样的容器中转世是芙蕾雅的意愿。";
+	npctalk "在这样的容器中转世是芙蕾雅的意愿。", instance_npcname("大祭司#2hmoon01");
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon11");
+	npctalk "这是一个历史性的时刻！", instance_npcname("镇民#2hmoon11");
+	cutin "ra_gwoman", 255;
+	mes "[奉献者]";
+	mes "哦，赞美新教皇的诞生！";
+	npctalk "哦，赞美新教皇的诞生！", instance_npcname("奉献者#2hmoon01");
+	next;
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon11");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon12");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon13");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon14");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon15");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon16");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon17");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon18");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon21");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon22");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon23");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon24");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon25");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon26");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon27");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon01");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon02");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon03");
+	npctalk "赞美教皇！", instance_npcname("镇民#2hmoon04");
+	sleep2 500;
+	enablenpc instance_npcname("Townsfolk#2hmoon15");
+	npctalk "嗯嗯，能亲眼目睹这样的场面，真是我的幸运啊！", instance_npcname("镇民#2hmoon15");
+	enablenpc instance_npcname("Townsfolk#2hmoon24");
+	npctalk "教皇终于降临了！", instance_npcname("镇民#2hmoon24");
+	mes "[奉献者]";
+	mes "赞美女神！";
+	npctalk "赞美女神！", instance_npcname("奉献者#2hmoon02");
+	next;
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon11");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon12");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon13");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon14");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon15");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon16");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon17");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon18");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon21");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon22");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon23");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon24");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon25");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon26");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon27");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon01");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon02");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon03");
+	npctalk "女神万岁！！", instance_npcname("镇民#2hmoon04");
+	sleep2 500;
+	enablenpc instance_npcname("Townsfolk#2hmoon13");
+	npctalk "恐怕我要走了！教皇我爱你！", instance_npcname("镇民#2hmoon13");
+	mes "[妈妈]";
+	mes "我们的孩子是教皇……？这是真的吗？";
+	next;
+	enablenpc instance_npcname("Townsfolk#2hmoon26");
+	npctalk "无疑。我要带走那个女孩。", instance_npcname("镇民#2hmoon26");
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "无疑。我要带走那个女孩。";
+	next;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "在寺庙里的生活将会安全舒适。";
+	next;
+	cutin "ra_gman2", 255;
+	mes "[爸爸]";
+	mes "那我们的儿子呢？";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "一个有着同样条件却什么都不知道的男孩是没有用的......";
+	next;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "教皇与几代人之间的间隔只有一分钟。但没有一个男孩被选中。";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "这意味着什么？还是芙蕾雅想要通过这个男孩传达她的话？";
+	next;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "我们需要进一步研究这一点。专家应该对这个问题做出决定。";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "……我们必须尽快做出决定。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我不想去。我恨它。请！妈妈...？爸爸...？冒险家...？救救我...!!";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "听我说。我们永远不会彼此分离。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "是的！";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "还记得我们两个经常谈论的梦境吗？";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "没错，就是《秘密花园》！我记得。";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "从南门就可以到达。我会在那里见到你。我们将受到保护，免受那里的任何威胁。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "你现在要离开我吗？";
+	npctalk "你现在要离开我吗？", instance_npcname("教皇#2hmoon06");
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我们最好就在这里分道扬镳。我在南门等你。";
+	sleep2 1000;
+	cutin "loo_smi", 255;
+	disablenpc instance_npcname("Luwmin#2hmoon05");
+	next;
+	specialeffect EF_MAGICCRASHER, AREA, instance_npcname("Pope#2hmoon06");
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "别走！别就这样离开我...";
+	npctalk "别走！别就这样离开我...", instance_npcname("教皇#2hmoon06");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇，教皇！放松！这是一个梦！这只是一场梦，快醒吧！";
+	next;
+	mes "[教皇]";
+	mes "妈妈！爸爸！！ ...别叫我教皇！";
+	npctalk "妈妈！爸爸 ！！", instance_npcname("教皇#2hmoon06");
+	cutin "pops_sim", 255;
+	next;
+	mes "[爸爸]";
+	mes "我很高兴有这样一个孩子！";
+	npctalk "我很高兴有这样一个孩子！", instance_npcname("爸爸#2hmoon01");
+	next;
+	mes "[妈妈]";
+	mes "我们很荣幸能拥有我们的孩子作为教皇，女神的器皿！";
+	npctalk "我们很荣幸能拥有我们的孩子作为教皇，女神的器皿！", instance_npcname("妈妈#2hmoon01");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "妈妈...？爸爸...？你要抛弃我了吗？";
+	next;
+	cutin "pops_sim", 255;
+	mes "[爸爸]";
+	mes "教皇，加油。跟着他们。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我讨厌分离，不！";
+	next;
+	cutin "pops_sim", 255;
+	mes "[妈妈]";
+	mes "这不是一种莫大的荣幸吗，我的孩子……？";
+	next;
+	cutin "ra_gwoman", 0;
+	mes "[大祭司]";
+	mes "我们将确保教皇的安全。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "不 ！！";
+	npctalk "我恨它 ！！", instance_npcname("教皇#2hmoon06");
+	next;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "我们别无选择，只能使用武力。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我恨它！我不会去！";
+	next;
+	cutin "ra_gman2", 2;
+	mes "[大祭司]";
+	mes "这不是由你决定的。已经确定了。";
+	next;
+	cutin "ra_gman2", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "使用武力是没有意义的！";
+	next;
+	mes "[奉献者]";
+	mes "你竟然敢插手这件事……！";
+	next;
+	mes "[奉献者]";
+	mes "违抗女神意志是不可原谅的！";
+	npctalk "违抗女神意志是不可原谅的！", instance_npcname("奉献者#2hmoon01");
+	instance_announce 0, "Townsfolk: Pope, we are all looking foward to seeing you in the temple...", bc_map, "0xFFFF00";
+	sleep2 500;
+	donpcevent instance_npcname("#mob2hmoon") + "::OnStart";
+	disablenpc instance_npcname("Pope#2hmoon06");
+	disablenpc instance_npcname("Puppy#2hmoon03");
+	disablenpc instance_npcname("Mom#2hmoon01");
+	disablenpc instance_npcname("Dad#2hmoon01");
+	disablenpc instance_npcname("High Priest#2hmoon01");
+	disablenpc instance_npcname("High Priest#2hmoon02");
+	disablenpc instance_npcname("Devotee#2hmoon01");
+	disablenpc instance_npcname("Devotee#2hmoon02");
+	disablenpc instance_npcname("Townsfolk#2hmoon01");
+	disablenpc instance_npcname("Townsfolk#2hmoon02");
+	disablenpc instance_npcname("Townsfolk#2hmoon03");
+	disablenpc instance_npcname("Townsfolk#2hmoon04");
+	disablenpc instance_npcname("Guard#2hmoon21");
+	disablenpc instance_npcname("Guard#2hmoon22");
+	disablenpc instance_npcname("Guard#2hmoon23");
+	disablenpc instance_npcname("Guard#2hmoon24");
+	disablenpc instance_npcname("Guard#2hmoon25");
+	disablenpc instance_npcname("Guard#2hmoon26");
+	disablenpc instance_npcname("Guard#2hmoon27");
+	disablenpc instance_npcname("Guard#2hmoon28");
+	disablenpc instance_npcname("Townsfolk#2hmoon11");
+	disablenpc instance_npcname("Townsfolk#2hmoon12");
+	disablenpc instance_npcname("Townsfolk#2hmoon13");
+	disablenpc instance_npcname("Townsfolk#2hmoon14");
+	disablenpc instance_npcname("Townsfolk#2hmoon15");
+	disablenpc instance_npcname("Townsfolk#2hmoon16");
+	disablenpc instance_npcname("Townsfolk#2hmoon17");
+	disablenpc instance_npcname("Townsfolk#2hmoon18");
+	disablenpc instance_npcname("Townsfolk#2hmoon21");
+	disablenpc instance_npcname("Townsfolk#2hmoon22");
+	disablenpc instance_npcname("Townsfolk#2hmoon23");
+	disablenpc instance_npcname("Townsfolk#2hmoon24");
+	disablenpc instance_npcname("Townsfolk#2hmoon25");
+	disablenpc instance_npcname("Townsfolk#2hmoon26");
+	disablenpc instance_npcname("Townsfolk#2hmoon27");
+	if ('mode == 1)
+		mercenary_create 3569,1800000; //POPE_MD_H_MERC_NORMAL
+	else
+		mercenary_create 3570,1800000; //POPE_MD_H_MERC_CASUAL
+	if ('progress == 12)
+		'progress = 13;
+	end;
+}
+
+1@pop2,64,75,3	duplicate(dummy_disabled_npc)	Pope#2hmoon07	4_F_ARUNA_POP2
+
+1@pop2,66,206,0	script(DISABLED)	#2hmoon05	139,5,5,{
+	disablenpc();
+	donpcevent instance_npcname("#mob2hmoon") + "::OnStart";
+	end;
+}
+
+1@pop2,66,156,0	duplicate(#2hmoon05)	#2hmoon06	139,5,5
+1@pop2,119,123,0	duplicate(#2hmoon05)	#2hmoon07	139,5,5
+1@pop2,48,126,0	duplicate(#2hmoon07)	#2hmoon08	139,5,5
+1@pop2,57,83,0	duplicate(#2hmoon07)	#2hmoon09	139,5,5
+1@pop2,129,38,0	duplicate(#2hmoon07)	#2hmoon10	139,5,5
+
+1@pop2,116,219,1	duplicate(dummy_npc)	Luwmin#2hmoon01	4_M_CHILD
+1@pop2,42,87,0	duplicate(dummy_npc)	#2mum01	111
+1@pop2,94,47,0	duplicate(dummy_npc)	#2mum02	111
+
+1@pop2,66,236,3	duplicate(dummy_disabled_npc)	Luwmin#2hmoon02	4_M_CHILD
+1@pop2,55,114,6	duplicate(dummy_disabled_npc)	Luwmin#2hmoon03	4_M_CHILD
+1@pop2,60,237,5	duplicate(dummy_disabled_npc)	Guard#2hmoon01	4_M_RASWORD
+1@pop2,62,234,7	duplicate(dummy_disabled_npc)	Guard#2hmoon02	4_M_RASWORD
+1@pop2,65,232,7	duplicate(dummy_disabled_npc)	Guard#2hmoon03	4_M_RASWORD
+1@pop2,62,240,5	duplicate(dummy_disabled_npc)	Guard#2hmoon04	4_M_RASWORD
+1@pop2,66,240,3	duplicate(dummy_disabled_npc)	Guard#2hmoon05	4_M_RASWORD
+1@pop2,68,239,3	duplicate(dummy_disabled_npc)	Guard#2hmoon06	4_M_RASWORD
+1@pop2,68,234,1	duplicate(dummy_disabled_npc)	Guard#2hmoon07	4_M_RASWORD
+1@pop2,70,236,1	duplicate(dummy_disabled_npc)	Guard#2hmoon08	4_M_RASWORD
+1@pop2,66,206,7	duplicate(dummy_disabled_npc)	Guard#2hmoon10	4_M_RASWORD
+1@pop2,60,204,7	duplicate(dummy_disabled_npc)	Guard#2hmoon11	4_M_RASWORD
+1@pop2,62,202,7	duplicate(dummy_disabled_npc)	Guard#2hmoon12	4_M_RASWORD
+1@pop2,64,200,7	duplicate(dummy_disabled_npc)	Guard#2hmoon13	4_M_RASWORD
+1@pop2,66,198,1	duplicate(dummy_disabled_npc)	Guard#2hmoon14	4_M_RASWORD
+1@pop2,68,200,1	duplicate(dummy_disabled_npc)	Guard#2hmoon15	4_M_RASWORD
+1@pop2,70,202,1	duplicate(dummy_disabled_npc)	Guard#2hmoon16	4_M_RASWORD
+1@pop2,72,204,1	duplicate(dummy_disabled_npc)	Guard#2hmoon17	4_M_RASWORD
+1@pop2,124,84,7	duplicate(dummy_disabled_npc)	Guard#2hmoon21	4_M_RASWORD
+1@pop2,127,83,7	duplicate(dummy_disabled_npc)	Guard#2hmoon22	4_M_RASWORD
+1@pop2,128,81,5	duplicate(dummy_disabled_npc)	Guard#2hmoon23	4_M_RASWORD
+1@pop2,128,77,5	duplicate(dummy_disabled_npc)	Guard#2hmoon24	4_M_RASWORD
+1@pop2,127,73,5	duplicate(dummy_disabled_npc)	Guard#2hmoon25	4_M_RASWORD
+1@pop2,124,71,5	duplicate(dummy_disabled_npc)	Guard#2hmoon26	4_M_RASWORD
+1@pop2,121,72,3	duplicate(dummy_disabled_npc)	Guard#2hmoon27	4_M_RASWORD
+1@pop2,119,74,3	duplicate(dummy_disabled_npc)	Guard#2hmoon28	4_M_RASWORD
+1@pop2,66,156,7	duplicate(dummy_disabled_npc)	Guard#2hmoon30	4_M_RASWORD
+1@pop2,60,154,7	duplicate(dummy_disabled_npc)	Guard#2hmoon31	4_M_RASWORD
+1@pop2,62,152,7	duplicate(dummy_disabled_npc)	Guard#2hmoon32	4_M_RASWORD
+1@pop2,64,150,7	duplicate(dummy_disabled_npc)	Guard#2hmoon33	4_M_RASWORD
+1@pop2,66,148,1	duplicate(dummy_disabled_npc)	Guard#2hmoon34	4_M_RASWORD
+1@pop2,68,150,1	duplicate(dummy_disabled_npc)	Guard#2hmoon35	4_M_RASWORD
+1@pop2,70,152,1	duplicate(dummy_disabled_npc)	Guard#2hmoon36	4_M_RASWORD
+1@pop2,72,154,1	duplicate(dummy_disabled_npc)	Guard#2hmoon37	4_M_RASWORD
+1@pop2,128,81,7	duplicate(dummy_disabled_npc)	Guard#2hmoon41	4_M_RASWORD
+1@pop2,130,81,1	duplicate(dummy_disabled_npc)	Guard#2hmoon42	4_M_RASWORD
+1@pop2,128,79,7	duplicate(dummy_disabled_npc)	Guard#2hmoon43	4_M_RASWORD
+1@pop2,130,79,1	duplicate(dummy_disabled_npc)	Guard#2hmoon44	4_M_RASWORD
+1@pop2,128,77,7	duplicate(dummy_disabled_npc)	Guard#2hmoon45	4_M_RASWORD
+1@pop2,130,77,1	duplicate(dummy_disabled_npc)	Guard#2hmoon46	4_M_RASWORD
+1@pop2,128,75,7	duplicate(dummy_disabled_npc)	Guard#2hmoon47	4_M_RASWORD
+1@pop2,130,75,1	duplicate(dummy_disabled_npc)	Guard#2hmoon48	4_M_RASWORD
+1@pop2,129,73,1	duplicate(dummy_disabled_npc)	Guard#2hmoon49	4_M_RASWORD
+1@pop2,59,235,7	duplicate(dummy_disabled_npc)	High Priest Zhed#2hmoon	4_M_RACHOLD1
+1@pop2,49,84,1	duplicate(dummy_disabled_npc)	Luwmin#2hmoon04	4_M_CHILD
+1@pop2,123,78,7	duplicate(dummy_disabled_npc)	Luwmin#2hmoon05	4_M_CHILD
+1@pop2,62,76,5	duplicate(dummy_disabled_npc)	Luwmin#2hmoon06	4_M_CHILD
+1@pop2,88,43,7	duplicate(dummy_disabled_npc)	Luwmin#2hmoon07	4_M_CHILD
+1@pop2,135,46,5	duplicate(dummy_disabled_npc)	Luwmin#2hmoon08	4_M_CHILD
+1@pop2,58,114,4	duplicate(dummy_disabled_npc)	Puppy#2hmoon01	4_DOG01
+1@pop2,50,85,1	duplicate(dummy_disabled_npc)	Puppy#2hmoon02	4_DOG01
+1@pop2,124,79,1	duplicate(dummy_disabled_npc)	Puppy#2hmoon03	4_DOG01
+1@pop2,90,42,1	duplicate(dummy_disabled_npc)	Puppy#2hmoon04	4_DOG01
+1@pop2,135,49,5	duplicate(dummy_disabled_npc)	Puppy#2hmoon05	4_DOG01
+1@pop2,59,118,3	duplicate(dummy_disabled_npc)	Friend#2hmoon01	4_F_CHILD
+1@pop2,60,117,3	duplicate(dummy_disabled_npc)	Friend#2hmoon02	4_M_MIKID
+1@pop2,60,115,1	duplicate(dummy_disabled_npc)	Friend#2hmoon03	4_F_KID2
+1@pop2,46,88,7	duplicate(dummy_disabled_npc)	Friend#2hmoon04	4_F_CHILD
+1@pop2,46,85,6	duplicate(dummy_disabled_npc)	Friend#2hmoon05	4_M_MIKID
+1@pop2,49,88,3	duplicate(dummy_disabled_npc)	Friend#2hmoon06	4_F_KID2
+1@pop2,91,43,1	duplicate(dummy_disabled_npc)	Friend#2hmoon07	4_F_CHILD
+1@pop2,92,44,3	duplicate(dummy_disabled_npc)	Friend#2hmoon08	4_M_MIKID
+1@pop2,136,45,7	duplicate(dummy_disabled_npc)	Friend#2hmoon09	4_F_CHILD
+1@pop2,121,80,5	duplicate(dummy_disabled_npc)	Mom#2hmoon01	4_F_GODEMOM
+1@pop2,121,78,7	duplicate(dummy_disabled_npc)	Dad#2hmoon01	4_M_RACHMAN1
+1@pop2,125,78,1	duplicate(dummy_disabled_npc)	High Priest#2hmoon01	4_F_MADAME
+1@pop2,123,76,7	duplicate(dummy_disabled_npc)	High Priest#2hmoon02	4_M_RACHOLD1
+1@pop2,126,80,3	duplicate(dummy_disabled_npc)	Devotee#2hmoon01	4_F_MASK
+1@pop2,122,81,5	duplicate(dummy_disabled_npc)	Devotee#2hmoon02	4_M_MASK
+1@pop2,129,83,3	duplicate(dummy_disabled_npc)	Devotee#2hmoon03	4_M_MASK
+1@pop2,130,80,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon01	4_F_CAVE1
+1@pop2,132,76,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon02	4_F_EINOLD
+1@pop2,129,74,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon03	4_M_MIDDLE1
+1@pop2,130,85,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon04	4_M_MIDDLE
+1@pop2,127,89,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon11	1_F_01
+1@pop2,131,87,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon12	1_M_SIGNMONK
+1@pop2,130,84,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon13	1_M_04
+1@pop2,133,81,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon14	1_M_SIGNMONK
+1@pop2,136,83,3	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon15	1_M_JOBTESTER
+1@pop2,135,76,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon16	4_M_MASK
+1@pop2,132,72,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon17	4_F_04
+1@pop2,129,68,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon18	4_KID01
+1@pop2,131,68,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon21	1_F_01
+1@pop2,125,67,1	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon22	4_F_RACHOLD
+1@pop2,119,69,7	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon23	4_M_04
+1@pop2,123,84,7	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon24	4_M_DESERT
+1@pop2,116,73,7	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon25	4_M_CAVE1
+1@pop2,117,75,7	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon26	4_F_SHABBY
+1@pop2,114,78,7	duplicate(dummy_disabled_npc)	Townsfolk#2hmoon27	101
+1@pop2,119,123,5	duplicate(dummy_disabled_npc)	Pope#2hmoon10	4_F_ARUNA_POP
+1@pop2,48,126,5	duplicate(dummy_disabled_npc)	Pope#2hmoon11	4_F_ARUNA_POP
+1@pop2,57,83,7	duplicate(dummy_disabled_npc)	Pope#2hmoon12	4_F_ARUNA_POP
+1@pop2,129,38,1	duplicate(dummy_disabled_npc)	Pope#2hmoon13	4_F_ARUNA_POP
+
+1@pop2,0,0,0	script	#mob2hmoon	139,{
+	end;
+OnStart:
+OnMyMobDead:
+	attachrid 'account_id_leader;
+	.@event$ = instance_npcname("#mob2hmoon") + "::OnMyMobDead";
+
+	if (mobcount('map_pop2$, .@event$) > 0)
+		end;
+
+	if (!'mode) {
+		.@guard = 3510; //Easy
+		.@fbel = 3511;
+		.@mbel = 3512;
+		.@dog = 3513;
+		.@priest = 3514;
+	}
+	else {
+		.@guard = 3518; //Hard
+		.@fbel = 3519;
+		.@mbel = 3520;
+		.@dog = 3521;
+		.@priest = 3522;
+	}
+	switch( '2hmoon ) {
+	case 0:
+		monster 'map_pop2$,59,235,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,60,237,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,62,234,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,65,232,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,62,240,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,66,240,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,68,239,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,68,234,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,70,236,"Guard",.@guard,1, .@event$;
+		'2hmoon++;
+		end;
+	case 1:
+		instance_announce 0, "Guards: She's heading south, stop her!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Guard#2hmoon10");
+		enablenpc instance_npcname("Guard#2hmoon11");
+		enablenpc instance_npcname("Guard#2hmoon12");
+		enablenpc instance_npcname("Guard#2hmoon13");
+		enablenpc instance_npcname("Guard#2hmoon14");
+		enablenpc instance_npcname("Guard#2hmoon15");
+		enablenpc instance_npcname("Guard#2hmoon16");
+		enablenpc instance_npcname("Guard#2hmoon17");
+		enablenpc instance_npcname("#2hmoon05");
+		'2hmoon++;
+		end;
+	case 2:
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "我们将确保新教皇的安全。", instance_npcname("警卫#2hmoon10");
+		sleep2 1500;
+		npctalk "如有不服者，将予以武力处理。", instance_npcname("警卫#2hmoon10");
+		sleep2 1500;
+		disablenpc instance_npcname("Guard#2hmoon10");
+		disablenpc instance_npcname("Guard#2hmoon11");
+		disablenpc instance_npcname("Guard#2hmoon12");
+		disablenpc instance_npcname("Guard#2hmoon13");
+		disablenpc instance_npcname("Guard#2hmoon14");
+		disablenpc instance_npcname("Guard#2hmoon15");
+		disablenpc instance_npcname("Guard#2hmoon16");
+		disablenpc instance_npcname("Guard#2hmoon17");
+		monster 'map_pop2$,66,206,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,60,204,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,62,202,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,64,200,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,66,198,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,68,200,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,70,202,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,72,204,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,63,195,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,65,195,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,69,195,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,71,195,"Guard",.@guard,1, .@event$;
+		'2hmoon++;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 3:
+		instance_announce 0, "Guards: Go down! Both of them moved south!!!!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Guard#2hmoon30");
+		enablenpc instance_npcname("Guard#2hmoon31");
+		enablenpc instance_npcname("Guard#2hmoon32");
+		enablenpc instance_npcname("Guard#2hmoon33");
+		enablenpc instance_npcname("Guard#2hmoon34");
+		enablenpc instance_npcname("Guard#2hmoon35");
+		enablenpc instance_npcname("Guard#2hmoon36");
+		enablenpc instance_npcname("Guard#2hmoon37");
+		enablenpc instance_npcname("#2hmoon06");
+		'2hmoon++;
+		end;
+	case 4:
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "我们必须小心，不要伤害教皇！", instance_npcname("警卫#2hmoon30");
+		sleep2 1500;
+		npctalk "我们将确保她的安全。", instance_npcname("警卫#2hmoon30");
+		sleep2 1500;
+		disablenpc instance_npcname("Guard#2hmoon30");
+		disablenpc instance_npcname("Guard#2hmoon31");
+		disablenpc instance_npcname("Guard#2hmoon32");
+		disablenpc instance_npcname("Guard#2hmoon33");
+		disablenpc instance_npcname("Guard#2hmoon34");
+		disablenpc instance_npcname("Guard#2hmoon35");
+		disablenpc instance_npcname("Guard#2hmoon36");
+		disablenpc instance_npcname("Guard#2hmoon37");
+		monster 'map_pop2$,66,156,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,60,154,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,62,152,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,64,150,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,66,148,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,68,150,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,70,152,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,72,154,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,61,145,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,63,145,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,65,145,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,67,145,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,69,145,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,71,145,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,73,145,"Guard",.@guard,1, .@event$;
+		'2hmoon++;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 5:
+		if (playerattached()) {
+			.@merc = getmercinfo(8,getcharid(0));
+			if (.@merc)
+				unitkill .@merc;
+		}
+		instance_announce 0, "The guards are gone. We need to hurry!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#2hmoon03");
+		'2hmoon++;
+		end;
+	case 6:
+		monster 'map_pop2$,124,84,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,127,83,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,128,81,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,128,77,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,127,73,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,124,71,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,121,72,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,119,74,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,118,77,"Guard",.@guard,1, .@event$;
+		'2hmoon++;
+		end;
+	case 7:
+		instance_announce 0, "Guards: The enemy is too strong!", bc_map, "0xFFFF00";
+		sleep2 1000;
+		instance_announce 0, "Guards: Stop the Pope from leaving!", bc_map, "0xFFFF00";
+		monster 'map_pop2$,126,80,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,129,80,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,132,80,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,126,83,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,129,83,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,132,83,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,126,82,"Suddenly Changed Dog",.@dog,1, .@event$;
+		monster 'map_pop2$,135,83,"Suddenly Changed Dog",.@dog,1, .@event$;
+		monster 'map_pop2$,130,84,"Suddenly Changed Dog",.@dog,1, .@event$;
+		monster 'map_pop2$,134,85,"Suddenly Changed Dog",.@dog,1, .@event$;
+		'2hmoon++;
+		end;
+	case 8:
+		instance_announce 0, "Guards: Watch out, they went north!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#2hmoon10");
+		enablenpc instance_npcname("#2hmoon07");
+		navigateto( "1@pop2",119,123 );
+		'2hmoon++;
+		end;
+	case 9:
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "逃跑解决不了任何问题。", instance_npcname("教皇#2hmoon10");
+		sleep2 1000;
+		npctalk "无论如何，我们都需要面对他们......", instance_npcname("教皇#2hmoon10");
+		sleep2 1000;
+		unittalk getcharid(3), "Pope...?";
+		sleep2 1500;
+		npctalk "......", instance_npcname("教皇#2hmoon10");
+		sleep2 1500;
+		specialeffect EF_MAGICCRASHER, AREA, instance_npcname("Pope#2hmoon10");
+		disablenpc instance_npcname("Pope#2hmoon10");
+		sleep2 1000;
+		instance_announce 0, "Devotees: The birth of the Pope is the will of the Goddess. Do you understand?.", bc_map, "0xFFFF00";
+		monster 'map_pop2$,116,126,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,119,126,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,122,126,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,116,123,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,119,123,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,122,123,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,116,120,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,119,120,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,122,120,"Guard",.@guard,1, .@event$;
+		monster 'map_pop2$,112,114,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,113,115,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,121,111,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,114,115,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,120,117,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,114,120,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,120,112,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,112,117,"Angry Devotee",.@mbel,1, .@event$;
+		'2hmoon++;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 10:
+		instance_announce 0, "Guards: Don't lose sight of her!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#2hmoon11");
+		enablenpc instance_npcname("#2hmoon08");
+		navigateto( "1@pop2",48,126 );
+		'2hmoon++;
+		end;
+	case 11:
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "我想念妈妈、爸爸和鲁敏。", instance_npcname("教皇#2hmoon11");
+		sleep2 1000;
+		npctalk "我感觉我想逃避现实。", instance_npcname("教皇#2hmoon11");
+		sleep2 1000;
+		npctalk "......", instance_npcname("教皇#2hmoon11");
+		sleep2 1000;
+		specialeffect EF_MAGICCRASHER, AREA, instance_npcname("Pope#2hmoon11");
+		disablenpc instance_npcname("Pope#2hmoon11");
+		sleep2 1000;
+		instance_announce 0, "Devotees: Pope, we will welcome you with open arms.", bc_map, "0xFFFF00";
+		monster 'map_pop2$,46,122,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,35,127,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,51,124,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,46,127,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,49,122,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,52,126,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,46,125,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,42,122,"Enraged Devotee",.@fbel,1, .@event$;
+		monster 'map_pop2$,54,113,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,52,116,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,56,116,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,58,119,"Angry Devotee",.@mbel,1, .@event$;
+		monster 'map_pop2$,51,112,"Angry Devotee",.@mbel,1, .@event$;
+		'2hmoon++;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 12:
+		instance_announce 0, "Guards: The south gate, they're heading to the south gate!!!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#2hmoon12");
+		enablenpc instance_npcname("#2hmoon09");
+		navigateto( "1@pop2",57,83 );
+		'2hmoon++;
+		end;
+	case 13:
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "别来烦我。", instance_npcname("教皇#2hmoon12");
+		sleep2 1500;
+		npctalk "回到属于你的地方吧！", instance_npcname("教皇#2hmoon12");
+		sleep2 1000;
+		specialeffect EF_MAGICCRASHER, AREA, instance_npcname("Pope#2hmoon12");
+		disablenpc instance_npcname("Pope#2hmoon12");
+		sleep2 1500;
+		monster 'map_pop2$,57,80,"Furious High Priest",.@priest,1, .@event$;
+		'2hmoon++;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 14:
+		if (playerattached()) {
+			.@merc = getmercinfo(8,getcharid(0));
+			if (.@merc)
+				unitkill .@merc;
+		}
+		if (countitem(25087) < 1 && rand(3) == 0) {
+			instance_announce 0, "The sound of something falling when High Priest appeared was heard.", bc_map, "0xFFFF00";
+			enablenpc instance_npcname("#dollbox02");
+			sleep2 1000;
+		}
+		setpcblock PCBLOCK_NPC, true;
+		instance_announce 0, "Pope: They're all gone. Come on, I gotta get out of here.", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#2hmoon07");
+		sleep2 2000;
+		enablenpc instance_npcname("Luwmin#2hmoon06");
+		npctalk "我不等它。我是来接她的。我们在回来之前就走吧。赶快！", instance_npcname("Luwmin#2hmoon06");
+		sleep2 2000;
+		disablenpc instance_npcname("Luwmin#2hmoon06");
+		npctalk "冒险家，跟我们走吧。", instance_npcname("教皇#2hmoon07");
+		sleep2 2000;
+		disablenpc instance_npcname("Pope#2hmoon07");
+		enablenpc instance_npcname("#2hmoon10");
+		enablenpc instance_npcname("Pope#2hmoon13");
+		unittalk getcharid(3), "I have to follow them!";
+		'2hmoon++;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	case 15:
+		setpcblock PCBLOCK_NPC, true;
+		npctalk "冒险家...", instance_npcname("教皇#2hmoon13");
+		sleep2 2000;
+		unittalk getcharid(3), "Who are you?";
+		sleep2 2000;
+		unittalk getcharid(3), "Why do you have the Pope's appearence and why are you following us?";
+		sleep2 2000;
+		npctalk "我...我...我...我是...", instance_npcname("教皇#2hmoon13");
+		sleep2 2000;
+		unittalk getcharid(3), "Pope?";
+		sleep2 2000;
+		npctalk "冒险家，请跟我来……", instance_npcname("教皇#2hmoon13");
+		disablenpc instance_npcname("Pope#2hmoon13");
+		enablenpc instance_npcname("#2hmoond03");
+		if ('progress == 13)
+			'progress = 14;
+		setpcblock PCBLOCK_NPC, false;
+		end;
+	}
+}
+
+//============================================================
+//== Dolls
+//============================================================
+1@pop1,95,99,4	script(DISABLED)	#dollbox01	4_ENERGY_WHITE,5,5,{
+	end;
+OnTouch:
+	getitem 25087,1;
+	disablenpc();
+	end;
+}
+1@pop2,43,81,4	duplicate(#dollbox01)	#dollbox02	4_ENERGY_WHITE,5,5
+1@pop3,55,61,4	duplicate(#dollbox01)	#dollbox03	4_ENERGY_WHITE,5,5
+
+//============================================================
+//== Warps
+//============================================================
+1@pop1,63,139,0	warp2(DISABLED)	#1hmoond01	2,2,1@pop1,92,143
+1@pop1,100,134,0	warp2(DISABLED)	#1hmoond03	2,2,1@pop1,99,111
+1@pop1,99,68,0	warp2(DISABLED)	#1hmoond05	2,2,1@pop1,99,54
+1@pop1,100,8,0	warp2(DISABLED)	#1hmoond07	2,2,1@pop2,124,218
+
+1@pop2,66,134,0	warp2(DISABLED)	#2hmoond01	2,2,1@pop2,66,125
+1@pop2,130,22,0	warp2(DISABLED)	#2hmoond03	2,2,1@pop3,46,62
+
+1@pop3,79,67,0	warp2(DISABLED)	#3hmoond01	2,2,rachel,177,134
+
+//============================================================
+//== Part 3
+//============================================================
+1@pop3,45,66,3	script	Pope#3hmoon01	4_F_ARUNA_POP2,{
+	if ('progress != 14)
+		end;
+	mes "[教皇]";
+	mes "兄弟，这里是……？";
+	next;
+	cutin "loo_nor", 0;
+	mes "[鲁敏]";
+	mes "现在没事了。我们很安全。";
+	next;
+	cutin "pops_nor", 2;
+	mes "[教皇]";
+	mes "我们常说的梦想之地？如何？";
+	next;
+	cutin "loo_nor", 0;
+	mes "[鲁敏]";
+	mes "我希望，我希望。我想让我的梦想变成现实。";
+	next;
+	cutin "pops_nor", 2;
+	mes "[教皇]";
+	mes "我以为这是一个只存在于梦中的地方。";
+	next;
+	mes "[教皇]";
+	mes "这个喷泉和我想象中的一模一样。那棵树也是。还有……那个娃娃！";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "如果我们躲在这里。没有人能找到我们。";
+	next;
+	cutin "pops_nor", 2;
+	mes "[教皇]";
+	mes "没人能找到我们吗？";
+	npctalk "没有人吗？", instance_npcname("教皇#3hmoon01");
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "是的，你现在就可以把那个冒险者送回去了。";
+	npctalk "我们现在就回去吧。", instance_npcname("Luwmin#3hmoon01");
+	next;
+	mes "[鲁敏]";
+	mes "我们不再需要它们了，因为我们现在很安全。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "冒险家？但 ...";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我将和教皇在一起直到最后。";
+	unittalk getcharid(3), "I will stay with the Pope to the end.";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "让她远离什么？在你来之前我们都很好！";
+	next;
+	mes "[鲁敏]";
+	mes "你出现之后，就有大祭司和侍卫来抓我们了……我们甚至和父母失散了！！";
+	next;
+	mes "[鲁敏]";
+	mes "你对我们来说是一个风险！";
+	npctalk "你对我们来说是一个风险！", instance_npcname("Luwmin#3hmoon01");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "兄弟，别这么说。冒险家一直是值得信赖的伙伴。";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "真的吗？你是真的吗？即使外面的每个人都背叛了我们？";
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "是的。我相信冒险家。";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我以为这个地方只适合我们两个人......现在这个？";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "你认为这个冒险家能比我更好地保护你吗？";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "但 ...";
+	npctalk "但 ...", instance_npcname("教皇#3hmoon01");
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "我们将永远隐藏在这里。摆脱牧师、守卫……甚至爸爸妈妈的束缚。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "...没有人会找到我们！我愿意用我的生命打赌..！";
+	npctalk "永远……没有人会发现……", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇！你不能永远留在这里，你最终需要醒来！";
+	next;
+	cutin "pops_nor", 2;
+	mes "[教皇]";
+	mes "梦 ...？";
+	npctalk "梦 ...？", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "事实上，很多人都在等待着你的到来。这只是一个梦，可能并不能反映过去发生的事情。";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "别听他的！这都是谎言！";
+	npctalk "别听他的！这都是谎言！", instance_npcname("Luwmin#3hmoon01");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "这是梦……？";
+	npctalk "这是梦……？", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "是的，没错。这只是一个梦。这是你和鲁敏所有焦虑的表现。并非你所看到的一切都是真实的。";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "谎言！这都是谎言！！";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我在黑暗中失去了蒂莉比，然后……然后，我遇见了冒险家。";
+	next;
+	cutin "pops_sim", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "你的焦虑在这个梦中被严重扭曲了。";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "别听那个。想都别想！";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "爸爸妈妈抛弃了我...";
+	next;
+	cutin "pops_sim", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "那些人不是你亲生父母...";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我...我需要回到那里...";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "你想回去吗？你可以永远留在这里，不受别人的干扰。你告诉我外面的生活是……令人窒息。";
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "兄弟我能忍住。我能承受。";
+	npctalk "一起去吧", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "不要那样做。 Luwmin 被冻住了，无法动弹。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "他被冻住了？";
+	npctalk "他被冻住了？", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "来这里之前，尼伦就告诉我了。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇的孪生兄弟鲁敏被封印在冰窟的深处。";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "你知道什么...！人都是邪恶到骨子里的！我们从来没有选择！";
+	next;
+	mes "[鲁敏]";
+	mes "就因为我们天生有这个相貌，所以就被抓到了寺庙里。正是因为这个原因，我被囚禁在冰雪之中！";
+	next;
+	mes "[鲁敏]";
+	mes "我们甚至没有得到适当的解释！";
+	next;
+	mes "[鲁敏]";
+	mes "为什么我一出生就遭遇这样的命运……";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "密封的？我的兄弟……被封印了？";
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "现在没关系。从现在开始我们会永远在一起。";
+	npctalk "我们永远在一起。", instance_npcname("Luwmin#3hmoon01");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "那是很久以前的事了……";
+	npctalk "那是很久以前的事了……", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[教皇]";
+	mes "哥哥突然失踪了。";
+	npctalk "哥哥突然失踪了。", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[教皇]";
+	mes "海豹……冰洞……现在很冷。";
+	npctalk "现在很冷。", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[教皇]";
+	mes "兄弟，你现在梦想什么？";
+	npctalk "兄弟，你现在梦想什么？", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[教皇]";
+	mes "这就是我哥哥想和我分享梦想的原因吗？";
+	npctalk "这就是我哥哥想和我分享梦想的原因吗？", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[教皇]";
+	mes "你想梦想什么？";
+	npctalk "你想梦想什么？", instance_npcname("教皇#3hmoon01");
+	next;
+	cutin "loo_smi", 0;
+	mes "[鲁敏]";
+	mes "还要像以前一样在一起。";
+	npctalk "还要像以前一样在一起。", instance_npcname("Luwmin#3hmoon01");
+	next;
+	mes "[鲁敏]";
+	mes "这里。";
+	npctalk "这里。", instance_npcname("Luwmin#3hmoon01");
+	next;
+	mes "[鲁敏]";
+	mes "永远。";
+	npctalk "永远。", instance_npcname("Luwmin#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "这是不对的。";
+	next;
+	cutin "loo_ang", 0;
+	mes "[鲁敏]";
+	mes "你不敢插手！";
+	specialeffect2 EF_FROSTDIVER2;
+	next;
+	mes "[鲁敏]";
+	mes "烦人的冒险家很快就会消失！！！";
+	npctalk "烦人的冒险家很快就会消失！！！", instance_npcname("Luwmin#3hmoon01");
+	cutin "loo_ang", 255;
+	specialeffect2 EF_ICEWALL;
+	unittalk getcharid(3), "?? ....";
+	sleep2 1000;
+	cutin "loo_ang", 0;
+	next;
+	mes "[鲁敏]";
+	mes "开始了！";
+	next;
+	cutin "loo_ang", 255;
+	mes "[教皇]";
+	mes "兄弟...？";
+	npctalk "兄弟...？", instance_npcname("教皇#3hmoon01");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇，这很危险！";
+	mes "靠近我一点...!!!";
+	disablenpc instance_npcname("Luwmin#3hmoon01");
+	disablenpc instance_npcname("Pope#3hmoon01");
+	if ('mode == 1)
+		mercenary_create 3569,1800000; //POPE_MD_H_MERC_NORMAL
+	else
+		mercenary_create 3570,1800000; //POPE_MD_H_MERC_CASUAL
+	instance_announce 0, "There seems to be a chilling presence...", bc_map, "0xFFFF00";
+	if ('progress == 14) {
+		'progress = 15;
+		donpcevent instance_npcname("#mob3hmoon") + "::OnStart";
+	}
+	close3;
+}
+
+1@pop3,42,64,7	duplicate(dummy_npc)	Luwmin#3hmoon01	4_M_CHILD
+
+1@pop3,51,65,7	duplicate(dummy_disabled_npc)	Pope#3hmoon03	4_F_ARUNA_POP
+1@pop3,51,65,7	duplicate(dummy_disabled_npc)	Pope#3hmoon04	4_F_ARUNA_POP2
+1@pop3,57,68,3	duplicate(dummy_disabled_npc)	Pope#3hmoon05	4_F_ARUNA_POP2
+1@pop3,57,68,3	duplicate(dummy_disabled_npc)	Pope#3hmoon06	4_F_ARUNA_POP
+1@pop3,54,69,6	duplicate(dummy_disabled_npc)	Luwmin#3hmoon02	925
+
+1@pop3,54,69,6	script(DISABLED)	Ktullanux#3hmoon01	1779,5,5,{
+	if ('progress != 16)
+		end;
+	mes "[??????]";
+	mes "这是一个微不足道的人类。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "你是谁？";
+	next;
+	cutin "pops_sim", 255;
+	mes "[Ktullanux]";
+	mes "这是冰洞的主人。";
+	npctalk "你不认识我了吗？", instance_npcname("克苏拉努克#3hmoon01");
+	sleep2 1000;
+	unittalk getcharid(3), "Who knows?";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "冰洞的主人？这不是教皇和鲁敏的梦想吗？";
+	next;
+	mes "[Ktullanux]";
+	mes "兄弟姐妹可以通过坚定的决心分享梦想。";
+	npctalk "兄弟姐妹可以通过坚定的决心分享梦想。", instance_npcname("克苏拉努克#3hmoon01");
+	next;
+	mes "[Ktullanux]";
+	mes "一个成为教皇的小孩子和她被封印的双胞胎兄弟鲁敏？";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "为什么我弟弟...";
+	npctalk "为什么 ...", instance_npcname("教皇#3hmoon04");
+	next;
+	cutin "pops_sim", 255;
+	mes "[Ktullanux]";
+	mes "为什么？你为什么问？";
+	next;
+	mes "[Ktullanux]";
+	mes "弟弟鲁敏被强行推入洞穴深处，被冻住了。";
+	npctalk "......", instance_npcname("教皇#3hmoon04");
+	next;
+	mes "[Ktullanux]";
+	mes "携带奥丁之火的人类威胁我要把这个孩子冻在这里......";
+	next;
+	mes "[Ktullanux]";
+	mes "我对人类还是有一定的同情心的。";
+	next;
+	mes "[Ktullanux]";
+	mes "于是我调查了鲁敏的意识。";
+	next;
+	mes "[Ktullanux]";
+	mes "我可以看到当时发生的事情......";
+	next;
+	mes "[Ktullanux]";
+	mes "这些记忆主要与他的双胞胎有关。";
+	next;
+	mes "[Ktullanux]";
+	mes "记得你们曾经和哥哥一起玩耍，在床上聊天，一起哭一起笑。";
+	npctalk "那是一段珍贵的回忆。", instance_npcname("克苏拉努克#3hmoon01");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "兄弟 ...";
+	next;
+	cutin "pops_sim", 255;
+	mes "[Ktullanux]";
+	mes "我决定帮助鲁敏。这是帮助他的一种方式。";
+	next;
+	mes "[Ktullanux]";
+	mes "我们已经找到了解放的方法。这并不困难。";
+	next;
+	mes "[Ktullanux]";
+	mes "鲁敏有能力与他的兄弟姐妹分享梦想。";
+	next;
+	mes "[Ktullanux]";
+	mes "让坐在教皇宝座上的妹妹永远陷入梦境。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "它对你有什么帮助？";
+	next;
+	mes "[Ktullanux]";
+	mes "那些威胁教皇的人让我陷入永恒的沉睡，现在一定很担心。我们都有一个共同的敌人。";
+	next;
+	mes "[Ktullanux]";
+	mes "他们的领袖正在沉睡……沉睡，这一定是多么令人不安。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "那么你可以和鲁敏一起报仇吗？";
+	next;
+	cutin "pops_sim", 255;
+	mes "[" + strcharinfo(0) + "]";
+	mes "你有什么梦想...";
+	unittalk getcharid(3), "This is an unstable dream.";
+	sleep2 2000;
+	npctalk "你太粗鲁了！", instance_npcname("克苏拉努克#3hmoon01");
+	next;
+	mes "[Ktullanux]";
+	mes "如果你不干涉的话！！！";
+	next;
+	mes "[Ktullanux]";
+	mes "我会除掉教皇和鲁敏。";
+	next;
+	mes "[Ktullanux]";
+	mes "教皇，过来！";
+	disablenpc instance_npcname("Ktullanux#3hmoon01");
+	disablenpc instance_npcname("Pope#3hmoon04");
+	if ('mode == 1)
+		mercenary_create 3569,1800000; //POPE_MD_H_MERC_NORMAL
+	else
+		mercenary_create 3570,1800000; //POPE_MD_H_MERC_CASUAL
+	instance_announce 0, "Ktullanux: I shall grant you a painless demise!", bc_map, "0xFFFF00";
+	if ('progress == 16) {
+		'progress = 17;
+		donpcevent instance_npcname("#mob3hmoon") + "::OnStart";
+	}
+	close3;
+}
+
+1@pop3,57,68,1	script(DISABLED)	Pope#3hmoon02	4_F_ARUNA_POP2,{
+	if ('progress != 18)
+		end;
+	mes "[" + strcharinfo(0) + "]";
+	mes "教皇，你还好吗？";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "哥哥……被冻在冰洞里了。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "鲁敏的意识已经不在这个梦里了。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "这是鲁明创造的、与教皇共享的梦境。双胞胎的命运同时让这个梦想成为可能。";
+	next;
+	mes "[教皇]";
+	mes "我想救我的兄弟。我想陪他到这里..";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "如果教皇不回来，许多人会感到不安。";
+	next;
+	mes "[教皇]";
+	mes "我不想回去。这就是我所属的地方。";
+	next;
+	enablenpc instance_npcname("Pope#3hmoon03");
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "回去。";
+	npctalk "回到属于你的地方吧。", instance_npcname("教皇#3hmoon03");
+	next;
+	mes "[教皇]";
+	mes "梦境之地，通道在夜晚开启……";
+	next;
+	mes "[教皇]";
+	mes "我无法隐藏。";
+	next;
+	disablenpc instance_npcname("Pope#3hmoon02");
+	enablenpc instance_npcname("Pope#3hmoon05");
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "你是谁，你是谁？";
+	npctalk "你是谁，你是谁？", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "你知道你是谁吗？";
+	npctalk "你是谁？", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我……我……";
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "你已经知道答案了。";
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我不知道答案……我会和我哥哥在一起。";
+	npctalk "...我会和我哥哥在一起。", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "我一直想和我哥哥在一起。";
+	npctalk "我一直想和我哥哥在一起。", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "爸爸妈妈不会想要这样的……";
+	npctalk "爸爸妈妈不会想要这样的……", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "我们的妈妈，我们的爸爸。他们很“荣幸”地为我们提供服务。";
+	npctalk "我们的妈妈，我们的爸爸。他们很“荣幸”地为我们提供服务。", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "一开始就没有人想要我。";
+	npctalk "一开始就没有人想要我。", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "那么现实中等待你的人呢？";
+	npctalk "那么现实中等待你的人呢？", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "……我不是任何人的替代者，我一开始就不希望这样的事情发生！";
+	npctalk "……我不是任何人的替代者，我一开始就不希望这样的事情发生！", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "生命是一种祝福。有时，你无法选择生活中你想要的东西。";
+	npctalk "生命是一种祝福。有时，你无法选择生活中你想要的东西。", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "即便如此，那也会……让我很高兴。";
+	npctalk "即便如此，那也会……让我很高兴。", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "你就是那个能够通过给别人机会而给自己机会的人。你是一个特殊的存在，就像黑暗中的月亮。";
+	npctalk "你就是那个能够通过给别人机会而给自己机会的人。你是一个特殊的存在，就像黑暗中的月亮。", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_sim", 2;
+	mes "[教皇]";
+	mes "我，我……";
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "你是谁？";
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "我是阿鲁纳费尔茨的教皇。";
+	npctalk "我是阿鲁纳费尔茨的教皇。", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "你就是我。";
+	npctalk "你就是我。", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "我就是你。";
+	npctalk "我就是你。", instance_npcname("教皇#3hmoon03");
+	next;
+	cutin "pops_smi", 2;
+	mes "[教皇]";
+	mes "我是阿鲁纳费尔茨的教皇。";
+	npctalk "我是阿鲁纳费尔茨的教皇。", instance_npcname("教皇#3hmoon05");
+	next;
+	cutin "pop_nor", 0;
+	mes "[教皇]";
+	mes "我是阿鲁纳费尔茨的教皇。";
+	npctalk "我是阿鲁纳费尔茨的教皇。", instance_npcname("教皇#3hmoon03");
+	cutin "pop_nor", 255;
+	sleep2 2000;
+	specialeffect EF_CONCENTRATION2, AREA, instance_npcname("Pope#3hmoon03");
+	specialeffect EF_CONCENTRATION2, AREA, instance_npcname("Pope#3hmoon03");
+	sleep2 1000;
+	specialeffect EF_BASH3D6, AREA, instance_npcname("Pope#3hmoon05");
+	specialeffect EF_ITEM315, AREA, instance_npcname("Pope#3hmoon05");
+	specialeffect EF_BASH3D6, AREA, instance_npcname("Pope#3hmoon03");
+	specialeffect EF_ITEM315, AREA, instance_npcname("Pope#3hmoon03");
+	specialeffect 1044, AREA, instance_npcname("Pope#3hmoon03");
+	specialeffect 1044, AREA, instance_npcname("Pope#3hmoon03");
+	disablenpc instance_npcname("Pope#3hmoon03");
+	sleep2 2000;
+	specialeffect EF_PRIMECHARGE4, AREA, instance_npcname("Pope#3hmoon05");
+	disablenpc instance_npcname("Pope#3hmoon05");
+	enablenpc instance_npcname("Pope#3hmoon06");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "你还好吗？";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "我终于明白了...";
+	next;
+	mes "[教皇]";
+	mes "人们爱我。尽力而为……就是做我自己。";
+	next;
+	mes "[教皇]";
+	mes "是时候从这个梦中醒来了。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "你的梦想怎么样？";
+	next;
+	mes "[教皇]";
+	mes "这很有趣，我永远不想忘记它。我很高兴。尽管如此，这仍然是一个幸福的梦，也可能是一个可怕的噩梦。";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "……不过，能这样遇见哥哥，我还是很高兴的。";
+	next;
+	mes "[教皇]";
+	mes "已经很久了";
+	next;
+	mes "[教皇]";
+	mes "如果我能再做这个梦的话，我想救我的兄弟。";
+	npctalk "如果你能得到...", instance_npcname("教皇#3hmoon06");
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "然而...";
+	next;
+	mes "[教皇]";
+	mes "别担心，我不会永远沉睡。";
+	next;
+	mes "[教皇]";
+	mes "我仍然……也许我会再次做这个梦。";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "...以及有我的兄弟在我身边的梦想...";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "我们将共同面对这个问题。";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "谢谢。";
+	next;
+	cutin "pop_nor", 2;
+	mes "[教皇]";
+	mes "等待白昼的半月。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "顺便说一句，我发现了这个娃娃。";
+	next;
+	mes "[教皇]";
+	mes "提利比！";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "丢失的娃娃..它对你来说有什么特别的意义吗？";
+	next;
+	mes "[教皇]";
+	mes "哥哥给了我娃娃来安慰我。";
+	next;
+	mes "[教皇]";
+	mes "现在我不再需要它了，只要我有我的兄弟就可以了。我并不孤独。";
+	next;
+	mes "[教皇]";
+	mes "我会回到属于我的地方。";
+	next;
+	mes "[" + strcharinfo(0) + "]";
+	mes "好吧，明天见。";
+	next;
+	mes "[教皇]";
+	mes "谢谢你帮助我。";
+	if (countitem(25087) > 0) {
+		delitem 25087,1; //Old_Doll
+		getexp 350000,350000;
+		getitem 25088,2; //Dream_Piece
+	}
+	if ('progress == 18)
+		'progress = 19;
+	disablenpc instance_npcname("Pope#3hmoon06");
+	instance_announce 0, "An exit has appeared in the east direction.", bc_map, "0xFFFF00";
+	enablenpc instance_npcname("#3hmoond01");
+	cutin "pop_nor",255;
+	navigateto( "1@pop3",79,67 );
+	close3;
+}
+
+1@pop3,0,0,0	script	#mob3hmoon	139,{
+OnStart:
+OnMyMobDead:
+	if (mobcount('map_pop3$, instance_npcname("#mob3hmoon") + "::OnMyMobDead") > 0)
+		end;
+	killmonsterall 'map_pop3$;
+	if (!'mode) {
+		.@ice = 3515; //Easy
+		.@loo = 3516;
+	} else {
+		.@ice = 3523; //Hard
+		.@loo = 3524;
+	}
+	switch( '3hmoon ) {
+	case 0:
+		monster 'map_pop3$,55,61,"Enraged Luwmin",.@loo,1, instance_npcname("#mob3hmoon") + "::OnMyMobDead";
+		monster 'map_pop3$,50,62,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,49,65,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,60,62,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,44,56,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,42,60,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,42,51,"Frozen Heart",.@ice,1;
+		'3hmoon++;
+		end;
+	case 1:
+		if (playerattached()) {
+			.@merc = getmercinfo(8,getcharid(0));
+			if (.@merc)
+				unitkill .@merc;
+		}
+		if (countitem(25087) < 1) {
+			instance_announce 0, "The sound of something falling when Luwmin appeared can be heard.", bc_map, "0xFFFF00";
+			enablenpc instance_npcname("#dollbox03");
+			sleep 1000;
+		}
+		instance_announce 0, "... Lonely... Alone... I hate this coldness...", bc_map, "0xFFFF00";
+		if (!'mode) {
+			if ('progress == 15)
+				'progress = 18;	// (final)
+			enablenpc instance_npcname("Pope#3hmoon02");
+			enablenpc instance_npcname("Luwmin#3hmoon02");
+			end;
+		}
+		sleep 1000;
+		instance_announce 0, "Someday you will be abandoned, like me!!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Ktullanux#3hmoon01");
+		enablenpc instance_npcname("Pope#3hmoon04");
+		if ('progress == 15)
+			'progress = 16;
+		'3hmoon++;
+		end;
+	case 2:
+		monster 'map_pop3$,54,69,"Ktullanux",3526,1, instance_npcname("#mob3hmoon") + "::OnMyMobDead";
+		monster 'map_pop3$,62,57,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,49,62,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,63,54,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,59,51,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,59,55,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,53,61,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,53,58,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,48,61,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,54,53,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,44,68,"Frozen Heart",.@ice,1;
+		monster 'map_pop3$,51,54,"Frozen Heart",.@ice,1;
+		'3hmoon++;
+		end;
+	case 3:
+		if (playerattached()) {
+			.@merc = getmercinfo(8,getcharid(0));
+			if (.@merc)
+				unitkill .@merc;
+		}
+		instance_announce 0, "Arghh...... To think that this was just a mere mortal...! What a disgrace...!!!", bc_map, "0xFFFF00";
+		enablenpc instance_npcname("Pope#3hmoon02");
+		enablenpc instance_npcname("Luwmin#3hmoon02");
+		if ('progress == 17)
+			'progress = 18;
+		end;
+	}
+}

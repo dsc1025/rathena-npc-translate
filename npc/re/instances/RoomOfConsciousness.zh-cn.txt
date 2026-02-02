@@ -1,0 +1,930 @@
+//===== rAthena Script =======================================
+//= Instance Room of Consciousness.
+//===== Description: =========================================
+//- [Walkthrough conversion]
+//- Require Banquet main quest.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//= 1.1 Added a setting to prevent an exploit
+//      (searchs "'exploit_disabled" variable - the variable is
+//      false by default like on official server). [Capuche]
+//============================================================
+
+1@mir,103,40,3	script	Fenrir#1mir	4_F_FENRIR,{
+	if (is_party_leader() == false)	// it shouldn't happen
+		end;
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "密封在地下";
+	mes "普隆德拉城堡的...";
+	mes "我没想到会这么大...";
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "里面到底是什么？";
+	next;
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "我不知道。我们先来调查一下内部。";
+	close2;
+	cutin "",255;
+	disablenpc instance_npcname("Iris#1mir");
+	disablenpc instance_npcname("Fenrir#1mir");
+	end;
+
+OnInstanceInit:
+	'map_name$ = instance_mapname("1@mir");
+	'step = 0;
+
+	// On official server the instance can be repeated if the player log out after the death of Bijou (main quest)
+	// true: prevent the exploit
+	// false: like on official - exploitable
+	'exploit_disabled = false;
+
+	disablenpc instance_npcname("Bijou#2mir");
+
+	disablenpc instance_npcname("Fenrir#3mir");
+	disablenpc instance_npcname("Iris#3mir");
+	disablenpc instance_npcname("Bijou#3mir");
+	disablenpc instance_npcname("Renovated Amdarais#3mir");
+
+	disablenpc instance_npcname("Fenrir#4mir");
+	disablenpc instance_npcname("Iris#4mir");
+	disablenpc instance_npcname("Bijou#4mir");
+
+	disablenpc instance_npcname("Fenrir#5mir");
+	disablenpc instance_npcname("Iris#5mir");
+	disablenpc instance_npcname("Bijou#5mir");
+	disablenpc instance_npcname("Sarah#5mir");
+
+	disablenpc instance_npcname("Fenrir#6mir");
+	disablenpc instance_npcname("Iris#6mir");
+	disablenpc instance_npcname("Bijou#6mir");
+	disablenpc instance_npcname("Sarah#6mir");
+
+	disablenpc instance_npcname("Fenrir#boss1a");
+	disablenpc instance_npcname("Fenrir#boss1b");
+	disablenpc instance_npcname("Fenrir#boss1c");
+	disablenpc instance_npcname("Fenrir#boss1d");
+	disablenpc instance_npcname("Iris#boss1a");
+	disablenpc instance_npcname("Iris#boss1b");
+	disablenpc instance_npcname("Iris#boss1c");
+	disablenpc instance_npcname("Iris#boss1d");
+
+	disablenpc instance_npcname("Fenrir#boss2a");
+	disablenpc instance_npcname("Fenrir#boss2b");
+	disablenpc instance_npcname("Fenrir#boss2c");
+	disablenpc instance_npcname("Fenrir#boss2d");
+	disablenpc instance_npcname("Iris#boss2a");
+	disablenpc instance_npcname("Iris#boss2b");
+	disablenpc instance_npcname("Iris#boss2c");
+	disablenpc instance_npcname("Iris#boss2d");
+
+	disablenpc instance_npcname("eq#mir2");
+	disablenpc instance_npcname("eq#mir3");
+	disablenpc instance_npcname("eq#mir4");
+	disablenpc instance_npcname("eq#mir5");
+	disablenpc instance_npcname("eq#mir6");
+	end;
+}
+
+1@mir,100,94,7	script	Iris#2mir	4_F_IRIS,{
+	if (is_party_leader() == false)	// it shouldn't happen
+		end;
+	if ('step != 0)
+		end;
+	mes "[虹膜]";
+	mes "这……这一定是……";
+	mes "尤弥尔之心！";
+	next;
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "这...";
+	mes "这是尤弥尔的心……";
+	next;
+	cutin "hero_iris_01",255;
+	mes "～隆隆声～";
+	next;
+	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Iris#2mir");
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "为什么这里会震动？！";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "～咕噜声～他们肯定也开始攻击这里了。";
+	next;
+	enablenpc instance_npcname("Bijou#2mir");
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "〜咧嘴笑〜很高兴见到你们大家。";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "!!";
+	mes "你一定是在开玩笑吧！";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "从这一刻起，我们是不朽军团 by Lord Valkyrie Himelmez";
+	mes "将接管这里。";
+	next;
+	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Iris#2mir");
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "什么？你怎么敢！";
+	mes "我是游戏。来吧！";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "～咧嘴笑～我看起来有时间去处理你这个人类这样的小事吗？";
+	mes "但是，出于纯粹的怜悯，我会让你尝尝不朽军团的可怕力量。";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "～咕噜～军团士兵什么时候才到这里的？";
+	close2;
+	cutin "",255;
+	if ('step == 0) {
+		'step = 1;
+		donpcevent instance_npcname("eq#mir1") + "::OnEvent";
+		disablenpc instance_npcname("Iris#2mir");
+	}
+	end;
+}
+
+1@mir,101,104,0	script	eq#mir1	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	initnpctimer;
+	end;
+OnTimer200:
+	disablenpc instance_npcname("Iris#1mir");
+	disablenpc instance_npcname("Fenrir#1mir");
+	disablenpc instance_npcname("Fenrir#2mir");
+	disablenpc instance_npcname("Bijou#2mir");
+	mapannounce 'map_name$, "Fenrir: The enemies will show up soon! Brace yourself!", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer2200:
+	mapannounce 'map_name$, "Fenrir: The enemies are swarming in. We must get rid of them all!", bc_map,0xFFFF00,FW_NORMAL,12;
+	// coords inaccurate
+	monster 'map_name$,83,67,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SKELETON
+	monster 'map_name$,91,51,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SKELETON
+	monster 'map_name$,111,67,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SKELETON
+	monster 'map_name$,92,69,"Enchanted Soldier Skeleton",3447,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SOLDIER_SKELETON
+	monster 'map_name$,109,50,"Enchanted Soldier Skeleton",3447,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_SOLDIER_SKELETON
+	monster 'map_name$,109,47,"Enchanted Archer Skeleton",3445,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_ARCHER_SKELETON
+	monster 'map_name$,90,48,"Enchanted Archer Skeleton",3445,1, instance_npcname("eq#mir1") + "::OnMobDead";// P_ARCHER_SKELETON
+	'skeleton_wave[0] = 7;
+	stopnpctimer;
+	end;
+
+OnMobDead:
+	'skeleton_wave[0]--;
+	if ('skeleton_wave[0] == 0) {
+		mapannounce 'map_name$, "Iris: ~Exhales~ Did we knock out all the enemies now?", bc_map,0xFFFF00,FW_NORMAL,12;
+		startnpctimer;
+	}
+	end;
+OnTimer4200:
+	mapannounce 'map_name$, "Fenrir: I don't think so. Some of the remnants are still here. Watch out!", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer6200:
+	// coords inaccurate
+	monster 'map_name$,83,67,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_SKELETON
+	monster 'map_name$,91,51,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_SKELETON
+	monster 'map_name$,111,67,"Enchanted Skeleton",3446,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_SKELETON
+	monster 'map_name$,92,69,"Enchanted Soldier Skeleton",3447,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_SOLDIER_SKELETON
+	monster 'map_name$,109,50,"Enchanted Soldier Skeleton",3447,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_SOLDIER_SKELETON
+	monster 'map_name$,109,47,"Enchanted Archer Skeleton",3445,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_ARCHER_SKELETON
+	monster 'map_name$,90,48,"Enchanted Archer Skeleton",3445,1, instance_npcname("eq#mir1") + "::OnMobDead2";// P_ARCHER_SKELETON
+	'skeleton_wave[1] = 7;
+	stopnpctimer;
+	end;
+
+OnMobDead2:
+	'skeleton_wave[1]--;
+	if ('skeleton_wave[1] == 0 && 'step == 1) {
+		'step = 2;
+		mapannounce 'map_name$, "Fenrir: Phew! I think we've done here.", bc_map,0xFFFF00,FW_NORMAL,12;
+		enablenpc instance_npcname("Fenrir#3mir");
+		enablenpc instance_npcname("Iris#3mir");
+		enablenpc instance_npcname("Bijou#2mir");
+		disablenpc instance_npcname("eq#mir1");
+	}
+	end;
+}
+
+1@mir,103,85,1	script	Iris#3mir	4_F_IRIS,{
+	if (is_party_leader() == false)	// it shouldn't happen
+		end;
+	if ('step != 2)
+		end;
+	mes "[珠宝]";
+	mes "〜咯咯笑〜我认为你对于人类来说并没有那么糟糕。";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "但你认为你能再次摆脱这个困境吗？醒醒吧，我的部下们！";
+	specialeffect EF_WARP,AREA, instance_npcname("Renovated Amdarais#3mir");
+	sleep2 3000;
+	specialeffect EF_ENTRY,AREA, instance_npcname("Renovated Amdarais#3mir");
+	enablenpc instance_npcname("Renovated Amdarais#3mir");
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "这……这怪物到底是怎么回事？！";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "啊...";
+	mes "我走之前会让你知道我的情况。";
+	mes "我是比茹。";
+	mes "我是瓦尔基里·希梅尔梅兹大人的副官。";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "～呻吟声～";
+	mes "瓦尔基里的部下从来没有让我失望过，你也没有。";
+	mes "尤弥尔之心是一个巨大的能量源泉。你到底想用它做什么？";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "......";
+	mes "你不需要知道。无论如何，你很快就会被消灭。";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "我认为你不会将它用于任何正当理由。";
+	mes "我会阻止比茹夺走尤弥尔之心。你去解决那个巨大的怪物吧！";
+	close2;
+	cutin "",255;
+	if ('step == 2) {
+		'step = 3;
+		donpcevent instance_npcname("eq#mir2") + "::OnEvent";
+	}
+	end;
+}
+
+1@mir,101,104,0	script	eq#mir2	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	enablenpc instance_npcname("eq#mir2");
+	enablenpc instance_npcname("eq#mir3");
+	disablenpc instance_npcname("Bijou#2mir");
+	disablenpc instance_npcname("Fenrir#3mir");
+	disablenpc instance_npcname("Iris#3mir");
+	disablenpc instance_npcname("Renovated Amdarais#3mir");
+
+	monster 'map_name$,101,95,"Renovated Amdarais",3448,1, instance_npcname("eq#mir2") + "::OnMobDead";// P_AMDARAIS
+	'boss_id = $@mobid[0];
+	'target_event = 1;	// Amdarais
+	initnpctimer;
+	end;
+OnTimer1000:
+	getunitdata 'boss_id, .@data;
+	if (.@data[UMOB_HP] == .@data[UMOB_MAXHP]) {
+		initnpctimer;
+		end;
+	}
+	mapannounce 'map_name$, "Iris: Oh, this monster...I don't think its HP doesn't seem to drop no matter how many times I hit.", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer3000:
+	mapannounce 'map_name$, "Bijou: ~Chuckles~ Amdarais won't get knocked down that easily.", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer5000:
+	mapannounce 'map_name$, "Fenrir: This undead seems to be different from any other undeads.", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer7000:
+	mapannounce 'map_name$, "Fenrir: Yes, it's the nucleus! Attack its nucleus to inflict huge damage!", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer9000:
+	donpcevent instance_npcname("eq#mir3") + "::OnEvent";
+	stopnpctimer;
+	end;
+OnMobDead:
+	if ('step != 3)
+		end;
+	'step = 4;
+	stopnpctimer;
+	donpcevent instance_npcname("eq#mir3") + "::OnStop";
+	if ('random_letter$ != "")
+		donpcevent instance_npcname( "Fenrir#boss1" + 'random_letter$ ) + "::OnStop";
+	disablenpc instance_npcname("eq#mir2");
+
+	enablenpc instance_npcname("Fenrir#4mir");
+	enablenpc instance_npcname("Iris#4mir");
+	end;
+}
+
+1@mir,101,104,0	script	eq#mir3	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	callsub S_Announce, true;
+OnEvent2:
+	callsub S_Announce, false;
+S_Announce:
+	setarray .@list$[0],"a","b","c","d";
+	'random_letter$ = .@list$[ rand(4) ];
+	donpcevent instance_npcname( "Fenrir#boss" + 'target_event + "" + 'random_letter$ ) + "::OnEvent";	// 1: P_AMDARAIS / 2: BIJOU
+	if (getarg(0) == true)
+		mapannounce 'map_name$, "Fenrir: Lure it to where I am!", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnTimer25000:
+	donpcevent instance_npcname("eq#mir3") + "::OnEvent";
+	stopnpctimer;
+	end;
+OnStop:
+	stopnpctimer;
+	disablenpc instance_npcname("eq#mir3");
+	end;
+}
+
+1@mir,103,80,3	script	Fenrir#boss1a	4_F_FENRIR,2,2,{
+	end;
+OnEvent:
+	'fenrir_name$ = instance_npcname( strnpcinfo(0) );
+	'iris_name$ = instance_npcname( "Iris#" + strnpcinfo(2) );
+	enablenpc 'fenrir_name$;
+	enablenpc 'iris_name$;
+	end;
+
+OnTouchNPC:
+	if ('touch_mob == 0) {
+		npctalk "芬里尔：干得好！现在轮到你了，艾丽丝！", 'fenrir_name$;
+		'touch_mob = 1;
+		initnpctimer;
+	}
+	end;
+OnTimer2000:
+	npctalk "艾丽丝：好吧，让我来吧！我，艾莉丝，想要的是……！", 'iris_name$;
+	specialeffect EF_BEGINSPELL,AREA, 'iris_name$;
+	end;
+OnTimer4000:
+	npctalk "Qalo ss：“abi 是贝尔塔特！走！！", 'iris_name$;
+	if ('target_event == 1)
+		unittalk 'boss_id, "Aaarrgghhh---!!";
+	else
+		unittalk 'boss_id, "Bijou: What the...!!";
+	end;
+OnTimer5000:
+	npctalk "艾里斯：成功了！", 'iris_name$;
+	end;
+OnTimer7000:
+	npctalk "芬里尔：那么，现在轮到我了。 ～激动的呐喊～", 'fenrir_name$;
+	specialeffect EF_BEGINSPELL,AREA, 'fenrir_name$;
+	specialeffect EF_TETRACASTING,AREA, 'fenrir_name$;
+	progressbar_npc "000000",3;
+	end;
+OnTimer10000:
+	npctalk "芬里尔：拿着这个！！", 'fenrir_name$;
+	specialeffect EF_SUI_EXPLOSION,AREA, 'fenrir_name$;
+	specialeffect EF_LORD,AREA, 'fenrir_name$;
+	specialeffect EF_FLAMELAUNCHER,AREA, 'fenrir_name$;
+	if ('target_event == 1)
+		unittalk 'boss_id, "~Screams~";
+	else
+		unittalk 'boss_id, "Bijou: ~Groans~ More hurting than I thought...!";
+	getunitdata 'boss_id, .@data;
+	if (.@data[UMOB_HP] > 0) {
+		.@damage = rand(700,1300) * 1000;
+		if (.@damage >= .@data[UMOB_HP])
+			.@mob_hp = 0;
+		else
+			.@mob_hp = .@data[UMOB_HP] - .@damage;
+		setunitdata 'boss_id, UMOB_HP, .@mob_hp;
+	}
+	end;
+OnTimer13000:
+	npctalk "芬里尔：这并不完美，但我认为我们已经造成了相当大的损害！", 'fenrir_name$;
+	end;
+OnTimer14500:
+	npctalk "芬里尔：我消耗的魔法太多了。我会短暂休息一下。那我就指望你了！", 'fenrir_name$;
+	end;
+OnTimer16500:
+	donpcevent instance_npcname("eq#mir3") + "::OnStart";
+OnStop:
+	stopnpctimer;
+	disablenpc();
+	disablenpc instance_npcname( "Iris#" + strnpcinfo(2) );
+	'touch_mob = 0;
+	'random_letter$ = "";
+	end;
+}
+
+1@mir,100,90,7	script	Iris#4mir	4_F_IRIS,{
+	if (is_party_leader() == false)	// it shouldn't happen
+		end;
+	if ('step != 4)
+		end;
+	mes "[虹膜]";
+	mes "是那个吗……？现在已经消失了吗？";
+	mes "那么现在剩下的就是……";
+	next;
+	enablenpc instance_npcname("Bijou#4mir");
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "我……只剩下我一个人了……";
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "什么？！";
+	next;
+	mes "〜战俘！〜";
+	specialeffect EF_SUI_EXPLOSION,AREA, instance_npcname("Iris#4mir");
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "啊啊啊——！！！";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "我必须说这是相当出乎意料的。 ～咯咯笑～";
+	mes "我没想到有人能打败我花了三年时间完成的《Amdarais》。";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "你将支付";
+	mes "毁了我三年的努力！！";
+	mes "慢慢地...";
+	mes "而且非常痛苦……!!";
+	close2;
+	cutin "",255;
+	if ('step == 4) {
+		'step = 5;
+		donpcevent instance_npcname("eq#mir4") + "::OnEvent";
+	}
+	end;
+}
+
+1@mir,101,104,0	script	eq#mir4	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	enablenpc instance_npcname("eq#mir4");
+	disablenpc instance_npcname("Fenrir#4mir");
+	disablenpc instance_npcname("Iris#4mir");
+	disablenpc instance_npcname("Bijou#4mir");
+	monster 'map_name$,102,95,"Bijou",3450,1, instance_npcname("eq#mir4") + "::OnMobDead";// BIJOU
+	'boss_id = $@mobid[0];
+	initnpctimer;
+	end;
+OnTimer1000:
+	getunitdata 'boss_id, .@data;
+	if (.@data[UMOB_HP] == .@data[UMOB_MAXHP]) {
+		initnpctimer;
+		end;
+	}
+	donpcevent instance_npcname("eq#mir4") + "::OnMobDead";
+	end;
+OnMobDead:
+	if ('step != 5)
+		end;
+	'step = 6;
+	killmonster 'map_name$, instance_npcname("eq#mir4") + "::OnMobDead";
+	stopnpctimer;
+	enablenpc instance_npcname("Fenrir#5mir");
+	enablenpc instance_npcname("Iris#5mir");
+	enablenpc instance_npcname("Bijou#5mir");
+	disablenpc instance_npcname("eq#mir4");
+	end;
+}
+
+1@mir,103,90,1	script	Fenrir#5mir	4_F_FENRIR,{
+	if (is_party_leader() == false)	// it shouldn't happen
+		end;
+	if ('step != 6)
+		end;
+	mes "[芬里尔]";
+	mes "~呻吟~我不敢相信似乎什么都不起作用！";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "～咯咯笑～";
+	mes "我会让你尝尝绝望的滋味。";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "冰霜潜水员！";
+	specialeffect EF_LOCKON,AREA, instance_npcname("Fenrir#5mir");
+	sleep2 3000;
+	specialeffect EF_FREEZE,AREA, instance_npcname("Fenrir#5mir");
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "～呻吟声～";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "感觉如何？很痛苦，是吗？";
+	mes "你现在一定已经瘫痪了。";
+	mes "……不过别指望我会这么轻易杀了你……";
+	next;
+	mes "[珠宝]";
+	mes "我应该先解决掉这个令人讨厌的牧师女孩。";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "我……艾丽丝！！";
+	next;
+	cutin "sarah_hero3",2;
+	mes "[莎拉]";
+	mes "......";
+	enablenpc instance_npcname("Sarah#5mir");
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "莎拉……？";
+	next;
+	cutin "sarah_hero3",2;
+	mes "[莎拉]";
+	mes "所以就是这样...";
+	mes "这里是普隆德拉城堡的地下。";
+	mes "第一代尤弥尔之心被封印的地方。";
+	next;
+	mes "[莎拉]";
+	mes "那一定是...";
+	mes "尤弥尔的心...";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "是什么让你千里迢迢来到这里？";
+	mes "萨拉·艾琳.";
+	mes "我没想到你会出现在这里。";
+	next;
+	cutin "sarah_hero3",2;
+	mes "[莎拉]";
+	mes "你觉得你来这里做什么，比茹？";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "是的，我正在处理那些烦人的错误。";
+	next;
+	cutin "sarah_hero3",2;
+	mes "[莎拉]";
+	mes "比茹，这算什么答案？";
+	next;
+	mes "[莎拉]";
+	mes "我的问题是：你还在这里做什么，完全是在偷懒，而且，你为什么不打破尤米尔之心的封锁？";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "嗯，呃……不过我确实打破了第一道封印。";
+	mes "这个地方很快就会被清理干净。莎拉，你没什么可担心的。";
+	next;
+	mes "[珠宝]";
+	mes "相信我并认为它已经完成。请做一个骄傲的瓦尔基里吧。";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "（~嗤之以鼻~她真是一个紧张又可怜的女武神！我不敢相信像你这样的新手会得到和希梅尔梅兹一样的待遇。这太不公平了。）";
+	next;
+	cutin "sarah_hero3_2",2;
+	mes "[莎拉]";
+	mes "你一定是疯了，比茹……这里没有希梅尔梅兹。";
+	next;
+	cutin "bijou_03",2;
+	mes "[珠宝]";
+	mes "......~喘气~";
+	mes "我气喘吁吁了！";
+	next;
+	cutin "sarah_hero3_2",2;
+	mes "[莎拉]";
+	mes "你最好闭嘴！";
+	next;
+	cutin "bijou_03",2;
+	mes "[珠宝]";
+	mes "～咳嗽～";
+	mes "～一直咳嗽～";
+	next;
+	cutin "sarah_hero3",2;
+	mes "[莎拉]";
+	mes "我当然可以没有一个为这种琐事浪费时间的下属。";
+	mes "让我亲自拿走尤弥尔的心吧。";
+	disablenpc instance_npcname("Sarah#5mir");
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "（她确实是瓦尔基里。哦，对此你能做什么？）";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "时机正好！";
+	mes "冰霜潜水员！";
+	specialeffect EF_FREEZE,AREA, instance_npcname("Bijou#5mir");
+	next;
+	cutin "bijou_03",2;
+	mes "[珠宝]";
+	mes "你说什么？！";
+	next;
+	mes "[珠宝]";
+	mes "哇……就这样结束了；称呼。";
+	mes "怎么会发生这种事？";
+	next;
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "这个魔法...";
+	mes "正如我所料，这一定是高级魔法。铸造它是相当困难的。";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "（这是什么？！她刚刚掌握了我对她使用的魔法吗？）";
+	next;
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "艾丽丝！这是一种治疗药剂。";
+	mes "喝了它你就会清醒过来。";
+	next;
+	sleep2 500;
+	specialeffect EF_POTION1,AREA, instance_npcname("Iris#5mir");
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "～闷闷的声音～";
+	next;
+	sleep2 500;
+	specialeffect EF_POTION1,AREA, instance_npcname("Iris#5mir");
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "哦，你现在醒了吗？";
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "嗯……";
+	mes "～呕吐声～";
+	mes "哎呀！这是苦吗！";
+	mes "这到底是什么？！";
+	mes "你给了我什么？";
+	next;
+	cutin "fenrir_a",2;
+	mes "[芬里尔]";
+	mes "所以你醒了，艾丽丝。";
+	mes "我很放心。";
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "～叹气～顺便说一句，芬里尔！";
+	mes "尤弥尔之心呢？";
+	next;
+	cutin "bijou_02",2;
+	mes "[珠宝]";
+	mes "（……芬里尔？我对尤弥尔之心想太多了，完全忘记了她。如果我猜对了，她一定是……！）";
+	next;
+	mes "[珠宝]";
+	mes "〜呼气〜我明白了。这是正确的。";
+	mes "你体内流淌的那兽血……那就是答案！";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "那么，就让我以正确的方式为您服务吧！ ～咯咯笑～";
+	mes "没想到竟然见到了一千年前的英雄！";
+	next;
+	cutin "bijou_03",2;
+	mes "[珠宝]";
+	mes "死！！";
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "...当心。她要进攻了！";
+	close2;
+	cutin "",255;
+	if ('step == 6) {
+		'step = 7;
+		donpcevent instance_npcname("eq#mir5") + "::OnEvent";
+	}
+	end;
+}
+
+1@mir,101,104,0	script	eq#mir5	HIDDEN_WARP_NPC,{
+	end;
+OnEvent:
+	enablenpc instance_npcname("eq#mir3");
+	enablenpc instance_npcname("eq#mir5");
+	disablenpc instance_npcname("Bijou#5mir");
+	disablenpc instance_npcname("Fenrir#5mir");
+	disablenpc instance_npcname("Iris#5mir");
+
+	monster 'map_name$,102,95,"Bijou",3450,1, instance_npcname("eq#mir5") + "::OnMobDead";// BIJOU
+	'boss_id = $@mobid[0];
+	'target_event = 2;
+	initnpctimer;
+	end;
+OnTimer1000:
+	getunitdata 'boss_id, .@data;
+	if (.@data[UMOB_HP] == .@data[UMOB_MAXHP]) {
+		initnpctimer;
+		end;
+	}
+	end;
+OnTimer3000:
+	mapannounce 'map_name$, "Iris: Let's fight together and we will win again!", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer5000:
+	mapannounce 'map_name$, "Fenrir: I think so, too. This time, too, I'd like to ask you to lure it to where I am.", bc_map,0xFFFF00,FW_NORMAL,12;
+	end;
+OnTimer7000:
+	mapannounce 'map_name$, "Bijou: ......", bc_map,0xFFFF00,FW_NORMAL,12;
+	donpcevent instance_npcname("eq#mir3") + "::OnEvent2";
+	donpcevent instance_npcname("eq#mir6") + "::OnTalk";
+	stopnpctimer;
+	end;
+OnMobDead:
+	if ('step != 7)
+		end;
+	'step = 8;
+	stopnpctimer;
+	donpcevent instance_npcname("eq#mir3") + "::OnStop";
+	donpcevent instance_npcname("eq#mir6") + "::OnStop";
+	if ('random_letter$ != "")
+		donpcevent instance_npcname( "Fenrir#boss2" + 'random_letter$ ) + "::OnStop";
+	disablenpc instance_npcname("eq#mir5");
+
+	enablenpc instance_npcname("Fenrir#6mir");
+	enablenpc instance_npcname("Iris#6mir");
+	enablenpc instance_npcname("Bijou#6mir");
+
+	if (playerattached() && 'exploit_disabled && ep16_royal == 19) {
+		erasequest 7700;// Once More!
+		setquest 7701;// Lost Imir Heart
+		ep16_royal = 20;
+	}
+	end;
+}
+
+1@mir,101,104,0	script	eq#mir6	HIDDEN_WARP_NPC,{
+	end;
+OnTalk:
+	enablenpc instance_npcname("eq#mir6");
+	initnpctimer;
+	end;
+OnTimer20000:
+	.@r = rand(3);
+	if (.@r == 0)
+		unittalk 'boss_id, "Bijou: To Lord Himelmez!";
+	else if (.@r == 1)
+		unittalk 'boss_id, "Bijou: Heh...You're still alive!";
+	else
+		unittalk 'boss_id, "Bijou: ~Chuckles~ Are you feeling the pain?";
+	initnpctimer;
+	end;
+OnStop:
+	stopnpctimer;
+	end;
+}
+
+1@mir,100,95,5	script	Iris#6mir	4_F_IRIS,{
+	if (is_party_leader() == false)	// it shouldn't happen
+		end;
+	if ('step != 8)
+		end;
+	mes "[虹膜]";
+	mes "～咕噜声～";
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "～邪恶的笑声～去死吧！";
+	mes "牧师该死！";
+	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
+	next;
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "爱丽丝！！";
+	mes "不！停止！！";
+	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
+	next;
+	cutin "bijou_01",2;
+	mes "[珠宝]";
+	mes "～咯咯笑～";
+	mes "所以你正在寻找合作伙伴，是吗？";
+	mes "好主意，但是...我认为已经太晚了。";
+	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
+	next;
+	mes "[珠宝]";
+	mes "因为...";
+	mes "这将是对你最后的、致命的打击。哇哈哈哈！";
+	specialeffect EF_TETRACASTING,AREA, instance_npcname("Iris#6mir");
+	next;
+	sleep2 300;
+	enablenpc instance_npcname("Sarah#6mir");
+	cutin "bijou_03",2;
+	mes "[珠宝]";
+	mes "......~叹息~";
+	mes "啊？……在我肚子里……";
+	mes "这把刀...";
+	mes "给……莎拉……？如何？";
+	specialeffect EF_HFLIMOON1,AREA, instance_npcname("Bijou#6mir");
+	next;
+	cutin "bijou_death",4;
+	mes "[莎拉]";
+	mes "这就是你想说的全部吗？";
+	mes "不用担心。我会让希梅尔梅斯知道你的勇敢贡献。别怪我，比茹。";
+	next;
+	mes "[珠宝]";
+	mes "为什么...？告诉我为什么！";
+	mes "……那个……那个小妞……是吗？因为她是你妹妹？是这样吗？告诉我，莎拉！";
+	next;
+	mes "[珠宝]";
+	mes "～呻吟声～";
+	specialeffect EF_HFLIMOON1,AREA, instance_npcname("Bijou#6mir");
+	disablenpc instance_npcname("Bijou#6mir");
+	next;
+	mes "[莎拉]";
+	mes "......";
+	mes "你的灵魂已经被释放了，Bijou。";
+	next;
+	cutin "hero_iris_01",2;
+	mes "[虹膜]";
+	mes "（她救了我吗……？）";
+	next;
+	mes "[虹膜]";
+	mes "莎拉...";
+	mes "是莎拉，对吧？";
+	mes "人们说我们小时候就分手了";
+	next;
+	mes "[虹膜]";
+	mes "……那你有什么计划吗？为什么……你为什么要救我？！";
+	mes "你难道不认为这会改变我的信念吗！我永远、永远不会原谅你！";
+	next;
+	mes "[虹膜]";
+	mes "妈妈……爸爸……我们镇上的每个人。我要报仇！";
+	next;
+	cutin "sarah_hero3",2;
+	mes "[莎拉]";
+	mes "闭上那张嘴！";
+	mes "不要成为一个戏剧女王，好像你是这里唯一的受害者。";
+	mes "他们只是为自己的罪孽付出了代价。他们12年前杀害我母亲所犯下的罪孽。";
+	next;
+	mes "[莎拉]";
+	mes "你想让我告诉你真相吗？你们口中念叨的那些‘亲人’……我们的大长辈和我们镇上的人们其实……";
+	next;
+	mes "[莎拉]";
+	mes "......";
+	mes "停下来...";
+	mes "无论如何，尤弥尔的心都是第一位的。";
+	next;
+	mes "[莎拉]";
+	mes "记住我的话。";
+	mes "我没让你活。";
+	mes "我会让你很快死去。";
+	mes "我保证下次我们见面的时候你就再也见不到天日了。";
+	next;
+	mes "[莎拉]";
+	mes "在那之前你永远不要让任何人杀了你，艾丽丝。";
+	mes "那么今天我就先告辞了。";
+	disablenpc instance_npcname("Sarah#6mir");
+	next;
+	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Iris#6mir");
+	cutin "fenrir_b",2;
+	mes "[芬里尔]";
+	mes "〜咕噜声〜瓦尔基里在夺取尤米尔之心时摧毁了天花板！";
+	next;
+	mes "[芬里尔]";
+	mes "我们也最好离开这里！这个地方太危险了！";
+	close2;
+	if (ep16_royal == 19) {
+		erasequest 7700;// Once More!
+		setquest 7701;// Lost Imir Heart
+		ep16_royal = 20;
+	}
+	warp "prt_lib_q",88,83;
+	end;
+}
+
+1@mir,100,40,5	duplicate(dummy_npc)	Iris#1mir	4_F_IRIS
+1@mir,103,94,1	duplicate(dummy_npc)	Fenrir#2mir	4_F_FENRIR
+1@mir,102,98,3	duplicate(dummy_npc)	Bijou#2mir	4_F_BIJOU
+
+1@mir,100,85,7	duplicate(dummy_npc)	Fenrir#3mir	4_F_FENRIR
+1@mir,102,88,3	duplicate(dummy_npc)	Bijou#3mir	4_F_BIJOU
+1@mir,101,95,1	duplicate(dummy_npc)	Renovated Amdarais#3mir	3448
+
+1@mir,94,73,3	duplicate(Fenrir#boss1a)	Fenrir#boss1b	4_F_FENRIR,2,2
+1@mir,112,73,3	duplicate(Fenrir#boss1a)	Fenrir#boss1c	4_F_FENRIR,2,2
+1@mir,103,60,3	duplicate(Fenrir#boss1a)	Fenrir#boss1d	4_F_FENRIR,2,2
+
+1@mir,100,80,5	duplicate(dummy_npc)	Iris#boss1a	4_F_IRIS
+1@mir,91,73,5	duplicate(dummy_npc)	Iris#boss1b	4_F_IRIS
+1@mir,109,73,5	duplicate(dummy_npc)	Iris#boss1c	4_F_IRIS
+1@mir,100,60,5	duplicate(dummy_npc)	Iris#boss1d	4_F_IRIS
+
+1@mir,103,76,3	duplicate(Fenrir#boss1a)	Fenrir#boss2a	4_F_FENRIR,2,2
+1@mir,94,70,3	duplicate(Fenrir#boss1a)	Fenrir#boss2b	4_F_FENRIR,2,2
+1@mir,112,70,3	duplicate(Fenrir#boss1a)	Fenrir#boss2c	4_F_FENRIR,2,2
+1@mir,103,63,3	duplicate(Fenrir#boss1a)	Fenrir#boss2d	4_F_FENRIR,2,2
+
+1@mir,100,76,5	duplicate(dummy_npc)	Iris#boss2a	4_F_IRIS
+1@mir,91,70,5	duplicate(dummy_npc)	Iris#boss2b	4_F_IRIS
+1@mir,109,70,5	duplicate(dummy_npc)	Iris#boss2c	4_F_IRIS
+1@mir,100,63,5	duplicate(dummy_npc)	Iris#boss2d	4_F_IRIS
+
+1@mir,102,95,3	duplicate(dummy_npc)	Bijou#4mir	4_F_BIJOU
+1@mir,103,90,1	duplicate(dummy_npc)	Fenrir#4mir	4_F_FENRIR
+
+1@mir,102,95,3	duplicate(dummy_npc)	Bijou#5mir	4_F_BIJOU
+1@mir,99,95,5	duplicate(dummy_npc)	Sarah#5mir	4_F_SARAH
+1@mir,100,90,7	duplicate(dummy_npc)	Iris#5mir	4_F_IRIS
+
+1@mir,102,95,3	duplicate(dummy_npc)	Bijou#6mir	4_F_BIJOU
+1@mir,104,95,3	duplicate(dummy_npc)	Sarah#6mir	4_F_SARAH
+1@mir,103,90,1	duplicate(dummy_npc)	Fenrir#6mir	4_F_FENRIR

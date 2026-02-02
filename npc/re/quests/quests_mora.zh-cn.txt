@@ -1,0 +1,5364 @@
+//===== rAthena Script =======================================
+//= Mora Quest NPCs
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Quest NPCs related to Mora:
+//== Theore's Request, Chesire's New Day,
+//== Helping Lope and Euridi, Mora Daily Quests,
+//== Find the Research Tools, Knights of the Neighborhood
+//===== Additional Comments: =================================
+//= 0.1 NPCs are currently placeholders. [Euphy]
+//= 1.0 Implemented all official quests. [Euphy]
+//= 1.1 Added GM management function and NPCs. [Euphy]
+//============================================================
+
+// Theore's Request :: ep14_1_bs
+//============================================================
+mid_camp,148,222,4	script	Theore#ep14_1_bs	982,3,3,{
+	if (BaseLevel < 100) {
+		mes "- 一个穿着白色长袍的人 -";
+		mes "- 正在拉他的头发。 -";
+		close;
+	}
+	if (ep14_1_bs == 0) {
+		mes "[理论]";
+		mes "啊啊啊啊！！！";
+		mes "妈的！！！！";
+		mes "我完了！！！";
+		next;
+		mes "[理论]";
+		mes "我怎么能提交这么糟糕的报告！！！一个5岁的孩子可以做得更好！";
+		mes "不！！！";
+		set ep14_1_bs,1;
+		close;
+	} else if (ep14_1_bs == 1) {
+		mes "- 一个穿着白色长袍的人 -";
+		mes "- 正在拉他的头发。 -";
+		next;
+		if(select("试着和他说话：好吵啊。") == 2) {
+			mes "[理论]";
+			mes "哦，当然，对不起。";
+			mes "我会保留它。";
+			close;
+		}
+		mes "["+strcharinfo(0)+"]";
+		mes "先生……你还好吗？";
+		mes "这样你就会失去所有的头发。";
+		mes "冷静下来。";
+		next;
+		mes "[理论]";
+		mes "哭泣.......";
+		next;
+		mes "[理论]";
+		mes ".......";
+		next;
+		mes "[理论]";
+		mes "奥丁！！！";
+		mes "芙蕾雅！！！";
+		mes "萨扎里姆！！！";
+		mes "谢谢你！！";
+		mes "一切还没有结束！！";
+		next;
+		mes "[理论]";
+		mes "总有希望！我，Theore，会坚持下去！";
+		next;
+		mes "[理论]";
+		mes "亲爱的冒险家！！！";
+		mes "不不不，亲爱的战士！！！";
+		mes "你现在忙吗？";
+		mes "如果你能抽出一点时间给我，我一定会好好奖励你的！";
+		next;
+		switch(select("我很忙：多听他说。")) {
+		case 1:
+			mes "[理论]";
+			mes ".......";
+			mes "我明白了，我想这也是没办法的事了。";
+			mes "我可能会失去所有的头发并出现在生发解决方案的广告上。但我不会反对你，战士。";
+			next;
+			mes "[理论]";
+			mes "亲爱的上帝！我的好运到这里就结束了。 *哭泣*";
+			mes "即使全世界都背弃我，我也不会责怪任何人！";
+			close;
+		case 2:
+			mes "[理论]";
+			mes "啊啊！";
+			mes "我感觉我被拯救了。";
+			mes "所以事情是......";
+			next;
+			mes "[理论]";
+			mes "哦！哦亲爱的！";
+			mes "我真是太粗鲁了，我连自我介绍都没有。";
+			mes "我叫西奥，在“巴泽特·蒂布莱克异世界文化研究所”工作。";
+			next;
+			mes "[理论]";
+			mes "我目前正在 Splendide 大本营研究 Laphines。";
+			mes "可能是因为我太努力了，但现在拉菲人一看到我就跑了。";
+			next;
+			mes "[理论]";
+			mes "截止日期快到了，我还没有弄清楚最关键的部分。";
+			mes "我的教授会非常失望......";
+			next;
+			mes "[理论]";
+			mes "所以你不帮我一把吗？";
+			mes "我们将充分感谢您的帮助——我会亲自告诉教授！";
+			next;
+			switch(select("救命：不救。")) {
+			case 1:
+				mes "[理论]";
+				mes "呜呜呜战士，你是最棒的！";
+				mes "我不会忘记这一点！";
+				mes "我要把它写在我的日记里！！";
+				mes "并在报告中！！！";
+				mes "在我寄回家的信中！";
+				next;
+				mes "[理论]";
+				mes "我会告诉我实验室的朋友！！！";
+				mes "我去告诉卢根！！！";
+				mes "我会写在布告栏上的！！！";
+				mes "让我们来看看！！！还有哪里？";
+				next;
+				mes "- 这个男人似乎处于狂躁状态。 -";
+				mes "- 等他平静下来 -";
+				mes "- 然后尝试再次与他交谈。 -";
+				set ep14_1_bs,2;
+				setquest 11182;
+				close;
+			case 2:
+				mes "[理论]";
+				mes ".......";
+				mes "你这个坏人，让我很生气。";
+				mes "*哭泣*";
+				close;
+			}
+		}
+	} else if (ep14_1_bs == 2) {
+		if (checkquest(11182,PLAYTIME) < 2) {
+			mes "[理论]";
+			mes "......";
+			switch(rand(1,4)) {
+			case 1:
+				mes "我必须告诉我的隔壁邻居Pico！！！";
+				mes "还有卡丘亚！！！";
+				break;
+			case 2:
+				mes "告诉街对面的商家！！！";
+				mes "并且告诉管理员！！！";
+				break;
+			case 3:
+				mes "告诉霍尔格伦先生！！！";
+				mes "给国王写一份报告！！！";
+				break;
+			case 4:
+				mes "告诉周围的人！！！";
+				mes "从天文台大声喊出来，让全世界都听到！！！";
+				break;
+			}
+			next;
+			mes "- 他仍然很躁狂。 -";
+			mes "- 等他平静下来 -";
+			mes "- 然后尝试再次与他交谈。 -";
+			close;
+		}
+		mes "[理论]";
+		mes "我很抱歉。";
+		mes "我有点兴奋。";
+		mes "我确实道歉。";
+		next;
+		mes "[理论]";
+		mes "我通常是一个冷静而理性的人，但今天感觉我去过任何地方——天堂和地狱！";
+		next;
+		mes "[理论]";
+		mes "重点是：我想问你的问题并不难。";
+		next;
+		mes "[理论]";
+		mes "您可能知道，拉菲人正与萨法人交战。";
+		mes "直到最近，他们还无情地攻击萨法斯人。";
+		next;
+		mes "[理论]";
+		mes "但最近，攻击频率明显下降。";
+		mes "我不明白为什么，他们是一心一意的生物，他们不可能只是同情萨法斯的处境。";
+		next;
+		mes "[理论]";
+		mes "此外，还有传言说，手无寸铁的拉菲尼斯飞过田野。";
+		next;
+		mes "[理论]";
+		mes "我见过一次，但他一看到我就跑了，我没有机会问他。";
+		mes "我确信他已经回村了。但尽管我很想问，我还是被禁止进入辉煌大本营。";
+		next;
+		select("被禁止？");
+		mes "[理论]";
+		mes "出色地...";
+		mes "当教授分配给我这个研究项目后，我非常兴奋......";
+		mes "我日日夜夜地在 Splendide 中进行了梳理，最后他们把我赶了出去。";
+		mes "哈哈哈！";
+		next;
+		mes "[理论]";
+		mes "拉菲人虽然看起来很可爱，但他们是战斗专家……";
+		mes "于是我就在这里，没有勇气潜入，但报告却完成了一半……";
+		next;
+		mes "[理论]";
+		mes "告诉我，还有比我更不幸的人生吗？";
+		mes "*咯咯笑*";
+		next;
+		mes "[理论]";
+		mes "那么，勇士，请你找到即将来到辉煌领域的拉菲恩人，看看他们在做什么？";
+		next;
+		mes "[理论]";
+		mes "如果您尝试与它们交谈，它们可能会逃跑，因此当您发现它们时请密切注意。";
+		next;
+		mes "[理论]";
+		mes "拉菲恩人是一群吵闹的人，看到他们如此安静真是令人不安——几乎就像一场巨大的雷暴之前的一段平静。";
+		set ep14_1_bs,3;
+		changequest 11182,11183;
+		close;
+	} else if (ep14_1_bs == 3) {
+		mes "[理论]";
+		mes "那么，勇士，你能找到即将来到辉煌领域的拉菲恩人，并询问他们在做什么吗？";
+		next;
+		mes "[理论]";
+		mes "如果您尝试与它们交谈，它们可能会逃跑，因此当您发现它们时请密切注意。";
+		next;
+		mes "[理论]";
+		mes "拉菲恩人是一群吵闹的人，看到他们如此安静真是令人不安——几乎就像一场巨大的雷暴之前的一段平静。";
+		close;
+	} else if (ep14_1_bs < 10) {
+		if (ep14_1_bs2 == 0) {
+			mes "- 他现在不适合谈话。你应该把袋子带到 Splendide 去寻找它的主人。 -";
+			close;
+		} else if (ep14_1_bs2 < 4) {
+			mes "[理论]";
+			mes "嗯……他们在灌木丛里翻找？";
+			mes "嗯……嗯……";
+			next;
+			mes "[理论]";
+			mes "他们可能留下了线索，你能看看周围吗？";
+			mes "如果他们在灌木丛中寻找，他们可能是在寻找丢失的东西。";
+			mes "或者他们可能留下了一些东西。";
+			close;
+		} else if (ep14_1_bs2 < 7) {
+			if (countitem(6390) == 0) {
+				mes "[理论]";
+				mes "他们可能留下了线索，你能看看周围吗？";
+				mes "如果他们在灌木丛中寻找，他们可能是在寻找丢失的东西。";
+				mes "或者他们可能留下了一些东西。";
+				close;
+			}
+			mes "[理论]";
+			mes "拉芬逃跑时掉落的袋子？";
+			mes "嗯……嗯……一个软皮袋，上面有一根用干藤蔓浸泡在油中制成的绳子……太小了，人类或萨法斯都无法使用……";
+			next;
+			mes "[理论]";
+			mes "难道……难道是？！！";
+			mes "那个物体？！";
+			mes "只是听说过，但没遇到过！！！";
+			next;
+			mes "[理论]";
+			mes "在远古时代，拉菲尼斯常常把仙尘——比如飞扬的尘埃，最大限度地减少灰尘——装在这样的小袋子里。";
+			next;
+			mes "[理论]";
+			mes "他们平时都喜欢奢侈的设计，但这个“仙尘袋”却是他们随身携带的东西，而且制作简单，没有华丽的装饰，符合传统。";
+			next;
+			mes "[理论]";
+			mes "虽然不知道现在会变成什么样子，但如果这就是‘仙尘袋’的话，主人应该会急着找到它吧。";
+			next;
+			mes "[理论]";
+			mes "但我们不能免费归还它。以换取一些信息——这是一笔公平的交易！";
+			next;
+			mes "[理论]";
+			mes "如果我们看看袋子里面，也许他们不会太难过！";
+			mes "哇哦！！";
+			mes "小时候我一直相信有仙女会来给我洒飞尘，让我飞翔！！！";
+			next;
+			mes "- 在我能阻止他之前，-";
+			mes "- 他打开小袋子。 -";
+			next;
+			mes "[理论]";
+			mes ".......";
+			next;
+			mes "[理论]";
+			mes "哦...";
+			mes "浆果……还有叶子？";
+			mes ".......";
+			next;
+			mes "[理论]";
+			mes "……那飞扬的尘埃呢？";
+			mes "不！";
+			mes "我可怜的天真的想象力！！！！";
+			next;
+			mes "- 他现在不适合谈话。你应该把袋子带到 Splendide 去寻找它的主人。 -";
+			set ep14_1_bs2, ep14_1_bs2+3; //4,5,6 -> 7,8,9
+			changequest 11185,11186;
+			close;
+		} else {
+			mes "- 他现在不适合谈话。你应该把袋子带到 Splendide 去寻找它的主人。 -";
+			close;
+		}
+	} else if (ep14_1_bs < 18) {
+		mes "- 他看起来很忙。你应该完成手头的任务然后回来。 -";
+		close;
+	} else if (ep14_1_bs == 18) {
+		mes "[理论]";
+		mes "终于，你回来了！！！！";
+		mes "调查得怎么样了？！";
+		next;
+		mes "[理论]";
+		mes "哇！！！";
+		mes "极好的！！！！！！";
+		mes "难以置信！！！";
+		next;
+		mes "[理论]";
+		mes "最好的！！！！";
+		mes "这肯定足以写一篇出色的报告！";
+		mes "全部感谢你，战士！！";
+		next;
+		mes "[理论]";
+		mes "我永远、永远不会忘记你为我所做的一切！";
+		mes "不！！";
+		mes "我的孙子孙子会记住的！！！！";
+		mes "*哭泣*";
+		next;
+		mes "[理论]";
+		mes "然后我就去对报告进行最后的润色！！！！！！";
+		mes "噢耶！！！！";
+		set ep14_1_bs,19;
+		getexp 0,200000;
+		getitem 6380,5; //Mora_Coin
+		close;
+	} else if (ep14_1_bs > 18) {
+		mes "[理论]";
+		mes "我会以闪电般的速度写报告！！！！！！！";
+		mes "噢耶！！！！";
+		close;
+	}
+	end;
+OnTouch:
+	if (BaseLevel > 99) {
+		if (ep14_1_bs == 0) {
+			mes "[理论]";
+			mes "啊啊啊啊！！！";
+			mes "妈的！！！！";
+			mes "我完了！！！";
+			next;
+			mes "[理论]";
+			mes "我怎么能提交这么糟糕的报告！！！一个5岁的孩子可以做得更好！";
+			mes "不！！！";
+			set ep14_1_bs,1;
+			close;
+		}
+	}
+	end;
+}
+
+-	script	#mora_bush	-1,{
+	if (ep14_1_bs != 3 || rand(5)) {
+		mes "- 这只是一棵普通的灌木丛。 -";
+		close;
+	}
+	set .@i, atoi(charat(strnpcinfo(2),9));
+	set .@rand, rand(1,3);
+	mes "[手无寸铁的拉芬]";
+	mes "啊啊啊啊啊啊啊啊！！！！！！！！！！！！！！！！！！！！！";
+	donpcevent "Fairy#cmd"+.@i+.@rand+"::OnEnable";
+	set ep14_1_bs, .@i+3;
+	set ep14_1_bs2, .@rand;
+	changequest 11183,11184;
+	next;
+	mes "- 你试着和拉芬说话，-";
+	mes "- 谁正在环视灌木丛，-";
+	mes "-但它飞走了-";
+	mes "——同时恐惧地大喊。 -";
+	next;
+	mes "- 仙女在做什么？ -";
+	mes "- 你决定四处看看。 -";
+	donpcevent "Bush"+.@i+"Timer::OnEnable";
+	close;
+OnEnable:
+	enablenpc();
+	donpcevent "Bush"+charat(strnpcinfo(2),9)+"Timer::OnDisable";
+	end;
+OnDisable:
+	disablenpc();
+	end;
+}
+
+-	script	#mora_pouch	-1,{
+	end;
+OnTouch:
+	set .@i, atoi(charat(strnpcinfo(2),9));
+	if (ep14_1_bs == .@i+3) {
+		if (countitem(6390) == 0) {
+			if (checkweight(1201,1) == 0) {
+				mes "- 坚持住！！ -";
+				mes "- 您携带的物品种类过多 -";
+		   		mes "- 接收更多物品。 -";
+				mes "-请减轻负担-";
+		   		mes "- 然后再试一次。 -";
+				close;
+			}
+			if (MaxWeight - Weight < 1000) {
+				mes "- 坚持住！！ -";
+			 	mes "- 你承受的重量太重了 -";
+				mes "-请减轻负担-";
+		   		mes "- 然后再试一次。 -";
+				close;
+			}
+			mes "- 混乱摸索 -";
+			mes "- 窸窸窣窣 -";
+			next;
+			if (rand(1,5) == 4) {
+				mes "- 你找到了一个小袋子。 -";
+				if (ep14_1_bs2 > 0 && ep14_1_bs2 < 4)
+					set ep14_1_bs2, ep14_1_bs2+3;
+				changequest 11184,11185;
+				getitem 6390,1; //Small_Pocket
+				close;
+			} else {
+				mes "- 你什么也没找到。 -";
+				close;
+			}
+		}
+	}
+	end;
+}
+
+-	script	#mora_fairy	-1,{
+	end;
+OnInit:
+	disablenpc();
+	end;
+OnEnable:
+	enablenpc();
+	initnpctimer;
+	end;
+OnDisable:
+	disablenpc();
+	stopnpctimer;
+	end;
+OnTimer5000:
+	donpcevent strnpcinfo(0)+"::OnDisable";
+	stopnpctimer;
+	end;
+}
+
+spl_fild02,79,104,0	duplicate(#mora_bush)	Bush#ep14_1_bs1	111
+spl_fild02,79,104,0	duplicate(#mora_pouch)	#ep14_1_bs1	139,2,2
+spl_fild02,79,104,6	duplicate(#mora_fairy)	Fairy#cmd11	440
+spl_fild02,79,104,6	duplicate(#mora_fairy)	Fairy#cmd12	445
+spl_fild02,79,104,6	duplicate(#mora_fairy)	Fairy#cmd13	439
+
+spl_fild02,103,344,0	duplicate(#mora_bush)	Bush#ep14_1_bs2	111
+spl_fild02,103,344,0	duplicate(#mora_pouch)	#ep14_1_bs2	139,2,2
+spl_fild02,103,344,6	duplicate(#mora_fairy)	Fairy#cmd21	440
+spl_fild02,103,344,6	duplicate(#mora_fairy)	Fairy#cmd22	445
+spl_fild02,103,344,6	duplicate(#mora_fairy)	Fairy#cmd23	439
+
+spl_fild02,261,323,0	duplicate(#mora_bush)	Bush#ep14_1_bs3	111
+spl_fild02,261,323,0	duplicate(#mora_pouch)	#ep14_1_bs3	139,2,2
+spl_fild02,261,323,6	duplicate(#mora_fairy)	Fairy#cmd31	440
+spl_fild02,261,323,6	duplicate(#mora_fairy)	Fairy#cmd32	445
+spl_fild02,261,323,6	duplicate(#mora_fairy)	Fairy#cmd33	439
+
+spl_fild02,137,305,0	duplicate(#mora_bush)	Bush#ep14_1_bs4	111
+spl_fild02,137,305,0	duplicate(#mora_pouch)	#ep14_1_bs4	139,2,2
+spl_fild02,137,305,6	duplicate(#mora_fairy)	Fairy#cmd41	440
+spl_fild02,137,305,6	duplicate(#mora_fairy)	Fairy#cmd42	445
+spl_fild02,137,305,6	duplicate(#mora_fairy)	Fairy#cmd43	439
+
+spl_fild02,23,196,0	duplicate(#mora_bush)	Bush#ep14_1_bs5	111
+spl_fild02,23,196,0	duplicate(#mora_pouch)	#ep14_1_bs5	139,2,2
+spl_fild02,23,196,6	duplicate(#mora_fairy)	Fairy#cmd51	440
+spl_fild02,23,196,6	duplicate(#mora_fairy)	Fairy#cmd52	445
+spl_fild02,23,196,6	duplicate(#mora_fairy)	Fairy#cmd53	439
+
+spl_fild02,186,260,0	duplicate(#mora_bush)	Bush#ep14_1_bs6	111
+spl_fild02,186,260,0	duplicate(#mora_pouch)	#ep14_1_bs6	139,2,2
+spl_fild02,186,260,6	duplicate(#mora_fairy)	Fairy#cmd61	440
+spl_fild02,186,260,6	duplicate(#mora_fairy)	Fairy#cmd62	445
+spl_fild02,186,260,6	duplicate(#mora_fairy)	Fairy#cmd63	439
+
+-	script	#mora_bush_timer	-1,{
+	end;
+OnInit:
+	disablenpc();
+	end;
+OnEnable:
+	enablenpc();
+	initnpctimer;
+	end;
+OnDisable:
+	stopnpctimer;
+	disablenpc();
+	end;
+OnTimer1000:
+	donpcevent "Bush#ep14_1_bs"+charat(strnpcinfo(0),4)+"::OnDisable";
+	end;
+OnTimer600000:
+	donpcevent "Bush#ep14_1_bs"+charat(strnpcinfo(0),4)+"::OnEnable";
+	donpcevent strnpcinfo(0)+"::OnDisable";
+	end;
+}
+spl_fild02,180,1,0	duplicate(#mora_bush_timer)	Bush1Timer	440
+spl_fild02,181,1,0	duplicate(#mora_bush_timer)	Bush2Timer	440
+spl_fild02,182,1,0	duplicate(#mora_bush_timer)	Bush3Timer	440
+spl_fild02,183,1,0	duplicate(#mora_bush_timer)	Bush4Timer	440
+spl_fild02,184,1,0	duplicate(#mora_bush_timer)	Bush5Timer	440
+spl_fild02,186,1,0	duplicate(#mora_bush_timer)	Bush6Timer	440
+
+spl_fild02,187,1,0	script	Field Bush Switch	440,{
+	callfunc "F_GM_NPC";
+	donpcevent "Bush#ep14_1_bs1::OnEnable";
+	end;
+}
+
+splendide,183,117,4	script	Tired-looking Fairy	438,{
+	if (!isequipped(2782)) {
+		mes "[一脸疲惫的仙子]";
+		mes "VeOsaRiveh 没有 ModAsh";
+		next;
+		mes "- 你无法理解仙女的话。 -";
+		mes "- 你需要一些东西来帮助你解释它们。 -";
+		close;
+	}
+	if (ep14_1_bs < 4) {
+		mes "[一脸疲惫的仙子]";
+		mes "我累了，别跟我说话。";
+		close;
+	} else if (ep14_1_bs < 10) {
+		if (checkquest(11187) == -1) {
+			if(!isbegin_quest(11186)) { // TODO: Confirm official dialog (is there one?)
+				mes "[一脸疲惫的仙子]";
+				mes "我累了，别跟我说话。";
+				close;
+			}
+			mes "[一脸疲惫的仙子]";
+			mes "我累了，别跟我说话。";
+			next;
+			select("展示袋子。");
+			mes "[一脸疲惫的仙子]";
+			mes "啊？！";
+			mes "你从哪里得到这个？";
+			next;
+			select("我在灌木丛中发现了它。");
+			mes "[一脸疲惫的仙子]";
+			mes "它可能看起来不起眼，但对我们来说却是一个重要的物体。我想我应该说谢谢。";
+			next;
+			mes "[一脸疲惫的仙子]";
+			mes "但光靠这个袋子想要找到它的主人并不容易……";
+			changequest 11186,11187;
+			next;
+			if(select("我想我看到了一位仙女，可能是主人。:我会考虑一下。") == 2) {
+				mes "[一脸疲惫的仙子]";
+				mes "然后告诉我你是否还记得什么。";
+				close;
+			}
+		} else if (checkquest(11187) == 2) {
+			mes "[一脸疲惫的仙子]";
+			mes "希望你能找到失主。";
+			close;
+		}
+		mes "[一脸疲惫的仙子]";
+		mes "你还记得仙女的样子吗？";
+		next;
+
+		setarray .@Hair$[0],"blonde","grassy-green","woody-brown","sea-blue";
+		setarray .@Skin$[0],"dark","light";
+		setarray .@Clothing$[0],"snow-white","grape","sky-blue","grassy-green";
+		setarray .@Wings$[0],"round","two pairs of","characteristic";
+
+		setarray .@i[1],
+			select("金发：草绿色头发：木棕色头发：海蓝色头发"),
+			select("深色皮肤：浅色皮肤"),
+			select("雪白服装：葡萄服装：天蓝色服装：草绿色服装"),
+			select("圆形翅膀:两对翅膀:特色翅膀");
+
+		set .@i[0], (1 << .@i[1]) | (1 << (.@i[2]+4)) | (1 << (.@i[3]+6)) | (1 << (.@i[4]+10));
+
+		mes "[一脸疲惫的仙子]";
+		mes "一个"+.@Skin$[.@i[2]-1]+"皮肤的仙女，有着"+.@Hair$[.@i[1]-1]+"的头发和"+.@Wings$[.@i[4]-1]+"的翅膀，穿着"+.@Clothing$[.@i[3]-1]+"的衣服......";
+		switch(.@i[0]) {
+		case 4418: // Kusmi: blonde hair, light skin, grape clothing, two pairs of wings
+			mes "嗯……那一定是库斯米了。";
+			next;
+			mes "[一脸疲惫的仙子]";
+			mes "库斯米一定是在村庄东南部地区闲逛。";
+			mes "去看看她的袋子是不是丢了。";
+			if (ep14_1_bs2 == 7)
+				set ep14_1_bs2,10;
+			close;
+		case 2212: // Theodore: grassy-green hair, dark skin, snow-white clothing, round wings
+			mes "嗯……那一定是西奥多。";
+			next;
+			mes "[一脸疲惫的仙子]";
+			mes "西奥多肯定正在村庄东北部地区闲逛。";
+			mes "去看看他的袋子是否丢了。";
+			if (ep14_1_bs2 == 8)
+				set ep14_1_bs2,11;
+			close;
+		case 9264: // Pauchon: sea-blue hair, dark skin, grassy-green clothing, characteristic wings
+			mes "嗯……那肯定是波雄了。";
+			next;
+			mes "[一脸疲惫的仙子]";
+			mes "波雄一定是在村子北部地区闲逛。";
+			mes "去看看她的袋子是不是丢了。";
+			if (ep14_1_bs2 == 9)
+				set ep14_1_bs2,12;
+			close;
+		default:
+			next;
+			mes "[一脸疲惫的仙子]";
+			mes "唔...";
+			mes "我不记得见过这样的仙女。";
+			mes "你确定你没有看错吗？";
+			mes "尝试再次记住它。";
+			close;
+		}
+	}
+	mes "[一脸疲惫的仙子]";
+	mes "这是怎么回事？";
+	mes "找到袋子的主人了吗？";
+	close;
+}
+
+splendide,119,138,4	script	Kusmi#ep14_1_bs	440,{
+	if (!isequipped(2782)) {
+		mes "[碎片]";
+		mes "迪姆福斯塔尔·穆拉尔斯";
+		mes "模安杜洛";
+		mes "模组";
+		mes "DorDuMe U NohLarsFulo Mu Fus";
+		next;
+		mes "- 你无法理解仙女的话。 -";
+		mes "- 你需要一些东西来帮助你解释它们。 -";
+		close;
+	}
+	if (ep14_1_bs > 3 && ep14_1_bs < 10) {
+		mes "[碎片]";
+		mes "你可能是谁？";
+		next;
+		select("展示袋子。");
+		if (countitem(6390) == 0) {
+			mes "[碎片]";
+			mes "你想给我看什么？";
+			close;
+		}
+		if (ep14_1_bs2 == 10) {
+			mes "[碎片]";
+			mes "啊！！";
+			mes "我的荷包！！！！！！";
+			mes "谢谢先生！！！！";
+			mes "我一直在寻找它！";
+			next;
+			select("询问传闻。");
+			mes "[碎片]";
+			mes "这是一个很难的问题！";
+			mes "但你已经把我的袋子还给我了，所以我必须回答……";
+			next;
+			mes "[碎片]";
+			mes "答应我你不会告诉任何人！";
+			mes "如果你能答应的话，请再跟我谈谈。";
+			delitem 6390,1; //Small_Pocket
+			set ep14_1_bs,10;
+			changequest 11187,11188;
+			close;
+		} else {
+			mes "[碎片]";
+			mes "嗯，我不知道是谁，但一定是个邋遢的人，才会像这样丢掉他的袋子。";
+			mes "啊？矿？？";
+			mes "不，我的就在这里，安全吗？";
+			next;
+			mes "[碎片]";
+			mes "这是一件珍贵的物品，所以我希望你能找到失主。";
+			close;
+		}
+	}
+	if (ep14_1_bs2 == 10) {
+		if (ep14_1_bs == 10) {
+			mes "[碎片]";
+			mes "这话不能对任何人说好吗~？";
+			mes "最近，";
+			mes "我们大陆的物资断了！";
+			mes "或者说补给路线被堵住了，我们拿不到补给？";
+			next;
+			mes "[碎片]";
+			mes "我们需要在储存的物品用完之前找到足够的食物，这就是我们一直在灌木丛中翻找的原因。";
+			next;
+			mes "[碎片]";
+			mes "但这片被诅咒的冰冻土地却没有什么好吃的。";
+			mes "我们用魔法勉强保持它的绿色，但制造水果需要太多的能量。";
+			next;
+			mes "[碎片]";
+			mes "制作食物所消耗的能量可能是从进食中获得的能量的两倍。";
+			mes "高层不愿意承认，但这很快就会成为一个严重的问题。";
+			next;
+			mes "[碎片]";
+			mes "我们不能离开战场，因为我们正处于战争之中，所以我们不能去检查。";
+			mes "我很好奇......";
+			next;
+			mes "[碎片]";
+			mes "不只是我，很多拉菲人都很担心。";
+			mes "嗯，情况就是这样，所以如果你在灌木丛中遇到拉芬，请不要和他说话。";
+			mes "真尴尬啊！！！";
+			next;
+			mes "[碎片]";
+			mes "哦，你绝对不能告诉任何人今天发生的事情！";
+			mes "除非那个人想帮助我们……传播这个消息对 Splendide 没有任何好处。";
+			set ep14_1_bs,11;
+			completequest 11188;
+			setquest 11189;
+			close;
+		} else if (ep14_1_bs == 11) {
+			mes "[碎片]";
+			mes "呃？";
+			mes "你还想说话吗？";
+			next;
+			select("来自大陆的补给路线？");
+			mes "[碎片]";
+			mes "好吧，如果你听到了，你就必须帮忙！";
+			mes "还想知道吗？！";
+			next;
+			switch(select("是的。：没有。")) {
+			case 1:
+				mes "[碎片]";
+				mes "这不是一条特殊的道路或任何东西。";
+				mes "只是一条旧马路。";
+				mes "有人说它连接着不同的大陆。它还通过backk连接Splendide大本营和Alfheim。";
+				next;
+				mes "[碎片]";
+				mes "如果你正朝那个方向走，请去看看是否一切顺利。";
+				set ep14_1_bs,12;
+				changequest 11189,11190;
+				close;
+			case 2:
+				mes "[碎片]";
+				mes "谢谢你找到我的袋子。";
+				mes "我本来想给你一些仙尘，但已经所剩无几了。";
+				close;
+			}
+		} else if (ep14_1_bs == 12) {
+			mes "[碎片]";
+			mes "这不是一条特殊的道路或任何东西。";
+			mes "只是一条旧马路。";
+			mes "有人说它连接着不同的大陆。它还通过backk连接Splendide大本营和Alfheim。";
+			next;
+			mes "[碎片]";
+			mes "如果你正朝那个方向走，请去看看是否一切顺利。";
+			close;
+		} else if (ep14_1_bs == 13) {
+			mes "[碎片]";
+			mes "一个缝隙？";
+			mes "这就是为什么我们联系不上大陆的原因。";
+			mes "乌尔格......";
+			mes "很高兴知道上面发生了什么。";
+			next;
+			mes "[碎片]";
+			mes "如果您碰巧经过 Bifrost，请弄清楚发生了什么。";
+			mes "比弗罗斯特 (Bifrost) 中部有一个小村庄，名为“莫拉”(Mora)。所有来自大陆的物资都经过那个村庄。";
+			next;
+			mes "[碎片]";
+			mes "如果你去莫拉村的仓库，经理会告诉你更多信息。";
+			mes "另外，回来的路上，你能看看我的朋友隆多在莫拉村吗？";
+			next;
+			mes "[碎片]";
+			mes "他以前总是在这个时候去拜访Splendide，但现在情况不太好。我得告诉他下次再来。";
+			set ep14_1_bs,14;
+			changequest 11191,11192;
+			close;
+		} else if (ep14_1_bs == 14) {
+			mes "[碎片]";
+			mes "如果您碰巧经过 Bifrost，请弄清楚发生了什么。";
+			mes "比弗罗斯特 (Bifrost) 中部有一个小村庄，名为“莫拉”(Mora)。所有来自大陆的物资都经过那个村庄。";
+			next;
+			mes "[碎片]";
+			mes "如果你去莫拉村的仓库，经理会告诉你更多信息。";
+			if (checkquest(11193) > -1 && checkquest(11193) < 2)
+				close;
+			mes "另外，回来的路上，你能看看我的朋友隆多在莫拉村吗？";
+			next;
+			mes "[碎片]";
+			mes "他以前总是在这个时候去拜访Splendide，但现在情况不太好。我得告诉他下次再来。";
+			close;
+		} else if (ep14_1_bs > 14) {
+			if (checkquest(11193) == -1) {
+				mes "[碎片]";
+				mes "你能查一下我的朋友隆多在莫拉村吗？";
+				next;
+				mes "[碎片]";
+				mes "他以前总是在这个时候去拜访Splendide，但现在情况不太好。我得告诉他下次再来。";
+				close;
+			}
+			mes "[碎片]";
+			mes "嘻！";
+			mes "你真的穿过迷雾森林迷宫的迷雾了吗？";
+			mes "哇！！！";
+			mes "这是非常令人印象深刻的。";
+			next;
+			mes "[碎片]";
+			mes "非常感谢你。";
+			mes "我希望我们能够再次经历 Bifrost。";
+			mes "我想见到隆多并再次与他交谈。";
+			if (ep14_1_bs == 17) {
+				next;
+				mes "[碎片]";
+				mes "哦，Daphrer 位于 Splendide 西北部。";
+			}
+			if (checkquest(11193) < 2) {
+				completequest 11192;
+				completequest 11193;
+			}
+			close;
+		}
+	}
+	mes "[碎片]";
+	mes "这个地方总是很冷。";
+	mes "与我天堂般的家乡如此不同。";
+	close;
+}
+
+splendide,304,295,4	script	Theodore#ep14_1_bs	445,{
+	if (!isequipped(2782)) {
+		mes "[西奥多]";
+		mes "迪姆福斯塔尔·穆拉尔斯";
+		mes "模安杜洛";
+		mes "模组";
+		mes "DorDuMe U NohLarsFulo Mu Fus";
+		next;
+		mes "- 你无法理解仙女的话。 -";
+		mes "- 你需要一些东西来帮助你解释它们。 -";
+		close;
+	}
+	if (ep14_1_bs > 3 && ep14_1_bs < 10) {
+		mes "[西奥多]";
+		mes "你是谁！";
+		next;
+		select("展示袋子。");
+		if (countitem(6390) == 0) {
+			mes "[西奥多]";
+			mes "唔？你是什​​么意思？";
+			close;
+		}
+		if (ep14_1_bs2 == 11) {
+			mes "[西奥多]";
+			mes "啊！！";
+			mes "我的荷包！！！！！！";
+			mes "我一直在到处寻找它。";
+			mes "谢谢！";
+			next;
+			select("询问传闻。");
+			mes "[西奥多]";
+			mes "嗯！！";
+			mes "多么尖锐的问题啊！";
+			next;
+			mes "[西奥多]";
+			mes "如果你真的想听答案，请再跟我谈谈。";
+			mes "我需要时间思考。";
+			delitem 6390,1; //Small_Pocket
+			set ep14_1_bs,10;
+			changequest 11187,11194;
+			close;
+		} else {
+			mes "[西奥多]";
+			mes "那个脏袋子是什么啊！";
+			mes "这绝对不是我的。";
+			next;
+			mes "[西奥多]";
+			mes "但我希望你能找到它真正的主人。";
+			close;
+		}
+	}
+	if (ep14_1_bs2 == 11) {
+		if (ep14_1_bs == 10) {
+			mes "[西奥多]";
+			mes "你不能告诉任何人我要告诉你的事情。";
+			next;
+			mes "[西奥多]";
+			mes "最近，Splendide出现了一个大问题。";
+			mes "与大陆没有任何联系。";
+			mes "不仅通讯被切断，供应也被切断。人们表现得漠不关心，但实际上却有深深的恐慌。";
+			next;
+			mes "[西奥多]";
+			mes "这片冰冻的土地无法用来收集食物，但要耕种却太费力了。";
+			next;
+			mes "[西奥多]";
+			mes "事实上，光是维持绿色就需要耗费惊人的魔力。";
+			mes "高层还没有透露任何消息，但从传言来看，这不是一个容易解决的问题。";
+			next;
+			mes "[西奥多]";
+			mes "由于没有简单的解决办法，每个人都非常担心。";
+			mes "根据军法，我们的士兵在战争期间不能离开战场，因此无法获得更多信息。";
+			next;
+			mes "[西奥多]";
+			mes "因此，如果你碰巧遇到了Laphine，请不要提及这些。";
+			mes "每个人都在尽自己最大的努力，但我们仍然是一支值得骄傲的种族。";
+			next;
+			mes "[西奥多]";
+			mes "正如我之前所说，我告诉你的事情是一个秘密，你不能告诉任何人。";
+			mes "我们确实需要帮助，但我们被逼到了绝境，我们不想让别人知道。";
+			set ep14_1_bs,11;
+			completequest 11194;
+			setquest 11195;
+			close;
+		} else if (ep14_1_bs == 11) {
+			mes "[西奥多]";
+			mes "你跟我还有什么事吗？";
+			next;
+			select("来自大陆的补给路线？");
+			mes "[西奥多]";
+			mes "嗯...如果你听到这个，你可能需要帮助我们？";
+			mes "你还想知道吗？";
+			next;
+			switch(select("是的。：没有。")) {
+			case 1:
+				mes "[西奥多]";
+				mes "补给路线经过Bifrost，你可以从Splendide大本营的后面到达。";
+				mes "这就是我们在这里设立大本营的原因。";
+				mes "这条路线的起源尚不清楚，但长期以来人们都知道它是一座连接大陆的桥梁。";
+				next;
+				mes "[西奥多]";
+				mes "如果您碰巧去那里冒险，请询问警卫那里的情况。";
+				set ep14_1_bs,12;
+				changequest 11195,11196;
+				close;
+			case 2:
+				mes "[西奥多]";
+				mes "谢谢你把袋子还给我。";
+				mes "仙尘？我不随身携带这样的东西。";
+				close;
+			}
+		} else if (ep14_1_bs == 12) {
+			mes "[西奥多]";
+			mes "补给路线经过Bifrost，你可以从Splendide大本营的后面到达。";
+			mes "这就是我们在这里设立大本营的原因。";
+			mes "这条路线的起源尚不清楚，但长期以来人们都知道它是一座连接大陆的桥梁。";
+			next;
+			mes "[西奥多]";
+			mes "如果您碰巧去那里冒险，请询问警卫那里的情况。";
+			close;
+		} else if (ep14_1_bs == 13) {
+			mes "[西奥多]";
+			mes "缝隙？";
+			mes "这就是我们无法到达大陆的原因。";
+			mes "很高兴知道上面发生了什么。";
+			next;
+			mes "[西奥多]";
+			mes "唔...";
+			mes "我不能离开这里，但你可以，不是吗？";
+			mes "来自大陆的物资来自位于比弗罗斯特中部的“莫拉”村。";
+			next;
+			mes "[西奥多]";
+			mes "如果你与莫拉村的仓库管理员交谈，你就能获得更多信息。";
+			mes "如果你愿意的话，你会去比弗罗斯特的“莫拉”村见见仓库经理吗？";
+			next;
+			mes "[西奥多]";
+			mes "如果不太麻烦的话，你也可以顺便去我朋友莉莉蒂娅家……";
+			set ep14_1_bs,14;
+			changequest 11197,11198;
+			close;
+		} else if (ep14_1_bs == 14) {
+			mes "[西奥多]";
+			mes "如果你与莫拉村的仓库管理员交谈，你就能获得更多信息。";
+			mes "如果你愿意的话，你会去比弗罗斯特的“莫拉”村见见仓库经理吗？";
+			if (checkquest(11199) > -1 && checkquest(11199) < 2)
+				close;
+			next;
+			mes "[西奥多]";
+			mes "如果不太麻烦的话，你也可以顺便去我朋友莉莉蒂娅家……";
+			close;
+		} else if (ep14_1_bs > 14) {
+			if (checkquest(11199) == -1) {
+				mes "[西奥多]";
+				mes "如果不太麻烦的话，你也可以顺便去我朋友莉莉蒂娅家……";
+				close;
+			}
+			mes "[西奥多]";
+			mes "哇！！！";
+			mes "于是你穿过了迷雾森林迷宫，从莫拉村回来了。";
+			mes "我问你的决定是正确的！";
+			next;
+			mes "[西奥多]";
+			mes "谢谢。";
+			mes "我希望这件事能尽快得到解决...";
+			mes "我不想再让莉莉蒂娅伤心了……";
+			if (ep14_1_bs == 17) {
+				next;
+				mes "[西奥多]";
+				mes "哦，Daphrer 位于 Splendide 西北部。";
+			}
+			if (checkquest(11199) < 2) {
+				completequest 11198;
+				completequest 11199;
+			}
+			close;
+		}
+	}
+	mes "[西奥多]";
+	mes "有时，我会在这冰冻的大地上感受到一种痛苦的美，与家乡的美截然不同。";
+	mes "但这对我们来说无疑是一个艰难的生活环境。";
+	close;
+}
+
+splendide,168,301,4	script	Pauchon#ep14_1_bs	439,{
+	if (!isequipped(2782)) {
+		mes "[波雄]";
+		mes "迪姆福斯塔尔·穆拉尔斯";
+		mes "模安杜洛";
+		mes "模组";
+		mes "DorDuMe U NohLarsFulo Mu Fus";
+		next;
+		mes "- 你无法理解仙女的话。 -";
+		mes "- 你需要一些东西来帮助你解释它们。 -";
+		close;
+	}
+	if (ep14_1_bs > 3 && ep14_1_bs < 10) {
+		mes "[波雄]";
+		mes "先生，我能为您做什么？";
+		next;
+		select("展示袋子。");
+		if (countitem(6390) == 0) {
+			mes "[波雄]";
+			mes "啊？你看到什么了吗？";
+			mes "我什么也没看到...";
+			close;
+		}
+		if (ep14_1_bs2 == 12) {
+			mes "[波雄]";
+			mes "天哪...！";
+			mes "我想这是我的！";
+			mes "谢谢。";
+			mes "自从失去它以来我一直很担心，你减轻了我心中的负担。";
+			next;
+			select("询问传闻。");
+			mes "[波雄]";
+			mes "这对我来说并不容易回答...";
+			mes "我非常感谢你找到我的袋子......嗯......";
+			mes "请给我一些时间思考..";
+			delitem 6390,1; //Small_Pocket
+			set ep14_1_bs,10;
+			changequest 11187,11200;
+			close;
+		} else {
+			mes "[波雄]";
+			mes "哦亲爱的。这不是我的。";
+			mes "却不小心掉落了这么重要的东西！";
+			mes "我不知道是谁，但拉芬需要教训！";
+			close;
+		}
+	}
+	if (ep14_1_bs2 == 12) {
+		if (ep14_1_bs == 10) {
+			mes "[波雄]";
+			mes "我要告诉你的是绝密！";
+			mes "我们之间甚至不谈论它！";
+			mes "怎么说大陆的供应就这么断了啊！";
+			next;
+			mes "[波雄]";
+			mes "啊？！";
+			mes "哦天哪...我已经做到了...";
+			mes "这真的是绝密！！";
+			mes "不要告诉任何人！";
+			next;
+			mes "[波雄]";
+			mes "好吧，既然我已经泄露了秘密……哦，好吧，太晚了。";
+			mes "所以我们已经有一段时间没有收到大陆的物资了。";
+			next;
+			mes "[波雄]";
+			mes "我们并没有挨饿，但我们得到的食物越来越少。";
+			mes "我饿了就去摘水果，但是这么冷的气候没有果树。";
+			next;
+			mes "[波雄]";
+			mes "而上面的人只是让我们等……我等得好烦啊！";
+			mes "但一旦离开这里，我就会进监狱……";
+			next;
+			mes "[波雄]";
+			mes "所以我被困在这里，我会被困在这里，忍受饥饿...... *抽泣*";
+			next;
+			mes "[波雄]";
+			mes "如果可以的话，我想吃掉那棵树的树皮。";
+			mes "如果有人能帮忙就好了。 *哭泣*";
+			set ep14_1_bs,11;
+			completequest 11200;
+			setquest 11201;
+			close;
+		} else if (ep14_1_bs == 11) {
+			mes "[波雄]";
+			mes "什么？";
+			mes "你想要什么……我饿了，没有力气说话……";
+			next;
+			select("来自大陆的补给路线？");
+			mes "[波雄]";
+			mes "如果我告诉你，你会帮我吗？";
+			mes "如果没有，我不会告诉。";
+			next;
+			switch(select("是的。：没有。")) {
+			case 1:
+				mes "[波雄]";
+				mes "一条巨大的道路从 Splendide 的后面通向远处。";
+				mes "我不知道这是否与传说有关，但我听说这条路一直都在那里。";
+				next;
+				mes "[波雄]";
+				mes "哦！那里的守卫可能知道一些事情。";
+				mes "如果你正朝那个方向走，请去看看发生了什么。";
+				set ep14_1_bs,12;
+				changequest 11201,11202;
+				close;
+			case 2:
+				mes "[波雄]";
+				mes "谢谢你找到这个袋子。";
+				mes "呃……我饿了……我想我得吃这些苦涩的浆果了……";
+				close;
+			}
+		} else if (ep14_1_bs == 12) {
+			mes "[波雄]";
+			mes "一条巨大的道路从 Splendide 的后面通向远处。";
+			mes "我不知道这是否与传说有关，但我听说这条路一直都在那里。";
+			next;
+			mes "[波雄]";
+			mes "哦！那里的守卫可能知道一些事情。";
+			mes "如果你正朝那个方向走，请去看看发生了什么。";
+			close;
+		} else if (ep14_1_bs == 13) {
+			mes "[波雄]";
+			mes "裂缝？！？";
+			mes "嗯，我听说裂缝四处蔓延，但它甚至渗入了 Bifrost……";
+			mes "看来事情比我想象的还要严重。";
+			next;
+			mes "[波雄]";
+			mes "如果可以的话，你会去比弗罗斯特的“莫拉”村看看发生了什么事吗？";
+			next;
+			mes "[波雄]";
+			mes "来自大陆的物资都经过这个村庄。如果你去和仓库经理谈谈，他会告诉你一些事情。";
+			mes "另外，请拜访我的朋友Humming。";
+			next;
+			mes "[波雄]";
+			mes "他真是个轻浮的家伙，可能已经离开了，但我们本来应该在莫拉村见面的。";
+			set ep14_1_bs,14;
+			changequest 11203,11204;
+			close;
+		} else if (ep14_1_bs == 14) {
+			mes "[波雄]";
+			mes "如果可以的话，你会去比弗罗斯特的“莫拉”村看看发生了什么事吗？";
+			next;
+			mes "[波雄]";
+			mes "来自大陆的物资都经过这个村庄。如果你去和仓库经理谈谈，他会告诉你一些事情。";
+			if (checkquest(11205) > -1 && checkquest(11205) < 2)
+				close;
+			mes "另外，请拜访我的朋友Humming。";
+			next;
+			mes "[波雄]";
+			mes "他真是个轻浮的家伙，可能已经离开了，但我们本来应该在莫拉村见面的。";
+			close;
+		} else if (ep14_1_bs > 14) {
+			if (checkquest(11205) == -1) {
+				mes "[波雄]";
+				mes "请拜访我的朋友哼鸣。";
+				mes "他真是个轻浮的家伙，可能已经离开了，但我们本来应该在莫拉村见面的。";
+				close;
+			}
+			mes "[波雄]";
+			mes "我曾怀疑过……不过，你确实穿越了传说中的迷雾森林迷宫……";
+			mes "我印象非常深刻。";
+			next;
+			mes "[波雄]";
+			mes "我真的很感谢你的帮助。";
+			mes "我希望这个问题能尽快得到解决。";
+			mes "我真正害怕的是……饥饿。不仅仅是战争。";
+			if (ep14_1_bs == 17) {
+				next;
+				mes "[波雄]";
+				mes "哦，Daphrer 位于 Splendide 西北部。";
+			}
+			if (checkquest(11205) < 2) {
+				completequest 11204;
+				completequest 11205;
+			}
+			close;
+		}
+	}
+	mes "[波雄]";
+	mes "啊……我饿了。";
+	mes "回到大陆我要把肚子填饱。";
+	close;
+}
+
+splendide,262,376,4	script	Laphine Soldier#ep14_1	447,{
+	if (!isequipped(2782)) {
+		mes "[拉芬士兵]";
+		mes "DielFarmar Di RiniIyazser Ha mahAgolAsh U U";
+		mes "TurNohmar 在 DurNateFar Rare AnuVerNeth Ha ash Heremor Hon";
+		next;
+		mes "- 你无法理解仙女的话。 -";
+		mes "- 你需要一些东西来帮助你解释它们。 -";
+		close;
+	}
+	mes "[拉芬士兵]";
+	mes "这是通往阿尔夫海姆的 Bifrost。";
+	mes "请注意，由于不明来源造成的裂缝，禁止进入。";
+	if (ep14_1_bs != 12)
+		close;
+	next;
+	mes "[拉芬士兵]";
+	mes "另一条路通向迷雾森林迷宫。";
+	next;
+	mes "[拉芬士兵]";
+	mes "穿过迷雾森林迷宫就可以到达阿尔夫海姆。然而，至今无人从迷雾森林迷宫中回来。";
+	if (checkquest(11190) > -1 && checkquest(11190) < 2) {
+		set ep14_1_bs,13;
+		changequest 11190,11191;
+	} else if (checkquest(11196) > -1 && checkquest(11196) < 2) {
+		set ep14_1_bs,13;
+		changequest 11196,11197;
+	} else if (checkquest(11202) > -1 && checkquest(11202) < 2) {
+		set ep14_1_bs,13;
+		changequest 11202,11203;
+	}
+	close;
+}
+
+mora,185,163,2	script	Warehouse Manager#ep14_1	516,{
+	if (ep14_1_bs < 15) {
+		mes "[仓库经理]";
+		mes "不，先生！";
+		mes "不能随意进入。";
+		mes "这是一个仓库。如果您需要什么，请询问外面的工作人员。";
+		if (ep14_1_bs < 14)
+			close;
+		next;
+		select("拉芬的补给品？");
+		mes "[仓库经理]";
+		mes "啊!";
+		mes "你是来自斯普莱迪德吗？";
+		mes "让我们来看看...";
+		mes "从那边到那里的所有补给品都是运往Splendide的。";
+		next;
+		mes "[仓库经理]";
+		mes "我们也很担心，因为 Bifrost 的裂缝导致这些货物无法运送。";
+		next;
+		mes "[仓库经理]";
+		mes "而那些准备下来的旅人也被困在这里了。顾客数量的增加既是福也是祸。";
+		next;
+		mes "[仓库经理]";
+		mes "如果您计划返回斯普莱迪德，请前往客栈拜访琼斯。";
+		mes "他有一件东西需要紧急运送给辉煌军队。";
+		set ep14_1_bs,15;
+		setquest 11206;
+		close;
+	} else if (ep14_1_bs == 15) {
+		mes "[仓库经理]";
+		mes "如果您计划返回斯普莱迪德，请前往客栈拜访琼斯。";
+		mes "他有一件东西需要紧急运送给辉煌军队。";
+		close;
+	} else {
+		mes "[仓库经理]";
+		mes "我们也很担心，因为 Bifrost 的裂缝导致这些货物无法运送。";
+		next;
+		mes "[仓库经理]";
+		mes "而那些准备下来的旅人也被困在这里了。顾客数量的增加既是福也是祸……";
+		close;
+	}
+	end;
+}
+
+mora,35,119,4	script	Rondo#ep14_1_bs	513,{
+	mes "[回旋曲]";
+	mes "莫拉真是一个神秘的地方。";
+	mes "你可以理解任何语言。";
+	next;
+	mes "[回旋曲]";
+	mes "当然，当我们离开这个区域时，我将无法理解你说的话，但我会记住我们的对话。我会期待我们在这里再次见面的那一天。";
+	if (ep14_1_bs > 13 && ep14_1_bs2 == 10) {
+		next;
+		mes "[回旋曲]";
+		mes "请告诉库斯米";
+		mes "如果他想见面，我们可以随时见面。没有什么可担心的。";
+		if (checkquest(11193) == -1)
+			setquest 11193;
+	}
+	close;
+}
+
+mora,98,66,4	script	Lilitia#ep14_1_bs	518,{
+	if (ep14_1_bs > 13 && ep14_1_bs2 == 11) {
+		mes "[莉莉蒂亚]";
+		mes "嘘！！！";
+		mes "他又违背了自己的诺言！！！";
+		next;
+		mes "[莉莉蒂亚]";
+		mes "他说这次他一定会来的！！！";
+		mes "那个地方太冷了，不适合我去！！！！";
+		mes "我珍贵的叶子将会在那里枯萎。";
+		next;
+		mes "[莉莉蒂亚]";
+		mes "什么？西奥多派你来的？";
+		mes "请告诉他我很生气！！";
+		if (checkquest(11199) == -1)
+			setquest 11199;
+		close;
+	}
+	mes "[莉莉蒂亚]";
+	mes "我真的很讨厌寒冷。";
+	mes "这就是为什么莫拉是一个宜居的地方。";
+	next;
+	mes "[莉莉蒂亚]";
+	mes "这里的叶子总是新鲜的。而且，语言方面的压力就消失了。";
+	close;
+}
+
+mora,139,102,2	script	Humming#ep14_1_bs	515,{
+	if (ep14_1_bs > 13 && ep14_1_bs2 == 12) {
+		mes "[嗡嗡声]";
+		mes "哦！";
+		mes "你来这里是因为波雄派你来的？";
+		next;
+		mes "[嗡嗡声]";
+		mes "你来到这里一定很困难。我印象深刻。";
+		mes "迷雾森林迷宫~激发我的冒险精神！";
+		next;
+		mes "[嗡嗡声]";
+		mes "如果你先于我到达 Splendide，请告诉 Pouchon";
+		mes "我正在穿过迷雾森林迷宫。";
+		if (checkquest(11205) == -1)
+			setquest 11205;
+		close;
+	}
+	mes "[嗡嗡声]";
+	mes "听说尤顿海姆和米德加尔特之间出现了裂缝，所以我想去看看。但我被困在这里了。";
+	mes "我期待着去一个新地方。";
+	next;
+	mes "[嗡嗡声]";
+	mes "你来自米德加德吗？";
+	mes "那里怎么样？";
+	mes "我一直想看看一种叫波林的生物。";
+	close;
+}
+
+mora,55,124,2	script	Jones#ep14_1_bs	495,{
+	if (ep14_1_bs < 15) {
+		mes "[琼斯]";
+		mes "哦……可恶……";
+		mes "我不能下去，也不能回去。我辛辛苦苦建立起来的信誉已经化为灰烬。";
+		close;
+	} else if (ep14_1_bs == 15) {
+		mes "[琼斯]";
+		mes "啊，你就是从锦绣之地穿过迷雾森林迷宫而来的旅者吗？";
+		mes "如果你打算回去的话，可以把这个交给辉煌军队吗？";
+		next;
+		mes "[琼斯]";
+		mes "一位高层提出了要求，但我无法穿越 Bifrost。";
+		next;
+		mes "[琼斯]";
+		mes "其他地方的发货也全部停止。啊，我的信誉度正在受到损害......";
+		next;
+		switch(select("是的。：没有。")) {
+		case 1:
+			mes "[琼斯]";
+			mes "谢谢。";
+			set ep14_1_bs,16;
+			changequest 11206,11207;
+			close;
+		case 2:
+			mes "[琼斯]";
+			mes "我有点不好意思向一个陌生人问这个问题……哈哈！";
+			close;
+		}
+	} else if (ep14_1_bs == 16) {
+		if (checkweight(1201,1) == 0) {
+			mes "[琼斯]";
+			mes "你的物品种类太多了。请减轻负担并回来。";
+			close;
+		}
+		if (MaxWeight - Weight < 3500) {
+			mes "[琼斯]";
+			mes "你承受的重量太多了。请减轻负担并回来。";
+			close;
+		}
+		mes "[琼斯]";
+		mes "请好好照顾它。";
+		mes "这是 Splendide 中 Daphrer 的作品。";
+		set ep14_1_bs,17;
+		getitem 6391,1; //Splendid_Supply_Kit
+		changequest 11207,11208;
+		close;
+	} else if (ep14_1_bs == 17) {
+		mes "[琼斯]";
+		mes "请好好照顾它。";
+		mes "这是 Splendide 中 Daphrer 的作品。";
+		close;
+	} else if (ep14_1_bs > 17) {
+		mes "[琼斯]";
+		mes "多亏了你，工作完成得很好。";
+		mes "呵呵，我看到了你作为送货员的潜力。";
+		mes "对送货职业感兴趣吗？";
+		close;
+	} else {
+		mes "[琼斯]";
+		mes "呵呵，我看到了你作为送货员的潜力。";
+		mes "对送货职业感兴趣吗？";
+		close;
+	}
+	end;
+}
+
+splendide,121,260,4	script	Daphrer#ep14_1_bs	435,{
+	if (!isequipped(2782)) {
+		mes "[达芙勒]";
+		mes "DRHSfhsdfGSDH FGkkmvoifk DFG DFHshfeksmn fgg FDbbd fjnnvk n skncki dfgd F FHdfkdfjkmv";
+		close;
+	}
+	if (countitem(6391)) {
+		mes "[达芙勒]";
+		mes "哦....";
+		mes "我一直在等你。";
+		next;
+		mes "[达芙勒]";
+		mes "这是急需的，所以谢谢你把它带到这里，希望我没有给你带来太多麻烦。";
+		next;
+		mes "[达芙勒]";
+		mes "这对于奖励来说可能太小了，但请收下这作为我的谢意。";
+		delitem 6391,1; //Splendid_Supply_Kit
+		if (ep14_1_bs == 17) {
+			set ep14_1_bs,18;
+			completequest 11208;
+			getexp 0,500000;
+			getitem 6380,5; //Mora_Coin
+		} else
+			getitem 6380,2; //Mora_Coin
+		close;
+	}
+	if (ep14_1_bs == 17) {
+		mes "[达芙勒]";
+		mes "哦....";
+		mes "所以你在路上丢失了物品。";
+		next;
+		mes "[达芙勒]";
+		mes "我知道这可能是一个延伸......";
+		mes "也许我一直不切实际。";
+		mes "但无论如何，我还是谢谢你给我带来的麻烦。请接受此作为我的谢意。";
+		set ep14_1_bs,18;
+		completequest 11208;
+		getexp 0,200000;
+		getitem 6380,2; //Mora_Coin
+		close;
+	}
+	mes "[达芙勒]";
+	mes "对我来说，滴水成花比一把利剑更重要。";
+	close;
+}
+
+sec_in02,35,175,0	script	Theore Set Guid	436,{
+	callfunc "F_GM_NPC";
+	switch(select("设置0：设置33：设置2_0")) {
+	case 1:
+		set ep14_1_bs,0;
+		end;
+	case 2:
+		set ep4_1_bs,3;
+		setquest 11183;
+		end;
+	case 3:
+		set ep14_1_bs2,0;
+		end;
+	}
+}
+
+// Chesire's New Day :: ep14_1_cheshir2
+//============================================================
+dic_in01,262,191,0	script	#ep14_1_xq02	139,0,3,{
+	end;
+OnTouch_:
+	if (ep13_3_secret > 22 && checkquest(7206) == -1) {
+		enablenpc "Cheshire#ep14_1_xq01";
+		cutin "ep13_cheshire_h",1;
+		mes "[柴郡]";
+		mes "哦，等等！";
+		mes "我还有一件事要你做。";
+		mes "没有足够的时间来详细说明...";
+		next;
+		mes "- 柴郡看了一眼站在你身边的守卫，凑近在你耳边低声说道。-";
+		next;
+		mes "[柴郡]";
+		mes "你会在^4d4dff卡米达尔隧道^000000中间找到猫队。";
+		mes "在圣甲虫洞入口西边的商队货物中有一个^4d4dff有标记的盒子^000000。";
+		next;
+		mes "[柴郡]";
+		mes "我想让你把它带给我。";
+		mes "通过查看盒子，您就会知道应该将其带到哪里。";
+		mes "这是一件重要的事情。";
+		next;
+		mes "[柴郡]";
+		mes "我还有事要提前办...";
+		mes "祝你好运！";
+		setquest 7206;
+		close2;
+		disablenpc "Cheshire#ep14_1_xq01";
+		cutin "",255;
+	}
+	end;
+}
+
+dic_in01,260,194,4	script	Cheshire#ep14_1_xq01	498,{
+	end;
+OnInit:
+	disablenpc "Cheshire#ep14_1_xq01";
+	end;
+}
+
+dic_dun01,274,114,0	script	Stacked Boxes of Goods	844,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
+		mes "- 你的物品太多，无法完成此任务。 -";
+		close;
+	}
+	set .@playtime, checkquest(7208,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "里面装着各种货物的箱子堆到了天花板。";
+		mes "柴郡所说的那个带标记的盒子似乎还没有出现。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "里面装着各种货物的箱子堆到了天花板。";
+		mes "仔细一看，你发现一个盒子，上面粘着一张小纸片。";
+		mes "你已经找到了柴郡所说的那箱货物。";
+		next;
+		switch(select("移动箱子：放弃。")) {
+		case 1:
+			mes "你答应把钴的盒子带到柴郡，他会在碧弗罗斯特裂缝附近等你。";
+			erasequest 7208;
+			setquest 7210;
+			getitem 6392,1; //Bradium_Box
+			close;
+		case 2:
+			mes "您决定放弃运送盒子。";
+			mes "你把盒子原样留下了。";
+			erasequest 7208;
+			close;
+		}
+	} else {
+		if (checkquest(7207) == -1) {
+			if (checkquest(7206) > -1) {
+				mes "里面装着各种货物的箱子堆到了天花板。";
+				mes "仔细一看，你发现一个盒子，上面粘着一张小纸片。";
+				next;
+				mes "这张纸上刻着一些神秘的符号，下面用小字写着《致：碧霜裂缝》《CLR1》。";
+				next;
+				mes "这一定是柴郡所说的盒子。";
+				mes "您决定将其带到纸上显示的位置。";
+				completequest 7206;
+				setquest 7207;
+				getitem 6392,1; //Bradium_Box
+				close;
+			}
+		} else if (checkquest(7207) < 2) {
+			mes "你已经得到了柴郡所说的盒子。";
+			mes "现在你只需要把它带到 Bifrost 的裂缝就可以了。";
+			close;
+		}
+		mes "里面装着各种货物的箱子堆到了天花板。";
+		close;
+	}
+	end;
+}
+
+bif_fild01,335,168,3	script	Cheshire#ep14_1_xq04	497,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
+		mes "- 你的物品太多，无法完成此任务。 -";
+		close;
+	}
+	cutin "ep13_cheshire",1;
+	if (checkquest(7209) > -1) {
+		if (countitem(6090) < 20) {
+			mes "[柴郡]";
+			mes "给我带来 20 块精炼钷。";
+			mes "作为交换，您不小心且不负责任地将盒子卖给了某人。";
+			mes "我已经说清楚了吗？！";
+			close2;
+			cutin "",255;
+			end;
+		}
+		mes "[柴郡]";
+		mes "那你带来了吗？";
+		mes "虽然金额比原来少了，但我想我也忍不住了。";
+		mes "下次你一定要把盒子完好无损地带给我。";
+		next;
+		mes "- 柴郡将钷扔进了裂缝中。 -";
+		next;
+		mes "[柴郡]";
+		mes "你犯了一个错误，丢了盒子，你必须对此感到满意。";
+		mes "从明天开始，把盒子完好无损地拿到这里。";
+		mes "每天。";
+		delitem 6090,20; //Purified_Bradium
+		erasequest 7209;
+		setquest 7208;
+		getitem 6304,1; //Sapa_Feat_Cert
+		close2;
+		cutin "",255;
+		end;
+	}
+	callsub L_CheckPlaytime;
+	if (checkquest(7210) > -1) {
+		if (countitem(6392) == 0)
+			callsub L_LostQuest,7210;
+		else {
+			mes "[柴郡]";
+			mes "你来得正是时候。";
+			mes "而且我看到盒子完好无损！";
+			mes "干得好。";
+			next;
+			mes "[柴郡]";
+			mes "好吧，明天我也指望你了。";
+			mes "得到它？";
+			mes "现在，在拉芬人起疑之前离开这个地方。";
+			erasequest 7210;
+			setquest 7208;
+			delitem 6392,1; //Bradium_Box
+			getitem 6304,1; //Sapa_Feat_Cert
+			getexp 50000,40000;
+			close2;
+			cutin "",255;
+			end;
+		}
+	}
+	if (ep13_3_secret > 22) {
+		if (checkquest(7207) == -1) {
+			if (checkquest(7206) == -1) {
+				mes "[柴郡]";
+				mes "...唔？啊？";
+				mes "它是"+strcharinfo(0)+"！";
+				mes "你在这里做什么？";
+				next;
+				select("啊？柴郡？");
+				mes "[柴郡]";
+				mes "是什么让你如此惊讶？";
+				mes "看到我在这里你感到惊讶吗？";
+				next;
+				select("没什么，就是个罩子……");
+				mes "[柴郡]";
+				mes "哦……这个。因为很麻烦。";
+				mes "在这里，我不必介意别人。";
+				mes "哦，很高兴见到！";
+				mes "当你来到迪尔时，我正打算给你安排工作。";
+				next;
+				mes "[柴郡]";
+				mes ".......什么？你为什么这样盯着我？";
+				mes "这一切都是为了阿哈特好。";
+				next;
+				switch(select("我想我别无选择：我有很多事情要做！")) {
+				case 1:
+					mes "["+strcharinfo(0)+"]";
+					mes "（如果我拒绝这样做，他会起疑心的……我想我现在应该配合一下。）";
+					mes "好的。";
+					mes "为了阿哈特的高兴，我会做任何事情。";
+					mes "那么，你需要我做什么？";
+					next;
+					break;
+				case 2:
+					mes "[柴郡]";
+					mes "要做的事情？";
+					mes "什么东西？";
+					mes "这是你必须做的事情之一。";
+					mes "别忘了你是忠于阿哈特的。";
+					next;
+					break;
+				}
+				mes "[柴郡]";
+				mes "伟大的！现在我会告诉你该怎么做。";
+				mes "你知道卡米达尔隧道中间有一个圣甲虫洞的入口吗？";
+				mes "您会在那里找到猫商队，出售用品和一些简单的工具。";
+				next;
+				mes "[柴郡]";
+				mes "堆放在那里的货物中间有一个有标记的盒子。";
+				mes "我希望你把盒子带给我。";
+				next;
+				mes "[柴郡]";
+				mes "这是一个简单的工作，拿起和运送一个盒子。";
+				mes "快速、安静地执行此操作^4d4dff，而不被注意到^000000。";
+				setquest 7206;
+				next;
+				mes "[柴郡]";
+				mes "现在，行动吧！";
+				close2;
+				cutin "",255;
+				end;
+			} else {
+				mes "[柴郡]";
+				mes "从卡米达尔隧道带来盒子。";
+				mes "又快又安静！";
+				mes "不，继续前进！";
+				close2;
+				cutin "",255;
+				end;
+			}
+		} else if (checkquest(7207) < 2) {
+			if (countitem(6392) == 0)
+				callsub L_LostQuest,7207;
+			else {
+				mes "[柴郡]";
+				mes "……那个盒子！";
+				mes "哦是的。这是正确的！";
+				mes "你做得很好。";
+				mes "这非常重要。";
+				mes "阿哈特会很高兴。";
+				next;
+				mes "[柴郡]";
+				mes "这些盒子每天都会放在同一个地方。";
+				mes "我会把工作留给你。";
+				next;
+				select("你为什么不自己做呢？");
+				mes "[柴郡]";
+				mes "........ 唔...";
+				mes "只有你们人类才能自由出入任何地方。";
+				mes "而且，这里是拉芬的领地。";
+				next;
+				mes "[柴郡]";
+				mes "我这样子，不太引起他们的注意，";
+				mes "但萨法斯会怎么想呢？";
+				mes "去拉芬领地见阿哈特的人？";
+				next;
+				mes "[柴郡]";
+				mes "他们会产生怀疑。";
+				mes "但你们人类没有这样的麻烦，所以这就是为什么你们是这份工作的合适人选。";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "（……我不相信他的故事，但他相信我站在他一边，所以我想我应该配合。）";
+				mes "那么这个钆会怎样呢？";
+				next;
+				mes "[柴郡]";
+				mes "那个东西？";
+				mes "把它交给我。";
+				next;
+				mes "- 柴郡打开盒子，检查了里面的钔，把它们扔进了裂缝，";
+				mes "他回头看了一眼，拍拍手上的灰尘，脸上露出胜利的表情。 -";
+				next;
+				mes "[柴郡]";
+				mes "这就是发生的事情。";
+				mes "*笑*裂缝之外有一条你未知的路。";
+				next;
+				mes "[柴郡]";
+				mes "好吧，我就把这件事交给你了。";
+				mes "尝试每天把盒子带给我。";
+				mes "好的？";
+				delitem 6392,1; //Bradium_Box
+				completequest 7207;
+				setquest 7208;
+				getitem 6304,1; //Sapa_Feat_Cert
+				getexp 50000,40000;
+				next;
+				mes "[柴郡]";
+				mes "作为对你努力的补偿，我会给你一份 Sapha 的利用证明和一点现金。";
+				mes "现在，在拉芬人起疑之前离开这个地方。";
+				close2;
+				cutin "",255;
+				end;
+			}
+		} else {
+			callsub L_CheckPlaytime;
+			mes "[柴郡]";
+			mes "啊？这是怎么回事？";
+			mes "你今天没带盒子吗？";
+			next;
+			mes "[柴郡]";
+			mes "嗯，这真是出乎意料……";
+			mes "好吧，那我别无选择。";
+			mes "今天我会让另一个人来做这件事。";
+			mes "但你必须从明天开始做，好吗？";
+			setquest 7208;
+			close2;
+			cutin "",255;
+			end;
+		}
+	} else if (ep13_3_secret > 15) {
+		mes "[柴郡]";
+		mes "……嗯？我好像在哪里见过你...";
+		mes "..........哦！";
+		mes strcharinfo(0)+"...？！";
+		mes "是什么风把你吹到这里来的？";
+		next;
+		mes "[柴郡]";
+		mes "你说你忘记了要做什么？";
+		mes "你不应该在这里。";
+		mes "你应该在迪卡斯特南部的裂缝处。";
+		next;
+		mes "[柴郡]";
+		mes "哇哦。";
+		mes "阿哈特派这样一个白痴来找我时他在想什么？";
+		mes "现在，继续前进，做好你的工作。";
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "[柴郡]";
+	mes "……这家伙怎么还不出现？";
+	mes "现在应该已经到了...";
+	mes "也许迷失了回去的路……？";
+	mes "....？呃？谁，你是谁？你在这里站了多久了？";
+	next;
+	select("一只猫？！");
+	mes "[柴郡]";
+	mes "谁……谁是猫？！";
+	mes "迷路！";
+	close2;
+	cutin "",255;
+	end;
+L_LostQuest:
+	mes "[柴郡]";
+	mes "哦，你去过吗？";
+	mes "盒子怎么了？";
+	mes "你为何两手空空？";
+	next;
+	switch(select("我再去找找！：我丢了……")) {
+	case 1:
+		mes "[柴郡]";
+		mes "确保你做好工作！";
+		mes "并继续寻找它。";
+		mes "你一定不能失去它。";
+		break;
+	case 2:
+		mes "[柴郡]";
+		mes "在哪里？";
+		mes "卖给哪家商家了？";
+		mes "你就不能区分卖什么和不卖什么吗？";
+		mes "做交易的时候你睡着了吗？";
+		next;
+		mes "[柴郡]";
+		mes "这实在是太荒谬了。";
+		mes "弥补你失去的！";
+		mes "^4d4dff20块精炼铷^000000！！";
+		erasequest getarg(0);
+		setquest 7209;
+		break;
+	}
+	close2;
+	cutin "",255;
+	end;
+L_CheckPlaytime:
+	set .@playtime, checkquest(7208,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "[柴郡]";
+		mes "每天，其中一个箱子会被送往卡米达尔隧道。";
+		mes "它是与其他物品一起走私进来的。";
+		next;
+		mes "[柴郡]";
+		mes "准时潜入现场，把盒子带给我。这些盒子每天都会放在同一个地方。";
+		mes "你每天都会这样做。";
+		close2;
+		cutin "",255;
+		end;
+	} else if (.@playtime == 2) {
+		mes "[柴郡]";
+		mes "是时候了。";
+		mes "现在去拿盒子。";
+		mes "它应该位于卡米达尔隧道的圣甲虫洞入口附近。";
+		mes "你以前做过这个，所以你一定很熟悉吧？";
+		close2;
+		cutin "",255;
+		end;
+	} else
+		return;
+}
+
+dicastes02,125,192,0	script	#call_cheshir_ep14	139,0,3,{
+	end;
+OnTouch_:
+	if (ep13_3_secret > 22) {
+		if (rand(2)) {
+			emotion ET_DELIGHT, playerattached();
+			mes "…………？";
+			mes "你感觉到有人在走动。";
+			mes "下面一定有人。";
+			if ($@cheshire_on == 0) {
+				donpcevent "Cheshire#ep14_extra::OnEnable";
+				set $@cheshire_on,1;
+			}
+			close;
+		}
+	}
+	end;
+}
+
+dicastes02,103,190,3	script	Cheshire#ep14_extra	497,{
+	if (ep13_3_secret > 22) {
+		cutin "ep13_cheshire",1;
+		mes "[柴郡]";
+		mes "...呃？";
+		mes "真是一个惊喜。你在这里做什么？";
+		next;
+		switch(select("你在这里做什么？：那些耳朵……？")) {
+		case 1:
+			mes "[柴郡]";
+			mes "出去散步吗？";
+			mes "我和阿哈特一起出来，但他回去处理紧急事务。";
+			next;
+			mes "[柴郡]";
+			mes "..........................";
+			next;
+			select("……：哇……多漂亮的树啊。");
+			mes "[柴郡]";
+			mes "这棵树……它是白色的，透明的，有光泽的。";
+			mes "这是萨法的尸体。";
+			next;
+			mes "[柴郡]";
+			mes "你知道萨法斯一生都会慢慢变成石头。";
+			mes "因此，当它们死后，它们就会变成石树。";
+			mes "这片森林可以说是……他们的墓地。";
+			next;
+			mes "[柴郡]";
+			mes "...... 仔细看，你可以看到他的胳膊和腿。";
+			mes "很有趣，不是吗？";
+			next;
+			mes "[柴郡]";
+			mes "…………";
+			next;
+			mes "[柴郡]";
+			mes "哦，这太烦人了。";
+			mes "我走了！";
+			next;
+			mes "- 柴郡愤然离去... -";
+			break;
+		case 2:
+			mes "[柴郡]";
+			mes "什么？耳朵？";
+			mes "嗯，这并不奇怪，因为我是兽人。";
+			mes "……为什么……你为什么这样盯着我？";
+			next;
+			select("你负责举报吗？");
+			mes "[柴郡]";
+			mes "你在说什么？";
+			mes "我不知道这样的事！";
+			next;
+			mes "- 柴郡逃跑了... -";
+			break;
+		}
+		disablenpc "Cheshire#ep14_extra";
+		stopnpctimer;
+		close2;
+		cutin "",255;
+		end;
+	}
+	mes "一名穿着奇装异服的少年站在那里，眼中带着凶狠的神色。";
+	mes "你猜你最好别管他。";
+	close;
+OnInit:
+	disablenpc "Cheshire#ep14_extra";
+	end;
+OnEnable:
+	enablenpc "Cheshire#ep14_extra";
+	initnpctimer;
+	end;
+OnDisable:
+	disablenpc "Cheshire#ep14_extra";
+	stopnpctimer;
+	end;
+OnTimer600000:
+	disablenpc "Cheshire#ep14_extra";
+	set $@cheshire_on,0;
+	stopnpctimer;
+	end;
+}
+
+// Helping Lope and Euridi :: ep14_1_rofe
+//============================================================
+mora,117,66,3	script	Euridi#pa	521,{
+	if (BaseLevel < 100) {
+		mes "[欧律得斯]";
+		mes "你很脆弱。";
+		mes "确实我需要帮助";
+		mes "但我认为你帮不上忙。";
+		close;
+	}
+	if (ep14_1_rope == 0) {
+		mes "[欧律得斯]";
+		mes "听说你穿过了迷雾森林。";
+		mes "你有没有...";
+		mes "你有没有碰巧看到";
+		mes "洛佩，我的未婚夫，在吗？";
+		next;
+		switch(select("是的，我做到了：不，我没有。")) {
+		case 1:
+			mes "[欧律得斯]";
+			mes "你确定吗？你在哪里看到他的？";
+			mes "带我去那里，快点！";
+			mes "...";
+			next;
+			mes "[欧律得斯]";
+			mes "什么？";
+			mes "你在开玩笑吗...？";
+			mes "你怎么可以？";
+			close;
+		case 2:
+			mes "[欧律得斯]";
+			mes "请找到我的洛普。";
+			mes "我来到了莫拉村";
+			mes "四处打听后，";
+			mes "但我无能为力。";
+			next;
+			mes "[欧律得斯]";
+			mes "一想到洛佩我的心就痛……";
+			mes "他一定会拼命地找我……";
+			next;
+			switch(select("对不起，我很忙！：我会帮你的！")) {
+			case 1:
+				mes "[欧律得斯]";
+				mes "多么无情啊！";
+				close;
+			case 2:
+				mes "[欧律得斯]";
+				mes "听说他去了迷雾森林，";
+				mes "同时引导游客游览村庄。";
+				mes "和洛普一起去的游客之一";
+				mes "一定还在旅馆里。";
+				next;
+				mes "[欧律得斯]";
+				mes "他不肯见我，就把自己锁在房间里。";
+				mes "但他可能愿意见你，因为你去过迷雾森林。";
+				setquest 1109;
+				set ep14_1_rope,1;
+				close;
+			}
+		}
+	} else if (ep14_1_rope == 1) {
+		mes "[欧律得斯]";
+		mes "游客在客栈里，";
+		mes "不在我面前！";
+		close;
+	} else if (ep14_1_rope == 2) {
+		mes "[欧律得斯]";
+		mes "所以你见过皮特！";
+		mes "我知道他会愿意见你。";
+		mes "他说什么？";
+		next;
+		mes "[欧律得斯]";
+		mes "...决不....！";
+		mes "这完全是无稽之谈。";
+		mes "这都怪洛普！";
+		mes "我找到了这张纸";
+		mes "靠近朦胧森林。";
+		mes "我确信这是洛普的。";
+		next;
+		mes "[欧律得斯]";
+		mes "如果你找到了^0000FF洛普的线索^000000的其余部分，";
+		mes "你将会发现";
+		mes "他在哪里。";
+		mes "我指望你了，"+strcharinfo(0)+".";
+		changequest 1110,1111;
+		set ep14_1_rope,3;
+		close;
+	} else if (ep14_1_rope == 3) {
+		mes "[欧律得斯]";
+		mes "如果您遇到^0000FF洛普的线索^000000，请将其展示给皮特。";
+		mes "我希望他尽快说出真相。";
+		close;
+	} else if (ep14_1_rope == 4) {
+		mes "[欧律得斯]";
+		mes "我不明白。";
+		mes "我现在怀疑他的动机。";
+		mes "他为什么如此努力地指责洛普？";
+		mes "等等……那些线索……";
+		next;
+		mes "[欧律得斯]";
+		mes "这些似乎不仅仅是简单的笔记。";
+		mes "我可以看一下吗？";
+		mes "...";
+		mes "这些像拼图一样组合在一起。";
+		mes "……哦！……这是……";
+		next;
+		mes "[洛普的信]";
+		mes "...我们已经在森林里闲逛了好几天了。";
+		mes "...所以我们没有保护游客，";
+		mes "我中了剧毒，成了大家的负担。";
+		mes "多么可悲啊...";
+		next;
+		mes "[洛普的信]";
+		mes "难怪我被赶出";
+		mes "辉煌远征。";
+		mes "...但我设法保护了至少一名游客。";
+		mes "他会将这封信和戒指交给您。";
+		next;
+		mes "[洛普的信]";
+		mes "...我想向你求婚";
+		mes "作为远征队的一名自豪的成员。";
+		mes "对不起，尤丽迪。";
+		mes "再见。";
+		next;
+		mes "读完这封信后，";
+		mes "尤里迪站在那里，茫然地看着，就像一个不存在的人。";
+		mes "我们去给皮特看信吧。";
+		changequest 1112,1113;
+
+		//delitem 6383,30; //Clue_Of_Lope
+		set .@count, countitem(6383);
+		if (.@count) delitem 6383,((.@count > 30)?30:.@count); //Clue_Of_Lope
+
+		set ep14_1_rope,5;
+		close;
+	} else if (ep14_1_rope == 5) {
+		mes "[欧律得斯]";
+		mes "不，洛普一定是安全的。";
+		mes "无论如何，他都会回来的……";
+		close;
+	} else if (ep14_1_rope == 6) {
+		mes "[欧律得斯]";
+		mes "......";
+		next;
+		mes "你听到低着头的女孩传来一首歌。";
+		mes "她的朋友似乎有话要说。";
+		close;
+	} else if (ep14_1_rope == 7 || ep14_1_rope == 8) {
+		mes "你听到安静的歌声。";
+		mes "你无法说出这些话。";
+		close;
+	} else if (ep14_1_rope == 9) {
+		mes "[欧律得斯]";
+		mes "你找到洛普了吗？";
+		mes "他安全吗？";
+		next;
+		switch(select("告诉她你不可能找到他。:告诉她他死了。")) {
+		case 1:
+			mes "[欧律得斯]";
+			mes "我自己去找他吧。";
+			mes "希望……现在还不算太晚。";
+			mes "放开我吧，不能再浪费时间了！";
+			close;
+		case 2:
+			mes "[欧律得斯]";
+			mes "我不相信。";
+			mes "他告诉我他很快就会回来...";
+			mes "他告诉我要坚持住。";
+			mes "这不可能……这只是不可能……";
+			next;
+			mes "你把皮特送给你的洛普戒指交给了她。";
+			mes "尤里迪手里拿着戒指，泪流满面。";
+			mes "她开始用紧张的声音唱歌，仍然在哭泣。";
+			changequest 1116,1117;
+			set ep14_1_rope,10;
+
+			//delitem 6384,1; //Ring_Of_Lope
+			if (countitem(6384)) delitem 6384,1; //Ring_Of_Lope
+
+			close;
+		}
+	} else if (ep14_1_rope > 9) {
+		mes "你站着冻僵了。";
+		mes "你听到安静的歌声。";
+		close;
+	}
+}
+
+mora,115,68,3	script	Euridi's Friend#pa	520,{
+	if (ep14_1_rope < 2) {
+		mes "[尤里迪的朋友]";
+		mes "请阻止尤里迪。";
+		mes "她迫切希望找到失踪的未婚夫。";
+		close;
+	} else if (ep14_1_rope == 2) {
+		mes "[尤里迪的朋友]";
+		mes "皮特肯定很怀疑。";
+		mes "我认为他在躲避尤里迪……";
+		mes "他肯定有什么事情瞒着。";
+		close;
+	} else if (ep14_1_rope == 3) {
+		mes "[尤里迪的朋友]";
+		mes "说实话，我不认为";
+		mes "洛普还活着。";
+		mes "我只是担心尤里迪。";
+		next;
+		mes "[欧律得斯]";
+		mes "啊啊啊啊啊！！！！！！";
+		next;
+		mes "[尤里迪的朋友]";
+		mes "...";
+		mes "说实话，我真的很相信";
+		mes "洛普还活着。";
+		mes "...";
+		mes "*叹*";
+		close;
+	} else if (ep14_1_rope == 4) {
+		mes "[尤里迪的朋友]";
+		mes "皮特怎么样了？";
+		mes "我想我应该去拜访他";
+		mes "并让他感觉更糟！";
+		mes "他真是太恶心了！";
+		close;
+	} else if (ep14_1_rope == 5) {
+		mes "[尤里迪的朋友]";
+		mes "快点去找皮特。";
+		close;
+	} else if (ep14_1_rope == 6) {
+		mes "[尤里迪的朋友]";
+		mes "尤里迪正在唱一首治愈之歌";
+		mes "以保护她虚弱的身体和心灵。";
+		mes "照这样下去，她也会出事的。";
+		next;
+		mes "[尤里迪的朋友]";
+		mes "哦，我记得一个旅行者告诉我";
+		mes "他看到一个可疑的人";
+		mes "靠近迷雾森林的入口。";
+		next;
+		mes "[尤里迪的朋友]";
+		mes "旅行者说他站在那里茫然地凝视着，看起来很令人毛骨悚然，";
+		mes "但他看不清楚";
+		mes "因为大雾。";
+		mes "我认为值得研究一下。";
+		changequest 1114,1115;
+		set ep14_1_rope,7;
+		close;
+	} else if (ep14_1_rope == 7) {
+		mes "[尤里迪的朋友]";
+		mes "听说看到了一个可疑的人";
+		mes "靠近迷雾森林的入口。";
+		mes "旅行者说他站在那里茫然地凝视着，看起来很令人毛骨悚然，";
+		mes "但他看不清楚";
+		mes "因为大雾。";
+		mes "我认为值得研究一下。";
+		close;
+	} else if (ep14_1_rope == 8 || ep14_1_rope == 9) {
+		mes "[尤里迪的朋友]";
+		mes "你的脸色很黑。";
+		mes "坏消息？";
+		close;
+	} else if (ep14_1_rope == 10) {
+		mes "[尤里迪的朋友]";
+		mes "有一个拉芬说";
+		mes "绝望会招致灾难。";
+		mes "也许我们有责任";
+		mes "对于发生的事情。";
+		next;
+		if (checkweight(6380,1) == 0) {
+			mes "[尤里迪的朋友]";
+			mes "你身上带的东西太多了。";
+			mes "你能扔掉其中一些吗？";
+			close;
+		}
+		mes "[尤里迪的朋友]";
+		mes "洛佩现在可以安息了。";
+		mes "谢谢。我不会忘记你为我所做的一切。";
+		completequest 1117;
+		set ep14_1_rope,11;
+		getexp 1000000,2000000;
+		getitem 6380,10; //Mora_Coin
+		close;
+	} else if (ep14_1_rope > 10) {
+		mes "[尤里迪的朋友]";
+		mes "谢谢。我不会忘记你的帮助。";
+		close;
+	}
+}
+
+mora,65,145,3	script	Pitt#pa	519,{
+	if (ep14_1_rope == 0) {
+		mes "[皮特]";
+		mes "所以说你已经很不错了";
+		mes "自从你活着穿过了迷雾森林。";
+		mes "我完全混乱了，你看，";
+		mes "所以我没钱听你的功绩故事。";
+		mes "现在离开。";
+		close;
+	} else if (ep14_1_rope == 1) {
+		mes "[皮特]";
+		mes "你有缠人的本领，不是吗？";
+		mes "尤丽迪派你来的，嗯？";
+		mes "拉芬夫妇是";
+		mes "急着想杀我。";
+		next;
+		mes "[皮特]";
+		mes "去告诉她吧！";
+		mes "那个愚蠢的导游";
+		mes "把我们不情愿的游客推入森林，";
+		mes "并跑掉以保全自己的性命！";
+		next;
+		mes "[皮特]";
+		mes "所以你因为是我而不是他而感到抱歉？";
+		mes "他会在某个地方活着，";
+		mes "所以去尝试找到他吧！别再打扰我了！";
+		changequest 1109,1110;
+		set ep14_1_rope,2;
+		close;
+	} else if (ep14_1_rope == 2) {
+		mes "[皮特]";
+		mes "这都是因为";
+		mes "愚蠢的导游！";
+		mes "我讨厌拉菲尼斯！";
+		close;
+	} else if (ep14_1_rope == 3) {
+		if (countitem(6383) < 30) {
+			mes "[皮特]";
+			mes "这都是因为";
+			mes "愚蠢的导游！";
+			mes "我讨厌拉菲尼斯！";
+			close;
+		}
+		mes "[皮特]";
+		mes "你手里的那个东西...";
+		mes "看起来很奇怪。";
+		mes "我以前从未见过这样的事情。";
+		mes "你最好不要保留那个。";
+		mes "我可以拥有吗？";
+		next;
+		switch(select("给他：别给他。")) {
+		case 1:
+			mes "[皮特]";
+			mes "于是我就这样吞下去了";
+			mes "瞧！证据不见了！";
+			mes "现在我可以睡个好觉了，谢谢你！";
+			delitem 6383,5; //Clue_Of_Lope
+			close;
+		case 2:
+			mes "[皮特]";
+			mes "你为什么要给我看这样的东西？";
+			mes "我什么都不知道！我是这里的受害者！";
+			mes "我是拉菲恩夫妇计划的受害者。";
+			mes "这不公平...";
+			next;
+			mes "再想跟他说话也没有用了。";
+			mes "尝试与尤里迪交谈。";
+			changequest 1111,1112;
+			set ep14_1_rope,4;
+			close;
+		}
+	} else if (ep14_1_rope == 4) {
+		mes "[皮特]";
+		mes "这不公平！";
+		mes "这实在是太不公平了！";
+		close;
+	} else if (ep14_1_rope == 5) {
+		if (checkweight(6384,1) == 0) {
+			mes "[皮特]";
+			mes "你是什​​么职业搬家工人？";
+			mes "背上背着一大堆东西跺脚！";
+			mes "因为噪音我无法休息！";
+			mes "扔掉所有这些东西！";
+			close;
+		}
+		mes "[皮特]";
+		mes "我从没想过你会找到它们全部";
+		mes "并将它们拼凑在一起。";
+		mes "这就是神罚吗……？";
+		mes "还是拉菲尼斯的诅咒？";
+		mes "呼...";
+		next;
+		mes "[皮特]";
+		mes "那个带路的小伙伴，";
+		mes "他打开门出去";
+		mes "当他受到重击时";
+		mes "由毒。";
+		next;
+		mes "[皮特]";
+		mes "当我犹豫要不要带他一起去的时候";
+		mes "他把那封信和戒指递给了我。";
+		mes "拉菲尼斯的珠宝...";
+		mes "有传言说除了拉菲尼斯之外没有人能拥有它，";
+		mes "包括众神本身。";
+		next;
+		mes "[皮特]";
+		mes "所以我手里有";
+		mes "宝中之宝！";
+		mes "如何...！究竟如何";
+		mes "我能让它过去吗！";
+		next;
+		mes "[皮特]";
+		mes "我本来要离开这个地方";
+		mes "当我振作起来的时候。";
+		mes "但现在我被困在这里了";
+		mes "我自己也中了毒。";
+		next;
+		mes "[皮特]";
+		mes "我会把戒指还给你";
+		mes "所以请别打扰我！";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "那么洛普哪里可以……？";
+		next;
+		mes "[皮特]";
+		mes "如果他死在森林出口附近";
+		mes "他一定就在附近的某个地方";
+		mes "无论他以何种形式。";
+		changequest 1113,1114;
+		set ep14_1_rope,6;
+		getitem 6384,1; //Ring_Of_Lope
+		close;
+	} else if (ep14_1_rope == 6 || ep14_1_rope == 7) {
+		mes "[皮特]";
+		mes "我也是受害者啊！";
+		mes "所以让我一个人静一静吧！我求求你！";
+		close;
+	} else if (ep14_1_rope == 8) {
+		mes "[皮特]";
+		mes "...";
+		close;
+	} else if (ep14_1_rope > 8) {
+		mes "他正在睡觉。";
+		mes "他似乎睡得很沉。";
+		close;
+	}
+}
+
+bif_fild01,132,338,3	script	Lope#pa	461,2,2,{
+	if (ep14_1_rope < 8) {
+		mes "[可疑男子]";
+		mes "......";
+		close;
+	} else if (ep14_1_rope == 8) {
+		donpcevent "Lope#pa::OnEnable";
+		mes "[可疑男子]";
+		mes "啊啊啊啊啊啊啊！！！！！！";
+		mes "我什么也看不见。";
+		mes "谁在那里？";
+		mes "回答，不然我就以你为敌，杀了你。";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "尤里迪正在找你。";
+		next;
+		mes "[可疑男子]";
+		mes "......";
+		next;
+		mes "[洛普]";
+		mes "厉鬼，你怎么可以对我这么狠？";
+		mes "我请你把这个名字从我的脑海中抹去";
+		mes "作为承受诅咒的回报！";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "请你冷静下来，听听……";
+		next;
+		mes "[洛普]";
+		mes "我的愿望是提供帮助";
+		mes "导致我走向死亡，";
+		mes "还有我求生和复仇的欲望";
+		mes "带领我重生。";
+		mes "我不会再站在生活一边了。";
+		next;
+		mes "[洛普]";
+		mes "当我的转变结束后";
+		mes "我将用迷雾森林的血腥混乱来惩罚你们所有人，";
+		mes "这救了我的命！";
+		next;
+		mes "你把尤里迪拼凑起来的信放在洛普手里。";
+		next;
+		mes "[洛普]";
+		mes "...这是！";
+		mes "我感觉到尤里迪的触摸。";
+		mes "那么这封信……是交给尤里迪的吗？";
+		mes "这太令人难以置信了...";
+		next;
+		mes "[洛普]";
+		mes "像我现在这样畸形";
+		mes "我不再是她的爱人了";
+		mes "回去告诉她洛普化为尘埃";
+		mes "很久以前，在迷雾森林的地面上。";
+		next;
+		mes "[洛普]";
+		mes "现在走吧！";
+		mes "这是我作为一个名叫洛普的拉菲因的最后一个请求……";
+		set ep14_1_rope,9;
+		changequest 1115,1116;
+		close;
+	} else {
+		mes "[洛普]";
+		mes "像我现在这样畸形";
+		mes "我不再是她的爱人了";
+		mes "回去告诉她洛普化为尘埃";
+		mes "很久以前，在迷雾森林的地面上。";
+		next;
+		mes "[洛普]";
+		mes "现在走吧！";
+		mes "这是我作为一个名叫洛普的拉菲因的最后一个请求……";
+		next;
+		mes "你看到他的左手上有一枚戒指在微微发光。";
+		close;
+	}
+	end;
+OnEnable:
+	setnpcdisplay "Lope#pa",999;
+	end;
+OnDisable:
+	disablenpc "Lope#pa";
+	initnpctimer;
+	end;
+OnReset:
+	setnpcdisplay "Lope#pa",461;
+	enablenpc "Lope#pa";
+	end;
+OnTimer2000:
+	donpcevent "Lope#pa::OnReset";
+	stopnpctimer;
+	end;
+OnTouch:
+	mes "我看到一个可疑的人。我应该尝试和他谈谈吗？";
+	next;
+	switch(select("别管他。：跟他说话。")) {
+	case 1:
+		donpcevent "Lope#pa::OnDisable";
+		mes "[可疑男子]";
+		mes "......";
+		close;
+	case 2:
+		donpcevent "Lope#pa::OnDisable";
+		if (ep14_1_rope == 7) {
+			mes "[可疑男子]";
+			mes ".";
+			mes "...";
+			mes "……！！！";
+			next;
+			mes "[可疑男子]";
+			mes "啊啊啊啊啊啊！！！！！！";
+			set ep14_1_rope,8;
+			close;
+		} else {
+			mes "[可疑男子]";
+			mes "......";
+			close;
+		}
+	}
+}
+
+// Find the Research Tools :: ep14_1_muk
+//============================================================
+mora,31,138,6	script	Raffle Researcher#ep14	522,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 500) {
+		mes "^FF0000- 警告消息 -";
+		mes "- 坚持住！！ -";
+		mes "- 你的物品太多了 -";
+		mes "- 接收更多物品。 -";
+		mes "-请减轻负担-";
+		mes "- 然后再试一次。 -^000000";
+		close;
+	}
+	// NPC disabled from 12am ~ 5am.
+	if (gettime(DT_HOUR) >= 0 && gettime(DT_HOUR) < 5) {
+		if (ep14_1_muk > 0) {
+			mes "[莱佛士研究员]";
+			mes "人类不睡觉吗？";
+			mes "人们应该在这个时间睡觉。";
+			mes "你到底为什么要打扰我？";
+			next;
+			mes "[莱佛士研究员]";
+			mes "因为你我睡不着觉";
+			mes "明天我必须睡觉去进行研究。";
+			mes "你也该去睡觉了。";
+			close;
+		} else {
+			mes "兹兹兹兹";
+			next;
+			mes "^FF0000他似乎睡着了。^000000";
+			close;
+		}
+	}
+	if (ep14_1_muk == 0) {
+		mes "[莱佛士研究员]";
+		mes "哦不~我的研究工具...";
+		mes "什么……那是什么？";
+		emotion ET_CRY;
+		next;
+		select("你在这里做什么？");
+		mes "[莱佛士研究员]";
+		mes "唔？";
+		emotion ET_QUESTION;
+		next;
+		mes "[莱佛士研究员]";
+		mes "你是人类吗……？你是人类吗……？";
+		mes "你……来自地府？";
+		next;
+		mes "[莱佛士研究员]";
+		mes "人类真是不可思议……";
+		mes "你从裂缝中幸存下来并来到这里。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "…………";
+		next;
+		mes "[莱佛士研究员]";
+		mes "你，过来一会儿。";
+		mes "这是一个简单的实验，所以不必害怕。";
+		emotion ET_KIK;
+		next;
+		if(select("多么疯狂的抽奖啊。我必须逃跑：……") == 1) {
+			mes "[莱佛士研究员]";
+			mes "你说你是从裂缝中弥补的，";
+			mes "所以我想知道你是什么种族";
+			mes "但只是一个人类？你怎么到这里来了？";
+			emotion ET_THROB;
+			close;
+		}
+		if (BaseLevel < 100) {
+			mes "[莱佛士研究员]";
+			mes "什么...我以为是从裂缝中爬出来的人类";
+			mes "将会是非凡的，";
+			mes "但你还只是个孩子。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "去狩猎更多^000000波林^000000";
+			mes "当你的等级达到三位数时再回来吧孩子！";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "…………";
+		emotion ET_THINK;
+		next;
+		mes "[莱佛士研究员]";
+		mes "你……你不像其他人类。";
+		mes "你不是要逃跑...";
+		next;
+		mes "[莱佛士研究员]";
+		mes "你倒是有几分认真的胆量啊……";
+		mes "现在我真的很想在你身上做一些实验......";
+		next;
+		select("嗯……那是……嗯……");
+		mes "[莱佛士研究员]";
+		mes "哈哈……开个玩笑……";
+		mes "我是莱佛士研究员";
+		mes "但我不研究人类。";
+		mes "其实我不知道";
+		mes "研究什么";
+		mes "关于人类...";
+		next;
+		select("很高兴听到...");
+		mes "[莱佛士研究员]";
+		mes "就是这样。你不忙，是吗？";
+		mes "我希望你能帮我...";
+		next;
+		select("帮助他：心甘情愿地帮助。：虽然你觉得有点不好意思，但无论如何都要帮助。：有信念地帮助。：可爱地帮助。：你很怀疑，但无论如何都要帮助。：你别无选择。帮助他。");
+		mes "[莱佛士研究员]";
+		mes "我还没见过多少人类";
+		mes "但你显然关心";
+		mes "另一个人的困难。";
+		mes "你一定是一个^FF0000非常^000000的好人。";
+		emotion ET_BEST;
+		next;
+		mes "[莱佛士研究员]";
+		mes "为了时间的缘故，我会保留我的感谢。";
+		mes "这很重要，所以请尽快处理。";
+		mes "因此我无法继续进行研究。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "在莫拉旅馆，";
+		mes "有一个很有名的浴场。";
+		mes "如果有人，不仅仅是我们莱佛士，";
+		mes "进入洗澡水";
+		mes "他们的伤口会立刻痊愈……";
+		next;
+		mes "[莱佛士研究员]";
+		mes "所以作为一名伟大的研究员，我走进了浴室";
+		mes "进一步检查";
+		mes "而且……不幸的是……";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我被神秘生物袭击了";
+		mes "我失去了知觉。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "当我醒来时，我意识到";
+		mes "我的重要研究工具丢失了......";
+		mes "所以我不知道该怎么办。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "而你在这里，一个人类，";
+		mes "从裂缝来到莫拉村的勇敢的英雄人类。";
+		mes "你的乐于助人确实让我卸下了心中的负担。";
+		next;
+		select("... ... ...");
+		mes "[莱佛士研究员]";
+		mes "请去浴室取回我的研究工具。";
+		mes "你越早把它们找回来";
+		mes "我就能越早回到我的研究。";
+		setquest 5016;
+		set ep14_1_muk,1;
+		next;
+		mes "[莱佛士研究员]";
+		mes "祝您旅途平安。";
+		emotion ET_WRAP;
+		close;
+	} else if (ep14_1_muk == 1) {
+		if (checkquest(5016) > -1 && countitem(6385) == 0) {
+			mes "[莱佛士研究员]";
+			mes "你回来了？我的研究工具在哪里？";
+			emotion ET_QUESTION;
+			next;
+			mes "[莱佛士研究员]";
+			mes "您还没有找到研究工具吗？";
+			mes "我很失望。让自己去洗澡";
+			mes "并快速检索我的研究工具";
+			mes "从我身边被夺走。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "哇！！你找到研究工具了吗...？";
+		mes "你很有能力。";
+		mes "我真的很喜欢你处理工作的方式。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我喜欢你。";
+		mes "你想和我一起研究我的研究吗？";
+		mes "我到处都需要你的帮助";
+		mes "直到我完成这项研究。";
+		next;
+		select("如你所愿。");
+		mes "[莱佛士研究员]";
+		mes "伟大的。谢谢，当我们完成后，";
+		mes "我会付给你丰厚的报酬。";
+		mes "此外，对于每个已完成的研究项目，";
+		mes "我也给你一些零花钱。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "现在的年轻莱佛士……他们简直就是愚蠢至极。";
+		mes "我一直想要一个有能力的研究助理";
+		mes "但要找到一个并不容易。";
+		next;
+		if (checkweight(6380,1) == 0) {
+			mes "[莱佛士研究员]";
+			mes "话说……有那么难吗？";
+			mes "收回研究工具？";
+			mes "你携带着一些看起来很重的设备。";
+			mes "去减轻你的负担，我会给你工作报酬。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "取回工具一定很辛苦。";
+		mes "你为什么不带着这个去旅馆呢";
+		mes "休息好了吗？你现在没什么可做的。";
+		delitem 6385,1; //Research_Tool_Bag
+		set ep14_1_muk,2;
+		getitem 6380,1; //Mora_Coin
+		erasequest 5016;
+		close;
+	} else if (ep14_1_muk == 2) {
+		// Unofficial check, but it's needed here.
+		if (checkquest(5029,PLAYTIME) == 0 || checkquest(5029,PLAYTIME) == 1) {
+			mes "[莱佛士研究员]";
+			mes "取回工具一定很辛苦。";
+			mes "你为什么不带着这个去旅馆呢";
+			mes "休息好了吗？你现在没什么可做的。";
+			close;
+		}
+		switch(rand(1,5)) {
+		case 1:
+			mes "[莱佛士研究员]";
+			mes "我还在为研究做准备。";
+			mes "不幸的是一些研究工具";
+			mes "被损坏。";
+			emotion ET_FRET;
+			close;
+		case 2:
+			mes "[莱佛士研究员]";
+			mes "仔细想想，我不认为";
+			mes "我告诉你我的名字了。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "我的名字是因弗勒。如果有人";
+			mes "询问你正在和谁一起工作，";
+			mes "你可以说^0000FF我正在与研究员Inffle合作。^000000";
+			mes "这就是为什么我要告诉你我的名字。";
+			emotion ET_OK;
+			close;
+		case 3:
+			mes "[莱佛士研究员]";
+			mes "为什么？客栈关门了？";
+			mes "这很奇怪，不应该的。";
+			mes "你为什么不再去尝试一下呢？";
+			emotion ET_QUESTION;
+			close;
+		case 4:
+			break;
+		case 5:
+			mes "[莱佛士研究员]";
+			mes "该死，我越想越激动。";
+			mes "我并不是怀着恶意去的...";
+			mes "我只是想做一些研究...";
+			mes "不敢相信我被袭击了...";
+			mes "我简直不敢相信...";
+			mes "你怎么认为？";
+			emotion ET_FRET;
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "幸好你在这儿。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我一直在想";
+		mes "浴缸里的不明生物。";
+		mes "他真是个小恶魔，拿研究工具，";
+		mes "这对研究人员来说就像他的生命一样重要......";
+		next;
+		mes "[莱佛士研究员]";
+		mes "研究助理的工作";
+		mes "是为了确保研究人员能够专注于他的研究";
+		mes "并且不必担心其他任何事情......非常！重要的。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我要你为我报仇";
+		mes "对我而言，关于身份不明的生物...";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我什至不想要那么激烈的事情。";
+		mes "3次！就去欺负他3次吧。";
+		mes "你可以在他的脸上画画";
+		mes "掐他、挠他痒痒、";
+		mes "任何你想要的。欺负他3次就好了。";
+		set ep14_1_muk,3;
+		setquest 5017;
+		close;
+	} else if (ep14_1_muk  < 6) {
+		mes "[莱佛士研究员]";
+		mes "工作进行得怎么样了？";
+		mes "助理必须快速有效地工作。";
+		mes "难道你已经忘记了";
+		mes "你的任务是什么？";
+		next;
+		select("确切地。我应该怎么办？");
+		mes "[莱佛士研究员]";
+		mes "去欺负不明生物";
+		mes "只需3次。";
+		mes "你可以在他的脸上画画";
+		mes "掐他，挠他痒痒，或者别的什么。";
+		mes "欺负他3次。";
+		emotion ET_KIK;
+		close;
+	} else if (ep14_1_muk == 6) {
+		mes "[莱佛士研究员]";
+		mes "那你教训他了？伟大的。我感觉报仇了！";
+		emotion ET_SMILE;
+		next;
+		mes "[莱佛士研究员]";
+		mes "有一段时间我睡不着";
+		mes "因为我无法停止思考丢失的研究工具。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "就是这样！我们现在需要开始沐浴研究。";
+		mes "我需要尽快完成研究，";
+		mes "这样我就可以开始一个新的话题。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "去洗澡水";
+		mes "用我给你的样品管，";
+		mes "并收集一些样本。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "看看洗澡水周围，";
+		mes "你会发现一个区域散发着独特的光环。";
+		mes "您可以采集样品";
+		mes "来自那个地区。";
+		next;
+		if (MaxWeight - Weight < 100 || checkweight(1092,10) == 0) {
+			mes "[莱佛士研究员]";
+			mes "你承受的重量太多了。";
+			mes "我不能给你样品管。";
+			mes "你为什么不减轻负担再回来呢？";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "这是用于收集的样品管。";
+		mes "去收集10个样本吧！";
+		set ep14_1_muk,7;
+		getitem 1092,10; //Empty_Cylinder
+		erasequest 5018;
+		setquest 5019;
+		close;
+	} else if (ep14_1_muk == 7) {
+		if (checkquest(5019) > -1 && countitem(6386) < 10) {
+			mes "[莱佛士研究员]";
+			mes "你收集样本了吗？";
+			mes "请快点。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "看看洗澡水周围，";
+			mes "你会发现一个区域散发着独特的光环。";
+			mes "您可以采集样品";
+			mes "来自那个地区。";
+			close;
+		}
+		if (checkweight(6380,1) == 0) {
+			mes "[莱佛士研究员]";
+			mes "我知道你已经做了很多...";
+			mes "但你背负的东西太多了。";
+			mes "虽然我想给你零用钱，但我不能。";
+			mes "你能减轻一下负担再回来吗？";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "你拿到了洗澡水样本。干得好。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我必须进行一些测试";
+		mes "与洗澡水样本。";
+		mes "通常需要 24 小时左右。";
+		mes "那你为什么不回来？";
+		delitem 6386,10; //Bathtub_R_Sample
+		getitem 6380,1; //Mora_Coin
+		set ep14_1_muk,8;
+		erasequest 5019;
+		setquest 5020;
+		close;
+	} else if (ep14_1_muk == 8) {
+		if (checkquest(5020,PLAYTIME) == 0 || checkquest(5020,PLAYTIME) == 1) {
+			mes "[莱佛士研究员]";
+			mes "基本测试尚未完成。";
+			mes "现在你没什么可做的。";
+			mes "散步。";
+			mes "花点我给你的钱吧。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "基本测试已完成。";
+		mes "正如我所想...";
+		mes "洗澡水中有许多有趣的物质。";
+		emotion ET_DELIGHT;
+		next;
+		mes "[莱佛士研究员]";
+		mes "最值得注意的是这种无法识别的DNA。";
+		mes "我没有机会将它与大量 DNA 样本进行比较，";
+		mes "但我很确定这个DNA";
+		mes "已被沐浴中的神秘物质所改变。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "经过深思熟虑，";
+		mes "我的结论是这个DNA可能属于";
+		mes "袭击我的不明生物。";
+		next;
+		if (rand(2)) {
+			set .@str$,"teeth";
+			set .@quest,5021;
+		} else {
+			set .@str$,"scales";
+			set .@quest,5022;
+		}
+		mes "[莱佛士研究员]";
+		mes "我最好比较一下两者。";
+		mes "请返回浴室";
+		mes "并寻找该生物的"+.@str$+".";
+		mes "如果可以的话，请给我带10个。";
+		set ep14_1_muk,9;
+		erasequest 5020;
+		setquest .@quest;
+		close;
+	} else if (ep14_1_muk == 9) {
+		if (checkquest(5021) > -1 || checkquest(5022) > -1) {
+			if (checkquest(5021) > -1) {
+				set .@quest,5021;
+				set .@item,6387; //Teeth_Sample
+				setarray .@str$[0],"tooth","teeth";
+			} else {
+				set .@quest,5022;
+				set .@item,6388; //Scale_Sample
+				setarray .@str$[0],"scale","scales";
+			}
+			if (countitem(.@item) < 10) {
+				mes "[莱佛士研究员]";
+				mes "你还没找到不明生物的"+.@str$[1]+"吗？";
+				mes "仔细看！";
+				mes "我确信这个生物";
+				mes "他的"+.@str$[1]+"掉在某个地方了。";
+				close;
+			}
+			mes "[莱佛士研究员]";
+			mes "您终于收集了所有"+.@str$[0]+"样本。";
+			mes "正如人类所说，";
+			mes "我一直在等待他们。";
+			next;
+			if (checkweight(6380,1) == 0) {
+				mes "[莱佛士研究员]";
+				mes "我知道你已经做了很多...";
+				mes "但你背负的东西太多了。";
+				mes "虽然我想给你零用钱，但我不能。";
+				mes "你能减轻一下负担再回来吗？";
+				close;
+			}
+			mes "[莱佛士研究员]";
+			mes "好的，我马上去上班。";
+			mes "如果您有任何事务要处理，请处理。";
+			mes "DNA分析大约需要6小时。";
+			mes "你为什么不去散步呢";
+			mes "然后回来吗？";
+			delitem .@item,10;
+			getitem 6380,1; //Mora_Coin
+			erasequest .@quest;
+			setquest 5023;
+			close;
+		} else if (checkquest(5023,PLAYTIME) == 0 || checkquest(5023,PLAYTIME) == 1) {
+			mes "[莱佛士研究员]";
+			mes "我还在分析 DNA。";
+			mes "DNA分析大约需要6小时。";
+			mes "你为什么不去散散步然后再回来呢？";
+			close;
+		} else {
+			switch(rand(1,6)) {
+			case 1:
+			case 3:
+				set .@quest,5021;
+				set .@item,6387; //Teeth_Sample
+				setarray .@str$[0],"tooth","teeth";
+				break;
+			case 2:
+			case 4:
+				set .@quest,5022;
+				set .@item,6388; //Scale_Sample
+				setarray .@str$[0],"scale","scales";
+				break;
+			case 5:
+			case 6:
+				break;
+			}
+			if (.@quest) {
+				mes "[莱佛士研究员]";
+				mes "不是这样的。";
+				mes "您采集的样本属于正常物种。";
+				emotion ET_PROFUSELY_SWEAT;
+				next;
+				mes "[莱佛士研究员]";
+				mes "一定是因为生物种类太多";
+				mes "已经在洗澡了。";
+				next;
+				mes "[莱佛士研究员]";
+				mes "抱歉，请重新收集样本。";
+				mes "这一次，"+.@str$[1]+"... 是的。";
+				mes "请携带"+.@str$[0]+"样品。";
+				erasequest 5023;
+				setquest .@quest;
+				close;
+			}
+			mes "[莱佛士研究员]";
+			mes "伟大的！这些样本肯定是";
+			mes "来自神秘生物。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "据分析，";
+			mes "该DNA是鱼类DNA的突变形式。";
+			mes "我不确定这个生物能活多久";
+			mes "曾经住过澡堂，";
+			mes "但这个 DNA 已经进化了 70%";
+			mes "来自原始鱼类 DNA。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "这条鱼是从哪里来的？";
+			mes "它怎么能在温热的洗澡水中生存呢？";
+			mes "经过DNA分析后，";
+			mes "我的脑子里充满了更多的问题。";
+			next;
+			mes "………………";
+			emotion ET_THINK;
+			emotion ET_THINK, playerattached();
+			next;
+			mes "[莱佛士研究员]";
+			mes "村里的老人说";
+			mes "洗澡水来自";
+			mes "村庄周围的水坑。";
+			next;
+			callsub L_CheckWeight;
+			mes "[莱佛士研究员]";
+			mes "如果你从水坑里给我一个样本";
+			mes "向东，从这里两点钟方向，";
+			mes "我会告诉你接下来该怎么做。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "你或许不需要四处奔波";
+			mes "就像你收集一样";
+			mes "洗澡水样本。";
+			set ep14_1_muk,10;
+			getitem 1092,1; //Empty_Cylinder
+			erasequest 5023;
+			setquest 5024;
+			next;
+			mes "[莱佛士研究员]";
+			mes "如果您一次获得全部 4 个水坑样本";
+			mes "可能会更方便。然而，";
+			mes "存在样品损坏或混淆的风险。";
+			mes "因此，我将一次向您发送一个地方。祝你好运。";
+			close;
+		}
+	} else if (ep14_1_muk == 10) {
+		if (countitem(6389) == 0) {
+			mes "[莱佛士研究员]";
+			mes "你还没去采集水坑样本吗？";
+			mes "走到村东的水坑里，";
+			mes "并收集样本。";
+			mes "从这里开始就要两点了。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "你有东边水坑里的样本吗？";
+		mes "干得好，但还没时间休息 -";
+		mes "研究快完成了。";
+		next;
+		callsub L_CheckWeight;
+		mes "[莱佛士研究员]";
+		mes "从西边的水坑里拿一份样本给我。";
+		mes "还没有完全向西...";
+		mes "水坑应该在7点钟方向";
+		mes "来自村庄。";
+		delitem 6389,1; //Puddle_R_Sample
+		set ep14_1_muk,11;
+		getitem 1092,1; //Empty_Cylinder
+		changequest 5024,5025;
+		next;
+		mes "[莱佛士研究员]";
+		mes "小心不要损坏样品。";
+		mes "祝你好运！";
+		close;
+	} else if (ep14_1_muk == 11) {
+		if (countitem(6389) == 0) {
+			mes "[莱佛士研究员]";
+			mes "你还没去采集水坑样本吗？";
+			mes "走到村西的水坑里，";
+			mes "并收集样本。";
+			mes "从这里开始就要七点了。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "你有西边水坑里的样本吗？";
+		mes "干得好，但还没时间休息 -";
+		mes "研究快完成了。";
+		next;
+		callsub L_CheckWeight;
+		mes "[莱佛士研究员]";
+		mes "从南方的水坑里拿一份样本给我。";
+		mes "南边的水洼";
+		mes "应该是... 6 点从这里出发。";
+		delitem 6389,1; //Puddle_R_Sample
+		set ep14_1_muk,12;
+		getitem 1092,1; //Empty_Cylinder
+		changequest 5025,5026;
+		next;
+		mes "[莱佛士研究员]";
+		mes "即使我重复了 1000000000000000000000 次，我也无法强调这一点。";
+		mes "请注意";
+		mes "样品未损坏。";
+		close;
+	} else if (ep14_1_muk == 12) {
+		if (countitem(6389) == 0) {
+			mes "你还没去采集水坑样本吗？";
+			mes "从南方的水坑里拿一份样本给我。";
+			mes "南边的水坑位于";
+			mes "6点从这里出发。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "你知道我要说什么吗？";
+			mes "当心。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "你有南边水坑里的样本吗？";
+		mes "现在只剩下北边的水坑了";
+		mes "仍有待采样。";
+		next;
+		callsub L_CheckWeight;
+		mes "[莱佛士研究员]";
+		mes "请从北边的水坑里给我拿一些样本。";
+		mes "并不是完全向北。";
+		mes "从村里出来已经是晚上11点了。";
+		delitem 6389,1; //Puddle_R_Sample
+		set ep14_1_muk,13;
+		getitem 1092,1; //Empty_Cylinder
+		changequest 5026,5027;
+		next;
+		mes "[莱佛士研究员]";
+		mes "你知道我要说什么吗？";
+		mes "当心。";
+		close;
+	} else if (ep14_1_muk == 13) {
+		if (countitem(6389) == 0) {
+			mes "[莱佛士研究员]";
+			mes "你还没去采集水坑样本吗？";
+			mes "请从北边的水坑里给我取一份样本。";
+			mes "它并不完全在村庄的北边。";
+			mes "水坑应该位于 11 点钟方向";
+			mes "来自村庄。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "你从北方的水坑里带来了最后一个样本。";
+		mes "很棒的工作。你做得非常好。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "现在，我要做一些研究";
+		mes "有了这些样本，";
+		mes "看看之间的关系";
+		mes "这些水坑和浴缸。";
+		next;
+		if (checkweight(6380,4) == 0) {
+			mes "[莱佛士研究员]";
+			mes "我知道你已经做了很多...";
+			mes "但你背负的东西太多了。";
+			mes "虽然我想给你零用钱，但我不能。";
+			mes "你能减轻一下负担再回来吗？";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "如果我完成这个实验...";
+		mes "可能没有其他事可做。当我进行实验时，";
+		mes "你为什么不去自娱自乐呢？";
+		delitem 6389,1; //Puddle_R_Sample
+		set ep14_1_muk,14;
+		getitem 6380,4; //Mora_Coin
+		erasequest 5027;
+		setquest 5028;
+		next;
+		mes "[莱佛士研究员]";
+		mes "样品与洗澡水的比较";
+		mes "大约需要12小时。";
+		close;
+	} else if (ep14_1_muk == 14) {
+		if (checkquest(5028,PLAYTIME) == 0 || checkquest(5028,PLAYTIME) == 1) {
+			mes "[莱佛士研究员]";
+			mes "什么？你在这儿吗？出色地...";
+			next;
+			mes "[莱佛士研究员]";
+			mes "但样本研究尚未完成。";
+			mes "这是最终结果的实验​​，";
+			mes "所以不要太急。";
+			mes "我认为这项研究大约需要12个小时。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "那就回来吧。";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "你在这儿吗？最后，";
+		mes "实验结果都在了。";
+		mes "您想查看结果吗？";
+		next;
+		switch(select("其实我不想：看结果。")) {
+		case 1:
+			mes "[莱佛士研究员]";
+			mes "好想法。其实可能会痛";
+			mes "常人动脑子看看吧。";
+			mes "我想是时候给你奖励了";
+			mes "帮了我这么多忙。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "实验前我有和你谈过奖励吗？";
+			mes "你不会因为你的帮助而后悔...";
+			next;
+			break;
+		case 2:
+			mes "[莱佛士研究员]";
+			mes "您对结果感到好奇吗？真的吗？？？";
+			mes "好的，就在这里。";
+			next;
+			callsub L_ShowReport;
+			mes "[莱佛士研究员]";
+			mes "该地区周围没有火山";
+			mes "过去没有火山的记录，";
+			mes "但是水温那么高...";
+			mes "是不是很奇怪呢？";
+			next;
+			mes "[莱佛士研究员]";
+			mes "成分是……是的。";
+			mes "当然有些物质对你们人类是有益的。";
+			mes "但是，也有物质";
+			mes "这对我们莱佛士来说是致命的，";
+			mes "或其他种族。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "如果你看一下电导率，";
+			mes "它比普通水要高得多。";
+			mes "我的理论是";
+			mes "这一定是神秘力量的原因。";
+			mes "这就是我在想的。";
+			mes "无论如何。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "有一些科学无法解释的东西在起作用";
+			mes "洗澡水里...";
+			mes "以不明生物为例。";
+			mes "鱼能活下去是多么奇怪的事";
+			mes "在这么温的水中？";
+			next;
+			mes "[莱佛士研究员]";
+			mes "我对研究结果和结论并不满意。";
+			mes "我想最后，";
+			mes "这将仍然是一个谜……";
+			next;
+			mes "[莱佛士研究员]";
+			mes "我想是时候给你奖励了";
+			mes "帮了我这么多忙。";
+			next;
+			mes "[莱佛士研究员]";
+			mes "实验前我有和你谈过奖励吗？";
+			mes "你不会因为你的帮助而后悔...";
+			next;
+			break;
+		}
+		mes "[莱佛士研究员]";
+		mes "我在想你想要什么";
+		mes "为了你的回报...我觉得";
+		mes "有点……悲伤。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "…………";
+		next;
+		mes "[莱佛士研究员]";
+		mes "在我们一起致力于这些项目的短暂时间里，";
+		mes "我把你送到了所有地方。";
+		mes "一定很辛苦，但你却没有一点抱怨。";
+		mes "与我遇到的其他一些人不同，";
+		mes "你从来没有逃过工作。";
+		next;
+		mes "[莱佛士研究员]";
+		mes "我想我已经喜欢上你了";
+		mes "所以说再见时我会感到难过...";
+		next;
+		mes "[莱佛士研究员]";
+		mes "但无论如何还是谢谢你。我研究了一段时间";
+		mes "但我从未见过像你这样优秀的研究助理。";
+		next;
+		if (MaxWeight - Weight < 100 || checkweight(1092,1) == 0) {
+			mes "[莱佛士研究员]";
+			mes "唔？顺便一提...";
+			mes "你承受的重量太多了。";
+			mes "难道是因为你也难过";
+			mes "关于分道扬镳？";
+			next;
+			mes "[莱佛士研究员]";
+			mes "就这个份量，我不能给你奖励！";
+			close;
+		}
+		mes "[莱佛士研究员]";
+		mes "我一生中最好的研究助理...";
+		mes "是你吗，"+strcharinfo(0)+"！！！";
+		set ep14_1_muk,15;
+		completequest 5028;
+		getexp 1000000,4000000;
+		getitem 6380,30; //Mora_Coin
+		next;
+		mes "[莱佛士研究员]";
+		mes "如果我们再次相遇";
+		mes "让我们再次进行一个研究项目。";
+		close;
+	} else if (ep14_1_muk == 15) {
+		mes "[莱佛士研究员]";
+		mes "唔？没有？...你在这里做什么？";
+		next;
+		mes "[莱佛士研究员]";
+		mes "难道你突然想看";
+		mes "研究报告？？？";
+		next;
+		switch(select("看报道：我是来打招呼的。")) {
+		case 1:
+			mes "[莱佛士研究员]";
+			mes "我之前没给你看过吗？";
+			next;
+			mes "[莱佛士研究员]";
+			mes "…………";
+			emotion ET_THINK;
+			next;
+			mes "[莱佛士研究员]";
+			mes "也许我还没有给你看。";
+			mes "对此感到抱歉。所以你非常想看它";
+			mes "你回来看我了？";
+			mes "伟大的！这里是。";
+			next;
+			while(1) {
+				callsub L_ShowReport;
+				mes "[莱佛士研究员]";
+				mes "报告到此结束";
+				mes "莫拉村的神秘浴场。";
+				mes "你想再看一遍吗？";
+				emotion ET_QUESTION;
+				next;
+				switch(select("再看一遍：别再看了。")) {
+				case 1:
+					mes "[莱佛士研究员]";
+					mes "当然...如你所愿！！";
+					next;
+					break;
+				case 2:
+					mes "[莱佛士研究员]";
+					mes "再见。随时过来，";
+					mes "如果你想再看一下结果。";
+					mes "这里随时欢迎您。";
+					close;
+				}
+			}
+		case 2:
+			mes "[莱佛士研究员]";
+			mes "噢，你是来打招呼的。我懂了。";
+			mes "好久不见，"+strcharinfo(0)+".";
+			next;
+			mes "[莱佛士研究员]";
+			mes "我一直告诉你，我很幸运地选择你作为我的研究助理。";
+			mes "随时过来，";
+			mes "如果你想再看一下结果。";
+			mes "这里随时欢迎您。";
+			close;
+		}
+	} else {
+		mes "[莱佛士研究员]";
+		mes "唔？我是研究员 Inffle。";
+		mes "你是谁？";
+		close;
+	}
+	end;
+L_ShowReport:
+	mes "[实验结果]";
+	mes "*** 研究员 - Inffle";
+	mes "*** 研究助理 -"+strcharinfo(0);
+	mes " ";
+	mes "<研究课题>";
+	mes "*** 莫拉村浴场";
+	mes " ";
+	mes "<目标>";
+	mes "探究洗澡水的神秘力量";
+	mes "并找出更好地利用的方法";
+	mes "水。";
+	mes " ";
+	mes "<方法>";
+	mes "1. 获得不明DNA样本。";
+	mes "获得了一份身份不明的DNA样本，";
+	mes "并收集了更多样本以进一步研究。";
+	mes " ";
+	mes "2. 未鉴定DNA的比对分析";
+	mes "结论是DNA属于";
+	mes "洗澡水中生活着一种身份不明的生物。";
+	mes "结合并产生";
+	mes "来自剑鱼的DNA。";
+	mes " ";
+	mes "3. 村庄周边水坑调查";
+	mes "从村子周围的四个水坑里，";
+	mes "确认测试物质是";
+	mes "均匀分布在水坑中。";
+	mes "人们认为这四个水坑";
+	mes "结合并产生";
+	mes "神秘的力量。";
+	mes " ";
+	mes "<材料分析>";
+	mes "*** 温度 ***** 33.5℃";
+	mes "*** PH值 ************ 9.8";
+	mes "*** 固体残留物 *** 176";
+	mes "*** K+ ************ 0,23";
+	mes "*** 钙++ ********** 1.83";
+	mes "*** 氯- ********** 26.2";
+	mes "***HCO3- ********* 31.0";
+	mes "*** 硫化氢 ********* 1.7";
+	mes "*** 钠++ ********** 51.9";
+	mes "*** 镁+ ********** 0.03";
+	mes "*** SO4- ********** 5.0";
+	mes "*** F ************* 12.8";
+	mes "*** 二氧化硅 ********** 23.9";
+	mes "*** 李 ************ 0.06";
+	mes "***二氧化碳+ ********** 22.8";
+	mes "*** 高级 ************ 0.04";
+	mes "*** 格 ************ 0.004";
+	mes "*** T-固体 ****** 165";
+	mes "*** 电导率 **** 500";
+	mes "*** 经度 ********** 4.6";
+	next;
+	return;
+L_CheckWeight:
+	if (MaxWeight - Weight < 100 || checkweight(1092,1) == 0) {
+		mes "[莱佛士研究员]";
+		mes "你承受的重量太多了。";
+		mes "我不能给你样品管。";
+		mes "你为什么不减轻负担再回来呢？";
+		close;
+	}
+	return;
+}
+
+mora,114,79,0	script	Black Shadow#ep14_muk	844,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 500) {
+		mes "^FF0000- 警告消息 -";
+		mes "- 坚持住！！ -";
+		mes "- 你的物品太多了 -";
+		mes "- 接收更多物品。 -";
+		mes "-请减轻负担-";
+		mes "- 然后再试一次。 -^000000";
+		close;
+	}
+	if (BaseLevel < 100) {
+		mes "有什么东西从头到脚打量着你，然后消失，嘲笑着你。";
+		close2;
+		donpcevent "Black Shadow#ep14_muk::OnDisable";
+		end;
+	}
+	set .@playtime, checkquest(5029,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "你看到一个黑洞。当你表现出兴趣时，某些东西会很快消失在黑洞中。";
+		close2;
+		donpcevent "Black Shadow#ep14_muk::OnDisable";
+		end;
+	} else if (.@playtime == 2)
+		erasequest 5029;
+	if (ep14_1_goki == 30) {
+		if (checkquest(5030) == -1 && checkquest(5031) == -1 && checkquest(5032) == -1 && checkquest(5033) == -1 && checkquest(5034) == -1) {
+			mes "[不明生物]";
+			mes "啊啊啊！！！";
+			mes "为什么你打扰我。";
+			mes "你别再欺负我了。";
+			next;
+			if(select("无论如何，欺负者：我会停下来。") == 1) {
+				emotion ET_CRY;
+				set ep14_1_goki,0;
+				close2;
+				donpcevent "Black Shadow#ep14_muk::OnDisable";
+				end;
+			}
+			mes "[不明生物]";
+			mes "你……很好。";
+			mes "大家都叫我怪物。";
+			mes "打我。欺负。我累了。";
+			next;
+			mes "[鱼]";
+			mes "我叫菲希。";
+			mes "爸爸给我起名字。";
+			next;
+			mes "………………";
+			next;
+			mes "他似乎在胡言乱语。";
+			next;
+			mes "[鱼]";
+			mes "欺负。乐趣。每天。";
+			mes "我说话。还是欺负人。";
+			next;
+			mes "[鱼]";
+			mes "你……很好。帮助菲希吗？";
+			next;
+			if(select("不帮忙：帮忙。") == 1) {
+				emotion ET_CRY;
+				set ep14_1_goki,0;
+				close2;
+				donpcevent "Black Shadow#ep14_muk::OnDisable";
+				end;
+			}
+			mes "[鱼]";
+			mes "你很好。好的！";
+			next;
+			mes "[鱼]";
+			mes "我不住在这里。";
+			mes "我住在水坑里。";
+			mes "水坑。住在那里。";
+			next;
+			mes "[鱼]";
+			mes "我睡得很奇怪。";
+			mes "有一天醒来。";
+			mes "在这里，洗澡。";
+			next;
+			mes "[鱼]";
+			mes "不知道怎么回家。";
+			mes "我只是住在这里。";
+			mes "长大了。孔小。";
+			mes "进不去。";
+			next;
+			mes "[鱼]";
+			mes "我想念家人。我想见见家人。";
+			mes "你很好。我的家人怎么样。";
+			mes "带我来。好的。";
+			next;
+			select("我怎么知道谁是你的家人？");
+			mes "[鱼]";
+			mes "我们鱼很蠢。";
+			mes "愚蠢的。但知道姓氏。";
+			next;
+			mes "[鱼]";
+			mes "家人都知道名字 Fishee。家人来了";
+			next;
+			mes "[鱼]";
+			mes "请。在水坑里。";
+			mes "你告诉我我的家人都很好。";
+			setquest 5030+rand(4); //5030,5031,5032,5033
+			close;
+		} else if (checkquest(5030) > -1 || checkquest(5031) > -1 || checkquest(5032) > -1 || checkquest(5033) > -1) {
+			mes "[鱼]";
+			mes "请。在水坑里。";
+			mes "你告诉我我的家人都很好。";
+			next;
+			mes "[鱼]";
+			mes "你忘了我的名字吗？";
+			next;
+			if(select("请再告诉我一次你的名字！：我知道你的名字。") == 1) {
+				mes "[鱼]";
+				mes "你的记忆力，就像鱼一样。";
+				mes "愚蠢的。我说话。";
+				mes "我的名字是菲希菲希！！";
+				next;
+			}
+			mes "[鱼]";
+			mes "请。在水坑里。";
+			mes "你告诉我我的家人都很好。";
+			close;
+		} else if (checkquest(5034) > -1 && checkquest(5034) < 2) {
+			if (MaxWeight - Weight < 100 || checkweight(5792,1) == 0) {
+				mes "[鱼]";
+				mes "你有很多。";
+				mes "我给。给你。";
+				mes "空袋子。回来。";
+				close;
+			}
+			mes "[鱼]";
+			mes "你告诉我我的家人都好。谢谢。";
+			mes "我知道了谢谢你。鱼。";
+			mes "重新...不认识这个词。";
+			next;
+			select("或许……奖励？？");
+			mes "[鱼]";
+			mes "是的。那。你很好。";
+			mes "聪明的。给你奖励。";
+			mes "我知道了谢谢你。鱼。";
+			next;
+			mes "[鱼]";
+			mes "这是我洗澡时得到的。";
+			mes "不，有人留下的。";
+			mes "…… 好家伙。我给你。";
+			completequest 5034;
+			getitem 5792,1; //Fish_Pin
+			close;
+		} else if (checkquest(5034) == 2) {
+			mes "[鱼]";
+			mes "你……我看见了。感觉。我看到了。感觉。";
+			mes "你……名字？";
+			next;
+			input .@inputstr$;
+			mes "[鱼]";
+			mes .@inputstr$+"做。";
+			mes "不知道。不记得了..";
+			mes "你……是谁？";
+			close;
+		}
+	}
+	set .@weapon$, ((getequipisequiped(EQI_HAND_R))?getequipname(EQI_HAND_R):"Bare handed");
+	set .@pc_hp, 200;
+	set .@npc_hp, 200;
+	setarray .@skills$[0],"Midsection punch","Headbutt","Wiggle wiggle","Screw punch","Mumble muble";
+	mes "不明生物正在攻击。你会怎么做？";
+	next;
+	while(1) {
+		switch(select("用武器攻击。：用技能攻击。：用牙齿攻击。：恐惧地逃跑。")) {
+		case 1: // Weapon
+			set .@p_damage,10;
+			set .@pc_attack, rand(1,10);
+			mes "["+strcharinfo(0)+"的攻击]";
+			switch(.@pc_attack) {
+			// Miss.
+			case 3:
+				mes "你试图用你最近购买的昂贵物品^FF0000["+.@weapon$+"]^000000进行攻击，但身份不明的生物迅速躲开了。";
+				break;
+			case 6:
+				mes "你错误地使用了霍尔格伦扔给你的^FF0000["+.@weapon$+"]^000000来攻击不明生物，但该生物预见到了攻击并躲开了。";
+				break;
+			case 9:
+				mes "你用你珍贵的^FF0000[+"+.@weapon$+"+]^000000攻击不明生物，但该生物后退并躲开了你的攻击。";
+				break;
+			// Hit.
+			default:
+				specialeffect EF_HIT1;
+				set .@npc_hp, .@npc_hp - .@p_damage;
+				switch(.@pc_attack) {
+					case 1: set .@str$,"With your precious ^FF0000["+.@weapon$+"]^000000, you attacked the unidentified creature. The weapon pierced the creature's body."; break;
+					case 2: set .@str$,"By mistake, you use ^FF0000["+.@weapon$+"]^000000 that Holgren has thrown your way to attack the unidentified creature. With a thud, the unidentified creature's body is swaying."; break;
+					case 4: set .@str$,"You attempt to attack with your recent expensive purchase ^FF0000["+.@weapon$+"]^000000. You hit the unidentified creature's body with a thud."; break;
+					case 5: set .@str$,"You use a borrowed ^FF0000["+.@weapon$+"]^000000 to attack the unidentified creature, but the weapon slipped. But the weapon flies off and pierces the creature's body."; break;
+					case 7: set .@str$,"With your precious ^FF0000["+.@weapon$+"]^000000, you attacked the unidentified creature. It was as if the weapon was part of your body."; break;
+					case 8: set .@str$,"You use your lucky ^FF0000["+.@weapon$+"]^000000 to attack the unidentified creature."; break;
+					case 10: set .@str$,"You use a friend's ^FF0000["+.@weapon$+"]^000000 to attack the unidentified creature."; break;
+				}
+				mes .@str$+" ^FF0000["+.@p_damage+"]^000000 造成伤害。";
+				break;
+			}
+			next;
+			break;
+		case 2: // Skill
+			set .@p_damage,20;
+			set .@pc_attack, rand(1,6);
+			set .@skillname$, .@skills$[rand(5)];
+			mes "["+strcharinfo(0)+"的攻击]";
+			switch(.@pc_attack) {
+			// Miss.
+			case 2:
+				mes "你使用技能^0000FF["+.@skillname$+"]^000000但你无法集中注意力，未能正确使用该技能。";
+				break;
+			case 4:
+				mes "你全力使用技能^0000FF["+.@skillname$+"]^000000，但不明生物轻轻躲开并嘲笑你。";
+				break;
+			case 6:
+				mes "你使用技能^0000FF["+.@skillname$+"]^000000攻击该生物，但他离开了视线，你无法使用该技能。";
+				break;
+			// Hit.
+			default:
+				specialeffect EF_BASH;
+				set .@npc_hp, .@npc_hp - .@p_damage;
+				switch(.@pc_attack) {
+					case 1: set .@str$, "With an attack so fast and furious, the creature is too stunned to move."; break;
+					case 3: set .@str$, "The creature dodged, but you foresaw his movements and targeted accurately."; break;
+					case 5: set .@str$, "Your skill flew in a perfect parabola and hit the creature exactly."; break;
+				}
+				mes "你使用技能^0000FF["+.@skillname$+"]^000000攻击不明生物。 "+.@str$+" ^FF0000["+.@p_damage+"]^000000 造成伤害。";
+				break;
+			}
+			next;
+			break;
+		case 3: // Tooth
+			set .@p_damage,50;
+			set .@pc_attack, rand(1,10);
+			mes "["+strcharinfo(0)+"的攻击]";
+			if (.@pc_attack == 4 || .@pc_attack == 7) {
+				specialeffect EF_HIT1;
+				set .@npc_hp, .@npc_hp - .@p_damage;
+				mes "你用你整齐的牙齿用力咬住这个不明生物，直到你的牙齿陷入它的肉里。 ^FF0000["+.@p_damage+"]^000000 造成伤害。";
+			} else
+				mes "你用钢铁般的牙齿去咬那个不明生物，但那个受惊的生物躲开了。他用奇怪的眼神看着你。";
+			next;
+			break;
+		case 4: // Run
+			mes "你害怕这个不明生物，并试图逃跑。";
+			next;
+			mes "["+strcharinfo(0)+"的逃亡]";
+			if (rand(1,2) == 1) {
+				mes "幸运的是，不明身份的生物没有追上你。";
+				close;
+			} else {
+				mes "当你试图逃跑时，不明身份的生物发现你并发起攻击。你没能逃脱。";
+				next;
+				specialeffect2 EF_HIT1;
+				mes "该生物用尾巴猛击你。太痛苦了，眼泪从眼睛里滚出来。 ^FF000010^000000 收到已损坏。";
+				set .@pc_hp, .@pc_hp - 10;
+				next;
+				// Unofficial check, but it's needed here.
+				callsub L_CheckPCAlive, .@pc_hp;
+			}
+			break;
+		}
+		if (.@npc_hp <= 0) {
+			mes "你赢了。身份不明的生物失去知觉。";
+			next;
+			if (checkquest(5016) > -1 && countitem(6385) == 0) {
+				mes "你会怎么做？";
+				next;
+				select("寻找研究工具。");
+				if (checkweight(6385,1) == 0) {
+					mes "你试图寻找研究工具，";
+					mes "但你背负的东西太多了。";
+					mes "你最好减轻一下负担";
+					mes "然后回来。";
+					close2;
+					donpcevent "Black Shadow#ep14_muk::OnDisable";
+					end;
+				}
+				mes "找到研究员 Raffle 的^0000FF研究工具^000000。";
+				set ep14_1_goki, ep14_1_goki+1;
+				getitem 6385,1; //Research_Tool_Bag
+				setquest 5029;
+				next;
+				mes "该生物醒来并消失在黑洞中。";
+				close2;
+				donpcevent "Black Shadow#ep14_muk::OnDisable";
+				end;
+			} else if (checkquest(5017) > -1) {
+				mes "你将如何欺负这个生物？";
+				next;
+				input .@inputstr$;
+				mes "你^0000FF"+.@inputstr$+"^000000来欺负不明生物。";
+				next;
+				setquest 5029;
+				switch(ep14_1_muk) {
+				case 3:
+					mes "你欺负不明生物。这很有趣。";
+					break;
+				case 4:
+					mes "你第二次欺负这个身份不明的生物了。这绝对很有趣。";
+					break;
+				case 5:
+					mes "你第三次欺负这个身份不明的生物了。这很有趣，但现在是时候停止了。";
+					changequest 5017,5018;
+					break;
+				}
+				set ep14_1_muk, ep14_1_muk+1;
+				set ep14_1_goki, ep14_1_goki+1;
+				close2;
+				donpcevent "Black Shadow#ep14_muk::OnDisable";
+				end;
+			} else {
+				mes "你会怎么做？";
+				next;
+				if(select("检查不明生物的尸体。：离开。") == 2) {
+					setquest 5029;
+					set ep14_1_goki, ep14_1_goki+1;
+					close2;
+					donpcevent "Black Shadow#ep14_muk::OnDisable";
+					end;
+				}
+				if (rand(1,30) == 7) {
+					if (checkweight(6380,1) == 0) {
+						mes "当你检查不明生物的尸体时，你的手指碰到了某个东西。你很幸运，但由于你的负担太重，你未能获得^0000FF莫拉币^000000。";
+						set ep14_1_goki, ep14_1_goki+1;
+						setquest 5029;
+						close2;
+						donpcevent "Black Shadow#ep14_muk::OnDisable";
+						end;
+					}
+					mes "当你检查不明生物的尸体时，你的手指碰到了某个东西。幸运的。获得^0000FF莫拉币^000000。";
+					set ep14_1_goki, ep14_1_goki+1;
+					getitem 6380,1; //Mora_Coin
+					setquest 5029;
+					next;
+					mes "该生物醒来并消失在黑洞中。";
+				} else {
+					mes "一旦你触碰该生物的身体，它就会苏醒并消失在黑洞中。";
+					set ep14_1_goki, ep14_1_goki+1;
+					setquest 5029;
+				}
+				close2;
+				donpcevent "Black Shadow#ep14_muk::OnDisable";
+				end;
+			}
+		}
+		mes "[ 当前进度 ]";
+		mes strcharinfo(0)+"生命值="+.@pc_hp;
+		mes "不明生物生命值="+.@npc_hp;
+		next;
+		mes "[不明生物的攻击]";
+		set .@npc_attack, rand(1,3);
+		switch(.@npc_attack) {
+		case 1:
+			set .@n_damage,10;
+			mes "身份不明的生物喷射出一股洗澡水。";
+			break;
+		case 2:
+			set .@n_damage,20;
+			mes "不明生物以极快的速度向你冲来。它似乎正在尝试用头撞。";
+			break;
+		case 3:
+			set .@n_damage,50;
+			mes "身份不明的生物张牙舞爪地向你冲来。它似乎正试图咬人。";
+			break;
+		}
+		next;
+		mes "你会怎么做？";
+		next;
+		switch(select("…………：躲闪：格挡：太过分了。逃跑。")) {
+		case 1:
+			switch(.@npc_attack) {
+			case 1:
+				specialeffect2 EF_ICEARROW;
+				mes "你站着不动。水流正好打在你的脸上。你的头脑瞬间清晰起来。 ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+				break;
+			case 2:
+				specialeffect2 EF_BASH;
+				mes "你站着不动。该生物直接用头撞你。你的头脑瞬间清晰起来。 ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+				break;
+			case 3:
+				specialeffect2 EF_HIT1;
+				mes "你站着不动。当你傻傻地站着时，这个生物靠近并无情地咬你。你的头脑瞬间清晰起来。 ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+				break;
+			}
+			set .@pc_hp, .@pc_hp - .@n_damage;
+			next;
+			break;
+		case 2:
+			switch(.@npc_attack) {
+			case 1:
+				set .@miss, rand(1,5);
+				mes "[不明生物的攻击]";
+				switch(.@miss) {
+				// Miss.
+				case 1:
+					mes "不明生物向你射出一股水流，但你通过倾斜身体轻松躲开。";
+					break;
+				case 3:
+					mes "身份不明的生物向你射出一股水流，但你一边挖鼻孔一边躲开了它。";
+					break;
+				// Hit.
+				default:
+					specialeffect2 EF_ICEARROW;
+					set .@pc_hp, .@pc_hp - .@n_damage;
+					switch(.@miss) {
+						case 2: set .@str$,"face"; break;
+						case 4: set .@str$,"stomach"; break;
+						case 5: set .@str$,"arm"; break;
+					}
+					mes "水流正好击中你的"+.@str$+"。 ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+					break;
+				}
+				next;
+				break;
+			case 2:
+				set .@miss, rand(1,10);
+				mes "[不明生物的攻击]";
+				switch(.@miss) {
+				// Miss.
+				case 1:
+					mes "身份不明的生物冲向你并试图用头撞，但你并不是屈服于这种攻击的人。";
+					break;
+				case 3:
+					mes "身份不明的生物冲向你并试图用头撞，但你稍微移动了一下躲开了攻击。";
+					break;
+				case 5:
+					mes "身份不明的生物冲向你，试图用头撞你，但你挖鼻孔躲开了攻击。";
+					break;
+				case 7:
+					mes "身份不明的生物冲向你并试图用头撞，但你轻松躲开了攻击。";
+					break;
+				// Hit.
+				default:
+					specialeffect2 EF_BASH;
+					set .@pc_hp, .@pc_hp - .@n_damage;
+					switch(.@miss) {
+						case 2: set .@str$,"With a thud, you can feel intense pain."; break;
+						case 4: set .@str$,"*thud* Your back seems to give way."; break;
+						case 6: set .@str$,"The creature's attack hits you in the shoulder."; break;
+						case 8: set .@str$,"The attack is like an arrow."; break;
+						case 9: set .@str$,"The attack was fast and accurate."; break;
+						case 10: set .@str$,"It hits your hand with a thud."; break;
+					}
+					mes "身份不明的生物冲向你并用头撞你。 "+.@str$+" ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+					break;
+				}
+				next;
+				break;
+			case 3:
+				set .@miss, rand(1,10);
+				mes "[不明生物的攻击]";
+				switch(.@miss) {
+				// Miss.
+				case 1:
+					mes "身份不明的生物张牙舞爪地向你冲来，但你冷笑着躲开了攻击。";
+					break;
+				case 3:
+					mes "身份不明的生物张牙舞爪地向你冲来，但你稍微移动一下就躲开了攻击。";
+					break;
+				case 5:
+					mes "身份不明的生物张牙舞爪地向你冲来，但你在伸展身体时躲开了攻击。";
+					break;
+				case 7:
+					mes "身份不明的生物张牙舞爪地向你冲来，但你一边数着泽尼一边躲开了攻击。";
+					break;
+				case 8:
+					mes "身份不明的生物张牙舞爪地向你冲来，但你轻轻躲开了攻击。";
+					break;
+				case 9:
+					mes "身份不明的生物张牙舞爪地向你冲来，但你冷笑着躲开了攻击。";
+					break;
+				// Hit.
+				default:
+					specialeffect2 EF_HIT1;
+					set .@pc_hp, .@pc_hp - .@n_damage;
+					switch(.@miss) {
+						case 2: set .@str$,"leg. Its sharp teeth penetrate your legs."; break;
+						case 4: set .@str$,"arm. Its sharp teeth penetrate your arm."; break;
+						case 6: set .@str$,"toe. You feel like your toe is being cut off."; break;
+						case 10: set .@str$,"finger. You feel like your finger is being cut off."; break;
+					}
+					mes "身份不明的生物张牙舞爪地向你冲来，咬住你受到的 "+.@str$+" ^FF0000["+.@n_damage+"]^000000 受到的伤害。";
+					break;
+				}
+				next;
+				break;
+			}
+			break;
+		case 3:
+			set .@defend, rand(1,10);
+			switch(.@npc_attack) {
+			case 1:
+				if (.@defend == 3 || .@defend == 6) {
+					set .@n_damage, .@n_damage / 2;
+					specialeffect2 EF_GUARD;
+				} else
+					specialeffect2 EF_ICEARROW;
+				set .@pc_hp, .@pc_hp - .@n_damage;
+				mes "[防御"+strcharinfo(0)+"]";
+				switch(.@defend) {
+					// Blocked.
+					case 3: set .@str$,"You block the stream of water with your strong butt. Feels refreshing. HP reduced only by half."; break;
+					case 6: set .@str$,"You block the stream of water with your strong hands. Your hands sting a little. HP reduced only by half."; break;
+					// Not blocked.
+					case 1: set .@str$,"You try to block the stream of water with your strong butt, but it's too late."; break;
+					case 2: set .@str$,"You try to block the stream of water with your big gut, but to no avail."; break;
+					case 4: set .@str$,"You try to block the stream of water with your gathered hands, but the creature targets a different place."; break;
+					case 5: set .@str$,"You try to block the stream of water with your strong hands, but you fail."; break;
+					case 7: set .@str$,"You try to block the stream of water with arms crossed, but you fold them wrong."; break;
+					case 8: set .@str$,"You try to block the stream of water with your rock-like head, but it was not possible."; break;
+					case 9: set .@str$,"You try to block the stream of water with your solid muscles, but it was not possible."; break;
+					case 10: set .@str$,"You try to block the stream of water with your strong feet, but your effort was wasted."; break;
+				}
+				mes .@str$+" ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+				next;
+				break;
+			case 2:
+				if (.@defend == 1 || .@defend == 3 || .@defend == 5 || .@defend == 7) {
+					set .@n_damage, .@n_damage / 2;
+					specialeffect2 EF_GUARD;
+				} else
+					specialeffect2 EF_BASH;
+				set .@pc_hp, .@pc_hp - .@n_damage;
+				mes "[防御"+strcharinfo(0)+"]";
+				switch(.@defend) {
+					// Blocked.
+					case 1: set .@str$,"You block the dash attack with your fat butt. Your butt is world class. HP reduced only by half."; break;
+					case 3: set .@str$,"You block the dash attack with your big gut. Your gut is world class. HP reduced only by half."; break;
+					case 5: set .@str$,"You block the dash attack with your strong hands. Your hands are world class. HP reduced only by half."; break;
+					case 7: set .@str$,"The unidentified creature dashed with lightning speed, but you easily block the attack with your big gut. Your gut is world class. HP reduced only by half."; break;
+					// Not blocked.
+					case 2: set .@str$,"You try to block the dash attack with your fat butt, but miss and get hit in an unmentionable place."; break;
+					case 4: set .@str$,"You try to block the dash attack with your big gut, but your gut isn't big enough to absorb the impact."; break;
+					case 6: set .@str$,"You try to block the dash attack with arms crossed, but you feel an incredible force."; break;
+					case 8: set .@str$,"You try to block the dash attack, to no avail."; break;
+					case 9: set .@str$,"You try to block the dash attack with your strong hands, to no avail."; break;
+					case 10: set .@str$,"You try to block the dash attack with your durable feet, but the pain woke you up."; break;
+				}
+				mes .@str$+" ^FF0000["+.@n_damage+"]^000000 受到伤害。";
+				next;
+				break;
+			case 3:
+				if (.@defend == 2 || .@defend == 4 || .@defend == 6 || .@defend == 8) {
+					set .@n_damage, .@n_damage / 2;
+					specialeffect2 EF_GUARD;
+				}
+				set .@pc_hp, .@pc_hp - .@n_damage;
+				mes "[防御"+strcharinfo(0)+"]";
+				switch(.@defend) {
+					// Blocked.
+					case 2: set .@str$,"but you block its attack with a branch nearby. HP reduced only by half."; break;
+					case 4: set .@str$,"but you block its attack with a weapon. HP reduced only by half."; break;
+					case 6: set .@str$,"but you block its attack using skill ^0000FFFriend Shield^000000. HP reduced only by half."; break;
+					case 8: set .@str$,"but you block its attack using a book you always carry around. HP reduced only by half."; break;
+					// Not blocked.
+					case 1: set .@str$,"and bites your arm."; break;
+					case 3: set .@str$,"and bites your leg."; break;
+					case 5: set .@str$,"and bites your shoulder."; break;
+					case 7: set .@str$,"and bites your finger."; break;
+					case 9: set .@str$,"and bites your finger."; break;
+					case 10: set .@str$,"and bites your toe."; break;
+				}
+				mes "身份不明的生物张牙舞爪地向你冲来，受到 "+.@str$+" ^FF0000["+.@n_damage+"]^000000 伤害。";
+				next;
+				break;
+			}
+			break;
+		case 4:
+			mes "你害怕这个不明生物，并试图逃跑。";
+			next;
+			mes "["+strcharinfo(0)+"的逃亡]";
+			if (rand(1,2) == 1) {
+				mes "幸运的是^BF2C15不明生物^000000";
+				mes "没有追随你。";
+				close;
+			} else {
+				mes "当你试图逃跑时，不明身份的生物发现你并发起攻击。";
+				mes "你没能逃脱。";
+				next;
+				mes "该生物用尾巴猛击你。太痛苦了，眼泪从眼睛里滚出来。 ^FF000010^000000 收到已损坏。";
+				set .@pc_hp, .@pc_hp - 10;
+				next;
+			}
+			break;
+		}
+		callsub L_CheckPCAlive, .@pc_hp;
+		mes "[ 当前进度 ]";
+		mes strcharinfo(0)+"生命值="+.@pc_hp;
+		mes "不明生物生命值="+.@npc_hp;
+		next;
+	}
+	end;
+L_CheckPCAlive:
+	if (getarg(0) <= 0) {
+		mes "你输给了不明生物。你的大脑一片空白，你晕倒了。";
+		next;
+		mes "你在某人的帮助下离开了浴室。";
+		percentheal -99,0;
+		donpcevent "Black Shadow#ep14_muk::OnDisable";
+		warp "mora",31,132;
+		end;
+	}
+	return;
+OnInit:
+	disablenpc "Black Shadow#ep14_muk";
+	end;
+OnEnable:
+	enablenpc "Black Shadow#ep14_muk";
+	disablenpc "???#ep14_muk01";
+	disablenpc "???#ep14_muk02";
+	disablenpc "???#ep14_muk03";
+	disablenpc "???#ep14_muk04";
+	disablenpc "???#ep14_muk05";
+	end;
+OnDisable:
+	disablenpc "Black Shadow#ep14_muk";
+	donpcevent "Black Shadow#ep14_muk::OnFullon";
+	mapannounce "mora","You can now use the mysterious power of bath water.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+	end;
+OnFullon:
+	donpcevent "???#ep14_muk01::OnReset";
+	donpcevent "???#ep14_muk02::OnReset";
+	donpcevent "???#ep14_muk03::OnReset";
+	donpcevent "???#ep14_muk04::OnReset";
+	donpcevent "???#ep14_muk05::OnReset";
+	end;
+}
+
+-	script	???#mora	-1,{
+	if (checkquest(5019) > -1) {
+		mes "你发现一个区域散发着独特的光环。";
+		mes "您也许可以收集洗澡水样本。";
+		mes "你会怎么做？";
+		next;
+		if(select("采集样本：离开。") == 2) {
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			end;
+		}
+		if (countitem(6386) >= 10) {
+			mes "您不需要额外的样品。";
+			close2;
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			end;
+		}
+		if (countitem(1092) == 0) {
+			mes "要获取样品，您需要样品管。";
+			close2;
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			end;
+		}
+		mes "收集样本。";
+		next;
+		progressbar "ffff00",3;
+		if (!rand(3)) {
+			if (checkweight(6386,1) == 0) {
+				mes "你有这么多物品";
+				mes "很难收集样本。";
+				mes "你必须减轻负担然后回来。";
+				close2;
+				donpcevent strnpcinfo(0)+"::OnDisable";
+				end;
+			}
+			mes "洗澡水样本采集完成。";
+			delitem 1092,1; //Empty_Cylinder
+			getitem 6386,1; //Bathtub_R_Sample
+		} else {
+			mes "洗澡水样本采集失败。";
+			percentheal 5,5;
+		}
+		close2;
+		donpcevent strnpcinfo(0)+"::OnDisable";
+		end;
+	} else if (checkquest(5021) > -1 || checkquest(5022) > -1) {
+		if (checkquest(5021) > -1) {
+			set .@str$,"tooth";
+			set .@item,6387; //Teeth_Sample
+		} else {
+			set .@str$,"scale";
+			set .@item,6388; //Scale_Sample
+		}
+		mes "水里有东西在闪闪发光。";
+		mes "你也许能够收集不明生物的"+.@str$+"样本。";
+		mes "你想让我做什么？";
+		next;
+		if(select("再看看：离开。") == 2) {
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			end;
+		}
+		if (countitem(.@item) >= 10) {
+			mes "您不需要额外的样品。";
+			close2;
+			donpcevent strnpcinfo(0)+"::OnDisable";
+			end;
+		}
+		progressbar "ffff00",3;
+		if (!rand(3)) {
+			if (checkweight(.@item,1) == 0) {
+				mes "你有这么多物品";
+				mes "很难收集样本。";
+				mes "你必须减轻负担然后回来。";
+				close;
+			}
+			mes "获得"+.@str$+"样品";
+			mes "不明生物的。";
+			getitem .@item,1;
+		} else
+			mes "你以为你在地上看到了它，但那是幻觉。";
+		close2;
+		donpcevent strnpcinfo(0)+"::OnDisable";
+		end;
+	} else {
+		mes "???";
+		next;
+		select("???");
+		mes "???";
+		close;
+	}
+	end;
+OnEnable:
+	enablenpc();
+	stopnpctimer;
+	end;
+OnDisable:
+	disablenpc();
+	initnpctimer;
+	end;
+OnReset:
+	if (rand(2))
+		donpcevent strnpcinfo(0)+"::OnEnable";
+	else
+		initnpctimer;
+	end;
+OnTimer10000:
+OnTimer20000:
+OnTimer30000:
+OnTimer40000:
+OnTimer50000:
+	if (rand(2)) 
+		donpcevent strnpcinfo(0)+"::OnEnable";
+	end;
+OnTimer60000:
+	donpcevent strnpcinfo(0)+"::OnEnable";
+	end;
+OnTouch:
+	if (checkquest(5034) == 2 || ep14_1_muk == 0 || rand(5)) {
+		percentheal 5,5;
+		end;
+	}
+	set .@playtime, checkquest(5029,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		percentheal 5,5;
+		end;
+	} else if (.@playtime == 2) {
+		erasequest 5029;
+		end;
+	} else {
+		mapannounce "mora","You can no longer use the mysterious power of the bath water.",bc_map,"0xFFFF00"; //FW_NORMAL 12 0 0
+		mes "^FF0000出现了一些东西。^000000";
+		mes "^FFFF00你无法使用洗澡水的神秘力量。^000000";
+		close2;
+		donpcevent "Black Shadow#ep14_muk::OnEnable";
+		end;
+	}
+}
+mora,108,86,0	duplicate(???#mora)	???#ep14_muk01	844,2,2
+mora,107,82,0	duplicate(???#mora)	???#ep14_muk02	844,2,2
+mora,113,84,0	duplicate(???#mora)	???#ep14_muk03	844,2,2
+mora,116,81,0	duplicate(???#mora)	???#ep14_muk04	844,2,2
+mora,118,86,0	duplicate(???#mora)	???#ep14_muk05	844,2,2
+
+-	script	#mora_puddle	-1,{
+	set .@i, atoi(charat(strnpcinfo(2),9));
+
+	// This script has a lot of checks,
+	// so arrays are only set when used.
+	setarray .@quest1[1],5024,5025,5026,5027;
+	setarray .@dir$[1],"east","west","south","north";
+
+	if (checkquest(.@quest1[.@i]) > -1) {
+		if (countitem(6389) == 0) {
+			mes "这似乎是水坑"+.@dir$[.@i];
+			mes "研究人员谈到的。";
+			mes "你会采集样本吗？";
+			next;
+			if(select("采集样本：不采集样本。") == 2)
+				close;
+			if (countitem(1092) == 0) {
+				mes "您没有空样品管。";
+				close;
+			}
+			progressbar "ffff00",5;
+			if (checkweight(6389,1) == 0) {
+				mes "你有这么多物品";
+				mes "很难收集样本。";
+				mes "你必须减轻负担然后回来。";
+				close;
+			}
+			mes "您已从水坑中采集到"+.@dir$[.@i]+".";
+			delitem 1092,1; //Empty_Cylinder
+			getitem 6389,1; //Puddle_R_Sample
+			close;
+		} else {
+			mes "您已经有样品了。";
+			close;
+		}
+	}
+
+	set .@quest1[0], .@quest1[.@i];
+	set .@dir$[0], .@dir$[.@i];
+	deletearray .@quest1[.@i],1;
+	deletearray .@dir$[.@i],1;
+
+	if (checkquest(.@quest1[1]) > -1 || checkquest(.@quest1[2]) > -1 || checkquest(.@quest1[3]) > -1) {
+		for(set .@j,1; .@j<=3; set .@j,.@j+1) {
+			if (checkquest(.@quest1[.@j]) > -1)
+				break;
+		}
+		mes "这不是"+.@dir$[.@j]+".";
+		close;
+	}
+
+	setarray .@quest2[1],5030,5031,5032,5033;
+	set .@quest2[0], .@quest2[.@i];
+	deletearray .@quest2[.@i],1;
+
+	if (ep14_1_goki == 30 && checkquest(.@quest2[0]) > -1) {
+		mes "你到达了"+.@dir$[0]+".";
+		mes "你应该寻找身份不明的生物的家人。";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "鱼~鱼~";
+		next;
+		mes "当你呼唤时，就有回应";
+		mes "从水坑里。";
+		next;
+		mes "[???]";
+		mes "WHO？费舍尔？去！";
+		next;
+		select("我正在寻找一条特定的鱼的家人。");
+		mes "[???]";
+		mes "家庭？那条鱼叫什么名字？";
+		next;
+		mes "这个身份不明的生物叫什么名字？";
+		next;
+		input .@inputstr$;
+		if (.@inputstr$ != "Fishee") {
+			mes "[???]";
+			mes "没有家人。"+.@inputstr$+"不。";
+			mes "你去。";
+			next;
+			mes "看来不明生物的家人并不在这里。";
+			close;
+		}
+		mes "[???]";
+		mes .@inputstr$+"？哦……怎么……";
+		mes "老公来了你的儿子。";
+		mes "新闻在这里。";
+		next;
+		mes "水坑里的另一个生物对你说话了。";
+		next;
+		mes "[???]";
+		mes "什么？儿子失踪的消息？";
+		next;
+		mes "两条鱼很兴奋，";
+		mes "他们的谈话很难听清。";
+		mes "你等待他们平静下来";
+		mes "并向他们讲述了整个故事。";
+		next;
+		mes "[菲希的爸爸]";
+		mes "是的...晚上，儿子";
+		mes "消失了……夜钓者。";
+		mes "儿子傻了捕捉。死的。好的。";
+		next;
+		mes "[鱼的妈妈]";
+		mes "菲希还活着。伟大的。伟大的。";
+		next;
+		mes "[菲希的爸爸]";
+		mes "是的...人类给儿子消息。";
+		mes "谢谢。儿子，";
+		mes "我们还好。快乐的。这里。你告诉儿子。";
+		changequest .@quest2[0],5034;
+		close;
+	} else if (checkquest(5034) > -1 && checkquest(5034) < 2) {
+		mes "[菲希的爸爸]";
+		mes "是的...人类给儿子消息。";
+		mes "谢谢。儿子，";
+		mes "我们还好。快乐的。这里。你告诉儿子。";
+		close;
+	} else if (checkquest(.@quest2[1]) > -1 || checkquest(.@quest2[2]) > -1 || checkquest(.@quest2[3]) > -1) {
+		mes "你到达了"+.@dir$[0]+".";
+		mes "你应该寻找身份不明的生物的家人。";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "鱼~鱼~";
+		next;
+		mes "你大声喊着要鱼，";
+		mes "但没有任何回应。";
+		mes "我认为没有人活着";
+		mes "在这个水坑里。";
+		close;
+	}
+	mes "您会看到一个表面平静的水坑。";
+	close;
+}
+bif_fild02,315,285,0	duplicate(#mora_puddle)	Puddle#ep14_muk01	844
+bif_fild02,65,109,0	duplicate(#mora_puddle)	Puddle#ep14_muk02	844
+bif_fild02,223,71,0	duplicate(#mora_puddle)	Puddle#ep14_muk03	844
+bif_fild02,113,340,0	duplicate(#mora_puddle)	Puddle#ep14_muk04	844
+
+// Mora Daily Quests :: ep14_1_dealer
+//============================================================
+mora,133,80,6	script	Elephantine#pa0829	509,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[大象]";
+		mes "嗯，你看起来不太可靠，无法为我执行任务。";
+		close;
+	}
+	if (BaseLevel < 135) {
+		mes "[大象]";
+		mes "等你变强了为什么不回来呢？当你处于当前状态时，我无法给你任务。";
+		close;
+	}
+	set .@playtime, checkquest(12230,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "[大象]";
+		mes "我现在没有其他任务可以完成。如果我得到一些，当你回来时我会通知你。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "[大象]";
+		mes "请您检查^990099Hotcha^000000";
+		mes "关于上一个任务的详细信息？";
+		close;
+	}
+	mes "[大象]";
+	mes "欢迎。";
+	mes "我有一些任务要交给你——你能看一下吗？";
+	next;
+	if(select("你有什么任务给我？：告诉我今天的任务。") == 1) {
+		mes "[大象]";
+		mes "我是莫拉村志愿巡逻队的队长。以前不是这样的，呵呵。";
+		next;
+		mes "[大象]";
+		mes "每天，我都会给你一个任务，杀死周围地区的怪物。";
+		next;
+		mes "[大象]";
+		mes "你可能会接到一项对你来说太困难而无法独自完成的任务 - 在这种情况下，请尝试向其他冒险家寻求帮助。";
+		close;
+	}
+	mes "[大象]";
+	mes "让我看看今天有什么任务……嗯……";
+	next;
+	mes "[大象]";
+	mes "这个怎么样？";
+	next;
+	switch(rand(1,5)) {
+	case 1:
+		setquest 12225;
+		setquest 12230;
+		mes "[大象]";
+		mes "背着水果的奇怪昆虫在这片地区游荡 - 您一定见过它们。";
+		next;
+		mes "[大象]";
+		mes "我希望你能在看到他们的时候就把他们消灭掉，以免他们试图向迷失在森林中的冒险者出售任何东西。";
+		set .@n$,"Fruit-Carrying Insects";
+		break;
+	case 2:
+		setquest 12226;
+		setquest 12230;
+		mes "[大象]";
+		mes "最近有很多关于螳螂伪装成花朵攻击路过生物的报道。";
+		next;
+		mes "[大象]";
+		mes "目前还没有人员伤亡的报告，但采取预防措施总没有坏处。请妥善处理他们。";
+		set .@n$,"Flowery Hunters";
+		break;
+	case 3:
+		setquest 12227;
+		setquest 12230;
+		mes "[大象]";
+		mes "据报道，一名冒险家在比弗罗斯特附近收集资源时遭到小鸟的袭击。";
+		next;
+		mes "[大象]";
+		mes "它们看起来并不那么凶猛……但是冒险家要求我除掉它们，所以你必须这么做。";
+		set .@n$,"Small but Ferocious...";
+		break;
+	case 4:
+		setquest 12228;
+		setquest 12230;
+		mes "[大象]";
+		mes "我对此心存疑虑，但有人匿名要求我去追捕顽皮的仙女。";
+		next;
+		mes "[大象]";
+		mes "不知道他和仙女们有什么恩怨，但是请求就是请求。";
+		set .@n$,"An Unknown Grudge";
+		break;
+	case 5:
+		setquest 12229;
+		setquest 12230;
+		mes "[大象]";
+		mes "如果我说有一团金发在滚来滚去你信吗？你不会，是吗？";
+		next;
+		mes "[大象]";
+		mes "他们看起来并不那么危险，但据报道他们会从冒险者那里偷书和糖果。请妥善处理他们。";
+		set .@n$,"Blondie Ann";
+		break;
+	}
+	next;
+	mes "您已收到任务^005500"+.@n$+"^000000。打开任务窗口并查看详细信息。";
+	close;
+}
+
+mora,115,98,8	script	Hotcha#pa0829	509,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[Hotcha]";
+		mes "嗯，你看起来对于大象的任务来说不够可靠。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[Hotcha]";
+		mes "这里就像是冒险者的天堂。但不适合像你这样的弱者。";
+		close;
+	}
+	set .@playtime, checkquest(12230,PLAYTIME);
+	if (.@playtime == -1) {
+		mes "[Hotcha]";
+		mes "我看到你还没有收到";
+		mes "还没有任何任务。";
+		mes "去和大象交谈吧";
+		mes "大象会给你";
+		mes "无数的任务之一。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "[Hotcha]";
+		mes "完成现有任务的时间到了。";
+		next;
+		mes "[Hotcha]";
+		mes "如果您的任务日志中有任何未完成的任务，它们将被视为“失败”并从日志中删除。";
+		next;
+		mes "[Hotcha]";
+		mes "一旦它们被移除，去与大象对话，你就可以接受新的任务。";
+		for(set .@i,12225; .@i<=12229; set .@i,.@i+1) {
+			if (checkquest(.@i) > -1)
+				erasequest .@i;
+		}
+		erasequest 12230;
+		close;
+	}
+	mes "[Hotcha]";
+	mes "欢迎。";
+	mes "我可以怎样帮助您？";
+	next;
+	select("我已经完成了一项任务。");
+	mes "哦。";
+	mes "你？";
+	mes "请稍等一下，我正在检查文件。";
+	next;
+
+	for(set .@i,12225; .@i<=12229; set .@i,.@i+1) {
+		if (checkquest(.@i,HUNTING) == 2) {
+			mes "[Hotcha]";
+			mes "是的，我看到你已经完成了任务。已确认已完成。";
+			erasequest .@i;
+			specialeffect2 EF_STEAL;
+			if (BaseLevel > 99 && JobLevel < 50)
+				getexp 0, (JobLevel * JobLevel * (110/100) * 50);	// note 110/100 is from the original file
+			else if (BaseLevel < 100 && JobLevel < 70)
+				getexp 0, (JobLevel * JobLevel * (110/100) * 10);
+			getitem 6380,3; //Mora_Coin
+			close;
+		}
+	}
+
+	mes "[Hotcha]";
+	mes "唔..."+strcharinfo(0)+".";
+	mes "这可能是文档错误，但根据文档，您与任务无关。";
+	close;
+}
+
+mora,119,103,4	script	Bow-wow#pa0829	513,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[鞠躬哇]";
+		mes "我尝试只把任务交给可靠的人。你是……不，没关系。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[鞠躬哇]";
+		mes "你真的毫无头绪。这么弱的身体能做什么呢？";
+		close;
+	}
+	set .@playtime, checkquest(12241,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "[鞠躬哇]";
+		mes "我现在没有其他任务可以完成。如果我得到一些，当你回来时我会通知你。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "[鞠躬哇]";
+		mes "请联系^990099杂货经销商^000000";
+		mes "关于上一个任务的详细信息？";
+		close;
+	}
+	mes "[鞠躬哇]";
+	mes "欢迎。";
+	mes "我有一些任务要交给你——你能看一下吗？";
+	next;
+	if(select("你有什么任务给我？：告诉我今天的任务。") == 1) {
+		mes "[鞠躬哇]";
+		mes "在这里，我们为冒险家制作各种物资。";
+		next;
+		mes "[鞠躬哇]";
+		mes "我们每天接受一次供应原材料。";
+		next;
+		mes "[鞠躬哇]";
+		mes "有时，我们可能会要求提供很难获得的材料。在这种情况下，请尝试向其他冒险者寻求帮助。";
+		close;
+	}
+	mes "[鞠躬哇]";
+	mes "让我看看……我们今天生产什么物资……？";
+	next;
+	mes "[鞠躬哇]";
+	mes "这个怎么样？";
+	next;
+	switch(rand(1,5)) {
+	case 1:
+		setquest 12231;
+		setquest 12241;
+		mes "[鞠躬哇]";
+		mes "这里的冒险家在探索地牢时一定要随身携带防腐剂，以保持食物新鲜。你知道防腐剂是由什么制成的吗？";
+		next;
+		mes "[鞠躬哇]";
+		mes "*咧嘴笑*不是别人，正是……昆虫触角！那里的杂货经销商让我买四张。我个人绝对不会吃它......";
+		set .@n$,"Material for the Preservative";
+		break;
+	case 2:
+		setquest 12232;
+		setquest 12241;
+		mes "[鞠躬哇]";
+		mes "如今，这里的冒险家们制作护身符以在危险的冒险中保护自己是很常见的。就像一种保险。";
+		next;
+		mes "[鞠躬哇]";
+		mes "最近《不朽之心》似乎很火。杂货商人让我买五个。";
+		set .@n$,"A Symbol of Resistance";
+		break;
+	case 3:
+		setquest 12233;
+		setquest 12241;
+		mes "[鞠躬哇]";
+		mes "他们需要大量的腐烂绷带来制作急救绷带。他们一定已经用完了新材料。";
+		next;
+		mes "[鞠躬哇]";
+		mes "客户是那边的杂货商。三束就足够了。";
+		set .@n$,"Material for First Aid Kits";
+		break;
+	case 4:
+		setquest 12234;
+		setquest 12241;
+		mes "[鞠躬哇]";
+		mes "强大战士的象征为冒险家的旅途提供了巨大的支持。这就是兽人优惠券热销的原因。";
+		next;
+		mes "[鞠躬哇]";
+		mes "杂货商让我去拿三张兽人券，用来制作勇气的象征。";
+		set .@n$,"Symbols of Courage";
+		break;
+	case 5:
+		setquest 12235;
+		setquest 12241;
+		mes "[鞠躬哇]";
+		mes "冒险者之间似乎有传言，喝与水混合的骨头粉有助于增强体力。";
+		next;
+		mes "[鞠躬哇]";
+		mes "杂货商让我去拿三块骷髅，用来制作补品。";
+		set .@n$,"Good for Stamina...";
+		break;
+	}
+	next;
+	mes "您已收到任务^880088"+.@n$+"^000000。打开任务窗口并查看详细信息。";
+	close;
+}
+
+mora,119,118,4	script	General Goods Dealer#pa0	516,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[杂货经销商]";
+		mes "嗯，对于 Bow-wow 的任务来说，你看起来不够可靠。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[杂货经销商]";
+		mes "你这个脆弱的身体能做什么呢？去锻炼一下吧。";
+		close;
+	}
+	set .@playtime, checkquest(12241,PLAYTIME);
+	if (.@playtime == -1) {
+		mes "[杂货经销商]";
+		mes "我看到你还没有收到";
+		mes "还没有任何任务。";
+		mes "去跟鲍哇说话吧，";
+		mes "Bow-wow 会给你";
+		mes "无数的任务之一。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "[杂货经销商]";
+		mes "完成现有任务的时间到了。";
+		next;
+		mes "[杂货经销商]";
+		mes "如果您的任务日志中有任何未完成的任务，它们将被视为“失败”并从日志中删除。";
+		next;
+		mes "[杂货经销商]";
+		mes "一旦它们被移除，去与Bow-wow交谈，你就可以接受新的任务。";
+		for(set .@i,12231; .@i<=12235; set .@i,.@i+1) {
+			if (checkquest(.@i) > -1)
+				erasequest .@i;
+		}
+		erasequest 12241;
+		close;
+	}
+	mes "[杂货经销商]";
+	mes "欢迎。";
+	mes "我可以怎样帮助您？";
+	next;
+	select("我已经完成了一项任务。");
+	mes "[杂货经销商]";
+	mes "哦。";
+	mes "你？";
+	mes "请稍等一下，我正在检查文件。";
+	next;
+
+	callsub L_CheckQuest,12231,928,4; //Insect_Feeler
+	callsub L_CheckQuest,12232,929,5; //Immortal_Heart
+	callsub L_CheckQuest,12233,930,1; //Rotten_Bandage
+	callsub L_CheckQuest,12234,931,3; //Orcish_Voucher
+	callsub L_CheckQuest,12235,932,3; //Skel_Bone
+
+	mes "[杂货经销商]";
+	mes "唔..."+strcharinfo(0)+".";
+	mes "这可能是文档错误，但根据文档，您与任务无关。";
+	close;
+
+L_CheckQuest:
+	if (checkquest(getarg(0)) > -1) {
+		if (countitem(getarg(1)) < getarg(2)) {
+			mes "[杂货经销商]";
+			mes "金额不够...";
+			close;
+		}
+		mes "[杂货经销商]";
+		mes "我已经收到物品了。过一段时间我还有任务要交给你，你为什么不去泡个温泉放松一下呢？";
+		delitem getarg(1),getarg(2);
+		erasequest getarg(0);
+		specialeffect2 EF_STEAL;
+		if (BaseLevel > 99)
+			getexp 0, ((JobLevel < 50)?JobLevel * JobLevel * (110/100) * 50:0);
+		else
+			getexp 0, ((JobLevel < 70)?JobLevel * JobLevel * (110/100) * 10:0);
+		getitem 6380,1; //Mora_Coin
+		close;
+	}
+	return;
+}
+
+mora,124,108,7	script	Woof-grrr#pa0829	514,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[呜呜声]";
+		mes "你能离我远一点吗？你妨碍了。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[呜呜声]";
+		mes "这个地方不是托儿所。长大了回来，我很乐意给你布置任务。";
+		close;
+	}
+	set .@playtime, checkquest(12242,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "[呜呜声]";
+		mes "我现在没有其他任务可以完成。如果我得到一些，当你回来时我会通知你。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "[呜呜声]";
+		mes "请您与站在我对面的^990099商品交易商^000000核实一下，";
+		mes "关于上一个任务的详细信息？";
+		close;
+	}
+	mes "[呜呜声]";
+	mes "很高兴见到你。";
+	mes "我有一些任务要交给你——你能看一下吗？";
+	next;
+	if(select("你有什么任务给我？：告诉我今天的任务。") == 1) {
+		mes "[呜呜声]";
+		mes "Bow-wow和我是同一个行业的。";
+		next;
+		mes "[呜呜声]";
+		mes "我们是一家冒险家用品制造商。";
+		next;
+		mes "[呜呜声]";
+		mes "我的任务并不容易——你最好做好准备。";
+		close;
+	}
+	mes "[呜呜声]";
+	mes "嗯……今天手头有什么任务？";
+	next;
+	mes "[呜呜声]";
+	mes "哦。这个看起来不错。";
+	next;
+	switch(rand(1,5)) {
+	case 1:
+		setquest 12236;
+		setquest 12242;
+		mes "[呜呜声]";
+		mes "有些人只是将护身符挂在脖子上，但更多的人选择将其密封在特殊的盒子中并随身携带。";
+		next;
+		mes "[呜呜声]";
+		mes "纪念品为这些案例的设计师提供了灵感。我对面的商品经销商让我买两件。";
+		set .@n$,"The Latest Trend in Talismans";
+		break;
+	case 2:
+		setquest 12237;
+		setquest 12242;
+		mes "[呜呜声]";
+		mes "冒险者一定要保管好他们的护身符，因为他们可以挽救自己的生命。";
+		next;
+		mes "[呜呜声]";
+		mes "我对面的商品交易商似乎是用贝壳做保护壳的。我被要求拿三个。";
+		set .@n$,"Keep Your Valuables Safe";
+		break;
+	case 3:
+		setquest 12238;
+		setquest 12242;
+		mes "[呜呜声]";
+		mes "进入迷雾森林迷宫的灌木丛中的冒险者总是佩戴护膝。";
+		next;
+		mes "[呜呜声]";
+		mes "我对面的商品经销商让我去买三块鳞片，用来制作护膝。";
+		set .@n$,"Material for Knee Protectors";
+		break;
+	case 4:
+		setquest 12239;
+		setquest 12242;
+		mes "[呜呜声]";
+		mes "我手头有一项任务交给你，为可能有毒的昆虫制作疫苗。";
+		next;
+		mes "[呜呜声]";
+		mes "我对面的商品经销商让我去买两只毒犬，用来研究这种物质。";
+		set .@n$,"Poison for Poison...";
+		break;
+	case 5:
+		setquest 12240;
+		setquest 12242;
+		mes "[呜呜声]";
+		mes "他们似乎已经用完了为鞋子添加防滑鞋底的材料。";
+		next;
+		mes "[呜呜声]";
+		mes "我对面的商品经销商委托我去买五团粘液。";
+		set .@n$,"Don't Slip and Fall";
+		break;
+	}
+	next;
+	mes "您已收到任务^880088"+.@n$+"^000000。打开任务窗口并查看详细信息。";
+	close;
+}
+
+mora,127,112,4	script	Commodities Dealer#pa08	518,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[商品经销商]";
+		mes "好吧，Woof-grrr 不可能给你这样的弱者任务。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[商品经销商]";
+		mes "离开！你就这样闲逛，我没法专心编目……";
+		close;
+	}
+	set .@playtime, checkquest(12242,PLAYTIME);
+	if (.@playtime == -1) {
+		mes "[商品经销商]";
+		mes "我看到你还没有收到";
+		mes "还没有任何任务。";
+		mes "去跟 Woof-grrr 说话，";
+		mes "Woof-grrr 会给你";
+		mes "无数的任务之一。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "[商品经销商]";
+		mes "完成现有任务的时间到了。";
+		next;
+		mes "[商品经销商]";
+		mes "如果您的任务日志中有任何未完成的任务，它们将被视为“失败”并从日志中删除。";
+		next;
+		mes "[商品经销商]";
+		mes "一旦它们被移除，去和 Woof-grrr 交谈，你就可以收到新的任务。";
+		for(set .@i,12236; .@i<=12240; set .@i,.@i+1) {
+			if (checkquest(.@i) > -1)
+				erasequest .@i;
+		}
+		erasequest 12242;
+		close;
+	}
+	mes "[商品经销商]";
+	mes "欢迎。";
+	mes "我可以怎样帮助您？";
+	next;
+	select("我已经完成了一项任务。");
+	mes "[商品经销商]";
+	mes "哦。";
+	mes "你？";
+	mes "请稍等一下，我正在检查文件。";
+	next;
+
+	callsub L_CheckQuest,12236,934,2; //Mementos
+	callsub L_CheckQuest,12237,935,3; //Shell
+	callsub L_CheckQuest,12238,936,3; //Scales_Shell
+	callsub L_CheckQuest,12239,937,2; //Posionous_Canine
+	callsub L_CheckQuest,12240,938,5; //Sticky_Mucus
+
+	mes "[商品经销商]";
+	mes "唔..."+strcharinfo(0)+".";
+	mes "这可能是文档错误，但根据文档，您与任务无关。";
+	close;
+
+L_CheckQuest:
+	if (checkquest(getarg(0)) > -1) {
+		if (countitem(getarg(1)) < getarg(2)) {
+			mes "[商品经销商]";
+			mes "金额不够...";
+			close;
+		}
+		mes "[商品经销商]";
+		mes "我已经收到物品了。我期待再次与您合作。";
+		delitem getarg(1),getarg(2);
+		erasequest getarg(0);
+		specialeffect2 EF_STEAL;
+		if (BaseLevel > 99 && JobLevel < 50)
+			getexp 0, JobLevel * JobLevel * (110/100) * 50;
+		else if( BaseLevel < 99 && JobLevel < 70 )
+			getexp 0, JobLevel * JobLevel * (110/100) * 10;
+		getitem 6380,1; //Mora_Coin
+		close;
+	}
+	return;
+}
+
+mora,170,101,4	script	Soul Guide#pa0829	515,{
+	if (checkweight(1201,1) == 0) {
+		mes "你身上有太多东西，无法做到这一点。扔掉其中一些，然后再试一次。";
+		close;
+	}
+	if (MaxWeight - Weight < 1000) {
+		mes "你承受的重量太重，无法做到这一点。减轻重量，然后再试一次。";
+		close;
+	}
+	if (ep14_1_mistwoods < 10) {
+		mes "[灵魂指南]";
+		mes "可靠性是寻找迷失灵魂所需的首要品质。你在我看来不太可靠。";
+		close;
+	}
+	if (BaseLevel < 97) {
+		mes "[灵魂指南]";
+		mes "你需要有坚强的精神来完成这项任务。我认为你需要更多的纪律。";
+		close;
+	}
+	set .@playtime, checkquest(12253,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "你的身上还残留着鬼魂的痕迹。";
+		next;
+		mes "等痕迹消失后，你必须回来。";
+		close;
+	} else if (.@playtime == 2) {
+		mes "你感觉自己的心再次平静下来。你现在有足够的能量去寻找其他灵魂，所以再次与指南交谈。";
+		for(set .@i,12243; .@i<=12252; set .@i,.@i+1) {
+			if (checkquest(.@i) > -1)
+				erasequest .@i;
+		}
+		erasequest 12253;
+		close;
+	}
+	mes "[灵魂指南]";
+	mes "欢迎。";
+	mes "你准备好了吗？";
+	next;
+	if(select("你有什么任务给我？：告诉我今天的任务。") == 1) {
+		mes "[灵魂指南]";
+		mes "我的工作是收集森林中出没的灵魂遗骸并安息。";
+		next;
+		mes "[灵魂指南]";
+		mes "无数的灵魂被困在迷宫之中。";
+		next;
+		mes "[灵魂指南]";
+		mes "帮助他们得到长久以来应得的休息。";
+		close;
+	}
+	mes "[灵魂指南]";
+	mes "我将向你展示其中一位失落灵魂的细节。";
+	next;
+	switch(rand(1,10)) {
+	case 1:
+		setquest 12243;
+		setquest 12253;
+		mes "^66006632岁。来自米德加德。自从前往迷雾森林迷宫采集本土植物以来，已经失踪三个月了。生存机会很低。^000000";
+		set .@n$,"Tazar";
+		break;
+	case 2:
+		setquest 12244;
+		setquest 12253;
+		mes "^66006619岁。乘船从遥远未知的地方来到的冒险家。自从他不顾所有莫拉居民的劝阻，穿着薄薄的紧身衣去探索迷宫以来，已经失踪两个月了。";
+		mes "就算他还活着，也会给救援队带来麻烦。^000000";
+		set .@n$,"Niger";
+		break;
+	case 3:
+		setquest 12245;
+		setquest 12253;
+		mes "^660066年龄未知。有一些精神疾病。为了净化迷雾森林迷宫而独自前往。他坚称自己有良好的血统，但没有人相信他。";
+		mes "失踪期限：12年。生存机会不大。^000000";
+		set .@n$,"Messil";
+		break;
+	case 4:
+		setquest 12246;
+		setquest 12253;
+		mes "^66006651岁。曾是盗取世界各地名剑的大盗。";
+		mes "在他晚年因经营非法赌场造成大量人员伤亡而被追捕后，在迷宫中失踪。生存机会很低。^000000";
+		set .@n$,"Noirit";
+		break;
+	case 5:
+		setquest 12247;
+		setquest 12253;
+		mes "^66006622岁。飞艇飞行员的学徒。他在莫拉镇休息时喝酒时失踪。";
+		mes "有传言说他在某处签约后逃跑了。失踪期限：4个月。生存机会很低。^000000";
+		set .@n$,"Pajama Sin";
+		break;
+	case 6:
+		setquest 12248;
+		setquest 12253;
+		mes "^660066年龄未知。一名长发、身穿黑衣的女性。前往迷宫森林探险，寻找永生。失踪期限：3个月。生存机会很低。^000000";
+		set .@n$,"Mendel";
+		break;
+	case 7:
+		setquest 12249;
+		setquest 12253;
+		mes "^66006650岁左右。现任莫拉村村长。他因欺骗居民牟取暴利而被抓，逃往迷宫森林。生存不确定。^000000";
+		set .@n$,"Milebit";
+		break;
+	case 8:
+		setquest 12250;
+		setquest 12253;
+		mes "^66006629岁，来历不明的年轻人。";
+		mes "从莫拉居民那里骗取1200莫拉币后逃到迷宫森林，同时假装在莫拉做很多生意并适应自己。生存不确定。^000000";
+		set .@n$,"Kunmoon";
+		break;
+	case 9:
+		setquest 12251;
+		setquest 12253;
+		mes "^66006634岁。与莫拉的几个女人调情。从莫拉村民那里逃到了迷宫森林。生存不确定。^000000";
+		set .@n$,"Chaihokin";
+		break;
+	case 10:
+		setquest 12252;
+		setquest 12253;
+		mes "^660066年龄未知。带着村民共同控制的钱币消失了。生存机会很低。^000000";
+		set .@n$,"Tual";
+		break;
+	}
+	next;
+	mes "^990099失踪人员的信息"+.@n$+"^000000已找到。检查您的任务窗口以获取更多信息。";
+	specialeffect2 EF_STEAL;
+	close;
+}
+
+mora,131,165,7	script	Wandering Customer#pa082	520,{
+	mes "[流浪顾客]";
+	mes "我不知道该不该相信这个画商……他让我这样站了好几天……啊……我头晕。";
+	close;
+}
+
+mora,125,174,2	script	A Random Customer#pa0829	520,{
+	mes "[天真的客户]";
+	mes "我不知道我的吊坠什么时候雕刻完成。既然他是个可靠的艺术品经销商，我想他不会弄坏我的吊坠。";
+	close;
+}
+
+mora,104,172,7	script	Victim#pa0829	520,{
+	mes "[受害者]";
+	mes "你这个混蛋！我想要我的粗犷外套！这是我父亲传给我的*SOB*";
+	next;
+	mes "^990099 看来他受到了艺术品经销商的很大伤害。^000000";
+	close;
+}
+
+sec_in02,29,34,5	script	Initializing Mora Sanjo	453,{
+	callfunc "F_GM_NPC";
+	mes "输入您的密码";
+	if (callfunc("F_GM_NPC","1854",1) == 0) {
+		mes "呵呵";
+		close;
+	} else {
+		mes "[初始化]";
+		mes "14.1 初始化所有任务窗口包括相关日常任务和地图等";
+		freeloop(1);
+		for(set .@i,12225; .@i<=12353; set .@i,.@i+1) {
+			if (checkquest(.@i) > -1)
+				erasequest .@i;
+		}
+		freeloop(0);
+		set ep14_1_mistwoods,10;
+		close;
+	}
+}
+
+// Mora Daily Quests - Souls :: md_cadaver_in
+//============================================================
+// callfunc "mora_remains",<quest ID>,<NPC name>,<Mora Coin amount>,<reward ID>,<max reward amount>;
+function	script	mora_remains	{
+	if (MaxWeight - Weight < 1000) {
+		mes "您必须在库存中腾出空间。";
+		close;
+	}
+	if (checkquest(getarg(0)) > -1) {
+		specialeffect2 EF_BLIND;
+		specialeffect2 EF_BEGINSPELL;
+		progressbar "ffff00",4;
+		erasequest getarg(0);
+		mes "这些一定是["+getarg(1)+"]的遗迹。所以仔细收集他的遗骸。";
+		specialeffect2 EF_STEAL;
+		getitem getarg(3), rand(1,getarg(4));
+		if (rand(10)) {
+			next;
+			mes "你在遗骸旁边捡到了"+getarg(2)+"莫拉硬币。";
+			specialeffect2 EF_STEAL;
+			getitem 6380,getarg(2); //Mora_Coin
+		}
+		close;
+	}
+	mes "你可以看到最近挖掘的痕迹。";
+	close;
+}
+1@mist,132,100,0	script	Tazaar's Remains#33	844,{ callfunc "mora_remains",12243,"Tazaar",6,526,3; }	//Royal_Jelly
+1@mist,102,242,0	script	Naizar's Remains#33	844,{ callfunc "mora_remains",12244,"Naizar",5,942,17; }	//Yoyo_Tail
+1@mist,145,245,0	script	Meshir's Remains#33	844,{ callfunc "mora_remains",12245,"Meshir",5,943,4; }	//Solid_Shell
+1@mist,196,276,0	script	Noirit's Remains#33	844,{ callfunc "mora_remains",12246,"Noirit",6,549,3; }	//Nice_Sweet_Potato
+1@mist,304,327,0	script	Pajama God's Remains#33	844,{ callfunc "mora_remains",12247,"Pajama God",5,945,18; }	//Raccoon_Leaf
+1@mist,334,287,0	script	Mendel's Remains#33	844,{ callfunc "mora_remains",12248,"Mendel",7,946,31; }	//Snail's_Shell
+1@mist,330,177,0	script	Milebit's Remains#33	844,{ callfunc "mora_remains",12249,"Milebit",5,7008,17; }	//Stiff_Horn
+1@mist,284,84,0	script	Kunmun's Remains#33	844,{ callfunc "mora_remains",12250,"Kunmun",4,6380,20; }	//Mora_Coin
+1@mist,170,54,0	script	Tsaihokin's Remains#33	844,{ callfunc "mora_remains",12251,"Tsaihokin",2,929,5; }	//Immortal_Heart
+1@mist,118,43,0	script	Tuar's Remains#33	844,{ callfunc "mora_remains",12252,"Tuar",3,6380,20; }	//Mora_Coin
+
+// Knights of the Neighborhood :: ep14_1_mora_knight
+//============================================================
+mora,118,166,6	script	Knights Chief#mo	525,{
+	mes "[骑士团长勋章]";
+	mes "我们是传说中的邻里骑士团，成立于五分钟前！";
+	next;
+	mes "[骑士团长勋章]";
+	mes "我们有四位酋长，但没有步兵……";
+	mes "真是令人沮丧！";
+	next;
+	mes "[其他领导]";
+	mes "其他人都是战士，但我才是老大！";
+	mes "我，团长，会告诉你该怎么做！";
+	mes "领袖是级别最高的！";
+	mes "你说服我加入了这个组织，现在看看这个！";
+	close;
+}
+
+mora,116,165,5	script	Knights Boss#mo	524,{
+	set .@playtime, checkquest(1119,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "[骑士团老大]";
+		mes "我们的莫拉币已经用完了。";
+		mes "明天再来吧！";
+		close;
+	} else if (.@playtime == 2)
+		erasequest 1119;
+	if (checkweight(6380,1) == 0) {
+		mes "[骑士团老大]";
+		mes "你身上有很多东西！";
+		mes "为什么不把其中一些放进我的口袋里呢？";
+		close;
+	}
+	if (countitem(12561) >= 200) {
+		mes "[骑士团老大]";
+		mes "所以你带回来了";
+		mes "200 个^FF0000神秘种子^000000。";
+		mes "你是在我的指挥下工作吗？";
+		mes "我很困惑";
+		mes "因为我一直在随机派人去办事。";
+		next;
+		mes "[骑士团老大]";
+		mes "我会按照我的承诺奖励你。";
+		mes "你确保每个人都知道";
+		mes "这是邻里骑士团的作品吧？";
+		setquest 1119;
+		delitem 12561,200; //Mysterious_Seed
+		getitem 6380,1; //Mora_Coin
+		close;
+	}
+	mes "[骑士团老大]";
+	mes "你有勇气";
+	mes "突然出现";
+	mes "并要求莫拉币......多么令人印象深刻！";
+	mes "你完全有资格成为邻里骑士团的士兵。";
+	next;
+	mes "[骑士团老大]";
+	mes "士兵，我需要你为我做一件事。";
+	mes "前往迷雾森林，收集200颗^FF0000神秘种子^000000！";
+	next;
+	switch(select("是的，先生！：我向你发起决斗！")) {
+	case 1:
+		mes "[骑士团老大]";
+		mes "态度好，"+strcharinfo(0)+"士兵！";
+		mes "等你回来我一定会重重地奖励你。";
+		next;
+		mes "[其他首领]";
+		mes "这是我队长发来的！";
+		mes "别小看头！";
+		mes "这是我，领导者发出的！";
+		close;
+	case 2:
+		mes "[骑士团老大]";
+		mes "如果您想决斗，请见酋长！";
+		mes "我在这里负责招聘。";
+		mes "咳咳……";
+		close;
+	}
+}
+
+mora,114,163,5	script	Knights Head#mo	522,{
+	if (checkweight(6380,1) == 0) {
+		mes "[骑士团团长]";
+		mes "你身上有很多东西！";
+		mes "为什么不把其中一些放进我的口袋里呢？";
+		close;
+	}
+	if (ep14_1_rope < 11) {
+		mes "[骑士团团长]";
+		mes "我听说有一个叫“洛普”的拉芬";
+		mes "在迷雾森林中失踪。";
+		mes "我希望邻里骑士团";
+		next;
+		mes "[骑士团团长]";
+		mes "可以帮助破案，";
+		mes "但我们现在不能";
+		mes "因为我们还没有打扫完院子。";
+		mes "所以，我想说的是";
+		next;
+		mes "[骑士团团长]";
+		mes "你为什么不走";
+		mes "并处理问题";
+		mes "代表邻里骑士团！";
+		next;
+		mes "[骑士团团长]";
+		mes "作为修会会长，我保证";
+		mes "我会给你更多的工作";
+		mes "当你回来的时候！";
+		next;
+		mes "[其他头]";
+		mes "我作为首长批准了这一点。";
+		mes "你可以感谢我，老板。";
+		mes "你知道领导者是这里的老板，对吗？";
+		close;
+	} else if (ep14_1_rope == 11) {
+		mes "[骑士团团长]";
+		mes "所以失踪的拉芬";
+		mes "死了吗？";
+		mes "听到这个消息我很遗憾。";
+		mes "我本来可以救他的。";
+		next;
+		mes "[骑士团团长]";
+		mes "听说还有更多^0000FF洛普的线索^000000";
+		mes "朦胧森林中。";
+		mes "去寻找其余的人";
+		mes "并带回其中大约30个。";
+		mes "它们将成为很棒的纪念品。";
+		next;
+		switch(select("我是在这里做所有的工作还是什么？：是的，先生！")) {
+		case 1:
+			mes "[骑士团团长]";
+			mes "那么你注意到了吗？";
+			mes "该死！我应该早点给你工作的！";
+			close;
+		case 2:
+			mes "[骑士团团长]";
+			mes "毕竟训练你还是值得的。";
+			mes "我为你感到骄傲，"+strcharinfo(0)+" 士兵！";
+			next;
+			mes "[其他头]";
+			mes "我认为你会成为一名出色的得力助手，酋长。";
+			mes "作为老板，我感到自己得到了回报。";
+			mes "作为领导者，我很高兴看到你们都在进步。";
+			set ep14_1_rope,12;
+			setquest 1118;
+			close;
+		}
+	} else if (ep14_1_rope == 12) {
+		if (countitem(6383) < 30) {
+			mes "[骑士团团长]";
+			mes "你们还没有聚集";
+			mes "^0000FF洛普的线索^000000？";
+			mes "我感觉还不错，";
+			mes "因为这就是我对你的期望。";
+			close;
+		}
+		mes "[骑士团团长]";
+		mes "所以你带回了^0000FF洛普的线索^000000。";
+		mes "让我们来看看 ...";
+		mes "组装，组装";
+		mes "附上，附上";
+		next;
+		mes "[洛普的信]";
+		mes "……一名旅行者……遭到袭击……";
+		mes "...伪装...致命的毒药...";
+		mes "...村庄...处于危险之中...";
+		next;
+		mes "[骑士团团长]";
+		mes "这到底是什么意思？";
+		mes "无论如何，干得好。";
+		mes "振作起来，有一天你也会像我一样成为骑士团的伟大领袖。";
+		next;
+		mes "[其他头]";
+		mes "我不太确定！";
+		mes "这对我们来说太多了。";
+		mes "尝试这样做是没有用的。";
+		completequest 1118;
+		delitem 6383,30; //Clue_Of_Lope
+		set ep14_1_rope,13;
+		getitem 6380,2; //Mora_Coin
+		getexp 1000000,1000000;
+		close;
+	} else if (ep14_1_rope > 12) {
+		mes "[骑士团团长]";
+		mes "我们有麻烦了。";
+		mes "我们厌倦了当骑士。";
+		mes "我们正在考虑组建";
+		mes "而是一个马戏团。";
+		mes "您有兴趣尝试走钢丝吗？";
+		next;
+		switch(select("好吧，我可以表演火焰表演。：这太荒谬了。")) {
+		case 1:
+			mes "[骑士团团长]";
+			mes "不，这是不可能的。";
+			mes "我烧毁了几间房子";
+			mes "玩火。";
+			close;
+		case 2:
+			mes "[骑士团团长]";
+			mes "这正是我所期望的答案。";
+			mes "我为自己感到骄傲。";
+			close;
+		}
+		close;
+	}
+	end;
+}
+
+mora,112,161,5	script	Knights Leader#mo	523,{
+	mes "[骑士团领袖勋章]";
+	mes "我是骑士团的领袖——";
+	mes "你可以告诉我。";
+	mes "是什么风把你吹到这里来的？你有什么工作可以帮我们吗？";
+	next;
+	mes "[其他领导]";
+	mes "哈！我说老大就是老大！";
+	mes "不，酋长是最棒的！";
+	mes "你们都是多么无礼啊！我是这里的头儿！";
+	emotion ET_PROFUSELY_SWEAT, playerattached();
+	close;
+}

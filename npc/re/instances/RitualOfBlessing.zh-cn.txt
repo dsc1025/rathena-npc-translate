@@ -1,0 +1,755 @@
+//===== rAthena Script =======================================
+//= Instance Ritual of Blessing.
+//===== Description: =========================================
+//- [Walkthrough conversion].
+//- Required in Banquet main quest.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+2@mir,100,17,5	script	Skia#skia01	4_EP16_SKIA,{
+	mes "[滑雪]";
+	mes "欢迎！";
+	mes "我一直在想你什么时候到达。";
+	next;
+	mes "[尼希尔]";
+	mes "你在这里！";
+	mes "其他家族的人都已经入座。";
+	next;
+	mes "[尼希尔]";
+	mes "顺便一提.........";
+	mes "当我离开宴会厅后";
+	mes "....不，没关系。";
+	npctalk "...？", instance_npcname("滑雪#skia01");
+	next;
+	mes "[尼希尔]";
+	mes "如果我们让他们再等下去，就听不到什么好消息了。我们开始吧。";
+	next;
+	mes "[滑雪]";
+	mes "^4d4dff理查德勋爵旁边还剩下一个座位。它必须是为观察员保留的座位。^000000";
+	next;
+	mes "[滑雪]";
+	mes "好吧，我们走吧。";
+	close2;
+	enablenpc instance_npcname("Skia Nerius#skia02");
+	enablenpc instance_npcname("Nyhill M. Heine#nihil02");
+	disablenpc instance_npcname("Skia#skia01");
+	disablenpc instance_npcname("Nyhill#nihil01");
+	end;
+}
+2@mir,103,17,3	duplicate(Skia#skia01)	Nyhill#nihil01	4_EP16_NIHIL
+
+2@mir,107,77,0	script	#royal_evt02	HIDDEN_WARP_NPC,2,2,{
+	end;
+OnTouch_:
+	disablenpc instance_npcname("#royal_evt02");
+	donpcevent instance_npcname("#royal_evt02") + "::OnEvent";// player can move
+	end;
+OnEvent:
+	disablenpc instance_npcname("Skia#skia01");	// extra
+	disablenpc instance_npcname("Nyhill#nihil01");
+	enablenpc instance_npcname("Skia Nerius#skia02");
+	enablenpc instance_npcname("Nyhill M. Heine#nihil02");
+
+	mapannounce 'map_2mir$, "Kronecker: Although there has been a slight delay, let me proceed.", bc_map,0xFF99;
+	sleep 3000;
+	mapannounce 'map_2mir$, "Kronecker: According to the Royal Assembly which has passed down in the palace,", bc_map,0xFF99;
+	sleep 3000;
+	npctalk "海涅", instance_npcname("弗里德里希·S·海涅#stol_1");
+	npctalk "海涅", instance_npcname("尼希尔·M·海涅#nihil02");
+	sleep 3000;
+	npctalk "海神属", instance_npcname("斯基亚·内里乌斯#skia02");
+	npctalk "海神属", instance_npcname("角宿一#spica01");
+	sleep 3000;
+	npctalk "瓦尔特", instance_npcname("艾森霍诺·瓦尔特#eisen");
+	npctalk "瓦尔特", instance_npcname("伊恩·瓦尔特#ian01");
+	sleep 3000;
+	npctalk "维格纳", instance_npcname("莱维埃·维格纳#louvier1");
+	npctalk "维格纳", instance_npcname("于尔根·维格纳#jurgen01");
+	npctalk "维格纳", instance_npcname("艾萨克·维格纳#isaac01");
+	npctalk "维格纳", instance_npcname("卡特琳·维格纳#kath01");
+	sleep 3000;
+	npctalk "乔博格", instance_npcname("凯瑟琳·D·乔博格#ca1");
+	npctalk "乔博格", instance_npcname("恩斯特·乔博格#ernst01");
+	sleep 3000;
+	npctalk "理查德", instance_npcname("保理查德#po01");
+	sleep 3000;
+	npctalk "罗根堡", instance_npcname("马克西米利安·罗根堡#m1");
+	npctalk "罗根堡", instance_npcname("沃尔夫·罗根堡#wolf01");
+	npctalk "罗根堡", instance_npcname("赫尔穆特·罗根堡#helmu");
+	npctalk "罗根堡", instance_npcname("艾格尼丝·罗根堡#agnes0_1");
+	sleep 3000;
+	mapannounce 'map_2mir$, "Kronecker: On the behalf of the seven royal families supporting Rune-Midgarts,", bc_map,0xFF99;
+	sleep 3000;
+	mapannounce 'map_2mir$, "Kronecker: Here is the new representative appointed", bc_map,0xFF99;
+	sleep 3000;
+	mapannounce 'map_2mir$, "Kronecker: The blessing star light may reach the glory of the earth...", bc_map,0xFF99;
+	sleep 3000;
+	npctalk "请允许赐予一切众生的源头力量，", instance_npcname("弗里德里希·S·海涅#stol_1");
+	npctalk "请允许赐予一切众生的源头力量，", instance_npcname("尼希尔·M·海涅#nihil02");
+	sleep 3000;
+	npctalk "勇往直前，义无反顾，用匕首刺向敌人，", instance_npcname("凯瑟琳·D·乔博格#ca1");
+	npctalk "勇往直前，义无反顾，用匕首刺向敌人，", instance_npcname("恩斯特·乔博格#ernst01");
+	sleep 3000;
+	npctalk "有一颗拥抱世间一切的心，", instance_npcname("斯基亚·内里乌斯#skia02");
+	npctalk "有一颗拥抱世间一切的心，", instance_npcname("角宿一#spica01");
+	sleep 3000;
+	npctalk "想要守护怀中一切的坚强意志，", instance_npcname("保理查德#po01");
+	sleep 3000;
+	npctalk "无论如何都不会屈服于正义和信仰的完整骄傲，", instance_npcname("艾森霍诺·瓦尔特#eisen");
+	npctalk "无论如何都不会屈服于正义和信仰的完整骄傲，", instance_npcname("伊恩·瓦尔特#ian01");
+	sleep 3000;
+	npctalk "以谦卑的心看待他人的美德，", instance_npcname("马克西米利安·罗根堡#m1");
+	npctalk "以谦卑的心看待他人的美德，", instance_npcname("沃尔夫·罗根堡#wolf01");
+	npctalk "以谦卑的心看待他人的美德，", instance_npcname("赫尔穆特·罗根堡#helmu");
+	npctalk "以谦卑的心看待他人的美德，", instance_npcname("艾格尼丝·罗根堡#agnes0_1");
+	sleep 3000;
+	npctalk "以及看待真相的智慧", instance_npcname("莱维埃·维格纳#louvier1");
+	npctalk "以及看待真相的智慧", instance_npcname("于尔根·维格纳#jurgen01");
+	npctalk "以及看待真相的智慧", instance_npcname("艾萨克·维格纳#isaac01");
+	npctalk "以及看待真相的智慧", instance_npcname("卡特琳·维格纳#kath01");
+	sleep 3000;
+	mapannounce 'map_2mir$, "Kronecker: To our new king...", bc_map,0xFF99;
+	sleep 1500;
+	mapannounce 'map_2mir$, "I am sorry to interrupt the fun!", bc_map,0xDDDDDD;
+	sleep 500;
+	specialeffect EF_SCREEN_QUAKE, AREA, instance_npcname("Peter Heine#peter01");
+	disablenpc instance_npcname("Peter Heine#peter01");
+	enablenpc instance_npcname("Fallen Peter#peter02");
+	sleep 500;
+	mapannounce 'map_2mir$, "Kronecker: Peter!!!", bc_map,0xFF99;
+	sleep 500;
+	disablenpc instance_npcname("Kronecker G. Heine#gran1");
+	.@kronecker_2$ = instance_npcname("Kronecker G. Heine#gran2");
+	enablenpc .@kronecker_2$;
+	sleep 500;
+	.@intruder$ = instance_npcname("Intruder#hunter01");
+	enablenpc .@intruder$;
+	npctalk "哦，你好！你一定就是大名鼎鼎的圣人格兰茨大公吧！", .@intruder$;
+	sleep 3000;
+	npctalk "你在干什么！！！", .@kronecker_2$;
+	sleep 3000;
+	npctalk "不，没什么。无论如何，这里没有什么值得做的。", .@intruder$;
+	sleep 3000;
+	npctalk "听说这里藏着一些很不错的东西……", .@intruder$;
+	sleep 3000;
+	npctalk "但这是什么？这是假的！", .@intruder$;
+	specialeffect EF_BEGINSPELL,AREA,.@kronecker_2$;
+	sleep 500;
+	specialeffect EF_BEGINSPELL6,AREA, .@intruder$;
+	specialeffect EF_LEVEL99,AREA, .@intruder$;
+	sleep 2000;
+	npctalk "你这个老头子，还有他背后的贵人……", .@intruder$;
+	sleep 3000;
+	npctalk "把它放在那里。这一点也不好玩。我可能想毁掉一些东西。", .@intruder$;
+	sleep 3000;
+	npctalk "例如...", .@intruder$;
+	sleep 3000;
+	npctalk "这个赝品很像尤弥尔之心！", .@intruder$;
+	sleep 3000;
+	npctalk "……你想要什么？", .@kronecker_2$;
+	sleep 3000;
+	npctalk "尤弥尔之心的碎片。我听说它就在这里，但我没有看到，是吗？", .@intruder$;
+	sleep 3000;
+	npctalk "...你在说什么？", .@kronecker_2$;
+	sleep 3000;
+	npctalk "哦，你不知道吗？", .@intruder$;
+	sleep 3000;
+	npctalk "嗯，我明白了。如果你知道的话，你就不会把它埋在地下，浪费时间在这个仪式上。", .@intruder$;
+	sleep 3000;
+	npctalk "但我无能为力，老人。这是假的。", .@intruder$;
+	sleep 2000;
+	npctalk "……你怎么敢……", .@kronecker_2$;
+	sleep 2000;
+	npctalk "别用那种眼神看着我。我也在这里浪费了时间，你知道的。", .@intruder$;
+	sleep 3000;
+	npctalk "好吧，这次我就不去拍摄场景了。", .@intruder$;
+	sleep 3000;
+	npctalk "哈!当你不知道如何使用时，再多的力量又有什么用呢？我想你不再需要这个了。", .@intruder$;
+	sleep 3000;
+	npctalk "是时候让这颗假尤弥尔之心消失了！", .@intruder$;
+	sleep 500;
+	specialeffect EF_BEGINSPELL3,AREA, .@intruder$;
+	sleep 500;
+	specialeffect EF_SCREEN_QUAKE,AREA, instance_npcname("Peter Heine#peter01");
+	specialeffect EF_LORD,AREA, .@kronecker_2$;
+	specialeffect EF_LORD,AREA, instance_npcname("Levuiere Wigner#louvier1");
+	specialeffect EF_LORD,AREA, instance_npcname("Catherine D. Geoborg#ca1");
+
+	disablenpc instance_npcname("Ian Walther#ian01");
+	disablenpc instance_npcname("Levuiere Wigner#louvier1");
+	disablenpc instance_npcname("Jurgen Wigner#jurgen01");
+	disablenpc instance_npcname("Catherine D. Geoborg#ca1");
+	disablenpc instance_npcname("Katrin Wigner#kath01");
+	disablenpc instance_npcname("Isaac Wigner#isaac01");
+
+	enablenpc instance_npcname("Ian Walther#ian02");
+	enablenpc instance_npcname("Levuiere Wigner#louvier2");
+	enablenpc instance_npcname("Jurgen Wigner#jurgen02");
+	enablenpc instance_npcname("Catherine D. Geoborg#ca2");
+	enablenpc instance_npcname("Katrin Wigner#kath02");
+	enablenpc instance_npcname("Isaac Wigner#isaac02");
+	sleep 500;
+	specialeffect EF_LORD,AREA, instance_npcname("Maximilian Roegenburg#m1");
+	disablenpc instance_npcname("Ernst Geoborg#ernst01");
+	disablenpc instance_npcname("Maximilian Roegenburg#m1");
+	disablenpc instance_npcname("Wolf Roegenburg#wolf01");
+	disablenpc instance_npcname("Agnes Roegenburg#agnes0_1");
+
+	enablenpc instance_npcname("Maximilian Roegenburg#m2");
+	enablenpc instance_npcname("Ernst Geoborg#ernst02");
+	enablenpc instance_npcname("Agnes Roegenburg#agnes0_2");
+	enablenpc instance_npcname("Wolf Roegenburg#wolf02");
+
+	specialeffect EF_LORD,AREA, instance_npcname("Agnes Roegenburg#agnes0_2");
+
+	mapannounce 'map_2mir$, "Intruder: Then ladies and gentlemen, have a good time!", bc_map,0xDDDDDD;
+	disablenpc .@intruder$;
+	enablenpc instance_npcname("Intruder#hunter02");
+	enablenpc instance_npcname("Intruder#hunter03");
+	enablenpc instance_npcname("Intruder#hunter04");
+	enablenpc instance_npcname("Intruder#hunter05");
+	enablenpc instance_npcname("Intruder#hunter06");
+
+	sleep 500;
+	donpcevent instance_npcname("Intruder_main") + "::OnEvent";
+
+	disablenpc instance_npcname("Po Richard#po01");
+	disablenpc instance_npcname("Spica Nerius#spica01");
+	disablenpc instance_npcname("Isenhonor Walther#eisen");
+	disablenpc instance_npcname("Friedrich S. Heine#stol_1");
+	disablenpc instance_npcname("Helmut Roegenburg#helmu");
+	disablenpc instance_npcname("Skia Nerius#skia02");
+	disablenpc instance_npcname("Nyhill M. Heine#nihil02");
+
+	enablenpc instance_npcname("Skia Nerius#skia03");
+	enablenpc instance_npcname("Nyhill M. Heine#nihil03");
+	enablenpc instance_npcname("Spica Nerius#spica02");
+	enablenpc instance_npcname("Po Richard#po02");
+	enablenpc instance_npcname("Isenhonor Walther#eisen2");
+	enablenpc instance_npcname("Friedrich S. Heine#stol_2");
+	enablenpc instance_npcname("Helmut Roegenburg#helmu2");
+	end;
+}
+
+2@mir,1,1,0	script	Intruder_main	-1,{
+	end;
+OnEvent:
+	enablenpc instance_npcname("Intruder_main");
+	.@label$ = instance_npcname("Intruder_main") + "::OnMobDead";
+	monster 'map_2mir$,107,73,"Suspicious Intruder",3454,1, .@label$;	// HEART_HUNTER_N
+	setunitdata $@mobid[0], UMOB_HP, 10000;
+	monster 'map_2mir$, 98,73,"Suspicious Intruder",3454,1, .@label$;
+	setunitdata $@mobid[0], UMOB_HP, 10000;
+	monster 'map_2mir$,101,83,"Suspicious Intruder",3454,1, .@label$;
+	setunitdata $@mobid[0], UMOB_HP, 10000;
+	'intruder_count = 0;
+
+	donpcevent instance_npcname("Intruder#hunter02") + "::OnStart";
+	donpcevent instance_npcname("Intruder#hunter03") + "::OnStart";
+	donpcevent instance_npcname("Intruder#hunter04") + "::OnStart";
+	donpcevent instance_npcname("Intruder#hunter05") + "::OnStart";
+	donpcevent instance_npcname("Intruder#hunter06") + "::OnStart";
+	end;
+OnMobDead:
+	'intruder_count++;
+	switch( 'intruder_count ) {
+	case 1:
+		donpcevent instance_npcname("Intruder#hunter02") + "::OnLeave";
+		donpcevent instance_npcname("Intruder#hunter05") + "::OnLeave";
+		break;
+	case 2:
+		donpcevent instance_npcname("Intruder#hunter03") + "::OnLeave";
+		donpcevent instance_npcname("Intruder#hunter06") + "::OnLeave";
+		break;
+	case 3:
+		donpcevent instance_npcname("Intruder#hunter04") + "::OnLeave";
+		break;
+	}
+	sleep 100;	// it seems there is a slight delay
+
+	switch( 'intruder_count ) {
+	case 3:
+		mapannounce 'map_2mir$, "Fellows! Let's leave this place!", bc_map,0xDDDDDD;
+		// display the effect a second time
+		donpcevent instance_npcname("Intruder#hunter02") + "::OnLeave";
+		donpcevent instance_npcname("Intruder#hunter03") + "::OnLeave";
+		donpcevent instance_npcname("Intruder#hunter04") + "::OnLeave";
+		donpcevent instance_npcname("Intruder#hunter05") + "::OnLeave";
+		donpcevent instance_npcname("Intruder#hunter06") + "::OnLeave";
+
+		disablenpc instance_npcname("Intruder#hunter02");
+		disablenpc instance_npcname("Intruder#hunter03");
+		disablenpc instance_npcname("Intruder#hunter04");
+		disablenpc instance_npcname("Intruder#hunter05");
+		disablenpc instance_npcname("Intruder#hunter06");
+		break;
+	default:
+		break;
+	}
+	end;
+}
+
+2@mir,87,79,5	script	Intruder#hunter02	3454,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnLeave:
+	stopnpctimer;
+	specialeffect EF_TEIHIT3;
+	hideonnpc instance_npcname("Intruder#hunter02");	// officially disabled, changed to hideonnpc to display the effect a second time
+	end;
+OnTimer1000:
+	specialeffect EF_PIERCE;
+	end;
+OnTimer2000:
+	specialeffect EF_CONCENTRATION, AREA, instance_npcname("Isenhonor Walther#eisen2");
+	end;
+OnTimer4000:
+	specialeffect EF_HOLYCROSS;
+	end;
+OnTimer5000:
+	npctalk "没有用！";
+	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Isenhonor Walther#eisen2");
+	end;
+OnTimer7000:
+	specialeffect EF_SHIELDCHARGE;
+	end;
+OnTimer8000:
+	specialeffect EF_CHAINCOMBO, AREA, instance_npcname("Isenhonor Walther#eisen2");
+	end;
+OnTimer10000:
+	specialeffect EF_PIERCE;
+	end;
+OnTimer11000:
+	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Isenhonor Walther#eisen2");
+	npctalk "我们没有时间聊天！", instance_npcname("艾森霍诺·瓦尔特#eisen2");
+	initnpctimer;
+	end;
+}
+
+2@mir,91,84,5	script	Intruder#hunter03	3454,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnLeave:
+	stopnpctimer;
+	specialeffect EF_TEIHIT3;
+	hideonnpc instance_npcname("Intruder#hunter03");
+	end;
+OnTimer1500:
+	specialeffect EF_MAGICALATTHIT;
+	end;
+OnTimer2500:
+	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Skia Nerius#skia03");
+	end;
+OnTimer4500:
+	specialeffect EF_HIT5;
+	end;
+OnTimer5500:
+	specialeffect EF_HIT6, AREA, instance_npcname("Skia Nerius#skia03");
+	end;
+OnTimer7500:
+	specialeffect EF_HIT2;
+	end;
+OnTimer8500:
+	npctalk "没有用！";
+	specialeffect EF_HIT1, AREA, instance_npcname("Skia Nerius#skia03");
+	end;
+OnTimer11100:
+	specialeffect EF_HOLYCROSS;
+	end;
+OnTimer12000:
+	specialeffect EF_HIT1, AREA, instance_npcname("Skia Nerius#skia03");
+	initnpctimer;
+	end;
+}
+
+2@mir,94,86,5	script	Intruder#hunter04	3454,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnLeave:
+	stopnpctimer;
+	specialeffect EF_TEIHIT3;
+	hideonnpc instance_npcname("Intruder#hunter04");
+	end;
+OnTimer1200:	// weird timer but ~correct
+	specialeffect EF_MAGICALATTHIT;
+	end;
+OnTimer2200:
+	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Friedrich S. Heine#stol_2");
+	end;
+OnTimer3800:
+	specialeffect EF_HIT5;
+	end;
+OnTimer4800:
+	npctalk "呵呵！";
+	specialeffect EF_HIT6, AREA, instance_npcname("Friedrich S. Heine#stol_2");
+	end;
+OnTimer8200:
+	specialeffect EF_HIT2;
+	end;
+OnTimer9200:
+	specialeffect EF_HIT1, AREA, instance_npcname("Friedrich S. Heine#stol_2");
+	end;
+OnTimer11500:
+	specialeffect EF_HOLYCROSS;
+	end;
+OnTimer12500:
+	specialeffect EF_AUTOCOUNTER, AREA, instance_npcname("Friedrich S. Heine#stol_2");
+	npctalk "……这些混蛋是哪里来的？", instance_npcname("弗里德里希·S·海涅#stol_2");
+	initnpctimer;
+	end;
+}
+
+2@mir,107,86,5	script	Intruder#hunter05	3454,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnLeave:
+	stopnpctimer;
+	specialeffect EF_TEIHIT3;
+	hideonnpc instance_npcname("Intruder#hunter05");
+	end;
+OnTimer1000:
+	specialeffect EF_MAGICALATTHIT;
+	end;
+OnTimer2000:
+	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Helmut Roegenburg#helmu2");
+	end;
+OnTimer4000:
+	npctalk "死！！！";
+	specialeffect EF_HIT5;
+	end;
+OnTimer4500:
+	npctalk "看看谁在说话！！！", instance_npcname("赫尔穆特·罗根堡#helmu2");
+	specialeffect EF_HIT6, AREA, instance_npcname("Helmut Roegenburg#helmu2");
+	end;
+OnTimer7000:
+	specialeffect EF_HIT2;
+	end;
+OnTimer8000:
+	specialeffect EF_HIT1, AREA, instance_npcname("Helmut Roegenburg#helmu2");
+	end;
+OnTimer10000:
+	specialeffect EF_HOLYCROSS;
+	end;
+OnTimer11000:
+	specialeffect EF_AUTOCOUNTER, AREA, instance_npcname("Helmut Roegenburg#helmu2");
+	npctalk "啊啊！！！", instance_npcname("赫尔穆特·罗根堡#helmu2");
+	initnpctimer;
+	end;
+}
+
+2@mir,110,85,5	script	Intruder#hunter06	3454,{
+	end;
+OnStart:
+	initnpctimer;
+	end;
+OnLeave:
+	stopnpctimer;
+	specialeffect EF_TEIHIT3;
+	hideonnpc instance_npcname("Intruder#hunter06");
+	end;
+OnTimer1000:
+	specialeffect EF_HITDARK;
+	end;
+OnTimer2000:
+	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Po Richard#po02");
+	end;
+OnTimer4000:
+	npctalk "死！！！";
+	specialeffect EF_LIGHTBOLT;
+	end;
+OnTimer5000:
+	specialeffect EF_HIT6, AREA, instance_npcname("Po Richard#po02");
+	end;
+OnTimer7000:
+	specialeffect EF_COMBOATTACK1;
+	end;
+OnTimer8000:
+	specialeffect EF_HIT1, AREA, instance_npcname("Po Richard#po02");
+	end;
+OnTimer10000:
+	specialeffect EF_NAPALMBEAT;
+	end;
+OnTimer12000:
+	npctalk "哦，这看起来不太好。", instance_npcname("保理查德#po02");
+	specialeffect EF_AUTOCOUNTER, AREA, instance_npcname("Po Richard#po02");
+	initnpctimer;
+	end;
+}
+
+2@mir,97,80,7	script	Friedrich S. Heine#stol_1	4_EP16_STOLZ,{
+	npctalk "... 安静的。";
+	end;
+}
+
+2@mir,88,78,2	script	Isenhonor Walther#eisen2	4_M_1STPRIN1,{
+	if ('intruder_count < 3) {
+		npctalk "我们没有时间聊天！";
+		end;
+	}
+	mes "[艾森霍诺尔]";
+	mes "到底是怎么回事...";
+	mes "我们先离开这个地方。";
+	next;
+	mes "[艾森霍诺尔]";
+	mes "大家还好吗...";
+	close2;
+	disablenpc instance_npcname("Isenhonor Walther#eisen2");
+	disablenpc instance_npcname("Ian Walther#ian02");
+	end;
+}
+
+2@mir,106,85,7	script	Helmut Roegenburg#helmu2	4_EP16_HELMUT,{
+	if ('intruder_count < 3) {
+		npctalk "嗯！";
+		end;
+	}
+	mes "[赫尔穆特]";
+	mes "一切看起来都很好。";
+	mes "……我要走了。兄弟俩的脸色都不太好。";
+	close2;
+	disablenpc instance_npcname("Helmut Roegenburg#helmu2");
+	disablenpc instance_npcname("Wolf Roegenburg#wolf02");
+	disablenpc instance_npcname("Maximilian Roegenburg#m2");
+	disablenpc instance_npcname("Agnes Roegenburg#agnes0_2");
+	end;
+}
+
+2@mir,92,83,2	script	Skia Nerius#skia03	4_EP16_SKIA,{
+	if ('intruder_count < 3) {
+		npctalk "……呃……他们是从哪里来的？";
+		end;
+	}
+	mes "[滑雪]";
+	mes "呼，我们离开这里吧。";
+	mes "姐姐，我们出去吧！";
+	mes "尼希尔，你应该跟我们一起去！";
+	next;
+	mes "[滑雪]";
+	mes "其他人会自己走出来的！";
+	close2;
+	disablenpc instance_npcname("Skia Nerius#skia03");
+	disablenpc instance_npcname("Spica Nerius#spica02");
+	end;
+}
+
+2@mir,109,84,7	script	Po Richard#po02	4_M_6THPRIN1,{
+	if ('intruder_count < 3) {
+		npctalk "……哈哈，没想到会在这里战斗！";
+		end;
+	}
+	npctalk "由于大厅似乎已经被清理干净，我现在就离开。这下可麻烦了！";
+	sleep 2000;
+	disablenpc instance_npcname("Po Richard#po02");
+	end;
+}
+
+2@mir,95,85,1	script	Friedrich S. Heine#stol_2	4_EP16_STOLZ,{
+	if ('intruder_count < 3) {
+		npctalk "请照顾其他人。";
+		end;
+	}
+	mes "[弗里德里希]";
+	mes "……好像没有人死。";
+	npctalk "你还在等什么！带着伤员离开这里！";
+	close2;
+OnDisable:
+	disablenpc instance_npcname("Skia Nerius#skia03");
+	disablenpc instance_npcname("Spica Nerius#spica02");
+	disablenpc instance_npcname("Isenhonor Walther#eisen2");
+	disablenpc instance_npcname("Ian Walther#ian02");
+	disablenpc instance_npcname("Levuiere Wigner#louvier2");
+	disablenpc instance_npcname("Jurgen Wigner#jurgen02");
+	disablenpc instance_npcname("Katrin Wigner#kath02");
+	disablenpc instance_npcname("Ernst Geoborg#ernst02");
+	disablenpc instance_npcname("Catherine D. Geoborg#ca2");
+	disablenpc instance_npcname("Po Richard#po02");
+	disablenpc instance_npcname("Maximilian Roegenburg#m2");
+	disablenpc instance_npcname("Wolf Roegenburg#wolf02");
+	disablenpc instance_npcname("Helmut Roegenburg#helmu2");
+	disablenpc instance_npcname("Agnes Roegenburg#agnes0_2");
+	disablenpc instance_npcname("Isaac Wigner#isaac02");
+	end;
+}
+
+2@mir,101,93,7	script	Kronecker G. Heine#gran2	4_EP16_GRANZ,{
+	if ('intruder_count < 3) {
+		mes "[克罗内克]";
+		mes "彼得情况危急。";
+		mes "……你介意替我们对抗入侵者吗？";
+		close;
+	}
+	if (isbegin_quest(7692) == 1) {
+		mes "[克罗内克]";
+		mes "....";
+		mes "....^4d4dff大地荣耀^000000缺失...";
+		next;
+		select("土地荣耀？");
+		mes "[克罗内克]";
+		mes "这是符文米德加特王宫中流传下来的王冠。";
+		mes "它的意义不仅仅是一顶普通的王冠。";
+		next;
+		mes "[克罗内克]";
+		mes "被他们拿走了吗？";
+		mes "这到底是怎么回事……！";
+		next;
+		mes "[克罗内克]";
+		mes "这里隐藏着什么，没有人知道……除了七大皇室……！";
+		next;
+		mes "[克罗内克]";
+		mes "是不是意味着...";
+		mes "……好吧，首先，有一些事情需要弄清楚。";
+		next;
+		mes "[克罗内克]";
+		mes "我们现在就离开这里吧。";
+		mes "还有很多东西有待我们去发现。";
+		erasequest 7692;
+		setquest 7693;// Surprise Attack
+		ep16_royal = 9;
+		next;
+		mes "[克罗内克]";
+		mes "不管谁离开这里，带着你附近的伤员一起清理！";
+		mes "意识室将关闭一段时间！";
+		donpcevent instance_npcname("Friedrich S. Heine#stol_2") + "::OnDisable";
+		disablenpc instance_npcname("Nyhill M. Heine#nihil03");
+		close;
+	}
+	mes "[克罗内克]";
+	mes "彼得受伤了。";
+	mes "我们需要快速移动他。";
+	next;
+	mes "[克罗内克]";
+	mes "我会在那里见到你。";
+	mes "您可以从您进入的门离开。";
+	mes "让我们在皇室往事回忆中见面吧。";
+	close;
+}
+
+2@mir,93,80,2	script	Nyhill M. Heine#nihil03	4_EP16_NIHIL,4,4,{
+	if ('intruder_count < 3) {
+		npctalk "……哦……我的……";
+		end;
+	}
+	mes "[尼希尔]";
+	mes "……这……都是我的错……";
+	close;
+OnTouch_:
+	npctalk "……我能帮忙吗？";
+	npcskill "AL_HEAL",11,99,60;
+	npcskill "PR_KYRIE",10,99,60;
+	end;
+}
+
+2@mir,97,65,5	script	Jurgen Wigner#jurgen02	4_M_4THPRIN1,{
+	npctalk "我指望你了！";
+	npcskill "AL_INCAGI",10,99,60;
+	end;
+}
+
+2@mir,111,66,4	script	Catherine D. Geoborg#ca2	4_EP16_EGEO,{
+	npctalk "...希望对您有帮助。";
+	npcskill "AL_HEAL",10,130,115;
+	end;
+}
+
+2@mir,107,61,6	script	Isaac Wigner#isaac02	4_EP16_ISAAC,{
+	npctalk "开心点！";
+	npcskill "AL_BLESSING",10,99,60;
+	end;
+}
+
+2@mir,112,71,1	script	Agnes Roegenburg#agnes0_2	4_EP16_AGNES,{
+	npctalk "啊！当心！";
+	end;
+}
+
+2@mir,96,83,2	script	Spica Nerius#spica02	4_EP16_SPICA,{
+	if ('intruder_count < 3)
+		npctalk "...S...到...一个...";
+	else
+		npctalk "Skia，为什么这家伙救了尼希尔勋爵，而不是我？";
+	end;
+}
+
+
+2@mir,102,97,3	script	Intruder#hunter01	3454,{
+	end;
+OnInstanceInit:
+	'map_2mir$ = instance_mapname("2@mir");
+	'intruder_count = 0;
+
+	disablenpc instance_npcname("Spica Nerius#spica02");
+	disablenpc instance_npcname("Agnes Roegenburg#agnes0_2");
+	disablenpc instance_npcname("Isaac Wigner#isaac02");
+	disablenpc instance_npcname("Catherine D. Geoborg#ca2");
+	disablenpc instance_npcname("Jurgen Wigner#jurgen02");
+	disablenpc instance_npcname("Kronecker G. Heine#gran2");
+	disablenpc instance_npcname("Isenhonor Walther#eisen2");
+	disablenpc instance_npcname("Helmut Roegenburg#helmu2");
+	disablenpc instance_npcname("Po Richard#po02");
+	disablenpc instance_npcname("Friedrich S. Heine#stol_2");
+
+	disablenpc instance_npcname("Intruder#hunter01");
+	disablenpc instance_npcname("Intruder#hunter02");
+	disablenpc instance_npcname("Intruder#hunter03");
+	disablenpc instance_npcname("Intruder#hunter04");
+	disablenpc instance_npcname("Intruder#hunter05");
+	disablenpc instance_npcname("Intruder#hunter06");
+
+	disablenpc instance_npcname("Skia Nerius#skia03");
+	disablenpc instance_npcname("Nyhill M. Heine#nihil03");
+	end;
+}
+
+2@mir,96,83,0	script	dummy_npc_rituel_disabled	-1,{
+	end;
+OnInstanceInit:
+	disablenpc();
+	end;
+}
+2@mir,88,74,3	duplicate(dummy_npc_rituel_disabled)	Ian Walther#ian02	1_M_JOBTESTER
+2@mir,86,70,4	duplicate(dummy_npc_rituel_disabled)	Levuiere Wigner#louvier2	4_EP16_LOUVIERE
+2@mir,94,72,3	duplicate(dummy_npc_rituel_disabled)	Katrin Wigner#kath02	4_EP16_POE
+2@mir,112,66,3	duplicate(dummy_npc_rituel_disabled)	Ernst Geoborg#ernst02	4_M_2NDPRIN1
+2@mir,91,69,7	duplicate(dummy_npc_rituel_disabled)	Maximilian Roegenburg#m2	4_EP16_MAX
+2@mir,94,66,3	duplicate(dummy_npc_rituel_disabled)	Wolf Roegenburg#wolf02	4_EP16_WOLF
+2@mir,100,80,7	duplicate(dummy_npc_rituel_disabled)	Nyhill M. Heine#nihil02	4_EP16_NIHIL
+2@mir,101,95,3	duplicate(dummy_npc_rituel_disabled)	Fallen Peter#peter02	4_EP16_PETER
+2@mir,97,77,7	duplicate(dummy_npc_rituel_disabled)	Skia Nerius#skia02	4_EP16_SKIA
+
+
+2@mir,101,88,4	duplicate(dummy_npc)	Kronecker G. Heine#gran1	4_EP16_GRANZ
+2@mir,97,71,7	duplicate(dummy_npc)	Levuiere Wigner#louvier1	4_EP16_LOUVIERE
+2@mir,100,71,7	duplicate(dummy_npc)	Jurgen Wigner#jurgen01	4_M_4THPRIN1
+2@mir,97,68,7	duplicate(dummy_npc)	Isaac Wigner#isaac01	4_EP16_ISAAC
+2@mir,100,68,7	duplicate(dummy_npc)	Katrin Wigner#kath01	4_EP16_POE
+2@mir,103,80,2	duplicate(dummy_npc)	Catherine D. Geoborg#ca1	4_EP16_EGEO
+2@mir,106,80,2	duplicate(dummy_npc)	Ernst Geoborg#ernst01	4_M_2NDPRIN1
+2@mir,103,77,2	duplicate(dummy_npc)	Po Richard#po01	4_M_6THPRIN1
+2@mir,103,74,2	duplicate(dummy_npc)	Maximilian Roegenburg#m1	4_EP16_MAX
+2@mir,106,74,2	duplicate(dummy_npc)	Wolf Roegenburg#wolf01	4_EP16_WOLF
+2@mir,101,94,0	duplicate(dummy_npc)	Peter Heine#peter01	4_M_3RDPRIN1
+2@mir,100,77,7	duplicate(dummy_npc)	Spica Nerius#spica01	4_EP16_SPICA
+2@mir,106,71,2	duplicate(dummy_npc)	Agnes Roegenburg#agnes0_1	4_EP16_AGNES
+2@mir,100,74,7	duplicate(dummy_npc)	Ian Walther#ian01	1_M_JOBTESTER
+2@mir,97,74,7	duplicate(dummy_npc)	Isenhonor Walther#eisen	4_M_1STPRIN1
+2@mir,103,71,2	duplicate(dummy_npc)	Helmut Roegenburg#helmu	4_EP16_HELMUT
+
+2@mir,101,10,0	script	to_prt_lib	WARPNPC,1,1,{
+	if (isbegin_quest(7693) == 1) {
+		warp "prt_lib",88,80;
+		end;
+	}
+	mes "[" + strcharinfo(0) + "]";
+	mes "我们应该观看祝福仪式。";
+	mes "现在别出去。";
+	close;
+}
