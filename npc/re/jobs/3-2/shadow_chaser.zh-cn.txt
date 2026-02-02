@@ -1,0 +1,2511 @@
+//===== rAthena Script ======================================= 
+//= Shadow Chaser Job Quest
+//===== By: ================================================== 
+//= Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.4
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Job change Quest from Rogue / Stalker -> Shadow Chaser.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [ultragunner, Oshinoke]
+//= 1.1 Standardized. [Euphy]
+//= 1.2 Updated dialogue. [Joseph]
+//= 1.3 Updated to official script. [Euphy]
+//= 1.4 Added VIP features. [Euphy]
+//============================================================
+
+morocc,156,70,3	script	Girl#sc00	93,3,3,{
+	mes "[女孩]";
+	if (BaseJob == Job_Rogue) {
+		if (job_sha == 0) {
+			if (BaseLevel < 99 || JobLevel < 50) {
+				mes "你还没准备好。";
+				close;
+			}
+			mes "嘿？停止！";
+			mes "你不想听一个有趣的故事吗？";
+			next;
+			select("什么故事？");
+			mes "[女孩]";
+			mes "你最近去过公会吗？";
+			mes "最近发生了一些有趣的事情。";
+			mes "也许有新客人...";
+			next;
+			mes "[女孩]";
+			mes "我听说这和一种叫做暗影追击者的东西有关。";
+			mes "你应该去看看。";
+			next;
+			mes "[女孩]";
+			mes "他们每次拜访我们，都肩负着新的使命。";
+			mes "我想知道他们正在执行什么任务？";
+			set job_sha,1;
+			close;
+		} else if (job_sha == 1) {
+			mes "如果你有兴趣...就去吧！";
+			mes "你知道公会在哪里吗？";
+			next;
+			mes "[女孩]";
+			mes "它位于法罗斯灯塔下的一座堡垒中。";
+			mes "叹....";
+			mes "你一定要去那里看看！";
+			close;
+		} else {
+			mes "哇，你看起来很忙。";
+			mes "你听说有客人来吗？";
+			mes "他们正在寻宝！";
+			next;
+			mes "[女孩]";
+			mes "这一定很有趣。";
+			mes "我想尝试一下！";
+			close;
+		}
+	}
+	mes "呃？";
+	mes "我没有什么可以给你的...";
+	close;
+OnTouch_:
+	if (BaseJob == Job_Rogue && BaseLevel > 98 && JobLevel > 49 && job_sha == 0) {
+		mes "[女孩]";
+		mes "嘿？停止！";
+		mes "你不想听一个有趣的故事吗？";
+		close;
+	}
+	end;
+}
+
+in_rogue,376,100,5	script	Guild Member#sc01	828,{
+	if (BaseJob == Job_Rogue) {
+		if (job_sha < 2) {
+			set @job_sha,0;
+		OnDialogue:
+			mes "[酒]";
+			mes "啊？这是什么？";
+			mes "洛蒂，你知道这意味着什么吗？";
+			next;
+			mes "[乐天]";
+			mes "嗯“3847147298”这是我唯一用过的东西......";
+			mes "那么，为什么要用数字来命名村庄呢？";
+			next;
+			mes "[乐天]";
+			mes "文！这太糟糕了！";
+			next;
+			mes "[酒]";
+			mes "什么？";
+			next;
+			if (BaseLevel > 98) {
+				mes "[可怕的男人]";
+				mes "嘿？";
+				next;
+				switch(select("我？：对不起，我很忙……")) {
+				case 1:
+					mes "[可怕的男人]";
+					mes "是的！你在那里！";
+					mes "让我向你介绍一下我自己。";
+					mes "我的名字是乌鲁帕。";
+					mes "如果你有兴趣的话可以过来一下吗？";
+					if (@job_sha == 1) {
+						set job_sha,1;
+						set @job_sha,0;
+					}
+					close;
+				case 2:
+					mes "[可怕的男人]";
+					mes "什么？你就这样放弃吗？";
+					mes "太令人失望了...";
+					close;
+				}
+			}
+			mes "[可怕的男人]";
+			mes "你应该弄清楚这一点！";
+			mes "但你还是那么……软弱。";
+			close;
+		} else {
+			mes "[酒]";
+			mes "是的...";
+			mes "如果我敢拿到地图的话，早晚我会自己解决的……！";
+			close;
+		}
+	} else if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "[酒]";
+		mes "哈！这是暗影追击者！";
+		mes "多么难以置信！";
+		mes "但看起来很熟悉不是吗？";
+		next;
+		mes "[酒]";
+		mes "唔......";
+		mes "..........";
+		mes "天啊！我不记得了...！";
+		close;
+	}
+	mes "[酒]";
+	mes "啊？谁在那里？";
+	mes "今天我们的客人太多了...";
+	close;
+}
+
+in_rogue,379,99,1	script	Guild Member#sc02	747,{
+	if (BaseJob == Job_Rogue) {
+		if (job_sha < 2) {
+			set @job_sha,1;
+			doevent "Guild Member#sc01::OnDialogue";
+			end;
+		}
+		mes "[乐天]";
+		mes "什么？";
+		mes "该死...";
+		next;
+		mes "[乐天]";
+		mes "我只是讨厌数字！";
+		close;
+	} else if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "[乐天]";
+		mes "哇！";
+		mes "你就是那个！";
+		mes "只是非凡的聪明和情感上的进步......";
+		next;
+		mes "[乐天]";
+		mes "暗影追击者！";
+		mes "哇我什么时候才能成为其中一员。";
+		close;
+	}
+	mes "[乐天]";
+	mes "我不需要任何东西。";
+	close;
+}
+
+in_rogue,379,101,3	script	Scary Man#sc03	810,{
+	if (job_sha == 0) {
+		if (BaseJob == Job_Rogue && BaseLevel > 98 && JobLevel > 49) {
+			mes "[可怕的男人]";
+			mes "哦你这么有才华？";
+			mes "现在我有一个有趣的问题！你想解决它吗？";
+			next;
+			mes "[墓地]";
+			mes "我的名字是乌鲁帕。";
+			mes "如果你有什么有趣的事情就挑战它吧。";
+			set job_sha,1;
+			close;
+		}
+		mes "[可怕的男人]";
+		mes "你是做什么生意的？";
+		mes "我和你没有任何关系。";
+		mes "我不关心像你这样的人。我只处理非凡的事情。";
+		close;
+	} else if (job_sha == 1) {
+		if (VIP_SCRIPT) {
+			callfunc "VIP_Third_Class";
+			set job_sha,2;
+			setquest 7160;
+			next;
+		}
+		mes "[墓地]";
+		mes "我们做了一个测验，但还没有人解决。";
+		mes "你想解决它吗？";
+		mes "这是一个代码。";
+		mes "看看它。";
+		next;
+		mes "- 消息是 -";
+		mes "- 用密码写的。 -";
+		mes "任务似乎是破解密码......";
+		next;
+		mes "[墓地]";
+		mes "这是代码。";
+		mes "它只是对密码进行编号以使消息有意义。";
+		mes "例如...";
+		next;
+		callsub L_Code,1;
+		mes "[墓地]";
+		mes "现在这就是需要解决的问题。";
+		mes "破译代码并前往它告诉您的地方......";
+		next;
+		callsub L_Code,2;
+		next;
+		mes "[墓地]";
+		mes "所以写下来！";
+		mes "我期待你会进行这次冒险！";
+		set job_sha,2;
+		setquest 7160;
+		close;
+	} else if (job_sha == 2) {
+		mes "[墓地]";
+		mes "您还想再解释一下吗？";
+		mes "或者您只想要代码？";
+		next;
+		switch(select("更多说明：获取代码。")) {
+		case 1:
+			callsub L_Code,1;
+			mes "[墓地]";
+			mes "现在就看你了！";
+			mes "所以走吧！去！";
+			close;
+		case 2:
+			mes "[墓地]";
+			mes "让我再次向您展示代码...";
+			next;
+			callsub L_Code,2;
+			close;
+		}
+	} else if (job_sha > 2 && job_sha < 31) {
+		mes "[墓地]";
+		mes "好吧，你解决了吗？";
+		mes "祝你好运！";
+		close;
+	} else if (job_sha == 31) {
+		mes "[墓地]";
+		mes "你刚刚成为一名暗影追击者。";
+		mes "测验是为了收集合适的人......";
+		close;
+	}
+	mes "[墓地]";
+	mes "没什么特别的吗？";
+	mes "如你所见...我在这里很好！";
+	close;
+L_Code:
+	if (getarg(0) == 1) {
+		mes "[墓地]";
+		mes "3511543433";
+		mes "这意味着PAYON。";
+		next;
+		mes "[墓地]";
+		mes "数字必须配对。";
+		mes "3511543433";
+		mes "35 11 54 34 33 分成 5 对！";
+		next;
+		mes "[墓地]";
+		mes "Error 504 (Server Error)!!1504.That’s an error.There was an error. Please try again later.That’s all we know.";
+		mes "35 - P，11 - A，";
+		mes "54-Y、34-O、33-N。";
+		next;
+		mes "[墓地]";
+		mes "这是连续的数字。";
+		mes "33、34、35！";
+		mes "氮、氧、磷？";
+		next;
+	} else {
+		mes "开始了！";
+		next;
+		mes "^4d4dff";
+		mes "43231114345243";
+		mes "11441531241542";
+		mes "2433";
+		mes "3542343344154211";
+		mes "^000000";
+		next;
+		mes "[墓地]";
+		mes "你能做到吗？";
+		mes "如果你去那里参观，你可能会感到惊讶......";
+	}
+	return;
+}
+
+s_atelier,65,123,5	script	Manager#sc04_prt	903,{
+	if (job_sha == 2) {
+		mes "[经理]";
+		mes "麦克斯在哪里！？";
+		mes "妈的，周围这么多陌生人。";
+		mes "嘿...";
+		next;
+		switch(select("显示破译的代码！：...")) {
+		case 1:
+			mes "[经理]";
+			mes "哇，你破解了吗？";
+			mes "那么，正确答案是什么？";
+			next;
+			input .@inputstr$;
+			if (.@inputstr$ == "shadows atelier in prontera" || .@inputstr$ == "SHADOWS ATELIER IN PRONTERA") {
+				mes "[经理]";
+				mes "好的。";
+				mes "你刚刚得到它。";
+				mes "那你为什么来这里？";
+				next;
+				select("代码说这是一个......");
+				mes "[经理]";
+				mes "所以你就是那个。";
+				mes "你能等一下吗？";
+				set job_sha,3;
+				close;
+			}
+			mes "[经理]";
+			mes "请记住将代码与应被破译的代码完全一致。";
+			mes "也许你应该再试一次...";
+			close;
+		case 2:
+			mes "[经理]";
+			mes "只允许相关人员......";
+			mes "可以问问店里的店员吗？";
+			close;
+		}
+	} else if (job_sha == 3) {
+		mes "[经理]";
+		mes "现在让我向大家介绍一下我自己吧！";
+		mes "我是格雷厄姆，这个影子画廊的经理......";
+		next;
+		mes "[格雷厄姆]";
+		mes "你可能已经猜到了。";
+		mes "这是盗贼的额外设施。";
+		mes "我们采用艺术和其他历史物品等东西。";
+		next;
+		mes "[格雷厄姆]";
+		mes "这些东西都是非法的。";
+		mes "你们从历史古迹给我们带来的这些东西......";
+		mes "好的。";
+		next;
+		mes "[格雷厄姆]";
+		mes "所以我们必须了解诸如...";
+		mes "宝藏所在位置的特殊代码和信息。";
+		next;
+		mes "[格雷厄姆]";
+		mes "我们需要你们...";
+		mes "所以我们向盗贼公会寻求帮助。";
+		next;
+		select("你们还有其他地方工作吗？");
+		mes "[格雷厄姆]";
+		mes "啊，是的...";
+		mes "我们位于普隆德拉、朱诺、雷切尔和莱特哈尔岑。";
+		mes "好的？";
+		next;
+		mes "[格雷厄姆]";
+		mes "反正....";
+		mes "我们都非常想知道宝藏在哪里。";
+		mes "所以代码就是要闯入每一个地方。";
+		next;
+		mes "[格雷厄姆]";
+		mes "你看起来是对的人。";
+		mes "所以我会给你代码。";
+		mes "请找到宝藏！";
+		next;
+		switch(select("没办法！：我试试吧！")) {
+		case 1:
+			mes "[格雷厄姆]";
+			mes "我勒个去？";
+			mes "如果你不肯帮忙，那我就去找别人了。";
+			set job_sha,4;
+			close;
+		case 2:
+			mes "[格雷厄姆]";
+			mes "你太强大了！";
+			mes "所以这里...";
+			next;
+			callsub L_Code,0;
+			close;
+		}
+	} else if (job_sha == 4) {
+		mes "[格雷厄姆]";
+		mes "你现在有兴趣吗？";
+		next;
+		switch(select("一点也不：嗯，我会接受的。")) {
+		case 1:
+			mes "[格雷厄姆]";
+			mes "该死的。";
+			close;
+		case 2:
+			mes "[格雷厄姆]";
+			mes "你真是太挑剔了...";
+			mes "这里...";
+			next;
+			callsub L_Code,0;
+			close;
+		}
+	} else if (job_sha == 5) {
+		mes "[格雷厄姆]";
+		mes "你有发现什么吗？";
+		next;
+		switch(select("我需要解释：代码又是什么？")) {
+		case 1:
+			mes "[格雷厄姆]";
+			mes "你太强大了！";
+			next;
+			callsub L_Code,1;
+			mes "[格雷厄姆]";
+			mes "知道了？";
+			close;
+		case 2:
+			mes "[格雷厄姆]";
+			mes "我已经给你代码了。";
+			mes "太疯狂了...";
+			mes "你没有一份备忘录吗？";
+			close;
+		}
+	} else if (job_sha == 6 || job_sha == 7) {
+		mes "[格雷厄姆]";
+		mes "没什么特别的...?";
+		mes "你去过一些地方...？";
+		mes "肯定有什么东西。";
+		next;
+		mes "格雷厄姆似乎知道些什么。";
+		mes "我最好再去那里一次。";
+		close;
+	} else if (job_sha == 8) {
+		mes "[格雷厄姆]";
+		mes "那么，有什么改进吗？";
+		next;
+		select("给他看钥匙。");
+		mes "[格雷厄姆]";
+		mes "欺骗！";
+		mes "你在欺骗我！";
+		next;
+		mes "[格雷厄姆]";
+		mes "这就是全部吗？";
+		mes "只有一把钥匙。";
+		mes "多么具有欺骗性啊！";
+		mes "正如我所想，这是一种宝藏。";
+		next;
+		mes "[格雷厄姆]";
+		mes "你刚刚给了我一个震惊。";
+		mes "好的...";
+		mes "代码保存在画廊中。";
+		next;
+		mes "[格雷厄姆]";
+		mes "好吧，还有比这更多的画廊......";
+		mes "朱诺和雷切尔有密码……";
+		next;
+		mes "[格雷厄姆]";
+		mes "这正是我的猜测。";
+		mes "其他画廊保存的密码根本不是什么宝藏……";
+		next;
+		mes "[格雷厄姆]";
+		mes "去雷切尔...";
+		next;
+		mes "[格雷厄姆]";
+		mes "找到雷切尔的画廊......";
+		mes "告诉他们你刚从格雷厄姆来并索要密码。";
+		next;
+		mes "[格雷厄姆]";
+		mes "好的？";
+		mes "那就去那里吧！";
+		set job_sha,9;
+		changequest 7165,7166;
+		close;
+	} else if (job_sha == 9) {
+		mes "[格雷厄姆]";
+		mes "有四个画廊...";
+		mes "普隆德拉、雷切尔、朱诺和莱特哈尔森。";
+		next;
+		mes "[格雷厄姆]";
+		mes "画廊保存的密码之一已经被破译。";
+		mes "这只是一把钥匙......";
+		next;
+		mes "[格雷厄姆]";
+		mes "但这就是我的猜测。";
+		mes "这些代码是相互链接的。";
+		mes "而且每个人的目的都不同。";
+		next;
+		mes "[格雷厄姆]";
+		mes "例如...";
+		mes "如果一个只是一把钥匙，那么其他的东西都是需要钥匙的。";
+		next;
+		mes "[格雷厄姆]";
+		mes "钥匙必须是用来打开盒子的。";
+		mes "你能猜出里面是什么吗？";
+		next;
+		select("嗯，宝藏？");
+		mes "[格雷厄姆]";
+		mes "是的。";
+		mes "这就是我们在这里的原因！";
+		next;
+		mes "[格雷厄姆]";
+		mes "人们认为我们只是在交易东西......";
+		mes "但我们来这里是为了非常特别的事情。";
+		next;
+		mes "[格雷厄姆]";
+		mes "前往 ^4d4dffRachel Gallery^000000 并获取代码...";
+		mes "如果你解释一切，他们会支持你。";
+		mes "好的？";
+		close;
+	} else if (job_sha > 9 && job_sha < 30) {
+		mes "[格雷厄姆]";
+		mes "一切又如何呢？";
+		mes "我们非常想知道这把钥匙。";
+		mes "所以你得到了其他画廊的支持。";
+		close;
+	} else if (job_sha > 29) {
+		mes "[格雷厄姆]";
+		mes "暗影追击者！！";
+		mes "啊!";
+		next;
+		mes "[格雷厄姆]";
+		mes "又不是故意骗人的……";
+		mes "哈哈哈！！";
+		next;
+		mes "[格雷厄姆]";
+		mes "是不是很有趣？";
+		mes "这不仅仅是参加考试。";
+		mes "我们了解了您并弄清楚了您是谁。";
+		next;
+		mes "[格雷厄姆]";
+		mes "我的演技怎么样？";
+		mes "有效吗？";
+		next;
+		mes "[格雷厄姆]";
+		mes "如果您需要任何东西，只需询问他们您想要什么。";
+		close;
+	}
+	mes "[经理]";
+	mes "只允许相关人员...";
+	mes "可以问问店里的店员吗？";
+	close;
+L_Code:
+	mes "-笔记。";
+	mes "^4d4dff 13 15 18 15 3 3 18 21 9 14^000000";
+	mes "键 : 0 -";
+	next;
+	select("这些只是数字...");
+	mes "[格雷厄姆]";
+	mes "与盗贼公会的唯一区别是你不需要将它们配对。";
+	next;
+	mes "[格雷厄姆]";
+	mes "这里还有关键字...";
+	mes "这个案例是关键0。";
+	next;
+	mes "[格雷厄姆]";
+	mes "让我们来看看。例如。";
+	mes "13 15 18 15 3 3 18 21 9 14 =";
+	mes "摩洛哥克鲁因";
+	next;
+	mes "[格雷厄姆]";
+	mes "看看这个...C = 3。";
+	mes "C是第三个字母吗？";
+	next;
+	mes "[格雷厄姆]";
+	mes "你明白了吗？";
+	mes "但这不会用关键字 0 给出。当我给你关键字时，你可以自己弄清楚。";
+	next;
+	if (getarg(0)) return;
+	mes "[格雷厄姆]";
+	mes "现在让我们继续执行任务。";
+	mes "这是密码...";
+	next;
+	set .@key01, rand(3,5);
+	set .@a, 1 + .@key01;
+	set .@b, 2 + .@key01;
+	set .@d, 4 + .@key01;
+	set .@e, 5 + .@key01;
+	set .@f, 6 + .@key01;
+	set .@h, 8 + .@key01;
+	set .@i, 9 + .@key01;
+	set .@l, 12 + .@key01;
+	set .@n, 14 + .@key01;
+	set .@o, 15 + .@key01;
+	set .@r, 18 + .@key01;
+	set .@s, 19 + .@key01;
+	set .@t, 20 + .@key01;
+	set .@u, 21 + .@key01;
+	mes "^4d4dff" + .@b + " " + .@l + " " + .@u + " " + .@e + " ";
+	mes "" + .@f + " " + .@i + " " + .@r + " " + .@e + " ";
+	mes "" + .@i + " " + .@n + " ";
+	mes "" + .@t + " " + .@u + " " + .@r + " " + .@t + " " + .@l + " " + .@e + " ";
+	mes "" + .@i + " " + .@s + " " + .@l + " " + .@a + " " + .@n + " " + .@d + " ";
+	mes "" + .@t + " " + .@h + " " + .@i + " " + .@r + " " + .@d + " ";
+	mes "" + .@f + " " + .@l + " " + .@o + " " + .@o + " " + .@r + " ";
+	mes "钥匙 ：" + .@key01 + ".";
+	set job_sha,5;
+	erasequest 7160;
+	if (.@key01 == 3) setquest 7161;
+	else if (.@key01 == 4) setquest 7162;
+	else if (.@key01 == 5) setquest 7163;
+	next;
+	mes "[格雷厄姆]";
+	mes "拿走吧。";
+	mes "我记性不好。";
+	mes "您拥有所有信息，因此您现在只能靠自己了。";
+	next;
+	mes "[格雷厄姆]";
+	mes "一旦你有东西就到这里来。";
+	next;
+	mes "- 你拿着格雷厄姆的备忘录。";
+	mes "别忘了！ -";
+	close;
+}
+
+s_atelier,168,65,5	script	Manager#sc08_ra	923,{
+	if (job_sha < 10) {
+		mes "[经理]";
+		mes "你是谁？";
+		mes "这个地方不适合你。";
+		next;
+		if (job_sha < 9) {
+			mes "[经理]";
+			mes "他们在上面做什么？";
+			mes "巴拉...";
+			close;
+		}
+		switch(select("给我你的密码！：我是格雷厄姆发送的。")) {
+		case 1:
+			mes "[经理]";
+			mes "你需要我的密码吗？";
+			mes "你愿意付给我多少钱？";
+			next;
+			mes "[经理]";
+			mes "1000万女性？";
+			mes "好吧，那我就接受了！";
+			next;
+			mes "[经理]";
+			mes "是啊，对！";
+			mes "你到底是谁？";
+			mes "你怎么敢问我密码？";
+			close;
+		case 2:
+			mes "[经理]";
+			mes "格雷厄姆？";
+			mes "为什么？";
+			next;
+			if (countitem(6266) == 0) {
+				mes "你好像没有把它带到这里来。";
+				next;
+				mes "[经理]";
+				mes "你是哑巴吗？";
+				mes "我不知道格雷厄姆为什么派你来这里。";
+				mes "如果你这里没什么事就走吧！";
+				close;
+			}
+			mes "[经理]";
+			mes "所以这把钥匙是他送来的。";
+			next;
+			select("不，我发现它作为线索。");
+			mes "[经理]";
+			mes "啊？";
+			mes "那岂不是说，一个代码就可以当宝物兑换了……？";
+			next;
+			select("或许。");
+			mes "[经理]";
+			mes "...........";
+			mes "唔....";
+			next;
+			mes "[经理]";
+			mes "唔...";
+			next;
+			mes "- 经理似乎 -";
+			mes "- 正在思考 -";
+			mes "- 某物。然后他——";
+			mes "- 递出一张纸。 -";
+			next;
+			mes "[经理]";
+			mes "决不。";
+			mes "这是线索。";
+			mes "尝试找到它。";
+			next;
+			mes "[经理]";
+			mes "无论如何，我的名字是保罗。";
+			mes "...........";
+			next;
+			mes "[保罗]";
+			mes "自然...";
+			mes "我已经解决了线索。";
+			next;
+			mes "- 这是论文 -";
+			mes "- 保罗交出。 -";
+			next;
+			mes "R-E-N-N-N-D";
+			mes "L-N-N-W-W-N-D";
+			next;
+			mes "[保罗]";
+			mes "是不是这么简单呢？";
+			mes "你怎么认为？";
+			mes "RENNND / LNNWWND 意味着一件事。";
+			next;
+			switch(select("我想我明白了。：我不知道。")) {
+			case 1:
+				callsub L_Code,7166;
+				close;
+			case 2:
+				mes "[保罗]";
+				mes "什么？你不知道吗？";
+				mes "那你最好再考虑一下。";
+				mes "太容易了。";
+				set job_sha,10;
+				changequest 7166,7167;
+				close;
+			}
+		}
+	} else if (job_sha == 10) {
+		mes "[保罗]";
+		mes "那么你明白这意味着什么了吗？";
+		next;
+		switch(select("是的！：不，我不这么认为。")) {
+		case 1:
+			callsub L_Code,7167;
+			close;
+		case 2:
+			mes "[保罗]";
+			mes "有那么难吗？";
+			next;
+			select("我做不到...");
+			mes "[保罗]";
+			mes "决不。";
+			mes "我可以给你一个提示吗？";
+			mes "罗盘！";
+			close;
+		}
+	} else if (job_sha > 10 && job_sha < 14) {
+		mes "[保罗]";
+		mes "我已经给你提供了你需要的所有信息。";
+		next;
+		mes "[保罗]";
+		mes "我又给了你一条线索。";
+		mes "还不够吗？";
+		next;
+		mes "[保罗]";
+		mes "正如你和格雷厄姆提到的。";
+		mes "去找出来吧。";
+		next;
+		mes "[保罗]";
+		mes "如果你发现了宝藏等真实的东西，";
+		mes "回到这里。";
+		close;
+	} else if (job_sha > 13 && job_sha < 17) {
+		mes "[保罗]";
+		mes "你必须找到正确的地方。";
+		mes "这个词是 RENNND";
+		mes "它指的是这个雷切尔的洞穴东-北-北-北。";
+		next;
+		mes "[保罗]";
+		mes "L-N-N-W-W-N-D 也相同。";
+		mes "L 代表 Lighthalzen。";
+		mes "莱特哈尔岑 - 北 - 北 - 西 - 西。";
+		mes "那就是冰洞。";
+		next;
+		mes "[保罗]";
+		mes "有改善吗！？";
+		next;
+		select("您需要进一步调查吗？");
+		mes "[保罗]";
+		mes "真的吗？好的...";
+		mes "决不....";
+		mes "我们将期待一个好的结果。";
+		close;
+	} else if (job_sha == 17) {
+		mes "[保罗]";
+		mes "我迫不及待地想等你。";
+		mes "那么你发现了什么？";
+		next;
+		select("我找到钥匙了：嗯……");
+		mes "- 你交出在冰洞中找到的“幻象钥匙”。 -";
+		next;
+		mes "[保罗]";
+		mes "错觉！哈哈！";
+		mes "欺骗之后就是幻觉！";
+		mes "那你是在骗我吗？";
+		next;
+		mes "[保罗]";
+		mes "我能感觉到格雷厄姆的感受......";
+		mes "我们不敢拿那把小钥匙...";
+		next;
+		mes "[保罗]";
+		mes "莱特哈尔森的年轻人很难对付……";
+		mes "所以我们最好请求哈勒德的帮助......";
+		next;
+		mes "[保罗]";
+		mes "嘿...";
+		mes "如果你去朱诺...";
+		mes "有一个画廊...";
+		next;
+		mes "[保罗]";
+		mes "那你能问他要密码吗？";
+		mes "唔...";
+		next;
+		mes "[保罗]";
+		mes "我感觉主画廊里的红发家伙在戏弄我......";
+		mes "反正...";
+		mes "所以我真的很想知道密码和密钥的身份......";
+		next;
+		mes "[保罗]";
+		mes "如果哈尔德不支持的话...";
+		mes "告诉他^4d4dff我知道你去年夏天做了什么！^000000";
+		mes "你应该不会看错吧……！？";
+		set job_sha,18;
+		changequest 7172,7173;
+		close;
+	} else if (job_sha == 18) {
+		mes "[保罗]";
+		mes "你可以叫他拿钥匙...";
+		mes "如果你告诉他一些事情，他会帮助你...";
+		next;
+		mes "[保罗]";
+		mes "如果哈尔德不支持的话...";
+		mes "告诉他^4d4dff我知道你去年夏天做了什么！^000000";
+		close;
+	} else if (job_sha > 18 && job_sha < 30) {
+		mes "[保罗]";
+		mes "所以你还在寻找宝藏......对吧？";
+		mes "我会寻找它...";
+		close;
+	} else if (job_sha == 30) {
+		mes "[保罗]";
+		mes "现在我几乎猜到接下来会发生什么了……";
+		mes "这不可能发生！";
+		next;
+		mes "[保罗]";
+		mes "你震惊吗？";
+		mes "别往坏处想。";
+		mes "你可以找到一个好人。";
+		mes "哈哈哈...";
+		close;
+	}
+	mes "[保罗]";
+	mes "您需要绘画工具吗？";
+	mes "然后你可以向助理提出要求。";
+	mes "我们总是备有它以防万一。";
+	close;
+L_Code:
+	mes "[保罗]";
+	mes "真的吗？那我就不需要给你答案了。";
+	mes "你能解释一下每个字母的含义吗？";
+	next;
+	select("这有点像地方的组合。");
+	mes "[保罗]";
+	mes "所以？";
+	next;
+	select("E-N 表示东 - 北");
+	mes "[保罗]";
+	mes "好吧，这就足够了。";
+	mes "然后去了解一下。";
+	next;
+	mes "[保罗]";
+	mes "记住这一点。";
+	mes "你可能需要它。这对你来说可能是一个线索。";
+	next;
+	mes "[保罗]";
+	switch(rand(3)) {
+	case 0:
+		mes "[ 种子 ]";
+		mes "SEED？";
+		set job_sha,11;
+		changequest getarg(0),7168;
+		break;
+	case 1:
+		mes "[ 脚 ]";
+		mes "脚？";
+		set job_sha,12;
+		changequest getarg(0),7169;
+		break;
+	case 2:
+		mes "[ 冷 ]";
+		mes "寒冷的？";
+		set job_sha,13;
+		changequest getarg(0),7170;
+		break;
+	}
+	mes "我不知道它的真正含义，但了解它会对您有所帮助。";
+	close;
+}
+
+s_atelier,167,129,3	script	Manager#sc06_yuno	806,{
+	if (job_sha < 19) {
+		mes "[经理]";
+		mes "什么？";
+		mes "如果你来这里是为了钱，那你就错了。";
+		mes "这不是当铺。";
+		if (job_sha < 18) close;
+		next;
+		select("你是……哈勒德？");
+		mes "[哈勒德]";
+		mes "唔？我是朱诺这个工作场所的经理。怎么了？";
+		next;
+		mes "[哈勒德]";
+		mes "唔。你是格雷厄姆和保罗派来的？";
+		mes "我以为你只是来拿化石碎片讨钱的。";
+		next;
+		mes "[哈勒德]";
+		mes "这是穷学者使用的经典方法。";
+		mes "有时我买了好东西，所以有人知道这是一家当铺。";
+		next;
+		mes "[哈勒德]";
+		mes "让我听听你的故事。";
+		next;
+		mes "- 你解释了到目前为止的一切并表现出傲慢的关键。 -";
+		next;
+		mes "[哈勒德]";
+		mes "所以...";
+		mes "我完全明白。";
+		mes "这就是这把钥匙的位置";
+		mes "分享了信息！";
+		next;
+		mes "[哈勒德]";
+		mes "反正。两把钥匙和我要用这把钥匙打开的宝藏，我该怎么办？";
+		next;
+		mes "[哈勒德]";
+		mes "我们要调查朱诺的工作场所，所以交给我吧？";
+		next;
+		mes "- 哈勒德不想和你合作。";
+		mes "记住保罗所说的话。 -";
+		next;
+		callsub L_Code;
+		mes "[哈勒德]";
+		mes "所以呢？";
+		mes "他是一个目光狂野的人。";
+		mes "你刚才是用威胁的语气跟我说话吗？";
+		set job_sha,19;
+		close;
+	} else if (job_sha == 19) {
+		mes "[哈勒德]";
+		mes "什么？";
+		mes "你想和我谈谈吗？";
+		mes "你把那把钥匙交给我怎么样？";
+		next;
+		callsub L_Code;
+		mes "[哈勒德]";
+		mes "你这人怎么回事？";
+		mes "你还好吗？";
+		mes "保罗？你想说什么？";
+		set job_sha,19;
+		close;
+	} else if (job_sha == 20) {
+		mes "[哈勒德]";
+		mes "知道了。";
+		mes "好的。";
+		mes "您需要知道代码所在的位置吗？";
+		next;
+		mes "[哈勒德]";
+		mes "我别无选择。";
+		mes "仔细听这首诗。";
+		next;
+		mes "[哈勒德]";
+		mes "^4d4dff赋予生命的水细根的末端。";
+		mes "这都是活人的泪水和痕迹。";
+		mes "他们是我们，但也不是我们。";
+		mes "被遗忘之夜的居民";
+		mes "演奏绝望的华尔兹^000000。";
+		next;
+		mes "[哈勒德]";
+		mes "你知道它在哪里吗？";
+		mes "你知道哪里是对的吗？";
+		mes "这只是我的意见，但是...";
+		mes "这不可能...";
+		next;
+		mes "[哈勒德]";
+		mes "不管怎样，如果你想做的话，就去做吧。";
+		mes "如果你知道这首诗的意思。";
+		next;
+		mes "[哈勒德]";
+		mes "当然，如果你发现了什么，你就得回来。";
+		mes "知道了？";
+		mes "我要把它写下来，这样你就不会忘记。";
+		set job_sha,21;
+		changequest 7173,7174;
+		close;
+	} else if (job_sha == 21) {
+		mes "[哈勒德]";
+		mes "无论你发现什么，我都不会感到惊讶。";
+		mes "你必须找到这首诗所谈到的地方。";
+		next;
+		mes "[哈勒德]";
+		mes "^4d4dff赋予生命的水细根的末端。";
+		mes "这都是活人的泪水和痕迹。";
+		mes "他们是我们，但也不是我们。";
+		mes "被遗忘之夜的居民";
+		mes "演奏绝望的华尔兹^000000。";
+		next;
+		mes "[哈勒德]";
+		mes "当然，如果你发现了什么，你就得回来。";
+		mes "知道了？";
+		close;
+	} else if (job_sha > 21 && job_sha < 25) {
+		mes "[哈勒德]";
+		mes "怎么样了？";
+		mes "如果你发现了什么，你就必须回来。";
+		mes "不要去找格雷厄姆或保罗。";
+		close;
+	} else if (job_sha == 25) {
+		mes "[哈勒德]";
+		mes "你有发现什么吗？";
+		next;
+		select("显示快乐的关键。");
+		if (countitem(6268)) {
+			mes "[哈勒德]";
+			mes "哈.........akkk。";
+			mes "另一把钥匙？";
+			mes "这是唯一的钥匙吗？！";
+			next;
+			mes "[哈勒德]";
+			mes "那……我需要向莱特哈尔森的年轻人寻求帮助吗？";
+			mes "...........";
+			mes "啊...";
+			next;
+			mes "[哈勒德]";
+			mes "我别无选择。";
+			mes "使用三把钥匙前往莱特哈尔森。";
+			mes "与莱特哈尔森商店的老板文森特见面并告诉他一切。";
+			next;
+			mes "[哈勒德]";
+			mes "我告诉过你，这个老人很执着，他毁了一切。";
+			next;
+			mes "[哈勒德]";
+			mes "您必须掌握所有事实才能向公会发送信息。";
+			mes "首先你们必须齐心协力共同努力。";
+			next;
+			mes "[哈勒德]";
+			mes "你找到的东西可能属于工作场所。";
+			mes "可以共享。";
+			next;
+			mes "[哈勒德]";
+			mes "我以为这是一件很简单的事情。";
+			mes "我们无法一起分享这些东西。";
+			next;
+			mes "[哈勒德]";
+			mes "我从工作场所获得的所有信息都是关键。";
+			mes "必须有可以使用三键的东西。";
+			next;
+			mes "[哈勒德]";
+			mes "无论如何，这与欺骗和快乐有关......";
+			mes "这是在逗我吗...";
+			next;
+			mes "[哈勒德]";
+			mes "好的。让我说完。";
+			mes "前往莱特哈尔岑的维森特。";
+			set job_sha,26;
+			changequest 7176,7177;
+			close;
+		}
+		mes "["+strcharinfo(0)+"]";
+		mes "对不起。";
+		mes "我又找到一把钥匙，但我没带。";
+		mes "我很快就会拿过来。";
+		close;
+	} else if (job_sha == 26) {
+		mes "[哈勒德]";
+		mes "莱特哈尔岑的影子工作场所。";
+		mes "经理的名字叫维森特。";
+		mes "告诉他一切并获取最后的信息。";
+		close;
+	} else if (job_sha > 26 && job_sha < 30) {
+		mes "[哈勒德]";
+		mes "嘿，你！";
+		mes "维森特对您有帮助吗？";
+		mes "你有重要的事情...";
+		mes "所以你必须找出它是什么。";
+		next;
+		mes "[哈勒德]";
+		mes "继续努力。";
+		close;
+	} else if (job_sha == 30) {
+		mes "[哈勒德]";
+		mes "嘿，你！";
+		mes "这是怎么回事？";
+		mes "什么？暗影追击者？";
+		next;
+		mes "[哈勒德]";
+		mes "我知道这个事实吗？";
+		mes "当然。之前听说过一点点";
+		mes "我曾经做过这样的工作。";
+		next;
+		mes "[哈勒德]";
+		mes "我很荣幸能够选择一个属于我们的人。";
+		mes "就接受这一点吧。你将成为一名出色的暗影追击者。";
+		close;
+	}
+	mes "[哈勒德]";
+	mes "我喜欢你的脸。";
+	mes "我们没有什么特别的东西。";
+	mes "一名助理出售一些油漆和工具。";
+	close;
+L_Code:
+	mes "["+strcharinfo(0)+"]";
+	mes "保罗说……";
+	next;
+	input .@inputstr$;
+	mes "["+strcharinfo(0)+"]";
+	mes "保罗说……";
+	mes "'"+.@inputstr$+"'。";
+	next;
+	if (.@inputstr$ == "I know what you did last summer!") {
+		mes "[哈勒德]";
+		mes "埃克……他……";
+		mes "什么都知道了...";
+		mes "唔...";
+		mes "我可以帮忙。";
+		mes "我会配合的。";
+		next;
+		mes "[哈勒德]";
+		mes "我需要一些时间来整理我的想法。";
+		mes "等我一下。";
+		set job_sha,20;
+		close;
+	}
+	return;
+}
+
+s_atelier,25,75,3	script	Manager#sc10_lgt	899,{
+	if (job_sha < 26) {
+		mes "[经理]";
+		mes "你是？";
+		mes "抱歉，我们不交易旧艺术品。";
+		mes "如果您需要什么，请询问助理。";
+		close;
+	} else if (job_sha == 26) {
+		mes "[文森特]";
+		mes "欢迎。";
+		mes "我一直在等你。";
+		next;
+		select("为我？");
+		mes "[文森特]";
+		mes "我想知道你什么时候来拜访。";
+		mes "我已经等你很久了。";
+		mes "呼呼……";
+		next;
+		mes "[文森特]";
+		mes "格雷厄姆、保罗和哈勒德怎么样？";
+		mes "他们可不是好对付的人啊？";
+		next;
+		select("你什么都知道吗？");
+		mes "[文森特]";
+		mes "当然。";
+		mes "他们忽视我，因为他们认为我太年轻。";
+		mes "仿佛他们都是完美的。哈哈哈哈...";
+		next;
+		mes "[文森特]";
+		mes "你带了所有的钥匙吗？";
+		mes "应该有三个。";
+		mes "我想你来这里是为了了解如何使用它们，对吗？";
+		next;
+		select("是的，你说得对！");
+		mes "[文森特]";
+		mes "你不必感到惊讶。";
+		mes "我不知道那三个人之前调查了多久。";
+		mes "我已经完成了我的工作。";
+		next;
+		mes "[文森特]";
+		mes "当我到达最终地点时，我发现了一尊石像。";
+		mes "但需要有钥匙。";
+		next;
+		mes "[文森特]";
+		mes "甚至三。";
+		mes " ";
+		mes "（维森特微笑）";
+		next;
+		mes "[文森特]";
+		mes "首先，公会给出的信息只意味着一件事。";
+		mes "因为他们尊重我们财产的权利，";
+		mes "我们分享了我们的信息。";
+		next;
+		mes "[文森特]";
+		mes "所以我们不得不等待。";
+		mes "我以为最后一个男人永远不会把它给我......";
+		next;
+		mes "[文森特]";
+		mes "他们以为我想把宝藏据为己有。";
+		mes "所以这就是我一直在等你的原因。";
+		next;
+		mes "[文森特]";
+		mes "那我们就来说说重点吧！";
+		mes "你知道塔纳托斯塔吗？";
+		next;
+		switch(select("当然。：死亡之塔？")) {
+		case 1:
+			mes "[文森特]";
+			mes "你知道的。";
+			mes "那么你就很容易理解了。";
+			next;
+			break;
+		case 2:
+			mes "[文森特]";
+			mes "是的，朱诺北部的那座塔。";
+			mes "那里有巨大的怪物。";
+			next;
+			break;
+		}
+		mes "[文森特]";
+		mes "你告诉我你带着情报去了最后的地方？";
+		mes "那是塔纳托斯塔。";
+		next;
+		mes "[文森特]";
+		mes "幸运的是，地点是那座塔的一楼。";
+		mes "所以我要告诉你必须做什么。";
+		next;
+		mes "[文森特]";
+		mes "塔纳托斯塔一楼，有雷肯贝尔集团的成员。";
+		mes "从他们的办公桌向北走……";
+		next;
+		mes "[文森特]";
+		mes "你可以找到楼梯和光线射出的地方。";
+		mes "这就是我所拥有的信息的位置。";
+		next;
+		mes "[文森特]";
+		mes "现在你知道你必须用三把钥匙去哪里了。";
+		mes "找出石像的秘密。";
+		next;
+		mes "[文森特]";
+		mes "你无法想象你会发现什么样的东西。";
+		mes "这是所有钥匙的最终目的地。";
+		set job_sha,27;
+		changequest 7177,7178;
+		next;
+		mes "[文森特]";
+		mes "祝你好运。";
+		close;
+	} else if (job_sha == 27) {
+		mes "[文森特]";
+		mes "仔细听。";
+		mes "您需要找到的位置是";
+		mes "塔纳托斯一楼中间向北。";
+		mes "你可以找到楼梯和光线射出的地方。";
+		next;
+		mes "[文森特]";
+		mes "如果你发现了什么，就回到这里。";
+		mes "其实我想从你那里拿到钥匙，但是……";
+		next;
+		mes "[文森特]";
+		mes "我只是尊重你的意见。";
+		mes "如果你发现了什么，就回到这里。知道了？";
+		close;
+	} else if (job_sha == 28) {
+		mes "[文森特]";
+		mes "你回来了？";
+		mes "找到什么了吗？";
+		next;
+		switch(select("扔掉刷子。：抓住他的衣领。：扔掉刷子。")) {
+		case 1:
+			mes "[文森特]";
+			mes "嘿，你在做什么？";
+			mes "这刷子...";
+			mes "这就是塔纳托斯塔里隐藏的宝藏吗？";
+			next;
+			mes "维森特看了一眼之后显得很惊讶。";
+			next;
+			break;
+		case 2:
+			mes "[文森特]";
+			mes "你这人怎么回事？";
+			mes "你能告诉我更多细节吗？";
+			next;
+			mes "文森特看了一眼之后显得很惊讶。";
+			next;
+			mes "[文森特]";
+			mes "这就是塔纳托斯塔里隐藏的宝藏吗？";
+			next;
+			break;
+		case 3:
+			mes "[文森特]";
+			mes "怎么了？";
+			mes "你还好吗？";
+			next;
+			mes "维森特一脸惊讶地看着我。";
+			next;
+			select("指向画笔。");
+			mes "[文森特]";
+			mes "这就是塔纳托斯塔里隐藏的宝藏吗？";
+			next;
+			mes "文森特看了一眼之后显得很惊讶。";
+			next;
+			break;
+		}
+		mes "[文森特]";
+		mes "哈哈！！";
+		mes "哈哈哈哈哈哈！！！！";
+		mes "我现在明白了！";
+		mes "恭喜。";
+		next;
+		mes "[文森特]";
+		mes "这是宝藏。";
+		mes "你发现了一个大宝藏！";
+		mes "和我聊一会儿，好吗？";
+		next;
+		mes "[文森特]";
+		mes "有人一直在等你。";
+		mes "他一直在等待有人把这把刷子带回来。";
+		mes "我们进去吧。";
+		set job_sha,29;
+		erasequest 7179;
+		close;
+	} else if (job_sha == 29 || job_sha == 30) {
+		mes "[文森特]";
+		mes "我要听你的故事。";
+		close;
+	}
+	mes "[文森特]";
+	mes "从现在开始我期待你的作品。";
+	mes "你一定是一名出色的暗影追击者。";
+	mes "我确信这一点。";
+	close;
+}
+
+s_atelier,73,65,3	script	Vicente#sc12_lgt	899,{
+	mes "[文森特]";
+	if (job_sha < 29) {
+		mes "如果你在这里没有什么特别的事情要做，你最好离开。";
+		mes "不得擅自侵入。";
+		close;
+	} else if (job_sha == 29) {
+		mes "这边走。";
+		mes "他已经等你有一段时间了。";
+		mes "不是我，杜姆克。";
+		close;
+	} else if (job_sha == 30) {
+		mes "达姆克想让你成为追影者。";
+		mes "大新闻对吧？";
+		close;
+	} else if (job_sha == 31) {
+		mes "从现在开始我期待你的作品。";
+		mes "你一定是一名出色的暗影追击者。";
+		mes "我确信这一点。";
+		close;
+	}
+	mes "我没有什么特别的理由来这里。";
+	mes "一名助理出售工具和油漆。";
+	close;
+}
+
+s_atelier,70,66,4	script	Dumk#sc13_lgh	481,{
+	if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "[傻瓜]";
+		mes "它是什么？";
+		mes "您享受新技能吗？";
+		next;
+		mes "[傻瓜]";
+		mes "如果你想提高你的技能，你必须寻找油漆的新用途。";
+		next;
+		mes "[傻瓜]";
+		mes "别忘了。";
+		mes "我们是影子追逐者。";
+		mes "呼呼……";
+		mes "呼呼呼……";
+		close;
+	}
+	if (checkweight(1201,4) == 0) {
+		mes "- 你无法继续这个任务，因为你超重了。 -";
+		close;
+	}
+	if (ismounting()) {
+		mes "[傻瓜]";
+		mes "这家伙是谁？他为什么要坐在我面前那么高？";
+		mes "虽然我不知道你为什么骑它，但这里是在门里，";
+		mes "依靠动物逃生是没有危险的，所以请趴下！";
+		close;
+	}
+	if (BaseJob == Job_Rogue) {
+		if (job_sha < 29) {
+			mes "[傻瓜]";
+			mes "文森特.不招揽。";
+			next;
+			mes "[文森特]";
+			mes "律师？";
+			mes "我不这么认为。他是我们的同学。";
+			next;
+			mes "[傻瓜]";
+			mes "...啊？";
+			close;
+		}
+		if (BaseLevel < 99 || JobLevel < 50 || SkillPoint != 0) {
+			mes "[傻瓜]";
+			mes "你还是绿的！";
+			mes "你以为以你的能力就能学会黑魔法吗？";
+			mes "您错了！";
+			next;
+			mes "[文森特]";
+			mes "哈哈...";
+			mes "请理解。杜姆克的沟通能力很差。";
+			mes "甚至不会和等级不够高的人说话。";
+			next;
+			mes "[文森特]";
+			mes "作为一个还没有准备好的人。";
+			mes "^4d4dff你可能还没有准备好迎接他^000000。";
+			next;
+			mes "[傻瓜]";
+			mes "你说太多了。";
+			mes "呵呵。";
+			next;
+			mes "[文森特]";
+			mes "- 他很高兴。 -";
+			mes "嘿。";
+			mes "他可能会感到羞耻。";
+			close;
+		}
+		if (job_sha == 29) {
+			mes "[傻瓜]";
+			mes "是你吗？你是第一个发现画笔的人吗？";
+			next;
+			select("把刷子拿给他看。");
+			if (countitem(6269)) {
+				mes "[傻瓜]";
+				mes "就是这样。";
+				mes "你自己找到的吗？";
+				next;
+				switch(select("是的：和我的朋友们")) {
+				case 1:
+					mes "[傻瓜]";
+					mes "唔...";
+					mes "你有很高的能力。";
+					mes "破解密码本来应该很困难。";
+					mes "但这不适合你。";
+					next;
+					break;
+				case 2:
+					mes "[傻瓜]";
+					mes "唔...";
+					mes "那是你的另一项技能。";
+					mes "没有朋友的人一定很孤独。";
+					next;
+					mes "[傻瓜]";
+					mes "对我们来说，人际关系非常重要。";
+					mes "你会得到更多的人，你会得到更多的帮助。";
+					next;
+					break;
+				}
+				mes "[傻瓜]";
+				mes "是时候自我介绍一下了。";
+				mes "我是杜姆克";
+				next;
+				select("你是...");
+				mes "[文森特]";
+				mes "鸡！这顿晚餐吃鸡肉怎么样？";
+				next;
+				mes "[傻瓜]";
+				mes "为什么是鸡肉？";
+				mes "你为什么要打断？";
+				mes "你想被解雇吗？";
+				next;
+				mes "[文森特]";
+				mes "对不起...";
+				mes " ";
+				mes "（他转向你说谈论鸡肉是禁忌。）";
+				next;
+				mes "[傻瓜]";
+				mes "无论如何，我们先说一个观点。";
+				mes "你。";
+				mes "你会屈服于画笔的意志吗？";
+				next;
+				select("屈服于？什么？");
+				mes "[傻瓜]";
+				mes "这把刷子是大师用过的。";
+				mes "他的画具有神秘的力量。";
+				next;
+				mes "[傻瓜]";
+				mes "我无法告诉你力量的根源。";
+				mes "总有一天你会发现的。";
+				mes "他通过绘画媒介升华了力量。";
+				next;
+				select("我不明白...？");
+				mes "[傻瓜]";
+				mes "我们在没有月光的黑暗中行走。";
+				mes "发现我们的光辉岁月已经结束了。";
+				next;
+				mes "[傻瓜]";
+				mes "我们追随其他的影子";
+				mes "我们可以成为真实的";
+				mes "暗影追击者！";
+				next;
+				select("你在说什么？");
+				mes "[文森特]";
+				mes "他建议你成为一名追影者。";
+				next;
+				mes "[文森特]";
+				mes "在我们行会里，有一个特殊的群体，他们拥有独特的技能。";
+				mes "他们是追影者。";
+				mes "他们通常隐藏自己的形象，并认为自己与其他人不同。";
+				next;
+				mes "[傻瓜]";
+				mes "别这么讽刺，维森特！";
+				mes "我告诉你了。";
+				mes "你有资格成为追影者！";
+				next;
+				mes "[傻瓜]";
+				mes "把那把刷子给我。";
+				mes "我又需要它了。";
+				mes "我好渴。";
+				mes "等一下。";
+				delitem 6269,1; //Master_Brush
+				set job_sha,30;
+				close;
+			}
+			mes "[傻瓜]";
+			mes "让我看看...";
+			mes "你带了刷子吗？";
+			next;
+			mes "[傻瓜]";
+			mes "你在干什么？";
+			mes "给我看看刷子？";
+			mes "你没带吗？";
+			mes "你是不是太细心了...";
+			close;
+		} else if (job_sha == 30) {
+			mes "[傻瓜]";
+			mes "那么，你想让我继续谈论追影者吗？";
+			next;
+			switch(select("什么是追影者？：把我改成追影者吧。：我稍后再回来。")) {
+			case 1:
+				mes "[傻瓜]";
+				mes "大多数法术都是针对巫师及其同类的。";
+				mes "但奈特从此能够使用一种叫做符文的魔法。";
+				next;
+				mes "[傻瓜]";
+				mes "所以我们尝试寻找适合我们特点的法术媒介。";
+				next;
+				mes "[傻瓜]";
+				mes "所以最后...";
+				mes "我们找到了油漆！";
+				next;
+				mes "[傻瓜]";
+				mes "绘画给了我们很多感受。";
+				mes "我们可以感到平静和快乐，也可以给我们带来悲伤和恐惧的感觉。";
+				next;
+				mes "[傻瓜]";
+				mes "我们利用这一点来驾驭人们的不同情绪，并在他们最脆弱的时候利用他们。";
+				next;
+				mes "[傻瓜]";
+				mes "对敌人的效果类似于魔法咒语。";
+				next;
+				mes "[傻瓜]";
+				mes "例如，这种力量可以用来制造黑洞，让你的敌人消失。";
+				next;
+				mes "[傻瓜]";
+				mes "因此，如果你想拥有这种力量，那么你必须具备艺术性。";
+				next;
+				mes "[傻瓜]";
+				mes "说到时尚，你就必须成为潮流引领者！";
+				mes "理解艺术的能力！";
+				mes "你应该拥有一切。";
+				next;
+				select("那么什么是大师刷呢？");
+				mes "[傻瓜]";
+				mes "啊？";
+				mes "那是一只黑术高手的画笔。";
+				mes "现在我们正在寻找一个可以成为暗影追击者的人。";
+				next;
+				mes "[傻瓜]";
+				mes "这是一种游戏。";
+				mes "如果有人想成为追影者，";
+				mes "我们刚刚开始寻找这把画笔的过程。";
+				next;
+				mes "[傻瓜]";
+				mes "我们放置代码是为了确保您能够跳出框框思考。";
+				mes "你玩得开心吗？";
+				close;
+			case 2:
+				mes "[傻瓜]";
+				mes "你决定了！";
+				mes "根据您的情况，您可以掌握使用油漆进行心理战的艺术！";
+				mes "所创造的艺术是美丽的，但也是危险的。";
+				next;
+				mes "[傻瓜]";
+				mes "我们使用油漆作为咒语的媒介。";
+				mes "我们利用这一点来驾驭人们的不同情绪，并在他们最脆弱的时候利用他们。";
+				next;
+				mes "[傻瓜]";
+				mes "例如，这种力量可以用来制造黑洞，让你的敌人消失。";
+				next;
+				mes "[傻瓜]";
+				mes "因此，如果你想拥有这种力量，那么你必须具备艺术性。";
+				next;
+				mes "[傻瓜]";
+				mes "说到时尚，你就必须成为潮流引领者！";
+				mes "理解艺术的能力！";
+				mes "你应该拥有一切。";
+				next;
+				mes "[傻瓜]";
+				mes "你尽职尽责，找到了画笔。";
+				mes "所以你有资格成为追影者。";
+				next;
+				mes "[傻瓜]";
+				mes "恭喜。";
+				mes "欢迎来到你的新生活。";
+				jobchange roclass(eaclass()|EAJL_THIRD);
+				getitem 6121,1; //Makeover_Brush
+				getitem 6122,1; //Paint_Brush
+				set job_sha,32;
+				getitem 2795,1; //Green_Apple_Ring
+				getitem 5750,1; //Shadow_Handicraft
+				next;
+				mes "[傻瓜]";
+				mes "这是一套时尚的制服。";
+				mes "它采用豹纹和羽毛图案";
+				mes "时尚界将会震惊。";
+				next;
+				mes "[傻瓜]";
+				mes "这个影子孔雀是我自己设计的。";
+				mes "创造出能够吸收我的艺术感的东西太难了。";
+				mes "那么关于这一部分...";
+				next;
+				mes "Dumk不停地谈论时尚、艺术感、绘画和感觉。";
+				mes "显然他还沉浸在自己的世界里。";
+				next;
+				select("关于这个刷子...");
+				mes "[文森特]";
+				mes "啊，我会解释一下。";
+				mes "我们需要绘画工具。";
+				next;
+				mes "[文森特]";
+				mes "化妆刷是用来化妆的。";
+				mes "您可以从工作场所获得油漆。";
+				next;
+				mes "[文森特]";
+				mes "油漆刷用于绘制大空间。";
+				mes "您也可以从工作场所获得油漆。";
+				next;
+				mes "[文森特]";
+				mes "你不记得工作地点吗？";
+				mes "朱诺、普隆德拉、雷切尔和莱特哈尔岑。";
+				next;
+				mes "[文森特]";
+				mes "如果您需要油漆，请去找助理。";
+				mes "^4d4dff如果你没有任何工具，你可以使用需要技能的颜料。^000000";
+				next;
+				mes "[文森特]";
+				mes "恭喜成为我们的人。";
+				close;
+			case 3:
+				mes "[傻瓜]";
+				mes "什么？";
+				mes "为什么不呢？";
+				mes "你不想成为追影者吗？";
+				mes "我可以教你很多关于绘画的知识。";
+				next;
+				mes "[傻瓜]";
+				mes "在你成为其中一员之前，你真的不会明白。";
+				next;
+				mes "[傻瓜]";
+				mes "你不想学习如何利用比你所知道的更强大的力量吗？";
+				mes "....";
+				next;
+				mes "达姆克似乎很失望，因为我没有回答他。";
+				close;
+			}
+		}
+	}
+	mes "[傻瓜]";
+	mes "..........";
+	mes "呵呵。";
+	next;
+	mes "[文森特]";
+	mes "对不起。";
+	mes "他对其他人不感兴趣。";
+	mes "但你不能进入这个空间。";
+	mes "您可以在商店购买工具。";
+	close;
+}
+
+// Flames
+//============================================================
+tur_dun03,38,209,1	script	Blue Flame#sc_f01	802,{
+	if (job_sha == 5) {
+		mes "蓝色的火焰在咆哮。";
+		mes "破译的代码意味着...";
+		next;
+		input .@inputstr$;
+		set .@dap01$, "blue fire in turtle island third floor";
+		set .@dap02$, "BLUE FIRE IN TURTLE ISLAND THIRD FLOOR";
+		if (.@inputstr$ != .@dap01$ && .@inputstr$ != .@dap02$) {
+			mes "["+strcharinfo(0)+"]";
+			mes "那是什么？";
+			mes "我想我必须确保不使用任何大写字母。";
+			close;
+		}
+		mes "["+strcharinfo(0)+"]";
+		mes "^4d4dff"+.@inputstr$+"^000000";
+		mes "很明确的指出了这一点。";
+		next;
+		mes "当火焰开始燃烧时，你只需低声说出这句话即可。";
+		next;
+		mes "[未知声音]";
+		mes "嗯？有人来了吗？";
+		mes "你是想要得到我的宝藏的人吗？";
+		mes "但你的限制已经过去了。";
+		next;
+		mes "火焰在说话。";
+		mes "声音如蛇。";
+		mes "蓝色火焰的中央，有两只大理石般的眼睛。";
+		next;
+		select("捡起来。");
+		mes "[未知声音]";
+		mes "你很着急。";
+		mes "哈哈哈，人类通常都会做这样的事情。";
+		mes "他们看不到真相。";
+		next;
+		mes "[未知声音]";
+		mes "你呢？";
+		mes "我没想到你会伤害这蓝色火焰。";
+		mes "这是唯一一个有两个...";
+		next;
+		select("你是谁？");
+		mes "[欺骗之影]";
+		mes "我？我是个骗子。";
+		mes "我嘲笑那些愚蠢的人。";
+		mes "我在背后笑他们。";
+		mes "哈哈哈哈...";
+		next;
+		mes "蓝色火焰正在成长、滚滚。";
+		mes "他们似乎有联系。";
+		set job_sha,6;
+		setquest 7164;
+		if (checkquest(7161) >= 0) erasequest 7161;
+		if (checkquest(7162) >= 0) erasequest 7162;
+		if (checkquest(7163) >= 0) erasequest 7163;
+		close;
+	} else if (job_sha == 6) {
+		if (checkquest(7164,HUNTING) == 2) {
+			mes "看来蓝色火焰受到了限制。";
+			mes "你无法再像以前那样感受到法术的滚动效果了。";
+			next;
+			select("捡起弹珠。");
+			mes "当你拿起它们时，你会感觉到你的重量减轻了。";
+			set job_sha,7;
+			erasequest 7164;
+			close2;
+			warp "job3_sha01",22,82;
+			end;
+		}
+		mes "火焰仍在翻滚，带着强烈的咒语。";
+		mes "你必须切断与它的关系。";
+		close;
+	} else if (job_sha == 7) {
+		mes "看来蓝色火焰受到了限制。";
+		mes "你无法再像以前那样感受到法术的滚动效果了。";
+		next;
+		select("捡起弹珠。");
+		mes "当你拿起它时，你能感觉到你的重量减轻了。";
+		close2;
+		warp "job3_sha01",22,82;
+		end;
+	}
+	mes "火焰在滚动。";
+	close;
+}
+
+ice_dun02,206,223,1	script	Red Flame#sc_f02	802,{
+	if (job_sha < 11) {
+		mes "一股不知名的红色火焰在咆哮。";
+		close;
+	} else if (job_sha > 10 && job_sha < 14) {
+		mes "红色的火焰在咆哮。";
+		mes "却变成了一个黑衣女子。";
+		next;
+		mes "[黑衣女子]";
+		mes "你能听到我吗？";
+		mes "呼呼。";
+		mes "你可以看到我吗？";
+		next;
+		mes "[黑衣女子]";
+		mes "你是被选中的人吗？";
+		mes "你可以知道这一点。";
+		mes "有一个和我一样的灵魂。";
+		next;
+		mes "[黑衣女子]";
+		mes "我是一个影子。";
+		mes "一个游荡的影子。";
+		mes "悲伤的灵魂。";
+		mes "没有真实的幻象的影子。";
+		next;
+		mes "[幻影之影]";
+		mes "你想要什么？";
+		mes "你想要宝藏吗？";
+		mes "然后把它捡起来。";
+		mes "撕裂我的灵魂";
+		mes "展示真相。";
+		set job_sha, job_sha+3;
+		setquest 7171;
+		close;
+	} else if (job_sha == 14 || job_sha == 15 || job_sha == 16) {
+		if (checkquest(7171,HUNTING) == 2) {
+			mes "你无法从火焰中感受到灵魂。";
+			mes "当你走近时，由于黑暗，你看不清楚。";
+			close2;
+			warp "job3_sha01",22,33;
+			end;
+		}
+		mes "[幻影之影]";
+		mes "呼呼。";
+		mes "怎么了？";
+		mes "你找不到我的一半灵魂吗？";
+		mes "呼呼……";
+		next;
+		mes "[幻影之影]";
+		mes "啊，快点让我休息吧。";
+		mes "我想温柔地死去。";
+		mes "我想放弃虚伪的生活。";
+		next;
+		mes "[幻影之影]";
+		mes "呼呼……";
+		mes "当虚假的阴影消失后，你就能看到真相。";
+		mes "请撕碎虚假，让那些盲目的人眼花缭乱……";
+		mes "没有任何痕迹...";
+		close;
+	}
+	mes "火焰在滚动。";
+	mes "由于冰的光芒，你看不清楚。";
+	close;
+}
+
+niflheim,230,276,1	script	Red Flame#sc_f03	802,{
+	if (job_sha < 21) {
+		mes "那是神秘的火焰。";
+		mes "看起来像是在骂人。";
+		mes "离开那个。";
+		close;
+	}
+	else if (job_sha == 21) {
+		mes "["+strcharinfo(0)+"]";
+		mes "哈勒德告诉我的那首诗是指尼福尔海姆。";
+		mes "那里有一团火焰，看起来像是来自海龟岛和冰之迷宫的火焰。";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "活树根的末端。";
+		mes "所有活着的人的眼泪。";
+		mes "所有死人的标志。";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "他们是我们，但也不是我们。";
+		next;
+		mes "[某人的声音]";
+		mes "他们是我们，但也不是我们。";
+		next;
+		mes "[某人的声音]";
+		mes "夜晚的居民被遗忘了……";
+		next;
+		select("谁在玩那个？");
+		mes "[某人的声音]";
+		mes "是谁在演奏绝望的华尔兹？";
+		mes ".....";
+		next;
+		mes "[某人的声音]";
+		mes "哈...";
+		mes "你来这里是为了挖掘死亡的秘密。";
+		mes "你能为我演奏死亡华尔兹吗？";
+		next;
+		mes "[某人的声音]";
+		mes "我不想被束缚";
+		mes "并带有死人的迹象。";
+		next;
+		mes "[快乐之影]";
+		mes "我是一个影子。";
+		mes "我展示了这个世界上最好的快乐。";
+		mes "让人不想从梦中醒来的幻觉。";
+		next;
+		mes "[快乐之影]";
+		mes "灵魂被冰冷的锁链缠绕";
+		mes "我看不到梦想";
+		mes "影子也失去了永远持续的快乐。";
+		next;
+		mes "[快乐之影]";
+		mes "请帮我。";
+		mes "给我两只手";
+		mes "逃离这里！";
+		next;
+		mes "[快乐之影]";
+		mes "你能用两只手掐死我吗？";
+		mes "我感官的另一面";
+		mes "呼吸用的气体。";
+		next;
+		mes "[快乐之影]";
+		mes "这就是我还活着的证据。";
+		mes "这就是我越界的证据。";
+		mes "随着生命的开始";
+		mes "最后的快乐。";
+		next;
+		mes "[快乐之影]";
+		mes "给我看看";
+		mes "甜蜜的死亡。";
+		next;
+		mes "火焰正在熄灭。";
+		mes "你应该处理好快乐的阴影。";
+		set job_sha,22;
+		erasequest 7174;
+		setquest 7175;
+		close;
+	} else if (job_sha == 22) {
+		if (checkquest(7175,HUNTING) == 2) {
+			mes "你无法从火焰中感受到灵魂。";
+			mes "当你走近时，由于黑暗，你看不清楚。";
+			set job_sha,23;
+			erasequest 7175;
+			close2;
+			warp "job3_sha01",73,87;
+			end;
+		}
+		mes "你可以在火焰中感受到强大的灵魂。";
+		mes "你应该处理好快乐的阴影。";
+		close;
+	} else if (job_sha == 23 || job_sha == 24) {
+		mes "你无法从火焰中感受到灵魂。";
+		mes "当你走近时，由于黑暗，你看不清楚。";
+		close2;
+		warp "job3_sha01",73,87;
+		end;
+	}
+	mes "有火焰。";
+	mes "你无法从中感受到任何东西。";
+	close;
+}
+
+// Boxes
+//============================================================
+job3_sha01,22,78,0	script	????#keybox01	844,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 你无法继续这个任务，因为你超重了。 -";
+		close;
+	}
+	if (job_sha == 7) {
+		mes "这是一个用坚硬的龟壳制成的小盒子。";
+		mes "中间那个...";
+		next;
+		select("触摸中间：推中间。");
+		mes "当你触摸它时，有东西出来！";
+		next;
+		setarray .@Codes1$[1],"EFDFJWF","FGEGKXG","GHFHLYH","HIGIMZI","IJHJNAJ","JKIKOBK","KLJLPCL","LMKMQDM";
+		setarray .@Codes2$[1],"IPOFTUZ","JQPGUVA","KRQHVWB","LSRIWXC","MTSJXYD","NUTKYZE","OVULZAF","PWVMABG";
+		set .@i, rand(1,8);
+		mes " ";
+		mes " ";
+		mes "欺骗";
+		next;
+		mes " ";
+		mes " ";
+		mes " "+.@i;
+		next;
+		mes " "+.@Codes1$[.@i];
+		next;
+		mes "它显示一些字母和数字。";
+		mes " ";
+		mes "欺骗。";
+		mes "然后"+.@i+".";
+		mes "和"+.@Codes1$[.@i]+".";
+		next;
+		select("这是什么意思？");
+		mes "["+strcharinfo(0)+"]";
+		mes "也是代码吗。";
+		mes "一定是的！";
+		mes "啊，有什么东西又出现了……？";
+		next;
+		mes "- 你可以看到乌龟壳上有一些字母。 -";
+		next;
+		mes " ";
+		mes "诚实";
+		mes " ";
+		mes "还有字母。它们闪烁着，好像在等待输入代码。";
+		next;
+		input .@inputstr$;
+		if (.@inputstr$ == .@Codes2$[.@i] || .@inputstr$ == strtolower(.@Codes2$[.@i])) {
+			mes "当你把正确答案填进去后";
+			mes "盒子被打开。";
+			mes "有一把小而精美的钥匙。";
+			next;
+			mes "- 你得到了欺骗之匙。 -";
+			set job_sha,8;
+			getitem 6266,1; //Cheat_Key
+			setquest 7165;
+			close;
+		}
+		mes "- 你把答案 -";
+		mes "- 但这不起作用。 -";
+		mes "- 你失败了。 -";
+		close;
+	}
+	mes "你不必留在这里。";
+	next;
+	if(select("出去吧：呆在这里。") == 1)
+		warp "tur_dun03",40,201;
+	close;
+}
+
+job3_sha01,25,28,0	script	????#keybox02	844,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 你无法继续这个任务，因为你超重了。 -";
+		close;
+	}
+	setarray .@Words$[0],"SEED","FOOT","COLD";
+	setarray .@Numbers[0],24,25,20;
+	set .@i,job_sha-14;
+	if (job_sha > 13 && job_sha < 17) {
+		mes "有很多盒子。";
+		mes "与一些数字。";
+		next;
+		mes " 1 2 3 4 5";
+		mes " 6 7 8 9 0";
+		mes " ";
+		mes " [ ][ ] ";
+		next;
+		mes "当你触摸那个数字时，它就会移动。";
+		mes "你找到了空的地方。";
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "我想我必须把号码放在空白处......";
+		mes "我有两个空方块来放置两个数字。";
+		mes "它有什么好处？";
+		next;
+		select("我想这和保罗的话有关。");
+		mes "["+strcharinfo(0)+"]";
+		mes "我得到了"+.@Words$[.@i]+".";
+		mes "现在我必须将其转换为数字......";
+		next;
+		switch(select("输入答案：我听不懂。")) {
+		case 1:
+			input .@input;
+			if (.@input == .@Numbers[.@i]) {
+				mes "您输入 2 和 "+(.@Numbers[.@i]-20)+".";
+				mes "盒子打开，你会得到一把钥匙。";
+				next;
+				mes "你得到了幻象之匙。";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "这不是宝藏。";
+				mes "幻象的钥匙？难道和幻影之影有关？";
+				mes "解决了欺骗之后，我得到了欺骗的钥匙……";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "无论如何，保罗都会失望的。";
+				mes "再次按键...";
+				mes "我该如何逃离这里……？";
+				set job_sha,17;
+				getitem 6267,1; //Virtual_Key
+				erasequest 7171;
+				changequest 7168+.@i,7172;
+				next;
+				mes "当我推箱子时，它会显示出去的门。";
+				close2;
+				warp "ice_dun02",209,219;
+				end;
+			}
+			mes "当您输入数字时，它会返回到第一个。";
+			close;
+		case 2:
+			mes "["+strcharinfo(0)+"]";
+			mes "唔。";
+			mes "我无法理解...";
+			mes "和普隆德拉工作场所的代码是一样的吗……？";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "按照那个方法...";
+			mes "A 表示 11，B 表示 12。";
+			close;
+		}
+	}
+	mes "这是一个神秘的盒子。";
+	mes "当我推箱子时，它会显示出去的门。";
+	close2;
+	warp "ice_dun02",209,219;
+	end;
+}
+
+job3_sha01,73,80,0	script	????#keybox03	844,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 你无法继续这个任务，因为你超重了。 -";
+		close;
+	}
+	if (job_sha == 23 || job_sha == 24) {
+		if (job_sha == 23) {
+			mes "有一个看起来像房子的盒子。";
+			mes "烟囱里有一张小纸。";
+			next;
+			mes "它说...";
+			mes "-----------------";
+			mes " 20 21 18 14";
+			mes " 1 14 4";
+			mes " 19 8 1 11 5";
+			mes "-----------------";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "我认为这是另一个代码。";
+		} else {
+			mes "["+strcharinfo(0)+"]";
+			mes "让我再想想...";
+			mes "20 21 18 14";
+			mes "1 14 4 ";
+			mes "19 8 1 11 5";
+			mes "...";
+		}
+		next;
+		mes "["+strcharinfo(0)+"]";
+		mes "和以前一样。";
+		mes "没有代码，所以 1 应该是 A。";
+		mes "答案是……";
+		next;
+		input .@inputstr$;
+		if (.@inputstr$ == "turn and shake" || .@inputstr$ == "TURN AND SHAKE") {
+			mes "["+strcharinfo(0)+"]";
+			mes "转...转...然后";
+			mes "摇？摇？";
+			mes "为了什么？";
+			next;
+			while(1) {
+				switch(select("转动屋顶。：转动房子。：转动把手。")) {
+				case 1:
+					mes "你转动屋顶。";
+					next;
+					switch(select("摇动屋顶：摇动房子。")) {
+					case 1:
+						mes "即使你摇动屋顶但是";
+						mes "什么也没发生。";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "不是这个。";
+						mes "唔...";
+						next;
+						break;
+					case 2:
+						mes "你试图摇动房子，但是";
+						mes "它没有做任何事情。";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "这是错误的。";
+						mes "把它放回去";
+						mes "然后再试一次。";
+						next;
+						break;
+					}
+					break;
+				case 2:
+					mes "你抓住整个房子并转动它。";
+					next;
+					switch(select("上下摇动。：前后摇动。：转来转去摇动。：将其上下颠倒。")) {
+					case 1:
+					case 2:
+						mes "什么也没发生。";
+						mes "你以为里面有东西，但它不会出来。";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "不是这个。";
+						mes "唔...";
+						next;
+						break;
+					case 3:
+						mes "你慢慢地摇晃它。";
+						mes "你可以听到有声音，";
+						mes "但什么也没有出来。";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "不是这个。";
+						mes "唔...";
+						next;
+						break;
+					case 4:
+						mes "将其颠倒滚动会导致里面的东西移动。";
+						next;
+						mes "你慢慢地摇晃它。";
+						mes "您可以听到一些噪音。";
+						mes "有东西出来了。";
+						next;
+						mes "- 你得到了快乐的钥匙。 -";
+						next;
+						mes "["+strcharinfo(0)+"]";
+						mes "什么？又有钥匙了！";
+						mes "哈尔德会失望的。";
+						mes "我最好还是回去吧";
+						set job_sha,25;
+						setquest 7176;
+						getitem 6268,1; //Mirth_Key
+						close;
+					}
+					break;
+				case 3:
+					mes "您尝试转动小手柄";
+					mes "但它不起作用。";
+					next;
+					mes "["+strcharinfo(0)+"]";
+					mes "我现在该怎么办？";
+					next;
+					break;
+				}
+			}
+		}
+		mes "["+strcharinfo(0)+"]";
+		mes "..."+.@inputstr$+"...？";
+		if (job_sha == 23) {
+			mes "这意味着什么？";
+			set job_sha,24;
+		} else
+			mes "再次？我不明白。";
+		close;
+	}
+	mes "你不必留在这里。";
+	mes "你把盒子放下，看到有一扇门可以出去。";
+	close2;
+	warp "niflheim",230,270;
+	end;
+}
+
+job3_sha01,71,27,0	script	????#keybox04	844,{
+	if (checkweight(1201,1) == 0) {
+		mes "- 你无法继续这个任务，因为你超重了。 -";
+		close;
+	}
+	if (job_sha == 27) {
+		mes "有一尊石像，看上去";
+		mes "就像一个小棺材，周围有精美的图案。";
+		next;
+		mes "但你却感受不到其中的任何力量。";
+		mes "你会发现里面有三个洞。";
+		next;
+		mes "孔旁边刻着写着";
+		mes "欺骗、幻觉和快乐。";
+		next;
+		select("将钥匙放入孔中。");
+		if (countitem(6266) && countitem(6267) && countitem(6268)) {
+			mes "["+strcharinfo(0)+"]";
+			mes "起初，欺骗...";
+			mes "然后幻觉...";
+			mes "和快乐...";
+			mes "让我看看。";
+			next;
+			mes "当你把钥匙放进去时";
+			mes "有东西出来了。";
+			next;
+			mes "- 你有一把画有精美图案的刷子。 -";
+			delitem 6266,1; //Cheat_Key
+			delitem 6267,1; //Virtual_Key
+			delitem 6268,1; //Mirth_Key
+			set job_sha,28;
+			getitem 6269,1; //Master_Brush
+			changequest 7178,7179;
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "什么？？？";
+			mes "一把刷子！！！";
+			mes "这不是宝藏！！！";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "啊啊啊！！！";
+			mes "*嗅闻*";
+			mes "这不是宝藏！";
+			next;
+			select("现在我很生气。");
+			mes "["+strcharinfo(0)+"]";
+			mes "*叹*";
+			mes "我想我应该把它带给^4d4dffVicente^000000！";
+			close;
+		}
+		mes "["+strcharinfo(0)+"]";
+		mes "我没有带所有的钥匙。";
+		mes "我怎么可以这么蠢呢？";
+		close;
+	}
+	mes "这是一尊空荡荡的石像。";
+	close;
+}
+
+// Brush Shops
+//============================================================
+s_atelier,29,119,3	script	Max#sc05_prt	97,{
+	mes "[最大]";
+	mes "欢迎光临~";
+	if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "你是盗贼公会的成员！";
+		mes "我能为您提供什么帮助？";
+		next;
+		set .@i, select("我需要化妆刷。：我需要画笔。：没什么。");
+		mes "[最大]";
+		if (.@i == 1) setarray .@i[1],6121,1,10,100000;
+		else if (.@i == 2) setarray .@i[1],6122,2,30,200000;
+		else {
+			mes "如果您需要更多";
+			mes "来拜访我吧！";
+			close;
+		}
+		if (countitem(.@i[1])) {
+			mes "你在开玩笑吧？";
+			mes "你已经拥有了吗？";
+			mes "你不需要任何其他东西。";
+			next;
+			mes "[最大]";
+			mes "稍后访问并使用您拥有的！";
+			close;
+		}
+		if (countitem(7150) >= .@i[2] && countitem(949) >= .@i[3] && Zeny >= .@i[4]) {
+			mes "哦，你带了所有需要的东西。";
+			mes "稍等一下。";
+			next;
+			mes "[最大]";
+			mes "这就是您所需要的。";
+			next;
+			mes "[最大]";
+			mes "拿走吧。";
+			mes "祝你好运！";
+			delitem 7150,.@i[2]; //Bamboo_Cut
+			delitem 949,.@i[3]; //Feather
+			set Zeny, Zeny - .@i[4];
+			getitem .@i[1],1; //Makeover_Brush,Paint_Brush
+			close;
+		}
+		mes "这是购买化妆刷所需的物品。";
+		mes .@i[2]+"竹切，";
+		mes .@i[3]+"羽毛，";
+		mes "和 "+.@i[0]+"00,000 zeny。";
+		close;
+	}
+	mes "我们这里卖的都是艺术相关的东西~";
+	next;
+	switch(select("油漆！？：经理在哪里？")) {
+	case 1:
+		mes "[最大]";
+		mes "你问的是油漆吗？";
+		mes "可以请他们拿油漆吗？~";
+		close;
+	case 2:
+		mes "[最大]";
+		mes "那是我们的经理。";
+		mes "就在那里。";
+		mes "**积分**";
+		mes "你是瞎子吗？";
+		close;
+	}
+}
+
+s_atelier,136,70,3	script	Titika#sc09_ra	914,{
+	mes "[点]";
+	mes "欢迎。";
+	if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "你在一个公会里。";
+		mes "我能为您提供什么帮助？";
+		next;
+		set .@i, select("制作一个新的化妆刷。：制作一个新的画笔。：什么都没有。");
+		mes "[点]";
+		if (.@i == 1) setarray .@i[1],6121,1,10,100000;
+		else if (.@i == 2) setarray .@i[1],6122,2,30,200000;
+		else {
+			mes "再次拜访我。";
+			close;
+		}
+		if (countitem(.@i[1])) {
+			mes "你已经有画笔了吗？";
+			mes "我觉得就够了...";
+			close;
+		}
+		if (countitem(7150) >= .@i[2] && countitem(949) >= .@i[3] && Zeny >= .@i[4]) {
+			mes "你把所有的材料都带来了。";
+			mes "我用我做的货来交换。";
+			delitem 7150,.@i[2]; //Bamboo_Cut
+			delitem 949,.@i[3]; //Feather
+			set Zeny, Zeny - .@i[4];
+			getitem .@i[1],1; //Makeover_Brush,Paint_Brush
+			close;
+		}
+		mes "为了制作一支画笔，";
+		mes "你需要"+.@i[2]+"竹切，";
+		mes .@i[3]+"羽毛，";
+		mes "和 "+.@i[0]+"00,000 zeny。";
+		close;
+	}
+	mes "这里是追影者的工作场所~";
+	next;
+	switch(select("油漆在哪里？：经理在哪里？")) {
+	case 1:
+		mes "[点]";
+		mes "你是说油漆吗？";
+		mes "与助手交谈并询问绘画工具。";
+		close;
+	case 2:
+		mes "[点]";
+		mes "我的经理在工作场所内。";
+		mes "如果你没有特殊原因去看他，他就会不理你。";
+		close;
+	}
+}
+
+s_atelier,124,128,3	script	RimiGX#sc07_yuno	862,{
+	mes "[RimiGX]";
+	mes "欢迎。";
+	if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "你要买什么？";
+		next;
+		set .@i, select("制作新的化妆用腮红。：制作新的绘画用腮红。：没什么。");
+		mes "[RimiGX]";
+		if (.@i == 1) setarray .@i[1],6121,1,10,100000;
+		else if (.@i == 2) setarray .@i[1],6122,2,30,200000;
+		else {
+			mes "再次拜访我。";
+			close;
+		}
+		if (countitem(.@i[1])) {
+			mes "我无法提供额外的东西。";
+			mes "当你丢失东西时请访问这里。";
+			close;
+		}
+		if (countitem(7150) >= .@i[2] && countitem(949) >= .@i[3] && Zeny >= .@i[4]) {
+			mes "你带来了你需要的东西。";
+			mes "做出来的东西交换起来会很快吗？";
+			delitem 7150,.@i[2]; //Bamboo_Cut
+			delitem 949,.@i[3]; //Feather
+			set Zeny, Zeny - .@i[4];
+			getitem .@i[1],1; //Makeover_Brush,Paint_Brush
+			close;
+		}
+		mes "用于腮红"+((.@i[0] == 1)?"化妆":"油漆");
+		mes "你需要"+.@i[2]+"竹切，";
+		mes .@i[3]+"羽毛，还有"+.@i[0]+"00,000 zeny。";
+		close;
+	}
+	mes "就是影子职场~";
+	next;
+	switch(select("油漆在哪里？：经理在哪里？")) {
+	case 1:
+		mes "[RimiGX]";
+		mes "画？";
+		mes "询问在那边工作的助理。";
+		close;
+	case 2:
+		mes "[RimiGX]";
+		mes "经理？他在工作场所内部。";
+		mes "但当你拜访他时，你应该有话要告诉他……";
+		close;
+	}
+}
+
+s_atelier,26,68,3	script	Vito#sc11_lgt	904,{
+	mes "[维托]";
+	mes "欢迎。";
+	if (Class == Job_Shadow_Chaser || Class == Job_Shadow_Chaser_T || Class == Job_Baby_Shadow_Chaser) {
+		mes "你要买什么？";
+		next;
+		set .@i, select("制作新的化妆用腮红。：制作新的绘画用腮红。：没什么。");
+		mes "[维托]";
+		if (.@i == 1) setarray .@i[1],6121,1,10,100000;
+		else if (.@i == 2) setarray .@i[1],6122,2,30,200000;
+		else {
+			mes "每当你需要脸红的时候，就来找我吧。";
+			mes "再见！";
+			close;
+		}
+		if (countitem(.@i[1])) {
+			mes "我们只为每个人提供一种腮红。";
+			mes "我们无法提供额外的腮红。";
+			close;
+		}
+		if (countitem(7150) >= .@i[2] && countitem(949) >= .@i[3] && Zeny >= .@i[4]) {
+			mes "你带来了你需要的一切。";
+			mes "我要把之前做的腮红换掉。";
+			delitem 7150,.@i[2]; //Bamboo_Cut
+			delitem 949,.@i[3]; //Feather
+			set Zeny, Zeny - .@i[4];
+			getitem .@i[1],1; //Makeover_Brush,Paint_Brush
+			close;
+		}
+		mes "用于腮红"+((.@i[0] == 1)?"化妆":"油漆");
+		mes "你需要"+.@i[2]+"竹切，";
+		mes .@i[3]+"羽毛，还有"+.@i[0]+"00,000 zeny。";
+		close;
+	}
+	mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+	next;
+	switch(select("油漆在哪里？：经理在哪里？")) {
+	case 1:
+		mes "[维托]";
+		mes "画？";
+		mes "询问站在那边的助理。";
+		close;
+	case 2:
+		mes "[维托]";
+		mes "站在柜台前的那个人是经理。";
+		close;
+	}
+}
+
+// Warp Portal
+//============================================================
+tha_t01,149,228,0	script	#shadowc02	45,2,2,{
+	end;
+OnTouch:
+	mes "你能感受到奇异的力量。";
+	if (BaseJob == Job_Rogue && job_sha == 27) {
+		mes "你开始头晕了。";
+		close2;
+		warp "job3_sha01",71,36;
+		end;
+	}
+	mes "你不知道那是什么。";
+	close;
+}
+
+// Quest Mob Spawn
+//============================================================
+tur_dun03,0,0	monster	Shadow of Deception	2076,1,1000
+ice_dun02,0,0	monster	Shadow of Illusion	2077,1,1000
+niflheim,0,0	monster	Shadow of Pleasure	2078,1,1000

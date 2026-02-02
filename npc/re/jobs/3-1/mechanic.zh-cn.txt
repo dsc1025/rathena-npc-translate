@@ -1,0 +1,740 @@
+//===== rAthena Script ======================================= 
+//= Mechanic Job Quest
+//===== By: ================================================== 
+//= Muad_Dib
+//===== Current Version: ===================================== 
+//= 1.3
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Jobchange Quest from Blacksmith / Whitesmith -> Mechanic.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Masao]
+//= 1.1 Fixed the Door NPC [JayPee].
+//= 1.2 Updated script. [Euphy]
+//= 1.3 Added VIP features. [Euphy]
+//============================================================ 
+
+yuno,129,156,3	script	Chainheart	923,{
+	mes "[链心]";
+	if (eaclass() & EAJL_THIRD) {
+		mes "机械师的生活很艰难";
+		mes "但我很高兴我可以";
+		mes "总是做我想做的事。";
+		close;
+	}
+	if (job__mechanic == 12) {
+		mes "关于力学或魔法机械，没有什么可说的。";
+		mes "现在你会比任何人都更了解它。";
+		next;
+		mes "[链心]";
+		mes "通过体验世界所提供的一切来继续增长您的知识。";
+		close;
+	} else if (job__mechanic == 11) {
+		if (BaseJob == Job_Blacksmith && BaseLevel > 98 && JobLevel > 49 && SkillPoint == 0) {
+			if (ismounting()) {
+				mes "你骑着宠物，";
+				mes "所以你不能改变你的工作。";
+				mes "请卸下您的骑乘宠物的装备并重试！";
+				close;
+			}
+			mes "它是什么？那是你吗？";
+			mes "哦等等，你看起来和我上次见到你时很不一样。";
+			mes "发生什么事了吗？";
+			next;
+			mes "[链心]";
+			mes "啊！你去了朱佩罗斯";
+			mes "就像我说的。正如弗兰克尔森所做的那样。";
+			next;
+			mes "[链心]";
+			mes "好像没有必要";
+			mes "以便更多提问。";
+			mes "我确信您已经获得了成为一名真正的机械师的知识。";
+			next;
+			mes "[链心]";
+			mes "我无话可说。";
+			mes "你已经是一名出色的机械师了。";
+			mes "不要失去你的神经";
+			mes "标题。最重要的是你有知识。";
+			next;
+			mes "[链心]";
+			mes "你似乎不是那种会被锁在实验室或图书馆里的人。";
+			mes "你是一个善于学习的人";
+			mes "通过积极参与。";
+			next;
+			mes "[链心]";
+			mes "我喜欢你，我认为我们的机械师需要这种新鲜血液。";
+			next;
+			mes "[链心]";
+			mes "科学正在寻找和研究可以逻辑证明的事物。";
+			mes "具有讽刺意味的是，科学通常像魔法一样从不确定的理论开始。";
+			next;
+			mes "[链心]";
+			mes "正如我之前所说，如果热情和才华是真实的，那就没有问题！";
+			mes "恭喜您走出了机械师的新道路！";
+			next;
+			set job__mechanic,12;
+			completequest 10101;
+			if (Sex == SEX_MALE)
+				getitem 5749,1; //Driver_Band
+			else
+				getitem 5760,1; //Driver_Band_
+			getitem 2795,1; //Green_Apple_Ring
+			jobchange roclass(eaclass()|EAJL_THIRD);
+			mes "[链心]";
+			mes "这是我送给你的礼物。";
+			mes "如果你能很好地保持这一点，有一天";
+			mes "你会感谢我的。";
+			next;
+			mes "[链心]";
+			mes "好吧，走吧。这广阔的世界是";
+			mes "你的实验室，一切都在";
+			mes "这个世界将是你的";
+			mes "教科书，让力学的未来有一线希望！";
+			close;
+		}
+		mes "好像还有些不够？";
+		close;
+	} else if (job__mechanic >= 3) {
+		mes "顺便说一下，弗兰克森失踪了。";
+		mes "他说他想读书";
+		mes "然后就消失了。";
+		mes "他能去哪儿呢？";
+		next;
+		mes "[链心]";
+		mes "如果你继续走成为一名机械师的道路，你可能会遇到他。";
+		mes "命运的运作方式很奇怪，朋友。";
+		next;
+		mes "[链心]";
+		mes "无论如何，再见。";
+		close;
+	} else if (job__mechanic == 2) {
+		mes "我想我已经完成了所有的解释，你还有什么想知道的吗？";
+		next;
+		switch(select("我想了解更多。:没什么。")) {
+		case 1:
+			mes "[链心]";
+			mes "嗯..？你想了解更多关于魔法机械的知识。是这样吗？";
+			mes "嗯……我告诉过你，你很有天赋，但这很难。";
+			next;
+			mes "[链心]";
+			mes "嗯，你看起来很有天赋，所以如果你能成为一名机械师，对我们来说也不错。";
+			mes "但不幸的是它没有";
+			mes "就这样工作。";
+			next;
+			mes "[链心]";
+			mes "如果你没有先表现出真正的努力，机械学者不会轻易地承认你并传授给你知识。";
+			next;
+			mes "[链心]";
+			mes "当然，我是那些学者之一，所以我想我可以尝试考虑你。";
+			next;
+			mes "[链心]";
+			mes "无论如何，我只是认为未经任何测试就将有才华的人排除在外是不公平的。";
+			next;
+			mes "[链心]";
+			mes "唔...";
+			next;
+			mes "[链心]";
+			mes "其实，如果别人教不了你，你可以自己学。";
+			mes "如果别人能做到，那么任何人都可以自己解决，对吗？";
+			next;
+			mes "[链心]";
+			mes "这并不容易，但如果你有强烈的热情并且你有真正的天赋，那么就不会有任何问题。";
+			next;
+			mes "[链心]";
+			mes "想想看...";
+			mes "弗兰克森开发了";
+			mes "神奇的机械靠他自己。";
+			mes "那你为什么不去";
+			mes "朱佩罗斯废墟？";
+			next;
+			mes "[链心]";
+			mes "正如我之前告诉过你的，如果你的热情和才华是真实的，你一定会找到一些东西。";
+			next;
+			mes "[链心]";
+			mes "找出知识点";
+			mes "像我们一样为自己。";
+			mes "不要只是等待有人教你。表现出你声称拥有的热情。";
+			next;
+			set job__mechanic,3;
+			changequest 10091,10092;
+			mes "[链心]";
+			mes "不管怎样，无论你的选择是什么，我都希望你尽力而为。";
+			close;
+		case 2:
+			mes "[链心]";
+			mes "真是个奇怪的人。";
+			mes "我认为你具备成为一名真正的机械师的条件。";
+			close;
+		}
+	} else if (job__mechanic == 1) {
+		mes "好吧，让我喘口气。";
+		mes "您一定感兴趣";
+		mes "魔法机械和";
+		mes "力学世界。";
+		mes "好吧，让我解释一下。";
+		next;
+		mes "[链心]";
+		mes "魔法机械是机械与魔法融合而诞生的。";
+		mes "直到现在，两者还没有真正成功地联系在一起。";
+		next;
+		mes "[链心]";
+		mes "如果你使用魔法机械，你真的必须熟悉机器的内部运作。";
+		next;
+		mes "[链心]";
+		mes "可以有效地使用它，";
+		mes "而且你不需要依赖像魔法这样不确定和不稳定的东西，所以还有什么比这更好的呢。";
+		next;
+		mes "[链心]";
+		mes "发明魔法机械的人是来自黑森林共和国的学者弗兰克尔森。";
+		next;
+		mes "[链心]";
+		mes "弗兰克尔森在《Juperos的废墟》《CLR1》中发现了一台古老的机器，并将其与魔法的力量融合在一起，这就是开始。";
+		next;
+		mes "[链心]";
+		mes "于是弗兰克森很自然地将这台新生机器命名为“魔法机械”。";
+		next;
+		mes "[链心]";
+		mes "不管怎样，由于朱诺以外的地方还不太为人所知，所以对于魔械的研究一直在进展。";
+		next;
+		mes "[链心]";
+		mes "因为我们研究过";
+		mes "神奇机械无穷无尽";
+		mes "人们开始称我们为^FF0000机械师^000000。";
+		mes "这个名字是不言自明的";
+		mes "所以它就卡住了。";
+		next;
+		mes "[链心]";
+		mes "唔。好吧，我想我已经解释完了魔法机械。";
+		mes "我想解释更多，但它太技术性了。";
+		mes "我不想再让你厌烦了。";
+		next;
+		set job__mechanic,2;
+		changequest 10090,10091;
+		mes "[链心]";
+		mes "无论如何，如果您成为我们中的一员，您就可以自己形成自己对力学的定义和解释。";
+		close;
+	}
+	if (BaseJob == Job_Blacksmith) {
+		if (BaseLevel > 98 && JobLevel > 49 && SkillPoint == 0) {
+			if (VIP_SCRIPT) {
+				callfunc "VIP_Third_Class";
+				set job__mechanic,1;
+				setquest 10090;
+				next;
+			}
+			mes "乍一看，你似乎是一个处理各种事情的多才多艺的人。";
+			mes "你看起来很熟练。";
+			mes "你可以成为那个人。";
+			next;
+			mes "[链心]";
+			mes "啊，我还没自我介绍呢。";
+			mes "我就是大名鼎鼎的链心。";
+			mes "我是一名机械师。";
+			mes "嗯，其实我没那么出名。";
+			next;
+			mes "[链心]";
+			mes "我不认为“机械师”这个词";
+			mes "你很熟悉。";
+			mes "事实上，当它到来时";
+			mes "根据描述，";
+			mes "这是一项新工作";
+			mes "简单解释一下。";
+			next;
+			mes "[链心]";
+			mes "研究并使用魔法机械的人，那就是机械师。";
+			next;
+			mes "[链心]";
+			mes "那么，机械师研究和使用的魔法机械是什么呢？";
+			mes "这不是那么容易解释的，但我会尝试一下。";
+			next;
+			setquest 10090;
+			set job__mechanic,1;
+			mes "[链心]";
+			mes "抱歉，我要开始了";
+			mes "说得太多。";
+			mes "让我抓住我的";
+			mes "喘了一会儿气。";
+			mes "如果您有兴趣，";
+			mes "请再跟我说话。";
+			close;
+		}
+		mes "你看起来像是一个处理事情很有理智的人。";
+		next;
+		mes "[链心]";
+		mes "该权力已被用于";
+		mes "只是处理简单的事情。";
+		mes "那不会给";
+		mes "你真正的享受。";
+		next;
+		mes "[链心]";
+		mes "是的...如果你想享受";
+		mes "交易的真实感受和";
+		mes "一种深邃的深意，";
+		mes "你需要处理";
+		mes "^FF0000魔法机械^000000！";
+		next;
+		mes "[链心]";
+		mes "魔法机械还没有";
+		mes "长期以来，认识到这一点还不常见。";
+		mes "它非常精确，并且与您在世界上经历过的任何事情完全不同。";
+		next;
+		mes "[链心]";
+		mes "是的，处理魔法机械的人被称为^FF0000机械^000000。";
+		mes "我也是那些值得尊敬的机械师之一。";
+		next;
+		mes "[链心]";
+		mes "看来你具备成为一名优秀机械师的条件。";
+		mes "以下是基本要求。";
+		next;
+		mes "[链心]";
+		mes "如果你在达到^FF0000基础等级99^000000和^FF0000工作等级50^000000后来找我，";
+		mes "我将带你进入力学的世界。";
+		close;
+	}
+	mes "机械师的生活很艰难";
+	mes "但我很高兴我可以";
+	mes "总是做我想做的事。";
+	next;
+	mes "[链心]";
+	mes "你难道不想成为一名机械师，享受真正的快乐吗？";
+	close;
+}
+
+jupe_cave,37,55,5	script	Scholar#Mechanic	883,{
+	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 300) {
+		mes "- 你的背包太重了。 -";
+		mes "-先减轻身体负担-";
+		mes "- 请再试一次。 -";
+		close;
+	}
+	mes "[学者]";
+	if (job__mechanic > 10) {
+		mes "Juperos怎么样？";
+		mes "我很害怕我仍然";
+		mes "不能去那里。";
+		close;
+	} else if (job__mechanic > 3) {
+		mes "^FF0000您将无法步行到达目的地。";
+		mes "^FF0000这里的问题不是强敌，而是你无法到达目的地。";
+		mes "请宾至如归。^000000";
+		next;
+		mes "[学者]";
+		mes "无论多么舒适，";
+		mes "我无意去。";
+		next;
+		mes "[学者]";
+		mes "好吧，你准备好了吗？";
+		mes "去中点";
+		mes "在尤佩罗斯？";
+		next;
+		switch(select("我准备好了！：还没有")) {
+		case 1:
+			mes "[学者]";
+			mes "呃……你表现得太坚决了，我有点后悔没有去那里。";
+			mes "我应该去那里吗？呃……牛奶打翻了哭也没用啊！";
+			next;
+			mes "[学者]";
+			mes "嗯，我发给你。";
+			mes "我希望你能得到";
+			mes "知识";
+			mes "你想要的。";
+			close2;
+			warp "jupe_core2",149,288;
+			end;
+		case 2:
+			mes "[学者]";
+			mes "嗯...对。当然，你犹豫也不足为奇。";
+			next;
+			mes "[学者]";
+			mes "但是，如果你不接受我为你打开的亚空间，你就无法到达目的地。";
+			mes "请不要浪费你的精力。";
+			next;
+			mes "[学者]";
+			mes "当然，无论你有多舒服我都不会去那里。";
+			close;
+		}
+	}
+	mes "我是一名学者，来这里是为了研究朱佩罗斯这里的废墟。";
+	next;
+	mes "[学者]";
+	mes "但是......实际上当我尝试走得更远时";
+	mes "我很害怕。我很难进去。";
+	mes "我能做些什么？";
+	next;
+	mes "[学者]";
+	mes "我听说那里不欢迎人类进入。";
+	mes "但研究那里的奇妙机器应该非常有用。";
+	if (job__mechanic != 3) close;
+	next;
+	mes "[学者]";
+	mes "嗯？你也要去Juperos拿东西吗？";
+	mes "我没有勇气进去。";
+	mes "祝你好运。";
+	next;
+	mes "[学者]";
+	mes "我知道怎么去";
+	mes "中点，我也有";
+	mes "我需要的所有东西。但我只是太害怕了。";
+	next;
+	mes "[学者]";
+	mes "所以如果你想要的话我就发给你";
+	mes "到尤佩罗斯。老学者先生";
+	mes "已经告诉我如何扭曲到";
+	mes "中点指向Juperos。";
+	next;
+	set job__mechanic,4;
+	mes "[学者]";
+	mes "确实，这变得很容易";
+	mes "但你无法抑制恐惧";
+	mes "太糟糕了。无论如何，如果你是";
+	mes "准备好了请告诉我。";
+	close;
+}
+
+jupe_core2,149,273,3	script	Ghostfire#1	802,{
+	mes "[？]";
+	if (job__mechanic == 11) {
+		mes "我失去了身体，只剩下我的灵魂在这个地方。";
+		mes "我将永远生活在Juperos，死在Juperos……";
+		close;
+	} else if (job__mechanic == 10) {
+		mes "那个样子……是这样吗？你也获得了知识。";
+		mes "当未来充满了可能性……";
+		mes "纯真的孩子的态度";
+		mes "就像你可以做任何事情一样...";
+		next;
+		mes "[？]";
+		mes "现在想来，现在最宝贵的事情可能是获得信心，而不是知识本身......";
+		next;
+		mes "[？]";
+		mes "请不要做任何";
+		mes "从现在起就和我一样犯错。";
+		mes "希望你能涨知识";
+		mes "有一天你自己。";
+		next;
+		mes "[？]";
+		mes "那么回去吧，找到一个懂得魔法机械的人，并出示证据证明你已经获得了这些知识……";
+		next;
+		mes "[？]";
+		mes "我就是失去身体的人";
+		mes "我的精神崩溃了";
+		mes "我被限制在这个地方，Juperos...我将与Juperos同生共死";
+		mes "永远...";
+		next;
+		mes "[？]";
+		mes "我的名字...名字是...Fr...";
+		close2;
+		set job__mechanic,11;
+		changequest 10100,10101;
+		warp "yuno",157,83;
+		end;
+	} else if (job__mechanic > 4) {
+		mes "我失去了身体，只剩下我的灵魂在这个地方。";
+		mes "我将永远生活在Juperos，死在Juperos……";
+		close;
+	} else if (job__mechanic > 2) {
+		mes "有才华的一个。";
+		mes "确保有";
+		mes "周围没有敌人。";
+		mes "如果你把注意力集中在我身上";
+		mes "你可能会受到攻击。";
+		next;
+		if(select("那么，稍后。：集中注意力。") == 1) close;
+		mes "[？]";
+		mes "我曾经是一位人类学者。";
+		mes "我想知道人类不知道的科学局限性，所以我学到了很多东西，研究了，";
+		mes "并搜索...";
+		next;
+		mes "[？]";
+		mes "就在那时我发现了，不确定的魔力。";
+		next;
+		mes "[？]";
+		mes "魔法的不确定性在于它高度不稳定且不可预测。";
+		mes "在我的学习过程中，我遇到了一些高度不稳定的魔法。";
+		next;
+		mes "[？]";
+		mes "我唯一的记忆就是从那天开始。";
+		mes "从那时起我就被困在这里了。";
+		next;
+		mes "[？]";
+		mes "Juperos 就是我现在所知道的一切。";
+		mes "我要死在这里了。";
+		next;
+		mes "[？]";
+		mes "我不知道你是谁...";
+		mes "我不会费心去知道你是否";
+		mes "想要获得一些知识";
+		mes "找到关心的人。";
+		next;
+		if (job__mechanic == 3 || job__mechanic == 4)
+			changequest 10092,10094;
+		set job__mechanic,5;
+		mes "[？]";
+		mes "知识不是从别人那里获得的。是通过自己的努力找到的。";
+		mes "找到适合自己的知识路径。";
+		close;
+	}
+	end;
+}
+
+jupe_core2,53,75,3	script	Ghostfire#2	802,{
+	mes "[？]";
+	if (job__mechanic > 5) {
+		mes "尤佩罗斯……我……";
+		mes "Juperos...我想要什么";
+		mes "都存在于此...";
+		mes "科学的力量……机器的天堂……";
+		close;
+	} else if (job__mechanic == 5) {
+		mes "有才华的一个。";
+		mes "确保有";
+		mes "周围没有敌人。";
+		mes "如果你把注意力集中在我身上";
+		mes "你可能会受到攻击。";
+		next;
+		if(select("那么，稍后：焦点") == 1) close;
+		mes "[？]";
+		mes "当我有身体的时候";
+		mes "我想证明";
+		mes "科学的卓越性";
+		mes "致那些只相信的人";
+		mes "这么神秘的东西...";
+		next;
+		mes "[？]";
+		mes "我想利用的力量";
+		mes "魔法作为一种合理的形式";
+		mes "这是可见的。凭借更强的";
+		mes "结果，我想控制";
+		mes "魔法的力量";
+		mes "用科学....";
+		next;
+		mes "[？]";
+		mes "我想向大家展示科学";
+		mes "控制魔法的能力非常出色";
+		mes "就像神秘学一样。我学了很多";
+		mes "的事情和痛苦";
+		mes "创造科学与魔法";
+		mes "共存。";
+		next;
+		mes "[？]";
+		mes "我的研究引导我来到这里，";
+		mes "尤佩罗斯。在这个地方有";
+		mes "有许多科学产品";
+		mes "可以激发学者的";
+		mes "脑...";
+		next;
+		mes "[？]";
+		mes "我发现将魔法的力量与科学结合起来是可能的。";
+		mes "即使它并不完美，但对其他学者来说已经足够有吸引力了……";
+		next;
+		mes "[？]";
+		mes "世界上最近发生的事件造成了混乱，因此我的研究尚未与世界其他地方分享。";
+		next;
+		set job__mechanic,6;
+		changequest 10094,10095;
+		mes "[？]";
+		mes "所以……我回到了Juperos继续我对科学和魔法的探索。";
+		close;
+	}
+	end;
+}
+
+jupe_core2,242,62,3	script	Ghostfire#3	802,{
+	mes "[？]";
+	if (job__mechanic > 6) {
+		mes "我想了解更多相关知识...";
+		mes "人类的特征...";
+		mes "先做的事和后做的事...";
+		mes "真理之门稍后...";
+		close;
+	} else if (job__mechanic == 6) {
+		mes "有才华的一个。";
+		mes "确保有";
+		mes "周围没有敌人。";
+		mes "如果你把注意力集中在我身上";
+		mes "你可能会受到攻击。";
+		next;
+		if(select("那么，稍后：焦点") == 1) close;
+		mes "[？]";
+		mes "我对自己的成功并不满意，所以我一次又一次地回到这里。";
+		next;
+		mes "[？]";
+		mes "当我踏上这座雕像的立足点时，我所聚集和学习的能量就被吸收了。";
+		next;
+		mes "[？]";
+		mes "但是，随着能量被吸收，我开始获得以前从未了解过的知识。";
+		next;
+		mes "[？]";
+		mes "但这是有代价的。有了这些知识，我开始失去人性。";
+		mes "我失去了身体，唯一拥有的就是灵魂。";
+		next;
+		mes "[？]";
+		mes "我不后悔获得知识。我所希望的只是我能恢复我的身体。";
+		next;
+		set job__mechanic,7;
+		changequest 10095,10096;
+		mes "[？]";
+		mes "当我将能量注入雕像后，我想我可以将能量转移到不同的雕像上。";
+		close;
+	}
+	end;
+}
+
+jupe_core2,29,150,0	script	#Foothold	139,1,1,{
+OnTouch_:
+	if (job__mechanic == 8) {
+		percentheal 0,-30;
+		mes "-突然间我感觉到力量是-";
+		mes "-逃离我的整个身体-";
+		mes "-怎么了？-";
+		next;
+		mes "-寻找真理之门-";
+		mes "-它是-的来源-";
+		mes "-电力消耗。-";
+		close;
+	} else if (job__mechanic == 7) {
+		percentheal -20,0;
+		mes "——突然，一个身份不明的——";
+		mes "-声音在我脑海中响起-";
+		mes "-这是什么？-";
+		next;
+		mes "-搬运机器-";
+		mes "-吸收魔力-";
+		mes "-祭品-";
+		mes "-人类雕像。-";
+		next;
+		set job__mechanic,8;
+		changequest 10096,10097;
+		mes "-最确定的是-";
+		mes "-我开始有这种冲动-";
+		mes "-走向真理之门-";
+		close;
+	} else if (job__mechanic > 2) {
+		percentheal 0,-30;
+		mes "-突然间我感觉到力量是-";
+		mes "-逃离我的身体-";
+		mes "-怎么了？-";
+		close;
+	}
+	end;
+}
+
+jupe_core2,272,149,0	script	#Foothold2	139,1,1,{
+OnTouch_:
+	if (job__mechanic == 9) {
+		mes "-我有一种力量的感觉-";
+		mes "-已经耗尽，-";
+		mes "-但现在，我不-";
+		mes "-感觉到什么-";
+		next;
+		mes "-去南边-";
+		mes "-迅速立足。-";
+		close;
+	} else if (job__mechanic == 8) {
+		percentheal -20,-30;
+		mes "-突然间我感觉到力量是-";
+		mes "-逃离我的身体-";
+		mes "-怎么了？-";
+		next;
+		mes "-我感觉到我的感觉-";
+		mes "-正在回到我身边。-";
+		next;
+		donpcevent "#Door::OnEnable";
+		changequest 10097,10098;
+		mes "-我想我正在成为-";
+		mes "- 祭品.-";
+		close;
+	} else if (job__mechanic > 2) {
+		percentheal 0,-30;
+		mes "-突然间我感觉到力量是-";
+		mes "-逃离我的身体-";
+		mes "-怎么了？-";
+		close;
+	}
+	end;
+}
+
+jupe_core2,288,142,3	script	#Door	844,1,1,{
+	end;
+OnInit:
+OnDisable:
+	disablenpc "#Door";
+	end;
+OnEnable:
+	enablenpc "#Door";
+	specialeffect EF_MAPPILLAR;
+	initnpctimer;
+	end;
+OnTimer180000:
+	donpcevent "#Door::OnDisable";
+	end;
+OnTouch_:
+	mes "——一道声音再次响起——";
+	mes "-在我的脑海里。这次是——";
+	mes "——和以前不同的是——";
+	mes "-一个令人印象深刻的人的声音。-";
+	next;
+	mes "我知道你走到这一步是因为你想要知识。";
+	mes "人类是软弱的动物";
+	mes "任何牺牲都是艰难的";
+	mes "他们做出的决定。";
+	next;
+	mes "但你缺少一些东西来穿过这扇真理之门。";
+	mes "通过这扇门，知识高于一切人类思维。";
+	next;
+	mes "如果不超过你的大脑容量，它不会伤害人的思想。";
+	next;
+	mes "努力把自己的身体放到南方知识的立足点上。";
+	next;
+	mes "如果知识适合你，你就能够获得它，而不必成为祭品。";
+	mes "如果不合格，就会失去身体作为祭品。";
+	next;
+	mes "当你具备资格时，你就能通过真理之门。";
+	mes "在那一天之前，不要迷失自己。";
+	next;
+	mes "............";
+	next;
+	mes "-我听不到任何声音-";
+	mes "-不再了，我感觉不到了-";
+	mes "-这个地方的任何东西。-";
+	next;
+	mes "-正如我心中响起的声音-";
+	mes "-队长指示，我们去-";
+	mes "-南部据点-";
+	close2;
+	set job__mechanic,9;
+	changequest 10098,10099;
+	donpcevent "#Door::OnDisable";
+	end;
+}
+
+jupe_core2,149,34,0	script	#Acquiring Knowledge	139,1,0,{
+OnTouch_:
+	if (job__mechanic == 9) {
+		mes "-我踏上的那一刻-";
+		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+		mes "-没有进入我的大脑-";
+		mes "-比较新的知识-";
+		mes "-自然而然地进来了-";
+		next;
+		mes "-几乎是瞬间-";
+		mes "-你获得了所有-";
+		mes "-您需要的知识-";
+		mes "-了解力学-";
+		mes "-还有魔法机械。-";
+		next;
+		set job__mechanic,10;
+		changequest 10099,10100;
+		specialeffect EF_POTION_CON;
+		mes "-这知识量-";
+		mes "-够了。让我们完成吧-";
+		mes "-并找到出路。-";
+		close;
+	}
+	end;
+}
+jupe_core2,150,33,0	duplicate(#Acquiring Knowledge)	#Acquiring Knowledge2	139,1,0
+
+jupe_core2,0,0	monster	Dimik	1669,100

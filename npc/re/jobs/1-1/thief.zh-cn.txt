@@ -1,0 +1,202 @@
+//===== rAthena Script ======================================= 
+//= Renewal Thief Job Quest
+//===== By: ================================================== 
+//= Kisuka
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+//= Job Change to Thief Class
+//===== Additional Comments: ================================= 
+//= 1.0 First Version. [Kisuka]
+//= 1.1 Added support for Baby classes. [Euphy]
+//============================================================ 
+moc_prydb1,39,129,2	script	Thief Guide#thief	69,{
+	if (Upper == 1) {
+		if (ADVJOB == Job_Assassin_Cross || ADVJOB == Job_Stalker) {
+			if (Class == Job_Novice_High) {
+				mes "[盗贼指南]";
+				mes "啊？我知道你？令人毛骨悚然，你看起来如此熟悉。你没有双胞胎吧？";
+				next;
+				if (!callfunc("F_CanChangeJob")) {
+					mes "[盗贼指南]";
+					mes "怎么，你想当小偷吗？抱歉，你看起来需要更多培训。";
+					next;
+					mes "[盗贼指南]";
+					mes "花点时间学习所有基本技能，好吗？那么，再见啦~！";
+					close;
+				}
+				mes "[盗贼指南]";
+				mes "好吧，我有这种感觉，就像你经历了一生的战斗，所以我现在就将你提升为盗贼。我最好给你们硬汉们你们想要的东西......";
+				next;
+				skill "NV_TRICKDEAD",0,SKILL_PERM;
+				jobchange Job_Thief_High;
+				skill "TF_SPRINKLESAND",1,SKILL_PERM;
+				skill "TF_BACKSLIDING",1,SKILL_PERM;
+				skill "TF_PICKSTONE",1,SKILL_PERM;
+				skill "TF_THROWSTONE",1,SKILL_PERM;
+				mes "[盗贼指南]";
+				mes "既然成为了小偷，就像小偷一样生活吧。现在，就行动起来吧！下一篇~";
+				close;
+			}else{
+				mes "[盗贼指南]";
+				if (Sex == SEX_MALE)
+					mes "嘿，伙计。";
+				else
+					mes "嘿嘿宝贝~";
+				close;
+			}
+		}else{
+			mes "[盗贼指南]";
+			if (Sex == SEX_MALE)
+				mes "嘿，伙计。";
+			else
+				mes "嘿，宝贝。";
+			mes "...嘿！你看起来太乖了，不想当小偷！！现在滚吧，我很忙。下一个！";
+			close;
+		}
+	}
+	if(q_job_thief == 1) {
+		mes "[盗贼公会成员]";
+		mes "呃……好像是富贵人家的宠儿"+(Sex == SEX_MALE?"儿子":"女儿")+"，但是你怎么会在这个肮脏的地方？";
+		next;
+		mes "[盗贼公会成员]";
+		mes "好吧，我不负责让你成为小偷。我只是接受申请，明白吗？";
+		mes "如果你想成为一名盗贼，就去问我旁边那个眼尖的家伙吧。";
+		close;
+	}
+	mes "[盗贼公会成员]";
+	if(BaseJob != Job_Novice) {
+		if(BaseJob == Job_Thief) {
+			mes "嘿嘿~如果有什么困难的话可以随时找我哦？";
+			close;
+		}else{
+			mes "到底什么……？";
+			if(Sex == SEX_MALE) {
+				mes "哼……你就是个"+jobname(Class)+"，笨蛋！";
+				next;
+				mes "[盗贼公会成员]";
+				mes "嘿，兄弟。";
+			}else{
+				next;
+				mes "[盗贼公会成员]";
+				mes "嘿，女士。";
+			}
+			mes "你为什么在这里？回你的地方去吧~回去吧~~";
+			close;
+		}
+	}
+	mes "呃……好像是富贵人家的宠儿"+(Sex == SEX_MALE?"儿子":"女儿")+"，但是你怎么会在这个肮脏的地方？";
+	next;
+	if(select("我想当小偷：没什么。") == 2) {
+		mes "[盗贼公会成员]";
+		mes "你知道没有申请你就不可能成为小偷......";
+		mes "你在想什么...？";
+		close;
+	}
+	mes "[盗贼公会成员]";
+	mes "嗯，你就这么自豪吗？";
+	mes "你如此自豪地告诉我你想成为一名小偷！你为什么不跑到所有的村庄去宣传自己是小偷呢？";
+	mes "‘哈哈哈！去张贴横幅，上面写着“我将成为一个自豪的小偷，偷别人的东西。”";
+	next;
+	mes "[盗贼公会成员]";
+	mes "你就这么想当小偷吗？";
+	next;
+	switch(select("是的：没有。：你呢？")) {
+	case 1:
+		mes "[盗贼公会成员]";
+		mes "噢，你……吗？嗯...好吧...我确实生活并学习看到像你这样的奇怪的人。";
+		next;
+		break;
+	case 2:
+		mes "[盗贼公会成员]";
+		mes "那你为什么在这里？你以为你这么容易就能当小偷吗？";
+		next;
+		break;
+	case 3:
+		mes "[盗贼公会成员]";
+		mes "呃..？我？我？";
+		mes "嗯……我很适合当小偷……就性格而言……我不介意这种愚蠢的事情。";
+		next;
+		break;
+	}
+	mes "[盗贼公会成员]";
+	mes "无论如何，在外面的世界里，绝对不要说你想当盗贼！！";
+	next;
+	mes "[盗贼公会成员]";
+	mes "那么，你想申请成为一名小偷吗？";
+	next;
+	if(select("是的，我愿意。：不。") == 2) {
+		mes "[盗贼公会成员]";
+		mes "嗯……做你想做的事吧~走你的路~";
+		close;
+	}
+	mes "[盗贼公会成员]";
+	mes "好吧，告诉我你的名字。啊？什么？";
+	mes ""+strcharinfo(0)+"。所以"+strcharinfo(0)+"， 正确的...？";
+	next;
+	if (!callfunc("F_CanChangeJob")) {
+		mes "[盗贼公会成员]";
+		mes "我看到了你成为盗贼的强烈意志……";
+		mes "但仅凭你的意志，你无法在真正的战斗中获胜，不是吗？";
+		mes "所以去吧，至少达到基本技能9级。";
+		close;
+	}
+	mes "[盗贼公会成员]";
+	mes "嗯……我从侦探社的资料里找到了你有趣的犯罪记录。嗯，看来你具备成为一名优秀小偷的素质。";
+	mes ""+strcharinfo(0)+"。我现在宣布你已经通过面试了！";
+	next;
+	mes "[盗贼公会成员]";
+	mes "好吧，我不负责让你成为小偷。我只是接受申请，明白吗？";
+	mes "如果你想成为一名小偷，就问我旁边的那个人。";
+	set q_job_thief,1;
+	close;
+}
+
+moc_prydb1,42,133,2	script	Thief Guildsman#thief	118,{
+	if(q_job_thief == 1) {
+		mes "[盗贼公会成员]";
+		mes "好吧。你一定已经通过了工作面试吧？";
+		mes "好的。我会接受你。";
+		mes "我们行会的转职仪式开始吧！";
+		next;
+		mes "[盗贼公会指挥官]";
+		mes "'"+strcharinfo(0)+".'";
+		mes "“对于那些做好准备的人来说，月光将为他们开辟道路。现在你已经完全准备好了，我现在正式允许你成为盗贼公会的一员。”";
+		callfunc "Job_Change",Job_Thief;
+		set q_job_thief,0;
+		getitem 13041,1;	// N_Main_Gauche
+		next;
+		mes "[盗贼公会指挥官]";
+		mes "“恭喜你成为一名小偷。”";
+		mes "“从现在开始，遵守我们行会的规则，做一名光荣的会员。”";
+		mes "“如果你违反了我们的规则，给我们带来了任何耻辱，你最好小心点。”";
+		mes "“不管怎样，我希望你能成为一名出色的小偷。”";
+		next;
+		mes "[布拉德]";
+		mes "嘻嘻～呀～！恭喜！我的朋友。";
+		mes "我的名字是“布拉德”。我在这里负责人力资源。";
+		mes "我现在还不确定，但以后你会有更多机会见到我。";
+		next;
+		mes "[布拉德]";
+		mes "好吧，我已经为你做了我能做的，所以你继续吧。我是一个很忙的人。";
+		mes "再见。";
+		close;
+	}
+	if(BaseJob != Job_Novice) {
+		if(BaseJob == Job_Thief) {
+			mes "[布拉德]";
+			mes "我现在没有什么特别的活动。所以继续你的路，稍后再回来。";
+		}else{
+			mes "[盗贼公会成员]";
+			mes "嘿~嘿~你又不是新手，又不是小偷！";
+			mes "你在这里做什么？不欢迎你把这里当作你的家~嘿嘿~滚出去~";
+		}
+		close;
+	}
+	mes "[盗贼公会成员]";
+	mes "何？像你这样的新手怎么会来这里？";
+	mes "如果你是来当小偷的，就去问我旁边那位脾气暴躁的女士。";
+	close;
+}
