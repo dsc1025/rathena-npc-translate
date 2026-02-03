@@ -70,6 +70,62 @@ def main(argv: list[str] | None = None) -> int:
 		print(f"Failed to read input file: {e}", file=sys.stderr)
 		return 3
 
+	# Insert "Translated By" block into the header before conversion, if not present.
+	if "Translated By" not in text:
+		lines = text.splitlines(True)  # preserve line endings
+		# detect newline style
+		nl = "\r\n" if lines and lines[0].endswith("\r\n") else "\n"
+		header_end = None
+		for i, ln in enumerate(lines):
+			if not ln.lstrip().startswith("//"):
+				break
+			if "=" in ln:
+				header_end = i
+		if header_end is not None:
+			insert_at = header_end + 1
+		# detect newline style from the file (prefer CRLF when present)
+		nl = "\r\n" if "\r\n" in text else "\n"
+		# Try to find the header separator line to insert before it
+		insert_at = None
+		for i, ln in enumerate(lines):
+			if ln.strip() == "//============================================================":
+				insert_at = i
+				break
+
+		# Fallback: if separator not found, insert after initial header comment block
+		if insert_at is None:
+			header_end = None
+			for i, ln in enumerate(lines):
+				if not ln.lstrip().startswith("//"):
+					break
+				if "=" in ln:
+					header_end = i
+			insert_at = (header_end + 1) if header_end is not None else 0
+
+		# Build header block matching other header lines (not the separator)
+		# Find a reference header line to match length (strip all trailing whitespace)
+		ref_line = None
+		for ln in lines[:insert_at]:
+			stripped = ln.rstrip()
+			if stripped.startswith("//===== ") and ":" in stripped:
+				ref_line = stripped
+				break
+		
+		if ref_line:
+			total_len = len(ref_line)
+		else:
+			total_len = 60  # fallback
+		
+		prefix = "//===== "
+		title = "Translated By:"
+		equals_count = total_len - len(prefix) - len(title) - 1
+		first = prefix + title + " " + ("=" * equals_count)
+		second = "//= dsc"
+		block = [first + nl, second + nl]
+
+		lines[insert_at:insert_at] = block
+		text = "".join(lines)
+
 	if args.force:
 		out = inp
 	else:
