@@ -10,6 +10,8 @@
 //= 1.0 Initial release [crazyarashi]
 //= 1.1 Optimizations and cleanup [Everade]
 //= 1.2 Cleanup [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 1@bamn,1,1,0	script	#twilight_garden_control	-1,{
@@ -53,19 +55,19 @@ OnTouch:
 		end;
 	if ('twilight_story == 0) {
 		'twilight_story = 1;
-		npctalk "Est：天又黑又安静。如果你想执行计划，现在就是最佳时机。正确的？";
+		npctalk "Est�����ֺ��ְ������������ִ�мƻ������ھ������ʱ������ȷ�ģ�";
 		sleep 2000;
-		npctalk "Est ：埃琳娜说她稍后会加入我们，但她很可能无法加入。";
+		npctalk "Est ��������˵���Ժ��������ǣ������ܿ����޷����롣";
 		sleep 2000;
-		npctalk "Est：即便如此，也不必担心。其他人都做好了准备，等待着埋伏的信号。";
+		npctalk "Est��������ˣ�Ҳ���ص��ġ������˶�������׼�����ȴ���������źš�";
 		sleep 2000;
-		npctalk "Est：我们所要做的就是像巡逻队一样四处走动，让他们措手不及。";
+		npctalk "Est��������Ҫ���ľ�����Ѳ�߶�һ���Ĵ��߶��������Ǵ��ֲ�����";
 		sleep 2000;
-		npctalk "东部：沿着道路前往宅邸的主楼。我会潜伏在你身后。";
+		npctalk "���������ŵ�·ǰ��լۡ����¥���һ�Ǳ����������";
 		sleep 2000;
-		npctalk "Est：别东张西望，假装不警惕，明白了吗？";
+		npctalk "Est��������������װ�����裬��������";
 		sleep 2000;
-		npctalk "艾斯特：现在，我们走吧。";
+		npctalk "��˹�أ����ڣ������߰ɡ�";
 		for ( .@i = 1; .@i < 6; ++.@i )
 			enablenpc instance_npcname("Heart Hunter#md_hh0" + .@i);
 		end;
@@ -74,9 +76,9 @@ OnTouch:
 		end;
 	if ('twilight_story == 2) {
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "他们一定也在等待。";
-		mes "让我们更安静地做这件事。";
+		mes "[��]";
+		mes "����һ��Ҳ�ڵȴ���";
+		mes "�����Ǹ�������������¡�";
 		close3;
 	}
 	end;
@@ -89,9 +91,9 @@ OnTouch_:
 		end;
 	if ('twilight_story == 1) {
 		'twilight_story = 2;
-		npctalk "默默投降或者回到你来的地方。";
+		npctalk "ĬĬͶ�����߻ص������ĵط���";
 		sleep 2000;
-		npctalk "嗯，这并不意味着我们会让你回去。";
+		npctalk "�ţ��Ⲣ����ζ�����ǻ������ȥ��";
 		sleep 1000;
 		for ( .@i = 1; .@i < 6; ++.@i )
 			disablenpc instance_npcname("Heart Hunter#md_hh0" + .@i);
@@ -133,9 +135,9 @@ OnMobDead:
 		end;
 	if ('twilight_story == 3) {
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "我不知道是该设个陷阱，还是给你一个机会。";
-		mes "激活我们从 Elyumina 获得的追踪器。";
+		mes "[��]";
+		mes "�Ҳ�֪���Ǹ�������壬���Ǹ���һ�����ᡣ";
+		mes "�������Ǵ� Elyumina ��õ�׷������";
 		next;
 		cutin "",255;
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Tracker : According to the intuition of the great Elyumina... Too Doo Too Doo Too~";
@@ -144,13 +146,13 @@ OnMobDead:
 		navigateto("1@bamn",206,273);
 		sleep2 2000;
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "这是一件响亮的事情。";
-		mes "你要先搬出去吗？";
-		mes "我有一个地方要去一会。";
+		mes "[��]";
+		mes "����һ�����������顣";
+		mes "��Ҫ�Ȱ��ȥ��";
+		mes "����һ���ط�Ҫȥһ�ᡣ";
 		next;
-		mes "[是]";
-		mes "我很快就会加入你们。";
+		mes "[��]";
+		mes "�Һܿ�ͻ�������ǡ�";
 		close2;
 		if ('twilight_story == 3) {
 			'twilight_story = 4;
@@ -187,23 +189,23 @@ OnMobDead:
 1@bamn,202,274,5	script(DISABLED)	Est#est03	4_F_ESTLOVELOY,{
 	if ('twilight_story == 5) {
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "我想还是多扔些诱饵比较好，于是就去找自动娃娃帮忙。";
-		mes "另外，阿尔蒙德说她必须出去检查一下。";
+		mes "[��]";
+		mes "���뻹�Ƕ���Щ�ն��ȽϺã����Ǿ�ȥ���Զ����ް�æ��";
+		mes "���⣬�����ɵ�˵�������ȥ���һ�¡�";
 		next;
 		cutin "ep172_beta",0;
-		mes "[杏仁]";
-		mes "中继器又死了。这就是为什么我必须解决它。";
-		mes "中继器是入侵者最喜欢的目标，所以我们不能让它坏掉，对吧？";
+		mes "[����]";
+		mes "�м��������ˡ������Ϊʲô�ұ���������";
+		mes "�м�������������ϲ����Ŀ�꣬�������ǲ��������������԰ɣ�";
 		next;
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "因此，我想请你护送阿尔蒙来这里检查中继器。";
-		mes "我会环顾四周并寻找其他路线。";
+		mes "[��]";
+		mes "��ˣ��������㻤�Ͱ��������������м�����";
+		mes "�һỷ�����ܲ�Ѱ������·�ߡ�";
 		next;
 		cutin "ep172_beta",0;
-		mes "[杏仁]";
-		mes "只要你准备好了，我们就一起去吧。";
+		mes "[����]";
+		mes "ֻҪ��׼�����ˣ����Ǿ�һ��ȥ�ɡ�";
 		close2;
 		cutin "",255;
 		if ('twilight_story == 5)
@@ -212,8 +214,8 @@ OnMobDead:
 	}
 	if ('twilight_story == 6) {
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "当你准备好移动时，与阿尔蒙德交谈。";
+		mes "[��]";
+		mes "����׼�����ƶ�ʱ���밢���ɵ½�̸��";
 		close3;
 	}
 	end;
@@ -222,16 +224,16 @@ OnMobDead:
 1@bamn,199,275,5	script(DISABLED)	Almond#amond01	EP17_2_BETA_BASIC,{
 	if ('twilight_story < 6) {
 		cutin "ep172_beta",2;
-		mes "[杏仁]";
-		mes "今天所有人都应该在宅邸里。";
-		mes "有重要的事情发生了。这就是我和埃斯特一起来这里的原因。";
+		mes "[����]";
+		mes "���������˶�Ӧ����լۡ�";
+		mes "����Ҫ�����鷢���ˡ�������ҺͰ�˹��һ���������ԭ��";
 		close3;
 	}
 	if ('twilight_story == 6) {
 		'guide = getnpcid(0);
 		'twilight_story = 7;
 		npcspeed 200;
-		npctalk "那么，我们走吧。";
+		npctalk "��ô�������߰ɡ�";
 		unitwalk 'guide,199,248, instance_npcname("Almond#amond01") + "::OnEvent00";
 		enablenpc instance_npcname("Intruder#sweety02");
 		end;
@@ -244,11 +246,11 @@ OnMobDead:
 		setpcblock PCBLOCK_NPC, true;
 		navigateto("1@bamn",242,206);
 		sleep2 2000;
-		npctalk "啊哈哈哈，太吵了";
+		npctalk "����������̫����";
 		sleep2 2000;
-		npctalk "我很好奇，我们要不要快点走？";
+		npctalk "�Һܺ��棬����Ҫ��Ҫ����ߣ�";
 		sleep2 2000;
-		npctalk "客人，有入侵者！";
+		npctalk "���ˣ��������ߣ�";
 		donpcevent instance_npcname("twilight_story_mob_3") + "::OnStart";
 		setpcblock PCBLOCK_NPC, false;
 		sleep 200;
@@ -257,14 +259,14 @@ OnMobDead:
 		end;
 	}
 	if ('twilight_story == 10 || 'twilight_story == 11 || 'twilight_story == 12) {
-		npctalk "当心！";
+		npctalk "���ģ�";
 		end;
 	}
 	if ('twilight_story == 13) {
 		'twilight_story = 14;
 		npcspeed 200;
 		setpcblock PCBLOCK_NPC, true;
-		npctalk "我们去检查一下中继器吧。";
+		npctalk "����ȥ���һ���м����ɡ�";
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		sleep2 1000;
@@ -286,7 +288,7 @@ OnMobDead:
 		setpcblock PCBLOCK_NPC, false;
 		sleep2 1000;
 		npcspeed 80;
-		npctalk "还有一个入侵者！难怪我开始兴奋了~！";
+		npctalk "����һ�������ߣ��ѹ��ҿ�ʼ�˷���~��";
 		unitwalk 'guide,332,169;
 		end;
 	}
@@ -295,20 +297,20 @@ OnMobDead:
 	if ('twilight_story == 18) {
 		npcspeed 200;
 		'twilight_story = 19;
-		npctalk "你还好吗，冒险家？然后，我们就可以继续前进了。";
+		npctalk "�㻹����ð�ռң�Ȼ�����ǾͿ��Լ���ǰ���ˡ�";
 		unitwalk 'guide,332,143, instance_npcname("Almond#amond01") + "::OnEvent11";
 		end;
 	}
 	if ('twilight_story == 19)
 		end;
 	if ('twilight_story == 20) {
-		npctalk "你不应该和艾斯特谈谈吗？看来她已经等了很久了。";
+		npctalk "�㲻Ӧ�úͰ�˹��̸̸�𣿿������Ѿ����˺ܾ��ˡ�";
 		end;
 	}
 	end;
 
 OnEvent00:
-	npctalk "这边走。";
+	npctalk "����ߡ�";
 	sleep 1000;
 	unitwalk 'guide,225,248, instance_npcname("Almond#amond01") + "::OnFollow00";
 	end;
@@ -316,14 +318,14 @@ OnFollow00:
 	unitwalk 'guide,245,248, instance_npcname("Almond#amond01") + "::OnEvent01";
 	end;
 OnEvent01:
-	npctalk "我们去看看经常被黑客攻击的Repeater。";
+	npctalk "����ȥ�����������ڿ͹�����Repeater��";
 	sleep 2000;
-	npctalk "啊？你现在带的是什么？把它拿出来给我看。";
+	npctalk "���������ڴ�����ʲô�������ó������ҿ���";
 	'twilight_story = 8;
 	end;
 
 OnEvent02:
-	npctalk "冒险家，有入侵者！";
+	npctalk "ð�ռң��������ߣ�";
 	unitwalk 'guide,245,215, instance_npcname("Almond#amond01") + "::OnEvent03";
 	end;
 OnEvent03:
@@ -331,60 +333,60 @@ OnEvent03:
 	end;
 
 OnEvent04:
-	npctalk "...检查信号。";
+	npctalk "...����źš�";
 	sleep 2000;
-	npctalk "...黑客通道已检查。";
+	npctalk "...�ڿ�ͨ���Ѽ�顣";
 	sleep 2000;
-	npctalk "...正在恢复...";
+	npctalk "...���ڻָ�...";
 	sleep 2000;
-	npctalk "...正在恢复...84%";
+	npctalk "...���ڻָ�...84%";
 	sleep 2000;
-	npctalk "...恢复完成。";
+	npctalk "...�ָ���ɡ�";
 	sleep 2000;
-	npctalk "我们去复读机那里好吗？";
+	npctalk "����ȥ�������������";
 	sleep 2000;
 	unitwalk 'guide,245,204, instance_npcname("Almond#amond01") + "::OnEvent05";
 	end;
 OnEvent05:
-	npctalk "冒险家。你喜欢杏仁吗？一位喜欢杏仁的顾客给我起了名字。适合我吗？";
+	npctalk "ð�ռҡ���ϲ��������һλϲ�����ʵĹ˿͸����������֡��ʺ�����";
 	sleep 3000;
 	unitwalk 'guide,265,204, instance_npcname("Almond#amond01") + "::OnEvent06";
 	end;
 OnEvent06:
-	npctalk "那个小子不久前，我见过他。";
+	npctalk "�Ǹ�С�Ӳ���ǰ���Ҽ�������";
 	unitwalk 'guide,285,204, instance_npcname("Almond#amond01") + "::OnEvent07";
 	end;
 OnEvent07:
-	npctalk "但他总是跑得那么好，我还是第一次见到他正常的样子~";
+	npctalk "���������ܵ���ô�ã��һ��ǵ�һ�μ���������������~";
 	unitwalk 'guide,300,204, instance_npcname("Almond#amond01") + "::OnEvent08";
 	end;
 OnEvent08:
-	npctalk "这里的火龙果很可爱~他们说杏仁很好吃？你以前吃过杏仁吗？";
+	npctalk "����Ļ������ܿɰ�~����˵���ʺܺóԣ�����ǰ�Թ�������";
 	sleep 2000;
-	npctalk "这边走。";
+	npctalk "����ߡ�";
 	unitwalk 'guide,300,190, instance_npcname("Almond#amond01") + "::OnEvent09";
 	end;
 OnEvent09:
-	npctalk "好久没有这么舒服了~";
+	npctalk "�þ�û����ô�����~";
 	unitwalk 'guide,327,189, instance_npcname("Almond#amond01") + "::OnEvent10";
 	end;
 OnEvent10:
-	npctalk "冒险家。那个吵闹的东西又闪烁了吗？让我们检查一下。";
+	npctalk "ð�ռҡ��Ǹ����ֵĶ�������˸���������Ǽ��һ�¡�";
 	'twilight_story = 15;
 	end;
 
 OnEvent11:
-	npctalk "...检查信号。";
+	npctalk "...����źš�";
 	sleep 2000;
-	npctalk "...黑客通道已检查。";
+	npctalk "...�ڿ�ͨ���Ѽ�顣";
 	sleep 2000;
-	npctalk "...正在恢复...";
+	npctalk "...���ڻָ�...";
 	sleep 2000;
-	npctalk "...正在恢复...72%";
+	npctalk "...���ڻָ�...72%";
 	sleep 2000;
-	npctalk "...恢复完成。";
+	npctalk "...�ָ���ɡ�";
 	sleep 2000;
-	npctalk "我们去下一个复读机吧~";
+	npctalk "����ȥ��һ����������~";
 	sleep 2000;
 	unitwalk 'guide,320,139, instance_npcname("Almond#amond01") + "::OnFollow12";
 	end;
@@ -392,24 +394,24 @@ OnFollow12:
 	unitwalk 'guide,300,139, instance_npcname("Almond#amond01") + "::OnEvent12";
 	end;
 OnEvent12:
-	npctalk "是之前那个孩子吧？他是一个入侵者。很奇怪，有点像杏仁……";
+	npctalk "��֮ǰ�Ǹ����Ӱɣ�����һ�������ߡ�����֣��е������ʡ���";
 	unitwalk 'guide,285,139, instance_npcname("Almond#amond01") + "::OnEvent13";
 	end;
 OnEvent13:
-	npctalk "我们要走快一点吗？有声音从那边传来……";
+	npctalk "����Ҫ�߿�һ�������������Ǳߴ�������";
 	unitwalk 'guide,285,118, instance_npcname("Almond#amond01") + "::OnEvent14";
 	end;
 OnEvent14:
-	npctalk "比我想象的还要安静。入侵者去哪儿了？";
+	npctalk "��������Ļ�Ҫ������������ȥ�Ķ��ˣ�";
 	unitwalk 'guide,285,98, instance_npcname("Almond#amond01") + "::OnEvent15";
 	end;
 OnEvent15:
-	npctalk "这边走。";
+	npctalk "����ߡ�";
 	unitwalk 'guide,261,98, instance_npcname("Almond#amond01") + "::OnEvent16";
 	end;
 OnEvent16:
 	npcspeed 80;
-	npctalk "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+	npctalk "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 	'twilight_story = 20;
 	unitwalk 'guide,261,87;
 	end;
@@ -435,20 +437,20 @@ OnMobDead:
 }
 
 1@bamn,243,208,5	script	Repeater#wifi03	CLEAR_NPC,{
-	mes "没有办法知道中继器的状态是什么。通讯芯片似乎已正确安装。";
+	mes "û�а취֪���м�����״̬��ʲô��ͨѶоƬ�ƺ�����ȷ��װ��";
 	close;
 }
 
 1@bamn,242,206,7	script(DISABLED)	Intruder#sweety02	4_EP17_SWEETY,{
 	if ('twilight_story < 11) {
-		npctalk "你就落后一步了！你们这群白痴！";
+		npctalk "������һ���ˣ�������Ⱥ�׳գ�";
 		end;
 	}
 	if ('twilight_story == 11) {
 		'twilight_story = 12;
-		npctalk "哈！你觉得你能抓住我吗？";
+		npctalk "�������������ץס����";
 		sleep 2000;
-		npctalk "去受苦吧！";
+		npctalk "ȥ�ܿ�ɣ�";
 		sleep 500;
 		disablenpc();
 		donpcevent instance_npcname("twilight_story_mob_4") + "::OnStart";
@@ -479,26 +481,26 @@ OnMobDead:
 OnTouch:
 	if ('twilight_story == 16) {
 		'twilight_story = 17;
-		npctalk "我们会接管这个地方，等着吧！";
+		npctalk "���ǻ�ӹ�����ط������Űɣ�";
 		sleep 1000;
 		specialeffect EF_DESPERADO, AREA, instance_npcname("Heart Hunter#md_hh06");
 		sleep 1000;
-		npctalk "卡卡卡，让我们用爆炸来击败他们吧！", instance_npcname("叛乱#md_rb04");
+		npctalk "���������������ñ�ը���������ǰɣ�", instance_npcname("����#md_rb04");
 		specialeffect EF_TRIPLEACTION, AREA, instance_npcname("Heart Hunter#md_hh07");
 		sleep 1000;
 		specialeffect EF_DESPERADO, AREA, instance_npcname("Heart Hunter#md_hh07");
 		sleep 2000;
-		npctalk "感谢你们展现自己！你们这些混蛋！", instance_npcname("叛乱#md_rb03");
+		npctalk "��л����չ���Լ���������Щ�쵰��", instance_npcname("����#md_rb03");
 		sleep 2000;
 		specialeffect EF_DESPERADO, AREA, instance_npcname("Heart Hunter#md_hh08");
 		sleep 2000;
-		npctalk "...", instance_npcname("心脏猎手#md_hh07");
+		npctalk "...", instance_npcname("��������#md_hh07");
 		sleep 2000;
-		npctalk "...（点头）", instance_npcname("心脏猎手#md_hh06");
+		npctalk "...����ͷ��", instance_npcname("��������#md_hh06");
 		sleep 1000;
-		npctalk "...", instance_npcname("心脏猎手#md_hh08");
+		npctalk "...", instance_npcname("��������#md_hh08");
 		sleep 1000;
-		npctalk "你们向对方发出什么信号？";
+		npctalk "������Է�����ʲô�źţ�";
 		sleep 1000;
 		specialeffect EF_DESPERADO, AREA, instance_npcname("Heart Hunter#md_hh07");
 		for ( .@i = 1; .@i < 5; ++.@i )
@@ -507,12 +509,12 @@ OnTouch:
 		for ( .@i = 6; .@i < 9; ++.@i )
 			disablenpc instance_npcname("Heart Hunter#md_hh0" + .@i);
 		sleep 1000;
-		npctalk "什么？他们跑了？！搬出去吧！";
+		npctalk "ʲô���������ˣ������ȥ�ɣ�";
 		sleep 2000;
 		for ( .@i = 1; .@i < 5; ++.@i )
 			disablenpc instance_npcname("Rebellion#md_rb0" + .@i);
 		enablenpc instance_npcname("Intruder#sweety03");
-		npctalk "什么...？", instance_npcname("入侵者#sweety03");
+		npctalk "ʲô...��", instance_npcname("������#sweety03");
 	}
 	end;
 }
@@ -528,24 +530,24 @@ OnTouch:
 	if ('twilight_story == 17) {
 		setpcblock PCBLOCK_NPC, true;
 		'twilight_story = 18;
-		npctalk "什么，其他人去哪儿了？";
+		npctalk "ʲô��������ȥ�Ķ��ˣ�";
 		sleep2 2000;
-		npctalk "你做到了吗？";
+		npctalk "����������";
 		sleep2 2000;
-		npctalk "你很不错，不是吗？";
+		npctalk "��ܲ�����������";
 		sleep2 2000;
-		npctalk "复读机：（.......）", instance_npcname("中继器#wifi02");
-		npctalk "哦，有消息。在那里呆一会儿。是的，你好。";
+		npctalk "����������.......��", instance_npcname("�м���#wifi02");
+		npctalk "Ŷ������Ϣ���������һ������ǵģ���á�";
 		sleep2 2000;
-		npctalk "复读机：（... ??... ??）", instance_npcname("中继器#wifi02");
+		npctalk "����������... ??... ??��", instance_npcname("�м���#wifi02");
 		sleep2 2000;
-		npctalk "现在？更多时间...是的，不...啊...";
+		npctalk "���ڣ�����ʱ��...�ǵģ���...��...";
 		sleep2 2000;
-		npctalk "... ...到目前为止...没有？！...好吧...";
+		npctalk "... ...��ĿǰΪֹ...û�У���...�ð�...";
 		sleep2 2000;
 		emotion ET_THINK;
 		sleep2 2000;
-		npctalk "你！你就是我现在没时间的原因！下次见面我就杀了你！";
+		npctalk "�㣡�����������ûʱ���ԭ���´μ����Ҿ�ɱ���㣡";
 		sleep2 2000;
 		disablenpc();
 		enablenpc instance_npcname("Est#est04");
@@ -563,31 +565,31 @@ OnTouch:
 1@bamn,257,84,3	script(DISABLED)	Est#est04	4_F_ESTLOVELOY,{
 	if ('twilight_story == 20) {
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "我听到了报道。你找到了一个看起来像领导的人吗？";
-		mes "我觉得其他成员也都不错。";
+		mes "[��]";
+		mes "�������˱��������ҵ���һ�����������쵼������";
+		mes "�Ҿ���������ԱҲ��������";
 		next;
-		mes "[是]";
-		mes "复读机怎么了？";
+		mes "[��]";
+		mes "��������ô�ˣ�";
 		next;
 		cutin "ep172_beta",2;
-		mes "[杏仁]";
-		mes "我们正在前往另一处的路上。";
-		mes "但距离这里还蛮远的。";
+		mes "[����]";
+		mes "��������ǰ����һ����·�ϡ�";
+		mes "���������ﻹ��Զ�ġ�";
 		next;
 		cutin "ep162_est01",2;
-		mes "[是]";
-		mes "嗯...我们要这样做吗？";
-		mes "你错过的那个人是一个紫色头发的男孩，对吗？";
-		mes "我们要引诱他出去。";
+		mes "[��]";
+		mes "��...����Ҫ��������";
+		mes "��������Ǹ�����һ����ɫͷ�����к�������";
+		mes "����Ҫ��������ȥ��";
 		next;
-		mes "[是]";
-		mes "我会处理掉躲在花园里的其他人。";
-		mes "啊。我也来护送阿蒙德。";
+		mes "[��]";
+		mes "�һᴦ�������ڻ�԰��������ˡ�";
+		mes "������Ҳ�����Ͱ��ɵ¡�";
 		next;
-		mes "[是]";
-		mes "他应该去了宅子的西边，所以就往那边走吧。";
-		mes "你有 Elyumina 的追踪器。如果你靠近他，它就会激活。";
+		mes "[��]";
+		mes "��Ӧ��ȥ��լ�ӵ����ߣ����Ծ����Ǳ��߰ɡ�";
+		mes "���� Elyumina ��׷����������㿿���������ͻἤ�";
 		if ('twilight_story == 20) {
 			'twilight_story = 21;
 			enablenpc instance_npcname("#to_bamq");
@@ -598,35 +600,35 @@ OnTouch:
 		close3;
 	}
 	if ('twilight_story == 21) {
-		mes "[是]";
-		mes "他应该去了宅子的西边，所以就往那边走吧。";
-		mes "你有Elyumina的追踪器，如果你靠近他，它就会激活。";
+		mes "[��]";
+		mes "��Ӧ��ȥ��լ�ӵ����ߣ����Ծ����Ǳ��߰ɡ�";
+		mes "����Elyumina��׷����������㿿���������ͻἤ�";
 		next;
-		mes "[是]";
-		mes "别担心，我会在这里照顾阿蒙德的。";
+		mes "[��]";
+		mes "���ģ��һ��������չ˰��ɵµġ�";
 		close3;
 	}
 	end;
 }
 
 1@bamn,250,80,7	script(DISABLED)	Rebellion#md_rb05	4_M_REBELLION,{
-	npctalk "剩下的就交给我们吧。";
+	npctalk "ʣ�µľͽ������ǰɡ�";
 	end;
 }
 
 // 1@bamn,254,80,7	script	Rebellion#md_rb06	4_F_REBELLION,7,7,{	// unknown effect
 1@bamn,254,80,7	script(DISABLED)	Rebellion#md_rb06	4_F_REBELLION,{
-	npctalk "嘿嘿嘿……终于到了报仇的时候了……嘿嘿嘿……";
+	npctalk "�ٺٺ١������ڵ��˱����ʱ���ˡ����ٺٺ١���";
 	end;
 }
 
 1@bamn,258,80,1	script(DISABLED)	Rebellion#md_rb07	4_M_REBELLION,{
-	npctalk "如果有敌人闹事，我们就应该用更多的兵力攻击他们。";
+	npctalk "����е������£����Ǿ�Ӧ���ø���ı����������ǡ�";
 	end;
 }
 
 1@bamn,202,84,3	script(DISABLED)	Rebellion#md_rb08	4_M_REBELLION2,{
-	npctalk "你正在寻找一个紫色头发的男孩，对吧？他朝实验室走去。";
+	npctalk "������Ѱ��һ����ɫͷ�����к����԰ɣ�����ʵ������ȥ��";
 	end;
 }
 
@@ -684,11 +686,11 @@ OnTouch:
 	if ('twilight_story == 21) {
 		setpcblock PCBLOCK_NPC, true;
 		'twilight_story = 22;
-		npctalk "你太晚了。你们这些白痴！";
+		npctalk "��̫���ˡ�������Щ�׳գ�";
 		sleep2 2000;
-		npctalk "他们已经利用飞空艇逃走了！";
+		npctalk "�����Ѿ����÷ɿ�ͧ�����ˣ�";
 		sleep2 2000;
-		npctalk "现在，我甜甜来对付刚刚进来的白痴们！";
+		npctalk "���ڣ����������Ը��ոս����İ׳��ǣ�";
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		disablenpc();
@@ -717,30 +719,30 @@ OnMobDead:
 
 1@bamq,123,39,3	script(DISABLED)	Broken Sweety#sweety04	4_EP17_SWEETY,{
 	specialeffect EF_NPC_STOP;
-	npctalk "...是的...去...去...不...两个...";
-	mes "电弹起来不动，就像机器坏了一样。";
-	mes "看到他移开了视线，他看起来并没有完全崩溃。";
+	npctalk "...�ǵ�...ȥ...ȥ...��...����...";
+	mes "�絯���������������������һ����";
+	mes "�������ƿ������ߣ�����������û����ȫ������";
 	close;
 }
 
 1@bamq,108,41,5	script(DISABLED)	Est#est05	4_F_ESTLOVELOY,{
 	cutin "ep162_est01",2;
-	mes "[是]";
-	mes "虽然有点晚了，但已经结束了。";
-	mes "这就是你。那个在花园里拖着脚步的家伙。";
+	mes "[��]";
+	mes "��Ȼ�е����ˣ����Ѿ������ˡ�";
+	mes "������㡣�Ǹ��ڻ�԰�����ŽŲ��ļһ";
 	next;
-	mes "[是]";
-	mes "这家伙以为控制自动人偶就能帮自己争取时间吗？";
+	mes "[��]";
+	mes "��һ���Ϊ�����Զ���ż���ܰ��Լ���ȡʱ����";
 	next;
 	cutin "ep162_est02",2;
-	mes "[是]";
-	mes "毕竟，它们只是自动娃娃，对吧？";
-	mes "没办法，只好把豪宅的自动人偶炸了……";
+	mes "[��]";
+	mes "�Ͼ�������ֻ���Զ����ޣ��԰ɣ�";
+	mes "û�취��ֻ�ðѺ�լ���Զ���żը�ˡ���";
 	next;
 	cutin "ep162_est01",2;
-	mes "[是]";
-	mes "我们离开这里吧。";
-	mes "我会在宾馆等你。";
+	mes "[��]";
+	mes "�����뿪����ɡ�";
+	mes "�һ��ڱ��ݵ��㡣";
 	close3;
 }
 
@@ -790,36 +792,36 @@ OnTouch:
 1@bamq,32,49,3	script(DISABLED)	Sweety#sweety_boss	4_EP17_Sweety,{
 	if ('sweety == 0) {
 		cutin "ep172_Sweety01",2;
-		mes "[甜心]";
-		mes "嘿，你准备好了吗？";
-		mes "随时来找我吧。";
-		mes "我相信，一旦打败你，我就会感觉好一些。";
+		mes "[����]";
+		mes "�٣���׼��������";
+		mes "��ʱ�����Ұɡ�";
+		mes "�����ţ�һ������㣬�Ҿͻ�о���һЩ��";
 		next;
-		if (select( "稍等一下。", "我们走吧！" ) == 1) {
-			mes "[甜心]";
-			mes "怎么，你来这里是为了探索花园吗？";
-			mes "猎心者不知道我发生了什么事，但是……";
+		if (select( "�Ե�һ�¡�", "�����߰ɣ�" ) == 1) {
+			mes "[����]";
+			mes "��ô������������Ϊ��̽����԰��";
+			mes "�����߲�֪���ҷ�����ʲô�£����ǡ���";
 			next;
 			cutin "ep172_Sweety02",2;
-			mes "[甜心]";
-			mes "什么，为什么？";
-			mes "我根本不像他们，我是一个优秀的生物！";
-			mes "老师们也是如此。";
-			mes "但是，那些人只不过是失败者。";
+			mes "[����]";
+			mes "ʲô��Ϊʲô��";
+			mes "�Ҹ����������ǣ�����һ����������";
+			mes "��ʦ��Ҳ����ˡ�";
+			mes "���ǣ���Щ��ֻ������ʧ���ߡ�";
 			close3;
 
 		}
 		cutin "",255;
-		npctalk "这次我不会再输给你了！";
+		npctalk "����Ҳ�����������ˣ�";
 		disablenpc();
 		donpcevent instance_npcname("twilight_daily") + "::OnStart";
 		'sweety = 1;
 		close;
 	}
 	specialeffect EF_NPC_STOP;
-	mes "他没有回应任何事情。";
-	mes "我想他是因为我的攻击而晕倒的。";
-	npctalk "……";
+	mes "��û�л�Ӧ�κ����顣";
+	mes "����������Ϊ�ҵĹ������ε��ġ�";
+	npctalk "����";
 	close;
 }
 
@@ -841,37 +843,37 @@ OnMobDead:
 	specialeffect EF_NPC_STOP;
 	sleep2 500;
 	setpcblock PCBLOCK_NPC, false;
-	npctalk "……";
-	mes "我震惊地昏过去了。";
-	mes "看起来他已经昏过去了。";
+	npctalk "����";
+	mes "���𾪵ػ��ȥ�ˡ�";
+	mes "���������Ѿ����ȥ�ˡ�";
 	close;
 }
 	
 1@bamq,37,59,3	script(DISABLED)	Almond#amond02	EP17_2_BETA_BASIC,{
 	if ('sweety < 2) {
 		cutin "ep172_beta",2;
-		mes "[杏仁]";
-		mes "我无法理解。";
-		mes "为什么Sweety喜欢挑战自己的身体极限……";
+		mes "[����]";
+		mes "���޷����⡣";
+		mes "ΪʲôSweetyϲ����ս�Լ������弫�ޡ���";
 		next;
-		mes "[杏仁]";
-		mes "我的工作就是修复他被毁坏的身体。";
-		mes "请好好对待他，让他满意。";
+		mes "[����]";
+		mes "�ҵĹ��������޸������ٻ������塣";
+		mes "��úöԴ������������⡣";
 		close3;
 	}
 	cutin "ep172_beta",2;
-	mes "[杏仁]";
-	mes "我会照顾甜甜的搬家事宜。";
-	mes "你现在想结束吗？";
+	mes "[����]";
+	mes "�һ��չ�����İ�����ˡ�";
+	mes "�������������";
 	next;
-	if (select( "让我们结束吧。", "我会先探索花园。" ) == 2) {
-		mes "[杏仁]";
-		mes "那里仍然有一些入侵者。";
-		mes "你知道吗？";
+	if (select( "�����ǽ����ɡ�", "�һ���̽����԰��" ) == 2) {
+		mes "[����]";
+		mes "������Ȼ��һЩ�����ߡ�";
+		mes "��֪����";
 		close3;
 	}
-	mes "[杏仁]";
-	mes "那么，我们可以吗？";
+	mes "[����]";
+	mes "��ô�����ǿ�����";
 	close2;
 	warp "ba_in01",18,255;
 	end;
@@ -887,26 +889,26 @@ OnMobDead:
 1@bamn,150,47,3	script	#bam_body01	4_EP17_BROKENBETA,{
 	if (isbegin_quest(18024) == 1) {
 		if (checkweight(1000226,1) == 0) {	// (custom)
-			mes "^008800等一下！！";
-			mes "您无法接收更多物品，因为您携带的物品太多。请等灯亮后再试。^000000";
+			mes "^008800��һ�£���";
+			mes "���޷����ո�����Ʒ����Ϊ��Я������Ʒ̫�ࡣ��ȵ��������ԡ�^000000";
 			close;
 		}
 		.@id = atoi(replacestr(strnpcinfo(2), "bam_body0", ""));
 
 		if ('broken_beta[.@id] == 0) {
-			mes "贝塔经理的尸体隐藏在风景之下。";
+			mes "����������ʬ�������ڷ羰֮�¡�";
 			next;
 			if (rand(1,10) < 5)
-				mes "核心槽是空的。";
+				mes "���Ĳ��ǿյġ�";
 			else {
-				mes "我已经恢复了核心。";
+				mes "���Ѿ��ָ��˺��ġ�";
 				getitem 1000226,1;
 			}
-			mes "我稍后会让阿尔法知道，这样她就可以取回娃娃的尸体。";
+			mes "���Ժ���ð�����֪�����������Ϳ���ȡ�����޵�ʬ�塣";
 			'broken_beta[.@id] = 1;
 		}
 	}
-	mes "核心部分是空的。";
+	mes "���Ĳ����ǿյġ�";
 	close;
 
 OnInstanceInit:

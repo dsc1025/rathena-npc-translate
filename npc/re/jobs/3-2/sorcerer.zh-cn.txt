@@ -14,102 +14,104 @@
 //= 1.1 Cleaning. [Euphy]
 //= 1.2 Updated script, optimized. [Euphy]
 //= 1.3 Added VIP features. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 gef_tower,102,34,5	script	Merito	742,{
-	mes "[优点]";
+	mes "[�ŵ�]";
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
-		mes "你的包里装了这么多东西。清空袋子后重试。";
+		mes "��İ���װ����ô�ණ������մ��Ӻ����ԡ�";
 		close;
 	}
 	if (Class == Job_Sorcerer || Class == Job_Sorcerer_T || Class == Job_Baby_Sorcerer) {
-		mes "请和精灵们好好相处吧~应该~！";
+		mes "��;����Ǻú��ദ��~Ӧ��~��";
 		close;
 	}
 	if (BaseLevel < 99 || JobLevel < 50 || SkillPoint != 0) {
-		mes "哇~你是一位年轻的冒险家。我羡慕你。";
+		mes "��~����һλ�����ð�ռҡ�����Ľ�㡣";
 		close;
 	}
 	if (BaseJob != Job_Sage) {
-		mes "啊~我觉得你没必要跟我说话。";
+		mes "��~�Ҿ�����û��Ҫ����˵����";
 		close;
 	}
 	if (job_soc == 0) {
-		mes "欢迎。我能为您提供什么帮助？";
+		mes "��ӭ������Ϊ���ṩʲô������";
 		next;
-		select("你了解魔法师吗？");
-		mes "[优点]";
-		mes "作为一个学者生活不是更舒服吗？法师们忙于与神灵沟通，没有太多时间看书……";
+		select("���˽�ħ��ʦ��");
+		mes "[�ŵ�]";
+		mes "��Ϊһ��ѧ������Ǹ�����𣿷�ʦ��æ�������鹵ͨ��û��̫��ʱ�俴�顭��";
 		next;
-		mes "[优点]";
-		mes "是什么让你想成为一名魔法师？";
+		mes "[�ŵ�]";
+		mes "��ʲô�������Ϊһ��ħ��ʦ��";
 		next;
-		if(select("火之灵带领我来到这里。:水之灵带领我来到这里。:土之灵带领我来到这里:肉之灵带领我来到这里。") == 4) {
-			mes "[优点]";
-			mes "这种精神是不存在的！";
+		if(select("��֮��������������:ˮ֮��������������:��֮���������������:��֮��������������") == 4) {
+			mes "[�ŵ�]";
+			mes "���־����ǲ����ڵģ�";
 			close;
 		}
-		mes "[优点]";
-		mes "我懂了。";
-		mes "你必须生来就有能力看到你已经与神灵沟通，否则你一定是一个出色的骗子。";
+		mes "[�ŵ�]";
+		mes "�Ҷ��ˡ�";
+		mes "������������������������Ѿ������鹵ͨ��������һ����һ����ɫ��ƭ�ӡ�";
 		next;
-		mes "[优点]";
-		mes "嗯……那么首先，你能在这张名单上写下你的名字吗？";
+		mes "[�ŵ�]";
+		mes "�š�����ô���ȣ�����������������д�����������";
 		next;
-		if(select("写名字：我不会。") == 2) {
-			mes "[优点]";
-			mes "好吧，好吧。当你有机会时再次见到你。";
+		if(select("д���֣��Ҳ��ᡣ") == 2) {
+			mes "[�ŵ�]";
+			mes "�ðɣ��ðɡ������л���ʱ�ٴμ����㡣";
 			close;
 		}
-		mes "[优点]";
-		mes "所以，你是[" + strcharinfo(0) + "]。";
+		mes "[�ŵ�]";
+		mes "���ԣ�����[" + strcharinfo(0) + "]��";
 		next;
-		mes "[优点]";
-		mes "请给我一点时间来注册您的名字。";
-		mes "过一会再跟我说话。";
+		mes "[�ŵ�]";
+		mes "�����һ��ʱ����ע���������֡�";
+		mes "��һ���ٸ���˵����";
 		set job_soc,1;
 		close;
 	} else if (job_soc == 1) {
-		mes "好吧，那我就给大家简单介绍一下魔法师吧。";
+		mes "�ðɣ����Ҿ͸���Ҽ򵥽���һ��ħ��ʦ�ɡ�";
 		next;
-		mes "[优点]";
-		mes "[" + strcharinfo(0) + "]，你能熟练运用魔法吗？";
+		mes "[�ŵ�]";
+		mes "[" + strcharinfo(0) + "]��������������ħ����";
 		next;
-		if(select("是的，我可以。:不，我不太擅长。") == 2) {
-			mes "[优点]";
-			mes "什么！？你不知道如何使用魔法吗？";
-			mes "那你来这里做什么？离开这里。现在！";
+		if(select("�ǵģ��ҿ��ԡ�:�����Ҳ�̫�ó���") == 2) {
+			mes "[�ŵ�]";
+			mes "ʲô�����㲻֪�����ʹ��ħ����";
+			mes "������������ʲô���뿪������ڣ�";
 			close;
 		}
-		mes "[优点]";
-		mes "好吧，这应该是显而易见的。";
-		mes "当然，魔法师也使用魔法。但是，你知道魔法师与其他魔法职业的主要区别吗？";
+		mes "[�ŵ�]";
+		mes "�ðɣ���Ӧ�����Զ��׼��ġ�";
+		mes "��Ȼ��ħ��ʦҲʹ��ħ�������ǣ���֪��ħ��ʦ������ħ��ְҵ����Ҫ������";
 		next;
-		switch(select("他们会唱歌。：他们都是老顽固。：他们能对付鬼魂。")) {
+		switch(select("���ǻᳪ�衣�����Ƕ�������̡��������ܶԸ����ꡣ")) {
 		case 1:
-			mes "[优点]";
-			mes "也许有一些，但这不是主要区别。";
+			mes "[�ŵ�]";
+			mes "Ҳ����һЩ�����ⲻ����Ҫ����";
 			close;
 		case 2:
-			mes "[优点]";
-			mes "什么！你怎么敢！！";
+			mes "[�ŵ�]";
+			mes "ʲô������ô�ң���";
 			close;
 		case 3:
 			break;
 		}
-		mes "[优点]";
-		mes "这是正确的。这是魔法师最显着的特征。";
+		mes "[�ŵ�]";
+		mes "������ȷ�ġ�����ħ��ʦ�����ŵ�������";
 		next;
-		mes "[优点]";
-		mes "当想要成为魔法师的人来的时候，我们首先要做的就是检查他们是否可以与灵魂沟通。";
+		mes "[�ŵ�]";
+		mes "����Ҫ��Ϊħ��ʦ��������ʱ����������Ҫ���ľ��Ǽ�������Ƿ��������깵ͨ��";
 		next;
-		mes "[优点]";
-		mes "这就是基本的介绍，所以你只需要决定是否参加资格考试即可。";
+		mes "[�ŵ�]";
+		mes "����ǻ����Ľ��ܣ�������ֻ��Ҫ�����Ƿ�μ��ʸ��Լ��ɡ�";
 		next;
-		mes "[优点]";
-		mes "好吧，这一切都取决于你。你会怎样做？";
+		mes "[�ŵ�]";
+		mes "�ðɣ���һ�ж�ȡ�����㡣�����������";
 		next;
-		switch(select("我要参加考试：我稍后再做。")) {
+		switch(select("��Ҫ�μӿ��ԣ����Ժ�������")) {
 		case 1:
 			if (VIP_SCRIPT) {
 				callfunc "VIP_Third_Class";
@@ -117,216 +119,216 @@ gef_tower,102,34,5	script	Merito	742,{
 				setquest 12096;
 				next;
 			}
-			mes "[优点]";
-			mes "好的。";
-			mes "然后我会把它交给四楼的卡拉卡斯。他将指导您完成测试过程。";
+			mes "[�ŵ�]";
+			mes "�õġ�";
+			mes "Ȼ���һ����������¥�Ŀ�����˹������ָ������ɲ��Թ��̡�";
 			set job_soc,2;
 			setquest 12096;
 			close;
 		case 2:
-			mes "[优点]";
-			mes "什么？我确信你想成为一名魔法师。";
+			mes "[�ŵ�]";
+			mes "ʲô����ȷ�������Ϊһ��ħ��ʦ��";
 			close;
 		}
 	} else {
-		mes "你的测试怎么样？好吧，卡拉卡斯有点懒，所以这可能会打扰你一些...... kkk";
+		mes "��Ĳ�����ô�����ðɣ�������˹�е�������������ܻ������һЩ...... kkk";
 		close;
 	}
 }
 
 gef_tower,113,161,5	script	Karacas	754,{
-	mes "[加拉加斯]";
+	mes "[������˹]";
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
-		mes "哦，看来你的体重太重了。清空你的包然后再来。";
+		mes "Ŷ�������������̫���ˡ������İ�Ȼ��������";
 		close;
 	}
 	if (Class == Job_Sorcerer || Class == Job_Sorcerer_T || Class == Job_Baby_Sorcerer) {
-		mes "你看起来很高兴。祝你旅途愉快。";
+		mes "�㿴�����ܸ��ˡ�ף����;��졣";
 		close;
 	}
 	if (BaseLevel < 99 || JobLevel < 50 || SkillPoint != 0) {
-		mes "有什么我可以为您做的吗？";
+		mes "��ʲô�ҿ���Ϊ��������";
 		close;
 	}
 	if (BaseJob != Job_Sage) {
-		mes "我属于魔法师协会。我不认为你跟我有什么关系。";
+		mes "������ħ��ʦЭ�ᡣ�Ҳ���Ϊ�������ʲô��ϵ��";
 		close;
 	}
 	if (job_soc < 2) {
-		mes "这些天来参观格芬塔的人越来越多。";
+		mes "��Щ�����ι۸��������Խ��Խ�ࡣ";
 		close;
 	} else if (job_soc == 2) {
 		mes "....";
 		next;
-		select("啊……不好意思啊~");
-		mes "[加拉加斯]";
-		mes "……（Zzz~）";
+		select("������������˼��~");
+		mes "[������˹]";
+		mes "������Zzz~��";
 		next;
-		select("嗯嗯！！！~");
-		mes "[加拉加斯]";
-		mes "奥克？";
-		mes "哦，我的...";
+		select("���ţ�����~");
+		mes "[������˹]";
+		mes "�¿ˣ�";
+		mes "Ŷ���ҵ�...";
 		next;
-		mes "[加拉加斯]";
-		mes "呃……你从哪里来？";
+		mes "[������˹]";
+		mes "�����������������";
 		next;
-		select("梅里托叫我来拜访你。");
-		mes "[卡拉卡斯]";
-		mes "我明白了，请给我一点时间。";
-		mes "名单……已经到了。";
+		select("÷���н������ݷ��㡣");
+		mes "[������˹]";
+		mes "�������ˣ������һ��ʱ�䡣";
+		mes "���������Ѿ����ˡ�";
 		next;
-		mes "[加拉加斯]";
-		mes "那么，你是[" + strcharinfo(0) + "]...对吗？";
+		mes "[������˹]";
+		mes "��ô������[" + strcharinfo(0) + "]...����";
 		next;
-		if(select("是的，我是。：不，我不是！") == 2) {
-			mes "[加拉加斯]";
-			mes "哦，我想列表中一定有什么错误。稍后你会再来吗？";
+		if(select("�ǵģ����ǡ��������Ҳ��ǣ�") == 2) {
+			mes "[������˹]";
+			mes "Ŷ�������б���һ����ʲô�����Ժ����������";
 			close;
 		}
-		mes "[加拉加斯]";
-		mes "在你参加魔法师测试之前，让我先给你介绍一下基本信息。";
+		mes "[������˹]";
+		mes "����μ�ħ��ʦ����֮ǰ�������ȸ������һ�»�����Ϣ��";
 		next;
-		mes "[加拉加斯]";
-		mes "获得魔法师报名券的方法非常简单。你只需要去寻找散布在世界各地的每种灵魂，然后将它们的力量转化为某种物质的形状即可。";
+		mes "[������˹]";
+		mes "���ħ��ʦ����ȯ�ķ����ǳ��򵥡���ֻ��ҪȥѰ��ɢ����������ص�ÿ����꣬Ȼ�����ǵ�����ת��Ϊĳ�����ʵ���״���ɡ�";
 		next;
-		mes "[加拉加斯]";
-		mes "听起来很容易，对吧？";
+		mes "[������˹]";
+		mes "�����������ף��԰ɣ�";
 		next;
-		select("啊……先生。这真的可能吗？");
-		mes "[卡拉卡斯]";
-		mes "嗯，一个人不可能遇见每一个灵魂。你需要非常努力地训练自己，才能给灵魂塑造一个形状，并通过你的眼睛清楚地看到它们。";
+		select("����������������Ŀ�����");
+		mes "[������˹]";
+		mes "�ţ�һ���˲���������ÿһ����ꡣ����Ҫ�ǳ�Ŭ����ѵ���Լ������ܸ��������һ����״����ͨ������۾�����ؿ������ǡ�";
 		next;
-		mes "[卡拉卡斯]";
-		mes "所以，通常我们都会向能够感受到神灵的地方进行某种仪式游行。";
+		mes "[������˹]";
+		mes "���ԣ�ͨ�����Ƕ������ܹ����ܵ�����ĵط�����ĳ����ʽ���С�";
 		next;
-		mes "[加拉加斯]";
-		mes "我会告诉你如何做到这一点。所以要仔细听。";
+		mes "[������˹]";
+		mes "�һ���������������һ�㡣����Ҫ��ϸ����";
 		next;
-		mes "[加拉加斯]";
-		mes "通常我们无法用肉眼看到灵魂，但有一种方法可以通过特殊的媒介来认识灵魂的部分。";
+		mes "[������˹]";
+		mes "ͨ�������޷������ۿ�����꣬����һ�ַ�������ͨ�������ý������ʶ���Ĳ��֡�";
 		next;
-		mes "[卡拉卡斯]";
-		mes "例如，如果你带着一定数量的翠风来到风之精灵停留的地方，精灵的反应就会被放大。";
+		mes "[������˹]";
+		mes "���磬��������һ�������Ĵ��������֮����ͣ���ĵط�������ķ�Ӧ�ͻᱻ�Ŵ�";
 		next;
-		mes "[加拉加斯]";
-		mes "同样的，如果你在拥有一定数量的红血的情况下接近火之精灵似乎停留的地方，精灵就会出现不良反应。";
+		mes "[������˹]";
+		mes "ͬ���ģ��������ӵ��һ�������ĺ�Ѫ������½ӽ���֮�����ƺ�ͣ���ĵط�������ͻ���ֲ�����Ӧ��";
 		next;
-		mes "[加拉加斯]";
-		mes "法师就是利用这个基本原理，这是法师达到灵界所需要具备的必备知识。";
+		mes "[������˹]";
+		mes "��ʦ���������������ԭ�������Ƿ�ʦ�ﵽ�������Ҫ�߱��ıر�֪ʶ��";
 		next;
-		select("所以与灵魂交流...");
-		mes "[加拉加斯]";
-		mes "对吧~";
-		mes "这项工作是基于精神力量的。";
+		select("��������꽻��...");
+		mes "[������˹]";
+		mes "�԰�~";
+		mes "������ǻ��ھ��������ġ�";
 		next;
-		mes "[加拉加斯]";
-		mes "嗯，不过对于像你这样只专注于读书的人来说可能很难……";
+		mes "[������˹]";
+		mes "�ţ�����������������ֻרע�ڶ��������˵���ܺ��ѡ���";
 		next;
-		mes "[加拉加斯]";
-		mes "首先，您需要携带考试所需的以下材料。";
+		mes "[������˹]";
+		mes "���ȣ�����ҪЯ��������������²��ϡ�";
 		next;
-		mes "[加拉加斯]";
-		mes "3 翠绿之风。";
-		mes "3 水晶蓝。";
-		mes "3 红血。";
-		mes "3 绿色生活。";
+		mes "[������˹]";
+		mes "3 ����֮�硣";
+		mes "3 ˮ������";
+		mes "3 ��Ѫ��";
+		mes "3 ��ɫ���";
 		next;
-		mes "[加拉加斯]";
-		mes "当你把这些材料带来后，我会告诉你下一步的步骤。";
+		mes "[������˹]";
+		mes "�������Щ���ϴ������һ��������һ���Ĳ��衣";
 		set job_soc,3;
 		changequest 12096,12097;
 		close;
 	} else if (job_soc == 3) {
 		if (countitem(992) > 2 && countitem(991) > 2 && countitem(990) > 2 && countitem(993) > 2) {
-			mes "哦，材料都齐全了。";
+			mes "Ŷ�����϶���ȫ�ˡ�";
 			next;
-			select("接下来我应该做什么？");
-			mes "[加拉加斯]";
-			mes "我现在就告诉你这件事。首先我给大家介绍一下考试地点。你最好把它们写下来。";
+			select("��������Ӧ����ʲô��");
+			mes "[������˹]";
+			mes "�����ھ͸���������¡������Ҹ���ҽ���һ�¿��Եص㡣����ð�����д������";
 			next;
-			mes "[卡拉卡斯]";
-			mes "1. 冰洞一层";
-			mes "2. 雷神火山地下城第一层";
-			mes "3.雷神之锤死坑第三层";
-			mes "4、昆仑地下城第二层";
+			mes "[������˹]";
+			mes "1. ����һ��";
+			mes "2. �����ɽ���³ǵ�һ��";
+			mes "3.����֮�����ӵ�����";
+			mes "4�����ص��³ǵڶ���";
 			next;
-			mes "[加拉加斯]";
-			mes "我们在这4个地方设立了探测杆，让普通人能够与神灵沟通。";
+			mes "[������˹]";
+			mes "��������4���ط�������̽��ˣ�����ͨ���ܹ������鹵ͨ��";
 			next;
-			mes "[加拉加斯]";
-			mes "请注意，只有当你拥有超过一定数量的属性石时，这些探测杆才会被激活。";
+			mes "[������˹]";
+			mes "��ע�⣬ֻ�е���ӵ�г���һ������������ʯʱ����Щ̽��˲Żᱻ���";
 			next;
-			mes "[加拉加斯]";
-			mes "每个属性至少需要准备3块小石头。例如，您需要翠绿之风，而不是狂风。";
+			mes "[������˹]";
+			mes "ÿ������������Ҫ׼��3��Сʯͷ�����磬����Ҫ����֮�磬�����ǿ�硣";
 			next;
-			select("所以我需要属性石...");
-			mes "[卡拉卡斯]";
-			mes "是的，你的思维敏捷！";
+			select("��������Ҫ����ʯ...");
+			mes "[������˹]";
+			mes "�ǵģ����˼ά���ݣ�";
 			next;
-			mes "[加拉加斯]";
-			mes "将石头带到柱子上后，将它们放入附在柱子上的属性分解机中。探测极将被激活，你可以与灵魂进行交流。";
+			mes "[������˹]";
+			mes "��ʯͷ���������Ϻ󣬽����Ƿ��븽�������ϵ����Էֽ���С�̽�⼫�������������������н�����";
 			next;
-			mes "[加拉加斯]";
-			mes "如果成功的话，就可以提取一部分灵气作为试剂。如果失败的话，属性石就会碎裂。";
+			mes "[������˹]";
+			mes "����ɹ��Ļ����Ϳ�����ȡһ����������Ϊ�Լ������ʧ�ܵĻ�������ʯ�ͻ����ѡ�";
 			next;
-			mes "[卡拉卡斯]";
-			mes "当然，如果运气好的话，如果失败了，翠风可以变成狂风……嗯，这种情况不常见，暂时不讨论。";
+			mes "[������˹]";
+			mes "��Ȼ����������õĻ������ʧ���ˣ������Ա�ɿ�硭���ţ������������������ʱ�����ۡ�";
 			next;
-			select("如果我的石头用完了怎么办？");
-			mes "[加拉加斯]";
-			mes "啊哈哈哈……属性石用完了，就得再弄点。";
+			select("����ҵ�ʯͷ��������ô�죿");
+			mes "[������˹]";
+			mes "����������������ʯ�����ˣ��͵���Ū�㡣";
 			next;
-			mes "[加拉加斯]";
-			mes "所以参加这个测试的人一般都是一开始就带着尽可能多的属性石。我告诉你的金额只是最低限度。";
+			mes "[������˹]";
+			mes "���Բμ�������Ե���һ�㶼��һ��ʼ�ʹ��ž����ܶ������ʯ���Ҹ�����Ľ��ֻ������޶ȡ�";
 			next;
-			mes "[卡拉卡斯]";
-			mes "如果你是高级魔法师，你将能够与灵魂交谈，而无需再次经历这个过程。但初学者需要使用这种媒介来与他们交谈。";
+			mes "[������˹]";
+			mes "������Ǹ߼�ħ��ʦ���㽫�ܹ�����꽻̸���������ٴξ���������̡�����ѧ����Ҫʹ������ý���������ǽ�̸��";
 			next;
-			select("那么试剂是……？");
-			mes "[卡拉卡斯]";
-			mes "我们不知道哪种试剂将由烈酒制成。它因精神状态而异。";
+			select("��ô�Լ��ǡ�����");
+			mes "[������˹]";
+			mes "���ǲ�֪�������Լ������Ҿ��Ƴɡ�������״̬���졣";
 			next;
-			mes "[加拉加斯]";
-			mes "当你成功获得3种不同的试剂后，你就可以回来了。";
+			mes "[������˹]";
+			mes "����ɹ����3�ֲ�ͬ���Լ�����Ϳ��Ի����ˡ�";
 			next;
-			mes "[加拉加斯]";
-			mes "一种烈酒制作的试剂不会超过2种，所以如果你要制作3种试剂，我建议你多去几个地方。";
+			mes "[������˹]";
+			mes "һ���Ҿ��������Լ����ᳬ��2�֣����������Ҫ����3���Լ����ҽ������ȥ�����ط���";
 			next;
-			mes "[卡拉卡斯]";
-			mes "有任何疑问吗？";
+			mes "[������˹]";
+			mes "���κ�������";
 			next;
-			if(select("否：请再解释一下。") == 2) {
-				mes "[卡拉卡斯]";
-				mes "哈哈，那我可以喝杯水吗？请稍后再来找我。";
+			if(select("�����ٽ���һ�¡�") == 2) {
+				mes "[������˹]";
+				mes "���������ҿ��Ժȱ�ˮ�����Ժ��������ҡ�";
 				next;
 			}
-			mes "[卡拉卡斯]";
-			mes "然后我会很快写下我总结的进展。等待...";
+			mes "[������˹]";
+			mes "Ȼ���һ�ܿ�д�����ܽ�Ľ�չ���ȴ�...";
 			next;
-			mes "^000099你得到了一张纸，上面写着与灵魂交流的方式。欲了解更多信息，请打开您的任务窗口^000000。";
+			mes "^000099��õ���һ��ֽ������д������꽻���ķ�ʽ�����˽������Ϣ������������񴰿�^000000��";
 			set job_soc,4;
 			changequest 12097,12098;
 			close;
 		}
-		mes "在我告诉您进展方式之前，您需要携带一些必需的材料。";
+		mes "���Ҹ�������չ��ʽ֮ǰ������ҪЯ��һЩ����Ĳ��ϡ�";
 		next;
-		mes "[加拉加斯]";
-		mes "3 翠绿之风。";
-		mes "3 水晶蓝。";
-		mes "3 红血。";
-		mes "3 绿色生活。";
+		mes "[������˹]";
+		mes "3 ����֮�硣";
+		mes "3 ˮ������";
+		mes "3 ��Ѫ��";
+		mes "3 ��ɫ���";
 		next;
-		mes "[加拉加斯]";
-		mes "当你带上这些基本的东西后，我将引导你进行下一步。";
+		mes "[������˹]";
+		mes "���������Щ�����Ķ������ҽ������������һ����";
 		close;
 	} else if (job_soc == 4) {
 		if (countitem(6276) && countitem(6278) && countitem(6277)) {
-			mes "哇~你的手艺真好。";
-			mes "我以为你会被鬼魂压倒，没想到你竟然得到了有效的药物！";
+			mes "��~���������á�";
+			mes "����Ϊ��ᱻ����ѹ����û�뵽�㾹Ȼ�õ�����Ч��ҩ�";
 			next;
-			select("这就是我需要做的全部吗？");
-			mes "[加拉加斯]";
-			mes "干得好。首先我会整理灵药，请稍等。";
+			select("���������Ҫ����ȫ����");
+			mes "[������˹]";
+			mes "�ɵúá������һ�������ҩ�����Եȡ�";
 			delitem 6276,1; //Clear_Reagent
 			delitem 6278,1; //Black_Reagent
 			delitem 6277,1; //Red_Reagent
@@ -334,47 +336,47 @@ gef_tower,113,161,5	script	Karacas	754,{
 			completequest 12098;
 			close;
 		}
-		mes "与神灵沟通想要达到预期的效果并不是一件容易的事情。";
+		mes "�����鹵ͨ��Ҫ�ﵽԤ�ڵ�Ч��������һ�����׵����顣";
 		next;
-		mes "[加拉加斯]";
-		mes "不要放弃，继续努力~";
+		mes "[������˹]";
+		mes "��Ҫ����������Ŭ��~";
 		close;
 	} else if (job_soc == 5) {
-		mes "原本我的老师需要检查魔法师转职的情况，但是他出去寻找鱼灵后，我就看不到他了。所以我自己检查一下。";
+		mes "ԭ���ҵ���ʦ��Ҫ���ħ��ʦתְ���������������ȥѰ��������ҾͿ��������ˡ��������Լ����һ�¡�";
 		next;
-		mes "[卡拉卡斯]";
-		mes "亲爱的[" + strcharinfo(0) + "]，";
-		mes "你穿越了崎岖的荒野，打开了魔法师的大门，并通过了我们学院给出的所有要求。";
+		mes "[������˹]";
+		mes "�װ���[" + strcharinfo(0) + "]��";
+		mes "�㴩Խ����᫵Ļ�Ұ������ħ��ʦ�Ĵ��ţ���ͨ��������ѧԺ����������Ҫ��";
 		next;
-		mes "[加拉加斯]";
-		mes "当然，这只是一个开始，我们不知道你将与哪个灵魂交流，也不知道等待你的将是怎样的磨难。";
+		mes "[������˹]";
+		mes "��Ȼ����ֻ��һ����ʼ�����ǲ�֪���㽫���ĸ���꽻����Ҳ��֪���ȴ���Ľ���������ĥ�ѡ�";
 		next;
-		mes "[加拉加斯]";
-		mes "但以你迄今为止所表现出的能力，从现在开始你将有能力做任何事情。亲爱的[" + strcharinfo(0) + "]";
+		mes "[������˹]";
+		mes "����������Ϊֹ�����ֳ��������������ڿ�ʼ�㽫���������κ����顣�װ���[" + strcharinfo(0) + "]";
 		next;
-		mes "[力量]";
+		mes "[����]";
 		if (BaseLevel < 99 || JobLevel < 50 || SkillPoint) {
-			mes "在我给你指定需要的工作之前，请先检查一下你自己的身体状况。";
+			mes "���Ҹ���ָ����Ҫ�Ĺ���֮ǰ�����ȼ��һ�����Լ�������״����";
 			next;
-			mes "[力量]";
-			mes "在接受新工作之前，您现在必须掌握工作礼仪！";
+			mes "[����]";
+			mes "�ڽ����¹���֮ǰ�������ڱ������չ������ǣ�";
 			close;
 		}
 		if (ismounting()) {
-			mes "好，在我们开始之前...";
-			mes "请解除你的骑乘宠物的装备~";
+			mes "�ã������ǿ�ʼ֮ǰ...";
+			mes "���������˳����װ��~";
 			close;
 		}
-		mes "而且，我正式承认你已经完成了魔法学院的所有转职测试。";
+		mes "���ң�����ʽ�������Ѿ������ħ��ѧԺ������תְ���ԡ�";
 		next;
-		mes "[卡拉卡斯]";
-		mes "恭喜，[" + strcharinfo(0) + "]";
+		mes "[������˹]";
+		mes "��ϲ��[" + strcharinfo(0) + "]";
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		getitem 5756,1; //Wind_Whisper
 		getitem 2795,1; //Green_Apple_Ring
 		next;
-		mes "[加拉加斯]";
-		mes "我希望你从现在开始与灵魂有更多的交流。";
+		mes "[������˹]";
+		mes "��ϣ��������ڿ�ʼ������и���Ľ�����";
 		close;
 	}
 }
@@ -391,33 +393,33 @@ gef_tower,113,161,5	script	Karacas	754,{
 		set .@soc_ran, rand(1,70);
 		if (.@soc_ran < 10) {
 			if (countitem(.@id[2]) == 0) {
-				mes "你通过与看不见的灵魂交流而获得了试剂。";
+				mes "��ͨ���뿴��������꽻����������Լ���";
 				getitem .@id[2],1; //Clear_Reagent,Black_Reagent,Red_Reagent
 				close;
 			}
-			mes "看起来你并没有从精灵身上得到什么特别的东西。";
+			mes "�������㲢û�дӾ������ϵõ�ʲô�ر�Ķ�����";
 			close;
 		} else if (.@soc_ran > 9 && .@soc_ran < 16) {
 			if (countitem(.@id[3]) == 0) {
-				mes "你通过与看不见的灵魂交流而获得了试剂。";
+				mes "��ͨ���뿴��������꽻����������Լ���";
 				getitem .@id[3],1; //Clear_Reagent,Black_Reagent,Red_Reagent
 				close;
 			}
-			mes "看起来你并没有从精灵身上得到什么特别的东西。";
+			mes "�������㲢û�дӾ������ϵõ�ʲô�ر�Ķ�����";
 			close;
 		} else if (.@soc_ran == 56) {
-			mes "神灵将属性石组合成一块巨大的属性石。";
+			mes "���齫����ʯ��ϳ�һ��޴������ʯ��";
 			getitem .@id[1],1; //Flame_Heart,Mistic_Frozen,Great_Nature,Rough_Wind
 			close;
 		} else {
-			mes "你使用了属性石，但看起来你无法与神灵沟通。";
+			mes "��ʹ��������ʯ�������������޷������鹵ͨ��";
 			close;
 		}
 	}
-	mes "我可以看到魔法师联盟设置的用于与精灵沟通的探测人员。";
+	mes "�ҿ��Կ���ħ��ʦ�������õ������뾫�鹵ͨ��̽����Ա��";
 	if (job_soc == 4 && countitem(.@id[0]) < 3) {
 		next;
-		mes "如果你有合适的属性石，应该可以与神灵沟通。";
+		mes "������к��ʵ�����ʯ��Ӧ�ÿ��������鹵ͨ��";
 	}
 	close;
 }

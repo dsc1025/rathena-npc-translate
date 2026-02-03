@@ -6,80 +6,82 @@
 //= 1.0 Initial release for Renewal [L0ne_W0lf]
 //= 1.1 Optimized. [Euphy]
 //= 1.2 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 	cutin "ein_soldier",2;
-	mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-	mes "æ¬¢è¿æ¥åˆ°^8B4513Lighthalzen^000000ï¼Œ";
-	mes "Error 500 (Server Error)!!1500.Thatâ€™s an error.There was an error. Please try again later.Thatâ€™s all we know.";
-	mes "å¦‚æœæ‚¨éœ€è¦ä»»ä½•æŒ‡å¯¼";
-	mes "åŸå¸‚å‘¨è¾¹ï¼Œéšæ„";
-	mes "æ¥é—®æˆ‘ï¼Œæˆ‘ä¼šåšæˆ‘çš„";
-	mes "æœ€å¥½èƒ½å¸®åŠ©ä½ ã€‚";
+	mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+	mes "»¶Ó­À´µ½^8B4513Lighthalzen^000000£¬";
+	mes "Error 500 (Server Error)!!1500.That¡¯s an error.There was an error. Please try again later.That¡¯s all we know.";
+	mes "Èç¹ûÄúĞèÒªÈÎºÎÖ¸µ¼";
+	mes "³ÇÊĞÖÜ±ß£¬ËæÒâ";
+	mes "À´ÎÊÎÒ£¬ÎÒ»á×öÎÒµÄ";
+	mes "×îºÃÄÜ°ïÖúÄã¡£";
 	next;
-	mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-	mes "è¯·æ³¨æ„æˆ‘æ˜¯";
-	mes "è´Ÿè´£æä¾›ä¿¡æ¯";
-	mes "å…³äºè¥¿åŒº";
-	mes "^8B4513Lighthalzen^000000ã€‚ç°åœ¨ï¼Œè¯·";
-	mes "é€‰æ‹©æ‚¨è¦çš„ä½ç½®";
-	mes "å–œæ¬¢äº†è§£æ›´å¤šã€‚";
-	F_Navi("[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]");
+	mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+	mes "Çë×¢ÒâÎÒÊÇ";
+	mes "¸ºÔğÌá¹©ĞÅÏ¢";
+	mes "¹ØÓÚÎ÷Çø";
+	mes "^8B4513Lighthalzen^000000¡£ÏÖÔÚ£¬Çë";
+	mes "Ñ¡ÔñÄúÒªµÄÎ»ÖÃ";
+	mes "Ï²»¶ÁË½â¸ü¶à¡£";
+	F_Navi("[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]");
 	next;
 	while (1) {
-		switch(select("[ä¸»è¦è®¾æ–½]ï¼š[å•†äººå’ŒåŠ©æ‰‹]ï¼šä»å°åœ°å›¾ä¸Šåˆ é™¤æ ‡è®°ï¼šå–æ¶ˆ")) {
+		switch(select("[Ö÷ÒªÉèÊ©]£º[ÉÌÈËºÍÖúÊÖ]£º´ÓĞ¡µØÍ¼ÉÏÉ¾³ı±ê¼Ç£ºÈ¡Ïû")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[é…’åº—]ï¼š[é“¶è¡Œ]ï¼š[æœºåœº]ï¼š[æ­¦å™¨åº—]ï¼š[ç™¾è´§å•†åº—]ï¼š[è­¦å¯Ÿå±€]ï¼š[ç å®åº—]:[ Cool Event Corp. ]:[ äººä½“å­¦å®éªŒå®¤ ]:[ ç‚¼é‡‘æœ¯å£«åä¼š ]:ä¸Šä¸€é¡µèœå•")) {
+				switch(select("[¾Æµê]£º[ÒøĞĞ]£º[»ú³¡]£º[ÎäÆ÷µê]£º[°Ù»õÉÌµê]£º[¾¯²ì¾Ö]£º[Öé±¦µê]:[ Cool Event Corp. ]:[ ÈËÌåÑ§ÊµÑéÊÒ ]:[ Á¶½ğÊõÊ¿Ğ­»á ]:ÉÏÒ»Ò³²Ëµ¥")) {
 				case 1:
-					callsub L_Mark, F_Navi("é…’åº—","lighthalzen,159,133","^FF0000");
+					callsub L_Mark, F_Navi("¾Æµê","lighthalzen,159,133","^FF0000");
 					viewpoint 1,160,217,0,0xFF0000;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("é“¶è¡Œ","lighthalzen,203,257","^FF4500");
+					callsub L_Mark, F_Navi("ÒøĞĞ","lighthalzen,203,257","^FF4500");
 					viewpoint 1,203,257,1,0xFF4500;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("é£æœºåœº","lighthalzen,262,75","^DAA520");
+					callsub L_Mark, F_Navi("·É»ú³¡","lighthalzen,262,75","^DAA520");
 					viewpoint 1,262,75,2,0xDAA520;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("æ­¦å™¨åº—","lighthalzen,194,35","^7B68EE");
+					callsub L_Mark, F_Navi("ÎäÆ÷µê","lighthalzen,194,35","^7B68EE");
 					viewpoint 1,194,35,3,0x7B68EE;
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("ç™¾è´§å•†åº—","lighthalzen,199,164","^B91A4D");
+					callsub L_Mark, F_Navi("°Ù»õÉÌµê","lighthalzen,199,164","^B91A4D");
 					viewpoint 1,202,106,4,0xB91A4D;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("è­¦å¯Ÿå±€","lighthalzen,234,276","^008000");
+					callsub L_Mark, F_Navi("¾¯²ì¾Ö","lighthalzen,234,276","^008000");
 					viewpoint 1,234,276,5,0x008000;
 					next;
 					break;
 				case 7:
-					callsub L_Mark, F_Navi("ç å®åº—","lighthalzen,96,110","^0000FF");
+					callsub L_Mark, F_Navi("Öé±¦µê","lighthalzen,96,110","^0000FF");
 					viewpoint 1,96,110,6,0x0000FF;
 					next;
 					break;
 				case 8:
-					callsub L_Mark, F_Navi("é…·äº‹ä»¶å…¬å¸","lighthalzen,238,217","^000080");
+					callsub L_Mark, F_Navi("¿áÊÂ¼ş¹«Ë¾","lighthalzen,238,217","^000080");
 					viewpoint 1,238,217,7,0x000080;
 					next;
 					break;
 				case 9:
-					callsub L_Mark, F_Navi("èº¯ä½“å­¦å®éªŒå®¤","lighthalzen,101,243","^800080");
+					callsub L_Mark, F_Navi("ÇûÌåÑ§ÊµÑéÊÒ","lighthalzen,101,243","^800080");
 					viewpoint 1,101,243,8,0x800080;
 					next;
 					break;
 				case 10:
-					callsub L_Mark, F_Navi("ç‚¼é‡‘æœ¯å£«åä¼š","lighthalzen,54,132","^0A9696");
+					callsub L_Mark, F_Navi("Á¶½ğÊõÊ¿Ğ­»á","lighthalzen,54,132","^0A9696");
 					viewpoint 1,54,132,9,0x0A9696;
 					next;
 					break;
@@ -92,30 +94,30 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Armsmith ]:[ Seiayablem ]:[ å® ç‰©ç¾å®¹å¸ˆ ]:[ Kafra å‘˜å·¥ ]:[ Cool Event Corp å‘˜å·¥ ]:ä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[ Armsmith ]:[ Seiayablem ]:[ ³èÎïÃÀÈİÊ¦ ]:[ Kafra Ô±¹¤ ]:[ Cool Event Corp Ô±¹¤ ]:ÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
-					mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-					mes "ä½ å¯ä»¥å»å¯Œå‹’ï¼Œ";
-					mes "^0A9696é˜¿å§†å²å¯†æ–¯^000000";
-					mes "æ­¦å™¨åº—ä¸€æ¥¼ã€‚";
+					mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+					mes "Äã¿ÉÒÔÈ¥¸»ÀÕ£¬";
+					mes "^0A9696°¢Ä·Ê·ÃÜË¹^000000";
+					mes "ÎäÆ÷µêÒ»Â¥¡£";
 					viewpoint 1,194,35,10,0x0A9696;
 					next;
 					callsub L_Mark, "^0A9696Armsmith^000000";
 					next;
 					break;
 				case 2:
-					mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-					mes "^4B0082Seiyablem^000000 æ·»åŠ ";
-					mes "æ‚¨ç‰©å“ä¸Šçš„æ’åº§";
-					mes "åœ¨ä¸€æ¥¼";
-					mes "æ­¦å™¨åº—çš„ã€‚";
+					mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+					mes "^4B0082Seiyablem^000000 Ìí¼Ó";
+					mes "ÄúÎïÆ·ÉÏµÄ²å×ù";
+					mes "ÔÚÒ»Â¥";
+					mes "ÎäÆ÷µêµÄ¡£";
 					viewpoint 1,194,35,11,0x4B0082;
 					next;
 					callsub L_Mark, "^4B0082Seiyablem^000000",1;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("å® ç‰©ç¾å®¹å¸ˆ","lighthalzen,222,191","^FF4500");
+					callsub L_Mark, F_Navi("³èÎïÃÀÈİÊ¦","lighthalzen,222,191","^FF4500");
 					viewpoint 1,222,191,12,0xFF4500;
 					next;
 					break;
@@ -126,7 +128,7 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("Cool Event å…¬å¸å‘˜å·¥","lighthalzen,94,247","^FF1493");
+					callsub L_Mark, F_Navi("Cool Event ¹«Ë¾Ô±¹¤","lighthalzen,94,247","^FF1493");
 					viewpoint 1,94,247,15,0xFF1493;
 					next;
 					break;
@@ -137,9 +139,9 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 			}
 			break;
 		case 3:
-			mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-			mes "å½“ç„¶ï¼Œæˆ‘ä¼šä»ä½ çš„å°åœ°å›¾ä¸Šåˆ é™¤æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+			mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+			mes "µ±È»£¬ÎÒ»á´ÓÄãµÄĞ¡µØÍ¼ÉÏÉ¾³ıËùÓĞ±ê¼Ç¡£";
+			mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 			viewpoint 2,160,217,0,0xFFFFFF;
 			viewpoint 2,203,257,1,0xFFFFFF;
 			viewpoint 2,262,75,2,0xFFFFFF;
@@ -159,8 +161,8 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 			next;
 			break;
 		case 4:
-			mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-			mes "äº«å—ä½ çš„å†’é™©å§ï¼";
+			mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+			mes "ÏíÊÜÄãµÄÃ°ÏÕ°É£¡";
 			close2;
 			cutin "ein_soldier",255;
 			end;
@@ -168,11 +170,11 @@ lighthalzen,207,310,5	script	Lighthalzen Guide#lhz01::GuideLighthalzen	852,{
 	}
 	end;
 L_Mark:
-	mes "[è±ç‰¹å“ˆå°”æ£®æŒ‡å—]";
-	mes "æˆ‘ä¼šæ ‡è®°ä½ç½®";
-	mes "çš„"+((getarg(1,0))?"":"è¿™")+getarg(0);
-	mes "åœ¨ä½ çš„å°åœ°å›¾ä¸Šã€‚";
-	mes "æ‚¨æƒ³æŸ¥çœ‹å…¶ä»–åœ°ç‚¹å—ï¼Ÿ";
+	mes "[À³ÌØ¹ş¶ûÉ­Ö¸ÄÏ]";
+	mes "ÎÒ»á±ê¼ÇÎ»ÖÃ";
+	mes "µÄ"+((getarg(1,0))?"":"Õâ")+getarg(0);
+	mes "ÔÚÄãµÄĞ¡µØÍ¼ÉÏ¡£";
+	mes "ÄúÏë²é¿´ÆäËûµØµãÂğ£¿";
 	return;
 }
 lighthalzen,220,310,3	duplicate(GuideLighthalzen)	Lighthalzen Guide#lhz02	852

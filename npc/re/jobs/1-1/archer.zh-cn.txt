@@ -11,119 +11,121 @@
 //===== Additional Comments: ================================= 
 //= 1.0 First Version. [Kisuka]
 //= 1.1 Added support for Baby classes. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 payon_in02,64,71,4	script	Archer Guildsman#archer	85,{
 	if (Upper == 1) {
 		if (Class == Job_Novice_High && (ADVJOB == Job_Sniper || ADVJOB == Job_Clown || ADVJOB == Job_Gypsy)) {
-			mes "[弓箭手公会成员]";
-			mes "嘿，我认识你。";
-			mes "你参加了这个测试";
-			mes "以前，不是吗？";
+			mes "[�����ֹ����Ա]";
+			mes "�٣�����ʶ�㡣";
+			mes "��μ����������";
+			mes "��ǰ��������";
 			next;
-			mes "[弓箭手公会成员]";
-			mes "啊，你一定是";
-			mes "前往瓦尔哈拉并获得重生。";
-			mes "哇，太令人印象深刻了！";
+			mes "[�����ֹ����Ա]";
+			mes "������һ����";
+			mes "ǰ���߶����������������";
+			mes "�ۣ�̫����ӡ������ˣ�";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[弓箭手公会成员]";
-				mes "犯错...";
-				mes "在成为弓箭手之前，你最好先学习所有的基本技能。";
+				mes "[�����ֹ����Ա]";
+				mes "����...";
+				mes "�ڳ�Ϊ������֮ǰ���������ѧϰ���еĻ������ܡ�";
 				next;
-				mes "[弓箭手公会成员]";
-				mes "好的，稍后见。";
+				mes "[�����ֹ����Ա]";
+				mes "�õģ��Ժ����";
 				close;
 			}
-			mes "[弓箭手公会成员]";
-			mes "那么好吧。我不";
-			mes "还需要说什么吗。";
-			mes "我知道你会成为一名出色的弓箭手...";
+			mes "[�����ֹ����Ա]";
+			mes "��ô�ðɡ��Ҳ�";
+			mes "����Ҫ˵ʲô��";
+			mes "��֪������Ϊһ����ɫ�Ĺ�����...";
 			next;
 			skill "NV_TRICKDEAD",0,SKILL_PERM;
 			jobchange Job_Archer_high;
 			skill "AC_MAKINGARROW",1,SKILL_PERM;
 			skill "AC_CHARGEARROW",1,SKILL_PERM;
-			mes "[弓箭手公会成员]";
-			mes "虽然没有什么特别的";
-			mes "这次给你的奖励，希望你能理解。照顾好你自己。";
+			mes "[�����ֹ����Ա]";
+			mes "��Ȼû��ʲô�ر��";
+			mes "��θ���Ľ�����ϣ���������⡣�չ˺����Լ���";
 			close;
 		}else{
-			mes "[弓箭手公会成员]";
-			mes "哦...？";
-			mes "嘿，什么是";
-			mes "你在这里做什么...？";
+			mes "[�����ֹ����Ա]";
+			mes "Ŷ...��";
+			mes "�٣�ʲô��";
+			mes "����������ʲô...��";
 			next;
-			mes "[弓箭手公会成员]";
-			mes "我看得出你不适合当弓箭手。感觉就像你注定要做的那样";
-			mes "还有别的东西...";
+			mes "[�����ֹ����Ա]";
+			mes "�ҿ��ó��㲻�ʺϵ������֡��о�������ע��Ҫ��������";
+			mes "���б�Ķ���...";
 			close;
 		}
 	}
-	mes "[弓箭手公会成员]";
-	mes "很高兴见到你。我可以怎样帮助您？";
+	mes "[�����ֹ����Ա]";
+	mes "�ܸ��˼����㡣�ҿ���������������";
 	next;
-	switch(select("我想成为一名弓箭手。：请满足我的要求。：没什么，谢谢。")) {
+	switch(select("�����Ϊһ�������֡����������ҵ�Ҫ�󡣣�ûʲô��лл��")) {
 	case 1:
-		mes "[弓箭手公会成员]";
+		mes "[�����ֹ����Ա]";
 		if(BaseJob != Job_Novice) {
 			if(BaseJob == Job_Archer)
-				mes "哈哈，你开玩笑吧……";
+				mes "�������㿪��Ц�ɡ���";
 			else {
-				mes "我感到抱歉，但只有新手才能换工作。";
-				mes "你已经有自己的体面工作了，不是吗？";
+				mes "�Ҹе���Ǹ����ֻ�����ֲ��ܻ�������";
+				mes "���Ѿ����Լ������湤���ˣ�������";
 			}
 			close;
 		}else{
-			mes "你是……"+strcharinfo(0)+"，对吧？";
+			mes "���ǡ���"+strcharinfo(0)+"���԰ɣ�";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[弓箭手公会成员]";
-				mes "好吧，你的技能水平不合适。";
-				mes "您的工作级别必须至少为 ^4A4AFF10^000000 并且您的基本技能级别应达到 ^4A4AFF 9 级";
+				mes "[�����ֹ����Ա]";
+				mes "�ðɣ���ļ���ˮƽ�����ʡ�";
+				mes "���Ĺ��������������Ϊ ^4A4AFF10^000000 �������Ļ������ܼ���Ӧ�ﵽ ^4A4AFF 9 ��";
 				next;
-				mes "[弓箭手公会成员]";
-				mes "因为弓箭手需要极高的专注力，所以我们不接受缺乏耐心的人。";
+				mes "[�����ֹ����Ա]";
+				mes "��Ϊ��������Ҫ���ߵ�רע�����������ǲ�����ȱ�����ĵ��ˡ�";
 				close;
 			}
-			mes "[弓箭手公会成员]";
-			mes "现在你的基本技能已经足够了..";
-			mes "....嗯~~所以你现在已经准备好成为一名弓箭手了。我会立即迈出这一步。";
+			mes "[�����ֹ����Ա]";
+			mes "������Ļ��������Ѿ��㹻��..";
+			mes "....��~~�����������Ѿ�׼���ó�Ϊһ���������ˡ��һ�����������һ����";
 			next;
-			mes "[弓箭手公会成员]";
-			mes "恭喜！你现在是弓箭手了！同时也希望大家能够积极参与到弓箭手公会的复兴活动中来。";
-			mes "啊，生产部的东西已经到了。来，拿着这些！这些都是你的！";
+			mes "[�����ֹ����Ա]";
+			mes "��ϲ���������ǹ������ˣ�ͬʱҲϣ������ܹ��������뵽�����ֹ���ĸ��˻������";
+			mes "�����������Ķ����Ѿ����ˡ�����������Щ����Щ������ģ�";
 			callfunc "Job_Change",Job_Archer;
 			getitem 1742,1;	// N_Composite_Bow
 			getitem 12004,1;	// Arrow_Container
 			getitem 12009,1;	// Silver_Arrow_Container
 			getitem 12008,1;	// Fire_Arrow_Container
 			next;
-			mes "[弓箭手公会成员]";
-			mes "有了弓箭，你就成为了真正的弓箭手。";
-			mes "如果你打开箭头容器，里面有箭头，然后你可以装备它们。";
-			mes "好吧，我期待从你那里听到更好的消息。是时候说再见了。";
-			mes "再见。";
+			mes "[�����ֹ����Ա]";
+			mes "���˹�������ͳ�Ϊ�������Ĺ����֡�";
+			mes "�����򿪼�ͷ�����������м�ͷ��Ȼ�������װ�����ǡ�";
+			mes "�ðɣ����ڴ����������������õ���Ϣ����ʱ��˵�ټ��ˡ�";
+			mes "�ټ���";
 			close;
 		}
 	case 2:
-		mes "[弓箭手公会成员]";
-		mes "弓箭手拥有使用弓的技能并拥有各种天赋。";
-		mes "弓箭手最大的能力就是远距离攻击敌人。";
+		mes "[�����ֹ����Ա]";
+		mes "������ӵ��ʹ�ù��ļ��ܲ�ӵ�и����츳��";
+		mes "������������������Զ���빥�����ˡ�";
 		next;
-		mes "[弓箭手公会成员]";
-		mes "弓箭手虽然生命值较弱，但可以远距离射击敌人，";
-		mes "所以弓箭手在真正的战斗中更安全。";
+		mes "[�����ֹ����Ա]";
+		mes "��������Ȼ����ֵ������������Զ����������ˣ�";
+		mes "���Թ�������������ս���и���ȫ��";
 		next;
-		mes "[弓箭手公会成员]";
-		mes "《仙境传说》中的弓箭手虽然生命值较低，但其精准度和攻击率较高，可以在怪物靠近弓箭手之前将其杀死。";
+		mes "[�����ֹ����Ա]";
+		mes "���ɾ���˵���еĹ�������Ȼ����ֵ�ϵͣ����侫׼�Ⱥ͹����ʽϸߣ������ڹ��￿��������֮ǰ����ɱ����";
 		next;
-		mes "[弓箭手公会成员]";
-		mes "^8C2121弓箭手可以转职为猎人。^000000";
-		mes "^8C2121除了猎人之外，如果你是男性，你可以转职为吟游诗人，如果你是女性，你可以转职为舞者。^000000";
+		mes "[�����ֹ����Ա]";
+		mes "^8C2121�����ֿ���תְΪ���ˡ�^000000";
+		mes "^8C2121��������֮�⣬����������ԣ������תְΪ����ʫ�ˣ��������Ů�ԣ������תְΪ���ߡ�^000000";
 		close;
 	case 3:
-		mes "[弓箭手公会成员]";
-		mes "如果您有任何疑问，请随时来问我。";
+		mes "[�����ֹ����Ա]";
+		mes "��������κ����ʣ�����ʱ�����ҡ�";
 		close;
 	}
 }

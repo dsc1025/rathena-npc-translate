@@ -14,6 +14,8 @@
 //= 1.0 First version.
 //= 1.1 Added 'is_clientver' command. [Euphy]
 //= 1.2 Dropped 'is_clientver' command. [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 function	script	F_Navi	{
@@ -29,7 +31,7 @@ function	script	F_Navi	{
 		if (!.@disabled) {
 			next;
 			mes getarg(0);
-			mes "å½“æ‚¨ç‚¹å‡»^B9062F[ä½ç½®åç§°]^000000æ—¶ï¼Œæ‚¨å°†æ”¶åˆ°æœ€å…ˆè¿›çš„^B9062Få¯¼èˆª^000000æœåŠ¡ï¼";
+			mes "µ±Äúµã»÷^B9062F[Î»ÖÃÃû³Æ]^000000Ê±£¬Äú½«ÊÕµ½×îÏÈ½øµÄ^B9062Fµ¼º½^000000·şÎñ£¡";
 		}
 		return;
 	default: // Display navigation link, if enabled; else set text color, if available.

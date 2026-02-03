@@ -13,56 +13,58 @@
 //= 1.0 First version, Renewal guide.
 //= 1.1 Optimized. [Euphy]
 //= 1.2 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 gonryun,163,60,4	script	Kunlun Guide#01gonryun	780,{
 	mes "[He Yuen Zhe]";
 	mes "Ni Hao!";
-	mes "æ¬¢è¿æ¥åˆ°^8B4513æ˜†ä»‘^000000>~";
-	mes "å››å¤„èµ°èµ°ï¼Œä½“éªŒä¸€ä¸‹";
-	mes "å¤è€çš„å†å²å’Œä¼ ç»Ÿ";
-	mes "æˆ‘ä»¬ä»¤äººå¹ä¸ºè§‚æ­¢çš„åŸå¸‚ã€‚";
+	mes "»¶Ó­À´µ½^8B4513À¥ÂØ^000000>~";
+	mes "ËÄ´¦×ß×ß£¬ÌåÑéÒ»ÏÂ";
+	mes "¹ÅÀÏµÄÀúÊ·ºÍ´«Í³";
+	mes "ÎÒÃÇÁîÈËÌ¾Îª¹ÛÖ¹µÄ³ÇÊĞ¡£";
 	next;
 	mes "[He Yuen Zhe]";
-	mes "æˆ‘æœ‰è´£ä»»å¸®åŠ©ä½ ";
-	mes "å¦‚æœæ‚¨æœ‰ä»»ä½•ç–‘é—®ã€‚";
-	mes "æœ‰ä»€ä¹ˆé—®é¢˜è¯·éšæ—¶é—®æˆ‘ã€‚";
+	mes "ÎÒÓĞÔğÈÎ°ïÖúÄã";
+	mes "Èç¹ûÄúÓĞÈÎºÎÒÉÎÊ¡£";
+	mes "ÓĞÊ²Ã´ÎÊÌâÇëËæÊ±ÎÊÎÒ¡£";
 	F_Navi("[He Yuen Zhe]");
 	while (1) {
 		next;
-		switch(select("[å¡å¤«æ‹‰å‘˜å·¥]ï¼š[é…‹é•¿å®˜é‚¸]ï¼š[å·¥å…·ç»é”€å•†]ï¼š[æ­¦å™¨ç»é”€å•†]ï¼š[ç›”ç”²ç»é”€å•†]ï¼š[é…¿é…’å¸ˆ]:[æ˜†ä»‘ä½¿]:ç§»é™¤å°åœ°å›¾æ ‡è®°ï¼šå–æ¶ˆ")) {
+		switch(select("[¿¨·òÀ­Ô±¹¤]£º[Çõ³¤¹ÙÛ¡]£º[¹¤¾ß¾­ÏúÉÌ]£º[ÎäÆ÷¾­ÏúÉÌ]£º[¿ø¼×¾­ÏúÉÌ]£º[Äğ¾ÆÊ¦]:[À¥ÂØÊ¹]:ÒÆ³ıĞ¡µØÍ¼±ê¼Ç£ºÈ¡Ïû")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employee^000000";
 			viewpoint 1,159,122,0,0x0A82FF;
 			break;
 		case 2:
-			callsub L_Mark, F_Navi("é…‹é•¿å®˜é‚¸","gonryun,110,131","^006400");
+			callsub L_Mark, F_Navi("Çõ³¤¹ÙÛ¡","gonryun,110,131","^006400");
 			viewpoint 1,110,131,1,0xAAFF00;
 			break;
 		case 3:
-			callsub L_Mark, F_Navi("å·¥å…·ç»é”€å•†","gonryun,147,84","^D8BFD8");
+			callsub L_Mark, F_Navi("¹¤¾ß¾­ÏúÉÌ","gonryun,147,84","^D8BFD8");
 			viewpoint 1,147,84,2,0xD8BFD8;
 			break;
 		case 4:
-			callsub L_Mark, F_Navi("æ­¦å™¨ç»é”€å•†","gonryun,174,101","^FF1493");
+			callsub L_Mark, F_Navi("ÎäÆ÷¾­ÏúÉÌ","gonryun,174,101","^FF1493");
 			viewpoint 1,174,101,3,0xFF1493;
 			break;
 		case 5:
-			callsub L_Mark, F_Navi("ç›”ç”²ç»é”€å•†","gonryun,173,84","^8B4513");
+			callsub L_Mark, F_Navi("¿ø¼×¾­ÏúÉÌ","gonryun,173,84","^8B4513");
 			viewpoint 1,173,84,4,0x8B4513;
 			break;
 		case 6:
-			callsub L_Mark, F_Navi("é…¿é…’å¸ˆ","gonryun,213,115","^9400D3");
+			callsub L_Mark, F_Navi("Äğ¾ÆÊ¦","gonryun,213,115","^9400D3");
 			viewpoint 1,213,115,5,0x9400D3;
 			break;
 		case 7:
-			callsub L_Mark, F_Navi("æ˜†ä»‘ä½¿","gonryun,161,11","^00BFFF");
+			callsub L_Mark, F_Navi("À¥ÂØÊ¹","gonryun,161,11","^00BFFF");
 			viewpoint 1,161,11,6,0x00BFFF;
 			break;
 		case 8:
 			mes "[He Yuen Zhe]";
-			mes "æˆ‘ä¼šä»ä½ çš„å°åœ°å›¾ä¸Šåˆ é™¤æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+			mes "ÎÒ»á´ÓÄãµÄĞ¡µØÍ¼ÉÏÉ¾³ıËùÓĞ±ê¼Ç¡£";
+			mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -73,16 +75,16 @@ gonryun,163,60,4	script	Kunlun Guide#01gonryun	780,{
 			break;
 		case 9:
 			mes "[He Yuen Zhe]";
-			mes "ç¥æ‚¨æ—…é€”æ„‰å¿«ï¼";
+			mes "×£ÄúÂÃÍ¾Óä¿ì£¡";
 			close;
 		}
 	}
 	end;
 L_Mark:
 	mes "[He Yuen Zhe]";
-	mes ""+getarg(0)+" æ˜¯";
-	mes "æ ‡è®°åœ¨æ‚¨çš„å°åœ°å›¾ä¸Šã€‚";
-	mes "æ£€æŸ¥ä½ çš„å°åœ°å›¾ã€‚";
-	mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+	mes ""+getarg(0)+" ÊÇ";
+	mes "±ê¼ÇÔÚÄúµÄĞ¡µØÍ¼ÉÏ¡£";
+	mes "¼ì²éÄãµÄĞ¡µØÍ¼¡£";
+	mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 	return;
 }

@@ -16,42 +16,44 @@
 //= 1.3 Updated script, optimized. [Euphy]
 //= 1.3a Moved warps to separate file. [Euphy]
 //= 1.4 Added VIP features. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 alde_alche,35,186,5	script	Alchemist Union Member	805,{
-	mes "[炼金术士联盟成员]";
+	mes "[������ʿ���˳�Ա]";
 	if (BaseLevel > 98 && JobLevel > 49){
 		if (BaseJob == Job_Alchemist) {
 			if (SkillPoint != 0) {
-				mes "- 你还有未使用的技能点。当你全部用完之后再回来。 -";
+				mes "- �㻹��δʹ�õļ��ܵ㡣����ȫ������֮���ٻ����� -";
 				close;
 			}
 			if (job_gen == 0) {
-				mes "我们炼金师工会通过各种晋升和考察，培养了很多初级炼金师。";
+				mes "��������ʦ����ͨ�����ֽ����Ϳ��죬�����˺ܶ��������ʦ��";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "他们遍布米德加尔特的各个角落，活跃于科学或特殊物品的制造方法等众多领域。";
+				mes "[������ʿ���˳�Ա]";
+				mes "���Ǳ鲼�׵¼Ӷ��صĸ������䣬��Ծ�ڿ�ѧ��������Ʒ�����췽�����ڶ�����";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "我们称新工会的成员为^3131FF“遗传学家”^000000。";
+				mes "[������ʿ���˳�Ա]";
+				mes "���ǳ��¹���ĳ�ԱΪ^3131FF���Ŵ�ѧ�ҡ�^000000��";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "遗传学家是在炼金术世界中发挥了最大潜力的人。他们是目前整个米德加德炼金术的先锋。";
+				mes "[������ʿ���˳�Ա]";
+				mes "�Ŵ�ѧ�����������������з��������Ǳ�����ˡ�������Ŀǰ�����׵¼ӵ����������ȷ档";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "看起来你是这个领域的专家，来认识一下其他遗传学家怎么样？";
+				mes "[������ʿ���˳�Ա]";
+				mes "������������������ר�ң�����ʶһ�������Ŵ�ѧ����ô����";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "不久前，有一位遗传学家宣布了一项轰动的新生命研究。";
-				mes "你知识渊博。你觉得你能理解她的作品吗？";
+				mes "[������ʿ���˳�Ա]";
+				mes "����ǰ����һλ�Ŵ�ѧ��������һ��䶯���������о���";
+				mes "��֪ʶԨ�����������������������Ʒ��";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "她的研究可能会帮助您获得知识，从而帮助您成为一名遗传学家！";
+				mes "[������ʿ���˳�Ա]";
+				mes "�����о����ܻ���������֪ʶ���Ӷ���������Ϊһ���Ŵ�ѧ�ң�";
 				next;
-				mes "[炼金术士联盟成员]";
-				mes "听起来怎么样？您想见见遗传学家吗？";
+				mes "[������ʿ���˳�Ա]";
+				mes "��������ô������������Ŵ�ѧ����";
 				next;
-				switch(select("当然，我想见一位遗传学家。：我不想见一位遗传学家。")) {
+				switch(select("��Ȼ�������һλ�Ŵ�ѧ�ҡ����Ҳ����һλ�Ŵ�ѧ�ҡ�")) {
 				case 1:
 					if (VIP_SCRIPT) {
 						callfunc "VIP_Third_Class";
@@ -59,345 +61,345 @@ alde_alche,35,186,5	script	Alchemist Union Member	805,{
 						setquest 2215;
 						next;
 					}
-					mes "[炼金术士联盟成员]";
-					mes "明智的选择！";
-					mes "臭名昭著的遗传学家“德夫里斯”。";
+					mes "[������ʿ���˳�Ա]";
+					mes "���ǵ�ѡ��";
+					mes "�����������Ŵ�ѧ�ҡ��·���˹����";
 					next;
-					mes "[炼金术士联盟成员]";
-					mes "你可以在莱特哈尔森西部的炼金实验室找到她。那里还有另一位研究武器的遗传学家，你可能也想拜访她。";
+					mes "[������ʿ���˳�Ա]";
+					mes "����������ع���ɭ����������ʵ�����ҵ��������ﻹ����һλ�о��������Ŵ�ѧ�ң������Ҳ��ݷ�����";
 					set job_gen,1;
 					setquest 2215;
 					close;
 				case 2:
-					mes "[炼金术士联盟成员]";
-					mes "你对生命的研究不感兴趣吗？";
+					mes "[������ʿ���˳�Ա]";
+					mes "����������о�������Ȥ��";
 					close;
 				}
 			}
-			mes "这位臭名昭著的遗传学家正在莱特哈尔森西部的炼金实验室学习。";
-			mes "如果你有兴趣，就去见见她吧。";
+			mes "��λ�����������Ŵ�ѧ���������ع���ɭ����������ʵ����ѧϰ��";
+			mes "���������Ȥ����ȥ�������ɡ�";
 			close;
 		}
 	}
-	mes "我们炼金师工会通过各种晋升和考察，培养了很多初级炼金师。";
+	mes "��������ʦ����ͨ�����ֽ����Ϳ��죬�����˺ܶ��������ʦ��";
 	next;
-	mes "[炼金术士联盟成员]";
-	mes "他们遍布米德加尔特的各个角落，活跃于科学或特殊物品的制造方法等众多领域。";
+	mes "[������ʿ���˳�Ա]";
+	mes "���Ǳ鲼�׵¼Ӷ��صĸ������䣬��Ծ�ڿ�ѧ��������Ʒ�����췽�����ڶ�����";
 	next;
-	mes "[炼金术士联盟成员]";
-	mes "我们称新工会的成员为^3131FF“遗传学家”^000000。";
+	mes "[������ʿ���˳�Ա]";
+	mes "���ǳ��¹���ĳ�ԱΪ^3131FF���Ŵ�ѧ�ҡ�^000000��";
 	next;
-	mes "[炼金术士联盟成员]";
-	mes "遗传学家是在炼金术世界中发挥了最大潜力的人。他们是目前整个米德加德炼金术的先锋。";
+	mes "[������ʿ���˳�Ա]";
+	mes "�Ŵ�ѧ�����������������з��������Ǳ�����ˡ�������Ŀǰ�����׵¼ӵ����������ȷ档";
 	close;
 }
 
 job3_gen01,25,58,3	script	Devries#gen	865,{
 	if (SkillPoint != 0) {
-		mes "- 你还有一些未使用的技能点。 -";
+		mes "- �㻹��һЩδʹ�õļ��ܵ㡣 -";
 		close;
 	}
 	if (job_gen == 1) {
-		mes "[德弗里斯]";
-		mes "哦！吸血植物样本C再次枯萎。";
-		mes "我应该改变生长护理的成分吗？";
-		mes "嘿嘿，请尽快振作起来吧！";
+		mes "[�¸���˹]";
+		mes "Ŷ����Ѫֲ������C�ٴο�ή��";
+		mes "��Ӧ�øı����������ĳɷ���";
+		mes "�ٺ٣��뾡�����������ɣ�";
 		next;
-		mes "[德弗里斯]";
-		mes "哦？陌生人？";
-		mes "从你的表情看来你也在炼金术吧？";
+		mes "[�¸���˹]";
+		mes "Ŷ��İ���ˣ�";
+		mes "����ı��鿴����Ҳ���������ɣ�";
 		next;
-		mes "[德弗里斯]";
-		mes "人们都说现在的炼金术士越来越多，但真正研究这个领域的人却不多！";
+		mes "[�¸���˹]";
+		mes "���Ƕ�˵���ڵ�������ʿԽ��Խ�࣬�������о�����������ȴ���࣡";
 		next;
-		mes "[德弗里斯]";
-		mes "他们都太担心说“看看我的炸弹损坏！”或“我的小人不是更漂亮吗？”之类的话。";
+		mes "[�¸���˹]";
+		mes "���Ƕ�̫����˵�������ҵ�ը���𻵣������ҵ�С�˲��Ǹ�Ư���𣿡�֮��Ļ���";
 		next;
-		mes "[德弗里斯]";
-		mes "炼金术士联盟嘴上说要支持研究人员，但实际上研究出来的只是‘容易培养的孢子’！";
+		mes "[�¸���˹]";
+		mes "������ʿ��������˵Ҫ֧���о���Ա����ʵ�����о�������ֻ�ǡ��������������ӡ���";
 		next;
-		mes "[德弗里斯]";
-		mes "多亏了这个，我的实验室里到处都是孢子！到处都是孢子！";
+		mes "[�¸���˹]";
+		mes "�����������ҵ�ʵ�����ﵽ���������ӣ������������ӣ�";
 		next;
-		select("你为什么这么说话？");
-		mes "[德弗里斯]";
-		mes "因为我来自符文米德加特！";
-		mes "你去过符文米德加特吗？符文中加尔特的所有人都这样说话。";
+		select("��Ϊʲô��ô˵����");
+		mes "[�¸���˹]";
+		mes "��Ϊ�����Է����׵¼��أ�";
+		mes "��ȥ�������׵¼����𣿷����мӶ��ص������˶�����˵����";
 		next;
-		switch(select("不可能？！：我也是符文米德加尔特人。")) {
+		switch(select("�����ܣ�������Ҳ�Ƿ����׵¼Ӷ����ˡ�")) {
 		case 1:
-			mes "[德弗里斯]";
-			mes "不可能的？";
-			mes "你来自符文米德加尔特村庄吗？";
-			mes "我的村子很大，大家都这样说话。";
+			mes "[�¸���˹]";
+			mes "�����ܵģ�";
+			mes "�����Է����׵¼Ӷ��ش�ׯ��";
+			mes "�ҵĴ��Ӻܴ󣬴�Ҷ�����˵����";
 			break;
 		case 2:
 			emotion ET_THROB;
-			mes "[德弗里斯]";
-			mes "真的吗！这就是为什么我在你周围感受到了某种熟悉的气氛。";
-			mes "在黑森林遇见家乡人，很高兴认识你！";
+			mes "[�¸���˹]";
+			mes "����������Ϊʲô��������Χ���ܵ���ĳ����Ϥ�����ա�";
+			mes "�ں�ɭ�����������ˣ��ܸ�����ʶ�㣡";
 			break;
 		}
 		next;
-		mes "- 扑通！！ -";
+		mes "- ��ͨ���� -";
 		next;
 		emotion ET_ANGER;
-		mes "[德弗里斯]";
-		mes "呃呃呃！那女人又开始了！";
+		mes "[�¸���˹]";
+		mes "����������Ů���ֿ�ʼ�ˣ�";
 		next;
-		select("那是什么声音？");
-		mes "[德弗里斯]";
-		mes "那是我的室友黛米·卡尔伯林 (Demi Calberine) 正在进行实验的声音。";
-		mes "黛米是一名火弹技术员，所以她总是那么吵闹。";
+		select("����ʲô������");
+		mes "[�¸���˹]";
+		mes "�����ҵ��������ס��������� (Demi Calberine) ���ڽ���ʵ���������";
+		mes "������һ���𵯼���Ա��������������ô���֡�";
 		next;
 		emotion ET_CRY;
-		mes "[德弗里斯]";
-		mes "看看那个！";
-		mes "我的孢子和植物都吓坏了！";
-		mes "我无法在这些吵闹的声音下工作。这给我带来了很大的压力！！";
+		mes "[�¸���˹]";
+		mes "�����Ǹ���";
+		mes "�ҵ����Ӻ�ֲ�ﶼ�Ż��ˣ�";
+		mes "���޷�����Щ���ֵ������¹���������Ҵ����˺ܴ��ѹ������";
 		next;
-		mes "- 蒙克紧缩 -";
+		mes "- �ɿ˽��� -";
 		next;
-		mes "[德弗里斯]";
-		mes "当我心情不好的时候，我就一点一点地品尝奥尔良先生亲手制作的饼干。";
+		mes "[�¸���˹]";
+		mes "�������鲻�õ�ʱ���Ҿ�һ��һ���Ʒ���¶����������������ı��ɡ�";
 		next;
-		mes "[德弗里斯]";
-		mes "这是我从 Prontera 买来的优质饼干。当我咬下一口时，我就好像飘到了阿斯加德。";
-		mes "甜饼干的柔软掩盖了黛米·卡尔伯林发出的碰撞声。";
+		mes "[�¸���˹]";
+		mes "�����Ҵ� Prontera ���������ʱ��ɡ�����ҧ��һ��ʱ���Ҿͺ���Ʈ���˰�˹�ӵ¡�";
+		mes "����ɵ������ڸ������ס��������ַ�������ײ����";
 		next;
-		mes "[德弗里斯]";
-		mes "想尝试一下吗？";
-		mes "啊，我已经全部吃完了。";
+		mes "[�¸���˹]";
+		mes "�볢��һ����";
+		mes "�������Ѿ�ȫ�������ˡ�";
 		next;
-		mes "[德弗里斯]";
-		mes "但没关系！在我房间的二楼，有盒子！";
-		mes "我无法停止批量购买。嗬嗬嗬。";
+		mes "[�¸���˹]";
+		mes "��û��ϵ�����ҷ���Ķ�¥���к��ӣ�";
+		mes "���޷�ֹͣ����������������";
 		next;
-		mes "- 呜呜呜呜 -";
+		mes "- �������� -";
 		specialeffect EF_ENDURE;
 		next;
 		specialeffect EF_REPAIRWEAPON,AREA,"#from1to2gen";
-		mes "- （尖叫声）！！！ -";
-		mes "-（尖叫）！！！ -";
+		mes "- ��������������� -";
+		mes "-����У������� -";
 		next;
 		specialeffect EF_CRASHEARTH,AREA,"#from1to2gen";
-		mes "- 撞！撞！撞！ -";
+		mes "- ײ��ײ��ײ�� -";
 		next;
-		mes "[德弗里斯]";
+		mes "[�¸���˹]";
 		mes "..................";
 		next;
-		mes "[德弗里斯]";
-		mes "呜呜呜";
-		mes "呀呀呀呀！！！";
+		mes "[�¸���˹]";
+		mes "������";
+		mes "ѽѽѽѽ������";
 		next;
-		mes "[德弗里斯]";
-		mes "德米伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊";
-		mes "德米伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊伊";
+		mes "[�¸���˹]";
+		mes "��������������������������������������������������������������������������";
+		mes "����������������������������������������������������������������";
 		next;
-		mes "- 现在看来我 -";
-		mes "- 需要让德弗里斯冷静下来。 -";
+		mes "- ���ڿ����� -";
+		mes "- ��Ҫ�õ¸���˹�侲������ -";
 		set job_gen,2;
 		close;
 	} else if (job_gen == 2) {
-		mes "[德弗里斯]";
-		mes "呀呀呀呀！！！";
-		mes "德米伊！！！";
-		mes "德米伊伊伊伊！！！";
+		mes "[�¸���˹]";
+		mes "ѽѽѽѽ������";
+		mes "������������";
+		mes "������������������";
 		next;
-		mes "- 唔。 -";
-		mes "- 什么能让她平静？ -";
+		mes "- ���� -";
+		mes "- ʲô������ƽ���� -";
 		close;
 	} else if (job_gen == 3) {
-		mes "[德弗里斯]";
-		mes "呀呀呀呀！！！";
-		mes "德米伊！！！";
-		mes "德米伊伊伊伊！！！";
+		mes "[�¸���˹]";
+		mes "ѽѽѽѽ������";
+		mes "������������";
+		mes "������������������";
 		next;
-		select("递上一块饼干。");
-		mes "——德弗里斯快速抢夺——";
-		mes "- 拿走饼干和其他东西 -";
-		mes "——这一切都在她嘴里。 -";
+		select("����һ����ɡ�");
+		mes "�����¸���˹�������ᡪ��";
+		mes "- ���߱��ɺ��������� -";
+		mes "������һ�ж�������� -";
 		next;
-		mes "- 嘎吱嘎吱嘎吱 -";
-		mes "- 嘎吱嘎吱嘎吱 -";
-		mes "- 嘎吱嘎吱嘎吱 -";
+		mes "- ��֨��֨��֨ -";
+		mes "- ��֨��֨��֨ -";
+		mes "- ��֨��֨��֨ -";
 		next;
-		mes "[德弗里斯]";
-		mes "啊，甜甜的黄油味残留在舌尖。";
-		mes "这确实让我安心。";
+		mes "[�¸���˹]";
+		mes "��������Ļ���ζ��������⡣";
+		mes "��ȷʵ���Ұ��ġ�";
 		next;
 		emotion ET_HNG;
-		mes "[德弗里斯]";
-		mes "Demi今天也在努力学习";
-		mes "呼呼呼。她真的是一个很努力的人。";
+		mes "[�¸���˹]";
+		mes "Demi����Ҳ��Ŭ��ѧϰ";
+		mes "���������������һ����Ŭ�����ˡ�";
 		next;
-		mes "- 那块饼干很快改变了她的心情。 -";
+		mes "- �ǿ���ɺܿ�ı����������顣 -";
 		emotion ET_BEST, playerattached();
 		next;
-		mes "[德弗里斯]";
-		mes "你带着对炼金术的热爱来到这里？";
+		mes "[�¸���˹]";
+		mes "����Ŷ����������Ȱ��������";
 		next;
-		mes "[德弗里斯]";
-		mes "哦等等，我们还没自我介绍呢。";
-		mes "我叫德弗里斯。";
-		mes "我对创造出新的、奇特的生长的生物非常感兴趣。";
+		mes "[�¸���˹]";
+		mes "Ŷ�ȵȣ����ǻ�û���ҽ����ء�";
+		mes "�ҽе¸���˹��";
+		mes "�ҶԴ�����µġ����ص�����������ǳ�����Ȥ��";
 		next;
-		mes "[德弗里斯]";
-		mes "年轻的炼金术士，你叫什么名字？";
+		mes "[�¸���˹]";
+		mes "�����������ʿ�����ʲô���֣�";
 		next;
-		select("我是"+strcharinfo(0)+".");
-		mes "[德弗里斯]";
-		mes "哦，"+strcharinfo(0)+"！";
-		mes "这是一个非常不寻常的名字。很高兴认识你。";
+		select("����"+strcharinfo(0)+".");
+		mes "[�¸���˹]";
+		mes "Ŷ��"+strcharinfo(0)+"��";
+		mes "����һ���ǳ���Ѱ�������֡��ܸ�����ʶ�㡣";
 		next;
-		mes "[德弗里斯]";
-		mes "但我记不住名字。";
-		mes "所以我就叫你<Popo>吧。这样可以吗？";
+		mes "[�¸���˹]";
+		mes "���Ҽǲ�ס���֡�";
+		mes "�����Ҿͽ���<Popo>�ɡ�����������";
 		next;
-		select("我呃...");
-		mes "[德弗里斯]";
-		mes "伟大的...";
-		mes "波波，你听说过我的研究吗？";
-		mes "你就是因为这个才来这里的，对吗？";
+		select("����...");
+		mes "[�¸���˹]";
+		mes "ΰ���...";
+		mes "����������˵���ҵ��о���";
+		mes "�������Ϊ�����������ģ�����";
 		next;
-		switch(select("否：是的。")) {
+		switch(select("���ǵġ�")) {
 		case 1:
-			mes "[德弗里斯]";
-			mes "嗯，都在你脸上了。";
-			mes "你不必害羞。";
+			mes "[�¸���˹]";
+			mes "�ţ������������ˡ�";
+			mes "�㲻�غ��ߡ�";
 			break;
 		case 2:
-			mes "[德弗里斯]";
-			mes "是这样吧？";
-			mes "嗯，果然如我所料，确实有一种东西能让故乡人相亲相爱";
+			mes "[�¸���˹]";
+			mes "�������ɣ�";
+			mes "�ţ���Ȼ�������ϣ�ȷʵ��һ�ֶ������ù����������మ";
 			break;
 		}
 		next;
-		mes "[德弗里斯]";
-		mes "当你看到我那发烧的样子时，你想起了我之前说过的话，这让我平静下来。";
+		mes "[�¸���˹]";
+		mes "���㿴�����Ƿ��յ�����ʱ������������֮ǰ˵���Ļ���������ƽ��������";
 		next;
-		mes "[德弗里斯]";
-		mes "我喜欢你管理自己并注意记住小细节的方式。";
-		mes "你有成为遗传学家的天赋。";
+		mes "[�¸���˹]";
+		mes "��ϲ��������Լ���ע���סСϸ�ڵķ�ʽ��";
+		mes "���г�Ϊ�Ŵ�ѧ�ҵ��츳��";
 		next;
-		mes "[德弗里斯]";
-		mes "^FF0000如果你成为一名遗传学家，你就不能参加之前没有研究过的炼金术士或生物化学家学习课程。^000000";
-		mes "如果这对你来说没问题，现在就尝试一下怎么样？";
+		mes "[�¸���˹]";
+		mes "^FF0000������Ϊһ���Ŵ�ѧ�ң���Ͳ��ܲμ�֮ǰû���о�����������ʿ�����ﻯѧ��ѧϰ�γ̡�^000000";
+		mes "����������˵û���⣬���ھͳ���һ����ô����";
 		next;
-		switch(select("我稍后会尝试：我想成为一名遗传学家！")) {
+		switch(select("���Ժ�᳢�ԣ������Ϊһ���Ŵ�ѧ�ң�")) {
 		case 1:
-			mes "[德弗里斯]";
-			mes "好吧。";
-			mes "尽管你的知识没有遗传学家那么丰富，但基础知识也很重要。";
-			mes "波波，学业完成后再来找我吧。";
+			mes "[�¸���˹]";
+			mes "�ðɡ�";
+			mes "�������֪ʶû���Ŵ�ѧ����ô�ḻ��������֪ʶҲ����Ҫ��";
+			mes "������ѧҵ��ɺ��������Ұɡ�";
 			set job_gen,4;
 			close;
 		case 2:
-			mes "[德弗里斯]";
-			mes "好的！";
-			mes "我们开始做吧！";
+			mes "[�¸���˹]";
+			mes "�õģ�";
+			mes "���ǿ�ʼ���ɣ�";
 			set job_gen,5;
 			close;
 		}
 	} else if (job_gen == 4) {
-		mes "[德弗里斯]";
-		mes "波波！";
-		mes "你准备好尝试一下了吗？";
+		mes "[�¸���˹]";
+		mes "������";
+		mes "��׼���ó���һ������";
 		next;
-		switch(select("否：是的！")) {
+		switch(select("���ǵģ�")) {
 		case 1:
-			mes "[德弗里斯]";
-			mes "你必须尽力而为！寻找知识没有简单的方法！";
+			mes "[�¸���˹]";
+			mes "����뾡����Ϊ��Ѱ��֪ʶû�м򵥵ķ�����";
 			close;
 		case 2:
-			mes "[德弗里斯]";
-			mes "非常好！";
-			mes "我们开始做吧！";
+			mes "[�¸���˹]";
+			mes "�ǳ��ã�";
+			mes "���ǿ�ʼ���ɣ�";
 			set job_gen,5;
 			close;
 		}
 	} else if (job_gen == 5) {
-		mes "[德弗里斯]";
-		mes "波波，你觉得植物怎么样？";
-		mes "你喜欢植物吗？您对哪种植物感兴趣？";
+		mes "[�¸���˹]";
+		mes "�����������ֲ����ô����";
+		mes "��ϲ��ֲ������������ֲ�����Ȥ��";
 		next;
-		mes "- 轰隆，轰隆，轰隆 -";
+		mes "- ��¡����¡����¡ -";
 		next;
 		emotion ET_SWEAT;
-		mes "[德弗里斯]";
-		mes "啊，请告诉我黛米·卡伯林不再开始了吗？";
-		mes "请让我的期望是错误的......求你......黛米，求你......";
+		mes "[�¸���˹]";
+		mes "��������������ס������ֲ��ٿ�ʼ����";
+		mes "�����ҵ������Ǵ����......����......���ף�����......";
 		next;
-		mes "[德弗里斯]";
-		mes "我哪里停止说话了";
-		mes "哦，对了。植物在炼金术中非常重要。";
+		mes "[�¸���˹]";
+		mes "������ֹͣ˵����";
+		mes "Ŷ�����ˡ�ֲ�����������зǳ���Ҫ��";
 		next;
-		mes "[德弗里斯]";
-		mes "炼金术可以让芙罗拉和地理学家成长得非常快，所以他们可以像那些炼金术士一样在战斗中提供帮助……";
+		mes "[�¸���˹]";
+		mes "������������ܽ�����͵���ѧ�ҳɳ��÷ǳ��죬�������ǿ�������Щ������ʿһ����ս�����ṩ��������";
 		next;
-		mes "- 繁荣！树！！树！！树！！ -";
+		mes "- ���٣������������������� -";
 		next;
 		emotion ET_THINK;
-		mes "[德弗里斯]";
+		mes "[�¸���˹]";
 		mes ".......................";
 		next;
 		emotion ET_THINK;
-		mes "[德弗里斯]";
-		mes "技术、植物都比较容易...";
+		mes "[�¸���˹]";
+		mes "������ֲ�ﶼ�Ƚ�����...";
 		next;
-		mes "- 繁荣!!!!!! -";
-		next;
-		emotion ET_THINK;
-		mes "[德弗里斯]";
-		mes "杂交...";
-		next;
-		mes "- 流行音乐！！！！！！ -";
-		mes "- 啊啊啊啊！！！ -";
-		mes "- 书库姆！！！ -";
-		mes "- 繁荣！树！！树！！ -";
+		mes "- ����!!!!!! -";
 		next;
 		emotion ET_THINK;
-		mes "[德弗里斯]";
+		mes "[�¸���˹]";
+		mes "�ӽ�...";
+		next;
+		mes "- �������֣����������� -";
+		mes "- �������������� -";
+		mes "- ���ķ������ -";
+		mes "- ���٣������������� -";
+		next;
+		emotion ET_THINK;
+		mes "[�¸���˹]";
 		mes ".......................";
 		next;
 		emotion ET_THINK;
-		mes "[德弗里斯]";
-		mes "波波。";
+		mes "[�¸���˹]";
+		mes "������";
 		next;
 		emotion ET_THINK;
-		mes "[德弗里斯]";
-		mes "我会给你一个成为遗传学家的测试。";
+		mes "[�¸���˹]";
+		mes "�һ����һ����Ϊ�Ŵ�ѧ�ҵĲ��ԡ�";
 		next;
-		mes "[德弗里斯]";
-		mes "主题是<完美的隔音系统>！";
-		mes "请想办法让我免受黛米·卡伯林的噪音影响，使用实验室一楼的植物和实验设备。";
+		mes "[�¸���˹]";
+		mes "������<�����ĸ���ϵͳ>��";
+		mes "����취�����������ס������ֵ�����Ӱ�죬ʹ��ʵ����һ¥��ֲ���ʵ���豸��";
 		next;
-		mes "[德弗里斯]";
-		mes "好吧，你最好开始吧！";
+		mes "[�¸���˹]";
+		mes "�ðɣ�����ÿ�ʼ�ɣ�";
 		set job_gen,6;
 		close;
 	} else if (job_gen == 6) {
-		mes "[德弗里斯]";
-		mes "主题是<完美的隔音系统>！";
-		mes "请想办法让我免受黛米·卡贝林的噪音影响，使用实验室一楼的植物和实验设备。";
+		mes "[�¸���˹]";
+		mes "������<�����ĸ���ϵͳ>��";
+		mes "����취�����������ס������ֵ�����Ӱ�죬ʹ��ʵ����һ¥��ֲ���ʵ���豸��";
 		next;
-		mes "[德弗里斯]";
-		mes "柜子里有一些您可以使用的指南。";
-		mes "好吧，你最好开始吧！";
+		mes "[�¸���˹]";
+		mes "��������һЩ������ʹ�õ�ָ�ϡ�";
+		mes "�ðɣ�����ÿ�ʼ�ɣ�";
 		close;
 	} else if (job_gen > 6 && job_gen < 60) {
-		mes "[德弗里斯]";
-		mes "有问题吗？";
+		mes "[�¸���˹]";
+		mes "��������";
 		next;
-		switch(select("没什么：实验失败了。")) {
+		switch(select("ûʲô��ʵ��ʧ���ˡ�")) {
 		case 1:
-			mes "[德弗里斯]";
-			mes "最好开始，否则我会开始尖叫！";
+			mes "[�¸���˹]";
+			mes "��ÿ�ʼ�������һῪʼ��У�";
 			close;
 		case 2:
-			mes "[德弗里斯]";
-			mes "那你可以从头开始吗？";
-			mes "你为什么问我这些问题？";
+			mes "[�¸���˹]";
+			mes "������Դ�ͷ��ʼ��";
+			mes "��Ϊʲô������Щ���⣿";
 			set job_gen,7;
 			if (checkquest(2209) == 1) erasequest 2209;
 			if (checkquest(2210) == 1) erasequest 2210;
@@ -408,76 +410,76 @@ job3_gen01,25,58,3	script	Devries#gen	865,{
 			close;
 		}
 	} else if (job_gen == 60 || job_gen == 61) {
-		mes "- 津津吉吉 -";
+		mes "- ��򼪼� -";
 		next;
-		mes "- 津津吉吉 -";
+		mes "- ��򼪼� -";
 		next;
-		mes "[德弗里斯]";
-		mes "黛米·卡贝琳到底在做什么？";
-		mes "这实在是太吵了。";
+		mes "[�¸���˹]";
+		mes "���ס������յ�������ʲô��";
+		mes "��ʵ����̫���ˡ�";
 		next;
-		mes "[德弗里斯]";
-		mes "波波，你的研究完成了吗？";
-		mes "把那些种子给我。";
+		mes "[�¸���˹]";
+		mes "����������о��������";
+		mes "����Щ���Ӹ��ҡ�";
 		next;
 		if (countitem(6273) == 0 && countitem(6272) == 0) {
-			mes "[德弗里斯]";
-			mes "发生了什么？";
-			mes "没有任何结果怎么能说研究完成了呢？";
-			mes "重新开始。";
+			mes "[�¸���˹]";
+			mes "������ʲô��";
+			mes "û���κν����ô��˵�о�������أ�";
+			mes "���¿�ʼ��";
 			set job_gen,7;
 		} else {
-			mes "[德弗里斯]";
-			mes "好吧，我来看看波波做的种子。";
-			mes "结果如何？";
+			mes "[�¸���˹]";
+			mes "�ðɣ��������������������ӡ�";
+			mes "�����Σ�";
 			next;
-			mes "[德弗里斯]";
-			mes "当你将种子放入超级中耕机并调节温度时......";
+			mes "[�¸���˹]";
+			mes "���㽫���ӷ��볬���и����������¶�ʱ......";
 			next;
-			mes "[德弗里斯]";
-			mes "该死！";
+			mes "[�¸���˹]";
+			mes "������";
 			next;
 			if (job_gen == 60) {
 				specialeffect EF_FLASHER,AREA,"Super Cultivator#gen";
 				specialeffect EF_PHARMACY_OK,AREA,"Super Cultivator#gen";
-				mes "[德弗里斯]";
-				mes "波波，看那个！";
-				mes "这真是一种神秘的植物啊！";
+				mes "[�¸���˹]";
+				mes "���������Ǹ���";
+				mes "������һ�����ص�ֲ�ﰡ��";
 				next;
-				mes "[德弗里斯]";
-				mes "修炼者的内部现在已经布满了刺茎！";
-				mes "就好像茎正在建造一堵墙，并且生长得非常坚固，而且它们正在纠缠在一起！";
+				mes "[�¸���˹]";
+				mes "�����ߵ��ڲ������Ѿ������˴̾���";
+				mes "�ͺ������ڽ���һ��ǽ�����������÷ǳ���̣������������ھ�����һ��";
 				next;
-				mes "[德弗里斯]";
-				mes "就是这个了，波波！";
-				mes "这种植物的特性可用于多种应用！";
+				mes "[�¸���˹]";
+				mes "��������ˣ�������";
+				mes "����ֲ������Կ����ڶ���Ӧ�ã�";
 				next;
-				mes "[德弗里斯]";
-				mes "这真的太棒了，波波。";
-				mes "我知道你知识渊博，但你的能力还不止于此！";
+				mes "[�¸���˹]";
+				mes "�����̫���ˣ�������";
+				mes "��֪����֪ʶԨ�����������������ֹ�ڴˣ�";
 				next;
-				mes "[德弗里斯]";
-				mes "我会把结果告诉炼金师联盟。";
-				mes "我会寄一封推荐信，说你的能力真的很棒，你可以成为一名出色的会员。";
+				mes "[�¸���˹]";
+				mes "�һ�ѽ����������ʦ���ˡ�";
+				mes "�һ��һ���Ƽ��ţ�˵���������ĺܰ�������Գ�Ϊһ����ɫ�Ļ�Ա��";
 				next;
-				mes "[德弗里斯]";
-				mes "得到联盟的答复需要一些时间，您能稍等一下吗？";
-				mes "你为什么不去找黛米·卡伯林呢？";
+				mes "[�¸���˹]";
+				mes "�õ����˵Ĵ���ҪһЩʱ�䣬�����Ե�һ����";
+				mes "��Ϊʲô��ȥ�����ס��������أ�";
 				next;
-				mes "[德弗里斯]";
-				mes "她是一位遗传学家，专门研究迷你大炮。";
-				mes "去看看她的实验结果吧。";
-				mes "你能把这个消息转告给她吗？告诉她安静地进行实验。";
+				mes "[�¸���˹]";
+				mes "����һλ�Ŵ�ѧ�ң�ר���о�������ڡ�";
+				mes "ȥ��������ʵ�����ɡ�";
+				mes "���ܰ������Ϣת������𣿸����������ؽ���ʵ�顣";
 				delitem 6273,1; //Altered_Seed
 				set job_gen,62;
 				changequest 2215,2216;
 			} else {
 				specialeffect EF_SPELLBREAKER,AREA,"Super Cultivator#gen";
 				specialeffect EF_PHARMACY_FAIL,AREA,"Super Cultivator#gen";
-				mes "[德弗里斯]";
-				mes "呃哦！你失败了，波波。";
-				mes "它根本没有生长，已经枯萎了。";
-				mes "去重新开始吧！";
+				mes "[�¸���˹]";
+				mes "��Ŷ����ʧ���ˣ�������";
+				mes "������û���������Ѿ���ή�ˡ�";
+				mes "ȥ���¿�ʼ�ɣ�";
 				delitem 6272,1; //Experiment_Seed
 				set job_gen,7;
 			}
@@ -491,120 +493,120 @@ job3_gen01,25,58,3	script	Devries#gen	865,{
 		close;
 	} else if (job_gen > 61 && job_gen < 76) {
 		if (checkquest(2223,HUNTING) == 2) {
-			mes "[德弗里斯]";
-			mes "哦，等一下。";
-			mes "看来邮件已经到达了。";
+			mes "[�¸���˹]";
+			mes "Ŷ����һ�¡�";
+			mes "�����ʼ��Ѿ������ˡ�";
 			set job_gen,76;
 			completequest 2223;
 			close;
 		}
-		mes "[德弗里斯]";
-		mes "你可以先去看看黛米·卡尔伯林的工作场所，我们再从联盟那里得到答复。";
+		mes "[�¸���˹]";
+		mes "�������ȥ�������ס��������ֵĹ��������������ٴ���������õ��𸴡�";
 		close;
 	} else if (job_gen == 76) {
-		mes "[德弗里斯]";
-		mes "波波！";
-		mes "我有好消息告诉你！";
+		mes "[�¸���˹]";
+		mes "������";
+		mes "���к���Ϣ�����㣡";
 		next;
 		if (checkweight(1201,2) == 0 || MaxWeight - Weight < 2000) {
-			mes "- 等一下 ！！ -";
-			mes "- 目前你携带的是 -";
-			mes "- 你身上带的东西太多了。 -";
-			mes "- 请再试一次 -";
-			mes "- 当你减掉一些体重后。 -";
+			mes "- ��һ�� ���� -";
+			mes "- Ŀǰ��Я������ -";
+			mes "- �����ϴ��Ķ���̫���ˡ� -";
+			mes "- ������һ�� -";
+			mes "- �������һЩ���غ� -";
 			close;
 		}
-		mes "[德弗里斯]";
+		mes "[�¸���˹]";
 		if (BaseJob != Job_Alchemist || BaseLevel < 99 || JobLevel < 50) {
-			mes "哦，看来你还没准备好听。";
+			mes "Ŷ�������㻹û׼��������";
 			close;
 		}
 		if (checkcart()){
-			mes "首先把那辆又重又脏的手推车拿下来，在这个快乐的时刻它不适合你。";
+			mes "���Ȱ�����������������Ƴ�����������������ֵ�ʱ�������ʺ��㡣";
 			close;
 		}
 		if (SkillPoint != 0) {
-			mes "但你看起来对以前的学习有着挥之不去的渴望。";
+			mes "���㿴��������ǰ��ѧϰ���Ż�֮��ȥ�Ŀ�����";
 			close;
 		}
-		mes "炼金术士联盟的来信来了。";
-		mes "我来读给你听，波波！";
+		mes "������ʿ���˵��������ˡ�";
+		mes "��������������������";
 		next;
-		mes "<最亲爱的德弗里斯小姐，>";
-		mes "<我们非常清楚您最近所表现出的精彩活动。>";
+		mes "<���װ��ĵ¸���˹С�㣬>";
+		mes "<���Ƿǳ��������������ֳ��ľ��ʻ��>";
 		next;
-		mes "<小姐。德弗里斯>";
-		mes "这家伙也是我老家的。";
+		mes "<С�㡣�¸���˹>";
+		mes "��һ�Ҳ�����ϼҵġ�";
 		next;
-		mes "<听说你们的研究成果正在迈出商业化的步伐，这是一个非常好的消息。>";
-		mes "<我相信这会对其他炼金术士有很大的启发。>";
+		mes "<��˵���ǵ��о��ɹ�����������ҵ���Ĳ���������һ���ǳ��õ���Ϣ��>";
+		mes "<��������������������ʿ�кܴ��������>";
 		next;
-		mes "<想想看，你附上了一张纸？>";
-		mes "<这是一种能让植物生长速度超快的新植物，是由一位名叫"+strcharinfo(0)+">的炼金术士发现的";
+		mes "<���뿴���㸽����һ��ֽ��>";
+		mes "<����һ������ֲ�������ٶȳ������ֲ�����һλ����"+strcharinfo(0)+">��������ʿ���ֵ�";
 		next;
-		mes "<我本人和炼金师工会的许多炼金师对此都非常感兴趣。>";
+		mes "<�ұ��˺�����ʦ�������������ʦ�Դ˶��ǳ�����Ȥ��>";
 		next;
-		mes "<我们期待更多的研究论文和结果，特别是来自其他听到这个消息的遗传学家。>";
+		mes "<�����ڴ�������о����ĺͽ�����ر��������������������Ϣ���Ŵ�ѧ�ҡ�>";
 		next;
-		mes "<小姐。德弗里斯>";
-		mes "<我认为"+strcharinfo(0)+"有足够的能力和天赋成为一名遗传学家。>";
+		mes "<С�㡣�¸���˹>";
+		mes "<����Ϊ"+strcharinfo(0)+"���㹻���������츳��Ϊһ���Ŵ�ѧ�ҡ�>";
 		next;
-		mes "<请尽快告诉"+strcharinfo(0)+"，从现在开始，我们期待着作为遗传学家的非凡活动。>";
+		mes "<�뾡�����"+strcharinfo(0)+"�������ڿ�ʼ�������ڴ�����Ϊ�Ŵ�ѧ�ҵķǷ����>";
 		next;
-		mes "<炼金术士联盟对德弗里斯小姐、黛米·卡贝琳小姐和"+strcharinfo(0)+"都是非常优秀的人才感到自豪。>";
-		mes "<希望您今后也能结出好果实。>";
+		mes "<������ʿ���˶Ե¸���˹С�㡢���ס�������С���"+strcharinfo(0)+"���Ƿǳ�������˲Ÿе��Ժ���>";
+		mes "<ϣ�������Ҳ�ܽ���ù�ʵ��>";
 		next;
-		mes "[德弗里斯]";
+		mes "[�¸���˹]";
 		if (ismounting()) {
-			mes "你骑着宠物，";
-			mes "所以你不能改变你的工作。";
-			mes "请卸下您的骑乘宠物的装备并重试！";
+			mes "�����ų��";
+			mes "�����㲻�ܸı���Ĺ�����";
+			mes "��ж��������˳����װ�������ԣ�";
 			close;
 		}
-		mes "恭喜波波！";
-		mes "从现在起你就是一名遗传学家！！";
+		mes "��ϲ������";
+		mes "�������������һ���Ŵ�ѧ�ң���";
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		set job_gen,77;
 		getitem 5752,1; //Midas_Whisper
 		getitem 2795,1; //Green_Apple_Ring
 		next;
-		mes "[德弗里斯]";
-		mes "正如联盟所说，我也期待你们的精彩活动。";
-		mes "我们一起努力吧！成为最好的遗传学家！";
+		mes "[�¸���˹]";
+		mes "����������˵����Ҳ�ڴ����ǵľ��ʻ��";
+		mes "����һ��Ŭ���ɣ���Ϊ��õ��Ŵ�ѧ�ң�";
 		close;
 	} else if (job_gen == 77) {
-		mes "[德弗里斯]";
-		mes "波波，你想加入我的爱奥尔良俱乐部吗？这是一个为那些喜欢饼干的人准备的俱乐部。当然，我们不会想到和查尔斯·奥尔良一起做奇怪的事情。";
+		mes "[�¸���˹]";
+		mes "��������������ҵİ��¶������ֲ�������һ��Ϊ��Щϲ�����ɵ���׼���ľ��ֲ�����Ȼ�����ǲ����뵽�Ͳ��˹���¶���һ������ֵ����顣";
 		close;
 	}
-	mes "[德弗里斯]";
-	mes "我在你眼里有那么漂亮吗？你为什么这样盯着我？";
+	mes "[�¸���˹]";
+	mes "��������������ôƯ������Ϊʲô���������ң�";
 	close;
 }
 
 job3_gen01,83,72,3	script	Delivery Box#generic	111,{
-	mes "- 有一个大盒子。 -";
+	mes "- ��һ������ӡ� -";
 	if (job_gen == 2) {
 		next;
-		switch(select("打开盒子。：检查地址。：不执行任何操作。")) {
+		switch(select("�򿪺��ӡ�������ַ������ִ���κβ�����")) {
 		case 1:
-			mes "- 盒子里有几个饼干袋，被小心地装在里面。 -";
+			mes "- �������м������ɴ�����С�ĵ�װ�����档 -";
 			next;
-			switch(select("拿出一个饼干袋。：什么也不做。")) {
+			switch(select("�ó�һ�����ɴ�����ʲôҲ������")) {
 			case 1:
-				mes "- 你从盒子里拿出了一个饼干袋。 -";
+				mes "- ��Ӻ������ó���һ�����ɴ��� -";
 				set job_gen,3;
 				close;
 			case 2:
-				mes "你什么也不做。";
+				mes "��ʲôҲ������";
 				close;
 			}
 		case 2:
-			mes "[来自：符文米德加特王国、普隆德拉、查尔斯·奥尔良]";
-			mes "[收件人：黑森林共和国、莱特哈尔森、德弗里斯]";
+			mes "[���ԣ������׵¼�����������¡���������˹���¶���]";
+			mes "[�ռ��ˣ���ɭ�ֹ��͹������ع���ɭ���¸���˹]";
 			close;
 		case 3:
-			mes "你什么也不做。";
+			mes "��ʲôҲ������";
 			close;
 		}
 	}
@@ -612,38 +614,38 @@ job3_gen01,83,72,3	script	Delivery Box#generic	111,{
 }
 
 job3_gen01,12,56,3	script	Plant Guide#generic	111,{
-	mes "<世界上最简单的炼金术>";
-	mes "由鲍勃·罗斯撰写。";
+	mes "<��������򵥵�������>";
+	mes "�ɱ�������˹׫д��";
 	next;
-	switch(select("动物：植物：矿物质：等")) {
+	switch(select("���ֲ������ʣ���")) {
 	case 1:
-		mes "...任何人都可以轻松练习在炼金术中使用动物。";
-		mes "你可以将你想要使用的动物放在白色托盘上，想象你想要达成的目标，然后练习炼金。";
-		mes "这很容易。";
+		mes "...�κ��˶�����������ϰ����������ʹ�ö��";
+		mes "����Խ�����Ҫʹ�õĶ�����ڰ�ɫ�����ϣ���������Ҫ��ɵ�Ŀ�꣬Ȼ����ϰ����";
+		mes "������ס�";
 		next;
-		mes "……炼金术中使用的动物可能会因为被轻率的炼金术士捕获而面临灭绝的危险。";
-		mes "所以我不会提及他们。";
+		mes "������������ʹ�õĶ�����ܻ���Ϊ�����ʵ�������ʿ��������������Σ�ա�";
+		mes "�����Ҳ����ἰ���ǡ�";
 		close;
 	case 2:
-		mes "...使用植物的炼金术指南很容易理解，即使对于小孩子来说也是如此。";
-		mes "你可以将植物放在桌子上，然后折断或切割它们，使用简单的工具将它们连接起来，然后进行炼金术。";
-		mes "这真是一个非凡的方法。";
+		mes "...ʹ��ֲ���������ָ�Ϻ��������⣬��ʹ����С������˵Ҳ����ˡ�";
+		mes "����Խ�ֲ����������ϣ�Ȼ���۶ϻ��и����ǣ�ʹ�ü򵥵Ĺ��߽���������������Ȼ�������������";
+		mes "������һ���Ƿ��ķ�����";
 		next;
-		mes "……通常用于炼金的植物有刺尖但内部脆弱的比吉比吉草和穆卡树，以及生长速度极快但寄生​​在生物上的博吉爬行物。";
+		mes "����ͨ�����������ֲ���д̼⵫�ڲ������ıȼ��ȼ��ݺ��¿������Լ������ٶȼ��쵫�����������ϵĲ��������";
 		if (job_gen == 6)
 			set job_gen,7;
 		close;
 	case 3:
-		mes "...在炼金术中使用矿物是初学者发现非常容易的一种方法。";
-		mes "你可以把你想要的矿物质放入制作精美的盒子里，唱任何你能想到的歌曲，然后练习炼金。";
-		mes "这确实是一个简单的方法。";
+		mes "...����������ʹ�ÿ����ǳ�ѧ�߷��ַǳ����׵�һ�ַ�����";
+		mes "����԰�����Ҫ�Ŀ����ʷ������������ĺ�������κ������뵽�ĸ�����Ȼ����ϰ����";
+		mes "��ȷʵ��һ���򵥵ķ�����";
 		next;
-		mes "...通常用于炼金术的矿物是“Phracon”，其成本并不高。";
+		mes "...ͨ�������������Ŀ����ǡ�Phracon������ɱ������ߡ�";
 		close;
 	case 4:
-		mes "……炼金术是世界上最简单的事情。";
-		mes "笔者每周都会在学生面前进行钴蓝色炼金术演示，每次都会得到学生们的热烈掌声。";
-		mes "我相信当你读到这本书的时候，你就会进入炼金术的世界。";
+		mes "��������������������򵥵����顣";
+		mes "����ÿ�ܶ�����ѧ����ǰ��������ɫ��������ʾ��ÿ�ζ���õ�ѧ���ǵ�����������";
+		mes "�����ŵ�������Ȿ���ʱ����ͻ���������������硣";
 		close;
 	}
 }
@@ -654,21 +656,21 @@ function	script	Genetic_Job_Plant	{
 		if (isbegin_quest(getarg(0)) == 0) {
 			mes "- "+getarg(2)+" -";
 			next;
-			switch(select("将其用作材料：请勿使用。")) {
+			switch(select("�����������ϣ�����ʹ�á�")) {
 			case 1:
 				if (getarg(3,0)) set .@str$,"some of the ";
-				mes "- 你已经获得了"+.@str$+getarg(1)+"。 -";
+				mes "- ���Ѿ������"+.@str$+getarg(1)+"�� -";
 				setquest getarg(0);
 				close;
 			case 2:
-				mes "- 这种植物看起来不适合作为实验样本。 -";
+				mes "- ����ֲ�￴�������ʺ���Ϊʵ�������� -";
 				close;
 			}
 		}
-		mes "- 您已经获得了"+getarg(1)+"。 -";
+		mes "- ���Ѿ������"+getarg(1)+"�� -";
 		close;
 	} else if (job_gen == 6) {
-		mes "与该植物相关的信息可以在柜子里的植物指南中找到。";
+		mes "���ֲ����ص���Ϣ�����ڹ������ֲ��ָ�����ҵ���";
 		close;
 	}
 	mes "- "+getarg(2)+" -";
@@ -702,10 +704,10 @@ job3_gen01,32,38,3	script	Sticky Grass#gen	844,{
 
 job3_gen01,7,50,3	script	Testing Table#gen	844,{
 	if (job_gen == 7) {
-		mes "- 这是一个有很多设备的测试台。我想我可以研究这里与植物的组合。 -";
+		mes "- ����һ���кܶ��豸�Ĳ���̨�������ҿ����о�������ֲ�����ϡ� -";
 		next;
-		if(select("进行实验。：不进行实验。") == 2) {
-			mes "- 现在还不是开始实验的时候。 -";
+		if(select("����ʵ�顣��������ʵ�顣") == 2) {
+			mes "- ���ڻ����ǿ�ʼʵ���ʱ�� -";
 			close;
 		}
 		if ((checkquest(2209) == -1 || checkquest(2209) == 0) &&
@@ -715,31 +717,31 @@ job3_gen01,7,50,3	script	Testing Table#gen	844,{
 		    (checkquest(2213) == -1 || checkquest(2213) == 0) &&
 		    (checkquest(2214) == -1 || checkquest(2214) == 0)) {
 			mes "["+strcharinfo(0)+"]";
-			mes "嗯，我得先收集植物材料。";
+			mes "�ţ��ҵ����ռ�ֲ����ϡ�";
 			close;
 		}
-		mes "我该如何处理这些植物材料？";
+		mes "�Ҹ���δ�����Щֲ����ϣ�";
 		next;
-		select("破碎：粉碎成小块。：压碎。");
+		select("���飺�����С�顣��ѹ�顣");
 		while (1) {
-			mes "我现在该怎么办？";
+			mes "�����ڸ���ô�죿";
 			next;
 			if (rand(2))
-				select("烧成灰烬。：浸入蒸馏水中。：蒸汽。");
+				select("�ճɻҽ�������������ˮ�С���������");
 			else
-				select("将其放入测试烧瓶中并摇匀。：冷冻。：加热。");
+				select("������������ƿ�в�ҡ�ȡ����䶳�������ȡ�");
 			if (!rand(7)) break;
 		}
-		mes "我现在该怎么办？";
+		mes "�����ڸ���ô�죿";
 		next;
-		select("将其注入测试种子中。");
-		mes "我应该挑选什么样的种子？";
+		select("����ע����������С�");
+		mes "��Ӧ����ѡʲô�������ӣ�";
 		next;
-		select("测试种子 - A 型：测试种子 - B 型：测试种子 - C 型：测试种子 - D 型");
-		mes "我已经将准备好的材料放入了选定的测试种子中。";
+		select("�������� - A �ͣ��������� - B �ͣ��������� - C �ͣ��������� - D ��");
+		mes "���Ѿ���׼���õĲ��Ϸ�����ѡ���Ĳ��������С�";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "好的。现在我可以让德弗里斯小姐看看这颗种子了！";
+		mes "�õġ������ҿ����õ¸���˹С�㿴����������ˣ�";
 		if ((checkquest(2209) == -1 || checkquest(2209) == 0) &&
 		    (checkquest(2210) == -1 || checkquest(2210) == 0) &&
 		    (checkquest(2211) == -1 || checkquest(2211) == 0)){
@@ -761,7 +763,7 @@ job3_gen01,7,50,3	script	Testing Table#gen	844,{
 			close;
 		}
 	} else if (job_gen > 7 && job_gen < 60) {
-		mes "——看来实验失败了。我最好重新开始。 -";
+		mes "��������ʵ��ʧ���ˡ���������¿�ʼ�� -";
 		set job_gen,7;
 		if (countitem(6273)) delitem 6273,1; //Altered_Seed
 		if (countitem(6272)) delitem 6272,1; //Experiment_Seed
@@ -773,10 +775,10 @@ job3_gen01,7,50,3	script	Testing Table#gen	844,{
 		if (checkquest(2214) == 1) erasequest 2214;
 		close;
 	} else if (job_gen == 60 || job_gen == 61) {
-		mes "——看来我得让德弗里斯小姐看看这粒种子了！ -";
+		mes "���������ҵ��õ¸���˹С�㿴�����������ˣ� -";
 		end;
 	}
-	mes "- 这是一个有很多设备的测试台。我想我可以研究这里与植物的组合。 -";
+	mes "- ����һ���кܶ��豸�Ĳ���̨�������ҿ����о�������ֲ�����ϡ� -";
 	close;
 }
 
@@ -785,144 +787,144 @@ job3_gen01,21,67,3	script	Super Cultivator#gen	844,{
 }
 
 job3_gen01,91,48,3	script	Demi Calberine#gen	982,{
-	mes "[半卡贝林]";
+	mes "[�뿨����]";
 	if (job_gen < 62) {
-		mes "嗯~那个螺栓去哪儿了？";
+		mes "��~�Ǹ���˨ȥ�Ķ��ˣ�";
 		close;
 	} else if (job_gen == 62) {
-		mes "哦，那辆蓝色的小车~";
-		mes "加载图片大炮~";
-		mes "和我可爱的宝贝一起~";
-		mes "想要射炮弗雷瓦~~";
+		mes "Ŷ��������ɫ��С��~";
+		mes "����ͼƬ����~";
+		mes "���ҿɰ��ı���һ��~";
+		mes "��Ҫ���ڸ�����~~";
 		next;
-		mes "[半卡贝林]";
-		mes "呃~螺栓在哪里？";
-		mes "为什么他们的螺丝不够？我不是最近才订新的吗？";
+		mes "[�뿨����]";
+		mes "��~��˨�����";
+		mes "Ϊʲô���ǵ���˿�������Ҳ�������Ŷ��µ���";
 		next;
-		select("你好~?");
-		mes "[半卡贝林]";
-		mes "哎哟我的~？";
-		mes "你什么时候……你是谁？";
+		select("���~?");
+		mes "[�뿨����]";
+		mes "��Ӵ�ҵ�~��";
+		mes "��ʲôʱ�򡭡�����˭��";
 		next;
-		mes "[半卡贝林]";
-		mes "我的天啊！";
-		mes "嘿！请帮我！";
+		mes "[�뿨����]";
+		mes "�ҵ��찡��";
+		mes "�٣�����ң�";
 		next;
-		mes "[半卡贝林]";
-		mes "我今天需要完成并订购迷你大炮，但我找不到零件！";
+		mes "[�뿨����]";
+		mes "�ҽ�����Ҫ��ɲ�����������ڣ������Ҳ��������";
 		next;
-		mes "[半卡贝林]";
-		mes "呃~我想他们在这附近的某个地方掉下来了。";
-		mes "我只需要10个！我需要先把其他部分放在一起......你能帮我吗？！";
+		mes "[�뿨����]";
+		mes "��~�����������⸽����ĳ���ط��������ˡ�";
+		mes "��ֻ��Ҫ10��������Ҫ�Ȱ��������ַ���һ��......���ܰ����𣿣�";
 		changequest 2216,2217;
 		set job_gen,63;
 		close;
 	} else if (job_gen > 62 && job_gen < 74) {
-		mes "啊啊啊啊啊啊啊啊~~~";
-		mes "你找到零件了吗？不，还没有？你答应过的，请快点吧！";
+		mes "����������������~~~";
+		mes "���ҵ�������𣿲�����û�У����Ӧ���ģ�����ɣ�";
 		close;
 	} else if (job_gen == 74) {
-		mes "有了这个推车，火力就不行了，那就这么说吧……";
+		mes "��������Ƴ��������Ͳ����ˣ��Ǿ���ô˵�ɡ���";
 		next;
-		select("我已经拿到零件了");
-		mes "[半卡贝林]";
-		mes "哦，天哪！";
-		mes "你吓死我了！！";
-		mes "哦，这些是我丢失的螺丝和螺栓吗？";
-		mes "你在哪里找到这些的？";
+		select("���Ѿ��õ������");
+		mes "[�뿨����]";
+		mes "Ŷ�����ģ�";
+		mes "���������ˣ���";
+		mes "Ŷ����Щ���Ҷ�ʧ����˿����˨��";
+		mes "���������ҵ���Щ�ģ�";
 		next;
-		select("你让我去找他们！");
-		mes "[半卡贝林]";
-		mes "哦真的吗？";
-		mes "做了吗？我有很长一段时间了。";
-		mes "我什至不知道我的心在哪里。";
+		select("������ȥ�����ǣ�");
+		mes "[�뿨����]";
+		mes "Ŷ�����";
+		mes "���������кܳ�һ��ʱ���ˡ�";
+		mes "��ʲ����֪���ҵ��������";
 		next;
-		mes "[半卡贝林]";
-		mes "请稍等。";
-		mes "我会很快完成这些。";
+		mes "[�뿨����]";
+		mes "���Եȡ�";
+		mes "�һ�ܿ������Щ��";
 		next;
-		mes "- 啪啪啪 -";
+		mes "- žžž -";
 		next;
-		mes "[半卡贝林]";
-		mes "好的，我已经把大炮连接到了小车上……现在我们来测试一下性能吧？";
+		mes "[�뿨����]";
+		mes "�õģ����Ѿ��Ѵ������ӵ���С���ϡ�����������������һ�����ܰɣ�";
 		next;
-		mes "- 嘶嘶声... -";
+		mes "- ˻˻��... -";
 		next;
-		mes "- 流行音乐！流行音乐！流行音乐！流行音乐！ -";
+		mes "- �������֣��������֣��������֣��������֣� -";
 		next;
-		mes "[半卡贝林]";
-		mes "伟大的！成功！";
-		mes "呼。你给了我很多帮助。";
-		mes "非常感谢。";
+		mes "[�뿨����]";
+		mes "ΰ��ģ��ɹ���";
+		mes "����������Һܶ������";
+		mes "�ǳ���л��";
 		next;
-		mes "[半卡贝林]";
-		mes "哦，顺便问一下，你来这里的目的是什么？";
-		mes "你来这里是为了订购东西吗";
-		next;
-		mes "["+strcharinfo(0)+"]";
-		mes "我是一名遗传学家申请人。";
-		mes "我听说你对便携式迷你大炮之类的东西非常了解。";
-		next;
-		mes "[半卡贝林]";
-		mes "是的，我处理过很多种大炮。";
-		mes "现在，有些人想要改造他们的推车，所以我一直在给他们的推车安装一些附加功能，例如迷你大炮。";
+		mes "[�뿨����]";
+		mes "Ŷ��˳����һ�£����������Ŀ����ʲô��";
+		mes "����������Ϊ�˶���������";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "推车改造？";
+		mes "����һ���Ŵ�ѧ�������ˡ�";
+		mes "����˵��Ա�Яʽ�������֮��Ķ����ǳ��˽⡣";
 		next;
-		mes "[半卡贝林]";
-		mes "是啊，下坡的时候你不是想冲出去吗？";
-		mes "或者你有没有想过拖着那辆普通的旧车是多么无聊？";
+		mes "[�뿨����]";
+		mes "�ǵģ��Ҵ������ܶ��ִ��ڡ�";
+		mes "���ڣ���Щ����Ҫ�������ǵ��Ƴ���������һֱ�ڸ����ǵ��Ƴ���װһЩ���ӹ��ܣ�����������ڡ�";
 		next;
-		mes "[半卡贝林]";
-		mes "手推车不再只是用来存放物品的马车。";
-		mes "你可以在车上挂一门大炮，让它帮助你增强攻击力。";
+		mes "["+strcharinfo(0)+"]";
+		mes "�Ƴ����죿";
 		next;
-		mes "[半卡贝林]";
-		mes "德弗里斯小姐似乎正在楼下研究幼稚的实验。";
-		mes "我不明白为什么这些研究论文如此受欢迎。";
+		mes "[�뿨����]";
+		mes "�ǰ������µ�ʱ���㲻������ȥ��";
+		mes "��������û���������������ͨ�ľɳ��Ƕ�ô���ģ�";
+		next;
+		mes "[�뿨����]";
+		mes "���Ƴ�����ֻ�����������Ʒ��������";
+		mes "������ڳ��Ϲ�һ�Ŵ��ڣ�������������ǿ��������";
+		next;
+		mes "[�뿨����]";
+		mes "�¸���˹С���ƺ�����¥���о����ɵ�ʵ�顣";
+		mes "�Ҳ�����Ϊʲô��Щ�о���������ܻ�ӭ��";
 		emotion ET_HNG;
 		next;
-		mes "[半卡贝林]";
-		mes "看看这个迷你大炮。";
-		mes "这是世界上最小、最轻的大炮。";
-		mes "这是我做的，但这不是很可爱吗？伊佩~";
+		mes "[�뿨����]";
+		mes "�������������ڡ�";
+		mes "������������С������Ĵ��ڡ�";
+		mes "���������ģ����ⲻ�Ǻܿɰ�������~";
 		emotion ET_COOL;
 		next;
-		select("我可以改造我的购物车吗？");
-		mes "[半卡贝林]";
-		mes "不幸的是，购物车改造只允许遗传学家使用。";
-		mes "这是炼金师联盟的规定，我也没办法。";
+		select("�ҿ��Ը����ҵĹ��ﳵ��");
+		mes "[�뿨����]";
+		mes "���ҵ��ǣ����ﳵ����ֻ�����Ŵ�ѧ��ʹ�á�";
+		mes "��������ʦ���˵Ĺ涨����Ҳû�취��";
 		next;
-		mes "[半卡贝林]";
-		mes "但不要失望。";
-		mes "你也可以成为一名遗传学家！";
-		mes "呼呼呼。";
+		mes "[�뿨����]";
+		mes "����Ҫʧ����";
+		mes "��Ҳ���Գ�Ϊһ���Ŵ�ѧ�ң�";
+		mes "��������";
 		next;
-		mes "[半卡贝林]";
-		mes "更重要的是，您不能将购物车改造成任何购物车。";
-		mes "它只能在经过长时间打磨、经过质量认证的推车上完成。";
+		mes "[�뿨����]";
+		mes "����Ҫ���ǣ������ܽ����ﳵ������κι��ﳵ��";
+		mes "��ֻ���ھ�����ʱ���ĥ������������֤���Ƴ�����ɡ�";
 		next;
-		mes "[半卡贝林]";
-		mes "在成为遗传学家之前，您应该一有时间就练习您的推车技能。";
-		mes "直到你的肌肉与你的车和谐相处，并且你的车移动得很漂亮，";
+		mes "[�뿨����]";
+		mes "�ڳ�Ϊ�Ŵ�ѧ��֮ǰ����Ӧ��һ��ʱ�����ϰ�����Ƴ����ܡ�";
+		mes "ֱ����ļ�������ĳ���г�ദ��������ĳ��ƶ��ú�Ư����";
 		next;
-		mes "[半卡贝林]";
-		mes "如果你愿意的话，^FF0000我会告诉你一个好的训练地点。^000000";
-		mes "^FF0000Devries 不太喜欢它^000000，但这是最好的地方。哈哈。";
+		mes "[�뿨����]";
+		mes "�����Ը��Ļ���^FF0000�һ������һ���õ�ѵ���ص㡣^000000";
+		mes "^FF0000Devries ��̫ϲ����^000000����������õĵط���������";
 		next;
-		mes "[半卡贝林]";
-		mes "作为练习，你可以转动你的推车吗？";
-		mes "当您将车晃动至少^FF0000100^000000次时，您就可以摆脱压力，并且车将被擦得足够光滑。";
+		mes "[�뿨����]";
+		mes "��Ϊ��ϰ�������ת������Ƴ���";
+		mes "���������ζ�����^FF0000100^000000��ʱ�����Ϳ��԰���ѹ�������ҳ����������㹻�⻬��";
 		next;
-		mes "[半卡贝林]";
-		mes "好吧，我得去处理下一个订单了。";
-		mes "当你需要培训的时候就来找我吧。";
-		mes "每当您需要改造您的购物车时，我都会为您提供帮助。";
+		mes "[�뿨����]";
+		mes "�ðɣ��ҵ�ȥ������һ�������ˡ�";
+		mes "������Ҫ��ѵ��ʱ��������Ұɡ�";
+		mes "ÿ������Ҫ�������Ĺ��ﳵʱ���Ҷ���Ϊ���ṩ������";
 		next;
-		mes "- 嘎嘎声 -";
+		mes "- �¸��� -";
 		next;
-		mes "- 这是什么？我感觉地板好像缺了什么地方。 -";
+		mes "- ����ʲô���Ҹо��ذ����ȱ��ʲô�ط��� -";
 		set job_gen,75;
 		changequest 2217,2223;
 		close2;
@@ -930,44 +932,44 @@ job3_gen01,91,48,3	script	Demi Calberine#gen	982,{
 		end;
 	} else if (job_gen == 75) {
 		if (checkquest(2223,HUNTING) == 2) {
-			mes "德弗里斯小姐似乎发现了我把你放进了她的孢子栏里。";
-			mes "当你看着她的脸时，这很有趣。当你杀死所有这些孢子之后。";
+			mes "�¸���˹С���ƺ��������Ұ���Ž��������������";
+			mes "���㿴��������ʱ�������Ȥ������ɱ��������Щ����֮��";
 			close;
 		}
-		mes "哎呀，你还没练完吗？";
-		mes "你想进入孢子笔吗？";
+		mes "��ѽ���㻹û������";
+		mes "����������ӱ���";
 		next;
-		switch(select("是的。：没有。")) {
+		switch(select("�ǵġ���û�С�")) {
 		case 1:
-			mes "[半卡贝林]";
-			mes "推着小车尽情摇摆吧~";
+			mes "[�뿨����]";
+			mes "����С������ҡ�ڰ�~";
 			close2;
 			warp "job3_gen01",23,32;
 			end;
 		case 2:
-			mes "[半卡贝林]";
-			mes "真丢脸！我想看看德弗里斯小姐生气的脸。";
+			mes "[�뿨����]";
+			mes "�涪�������뿴���¸���˹С������������";
 			close;
 		}
 	} else if (job_gen > 75) {
-		mes "德弗里斯小姐似乎发现了我把你放进了她的孢子栏里。";
-		mes "当你看着她的脸时，这很有趣。当你杀死所有这些孢子之后。";
+		mes "�¸���˹С���ƺ��������Ұ���Ž��������������";
+		mes "���㿴��������ʱ�������Ȥ������ɱ��������Щ����֮��";
 		close;
 	}
 }
 
 -	script	Scattered Stuff#gen	-1,{
 	if (job_gen > 62 && job_gen < 74) {
-		mes "- 地板上散落着很多东西，实验室一片混乱。 -";
+		mes "- �ذ���ɢ���źܶණ����ʵ����һƬ���ҡ� -";
 		next;
-		mes "- 你发现了一个小金属碎片。 -";
+		mes "- �㷢����һ��С������Ƭ�� -";
 		set job_gen, job_gen+1;
 		specialeffect EF_BASH;
 		disablenpc();
 		initnpctimer;
 		close;
 	} else if (job_gen == 74) {
-		mes "- 我想我已经收集了所有的零件。 -";
+		mes "- �������Ѿ��ռ������е������ -";
 		close;
 	}
 	end;
@@ -985,42 +987,42 @@ job3_gen01,83,27,3	duplicate(Scattered Stuff#gen)	Scattered Stuff#gen6	111
 job3_gen01,74,45,3	duplicate(Scattered Stuff#gen)	Scattered Stuff#gen7	111
 
 job3_gen01,18,39,3	script	Warning#gen	837,{
-	mes "= 警告 =";
-	mes "如果你欺负我的孢子，我就尖叫！！！";
+	mes "= ���� =";
+	mes "������۸��ҵ����ӣ��Ҿͼ�У�����";
 	if (job_gen < 75) close;
 	next;
-	switch(select("离开围栏：保持静止。")) {
+	switch(select("�뿪Χ�������־�ֹ��")) {
 	case 1:
-		mes "- 我最好在被德弗里斯小姐抓住之前离开。 -";
+		mes "- ������ڱ��¸���˹С��ץס֮ǰ�뿪�� -";
 		close2;
 		warp "job3_gen01",21,38;
 		end;
 	case 2:
-		mes "- 我决定保持静止。 -";
+		mes "- �Ҿ������־�ֹ�� -";
 		close;
 	}
 }
 
 job3_gen01,80,12,1	script	Stacked Magazines#gen	111,{
-	mes "- “每月爆炸！”杂志堆得乱七八糟。 -";
+	mes "- ��ÿ�±�ը������־�ѵ����߰��㡣 -";
 	close;
 }
 
 job3_gen01,83,20,1	script	Bed#gen	111,{
-	mes "- 看起来像是精心挑选的格子图案毯子套装太适合这张肮脏的床了。 -";
+	mes "- ���������Ǿ�����ѡ�ĸ���ͼ��̺����װ̫�ʺ����Ű���Ĵ��ˡ� -";
 	close;
 }
 
 job3_gen01,85,25,1	script	Opened Book#gen	111,{
-	mes "< 你想拥有我漂亮的房间吗？你有足够的禅意吗？有足够的空间吗？立即跑到Lighthalzen百货商店，购买最高端的壁纸和室内装饰品！ >";
+	mes "< ����ӵ����Ư���ķ����������㹻�����������㹻�Ŀռ��������ܵ�Lighthalzen�ٻ��̵꣬������߶˵ı�ֽ������װ��Ʒ�� >";
 	next;
-	mes "< 照亮你房间的奢华蜡烛，每个女士都拥有的一面巨大的金色镜子，你不能错过其中任何一个！ >";
+	mes "< �����㷿����ݻ�����ÿ��Ůʿ��ӵ�е�һ��޴�Ľ�ɫ���ӣ��㲻�ܴ��������κ�һ���� >";
 	close;
 }
 
 job3_gen01,81,81,0	script	#dbroom	139,2,2,{
 OnTouch_:
-	mes "- 这是一个看起来像仓库的房间，因为房间里堆满了很多包裹。 -";
+	mes "- ����һ����������ֿ�ķ��䣬��Ϊ����������˺ܶ������ -";
 	close;
 }
 

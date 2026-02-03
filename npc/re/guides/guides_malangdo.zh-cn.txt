@@ -2,37 +2,39 @@
 //= Malangdo Guide
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [JohnnyPlayy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
-	mes "[é©¬å…°å¤šæŒ‡å—]";
-	mes "å¾ˆé«˜å…´è®¤è¯†ä½ ï¼Œæ¬¢è¿æ¥åˆ°^8C4210é©¬å…°å¤š^000000ã€‚çŒ«çˆªå²›ï¼";
-	mes "éœ€è¦ä¸€äº›æŒ‡å¯¼å—ï¼Ÿ";
-	F_Navi("[é©¬å…°å¤šæŒ‡å—]");
+	mes "[ÂíÀ¼¶àÖ¸ÄÏ]";
+	mes "ºÜ¸ßĞËÈÏÊ¶Äã£¬»¶Ó­À´µ½^8C4210ÂíÀ¼¶à^000000¡£Ã¨×¦µº£¡";
+	mes "ĞèÒªÒ»Ğ©Ö¸µ¼Âğ£¿";
+	F_Navi("[ÂíÀ¼¶àÖ¸ÄÏ]");
 	while(1) {
 		next;
-		switch(select("[ä¸»è¦è®¾æ–½]ï¼š[äº¤æ˜“å‘˜å’ŒåŠ©ç†]ï¼šæ¸…é™¤å°åœ°å›¾ï¼šå–æ¶ˆ")) {
+		switch(select("[Ö÷ÒªÉèÊ©]£º[½»Ò×Ô±ºÍÖúÀí]£ºÇå³ıĞ¡µØÍ¼£ºÈ¡Ïû")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[çŒ«ç©å®¶æ€»ç›‘]ï¼š[ç‰¹åˆ«è‡ªåŠ¨å”®è´§æœº]ï¼š[ç¡¬å¸å…‘æ¢å™¨]ï¼š[æ˜Ÿç©ºçŠç‘š]ï¼šä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[Ã¨Íæ¼Ò×Ü¼à]£º[ÌØ±ğ×Ô¶¯ÊÛ»õ»ú]£º[Ó²±Ò¶Ò»»Æ÷]£º[ĞÇ¿ÕÉºº÷]£ºÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
-					callsub L_Mark, F_Navi("çŒ«ç©å®¶æ€»ç›‘","malangdo,119,137","FF0000");
+					callsub L_Mark, F_Navi("Ã¨Íæ¼Ò×Ü¼à","malangdo,119,137","FF0000");
 					viewpoint 1,119,137,0,0xFF0000;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("ä¸“ç”¨è‡ªåŠ¨å”®è´§æœº","malangdo,216,165","FF4500");
+					callsub L_Mark, F_Navi("×¨ÓÃ×Ô¶¯ÊÛ»õ»ú","malangdo,216,165","FF4500");
 					viewpoint 1,216,165,1,0xFF4500;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("ç¡¬å¸å…‘æ¢æœº","malangdo,216,165","DAA520");
+					callsub L_Mark, F_Navi("Ó²±Ò¶Ò»»»ú","malangdo,216,165","DAA520");
 					viewpoint 1,216,165,2,0xDAA520;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("æ˜Ÿç©ºçŠç‘š","malangdo,73,238","7B68EE");
+					callsub L_Mark, F_Navi("ĞÇ¿ÕÉºº÷","malangdo,73,238","7B68EE");
 					next;
 					viewpoint 1,73,238,3,0x7B68EE;
 					break;
@@ -45,54 +47,54 @@ malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ æ‰˜é©¬æ–¯é…‹é•¿]:[ è‡­å•†äºº]:[ æµæµªå•†äºº]:[ æ—…åº—è€æ¿]:[ åº—ä¸»]:[ å·¥å…·ç»é”€å•†]:[ Portali ]:[ Clink ]:[ Holink ]:[ æµåŠ¨å•†äºº ]:ä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[ ÍĞÂíË¹Çõ³¤]:[ ³ôÉÌÈË]:[ Á÷ÀËÉÌÈË]:[ ÂÃµêÀÏ°å]:[ µêÖ÷]:[ ¹¤¾ß¾­ÏúÉÌ]:[ Portali ]:[ Clink ]:[ Holink ]:[ Á÷¶¯ÉÌÈË ]:ÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
-					callsub L_Mark, F_Navi("æ‰˜é©¬æ–¯é…‹é•¿","malangdo,164,163","0A9696");
+					callsub L_Mark, F_Navi("ÍĞÂíË¹Çõ³¤","malangdo,164,163","0A9696");
 					viewpoint 1,164,163,4,0x0A9696;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("è‡­å•†äºº","malangdo,173,145","4B0082");
+					callsub L_Mark, F_Navi("³ôÉÌÈË","malangdo,173,145","4B0082");
 					viewpoint 1,173,145,5,0x4B0082;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("æµæµªå•†äºº","malangdo,162,145","FF4500");
+					callsub L_Mark, F_Navi("Á÷ÀËÉÌÈË","malangdo,162,145","FF4500");
 					viewpoint 1,162,145,6,0x7B68EE;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("å®¢æ ˆè€æ¿","malangdo,147,120","FF6A00");
+					callsub L_Mark, F_Navi("¿ÍÕ»ÀÏ°å","malangdo,147,120","FF6A00");
 					viewpoint 1,147,120,7,FF6A00;
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("åº—ä¸»","malangdo,184,138","7F3300");
+					callsub L_Mark, F_Navi("µêÖ÷","malangdo,184,138","7F3300");
 					viewpoint 1,184,138,8,0x7F3300;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("å·¥å…·ç»é”€å•†","malangdo,232,160","7B68EE");
+					callsub L_Mark, F_Navi("¹¤¾ß¾­ÏúÉÌ","malangdo,232,160","7B68EE");
 					viewpoint 1,232,160,9,0x7B68EE;
 					next;
 					break;
 				case 7:
-					callsub L_Mark, F_Navi("é—¨æˆ·ç½‘ç«™","malangdo,190,167","FF4500");
+					callsub L_Mark, F_Navi("ÃÅ»§ÍøÕ¾","malangdo,190,167","FF4500");
 					viewpoint 1,190,167,10,0x7B68EE;
 					next;
 					break;
 				case 8:
-					callsub L_Mark, F_Navi("ç¢°æ¯","malangdo,225,174","0A9696");
+					callsub L_Mark, F_Navi("Åö±­","malangdo,225,174","0A9696");
 					viewpoint 1,225,174,11,0x0A9696;
 					next;
 					break;
 				case 9:
-					callsub L_Mark, F_Navi("éœæ—å…‹","malangdo,221,176","DA70D6");
+					callsub L_Mark, F_Navi("»ôÁÖ¿Ë","malangdo,221,176","DA70D6");
 					viewpoint 1,221,176,12,0xDA70D6;
 					next;
 					break;
 				case 10:
-					callsub L_Mark, F_Navi("æµåŠ¨å•†äºº","malangdo,150,132","3131FF");
+					callsub L_Mark, F_Navi("Á÷¶¯ÉÌÈË","malangdo,150,132","3131FF");
 					viewpoint 1,150,132,13,0x3131FF;
 					next;
 					break;
@@ -103,9 +105,9 @@ malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
 			}
 			break;
 		case 3:
-			mes "[é©¬å…°å¤šæŒ‡å—]";
-			mes "æˆ‘ä¼šåˆ é™¤ä½ å°åœ°å›¾ä¸Šçš„æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "éœ€è¦æ›´å¤šå¸®åŠ©å—ï¼Ÿ";
+			mes "[ÂíÀ¼¶àÖ¸ÄÏ]";
+			mes "ÎÒ»áÉ¾³ıÄãĞ¡µØÍ¼ÉÏµÄËùÓĞ±ê¼Ç¡£";
+			mes "ĞèÒª¸ü¶à°ïÖúÂğ£¿";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -122,14 +124,14 @@ malangdo,218,101,3	script	Malangdo Guide#Malangdo	4_CAT_SAILOR3,{
 			viewpoint 2,1,1,13,0xFFFFFF;
 			break;
 		case 4:
-			mes "[é©¬å…°å¤šæŒ‡å—]";
-			mes "ç¥æ‚¨æ—…é€”æ„‰å¿«ã€‚";
+			mes "[ÂíÀ¼¶àÖ¸ÄÏ]";
+			mes "×£ÄúÂÃÍ¾Óä¿ì¡£";
 			close;
 		}
 	}
 L_Mark:
-	mes "[é©¬å…°å¤šæŒ‡å—]";
-	mes "æˆ‘å°†å‘æ‚¨å±•ç¤ºè¯¥åœ°ç‚¹" + getarg(0);
-	mes "æ‚¨è¿˜éœ€è¦å…¶ä»–ä¿¡æ¯å—ï¼Ÿ";
+	mes "[ÂíÀ¼¶àÖ¸ÄÏ]";
+	mes "ÎÒ½«ÏòÄúÕ¹Ê¾¸ÃµØµã" + getarg(0);
+	mes "Äú»¹ĞèÒªÆäËûĞÅÏ¢Âğ£¿";
 	return;
 }

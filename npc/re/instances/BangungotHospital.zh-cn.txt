@@ -15,6 +15,8 @@
 //= 1.1 Added GM management function. [Euphy]
 //= 1.2 Added VIP features. [Euphy]
 //= 1.3 Bugs fixed. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 // Instance Creation :: ma_hos_enter
@@ -41,10 +43,10 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 					callsub S_NoParty;
 			}
 			if (checkquest(11309,HUNTING) == 2) {
-				mes "[æ¢…æ©æŠ¤å£«]";
-				mes "ä½ æ‘†è„±äº†ç­è´¡æˆˆç‰¹ï¼";
-				mes "æŠ¤å£«å¯èƒ½æ­£åœ¨ç­‰ä½ ";
-				mes "å°±åœ¨åŒ»é™¢å‰é¢ï¼";
+				mes "[Ã·¶÷»¤Ê¿]";
+				mes "Äã°ÚÍÑÁË°à¹±¸êÌØ£¡";
+				mes "»¤Ê¿¿ÉÄÜÕıÔÚµÈÄã";
+				mes "¾ÍÔÚÒ½ÔºÇ°Ãæ£¡";
 				close2;
 				cutin "",255;
 				end;
@@ -61,7 +63,7 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 				else if (malaya_bang > 39)
 					callsub S_Enter, false;
 				else {
-					mes "[æ¢…æ©æŠ¤å£«]";
+					mes "[Ã·¶÷»¤Ê¿]";
 					mes "..........";
 					close2;
 					cutin "",255;
@@ -69,16 +71,16 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 				}
 			case 0:
 			case 1:
-				mes "[æ¢…æ©æŠ¤å£«]";
-				mes "ç°åœ¨å…¥å£å¤„";
-				mes "ä¸ŠäºŒæ¥¼";
-				mes "å·²å…³é—­ã€‚";
+				mes "[Ã·¶÷»¤Ê¿]";
+				mes "ÏÖÔÚÈë¿Ú´¦";
+				mes "ÉÏ¶şÂ¥";
+				mes "ÒÑ¹Ø±Õ¡£";
 				next;
-				mes "[æ¢…æ©æŠ¤å£«]";
-				mes "å‘ä¸Šèµ°";
-				mes "åˆä¸ŠäºŒæ¥¼";
-				mes "æ‰“å¼€å¤§é—¨";
-				mes "ç»è¿‡ä¸€æ®µæ—¶é—´åã€‚";
+				mes "[Ã·¶÷»¤Ê¿]";
+				mes "ÏòÉÏ×ß";
+				mes "ÓÖÉÏ¶şÂ¥";
+				mes "´ò¿ª´óÃÅ";
+				mes "¾­¹ıÒ»¶ÎÊ±¼äºó¡£";
 				close2;
 				cutin "",255;
 				end;
@@ -86,14 +88,14 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 				if (checkquest(11309,HUNTING) == -1)
 					callsub S_NoParty;
 				if (isbegin_quest(11309) == 1) {
-					mes "[æ¢…æ©æŠ¤å£«]";
-					mes "ä»äºŒæ¥¼çš„Bangungot";
-					mes "ä½ å®‰å…¨å›åˆ°è¿™é‡Œäº†ï¼ï¼";
+					mes "[Ã·¶÷»¤Ê¿]";
+					mes "´Ó¶şÂ¥µÄBangungot";
+					mes "Äã°²È«»Øµ½ÕâÀïÁË£¡£¡";
 					next;
-					mes "[æ¢…æ©æŠ¤å£«]";
-					mes "å¦‚æœä½ æƒ³ä¸Šå»";
-					mes "åˆæ˜¯äºŒæ¥¼";
-					mes "è¯·åˆ°æˆ‘è¿™é‡Œæ¥ã€‚";
+					mes "[Ã·¶÷»¤Ê¿]";
+					mes "Èç¹ûÄãÏëÉÏÈ¥";
+					mes "ÓÖÊÇ¶şÂ¥";
+					mes "Çëµ½ÎÒÕâÀïÀ´¡£";
 					completequest 9224;
 					erasequest 9224;
 					close2;
@@ -104,7 +106,7 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 				if (malaya_bang > 39)
 					callsub S_Enter, true;
 				else {
-					mes "[æ¢…æ©æŠ¤å£«]";
+					mes "[Ã·¶÷»¤Ê¿]";
 					mes ".......";
 					close2;
 					cutin "",255;
@@ -115,10 +117,10 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 			if (.@party_id == 0)
 				callsub S_NoParty;
 			if (malaya_bang < 40) {
-				mes "[æ¢…æ©æŠ¤å£«]";
-				mes "â€¦â€¦ï¼Ÿ";
-				mes "ç°åœ¨ä½ ä¸èƒ½ä¸Šå»";
-				mes "åˆ°äºŒæ¥¼ã€‚";
+				mes "[Ã·¶÷»¤Ê¿]";
+				mes "¡­¡­£¿";
+				mes "ÏÖÔÚÄã²»ÄÜÉÏÈ¥";
+				mes "µ½¶şÂ¥¡£";
 				close2;
 				cutin "",255;
 				end;
@@ -126,18 +128,18 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 			if (checkquest(9222,HUNTING) == 0 || checkquest(9222,HUNTING) == 1) {
 				switch( checkquest(9224,PLAYTIME) ) {// Explore Hospital 2F
 				case -1:
-					mes "[æ¢…æ©æŠ¤å£«]";
-					mes "è¿™æ˜¯è‡´å‘½çš„æƒ…å†µã€‚";
-					mes "è¿™å°±æ˜¯ä¸ºä»€ä¹ˆä½ ä¸èƒ½ä¸Šå»";
-					mes "2æ¥¼ã€‚";
+					mes "[Ã·¶÷»¤Ê¿]";
+					mes "ÕâÊÇÖÂÃüµÄÇé¿ö¡£";
+					mes "Õâ¾ÍÊÇÎªÊ²Ã´Äã²»ÄÜÉÏÈ¥";
+					mes "2Â¥¡£";
 					close2;
 					cutin "",255;
 					end;
 				case 0:
 				case 1:
-					mes "[æ¢…æ©æŠ¤å£«]";
-					mes "åˆ°åŒ»é™¢äºŒæ¥¼";
-					mes "ä½ è¿˜æƒ³å†ä¸ŠäºŒæ¥¼å—ï¼Ÿ";
+					mes "[Ã·¶÷»¤Ê¿]";
+					mes "µ½Ò½Ôº¶şÂ¥";
+					mes "Äã»¹ÏëÔÙÉÏ¶şÂ¥Âğ£¿";
 					callsub S_Enter, false, false;
 				case 2:
 					callsub S_Enter, true;
@@ -145,19 +147,19 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 			}
 			// else
 			if (checkweight(607,11) == 0) {
-				mes "[æ¢…æ©æŠ¤å£«]";
-				mes "ä½ çš„ä¸œè¥¿å¤ªå¤šäº†ã€‚";
-				mes "è¯·å‡å°‘ä½ çš„ä¸œè¥¿å¹¶";
-				mes "å†æ¥æ‰¾æˆ‘å§ã€‚";
+				mes "[Ã·¶÷»¤Ê¿]";
+				mes "ÄãµÄ¶«Î÷Ì«¶àÁË¡£";
+				mes "Çë¼õÉÙÄãµÄ¶«Î÷²¢";
+				mes "ÔÙÀ´ÕÒÎÒ°É¡£";
 				close2;
 				cutin "",255;
 				end;
 			}
 			if (checkweight(607,1) == 0) {
-				mes "[æ¢…æ©æŠ¤å£«]";
-				mes "å¤ªé‡äº†ã€‚";
-				mes "è¯·å‡è½»é‡é‡å¹¶";
-				mes "å†æ¥æ‰¾æˆ‘å§ã€‚";
+				mes "[Ã·¶÷»¤Ê¿]";
+				mes "Ì«ÖØÁË¡£";
+				mes "Çë¼õÇáÖØÁ¿²¢";
+				mes "ÔÙÀ´ÕÒÎÒ°É¡£";
 				close2;
 				cutin "",255;
 				end;
@@ -189,7 +191,7 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 		else if (malaya_bang > 39)
 			callsub S_Enter, true;
 		else {
-			mes "[æ¢…æ©æŠ¤å£«]";
+			mes "[Ã·¶÷»¤Ê¿]";
 			mes ".......";
 			close2;
 			cutin "",255;
@@ -198,28 +200,28 @@ ma_dun01,147,10,5	script	Nurse#ma_dun01	4_F_NURSE,{
 	}
 
 S_Closed:
-	mes "[æ¢…æ©æŠ¤å£«]";
-	mes "- ä¸€æ¥¼çš„é—¨å…³é—­";
-	mes "è¿™ä½æŠ¤å£«ä»€ä¹ˆæ—¶å€™è¿›æ¥çš„ï¼Ÿ";
-	mes "æˆ‘åœ¨èƒŒåå‘¼å”¤å¥¹ï¼Œä½†æ˜¯";
-	mes "å¥¹æ²¡æœ‰å›åº”ã€‚ -";
+	mes "[Ã·¶÷»¤Ê¿]";
+	mes "- Ò»Â¥µÄÃÅ¹Ø±Õ";
+	mes "ÕâÎ»»¤Ê¿Ê²Ã´Ê±ºò½øÀ´µÄ£¿";
+	mes "ÎÒÔÚ±³ºóºô»½Ëı£¬µ«ÊÇ";
+	mes "ËıÃ»ÓĞ»ØÓ¦¡£ -";
 	close2;
 	cutin "",255;
 	end;
 
 S_Complete:
-	mes "[æ¢…æ©æŠ¤å£«]";
-	mes "ä½ ä»äºŒæ¥¼çš„Bangungotå®‰å…¨å›æ¥äº†ï¼ï¼";
-	mes "ç„¶è€Œï¼Œè¿™å¹¶ä¸æ˜¯";
-	mes "çœŸçš„ç»“æŸäº†ã€‚";
+	mes "[Ã·¶÷»¤Ê¿]";
+	mes "Äã´Ó¶şÂ¥µÄBangungot°²È«»ØÀ´ÁË£¡£¡";
+	mes "È»¶ø£¬Õâ²¢²»ÊÇ";
+	mes "ÕæµÄ½áÊøÁË¡£";
 	next;
-	mes "[æ¢…æ©æŠ¤å£«]";
-	mes "æˆ‘å¾ˆç¡®å®š";
-	mes "æ°¸è¿œä¸ä¼šè½»æ˜“æ¶ˆå¤±ã€‚";
-	mes "æˆ‘ä¸çŸ¥é“ä¼šå‘ç”Ÿä»€ä¹ˆ";
-	mes "å…³äºå™©æ¢¦ï¼Œæ‰€ä»¥";
-	mes "ä¸€æ®µæ—¶é—´å";
-	mes "è¯·å›åˆ°æˆ‘èº«è¾¹ã€‚";
+	mes "[Ã·¶÷»¤Ê¿]";
+	mes "ÎÒºÜÈ·¶¨";
+	mes "ÓÀÔ¶²»»áÇáÒ×ÏûÊ§¡£";
+	mes "ÎÒ²»ÖªµÀ»á·¢ÉúÊ²Ã´";
+	mes "¹ØÓÚØ¬ÃÎ£¬ËùÒÔ";
+	mes "Ò»¶ÎÊ±¼äºó";
+	mes "Çë»Øµ½ÎÒÉí±ß¡£";
 	if (getarg(0) == true) {
 		completequest 9222;
 		erasequest 9222;
@@ -230,10 +232,10 @@ S_Complete:
 	return;
 
 S_NoParty:
-	mes "- æˆ‘çŒœ...";
-	mes "æˆ‘ä¸èƒ½å•ç‹¬å’Œä»–è¯´è¯ã€‚";
-	mes "æ³¨å†Œèšä¼šå";
-	mes "è®©æˆ‘è¯•ç€è¯´ç‚¹ä»€ä¹ˆã€‚ -";
+	mes "- ÎÒ²Â...";
+	mes "ÎÒ²»ÄÜµ¥¶ÀºÍËûËµ»°¡£";
+	mes "×¢²á¾Û»áºó";
+	mes "ÈÃÎÒÊÔ×ÅËµµãÊ²Ã´¡£ -";
 	close2;
 	cutin "",255;
 	end;
@@ -243,68 +245,68 @@ S_Enter:
 	if (getarg(1,1) == true) {
 		if (is_party_leader() == true)
 			.@menu$ = "Prepare to enter the second floor.";
-		mes "[æ¢…æ©æŠ¤å£«]";
+		mes "[Ã·¶÷»¤Ê¿]";
 		if (getarg(0) == false) {
-			mes "æˆ‘å·²ç»å¬è¿‡é‚£ä¸ªæ•…äº‹äº†";
-			mes "æˆ‘å¾ˆæ¸…æ¥šè¿™ä¸€ç‚¹ã€‚";
-			mes "ä½ ä¼šæ€æ ·åšï¼Ÿ";
-			mes "ä½ æƒ³ä¸Šå»å—";
-			mes "åˆ°äºŒæ¥¼ï¼Ÿ";
+			mes "ÎÒÒÑ¾­Ìı¹ıÄÇ¸ö¹ÊÊÂÁË";
+			mes "ÎÒºÜÇå³şÕâÒ»µã¡£";
+			mes "Äã»áÔõÑù×ö£¿";
+			mes "ÄãÏëÉÏÈ¥Âğ";
+			mes "µ½¶şÂ¥£¿";
 		}
 		else {
-			mes "ä½ å›æ¥äº†...";
-			mes "æœ‰åæ¶ˆæ¯ã€‚";
-			mes "æˆ‘å¬è¯´";
-			mes "ç­è´¡æˆˆç‰¹å‡ºç°äº†";
-			mes "å†æ¬¡ã€‚";
+			mes "Äã»ØÀ´ÁË...";
+			mes "ÓĞ»µÏûÏ¢¡£";
+			mes "ÎÒÌıËµ";
+			mes "°à¹±¸êÌØ³öÏÖÁË";
+			mes "ÔÙ´Î¡£";
 			next;
-			mes "[æ¢…æ©æŠ¤å£«]";
-			mes ""+ strcharinfo(0) +"çš„å¸®åŠ©";
-			mes "Error 500 (Server Error)!!1500.Thatâ€™s an error.There was an error. Please try again later.Thatâ€™s all we know.";
-			mes "è¯·ä½ ç»™æˆ‘";
-			mes "è¿˜æœ‰ä¸€æ¬¡æœºä¼šå—ï¼Ÿ";
+			mes "[Ã·¶÷»¤Ê¿]";
+			mes ""+ strcharinfo(0) +"µÄ°ïÖú";
+			mes "Error 500 (Server Error)!!1500.That¡¯s an error.There was an error. Please try again later.That¡¯s all we know.";
+			mes "ÇëÄã¸øÎÒ";
+			mes "»¹ÓĞÒ»´Î»ú»áÂğ£¿";
 		}
 	}
 	next;
-	switch( select( .@menu$, "è¿›å…¥äºŒæ¥¼ã€‚", "è¯·å‹¿è¿›å…¥ã€‚" ) ) {
+	switch( select( .@menu$, "½øÈë¶şÂ¥¡£", "ÇëÎğ½øÈë¡£" ) ) {
 	case 1:
 		if (instance_create(.@md_name$) < 0) {
-			mes "[æ¢…æ©æŠ¤å£«]";
-			mes "ç´§æ€¥æƒ…å†µå‘ç”Ÿäº†ã€‚";
-			mes "ä¸èƒ½ä¸Š2æ¥¼ã€‚";
+			mes "[Ã·¶÷»¤Ê¿]";
+			mes "½ô¼±Çé¿ö·¢ÉúÁË¡£";
+			mes "²»ÄÜÉÏ2Â¥¡£";
 			break;
 		}
-		mes "[æ¢…æ©æŠ¤å£«]";
-		mes "æˆ‘ä»¬æ­£å‡†å¤‡ä¸Šå»";
-		mes "åˆ°äºŒæ¥¼ã€‚";
-		mes "åœ¨äºŒæ¥¼";
-		mes "æœ‰ä¸€ä¸ªæ··ä¹±çš„è°£è¨€è¯´";
-		mes "æ­»è€…ä¸ä¼šæ­»ã€‚";
-		mes "è¯·å‚è€ƒè¿™ä¸ªæ•…äº‹ã€‚";
+		mes "[Ã·¶÷»¤Ê¿]";
+		mes "ÎÒÃÇÕı×¼±¸ÉÏÈ¥";
+		mes "µ½¶şÂ¥¡£";
+		mes "ÔÚ¶şÂ¥";
+		mes "ÓĞÒ»¸ö»ìÂÒµÄÒ¥ÑÔËµ";
+		mes "ËÀÕß²»»áËÀ¡£";
+		mes "Çë²Î¿¼Õâ¸ö¹ÊÊÂ¡£";
 		next;
-		mes "[æ¢…æ©æŠ¤å£«]";
-		mes "å½“ä½ å®Œæˆæ‰€æœ‰äº‹æƒ…åï¼Œ";
-		mes "è¯·å†è·Ÿæˆ‘è¯´è¯ã€‚";
-		mes "æˆ‘çœŸçš„å¾ˆæ„Ÿæ¿€ã€‚";
+		mes "[Ã·¶÷»¤Ê¿]";
+		mes "µ±ÄãÍê³ÉËùÓĞÊÂÇéºó£¬";
+		mes "ÇëÔÙ¸úÎÒËµ»°¡£";
+		mes "ÎÒÕæµÄºÜ¸Ğ¼¤¡£";
 		break;
 	case 2:
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
-			mes "[æ¢…æ©æŠ¤å£«]";
-			mes "ç´§æ€¥æƒ…å†µå‘ç”Ÿäº†ã€‚";
-			mes "ä¸èƒ½ä¸Š2æ¥¼ã€‚";
+			mes "[Ã·¶÷»¤Ê¿]";
+			mes "½ô¼±Çé¿ö·¢ÉúÁË¡£";
+			mes "²»ÄÜÉÏ2Â¥¡£";
 			break;
 		case IE_NOINSTANCE:
-			mes "[æ¢…æ©æŠ¤å£«]";
-			mes "ä½ ä¸èƒ½ä¸Šå»";
-			mes "ç°åœ¨2æ¥¼ã€‚";
+			mes "[Ã·¶÷»¤Ê¿]";
+			mes "Äã²»ÄÜÉÏÈ¥";
+			mes "ÏÖÔÚ2Â¥¡£";
 			break;
 		case IE_NOMEMBER:
-			mes "[æ¢…æ©æŠ¤å£«]";
-			mes "å»å¤ªå±é™©äº†";
-			mes "ç‹¬è‡ªä¸Š2æ¥¼ã€‚";
-			mes "è¯·å¸¦ç€";
-			mes "å‡ ä¸ªäººã€‚";
+			mes "[Ã·¶÷»¤Ê¿]";
+			mes "È¥Ì«Î£ÏÕÁË";
+			mes "¶À×ÔÉÏ2Â¥¡£";
+			mes "Çë´ø×Å";
+			mes "¼¸¸öÈË¡£";
 			break;
 		case IE_OK:
 			mapannounce "ma_dun01", getpartyname(getcharid(1)) + " party's " + strcharinfo(0) + " member entered " + .@md_name$ + ".",bc_map,"0x00ff99";
@@ -327,9 +329,9 @@ S_Enter:
 		}
 		break;
 	case 3:
-		mes "[æ¢…æ©æŠ¤å£«]";
-		mes "å¥½å§ã€‚";
-		mes "å¦‚æœä½ æ”¹å˜ä¸»æ„ï¼Œè¯·å†å›æ¥ã€‚";
+		mes "[Ã·¶÷»¤Ê¿]";
+		mes "ºÃ°É¡£";
+		mes "Èç¹ûÄã¸Ä±äÖ÷Òâ£¬ÇëÔÙ»ØÀ´¡£";
 		break;
 	}
 	close2;
@@ -340,13 +342,13 @@ S_Enter:
 // GM Management NPC :: ma_hos_enter_2
 //============================================================
 sec_in02,27,30,0	script	Bangungot Gate	2_MONEMUS,{
-	mes "å¯†ç ";
+	mes "ÃÜÂë";
 	next;
 	if (callfunc("F_GM_NPC","1854",1) == 0) {
-		mes "ç¥ä½ å¥½è¿ã€‚";
+		mes "×£ÄãºÃÔË¡£";
 		close;
 	}
-	switch(select("æ¥æ”¶ 9222:æ¥æ”¶ 9223:æ“¦é™¤ 9222:æ“¦é™¤ 9223:æ¥æ”¶ 9224:æ“¦é™¤ 9224:æ¥æ”¶ malaya_bang 30:æ¥æ”¶ malaya_bang 40:æ¥æ”¶ 11309:æ“¦é™¤ 11309:å–æ¶ˆ")) {
+	switch(select("½ÓÊÕ 9222:½ÓÊÕ 9223:²Á³ı 9222:²Á³ı 9223:½ÓÊÕ 9224:²Á³ı 9224:½ÓÊÕ malaya_bang 30:½ÓÊÕ malaya_bang 40:½ÓÊÕ 11309:²Á³ı 11309:È¡Ïû")) {
 		case 1: setquest 9222; end;
 		case 2: setquest 9223; end;
 		case 3: erasequest 9222; end;

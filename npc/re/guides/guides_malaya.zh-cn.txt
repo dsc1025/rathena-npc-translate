@@ -11,50 +11,52 @@
 //===== Additional Comments: ================================= 
 //= 1.0 First version. [Euphy]
 //= 1.1 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 malaya,71,72,4	script	Port Malaya Guide#01::GuideMalaya	579,{
-	mes "[é©¬æ¥äºšæ¸¯æŒ‡å—]";
-	mes "æ¬¢è¿æ¥åˆ°^8B4513é©¬æ¥äºšæ¸¯^000000ï¼Œå‘¼å¸ä¹‹æ‘ã€‚";
-	mes "æ–‡åŒ–å’Œä¼ è¯´åœ¨è¿™é‡Œæ ©æ ©å¦‚ç”Ÿï¼";
-	mes "æ‚¨éœ€è¦å¸®åŠ©æ¸¸è§ˆæ‘åº„å—ï¼Ÿ";
-	F_Navi("[é©¬æ¥äºšæ¸¯æŒ‡å—]");
+	mes "[ÂíÀ´ÑÇ¸ÛÖ¸ÄÏ]";
+	mes "»¶Ó­À´µ½^8B4513ÂíÀ´ÑÇ¸Û^000000£¬ºôÎüÖ®´å¡£";
+	mes "ÎÄ»¯ºÍ´«ËµÔÚÕâÀïèòèòÈçÉú£¡";
+	mes "ÄúĞèÒª°ïÖúÓÎÀÀ´å×¯Âğ£¿";
+	F_Navi("[ÂíÀ´ÑÇ¸ÛÖ¸ÄÏ]");
 	while(1) {
 		next;
-		switch(select("[å¡å¤«æ‹‰å‘˜å·¥]ï¼š[æ—…é¦†å’Œé…’é¦†]ï¼š[æ­¦å™¨å’Œç›”ç”²åº—]ï¼š[å·¥å…·åº—]ï¼š[åŒ»é™¢]ï¼š[å…¬å›­]ï¼š[æ¸¯å£]ï¼šä»å°åœ°å›¾ä¸Šåˆ é™¤æ ‡è®°ï¼šå–æ¶ˆ")) {
+		switch(select("[¿¨·òÀ­Ô±¹¤]£º[ÂÃ¹İºÍ¾Æ¹İ]£º[ÎäÆ÷ºÍ¿ø¼×µê]£º[¹¤¾ßµê]£º[Ò½Ôº]£º[¹«Ô°]£º[¸Û¿Ú]£º´ÓĞ¡µØÍ¼ÉÏÉ¾³ı±ê¼Ç£ºÈ¡Ïû")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employees^000000",1;
 			viewpoint 1,71,79,0,0x0A82FF;
 			viewpoint 1,234,204,1,0x0A82FF;
 			break;
 		case 2:
-			callsub L_Mark, F_Navi("æ—…é¦†åŠé…’é¦†","malaya,193,215","^006400");
+			callsub L_Mark, F_Navi("ÂÃ¹İ¼°¾Æ¹İ","malaya,193,215","^006400");
 			viewpoint 1,193,215,2,0xAAFF00;
 			break;
 		case 3:
-			callsub L_Mark, F_Navi("æ­¦å™¨ä¸ç›”ç”²åº—","malaya,114,212","^008080");
+			callsub L_Mark, F_Navi("ÎäÆ÷Óë¿ø¼×µê","malaya,114,212","^008080");
 			viewpoint 1,114,212,3,0x4F543C;
 			break;
 		case 4:
-			callsub L_Mark, F_Navi("å·¥å…·åº—","malaya,297,167","^FF1493");
+			callsub L_Mark, F_Navi("¹¤¾ßµê","malaya,297,167","^FF1493");
 			viewpoint 1,297,167,4,0xFF1493;
 			break;
 		case 5:
-			callsub L_Mark, F_Navi("åŒ»é™¢","malaya,50,75","^8B4513");
+			callsub L_Mark, F_Navi("Ò½Ôº","malaya,50,75","^8B4513");
 			viewpoint 1,50,75,5,0x8B4513;
 			break;
 		case 6:
-			callsub L_Mark, F_Navi("å…¬å›­","malaya,280,371","^8B4513");
+			callsub L_Mark, F_Navi("¹«Ô°","malaya,280,371","^8B4513");
 			viewpoint 1,280,371,6,0x8B4513;
 			break;
 		case 7:
-			callsub L_Mark, F_Navi("æ¸¯å£","malaya,276,55","^8A2BE2");
+			callsub L_Mark, F_Navi("¸Û¿Ú","malaya,276,55","^8A2BE2");
 			viewpoint 1,276,55,7,0x8A2BE2;
 			break;
 		case 8:
-			mes "[é©¬æ¥äºšæ¸¯æŒ‡å—]";
-			mes "æˆ‘ä¼šä»ä½ çš„å°åœ°å›¾ä¸Šåˆ é™¤æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+			mes "[ÂíÀ´ÑÇ¸ÛÖ¸ÄÏ]";
+			mes "ÎÒ»á´ÓÄãµÄĞ¡µØÍ¼ÉÏÉ¾³ıËùÓĞ±ê¼Ç¡£";
+			mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -65,18 +67,18 @@ malaya,71,72,4	script	Port Malaya Guide#01::GuideMalaya	579,{
 			viewpoint 2,1,1,7,0xFFFFFF;
 			break;
 		case 9:
-			mes "[é©¬æ¥äºšæ¸¯æŒ‡å—]";
-			mes "æˆ‘å¸Œæœ›æ‚¨æ—…é€”æ„‰å¿«ã€‚";
+			mes "[ÂíÀ´ÑÇ¸ÛÖ¸ÄÏ]";
+			mes "ÎÒÏ£ÍûÄúÂÃÍ¾Óä¿ì¡£";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[é©¬æ¥äºšæ¸¯æŒ‡å—]";
-	mes ""+getarg(0)+" "+((getarg(1,0))?" æ˜¯ ":" æ˜¯");
-	mes "æ ‡è®°åœ¨æ‚¨çš„å°åœ°å›¾ä¸Šã€‚";
-	mes "æ£€æŸ¥ä½ çš„å°åœ°å›¾ã€‚";
-	mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+	mes "[ÂíÀ´ÑÇ¸ÛÖ¸ÄÏ]";
+	mes ""+getarg(0)+" "+((getarg(1,0))?" ÊÇ ":" ÊÇ");
+	mes "±ê¼ÇÔÚÄúµÄĞ¡µØÍ¼ÉÏ¡£";
+	mes "¼ì²éÄãµÄĞ¡µØÍ¼¡£";
+	mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 	return;
 }
 malaya,250,83,6	duplicate(GuideMalaya)	Port Malaya Guide#02	579

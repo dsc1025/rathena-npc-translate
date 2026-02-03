@@ -6,6 +6,8 @@
 //===== Changelogs: ==========================================
 //= 1.0 First version. [exneval]
 //= 1.1 Syntax change. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_fild12,261,318,3	script	Suspicious Man	4_M_MOCASS2,2,2,{
@@ -13,35 +15,35 @@ moc_fild12,261,318,3	script	Suspicious Man	4_M_MOCASS2,2,2,{
 OnTouch:
 	if (Class == Job_Gunslinger && BaseLevel >= 99 && JobLevel >= 70) {
 		if (isbegin_quest(12340) == 0) {
-			mes "[å¯ç–‘ç”·å­]";
-			mes "æˆ‘ç»ˆäºŽæ‰¾åˆ°ä½ äº†ï¼Œæµæµªè€…æ–¯æ´¾å…‹ï¼ä½ çš„è„–å­æ˜¯æˆ‘çš„äº†ï¼";
+			mes "[¿ÉÒÉÄÐ×Ó]";
+			mes "ÎÒÖÕÓÚÕÒµ½ÄãÁË£¬Á÷ÀËÕßË¹ÅÉ¿Ë£¡ÄãµÄ²±×ÓÊÇÎÒµÄÁË£¡";
 			next;
-			select("è¯´ä»€ä¹ˆï¼Ÿ");
-			mes "[å¯ç–‘ç”·å­]";
-			mes "*å“¼å“¼*åˆ«å‡è£…ä½ ä¸çŸ¥é“ã€‚çœ‹çœ‹è¿™å¼ æµ·æŠ¥ï¼ä½ å°±åœ¨å…¶ä¸­ï¼";
+			select("ËµÊ²Ã´£¿");
+			mes "[¿ÉÒÉÄÐ×Ó]";
+			mes "*ºßºß*±ð¼Ù×°Äã²»ÖªµÀ¡£¿´¿´ÕâÕÅº£±¨£¡Äã¾ÍÔÚÆäÖÐ£¡";
 			next;
-			select("æˆ‘çœ‹åˆ°äº†ç›¸ä¼¼ä¹‹å¤„ï¼Œä½†è¿™ä¸æ˜¯æˆ‘ã€‚");
+			select("ÎÒ¿´µ½ÁËÏàËÆÖ®´¦£¬µ«Õâ²»ÊÇÎÒ¡£");
 			mes "["+strcharinfo(0)+"]";
-			mes "å¿˜è®°ç›¸ä¼¼ä¹‹å¤„ã€‚ä½ ä»Žå“ªé‡Œå¾—åˆ°é‚£å¼ æµ·æŠ¥ï¼Ÿæˆ‘ä»Žæ¥æ²¡æœ‰çŠ¯ç½ªè¿‡ã€‚";
+			mes "Íü¼ÇÏàËÆÖ®´¦¡£Äã´ÓÄÄÀïµÃµ½ÄÇÕÅº£±¨£¿ÎÒ´ÓÀ´Ã»ÓÐ·¸×ï¹ý¡£";
 			next;
-			mes "[å¯ç–‘ç”·å­]";
-			mes "æˆ‘çŸ¥é“ä½ ä¼šè¯•å›¾ç”¨è°Žè¨€é€ƒè„±ã€‚";
+			mes "[¿ÉÒÉÄÐ×Ó]";
+			mes "ÎÒÖªµÀÄã»áÊÔÍ¼ÓÃ»ÑÑÔÌÓÍÑ¡£";
 			next;
-			mes "[å¯ç–‘ç”·å­]";
-			mes "^0000ffEinbrochç§äººé…’é¦†^000000å·²ç»å‘å¸ƒäº†é€šç¼‰æµ·æŠ¥ã€‚ä½ ä»¬èº«è¾¹æœ‰å¾ˆå¤šåƒæˆ‘è¿™æ ·çš„èµé‡‘çŒŽäººã€‚";
+			mes "[¿ÉÒÉÄÐ×Ó]";
+			mes "^0000ffEinbrochË½ÈË¾Æ¹Ý^000000ÒÑ¾­·¢²¼ÁËÍ¨¼©º£±¨¡£ÄãÃÇÉí±ßÓÐºÜ¶àÏñÎÒÕâÑùµÄÉÍ½ðÁÔÈË¡£";
 			next;
-			mes "[å¯ç–‘ç”·å­]";
-			mes "æˆ‘ä¸åœ¨ä¹Žä½ æ˜¯ä¸æ˜¯å¯¹çš„äººï¼Œåªè¦ä½ çœ‹å‡ºæ¥ï¼Œæˆ‘å°±å¯ä»¥å¸¦ä½ æ­»æˆ–æ´»ã€‚";
+			mes "[¿ÉÒÉÄÐ×Ó]";
+			mes "ÎÒ²»ÔÚºõÄãÊÇ²»ÊÇ¶ÔµÄÈË£¬Ö»ÒªÄã¿´³öÀ´£¬ÎÒ¾Í¿ÉÒÔ´øÄãËÀ»ò»î¡£";
 		}
 		else {
-			mes "[å¯ç–‘ç”·å­]";
-			mes "åˆæ˜¯ä½ ï¼ä½ æœ‰å‹‡æ°”å›žæ¥è¿™é‡Œï¼";
+			mes "[¿ÉÒÉÄÐ×Ó]";
+			mes "ÓÖÊÇÄã£¡ÄãÓÐÓÂÆø»ØÀ´ÕâÀï£¡";
 		}
 		next;
-		if (select("é€ƒè·‘å§ã€‚ï¼šè·Ÿä»–æˆ˜æ–—ã€‚") == 1)
-			mes "^0000ffæˆ‘çŽ°åœ¨åº”è¯¥å…ˆè·‘ä¸€ä¸‹ï¼Œç¨åŽå†è€ƒè™‘è¿™ä¸ªé—®é¢˜ã€‚^000000";
+		if (select("ÌÓÅÜ°É¡££º¸úËûÕ½¶·¡£") == 1)
+			mes "^0000ffÎÒÏÖÔÚÓ¦¸ÃÏÈÅÜÒ»ÏÂ£¬ÉÔºóÔÙ¿¼ÂÇÕâ¸öÎÊÌâ¡£^000000";
 		else
-			mes "^0000ffå¦‚æžœä»–è¯´çš„æ˜¯å®žè¯çš„è¯ï¼Œä»–å¹¶ä¸æ˜¯å”¯ä¸€è¿½éšæˆ‘çš„èµé‡‘çŒŽäººã€‚æˆ‘éœ€è¦æ—¶é—´åˆ¶å®šç­–ç•¥ã€‚^000000";
+			mes "^0000ffÈç¹ûËûËµµÄÊÇÊµ»°µÄ»°£¬Ëû²¢²»ÊÇÎ¨Ò»×·ËæÎÒµÄÉÍ½ðÁÔÈË¡£ÎÒÐèÒªÊ±¼äÖÆ¶¨²ßÂÔ¡£^000000";
 		close2;
 		if (isbegin_quest(12340) == 0)
 			setquest 12340;// Rebellion Job Change Quest
@@ -52,45 +54,45 @@ OnTouch:
 
 einbroch,54,97,3	script	Bouncer	4_M_REBELLION,{
 	if (BaseClass != Job_Gunslinger) {
-		mes "[ä¿é•–]";
-		mes "ä¸å¾—åœ¨ä¼šåœºå‘¨å›´é—²é€›ã€‚";
+		mes "[±£ïÚ]";
+		mes "²»µÃÔÚ»á³¡ÖÜÎ§ÏÐ¹ä¡£";
 		close;
 	}
 	switch( isbegin_quest(12340) ) {
 	case 0:
-		mes "[ä¿é•–]";
-		mes "æ­£åœ¨æ–½å·¥ï¼Œè¿›ä¸åŽ»ã€‚";
+		mes "[±£ïÚ]";
+		mes "ÕýÔÚÊ©¹¤£¬½ø²»È¥¡£";
 		close;
 	case 1:
-		mes "[ä¿é•–]";
-		mes "*å–˜æ°”*ä½ ï¼æˆ‘ä»¥ä¸ºä½ å·²ç»è¢«ä¿˜è™äº†å“¦ï¼ŒçŽ°åœ¨æ— æ‰€è°“äº†ã€‚ä½ æ˜¯æˆ‘çš„å‡ºç‹±å…è´¹å¡ï¼";
+		mes "[±£ïÚ]";
+		mes "*´­Æø*Äã£¡ÎÒÒÔÎªÄãÒÑ¾­±»·ýÂ²ÁËÅ¶£¬ÏÖÔÚÎÞËùÎ½ÁË¡£ÄãÊÇÎÒµÄ³öÓüÃâ·Ñ¿¨£¡";
 		next;
-		select("æˆ‘ä¸æ˜¯ä½ æƒ³è±¡çš„é‚£ä¸ªç½ªçŠ¯ï¼");
-		mes "[ä¿é•–]";
-		mes "ä½ ä¸æ˜¯å—ï¼Ÿ";
+		select("ÎÒ²»ÊÇÄãÏëÏóµÄÄÇ¸ö×ï·¸£¡");
+		mes "[±£ïÚ]";
+		mes "Äã²»ÊÇÂð£¿";
 		next;
-		mes "^0000ffä¿é•–æ£€æŸ¥ä½ çš„è„¸ã€‚^000000";
+		mes "^0000ff±£ïÚ¼ì²éÄãµÄÁ³¡£^000000";
 		next;
-		mes "[ä¿é•–]";
-		mes "å—¯ï¼Œä½ é•¿å¾—å¾ˆåƒï¼Œä¸è¿‡ä½ çœ‹èµ·æ¥ä¸åƒé‚£ä¸ªç½ªçŠ¯æ–¯æ´¾å…‹é‚£ä¹ˆå±é™©";
+		mes "[±£ïÚ]";
+		mes "àÅ£¬Äã³¤µÃºÜÏñ£¬²»¹ýÄã¿´ÆðÀ´²»ÏñÄÇ¸ö×ï·¸Ë¹ÅÉ¿ËÄÇÃ´Î£ÏÕ";
 		next;
-		select("æˆ‘æƒ³å’Œæµ·æŠ¥å‡ºç‰ˆå•†è°ˆè°ˆã€‚");
-		mes "[ä¿é•–]";
-		mes "ä½ çš„é—®é¢˜æœ‰ç‚¹è¶…å‡ºæˆ‘çš„èƒ½åŠ›èŒƒå›´ã€‚è¿›åŽ»å§ã€‚å¦‚æžœæˆ‘å‘çŽ°ä½ ä¸€ç›´éƒ½æ˜¯è´§çœŸä»·å®žçš„äººï¼Œæˆ‘å°±è®©ä½ å†ä¹Ÿè§ä¸åˆ°å¤–é¢äº†ã€‚";
+		select("ÎÒÏëºÍº£±¨³ö°æÉÌÌ¸Ì¸¡£");
+		mes "[±£ïÚ]";
+		mes "ÄãµÄÎÊÌâÓÐµã³¬³öÎÒµÄÄÜÁ¦·¶Î§¡£½øÈ¥°É¡£Èç¹ûÎÒ·¢ÏÖÄãÒ»Ö±¶¼ÊÇ»õÕæ¼ÛÊµµÄÈË£¬ÎÒ¾ÍÈÃÄãÔÙÒ²¼û²»µ½ÍâÃæÁË¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	case 2:
-		mes "[ä¿é•–]";
-		mes "ä½ å›žæ¥äº†ã€‚ä¸ºä»€ä¹ˆï¼Ÿ";
+		mes "[±£ïÚ]";
+		mes "Äã»ØÀ´ÁË¡£ÎªÊ²Ã´£¿";
 		next;
-		if (select("æˆ‘æƒ³è¿›æ¥ï¼šæˆ‘è·¯è¿‡ã€‚") == 2) {
-			mes "[ä¿é•–]";
-			mes "ä½ çœŸå‚»ã€‚";
+		if (select("ÎÒÏë½øÀ´£ºÎÒÂ·¹ý¡£") == 2) {
+			mes "[±£ïÚ]";
+			mes "ÄãÕæÉµ¡£";
 			close;
 		}
-		mes "[ä¿é•–]";
-		mes "å‰è¿›ã€‚è¿œç¦»éº»çƒ¦ã€‚";
+		mes "[±£ïÚ]";
+		mes "Ç°½ø¡£Ô¶ÀëÂé·³¡£";
 		close2;
 		warp "job_gun",70,28;
 		end;
@@ -98,39 +100,39 @@ einbroch,54,97,3	script	Bouncer	4_M_REBELLION,{
 }
 
 job_gun,68,33,3	script	Ruthless Rebellion	4_F_REBELLION,{
-	mes "[æ— æƒ…çš„å›ä¹±]";
-	mes "ä½ çŸ¥é“å¦‚ä½•ä½¿ç”¨æžªå—ï¼Ÿ";
+	mes "[ÎÞÇéµÄÅÑÂÒ]";
+	mes "ÄãÖªµÀÈçºÎÊ¹ÓÃÇ¹Âð£¿";
 	close;
 }
 
 job_gun,78,33,3	script	Suspicious Gunslinger	4_M_JOB_BLACKSMITH,{
-	mes "[å¯ç–‘çš„æžªæ‰‹]";
+	mes "[¿ÉÒÉµÄÇ¹ÊÖ]";
 	mes "...";
 	next;
-	mes "[å®‰é™çš„æžªæ‰‹]";
-	mes "åˆ«è¯´æˆ‘çœ‹èµ·æ¥åƒä¸ªé“åŒ ï¼Œä½ çŸ¥é“çš„ã€‚";
+	mes "[°²¾²µÄÇ¹ÊÖ]";
+	mes "±ðËµÎÒ¿´ÆðÀ´Ïñ¸öÌú½³£¬ÄãÖªµÀµÄ¡£";
 	close;
 }
 
 job_gun,74,24,6	script	Drunken Man	4_M_LIEMAN,{
-	mes "[é†‰æ±‰]";
-	mes "*æ‰“å—*å“¦ï¼Œæˆ‘æ˜¯è¿™é‡Œçš„ä¸»äººã€‚";
-	mes "å“¦ç­‰ç­‰ï¼Œæˆ‘æ˜¯åœ¨é…’å§è¿˜æ˜¯å…¶ä»–åœ°æ–¹ï¼Ÿå…¹å…¹...";
+	mes "[×íºº]";
+	mes "*´òàÃ*Å¶£¬ÎÒÊÇÕâÀïµÄÖ÷ÈË¡£";
+	mes "Å¶µÈµÈ£¬ÎÒÊÇÔÚ¾Æ°É»¹ÊÇÆäËûµØ·½£¿×È×È...";
 	close;
 }
 
 job_gun,64,33,6	script	Anxious Man	4_M_ALCHE_A,{
-	mes "[ç„¦è™‘çš„äºº]";
-	mes "ä¹Ÿè®¸æˆ‘æ¥é”™åœ°æ–¹äº†ã€‚è¿™ä¸ªåœ°æ–¹çœ‹èµ·æ¥ä¸åƒé…’å§ã€‚";
+	mes "[½¹ÂÇµÄÈË]";
+	mes "Ò²ÐíÎÒÀ´´íµØ·½ÁË¡£Õâ¸öµØ·½¿´ÆðÀ´²»Ïñ¾Æ°É¡£";
 	close;
 }
 
 job_gun,86,29,3	script	Kulbertinov	4_M_REBELLION,{
 	if (Class == Job_Rebellion) {
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä½ æƒ³è§è€æ¿å—ï¼Ÿ";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÄãÏë¼ûÀÏ°åÂð£¿";
 		next;
-		if (select("æ˜¯çš„ã€‚ï¼šæ²¡æœ‰ã€‚") == 1) {
+		if (select("ÊÇµÄ¡££ºÃ»ÓÐ¡£") == 1) {
 			close2;
 			warp "job_gun",220,130;
 			end;
@@ -138,78 +140,78 @@ job_gun,86,29,3	script	Kulbertinov	4_M_REBELLION,{
 		end;
 	}
 	if (Class != Job_Gunslinger) {
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä½ åœ¨æ‰¾æˆ‘å—ï¼Ÿ";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÄãÔÚÕÒÎÒÂð£¿";
 		close;
 	}
 	switch( isbegin_quest(12340) ) {
 	case 0:
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "æˆ‘å¯ä»¥å¸®ä½ å—ï¼Ÿ";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÎÒ¿ÉÒÔ°ïÄãÂð£¿";
 		close;
 	case 1:
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä½ æƒ³è¦ä»€ä¹ˆï¼Ÿ";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÄãÏëÒªÊ²Ã´£¿";
 		next;
-		select("æˆ‘è¢«è¯¯è®¤ä¸ºæ˜¯ç½ªçŠ¯ï¼");
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ç­‰ä¸€ä¸‹...å“‡å“ˆå“ˆå“ˆï¼";
+		select("ÎÒ±»ÎóÈÏÎªÊÇ×ï·¸£¡");
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "µÈÒ»ÏÂ...ÍÛ¹þ¹þ¹þ£¡";
 		next;
-		mes "^0000ffä»–æ‰«æäº†ä½ çš„è„¸ï¼Œç„¶åŽå¤§ç¬‘èµ·æ¥ã€‚^000000";
+		mes "^0000ffËûÉ¨ÃèÁËÄãµÄÁ³£¬È»ºó´óÐ¦ÆðÀ´¡£^000000";
 		next;
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "å¯¹ä¸èµ·ã€‚æœ‰é‚£ä¹ˆä¸€åˆ»ï¼Œæˆ‘ä»¥ä¸ºæ–¯æ´¾å…‹åˆå¤æ´»äº†ã€‚ä¸‰å¤©å‰ä»–è¢«å‘çŽ°æ­»äº¡ã€‚";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "¶Ô²»Æð¡£ÓÐÄÇÃ´Ò»¿Ì£¬ÎÒÒÔÎªË¹ÅÉ¿ËÓÖ¸´»îÁË¡£ÈýÌìÇ°Ëû±»·¢ÏÖËÀÍö¡£";
 		next;
-		select("ä»–å·²ç»è¢«æŠ“äº†ï¼Ÿ");
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "æ˜¯çš„ï¼Œèµé‡‘çŒŽäººå·²ç»å¾—åˆ°æŠ¥é…¬äº†ã€‚æ¶ˆæ¯è¿˜æ²¡ä¼ å‡ºåŽ»ï¼Œä½ å°±è·Ÿä»–ä¸€æ¨¡ä¸€æ ·äº†ã€‚åŽ»ç®—ç®—å§ã€‚";
+		select("ËûÒÑ¾­±»×¥ÁË£¿");
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÊÇµÄ£¬ÉÍ½ðÁÔÈËÒÑ¾­µÃµ½±¨³êÁË¡£ÏûÏ¢»¹Ã»´«³öÈ¥£¬Äã¾Í¸úËûÒ»Ä£Ò»ÑùÁË¡£È¥ËãËã°É¡£";
 		next;
-		select("ä½ å¿…é¡»åšç‚¹ä»€ä¹ˆï¼");
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "æŠ±æ­‰ï¼Œæˆ‘æ— æ³•æ›¿ä½ ä¸Žæ¯ä¸€ä¸ªèµé‡‘çŒŽäººäº¤è°ˆã€‚å½“ç„¶ï¼Œæˆ‘æ„¿æ„è¡¥å¿ç»™æ‚¨å¸¦æ¥çš„ä¸ä¾¿ã€‚";
+		select("Äã±ØÐë×öµãÊ²Ã´£¡");
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "±§Ç¸£¬ÎÒÎÞ·¨ÌæÄãÓëÃ¿Ò»¸öÉÍ½ðÁÔÈË½»Ì¸¡£µ±È»£¬ÎÒÔ¸Òâ²¹³¥¸øÄú´øÀ´µÄ²»±ã¡£";
 		next;
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "å˜¿ï¼ŒåŠ å…¥æˆ‘ä»¬çš„è¡Œåˆ—æ€Žä¹ˆæ ·ï¼Ÿæœ€åŽï¼Œä½ ä¸ä¼šè¢«æžªæ€ã€‚";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ºÙ£¬¼ÓÈëÎÒÃÇµÄÐÐÁÐÔõÃ´Ñù£¿×îºó£¬Äã²»»á±»Ç¹É±¡£";
 		next;
-		select("ä½ æƒ³è®©æˆ‘æˆä¸ºèµé‡‘çŒŽäººå—ï¼Ÿ");
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä¸ï¼Œèµé‡‘ç‹©çŒŽåªæ˜¯ä¸€ç§æ¶ˆé£ã€‚æˆ‘ä»¬æ˜¯ä¸–ç•Œä¸Šæ‰€æœ‰æžªæ¢°çš„ä¸“å®¶ã€‚";
+		select("ÄãÏëÈÃÎÒ³ÉÎªÉÍ½ðÁÔÈËÂð£¿");
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "²»£¬ÉÍ½ðá÷ÁÔÖ»ÊÇÒ»ÖÖÏûÇ²¡£ÎÒÃÇÊÇÊÀ½çÉÏËùÓÐÇ¹ÐµµÄ×¨¼Ò¡£";
 		next;
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "æ— å¿§æ— è™‘çš„ç²¾ç¥žï¼";
-		mes "ç¥žå¥‡çš„å–·ç«ï¼";
-		mes "æˆ‘ä»¬ç§°è‡ªå·±ä¸º^0000ffå›ä¹±^000000ã€‚";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÎÞÓÇÎÞÂÇµÄ¾«Éñ£¡";
+		mes "ÉñÆæµÄÅç»ð£¡";
+		mes "ÎÒÃÇ³Æ×Ô¼ºÎª^0000ffÅÑÂÒ^000000¡£";
 		next;
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä½ çœ‹èµ·æ¥å¥½åƒçŸ¥é“å¦‚ä½•ä½¿ç”¨æžªã€‚ä½ æƒ³åŠ å…¥æˆ‘ä»¬çš„è¡Œåˆ—å—ï¼Ÿæ‚¨ä¹Ÿä¸å¿…å†æ‹…å¿ƒå…¶ä»–èµé‡‘çŒŽäººäº†ã€‚";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "Äã¿´ÆðÀ´ºÃÏñÖªµÀÈçºÎÊ¹ÓÃÇ¹¡£ÄãÏë¼ÓÈëÎÒÃÇµÄÐÐÁÐÂð£¿ÄúÒ²²»±ØÔÙµ£ÐÄÆäËûÉÍ½ðÁÔÈËÁË¡£";
 		next;
-		if (select("è®©æˆ‘æƒ³ä¸€æƒ³ï¼šæˆ‘æƒ³æˆ‘åˆ«æ— é€‰æ‹©ã€‚") == 1) {
-			mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-			mes "ä½ å¯ä»¥åå¤æ€è€ƒï¼Œä½†ç­”æ¡ˆä¸ä¼šæ”¹å˜ã€‚åªéœ€æŽ¥å—æŠ¥ä»·å³å¯ã€‚";
+		if (select("ÈÃÎÒÏëÒ»Ïë£ºÎÒÏëÎÒ±ðÎÞÑ¡Ôñ¡£") == 1) {
+			mes "[¿â¶û²®µÙÅµ·ò]";
+			mes "Äã¿ÉÒÔ·´¸´Ë¼¿¼£¬µ«´ð°¸²»»á¸Ä±ä¡£Ö»Ðè½ÓÊÜ±¨¼Û¼´¿É¡£";
 		}
 		else {
-			mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-			mes "å¥½æƒ³æ³•ã€‚ä¸å¦¨çŽ°åœ¨å°±åšå¹¶ç»“æŸå®ƒã€‚";
+			mes "[¿â¶û²®µÙÅµ·ò]";
+			mes "ºÃÏë·¨¡£²»·ÁÏÖÔÚ¾Í×ö²¢½áÊøËü¡£";
 		}
 		next;
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä¸Žæ©æ¸©Â·ç§‘å°¼å…‹äº¤è°ˆã€‚å¥¹å¼•å¯¼åƒä½ è¿™æ ·æ¼‚æ³Šçš„çµé­‚èµ°ä¸Šå›ä¹±ä¹‹è·¯ã€‚æˆ‘ä¼šä¼ è¯ç»™å¥¹ã€‚å•Šï¼Œåˆ«ç”¨æžªæŒ‡ç€å¥¹ã€‚";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "Óë¶÷ÎÂ¡¤¿ÆÄá¿Ë½»Ì¸¡£ËýÒýµ¼ÏñÄãÕâÑùÆ¯²´µÄÁé»ê×ßÉÏÅÑÂÒÖ®Â·¡£ÎÒ»á´«»°¸øËý¡£°¡£¬±ðÓÃÇ¹Ö¸×ÅËý¡£";
 		completequest 12340;
 		setquest 12341;// Rebellion Job Change Quest
 		close2;
 		warp "job_gun",19,15;
 		end;
 	case 2:
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "ä½ å’ŒåŸƒå°”æ–‡Â·ç§‘å°¼å…‹æœ‰ç”Ÿæ„å—ï¼Ÿ";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ÄãºÍ°£¶ûÎÄ¡¤¿ÆÄá¿ËÓÐÉúÒâÂð£¿";
 		next;
-		if (select("å¦ï¼šè¯·æ´¾æˆ‘åŽ»æ‰¾åŸƒå°”æ–‡Â·ç§‘å°¼å…‹ã€‚") == 1) {
-			mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-			mes "å¥½çš„ã€‚æƒ³å–ä¸€æ¯ä¼ç‰¹åŠ å—ï¼Ÿ";
+		if (select("·ñ£ºÇëÅÉÎÒÈ¥ÕÒ°£¶ûÎÄ¡¤¿ÆÄá¿Ë¡£") == 1) {
+			mes "[¿â¶û²®µÙÅµ·ò]";
+			mes "ºÃµÄ¡£ÏëºÈÒ»±­·üÌØ¼ÓÂð£¿";
 			close;
 		}
-		mes "[åº“å°”ä¼¯è’‚è¯ºå¤«]";
-		mes "å¥½çš„ï¼Œæˆ‘ä¼šè®©å¥¹çŸ¥é“çš„ã€‚";
+		mes "[¿â¶û²®µÙÅµ·ò]";
+		mes "ºÃµÄ£¬ÎÒ»áÈÃËýÖªµÀµÄ¡£";
 		close2;
 		warp "job_gun",19,15;
 		end;
@@ -218,86 +220,86 @@ job_gun,86,29,3	script	Kulbertinov	4_M_REBELLION,{
 
 job_gun,19,24,3	script	Elwin Conick#1	4_F_REBELLION,{
 	if (Class != Job_Gunslinger) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "å¦‚æžœä½ ä¸æƒ³åŠ å…¥å›ä¹±ï¼Œé‚£å°±æ»šå§ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "Èç¹ûÄã²»Ïë¼ÓÈëÅÑÂÒ£¬ÄÇ¾Í¹ö°É¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
 	if (isbegin_quest(12341) == 1) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "ä½ æ„¿æ„åŠ å…¥æˆ‘ä»¬çš„å›ä¹±å—ï¼Ÿ";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ÄãÔ¸Òâ¼ÓÈëÎÒÃÇµÄÅÑÂÒÂð£¿";
 		next;
-		mes "^0000ffé‚£ä¸ªç›®å…‰é”åˆ©çš„çŸ®ä¸ªå­å¥³äººå‡è§†ç€ä½ çš„çœ¼ç›ã€‚^000000";
+		mes "^0000ffÄÇ¸öÄ¿¹âÈñÀûµÄ°«¸ö×ÓÅ®ÈËÄýÊÓ×ÅÄãµÄÑÛ¾¦¡£^000000";
 		next;
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "åœ¨è¿™é‡Œç­¾åã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ÔÚÕâÀïÇ©Ãû¡£";
 		next;
-		mes "^0000ffç­¾å­—æ–¹â€œ_____â€ä¸ä¼šè°ˆè®ºæµ‹è¯•ï¼Œå³ä½¿ä»–æˆ–å¥¹åœ¨æµ‹è¯•è¿‡ç¨‹ä¸­å¯èƒ½å‘ç”Ÿä¸å¯é¢„è§çš„äº‹æ•…ä¸­å—ä¼¤ã€è‡´æ®‹æˆ–æ­»äº¡ã€‚^000000";
+		mes "^0000ffÇ©×Ö·½¡°_____¡±²»»áÌ¸ÂÛ²âÊÔ£¬¼´Ê¹Ëû»òËýÔÚ²âÊÔ¹ý³ÌÖÐ¿ÉÄÜ·¢Éú²»¿ÉÔ¤¼ûµÄÊÂ¹ÊÖÐÊÜÉË¡¢ÖÂ²Ð»òËÀÍö¡£^000000";
 		next;
-		select("ä»€ä¹ˆï¼Ÿï¼");
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "ä½ æƒ³åŠ å…¥æˆ‘ä»¬å—ï¼Ÿ";
+		select("Ê²Ã´£¿£¡");
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ÄãÏë¼ÓÈëÎÒÃÇÂð£¿";
 		next;
-		if (select("æˆ‘æ”¾å¼ƒ.:...æˆ‘ä¼šç­¾åã€‚") == 1) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä½ çš„é€‰æ‹©ã€‚";
+		if (select("ÎÒ·ÅÆú.:...ÎÒ»áÇ©Ãû¡£") == 1) {
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÄãµÄÑ¡Ôñ¡£";
 			close2;
 			warp "job_gun",81,29;
 			end;
 		}
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "å¥½çš„ã€‚çŽ°åœ¨ï¼Œè·Ÿæˆ‘æ¥ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ºÃµÄ¡£ÏÖÔÚ£¬¸úÎÒÀ´¡£";
 		close2;
 		warp "job_gun",117,41;
 		end;
 	}
 	if (isbegin_quest(12342) == 1) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "æ‚¨æƒ³å†è¯•ä¸€æ¬¡å—ï¼Ÿ";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ÄúÏëÔÙÊÔÒ»´ÎÂð£¿";
 		next;
-		if (select("æˆ‘æ”¾å¼ƒäº†ï¼šåšå§ã€‚") == 1) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä½ çš„é€‰æ‹©ã€‚";
+		if (select("ÎÒ·ÅÆúÁË£º×ö°É¡£") == 1) {
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÄãµÄÑ¡Ôñ¡£";
 			close2;
 			warp "job_gun",81,29;
 			end;
 		}
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "è·Ÿæˆ‘æ¥ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "¸úÎÒÀ´¡£";
 		close2;
 		warp "job_gun",117,41;
 		end;
 	}
 	if (isbegin_quest(12343) > 0) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
 		if (isbegin_quest(12343) == 1)
-			mes "ä½ è¿˜æœ‰ä¼Šä¸‡çš„æŠ•ç¯®æµ‹è¯•ï¼Œä½ æƒ³å†è¯•ä¸€æ¬¡å—ï¼Ÿ";
+			mes "Äã»¹ÓÐÒÁÍòµÄÍ¶Àº²âÊÔ£¬ÄãÏëÔÙÊÔÒ»´ÎÂð£¿";
 		else
-			mes "ä¼Šä¸‡çš„å°„å‡»æµ‹è¯•è¿˜æ²¡æœ‰ç»“æŸï¼Œä½ æƒ³å†è¯•ä¸€æ¬¡å—ï¼Ÿ";
+			mes "ÒÁÍòµÄÉä»÷²âÊÔ»¹Ã»ÓÐ½áÊø£¬ÄãÏëÔÙÊÔÒ»´ÎÂð£¿";
 		next;
-		if (select("æˆ‘æ”¾å¼ƒäº†ï¼šåšå§ã€‚") == 1) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä¸å€¼å¾—æ”¾å¼ƒï¼ŒçŽ°åœ¨å‡ºåŽ»æ”¾æ¾ä¸€ä¸‹ã€‚";
+		if (select("ÎÒ·ÅÆúÁË£º×ö°É¡£") == 1) {
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "²»ÖµµÃ·ÅÆú£¬ÏÖÔÚ³öÈ¥·ÅËÉÒ»ÏÂ¡£";
 			close2;
 			warp "job_gun",81,29;
 			end;
 		}
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "è®°å¾—å°½åŠ›è€Œä¸ºã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "¼ÇµÃ¾¡Á¦¶øÎª¡£";
 		close2;
 		warp "job_gun",120,130;
 		end;
 	}
 	if (isbegin_quest(12345) == 1) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "ä¼Šä¸‡æ­£åœ¨ç­‰ä½ ï¼ŒåŽ»æ‰¾ä»–å§ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ÒÁÍòÕýÔÚµÈÄã£¬È¥ÕÒËû°É¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
-	mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-	mes "æ‚¨æ— éœ€å†å‚åŠ ä»»ä½•æµ‹è¯•ã€‚ä½ ä¸ºä»€ä¹ˆä¸å‡ºåŽ»å–ä¸€æ¯å‘¢ï¼Ÿ";
+	mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+	mes "ÄúÎÞÐèÔÙ²Î¼ÓÈÎºÎ²âÊÔ¡£ÄãÎªÊ²Ã´²»³öÈ¥ºÈÒ»±­ÄØ£¿";
 	close2;
 	warp "job_gun",81,29;
 	end;
@@ -305,8 +307,8 @@ job_gun,19,24,3	script	Elwin Conick#1	4_F_REBELLION,{
 
 job_gun,117,46,3	script	Elwin Conick#2	4_F_REBELLION,{
 	if (Class != Job_Gunslinger) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "å¦‚æžœä½ ä¸æƒ³åŠ å…¥å›ä¹±ï¼Œé‚£å°±æ»šå§ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "Èç¹ûÄã²»Ïë¼ÓÈëÅÑÂÒ£¬ÄÇ¾Í¹ö°É¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
@@ -315,42 +317,42 @@ job_gun,117,46,3	script	Elwin Conick#2	4_F_REBELLION,{
 	.@quest_12341 = isbegin_quest(12341);
 	.@quest_12342 = isbegin_quest(12342);
 	if (.@emt_chk == 3169) {
-		mes "^0000ffæ‚¨å·²ç»å¤„äºŽæµ‹è¯•è¡¨æ ¼ä¸­ã€‚å¦‚æžœæ‚¨å·²å®Œæˆæ‰€æœ‰æµ‹è¯•ï¼Œè¯·å‘å¤§ä¼šå®¤^000000 çš„ Elwin Conick æŠ¥åˆ°ã€‚";
+		mes "^0000ffÄúÒÑ¾­´¦ÓÚ²âÊÔ±í¸ñÖÐ¡£Èç¹ûÄúÒÑÍê³ÉËùÓÐ²âÊÔ£¬ÇëÏò´ó»áÊÒ^000000 µÄ Elwin Conick ±¨µ½¡£";
 		close;
 	}
 	if (.@emt_chk) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "çœ‹çœ‹ä½ è‡ªå·±ï¼Œä½ çœŸçš„æƒ³æµ‹è¯•å—ï¼Ÿ";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "¿´¿´Äã×Ô¼º£¬ÄãÕæµÄÏë²âÊÔÂð£¿";
 		next;
-		mes "^0000ffåŸƒå°”æ–‡çœ‹åˆ°ä½ å˜æˆäº†å¦ä¸€ç§å½¢æ€ï¼Œå¥¹å¾ˆç”Ÿæ°”ã€‚ç­‰å¾…å½“å‰è¡¨å•ç»“æŸï¼Œç„¶åŽå†æ¬¡æ‰¾åˆ°å¥¹ã€‚^000000";
+		mes "^0000ff°£¶ûÎÄ¿´µ½Äã±ä³ÉÁËÁíÒ»ÖÖÐÎÌ¬£¬ËýºÜÉúÆø¡£µÈ´ýµ±Ç°±íµ¥½áÊø£¬È»ºóÔÙ´ÎÕÒµ½Ëý¡£^000000";
 		next;
-		if (select("ç­‰ç­‰ï¼šèµ°å¼€ã€‚") == 2) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "å½“ä½ ä¸ä»¥ä»»ä½•å½¢å¼å›žæ¥æ—¶ã€‚";
+		if (select("µÈµÈ£º×ß¿ª¡£") == 2) {
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "µ±Äã²»ÒÔÈÎºÎÐÎÊ½»ØÀ´Ê±¡£";
 			close2;
 			warp "job_gun",81,29;
 			end;
 		}
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "ä¸å€¼å¾—æ”¾å¼ƒï¼ŒçŽ°åœ¨å‡ºåŽ»æ”¾æ¾ä¸€ä¸‹ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "²»ÖµµÃ·ÅÆú£¬ÏÖÔÚ³öÈ¥·ÅËÉÒ»ÏÂ¡£";
 		close;
 	}
 	if (.@quest_12341 == 1 || .@quest_12342 == 1) {
 		if (countitem(6746)) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä»»ä½•å‰©ä½™çš„é’¢åˆ¶å“å¿…é¡»åœ¨æµ‹è¯•åŽå½’è¿˜ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÈÎºÎÊ£ÓàµÄ¸ÖÖÆÆ·±ØÐëÔÚ²âÊÔºó¹é»¹¡£";
 			delitem 6746,countitem(6746);// Steel_Article
 			close;
 		}
 		if (countitem(6747)) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä»»ä½•å‰©ä½™çš„é’¢åˆ¶å“å¿…é¡»åœ¨æµ‹è¯•åŽå½’è¿˜ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÈÎºÎÊ£ÓàµÄ¸ÖÖÆÆ·±ØÐëÔÚ²âÊÔºó¹é»¹¡£";
 			delitem 6747,countitem(6747);// Steel_Article_
 			close;
 		}
 		if ((countitem(13118) - isequipped(13118)) > 0) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "æ—¶é—´åˆ°äº†ã€‚ä½ æ²¡é€šè¿‡æµ‹è¯•ã€‚è®©æˆ‘æ‹¿èµ°ä½ å‰©ä¸‹çš„æ‰€æœ‰è€ƒè¯•ææ–™ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "Ê±¼äµ½ÁË¡£ÄãÃ»Í¨¹ý²âÊÔ¡£ÈÃÎÒÄÃ×ßÄãÊ£ÏÂµÄËùÓÐ¿¼ÊÔ²ÄÁÏ¡£";
 			delitem 13118,1;// Tiny_Flame
 			close;
 		}
@@ -361,40 +363,40 @@ job_gun,117,46,3	script	Elwin Conick#2	4_F_REBELLION,{
 			setquest 12342;// Rebellion Job Change Quest
 			completequest 12341;
 		}
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "å¬ç€ã€‚æˆ‘ä¸ä¼šç«­å°½å…¨åŠ›å‘æ‚¨è§£é‡Šæµ‹è¯•ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "Ìý×Å¡£ÎÒ²»»á½ß¾¡È«Á¦ÏòÄú½âÊÍ²âÊÔ¡£";
 		next;
 		select( .@menu$ );
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
 		if (.@quest_12341 == 1) {
-			mes "è¿™æ˜¯é“¸é€ æžªæ¢°æ¨¡å…·çš„åœ°æ–¹ã€‚éšå¤„å¯è§é’¢é“åˆ¶å“çš„ç”Ÿäº§ã€‚";
+			mes "ÕâÊÇÖýÔìÇ¹ÐµÄ£¾ßµÄµØ·½¡£Ëæ´¦¿É¼û¸ÖÌúÖÆÆ·µÄÉú²ú¡£";
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "æˆ‘ä»¬å›å†›æœ¬è´¨ä¸Šæ˜¯æ­¦å™¨ä¸“å®¶ã€‚åœ¨è¿™é‡Œæ‚¨å°†å­¦ä¹ åˆ¶é€ å’Œç»„è£…æžªæ”¯ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÎÒÃÇÅÑ¾ü±¾ÖÊÉÏÊÇÎäÆ÷×¨¼Ò¡£ÔÚÕâÀïÄú½«Ñ§Ï°ÖÆÔìºÍ×é×°Ç¹Ö§¡£";
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä½ ä¼šè¢«è¦æ±‚æŽ§åˆ¶å…¥å£é™„è¿‘çš„ç†”ç‚‰æŽ§åˆ¶å™¨å¹¶é€‰æ‹© 5 ä¸ªæ ‡å‡†é’¢åˆ¶å“ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "Äã»á±»ÒªÇó¿ØÖÆÈë¿Ú¸½½üµÄÈÛÂ¯¿ØÖÆÆ÷²¢Ñ¡Ôñ 5 ¸ö±ê×¼¸ÖÖÆÆ·¡£";
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ç„¶åŽä½ å°†æŠŠä»–ä»¬å¸¦åˆ°ä¸‹ä¸€ä¸ªè£…é…å®¤å¹¶å°†å®ƒä»¬ç»„è£…æˆæžªæ”¯ã€‚æ‚¨å°†æœ‰ 3 åˆ†é’Ÿæ—¶é—´å®Œæˆæ‰€æœ‰è¿™äº›å·¥ä½œã€‚ä½ æœ€å¥½åŠ¨ä½œå¿«ã€æ³¨æ„åŠ›é›†ä¸­ï¼Œå¦åˆ™ä½ å°±ä¼šè€ƒè¯•ä¸åŠæ ¼ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "È»ºóÄã½«°ÑËûÃÇ´øµ½ÏÂÒ»¸ö×°ÅäÊÒ²¢½«ËüÃÇ×é×°³ÉÇ¹Ö§¡£Äú½«ÓÐ 3 ·ÖÖÓÊ±¼äÍê³ÉËùÓÐÕâÐ©¹¤×÷¡£Äã×îºÃ¶¯×÷¿ì¡¢×¢ÒâÁ¦¼¯ÖÐ£¬·ñÔòÄã¾Í»á¿¼ÊÔ²»¼°¸ñ¡£";
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "æˆ‘ä¼šåœ¨éš”å£æˆ¿é—´ç­‰ä½ ç»™æˆ‘æ‹¿æ¥ä¸€æŠŠå®Œæ•´çš„æžªã€‚ä¸ºäº†æ£€æŸ¥ç»è¿‡çš„æ—¶é—´ï¼Œä½ å°†è¢«è½¬æ¢åˆ°ä¸åŒçš„å·¥ä½œã€‚ ^0000ffå¦‚æžœ3åˆ†é’ŸåŽæ¢å¤æ­£å¸¸ï¼Œè¯·å›žåˆ°æˆ‘èº«è¾¹å¹¶é‡æ–°å¼€å§‹æµ‹è¯•ã€‚^000000ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÎÒ»áÔÚ¸ô±Ú·¿¼äµÈÄã¸øÎÒÄÃÀ´Ò»°ÑÍêÕûµÄÇ¹¡£ÎªÁË¼ì²é¾­¹ýµÄÊ±¼ä£¬Äã½«±»×ª»»µ½²»Í¬µÄ¹¤×÷¡£ ^0000ffÈç¹û3·ÖÖÓºó»Ö¸´Õý³££¬Çë»Øµ½ÎÒÉí±ß²¢ÖØÐÂ¿ªÊ¼²âÊÔ¡£^000000¡£";
 		}
 		else {
-			mes "æ‚¨å°†è¢«è¦æ±‚æŽ§åˆ¶æœºå™¨ä¸Šçš„å¼€å…³å¹¶é€‰æ‹© 5 ä¸ªæ ‡å‡†é’¢åˆ¶å“ã€‚";
+			mes "Äú½«±»ÒªÇó¿ØÖÆ»úÆ÷ÉÏµÄ¿ª¹Ø²¢Ñ¡Ôñ 5 ¸ö±ê×¼¸ÖÖÆÆ·¡£";
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ç„¶åŽï¼Œæ‚¨å°†æŠŠå®ƒä»¬å¸¦åˆ°ä¸‹ä¸€ä¸ªè£…é…å®¤å¹¶å°†å®ƒä»¬ç»„è£…æˆå®Œæ•´çš„æžªæ”¯ã€‚æ‚¨å°†æœ‰ 3 åˆ†é’Ÿçš„æ—¶é—´æ¥å®Œæˆæ‰€æœ‰è¿™äº›å·¥ä½œã€‚ ^0000ffä¸ºäº†æ£€æŸ¥ç»è¿‡çš„æ—¶é—´ï¼Œä½ å°†è¢«è½¬æ¢æˆä¸åŒçš„å·¥ä½œ^000000ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "È»ºó£¬Äú½«°ÑËüÃÇ´øµ½ÏÂÒ»¸ö×°ÅäÊÒ²¢½«ËüÃÇ×é×°³ÉÍêÕûµÄÇ¹Ö§¡£Äú½«ÓÐ 3 ·ÖÖÓµÄÊ±¼äÀ´Íê³ÉËùÓÐÕâÐ©¹¤×÷¡£ ^0000ffÎªÁË¼ì²é¾­¹ýµÄÊ±¼ä£¬Äã½«±»×ª»»³É²»Í¬µÄ¹¤×÷^000000¡£";
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "æˆ‘ä¼šåœ¨éš”å£æˆ¿é—´ç­‰ä½ ç»™æˆ‘æ‹¿æ¥ä¸€æŠŠå®Œæ•´çš„æžªã€‚è¯·è®°ä½ï¼Œ^0000ff å½“æ‚¨çš„è½¬æ¢åœ¨ 3 åˆ†é’ŸåŽè¿‡æœŸ^000000 æ—¶ï¼Œæ‚¨å°†å¤±è´¥æµ‹è¯•ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÎÒ»áÔÚ¸ô±Ú·¿¼äµÈÄã¸øÎÒÄÃÀ´Ò»°ÑÍêÕûµÄÇ¹¡£Çë¼Ç×¡£¬^0000ff µ±ÄúµÄ×ª»»ÔÚ 3 ·ÖÖÓºó¹ýÆÚ^000000 Ê±£¬Äú½«Ê§°Ü²âÊÔ¡£";
 		}
 		transform 3169,180000;
 		close;
 	}
-	mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-	mes "å•Šï¼Ÿä½ è¿·è·¯äº†å—ï¼Ÿæ‚¨éœ€è¦å…ˆæ³¨å†Œï¼Œç„¶åŽå†å›žåˆ°è¿™é‡Œã€‚";
+	mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+	mes "°¡£¿ÄãÃÔÂ·ÁËÂð£¿ÄúÐèÒªÏÈ×¢²á£¬È»ºóÔÙ»Øµ½ÕâÀï¡£";
 	close2;
 	warp "job_gun",81,29;
 	end;
@@ -402,8 +404,8 @@ job_gun,117,46,3	script	Elwin Conick#2	4_F_REBELLION,{
 
 job_gun,198,39,3	script	Elwin Conick#3	4_F_REBELLION,{
 	if (Class != Job_Gunslinger) {
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "å¦‚æžœä½ ä¸æƒ³åŠ å…¥å›ä¹±ï¼Œé‚£å°±æ»šå§ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "Èç¹ûÄã²»Ïë¼ÓÈëÅÑÂÒ£¬ÄÇ¾Í¹ö°É¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
@@ -412,57 +414,57 @@ job_gun,198,39,3	script	Elwin Conick#3	4_F_REBELLION,{
 		.@emt_chk = getstatus(SC_MONSTER_TRANSFORM,1);
 		if (.@emt_chk == 3169) {
 			if ((countitem(13118) - isequipped(13118)) < 1) {// don't count if equipped
-				mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-				mes "ä½ å®Œæˆäº†å—ï¼Ÿæˆ‘åœ¨ä½ çš„åº“å­˜ä¸­æ²¡æœ‰çœ‹åˆ°ä»»ä½•å·²å®Œæˆçš„æžªæ”¯ã€‚";
+				mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+				mes "ÄãÍê³ÉÁËÂð£¿ÎÒÔÚÄãµÄ¿â´æÖÐÃ»ÓÐ¿´µ½ÈÎºÎÒÑÍê³ÉµÄÇ¹Ö§¡£";
 				close;
 			}
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "è€ƒè™‘åˆ°æ—¶é—´ï¼Œå®ƒæ˜¯åŠ£è´¨çš„ï¼Œä½†è¿˜ä¸é”™ã€‚ä½ é€šè¿‡äº†ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "¿¼ÂÇµ½Ê±¼ä£¬ËüÊÇÁÓÖÊµÄ£¬µ«»¹²»´í¡£ÄãÍ¨¹ýÁË¡£";
 			delitem 13118,1;// Tiny_Flame
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "è®©æˆ‘æ‹¿èµ°ä½ å‰©ä¸‹çš„æ‰€æœ‰è€ƒè¯•ææ–™ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÈÃÎÒÄÃ×ßÄãÊ£ÏÂµÄËùÓÐ¿¼ÊÔ²ÄÁÏ¡£";
 			delitem 6746,countitem(6746);// Iron_Artifact
 			delitem 6747,countitem(6747);// Steel_Artifact
 			next;
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "çŽ°åœ¨æ‚¨å¯ä»¥ç»§ç»­å­¦ä¹ ä¸‹ä¸€è¯¾ç¨‹ã€‚ Ivan Sidorenko å°†ç›‘ç£æ‚¨çš„æµ‹è¯•ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "ÏÖÔÚÄú¿ÉÒÔ¼ÌÐøÑ§Ï°ÏÂÒ»¿Î³Ì¡£ Ivan Sidorenko ½«¼à¶½ÄúµÄ²âÊÔ¡£";
 			completequest 12342;
 			close2;
 			warp "job_gun",120,133;
 			end;
 		}
 		if (.@emt_chk) {
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "çœ‹çœ‹ä½ è‡ªå·±ï¼Œä½ çœŸçš„æƒ³æµ‹è¯•å—ï¼Ÿ";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "¿´¿´Äã×Ô¼º£¬ÄãÕæµÄÏë²âÊÔÂð£¿";
 			next;
-			mes "^0000ffåŸƒå°”æ–‡çœ‹åˆ°ä½ å˜æˆäº†å¦ä¸€ç§å½¢æ€ï¼Œå¥¹å¾ˆç”Ÿæ°”ã€‚ç­‰å¾…å½“å‰è¡¨å•ç»“æŸï¼Œç„¶åŽå†æ¬¡æ‰¾åˆ°å¥¹ã€‚^000000";
+			mes "^0000ff°£¶ûÎÄ¿´µ½Äã±ä³ÉÁËÁíÒ»ÖÖÐÎÌ¬£¬ËýºÜÉúÆø¡£µÈ´ýµ±Ç°±íµ¥½áÊø£¬È»ºóÔÙ´ÎÕÒµ½Ëý¡£^000000";
 			next;
-			if (select("ç­‰ç­‰ï¼šèµ°å¼€ã€‚") == 2) {
-				mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-				mes "å½“ä½ ä¸ä»¥ä»»ä½•å½¢å¼å›žæ¥æ—¶ã€‚";
+			if (select("µÈµÈ£º×ß¿ª¡£") == 2) {
+				mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+				mes "µ±Äã²»ÒÔÈÎºÎÐÎÊ½»ØÀ´Ê±¡£";
 				close2;
 				warp "job_gun",81,29;
 				end;
 			}
-			mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-			mes "ä¸å€¼å¾—æ”¾å¼ƒï¼ŒçŽ°åœ¨å‡ºåŽ»æ”¾æ¾ä¸€ä¸‹ã€‚";
+			mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+			mes "²»ÖµµÃ·ÅÆú£¬ÏÖÔÚ³öÈ¥·ÅËÉÒ»ÏÂ¡£";
 			close;
 		}
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "æ—¶é—´åˆ°äº†ã€‚ä½ æ²¡é€šè¿‡æµ‹è¯•ã€‚è®©æˆ‘æ‹¿èµ°ä½ å‰©ä¸‹çš„æ‰€æœ‰è€ƒè¯•ææ–™ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "Ê±¼äµ½ÁË¡£ÄãÃ»Í¨¹ý²âÊÔ¡£ÈÃÎÒÄÃ×ßÄãÊ£ÏÂµÄËùÓÐ¿¼ÊÔ²ÄÁÏ¡£";
 		delitem 6746,countitem(6746);// Iron_Artifact
 		delitem 6747,countitem(6747);// Steel_Artifact
 		delitem 13118,(countitem(13118) - isequipped(13118));// Tiny_Flame
 		next;
-		mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-		mes "è®©æˆ‘ä»¬é‡æ–°å¼€å§‹å§ã€‚";
+		mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+		mes "ÈÃÎÒÃÇÖØÐÂ¿ªÊ¼°É¡£";
 		close2;
 		warp "job_gun",117,41;
 		end;
 	}
-	mes "[åŸƒå°”æ–‡Â·ç§‘å°¼å…‹]";
-	mes "å•Šï¼Ÿä½ è¿·è·¯äº†å—ï¼Ÿæ‚¨éœ€è¦å…ˆæ³¨å†Œï¼Œç„¶åŽå†å›žåˆ°è¿™é‡Œã€‚";
+	mes "[°£¶ûÎÄ¡¤¿ÆÄá¿Ë]";
+	mes "°¡£¿ÄãÃÔÂ·ÁËÂð£¿ÄúÐèÒªÏÈ×¢²á£¬È»ºóÔÙ»Øµ½ÕâÀï¡£";
 	close2;
 	warp "job_gun",81,29;
 	end;
@@ -470,67 +472,67 @@ job_gun,198,39,3	script	Elwin Conick#3	4_F_REBELLION,{
 
 job_gun,165,18,0	script	Furnace Controller#1	CLEAR_NPC,{
 	if (Class != Job_Gunslinger) {
-		mes "åªæœ‰æŽˆæƒç”¨æˆ·æ‰èƒ½è¿›è¡Œæ“ä½œã€‚";
+		mes "Ö»ÓÐÊÚÈ¨ÓÃ»§²ÅÄÜ½øÐÐ²Ù×÷¡£";
 		close;
 	}
 	if (getstatus(SC_MONSTER_TRANSFORM,1) == 3169) {// J_REB_SHECIL1
 		if (isbegin_quest(12342) == 1) {
-			mes "æ‚¨æƒ³å°†æ¨¡å…·ä»Žç†”ç‚‰ä¸­æŒ–å‡ºæ¥å—ï¼Ÿ";
+			mes "ÄúÏë½«Ä£¾ß´ÓÈÛÂ¯ÖÐÍÚ³öÀ´Âð£¿";
 			next;
-			if (select("é€€å‡ºï¼šå¼€å§‹ã€‚") == 1) {
-				mes "åˆ‡æ¢è‡³å¾…æœºæ¨¡å¼ã€‚";
+			if (select("ÍË³ö£º¿ªÊ¼¡£") == 1) {
+				mes "ÇÐ»»ÖÁ´ý»úÄ£Ê½¡£";
 				close;
 			}
-			mes "æ­£åœ¨åˆå§‹åŒ–ç‚‰æŽ§åˆ¶å™¨ ZX-3100...";
+			mes "ÕýÔÚ³õÊ¼»¯Â¯¿ØÖÆÆ÷ ZX-3100...";
 			disablenpc "Furnace Controller#1";
 			donpcevent "Furnace Controller#2::OnStart";
 			close;
 		}
 	}
-	mes "ä¸æ˜¯æŽˆæƒç”¨æˆ·ã€‚ä¸­æ­¢æ“ä½œã€‚";
+	mes "²»ÊÇÊÚÈ¨ÓÃ»§¡£ÖÐÖ¹²Ù×÷¡£";
 	close;
 }
 
 job_gun,214,36,0	script	Auto Anvil#1	CLEAR_NPC,{
 	if (Class != Job_Gunslinger) {
-		mes "åªæœ‰æŽˆæƒç”¨æˆ·æ‰èƒ½è¿›è¡Œæ“ä½œã€‚";
+		mes "Ö»ÓÐÊÚÈ¨ÓÃ»§²ÅÄÜ½øÐÐ²Ù×÷¡£";
 		close;
 	}
 	if ((countitem(13118) - isequipped(13118)) > 0) {// Tiny_Flame
-		mes "å·²å‘çŽ°æœªç»æŽˆæƒåˆ¶é€ æžªæ”¯çš„æƒ…å†µã€‚å‘ç»ç†åŸƒå°”æ–‡æ±‡æŠ¥ã€‚";
+		mes "ÒÑ·¢ÏÖÎ´¾­ÊÚÈ¨ÖÆÔìÇ¹Ö§µÄÇé¿ö¡£Ïò¾­Àí°£¶ûÎÄ»ã±¨¡£";
 		close;
 	}
 	if (getstatus(SC_MONSTER_TRANSFORM,1) == 3169) {
 		if (countitem(6747) < 5) {// Steel_Article_
-			mes "æ‚¨æ²¡æœ‰æ ‡å‡†çš„é’¢é“åˆ¶å“ã€‚";
+			mes "ÄúÃ»ÓÐ±ê×¼µÄ¸ÖÌúÖÆÆ·¡£";
 			close;
 		}
 		if (isbegin_quest(12342) == 1) {
-			mes "æ‚¨æƒ³ä½¿ç”¨è‡ªåŠ¨é“ç §å¹¶å°†æ ‡å‡†é’¢åˆ¶å“å¡‘é€ æˆæžªæ”¯å—ï¼Ÿ";
+			mes "ÄúÏëÊ¹ÓÃ×Ô¶¯ÌúÕè²¢½«±ê×¼¸ÖÖÆÆ·ËÜÔì³ÉÇ¹Ö§Âð£¿";
 			next;
-			if (select("é€€å‡ºï¼šå¼€å§‹ã€‚") == 1) {
-				mes "ä¸ºäº†æ‚¨çš„å®‰å…¨ï¼Œè¯·è¿œç¦»è‡ªåŠ¨ç §ã€‚";
+			if (select("ÍË³ö£º¿ªÊ¼¡£") == 1) {
+				mes "ÎªÁËÄúµÄ°²È«£¬ÇëÔ¶Àë×Ô¶¯Õè¡£";
 				close;
 			}
 			if (rand(1,10) > 6) {
-				mes "æ‚¨å·²ç»ä½¿ç”¨è‡ªåŠ¨ç §æˆåŠŸåˆ›å»ºäº†ä¸€æŠŠæžªæ”¯ã€‚ ^ff0000è¯·åœ¨è½¬æ¢åˆ°æœŸä¹‹å‰æŠ¥å‘Š^000000ã€‚";
+				mes "ÄúÒÑ¾­Ê¹ÓÃ×Ô¶¯Õè³É¹¦´´½¨ÁËÒ»°ÑÇ¹Ö§¡£ ^ff0000ÇëÔÚ×ª»»µ½ÆÚÖ®Ç°±¨¸æ^000000¡£";
 				specialeffect EF_REPAIRWEAPON;
 				getitem 13118,1;// Tiny_Flame
 			}
 			else {
-				mes "åˆ¶é€ æžªæ”¯å¤±è´¥ã€‚";
+				mes "ÖÆÔìÇ¹Ö§Ê§°Ü¡£";
 				specialeffect EF_SUI_EXPLOSION;
 			}
 			delitem 6747,5;// Steel_Article_
 			close;
 		}
 	}
-	mes "ä¸æ˜¯æŽˆæƒç”¨æˆ·ã€‚ä¸­æ­¢æ“ä½œã€‚";
+	mes "²»ÊÇÊÚÈ¨ÓÃ»§¡£ÖÐÖ¹²Ù×÷¡£";
 	close;
 }
 
 job_gun,165,18,0	script	Furnace Controller#2	CLEAR_NPC,{
-	mes "ç³»ç»Ÿæ­£å¿™ç€ä»Žç†”ç‚‰ä¸­å–å‡ºå·²å®Œæˆçš„æ¨¡å…·ã€‚";
+	mes "ÏµÍ³ÕýÃ¦×Å´ÓÈÛÂ¯ÖÐÈ¡³öÒÑÍê³ÉµÄÄ£¾ß¡£";
 	close;
 
 OnStart:
@@ -578,40 +580,40 @@ job_gun,141,31,0	duplicate(Heating Furnace#3)	Heating Furnace#5	CLEAR_NPC
 
 job_gun,120,138,3	script	Ivan Sidorenko#1	4_M_REBELLION,{
 	if (Class != Job_Gunslinger) {
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "è¿™é‡Œæ˜¯å°„å‡»è¯•éªŒåœºï¼Œä½ ä¸èƒ½éšæ„æ¥ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÕâÀïÊÇÉä»÷ÊÔÑé³¡£¬Äã²»ÄÜËæÒâÀ´¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
 	if (isbegin_quest(12342) < 2) {
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "çœ‹æ¥æœ‰ä¸€ä¸ªé”™è¯¯ï¼Œä½ ä¸èƒ½ç•™åœ¨è¿™é‡Œã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "¿´À´ÓÐÒ»¸ö´íÎó£¬Äã²»ÄÜÁôÔÚÕâÀï¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
 	if (isbegin_quest(12343) == 0) {
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "å˜¿ï¼Œä¿æŒä¸“æ³¨â€”â€”æˆ‘ä»¬è¿™é‡Œä½¿ç”¨çš„æ˜¯å®žå¼¹ï¼Œä½ éšæ—¶éƒ½å¯èƒ½è¢«æžªæ€ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ºÙ£¬±£³Ö×¨×¢¡ª¡ªÎÒÃÇÕâÀïÊ¹ÓÃµÄÊÇÊµµ¯£¬ÄãËæÊ±¶¼¿ÉÄÜ±»Ç¹É±¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "è®©æˆ‘å¿«ç‚¹åšè¿™ä»¶äº‹ã€‚åŸºæœ¬ä¸Šï¼Œæ‚¨å°†åœ¨è¿™ä¸ªç”± 5 ä¸ªéƒ¨åˆ†ç»„æˆçš„å°„å‡»åœºä¸­å¥”è·‘ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÈÃÎÒ¿ìµã×öÕâ¼þÊÂ¡£»ù±¾ÉÏ£¬Äú½«ÔÚÕâ¸öÓÉ 5 ¸ö²¿·Ö×é³ÉµÄÉä»÷³¡ÖÐ±¼ÅÜ¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "ç›®æ ‡æ˜¯åœ¨äººç¾¤ä¸­å¿«é€Ÿä¸”å‡†ç¡®åœ°æ‰¾åˆ°æ•Œäººã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "Ä¿±êÊÇÔÚÈËÈºÖÐ¿ìËÙÇÒ×¼È·µØÕÒµ½µÐÈË¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "åœ¨æ‰€æœ‰ç›®æ ‡ä¸­ï¼Œæ‚¨åªèƒ½å°„å‡»^0000ffæ ‡å‡†ç›®æ ‡^000000ã€‚å¦‚æžœä½ çŠ¯äº†é”™è¯¯ï¼Œä½ å°±ä¼šå¤±åŽ»åˆ†æ•°ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÔÚËùÓÐÄ¿±êÖÐ£¬ÄúÖ»ÄÜÉä»÷^0000ff±ê×¼Ä¿±ê^000000¡£Èç¹ûÄã·¸ÁË´íÎó£¬Äã¾Í»áÊ§È¥·ÖÊý¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "æˆ‘ä»¬æ¥è¯•è¯•å§ã€‚æ²¡æœ‰å¾ˆå¤š^0000ffæ ‡å‡†é—®é¢˜ç›®æ ‡^000000ï¼Œæ‰€ä»¥è¯·ä¿æŒè­¦æƒ•ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÎÒÃÇÀ´ÊÔÊÔ°É¡£Ã»ÓÐºÜ¶à^0000ff±ê×¼ÎÊÌâÄ¿±ê^000000£¬ËùÒÔÇë±£³Ö¾¯Ìè¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "^0000ffæ‚¨æœ‰ 3 åˆ†é’Ÿæ—¶é—´å®Œæˆæ­¤æµ‹è¯•ã€‚å¦‚æžœæ‚¨æ— æ³•åœ¨è½¬æ¢åˆ°æœŸ^000000ä¹‹å‰å®Œæˆï¼Œæ‚¨å°±ä¼šå¤±è´¥ã€‚å¦‚æžœå‘ç”Ÿè¿™ç§æƒ…å†µï¼Œè¯·æ²¿ç€è·¯å¾„å›žåˆ°æˆ‘èº«è¾¹ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "^0000ffÄúÓÐ 3 ·ÖÖÓÊ±¼äÍê³É´Ë²âÊÔ¡£Èç¹ûÄúÎÞ·¨ÔÚ×ª»»µ½ÆÚ^000000Ö®Ç°Íê³É£¬Äú¾Í»áÊ§°Ü¡£Èç¹û·¢ÉúÕâÖÖÇé¿ö£¬ÇëÑØ×ÅÂ·¾¶»Øµ½ÎÒÉí±ß¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "^0000ffå¦‚æžœä½ é”™è¿‡äº†ä¸€ä¸ªæ ‡å‡†ç›®æ ‡ï¼Œæˆ–è€…å°„ä¸­äº† 3 ä¸ªä¸æ­£ç¡®çš„ç›®æ ‡^000000ï¼Œä½ å°±ä¼šå¤±è´¥ã€‚è®©æˆ‘ä»¬å¼€å§‹å§ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "^0000ffÈç¹ûÄã´í¹ýÁËÒ»¸ö±ê×¼Ä¿±ê£¬»òÕßÉäÖÐÁË 3 ¸ö²»ÕýÈ·µÄÄ¿±ê^000000£¬Äã¾Í»áÊ§°Ü¡£ÈÃÎÒÃÇ¿ªÊ¼°É¡£";
 		setquest 12343;// Rebellion Job Change Quest
 		setquest 12344;// Rebellion Job Change Quest
 		transform 3169,180000;
@@ -628,39 +630,39 @@ job_gun,120,138,3	script	Ivan Sidorenko#1	4_M_REBELLION,{
 			.@j_r_t = 5;
 		.@j_r_c = .@j_r_s - .@j_r_f - .@j_r_t;
 		if (.@j_r_c > 9) {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "å¥½å·¥ä½œã€‚æˆ‘æ²¡æƒ³åˆ°ä½ èƒ½è¿™ä¹ˆå¿«å°±è¿‡åŽ»äº†ã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "ºÃ¹¤×÷¡£ÎÒÃ»Ïëµ½ÄãÄÜÕâÃ´¿ì¾Í¹ýÈ¥ÁË¡£";
 			completequest 12343;
 			completequest 12344;
 			setquest 12345;// Rebellion Job Change Quest
 			next;
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "æ‚¨å¯ä»¥ç¦»å¼€å¹¶åœ¨å¤–é¢ç­‰å€™ã€‚æˆ‘ä¼šå¸¦ç€å…¶ä»–å¯¼å¸ˆçš„è¯„ä¼°æŠ¥å‘Šæ¥è§ä½ ã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "Äú¿ÉÒÔÀë¿ª²¢ÔÚÍâÃæµÈºò¡£ÎÒ»á´ø×ÅÆäËûµ¼Ê¦µÄÆÀ¹À±¨¸æÀ´¼ûÄã¡£";
 			close2;
 			warp "job_gun",210,132;
 			end;
 		}
 		if (.@j_r_c == 8) {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "ä½ çš„é€Ÿåº¦è¶³å¤Ÿå¿«ï¼Œä½†ä½ å°„ä¸­äº†å¤ªå¤šä¸æ­£ç¡®çš„ç›®æ ‡ã€‚ä½ å¤±è´¥äº†ã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "ÄãµÄËÙ¶È×ã¹»¿ì£¬µ«ÄãÉäÖÐÁËÌ«¶à²»ÕýÈ·µÄÄ¿±ê¡£ÄãÊ§°ÜÁË¡£";
 		}
 		else if (.@j_r_c == 5) {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "ä½ è¶³å¤Ÿå‡†ç¡®ï¼Œä½†ä½ èŠ±äº†å¤ªå¤šæ—¶é—´ã€‚ç¼“æ…¢çš„å›ä¹±æ— æ³•æŒç»­è¶³å¤Ÿé•¿çš„æ—¶é—´ã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "Äã×ã¹»×¼È·£¬µ«Äã»¨ÁËÌ«¶àÊ±¼ä¡£»ºÂýµÄÅÑÂÒÎÞ·¨³ÖÐø×ã¹»³¤µÄÊ±¼ä¡£";
 		}
 		else if (.@j_r_c < 5) {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "ä½ åœ¨é€Ÿåº¦å’Œå‡†ç¡®æ€§ä¸Šéƒ½å¤±è´¥äº†ã€‚ä½ æ€Žä¹ˆæ´»äº†è¿™ä¹ˆä¹…ï¼Ÿ";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "ÄãÔÚËÙ¶ÈºÍ×¼È·ÐÔÉÏ¶¼Ê§°ÜÁË¡£ÄãÔõÃ´»îÁËÕâÃ´¾Ã£¿";
 		}
 		else {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "æœ‰é—®é¢˜ï¼Œç»Ÿè®¡å¥½åƒæœ‰é”™ã€‚å—¯...æœ‰æ—¶ä¼šå‘ç”Ÿè¿™ç§æƒ…å†µã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "ÓÐÎÊÌâ£¬Í³¼ÆºÃÏñÓÐ´í¡£àÅ...ÓÐÊ±»á·¢ÉúÕâÖÖÇé¿ö¡£";
 		}
 		erasequest 12343;
 		erasequest 12344;
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "è®©æˆ‘ä»¬å†è¯•ä¸€æ¬¡ã€‚è¿™æ¬¡è¦å°å¿ƒä¸€äº›ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÈÃÎÒÃÇÔÙÊÔÒ»´Î¡£Õâ´ÎÒªÐ¡ÐÄÒ»Ð©¡£";
 		setquest 12343;
 		setquest 12344;
 		transform 3169,180000;
@@ -668,11 +670,11 @@ job_gun,120,138,3	script	Ivan Sidorenko#1	4_M_REBELLION,{
 		warp "job_gun",102,146;
 		end;
 	}
-	mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-	mes "ä½ æ€Žä¹ˆæ²¡æœ‰ç¦»å¼€ï¼Ÿ";
+	mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+	mes "ÄãÔõÃ´Ã»ÓÐÀë¿ª£¿";
 	next;
-	mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-	mes "æ‚¨å¯ä»¥ç¦»å¼€å¹¶åœ¨å¤–é¢ç­‰å€™ã€‚æˆ‘ä¼šå¸¦ç€å…¶ä»–å¯¼å¸ˆçš„è¯„ä¼°æŠ¥å‘Šæ¥è§ä½ ã€‚";
+	mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+	mes "Äú¿ÉÒÔÀë¿ª²¢ÔÚÍâÃæµÈºò¡£ÎÒ»á´ø×ÅÆäËûµ¼Ê¦µÄÆÀ¹À±¨¸æÀ´¼ûÄã¡£";
 	close2;
 	warp "job_gun",210,132;
 	end;
@@ -726,79 +728,79 @@ OnMyMobDead:
 
 job_gun,220,132,3	script	Ivan Sidorenko#2	10062,{
 	if (!checkweight(1201,1)) {
-		mes "æ‚¨çš„é¡¹ç›®å¤ªå¤šï¼Œè¯·å‡å°‘é¡¹ç›®ä»¥ç»§ç»­ã€‚";
+		mes "ÄúµÄÏîÄ¿Ì«¶à£¬Çë¼õÉÙÏîÄ¿ÒÔ¼ÌÐø¡£";
 		close;
 	}
 	if ((MaxWeight - Weight) < 1000) {
-		mes "åº“å­˜ä¸­çš„ç‰©å“æ­£åœ¨åŽ‹åž®ä½ ã€‚å…ˆå‡è½»ä½“é‡ã€‚";
+		mes "¿â´æÖÐµÄÎïÆ·ÕýÔÚÑ¹¿åÄã¡£ÏÈ¼õÇáÌåÖØ¡£";
 		close;
 	}
 	if (isbegin_quest(12345) == 0) {
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "ä¸€å®šæ˜¯å‡ºäº†ä»€ä¹ˆå·®é”™ã€‚ä½ ä¸åº”è¯¥ç•™åœ¨è¿™é‡Œã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "Ò»¶¨ÊÇ³öÁËÊ²Ã´²î´í¡£Äã²»Ó¦¸ÃÁôÔÚÕâÀï¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
 	if (Class == Job_Gunslinger) {
 		if (BaseLevel < 99 || JobLevel < 70) {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "å•Šï¼Ÿä½ çœ‹èµ·æ¥è¿™ä¹ˆå¼±å—ï¼Ÿæˆ‘æ²¡ä»€ä¹ˆå¯è¯´çš„äº†ã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "°¡£¿Äã¿´ÆðÀ´ÕâÃ´ÈõÂð£¿ÎÒÃ»Ê²Ã´¿ÉËµµÄÁË¡£";
 			close;
 		}
 		if (SkillPoint) {
-			mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-			mes "å“¦ä¸~ä½ è¿˜æœ‰æŠ€èƒ½ç‚¹ã€‚";
+			mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+			mes "Å¶²»~Äã»¹ÓÐ¼¼ÄÜµã¡£";
 			close;
 		}
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "åº“å°”ä¼¯è’‚è¯ºå¤«ã€åŸƒå°”æ–‡å’Œæˆ‘è¯„ä¼°äº†ä½ ä»¬çš„ Rebellion æµ‹è¯•ç»“æžœã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "¿â¶û²®µÙÅµ·ò¡¢°£¶ûÎÄºÍÎÒÆÀ¹ÀÁËÄãÃÇµÄ Rebellion ²âÊÔ½á¹û¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "å’Œ...";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ºÍ...";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "æ‚¨å·²ç»æ»¡è¶³äº†æˆ‘ä»¬æ‰€æœ‰çš„è¦æ±‚ï¼ŒåŒ…æ‹¬æ€åº¦å’Œæµ‹è¯•è¡¨çŽ°ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÄúÒÑ¾­Âú×ãÁËÎÒÃÇËùÓÐµÄÒªÇó£¬°üÀ¨Ì¬¶ÈºÍ²âÊÔ±íÏÖ¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "æ²¡é”™ï¼Œä½ çŽ°åœ¨æ˜¯å›å†›çš„ä¸€å‘˜äº†ã€‚å‡†å¤‡å¥½æƒŠå¹å§ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "Ã»´í£¬ÄãÏÖÔÚÊÇÅÑ¾üµÄÒ»Ô±ÁË¡£×¼±¸ºÃ¾ªÌ¾°É¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "åŸƒå°”æ–‡å¸Œæœ›ä½ æ‹¥æœ‰è¿™ä¸ªã€‚å¥½å¥½ç…§é¡¾å®ƒã€‚ä»–ä¸ºä½ åšçš„ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "°£¶ûÎÄÏ£ÍûÄãÓµÓÐÕâ¸ö¡£ºÃºÃÕÕ¹ËËü¡£ËûÎªÄã×öµÄ¡£";
 		jobchange Job_Rebellion;
 		completequest 12345;
 		getitem 13119,1;// Freedom_Flame
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "ç¨åŽè§ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÉÔºó¼û¡£";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
 	if (Class == Job_Rebellion) {
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "è¿™æ ·çš„ç”Ÿæ´»åº”è¯¥æ˜¯æœ‰è¶£çš„ï¼Œè€Œä¸æ˜¯æ— èŠçš„ã€‚";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "ÕâÑùµÄÉú»îÓ¦¸ÃÊÇÓÐÈ¤µÄ£¬¶ø²»ÊÇÎÞÁÄµÄ¡£";
 		next;
-		mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-		mes "é€šè¿‡æˆä¸ºå›é€†è€…ï¼Œä½ çš„ç”Ÿæ´»åº”è¯¥å¾—åˆ°å‡çº§ã€‚é‚£ä¹ˆï¼ŒåŽ»åˆ›é€ ä¸€æ®µä¼Ÿå¤§çš„æ—…ç¨‹ï¼Œè®©æˆ‘ä»¬éª„å‚²å§ï¼";
+		mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+		mes "Í¨¹ý³ÉÎªÅÑÄæÕß£¬ÄãµÄÉú»îÓ¦¸ÃµÃµ½Éý¼¶¡£ÄÇÃ´£¬È¥´´ÔìÒ»¶ÎÎ°´óµÄÂÃ³Ì£¬ÈÃÎÒÃÇ½¾°Á°É£¡";
 		close2;
 		warp "job_gun",81,29;
 		end;
 	}
-	mes "[ä¼Šä¸‡Â·è¥¿å¤šè¿žç§‘]";
-	mes "ä½ æœ‰ä»€ä¹ˆè¯è¦å¯¹æˆ‘è¯´å—ï¼Ÿ";
+	mes "[ÒÁÍò¡¤Î÷¶àÁ¬¿Æ]";
+	mes "ÄãÓÐÊ²Ã´»°Òª¶ÔÎÒËµÂð£¿";
 	close;
 }
 
 job_gun,220,138,4	shop	Prop Vending Machine	2_VENDING_MACHINE1,13210:-1,13211:-1,13212:-1,13213:-1,13214:-1,7663:-1,7664:-1,7665:-1
 
 job_gun,216,138,4	script	Butler Karlex	1_M_01,{
-	mes "[ç®¡å®¶å¡èŽ±å…‹æ–¯]";
-	mes "ä½¿ç”¨æ­¤ä¸´æ—¶å­˜å‚¨ç©ºé—´å¯ä»¥åœ¨é«˜çº§æµ‹è¯•æœŸé—´ä¿è¯æ‚¨çš„ç‰©å“å®‰å…¨ã€‚";
+	mes "[¹Ü¼Ò¿¨À³¿ËË¹]";
+	mes "Ê¹ÓÃ´ËÁÙÊ±´æ´¢¿Õ¼ä¿ÉÒÔÔÚ¸ß¼¶²âÊÔÆÚ¼ä±£Ö¤ÄúµÄÎïÆ·°²È«¡£";
 	next;
-	.@s = select("é€€å‡ºï¼šæ‰“å¼€å­˜å‚¨ã€‚");
-	mes "[ç®¡å®¶å¡èŽ±å…‹æ–¯]";
-	mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨è¯¥æœåŠ¡ã€‚";
+	.@s = select("ÍË³ö£º´ò¿ª´æ´¢¡£");
+	mes "[¹Ü¼Ò¿¨À³¿ËË¹]";
+	mes "¸ÐÐ»ÄúÊ¹ÓÃ¸Ã·þÎñ¡£";
 	close2;
 	if (.@s == 2)
 		openstorage;
@@ -820,10 +822,10 @@ job_gun,1,1,0	script	Admin1	CLEAR_NPC,{
 	callfunc "F_GM_NPC";
 	if (callfunc("F_GM_NPC",1854,0) != 1)
 		end;
-	mes "[æ—¶é—´ç®¡ç†å™¨]";
-	mes "æ‚¨æƒ³ä»€ä¹ˆæ—¶å€™è¿”å›žï¼Ÿ";
+	mes "[Ê±¼ä¹ÜÀíÆ÷]";
+	mes "ÄúÏëÊ²Ã´Ê±ºò·µ»Ø£¿";
 	next;
-	switch( select("å–æ¶ˆï¼šæµ‹è¯•æ€ªç‰©ç”Ÿæˆï¼šä»Žå¤´å¼€å§‹ï¼šç†”ç‚‰åŒºï¼šå°„å‡»åŒºï¼šå®Œæˆæµ‹è¯•") ) {
+	switch( select("È¡Ïû£º²âÊÔ¹ÖÎïÉú³É£º´ÓÍ·¿ªÊ¼£ºÈÛÂ¯Çø£ºÉä»÷Çø£ºÍê³É²âÊÔ") ) {
 	case 1:
 		end;
 	case 2:

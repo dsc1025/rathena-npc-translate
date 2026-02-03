@@ -12,276 +12,278 @@
 //= 1.0 First version, edited. [Euphy]
 //= 1.1 Moved the Enchant (Sorcerer#Bio4Reward) and Reward
 //=		(Weird old man#Bio4Reward) NPC in merchant folder. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Giacomo Girolam
 //============================================================
 lighthalzen,303,303,6	script	Giacomo Girolamo#kiup2	4_M_KHMAN,3,3,{
 	if ((MaxWeight - Weight) < 1000 || !checkweight(1201, 1)) {
-		mes "^FF0000 检查您的库存。你的物品太多，无法完成任务。 ^000000";
+		mes "^FF0000 ������Ŀ�档�����Ʒ̫�࣬�޷�������� ^000000";
 		close;
 	}
 	if (lhz_curse > 30) {
 		if (!lght_duk01) {
 			if (Sex == SEX_MALE) {
 				emotion ET_HNG;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "……一个男人……？";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "����һ�����ˡ�����";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "啊!嘿！男人！";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��!�٣����ˣ�";
 				next;
-				select("这是怎么回事？");
+				select("������ô���£�");
 				emotion ET_QUESTION, playerattached();
-				mes "[贾科莫·吉罗拉莫]";
-				mes "您是否听说过总部位于莱特哈尔岑的雷肯贝尔公司进行的可怕的人体实验？";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "���Ƿ���˵���ܲ�λ�����ع���᯵��׿ϱ�����˾���еĿ��µ�����ʵ�飿";
 				next;
-				select("哇啊？！人体实验？");
+				select("�۰���������ʵ�飿");
 				emotion ET_HUK, playerattached();
-				mes "[贾科莫·吉罗拉莫]";
-				mes "是的！人体实验！！";
-				mes "有很多传言说，可怕的人体实验实际上正在进行，但贫民窟的这些人……由于雷肯伯的福利运动而不愿相信。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "�ǵģ�����ʵ�飡��";
+				mes "�кܶഫ��˵�����µ�����ʵ��ʵ�������ڽ��У���ƶ��ߵ���Щ�ˡ��������׿ϲ��ĸ����˶�����Ը���š�";
 				next;
 				emotion ET_PROFUSELY_SWEAT;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "出色地！而那些有钱人，似乎知道一些事情，却从来不提……";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��ɫ�أ�����Щ��Ǯ�ˣ��ƺ�֪��һЩ���飬ȴ�������ᡭ��";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "啊！！这是只有一些人知道的秘密。我从 Rekenber 实验室听说...一个叫...嗯...Wol...的人";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "����������ֻ��һЩ��֪�������ܡ��Ҵ� Rekenber ʵ������˵...һ����...��...Wol...����";
 				next;
 				emotion ET_SCRATCH;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "反正！！一位名叫沃尔夫的科学家……突然被解雇了。而且他肯定和这个传闻有关，我想……";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��������һλ�����ֶ���Ŀ�ѧ�ҡ���ͻȻ������ˡ��������϶�����������йأ����롭��";
 				next;
-				select("你是说……沃尔夫切夫？");
+				select("����˵�����ֶ����з�");
 				emotion ET_SURPRISE;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "哦哦？！是的，沃尔夫切夫！！没错，这个名字就是沃尔夫切夫..疯狂的科学家..";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "ŶŶ�����ǵģ��ֶ����з򣡣�û����������־����ֶ����з�..���Ŀ�ѧ��..";
 				next;
 				emotion ET_OK;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "我想你这样就能更快地理解这个故事了……我确信他参与了谣言。我发誓。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "�������������ܸ����������������ˡ�����ȷ����������ҥ�ԡ��ҷ��ġ�";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "顺便说一句..你呢？你对他有什么了解吗？";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "˳��˵һ��..���أ��������ʲô�˽���";
 				next;
-				if (select("假装你什么都不知道。", "告诉他你所知道的。") == 1) {
+				if (select("��װ��ʲô����֪����", "����������֪���ġ�") == 1) {
 					mes "["+ strcharinfo(0) +"]";
-					mes "并不真地。我听说过他的名字，但对他一无所知。。";
+					mes "������ء�����˵���������֣�������һ����֪����";
 					next;
-					mes "[贾科莫·吉罗拉莫]";
-					mes "嗯……你听起来很可疑，伙计！嗯？";
+					mes "[�ֿ�Ī��������Ī]";
+					mes "�š������������ܿ��ɣ���ƣ��ţ�";
 					next;
 				} else {
 					mes "["+ strcharinfo(0) +"]";
-					mes "他碰巧在研究人类“人造人”时没有告诉雷肯贝尔公司，而有一名举报者向该公司报告了此事。所以他被解雇了。";
+					mes "���������о����ࡰ�����ˡ�ʱû�и����׿ϱ�����˾������һ���ٱ�����ù�˾�����˴��¡�������������ˡ�";
 					next;
 					emotion ET_BEST;
-					mes "[贾科莫·吉罗拉莫]";
-					mes "哦！男人..！看来你知道的还不少啊！无论如何，你关心雷肯伯吗？";
+					mes "[�ֿ�Ī��������Ī]";
+					mes "Ŷ������..��������֪���Ļ����ٰ���������Σ�������׿ϲ���";
 					next;
 					emotion ET_THINK;
 					mes "["+ strcharinfo(0) +"]";
-					mes "…………";
+					mes "��������";
 					next;
 				}
 				emotion ET_SCRATCH;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "不用担心。我没有任何意思。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "���õ��ġ���û���κ���˼��";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "出色地！我只是好奇，只是因为贫民窟里的一些人和一些冒险家失踪了，";
-				mes "我听说雷肯伯正在对那些失踪的人进行人体实验。希望你不要误会我的意思。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��ɫ�أ���ֻ�Ǻ��棬ֻ����Ϊƶ������һЩ�˺�һЩð�ռ�ʧ���ˣ�";
+				mes "����˵�׿ϲ����ڶ���Щʧ�ٵ��˽�������ʵ�顣ϣ���㲻Ҫ����ҵ���˼��";
 				next;
 				lght_duk01 = 1;
 				setquest 5109;
-				mes "事实上，这并不是一个有趣的谣言。";
-				mes "应调查进行实验的实验室。";
+				mes "��ʵ�ϣ��Ⲣ����һ����Ȥ��ҥ�ԡ�";
+				mes "Ӧ�������ʵ���ʵ���ҡ�";
 				close;
 			} else {
 				emotion ET_THROB;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "哦！多么美丽的女士啊！！";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "Ŷ����ô������Ůʿ������";
 				next;
 				emotion ET_QUESTION;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "怎么会有美女出现在这个充满危险谣言的地方？";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��ô������Ů�������������Σ��ҥ�Եĵط���";
 				next;
-				switch(select("步行...", "闲逛...", "购物...")) {
+				switch(select("����...", "�й�...", "����...")) {
 				case 1:
-					mes "[贾科莫·吉罗拉莫]";
-					mes "啊..小姐姐，走路都那么优雅啊……";
+					mes "[�ֿ�Ī��������Ī]";
+					mes "��..С��㣬��·����ô���Ű�����";
 					next;
 					break;
 				case 2:
-					mes "[贾科莫·吉罗拉莫]";
-					mes "女士。即使你在这个贫穷的小镇里闲逛，你也是一位有尊严的女士......";
+					mes "[�ֿ�Ī��������Ī]";
+					mes "Ůʿ����ʹ�������ƶ���С�����й䣬��Ҳ��һλ�����ϵ�Ůʿ......";
 					next;
 					break;
 				case 3:
-					mes "[贾科莫·吉罗拉莫]";
-					mes "啊..女士..在贫民窟购物！！...你是那种每家商店都需要逛遍的类型吗？";
+					mes "[�ֿ�Ī��������Ī]";
+					mes "��..Ůʿ..��ƶ��߹����...��������ÿ���̵궼��Ҫ����������";
 					next;
 					break;
 				}
 			}
 			select("... .... ... ....");
-			mes "[贾科莫·吉罗拉莫]";
-			mes "好吧，我怎么敢问你并对这位女士所做的事情感兴趣......";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "�ðɣ�����ô�����㲢����λŮʿ�������������Ȥ......";
 			next;
 			emotion ET_OK;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "我只希望这位女士带着危险的谣言离开这个小镇。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "��ֻϣ����λŮʿ����Σ�յ�ҥ���뿪���С��";
 			next;
-			select("危险的谣言？");
+			select("Σ�յ�ҥ�ԣ�");
 			emotion ET_QUESTION, playerattached();
-			mes "[贾科莫·吉罗拉莫]";
-			mes "啊……小姐可能没有听说过这个传闻。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "������С�����û����˵��������š�";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "最近，这个小镇上来了一些人，实际上是贫民窟里的人……还有一些冒险者失踪了……";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "��������С��������һЩ�ˣ�ʵ������ƶ�������ˡ�������һЩð����ʧ���ˡ���";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "然后谣言四起，因为失踪案件经常发生，雷肯伯正在他们的秘密实验室里进行可怕的人体实验。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "Ȼ��ҥ��������Ϊʧ�ٰ��������������׿ϲ��������ǵ�����ʵ��������п��µ�����ʵ�顣";
 			next;
-			select("打扰一下？！人体实验？");
+			select("����һ�£�������ʵ�飿");
 			emotion ET_HUK, playerattached();
-			mes "[贾科莫·吉罗拉莫]";
-			mes "是的！人体实验！！";
-			mes "有很多传言说，可怕的人体实验实际上正在进行，但贫民窟的这些人……由于雷肯伯的福利运动而不愿相信。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "�ǵģ�����ʵ�飡��";
+			mes "�кܶഫ��˵�����µ�����ʵ��ʵ�������ڽ��У���ƶ��ߵ���Щ�ˡ��������׿ϲ��ĸ����˶�����Ը���š�";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "出色地！有钱人要么愿意相信..我想..啊！！几周前。嗯。他叫什么名字？沃尔夫切夫？？";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "��ɫ�أ���Ǯ��ҪôԸ������..����..����������ǰ���š�����ʲô���֣��ֶ����з򣿣�";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "反正！！这项研究被实验室解雇了。我想他一定与这个谣言有关。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "�������������о���ʵ���ҽ���ˡ�������һ�������ҥ���йء�";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "所以，拜托，女士。请不要去这样的地方并保持安全。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "���ԣ����У�Ůʿ���벻Ҫȥ�����ĵط������ְ�ȫ��";
 			next;
 			lght_duk01 = 1;
 			setquest 5109;
-			mes "…………看来是一件很严重的事情了。";
-			mes "应调查进行实验的实验室。";
+			mes "��������������һ�������ص������ˡ�";
+			mes "Ӧ�������ʵ���ʵ���ҡ�";
 			close;
 		} else {
-			mes "[贾科莫·吉罗拉莫]";
+			mes "[�ֿ�Ī��������Ī]";
 			if (Sex == SEX_MALE) {
 				emotion ET_WRAP;
-				mes "照顾好自己，不要消失！";
+				mes "�չ˺��Լ�����Ҫ��ʧ��";
 			} else {
 				emotion ET_BIGTHROB;
-				mes "小心点，女士。";
+				mes "С�ĵ㣬Ůʿ��";
 			}
 			close;
 		}
 	} else {
 		if (Sex == SEX_MALE) {
 			emotion ET_DELIGHT;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "只有那些美丽的女士才是我生命的理由~！";
-			mes "我，Giacomo Girolamo Casanova de Seingalt，对你这样的人从来不感兴趣！";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "ֻ����Щ������Ůʿ����������������~��";
+			mes "�ң�Giacomo Girolamo Casanova de Seingalt�������������˴���������Ȥ��";
 			next;
 			emotion ET_FRET;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "但我可以听你说……你想对我说什么吗？";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "���ҿ�������˵�����������˵ʲô��";
 			next;
-			switch(select("没有..？", "关于女士们..", "你这个好色之徒!!", "羡慕你...", "最近有什么谣言？")) {
+			switch(select("û��..��", "����Ůʿ��..", "�������ɫ֮ͽ!!", "��Ľ��...", "�����ʲôҥ�ԣ�")) {
 			case 1:
 				emotion ET_SCRATCH;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "嘿，你，那就别挡我的路了..";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "�٣��㣬�Ǿͱ��ҵ�·��..";
 				close;
 			case 2:
 				emotion ET_FRET;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "我不想谈论我亲爱的女士们取笑她们。你和你的朋友一起做。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "�Ҳ���̸�����װ���Ůʿ��ȡЦ���ǡ�����������һ������";
 				close;
 			case 3:
-				mes "[贾科莫·吉罗拉莫]";
-				mes "嘿..对不起！！！但我不是一个“好色之徒”，我只是一个崇拜女人的人。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��..�Բ��𣡣������Ҳ���һ������ɫ֮ͽ������ֻ��һ�����Ů�˵��ˡ�";
 				next;
 				emotion ET_OK;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "当然……是的……如果我是一个好色之徒，那么地球上所有的男人都是！我只是卡萨诺瓦。嗯哈哈哈。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��Ȼ�����ǵġ����������һ����ɫ֮ͽ����ô���������е����˶��ǣ���ֻ�ǿ���ŵ�ߡ��Ź�������";
 				close;
 			case 4:
 				emotion ET_QUESTION;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "哈..你……吗？你身边除了你姐姐和妈妈就没有别的女人了吗？";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��..�㡭���������߳�������������û�б��Ů������";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "…………";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��������";
 				next;
 				emotion ET_PROFUSELY_SWEAT;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "哦……抱歉……我明白你的意思了……";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "Ŷ������Ǹ���������������˼�ˡ���";
 				close;
 			case 5:
-				mes "[贾科莫·吉罗拉莫]";
-				mes "你……不像你看上去的那样？有趣的..";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "�㡭�������㿴��ȥ����������Ȥ��..";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "是的，其实最近有很多贫民窟的人和一些流浪的冒险家失踪了。我不知道为什么。";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "�ǵģ���ʵ����кܶ�ƶ��ߵ��˺�һЩ���˵�ð�ռ�ʧ���ˡ��Ҳ�֪��Ϊʲô��";
 				next;
-				mes "[贾科莫·吉罗拉莫]";
-				mes "你也得小心啊..";
+				mes "[�ֿ�Ī��������Ī]";
+				mes "��Ҳ��С�İ�..";
 				close;
 			}
 		} else {
 			emotion ET_QUESTION;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "嘿，女士？";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "�٣�Ůʿ��";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
+			mes "[�ֿ�Ī��������Ī]";
 			switch(rand(1,10)) {
 			case 1:
-				mes "我的天使，你从天上掉下来的时候不是很痛苦吗？";
+				mes "�ҵ���ʹ��������ϵ�������ʱ���Ǻ�ʹ����";
 				next;
 				break;
 			case 2:
-				mes "你一定很累了。因为你总是在我的脑海中徘徊。";
+				mes "��һ�������ˡ���Ϊ���������ҵ��Ժ����ǻ���";
 				next;
 				break;
 			case 3:
-				mes "昨晚在我的梦里走来走去你不累吗？";
+				mes "�������ҵ�����������ȥ�㲻����";
 				next;
 				break;
 			case 4:
-				mes "打扰一下。但我想我已经失去了我的心。你能借我一下你的吗？";
+				mes "����һ�¡����������Ѿ�ʧȥ���ҵ��ġ����ܽ���һ�������";
 				next;
 				break;
 			case 5:
-				mes "你相信一见钟情吗？？或者我们可以重新开始吗..？";
+				mes "������һ�������𣿣��������ǿ������¿�ʼ��..��";
 				next;
 				break;
 			case 6:
-				mes "非常抱歉，请问可以和刚认识的人接吻吗？不？好吧，那么让我自我介绍一下。";
+				mes "�ǳ���Ǹ�����ʿ��Ժ͸���ʶ���˽����𣿲����ðɣ���ô�������ҽ���һ�¡�";
 				next;
 				break;
 			case 7:
-				mes "因为这是第一次，所以我很迷失在这里。你能告诉我哪条路才是通往你内心的路吗？";
+				mes "��Ϊ���ǵ�һ�Σ������Һ���ʧ��������ܸ���������·����ͨ�������ĵ�·��";
 				next;
 				break;
 			case 8:
-				mes "请给我一张地图...以便找到一条路...我已陷入你的眼中。";
+				mes "�����һ�ŵ�ͼ...�Ա��ҵ�һ��·...��������������С�";
 				next;
 				break;
 			case 9:
-				mes "你的眼睛……我想永远在那里。";
+				mes "����۾�����������Զ�����";
 				next;
 				break;
 			case 10:
-				mes "我保证，在任何情况下，在任何困难的情况下，我都会成为你的一切。";
+				mes "�ұ�֤�����κ�����£����κ����ѵ�����£��Ҷ����Ϊ���һ�С�";
 				next;
 				break;
 			}
 			emotion ET_BIGTHROB;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "今天是我们见面的第一天，但​​我爱你，女士<3";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "���������Ǽ���ĵ�һ�죬���Ұ��㣬Ůʿ<3";
 			next;
-			mes "[贾科莫·吉罗拉莫]";
-			mes "我告诉你这些只是因为我担心你。你需要离开这个充满失踪案件的小镇。";
+			mes "[�ֿ�Ī��������Ī]";
+			mes "�Ҹ�������Щֻ����Ϊ�ҵ����㡣����Ҫ�뿪�������ʧ�ٰ�����С��";
 			close;
 		}
 	}
@@ -299,7 +301,7 @@ lhz_dun03,239,78,1	script	lhz_dun03_lhz_dun04	WARPNPC,1,1,{
 
 OnTouch:
 	if (lght_duk01 > 0 && lght_duk01 < 6) {
-		mes "为了研究人体实验，我不得不下去，但我不想下去，因为可怕的声音。";
+		mes "Ϊ���о�����ʵ�飬�Ҳ��ò���ȥ�����Ҳ�����ȥ����Ϊ���µ�������";
 		close2;
 		if (lght_duk01 < 3) {
 			warp "que_lhz", 245, 56;
@@ -310,8 +312,8 @@ OnTouch:
 		}
 	} else {
 		if (lhz_curse < 31) {
-			mes "- 口哨声 -";
-			mes "从下方，传来一阵令人毛骨悚然的声音，夹杂着风声。";
+			mes "- ������ -";
+			mes "���·�������һ������ë���Ȼ�������������ŷ�����";
 			close2;
 		}
 		warp "lhz_dun04", 245, 56;
@@ -355,12 +357,12 @@ OnTimer300000:
 
 OnTouch:
 	if (lght_duk01 == 1) {
-		mes "我来到了一个研究设施，它似乎一直被使用至今。";
+		mes "��������һ���о���ʩ�����ƺ�һֱ��ʹ������";
 		next;
-		mes "虽然有部分被毁坏的地方，但基本设施看起来还不错。";
+		mes "��Ȼ�в��ֱ��ٻ��ĵط�����������ʩ��������������";
 		next;
 		lght_duk01 = 2;
-		mes "再绕一圈...";
+		mes "����һȦ...";
 		close;
 	}
 	end;
@@ -373,35 +375,35 @@ OnTouch:
 	if (lght_duk01 == 2) {
 		emotion ET_HUK, playerattached();
 		mes "["+ strcharinfo(0) +"]";
-		mes "你！！！！是沃尔夫切夫吗？";
+		mes "�㣡���������ֶ����з���";
 		next;
 		emotion ET_KIK;
-		mes "[沃尔夫切夫]";
-		mes "一个人类！哈哈哈。人们往往讨厌这个地方，你为什么来这里？";
+		mes "[�ֶ����з�]";
+		mes "һ�����࣡������������������������ط�����Ϊʲô�����";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "你！！！我听说你正在进行人体实验。沃尔夫切夫！！";
+		mes "�㣡��������˵�����ڽ�������ʵ�顣�ֶ����з򣡣�";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "我发现你仍然这样做！";
+		mes "�ҷ�������Ȼ��������";
 		next;
 		emotion ET_KIK;
-		mes "[沃尔夫切夫]";
-		mes "基希希希。我看得出你对我有所了解。指控我的就是你吗？";
-		mes "你这么做之后还敢回到我身边吗？基希希";
+		mes "[�ֶ����з�]";
+		mes "��ϣϣϣ���ҿ��ó�����������˽⡣ָ���ҵľ�������";
+		mes "����ô��֮�󻹸һص��������𣿻�ϣϣ";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "见到人类我感觉很好";
-		mes "很长一段时间了，但我得走了。基希希希。";
+		mes "[�ֶ����з�]";
+		mes "���������Ҹо��ܺ�";
+		mes "�ܳ�һ��ʱ���ˣ����ҵ����ˡ���ϣϣϣ��";
 		next;
-		mes "- 沃尔夫切夫发出尴尬的笑声，跑开了。 -";
+		mes "- �ֶ����з򷢳����ε�Ц�����ܿ��ˡ� -";
 		next;
 		erasequest 5109;
 		setquest 5110;
 		lght_duk01 = 3;
 		emotion ET_HUK, playerattached();
 		mes "["+ strcharinfo(0) +"]";
-		mes "哇！沃尔夫切夫，站住！";
+		mes "�ۣ��ֶ����з�վס��";
 		close2;
 		warp "que_lhz", 96, 136;
 	}
@@ -410,38 +412,38 @@ OnTouch:
 
 que_lhz,94,119,4	script	Researcher#03	4_LGTSCIENCE,{
 	if ((MaxWeight - Weight) < 1000 || !checkweight(1201, 1)) {
-		mes "^FF0000 检查您的库存。你的物品太多，无法完成任务。 ^000000";
+		mes "^FF0000 ������Ŀ�档�����Ʒ̫�࣬�޷�������� ^000000";
 		close;
 	}
 	if (lght_duk01 == 3) {
 		emotion ET_PROFUSELY_SWEAT;
-		mes "[沃尔夫切夫]";
-		mes "（喘气）Pshaw...你还在跟着我。喂，你为什么老跟着我？";
+		mes "[�ֶ����з�]";
+		mes "��������Pshaw...�㻹�ڸ����ҡ�ι����Ϊʲô�ϸ����ң�";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "沃尔夫切夫..你之前说过。你正在为每个人做研究。";
+		mes "�ֶ����з�..��֮ǰ˵����������Ϊÿ�������о���";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "我可能会这么说……那又怎样？";
+		mes "[�ֶ����з�]";
+		mes "�ҿ��ܻ���ô˵��������������";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "但是，你的实验看起来真的很危险。怎么会是大家想要的呢？";
+		mes "���ǣ����ʵ�鿴������ĺ�Σ�ա���ô���Ǵ����Ҫ���أ�";
 		next;
 		emotion ET_KIK;
-		mes "[沃尔夫切夫]";
-		mes "每个人都渴望变得更强大，都想主宰别人，让别人服从你、钦佩你。你没有这个愿望吗？";
+		mes "[�ֶ����з�]";
+		mes "ÿ���˶�������ø�ǿ�󣬶������ױ��ˣ��ñ��˷����㡢�����㡣��û�����Ը����";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "…………";
+		mes "��������";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "如果你想自救，就别再跟着我了。滚蛋吧。";
+		mes "[�ֶ����з�]";
+		mes "��������Ծȣ��ͱ��ٸ������ˡ������ɡ�";
 		next;
-		mes "沃尔夫切夫再次逃跑，发出奇怪的声音。";
+		mes "�ֶ����з��ٴ����ܣ�������ֵ�������";
 		next;
 		lght_duk01 = 4;
 		mes "["+ strcharinfo(0) +"]";
-		mes "哇哇！！你！！又跑了……站住！";
+		mes "���ۣ����㣡�������ˡ���վס��";
 		close2;
 		warp "que_lhz", 148, 215;
 	}
@@ -450,82 +452,82 @@ que_lhz,94,119,4	script	Researcher#03	4_LGTSCIENCE,{
 
 que_lhz,147,224,4	script	Researcher#04	4_LGTSCIENCE,{
 	if ((MaxWeight - Weight) < 1000 || !checkweight(1201, 1)) {
-		mes "^FF0000 检查您的库存。你的物品太多，无法完成任务。 ^000000";
+		mes "^FF0000 ������Ŀ�档�����Ʒ̫�࣬�޷�������� ^000000";
 		close;
 	}
 	if (lght_duk01 == 4) {
-		mes "[沃尔夫切夫]";
-		mes "你很执着，不是吗？或者我认为……你喜欢我，是吗？基希希。";
+		mes "[�ֶ����з�]";
+		mes "���ִ�ţ������𣿻�������Ϊ������ϲ���ң����𣿻�ϣϣ��";
 		next;
 		emotion ET_THINK;
 		mes "["+ strcharinfo(0) +"]";
-		mes "…………";
+		mes "��������";
 		next;
 		specialeffect EF_SIGHTRASHER;
-		mes "沃尔夫切夫嘲笑你的沉默，然后按下了手中的按钮。然后豚鼠在他周围醒来。";
+		mes "�ֶ����з�Ц��ĳ�Ĭ��Ȼ���������еİ�ť��Ȼ������������Χ������";
 		next;
 		for(.@i = 1; .@i < 9; .@i++)
 			donpcevent "Human Guinea pig#0"+.@i+"::OnEnable";
-		mes "[沃尔夫切夫]";
-		mes "又到了说再见的时候了。";
+		mes "[�ֶ����з�]";
+		mes "�ֵ���˵�ټ���ʱ���ˡ�";
 		next;
 		emotion ET_SURPRISE;
-		mes "[沃尔夫切夫]";
-		mes "出色地！或许....";
+		mes "[�ֶ����з�]";
+		mes "��ɫ�أ�����....";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "如果你来找我做实验，我可以对你更好。";
+		mes "[�ֶ����з�]";
+		mes "�������������ʵ�飬�ҿ��Զ�����á�";
 		next;
 		donpcevent "#Eventctrl::OnEnable";
 		progressbar "FF00FF", 5;
 		emotion ET_HUK;
-		mes "[沃尔夫切夫]";
-		mes "天啊，……发生什么事了？";
+		mes "[�ֶ����з�]";
+		mes "�찡����������ʲô���ˣ�";
 		next;
 		donpcevent "#Eventctrl::OnEnable2";
 		for(.@i = 1; .@i < 9; .@i++)
 			donpcevent "Human Guinea pig#0"+.@i+"::OnDisable";
-		mes "[沃尔夫切夫]";
-		mes "不！别来找我！不！！";
+		mes "[�ֶ����з�]";
+		mes "�����������ң�������";
 		next;
 		lght_duk01 = 5;
-		mes "首先，我得处理掉那些小白鼠！";
+		mes "���ȣ��ҵô�������ЩС����";
 		close;
 	} else if (lght_duk01 == 5) {
 		.@i = rand(1,3);
 		if (.@i == 2) {
-			mes "沃尔夫切夫很困惑，现在不知道，因为那些怪物也在攻击他。";
+			mes "�ֶ����з���������ڲ�֪������Ϊ��Щ����Ҳ�ڹ�������";
 			next;
 			specialeffect EF_STUNATTACK;
 			specialeffect EF_STUNATTACK;
-			mes "- 打他叫醒他 -";
+			mes "- ���������� -";
 			next;
 			specialeffect EF_DARKBREATH;
 			emotion ET_STARE_ABOUT;
 			mes "["+ strcharinfo(0) +"]";
-			mes "嘿伙计！不管怎样，我们先离开这里吧！难道就没有他们到达不了的地方吗？";
+			mes "�ٻ�ƣ������������������뿪����ɣ��ѵ���û�����ǵ��ﲻ�˵ĵط���";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "哎呀...然后我的...我的实验室...我的实验室...";
+			mes "[�ֶ����з�]";
+			mes "��ѽ...Ȼ���ҵ�...�ҵ�ʵ����...�ҵ�ʵ����...";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "你的实验室？？好吧，那是哪里？";
+			mes "���ʵ���ң����ðɣ��������";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "向北......离这里不远..";
+			mes "[�ֶ����з�]";
+			mes "��......�����ﲻԶ..";
 			next;
 			erasequest 5110;
 			setquest 5111;
 			lght_duk01 = 6;
-			mes "前往12点方向的“^0000FF沃尔夫切夫实验室^000000”...";
+			mes "ǰ��12�㷽��ġ�^0000FF�ֶ����з�ʵ����^000000��...";
 			close;
 		} else {
 			emotion ET_CONFUSE;
-			mes "沃尔夫切夫很困惑，现在不知道，因为那些怪物也在攻击他。";
+			mes "�ֶ����з���������ڲ�֪������Ϊ��Щ����Ҳ�ڹ�������";
 			close;
 		}
 	} else if (lght_duk01 == 6) {
-		mes "前往12点方向的“^0000FF沃尔夫切夫实验室^000000”...";
+		mes "ǰ��12�㷽��ġ�^0000FF�ֶ����з�ʵ����^000000��...";
 		close;
 	}
 	end;
@@ -538,12 +540,12 @@ que_lhz,148,251,0	script	#Move2lab	-1,12,0,{
 
 OnTouch:
 	if (lght_duk01 == 6) {
-		mes "我到达了‘^0000FF沃尔夫切夫的实验室^000000'。";
+		mes "�ҵ����ˡ�^0000FF�ֶ����з��ʵ����^000000'��";
 		close2;
 		warp "lhz_dun04", 148, 269;
 		end;
 	} else {
-		mes "我和沃尔夫切夫还有点关系。";
+		mes "�Һ��ֶ����з��е��ϵ��";
 		close;
 	}
 }
@@ -652,7 +654,7 @@ que_lhz,140,224,2	duplicate(Human Guinea pig#01)	Human Guinea pig#08	2224
 //============================================================
 lhz_dun04,151,276,3	script	Researcher#memo	4_LGTSCIENCE,{
 	if ((MaxWeight - Weight) < 1000 || !checkweight(1201, 1)) {
-		mes "^FF0000由于拥有太多物品，您无法继续该过程。^000000";
+		mes "^FF0000����ӵ��̫����Ʒ�����޷������ù��̡�^000000";
 		close;
 	}
 	.@quest_time = checkquest(5112, PLAYTIME);
@@ -662,92 +664,92 @@ lhz_dun04,151,276,3	script	Researcher#memo	4_LGTSCIENCE,{
 			.@killed_bosses = false;
 	}
 	if (lght_duk01 < 6) {
-		mes "[研究员]";
-		mes "什么！你在这里有什么生意吗？";
+		mes "[�о�Ա]";
+		mes "ʲô������������ʲô������";
 		next;
-		if (select("是的，我愿意！！", "嗯..不..") == 1) {
-			mes "[研究员]";
-			mes "为什么不停止盯着别人的实验室，走自己的路呢？";
+		if (select("�ǵģ���Ը�⣡��", "��..��..") == 1) {
+			mes "[�о�Ա]";
+			mes "Ϊʲô��ֹͣ���ű��˵�ʵ���ң����Լ���·�أ�";
 			close;
 		}
-		mes "[研究员]";
-		mes "别再在这里疑惑了，上路吧。你会？咳咳。";
+		mes "[�о�Ա]";
+		mes "�����������ɻ��ˣ���·�ɡ���᣿�ȿȡ�";
 		close;
 	} else if (lght_duk01 == 6) {
-		mes "看来实验生物是不能靠近实验室的，就像沃尔夫切夫说的那样。";
+		mes "����ʵ�������ǲ��ܿ���ʵ���ҵģ������ֶ����з�˵��������";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "嘿，有什么办法可以阻止这些生物吗？你应该知道一些事情，你创造了那些东西！";
+		mes "�٣���ʲô�취������ֹ��Щ��������Ӧ��֪��һЩ���飬�㴴������Щ������";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "呃……我没想到他们会这样失去控制……";
+		mes "[�ֶ����з�]";
+		mes "��������û�뵽���ǻ�����ʧȥ���ơ���";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "这整件事有什么问题吗？";
+		mes "[�ֶ����з�]";
+		mes "����������ʲô������";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "呃..我想他们会毁掉我的整个实验室！";
+		mes "[�ֶ����з�]";
+		mes "��..�������ǻ�ٵ��ҵ�����ʵ���ң�";
 		next;
 		emotion ET_BLABLA, playerattached();
 		mes "["+ strcharinfo(0) +"]";
-		mes "嘿！沃尔夫切夫！！";
+		mes "�٣��ֶ����з򣡣�";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "你！？嘿，请阻止他们！";
-		mes "生物^9f6077与相同的工作领域^000000有机地联系在一起。";
+		mes "[�ֶ����з�]";
+		mes "�㣡���٣�����ֹ���ǣ�";
+		mes "����^9f6077����ͬ�Ĺ�������^000000�л�����ϵ��һ��";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "有一个特殊的生物是他们的^46B951头目位置^000000...";
-		mes "如果你可以停用该生物，所有在这里行走的^A1BB44奴隶生物^000000都会立即停止移动。";
-		next;
-		mes "["+ strcharinfo(0) +"]";
-		mes "老大生物？";
-		mes "嘿！沃尔夫切夫！那个^46B951头目生物^000000在哪里？";
-		next;
-		mes "[沃尔夫切夫]";
-		mes "实验室里面……现在应该被唤醒了。毁了我的工作生活真是令人难过，但我不能再忍受了……";
+		mes "[�ֶ����з�]";
+		mes "��һ����������������ǵ�^46B951ͷĿλ��^000000...";
+		mes "��������ͣ�ø�����������������ߵ�^A1BB44ū������^000000��������ֹͣ�ƶ���";
 		next;
 		mes "["+ strcharinfo(0) +"]";
-		mes "我怎样才能进入沃尔夫切夫的实验室？";
+		mes "�ϴ����";
+		mes "�٣��ֶ����з��Ǹ�^46B951ͷĿ����^000000�����";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "哦..等等！";
-		mes "我会帮助你进入那里。";
+		mes "[�ֶ����з�]";
+		mes "ʵ�������桭������Ӧ�ñ������ˡ������ҵĹ����������������ѹ������Ҳ����������ˡ���";
 		next;
-		mes "[沃尔夫切夫]";
-		mes "好消息是，首领生物并没有设置为立即醒来，尽管奴隶可以。";
+		mes "["+ strcharinfo(0) +"]";
+		mes "���������ܽ����ֶ����з��ʵ���ң�";
+		next;
+		mes "[�ֶ����з�]";
+		mes "Ŷ..�ȵȣ�";
+		mes "�һ������������";
+		next;
+		mes "[�ֶ����з�]";
+		mes "����Ϣ�ǣ��������ﲢû������Ϊ��������������ū�����ԡ�";
 		next;
 		erasequest 5111;
 		lght_duk01 = 7;
 		for(.@i = 5113; .@i <= 5125; .@i++)
 			setquest .@i;
-		mes "[沃尔夫切夫]";
-		mes "但仍然很危险，因为我们不知道他们什么时候才能逃离那里。";
-		mes "所以，请你的队员做好准备，并照顾好那些boss生物。我不知道这个地方还能坚持多久。";
+		mes "[�ֶ����з�]";
+		mes "����Ȼ��Σ�գ���Ϊ���ǲ�֪������ʲôʱ������������";
+		mes "���ԣ�����Ķ�Ա����׼�������չ˺���Щboss����Ҳ�֪������ط����ܼ�ֶ�á�";
 		close;
 	} else if (lght_duk01 > 6) {
 		if (getcharid(1) > 0) {
-			mes "[沃尔夫切夫]";
-			mes "你们都准备好了吗？如果你是该党的领袖，我会准备入口。";
+			mes "[�ֶ����з�]";
+			mes "���Ƕ�׼��������������Ǹõ������䣬�һ�׼����ڡ�";
 			next;
-			switch(select("有任何警告吗？", "进入实验室", "请勿进入")) {
+			switch(select("���κξ�����", "����ʵ����", "�������")) {
 			case 1:
-				mes "[沃尔夫切夫]";
-				mes "我不知道按下紧急警报会导致这样的问题。管理系统似乎改为紧急模式。";
+				mes "[�ֶ����з�]";
+				mes "�Ҳ�֪�����½��������ᵼ�����������⡣����ϵͳ�ƺ���Ϊ����ģʽ��";
 				next;
-				mes "[沃尔夫切夫]";
-				mes "实验室里设置了太多的系统，所以我现在都无法确定系统是如何扭曲的。";
+				mes "[�ֶ����з�]";
+				mes "ʵ������������̫���ϵͳ�����������ڶ��޷�ȷ��ϵͳ�����Ť���ġ�";
 				next;
-				mes "[沃尔夫切夫]";
-				mes "啊!如果紧急系统启动，只有党的领导人才能控制一切。我理解这是很大的压力。";
+				mes "[�ֶ����з�]";
+				mes "��!�������ϵͳ������ֻ�е����쵼�˲��ܿ���һ�С����������Ǻܴ��ѹ����";
 				next;
-				mes "[沃尔夫切夫]";
-				mes "请注意，请不要出于好奇而随意触摸事物。我不想让你受伤。";
+				mes "[�ֶ����з�]";
+				mes "��ע�⣬�벻Ҫ���ں�������ⴥ������Ҳ����������ˡ�";
 				close;
 			case 2:
 				if (.@quest_time == 0) {
-					mes "[沃尔夫切夫]";
-					mes "抱歉，看来你还不能进入实验室。你稍后会回来吗？你知道，这个系统有点棘手。";
+					mes "[�ֶ����з�]";
+					mes "��Ǹ�������㻹���ܽ���ʵ���ҡ����Ժ���������֪�������ϵͳ�е㼬�֡�";
 					close;
 				} else {
 					//if (.@quest_time == 2)
@@ -756,63 +758,63 @@ lhz_dun04,151,276,3	script	Researcher#memo	4_LGTSCIENCE,{
 						erasequest 5112;
 					if (!.@killed_bosses) {
 						if (lght_duk01 == 9) {
-							mes "[沃尔夫切夫]";
-							mes "你回来了，哈哈哈。";
+							mes "[�ֶ����з�]";
+							mes "������ˣ���������";
 							next;
-							mes "[沃尔夫切夫]";
-							mes "你走后，我正在修复一些系统部件。然后奇怪的事情突然发生了。";
-							next;
-							mes "["+ strcharinfo(0) +"]";
-							mes "那是什么？";
-							next;
-							mes "[沃尔夫切夫]";
-							mes "所有你照顾的boss生物都开始自我再生。";
+							mes "[�ֶ����з�]";
+							mes "���ߺ��������޸�һЩϵͳ������Ȼ����ֵ�����ͻȻ�����ˡ�";
 							next;
 							mes "["+ strcharinfo(0) +"]";
-							mes "什么……这怎么可能……？！";
+							mes "����ʲô��";
 							next;
-							mes "[沃尔夫切夫]";
-							mes "我也完全迷失在这里..但是，这不应该发生..";
+							mes "[�ֶ����з�]";
+							mes "�������չ˵�boss���ﶼ��ʼ����������";
 							next;
 							mes "["+ strcharinfo(0) +"]";
-							mes "…………";
+							mes "ʲô��������ô���ܡ�������";
 							next;
-							mes "[沃尔夫切夫]";
-							mes "正如你所看到的，你是我唯一可以信任的人。你和你的队伍能帮我再次消灭这些生物吗？";
+							mes "[�ֶ����з�]";
+							mes "��Ҳ��ȫ��ʧ������..���ǣ��ⲻӦ�÷���..";
 							next;
-							if (select("我不确定", "为什么不呢") == 1) {
-								mes "[沃尔夫切夫]";
-								mes "我懂了。我明白你为什么犹豫，也不想再催促你了。但是，我仍然不确定你为什么想去那里，";
+							mes "["+ strcharinfo(0) +"]";
+							mes "��������";
+							next;
+							mes "[�ֶ����з�]";
+							mes "�������������ģ�������Ψһ�������ε��ˡ������Ķ����ܰ����ٴ�������Щ������";
+							next;
+							if (select("�Ҳ�ȷ��", "Ϊʲô����") == 1) {
+								mes "[�ֶ����з�]";
+								mes "�Ҷ��ˡ���������Ϊʲô��ԥ��Ҳ�����ٴߴ����ˡ����ǣ�����Ȼ��ȷ����Ϊʲô��ȥ���";
 								next;
 							} else {
 								for(.@i = 5113; .@i <= 5125; .@i++) {
 									setquest .@i;
 								}
 								lght_duk01 = 10;
-								mes "[沃尔夫切夫]";
-								mes "非常感谢。"+strcharinfo(0)+"";
-								mes "我马上帮你进实验室。";
+								mes "[�ֶ����з�]";
+								mes "�ǳ���л��"+strcharinfo(0)+"";
+								mes "�����ϰ����ʵ���ҡ�";
 								next;
 							}
 						} else {
-							mes "[沃尔夫切夫]";
-							mes "嗯..那些boss生物再次重生..";
+							mes "[�ֶ����з�]";
+							mes "��..��Щboss�����ٴ�����..";
 							next;
-							mes "[沃尔夫切夫]";
-							mes "你能再帮我一次吗？";
+							mes "[�ֶ����з�]";
+							mes "�����ٰ���һ����";
 							next;
-							if (select("我不确定", "为什么不呢") == 1) {
-								mes "[沃尔夫切夫]";
-								mes "我懂了。我明白你为什么犹豫，也不想再催促你了。但是，我仍然不确定你为什么想去那里，";
+							if (select("�Ҳ�ȷ��", "Ϊʲô����") == 1) {
+								mes "[�ֶ����з�]";
+								mes "�Ҷ��ˡ���������Ϊʲô��ԥ��Ҳ�����ٴߴ����ˡ����ǣ�����Ȼ��ȷ����Ϊʲô��ȥ���";
 								next;
 							} else {
 								for(.@i = 5113; .@i <= 5125; .@i++) {
 									setquest .@i;
 								}
 								lght_duk01 = 10;
-								mes "[沃尔夫切夫]";
-								mes "谢谢。"+strcharinfo(0)+"";
-								mes "你想快点进去，对吗？";
+								mes "[�ֶ����з�]";
+								mes "лл��"+strcharinfo(0)+"";
+								mes "�������ȥ������";
 								next;
 							}
 						}
@@ -820,73 +822,73 @@ lhz_dun04,151,276,3	script	Researcher#memo	4_LGTSCIENCE,{
 				}
 				if (is_party_leader() == true) {
 					if (instance_create("Wolfchev's Laboratory") < 0) {
-						mes "[沃尔夫切夫]";
-						mes "嗯..实验室输入系统有点奇怪。会等我检查系统吗？";
+						mes "[�ֶ����з�]";
+						mes "��..ʵ��������ϵͳ�е���֡�����Ҽ��ϵͳ��";
 						close;
 					}
-					mes "[沃尔夫切夫]";
-					mes "请稍等...";
+					mes "[�ֶ����з�]";
+					mes "���Ե�...";
 					next;
-					mes "沃尔夫切夫开始控制某些装备。";
+					mes "�ֶ����з�ʼ����ĳЩװ����";
 					next;
 					progressbar "FF00FF", 2;
-					mes "[沃尔夫切夫]";
-					mes "好吧！我已将 lan 输入系统代码标记为";
-					mes "^0000ff"+ strcharinfo(1) +"^000000 党领袖姓名^0000ff"+ strcharinfo(0) +"^000000!!。";
+					mes "[�ֶ����з�]";
+					mes "�ðɣ����ѽ� lan ����ϵͳ������Ϊ";
+					mes "^0000ff"+ strcharinfo(1) +"^000000 ����������^0000ff"+ strcharinfo(0) +"^000000!!��";
 					next;
-					mes "[沃尔夫切夫]";
-					mes "现在，您的队伍可以自由通过入口了。";
+					mes "[�ֶ����з�]";
+					mes "���ڣ����Ķ����������ͨ������ˡ�";
 					close;
 				} else {
-					mes "[沃尔夫切夫]";
-					mes "你不是^0000ff党的领袖^000000，是吗？ Please go get the leader.";
+					mes "[�ֶ����з�]";
+					mes "�㲻��^0000ff��������^000000������ Please go get the leader.";
 					close;
 				}
 			case 3:
-				mes "[沃尔夫切夫]";
-				mes "需要更多准备吗？拜托，我们没有一整天的时间。";
+				mes "[�ֶ����з�]";
+				mes "��Ҫ����׼���𣿰��У�����û��һ�����ʱ�䡣";
 				close;
 			}
 		} else {
-			mes "[沃尔夫切夫]";
-			mes "你想一起去那里吗？那是自杀！我们的实验室进入系统并不像您想象的那么容易。";
+			mes "[�ֶ����з�]";
+			mes "����һ��ȥ������������ɱ�����ǵ�ʵ���ҽ���ϵͳ���������������ô���ס�";
 			close;
 		}
 	} else {
-		mes "[沃尔夫切夫]";
-		mes "哇！奇怪的事情发生了。如果这种情况继续发生，也许我们应该尝试其他方法。";
+		mes "[�ֶ����з�]";
+		mes "�ۣ���ֵ����鷢���ˡ���������������������Ҳ������Ӧ�ó�������������";
 		close;
 	}
 }
 
 lhz_dun04,147,279,0	script	Laboratory Entrance#memo	CLEAR_NPC,{
 	if ((MaxWeight - Weight) < 1000 || !checkweight(1201, 1)) {
-		mes "^FF0000由于拥有太多物品，您无法继续该过程。^000000";
+		mes "^FF0000����ӵ��̫����Ʒ�����޷������ù��̡�^000000";
 		close;
 	}
 	.@lhz_time = checkquest(5112, PLAYTIME);
 	if (lght_duk01 < 7) {
-		mes "它说，";
-		mes "'^0000FF****仅限实验室成员^000000'";
+		mes "��˵��";
+		mes "'^0000FF****����ʵ���ҳ�Ա^000000'";
 		close;
 	}
 	if (.@lhz_time == -1) {
-		mes "这是沃尔夫切夫实验室的入口。有什么东西在入口处嚎叫。";
+		mes "�����ֶ����з�ʵ���ҵ���ڡ���ʲô��������ڴ����С�";
 		next;
-		if (select("进去", "再想一想") == 2) {
-			mes "你已经停止进入沃尔夫切夫的实验室。";
+		if (select("��ȥ", "����һ��") == 2) {
+			mes "���Ѿ�ֹͣ�����ֶ����з��ʵ���ҡ�";
 			close;
 		}
 		if (instance_enter("Wolfchev's Laboratory") != IE_OK) {  // probably missing failure cases
-			mes "^FF0000警告^000000";
-			mes ""+ strcharinfo(0) +"。 。 。";
-			mes "^FF0000未注册人员^000000";
+			mes "^FF0000����^000000";
+			mes ""+ strcharinfo(0) +"�� �� ��";
+			mes "^FF0000δע����Ա^000000";
 			next;
 			pushpc 0, 10;
 			percentheal -5,0;
 			specialeffect EF_AUTOCOUNTER;
 			specialeffect2 EF_BASH;
-			mes "您因实验室入口系统攻击而受伤。";
+			mes "����ʵ�������ϵͳ���������ˡ�";
 			close;
 		}
 		mapannounce "lhz_dun04","Laboratory entrance system ["+ strcharinfo(1) +"] member ["+ strcharinfo(0) +"] access granted..",bc_map,"0x0DF297";
@@ -894,25 +896,25 @@ lhz_dun04,147,279,0	script	Laboratory Entrance#memo	CLEAR_NPC,{
 		//warp "1@lhz", 45, 148;
 		close;
 	} else if (.@lhz_time == 0) {
-		mes "迪丽-迪-迪-迪-";
+		mes "����-��-��-��-";
 		next;
-		mes ""+ strcharinfo(0) +"。 。 。";
-		mes "^FF0000禁止人员^000000";
+		mes ""+ strcharinfo(0) +"�� �� ��";
+		mes "^FF0000��ֹ��Ա^000000";
 		next;
-		mes "系统拒绝你进入。";
+		mes "ϵͳ�ܾ�����롣";
 		close;
 	} else if (.@lhz_time >= 1) {
-		mes "迪丽-迪-迪-迪-";
+		mes "����-��-��-��-";
 		next;
 		//if (.@lhz_time == 2)
 			//recall_completequest 5112;
 		erasequest 5112;
-		mes ""+ strcharinfo(0) +"。 。 。";
-		mes "^FF0000拒绝访问已停用。^000000";
+		mes ""+ strcharinfo(0) +"�� �� ��";
+		mes "^FF0000�ܾ�������ͣ�á�^000000";
 		close;
 	} else {
-		mes "^FF0000错误！错误！^000000";
-		mes "^FF0000请重试。^000000";
+		mes "^FF0000���󣡴���^000000";
+		mes "^FF0000�����ԡ�^000000";
 		close;
 	}
 }
@@ -988,68 +990,68 @@ OnMyMobDead:
 // Emergency Access Valve Manual
 //============================================================
 1@lhz,39,168,0	script	Manual Sheet#1_1	CLEAR_NPC,{
-	mes "地板上散落着阀门手册。";
+	mes "�ذ���ɢ���ŷ����ֲᡣ";
 	next;
 	if (is_party_leader() == true) {
-		mes "你是党的领导，开始阅读手册了。";
+		mes "���ǵ����쵼����ʼ�Ķ��ֲ��ˡ�";
 		next;
-		mes "[紧急检修阀手册]";
+		mes "[�������޷��ֲ�]";
 		switch(lght_duk02) {
 		case 0:
 			switch(rand(1,6)) {
 			case 1:
 				lght_duk02 = 1;
-				mes "左阀顺时针转动两次，逆时针转动一次，顺时针转动一次";
+				mes "��˳ʱ��ת�����Σ���ʱ��ת��һ�Σ�˳ʱ��ת��һ��";
 				break;
 			case 2:
 				lght_duk02 = 2;
-				mes "左阀顺时针转动一次，逆时针转动两次，顺时针转动一次";
+				mes "��˳ʱ��ת��һ�Σ���ʱ��ת�����Σ�˳ʱ��ת��һ��";
 				break;
 			case 3:
 				lght_duk02 = 3;
-				mes "左阀顺时针转动一次，逆时针转动一次，顺时针转动两次";
+				mes "��˳ʱ��ת��һ�Σ���ʱ��ת��һ�Σ�˳ʱ��ת������";
 				break;
 			case 4:
 				lght_duk02 = 4;
-				mes "逆时针转动右阀两次，顺时针转动一次，逆时针转动一次";
+				mes "��ʱ��ת���ҷ����Σ�˳ʱ��ת��һ�Σ���ʱ��ת��һ��";
 				break;
 			case 5:
 				lght_duk02 = 5;
-				mes "逆时针转动右阀一次，顺时针转动两次，逆时针转动一次";
+				mes "��ʱ��ת���ҷ�һ�Σ�˳ʱ��ת�����Σ���ʱ��ת��һ��";
 				break;
 			case 6:
 				lght_duk02 = 6;
-				mes "逆时针转动右阀一次，顺时针转动一次，逆时针转动两次";
+				mes "��ʱ��ת���ҷ�һ�Σ�˳ʱ��ת��һ�Σ���ʱ��ת������";
 				break;
 			default:
-				mes "这是一个未知错误。如果再尝试一次后仍然出现同样的问题，请联系 GM。";
+				mes "����һ��δ֪��������ٳ���һ�κ���Ȼ����ͬ�������⣬����ϵ GM��";
 				break;
 			}
 			break;
 		case 1:
-			mes "左阀顺时针转动两次，逆时针转动一次，顺时针转动一次";
+			mes "��˳ʱ��ת�����Σ���ʱ��ת��һ�Σ�˳ʱ��ת��һ��";
 			break;
 		case 2:
-			mes "左阀顺时针转动一次，逆时针转动两次，顺时针转动一次";
+			mes "��˳ʱ��ת��һ�Σ���ʱ��ת�����Σ�˳ʱ��ת��һ��";
 			break;
 		case 3:
-			mes "左阀顺时针转动一次，逆时针转动一次，顺时针转动两次";
+			mes "��˳ʱ��ת��һ�Σ���ʱ��ת��һ�Σ�˳ʱ��ת������";
 			break;
 		case 4:
-			mes "逆时针转动右阀两次，顺时针转动一次，逆时针转动一次";
+			mes "��ʱ��ת���ҷ����Σ�˳ʱ��ת��һ�Σ���ʱ��ת��һ��";
 			break;
 		case 5:
-			mes "逆时针转动右阀一次，顺时针转动两次，逆时针转动一次";
+			mes "��ʱ��ת���ҷ�һ�Σ�˳ʱ��ת�����Σ���ʱ��ת��һ��";
 			break;
 		case 6:
-			mes "逆时针转动右阀一次，顺时针转动一次，逆时针转动两次";
+			mes "��ʱ��ת���ҷ�һ�Σ�˳ʱ��ת��һ�Σ���ʱ��ת������";
 			break;
 		default:
-			mes "这是一个未知错误。如果您再次尝试后遇到同样的问题，请联系 GM。";
+			mes "����һ��δ֪����������ٴγ��Ժ�����ͬ�������⣬����ϵ GM��";
 			break;
 		}
 	} else {
-		mes "让你的政党领袖来操作阀门。";
+		mes "����������������������š�";
 	}
 	close;
 
@@ -1067,17 +1069,17 @@ OnEnable:
 //============================================================
 1@lhz,41,172,0	script	Valve#1_2	CLEAR_NPC,{
 	.@open_portal = 0;
-	mes "这是紧急通道的左侧阀门。";
+	mes "���ǽ���ͨ������෧�š�";
 	if (is_party_leader() == true) {
 		next;
-		mes "您想转向哪个方向？";
+		mes "����ת���ĸ�����";
 		next;
 		if (lght_duk02 < 1 || lght_duk02 > 3) {
 			for(.@i = 1; .@i <= 4; .@i++) {
-				select("顺时针", "逆时针");
-				mes "-金属声音-";
+				select("˳ʱ��", "��ʱ��");
+				mes "-��������-";
 				if (.@i != 4)
-					mes "那么，朝哪个方向呢？";
+					mes "��ô�����ĸ������أ�";
 				next;
 			}
 		} else {
@@ -1085,7 +1087,7 @@ OnEnable:
 			// lght_duk02 == 2 : Clockwise, Counterclockwise, Counterclockwise, Clockwise
 			// lght_duk02 == 3 : Clockwise, Counterclockwise, Clockwise, Clockwise
 			for(.@i = 1; .@i <= 4; .@i++) {
-				switch(select("顺时针", "逆时针")) {
+				switch(select("˳ʱ��", "��ʱ��")) {
 				case 1:
 					if ((.@i == 1 || .@i == 4) || (.@i == 2 && lght_duk02 == 1) || (.@i == 3 && lght_duk02 == 3)) {
 						.@open_portal += 1;
@@ -1095,23 +1097,23 @@ OnEnable:
 						.@open_portal += 1;
 					}
 				}
-				mes "-金属声音-";
+				mes "-��������-";
 				if (.@i != 4)
-					mes "那么，朝哪个方向呢？";
+					mes "��ô�����ĸ������أ�";
 				next;
 			}
 		}
 		if (.@open_portal == 4) {
 			donpcevent instance_npcname("#potal_01")+"::OnEnable";
 			lght_duk02 = 0;
-			mes "-门打开了-";
+			mes "-�Ŵ���-";
 			next;
-			mes "连接二号实验室的门现已打开。";
+			mes "���Ӷ���ʵ���ҵ������Ѵ򿪡�";
 		} else {
 			lght_duk02 = 0;
-			mes "什么也没发生。";
+			mes "ʲôҲû������";
 			next;
-			mes "您需要查看手册。";
+			mes "����Ҫ�鿴�ֲᡣ";
 		}
 	}
 	close;
@@ -1130,17 +1132,17 @@ OnEnable:
 //============================================================
 1@lhz,52,172,0	script	Valve#1_3	CLEAR_NPC,{
 	.@open_portal = 0;
-	mes "这是紧急通道的左侧阀门。";
+	mes "���ǽ���ͨ������෧�š�";
 	if (is_party_leader() == true) {
 		next;
-		mes "您想转向哪个方向？";
+		mes "����ת���ĸ�����";
 		next;
 		if (lght_duk02 < 4 || lght_duk02 > 6) {
 			for(.@i = 1; .@i <= 4; .@i++) {
-				select("顺时针", "逆时针");
-				mes "-金属声音-";
+				select("˳ʱ��", "��ʱ��");
+				mes "-��������-";
 				if (.@i != 4)
-					mes "那么，朝哪个方向呢？";
+					mes "��ô�����ĸ������أ�";
 				next;
 			}
 		} else {
@@ -1148,7 +1150,7 @@ OnEnable:
 			// lght_duk02 == 5 : Counterclockwise, Clockwise, Clockwise, Counterclockwise
 			// lght_duk02 == 6 : Counterclockwise, Clockwise, Counterclockwise, Counterclockwise
 			for(.@i = 1; .@i <= 4; .@i++) {
-				switch(select("顺时针", "逆时针")) {
+				switch(select("˳ʱ��", "��ʱ��")) {
 				case 1:
 					if ((.@i == 2 && lght_duk02 != 4) || (.@i == 3 && lght_duk02 != 6))
 						.@open_portal += 1;
@@ -1158,23 +1160,23 @@ OnEnable:
 						.@open_portal += 1;
 					break;
 				}
-				mes "-金属声音-";
+				mes "-��������-";
 				if (.@i != 4)
-					mes "那么，朝哪个方向呢？";
+					mes "��ô�����ĸ������أ�";
 				next;
 			}
 		}
 		if (.@open_portal == 4) {
 			donpcevent instance_npcname("#potal_01")+"::OnEnable";
 			lght_duk02 = 0;
-			mes "-门打开了-";
+			mes "-�Ŵ���-";
 			next;
-			mes "连接二号实验室的门现已打开。";
+			mes "���Ӷ���ʵ���ҵ������Ѵ򿪡�";
 		} else {
 			lght_duk02 = 0;
-			mes "什么也没发生。";
+			mes "ʲôҲû������";
 			next;
-			mes "您需要查看手册。";
+			mes "����Ҫ�鿴�ֲᡣ";
 		}
 	}
 	close;
@@ -1533,7 +1535,7 @@ OnMyMobDead:
 		disablenpc();
 		end;
 	} else {
-		mes "让你的政党领袖来操作阀门。";
+		mes "����������������������š�";
 		close;
 	}
 
@@ -2048,7 +2050,7 @@ OnMyMobDead:
 //============================================================
 1@lhz,137,156,7	script	Wolfchev#last	4_LGTSCIENCE,{
 	if ((MaxWeight - Weight) < 1000 || !checkweight(1201, 1)) {
-		mes "^FF0000 检查您的库存。你的物品太多，无法完成任务。 ^000000";
+		mes "^FF0000 ������Ŀ�档�����Ʒ̫�࣬�޷�������� ^000000";
 		close;
 	}
 	for(.@i = 5113; .@i <= 5125; .@i++) {
@@ -2068,112 +2070,112 @@ OnMyMobDead:
 		// Quests Complete. Get Rewards.
 		if (lght_duk01 == 8) {
 			// First time beating the instance.
-			mes "[沃尔夫切夫]";
-			mes "你终于打败了我的 Boss 生物。";
+			mes "[�ֶ����з�]";
+			mes "�����ڴ�����ҵ� Boss ���";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "最后。这是结果吗？？我为谁做实验？他们欺骗了我吗？";
+			mes "[�ֶ����з�]";
+			mes "������ǽ���𣿣���Ϊ˭��ʵ�飿������ƭ������";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "该按钮本来应该在紧急情况下按下......但是......";
+			mes "[�ֶ����з�]";
+			mes "�ð�ť����Ӧ���ڽ�������°���......����......";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "嘿……我和你是缘分不佳认识的……";
+			mes "[�ֶ����з�]";
+			mes "�١����Һ�����Ե�ֲ�����ʶ�ġ���";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "但是……，你帮了我……你怎么能这么做？";
-			next;
-			mes "["+ strcharinfo(0) +"]";
-			mes "当我第一次见到你时，你看起来很疯狂，但又悲伤，即使你可以进行那些残酷和可怕的实验。";
+			mes "[�ֶ����з�]";
+			mes "���ǡ�����������ҡ�������ô����ô����";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "但实际上，你这么做是因为你孤独，……你只是因为这个原因才集中精力吧？";
-			next;
-			mes "[沃尔夫切夫]";
-			mes "哈哈哈哈。孤独……你说？";
-			next;
-			mes "[沃尔夫切夫]";
-			mes "在你看来可能是这样的。但是，事实并非如此。孤独只是失败者的一个又好又容易的借口。";
-			next;
-			mes "[沃尔夫切夫]";
-			mes "我很高兴做实验追求完美，我从不感到孤独。";
-			next;
-			mes "[沃尔夫切夫]";
-			mes "不管怎样，既然我意识到雷肯伯背叛了我，我就不能任由他们为所欲为。";
-			next;
-			mes "[沃尔夫切夫]";
-			mes "现在，我不会打扰他们，但我会让他们哭泣并后悔试图除掉沃尔夫切夫。";
+			mes "���ҵ�һ�μ�����ʱ���㿴�����ܷ�񣬵��ֱ��ˣ���ʹ����Խ�����Щ�п�Ϳ��µ�ʵ�顣";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "………………";
+			mes "��ʵ���ϣ�����ô������Ϊ��¶���������ֻ����Ϊ���ԭ��ż��о����ɣ�";
+			next;
+			mes "[�ֶ����з�]";
+			mes "�����������¶�������˵��";
+			next;
+			mes "[�ֶ����з�]";
+			mes "���㿴�������������ġ����ǣ���ʵ������ˡ��¶�ֻ��ʧ���ߵ�һ���ֺ������׵Ľ�ڡ�";
+			next;
+			mes "[�ֶ����з�]";
+			mes "�Һܸ�����ʵ��׷���������ҴӲ��е��¶���";
+			next;
+			mes "[�ֶ����з�]";
+			mes "������������Ȼ����ʶ���׿ϲ��������ң��ҾͲ�����������Ϊ����Ϊ��";
+			next;
+			mes "[�ֶ����з�]";
+			mes "���ڣ��Ҳ���������ǣ����һ������ǿ����������ͼ�����ֶ����з�";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "������������";
 			next;
 			lght_duk01 = 9;
 			callsub L_Reward;
-			mes "[沃尔夫切夫]";
-			mes "啊啊啊，"+ strcharinfo(0) +" 非常感谢你帮我删除了那些发疯的孩子们。这不是一份大礼物，但我希望你不要否认，我不再需要这个了。";
+			mes "[�ֶ����з�]";
+			mes "��������"+ strcharinfo(0) +" �ǳ���л�����ɾ������Щ����ĺ����ǡ��ⲻ��һ�ݴ��������ϣ���㲻Ҫ���ϣ��Ҳ�����Ҫ����ˡ�";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "而且，如果可以的话……希望你经常回来，尤其是和你的朋友一起回来。我希望这个地方再次充满人心，这样这里的悲伤就会消失。";
+			mes "[�ֶ����з�]";
+			mes "���ң�������ԵĻ�����ϣ���㾭�������������Ǻ��������һ���������ϣ������ط��ٴγ������ģ���������ı��˾ͻ���ʧ��";
 			next;
-			mes "在离开沃尔夫切夫的实验室之前，我再次看了他一眼。我能感觉到他不再痴迷了..";
+			mes "���뿪�ֶ����з��ʵ����֮ǰ�����ٴο�����һ�ۡ����ܸо��������ٳ�����..";
 			close2;
 			warp "lhz_dun04", 147, 273;
 			end;
 		} else {
-			mes "[沃尔夫切夫]";
-			mes "你确实击败了所有的 Boss 生物。再次感谢您。";
+			mes "[�ֶ����з�]";
+			mes "��ȷʵ���������е� Boss ����ٴθ�л����";
 			next;
 			callsub L_Reward;
-			mes "[沃尔夫切夫]";
-			mes "我再说一遍，"+ strcharinfo(0) +" 非常感谢你帮我赶走那些发疯的孩子们。这不是一份大礼物，但我希望你不要否认，我不再需要这个了。";
+			mes "[�ֶ����з�]";
+			mes "����˵һ�飬"+ strcharinfo(0) +" �ǳ���л����Ҹ�����Щ����ĺ����ǡ��ⲻ��һ�ݴ��������ϣ���㲻Ҫ���ϣ��Ҳ�����Ҫ����ˡ�";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "哈哈哈，又见面了。你现在想离开这里吗？";
+			mes "[�ֶ����з�]";
+			mes "���������ּ����ˡ����������뿪������";
 			next;
-			if (select("还没有", "是的") == 1) {
-				mes "[沃尔夫切夫]";
-				mes "然后告诉我你什么时候愿意。";
+			if (select("��û��", "�ǵ�") == 1) {
+				mes "[�ֶ����з�]";
+				mes "Ȼ���������ʲôʱ��Ը�⡣";
 				close;
 			}
-			mes "[沃尔夫切夫]";
-			mes "那我就送你出去。";
+			mes "[�ֶ����з�]";
+			mes "���Ҿ������ȥ��";
 			close2;
 			warp "lhz_dun04", 147, 273;
 			end;
 		}
 	} else {
 		if (.@all_quests_complete == 0) {
-			mes "[沃尔夫切夫]";
-			mes "我正在查看系统......不知道是谁制作的......但它太复杂了......不知道......";
+			mes "[�ֶ����з�]";
+			mes "�����ڲ鿴ϵͳ......��֪����˭������......����̫������......��֪��......";
 			next;
 		} else {
-			mes "[沃尔夫切夫]";
-			mes "卡卡卡啊..谢谢你。你把那些 Boss 生物处理得很好......";
+			mes "[�ֶ����з�]";
+			mes "��������..лл�㡣�����Щ Boss ���ﴦ���úܺ�......";
 			next;
 		}
 		if (lght_duk01 == 7) {
 			lght_duk01 = 8;
-			mes "[沃尔夫切夫]";
-			mes "当你还在挣扎的时候...";
+			mes "[�ֶ����з�]";
+			mes "���㻹��������ʱ��...";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "我想通了……系统出了问题，我们不能自由出入，所以你可以在72小时内帮我……先去个地方休息一下再回来。";
+			mes "[�ֶ����з�]";
+			mes "����ͨ�ˡ���ϵͳ�������⣬���ǲ������ɳ��룬�����������72Сʱ�ڰ��ҡ�����ȥ���ط���Ϣһ���ٻ�����";
 			next;
-			mes "[沃尔夫切夫]";
-			mes "啊……我可以把你送出我的实验室。你想要？";
+			mes "[�ֶ����з�]";
+			mes "�������ҿ��԰����ͳ��ҵ�ʵ���ҡ�����Ҫ��";
 			next;
 		} else {
-			mes "[沃尔夫切夫]";
-			mes "你现在想离开这里吗？";
+			mes "[�ֶ����з�]";
+			mes "���������뿪������";
 			next;
 		}
-		if (select("还没有", "是的") == 1) {
-			mes "[沃尔夫切夫]";
-			mes "然后告诉我你什么时候愿意。";
+		if (select("��û��", "�ǵ�") == 1) {
+			mes "[�ֶ����з�]";
+			mes "Ȼ���������ʲôʱ��Ը�⡣";
 			close;
 		}
-		mes "[沃尔夫切夫]";
-		mes "那我就送你出去。";
+		mes "[�ֶ����з�]";
+		mes "���Ҿ������ȥ��";
 		close2;
 		warp "lhz_dun04", 147, 273;
 		end;

@@ -5,6 +5,8 @@
 //= Job quest for Crusader classes
 //===== Changelogs: ==========================================
 //= 1.0 Location changed in ep16.1 [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Senior Crusader: 1st Collect Items Test

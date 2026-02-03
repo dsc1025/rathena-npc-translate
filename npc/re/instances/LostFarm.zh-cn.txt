@@ -7,207 +7,209 @@
 //= 1.0 Initial release [crazyarashi]
 //= 1.1 Optimizations and cleanup [Everade]
 //= 1.2 Cleanup [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
 	if (checkweight(1000103,20) == 0) {
-		mes "- 你无法继续任务，因为你的物品太多。 -";
+		mes "- ���޷�����������Ϊ�����Ʒ̫�ࡣ -";
 		close;
 	}
 	if (BaseLevel < 150) {
-		mes "[棉]";
-		mes "好吧，你看起来很弱，不适合工作。我认为你现在做不到。";
+		mes "[��]";
+		mes "�ðɣ��㿴�������������ʺϹ���������Ϊ��������������";
 		next;
-		mes "- 此任务适用于 150 级或更高级别 -";
+		mes "- ������������ 150 ������߼��� -";
 		close;
 	}
 	if (ep17_2_main < 9) {
-		mes "- 我和农场前的自动人偶见过面。 -";
+		mes "- �Һ�ũ��ǰ���Զ���ż�����档 -";
 		next;
-		mes "- 娃娃上下打量了我一下，然后转过头。 -";
+		mes "- �������´�������һ�£�Ȼ��ת��ͷ�� -";
 		close;
 	}
 	if (isbegin_quest(8586) == 0) {
-		mes "- 我和农场前的自动人偶见过面。 -";
+		mes "- �Һ�ũ��ǰ���Զ���ż�����档 -";
 		next;
-		mes "[自动人偶]";
-		mes "心率、血压、体温均正常。";
-		mes "呼吸正常。眼睛稳定性正常。";
-		mes "正在检查注册信息...";
+		mes "[�Զ���ż]";
+		mes "���ʡ�Ѫѹ�����¾�������";
+		mes "�����������۾��ȶ���������";
+		mes "���ڼ��ע����Ϣ...";
 		next;
-		mes "- 娃娃上下打量着我，似乎很满意。 -";
+		mes "- �������´������ң��ƺ������⡣ -";
 		next;
-		mes "[自动人偶]";
-		mes "你好，" + strcharinfo(0) + "？";
-		mes "您是来看农业设施的吗？";
-		npctalk "喵。", "猫咪#greeen", bc_self;
+		mes "[�Զ���ż]";
+		mes "��ã�" + strcharinfo(0) + "��";
+		mes "��������ũҵ��ʩ����";
+		npctalk "����", "è��#greeen", bc_self;
 		next;
-		if (select( "呵呵。", "不。" ) == 2) {
-			mes "[自动人偶]";
-			mes "这是凯蒂和其他人居住的农场。";
-			mes "如果你有兴趣，就和我谈谈吧。";
-			mes "我会向你解释一切。";
+		if (select( "�Ǻǡ�", "����" ) == 2) {
+			mes "[�Զ���ż]";
+			mes "���ǿ��ٺ������˾�ס��ũ����";
+			mes "���������Ȥ���ͺ���̸̸�ɡ�";
+			mes "�һ��������һ�С�";
 			close;
 		}
-		mes "[自动人偶]";
-		mes "凯蒂，别动一分钟。好孩子~";
-		mes "我负责这里的农场设施。";
-		mes "我修理植物，给它施肥，并喂养这里的小猫和他的朋友们。";
-		npctalk "咕噜声。", "猫咪#greeen", bc_self;
+		mes "[�Զ���ż]";
+		mes "���٣���һ���ӡ��ú���~";
+		mes "�Ҹ��������ũ����ʩ��";
+		mes "������ֲ�����ʩ�ʣ���ι�������Сè�����������ǡ�";
+		npctalk "��������", "è��#greeen", bc_self;
 		next;
-		mes "[自动人偶]";
-		mes "自助餐厅出来的甜点的原料都是在这里收获的。";
-		mes "咳咳。";
+		mes "[�Զ���ż]";
+		mes "������������������ԭ�϶����������ջ�ġ�";
+		mes "�ȿȡ�";
 		next;
-		mes "[自动人偶]";
-		mes "最近客人很多，所以我们接到的订单也多了。";
-		mes "我的另一个工作的同事刚刚被分配到这个地方，但她有点笨手笨脚。";
-		mes "每个人都听话，就容易获得好收获。";
+		mes "[�Զ���ż]";
+		mes "������˺ܶ࣬�������ǽӵ��Ķ���Ҳ���ˡ�";
+		mes "�ҵ���һ��������ͬ�¸ոձ����䵽����ط��������е㱿�ֱ��š�";
+		mes "ÿ���˶������������׻�ú��ջ�";
 		next;
-		select( "你很健谈。" );
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "哦，我忘了，如果我想和一位客人长时间交谈，我应该先自我介绍一下。";
-		mes "我叫露伊娜。";
+		select( "��ܽ�̸��" );
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "Ŷ�������ˣ���������һλ���˳�ʱ�佻̸����Ӧ�������ҽ���һ�¡�";
+		mes "�ҽ�¶���ȡ�";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "这里的Kitty是一种叫做火龙果的植物。它是一种改良的古代物种，曾生活在这个岛上的某个地方。";
-		mes "我不知道这是否奇怪，但我不是火龙果，但我很擅长倾听。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "�����Kitty��һ�ֽ�����������ֲ�����һ�ָ����ĹŴ����֣���������������ϵ�ĳ���ط���";
+		mes "�Ҳ�֪�����Ƿ���֣����Ҳ��ǻ����������Һ��ó�������";
 		next;
-		mes "- 露伊娜抚摸着火龙果。 -";
-		npctalk "咕噜声。", "猫咪#greeen", bc_self;
+		mes "- ¶���ȸ����Ż������� -";
+		npctalk "��������", "è��#greeen", bc_self;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-		mes "小猫、蝴蝶、快乐等等。";
-		mes "火龙果是一种小而可爱的生物，所以我给它们起了个名字。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+		mes "Сè�����������ֵȵȡ�";
+		mes "��������һ��С���ɰ�����������Ҹ��������˸����֡�";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "Kitty最可爱了，这里的火龙果就是Kitty。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "Kitty��ɰ��ˣ�����Ļ���������Kitty��";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "所以...";
-		mes "你是来砍尾巴的吗？";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "����...";
+		mes "��������β�͵���";
 		next;
-		select( "尾巴？", "我没有尾巴。" );
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "你来这里是为了砍掉一些尾巴，不是吗？";
-		mes "哦，我犯了一个错误。";
-		mes "坚持一会儿。我会处理解释。";
+		select( "β�ͣ�", "��û��β�͡�" );
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "����������Ϊ�˿���һЩβ�ͣ�������";
+		mes "Ŷ���ҷ���һ������";
+		mes "���һ������һᴦ�����͡�";
 		setquest 8586;
 		close;
 	}
 	if (isbegin_quest(8586) == 1) {
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "如果你现在看看基蒂，他没有根，对吗？";
-		mes "即使没有根，它也会吸收空气中的水分并进行光合作用。";
-		mes "只是一些肥料...和一些食物。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "��������ڿ������٣���û�и�������";
+		mes "��ʹû�и�����Ҳ�����տ����е�ˮ�ֲ����й�����á�";
+		mes "ֻ��һЩ����...��һЩʳ�";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "当你种下种子时，它们会从地里长出来，但我以前从未见过多重发芽。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "������������ʱ�����ǻ�ӵ��ﳤ������������ǰ��δ�������ط�ѿ��";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "至于尾巴，你只要抓住火龙果，像这样抚摸它，然后放开它们。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "����β�ͣ���ֻҪץס����������������������Ȼ��ſ����ǡ�";
 		next;
-		mes "- Luina 拿着火龙果，演示如何拉尾巴并把它放下。 -";
+		mes "- Luina ���Ż���������ʾ�����β�Ͳ��������¡� -";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "不，不。我没拉。";
-		mes "收获的尾巴不一定够吃。";
-		mes "你必须考虑到损失。";
-		npctalk "咕...！", "猫咪#greeen", bc_self;
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "����������û����";
+		mes "�ջ��β�Ͳ�һ�����ԡ�";
+		mes "����뿼�ǵ���ʧ��";
+		npctalk "��...��", "è��#greeen", bc_self;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "你需要去除种子和皮肤，但这并不困难。";
-		mes "处理完后，收获的火龙果尾就上桌了。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "����Ҫȥ�����Ӻ�Ƥ�������Ⲣ�����ѡ�";
+		mes "��������ջ�Ļ�����β�������ˡ�";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "收割其实有点困难，所以我的同事“Silk”会指导你。";
-		mes "即使没有收获也可以进入。我会让你在没有向导的情况下进入这里。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "�ո���ʵ�е����ѣ������ҵ�ͬ�¡�Silk����ָ���㡣";
+		mes "��ʹû���ջ�Ҳ���Խ��롣�һ�������û���򵼵�����½������";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "如果您有空，请与这里的“Cotton”交谈，她是游戏经理，她会让您知道该怎么做。";
-		mes "我知道这对你来说有点难，但是……如果你帮我们一把，我们会适当补偿你的。";
-		npctalk "棉花：我希望它高一点......", "棉布#172_lost_0", bc_self;
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "������пգ���������ġ�Cotton����̸��������Ϸ��������������֪������ô����";
+		mes "��֪���������˵�е��ѣ����ǡ�������������һ�ѣ����ǻ��ʵ�������ġ�";
+		npctalk "�޻�����ϣ������һ��......", "�޲�#172_lost_0", bc_self;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "现在您已经听到了说明，现在可以进入了。";
-		mes "如果你想四处看看的话就可以进去。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "�������Ѿ�������˵�������ڿ��Խ����ˡ�";
+		mes "��������Ĵ������Ļ��Ϳ��Խ�ȥ��";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "我们首先谈到了棉花的工作，但实际上更紧迫的是收获。";
-		mes "如果你对自己的战技有信心的话，我希望你能够帮忙收获。";
-		mes "希望你能帮我收获...";
-		mes "我们还得喂猫老板。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "��������̸�����޻��Ĺ�������ʵ���ϸ����ȵ����ջ�";
+		mes "�������Լ���ս�������ĵĻ�����ϣ�����ܹ���æ�ջ�";
+		mes "ϣ�����ܰ����ջ�...";
+		mes "���ǻ���ιè�ϰ塣";
 		next;
-		select( "凯蒂老板？" );
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "我只是这样称呼他，他和其他人有点不同，它隐藏在一个很难看到的地方。";
-		mes "如果你想看到他，你就得把食物撒在农场周围，让农场周围变得有点吵闹。";
+		select( "�����ϰ壿" );
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "��ֻ�������ƺ����������������е㲻ͬ����������һ�����ѿ����ĵط���";
+		mes "������뿴��������͵ð�ʳ������ũ����Χ����ũ����Χ����е㳳�֡�";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "我是负责收割的人，所以请随时与我交谈！";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "���Ǹ����ո���ˣ���������ʱ���ҽ�̸��";
 		completequest 8586;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "当您需要帮助时，我们来谈谈详细信息。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "������Ҫ����ʱ��������̸̸��ϸ��Ϣ��";
 		close;
 	}
 	if (isbegin_quest(8589) == 1) {
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "小孩子们来找你玩了吗？";
-		mes "真奇怪……我听得很清楚。";
-		mes "... 什么？甚至丝绸？";
-		mes "发生了什么？";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "С������������������";
+		mes "����֡��������ú������";
+		mes "... ʲô������˿��";
+		mes "������ʲô��";
 		next;
-		select( "她假装自己是一只猫。" );
+		select( "����װ�Լ���һֻè��" );
 		emotion ET_FRET, getnpcid(0,"Kitty#greeen");
-		mes "[小猫]";
-		mes "咕。";
+		mes "[Сè]";
+		mes "����";
 		next;
-		mes "——在露伊娜到达之前，猫躲到了她身后。 --";
+		mes "������¶���ȵ���֮ǰ��è�㵽�������� --";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "什么...";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "ʲô...";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "也许……只是也许？";
-		mes "它在听我说话吗？";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "Ҳ������ֻ��Ҳ����";
+		mes "��������˵����";
 		next;
-		select( "我猜。" );
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "猫咪。";
-		npctalk "*咆哮*", "猫咪#greeen", bc_self;
+		select( "�Ҳ¡�" );
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "è�䡣";
+		npctalk "*����*", "è��#greeen", bc_self;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
 		mes "...";
-		mes "这就是客人所说的‘丢脸’吗？";
-		npctalk "*发牢骚*", "猫咪#greeen", bc_self;
+		mes "����ǿ�����˵�ġ���������";
+		npctalk "*����ɧ*", "è��#greeen", bc_self;
 		next;
-		mes "- 当露伊娜向猫伸出手时，猫把头靠在了她的手上。 -";
+		mes "- ��¶������è�����ʱ��è��ͷ�������������ϡ� -";
 		next;
-		mes "——露伊娜抚摸着猫，脸色变得复杂，露出满足的表情。 -";
+		mes "����¶���ȸ�����è����ɫ��ø��ӣ�¶������ı��顣 -";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "唔...";
-		mes "难道有一天客人就不能和喵做朋友了吗？";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "��...";
+		mes "�ѵ���һ����˾Ͳ��ܺ�������������";
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "如果我们继续这样和他们一起玩不是很好吗？";
-		npctalk "*发牢骚*", "猫咪#greeen", bc_self;
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "������Ǽ�������������һ���治�Ǻܺ���";
+		npctalk "*����ɧ*", "è��#greeen", bc_self;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "是的！明天也请再次帮助Silk。";
-		mes "然后，有一天...您将能够与所有火龙果成为朋友！";
-		mes "在这里……这是一个承诺的信物。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "�ǵģ�����Ҳ���ٴΰ���Silk��";
+		mes "Ȼ����һ��...�����ܹ������л�������Ϊ���ѣ�";
+		mes "�����������һ����ŵ�����";
 		completequest 8589;
 		getitem 1000103,20;
 		getexp 3094009,0;
 		next;
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "大概。";
-		npctalk "嘎嘎嘎嘎。", "猫咪#greeen", bc_self;
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "��š�";
+		npctalk "�¸¸¸¡�", "è��#greeen", bc_self;
 		next;
-		mes "- 猫发出高亢的叫声，好像很兴奋。 -";
+		mes "- è�����߿��Ľ�����������˷ܡ� -";
 		next;
 	}
 	switch( checkquest(8587,PLAYTIME) ) {
@@ -215,20 +217,20 @@ ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
 		break;
 	case 0:
 	case 1:
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "我们已经完成了今天必要的收获。";
-		mes "黎明前我们将再次开始收割。到时候回来吧。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "�����Ѿ�����˽����Ҫ���ջ�";
+		mes "����ǰ���ǽ��ٴο�ʼ�ո��ʱ������ɡ�";
 		close;
 	case 2:
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "^0000FF我们与火龙果的斗争似乎是很久以前的事了。^000000";
-		mes "^0000FF我现在又有勇气再次回到农场了。^000000";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "^0000FF������������Ķ����ƺ��Ǻܾ���ǰ�����ˡ�^000000";
+		mes "^0000FF���������������ٴλص�ũ���ˡ�^000000";
 		erasequest 8587;
 		close;
 	}
 	.@party_id = getcharid(1);
 	if (.@party_id < 1) {
-		mes "^FF0000您必须组织至少一个人或加入队伍才能进入。^000000";
+		mes "^FF0000��������֯����һ���˻���������ܽ��롣^000000";
 		close;
 	}
 	.@md_name$ = "Farm Lost in Time";
@@ -241,27 +243,27 @@ ba_maison,311,206,3	script	Luina#greeen	4_EP17_BASIC_B,{
 		}
 	}
 	if (.@count > 0) {
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "！？发生了什么？你的尾巴断了。";
-		mes "请我来处理。";
-		mes "谢谢....下次收获体验后，一定要交给Silk出来。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "����������ʲô�����β�Ͷ��ˡ�";
+		mes "������������";
+		mes "лл....�´��ջ������һ��Ҫ����Silk������";
 		next;
 	}
-	mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-	mes "你好，" + strcharinfo(0) + ".";
-	mes "今天你要进入农场吗？";
+	mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+	mes "��ã�" + strcharinfo(0) + ".";
+	mes "������Ҫ����ũ����";
 	next;
-	switch( select( (is_party_leader() ? "创建" + .@md_name$ : ""), "进入地牢。", "取消" ) ) {
+	switch( select( (is_party_leader() ? "����" + .@md_name$ : ""), "������Ρ�", "ȡ��" ) ) {
 	case 1:
 		if (instance_create(.@md_name$) == -3)
 			dispbottom "The reservation of the instance '" + .@md_name$ + "' has failed due to an active instance.";
-		mes "<<<<1)>我摔倒了栾<<< BR BR1 >>>";
-		mes "请稍等一下~";
-		mes "我来准备今天的食物。";
+		mes "<<<<1)>��ˤ������<<< BR BR1 >>>";
+		mes "���Ե�һ��~";
+		mes "����׼�������ʳ�";
 		close;
 	case 2:
 		if (instance_enter(.@md_name$) != IE_OK) {
-			mes "^FF0000纪念地牢尚未创建。^000000";
+			mes "^FF0000���������δ������^000000";
 			close;
 		}
 		setquest 8587;
@@ -299,25 +301,25 @@ OnTouch:
 	disablenpc();
 	'lost_farm = 0;
 	enablenpc instance_npcname("Wooden Box#01");
-	npctalk "哦！客人！在这里！", instance_npcname("木箱#01");
+	npctalk "Ŷ�����ˣ������", instance_npcname("ľ��#01");
 	end;
 }
 
 1@lost,163,47,3	script(DISABLED)	Wooden Box#01	4_WOODBOX,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 0) {
-		mes "[丝绸]";
-		mes "欢迎来到繁殖地！我是丝绸，负责收集的！";
-		npctalk "丝绸：欢迎来到繁殖地！我是丝绸，负责收集的！";
+		mes "[˿��]";
+		mes "��ӭ������ֳ�أ�����˿�񣬸����ռ��ģ�";
+		npctalk "˿�񣺻�ӭ������ֳ�أ�����˿�񣬸����ռ��ģ�";
 		next;
-		mes "[丝绸]";
-		mes "哎呀……救救我吧！";
-		npctalk "Silk：哎呀……救救我！";
+		mes "[˿��]";
+		mes "��ѽ�����Ⱦ��Ұɣ�";
+		npctalk "Silk����ѽ�����Ⱦ��ң�";
 		close2;
 		if ('lost_farm == 0) {
 			'lost_farm = 1;
@@ -325,7 +327,7 @@ OnTouch:
 		}
 		end;
 	}
-	npctalk "Silk：火龙果冷静点！";
+	npctalk "Silk���������侲�㣡";
 	end;
 
 OnStart:
@@ -345,7 +347,7 @@ OnMobDead:
 		disablenpc();
 		enablenpc instance_npcname("Silk#01");
 		sleep 1000;
-		npctalk "丝绸 ： ！！", instance_npcname("丝绸#01");
+		npctalk "˿�� �� ����", instance_npcname("˿��#01");
 	}
 	end;
 }
@@ -353,52 +355,52 @@ OnMobDead:
 
 1@lost,163,47,3	script(DISABLED)	Silk#01	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm != 2)
 		end;
-	mes "[丝绸]";
-	mes "谢谢你救了我的命！根据卢伊娜的说法，火龙果是一种温柔的生物！";
-	npctalk "丝绸：谢谢你救了我的命！根据卢伊娜的说法，火龙果是一种温柔的生物！";
+	mes "[˿��]";
+	mes "лл������ҵ���������¬���ȵ�˵������������һ����������";
+	npctalk "˿��лл������ҵ���������¬���ȵ�˵������������һ����������";
 	next;
-	mes "[丝绸]";
-	mes "你也看过了！我很害怕！";
-	npctalk "丝绸：你也看到了！我很害怕！";
+	mes "[˿��]";
+	mes "��Ҳ�����ˣ��Һܺ��£�";
+	npctalk "˿����Ҳ�����ˣ��Һܺ��£�";
 	next;
-	mes "[丝绸]";
-	mes "喂食和拥抱各五分钟？当它们不断露出牙齿时，我该如何抚摸它们？";
-	npctalk "Silk：喂食和拥抱各五分钟？当它们不断露出牙齿时，我该如何抚摸它们？";
+	mes "[˿��]";
+	mes "ιʳ��ӵ��������ӣ������ǲ���¶������ʱ���Ҹ���θ������ǣ�";
+	npctalk "Silk��ιʳ��ӵ��������ӣ������ǲ���¶������ʱ���Ҹ���θ������ǣ�";
 	next;
-	mes "[丝绸]";
-	mes "5分钟之内还能做什么！";
-	npctalk "Silk：5分钟之内还能做什么！";
+	mes "[˿��]";
+	mes "5����֮�ڻ�����ʲô��";
+	npctalk "Silk��5����֮�ڻ�����ʲô��";
 	next;
-	mes "[丝绸]";
+	mes "[˿��]";
 	mes "...";
-	npctalk "丝绸 ： ...";
+	npctalk "˿�� �� ...";
 	next;
-	mes "[丝绸]";
-	mes "尊敬的客人...";
-	npctalk "丝绸：尊敬的客人……";
+	mes "[˿��]";
+	mes "�𾴵Ŀ���...";
+	npctalk "˿���𾴵Ŀ��ˡ���";
 	next;
-	mes "[丝绸]";
-	mes "我明白为什么露伊娜要求更多的工人，因为她自己无法快速收割。";
-	npctalk "Silk：我明白为什么Luina 要求更多工人，因为她自己无法快速收割。";
+	mes "[˿��]";
+	mes "������Ϊʲô¶����Ҫ�����Ĺ��ˣ���Ϊ���Լ��޷������ո";
+	npctalk "Silk��������ΪʲôLuina Ҫ����๤�ˣ���Ϊ���Լ��޷������ո";
 	next;
-	mes "[丝绸]";
-	mes "但像你一样抱着它玩它会比抚摸它 5 分钟更快。";
-	npctalk "Silk：但是像你一样抱着它玩它会比抚摸它5分钟更快。";
+	mes "[˿��]";
+	mes "������һ��������������ȸ����� 5 ���Ӹ��졣";
+	npctalk "Silk����������һ��������������ȸ�����5���Ӹ��졣";
 	next;
-	mes "[丝绸]";
-	mes "……虽然我已经坚持不住了。";
-	npctalk "Silk：……虽然我抓不住。";
+	mes "[˿��]";
+	mes "������Ȼ���Ѿ���ֲ�ס�ˡ�";
+	npctalk "Silk��������Ȼ��ץ��ס��";
 	next;
-	mes "[丝绸]";
-	mes "让我们前往下一个栖息地，它就在这附近。准备好？开始了！";
-	npctalk "Silk：我们​​前往下一个栖息地吧，就在这附近。准备好？开始了！";
+	mes "[˿��]";
+	mes "������ǰ����һ����Ϣ�أ��������⸽����׼���ã���ʼ�ˣ�";
+	npctalk "Silk������ǰ����һ����Ϣ�ذɣ������⸽����׼���ã���ʼ�ˣ�";
 	close2;
 	if ('lost_farm == 2) {
 		'lost_farm = 3;
@@ -412,60 +414,60 @@ OnMobDead:
 
 1@lost,214,146,3	script(DISABLED)	Silk#02	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 3) {
-		mes "[丝绸]";
-		mes "这个设施……正如你所看到的，这是我们鳞片朋友的便利繁殖地。";
-		npctalk "Silk：这个设施...正如你所看到的，这是我们鳞片朋友的便利繁殖地。";
+		mes "[˿��]";
+		mes "�����ʩ�����������������ģ�����������Ƭ���ѵı�����ֳ�ء�";
+		npctalk "Silk�������ʩ...�������������ģ�����������Ƭ���ѵı�����ֳ�ء�";
 		next;
-		mes "[丝绸]";
-		mes "无论是植物还是动物。温度和湿度始终恒定。";
-		npctalk "丝绸：无论是植物还是动物。温度和湿度始终恒定。";
+		mes "[˿��]";
+		mes "������ֲ�ﻹ�Ƕ���¶Ⱥ�ʪ��ʼ�պ㶨��";
+		npctalk "˿��������ֲ�ﻹ�Ƕ���¶Ⱥ�ʪ��ʼ�պ㶨��";
 		next;
-		mes "[丝绸]";
-		mes "听说人不舒服，呼吸怎么样？";
-		npctalk "Silk：我听说这对人来说不太舒服，呼吸怎么样？";
+		mes "[˿��]";
+		mes "��˵�˲������������ô����";
+		npctalk "Silk������˵�������˵��̫�����������ô����";
 		next;
-		mes "[丝绸]";
-		mes "现在我也要在这里撒一些食物。让我们结束这一切吧。我去躲起来...";
-		npctalk "Silk：现在我也要把一些食物撒在这里。让我们结束这一切吧...我会躲起来。";
+		mes "[˿��]";
+		mes "������ҲҪ��������һЩʳ������ǽ�����һ�аɡ���ȥ������...";
+		npctalk "Silk��������ҲҪ��һЩʳ��������������ǽ�����һ�а�...�һ��������";
 		next;
-		mes "[丝绸]";
-		mes "嘿...伙计们，又到了吃酒吧和米饭的时间了~";
-		npctalk "Silk：嘿...伙计们，吃酒吧和米饭的时间到了~";
+		mes "[˿��]";
+		mes "��...����ǣ��ֵ��˳Ծưɺ��׷���ʱ����~";
+		npctalk "Silk����...����ǣ��Ծưɺ��׷���ʱ�䵽��~";
 		close2;
 		if ('lost_farm == 3) {
 			'lost_farm = 4;
-			npctalk "Silk：我已经撒了食物，他们很快就会出现！";
+			npctalk "Silk�����Ѿ�����ʳ����Ǻܿ�ͻ���֣�";
 			disablenpc();
 			donpcevent instance_npcname("Wooden Box#02") + "::OnStart";
 		}
 		end;
 	}
 	if ('lost_farm == 4) {
-		mes "[丝绸]";
-		mes "哈哈哈哈……我好害怕……";
-		npctalk "Silk：哈哈哈哈……我好害怕……";
+		mes "[˿��]";
+		mes "�������������Һú��¡���";
+		npctalk "Silk���������������Һú��¡���";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "你确定你现在不是在玩吗？";
+		mes "��ȷ�������ڲ���������";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Are you sure that you're not playing right now?";
 		next;
-		mes "[丝绸]";
-		mes "我认为这对他们来说是正确的。我之前告诉过你，它们只有心情好的时候才会产生尾巴。";
-		npctalk "Silk：我认为这适合他们。我之前告诉过你，它们只有心情好的时候才会产生尾巴。";
+		mes "[˿��]";
+		mes "����Ϊ���������˵����ȷ�ġ���֮ǰ���߹��㣬����ֻ������õ�ʱ��Ż����β�͡�";
+		npctalk "Silk������Ϊ���ʺ����ǡ���֮ǰ���߹��㣬����ֻ������õ�ʱ��Ż����β�͡�";
 		next;
-		mes "[丝绸]";
-		mes "顺便问一下，我们要前往下一个地点吗……？我们还没有完成，所以...";
-		npctalk "Silk：那么，我们要前往下一个地点吗……？我们还没有完成，所以...";
+		mes "[˿��]";
+		mes "˳����һ�£�����Ҫǰ����һ���ص��𡭡������ǻ�û����ɣ�����...";
+		npctalk "Silk����ô������Ҫǰ����һ���ص��𡭡������ǻ�û����ɣ�����...";
 		next;
-		mes "[丝绸]";
-		mes "下一个是一个有岩石和沙子的游乐场。收割的时候，我得先把沙子抖掉……";
-		npctalk "Silk：下一个是一个有岩石和沙子的游乐场。收割的时候，我得先把沙子抖掉……";
+		mes "[˿��]";
+		mes "��һ����һ������ʯ��ɳ�ӵ����ֳ����ո��ʱ���ҵ��Ȱ�ɳ�Ӷ�������";
+		npctalk "Silk����һ����һ������ʯ��ɳ�ӵ����ֳ����ո��ʱ���ҵ��Ȱ�ɳ�Ӷ�������";
 		close2;
 		if ('lost_farm == 4) {
 			'lost_farm = 5;
@@ -479,7 +481,7 @@ OnMobDead:
 }
 
 1@lost,214,146,3	script(DISABLED)	Wooden Box#02	4_WOODBOX,{
-	npctalk "丝绸：救救我！我要被火龙果吃掉了！";
+	npctalk "˿�񣺾Ⱦ��ң���Ҫ���������Ե��ˣ�";
 	end;
 OnStart:
 	enablenpc();
@@ -493,9 +495,9 @@ OnStart:
 	monster 'map_lost$,211,144,"Cloud",20663,1, .@event$;
 	monster 'map_lost$,216,151,"Harmony",20660,1, .@event$;
 	sleep 3000;
-	npctalk "Silk：他~，救救我~~~~";
+	npctalk "Silk����~���Ⱦ���~~~~";
 	sleep 3000;
-	npctalk "Silk：拯救自动娃娃~~~~~~";
+	npctalk "Silk�������Զ�����~~~~~~";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#02") + "::OnMobDead");
@@ -503,74 +505,74 @@ OnMobDead:
 		'lost_farm = 4;
 		disablenpc();
 		enablenpc instance_npcname("Silk#02");
-		npctalk "丝绸：……结束了吗？", instance_npcname("丝绸#02");
+		npctalk "˿�񣺡�����������", instance_npcname("˿��#02");
 		end;
 	}
-	npctalk "丝绸：有" + (.@count == 1 ? "是" : "are") + " " + .@count + " left!";
+	npctalk "˿����" + (.@count == 1 ? "��" : "are") + " " + .@count + " left!";
 	end;
 }
 
 
 1@lost,91,92,3	script(DISABLED)	Silk#03	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 5) {
-		mes "[丝绸]";
-		mes "别介意我的位置...";
-		npctalk "Silk：别介意我的位置……";
+		mes "[˿��]";
+		mes "������ҵ�λ��...";
+		npctalk "Silk��������ҵ�λ�á���";
 		next;
-		mes "[丝绸]";
-		mes "就算过来玩也是对的，至少不是和我一起玩。";
-		npctalk "Silk：就算过来玩也是对的，至少不能和我一起玩。";
+		mes "[˿��]";
+		mes "���������Ҳ�ǶԵģ����ٲ��Ǻ���һ���档";
+		npctalk "Silk�����������Ҳ�ǶԵģ����ٲ��ܺ���һ���档";
 		next;
-		mes "[丝绸]";
-		mes "但我认为他们应该和你一起玩！这是正确的！";
-		npctalk "Silk：但我觉得他们应该是在玩你！这是正确的！";
+		mes "[˿��]";
+		mes "������Ϊ����Ӧ�ú���һ���棡������ȷ�ģ�";
+		npctalk "Silk�����Ҿ�������Ӧ���������㣡������ȷ�ģ�";
 		next;
-		mes "[丝绸]";
-		mes "不管怎样，帮我下一次的收获吧！嘿嘿嘿嘿嘿~吃饭时间到了~";
-		npctalk "Silk：不管怎么样，帮我接下来的收获吧！嘿嘿嘿嘿嘿~吃饭时间到了~";
+		mes "[˿��]";
+		mes "����������������һ�ε��ջ�ɣ��ٺٺٺٺ�~�Է�ʱ�䵽��~";
+		npctalk "Silk��������ô�������ҽ��������ջ�ɣ��ٺٺٺٺ�~�Է�ʱ�䵽��~";
 		close2;
 		if ('lost_farm == 5) {
 			'lost_farm = 6;
-			npctalk "Silk：我已经把食物铺好了，他们很快就会出现！";
+			npctalk "Silk�����Ѿ���ʳ���̺��ˣ����Ǻܿ�ͻ���֣�";
 			disablenpc();
 			donpcevent instance_npcname("Wooden Box#03") + "::OnStart";
 		}
 		end;
 	}
 	if ('lost_farm == 7) {
-		mes "[丝绸]";
-		mes "呜...";
-		npctalk "丝绸 ：........";
+		mes "[˿��]";
+		mes "��...";
+		npctalk "˿�� ��........";
 		next;
-		mes "[丝绸]";
-		mes "你和我……都被沙子覆盖了……";
-		npctalk "Silk：你和我……都被沙子覆盖了……";
+		mes "[˿��]";
+		mes "����ҡ�������ɳ�Ӹ����ˡ���";
+		npctalk "Silk������ҡ�������ɳ�Ӹ����ˡ���";
 		next;
-		mes "[丝绸]";
-		mes "哦，我防水防尘，我的芯没问题。";
-		npctalk "Silk：噢，我是防水防尘的，我的芯子没问题。";
+		mes "[˿��]";
+		mes "Ŷ���ҷ�ˮ�������ҵ�оû���⡣";
+		npctalk "Silk���ޣ����Ƿ�ˮ�����ģ��ҵ�о��û���⡣";
 		next;
-		mes "[丝绸]";
-		mes "我生气了吗？给客人？不...";
-		npctalk "丝绸：我生气了吗？给客人？不...";
+		mes "[˿��]";
+		mes "���������𣿸����ˣ���...";
+		npctalk "˿�����������𣿸����ˣ���...";
 		next;
-		mes "[丝绸]";
-		mes "自动人偶……我可以生气吗？ ...嗯...";
-		npctalk "Silk：自动人偶……我可以生气吗？ ...嗯...";
+		mes "[˿��]";
+		mes "�Զ���ż�����ҿ��������� ...��...";
+		npctalk "Silk���Զ���ż�����ҿ��������� ...��...";
 		next;
-		mes "[丝绸]";
-		mes "...现在不行，但我觉得我可以...嗯。";
-		npctalk "Silk：……现在不行，但我觉得我可以……嗯。";
+		mes "[˿��]";
+		mes "...���ڲ��У����Ҿ����ҿ���...�š�";
+		npctalk "Silk���������ڲ��У����Ҿ����ҿ��ԡ����š�";
 		next;
-		mes "[丝绸]";
-		mes "接下来是带有绿洲般游泳池的游乐场。我们走吧...";
-		npctalk "Silk：接下来是带有绿洲般游泳池的游乐场。我们走吧...";
+		mes "[˿��]";
+		mes "�������Ǵ������ް���Ӿ�ص����ֳ��������߰�...";
+		npctalk "Silk���������Ǵ������ް���Ӿ�ص����ֳ��������߰�...";
 		close2;
 		if ('lost_farm == 7) {
 			'lost_farm = 8;
@@ -584,7 +586,7 @@ OnMobDead:
 }
 
 1@lost,91,92,3	script(DISABLED)	Wooden Box#03	4_WOODBOX,{
-	npctalk "丝：啊啊啊！";
+	npctalk "˿����������";
 	end;
 OnStart:
 	enablenpc();
@@ -598,9 +600,9 @@ OnStart:
 	monster 'map_lost$,92,99,"Rony",20664,1, .@event$;
 	monster 'map_lost$,89,94,"Mikey",20663,1, .@event$;
 	sleep 3000;
-	npctalk "Silk：噢，别过来~~~";
+	npctalk "Silk���ޣ������~~~";
 	sleep 3000;
-	npctalk "Silk：不是我，不是meeeee~~~";
+	npctalk "Silk�������ң�����meeeee~~~";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#03") + "::OnMobDead");
@@ -610,7 +612,7 @@ OnMobDead:
 		enablenpc instance_npcname("Silk#03");
 		end;
 	}
-	npctalk "丝绸：有" + (.@count == 1 ? "是" : "are") + " " + .@count + " left!";
+	npctalk "˿����" + (.@count == 1 ? "��" : "are") + " " + .@count + " left!";
 	end;
 }
 
@@ -621,31 +623,31 @@ OnMobDead:
 
 1@lost,232,257,3	script(DISABLED)	Silk#04	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 8) {
-		mes "[丝绸]";
-		mes "再说一次，不用担心我的位置......";
-		npctalk "Silk：再说一次，不用担心我的位置……";
+		mes "[˿��]";
+		mes "��˵һ�Σ����õ����ҵ�λ��......";
+		npctalk "Silk����˵һ�Σ����õ����ҵ�λ�á���";
 		next;
-		mes "[丝绸]";
-		mes "你怎么认为？我认为你对于第一次来的人来说已经做得很好了。";
-		npctalk "丝绸：你觉得怎么样？我认为你对于第一次来的人来说已经做得很好了。";
+		mes "[˿��]";
+		mes "����ô��Ϊ������Ϊ����ڵ�һ����������˵�Ѿ����úܺ��ˡ�";
+		npctalk "˿���������ô��������Ϊ����ڵ�һ����������˵�Ѿ����úܺ��ˡ�";
 		next;
-		mes "[丝绸]";
-		mes "果然，你有这方面的天赋！我是对的！";
-		npctalk "Silk：果然，你有这方面的天赋！我是对的！";
+		mes "[˿��]";
+		mes "��Ȼ�������ⷽ����츳�����ǶԵģ�";
+		npctalk "Silk����Ȼ�������ⷽ����츳�����ǶԵģ�";
 		next;
-		mes "[丝绸]";
-		mes "你觉得自动娃娃能讨好人吗？我只说了实话。";
-		npctalk "Silk：你觉得自动娃娃可以拍马屁吗？我只说了实话。";
+		mes "[˿��]";
+		mes "������Զ��������ֺ�������ֻ˵��ʵ����";
+		npctalk "Silk��������Զ����޿�������ƨ����ֻ˵��ʵ����";
 		next;
-		mes "[丝绸]";
-		mes "让我们看看你的才华并传播食物吧！各位~~该吃饭了~~~";
-		npctalk "Silk：让我们看看你的才华，传播食物吧！各位~~该吃饭了~~~";
+		mes "[˿��]";
+		mes "�����ǿ�����ĲŻ�������ʳ��ɣ���λ~~�óԷ���~~~";
+		npctalk "Silk�������ǿ�����ĲŻ�������ʳ��ɣ���λ~~�óԷ���~~~";
 		close2;
 		if ('lost_farm == 8) {
 			'lost_farm = 9;
@@ -655,37 +657,37 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 10) {
-		mes "[丝绸]";
+		mes "[˿��]";
 		mes "...";
-		npctalk "丝绸 ： ...";
+		npctalk "˿�� �� ...";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "你还好吗？";
+		mes "�㻹����";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Are you okay?";
 		next;
-		mes "[丝绸]";
-		mes "我觉得这和习惯一个客人、习惯这种工作还是有点不一样的。";
-		npctalk "Silk：我觉得这和习惯一个客人、习惯这种工作有点不一样";
+		mes "[˿��]";
+		mes "�Ҿ������ϰ��һ�����ˡ�ϰ�����ֹ��������е㲻һ���ġ�";
+		npctalk "Silk���Ҿ������ϰ��һ�����ˡ�ϰ�����ֹ����е㲻һ��";
 		next;
-		mes "[丝绸]";
-		mes "让我们前往下一个地点吧！";
-		npctalk "Silk：我们​​前往下一个地点吧！";
+		mes "[˿��]";
+		mes "������ǰ����һ���ص�ɣ�";
+		npctalk "Silk������ǰ����һ���ص�ɣ�";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "还有另外一个吗？";
+		mes "��������һ����";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Is there another one?";
 		next;
-		mes "[丝绸]";
-		mes "从外面看，它可能是一个小温室，但这是一种幻觉。看看天花板……真的很高吧？";
-		npctalk "Silk：从外面看它可能是一个小温室，但那只是幻觉。看看天花板……真的很高吧？";
+		mes "[˿��]";
+		mes "�����濴����������һ��С���ң�������һ�ֻþ��������컨�塭����ĺܸ߰ɣ�";
+		npctalk "Silk�������濴��������һ��С���ң�����ֻ�ǻþ��������컨�塭����ĺܸ߰ɣ�";
 		next;
-		mes "[丝绸]";
-		mes "我总是引导客人是有原因的。";
-		npctalk "Silk：我总是引导客人是有原因的。";
+		mes "[˿��]";
+		mes "������������������ԭ��ġ�";
+		npctalk "Silk��������������������ԭ��ġ�";
 		next;
-		mes "[丝绸]";
-		mes "接下来是入口附近，但根据露伊娜的情报，那是一个昏昏欲睡的地方。你觉得它快要醒来了吗？";
-		npctalk "Silk：接下来是入口附近，但根据露伊娜的信息，这是一个休眠区。你认为他会醒来吗？";
+		mes "[˿��]";
+		mes "����������ڸ�����������¶���ȵ��鱨������һ�������˯�ĵط������������Ҫ��������";
+		npctalk "Silk������������ڸ�����������¶���ȵ���Ϣ������һ��������������Ϊ����������";
 		close2;
 		if ('lost_farm == 10) {
 			'lost_farm = 11;
@@ -699,11 +701,11 @@ OnMobDead:
 }
 
 1@lost,232,257,3	script(DISABLED)	Wooden Box#04	4_WOODBOX,{
-	npctalk "丝绸：别来！别来！";
+	npctalk "˿�񣺱�����������";
 	end;
 OnStart:
 	enablenpc();
-	npctalk "Silk：嘿，伙计们~不是我~";
+	npctalk "Silk���٣������~������~";
 	sleep 1000;
 	.@event$ = instance_npcname("Wooden Box#04") + "::OnMobDead";
 	monster 'map_lost$,227,261,"Rudolf",20664,1, .@event$;
@@ -714,9 +716,9 @@ OnStart:
 	monster 'map_lost$,228,247,"Sammy",20661,1, .@event$;
 	monster 'map_lost$,234,253,"Joy",20662,1, .@event$;
 	sleep 3000;
-	npctalk "丝绸：别来！别来啊！";
+	npctalk "˿�񣺱�������������";
 	sleep 3000;
-	npctalk "Silk：别来了哇啊啊啊！";
+	npctalk "Silk���������۰�������";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#04") + "::OnMobDead");
@@ -724,41 +726,41 @@ OnMobDead:
 		'lost_farm = 10;
 		disablenpc();
 		enablenpc instance_npcname("Silk#04");
-		npctalk "丝绸：……哦，我的……", instance_npcname("丝绸#04");
+		npctalk "˿�񣺡���Ŷ���ҵġ���", instance_npcname("˿��#04");
 		end;
 	}
-	npctalk "丝绸：有" + (.@count == 1 ? "是" : "are") + " " + .@count + " left!";
+	npctalk "˿����" + (.@count == 1 ? "��" : "are") + " " + .@count + " left!";
 	end;
 }
 
 
 1@lost,247,119,3	script(DISABLED)	Silk#05	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 11) {
-		mes "[丝绸]";
-		mes "深呼吸……深呼吸……";
-		npctalk "丝：深呼吸……深呼吸……";
+		mes "[˿��]";
+		mes "������������������";
+		npctalk "˿��������������������";
 		next;
-		mes "[丝绸]";
-		mes "什么？自动娃娃呼吸深吗？如果你无法控制自己的心，你难道不想喘口气吗？";
-		npctalk "丝绸：什么？自动娃娃呼吸深吗？如果你无法控制自己的心，你难道不想喘口气吗？";
+		mes "[˿��]";
+		mes "ʲô���Զ����޺�������������޷������Լ����ģ����ѵ����봭������";
+		npctalk "˿��ʲô���Զ����޺�������������޷������Լ����ģ����ѵ����봭������";
 		next;
-		mes "[丝绸]";
-		mes "不是用肺，而是……想想看，火龙果是怎么发出声音的？";
-		npctalk "Silk：不是用肺，而是……你想想，火龙果是怎么发出声音的？";
+		mes "[˿��]";
+		mes "�����÷Σ����ǡ������뿴������������ô���������ģ�";
+		npctalk "Silk�������÷Σ����ǡ��������룬����������ô���������ģ�";
 		next;
-		mes "[丝绸]";
-		mes "……我不想害怕。";
-		npctalk "Silk：……我不想害怕。";
+		mes "[˿��]";
+		mes "�����Ҳ��뺦�¡�";
+		npctalk "Silk�������Ҳ��뺦�¡�";
 		next;
-		mes "[丝绸]";
-		mes "那么让我们继续前进...这里的火龙果都是瞌睡虫，所以反应可能会有点不同。现在，伙计们……过来……";
-		npctalk "Silk：那么我们继续吧...这里的火龙果都是瞌睡虫，所以反应可能会有点不同。现在，伙计们……过来……";
+		mes "[˿��]";
+		mes "��ô�����Ǽ���ǰ��...����Ļ����������˯�棬���Է�Ӧ���ܻ��е㲻ͬ�����ڣ�����ǡ�����������";
+		npctalk "Silk����ô���Ǽ�����...����Ļ����������˯�棬���Է�Ӧ���ܻ��е㲻ͬ�����ڣ�����ǡ�����������";
 		close2;
 		if ('lost_farm == 11) {
 			'lost_farm = 12;
@@ -768,44 +770,44 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 13) {
-		mes "[丝绸]";
-		mes "呼……";
-		npctalk "丝绸：呼……";
+		mes "[˿��]";
+		mes "������";
+		npctalk "˿�񣺺�����";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "你还好吗？";
+		mes "�㻹����";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Are you okay?";
 		next;
-		mes "[丝绸]";
-		mes "“猫”会咬你吗？";
+		mes "[˿��]";
+		mes "��è����ҧ����";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "我想是的。";
+		mes "�����ǵġ�";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : I think so.";
 		next;
-		mes "[丝绸]";
-		mes "有没有条件要求你咬人才能显得可爱？";
-		npctalk "Silk：有没有条件要求你咬人才能可爱？";
+		mes "[˿��]";
+		mes "��û������Ҫ����ҧ�˲����Եÿɰ���";
+		npctalk "Silk����û������Ҫ����ҧ�˲��ܿɰ���";
 		next;
-		mes "[丝绸]";
-		mes "正如预期的那样……快乐是有代价的。";
-		npctalk "Silk：果然……快乐是有代价的。";
+		mes "[˿��]";
+		mes "����Ԥ�ڵ����������������д��۵ġ�";
+		npctalk "Silk����Ȼ�����������д��۵ġ�";
 		next;
-		mes "[丝绸]";
-		mes "为了享受它的可爱，我已经准备好献出我的胳膊和腿了……！";
-		npctalk "Silk：为了享受它的可爱，我已经准备好献出我的胳膊和腿了……！";
+		mes "[˿��]";
+		mes "Ϊ���������Ŀɰ������Ѿ�׼�����׳��ҵĸ첲�����ˡ�����";
+		npctalk "Silk��Ϊ���������Ŀɰ������Ѿ�׼�����׳��ҵĸ첲�����ˡ�����";
 		next;
-		mes "[丝绸]";
-		mes "我又见到了客人。我尊重你。哦，当然，从一开始就令人钦佩。";
-		npctalk "Silk：我又见到客人了。我尊重你。哦，当然，从一开始就令人钦佩。";
+		mes "[˿��]";
+		mes "���ּ����˿��ˡ��������㡣Ŷ����Ȼ����һ��ʼ���������塣";
+		npctalk "Silk�����ּ��������ˡ��������㡣Ŷ����Ȼ����һ��ʼ���������塣";
 		next;
-		mes "[丝绸]";
-		mes "自动娃娃会开玩笑吗？哦，你开玩笑的技术真好。我总是这么说。";
-		npctalk "Silk：自动娃娃会开玩笑吗？哦，你开玩笑的技术真好。我总是这么说。";
+		mes "[˿��]";
+		mes "�Զ����޻Ὺ��Ц��Ŷ���㿪��Ц�ļ�����á���������ô˵��";
+		npctalk "Silk���Զ����޻Ὺ��Ц��Ŷ���㿪��Ц�ļ�����á���������ô˵��";
 		next;
-		mes "[丝绸]";
-		mes "我们还有收获吗？对此我也很抱歉。让我们进入下一节。";
-		npctalk "Silk：我们​​还有收获吗？对此我也很抱歉。让我们进入下一节。";
+		mes "[˿��]";
+		mes "���ǻ����ջ��𣿶Դ���Ҳ�ܱ�Ǹ�������ǽ�����һ�ڡ�";
+		npctalk "Silk�����ǻ����ջ��𣿶Դ���Ҳ�ܱ�Ǹ�������ǽ�����һ�ڡ�";
 		close2;
 		if ('lost_farm == 13) {
 			'lost_farm = 14;
@@ -819,11 +821,11 @@ OnMobDead:
 }
 
 1@lost,247,119,3	script(DISABLED)	Wooden Box#05	4_WOODBOX,{
-	npctalk "Silk：拯救自动娃娃！";
+	npctalk "Silk�������Զ����ޣ�";
 	end;
 OnStart:
 	enablenpc();
-	npctalk "丝绸 ： ...";
+	npctalk "˿�� �� ...";
 	sleep 1000;
 	.@event$ = instance_npcname("Wooden Box#05") + "::OnMobDead";
 	monster 'map_lost$,248,115,"Dough",20664,1, .@event$;
@@ -834,9 +836,9 @@ OnStart:
 	monster 'map_lost$,244,115,"Sandy",20662,1, .@event$;
 	monster 'map_lost$,243,116,"Bonnie",20661,1, .@event$;
 	sleep 3000;
-	npctalk "丝绸 ： .....";
+	npctalk "˿�� �� .....";
 	sleep 3000;
-	npctalk "丝绸：…………有什么区别！";
+	npctalk "˿�񣺡���������ʲô����";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#05") + "::OnMobDead");
@@ -844,45 +846,45 @@ OnMobDead:
 		'lost_farm = 13;
 		disablenpc();
 		enablenpc instance_npcname("Silk#05");
-		npctalk "丝绸：结束了？！", instance_npcname("丝绸#05");
+		npctalk "˿�񣺽����ˣ���", instance_npcname("˿��#05");
 		end;
 	}
-	npctalk "丝绸：有" + (.@count == 1 ? "是" : "are") + " " + .@count + " left!";
+	npctalk "˿����" + (.@count == 1 ? "��" : "are") + " " + .@count + " left!";
 	end;
 }
 
 
 1@lost,106,160,3	script(DISABLED)	Silk#06	4_EP17_BASKET,{
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 14) {
-		mes "[丝绸]";
-		mes "我很担心...";
-		npctalk "丝绸：我担心……";
+		mes "[˿��]";
+		mes "�Һܵ���...";
+		npctalk "˿���ҵ��ġ���";
 		next;
-		mes "[丝绸]";
-		mes "我们之间没有区别，但他们怎么能区分我们呢？";
-		npctalk "Silk：我们​​之间没有区别，但是他们怎么能区分我们呢？";
+		mes "[˿��]";
+		mes "����֮��û�����𣬵�������ô�����������أ�";
+		npctalk "Silk������֮��û�����𣬵���������ô�����������أ�";
 		next;
-		mes "[丝绸]";
-		mes "我闻到了吗……？闻一闻，闻一闻。";
-		npctalk "丝绸：我闻到了吗……？闻一闻，闻一闻。";
+		mes "[˿��]";
+		mes "���ŵ����𡭡�����һ�ţ���һ�š�";
+		npctalk "˿�����ŵ����𡭡�����һ�ţ���һ�š�";
 		next;
-		mes "[丝绸]";
-		mes "对了……今天的名额终于过半了。";
-		npctalk "Silk：对了……今天的名额终于过半了。";
+		mes "[˿��]";
+		mes "���ˡ���������������ڹ����ˡ�";
+		npctalk "Silk�����ˡ���������������ڹ����ˡ�";
 		next;
-		mes "[丝绸]";
-		mes "这一切都归功于您的帮助...非常感谢您。";
-		npctalk "Silk：这都是多亏了你的帮助……非常感谢。";
+		mes "[˿��]";
+		mes "��һ�ж��鹦�����İ���...�ǳ���л����";
+		npctalk "Silk���ⶼ�Ƕ������İ��������ǳ���л��";
 		next;
-		mes "[丝绸]";
-		mes "所以让我给这里的火龙果打电话......";
-		npctalk "Silk：那我就给附近的火龙果打电话吧……";
+		mes "[˿��]";
+		mes "�������Ҹ�����Ļ�������绰......";
+		npctalk "Silk�����Ҿ͸������Ļ�������绰�ɡ���";
 		close2;
 		if ('lost_farm == 14) {
 			'lost_farm = 15;
@@ -892,54 +894,54 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 16) {
-		mes "[丝绸]";
-		mes "叹...";
-		npctalk "丝绸：叹息……";
+		mes "[˿��]";
+		mes "̾...";
+		npctalk "˿��̾Ϣ����";
 		next;
-		mes "[丝绸]";
-		mes "按照露伊娜的指示，现在剩下的就是……";
-		npctalk "丝绸：按照露伊娜的指示，现在剩下的就是……";
+		mes "[˿��]";
+		mes "����¶���ȵ�ָʾ������ʣ�µľ��ǡ���";
+		npctalk "˿�񣺰���¶���ȵ�ָʾ������ʣ�µľ��ǡ���";
 		next;
-		mes "[丝绸]";
-		mes "只有喵老大……";
-		npctalk "丝绸：只有喵老大……";
+		mes "[˿��]";
+		mes "ֻ�����ϴ󡭡�";
+		npctalk "˿��ֻ�����ϴ󡭡�";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "喵老大？";
+		mes "���ϴ�";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Boss Meow?";
 		next;
-		mes "[丝绸]";
-		mes "如果说可爱的条件就是咬人的话，那么喵老大就是最可爱的，而且和其他人一样会咬人……";
-		npctalk "丝丝：如果可爱的条件就是咬人的话，那么喵老大就是最可爱的，而且和其他人一样会咬人。";
+		mes "[˿��]";
+		mes "���˵�ɰ�����������ҧ�˵Ļ�����ô���ϴ������ɰ��ģ����Һ�������һ����ҧ�ˡ���";
+		npctalk "˿˿������ɰ�����������ҧ�˵Ļ�����ô���ϴ������ɰ��ģ����Һ�������һ����ҧ�ˡ�";
 		next;
-		mes "[丝绸]";
-		mes "……咬得很好……？";
-		npctalk "Silk：……咬起来很好……？";
+		mes "[˿��]";
+		mes "����ҧ�úܺá�����";
+		npctalk "Silk������ҧ�����ܺá�����";
 		next;
-		mes "[丝绸]";
-		mes "为了享受它的可爱，我不仅要给它胳膊和腿，还要给我的同事们……！";
-		npctalk "Silk：为了享受它的可爱，我不仅要给它胳膊和腿，还要给我的同事们……！";
+		mes "[˿��]";
+		mes "Ϊ���������Ŀɰ����Ҳ���Ҫ�����첲���ȣ���Ҫ���ҵ�ͬ���ǡ�����";
+		npctalk "Silk��Ϊ���������Ŀɰ����Ҳ���Ҫ�����첲���ȣ���Ҫ���ҵ�ͬ���ǡ�����";
 		next;
-		mes "[丝绸]";
-		mes "怎么样……亲爱的客人？";
-		npctalk "Silk：怎么样……亲爱的客人？";
+		mes "[˿��]";
+		mes "��ô�������װ��Ŀ��ˣ�";
+		npctalk "Silk����ô�������װ��Ŀ��ˣ�";
 		next;
-		mes "[丝绸]";
-		mes "我们走吧？";
-		npctalk "丝绸：我们走吧？";
+		mes "[˿��]";
+		mes "�����߰ɣ�";
+		npctalk "˿�������߰ɣ�";
 		close2;
 		if ('lost_farm == 16) {
 			'lost_farm = 17;
 			sleep 3000;
-			npctalk "Silk：玫瑰园是喵老大平时睡觉的地方，在二楼。";
+			npctalk "Silk��õ��԰�����ϴ�ƽʱ˯���ĵط����ڶ�¥��";
 			sleep 3000;
-			npctalk "Silk：让我们看看，露伊娜的记录……我需要唤醒一只大喵。为了到达那里...";
+			npctalk "Silk�������ǿ�����¶���ȵļ�¼��������Ҫ����һֻ������Ϊ�˵�������...";
 			sleep 3000;
-			npctalk "丝丝：……所以，两只大喵……喵老大和大喵是有等级制度的，所以吃饭前有一个特定的午睡地点……";
+			npctalk "˿˿���������ԣ���ֻ�����������ϴ�ʹ������еȼ��ƶȵģ����ԳԷ�ǰ��һ���ض�����˯�ص㡭��";
 			sleep 3000;
-			npctalk "Silk：我想我们只需要安抚一下他们就能让路。好吧，如果你选择一侧，我就去……我会喂另一侧……";
+			npctalk "Silk����������ֻ��Ҫ����һ�����Ǿ�����·���ðɣ������ѡ��һ�࣬�Ҿ�ȥ�����һ�ι��һ�࡭��";
 			sleep 3000;
-			npctalk "Silk：没关系，我视力很好，所以如果你到了给我一个信号，我会处理的！现在，对于最近的一个，我将在地图上向您展示坐标......";
+			npctalk "Silk��û��ϵ���������ܺã���������㵽�˸���һ���źţ��һᴦ���ģ����ڣ����������һ�����ҽ��ڵ�ͼ������չʾ����......";
 			enablenpc instance_npcname("#compass01");
 			viewpointmap 'map_lost$,1,38,253,1,0xFFFF00;
 			viewpointmap 'map_lost$,1,287,253,2,0xFFFF00;
@@ -947,8 +949,8 @@ OnMobDead:
 		end;
 	}
 	if ('lost_farm == 17) {
-		mes "[丝绸]";
-		mes "您可以选择地图上的位置之一并前往。";
+		mes "[˿��]";
+		mes "������ѡ���ͼ�ϵ�λ��֮һ��ǰ����";
 		viewpointmap 'map_lost$,1,38,253,1,0xFFFF00;
 		viewpointmap 'map_lost$,1,287,253,2,0xFFFF00;
 		close;
@@ -966,7 +968,7 @@ OnTouch:
 }
 
 1@lost,106,160,3	script(DISABLED)	Wooden Box#06	4_WOODBOX,{
-	npctalk "丝绸：救救我！";
+	npctalk "˿�񣺾Ⱦ��ң�";
 	end;
 OnStart:
 	enablenpc();
@@ -979,11 +981,11 @@ OnStart:
 	monster 'map_lost$,119,169,"Lala",20662,1, .@event$;
 	monster 'map_lost$,111,160,"Sasha",20664,1, .@event$;
 	monster 'map_lost$,115,161,"Emerald",20660,1, .@event$;
-	npctalk "丝绸：我是~~~";
+	npctalk "˿������~~~";
 	sleep 1000;
-	npctalk "丝绸：……好吧~~~~~~";
+	npctalk "˿�񣺡����ð�~~~~~~";
 	sleep 1000;
-	npctalk "Silk：好吧，我告诉你~~~~~~~~~ 呃！";
+	npctalk "Silk���ðɣ��Ҹ�����~~~~~~~~~ ����";
 	end;
 OnMobDead:
 	.@count = mobcount('map_lost$, instance_npcname("Wooden Box#06") + "::OnMobDead");
@@ -991,20 +993,20 @@ OnMobDead:
 		'lost_farm = 16;
 		disablenpc();
 		enablenpc instance_npcname("Silk#06");
-		npctalk "丝绸：叹息……", instance_npcname("丝绸#06");
+		npctalk "˿��̾Ϣ����", instance_npcname("˿��#06");
 		end;
 	}
-	npctalk "丝绸：有" + (.@count == 1 ? "是" : "are") + " " + .@count + " left!";
+	npctalk "˿����" + (.@count == 1 ? "��" : "are") + " " + .@count + " left!";
 	end;
 }
 
 
 // traps left side
 1@lost,38,257,3	script	Big Meow#01	MD_PITAYA_B,{
-	mes "[大喵]";
-	mes "咕噜声。";
+	mes "[����]";
+	mes "��������";
 	next;
-	mes "——大喵正在午睡呢。 --";
+	mes "��������������˯�ء� --";
 	close;
 }
 
@@ -1013,7 +1015,7 @@ OnMobDead:
 OnTouch:
 	if ('lost_farm == 17) {
 		'lost_farm = 18;
-		npctalk "大喵：咕噜咕噜。", instance_npcname("大喵#01");
+		npctalk "���������๾�ࡣ", instance_npcname("����#01");
 		disablenpc instance_npcname("Big Meow#01");
 		disablenpc instance_npcname("#cat01warp");
 		disablenpc instance_npcname("#compass01");
@@ -1029,7 +1031,7 @@ OnTouch:
 		monster 'map_lost$,38,257,"Big Meow",20662,1, instance_npcname("Wooden Box#10") + "::OnMobDead";
 		end;
 	}
-	npctalk "大喵：*打喷嚏*";
+	npctalk "������*������*";
 	warp 'map_lost$,38,226;
 	end;
 }
@@ -1118,7 +1120,7 @@ OnTouch_:
 OnTouch:
 	if ('lost_farm == 17) {
 		'lost_farm = 18;
-		npctalk "大喵：咕噜咕噜。", instance_npcname("大喵#02");
+		npctalk "���������๾�ࡣ", instance_npcname("����#02");
 		disablenpc instance_npcname("Big Meow#02");
 		disablenpc instance_npcname("#cat02warp");
 		disablenpc instance_npcname("#compass01");
@@ -1134,7 +1136,7 @@ OnTouch:
 		monster 'map_lost$,286,253,"Big Meow",20661,1, instance_npcname("Wooden Box#10") + "::OnMobDead";
 		end;
 	}
-	npctalk "大喵：*打喷嚏*";
+	npctalk "������*������*";
 	warp 'map_lost$,287,226;
 	end;
 }
@@ -1213,23 +1215,23 @@ OnTouch_:
 // boss
 1@lost,161,315,3	script(DISABLED)	Wooden Box#10	4_WOODBOX,{
 	if ('lost_farm < 19) {
-		npctalk "Silk：来这里的路上你必须把所有的火龙果都玩一遍。";
+		npctalk "Silk���������·�����������еĻ���������һ�顣";
 		end;
 	}
 	if (!is_party_leader()) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 19) {
-		mes "[丝绸]";
-		mes "……这边来。";
-		npctalk "丝绸：……这边走。";
+		mes "[˿��]";
+		mes "�����������";
+		npctalk "˿�񣺡�������ߡ�";
 		next;
-		mes "[丝绸]";
-		mes "喵老大……！";
-		npctalk "丝绸：喵老大……！";
+		mes "[˿��]";
+		mes "���ϴ󡭡���";
+		npctalk "˿�����ϴ󡭡���";
 		close2;
 		disablenpc();
 		enablenpc instance_npcname("Wooden Box#10-1");
@@ -1241,25 +1243,25 @@ OnTouch_:
 		end;
 	}
 	if ('lost_farm == 21) {
-		mes "[丝绸]";
-		mes "客人……呃……";
-		npctalk "丝绸：客人……呃……";
+		mes "[˿��]";
+		mes "���ˡ���������";
+		npctalk "˿�񣺿��ˡ���������";
 		next;
-		mes "[丝绸]";
-		mes "这……不是恐惧，更像是怨恨……";
-		npctalk "丝绸：这……不是恐惧，更像是怨恨……";
+		mes "[˿��]";
+		mes "�⡭�����ǿ־壬������Թ�ޡ���";
+		npctalk "˿���⡭�����ǿ־壬������Թ�ޡ���";
 		next;
-		mes "[丝绸]";
-		mes "我们都是一样的，但我不能做和露伊娜一样的工作……";
-		npctalk "Silk：我们​​都是一样的，但我不能做和露伊娜一样的工作……";
+		mes "[˿��]";
+		mes "���Ƕ���һ���ģ����Ҳ�������¶����һ���Ĺ�������";
+		npctalk "Silk�����Ƕ���һ���ģ����Ҳ�������¶����һ���Ĺ�������";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "暂时出来吧。";
+		mes "��ʱ�����ɡ�";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Come out for now.";
 		close2;
 		disablenpc();
 		enablenpc instance_npcname("Silk#10");
-		npctalk "丝：啊！", instance_npcname("丝绸#10");
+		npctalk "˿������", instance_npcname("˿��#10");
 		end;
 	}
 	end;
@@ -1279,7 +1281,7 @@ OnMobDead:
 		end;
 	if (mobcount('map_lost$, instance_npcname("Wooden Box#10") + "::OnMobDead") == 0) {
 		'lost_farm = 19;
-		npctalk "丝绸：嘘。";
+		npctalk "˿���ꡣ";
 	}
 	end;
 }
@@ -1287,13 +1289,13 @@ OnMobDead:
 1@lost,161,315,3	script(DISABLED)	Wooden Box#10-1	4_WOODBOX,{
 	switch (rand(1,3)) {
 	case 1:
-		npctalk "Silk：他、救救我~~~~！";
+		npctalk "Silk�������Ⱦ���~~~~��";
 		break;
 	case 2:
-		npctalk "Silk : 冷静老大喵下来~~~";
+		npctalk "Silk : �侲�ϴ�������~~~";
 		break;
 	case 3:
-		npctalk "Silk：这里~~你可以拥有我的手臂~~";
+		npctalk "Silk������~~�����ӵ���ҵ��ֱ�~~";
 		break;
 	}
 	end;
@@ -1301,42 +1303,42 @@ OnMobDead:
 
 1@lost,161,315,3	script(DISABLED)	Silk#10	4_EP17_BASKET,{
 	if (!is_party_leader() && 'lost_farm < 22) {
-		mes "[丝绸]";
-		mes "我去和客人的领导谈谈！";
-		mes "请领导过来！";
+		mes "[˿��]";
+		mes "��ȥ�Ϳ��˵��쵼̸̸��";
+		mes "���쵼������";
 		close;
 	}
 	if ('lost_farm == 21) {
-		mes "[丝绸]";
-		mes "每个部件的组成部分都不同，那么我们可以用它做什么......？";
+		mes "[˿��]";
+		mes "ÿ����������ɲ��ֶ���ͬ����ô���ǿ���������ʲô......��";
 		next;
-		mes "[丝绸]";
-		mes "那么，这就是未来唯一的收获方式吗……？";
+		mes "[˿��]";
+		mes "��ô�������δ��Ψһ���ջ�ʽ�𡭡���";
 		next;
-		mes "[丝绸]";
-		mes "好吧，我没办法！客人们玩得开心吗？";
+		mes "[˿��]";
+		mes "�ðɣ���û�취����������ÿ�����";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "你玩得开心吗？";
+		mes "����ÿ�����";
 		unittalk getcharid(3), "" + strcharinfo(0) + " : Did you have fun?";
 		next;
-		mes "[丝绸]";
-		mes "是的！结束了！工作结束后不应该很有趣吗？";
+		mes "[˿��]";
+		mes "�ǵģ������ˣ�����������Ӧ�ú���Ȥ��";
 		next;
-		mes "[丝绸]";
-		mes "如果你把收集到的火龙果尾巴给我，今天的农场体验就结束了！走吧，我们到外面去吧！";
+		mes "[˿��]";
+		mes "�������ռ����Ļ�����β�͸��ң������ũ������ͽ����ˣ��߰ɣ����ǵ�����ȥ�ɣ�";
 		if ('lost_farm == 21)
 			'lost_farm = 22;
 		close;
 	}
 	if (isbegin_quest(8588) == 1) {
 		if (checkweight(1000103,8) == 0) {	// (custom)
-			mes "^008800等一下！！";
-			mes "您无法接收更多物品，因为您携带的物品太多。请等灯亮后再试。^000000";
+			mes "^008800��һ�£���";
+			mes "���޷����ո�����Ʒ����Ϊ��Я������Ʒ̫�ࡣ��ȵ��������ԡ�^000000";
 			close;
 		}
-		mes "[丝绸]";
-		mes "让我们看看...您收集了多少？";
+		mes "[˿��]";
+		mes "�����ǿ���...���ռ��˶��٣�";
 		next;
 		setarray .@item[0],1000093,1000094,1000095,1000096,1000097;
 		for ( .@i = 0; .@i < 5; ++.@i ) {
@@ -1353,29 +1355,29 @@ OnMobDead:
 			delitem 1000098, countitem(1000098);
 			.@reward += 2;
 		}
-		mes "[丝绸]";
-		mes "总计为" + .@count + ".";
-		mes "感谢您的辛勤工作！";
+		mes "[˿��]";
+		mes "�ܼ�Ϊ" + .@count + ".";
+		mes "��л�������ڹ�����";
 		erasequest 8588;
 		getitem 1000103, .@reward;
 		next;
 	}
-	mes "[丝绸]";
-	mes "那么……你想出去吗？";
+	mes "[˿��]";
+	mes "��ô���������ȥ��";
 	next;
-	if (select( "出去。", "别出去。" ) == 2) {
-		mes "[丝绸]";
-		mes "你在等你的同事吗？";
-		mes "我会等你的，你想出去的时候请告诉我~";
+	if (select( "��ȥ��", "���ȥ��" ) == 2) {
+		mes "[˿��]";
+		mes "���ڵ����ͬ����";
+		mes "�һ����ģ������ȥ��ʱ���������~";
 		close;
 	}
 	if (isbegin_quest(8589) == 0) {	// first time entering the instance
-		mes "[丝绸]";
-		mes "Luina...我完成了延伸报告，之后请对客人说几句话！";
-		mes "我做得很好...*抽泣*";
+		mes "[˿��]";
+		mes "Luina...����������챨�棬֮����Կ���˵���仰��";
+		mes "�����úܺ�...*����*";
 		setquest 8589;
 	}
-	mes "下次见！";
+	mes "�´μ���";
 	close2;
 	warp "ba_maison",308,202;
 	end;

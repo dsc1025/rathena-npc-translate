@@ -5,178 +5,180 @@
 //= NPC Guide for WoE TE
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 prt_gld,118,151,4	script	Guide in Gloria#tes01	8W_SOLDIER,{
-	mes "[å¼•å¯¼å£«å…µ]";
-	mes "æ„¿ç¬¦æ–‡ç±³å¾·åŠ ç‰¹çŽ‹å›½åŠå…¶ä¸ƒå¤§çŽ‹å®¤æ‹¥æœ‰æ— å°½çš„è£è€€ï¼";
-	mes "æ¬¢è¿Žæ¥åˆ°æ”»åŸŽæˆ˜ TE ä¸­çš„å ¡åž’æ ¼æ´›ä¸½äºšã€‚æˆ‘ä»¬ä¸Žå¡å¤«æ‹‰å’ŒçŽ‹å›½ä¸»è¦çŽ‹å®¤åˆä½œæä¾›æœåŠ¡ã€‚";
+	mes "[Òýµ¼Ê¿±ø]";
+	mes "Ô¸·ûÎÄÃ×µÂ¼ÓÌØÍõ¹ú¼°ÆäÆß´óÍõÊÒÓµÓÐÎÞ¾¡µÄÈÙÒ«£¡";
+	mes "»¶Ó­À´µ½¹¥³ÇÕ½ TE ÖÐµÄ±¤ÀÝ¸ñÂåÀöÑÇ¡£ÎÒÃÇÓë¿¨·òÀ­ºÍÍõ¹úÖ÷ÒªÍõÊÒºÏ×÷Ìá¹©·þÎñ¡£";
 	next;
-	switch( select( "æ ¼æ´›ä¸½äºšï¼Ÿ", "å…³äºŽæ”»åŸŽæˆ˜TE", "å…³äºŽå‚åŠ è¦æ±‚", "ç®—äº†ã€‚" ) ) {
+	switch( select( "¸ñÂåÀöÑÇ£¿", "¹ØÓÚ¹¥³ÇÕ½TE", "¹ØÓÚ²Î¼ÓÒªÇó", "ËãÁË¡£" ) ) {
 	case 1:
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "å®ƒçš„å‘½åæ˜¯ä¸ºäº†çºªå¿µä¸ƒä¸ªçŽ‹å®¤å®¶æ—å’ŒçŽ‹å›½ã€‚";
-		mes "æ•´åº§åŸŽå¸‚é…·ä¼¼å¥³æ­¦ç¥žåŸŸï¼Œè¿™é‡Œå¯„æ‰˜ç€çŽ‹æ—å¯¹æ‰€æœ‰äººçš„å¿ƒæ„¿ã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "ËüµÄÃüÃûÊÇÎªÁË¼ÍÄîÆß¸öÍõÊÒ¼Ò×åºÍÍõ¹ú¡£";
+		mes "Õû×ù³ÇÊÐ¿áËÆÅ®ÎäÉñÓò£¬ÕâÀï¼ÄÍÐ×ÅÍõ×å¶ÔËùÓÐÈËµÄÐÄÔ¸¡£";
 		next;
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "åœ¨ç”± Gloria å’Œ Kafra Service ç®¡ç†çš„ Aldebaran Kafragartenï¼Œæˆ‘ä»¬æœ‰ä¸ŽçŽ°æœ‰è§„åˆ™ç•¥æœ‰ä¸åŒçš„ç‰¹æ®Šè§„åˆ™ã€‚";
-		mes "æˆ‘ä»¬ç§°ä¹‹ä¸ºæ”»åŸŽæˆ˜ TEã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "ÔÚÓÉ Gloria ºÍ Kafra Service ¹ÜÀíµÄ Aldebaran Kafragarten£¬ÎÒÃÇÓÐÓëÏÖÓÐ¹æÔòÂÔÓÐ²»Í¬µÄÌØÊâ¹æÔò¡£";
+		mes "ÎÒÃÇ³ÆÖ®Îª¹¥³ÇÕ½ TE¡£";
 		next;
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "æ‚¨åº”è¯¥ä¸ä¼šåœ¨ç†è§£æ–°è§„åˆ™æ—¶é‡åˆ°å›°éš¾ï¼Œå› ä¸ºå®ƒåªæ˜¯å¯¹å‚ä¸Žèµ„æ ¼è¿›è¡Œé™åˆ¶ã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "ÄúÓ¦¸Ã²»»áÔÚÀí½âÐÂ¹æÔòÊ±Óöµ½À§ÄÑ£¬ÒòÎªËüÖ»ÊÇ¶Ô²ÎÓë×Ê¸ñ½øÐÐÏÞÖÆ¡£";
 		close;
 	case 2:
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "æ˜¯çš‡å®¤ä¸ºäº†è®©æ›´å¤šäººå‚ä¸Žæ”»åŸŽæˆ˜è€Œå‡†å¤‡çš„æ–°èˆžå°ã€‚";
-		mes "ç”±äºŽå…¶æ°›å›´ç±»ä¼¼äºŽä½“è‚²é¦†ï¼Œå› æ­¤é€‚ç”¨ä¸åŒçš„è§„åˆ™ï¼Œå¹¶æä¾›è¶³å¤Ÿçš„æ”¯æŒã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "ÊÇ»ÊÊÒÎªÁËÈÃ¸ü¶àÈË²ÎÓë¹¥³ÇÕ½¶ø×¼±¸µÄÐÂÎèÌ¨¡£";
+		mes "ÓÉÓÚÆä·ÕÎ§ÀàËÆÓÚÌåÓý¹Ý£¬Òò´ËÊÊÓÃ²»Í¬µÄ¹æÔò£¬²¢Ìá¹©×ã¹»µÄÖ§³Ö¡£";
 		next;
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "^4d4dffåœ¨åº”ç”¨æ”»åŸŽæˆ˜TEè§„åˆ™çš„Gloriaå’ŒKafragartenåœ°åŒºä¸å…è®¸ä¸‰çº§èŒä¸šå’Œæ‰©å±•çº§åˆ«çš„ç”¨æˆ·ã€‚^000000";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "^4d4dffÔÚÓ¦ÓÃ¹¥³ÇÕ½TE¹æÔòµÄGloriaºÍKafragartenµØÇø²»ÔÊÐíÈý¼¶Ö°ÒµºÍÀ©Õ¹¼¶±ðµÄÓÃ»§¡£^000000";
 		next;
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "å¦å¤–ï¼Œæˆ‘ä»¬è¿˜å…è´¹å‡ºå€Ÿä»…åœ¨ç›¸åº”åœ°åŒºä½¿ç”¨çš„å„ç§æˆ˜æ–—è£…å¤‡ã€‚";
-		mes "è¿™å¯èƒ½æ˜¯æœ€å¤§çš„åŒºåˆ«ã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "ÁíÍâ£¬ÎÒÃÇ»¹Ãâ·Ñ³ö½è½öÔÚÏàÓ¦µØÇøÊ¹ÓÃµÄ¸÷ÖÖÕ½¶·×°±¸¡£";
+		mes "Õâ¿ÉÄÜÊÇ×î´óµÄÇø±ð¡£";
 		close;
 	case 3:
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "^4d4dffæ–°æ‰‹ã€åˆçº§ã€äºŒçº§èŒä¸šä»¥åŠé¢å¤–èŒä¸šéƒ½å¯ä»¥å‚åŠ ã€‚^000000";
-		mes "å½“ç„¶ï¼Œä¹ŸåŒ…æ‹¬åˆçº§å’Œæ¬¡çº§å·¥ä½œç±»åˆ«ã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "^4d4dffÐÂÊÖ¡¢³õ¼¶¡¢¶þ¼¶Ö°ÒµÒÔ¼°¶îÍâÖ°Òµ¶¼¿ÉÒÔ²Î¼Ó¡£^000000";
+		mes "µ±È»£¬Ò²°üÀ¨³õ¼¶ºÍ´Î¼¶¹¤×÷Àà±ð¡£";
 		next;
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "æ¢è¨€ä¹‹ï¼Œä¸‰çº§èŒä¸šä»¥åŠé˜³ç‚Žã€æ•–æ³¢ç½—ç­‰ç­‰çº§æ‰©å¤§çš„èŒä¸šæ˜¯ä¸å…è®¸çš„ã€‚";
-		mes "è€Œä¸”ï¼Œä»–ä»¬çš„å¢žç›Šæ•ˆæžœåœ¨è¿™é‡Œè¢«æ¶ˆé™¤äº†ã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "»»ÑÔÖ®£¬Èý¼¶Ö°ÒµÒÔ¼°ÑôÑ×¡¢°½²¨ÂÞµÈµÈ¼¶À©´óµÄÖ°ÒµÊÇ²»ÔÊÐíµÄ¡£";
+		mes "¶øÇÒ£¬ËûÃÇµÄÔöÒæÐ§¹ûÔÚÕâÀï±»Ïû³ýÁË¡£";
 		next;
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "é™¤æ­¤ä¹‹å¤–ï¼Œä¸ŽçŽ°æœ‰çš„æ”»åŸŽæˆ˜å¹¶æ— å¤ªå¤§åŒºåˆ«ã€‚";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "³ý´ËÖ®Íâ£¬ÓëÏÖÓÐµÄ¹¥³ÇÕ½²¢ÎÞÌ«´óÇø±ð¡£";
 		close;
 	case 4:
-		mes "[å¼•å¯¼å£«å…µ]";
-		mes "æ„¿çŽ‹å®¤çš„è£è€€å’Œå¥¥ä¸çš„ä¿æŠ¤ä¸Žä½ åŒåœ¨ï¼";
+		mes "[Òýµ¼Ê¿±ø]";
+		mes "Ô¸ÍõÊÒµÄÈÙÒ«ºÍ°Â¶¡µÄ±£»¤ÓëÄãÍ¬ÔÚ£¡";
 		close;
 	}
 }
 
 prt_gld,122,151,4	script	Guide in Gloria#tes02	8W_SOLDIER,{
-	mes "[å¼•å¯¼å£«å…µ]";
-	mes "è¿™é‡Œçš„ä¼ é€é—¨å¯ä»¥è®©ä½ è¿›å…¥æ ¼æ´›ä¸½äºšåœ°åŒºã€‚";
-	mes "è¯·è®°ä½ï¼Œä½ åº”è¯¥åœ¨è¿™é‡Œç©¿è¶Šæ‰­æ›²ã€‚";
+	mes "[Òýµ¼Ê¿±ø]";
+	mes "ÕâÀïµÄ´«ËÍÃÅ¿ÉÒÔÈÃÄã½øÈë¸ñÂåÀöÑÇµØÇø¡£";
+	mes "Çë¼Ç×¡£¬ÄãÓ¦¸ÃÔÚÕâÀï´©Ô½Å¤Çú¡£";
 	close;
 }
 
 te_prt_gld,118,151,4	script	Guide in Gloria#tes03	8W_SOLDIER,{
-	mes "[å¼•å¯¼å£«å…µ]";
-	mes "ä½ çŽ°åœ¨åœ¨æ ¼æ´›ä¸½äºšçš„å ¡åž’ã€‚";
-	mes "å¦‚æžœä½ æƒ³å›žåˆ°å¥³æ­¦ç¥žé¢†åŸŸï¼Œä½ å¯ä»¥é€šè¿‡äºšç©ºé—´æ—…è¡Œã€‚";
+	mes "[Òýµ¼Ê¿±ø]";
+	mes "ÄãÏÖÔÚÔÚ¸ñÂåÀöÑÇµÄ±¤ÀÝ¡£";
+	mes "Èç¹ûÄãÏë»Øµ½Å®ÎäÉñÁìÓò£¬Äã¿ÉÒÔÍ¨¹ýÑÇ¿Õ¼äÂÃÐÐ¡£";
 	close;
 }
 
 te_prt_gld,122,151,4	script	Guide in Gloria#tes04	8W_SOLDIER,{
-	mes "[å¼•å¯¼å£«å…µ]";
-	mes "æ¬¢è¿Žæ¥åˆ°æ ¼æ´›ä¸½äºšã€‚";
-	mes "å¡å¤«æ‹‰èŠ±å›­å’Œæ ¼æ´›ä¸½äºšåœ°åŒºçš„è¦å¡žä¸­å…è®¸å‚åŠ æ”»åŸŽæˆ˜çš„èŒä¸šç±»åˆ«ä»…é™äºŽã€Š^4d4dffåˆçº§ã€äºŒçº§èŒä¸šä»¥åŠæœªæ‰©å±•ç­‰çº§çš„èŒä¸šã€‚^000000";
+	mes "[Òýµ¼Ê¿±ø]";
+	mes "»¶Ó­À´µ½¸ñÂåÀöÑÇ¡£";
+	mes "¿¨·òÀ­»¨Ô°ºÍ¸ñÂåÀöÑÇµØÇøµÄÒªÈûÖÐÔÊÐí²Î¼Ó¹¥³ÇÕ½µÄÖ°ÒµÀà±ð½öÏÞÓÚ¡¶^4d4dff³õ¼¶¡¢¶þ¼¶Ö°ÒµÒÔ¼°Î´À©Õ¹µÈ¼¶µÄÖ°Òµ¡£^000000";
 	next;
-	mes "[å¼•å¯¼å£«å…µ]";
-	mes "åœ¨å¡å¤«æ‹‰èŠ±å›­å’Œæ ¼æ´›ä¸½äºšåœ°åŒºï¼Œä½ ä¼šå¾—åˆ°ä¸åŒçš„ä»»åŠ¡ã€‚";
-	mes "å…¶ä¸­ä¸€äº›ä¸Ž Emperiums æ— å…³ï¼Œæ‰€ä»¥æŒ‘æˆ˜ä¸€ä¸‹è‡ªå·±å§ï¼";
+	mes "[Òýµ¼Ê¿±ø]";
+	mes "ÔÚ¿¨·òÀ­»¨Ô°ºÍ¸ñÂåÀöÑÇµØÇø£¬Äã»áµÃµ½²»Í¬µÄÈÎÎñ¡£";
+	mes "ÆäÖÐÒ»Ð©Óë Emperiums ÎÞ¹Ø£¬ËùÒÔÌôÕ½Ò»ÏÂ×Ô¼º°É£¡";
 	next;
-	mes "[å¼•å¯¼å£«å…µ]";
-	mes "çš‡å®¤å’ŒKafra Serviceä¸ºæ‚¨å‡†å¤‡äº†å„ç§é›¶å”®ç‰©å“ã€‚";
-	mes "è™½ç„¶ç§ŸæœŸæ¯”è¾ƒçŸ­ï¼Œä½†æ˜¯éƒ½æ˜¯å…è´¹çš„ã€‚æ‰€ä»¥ï¼Œä¸è¦é”™è¿‡æœºä¼šï¼";
+	mes "[Òýµ¼Ê¿±ø]";
+	mes "»ÊÊÒºÍKafra ServiceÎªÄú×¼±¸ÁË¸÷ÖÖÁãÊÛÎïÆ·¡£";
+	mes "ËäÈ»×âÆÚ±È½Ï¶Ì£¬µ«ÊÇ¶¼ÊÇÃâ·ÑµÄ¡£ËùÒÔ£¬²»Òª´í¹ý»ú»á£¡";
 	close;
 }
 
 alde_gld,228,189,3	script	Sorin of Kafragarten	4_F_KAFRA3,{
-	mes "[ç´¢æž—]";
-	mes "æ¬¢è¿Žæ¥åˆ°Kafra Serviceã€œæˆ‘ä»¬å§‹ç»ˆä¸ºå®¢æˆ·æä¾›æœ€å¥½çš„æœåŠ¡ã€‚";
-	mes "å¡å¤«æ‹‰æœåŠ¡ç»ˆäºŽå»ºç«‹äº†è‡ªå·±çš„å ¡åž’ï¼";
+	mes "[Ë÷ÁÖ]";
+	mes "»¶Ó­À´µ½Kafra Service¡«ÎÒÃÇÊ¼ÖÕÎª¿Í»§Ìá¹©×îºÃµÄ·þÎñ¡£";
+	mes "¿¨·òÀ­·þÎñÖÕÓÚ½¨Á¢ÁË×Ô¼ºµÄ±¤ÀÝ£¡";
 	next;
-	switch( select( "Kafragartenæ˜¯ä»€ä¹ˆï¼Ÿ", "æ”»åŸŽæˆ˜TEæ˜¯ä»€ä¹ˆï¼Ÿ", "å‚åŠ èµ„æ ¼", "ç®—äº†ã€‚" ) ) {
+	switch( select( "KafragartenÊÇÊ²Ã´£¿", "¹¥³ÇÕ½TEÊÇÊ²Ã´£¿", "²Î¼Ó×Ê¸ñ", "ËãÁË¡£" ) ) {
 	case 1:
-		mes "[ç´¢æž—]";
-		mes "è¿™æ˜¯å¡å¤«æ‹‰æœåŠ¡å…¬å¸ä¸Žç¬¦æ–‡ç±³å¾·åŠ å°”ç‰¹çŽ‹å®¤åˆä½œæä¾›çš„è¦å¡žã€‚";
-		mes "æ„æ€æ˜¯â€œå¡å¤«æ‹‰çš„èŠ±å›­â€ã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "ÕâÊÇ¿¨·òÀ­·þÎñ¹«Ë¾Óë·ûÎÄÃ×µÂ¼Ó¶ûÌØÍõÊÒºÏ×÷Ìá¹©µÄÒªÈû¡£";
+		mes "ÒâË¼ÊÇ¡°¿¨·òÀ­µÄ»¨Ô°¡±¡£";
 		next;
-		mes "[ç´¢æž—]";
-		mes "è™½ç„¶é•¿å¾—å’Œéœ²ä¼Šå¨œå¾ˆåƒ";
-		mes "åº”è¯¥æ²¡é—®é¢˜ï¼Œå› ä¸ºå®ƒä¸ºä¸åŒçš„ç”¨æˆ·æä¾›æœåŠ¡ã€‚";
-		mes "å¯ä»¥è¿™ä¹ˆè¯´ï¼Œè¿™å°±åƒä¸€ä¸ªè®­ç»ƒé˜¶æ®µã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "ËäÈ»³¤µÃºÍÂ¶ÒÁÄÈºÜÏñ";
+		mes "Ó¦¸ÃÃ»ÎÊÌâ£¬ÒòÎªËüÎª²»Í¬µÄÓÃ»§Ìá¹©·þÎñ¡£";
+		mes "¿ÉÒÔÕâÃ´Ëµ£¬Õâ¾ÍÏñÒ»¸öÑµÁ·½×¶Î¡£";
 		next;
-		mes "[ç´¢æž—]";
-		mes "åœ¨å¢ä¼Šçº³åœ°åŒºå»ºç«‹äº†å¡å¤«æ‹‰èŠ±å›­ï¼Œåœ¨ç“¦å°”åŸºé‡ŒçŽ‹å›½å»ºç«‹äº†çŽ‹å®¤çš„æ ¼æ´›ä¸½äºšã€‚";
-		mes "Kafra Service å¸Œæœ›æ‚¨èƒ½åœ¨è¿™åº§æ–°å ¡åž’ä¸­èŽ·å¾—å®è´µçš„ç»éªŒã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "ÔÚÂ¬ÒÁÄÉµØÇø½¨Á¢ÁË¿¨·òÀ­»¨Ô°£¬ÔÚÍß¶û»ùÀïÍõ¹ú½¨Á¢ÁËÍõÊÒµÄ¸ñÂåÀöÑÇ¡£";
+		mes "Kafra Service Ï£ÍûÄúÄÜÔÚÕâ×ùÐÂ±¤ÀÝÖÐ»ñµÃ±¦¹óµÄ¾­Ñé¡£";
 		close;
 	case 2:
-		mes "[ç´¢æž—]";
-		mes "æ”»åŸŽæˆ˜ TE æ˜¯^4d4dffä¸“ä¸ºåˆçº§å’ŒäºŒçº§èŒä¸šè®¾è®¡çš„æ”»åŸŽæˆ˜ï¼ŒæŽ’é™¤äº†ä¸‰çº§èŒä¸šã€‚^000000";
+		mes "[Ë÷ÁÖ]";
+		mes "¹¥³ÇÕ½ TE ÊÇ^4d4dff×¨Îª³õ¼¶ºÍ¶þ¼¶Ö°ÒµÉè¼ÆµÄ¹¥³ÇÕ½£¬ÅÅ³ýÁËÈý¼¶Ö°Òµ¡£^000000";
 		next;
-		mes "[ç´¢æž—]";
-		mes "å®ƒæ˜¯ä¸ºäº†è®©æ›´å¤šçš„ç”¨æˆ·é€šè¿‡æ”»åŸŽæˆ˜èŽ·å¾—ç»éªŒè€Œæ–°è®¾ç«‹çš„ã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "ËüÊÇÎªÁËÈÃ¸ü¶àµÄÓÃ»§Í¨¹ý¹¥³ÇÕ½»ñµÃ¾­Ñé¶øÐÂÉèÁ¢µÄ¡£";
 		next;
-		mes "[ç´¢æž—]";
-		mes "æ­¤å¤–ï¼Œä¸ºäº†æ‚¨çš„æ–¹ä¾¿ï¼Œæˆ‘ä»¬è¿˜å€Ÿå‡ºå„ç§åªèƒ½åœ¨ç›¸åº”è¦å¡žå†…ä½¿ç”¨çš„ç‰©å“ã€‚æ‰€ä»¥ï¼Œå¥½å¥½åˆ©ç”¨è¿™ä¸ªæœºä¼šã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "´ËÍâ£¬ÎªÁËÄúµÄ·½±ã£¬ÎÒÃÇ»¹½è³ö¸÷ÖÖÖ»ÄÜÔÚÏàÓ¦ÒªÈûÄÚÊ¹ÓÃµÄÎïÆ·¡£ËùÒÔ£¬ºÃºÃÀûÓÃÕâ¸ö»ú»á¡£";
 		next;
-		mes "[ç´¢æž—]";
-		mes "æ­£å¦‚ä»–ä»¬æ‰€è¯´ï¼Œâ€œè¡ŒåŠ¨èƒœäºŽé›„è¾©ã€‚â€";
-		mes "çŽ°åœ¨å°±äº²è‡ªåŽ»çœ‹çœ‹å§~";
+		mes "[Ë÷ÁÖ]";
+		mes "ÕýÈçËûÃÇËùËµ£¬¡°ÐÐ¶¯Ê¤ÓÚÐÛ±ç¡£¡±";
+		mes "ÏÖÔÚ¾ÍÇ××ÔÈ¥¿´¿´°É~";
 		close;
 	case 3:
-		mes "[ç´¢æž—]";
-		mes "åªå…è®¸åˆçº§ã€ä¸­çº§ã€æœªæ‰©å±•çº§åˆ«çš„é¢å¤–å·¥ä½œç­ä»¥åŠåˆçº§ã€ä¸­çº§å·¥ä½œç­å‚åŠ ã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "Ö»ÔÊÐí³õ¼¶¡¢ÖÐ¼¶¡¢Î´À©Õ¹¼¶±ðµÄ¶îÍâ¹¤×÷°àÒÔ¼°³õ¼¶¡¢ÖÐ¼¶¹¤×÷°à²Î¼Ó¡£";
 		next;
-		mes "[ç´¢æž—]";
-		mes "æ¢è¨€ä¹‹ï¼Œä¸‰çº§èŒä¸šä»¥åŠé˜³ç‚Žã€æ•–æ³¢ç½—ç­‰ç­‰çº§æ‰©å¤§çš„èŒä¸šæ˜¯ä¸å…è®¸çš„ã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "»»ÑÔÖ®£¬Èý¼¶Ö°ÒµÒÔ¼°ÑôÑ×¡¢°½²¨ÂÞµÈµÈ¼¶À©´óµÄÖ°ÒµÊÇ²»ÔÊÐíµÄ¡£";
 		close;
 	case 4:
-		mes "[ç´¢æž—]";
-		mes "Kafra Serviceå°†ç«­å°½å…¨åŠ›é€šè¿‡Kafragartenä¸ºæ‚¨çš„ç”Ÿæ´»å¸¦æ¥æ¬¢ä¹ã€‚";
+		mes "[Ë÷ÁÖ]";
+		mes "Kafra Service½«½ß¾¡È«Á¦Í¨¹ýKafragartenÎªÄúµÄÉú»î´øÀ´»¶ÀÖ¡£";
 		close;
 	}
 }
 
 alde_gld,224,185,5	script	Defolty of Kafragarten	4_F_KAFRA1,{
-	mes "[å¾·ç¦å°”è’‚]";
-	mes "Kafragartenå°±åƒæ˜¯Luinaçš„é•œåƒï¼Œæ‰€ä»¥å®ƒçš„ç»“æž„å’ŒLuinaä¸€æ¨¡ä¸€æ ·ã€‚";
+	mes "[µÂ¸£¶ûµÙ]";
+	mes "Kafragarten¾ÍÏñÊÇLuinaµÄ¾µÏñ£¬ËùÒÔËüµÄ½á¹¹ºÍLuinaÒ»Ä£Ò»Ñù¡£";
 	next;
-	mes "[å¾·ç¦å°”è’‚]";
-	mes "ä½ å¯ä»¥åœ¨è¿™é‡Œé€šè¿‡è¿™äº›æ‰­æ›²æ—…è¡Œã€‚";
-	mes "ä½ å¯ä»¥ä½¿ç”¨ç»çº¿å‰å¾€å¡å¤«æ‹‰èŠ±å›­ã€‚";
+	mes "[µÂ¸£¶ûµÙ]";
+	mes "Äã¿ÉÒÔÔÚÕâÀïÍ¨¹ýÕâÐ©Å¤ÇúÂÃÐÐ¡£";
+	mes "Äã¿ÉÒÔÊ¹ÓÃ¾­ÏßÇ°Íù¿¨·òÀ­»¨Ô°¡£";
 	close;
 }
 
 te_alde_gld,228,189,3	script	W of Kafragarten#tes01	4_F_KAFRA6,{
 	mes "[W]";
-	mes "ä½ å¯ä»¥åœ¨è¿™é‡Œä½¿ç”¨è¿™ä¸ªæ‰­æ›²å‰å¾€å¢ä¼Šçº³ã€‚";
-	mes "å¥½å¥½åˆ©ç”¨å®ƒ";
+	mes "Äã¿ÉÒÔÔÚÕâÀïÊ¹ÓÃÕâ¸öÅ¤ÇúÇ°ÍùÂ¬ÒÁÄÉ¡£";
+	mes "ºÃºÃÀûÓÃËü";
 	next;
 	mes "[W]";
-	mes "è°æ‹¿èµ°äº†ä»¥æˆ‘å‘½åçš„åŸŽå ¡ï¼ŒWï¼Ÿ";
-	mes "å‘µå‘µï¼Œè¿™å²‚ä¸æ˜¯è¯´æ˜Žæˆ‘æ¯”æ³°çµä¼˜è¶Šï¼Ÿ";
+	mes "Ë­ÄÃ×ßÁËÒÔÎÒÃüÃûµÄ³Ç±¤£¬W£¿";
+	mes "ºÇºÇ£¬ÕâÆñ²»ÊÇËµÃ÷ÎÒ±ÈÌ©ÁéÓÅÔ½£¿";
 	close;
 }
 
 te_alde_gld,224,185,5	script	Tailing of Kafragarten	4_F_KAFRA2,{
-	mes "[æ‹–å°¾]";
-	mes "è¿™æ˜¯Kafragarten åœ°åŒºã€‚";
-	mes "å¡å¤«æ‹‰èŠ±å›­å’Œæ ¼æ´›ä¸½äºšåœ°åŒºçš„æ”»åŸŽæˆ˜ï¼Œåªæœ‰åˆçº§ã€æ¬¡çº§èŒä¸šä»¥åŠæ²¡æœ‰æ‰©å±•ç­‰çº§çš„ç”¨æˆ·å¯ä»¥å‚åŠ ã€‚";
+	mes "[ÍÏÎ²]";
+	mes "ÕâÊÇKafragarten µØÇø¡£";
+	mes "¿¨·òÀ­»¨Ô°ºÍ¸ñÂåÀöÑÇµØÇøµÄ¹¥³ÇÕ½£¬Ö»ÓÐ³õ¼¶¡¢´Î¼¶Ö°ÒµÒÔ¼°Ã»ÓÐÀ©Õ¹µÈ¼¶µÄÓÃ»§¿ÉÒÔ²Î¼Ó¡£";
 	next;
-	mes "[æ‹–å°¾]";
+	mes "[ÍÏÎ²]";
 	mes "....";
-	mes "åœ¨å¡å¤«æ‹‰èŠ±å›­å’Œæ ¼æ´›ä¸½äºšåœ°åŒºï¼Œä½ ä¼šå¾—åˆ°ä¸åŒçš„ä»»åŠ¡ã€‚";
-	mes "æ‰€ä»¥ä½ åº”è¯¥å¯†åˆ‡æ³¨æ„ã€‚";
+	mes "ÔÚ¿¨·òÀ­»¨Ô°ºÍ¸ñÂåÀöÑÇµØÇø£¬Äã»áµÃµ½²»Í¬µÄÈÎÎñ¡£";
+	mes "ËùÒÔÄãÓ¦¸ÃÃÜÇÐ×¢Òâ¡£";
 	next;
-	mes "[æ‹–å°¾]";
-	mes "æ­¤å¤–ï¼Œæˆ‘ä»¬è¿˜å‡†å¤‡äº†å„ç§æˆ˜æ–—è£…å¤‡ï¼Œå¯æ ¹æ®æ‚¨çš„è¦æ±‚éšæ—¶æä¾›ã€‚";
+	mes "[ÍÏÎ²]";
+	mes "´ËÍâ£¬ÎÒÃÇ»¹×¼±¸ÁË¸÷ÖÖÕ½¶·×°±¸£¬¿É¸ù¾ÝÄúµÄÒªÇóËæÊ±Ìá¹©¡£";
 	next;
-	mes "[æ‹–å°¾]";
-	mes "ä½†æ˜¾ç„¶ï¼Œå®ƒä»¬åªåœ¨ Kafragarten å’Œ Gloria åœ°åŒºæœ‰æ•ˆã€‚";
+	mes "[ÍÏÎ²]";
+	mes "µ«ÏÔÈ»£¬ËüÃÇÖ»ÔÚ Kafragarten ºÍ Gloria µØÇøÓÐÐ§¡£";
 	next;
-	mes "[æ‹–å°¾]";
+	mes "[ÍÏÎ²]";
 	mes ".....";
-	mes "å•Šï¼Œå¦‚æžœä½ è®¤ä¸ºæˆ‘ç”Ÿæ°”äº†ï¼Œå› ä¸ºæˆ‘çš„åå­—åœ¨ Kafragarten ä¸­æ¶ˆå¤±äº†ï¼Œå¹¶ä¸”æˆ‘çš„è¯´è¯æ–¹å¼å› æ­¤å˜å¾—æœ‰ç‚¹åƒµç¡¬";
+	mes "°¡£¬Èç¹ûÄãÈÏÎªÎÒÉúÆøÁË£¬ÒòÎªÎÒµÄÃû×ÖÔÚ Kafragarten ÖÐÏûÊ§ÁË£¬²¢ÇÒÎÒµÄËµ»°·½Ê½Òò´Ë±äµÃÓÐµã½©Ó²";
 	next;
-	mes "[æ‹–å°¾]";
-	mes "å¤©å“ªã€‚";
-	mes "è¿™æ˜¯çœŸçš„å—ï¼Ÿ";
-	mes "å†³ä¸ã€‚ Wå¹¶ä¸æ¯”æˆ‘å¥½..å“ˆå“ˆå“ˆã€‚";
+	mes "[ÍÏÎ²]";
+	mes "ÌìÄÄ¡£";
+	mes "ÕâÊÇÕæµÄÂð£¿";
+	mes "¾ö²»¡£ W²¢²»±ÈÎÒºÃ..¹þ¹þ¹þ¡£";
 	close;
 }

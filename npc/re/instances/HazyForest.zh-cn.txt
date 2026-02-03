@@ -13,6 +13,8 @@
 //===== Additional Comments: ================================= 
 //= 1.0 First version. [Euphy]
 //= 1.1 Instance system rewrite. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 // Instance Creation :: md_mistwoods_enter
@@ -22,138 +24,138 @@ bif_fild01,158,340,5	script	Laphine Soldier#mist	447,{
 	set .@party_id,getcharid(1);
 	set .@md_name$,"Mistwood Maze";
 
-	mes "[拉芬士兵]";
-	mes "你要去森林吗？";
+	mes "[����ʿ��]";
+	mes "��Ҫȥɭ����";
 	next;
 	if (!.@party_id) {
-		mes "[拉芬士兵]";
-		mes "好吧好吧，你这也太鲁莽了吧？";
-		mes "你为什么不至少组织一个聚会呢？";
+		mes "[����ʿ��]";
+		mes "�ðɺðɣ�����Ҳ̫³ç�˰ɣ�";
+		mes "��Ϊʲô��������֯һ���ۻ��أ�";
 		close;
 	}
 	set .@playtime, checkquest(7211,PLAYTIME);
 	if (is_party_leader() == true) {
 		if (.@playtime == 0 || .@playtime == 1) {
-			mes "[拉芬士兵]";
-			mes "……你确定你没有做得太过分吗？";
-			mes "我想你最好休息一下。";
-			mes "尝试做太多事情只会让自己筋疲力尽";
+			mes "[����ʿ��]";
+			mes "������ȷ����û������̫������";
+			mes "�����������Ϣһ�¡�";
+			mes "������̫������ֻ�����Լ���ƣ����";
 			next;
-			mes "[拉芬士兵]";
-			mes "我认为当局也不会给予你许可。";
-			mes "……即使是萨法人也会被阻止进入森林。";
+			mes "[����ʿ��]";
+			mes "����Ϊ����Ҳ������������ɡ�";
+			mes "������ʹ��������Ҳ�ᱻ��ֹ����ɭ�֡�";
 			next;
-			select("你我们的语言说得很好，不是吗？");
-			mes "[拉芬士兵]";
-			mes "...我是吗？";
-			mes "事实上我不会说你们的语言。";
-			mes "我说的是拉芬语。";
+			select("�����ǵ�����˵�úܺã�������");
+			mes "[����ʿ��]";
+			mes "...������";
+			mes "��ʵ���Ҳ���˵���ǵ����ԡ�";
+			mes "��˵���������";
 			next;
-			mes "[拉芬士兵]";
-			mes "但这是 Bifrost 的谜团之一。";
-			mes "即使我们说不同的语言，我们也能互相理解。";
+			mes "[����ʿ��]";
+			mes "������ Bifrost ������֮һ��";
+			mes "��ʹ����˵��ͬ�����ԣ�����Ҳ�ܻ������⡣";
 			next;
-			mes "[拉芬士兵]";
-			mes "能够和大家交流...";
-			mes "也许这就是 Bifrost 的力量。";
+			mes "[����ʿ��]";
+			mes "�ܹ��ʹ�ҽ���...";
+			mes "Ҳ������� Bifrost ��������";
 			close;
 		} else if (.@playtime == 2) {
-			mes "[拉芬士兵]";
-			mes "太棒了，太棒了。";
-			mes "现在森林不会拒绝你了。";
-			mes "你现在要做什么？";
+			mes "[����ʿ��]";
+			mes "̫���ˣ�̫���ˡ�";
+			mes "����ɭ�ֲ���ܾ����ˡ�";
+			mes "������Ҫ��ʲô��";
 			erasequest 7211;
 		} else {
-			mes "[拉芬士兵]";
-			mes "你们人类冒险家真是不可思议。";
-			mes "你总是要走进别人不敢去的森林。";
+			mes "[����ʿ��]";
+			mes "��������ð�ռ����ǲ���˼�顣";
+			mes "������Ҫ�߽����˲���ȥ��ɭ�֡�";
 			next;
-			mes "[拉芬士兵]";
-			mes "唷。但我必须向当局报告";
-			mes "每个进入森林的人，以防万一。";
+			mes "[����ʿ��]";
+			mes "ࡡ����ұ����򵱾ֱ���";
+			mes "ÿ������ɭ�ֵ��ˣ��Է���һ��";
 			next;
-			mes "[拉芬士兵]";
-			mes "你会得到许可";
-			mes "注册后。";
-			mes "你要去迷雾森林冒险吗？";
+			mes "[����ʿ��]";
+			mes "���õ�����";
+			mes "ע���";
+			mes "��Ҫȥ����ɭ��ð����";
 		}
 		next;
-		switch(select("冒险进入朦胧森林。：放弃。")) {
+		switch(select("ð�ս�������ɭ�֡���������")) {
 		case 1:
-			mes "[拉芬士兵]";
-			mes "政党名称 "+getpartyname(.@party_id)+"...";
-			mes "党魁"+strcharinfo(0)+"...";
+			mes "[����ʿ��]";
+			mes "�������� "+getpartyname(.@party_id)+"...";
+			mes "����"+strcharinfo(0)+"...";
 			if (instance_create(.@md_name$) < 0) {
-				mes "唔...";
+				mes "��...";
 				next;
-				mes "[拉芬士兵]";
+				mes "[����ʿ��]";
 				if (.@playtime == -1)
-					mes "森林里很危险。";
+					mes "ɭ�����Σ�ա�";
 				else
-					mes "森林里的气氛有些紧张。";
-				mes "……你今天怎么不回去？";
+					mes "ɭ�����������Щ���š�";
+				mes "�����������ô����ȥ��";
 				close;
 			}
-			mes "我明白了。我已将它们写在此处的报告中。";
+			mes "�������ˡ����ѽ�����д�ڴ˴��ı����С�";
 			next;
-			mes "[拉芬士兵]";
-			mes "你很快就会得到许可。";
-			mes "现在前往原木隧道，这是进入朦胧森林的唯一途径。";
-			mes "你明白吗？";
+			mes "[����ʿ��]";
+			mes "��ܿ�ͻ�õ����ɡ�";
+			mes "����ǰ��ԭľ���������ǽ�������ɭ�ֵ�Ψһ;����";
+			mes "��������";
 			next;
-			mes "[拉芬士兵]";
-			mes "我们不能违背森林，";
-			mes "但也许你们人类可以。";
-			mes "祝你好运！";
+			mes "[����ʿ��]";
+			mes "���ǲ���Υ��ɭ�֣�";
+			mes "��Ҳ������������ԡ�";
+			mes "ף����ˣ�";
 			close;
 		case 2:
-			mes "[拉芬士兵]";
-			mes "嗯，你做出了正确的决定。";
+			mes "[����ʿ��]";
+			mes "�ţ�����������ȷ�ľ�����";
 			if (.@playtime == -1)
-				mes "这对你有好处。";
+				mes "������кô���";
 			close;
 		}
 	} else {
-		mes "[拉芬士兵]";
-		mes "你们的党魁在哪里？";
-		mes "那里很危险。";
+		mes "[����ʿ��]";
+		mes "���ǵĵ��������";
+		mes "�����Σ�ա�";
 		next;
 		if (.@playtime == 2) {
-			mes "[拉芬士兵]";
-			mes "我发现你以前去过森林。";
-			mes "好吧，至少森林不会拒绝你。";
-			mes "然而...";
+			mes "[����ʿ��]";
+			mes "�ҷ�������ǰȥ��ɭ�֡�";
+			mes "�ðɣ�����ɭ�ֲ���ܾ��㡣";
+			mes "Ȼ��...";
 			erasequest 7211;
 			next;
 		}
-		mes "[拉芬士兵]";
-		mes "设身处地为我着想，门卫，让我见见你们党的代表。";
-		mes "我必须和他/她讨论一些事情。";
+		mes "[����ʿ��]";
+		mes "��������Ϊ�����룬���������Ҽ������ǵ��Ĵ�����";
+		mes "�ұ������/������һЩ���顣";
 		close;
 	}
 }
 
 bif_fild01,161,355,0	script	Log Tunnel	844,{
-	mes "我透过圆木隧道看到了森林。";
-	mes "看来可以通过圆木隧道进入森林了。";
+	mes "��͸��Բľ����������ɭ�֡�";
+	mes "��������ͨ��Բľ��������ɭ���ˡ�";
 	next;
-	if(select("进入隧道。：放弃。") == 2)
+	if(select("������������������") == 2)
 		close;
 	switch(instance_enter("Mistwood Maze")) {
 	case IE_OTHER:
-		mes "[拉芬士兵]";
-		mes "感觉有些不对劲。看来有什么危险的事情发生，你今天还是回去吧。";
+		mes "[����ʿ��]";
+		mes "�о���Щ���Ծ���������ʲôΣ�յ����鷢��������컹�ǻ�ȥ�ɡ�";
 		close;
 	case IE_NOINSTANCE:
-		mes "你试图爬进圆木里，但某种神秘的力量用一阵风将你推了回来。";
-		mes "看来你不能强行进入森林。";
+		mes "����ͼ����Բľ���ĳ�����ص�������һ��罫�����˻�����";
+		mes "�����㲻��ǿ�н���ɭ�֡�";
 		close;
 	case IE_NOMEMBER:
-		mes "[拉芬士兵]";
-		mes "嘿，看！";
-		mes "你一个人去吗？";
-		mes "那是不可能的。太鲁莽了。";
-		mes "与一些朋友组队，一起去吧！";
+		mes "[����ʿ��]";
+		mes "�٣�����";
+		mes "��һ����ȥ��";
+		mes "���ǲ����ܵġ�̫³ç�ˡ�";
+		mes "��һЩ������ӣ�һ��ȥ�ɣ�";
 		close;
 	case IE_OK:
 		if (checkquest(7211,PLAYTIME) == 2) erasequest 7211;
@@ -162,8 +164,8 @@ bif_fild01,161,355,0	script	Log Tunnel	844,{
 		//warp "1@mist",89,29;
 		close;
 	default:
-		mes "圆木隧道之外的世界看起来黑暗而令人窒息。";
-		mes "你的本能尖叫着这片森林很危险。";
+		mes "Բľ����֮������翴�����ڰ���������Ϣ��";
+		mes "��ı��ܼ������Ƭɭ�ֺ�Σ�ա�";
 		close;
 	}
 }
@@ -199,12 +201,12 @@ OnTimer180000:
 function	script	F_Mora_Mist	{
 	set .@map$, instance_mapname("1@mist");
 	if (mobcount(.@map$,instance_npcname(strnpcinfo(0))+"::OnMyMobDead") == 0) {
-		mes "显然没有人照顾它。";
-		mes "看来你可以砍倒花园里的树。";
+		mes "��Ȼû�����չ�����";
+		mes "��������Կ�����԰�������";
 		next;
-		if(select("砍倒花园里的树。：放弃。") == 2)
+		if(select("������԰���������������") == 2)
 			close;
-		mes "你砍倒了挡住迷宫道路的树，"+((getarg(3,0))?"清理出森林的道路。":"所以现在你可以继续了。");
+		mes "�㿳���˵�ס�Թ���·������"+((getarg(3,0))?"������ɭ�ֵĵ�·��":"������������Լ����ˡ�");
 		mapannounce .@map$,getarg(1),bc_map,"0xccffcc"; //FW_NORMAL 12 0 0
 		enablenpc instance_npcname(getarg(0));
 		disablenpc();
@@ -540,141 +542,141 @@ OnTimer3000:
 
 1@mist,97,30,3	script	Mysterious Young Man#mis	512,{
 	if (BaseLevel < 98) {
-		mes "[神秘青年]";
-		mes "啊？你打算经过这里吗？";
-		mes "……恐怕这超出了你的能力范围，但我不会插手你的事情。";
-		mes "如果你还活着的话我们还会再见面的。";
+		mes "[��������]";
+		mes "��������㾭��������";
+		mes "���������ⳬ�������������Χ�����Ҳ������������顣";
+		mes "����㻹���ŵĻ����ǻ����ټ���ġ�";
 		close;
 	}
 	if (ep14_1_mistwoods == 0) {
 		if (ep13_3_secret > 23) {
-			mes "[神秘青年]";
-			mes "你……我记得在营地见过你。";
-			mes "您提供的有关阿哈特的信息很有用。";
-			mes "谢谢！";
+			mes "[��������]";
+			mes "�㡭���Ҽǵ���Ӫ�ؼ����㡣";
+			mes "���ṩ���йذ����ص���Ϣ�����á�";
+			mes "лл��";
 			next;
-			mes "[神秘青年]";
-			mes "但你打算经过这里吗？";
-			mes "穿过 Bifrost 有什么好处呢？";
+			mes "[��������]";
+			mes "������㾭��������";
+			mes "���� Bifrost ��ʲô�ô��أ�";
 			next;
 		} else {
-			mes "[神秘青年]";
-			mes "你打算经过这里吗？";
-			mes "如果您只是好奇的话，我会建议您不要这样做。";
-			mes "只会带来你的英年早逝……";
+			mes "[��������]";
+			mes "����㾭��������";
+			mes "�����ֻ�Ǻ���Ļ����һὨ������Ҫ��������";
+			mes "ֻ��������Ӣ�����š���";
 			next;
 		}
-		mes "[神秘青年]";
-		mes "如果你决心要经过这里，";
-		mes "我会向你寻求一些帮助。";
+		mes "[��������]";
+		mes "��������Ҫ�������";
+		mes "�һ�����Ѱ��һЩ������";
 		next;
-		select("你是谁？");
-		mes "[洛基]";
-		mes "洛基……来自刺客公会。";
-		mes "那是我的名字。";
-		mes "你的呢？";
+		select("����˭��");
+		mes "[���]";
+		mes "����������Դ̿͹��ᡣ";
+		mes "�����ҵ����֡�";
+		mes "����أ�";
 		next;
 		mes "["+strcharinfo(0)+"]";
 		mes "....";
-		mes "...."+strcharinfo(0)+"先生。";
+		mes "...."+strcharinfo(0)+"������";
 		next;
-		mes "[洛基]";
-		mes "我懂了。"+strcharinfo(0)+".";
-		mes "我又问你了。";
-		mes "你打算穿过这片森林吗？";
+		mes "[���]";
+		mes "�Ҷ��ˡ�"+strcharinfo(0)+".";
+		mes "���������ˡ�";
+		mes "����㴩����Ƭɭ����";
 		next;
-		switch(select("是的，我愿意。：不，我不这样做。")) {
+		switch(select("�ǵģ���Ը�⡣�������Ҳ���������")) {
 		case 1:
-			mes "[洛基]";
-			mes "那我就问你一个问题。";
-			mes "你见过守卫……紫色头发的女孩吗？";
+			mes "[���]";
+			mes "���Ҿ�����һ�����⡣";
+			mes "���������������ɫͷ����Ů����";
 			next;
-			switch(select("不，我没有：是的，我可能有……")) {
+			switch(select("������û�У��ǵģ��ҿ����С���")) {
 			case 1:
-				mes "[洛基]";
-				mes "所以你还没有。";
-				mes "你说的是实话。";
+				mes "[���]";
+				mes "�����㻹û�С�";
+				mes "��˵����ʵ����";
 				next;
 				break;
 			case 2:
-				mes "[洛基]";
-				mes "等待。";
-				mes "（洛基走近了。）";
-				mes "... 不。";
-				mes "你说的是实话。";
+				mes "[���]";
+				mes "�ȴ���";
+				mes "������߽��ˡ���";
+				mes "... ����";
+				mes "��˵����ʵ����";
 				next;
 				break;
 			}
-			mes "[洛基]";
-			mes "现在我们必须在这里说再见了。";
-			mes "当然，如果你能在这片森林里生存下来。";
+			mes "[���]";
+			mes "�������Ǳ���������˵�ټ��ˡ�";
+			mes "��Ȼ�������������Ƭɭ��������������";
 			set ep14_1_mistwoods,2;
 			setquest 7212;
 			close;
 		case 2:
-			mes "[洛基]";
-			mes "我明白。";
-			mes "如果你还没准备好，就退后一步。";
-			mes "这片森林不喜欢陌生人。";
+			mes "[���]";
+			mes "�����ס�";
+			mes "����㻹û׼���ã����˺�һ����";
+			mes "��Ƭɭ�ֲ�ϲ��İ���ˡ�";
 			set ep14_1_mistwoods,1;
 			close;
 		}
 	} else if (ep14_1_mistwoods == 1) {
-		mes "[洛基]";
-		mes "我告诉过你——如果你不想死就退后一步。";
-		mes "穿过森林并不容易。";
-		mes "这可能会让你付出生命的代价。";
+		mes "[���]";
+		mes "�Ҹ��߹��㡪������㲻�������˺�һ����";
+		mes "����ɭ�ֲ������ס�";
+		mes "����ܻ����㸶�������Ĵ��ۡ�";
 		next;
-		switch(select("好的：你想要什么？")) {
+		switch(select("�õģ�����Ҫʲô��")) {
 		case 1:
-			mes "- 当你退后一步时，";
-			mes "Loki轻轻地点点头，然后移开视线。 -";
+			mes "- �����˺�һ��ʱ��";
+			mes "Loki����ص��ͷ��Ȼ���ƿ����ߡ� -";
 			close;
 		case 2:
-			mes "[洛基]";
-			mes "我正在找人。";
-			mes "你见过守卫……紫色头发的女孩吗？";
+			mes "[���]";
+			mes "���������ˡ�";
+			mes "���������������ɫͷ����Ů����";
 			next;
-			switch(select("不，我没有：是的，我可能有……")) {
+			switch(select("������û�У��ǵģ��ҿ����С���")) {
 			case 1:
-				mes "[洛基]";
-				mes "所以你还没有。";
-				mes "你说的是实话。";
+				mes "[���]";
+				mes "�����㻹û�С�";
+				mes "��˵����ʵ����";
 				next;
 				break;
 			case 2:
-				mes "[洛基]";
-				mes "等待。";
-				mes "（洛基走近了。）";
-				mes "... 不。";
-				mes "你说的是实话。";
+				mes "[���]";
+				mes "�ȴ���";
+				mes "������߽��ˡ���";
+				mes "... ����";
+				mes "��˵����ʵ����";
 				next;
 				break;
 			}
-			mes "[洛基]";
-			mes "现在我们必须在这里说再见了。";
-			mes "希望我们能在莫拉再次见面。";
+			mes "[���]";
+			mes "�������Ǳ���������˵�ټ��ˡ�";
+			mes "ϣ����������Ī���ٴμ��档";
 			set ep14_1_mistwoods,2;
 			setquest 7212;
 			close;
 		}
 	} else if (ep14_1_mistwoods == 2) {
-		mes "[洛基]";
-		mes "我不想和你一起去。";
-		mes "希望我们能在莫拉再次见面。";
+		mes "[���]";
+		mes "�Ҳ������һ��ȥ��";
+		mes "ϣ����������Ī���ٴμ��档";
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[洛基]";
-		mes "于是我们又见面了。";
-		mes "你习惯这个地方吗？";
-		mes "来到莫拉的旅馆。";
-		mes "我有东西要给你。";
+		mes "[���]";
+		mes "���������ּ����ˡ�";
+		mes "��ϰ������ط���";
+		mes "����Ī�����ùݡ�";
+		mes "���ж���Ҫ���㡣";
 		close;
 	} else {
-		mes "[洛基]";
-		mes "这些天我们见面很多。";
-		mes "看起来你对这个地方非常满意。";
-		mes "你最好不要太为自己骄傲。";
+		mes "[���]";
+		mes "��Щ�����Ǽ���ܶࡣ";
+		mes "�������������ط��ǳ����⡣";
+		mes "����ò�Ҫ̫Ϊ�Լ�������";
 		close;
 	}
 	end;
@@ -688,46 +690,46 @@ OnDisable:
 
 1@mist,183,304,3	script	Loki#mist	512,{
 	if (ep14_1_mistwoods < 2) {
-		mes "[洛基]";
-		mes "森林里的冒险家。";
+		mes "[���]";
+		mes "ɭ�����ð�ռҡ�";
 		mes ".....";
-		mes "穿过这片森林就可以去莫拉。";
+		mes "������Ƭɭ�־Ϳ���ȥĪ����";
 		close;
 	} else if (ep14_1_mistwoods == 2) {
-		mes "[洛基]";
-		mes "是你照顾这个不守规矩的女孩吗？";
-		mes "我想我必须感谢你。";
-		mes "你已经让她平静下来了。";
+		mes "[���]";
+		mes "�����չ�������ع�ص�Ů����";
+		mes "�����ұ����л�㡣";
+		mes "���Ѿ�����ƽ�������ˡ�";
 		next;
-		select("这是怎么回事？：这个女孩……？");
-		mes "[洛基]";
-		mes "你也许可以改变你的外表，但你无法改变你独特的、与生俱来的光芒。";
-		mes "一股浓烈的气味足以灼伤你的鼻子。";
+		select("������ô���£������Ů��������");
+		mes "[���]";
+		mes "��Ҳ�����Ըı��������������޷��ı�����صġ����������Ĺ�â��";
+		mes "һ��Ũ�ҵ���ζ����������ı��ӡ�";
 		next;
-		mes "[洛基]";
-		mes "这是尼德霍格，世界树的守护者，";
-		mes "我在找谁。";
-		mes "现在她不会再疯狂地到处乱逛了。";
+		mes "[���]";
+		mes "������»������������ػ��ߣ�";
+		mes "������˭��";
+		mes "�����������ٷ��ص����ҹ��ˡ�";
 		next;
-		select("你现在要做什么？");
-		mes "[洛基]";
-		mes "我会等她醒来，离开这片森林。";
-		mes "我可以自己处理。";
-		mes "我们在莫拉见。";
+		select("������Ҫ��ʲô��");
+		mes "[���]";
+		mes "�һ�����������뿪��Ƭɭ�֡�";
+		mes "�ҿ����Լ�������";
+		mes "������Ī������";
 		set ep14_1_mistwoods,3;
 		erasequest 7212;
 		setquest 7213;
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[洛基]";
-		mes "我不想和你一起去。";
-		mes "我一个人就能管理她。";
-		mes "如果你有什么话要说，等我们走出森林后再说。";
+		mes "[���]";
+		mes "�Ҳ������һ��ȥ��";
+		mes "��һ���˾��ܹ�������";
+		mes "�������ʲô��Ҫ˵���������߳�ɭ�ֺ���˵��";
 		close;
 	} else {
-		mes "[洛基]";
-		mes "我不想和你一起去。";
-		mes "如果你有什么话要说，等我们走出森林后再说。";
+		mes "[���]";
+		mes "�Ҳ������һ��ȥ��";
+		mes "�������ʲô��Ҫ˵���������߳�ɭ�ֺ���˵��";
 		close;
 	}
 	end;
@@ -741,8 +743,8 @@ OnEnable:
 }
 
 1@mist,181,303,3	script	Collapsed Girl#mist	511,{
-	mes "你看到一个有着神秘头发的女孩倒在地上。";
-	mes "当你走近她时，你闻到了浓烈的花香，让你头晕目眩。";
+	mes "�㿴��һ����������ͷ����Ů�����ڵ��ϡ�";
+	mes "�����߽���ʱ�����ŵ���Ũ�ҵĻ��㣬����ͷ��Ŀѣ��";
 	close;
 OnInstanceInit:
 OnDisable:
@@ -756,161 +758,161 @@ OnEnable:
 // --------------- Part of md_mistwoods_enter ----------------
 mora,46,152,5	script	Flower Smelling Lady	510,{
 	if (ep14_1_mistwoods < 3) {
-		mes "[花香女士]";
-		mes "我需要休息。";
-		mes "我太累了，不想和你说话。";
-		mes "对不起。";
+		mes "[����Ůʿ]";
+		mes "����Ҫ��Ϣ��";
+		mes "��̫���ˣ��������˵����";
+		mes "�Բ���";
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[守护者尼多格]";
-		mes "我一直在等你。";
-		mes "我仍然很困惑，但我知道我做错了什么。";
+		mes "[�ػ�������]";
+		mes "��һֱ�ڵ��㡣";
+		mes "����Ȼ�����󣬵���֪����������ʲô��";
 		next;
-		mes "[守护者尼多格]";
-		mes "如果没有你，我可能还在黑暗的深渊里徘徊。";
-		mes "我从心底里感谢你。";
+		mes "[�ػ�������]";
+		mes "���û���㣬�ҿ��ܻ��ںڰ�����Ԩ���ǻ���";
+		mes "�Ҵ��ĵ����л�㡣";
 		next;
-		mes "[守护者尼多格]";
-		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+		mes "[�ػ�������]";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 		mes "....";
 		next;
-		mes "[守护者尼多格]";
-		mes "我不配再当监护人了。";
-		mes "发疯的龙不再是守护者了。";
+		mes "[�ػ�������]";
+		mes "�Ҳ����ٵ��໤���ˡ�";
+		mes "��������������ػ����ˡ�";
 		next;
-		mes "[洛基]";
-		mes "Yggdrasil 不这么认为。";
-		mes "尼迪，不要忘记你的职责。";
+		mes "[���]";
+		mes "Yggdrasil ����ô��Ϊ��";
+		mes "��ϣ���Ҫ�������ְ��";
 		next;
-		mes "[守护者尼多格]";
-		mes "你是...？";
-		mes "我懂了...";
-		mes "我以为我被抛弃了...";
+		mes "[�ػ�������]";
+		mes "����...��";
+		mes "�Ҷ���...";
+		mes "����Ϊ�ұ�������...";
 		next;
-		mes "守护者缓缓移开视线，仿佛陷入了沉思。";
+		mes "�ػ��߻����ƿ����ߣ��·������˳�˼��";
 		set ep14_1_mistwoods,4;
 		close2;
 	} else if (ep14_1_mistwoods == 4) {
-		mes "——他似乎陷入了沉思。 -";
+		mes "�������ƺ������˳�˼�� -";
 		close;
 	} else {
-		mes "[守护者尼多格]";
-		mes "我还没有恢复所有的力量。";
-		mes "很抱歉我无法保护你。";
+		mes "[�ػ�������]";
+		mes "�һ�û�лָ����е�������";
+		mes "�ܱ�Ǹ���޷������㡣";
 		next;
-		mes "[守护者尼多格]";
-		mes "洛基说……";
-		mes "我不会再因为孤独而哭泣";
-		mes "我将永远有像你这样的新朋友......";
+		mes "[�ػ�������]";
+		mes "���˵����";
+		mes "�Ҳ�������Ϊ�¶�������";
+		mes "�ҽ���Զ������������������......";
 		next;
-		mes "[守护者尼多格]";
-		mes "……我失去了一切，但我现在很幸福。";
+		mes "[�ػ�������]";
+		mes "������ʧȥ��һ�У��������ں��Ҹ���";
 		close;
 	}
 }
 
 mora,48,152,3	script	Sharp Eyed Man	512,{
 	if (checkweight(1201,1) == 0 || MaxWeight - Weight < 1000) {
-		mes "- 你的物品太多，无法完成此任务。 -";
+		mes "- �����Ʒ̫�࣬�޷���ɴ����� -";
 		close;
 	}
 	if (ep14_1_mistwoods < 3) {
-		mes "他不会看你。就好像他根本不感兴趣一样。";
+		mes "�����ῴ�㡣�ͺ���������������Ȥһ����";
 		close;
 	} else if (ep14_1_mistwoods == 3) {
-		mes "[洛基]";
-		mes "所以你已经穿过了森林。";
-		mes "尼迪似乎有话要对你说。";
+		mes "[���]";
+		mes "�������Ѿ�������ɭ�֡�";
+		mes "����ƺ��л�Ҫ����˵��";
 		close;
 	} else if (ep14_1_mistwoods == 4) {
-		mes "[洛基]";
-		mes "尼多格是世界树的守护者之一。";
-		mes "但当他屈服于莫罗克的诱惑时，他放弃了监护人的职责。";
+		mes "[���]";
+		mes "���������������ػ���֮һ��";
+		mes "������������Ī�޿˵��ջ�ʱ���������˼໤�˵�ְ��";
 		next;
-		mes "[洛基]";
-		mes "一些傻瓜举行了仪式来打破摩洛哥的封印。";
-		mes "但仪式并没有发挥作用。摩洛哥的仆人未能打破封印。";
+		mes "[���]";
+		mes "һЩɵ�Ͼ�������ʽ������Ħ���ķ�ӡ��";
+		mes "����ʽ��û�з������á�Ħ��������δ�ܴ��Ʒ�ӡ��";
 		next;
-		mes "[洛基]";
-		mes "但封印如此脆弱，随时都有可能破开。";
-		mes "正是世界之树尤格德拉西尔的意志才阻止了封印的破裂。";
+		mes "[���]";
+		mes "����ӡ��˴�������ʱ���п����ƿ���";
+		mes "��������֮���ȸ������������־����ֹ�˷�ӡ�����ѡ�";
 		next;
-		mes "[守护者尼多格]";
-		mes "这是正确的。世界树的力量，与整个世界相连。";
-		mes "当守护者和世界树之间的联系破裂时，世界树变得不稳定。";
+		mes "[�ػ�������]";
+		mes "������ȷ�ġ�������������������������������";
+		mes "���ػ��ߺ�������֮�����ϵ����ʱ����������ò��ȶ���";
 		next;
-		mes "[守护者尼多格]";
-		mes "这就是为什么所有这些灾难发生在世界树上。";
-		mes "随着世界树变得不稳定，它对封印的影响也越来越弱。";
+		mes "[�ػ�������]";
+		mes "�����Ϊʲô������Щ���ѷ������������ϡ�";
+		mes "������������ò��ȶ������Է�ӡ��Ӱ��ҲԽ��Խ����";
 		next;
-		mes "[洛基]";
-		mes "摩洛哥也挣脱了封印。";
-		mes "虽然看起来他用了大部分力量只是为了打破封印……";
+		mes "[���]";
+		mes "Ħ���Ҳ�����˷�ӡ��";
+		mes "��Ȼ�����������˴󲿷�����ֻ��Ϊ�˴��Ʒ�ӡ����";
 		next;
-		mes "[守护者尼多格]";
-		mes "都是我的错。";
-		mes "我无法摆脱摩洛哥的诱惑。";
-		mes "太……太久了……";
+		mes "[�ػ�������]";
+		mes "�����ҵĴ���";
+		mes "���޷�����Ħ�����ջ�";
+		mes "̫����̫���ˡ���";
 		next;
-		mes "[守护者尼多格]";
-		mes "……我想摆脱几千年来的孤独。";
-		mes "那时我神志不清。";
-		mes "断绝与世界树的羁绊的不是别人，正是我。";
+		mes "[�ػ�������]";
+		mes "����������Ѽ�ǧ�����Ĺ¶���";
+		mes "��ʱ����־���塣";
+		mes "�Ͼ�������������Ĳ��Ǳ��ˣ������ҡ�";
 		next;
-		mes "[守护者尼多格]";
-		mes "我失去了对自己的控制，做了不该做的事。";
-		mes "我的另一面变成了阴影和鲁莽的暴君。";
+		mes "[�ػ�������]";
+		mes "��ʧȥ�˶��Լ��Ŀ��ƣ����˲��������¡�";
+		mes "�ҵ���һ��������Ӱ��³ç�ı�����";
 		next;
-		mes "[守护者尼多格]";
-		mes "面对这个世界，我发现...";
-		mes "我的失落感太大了……比我承受了几千年的孤独还要痛苦得多。";
+		mes "[�ػ�������]";
+		mes "���������磬�ҷ���...";
+		mes "�ҵ�ʧ���̫���ˡ������ҳ����˼�ǧ��Ĺ¶���Ҫʹ��öࡣ";
 		next;
-		mes "[守护者尼多格]";
-		mes "就这样我就被留下了。";
-		mes "我的失落感太大了……比我承受了几千年的孤独还要痛苦得多。";
+		mes "[�ػ�������]";
+		mes "�������Ҿͱ������ˡ�";
+		mes "�ҵ�ʧ���̫���ˡ������ҳ����˼�ǧ��Ĺ¶���Ҫʹ��öࡣ";
 		next;
-		mes "[守护者尼多格]";
-		mes "于是我成了一个罪人，被世界遗忘了。";
+		mes "[�ػ�������]";
+		mes "�����ҳ���һ�����ˣ������������ˡ�";
 		next;
-		mes "[洛基]";
-		mes "还不算太晚。";
-		mes "你仍然是一个监护人。";
-		mes "你还有事情要做。";
+		mes "[���]";
+		mes "������̫����";
+		mes "����Ȼ��һ���໤�ˡ�";
+		mes "�㻹������Ҫ����";
 		next;
-		mes "[守护者尼多格]";
-		mes "...哦是的。虽然很晚了，但我还是要尽到监护人的职责。";
-		mes "现在我知道了。我会亲手毁灭摩洛哥。";
-		mes "我会履行作为监护人的职责。";
+		mes "[�ػ�������]";
+		mes "...Ŷ�ǵġ���Ȼ�����ˣ����һ���Ҫ�����໤�˵�ְ��";
+		mes "������֪���ˡ��һ����ֻ���Ħ��硣";
+		mes "�һ�������Ϊ�໤�˵�ְ��";
 		next;
-		switch(select("你并不孤单：这些都是非常重要的职责。")) {
+		switch(select("�㲢���µ�����Щ���Ƿǳ���Ҫ��ְ��")) {
 		case 1:
-			mes "[守护者尼多格]";
-			mes "你说得对。";
-			mes "这可能就是我没有被抛弃的原因——意识到我并不孤单。";
-			mes "你是一个善良的灵魂。";
+			mes "[�ػ�������]";
+			mes "��˵�öԡ�";
+			mes "����ܾ�����û�б�������ԭ�򡪡���ʶ���Ҳ����µ���";
+			mes "����һ����������ꡣ";
 			next;
 			break;
 		case 2:
-			mes "[守护者尼多格]";
-			mes "但这是我的赎罪。";
-			mes "不过我很高兴。";
-			mes "我不再需要与孤独作斗争。";
+			mes "[�ػ�������]";
+			mes "�������ҵ����";
+			mes "�����Һܸ��ˡ�";
+			mes "�Ҳ�����Ҫ��¶���������";
 			next;
 			break;
 		}
-		mes "[守护者尼多格]";
+		mes "[�ػ�������]";
 		mes strcharinfo(0)+"...";
-		mes "谢谢你听我的长篇故事。";
+		mes "лл�����ҵĳ�ƪ���¡�";
 		next;
-		mes "[守护者尼多格]";
-		mes "这是我一直随身携带的东西。";
-		mes "我相信有一天它会保护你。";
+		mes "[�ػ�������]";
+		mes "������һֱ����Я���Ķ�����";
+		mes "��������һ�����ᱣ���㡣";
 		next;
-		mes "[洛基]";
-		mes "（摘下脖子上的围巾，递给你。）";
+		mes "[���]";
+		mes "��ժ�²����ϵ�Χ�����ݸ��㡣��";
 		next;
-		mes "[守护者尼多格]";
-		mes "愿尤格德拉希尔母亲的祝福与你同在……";
+		mes "[�ػ�������]";
+		mes "Ը�ȸ����ϣ��ĸ�׵�ף������ͬ�ڡ���";
 		set ep14_1_mistwoods,10;
 		completequest 7213;
 		getitem 2568,1; //Muffler_Of_Roki
@@ -918,13 +920,13 @@ mora,48,152,3	script	Sharp Eyed Man	512,{
 		getexp 400000,400000;
 		close;
 	} else {
-		mes "[洛基]";
-		mes "我会在这里呆一段时间。";
-		mes "我们可能会再次见面。";
+		mes "[���]";
+		mes "�һ��������һ��ʱ�䡣";
+		mes "���ǿ��ܻ��ٴμ��档";
 		next;
-		mes "[洛基]";
-		mes "摩洛哥露出卑鄙本性的那一天……";
-		mes "我会等他。";
+		mes "[���]";
+		mes "Ħ���¶�����ɱ��Ե���һ�졭��";
+		mes "�һ������";
 		close;
 	}
 }
@@ -1007,25 +1009,25 @@ OnInstanceInit:
 // Warp Portals :: md_mist_in_link
 //============================================================
 bif_fild01,38,374,0	script	Mysterious Flower#ep14_1	844,{
-	mes "这是一朵巨大的花朵，蕴含着神秘的能量。";
+	mes "����һ��޴�Ļ��䣬�̺������ص�������";
 	if (countitem(12561)) {
-		mes "它会对你随身携带的神秘花种子做出反应。";
+		mes "�����������Я�������ػ�����������Ӧ��";
 		next;
-		switch(select("观察反应：停止反应。")) {
+		switch(select("�۲췴Ӧ��ֹͣ��Ӧ��")) {
 		case 1:
-			mes "花朵开始剧烈摇晃";
-			mes "然后向前摆动，好像要把种子送到尽可能远的地方！";
+			mes "���俪ʼ����ҡ��";
+			mes "Ȼ����ǰ�ڶ�������Ҫ�������͵�������Զ�ĵط���";
 			close2;
 			delitem 12561,1; //Mysterious_Seed
 			warp "bif_fild02",160,230;
 			end;
 		case 2:
-			mes "当你紧紧握住神秘花种时，";
-			mes "花朵猛烈地摇晃了一下，然后又恢复了平静。";
+			mes "���������ס���ػ���ʱ��";
+			mes "�������ҵ�ҡ����һ�£�Ȼ���ָֻ���ƽ����";
 			close;
 		}
 	}
-	mes "看起来它有一些特殊的用途，但你不确定是什么。";
+	mes "����������һЩ�������;�����㲻ȷ����ʲô��";
 	close;
 }
 

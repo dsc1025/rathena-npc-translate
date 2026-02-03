@@ -13,61 +13,63 @@
 //= 1.0 First version, Renewal guide.
 //= 1.1 Optimized. [Euphy]
 //= 1.2 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
-	mes "[é˜¿ç›æ˜Œ]";
-	mes "æ¬¢è¿æ¥åˆ°^8B4513é˜¿æ¾^000000ï¼Œ";
-	mes "å–„è‰¯çš„é•‡æ°‘ä¹‹åŸ";
-	mes "å’Œç¾ä¸½çš„æ¨±èŠ±ã€‚";
+	mes "[°¢Âê²ı]";
+	mes "»¶Ó­À´µ½^8B4513°¢ËÉ^000000£¬";
+	mes "ÉÆÁ¼µÄÕòÃñÖ®³Ç";
+	mes "ºÍÃÀÀöµÄÓ£»¨¡£";
 	next;
-	mes "[é˜¿ç›æ˜Œ]";
-	mes "æˆ‘æ˜¯é˜¿ç›æ˜Œ";
-	mes "ç¬¬åä¸‰ä»£å¤©æ¾å°å§ã€‚";
-	mes "æˆ‘ä¼šå¸¦ä½ å‚è§‚è¿™åº§åŸå¸‚";
-	mes "ä½œä¸ºå¤©æ¾å°å§ã€‚";
-	mes "è¯·å‘Šè¯‰æˆ‘";
-	mes "å¦‚æœä½ æƒ³çŸ¥é“ä»€ä¹ˆã€‚";
-	F_Navi("[é˜¿ç›æ˜Œ]");
+	mes "[°¢Âê²ı]";
+	mes "ÎÒÊÇ°¢Âê²ı";
+	mes "µÚÊ®Èı´úÌìËÉĞ¡½ã¡£";
+	mes "ÎÒ»á´øÄã²Î¹ÛÕâ×ù³ÇÊĞ";
+	mes "×÷ÎªÌìËÉĞ¡½ã¡£";
+	mes "Çë¸æËßÎÒ";
+	mes "Èç¹ûÄãÏëÖªµÀÊ²Ã´¡£";
+	F_Navi("[°¢Âê²ı]");
 	while (1) {
 		next;
-		switch(select("[å¡å¤«æ‹‰å‘˜å·¥]ï¼š[é…’å§]ï¼š[æ­¦å™¨ç»é”€å•†]ï¼š[å·¥å…·ç»é”€å•†]ï¼š[é˜¿ç›æ¾å®«]ï¼š[å¨å¸ˆåŠ©ç†]ï¼š[å¿è€…å…¬ä¼šå¤§æ¥¼]ï¼š[èˆ¹é•¿]ï¼šä»å°åœ°å›¾ä¸Šåˆ é™¤æ ‡è®°ï¼šå–æ¶ˆ")) {
+		switch(select("[¿¨·òÀ­Ô±¹¤]£º[¾Æ°É]£º[ÎäÆ÷¾­ÏúÉÌ]£º[¹¤¾ß¾­ÏúÉÌ]£º[°¢ÂêËÉ¹¬]£º[³øÊ¦ÖúÀí]£º[ÈÌÕß¹«»á´óÂ¥]£º[´¬³¤]£º´ÓĞ¡µØÍ¼ÉÏÉ¾³ı±ê¼Ç£ºÈ¡Ïû")) {
 		case 1:
 			callsub L_Mark, "^0000FFKafra Employee^000000";
 			viewpoint 1,102,149,0,0x0A82FF;
 			break;
 		case 2:
-			callsub L_Mark, F_Navi("é…’å§","amatsu,215,116","^006400");
+			callsub L_Mark, F_Navi("¾Æ°É","amatsu,215,116","^006400");
 			viewpoint 1,215,116,1,0xAAFF00;
 			break;
 		case 3:
-			callsub L_Mark, F_Navi("æ­¦å™¨ç»é”€å•†","amatsu,129,117","^008080");
+			callsub L_Mark, F_Navi("ÎäÆ÷¾­ÏúÉÌ","amatsu,129,117","^008080");
 			viewpoint 1,129,117,2,0x008080;
 			break;
 		case 4:
-			callsub L_Mark, F_Navi("å·¥å…·ç»é”€å•†","amatsu,97,117","^FF1493");
+			callsub L_Mark, F_Navi("¹¤¾ß¾­ÏúÉÌ","amatsu,97,117","^FF1493");
 			viewpoint 1,97,117,3,0xFF1493;
 			break;
 		case 5:
-			callsub L_Mark, F_Navi("å¤©æ¾å®«","amatsu,87,235","^8B4513");
+			callsub L_Mark, F_Navi("ÌìËÉ¹¬","amatsu,87,235","^8B4513");
 			viewpoint 1,87,235,4,0x8B4513;
 			break;
 		case 6:
-			callsub L_Mark, F_Navi("åŠ©ç†å¨å¸ˆé•¿","amatsu,206,150","^8A2BE2");
+			callsub L_Mark, F_Navi("ÖúÀí³øÊ¦³¤","amatsu,206,150","^8A2BE2");
 			viewpoint 1,206,150,5,0x8A2BE2;
 			break;
 		case 7:
-			callsub L_Mark, F_Navi("å¿è€…å…¬ä¼šå¤§æ¥¼","amatsu,148,137","^4B0082");
+			callsub L_Mark, F_Navi("ÈÌÕß¹«»á´óÂ¥","amatsu,148,137","^4B0082");
 			viewpoint 1,148,137,6,0x4B0082;
 			break;
 		case 8:
-			callsub L_Mark, F_Navi("èˆ¹é•¿","amatsu,195,79","^00BFFF");
+			callsub L_Mark, F_Navi("´¬³¤","amatsu,195,79","^00BFFF");
 			viewpoint 1,195,79,7,0x00BFFF;
 			break;
 		case 9:
-			mes "[é˜¿ç›æ˜Œ]";
-			mes "æˆ‘ä¼šä»ä½ çš„å°åœ°å›¾ä¸Šåˆ é™¤æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+			mes "[°¢Âê²ı]";
+			mes "ÎÒ»á´ÓÄãµÄĞ¡µØÍ¼ÉÏÉ¾³ıËùÓĞ±ê¼Ç¡£";
+			mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -78,16 +80,16 @@ amatsu,202,91,3	script	Amatsu Guide#amatsu	758,{
 			viewpoint 2,1,1,7,0xFFFFFF;
 			break;
 		case 10:
-			mes "[é˜¿ç›æ˜Œ]";
-			mes "ç¥æ‚¨æ—…é€”æ„‰å¿«~ï¼ï¼";
+			mes "[°¢Âê²ı]";
+			mes "×£ÄúÂÃÍ¾Óä¿ì~£¡£¡";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[é˜¿ç›æ˜Œ]";
-	mes ""+getarg(0)+" æ˜¯";
-	mes "æ ‡è®°åœ¨æ‚¨çš„å°åœ°å›¾ä¸Šã€‚";
-	mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+	mes "[°¢Âê²ı]";
+	mes ""+getarg(0)+" ÊÇ";
+	mes "±ê¼ÇÔÚÄúµÄĞ¡µØÍ¼ÉÏ¡£";
+	mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 	return;
 }

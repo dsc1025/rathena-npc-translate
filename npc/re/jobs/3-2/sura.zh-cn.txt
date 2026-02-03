@@ -16,6 +16,8 @@
 //= 1.3 Added GM management function. [Euphy]
 //= 1.4 Added VIP features. [Euphy]
 //= 1.5 Fixed players stuck in waiting room, event triggers properly [Luciar]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ve_in,237,125,0	script	King Crab#job_shu	107,{
@@ -29,141 +31,141 @@ ve_in,237,125,0	script	King Crab#job_shu	107,{
 				next;
 			}
 		}
-		mes "[帝王蟹]";
-		mes "哈哈哈哈哈哈哈。";
-		mes "那小菜鸟就被我一击打倒了！";
+		mes "[����з]";
+		mes "����������������";
+		mes "��С����ͱ���һ�����ˣ�";
 		next;
-		mes "[污泥蠕虫]";
-		mes "这些嚣张的家伙就该受到惨痛的教训。";
-		mes "老大，一个小菜鸟竟然敢攻击你！";
+		mes "[�������]";
+		mes "��Щ���ŵļһ�͸��ܵ���ʹ�Ľ�ѵ��";
+		mes "�ϴ�һ��С����Ȼ�ҹ����㣡";
 		next;
 		if (!.@job_check) {
-			mes "[帝王蟹]";
-			mes "哈哈哈哈哈哈哈！！！！";
-			mes "再来一杯啤酒，来！！！";
-			mes "我今天就喝！！！";
+			mes "[����з]";
+			mes "����������������������";
+			mes "����һ��ơ�ƣ���������";
+			mes "�ҽ���ͺȣ�����";
 			next;
-			mes "[污泥蠕虫]";
-			mes "帝王蟹！！！我会永远追随你！！";
+			mes "[�������]";
+			mes "����з�������һ���Զ׷���㣡��";
 			close;
 		}
-		mes "[帝王蟹]";
-		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+		mes "[����з]";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 		next;
-		mes "[污泥蠕虫]";
-		mes "嘿！就在这里！！！再来一杯啤酒！！！";
-		mes "你在干什么？我老板的杯子已经空了！快来吧！";
+		mes "[�������]";
+		mes "�٣����������������һ��ơ�ƣ�����";
+		mes "���ڸ�ʲô�����ϰ�ı����Ѿ����ˣ������ɣ�";
 		next;
-		mes "[女服务员]";
-		mes "是的，我马上拿来。";
+		mes "[Ů����Ա]";
+		mes "�ǵģ�������������";
 		next;
-		mes "[污泥蠕虫]";
-		mes "太慢了！！！你以为我的老板是谁？哈！？";
+		mes "[�������]";
+		mes "̫���ˣ���������Ϊ�ҵ��ϰ���˭��������";
 		next;
-		mes "[女服务员]";
-		mes "我……我真的很抱歉，先生……";
+		mes "[Ů����Ա]";
+		mes "�ҡ�������ĺܱ�Ǹ����������";
 		next;
-		mes "[帝王蟹]";
-		mes "克克克克克。这就够了。";
-		mes "那个可爱的女孩好像很害怕你！";
-		mes "嘿女士~我们不是可怕的人~~";
+		mes "[����з]";
+		mes "�˿˿˿˿ˡ���͹��ˡ�";
+		mes "�Ǹ��ɰ���Ů������ܺ����㣡";
+		mes "��Ůʿ~���ǲ��ǿ��µ���~~";
 		next;
-		mes "[女服务员]";
-		mes "啊啊啊啊啊！不要这样做！";
+		mes "[Ů����Ա]";
+		mes "��������������Ҫ��������";
 		next;
-		mes "- 砰 -";
+		mes "- �� -";
 		donpcevent "???#bcmd::OnEnable";
 		next;
 		mes "[???]";
-		mes "嘿。";
-		mes "我一直在看着你，大吵大闹，就像你是这个地方的主人一样。";
+		mes "�١�";
+		mes "��һֱ�ڿ����㣬�󳳴��֣�������������ط�������һ����";
 		next;
 		mes "[???]";
-		mes "太吵了。所以，如果你还想再说那句废话，那就回家吧。";
+		mes "̫���ˡ����ԣ�����㻹����˵�Ǿ�ϻ����ǾͻؼҰɡ�";
 		next;
-		mes "[污泥蠕虫]";
-		mes "什么？！";
-		mes "我不知道你是谁，但你一定是疯了！";
-		mes "你知道我的老板是谁吗？！";
+		mes "[�������]";
+		mes "ʲô����";
+		mes "�Ҳ�֪������˭������һ���Ƿ��ˣ�";
+		mes "��֪���ҵ��ϰ���˭�𣿣�";
 		next;
-		mes "[污泥蠕虫]";
-		mes "这就是著名的帝王蟹！！！";
-		mes "谁能用他的拳头消灭整个军队！";
+		mes "[�������]";
+		mes "����������ĵ���з������";
+		mes "˭��������ȭͷ�����������ӣ�";
 		next;
 		mes "[???]";
-		mes "你做所有肮脏的事情，比如你肮脏的脸。";
-		mes "你只是一个满足自己欲望的暴徒。";
+		mes "�������а�������飬�����㰹�������";
+		mes "��ֻ��һ�������Լ������ı�ͽ��";
 		next;
-		mes "[帝王蟹]";
-		mes "什么？";
-		mes "你怎么敢说那些话？";
-		mes "仅仅因为你是个女孩并不意味着我就会放手。";
+		mes "[����з]";
+		mes "ʲô��";
+		mes "����ô��˵��Щ����";
+		mes "������Ϊ���Ǹ�Ů��������ζ���Ҿͻ���֡�";
 		next;
-		mes "[污泥蠕虫]";
-		mes "哈！老板真的生气了！";
-		mes "我一拳就能打倒你……";
+		mes "[�������]";
+		mes "�����ϰ���������ˣ�";
+		mes "��һȭ���ܴ��㡭��";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "嘿！竟敢对一位女士使用暴力！？";
+		mes "�٣����Ҷ�һλŮʿʹ�ñ�������";
 		next;
 		mes "[???]";
-		mes "退后一步吧，你这个小东西……";
+		mes "�˺�һ���ɣ������С��������";
 		next;
 		mes "[???]";
-		mes "哦，我很高兴听到这个。";
-		mes "我不会先进攻，因为我正在训练中。";
+		mes "Ŷ���Һܸ������������";
+		mes "�Ҳ����Ƚ�������Ϊ������ѵ���С�";
 		next;
-		mes "[帝王蟹和污泥蠕虫]";
-		mes "什么？";
+		mes "[����з���������]";
+		mes "ʲô��";
 		next;
-		mes "[帝王蟹和污泥蠕虫]";
-		mes "呃呃？！";
+		mes "[����з���������]";
+		mes "��������";
 		next;
-		mes "[帝王蟹和污泥蠕虫]";
-		mes "啊啊啊啊啊啊！！！！！！";
+		mes "[����з���������]";
+		mes "������������������������";
 		specialeffect EF_FIRESPLASHHIT,AREA,"King Crab#job_shu";
 		specialeffect EF_FIRESPLASHHIT,AREA,"Sludge Worm#job_shu";
 		next;
-		mes "——那是什么惊人的力量？ -";
-		mes "-我从来没见过这个-";
-		mes "- 之前的一种技能... -";
+		mes "��������ʲô���˵������� -";
+		mes "-�Ҵ���û�������-";
+		mes "- ֮ǰ��һ�ּ���... -";
 		next;
 		mes "[???]";
-		mes "哎呀，心情都被破坏了……";
+		mes "��ѽ�����鶼���ƻ��ˡ���";
 		next;
-		mes "[女服务员]";
-		mes "那个……太谢谢你了……";
-		mes "我该如何报答你呢？";
-		next;
-		mes "[???]";
-		mes "这没什么大不了的。没关系。";
-		next;
-		mes "[女服务员]";
-		mes "你要回你的住处吗？";
-		mes "如果你方便的话，我可以请你吃饭吗？";
+		mes "[Ů����Ա]";
+		mes "�Ǹ�����̫лл���ˡ���";
+		mes "�Ҹ���α������أ�";
 		next;
 		mes "[???]";
-		mes "哦，你真的不需要。";
-		mes "只要一片面包和热汤对我来说就足够了。";
-		mes "那么，我就得说再见了。再见。";
+		mes "��ûʲô���˵ġ�û��ϵ��";
+		next;
+		mes "[Ů����Ա]";
+		mes "��Ҫ�����ס����";
+		mes "����㷽��Ļ����ҿ�������Է���";
+		next;
+		mes "[???]";
+		mes "Ŷ������Ĳ���Ҫ��";
+		mes "ֻҪһƬ���������������˵���㹻�ˡ�";
+		mes "��ô���Ҿ͵�˵�ټ��ˡ��ټ���";
 		donpcevent "???#bcmd::OnDisable";
 		next;
-		mes "[女服务员]";
-		mes "再见...";
+		mes "[Ů����Ա]";
+		mes "�ټ�...";
 		mes "...";
 		mes ".....";
-		mes "........（脸颊发红）";
+		mes "........�����շ��죩";
 		set job_shu,1;
 		setquest 11155;
 		close;
 	} else {
 		if (strnpcinfo(0) == "King Crab#job_shu") {
-			mes "[帝王蟹]";
-			mes "怎么一个小菜鸟就把我打倒了！我！伟大的帝王蟹...";
+			mes "[����з]";
+			mes "��ôһ��С����Ͱ��Ҵ��ˣ��ң�ΰ��ĵ���з...";
 		} else {
-			mes "[污泥蠕虫]";
-			mes "老大……我们真的已经过了巅峰期了吗？";
-			mes "呜呜……呜呜……";
+			mes "[�������]";
+			mes "�ϴ󡭡���������Ѿ������۷�������";
+			mes "���ء������ء���";
 		}
 		close;
 	}
@@ -171,37 +173,37 @@ ve_in,237,125,0	script	King Crab#job_shu	107,{
 ve_in,241,128,4	duplicate(King Crab#job_shu)	Sludge Worm#job_shu	110
 
 ve_in,244,126,3	script	Waitress#job_shu	69,{
-	mes "[女服务员]";
+	mes "[Ů����Ա]";
 	if (job_shu == 0) {
-		mes "哦不~";
-		mes "我讨厌那些吵闹、无礼的顾客！";
-		mes "我希望有人能替我骂他们。";
+		mes "Ŷ��~";
+		mes "��������Щ���֡�����Ĺ˿ͣ�";
+		mes "��ϣ�����������������ǡ�";
 		close;
 	} else if (job_shu == 1) {
 		if (BaseJob == Job_Monk) {
-			mes "亲亲哦~";
-			mes "我真的很感谢你，"+jobname(Class)+"，不久前对我的帮助。";
+			mes "����Ŷ~";
+			mes "����ĺܸ�л�㣬"+jobname(Class)+"������ǰ���ҵİ�����";
 			next;
 		}
-		mes "啊，我们之前见过的那个人？";
-		mes "她在这个村子里呆了好几天了，";
-		mes "她不是很厉害吗？";
+		mes "��������֮ǰ�������Ǹ��ˣ�";
+		mes "���������������˺ü����ˣ�";
+		mes "�����Ǻ�������";
 		next;
-		mes "[女服务员]";
-		mes "虽然她和我一样是个女人，但她真的很酷！";
-		mes "啊啊啊~那美丽又威风的身材……";
+		mes "[Ů����Ա]";
+		mes "��Ȼ������һ���Ǹ�Ů�ˣ�������ĺܿᣡ";
+		mes "������~����������������ġ���";
 		next;
-		mes "[女服务员]";
-		mes "天啊！！";
-		mes "我忘了做某事！";
-		mes "我应该立即做饭，然后把饭菜带到旅馆。啊啊啊~";
+		mes "[Ů����Ա]";
+		mes "�찡����";
+		mes "��������ĳ�£�";
+		mes "��Ӧ������������Ȼ��ѷ��˴����ùݡ�������~";
 		next;
-		mes "[女服务员]";
-		mes "如果您仍然不知道住在哪里，请使用^f57d7d本大楼上侧的旅馆^000000。";
+		mes "[Ů����Ա]";
+		mes "�������Ȼ��֪��ס�������ʹ��^f57d7d����¥�ϲ���ù�^000000��";
 		close;
 	}
-	mes "现在顾客们都变得有些安静了。";
-	mes "啊啊啊，我现在感觉好多了！！";
+	mes "���ڹ˿��Ƕ������Щ�����ˡ�";
+	mes "�������������ڸо��ö��ˣ���";
 	close;
 }
 
@@ -229,53 +231,53 @@ OnTouch:
 	if (job_shu == 1) {
 		set .@n$, "["+strcharinfo(0)+"]";
 		mes "[???]";
-		mes "是谁？！";
+		mes "��˭����";
 		next;
 		mes .@n$;
-		mes "我就是刚才在酒吧里的那个人。";
-		mes "我有事要问。";
+		mes "�Ҿ��Ǹղ��ھư�����Ǹ��ˡ�";
+		mes "������Ҫ�ʡ�";
 		next;
 		mes "[???]";
-		mes "别打扰我，你走吧！";
+		mes "������ң����߰ɣ�";
 		next;
 		mes .@n$;
-		mes "拜托，我只是想谈谈。";
+		mes "���У���ֻ����̸̸��";
 		next;
 		mes "[???]";
 		mes "...";
 		next;
 		mes .@n$;
-		mes "别不理我，跟我说话就行。";
+		mes "�����ң�����˵�����С�";
 		next;
 		mes .@n$;
-		mes "就一会儿，好吗？";
+		mes "��һ���������";
 		next;
 		mes .@n$;
-		mes "我不是来伤害你的。";
+		mes "�Ҳ������˺���ġ�";
 		next;
 		mes .@n$;
-		mes "你怎么能这样对待一个找上门来的人呢？";
+		mes "����ô�������Դ�һ���������������أ�";
 		next;
 		mes .@n$;
-		mes "你太过分了。";
+		mes "��̫�����ˡ�";
 		next;
 		mes .@n$;
-		mes "当我看到你打架后...";
+		mes "���ҿ������ܺ�...";
 		next;
 		mes .@n$;
-		mes "我以为你一定是练过武的，所以特地来见你的。";
+		mes "����Ϊ��һ����������ģ������ص�������ġ�";
 		next;
 		mes .@n$;
-		mes "但看到你这样把我放在外面......";
+		mes "���������������ҷ�������......";
 		next;
 		mes .@n$;
-		mes "你的武功一定很精湛吧……";
+		mes "����书һ���ܾ�տ�ɡ���";
 		next;
 		mes "[???]";
-		mes "多么执着...";
+		mes "��ôִ��...";
 		next;
 		mes "[???]";
-		mes "你到底想要什么？";
+		mes "�㵽����Ҫʲô��";
 		set job_shu,2;
 		close;
 	}
@@ -284,235 +286,235 @@ OnTouch:
 
 ve_in,98,159,0	script	Fighter#job_shu	484,{
 	if (job_shu < 2) {
-		mes "[战斗机]";
-		mes "啊啊啊~好累啊。";
-		mes "训练太辛苦了，我还有很长的路要走！";
+		mes "[ս����]";
+		mes "������~���۰���";
+		mes "ѵ��̫�����ˣ��һ��кܳ���·Ҫ�ߣ�";
 		close;
 	} else if (job_shu == 2) {
 		mes "["+strcharinfo(0)+"]";
-		mes "我想知道你刚才使用的技能。";
+		mes "����֪����ղ�ʹ�õļ��ܡ�";
 		next;
 		mes "[???]";
 		mes "...";
 		mes "......";
 		mes ".........";
-		mes "......像你这样的菜鸟不需要知道。";
+		mes "......���������Ĳ�����Ҫ֪����";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "菜鸟？！";
-		mes "我一直坚持不懈地练习武术。";
-		mes "我有信心我永远不会输。";
+		mes "���񣿣�";
+		mes "��һֱ��ֲ�и����ϰ������";
+		mes "������������Զ�����䡣";
 		next;
 		mes "[???]";
-		mes "那么你也能打败我吗？";
+		mes "��ô��Ҳ�ܴ������";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "不...";
-		mes "我想这太过分了...";
-		mes "坦白说，我对你感到非常惊讶。";
+		mes "��...";
+		mes "������̫������...";
+		mes "̹��˵���Ҷ���е��ǳ����ȡ�";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "我以为我已经足够强大了，但看到你打架后，我才发现我太自负了。";
+		mes "����Ϊ���Ѿ��㹻ǿ���ˣ����������ܺ��Ҳŷ�����̫�Ը��ˡ�";
 		next;
 		mes "[???]";
-		mes "呵呵~不管你有多强，";
-		mes "你无法避免达到自己真正的极限。";
+		mes "�Ǻ�~�������ж�ǿ��";
+		mes "���޷�����ﵽ�Լ������ļ��ޡ�";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "你正是我所期待的人。";
+		mes "�����������ڴ����ˡ�";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "我想你会知道";
-		mes "如何克服这个限制。";
+		mes "�������֪��";
+		mes "��ο˷�������ơ�";
 		next;
 		mes "[???]";
-		mes "停止吧。";
+		mes "ֹͣ�ɡ�";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "什么？为什么？";
+		mes "ʲô��Ϊʲô��";
 		next;
 		mes "[???]";
-		mes "你是人类吗？";
+		mes "����������";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "什么？";
-		mes "当然，我是一个人。";
+		mes "ʲô��";
+		mes "��Ȼ������һ���ˡ�";
 		next;
 		mes "[???]";
-		mes "想要变强，对于一个普通人来说，实在是太难了。";
-		mes "如果你愿意，就买更好的设备。";
+		mes "��Ҫ��ǿ������һ����ͨ����˵��ʵ����̫���ˡ�";
+		mes "�����Ը�⣬������õ��豸��";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "那么，你是什么？";
-		mes "你的意思是你不是人？";
+		mes "��ô������ʲô��";
+		mes "�����˼���㲻���ˣ�";
 		next;
 		mes "[???]";
-		mes "想要超越极限……";
-		mes "对人类来说是不可能的。";
-		mes "这是鬼道...";
+		mes "��Ҫ��Խ���ޡ���";
+		mes "��������˵�ǲ����ܵġ�";
+		mes "���ǹ���...";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "鬼？";
+		mes "����";
 		next;
 		mes "[???]";
-		mes "当我选择了这条路之后，我就放弃了做人。";
-		mes "放弃神护成为修罗的方法。";
+		mes "����ѡ��������·֮���Ҿͷ��������ˡ�";
+		mes "�����񻤳�Ϊ���޵ķ�����";
 		next;
 		mes "[???]";
-		mes "如果你选择这样，你连休息的时间都没有。";
-		mes "你将成为战争的傀儡......";
+		mes "�����ѡ��������������Ϣ��ʱ�䶼û�С�";
+		mes "�㽫��Ϊս���Ŀ���......";
 		next;
-		switch(select("但我还想了解更多。：好吧，我就退出了。")) {
+		switch(select("���һ����˽���ࡣ���ðɣ��Ҿ��˳��ˡ�")) {
 		case 1:
 			mes "[???]";
-			mes "你不是白痴吗？";
-			mes "为什么你对变成鬼这么高兴？";
+			mes "�㲻�ǰ׳���";
+			mes "Ϊʲô��Ա�ɹ���ô���ˣ�";
 			next;
 			mes "[???]";
-			mes "你会后悔的，所以满足于现在的生活吧。";
+			mes "����ڵģ��������������ڵ�����ɡ�";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "好吧，既然遇见了你，我就不会再这样生活了！";
+			mes "�ðɣ���Ȼ�������㣬�ҾͲ��������������ˣ�";
 			next;
 			mes "[???]";
-			mes "哈……你真是让我累了。";
+			mes "�������������������ˡ�";
 			next;
 			mes "[???]";
-			mes "好的，那么^f57d7d去杀掉100只沙漠狼吧。^000000";
-			mes "在那之后，我会再考虑一下。";
+			mes "�õģ���ô^f57d7dȥɱ��100ֻɳĮ�ǰɡ�^000000";
+			mes "����֮���һ��ٿ���һ�¡�";
 			set job_shu,3;
 			changequest 11155,11156;
 			close;
 		case 2:
 			mes "[???]";
-			mes "嗯，不错的选择。";
-			mes "你不需要自找麻烦。";
+			mes "�ţ�������ѡ��";
+			mes "�㲻��Ҫ�����鷳��";
 			close;
 		}
 	} else if (job_shu == 3) {
 		if (checkquest(11156,HUNTING) == 2) {
 			mes "[???]";
-			mes "哇~";
-			mes "你真的把那些狼都杀掉了吗？";
-			mes "我以为你会放弃。";
+			mes "��~";
+			mes "����İ���Щ�Ƕ�ɱ������";
+			mes "����Ϊ��������";
 			next;
 			mes "[???]";
-			mes "女人的话就是她的契约！！";
-			mes "承诺就是承诺。";
+			mes "Ů�˵Ļ�����������Լ����";
+			mes "��ŵ���ǳ�ŵ��";
 			next;
 			mes "[???]";
-			mes "前往朱诺东南部的^f57d7d埃尔梅斯峡谷^000000。";
-			mes "我的同事 ^f57d7dBuddy^000000 将在该区域中心附近进行自我训练。";
+			mes "ǰ����ŵ���ϲ���^f57d7d����÷˹Ͽ��^000000��";
+			mes "�ҵ�ͬ�� ^f57d7dBuddy^000000 ���ڸ��������ĸ�����������ѵ����";
 			next;
-			mes "[布鲁诺]";
-			mes "告诉他是“布鲁诺”派你去那里的，之后就随你便了。";
+			mes "[��³ŵ]";
+			mes "�������ǡ���³ŵ������ȥ����ģ�֮���������ˡ�";
 			set job_shu,4;
 			changequest 11156,11157;
 			close;
 		}
 		mes "[???]";
-		mes "哈……你真是让我累了。";
+		mes "�������������������ˡ�";
 		next;
 		mes "[???]";
-		mes "好的，那么^f57d7d去杀掉100只沙漠狼吧。^000000";
-		mes "那我再考虑一下。";
+		mes "�õģ���ô^f57d7dȥɱ��100ֻɳĮ�ǰɡ�^000000";
+		mes "�����ٿ���һ�¡�";
 		close;
 	} else if (job_shu == 4) {
-		mes "[布鲁诺]";
-		mes "前往朱诺东南部的^f57d7d埃尔梅斯峡谷^000000。";
-		mes "我的同事 ^f57d7dBuddy^000000 将在该区域中心附近进行自我训练。";
+		mes "[��³ŵ]";
+		mes "ǰ����ŵ���ϲ���^f57d7d����÷˹Ͽ��^000000��";
+		mes "�ҵ�ͬ�� ^f57d7dBuddy^000000 ���ڸ��������ĸ�����������ѵ����";
 		next;
-		mes "[布鲁诺]";
-		mes "告诉他是“布鲁诺”派你去那里的，之后就随你便了。";
+		mes "[��³ŵ]";
+		mes "�������ǡ���³ŵ������ȥ����ģ�֮���������ˡ�";
 		close;
 	} else if (job_shu == 100) {
-		mes "[布鲁诺]";
-		mes "嘿~！";
-		mes "你好吗？";
+		mes "[��³ŵ]";
+		mes "��~��";
+		mes "�����";
 		next;
-		mes "[布鲁诺]";
-		mes "你没有给老师准备礼物吗？";
+		mes "[��³ŵ]";
+		mes "��û�и���ʦ׼��������";
 		close;
 	}
-	mes "[布鲁诺]";
-	mes "我建议你重新考虑成为苏拉。";
-	mes "苏拉坚强而冷静，但这还不是全部。";
+	mes "[��³ŵ]";
+	mes "�ҽ��������¿��ǳ�Ϊ������";
+	mes "������ǿ���侲�����⻹����ȫ����";
 	next;
-	mes "[布鲁诺]";
-	mes "我？";
-	mes "如果让我重新选择工作，我一定会选择苏拉。";
+	mes "[��³ŵ]";
+	mes "�ң�";
+	mes "�����������ѡ��������һ����ѡ��������";
 	close;
 }
 
 yuno_fild07,254,176,7	script	Buddy#job_shu	753,{
 	if (job_shu < 4) {
-		mes "[好友]";
-		mes "哈哈哈！！！哈哈哈！！！呼！！哈哈！！！";
+		mes "[����]";
+		mes "����������������������������������������";
 		next;
-		mes "[好友]";
-		mes "我不知道你为什么在这里，但请不要站在我身后，除非你想死。";
+		mes "[����]";
+		mes "�Ҳ�֪����Ϊʲô��������벻Ҫվ�������󣬳�����������";
 		close;
 	} else if (job_shu == 4) {
-		mes "[好友]";
-		mes "哈哈哈！！！哈哈哈！！！呼！！哈哈！！！";
+		mes "[����]";
+		mes "����������������������������������������";
 		next;
-		mes "[好友]";
-		mes "我不知道你为什么在这里，但请不要站在我身后，除非你想死。";
-		next;
-		mes "["+strcharinfo(0)+"]";
-		mes "“布鲁诺”派我来这里。";
-		next;
-		mes "[好友]";
-		mes "啊!我的同事把我介绍给你了！";
-		mes "无论如何，你为什么来这里见我？";
+		mes "[����]";
+		mes "�Ҳ�֪����Ϊʲô��������벻Ҫվ�������󣬳�����������";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "我向布鲁诺询问了她的实力，她向你推荐了我。";
+		mes "����³ŵ�����������";
 		next;
-		mes "[好友]";
-		mes "那个难缠的女孩……不，开玩笑的。";
-		mes "她一定是个特别的人，才把你送到我这里来的。";
+		mes "[����]";
+		mes "��!�ҵ�ͬ�°��ҽ��ܸ����ˣ�";
+		mes "������Σ���Ϊʲô��������ң�";
 		next;
-		mes "[好友]";
-		mes "好吧，我无法回答你的问题，因为我正在自我修炼，所以我带你去见我们的师傅。";
+		mes "["+strcharinfo(0)+"]";
+		mes "����³ŵѯ��������ʵ�����������Ƽ����ҡ�";
 		next;
-		mes "[好友]";
-		mes "我的主人不喜欢吵闹，所以请^f57d7d在客厅安静地等待。^000000";
+		mes "[����]";
+		mes "�Ǹ��Ѳ���Ů��������������Ц�ġ�";
+		mes "��һ���Ǹ��ر���ˣ��Ű����͵����������ġ�";
 		next;
-		mes "[好友]";
-		mes "这边走...";
+		mes "[����]";
+		mes "�ðɣ����޷��ش�������⣬��Ϊ���������������������Ҵ���ȥ�����ǵ�ʦ����";
+		next;
+		mes "[����]";
+		mes "�ҵ����˲�ϲ�����֣�������^f57d7d�ڿ��������صȴ���^000000";
+		next;
+		mes "[����]";
+		mes "�����...";
 		set job_shu,5;
 		changequest 11157,11158;
 		close2;
 		warp "sword_1-1",215,244;
 		end;
 	} else if (job_shu == 100) {
-		mes "[好友]";
-		mes "啊，好久不见，"+strcharinfo(0)+".";
-		mes "你是来见我师父的吗？";
+		mes "[����]";
+		mes "�����þò�����"+strcharinfo(0)+".";
+		mes "����������ʦ������";
 		next;
-		switch(select("是：否")) {
+		switch(select("�ǣ���")) {
 		case 1:
-			mes "[好友]";
-			mes "我马上带你去。";
+			mes "[����]";
+			mes "�����ϴ���ȥ��";
 			close2;
 			warp "sword_1-1",216,168;
 			end;
 		case 2:
-			mes "[好友]";
-			mes "那么，你为什么在这里？";
-			mes "你不是来见我的，不是吗？";
+			mes "[����]";
+			mes "��ô����Ϊʲô�����";
+			mes "�㲻�������ҵģ�������";
 			close;
 		}
 	}
-	mes "[好友]";
-	mes strcharinfo(0)+"，你还没见到师傅吗？";
+	mes "[����]";
+	mes strcharinfo(0)+"���㻹û����ʦ����";
 	next;
-	mes "[好友]";
-	mes "我的主人不喜欢吵闹，所以请^f57d7d在客厅安静地等待。^000000";
+	mes "[����]";
+	mes "�ҵ����˲�ϲ�����֣�������^f57d7d�ڿ��������صȴ���^000000";
 	next;
-	mes "[好友]";
-	mes "这边走...";
+	mes "[����]";
+	mes "�����...";
 	close2;
 	warp "sword_1-1",215,244;
 	end;
@@ -538,17 +540,17 @@ OnDisable:
 }
 
 sword_1-1,223,243,4	script	Buddy#job_shu_Salong	753,{
-	mes "[好友]";
-	mes "我的主人不喜欢吵闹，所以请^f57d7d在客厅安静地等待。^000000";
+	mes "[����]";
+	mes "�ҵ����˲�ϲ�����֣�������^f57d7d�ڿ��������صȴ���^000000";
 	next;
-	switch(select("到客厅去：到外面去。")) {
+	switch(select("������ȥ��������ȥ��")) {
 	case 1:
-		mes "[好友]";
-		mes "请在楼上客厅等候。";
+		mes "[����]";
+		mes "����¥�Ͽ����Ⱥ�";
 		close;
 	case 2:
-		mes "[好友]";
-		mes "那么，再见吧。";
+		mes "[����]";
+		mes "��ô���ټ��ɡ�";
 		close2;
 		warp "yuno_fild07",255,178;
 		end;
@@ -658,13 +660,13 @@ OnTimer320000:
 
 sword_2-1,223,205,7	script	Buddy#job_shuaneh	753,{
 	if (job_shu > 4) {
-		mes "我会给你指路的。这边走。";
+		mes "�һ����ָ·�ġ�����ߡ�";
 		close2;
 		warp "sword_1-1",216,168;
 		donpcevent "Buddy#job_shuaneh::OnDisable";
 		end;
 	}
-	mes "你为什么在这里？";
+	mes "��Ϊʲô�����";
 	close2;
 	warp "yuno_fild07",248,179;
 	end;
@@ -692,129 +694,129 @@ OnEnable:
 
 sword_1-1,222,169,5	script	Bruno#job_shu	484,{
 	if (job_shu > 4) {
-		mes "[布鲁诺]";
-		mes "嘿~"+strcharinfo(0)+"，有什么事吗？";
+		mes "[��³ŵ]";
+		mes "��~"+strcharinfo(0)+"����ʲô����";
 		next;
-		switch(select("我们来谈谈吧：出去吧。")) {
+		switch(select("������̸̸�ɣ���ȥ�ɡ�")) {
 		case 1:
 			if (job_shu == 100) {
-				mes "[布鲁诺]";
-				mes "我的主人？";
-				mes "他说他已经把这个世界抛到了脑后，他是一个放弃了人性的鬼魂，但他似乎对这个世界有着挥之不去的渴望。";
+				mes "[��³ŵ]";
+				mes "�ҵ����ˣ�";
+				mes "��˵���Ѿ�����������׵����Ժ�����һ�����������ԵĹ��꣬�����ƺ�������������Ż�֮��ȥ�Ŀ�����";
 				next;
-				mes "[布鲁诺]";
-				mes "嗯，我也是Sura，但我还是喜欢旅行和认识很多人~";
+				mes "[��³ŵ]";
+				mes "�ţ���Ҳ��Sura�����һ���ϲ�����к���ʶ�ܶ���~";
 				next;
-				mes "[布鲁诺]";
-				mes "昔日，我师父有一位挚友，但成为修罗后，";
+				mes "[��³ŵ]";
+				mes "���գ���ʦ����һλֿ�ѣ�����Ϊ���޺�";
 				next;
-				mes "[布鲁诺]";
-				mes "我听说他写了一封信给朋友说他已经去世了。";
-				mes "然后他有时会偷偷拜访“记忆之地”。";
+				mes "[��³ŵ]";
+				mes "����˵��д��һ���Ÿ�����˵���Ѿ�ȥ���ˡ�";
+				mes "Ȼ������ʱ��͵͵�ݷá�����֮�ء���";
 				next;
-				mes "[布鲁诺]";
-				mes "最好不要说他死了，继续去见他的朋友。";
-				mes "他有点墨守成规。";
+				mes "[��³ŵ]";
+				mes "��ò�Ҫ˵�����ˣ�����ȥ���������ѡ�";
+				mes "���е�ī�سɹ档";
 				next;
-				mes "[布鲁诺]";
-				mes "但他真的很酷而且很棒。";
-				mes "嗬嗬。";
+				mes "[��³ŵ]";
+				mes "������ĺܿ���Һܰ���";
+				mes "������";
 				next;
-				mes "[布鲁诺]";
-				mes "我不断旅行的原因是为了寻找我师父的“贵友”，而不是为了更多地锻炼自己。";
+				mes "[��³ŵ]";
+				mes "�Ҳ������е�ԭ����Ϊ��Ѱ����ʦ���ġ����ѡ���������Ϊ�˸���ض����Լ���";
 				next;
-				mes "[布鲁诺]";
-				mes "当我看到主人想念他的朋友时，我感到心情沉重……";
-				mes "这不……不只是为了我的……主人！";
+				mes "[��³ŵ]";
+				mes "���ҿ�������������������ʱ���Ҹе�������ء���";
+				mes "�ⲻ������ֻ��Ϊ���ҵġ������ˣ�";
 				close;
 			}
-			mes "[布鲁诺]";
-			mes "哇哦~本来还以为你还没见到我师父就被打倒了，现在你终于来了？";
+			mes "[��³ŵ]";
+			mes "��Ŷ~��������Ϊ�㻹û������ʦ���ͱ����ˣ��������������ˣ�";
 			next;
-			mes "[布鲁诺]";
-			mes "反正你现在来了，我就是你的顶头上司了。";
+			mes "[��³ŵ]";
+			mes "�������������ˣ��Ҿ�����Ķ�ͷ��˾�ˡ�";
 			next;
-			mes "[布鲁诺]";
-			mes "在我们的世界里，我们不在乎你的年龄！";
+			mes "[��³ŵ]";
+			mes "�����ǵ���������ǲ��ں�������䣡";
 			close;
 		case 2:
-			mes "[布鲁诺]";
-			mes "你什么时候想再来就来吧~";
-			mes "我带你看看死者的训练课程~";
+			mes "[��³ŵ]";
+			mes "��ʲôʱ��������������~";
+			mes "�Ҵ��㿴�����ߵ�ѵ���γ�~";
 			close2;
 			warp "yuno_fild07",255,178;
 			end;
 		}
 	}
-	mes "[布鲁诺]";
-	mes "你是做什么的？";
-	mes "你怎么找到这个地方的！";
-	mes "离开！！！";
+	mes "[��³ŵ]";
+	mes "������ʲô�ģ�";
+	mes "����ô�ҵ�����ط��ģ�";
+	mes "�뿪������";
 	close2;
 	warp "yuno_fild07",255,178;
 	end;
 }
 
 sword_1-1,223,167,2	script	Master#job_shu	483,{
-	mes "[主人]";
+	mes "[����]";
 	if (job_shu == 5) {
-		mes "你一定眼睛很亮，终于来到了这个房间。";
+		mes "��һ���۾�����������������������䡣";
 		next;
-		mes "[主人]";
+		mes "[����]";
 		if (SkillPoint != 0) {
-			mes "除非你使用所有的技能点，否则你无法成为苏拉。";
+			mes "������ʹ�����еļ��ܵ㣬�������޷���Ϊ������";
 			close;
 		}
 		if (checkweight(1201,1) == 0 || MaxWeight - Weight < 3500) {
-			mes "看来你的负担很重。请删除其中一些。";
+			mes "������ĸ������ء���ɾ������һЩ��";
 			close;
 		}
 		if (BaseLevel < 99 || JobLevel < 50) {
-			mes "你似乎还没有达到人类的极限，距离成为苏拉还有很长的路要走。";
-			mes "请你多去练习一下。";
+			mes "���ƺ���û�дﵽ����ļ��ޣ������Ϊ�������кܳ���·Ҫ�ߡ�";
+			mes "�����ȥ��ϰһ�¡�";
 			close;
 		}
 		if (BaseJob != Job_Monk) {
-			mes "唔？";
+			mes "����";
 			close;
 		}
-		mes "当然啦~";
-		mes "我有一双敏锐的眼睛。";
+		mes "��Ȼ��~";
+		mes "����һ˫������۾���";
 		next;
-		mes "[布鲁诺]";
-		mes "掌握！这是一件狼皮大衣。";
-		mes "天冷的时候就穿上它。";
+		mes "[��³ŵ]";
+		mes "���գ�����һ����Ƥ���¡�";
+		mes "�����ʱ��ʹ�������";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "啊哈！那是我……抓到的狼……呃。";
+		mes "�����������ҡ���ץ�����ǡ�������";
 		next;
-		mes "- 敲击 -";
+		mes "- �û� -";
 		next;
-		mes "[布鲁诺]";
-		mes "嗬嗬嗬~";
-		mes "你有什么话要说吗"+strcharinfo(0)+"？";
-		mes "你成为我们家庭的一员了，我们一起相处吧~";
+		mes "[��³ŵ]";
+		mes "������~";
+		mes "����ʲô��Ҫ˵��"+strcharinfo(0)+"��";
+		mes "���Ϊ���Ǽ�ͥ��һԱ�ˣ�����һ���ദ��~";
 		next;
-		mes "[主人]";
-		mes "好吧，我现在也收你为我的学生了。";
+		mes "[����]";
+		mes "�ðɣ�������Ҳ����Ϊ�ҵ�ѧ���ˡ�";
 		next;
-		mes "[主人]";
-		mes "我想你已经知道了，但作为苏拉生活并不那么容易。";
+		mes "[����]";
+		mes "�������Ѿ�֪���ˣ�����Ϊ�����������ô���ס�";
 		next;
-		mes "[主人]";
-		mes "我也把自己与世隔绝。如果有一天我们再次来到这个世界，那一定是世界需要鬼来进行战争的那一天。";
+		mes "[����]";
+		mes "��Ҳ���Լ����������������һ�������ٴ�����������磬��һ����������Ҫ��������ս������һ�졣";
 		next;
-		mes "[主人]";
-		mes "我希望那些日子不会到来，但是……我愿意成为幽灵，杀死所有敌人。";
+		mes "[����]";
+		mes "��ϣ����Щ���Ӳ��ᵽ�������ǡ�����Ը���Ϊ���飬ɱ�����е��ˡ�";
 		next;
 		if (ismounting()) {
-			mes "[主人]";
-			mes "所以……请从你的骑乘宠物身上下来！";
-			mes "在这种情况下，这是失礼的行为。";
+			mes "[����]";
+			mes "���ԡ�����������˳�������������";
+			mes "����������£�����ʧ�����Ϊ��";
 			close;
 		}
-		mes "[主人]";
-		mes "你应该坚定地训练自己，直到那一天。";
+		mes "[����]";
+		mes "��Ӧ�üᶨ��ѵ���Լ���ֱ����һ�졣";
 		set job_shu,100;
 		jobchange roclass(eaclass()|EAJL_THIRD);
 		completequest 11158;
@@ -822,20 +824,20 @@ sword_1-1,223,167,2	script	Master#job_shu	483,{
 		getitem 2795,1; //Green_Apple_Ring
 		close;
 	} else if (job_shu > 5) {
-		mes "曾经我也是一个普通的年轻人，经常出差，认识很多朋友。";
+		mes "������Ҳ��һ����ͨ�������ˣ����������ʶ�ܶ����ѡ�";
 		next;
-		mes "[主人]";
-		mes "然而，正如你可能已经感觉到的，我终于面临了我的局限性。";
+		mes "[����]";
+		mes "Ȼ��������������Ѿ��о����ģ��������������ҵľ����ԡ�";
 		next;
-		mes "[主人]";
-		mes "有时我会想“我是否必须放弃一切才能变得更强大……？”";
+		mes "[����]";
+		mes "��ʱ�һ��롰���Ƿ�������һ�в��ܱ�ø�ǿ�󡭡�����";
 		next;
-		mes "[主人]";
-		mes "但该做的已经做了...";
+		mes "[����]";
+		mes "���������Ѿ�����...";
 		close;
 	}
-	mes "这不是一个你可以停留的地方。";
-	mes "请回去吧。";
+	mes "�ⲻ��һ�������ͣ���ĵط���";
+	mes "���ȥ�ɡ�";
 	close2;
 	warp "yuno_fild07",255,178;
 	end;
@@ -843,29 +845,29 @@ sword_1-1,223,167,2	script	Master#job_shu	483,{
 
 sword_2-1,1,2,0	script	Button Girl#sura	66,{
 	callfunc "F_GM_NPC";
-	switch(select("打开竞技场.:关闭竞技场.:打开客厅.:打开Buddy.:打开Gara.:关闭全部.:关闭")) {
+	switch(select("�򿪾�����.:�رվ�����.:�򿪿���.:��Buddy.:��Gara.:�ر�ȫ��.:�ر�")) {
 	case 1:
-		mes "开启竞技场。";
+		mes "������������";
 		donpcevent "Drawing Room::OnEnable";
 		close;
 	case 2:
-		mes "关闭竞技场。";
+		mes "�رվ�������";
 		donpcevent "Drawing Room::OnDisable";
 		close;
 	case 3:
-		mes "打开客厅。";
+		mes "�򿪿�����";
 		donpcevent "Buddy#Sura_Salon::OnEnable";
 		close;
 	case 4:
-		mes "打开好友。";
+		mes "�򿪺��ѡ�";
 		donpcevent "Buddy#job_shuaneh::OnEnable";
 		close;
 	case 5:
-		mes "打开加拉。";
+		mes "�򿪼�����";
 		donpcevent "#Sura_garajjom::OnEnable";
 		close;
 	case 6:
-		mes "全部关掉。";
+		mes "ȫ���ص���";
 		donpcevent "Drawing Room::OnDisable";
 		donpcevent "Buddy#Sura_Salon::OnReset";
 		donpcevent "Buddy#Sura_Salon::OnDisable";

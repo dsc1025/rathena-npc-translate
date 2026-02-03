@@ -5,87 +5,89 @@
 //= Sarah and Fenrir Instance
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 dali02,97,142,3	script	Professor Bernhard#a1	4_LGTSCIENCE,{
 	if (BaseLevel < 145) {
-		mes "- è¾¾åˆ°145çº§ä»¥ä¸Šå³å¯ç»§ç»­ -";
+		mes "- ´ïµ½145¼¶ÒÔÉÏ¼´¿É¼ÌÐø -";
 		close;
 	}
 	switch( checkquest(9336,PLAYTIME) ) {
 	case -1:
 		switch( isbegin_quest(9335) ) {
 		case 0:// First time doing instance
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "æˆ‘æƒ³è¯´æˆ‘æ˜¯ä¼¯æ©å“ˆå¾·æ•™æŽˆï¼Œé»‘æ£®æž—æœ€å¥½çš„æ­¦å™¨ç ”ç©¶å‘˜ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "ÎÒÏëËµÎÒÊÇ²®¶÷¹þµÂ½ÌÊÚ£¬ºÚÉ­ÁÖ×îºÃµÄÎäÆ÷ÑÐ¾¿Ô±¡£";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "ç»è¿‡æ— å°½çš„ç ”ç©¶ï¼Œæˆ‘åˆ›é€ äº†å„ç§æ­¦å™¨ï¼Œä½†æˆ‘è§‰å¾—ç¼ºå°‘äº†ä¸€äº›ä¸œè¥¿ï¼Œæ‰€ä»¥æˆ‘æ‰¾åˆ°äº†å¤ä»£æ–‡çŒ®ã€‚";
-			mes "æˆ‘åœ¨ç ”ç©¶è¿‡ç¨‹ä¸­å‘çŽ°äº†æ¬¡å…ƒè£…ç½®ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "¾­¹ýÎÞ¾¡µÄÑÐ¾¿£¬ÎÒ´´ÔìÁË¸÷ÖÖÎäÆ÷£¬µ«ÎÒ¾õµÃÈ±ÉÙÁËÒ»Ð©¶«Î÷£¬ËùÒÔÎÒÕÒµ½ÁË¹Å´úÎÄÏ×¡£";
+			mes "ÎÒÔÚÑÐ¾¿¹ý³ÌÖÐ·¢ÏÖÁË´ÎÔª×°ÖÃ¡£";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "æˆ‘è¿˜æ„è¯†åˆ°ï¼Œè¿˜éœ€è¦æ¥è‡ªè¾‰ç…Œè¿‡åŽ»çš„é—ç‰©æ¥åˆ¶é€ æ›´å¼ºå¤§å’Œæ›´å…ˆè¿›çš„æ­¦å™¨ã€‚";
-			mes "è¿™å°±æ˜¯ä¸ºä»€ä¹ˆ..æˆ‘éœ€è¦ä½ ..";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "ÎÒ»¹ÒâÊ¶µ½£¬»¹ÐèÒªÀ´×Ô»Ô»Í¹ýÈ¥µÄÒÅÎïÀ´ÖÆÔì¸üÇ¿´óºÍ¸üÏÈ½øµÄÎäÆ÷¡£";
+			mes "Õâ¾ÍÊÇÎªÊ²Ã´..ÎÒÐèÒªÄã..";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
 			if (is_party_leader() == false) {
-				mes "ä½œä¸ºçœŸæ­£çš„æ•™æŽˆï¼Œæ¸´æœ›èŽ·å¾—å¼ºå¤§çš„æ­¦å™¨ï¼";
-				mes "ä¸ºäº†å®žçŽ°è¿™ä¸ªç›®æ ‡ï¼Œæˆ‘ä»¬éœ€è¦åœ¨è¿‡åŽ»çš„èŠ¬é‡Œå°”å’ŒèŽŽæ‹‰ä¹‹æˆ˜ä¸­å‡ºçŽ°è¿‡çš„å·¨äººç¢Žç‰‡ã€‚";
+				mes "×÷ÎªÕæÕýµÄ½ÌÊÚ£¬¿ÊÍû»ñµÃÇ¿´óµÄÎäÆ÷£¡";
+				mes "ÎªÁËÊµÏÖÕâ¸öÄ¿±ê£¬ÎÒÃÇÐèÒªÔÚ¹ýÈ¥µÄ·ÒÀï¶ûºÍÉ¯À­Ö®Õ½ÖÐ³öÏÖ¹ýµÄ¾ÞÈËËéÆ¬¡£";
 				next;
-				mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-				mes "æˆ‘ä¸èƒ½ç¦»å¼€æˆ‘çš„å²—ä½ã€‚";
-				mes "æˆ‘éœ€è¦ä¸€ä¸ªèƒ½ç»™æˆ‘å¸¦æ¥ç¢Žç‰‡çš„æˆ˜å£«ã€‚";
-				mes "çœ‹æ¥ä½ å¾ˆæœ‰èƒ½åŠ›å•Š";
+				mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+				mes "ÎÒ²»ÄÜÀë¿ªÎÒµÄ¸ÚÎ»¡£";
+				mes "ÎÒÐèÒªÒ»¸öÄÜ¸øÎÒ´øÀ´ËéÆ¬µÄÕ½Ê¿¡£";
+				mes "¿´À´ÄãºÜÓÐÄÜÁ¦°¡";
 				next;
-				mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-				mes "æˆ‘å°†ç»§ç»­ä¸Žä½ ä»¬çš„å…šé­è€Œä¸æ˜¯ä½ è¿›ä¸€æ­¥è®¨è®ºè¿™ä¸ªé—®é¢˜ã€‚";
+				mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+				mes "ÎÒ½«¼ÌÐøÓëÄãÃÇµÄµ³¿ý¶ø²»ÊÇÄã½øÒ»²½ÌÖÂÛÕâ¸öÎÊÌâ¡£";
 				close;
 			}
-			mes "æˆ‘éœ€è¦ä¸€ä¸ªèƒ½ç»™æˆ‘å¸¦æ¥å·¨äººç¢Žç‰‡çš„æˆ˜å£«ã€‚";
-			mes "çœ‹æ¥ä½ å¾ˆæœ‰èƒ½åŠ›å•Š";
+			mes "ÎÒÐèÒªÒ»¸öÄÜ¸øÎÒ´øÀ´¾ÞÈËËéÆ¬µÄÕ½Ê¿¡£";
+			mes "¿´À´ÄãºÜÓÐÄÜÁ¦°¡";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "ä½ æ€Žä¹ˆè®¤ä¸ºï¼Ÿ";
-			mes "ä½ æ„¿æ„å›žåˆ°è¿‡åŽ»ï¼ŒæŠŠå·¨äººçš„ç¢Žç‰‡å¸¦å›žæ¥å—ï¼Ÿ";
-			mes "æˆ‘ä¸€å®šä¼šç»™äºˆä½ è¶³å¤Ÿçš„è¡¥å¿ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "ÄãÔõÃ´ÈÏÎª£¿";
+			mes "ÄãÔ¸Òâ»Øµ½¹ýÈ¥£¬°Ñ¾ÞÈËµÄËéÆ¬´ø»ØÀ´Âð£¿";
+			mes "ÎÒÒ»¶¨»á¸øÓèÄã×ã¹»µÄ²¹³¥¡£";
 			next;
-			if (select( "ä¸", "æ˜¯çš„" ) == 1) {
-				mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-				mes "å¦‚æžœæ‚¨æ”¹å˜ä¸»æ„ï¼Œè¯·å†æ¬¡è®¿é—®æˆ‘ã€‚";
+			if (select( "²»", "ÊÇµÄ" ) == 1) {
+				mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+				mes "Èç¹ûÄú¸Ä±äÖ÷Òâ£¬ÇëÔÙ´Î·ÃÎÊÎÒ¡£";
 				close;
 			}
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "æˆ‘å°†æ¬¡å…ƒè£…ç½®è®¾ç½®åœ¨èŠ¬é‡Œå°”å’ŒèŽŽæ‹‰æ›¾ç»æˆ˜æ–—è¿‡çš„è¿‡åŽ»çš„æ ¼æ‹‰æ–¯æµ·å§†ã€‚";
-			mes "è¥ä¸šæ—¶é—´ä¸é•¿ï¼Œèµ¶ç´§å›žæ¥å§ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "ÎÒ½«´ÎÔª×°ÖÃÉèÖÃÔÚ·ÒÀï¶ûºÍÉ¯À­Ôø¾­Õ½¶·¹ýµÄ¹ýÈ¥µÄ¸ñÀ­Ë¹º£Ä·¡£";
+			mes "ÓªÒµÊ±¼ä²»³¤£¬¸Ï½ô»ØÀ´°É¡£";
 			instance_create("Fenrir and Sarah");
 			close;
 		case 1:
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "å·¨äººç¢Žç‰‡æˆåŠŸå¸¦å›žæ¥äº†å—ï¼Ÿ";
-			mes "æ‚¨å¯èƒ½é¢ä¸´å¾ˆå¤šå±é™©ï¼Œæ‰€ä»¥æ„Ÿè°¢æ‚¨çš„åŠªåŠ›ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "¾ÞÈËËéÆ¬³É¹¦´ø»ØÀ´ÁËÂð£¿";
+			mes "Äú¿ÉÄÜÃæÁÙºÜ¶àÎ£ÏÕ£¬ËùÒÔ¸ÐÐ»ÄúµÄÅ¬Á¦¡£";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "æˆ‘å¯ä¸æŒ‡æœ›ä½ å†’ç€ç”Ÿå‘½å±é™©æ‰å¾—åˆ°è¿™äº›ç¢Žç‰‡ï¼";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "ÎÒ¿É²»Ö¸ÍûÄãÃ°×ÅÉúÃüÎ£ÏÕ²ÅµÃµ½ÕâÐ©ËéÆ¬£¡";
 			if (sarah_fenrir == 0) {
-				mes "æˆ‘ä¼šç»™ä½ ä¸€ä¸ªçœ‹èµ·æ¥å¾ˆæœ‰ç”¨çš„è€³çŽ¯ï¼Œæ˜¯æˆ‘åœ¨ä¹‹å‰çš„ç ”ç©¶ä¸­ç¢°å·§èŽ·å¾—çš„é—ç‰©ä¸­çš„ã€‚";
+				mes "ÎÒ»á¸øÄãÒ»¸ö¿´ÆðÀ´ºÜÓÐÓÃµÄ¶ú»·£¬ÊÇÎÒÔÚÖ®Ç°µÄÑÐ¾¿ÖÐÅöÇÉ»ñµÃµÄÒÅÎïÖÐµÄ¡£";
 				next;
-				mes "- èŽŽæ‹‰çš„å·¦è€³çŽ¯ -";
-				mes "å¯ç”¨äºŽæ²»æ„ˆ1Lv";
-				mes "- èŽŽæ‹‰çš„å³è¾¹è€³çŽ¯ -";
-				mes "å¯ç”¨äºŽä¼ é€1Lv";
+				mes "- É¯À­µÄ×ó¶ú»· -";
+				mes "¿ÉÓÃÓÚÖÎÓú1Lv";
+				mes "- É¯À­µÄÓÒ±ß¶ú»· -";
+				mes "¿ÉÓÃÓÚ´«ËÍ1Lv";
 				next;
-				.@s = select( "èŽŽæ‹‰çš„å·¦è€³çŽ¯", "èŽŽæ‹‰çš„å³è€³çŽ¯" ) - 1;
+				.@s = select( "É¯À­µÄ×ó¶ú»·", "É¯À­µÄÓÒ¶ú»·" ) - 1;
 			}
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "å¦‚æžœä½ æŠŠå·¨äººçš„ç¢Žç‰‡äº¤ç»™æˆ‘çš„é¦–å¸­åŠ©æ‰‹ï¼Œæˆ‘ä¼šé€šè¿‡ç»“ç•Œç¡®ä¿è€³çŽ¯ä¼šç›¸åº”åœ°å˜å¾—å¾ˆæ£’ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "Èç¹ûÄã°Ñ¾ÞÈËµÄËéÆ¬½»¸øÎÒµÄÊ×Ï¯ÖúÊÖ£¬ÎÒ»áÍ¨¹ý½á½çÈ·±£¶ú»·»áÏàÓ¦µØ±äµÃºÜ°ô¡£";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "æ”¶é›†çš„å·¨äººç¢Žç‰‡è¶Šå¤šè¶Šå¥½ã€‚";
-			mes "ç„¶è€Œï¼Œç©ºé—´è£…ç½®è¿è½¬æ‰€éœ€çš„èƒ½é‡å¹¶ä¸ç¨³å®šã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "ÊÕ¼¯µÄ¾ÞÈËËéÆ¬Ô½¶àÔ½ºÃ¡£";
+			mes "È»¶ø£¬¿Õ¼ä×°ÖÃÔË×ªËùÐèµÄÄÜÁ¿²¢²»ÎÈ¶¨¡£";
 			next;
-			mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-			mes "æ¬¡å…ƒèƒ½é‡ä¾›åº”ä¸€å‘¨åŽå†æ¥æ‰¾æˆ‘ã€‚";
-			mes "æˆ‘éœ€è¦ä½ å†æ¬¡æ‰¾åˆ°å·¨äººç¢Žç‰‡ã€‚";
+			mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+			mes "´ÎÔªÄÜÁ¿¹©Ó¦Ò»ÖÜºóÔÙÀ´ÕÒÎÒ¡£";
+			mes "ÎÒÐèÒªÄãÔÙ´ÎÕÒµ½¾ÞÈËËéÆ¬¡£";
 			erasequest 9335;// Search for shards of Gigantes
 			setquest 9336;// Go back to Professor Bernhard
 			if (isbegin_quest(9337) > 0)
@@ -100,36 +102,36 @@ dali02,97,142,3	script	Professor Bernhard#a1	4_LGTSCIENCE,{
 		}
 	case 0:
 	case 1:
-		mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-		mes "æˆ‘ä»¬ç¼ºä¹å·¨äººç¢Žç‰‡æ¥åˆ¶é€ å¼ºå¤§çš„æ­¦å™¨ã€‚";
-		mes "å› ä¸ºå¼€å¯æ¬¡å…ƒè£…ç½®éœ€è¦å¤§é‡çš„èƒ½é‡ï¼Œç­‰èƒ½é‡ç§¯ç´¯å®Œäº†å†å›žæ¥æ‰¾æˆ‘ã€‚";
+		mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+		mes "ÎÒÃÇÈ±·¦¾ÞÈËËéÆ¬À´ÖÆÔìÇ¿´óµÄÎäÆ÷¡£";
+		mes "ÒòÎª¿ªÆô´ÎÔª×°ÖÃÐèÒª´óÁ¿µÄÄÜÁ¿£¬µÈÄÜÁ¿»ýÀÛÍêÁËÔÙ»ØÀ´ÕÒÎÒ¡£";
 		close;
 	case 2:
-		mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-		mes "æˆ‘ä¸€ç›´åœ¨ç­‰å¾…ã€‚";
-		mes "ä¸€åˆ‡è¿›å±•å¦‚ä½•ï¼Ÿ";
-		mes "å½“ä½ ä¸åœ¨çš„æ—¶å€™ï¼Œæˆ‘å·²ç»æˆåŠŸåœ°ç§¯ç´¯äº†ç»´åº¦èƒ½é‡ã€‚";
-		mes "æˆ‘ä»¬å¯ä»¥å†æ¬¡æ‰“å¼€ç»´åº¦è®¾å¤‡ã€‚";
+		mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+		mes "ÎÒÒ»Ö±ÔÚµÈ´ý¡£";
+		mes "Ò»ÇÐ½øÕ¹ÈçºÎ£¿";
+		mes "µ±Äã²»ÔÚµÄÊ±ºò£¬ÎÒÒÑ¾­³É¹¦µØ»ýÀÛÁËÎ¬¶ÈÄÜÁ¿¡£";
+		mes "ÎÒÃÇ¿ÉÒÔÔÙ´Î´ò¿ªÎ¬¶ÈÉè±¸¡£";
 		next;
-		mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-		mes "ä½œä¸ºçœŸæ­£çš„æ•™æŽˆï¼Œæ¸´æœ›èŽ·å¾—å¼ºå¤§çš„æ­¦å™¨ï¼";
-		mes "ä¸ºäº†å®žçŽ°è¿™ä¸ªç›®æ ‡ï¼Œæˆ‘ä»¬éœ€è¦åœ¨è¿‡åŽ»çš„èŠ¬é‡Œå°”å’ŒèŽŽæ‹‰ä¹‹æˆ˜ä¸­å‡ºçŽ°è¿‡çš„å·¨äººç¢Žç‰‡ã€‚";
+		mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+		mes "×÷ÎªÕæÕýµÄ½ÌÊÚ£¬¿ÊÍû»ñµÃÇ¿´óµÄÎäÆ÷£¡";
+		mes "ÎªÁËÊµÏÖÕâ¸öÄ¿±ê£¬ÎÒÃÇÐèÒªÔÚ¹ýÈ¥µÄ·ÒÀï¶ûºÍÉ¯À­Ö®Õ½ÖÐ³öÏÖ¹ýµÄ¾ÞÈËËéÆ¬¡£";
 		next;
-		mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-		mes "å› ä¸ºæˆ‘ä¸èƒ½ç¦»å¼€æˆ‘çš„å²—ä½ï¼Œ";
-		mes "æˆ‘éœ€è¦ä¸€ä¸ªèƒ½ç»™æˆ‘å¸¦æ¥ç¢Žç‰‡çš„æˆ˜å£«ã€‚";
-		mes "æˆ‘æƒ³ä½ å¯ä»¥å†æ¬¡å¸®åŠ©æˆ‘..";
+		mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+		mes "ÒòÎªÎÒ²»ÄÜÀë¿ªÎÒµÄ¸ÚÎ»£¬";
+		mes "ÎÒÐèÒªÒ»¸öÄÜ¸øÎÒ´øÀ´ËéÆ¬µÄÕ½Ê¿¡£";
+		mes "ÎÒÏëÄã¿ÉÒÔÔÙ´Î°ïÖúÎÒ..";
 		next;
-		mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-		mes "åˆ°è¿™é‡Œï¼Œæ‰€æœ‰çš„å‡†å¤‡å·¥ä½œå°±å®Œæˆäº†ã€‚";
-		mes "ä½ èƒ½å†æ¬¡å›žåˆ°è¿‡åŽ»ï¼Œç»™æˆ‘å¸¦æ¥å·¨äººçš„ç¢Žç‰‡å—ï¼Ÿ";
-		mes "æˆ‘ä¸€å®šä¼šç»™äºˆä½ è¶³å¤Ÿçš„è¡¥å¿ã€‚";
+		mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+		mes "µ½ÕâÀï£¬ËùÓÐµÄ×¼±¸¹¤×÷¾ÍÍê³ÉÁË¡£";
+		mes "ÄãÄÜÔÙ´Î»Øµ½¹ýÈ¥£¬¸øÎÒ´øÀ´¾ÞÈËµÄËéÆ¬Âð£¿";
+		mes "ÎÒÒ»¶¨»á¸øÓèÄã×ã¹»µÄ²¹³¥¡£";
 		if (is_party_leader() == true) {
 			next;
-			if (select( "ä¸", "æ˜¯çš„" ) == 1) {
-				mes "[ä¼¯æ©å“ˆå¾·æ•™æŽˆ]";
-				mes "æˆ‘å°†æ¬¡å…ƒè£…ç½®è®¾ç½®åœ¨è¿‡åŽ»çš„æ ¼æ‹‰æ–¯æµ·å§†ï¼Œä¹Ÿå°±æ˜¯èŠ¬é‡Œå°”å’ŒèŽŽæ‹‰æ›¾ç»æ‰€åœ¨çš„åœ°æ–¹ã€‚";
-				mes "å®ƒä¸ä¼šæŒç»­å¤ªä¹…ï¼Œæ‰€ä»¥å¿«ç‚¹å›žæ¥å§ã€‚";
+			if (select( "²»", "ÊÇµÄ" ) == 1) {
+				mes "[²®¶÷¹þµÂ½ÌÊÚ]";
+				mes "ÎÒ½«´ÎÔª×°ÖÃÉèÖÃÔÚ¹ýÈ¥µÄ¸ñÀ­Ë¹º£Ä·£¬Ò²¾ÍÊÇ·ÒÀï¶ûºÍÉ¯À­Ôø¾­ËùÔÚµÄµØ·½¡£";
+				mes "Ëü²»»á³ÖÐøÌ«¾Ã£¬ËùÒÔ¿ìµã»ØÀ´°É¡£";
 				close;
 			}
 			instance_create("Fenrir and Sarah");
@@ -140,7 +142,7 @@ dali02,97,142,3	script	Professor Bernhard#a1	4_LGTSCIENCE,{
 
 dali02,99,148,3	script	Dimensional Device#XX1	PORTAL,{
 	if (BaseLevel < 145) {
-		mes "- ä½ å¿…é¡»è¾¾åˆ°145çº§æˆ–ä»¥ä¸Š";
+		mes "- Äã±ØÐë´ïµ½145¼¶»òÒÔÉÏ";
 		mes "It seems entry is possible. -";
 		close;
 	}
@@ -149,37 +151,37 @@ dali02,99,148,3	script	Dimensional Device#XX1	PORTAL,{
 		break;
 	case 0:
 	case 1:
-		mes "- æ¬¡å…ƒè£…ç½®å·²å…³é—­ã€‚";
-		mes "çœ‹æ¥ä¸èƒ½å…¥å¢ƒäº†ã€‚ -";
+		mes "- ´ÎÔª×°ÖÃÒÑ¹Ø±Õ¡£";
+		mes "¿´À´²»ÄÜÈë¾³ÁË¡£ -";
 		close;
 	case 2:
 		break;
 	}
 	if (isbegin_quest(9335) > 0) {
-		mes "- æ¬¡å…ƒè£…ç½®å·²å…³é—­ã€‚";
-		mes "çœ‹æ¥ä¸èƒ½å…¥å¢ƒäº†ã€‚ -";
+		mes "- ´ÎÔª×°ÖÃÒÑ¹Ø±Õ¡£";
+		mes "¿´À´²»ÄÜÈë¾³ÁË¡£ -";
 		close;
 	}
-	if (select( "è¯·å‹¿è¾“å…¥è®¾å¤‡ã€‚", "è¾“å…¥æ—¶é—´è®¾å¤‡" ) == 1) {
+	if (select( "ÇëÎðÊäÈëÉè±¸¡£", "ÊäÈëÊ±¼äÉè±¸" ) == 1) {
 		if (getcharid(1) > 0) {
-			mes "- å¥½åƒæ˜¯æ¬¡å…ƒè£…ç½®";
-			mes "ä¼šæ‰­æ›²æ—¶ç©ºâ€”â€”";
+			mes "- ºÃÏñÊÇ´ÎÔª×°ÖÃ";
+			mes "»áÅ¤ÇúÊ±¿Õ¡ª¡ª";
 			close;
 		}
-		mes "- æœ‰æ½®æ¹¿çš„å­˜åœ¨ã€‚ -";
+		mes "- ÓÐ³±ÊªµÄ´æÔÚ¡£ -";
 		close;
 	}
 	.@md_name$ = "Fenrir and Sarah";
 	switch( instance_enter(.@md_name$) ) {
 	case IE_OTHER:
-		mes "å‘ç”ŸæœªçŸ¥é”™è¯¯ã€‚";
+		mes "·¢ÉúÎ´Öª´íÎó¡£";
 		close;
 	case IE_NOINSTANCE:
-		mes "çºªå¿µåœ°ä¸‹åŸŽ" + .@md_name$ + "ä¸å­˜åœ¨ã€‚";
-		mes "å…šé­è¿˜æ²¡æœ‰åˆ›å»ºçºªå¿µåœ°ä¸‹åŸŽã€‚";
+		mes "¼ÍÄîµØÏÂ³Ç" + .@md_name$ + "²»´æÔÚ¡£";
+		mes "µ³¿ý»¹Ã»ÓÐ´´½¨¼ÍÄîµØÏÂ³Ç¡£";
 		close;
 	case IE_NOMEMBER:
-		mes "åªæœ‰å…šå‘˜æ‰èƒ½è¿›å…¥çºªå¿µåœ°ä¸‹åŸŽã€‚";
+		mes "Ö»ÓÐµ³Ô±²ÅÄÜ½øÈë¼ÍÄîµØÏÂ³Ç¡£";
 		close;
 	case IE_OK:
 		mapannounce "dali02", "Party member " + strcharinfo(0) + " of party's " + getpartyname( getcharid(1) ) + " enters Room " + .@md_name$ + "", bc_map,0xFF99,FW_NORMAL,12;
@@ -195,22 +197,22 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 	if (sarah_fenrir == 0)
 		end;
 	disable_items;
-	mes "[é¦–å¸­åŠ©ç†]";
-	mes "æˆ‘ä»Žæ•™æŽˆé‚£é‡Œå¬è¯´è¿‡ä½ ã€‚";
-	mes "æ•™æŽˆå‘Šè¯‰æˆ‘è¦ç»™ä½ è¶³å¤Ÿçš„è¡¥å¿ï¼Œå› ä¸ºä½ å†’ç€ç”Ÿå‘½å±é™©å¸¦æ¥äº†å·¨äººç¢Žç‰‡ã€‚";
+	mes "[Ê×Ï¯ÖúÀí]";
+	mes "ÎÒ´Ó½ÌÊÚÄÇÀïÌýËµ¹ýÄã¡£";
+	mes "½ÌÊÚ¸æËßÎÒÒª¸øÄã×ã¹»µÄ²¹³¥£¬ÒòÎªÄãÃ°×ÅÉúÃüÎ£ÏÕ´øÀ´ÁË¾ÞÈËËéÆ¬¡£";
 	next;
-	switch( select( "é™„é­”è€³çŽ¯ã€‚", "è´­ä¹°è€³çŽ¯", "é€€å‡ºå¯¹è¯" ) ) {
+	switch( select( "¸½Ä§¶ú»·¡£", "¹ºÂò¶ú»·", "ÍË³ö¶Ô»°" ) ) {
 	case 1:
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "æˆ‘ä»¬åœ¨è€ƒå¤é—å€å‘çŽ°çš„èŽŽæ‹‰è€³çŽ¯è‚¯å®šå…·æœ‰å·¨å¤§çš„æ½œåŠ›ã€‚";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "ÎÒÃÇÔÚ¿¼¹ÅÒÅÖ··¢ÏÖµÄÉ¯À­¶ú»·¿Ï¶¨¾ßÓÐ¾Þ´óµÄÇ±Á¦¡£";
 		next;
-		switch( select( "ä¸ºèŽŽæ‹‰çš„è€³çŽ¯é™„é­”", "åˆå§‹åŒ–èŽŽæ‹‰è€³çŽ¯çš„é™„é­”", "é€€å‡ºå¯¹è¯" ) ) {
+		switch( select( "ÎªÉ¯À­µÄ¶ú»·¸½Ä§", "³õÊ¼»¯É¯À­¶ú»·µÄ¸½Ä§", "ÍË³ö¶Ô»°" ) ) {
 		case 1:
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "ä¸€åªè€³çŽ¯å¯ä»¥æœ‰ 2 ä¸ªé™„é­”ã€‚";
-			mes "æ‚¨æƒ³è¦ä¸ºå“ªåªè€³çŽ¯é™„é­”ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "Ò»Ö»¶ú»·¿ÉÒÔÓÐ 2 ¸ö¸½Ä§¡£";
+			mes "ÄúÏëÒªÎªÄÄÖ»¶ú»·¸½Ä§£¿";
 			next;
-			switch( select( "èŽŽæ‹‰çš„å·¦è€³çŽ¯", "èŽŽæ‹‰çš„å³è€³çŽ¯", "é€€å‡º" ) ) {
+			switch( select( "É¯À­µÄ×ó¶ú»·", "É¯À­µÄÓÒ¶ú»·", "ÍË³ö" ) ) {
 			case 1:
 				.@sarah_item_id = 28310;
 				.@sarah_earring$ = "left";
@@ -220,17 +222,17 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 				.@sarah_earring$ = "right";
 				break;
 			case 3:
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å¦‚æžœä½ æƒ³è¦æœ‰é­…åŠ›";
-				mes "èŽŽæ‹‰çš„è€³çŽ¯ä¸Šï¼Œ";
-				mes "å†æ¥æ‰¾æˆ‘å§ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Èç¹ûÄãÏëÒªÓÐ÷ÈÁ¦";
+				mes "É¯À­µÄ¶ú»·ÉÏ£¬";
+				mes "ÔÙÀ´ÕÒÎÒ°É¡£";
 				close;
 			}
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "æ‚¨å¿…é¡»è£…å¤‡è¯¥ç‰©å“æ‰èƒ½ä½¿é™„é­”æˆä¸ºå¯èƒ½ã€‚";
-			mes "æ‚¨æƒ³å¯¹å“ªä¸€åˆ—è¿›è¡Œé™„é­”ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "Äú±ØÐë×°±¸¸ÃÎïÆ·²ÅÄÜÊ¹¸½Ä§³ÉÎª¿ÉÄÜ¡£";
+			mes "ÄúÏë¶ÔÄÄÒ»ÁÐ½øÐÐ¸½Ä§£¿";
 			next;
-			if (select( "å·¦æ ", "å³æ " ) == 1) {
+			if (select( "×óÀ¸", "ÓÒÀ¸" ) == 1) {
 				.@part = EQI_ACC_L;
 				.@column$ = "left";
 				.@bonus_size = 4;		// 4 possibilities
@@ -244,31 +246,31 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 			}
 			.@equip_id = getequipid(.@part);
 			if (.@equip_id != .@sarah_item_id) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å¦‚æžœä½ æƒ³é™„é­”ï¼Œä½ å¿…é¡»è£…å¤‡èŽŽæ‹‰çš„" + .@sarah_earring$ + "è€³çŽ¯ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Èç¹ûÄãÏë¸½Ä§£¬Äã±ØÐë×°±¸É¯À­µÄ" + .@sarah_earring$ + "¶ú»·¡£";
 				close;
 			}
 			setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 			if (.@card[2] > 0) {// 2 enchants
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å®Œå…¨é™„é­”çš„èŽŽæ‹‰è€³çŽ¯æ— æ³•å†ç»§ç»­é™„é­”ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "ÍêÈ«¸½Ä§µÄÉ¯À­¶ú»·ÎÞ·¨ÔÙ¼ÌÐø¸½Ä§¡£";
 				close;
 			}
 			if (.@card[3] > 0) {// 1 enchant
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "èŽŽæ‹‰çš„è€³çŽ¯ç›®å‰åœ¨æ’æ§½ 4 ä¸­å¤„äºŽç»“ç•ŒçŠ¶æ€ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "É¯À­µÄ¶ú»·Ä¿Ç°ÔÚ²å²Û 4 ÖÐ´¦ÓÚ½á½ç×´Ì¬¡£";
 				.@slot = 3;
 			}
 			else {// none enchant
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "èŽŽæ‹‰çš„è€³çŽ¯ç›®å‰å¤„äºŽæ²¡æœ‰é™„é­”çš„çŠ¶æ€ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "É¯À­µÄ¶ú»·Ä¿Ç°´¦ÓÚÃ»ÓÐ¸½Ä§µÄ×´Ì¬¡£";
 				.@slot = 4;
 			}
 			next;
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "æ‚¨æƒ³è¦å“ªç§èƒ½åŠ›ä½œä¸ºæ’æ§½ " + .@slot + " ä¸Šçš„é™„é­”ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "ÄúÏëÒªÄÄÖÖÄÜÁ¦×÷Îª²å²Û " + .@slot + " ÉÏµÄ¸½Ä§£¿";
 			next;
-			switch( select( "CRI æˆ–å…³é”®", "ä¸“å®¶å¼“ç®­æ‰‹æˆ–æµè¡€", "ä¿æŠ¤æˆ–MATK", "å»¶è¿Ÿæ”»å‡»æˆ–å»¶è¿ŸæŠ€èƒ½" ) ) {
+			switch( select( "CRI »ò¹Ø¼ü", "×¨¼Ò¹­¼ýÊÖ»òÁ÷Ñª", "±£»¤»òMATK", "ÑÓ³Ù¹¥»÷»òÑÓ³Ù¼¼ÄÜ" ) ) {
 			case 1:
 				setarray .@bonus[0],
 					4863,	// Fatal1
@@ -277,8 +279,8 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4940,	// Critical3
 					4941,	// Critical4
 					4865;	// Fatal3
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "ä¸º CRI æˆ–å…³é”®é™„é­”æ§½é€‰æ‹©" + .@slot + ".";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Îª CRI »ò¹Ø¼ü¸½Ä§²ÛÑ¡Ôñ" + .@slot + ".";
 				break;
 			case 2:
 				setarray .@bonus[0],
@@ -288,8 +290,8 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4943,	// Dodge2
 					4944,	// Dodge3
 					4834;	// Expert_Archer3
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "ä¸ºä¸“å®¶å¼“ç®­æ‰‹æˆ–æµè¡€é™„é­”æ§½é€‰æ‹©" + .@slot + ".";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Îª×¨¼Ò¹­¼ýÊÖ»òÁ÷Ñª¸½Ä§²ÛÑ¡Ôñ" + .@slot + ".";
 				break;
 			case 3:
 				setarray .@bonus[0],
@@ -299,8 +301,8 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4898,	// Matk4p
 					4947,	// Thrift3
 					4899;	// Matk5p
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "é€‰æ‹©ç”¨äºŽä¿æŠ¤æˆ– MATK é™„é­”æ§½" + .@slot + ".";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Ñ¡ÔñÓÃÓÚ±£»¤»ò MATK ¸½Ä§²Û" + .@slot + ".";
 				break;
 			case 4:
 				setarray .@bonus[0],
@@ -310,35 +312,35 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 					4949,	// Skill_Delay2
 					4950,	// Skill_Delay3
 					4873;	// Attack_Delay_3
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "é€‰æ‹©ç”¨äºŽå»¶è¿Ÿæ”»å‡»æˆ–å»¶è¿ŸæŠ€èƒ½é™„é­”æ§½" + .@slot + ".";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Ñ¡ÔñÓÃÓÚÑÓ³Ù¹¥»÷»òÑÓ³Ù¼¼ÄÜ¸½Ä§²Û" + .@slot + ".";
 				break;
 			}
 			next;
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "1 ä¸ªé™„é­”éœ€è¦ 4 ä¸ªå·¨äººç¢Žç‰‡ã€‚";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "1 ¸ö¸½Ä§ÐèÒª 4 ¸ö¾ÞÈËËéÆ¬¡£";
 			next;
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "å› ä¸ºé™„é­”æ˜¯ä¸€ä¸ªé«˜é£Žé™©çš„è¿‡ç¨‹ï¼ŒèŽŽæ‹‰çš„è€³çŽ¯æœ‰è¢«æ¯åçš„é£Žé™©ã€‚";
-			mes "ä½ è¿˜æƒ³åšå—ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "ÒòÎª¸½Ä§ÊÇÒ»¸ö¸ß·çÏÕµÄ¹ý³Ì£¬É¯À­µÄ¶ú»·ÓÐ±»»Ù»µµÄ·çÏÕ¡£";
+			mes "Äã»¹Ïë×öÂð£¿";
 			next;
-			if (select( "ä¸", "æ˜¯çš„" ) == 1) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "è¯·ç­‰æ˜Žç¡®å†³å®šåŽå†è·Ÿæˆ‘è¯´ï¼";
+			if (select( "²»", "ÊÇµÄ" ) == 1) {
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "ÇëµÈÃ÷È·¾ö¶¨ºóÔÙ¸úÎÒËµ£¡";
 				close;
 			}
 			if (countitem(6803) < 4) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å·¨äººç¢Žç‰‡ä¸å¤Ÿã€‚";
-				mes "å®Œæˆä¸€é¡¹ç»“ç•Œéœ€è¦ 4 ä¸ªå·¨äººç¢Žç‰‡ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "¾ÞÈËËéÆ¬²»¹»¡£";
+				mes "Íê³ÉÒ»Ïî½á½çÐèÒª 4 ¸ö¾ÞÈËËéÆ¬¡£";
 				close;
 			}
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "å¥½çš„ã€‚æˆ‘è¦å¼€å§‹ç»“ç•Œäº†ï¼";
-			mes "ç¥ä½ å¥½è¿~ï¼";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "ºÃµÄ¡£ÎÒÒª¿ªÊ¼½á½çÁË£¡";
+			mes "×£ÄãºÃÔË~£¡";
 			next;
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "å•Šå•Šï¼ï¼";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "°¡°¡£¡£¡";
 			next;
 			progressbar "000000",5;
 			specialeffect2 EF_MAGICALATTHIT;
@@ -355,24 +357,24 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 			if (.@i == .@bonus_size) {
 				specialeffect2 EF_CRASHEARTH;
 				specialeffect2 EF_MAXPOWER;
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å¯æ‚²çš„æ˜¯â€¦â€¦ç¡®å®žæ˜¯â€¦â€¦";
-				mes "æ¯äº†â€¦â€¦";
-				mes "å‘¼..";
-				mes "é­…æƒ‘ä¸æ˜¯ä¸€ä»¶å®¹æ˜“çš„äº‹..";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "¿É±¯µÄÊÇ¡­¡­È·ÊµÊÇ¡­¡­";
+				mes "»ÙÁË¡­¡­";
+				mes "ºô..";
+				mes "÷È»ó²»ÊÇÒ»¼þÈÝÒ×µÄÊÂ..";
 				close;
 			}
 			.@card[.@slot-1] = .@bonus[.@i];
 			specialeffect2 EF_ANGEL2;
 			getitem2 .@sarah_item_id,1,1,0,0,.@card[0],.@card[1],.@card[2],.@card[3];
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "é™„é­”å®Œæˆï¼";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "¸½Ä§Íê³É£¡";
 			close;
 		case 2:
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "æ‚¨æƒ³è¦åˆå§‹åŒ–å“ªåªè€³çŽ¯ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "ÄúÏëÒª³õÊ¼»¯ÄÄÖ»¶ú»·£¿";
 			next;
-			switch( select( "èŽŽæ‹‰çš„å·¦è€³çŽ¯", "èŽŽæ‹‰çš„å³è€³çŽ¯", "é€€å‡º" ) ) {
+			switch( select( "É¯À­µÄ×ó¶ú»·", "É¯À­µÄÓÒ¶ú»·", "ÍË³ö" ) ) {
 			case 1:
 				.@sarah_item_id = 28310;
 				.@sarah_earring$ = "left";
@@ -382,24 +384,24 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 				.@sarah_earring$ = "right";
 				break;
 			case 3:
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å¦‚æžœä½ æƒ³ç»™èŽŽæ‹‰çš„è€³çŽ¯åˆå§‹åŒ–ç»“ç•Œï¼Œå°±å†æ¥æ‰¾æˆ‘å§ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Èç¹ûÄãÏë¸øÉ¯À­µÄ¶ú»·³õÊ¼»¯½á½ç£¬¾ÍÔÙÀ´ÕÒÎÒ°É¡£";
 				close;
 			}
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "èŽŽæ‹‰çš„è€³çŽ¯ä¸Šã€‚åˆå§‹åŒ–ç»“ç•Œéœ€è¦ 1 ä¸ªå·¨äººç¢Žç‰‡ã€‚";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "É¯À­µÄ¶ú»·ÉÏ¡£³õÊ¼»¯½á½çÐèÒª 1 ¸ö¾ÞÈËËéÆ¬¡£";
 			next;
 			if (countitem(6803) < 1) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å·¨äººç¢Žç‰‡ä¸å¤Ÿã€‚";
-				mes "æ‚¨å°†éœ€è¦å®ƒä»¬æ‰èƒ½è¿›è¡Œåˆå§‹åŒ–ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "¾ÞÈËËéÆ¬²»¹»¡£";
+				mes "Äú½«ÐèÒªËüÃÇ²ÅÄÜ½øÐÐ³õÊ¼»¯¡£";
 				close;
 			}
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "æ‚¨å¿…é¡»è£…å¤‡è¯¥ç‰©å“æ‰èƒ½è¿›è¡Œåˆå§‹åŒ–ã€‚";
-			mes "æ‚¨å¸Œæœ›åˆå§‹åŒ–å“ªä¸€åˆ—çš„è€³çŽ¯ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "Äú±ØÐë×°±¸¸ÃÎïÆ·²ÅÄÜ½øÐÐ³õÊ¼»¯¡£";
+			mes "ÄúÏ£Íû³õÊ¼»¯ÄÄÒ»ÁÐµÄ¶ú»·£¿";
 			next;
-			if (select( "å·¦æ ", "å³æ " ) == 1) {
+			if (select( "×óÀ¸", "ÓÒÀ¸" ) == 1) {
 				.@part = EQI_ACC_L;
 				.@column$ = "left";
 			}
@@ -410,28 +412,28 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 			.@equip_id = getequipid(.@part);
 			setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 			if (.@equip_id == -1) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "è¦åˆå§‹åŒ–ç»“ç•Œï¼Œç›¸å…³åˆ—å¿…é¡»é…å¤‡è£…å¤‡ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Òª³õÊ¼»¯½á½ç£¬Ïà¹ØÁÐ±ØÐëÅä±¸×°±¸¡£";
 				close;
 			}
 			if (.@equip_id != .@sarah_item_id) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "è¦åˆå§‹åŒ–ç»“ç•Œï¼Œç›¸å…³æŸ±å¿…é¡»é…å¤‡èŽŽæ‹‰çš„è€³çŽ¯ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Òª³õÊ¼»¯½á½ç£¬Ïà¹ØÖù±ØÐëÅä±¸É¯À­µÄ¶ú»·¡£";
 				close;
 			}
 			if (getequipcardid(.@part,3) < 1) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "æ²¡æœ‰é™„é­”çš„èŽŽæ‹‰çš„è€³çŽ¯æ— æ³•åˆå§‹åŒ–ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "Ã»ÓÐ¸½Ä§µÄÉ¯À­µÄ¶ú»·ÎÞ·¨³õÊ¼»¯¡£";
 				close;
 			}
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "æ‚¨å·²åœ¨" + .@sarah_earring$ + " åˆ—ä¸­é€‰æ‹©äº†Sarah çš„" + .@column$ + " è€³çŽ¯ã€‚";
-			mes "åˆå§‹åŒ–åŽæ¶ˆå¤±çš„èƒ½åŠ›æ˜¯ä¸å¯èƒ½æ¢å¤çš„ã€‚";
-			mes "æ‚¨è¿˜æƒ³ç»§ç»­å—ï¼Ÿ";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "ÄúÒÑÔÚ" + .@sarah_earring$ + " ÁÐÖÐÑ¡ÔñÁËSarah µÄ" + .@column$ + " ¶ú»·¡£";
+			mes "³õÊ¼»¯ºóÏûÊ§µÄÄÜÁ¦ÊÇ²»¿ÉÄÜ»Ö¸´µÄ¡£";
+			mes "Äú»¹Ïë¼ÌÐøÂð£¿";
 			next;
-			if (select( "ä¸", "æ˜¯çš„" ) == 2) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "æ˜¯çš„ï¼Œå…ˆç”Ÿã€‚åˆå§‹åŒ–å°†å¼€å§‹ã€‚";
+			if (select( "²»", "ÊÇµÄ" ) == 2) {
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "ÊÇµÄ£¬ÏÈÉú¡£³õÊ¼»¯½«¿ªÊ¼¡£";
 				next;
 				progressbar "000000",5;
 				specialeffect2 EF_MAGICALATTHIT;
@@ -445,53 +447,53 @@ dali02,93,146,6	script	Assistant Professor#a1	4_M_REPAIR,{
 
 				delequip .@part;
 				getitem .@sarah_item_id,1;
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "åˆå§‹åŒ–å®Œæˆã€‚";
-				mes "å¦‚æžœæ‚¨éœ€è¦æˆ‘ï¼Œè¯·æ‰¾åˆ°æˆ‘ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "³õÊ¼»¯Íê³É¡£";
+				mes "Èç¹ûÄúÐèÒªÎÒ£¬ÇëÕÒµ½ÎÒ¡£";
 			}
 			close;
 		case 3:
-			mes "[é¦–å¸­åŠ©ç†]";
-			mes "å¦‚æžœä½ æƒ³è¦èŽŽæ‹‰çš„è€³çŽ¯ä¸Šé™„é­”ï¼Œå°±å†æ¥æ‰¾æˆ‘å§ã€‚";
+			mes "[Ê×Ï¯ÖúÀí]";
+			mes "Èç¹ûÄãÏëÒªÉ¯À­µÄ¶ú»·ÉÏ¸½Ä§£¬¾ÍÔÙÀ´ÕÒÎÒ°É¡£";
 			close;
 		}
 	case 2:
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "è¿™æ˜¯ä¸Žæ ¼æ‹‰æ–¯ç‰¹Â·æµ·å§† (Glast Heim) ç›¸å…³çš„è€³çŽ¯ï¼Œæ˜¯åœ¨ä¸Žæ•™æŽˆä¸€èµ·æŒ–æŽ˜æ—¶å‘çŽ°çš„ç‹¬ç‰¹ä¸”ç½•è§çš„è€³çŽ¯ã€‚";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "ÕâÊÇÓë¸ñÀ­Ë¹ÌØ¡¤º£Ä· (Glast Heim) Ïà¹ØµÄ¶ú»·£¬ÊÇÔÚÓë½ÌÊÚÒ»ÆðÍÚ¾òÊ±·¢ÏÖµÄ¶ÀÌØÇÒº±¼ûµÄ¶ú»·¡£";
 		next;
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "æˆ‘æƒ³è¿™ä»¶èŽŽæ‹‰æ›¾ç»ç©¿è¿‡è¿‡ï¼Œä¼¼ä¹Žæœ‰å¾ˆå¼ºçš„èƒ½åŠ›å¼•å‡ºæ½œåœ¨çš„åŠ›é‡ã€‚";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "ÎÒÏëÕâ¼þÉ¯À­Ôø¾­´©¹ý¹ý£¬ËÆºõÓÐºÜÇ¿µÄÄÜÁ¦Òý³öÇ±ÔÚµÄÁ¦Á¿¡£";
 		next;
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "æˆ‘ç‰¹æ„ç”¨å®ƒæ¢1å—ç¢Žç‰‡ï¼Œå› ä¸ºä½ æ˜¯ä¸ºæ•™æŽˆçš„å·¥ä½œå¸¦æ¥å·¨äººç¢Žç‰‡çš„æˆ˜å£«ã€‚";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "ÎÒÌØÒâÓÃËü»»1¿éËéÆ¬£¬ÒòÎªÄãÊÇÎª½ÌÊÚµÄ¹¤×÷´øÀ´¾ÞÈËËéÆ¬µÄÕ½Ê¿¡£";
 		next;
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "- èŽŽæ‹‰çš„å·¦è€³çŽ¯ -";
-		mes "å¯ç”¨äºŽæ²»æ„ˆ1Lv";
-		mes "- èŽŽæ‹‰çš„å³è¾¹è€³çŽ¯ -";
-		mes "å¯ç”¨äºŽä¼ é€1Lv";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "- É¯À­µÄ×ó¶ú»· -";
+		mes "¿ÉÓÃÓÚÖÎÓú1Lv";
+		mes "- É¯À­µÄÓÒ±ß¶ú»· -";
+		mes "¿ÉÓÃÓÚ´«ËÍ1Lv";
 		mes "-----------------------";
-		mes "ä½ æƒ³è¦å“ªä¸€ä¸ªï¼Ÿ";
+		mes "ÄãÏëÒªÄÄÒ»¸ö£¿";
 		next;
-		.@s = select( "èŽŽæ‹‰çš„å·¦è€³çŽ¯", "èŽŽæ‹‰çš„å³è€³çŽ¯", "é€€å‡ºå¯¹è¯" ) - 1;
+		.@s = select( "É¯À­µÄ×ó¶ú»·", "É¯À­µÄÓÒ¶ú»·", "ÍË³ö¶Ô»°" ) - 1;
 		if (.@s < 2) {
 			if (countitem(6803) < 1) {
-				mes "[é¦–å¸­åŠ©ç†]";
-				mes "å·¨äººç¢Žç‰‡ä¸å¤Ÿã€‚";
-				mes "ä½ éœ€è¦å®ƒä»¬ï¼Œä»¥ä¾¿æˆ‘ä¸Žä½ è¿›è¡Œäº¤æ˜“ã€‚";
+				mes "[Ê×Ï¯ÖúÀí]";
+				mes "¾ÞÈËËéÆ¬²»¹»¡£";
+				mes "ÄãÐèÒªËüÃÇ£¬ÒÔ±ãÎÒÓëÄã½øÐÐ½»Ò×¡£";
 				close;
 			}
 			delitem 6803,1;// Shard of Gigantes
 			getitem (28310+.@s),1;
 		}
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "ä¼¯æ©å“ˆå¾·æ•™æŽˆæ˜¯æˆ‘æœ€å°Šæ•¬çš„æ•™æŽˆã€‚";
-		mes "ä½ æœ‰ä½ å°Šæ•¬çš„äººå—ï¼Ÿ";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "²®¶÷¹þµÂ½ÌÊÚÊÇÎÒ×î×ð¾´µÄ½ÌÊÚ¡£";
+		mes "ÄãÓÐÄã×ð¾´µÄÈËÂð£¿";
 		close;
 	case 3:
-		mes "[é¦–å¸­åŠ©ç†]";
-		mes "æˆ‘ä»Žæ•™æŽˆé‚£é‡Œå¬è¯´è¿‡ä½ ã€‚";
-		mes "æ•™æŽˆå‘Šè¯‰æˆ‘è¦ç»™ä½ è¶³å¤Ÿçš„è¡¥å¿ï¼Œå› ä¸ºä½ å†’ç€ç”Ÿå‘½å±é™©å¸¦æ¥äº†å·¨äººç¢Žç‰‡ã€‚";
+		mes "[Ê×Ï¯ÖúÀí]";
+		mes "ÎÒ´Ó½ÌÊÚÄÇÀïÌýËµ¹ýÄã¡£";
+		mes "½ÌÊÚ¸æËßÎÒÒª¸øÄã×ã¹»µÄ²¹³¥£¬ÒòÎªÄãÃ°×ÅÉúÃüÎ£ÏÕ´øÀ´ÁË¾ÞÈËËéÆ¬¡£";
 		close;
 	}
 }
@@ -505,9 +507,9 @@ OnTouch:
 	unittalk getcharid(3), "" + strcharinfo(0) + " : Huh? Somebody there? Hello~ You must be a traveler.";
 	sleep2 3000;
 	cutin "fenrir_a.bmp",2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¿™å¾ˆå¥‡æ€ªã€‚æˆ‘ä¸è®°å¾—æ ¼æ‹‰æ–¯ç‰¹Â·æµ·å§†åŸŽå ¡é‡Œå……æ»¡äº†å¦‚æ­¤é»‘æš—çš„å­˜åœ¨ã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕâºÜÆæ¹Ö¡£ÎÒ²»¼ÇµÃ¸ñÀ­Ë¹ÌØ¡¤º£Ä·³Ç±¤Àï³äÂúÁËÈç´ËºÚ°µµÄ´æÔÚ¡£", 'fenrir_1$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå†è§ï¼Œç¨åŽå†æ¥ï¼å°å¿ƒï¼ä¼¼ä¹Žæœ‰äººå¬å”¤å‡ºäº†æ€ªç‰©ï¼", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÔÙ¼û£¬ÉÔºóÔÙÀ´£¡Ð¡ÐÄ£¡ËÆºõÓÐÈËÕÙ»½³öÁË¹ÖÎï£¡", 'fenrir_1$;
 	sleep2 3000;
 	cutin "",255;
 	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
@@ -522,7 +524,7 @@ OnTouch:
 	monster 'map_glast$,364,291, "Mutant Galion",3198,1, .@label$;
 	monster 'map_glast$,353,290, "Mutant Galion",3198,1, .@label$;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : What are these things?";
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç»™æˆ‘ä¸€äº›æ–½å±•é­”æ³•çš„æ—¶é—´ï¼æˆ‘ä¼šå¤„ç†è¿™ä»¶äº‹ï¼", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º¸øÎÒÒ»Ð©Ê©Õ¹Ä§·¨µÄÊ±¼ä£¡ÎÒ»á´¦ÀíÕâ¼þÊÂ£¡", 'fenrir_1$;
 	donpcevent instance_npcname("#glast_event_1") + "::OnBar";
 	donpcevent instance_npcname("#glast_event_1") + "::OnEvent";
 	setpcblock PCBLOCK_NPC, false;
@@ -534,24 +536,24 @@ OnBar:
 OnEvent:
 	// npctalk "Fenrith Fenrir: Buy me some time while I cast magic! I will handle this!", 'fenrir_1$;// double on official
 	sleep 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçœŸå¤©ä¹‹æ€’ã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕæÌìÖ®Å­¡£", 'fenrir_1$;
 	sleep 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¶³ä»¥æ’•è£‚å¤§åœ°çš„é›·ç”µï¼", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º×ãÒÔËºÁÑ´óµØµÄÀ×µç£¡", 'fenrir_1$;
 	sleep 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçŽ°åœ¨å°±å€’åœ¨æˆ‘é¢å‰å§ï¼", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏÖÔÚ¾Íµ¹ÔÚÎÒÃæÇ°°É£¡", 'fenrir_1$;
 	sleep 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå•Šå•Šï¼ï¼é›·éœ†é£Žæš´ï¼ï¼ï¼ï¼", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º°¡°¡£¡£¡À×öª·ç±©£¡£¡£¡£¡", 'fenrir_1$;
 	for ( .@i = 1; .@i < 8; .@i++ )
 		specialeffect EF_THUNDERSTORM, AREA, instance_npcname( "#effect_glast_event01_" + .@i );
 	killmonster 'map_glast$, instance_npcname("#glast_event_1") + "::OnMobDead";
 	sleep 4000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼ˆFenrith Fenrirï¼‰ï¼šæ ¼æ‹‰æ–¯æµ·å§†ï¼ˆGlast Heimï¼‰ï¼Œæ›¾ç»æ˜¯é˜¿æ–¯åŠ å¾·è¯¸ç¥žçš„å¤§æ•™å ‚ã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£¨Fenrith Fenrir£©£º¸ñÀ­Ë¹º£Ä·£¨Glast Heim£©£¬Ôø¾­ÊÇ°¢Ë¹¼ÓµÂÖîÉñµÄ´ó½ÌÌÃ¡£", 'fenrir_1$;
 	sleep 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçŽ°åœ¨å·²ç»å®Œå…¨æˆä¸ºæ€ªç‰©çš„æ –æ¯åœ°äº†..", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏÖÔÚÒÑ¾­ÍêÈ«³ÉÎª¹ÖÎïµÄÆÜÏ¢µØÁË..", 'fenrir_1$;
 	sleep 3000;
-	npctalk "Fenrith Fenrirï¼šç­‰ç­‰..æƒ³æƒ³çœ‹ï¼Œæœ‰äº›äº‹æƒ…å¾ˆå¥‡æ€ª..", 'fenrir_1$;
+	npctalk "Fenrith Fenrir£ºµÈµÈ..ÏëÏë¿´£¬ÓÐÐ©ÊÂÇéºÜÆæ¹Ö..", 'fenrir_1$;
 	sleep 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼ˆFenrith Fenrirï¼‰ï¼šåŠ åˆ©ç¿æ˜¯å±…ä½åœ¨è¿™é™„è¿‘çš„æ€ªç‰©ã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£¨Fenrith Fenrir£©£º¼ÓÀûÎÌÊÇ¾Ó×¡ÔÚÕâ¸½½üµÄ¹ÖÎï¡£", 'fenrir_1$;
 	sleep 3000;
 	enablenpc instance_npcname("#glast_event_3");
 	end;
@@ -566,23 +568,23 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_3");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "Fenrith Fenrirï¼šé¡ºä¾¿è¯´ä¸€å¥ï¼Œæˆ‘çŸ¥é“è¿™å¾ˆçªç„¶ï¼Œä½†è°¢è°¢ä½ çš„å¸®åŠ©ã€‚", 'fenrir_1$;
+	npctalk "Fenrith Fenrir£ºË³±ãËµÒ»¾ä£¬ÎÒÖªµÀÕâºÜÍ»È»£¬µ«Ð»Ð»ÄãµÄ°ïÖú¡£", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¸ç®¡æ€Žæ ·ï¼Œä½ æ˜¯è°ï¼Ÿ", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º²»¹ÜÔõÑù£¬ÄãÊÇË­£¿", 'fenrir_1$;
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : Ah.. that is....";
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : .. I am a traveler who wanders around the world!";
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ˜¯è¿™æ ·å—â€¦â€¦ï¼Ÿæˆ‘æ˜Žç™½äº†..æˆ‘æƒ³è¿™å¹¶ä¸é‡è¦ã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÊÇÕâÑùÂð¡­¡­£¿ÎÒÃ÷°×ÁË..ÎÒÏëÕâ²¢²»ÖØÒª¡£", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¿™ä¸ªåœ°æ–¹çŽ°åœ¨çœ‹èµ·æ¥ç›¸å½“å±é™©ã€‚çŽ°åœ¨å›žå¤´è¿˜ä¸ç®—å¤ªæ™šã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕâ¸öµØ·½ÏÖÔÚ¿´ÆðÀ´Ïàµ±Î£ÏÕ¡£ÏÖÔÚ»ØÍ·»¹²»ËãÌ«Íí¡£", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘éœ€è¦æ‰¾åˆ°ä¸€ä¸ªç‰©ä½“ã€‚æˆ‘å¾—å¿«ç‚¹ï¼Œä»¥å…ä¸ºæ—¶å·²æ™šã€‚", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÐèÒªÕÒµ½Ò»¸öÎïÌå¡£ÎÒµÃ¿ìµã£¬ÒÔÃâÎªÊ±ÒÑÍí¡£", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¹Ÿè®¸ä½ å¯ä»¥å¸®åŠ©æˆ‘â€¦â€¦", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÒ²ÐíÄã¿ÉÒÔ°ïÖúÎÒ¡­¡­", 'fenrir_1$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¸â€¦â€¦é‚£å°±è°¢è°¢ä½ äº†ï¼å¸Œæœ›æˆ‘ä»¬ä»¥åŽè¿˜èƒ½å†è§é¢ï¼", 'fenrir_1$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º²»¡­¡­ÄÇ¾ÍÐ»Ð»ÄãÁË£¡Ï£ÍûÎÒÃÇÒÔºó»¹ÄÜÔÙ¼ûÃæ£¡", 'fenrir_1$;
 	sleep2 3000;
 	cutin "",255;
 	specialeffect EF_LOCKON, AREA, 'fenrir_1$;
@@ -629,22 +631,22 @@ OnTimer2000:
 	specialeffect EF_WHITEBODY, AREA, 'sarah_ego$;
 	end;
 OnTimer3000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šä»¤äººå°è±¡æ·±åˆ»çš„èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼Œä½ å·§å¦™åœ°é€ƒè„±äº†", 'sarah_ego$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÁîÈËÓ¡ÏóÉî¿ÌµÄ·ÒÀïË¹¡¤·ÒÀï¶û£¬ÄãÇÉÃîµØÌÓÍÑÁË", 'sarah_ego$;
 	end;
 OnTimer7500:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šå—¯..ä»Šå¤©æˆ‘ä¼šè®©ä½ é€€ä¸‹æ¥", 'sarah_ego$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºàÅ..½ñÌìÎÒ»áÈÃÄãÍËÏÂÀ´", 'sarah_ego$;
 	end;
 OnTimer8000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä»Šå¤©æˆ‘å¸Œæœ›ç»“æŸæˆ‘ä»¬ä¸å¹¸çš„å…³ç³»ã€‚", 'fenrir_11$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º½ñÌìÎÒÏ£Íû½áÊøÎÒÃÇ²»ÐÒµÄ¹ØÏµ¡£", 'fenrir_11$;
 	end;
 OnTimer11000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šç„¶è€Œï¼Œä¸è¦ä»¥ä¸ºè¿™å°±æ˜¯ç»“å±€", 'sarah_ego$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÈ»¶ø£¬²»ÒªÒÔÎªÕâ¾ÍÊÇ½á¾Ö", 'sarah_ego$;
 	end;
 OnTimer14000:
-	npctalk "èŽŽæ‹‰è‰¾ç³ï¼šä½ ä¸€å®šä¼šå†æ¬¡è§åˆ°æˆ‘ï¼", 'sarah_ego$;
+	npctalk "É¯À­°¬ÁÕ£ºÄãÒ»¶¨»áÔÙ´Î¼ûµ½ÎÒ£¡", 'sarah_ego$;
 	end;
 OnTimer14500:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå—¯â€¦â€¦æˆ‘å¾ˆæœŸå¾…èŽŽæ‹‰Â·è‰¾ç³â€¦â€¦", 'fenrir_11$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºàÅ¡­¡­ÎÒºÜÆÚ´ýÉ¯À­¡¤°¬ÁÕ¡­¡­", 'fenrir_11$;
 	specialeffect EF_FIREPILLARON2, AREA, 'sarah_ego$;
 	end;
 OnTimer15500:
@@ -714,26 +716,26 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_5");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä½ è¿˜åœ¨æ ¼æ‹‰æ–¯ç‰¹æµ·å§†å—ï¼Ÿä½ ä¸ºä»€ä¹ˆä¸ç¦»å¼€è¿™ä¸ªå±é™©çš„åœ°æ–¹ï¼Ÿ", 'fenrir_2$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÄã»¹ÔÚ¸ñÀ­Ë¹ÌØº£Ä·Âð£¿ÄãÎªÊ²Ã´²»Àë¿ªÕâ¸öÎ£ÏÕµÄµØ·½£¿", 'fenrir_2$;
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : I know it's dangerous but I thought it would be fun so I couldn't help myself..";
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå—¯..å†’é™©å®¶..", 'fenrir_2$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºàÅ..Ã°ÏÕ¼Ò..", 'fenrir_2$;
 	sleep2 2000;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : You don't have to worry~! I am fairly strong myself!";
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå™¢..çœŸçš„å—ï¼Ÿé‚£ä½ è§‰å¾—ä½ èƒ½å¸®æˆ‘å—ï¼Ÿ", 'fenrir_2$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºàÞ..ÕæµÄÂð£¿ÄÇÄã¾õµÃÄãÄÜ°ïÎÒÂð£¿", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘æ­£åœ¨å¯»æ‰¾çš„ç‰©ä½“ä½äºŽæ ¼æ‹‰æ–¯ç‰¹Â·æµ·å§†çš„æŸä¸ªåœ°æ–¹ï¼", 'fenrir_2$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÕýÔÚÑ°ÕÒµÄÎïÌåÎ»ÓÚ¸ñÀ­Ë¹ÌØ¡¤º£Ä·µÄÄ³¸öµØ·½£¡", 'fenrir_2$;
 	viewpoint 1,47,270,1,0xFF0000;
 	sleep2 2000;
-	npctalk "Fenrith Fenrirï¼šä½†æ˜¯å¯»æ‰¾è¯¥ç‰©ä½“çš„å…¶ä»–äººå¾ˆå¿«å°±ä¼šåˆ°è¾¾é‚£é‡Œï¼", 'fenrir_2$;
+	npctalk "Fenrith Fenrir£ºµ«ÊÇÑ°ÕÒ¸ÃÎïÌåµÄÆäËûÈËºÜ¿ì¾Í»áµ½´ïÄÇÀï£¡", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrirï¼šè¿™å¾ˆç´§æ€¥ï¼Œå› ä¸ºæ—¶é—´ä¸å¤Ÿã€‚æˆ‘ä»¬å¿…é¡»å°½å¿«åˆ°è¾¾é‚£é‡Œã€‚æœ€è¿Ÿ5åˆ†é’Ÿï¼", 'fenrir_2$;
+	npctalk "Fenrith Fenrir£ºÕâºÜ½ô¼±£¬ÒòÎªÊ±¼ä²»¹»¡£ÎÒÃÇ±ØÐë¾¡¿ìµ½´ïÄÇÀï¡£×î³Ù5·ÖÖÓ£¡", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘ä¼šç­‰å¾…ï¼å¦‚æžœä½ è¿Ÿåˆ°äº†æˆ‘å°±å¾—è‡ªå·±èµ°äº†ï¼", 'fenrir_2$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒ»áµÈ´ý£¡Èç¹ûÄã³Ùµ½ÁËÎÒ¾ÍµÃ×Ô¼º×ßÁË£¡", 'fenrir_2$;
 	sleep2 2000;
-	npctalk "Fenrith Fenrirï¼šå¥½å§ï¼Œæˆ‘ç»§ç»­ï¼Œä½ å†³å®šæ˜¯å¦è¦å¸®åŠ©æˆ‘ï¼", 'fenrir_2$;
+	npctalk "Fenrith Fenrir£ººÃ°É£¬ÎÒ¼ÌÐø£¬Äã¾ö¶¨ÊÇ·ñÒª°ïÖúÎÒ£¡", 'fenrir_2$;
 	sleep2 3000;
 	cutin "",255;
 	disablenpc 'fenrir_2$;
@@ -759,13 +761,13 @@ OnTouch:
 	end;
 OnTouch:
 	if (is_party_leader() == false)
-		npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘å¸Œæœ›ä½ ä»¬çš„å…šé­èƒ½æ¥å¸®åŠ©æˆ‘ï¼", 'fenrir_3$;
+		npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÏ£ÍûÄãÃÇµÄµ³¿ýÄÜÀ´°ïÖúÎÒ£¡", 'fenrir_3$;
 	else {
 		setpcblock PCBLOCK_NPC, true;
 		disablenpc instance_npcname("#glast_event_7");
-		npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä½ æ¥äº†ï¼æˆ‘åœ¨ç­‰ï¼", 'fenrir_3$;
+		npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÄãÀ´ÁË£¡ÎÒÔÚµÈ£¡", 'fenrir_3$;
 		sleep2 2000;
-		npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘ä»¬æ—¶é—´ä¸å¤šäº†ï¼æˆ‘ä»¬çŽ°åœ¨å¿…é¡»åŽ»å¯»æ‰¾å®ƒï¼æˆ‘ä»¬è¿›åŽ»å§ï¼", 'fenrir_3$;
+		npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÃÇÊ±¼ä²»¶àÁË£¡ÎÒÃÇÏÖÔÚ±ØÐëÈ¥Ñ°ÕÒËü£¡ÎÒÃÇ½øÈ¥°É£¡", 'fenrir_3$;
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		if ('skip_left_part == 0 && is_party_leader() == true) {// 5 mins have passed?
@@ -789,38 +791,38 @@ OnTouch:
 	disablenpc instance_npcname("#glast_event_9");
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šåšå¾·ä¹‹å‰‘ã€å“¨å…µå¾®é£Žâ€¦â€¦å³ä½¿åœ¨ 1000 å¹´åŽâ€¦â€¦", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º²©µÂÖ®½£¡¢ÉÚ±øÎ¢·ç¡­¡­¼´Ê¹ÔÚ 1000 Äêºó¡­¡­", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrirï¼šæˆ‘èƒ½æ„Ÿå—åˆ°è¿™ä¸ªåœ°æ–¹æ€ªç‰©çš„é‚ªæ¶..å¥½åƒå®ƒä»¬è¢«æŸäººæŽ§åˆ¶äº†..", 'fenrir_4$;
+	npctalk "Fenrith Fenrir£ºÎÒÄÜ¸ÐÊÜµ½Õâ¸öµØ·½¹ÖÎïµÄÐ°¶ñ..ºÃÏñËüÃÇ±»Ä³ÈË¿ØÖÆÁË..", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šé‚£ä¹ˆè¿™é‡Œé™¤äº†æˆ‘ä¹‹å¤–è¿˜æœ‰å…¶ä»–äººå—ï¼Ÿ", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÄÇÃ´ÕâÀï³ýÁËÎÒÖ®Íâ»¹ÓÐÆäËûÈËÂð£¿", 'fenrir_4$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¿™æ ·å°±å¯ä»¥äº†..çŽ°åœ¨æˆ‘è¦åšçš„å°±æ˜¯ä½¿ç”¨å“¨å…µå¾®é£Žæ‰¾åˆ°åšå¾·çš„ä¸‹è½..", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕâÑù¾Í¿ÉÒÔÁË..ÏÖÔÚÎÒÒª×öµÄ¾ÍÊÇÊ¹ÓÃÉÚ±øÎ¢·çÕÒµ½²©µÂµÄÏÂÂä..", 'fenrir_4$;
 	sleep2 3000;
 	enablenpc 'sarah_10$;
 	enablenpc instance_npcname("Gigantes#semi1");
 	enablenpc instance_npcname("Gigantes#semi2");
 	sleep2 1000;
 	cutin "sarah_hero3.bmp",0;
-	npctalk "Sarah Ireneï¼šå‘µå‘µ...æˆ‘æ˜Žç™½äº†...æ­£å¦‚æˆ‘æ‰€æ–™ã€‚", 'sarah_10$;
+	npctalk "Sarah Irene£ººÇºÇ...ÎÒÃ÷°×ÁË...ÕýÈçÎÒËùÁÏ¡£", 'sarah_10$;
 	sleep2 3000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šé‚£æŠŠå‰‘å°±æ˜¯çº¿ç´¢å—ï¼Ÿ", 'sarah_10$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÄÇ°Ñ½£¾ÍÊÇÏßË÷Âð£¿", 'sarah_10$;
 	sleep2 3000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šé‚£ä¹ˆï¼ŒèŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼Œè¿™æ„å‘³ç€å¯ä»¥ç”¨å®ƒæ‰“ç ´ä¸€åƒå¹´çš„å°å°å—ï¼Ÿ", 'sarah_10$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÄÇÃ´£¬·ÒÀïË¹¡¤·ÒÀï¶û£¬ÕâÒâÎ¶×Å¿ÉÒÔÓÃËü´òÆÆÒ»Ç§ÄêµÄ·âÓ¡Âð£¿", 'sarah_10$;
 	sleep2 3500;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : Could it be he was the real Fenrir?";
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¿™éš¾é“æ˜¯â€¦â€¦ç“¦å°”åŸºé‡Œï¼çŽ°åœ¨ä¸å†å¥½çŽ©äº†", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕâÄÑµÀÊÇ¡­¡­Íß¶û»ùÀï£¡ÏÖÔÚ²»ÔÙºÃÍæÁË", 'fenrir_4$;
 	cutin "fenrir_b.bmp",2;
 	sleep2 5000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šè¿Ÿæ¥çš„é—®å€™ï¼Œæˆ‘å«èŽŽæ‹‰Â·è‰¾ç³ï¼Œç“¦å°”å“ˆæ‹‰åäºŒå¥³æ­¦ç¥žä¹‹ä¸€ã€‚", 'sarah_10$;
+	npctalk "É¯À­¡¤°¬ÁÕ£º³ÙÀ´µÄÎÊºò£¬ÎÒ½ÐÉ¯À­¡¤°¬ÁÕ£¬Íß¶û¹þÀ­Ê®¶þÅ®ÎäÉñÖ®Ò»¡£", 'sarah_10$;
 	cutin "sarah_hero3.bmp",0;
 	sleep2 3000;
-	npctalk "Sarah Ireneï¼šä¸ç®¡æ€Žæ ·ï¼Œä¹Ÿæ˜¯ä¸ºäº†å®žçŽ°Freyjaçš„æ„æ„¿..å‘µå‘µ..", 'sarah_10$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¸¤ä¸ªå·¨äººï¼è¿™ä¸ä¼šæ˜¯ä¸€åœºè½»æ¾çš„æˆ˜æ–—ã€‚å¸®åŠ©æˆ‘æ‰“è´¥å·¨äººï¼", 'fenrir_4$;
+	npctalk "Sarah Irene£º²»¹ÜÔõÑù£¬Ò²ÊÇÎªÁËÊµÏÖFreyjaµÄÒâÔ¸..ºÇºÇ..", 'sarah_10$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÁ½¸ö¾ÞÈË£¡Õâ²»»áÊÇÒ»³¡ÇáËÉµÄÕ½¶·¡£°ïÖúÎÒ´ò°Ü¾ÞÈË£¡", 'fenrir_4$;
 	cutin "fenrir_b.bmp",2;
 	sleep2 3000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šå‰è¿›ï¼å·¨äººï¼è¿˜æœ‰æˆ‘å¿ è¯šçš„æ€ªç‰©ï¼", 'sarah_10$;
-	npctalk "èŠ¬é‡Œæ–¯èŠ¬é‡Œå°”ï¼šèŽŽæ‹‰ä¼šéšè—å¹¶ä¸æ–­å¬å”¤æ€ªç‰©ï¼æˆ‘æ¥å¯¹ä»˜é‚£ä¸ªæ€ªç‰©ï¼Œä½ é¢å¯¹å·¨äººï¼", 'fenrir_4$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÇ°½ø£¡¾ÞÈË£¡»¹ÓÐÎÒÖÒ³ÏµÄ¹ÖÎï£¡", 'sarah_10$;
+	npctalk "·ÒÀïË¹·ÒÀï¶û£ºÉ¯À­»áÒþ²Ø²¢²»¶ÏÕÙ»½¹ÖÎï£¡ÎÒÀ´¶Ô¸¶ÄÇ¸ö¹ÖÎï£¬ÄãÃæ¶Ô¾ÞÈË£¡", 'fenrir_4$;
 	cutin "fenrir_b.bmp",255;
 	sleep2 2000;
 	disablenpc 'sarah_10$;
@@ -840,11 +842,11 @@ OnEvent:
 
 OnStart:
 	initnpctimer;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç”µæµåœ¨å¤§æ°”ä¸­æŒ¯åŠ¨ï¼è®©æˆ‘çœ‹çœ‹ä½ çš„å®žåŠ›å§ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºµçÁ÷ÔÚ´óÆøÖÐÕñ¶¯£¡ÈÃÎÒ¿´¿´ÄãµÄÊµÁ¦°É£¡", 'fenrir_4$;
 	callsub S_Spawn,1,3198;// MM_M_GALION
 
 	progressbar_npc "000000",5, 'fenrir_4$;	// note: display effect after dead of Gigantes
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šé—ªç”µï¼ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÉÁµç£¡£¡£¡", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -852,10 +854,10 @@ OnTimer6000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer15000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç”¨å®‡å®™çš„ç«å‘åžå™¬è¿™ä¸ªé‚ªæ¶çš„å­˜åœ¨ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÓÃÓîÖæµÄ»ð¿ÓÍÌÊÉÕâ¸öÐ°¶ñµÄ´æÔÚ£¡", 'fenrir_4$;
 	callsub S_Spawn,2,3198;// MM_M_GALION
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¿žç©ºé—´éƒ½èƒ½åžå™¬çš„åœ°ç‹±ç«ï¼æµæ˜Ÿé£Žæš´~ï¼ï¼ï¼ï¼ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÁ¬¿Õ¼ä¶¼ÄÜÍÌÊÉµÄµØÓü»ð£¡Á÷ÐÇ·ç±©~£¡£¡£¡£¡£¡£¡", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_METEORSTORM, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -863,10 +865,10 @@ OnTimer21000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer30000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç”µæµåœ¨å¤§æ°”ä¸­æŒ¯åŠ¨ï¼è®©æˆ‘çœ‹çœ‹ä½ çš„å®žåŠ›å§ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºµçÁ÷ÔÚ´óÆøÖÐÕñ¶¯£¡ÈÃÎÒ¿´¿´ÄãµÄÊµÁ¦°É£¡", 'fenrir_4$;
 	callsub S_Spawn,1,3199;// MM_M_MUTANT_DRAGON
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šé—ªç”µï¼ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÉÁµç£¡£¡£¡", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LIGHTBOLT, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -874,10 +876,10 @@ OnTimer36000:
 	killmonster 'map_glast$, instance_npcname("#glast_event_9") + "::OnMobDead";
 	end;
 OnTimer45000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç”¨éœœé£Žå†»ç»“é‚ªæ¶å­˜åœ¨ï¼ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÓÃËª·ç¶³½áÐ°¶ñ´æÔÚ£¡£¡£¡", 'fenrir_4$;
 	callsub S_Spawn,2,3199;// MM_M_MUTANT_DRAGON
 	progressbar_npc "000000",5, 'fenrir_4$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè¿žçµé­‚éƒ½èƒ½å†»ç»“çš„é£Žæš´ï¼ï¼ç‹‚é£Žæš´é›¨~ï¼ï¼ï¼ï¼ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÁ¬Áé»ê¶¼ÄÜ¶³½áµÄ·ç±©£¡£¡¿ñ·ç±©Óê~£¡£¡£¡£¡£¡£¡", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_STORMGUST, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	end;
@@ -933,21 +935,21 @@ S_Spawn:
 OnEvent:
 	enablenpc instance_npcname("#fenrir_left_vermilion");
 	initnpctimer;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå®ƒä»¬æ˜¯æ— ç©·æ— å°½çš„ã€‚æˆ‘ç»å¯¹åº”è¯¥å®Œæˆè¿™ä»¶äº‹ã€‚", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºËüÃÇÊÇÎÞÇîÎÞ¾¡µÄ¡£ÎÒ¾ø¶ÔÓ¦¸ÃÍê³ÉÕâ¼þÊÂ¡£", 'fenrir_4$;
 	progressbar_npc "000000",10, 'fenrir_4$;
 	end;
 OnTimer2000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ‹¥æœ‰ç¾Žä¸½çŒ©çº¢è‰²æ°”æ¯çš„æ— é™é¥è¿œçš„å›ä¸»ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÓµÓÐÃÀÀöÐÉºìÉ«ÆøÏ¢µÄÎÞÏÞÒ£Ô¶µÄ¾ýÖ÷£¡£¡", 'fenrir_4$;
 	end;
 OnTimer4000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä½ æ‰€ç»è¿‡çš„åœ°æ–¹åªä¼šå……æ»¡è™šæ— ã€‚", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÄãËù¾­¹ýµÄµØ·½Ö»»á³äÂúÐéÎÞ¡£", 'fenrir_4$;
 	end;
 OnTimer7000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ’¼åŠ¨åœ°è½´çš„åŠ›é‡ï¼å°±åœ¨æ­¤æ—¶æ­¤åœ°å±•çŽ°ä½ çš„ä¼˜é›…ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºº³¶¯µØÖáµÄÁ¦Á¿£¡¾ÍÔÚ´ËÊ±´ËµØÕ¹ÏÖÄãµÄÓÅÑÅ£¡", 'fenrir_4$;
 	end;
 OnTimer10000:
 	stopnpctimer;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæœ±çº¢ä¹‹è·¯ï¼ï¼ï¼ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÖìºìÖ®Â·£¡£¡£¡£¡", 'fenrir_4$;
 	for ( .@i = 1; .@i < 9; .@i++ )
 		specialeffect EF_LORD, AREA, instance_npcname("#effect_glast_event02_" + .@i);
 	killmonster 'map_glast$, instance_npcname("#fenrir_left_final_1") + "::OnMobDead";
@@ -966,21 +968,21 @@ OnStart:
 	initnpctimer;
 	end;
 OnTimer2000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå¥½çš„ï¼æˆ‘ä»¬æ‰“è´¥äº†å·¨äººï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ººÃµÄ£¡ÎÒÃÇ´ò°ÜÁË¾ÞÈË£¡", 'fenrir_4$;
 	enablenpc 'sarah_10$;
 	end;
 OnTimer4000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šæžœç„¶ï¼ŒèŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼Œä½ ä¸ä¼šè½»æ˜“å±ˆæœçš„ï¼", 'sarah_10$;
+	npctalk "É¯À­¡¤°¬ÁÕ£º¹ûÈ»£¬·ÒÀïË¹¡¤·ÒÀï¶û£¬Äã²»»áÇáÒ×Çü·þµÄ£¡", 'sarah_10$;
 	end;
 OnTimer7000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç«‹å³è¿œç¦»å“¨å…µå¾®é£Žï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÁ¢¼´Ô¶ÀëÉÚ±øÎ¢·ç£¡", 'fenrir_4$;
 	end;
 OnTimer9000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šå‘µå‘µ..æˆ‘ä¸èƒ½é‚£æ ·åšï¼", 'sarah_10$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ººÇºÇ..ÎÒ²»ÄÜÄÇÑù×ö£¡", 'sarah_10$;
 	specialeffect EF_WL_TELEKINESIS_INTENSE, AREA, instance_npcname("#effect_glast_event02_bis");
 	end;
 OnTimer11000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šå¦‚æžœä½ æƒ³è¦å®ƒå›žæ¥ï¼Œå°±æ¥æ ¼æ‹‰æ–¯ç‰¹æµ·å§†åŸŽå ¡å§ï¼æˆ‘ä¼šç­‰å¾…çš„ï¼", 'sarah_10$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÈç¹ûÄãÏëÒªËü»ØÀ´£¬¾ÍÀ´¸ñÀ­Ë¹ÌØº£Ä·³Ç±¤°É£¡ÎÒ»áµÈ´ýµÄ£¡", 'sarah_10$;
 	end;
 OnTimer13000:
 	specialeffect EF_FIREPILLARON2, AREA, 'sarah_10$;
@@ -989,10 +991,10 @@ OnTimer14000:
 	disablenpc 'sarah_10$;
 	end;
 OnTimer16000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘ä»¬å¿…é¡»èµ¶ç´§è·Ÿä¸ŠåŽ»å–å›žå‰‘ï¼æˆ‘è¦ä½¿ç”¨é›†ä½“ç©ºé—´ç§»åŠ¨é­”æ³•ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÃÇ±ØÐë¸Ï½ô¸úÉÏÈ¥È¡»Ø½££¡ÎÒÒªÊ¹ÓÃ¼¯Ìå¿Õ¼äÒÆ¶¯Ä§·¨£¡", 'fenrir_4$;
 	end;
 OnTimer19000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šåŒæ—¶å¤§è§„æ¨¡æ‰­æ›²ï¼", 'fenrir_4$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÍ¬Ê±´ó¹æÄ£Å¤Çú£¡", 'fenrir_4$;
 	end;
 OnTimer20000:
 	stopnpctimer;
@@ -1042,18 +1044,18 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "fenrir_a.bmp",2;
 	sleep2 1000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘éœ€è¦åŽ»æ ¼æ‹‰æ–¯ç‰¹Â·æµ·å§†åŸŽå ¡å–å›žåšå¾·ä¹‹å‰‘ã€‚", 'fenrir_5$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÐèÒªÈ¥¸ñÀ­Ë¹ÌØ¡¤º£Ä·³Ç±¤È¡»Ø²©µÂÖ®½£¡£", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "Fenrith Fenrirï¼šç‹¬è‡ªä¸€äººå¯èƒ½ä¼šå¾ˆå›°éš¾ï¼Œæˆ‘ä¼šå¾ˆæ„Ÿæ¿€åœ°æŽ¥å—ä½ çš„å¸®åŠ©ã€‚", 'fenrir_5$;
+	npctalk "Fenrith Fenrir£º¶À×ÔÒ»ÈË¿ÉÄÜ»áºÜÀ§ÄÑ£¬ÎÒ»áºÜ¸Ð¼¤µØ½ÓÊÜÄãµÄ°ïÖú¡£", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç”±äºŽæ—¶é—´ä¸å¤Ÿï¼Œæˆ‘ä»¬ä¸èƒ½ç­‰å¤ªä¹…ã€‚", 'fenrir_5$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÓÉÓÚÊ±¼ä²»¹»£¬ÎÒÃÇ²»ÄÜµÈÌ«¾Ã¡£", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘ä¼šåœ¨æ ¼æ‹‰æ–¯ç‰¹æµ·å§†ä¸­å¤®åŸŽå ¡ç­‰å¾…å¤§çº¦5åˆ†é’Ÿã€‚", 'fenrir_5$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒ»áÔÚ¸ñÀ­Ë¹ÌØº£Ä·ÖÐÑë³Ç±¤µÈ´ý´óÔ¼5·ÖÖÓ¡£", 'fenrir_5$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ—¢ç„¶å¾ˆå±é™©ï¼Œä½ å°±ä¸å¿…è§‰å¾—æœ‰ä¹‰åŠ¡å¸®åŠ©æˆ‘ã€‚å¦‚æžœæœ‰å¿…è¦çš„è¯æˆ‘ä¼šè‡ªå·±å°è¯•ã€‚", 'fenrir_5$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º¼ÈÈ»ºÜÎ£ÏÕ£¬Äã¾Í²»±Ø¾õµÃÓÐÒåÎñ°ïÖúÎÒ¡£Èç¹ûÓÐ±ØÒªµÄ»°ÎÒ»á×Ô¼º³¢ÊÔ¡£", 'fenrir_5$;
 	viewpoint 1,199,237,1,0xFF0000;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šé‚£æˆ‘ç»§ç»­å‰è¿›ï¼ç»ï¼", 'fenrir_5$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÄÇÎÒ¼ÌÐøÇ°½ø£¡¾­£¡", 'fenrir_5$;
 	cutin "",255;
 	donpcevent instance_npcname("#glast_event_13") + "::OnBar";
 	setpcblock PCBLOCK_NPC, false;
@@ -1131,9 +1133,9 @@ OnTouch:
 	donpcevent instance_npcname("#fenrir_boss_final_2") + "::OnStop";
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘åœ¨ç­‰ã€‚è°¢è°¢ä½ æ²¡æœ‰è¿Ÿåˆ°ã€‚", 'fenrir_6$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÔÚµÈ¡£Ð»Ð»ÄãÃ»ÓÐ³Ùµ½¡£", 'fenrir_6$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè®©æˆ‘ä»¬çˆ¬ä¸ŠåŸŽå ¡åŽ»æ‰¾å›žå“¨å…µå¾®é£Žå§ï¼èŽŽæ‹‰ä¼šç­‰ç€çš„ï¼", 'fenrir_6$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÈÃÎÒÃÇÅÀÉÏ³Ç±¤È¥ÕÒ»ØÉÚ±øÎ¢·ç°É£¡É¯À­»áµÈ×ÅµÄ£¡", 'fenrir_6$;
 	sleep2 3000;
 	disablenpc 'fenrir_6$;
 	enablenpc instance_npcname("#glast_move_03a");
@@ -1154,38 +1156,38 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	cutin "sarah_hero3.bmp",0;
 	sleep2 1000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šä¼¼ä¹Žæ°¸è¿œåœ¨ç­‰ä½ ~èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ã€‚", 'sarah_17$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºËÆºõÓÀÔ¶ÔÚµÈÄã~·ÒÀïË¹¡¤·ÒÀï¶û¡£", 'sarah_17$;
 	sleep2 3000;
 	cutin "fenrir_b.bmp",2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¸ç”¨åºŸè¯äº†ï¼ŒçŽ°åœ¨å°±äº¤å‡ºå“¨å…µå¾®é£Žå§ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º²»ÓÃ·Ï»°ÁË£¬ÏÖÔÚ¾Í½»³öÉÚ±øÎ¢·ç°É£¡", 'fenrir_7$;
 	sleep2 3000;
 	cutin "sarah_hero3.bmp",0;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šå¦‚æžœå¯ä»¥çš„è¯å°±è¯•è¯•å§ã€‚", 'sarah_17$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÈç¹û¿ÉÒÔµÄ»°¾ÍÊÔÊÔ°É¡£", 'sarah_17$;
 	sleep2 3000;
 	cutin "fenrir_b.bmp",2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šèŽŽæ‹‰å¯¹ä½ æ¥è¯´å¯èƒ½å¤ªéš¾ç‹¬è‡ªé¢å¯¹äº†ã€‚æˆ‘å¿…é¡»é¢å¯¹å¥¹ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÉ¯À­¶ÔÄãÀ´Ëµ¿ÉÄÜÌ«ÄÑ¶À×ÔÃæ¶ÔÁË¡£ÎÒ±ØÐëÃæ¶ÔËý£¡", 'fenrir_7$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçº¯ç™½çš„æž·é”ï¼Œæ°¸æ’çš„ç›‘ç‹±ï¼ŒçŽ°åœ¨å°±è·Ÿæˆ‘åšäº¤æ˜“å§ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º´¿°×µÄ¼ÏËø£¬ÓÀºãµÄ¼àÓü£¬ÏÖÔÚ¾Í¸úÎÒ×ö½»Ò×°É£¡", 'fenrir_7$;
 	donpcevent instance_npcname("#glast_event_18") + "::OnBar";
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šç™½è‰²å›šç¦ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º°×É«Çô½û£¡£¡", 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	sleep2 3000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šèµ«å…‹â€¦â€¦ä»–â€¦â€¦", 'sarah_17$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘ä¼šç”¨ç™½è‰²å›šç¦å‰Šå¼±èŽŽæ‹‰ï¼Œå¹¶åœ¨å¥¹æˆ´ç€é•£é“æ—¶é¢å¯¹å¥¹ï¼Œ", 'fenrir_7$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ººÕ¿Ë¡­¡­Ëû¡­¡­", 'sarah_17$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒ»áÓÃ°×É«Çô½ûÏ÷ÈõÉ¯À­£¬²¢ÔÚËý´÷×ÅÁÍîíÊ±Ãæ¶ÔËý£¬", 'fenrir_7$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä½ è´Ÿè´£ç…§é¡¾å¥¹å¬å”¤çš„æ€ªç‰©ã€‚æˆ‘æŒ‡æœ›ä½ äº†ã€‚", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÄã¸ºÔðÕÕ¹ËËýÕÙ»½µÄ¹ÖÎï¡£ÎÒÖ¸ÍûÄãÁË¡£", 'fenrir_7$;
 	sleep2 3000;
 	unittalk getcharid(3), "" + strcharinfo(0) + " : Will do. Powerful enemies make my blood boil.";
 	sleep2 6000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼ˆFenrith Fenrirï¼‰ï¼šè¿™æ˜¯ä¸€ç§åœ¨èŽŽæ‹‰å¤„äºŽå±æ€¥çŠ¶æ€æ—¶ç«‹å³æ”»å‡»å¹¶æ€æ­»å¥¹çš„ç­–ç•¥ã€‚è¯·è®°ä½ï¼Œæˆ‘ä»¬çš„å¯¹æ‰‹å¾ˆå¼ºå¤§ã€‚", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£¨Fenrith Fenrir£©£ºÕâÊÇÒ»ÖÖÔÚÉ¯À­´¦ÓÚÎ£¼±×´Ì¬Ê±Á¢¼´¹¥»÷²¢É±ËÀËýµÄ²ßÂÔ¡£Çë¼Ç×¡£¬ÎÒÃÇµÄ¶ÔÊÖºÜÇ¿´ó¡£", 'fenrir_7$;
 	sleep2 3000;
 	cutin "sarah_hero3_2.bmp",0;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šæ‰€ä»¥ä½ çš„è®¡åˆ’æ˜¯ç”¨è¿™ç§æŠŠæˆæŠŠæˆ‘ç»‘èµ·æ¥ï¼Ÿ", 'sarah_17$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºËùÒÔÄãµÄ¼Æ»®ÊÇÓÃÕâÖÖ°ÑÏ·°ÑÎÒ°óÆðÀ´£¿", 'sarah_17$;
 	sleep2 3000;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šè€Œä¸”è¿˜å€Ÿç”¨äº†æ–°äººå†’é™©å®¶çš„å¸®åŠ©â€¦â€¦", 'sarah_17$;
+	npctalk "É¯À­¡¤°¬ÁÕ£º¶øÇÒ»¹½èÓÃÁËÐÂÈËÃ°ÏÕ¼ÒµÄ°ïÖú¡­¡­", 'sarah_17$;
 	sleep2 3000;
-	npctalk "èŽŽæ‹‰è‰¾ç³ï¼šä½ éœ€è¦å’Œé‚£æŠŠç ´æ—§çš„åˆ€ç‰‡ä¸€èµ·ä»Žè¿™é‡Œæ¶ˆå¤±ï¼ï¼", 'sarah_17$;
+	npctalk "É¯À­°¬ÁÕ£ºÄãÐèÒªºÍÄÇ°ÑÆÆ¾ÉµÄµ¶Æ¬Ò»Æð´ÓÕâÀïÏûÊ§£¡£¡", 'sarah_17$;
 	sleep2 3000;
 	cutin "",255;
 	hideonnpc 'sarah_17$;
@@ -1222,7 +1224,7 @@ OnEvent:
 	enablenpc instance_npcname("#fenrir_boss_final_1");
 	initnpctimer;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè‡´å‘½çš„æ¯’è¯ï¼Œä¹Œäº‘ï¼Œå‡ºçŽ°åœ¨æˆ‘é¢å‰ï¼Œå‘ˆçŽ°å‡ºæœ€ç—›è‹¦çš„æ­»äº¡ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÖÂÃüµÄ¶¾Ò©£¬ÎÚÔÆ£¬³öÏÖÔÚÎÒÃæÇ°£¬³ÊÏÖ³ö×îÍ´¿àµÄËÀÍö£¡", 'fenrir_7$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1232,7 +1234,7 @@ OnTimer1000:
 	end;
 OnTimer10000:
 	callsub S_Hit,1;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šèµ°å§ï¼äº‘æ€ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º×ß°É£¡ÔÆÉ±£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_POISONSMOKE, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1253,7 +1255,7 @@ OnTimer11000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer13000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè‡´å‘½çš„æ¯’è¯ï¼Œä¹Œäº‘ï¼Œå‡ºçŽ°åœ¨æˆ‘é¢å‰ï¼Œå‘ˆçŽ°å‡ºæœ€ç—›è‹¦çš„æ­»äº¡ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÖÂÃüµÄ¶¾Ò©£¬ÎÚÔÆ£¬³öÏÖÔÚÎÒÃæÇ°£¬³ÊÏÖ³ö×îÍ´¿àµÄËÀÍö£¡", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
 	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
@@ -1267,7 +1269,7 @@ OnTimer13000:
 	end;
 OnTimer20000:
 	callsub S_Hit,2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šèµ°å§ï¼äº‘æ€ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º×ß°É£¡ÔÆÉ±£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_POISONSMOKE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
@@ -1289,7 +1291,7 @@ OnTimer21000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer23000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘å¯¹æŽŒæŽ§ç«çš„ä½ è¯´è¯ï¼Œæˆ‘èŠ¬é‡Œæ–¯ï¼Œæ¸´æœ›ä¸ç†„ç­çš„ç«â€¦â€¦", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒ¶ÔÕÆ¿Ø»ðµÄÄãËµ»°£¬ÎÒ·ÒÀïË¹£¬¿ÊÍû²»Ï¨ÃðµÄ»ð¡­¡­", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_POISONSMOKE2, AREA, 'sarah_17$;
 	specialeffect EF_POISONSMOKE2, AREA, instance_npcname("#effect_glast_event03_1");
@@ -1302,13 +1304,13 @@ OnTimer23000:
 	specialeffect EF_ENCHANTPOISON, AREA, instance_npcname("#effect_glast_event03_8");
 	end;
 OnTimer36000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ— å°½ç‡ƒçƒ§çš„å¤§ç«ï¼Œè¿žçµé­‚éƒ½èƒ½è¢«çƒ§ç„¦çš„ç«ç„°ï¼ï¼çŽ°åœ¨å°±å‡ºçŽ°åœ¨æˆ‘é¢å‰å§ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÞ¾¡È¼ÉÕµÄ´ó»ð£¬Á¬Áé»ê¶¼ÄÜ±»ÉÕ½¹µÄ»ðÑæ£¡£¡ÏÖÔÚ¾Í³öÏÖÔÚÎÒÃæÇ°°É£¡£¡", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer50000:
 	callsub S_Hit,3;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‡ºçŽ°ï¼ï¼ç«ç„°çº¹ç« ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º³öÏÖ£¡£¡»ðÑæÎÆÕÂ£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
 	end;
@@ -1319,12 +1321,12 @@ OnTimer51000:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer53000:
-	npctalk "Error 500 (Server Error)!!1500.Thatâ€™s an error.There was an error. Please try again later.Thatâ€™s all we know.", 'fenrir_7$;
+	npctalk "Error 500 (Server Error)!!1500.That¡¯s an error.There was an error. Please try again later.That¡¯s all we know.", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
 	end;
 OnTimer60000:
 	callsub S_Hit,4;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‰è¿›ï¼ï¼å¤©é“é©±åŠ¨ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÇ°½ø£¡£¡ÌìµÀÇý¶¯£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
@@ -1335,11 +1337,11 @@ OnTimer60500:
 	end;
 OnTimer63000:
 	specialeffect EF_PRIMECHARGE4, AREA, 'fenrir_7$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæƒŠå¤©åŠ¨åœ°ä¹‹åŠ›çš„æ ¹æºï¼ï¼æ•¬ç•å¤§åœ°çš„åŠ›é‡ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º¾ªÌì¶¯µØÖ®Á¦µÄ¸ùÔ´£¡£¡¾´Î·´óµØµÄÁ¦Á¿£¡£¡£¡", 'fenrir_7$;
 	end;
 OnTimer70000:
 	callsub S_Hit,5;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‰è¿›ï¼ï¼å¤©é“é©±åŠ¨ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÇ°½ø£¡£¡ÌìµÀÇý¶¯£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_HEAVENSDRIVE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",30, 'fenrir_7$;
@@ -1348,16 +1350,16 @@ OnTimer70500:
 	unittalk 'boss_id, "Sarah Irene: Do you think that is enough to beat me?";
 	end;
 OnTimer73000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼ˆFenrith Fenrirï¼‰ï¼šåŒ—é£Žæ— æƒ…çš„å¯’å†·æ°”æ¯ï¼Œ", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£¨Fenrith Fenrir£©£º±±·çÎÞÇéµÄº®ÀäÆøÏ¢£¬", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer85000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šåƒå¯‚é™çš„é»Žæ˜Žè–„é›¾ä¸€æ ·é™ä¸´ï¼Œå†»ç»“ä¸€åˆ‡ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏñ¼Å¾²µÄÀèÃ÷±¡ÎíÒ»Ñù½µÁÙ£¬¶³½áÒ»ÇÐ£¡£¡", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer100000:
 	callsub S_Hit,6;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‡ºçŽ°ï¼ï¼ï¼å†°éœœè¿·é›¾ï¼ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º³öÏÖ£¡£¡£¡±ùËªÃÔÎí£¡£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
@@ -1367,12 +1369,12 @@ OnTimer100500:
 	unittalk 'boss_id, "Sarah Irene: Not bad but.. not even close!";
 	end;
 OnTimer103000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ€€ç–‘çš„åŠ›é‡ï¼Œå¼ºå¤§çš„åŠ›é‡ï¼Œå¿ƒçµæ·±å¤„éšè—çš„ç§˜å¯†çš„åŠ›é‡ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º»³ÒÉµÄÁ¦Á¿£¬Ç¿´óµÄÁ¦Á¿£¬ÐÄÁéÉî´¦Òþ²ØµÄÃØÃÜµÄÁ¦Á¿£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
 	end;
 OnTimer110000:
 	callsub S_Hit,7;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçŽ°åœ¨ï¼ï¼ï¼å¿ƒçµæ³¢åŠ¨ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏÖÔÚ£¡£¡£¡ÐÄÁé²¨¶¯£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1381,12 +1383,12 @@ OnTimer110500:
 	unittalk 'boss_id, "Sarah Irene: Ugh... that is no use Fenrir!";
 	end;
 OnTimer113000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ€€ç–‘çš„åŠ›é‡ï¼Œå¼ºå¤§çš„åŠ›é‡ï¼Œå¿ƒçµæ·±å¤„éšè—çš„ç§˜å¯†çš„åŠ›é‡ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º»³ÒÉµÄÁ¦Á¿£¬Ç¿´óµÄÁ¦Á¿£¬ÐÄÁéÉî´¦Òþ²ØµÄÃØÃÜµÄÁ¦Á¿£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE, AREA, 'fenrir_7$;
 	end;
 OnTimer120000:
 	callsub S_Hit,8;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçŽ°åœ¨ï¼ï¼ï¼å¿ƒçµæ³¢åŠ¨ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏÖÔÚ£¡£¡£¡ÐÄÁé²¨¶¯£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_SPR_PLANT10, AREA, 'sarah_17$;
 	monster 'map_glast$,190,341, "Large Gigantes#a1", 3194,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN1
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
@@ -1396,17 +1398,17 @@ OnTimer120500:
 	unittalk 'boss_id, "Sarah Irene: Hurk.. such an annoying magic bombardment!!";
 	end;
 OnTimer123000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘å¯¹æŽŒæŽ§ç«çš„ä½ è¯´è¯ï¼Œæˆ‘èŠ¬é‡Œæ–¯ï¼Œæ¸´æœ›ä¸ç†„ç­çš„ç«â€¦â€¦", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒ¶ÔÕÆ¿Ø»ðµÄÄãËµ»°£¬ÎÒ·ÒÀïË¹£¬¿ÊÍû²»Ï¨ÃðµÄ»ð¡­¡­", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	end;
 OnTimer135000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ— å°½ç‡ƒçƒ§çš„å¤§ç«ï¼Œè¿žçµé­‚éƒ½èƒ½è¢«çƒ§ç„¦çš„ç«ç„°ï¼ï¼çŽ°åœ¨å°±å‡ºçŽ°åœ¨æˆ‘é¢å‰å§ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÞ¾¡È¼ÉÕµÄ´ó»ð£¬Á¬Áé»ê¶¼ÄÜ±»ÉÕ½¹µÄ»ðÑæ£¡£¡ÏÖÔÚ¾Í³öÏÖÔÚÎÒÃæÇ°°É£¡£¡", 'fenrir_7$;
 	specialeffect EF_BEGINSPELL_YB, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer150000:
 	callsub S_Hit,9;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‡ºçŽ°ï¼ï¼ç«ç„°çº¹ç« ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º³öÏÖ£¡£¡»ðÑæÎÆÕÂ£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_DEMONICFIRE, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1415,12 +1417,12 @@ OnTimer150500:
 	unittalk 'boss_id, "Sarah Irene: I am Sarah Irene! I will not fall so easily!!!";
 	end;
 OnTimer153000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçœŸæ­£çš„å¤©ç©ºä¹‹æ€’ï¼Œæ’•è£‚å¤§åœ°çš„é›·éœ†â€¦â€¦çŽ°åœ¨å°±å€’åœ¨æˆ‘é¢å‰å§ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕæÕýµÄÌì¿ÕÖ®Å­£¬ËºÁÑ´óµØµÄÀ×öª¡­¡­ÏÖÔÚ¾Íµ¹ÔÚÎÒÃæÇ°°É£¡£¡", 'fenrir_7$;
 	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
 	end;
 OnTimer160000:
 	callsub S_Hit,10;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ¥å§ï¼ï¼é›·éœ†é£Žæš´ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÀ´°É£¡£¡À×öª·ç±©£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
 	unittalk 'boss_id, "Sarah Irene: Ugh...you are.. stronger than I predicted Fenrir...";
 	progressbar_npc "000000",10, 'fenrir_7$;
@@ -1429,12 +1431,12 @@ OnTimer160500:
 	unittalk 'boss_id, "Sarah Irene: Ugh...you are.. stronger than I predicted Fenrir...";
 	end;
 OnTimer163000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçœŸæ­£çš„å¤©ç©ºä¹‹æ€’ï¼Œæ’•è£‚å¤§åœ°çš„é›·éœ†â€¦â€¦çŽ°åœ¨å°±å€’åœ¨æˆ‘é¢å‰å§ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÕæÕýµÄÌì¿ÕÖ®Å­£¬ËºÁÑ´óµØµÄÀ×öª¡­¡­ÏÖÔÚ¾Íµ¹ÔÚÎÒÃæÇ°°É£¡£¡", 'fenrir_7$;
 	specialeffect EF_DQ9_CHARGE3, AREA, 'fenrir_7$;
 	end;
 OnTimer170000:
 	callsub S_Hit,11;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ¥å§ï¼ï¼é›·éœ†é£Žæš´ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÀ´°É£¡£¡À×öª·ç±©£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_THUNDERSTORM2, AREA, 'sarah_17$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	progressbar_npc "000000",30, 'fenrir_7$;
@@ -1443,7 +1445,7 @@ OnTimer170500:
 	unittalk 'boss_id, "Sarah Irene: Argh!!!!!! Ahhh!!!!!";
 	end;
 OnTimer173000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼ˆFenrith Fenrirï¼‰ï¼šåŒ—é£Žæ— æƒ…çš„å¯’å†·æ°”æ¯ï¼Œ", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£¨Fenrith Fenrir£©£º±±·çÎÞÇéµÄº®ÀäÆøÏ¢£¬", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	end;
 OnTimer180000:
@@ -1453,13 +1455,13 @@ OnTimer180000:
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	end;
 OnTimer185000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šåƒå¯‚é™çš„é»Žæ˜Žè–„é›¾ä¸€æ ·é™ä¸´ï¼Œå†»ç»“ä¸€åˆ‡ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏñ¼Å¾²µÄÀèÃ÷±¡ÎíÒ»Ñù½µÁÙ£¬¶³½áÒ»ÇÐ£¡£¡", 'fenrir_7$;
 	specialeffect EF_PRIMECHARGE2, AREA, 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer200000:
 	callsub S_Hit,12;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‡ºçŽ°ï¼ï¼ï¼å†°éœœè¿·é›¾ï¼ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º³öÏÖ£¡£¡£¡±ùËªÃÔÎí£¡£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_FROSTMYSTY, AREA, 'sarah_17$;
 	donpcevent 'fenrir_7$ + "::OnStart";
 	progressbar_npc "000000",50, 'fenrir_7$;
@@ -1470,15 +1472,15 @@ OnTimer200500:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer203000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šåˆºç ´è‹ç©¹çš„å¤©å‰‘", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º´ÌÆÆ²Ôñ·µÄÌì½£", 'fenrir_7$;
 	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
 	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
 	end;
 OnTimer216000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘æƒ³æš‚æ—¶å€Ÿç”¨ä½ çš„åŠ›é‡ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÏëÔÝÊ±½èÓÃÄãµÄÁ¦Á¿£¡£¡", 'fenrir_7$;
 	end;
 OnTimer230000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè®©ä½ è¿žçœŸç©ºéƒ½æ’•è£‚çš„æžé™åŠ›é‡é™ä¸´å§ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÈÃÄãÁ¬Õæ¿Õ¶¼ËºÁÑµÄ¼«ÏÞÁ¦Á¿½µÁÙ°É£¡£¡", 'fenrir_7$;
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
 	end;
 OnTimer239000:
@@ -1488,10 +1490,10 @@ OnTimer239000:
 	monster 'map_glast$,214,331, "Large Gigantes#b2", 3195,1, instance_npcname("#fenrir_boss_final_1") + "::OnMobDead";// MM_L_GIGAN2
 	end;
 OnTimer240000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¸»å®°ç”Ÿæ­»ã€è´¯ç©¿æ—¶ç©ºçš„å‰‘ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÖ÷Ô×ÉúËÀ¡¢¹á´©Ê±¿ÕµÄ½££¡£¡£¡", 'fenrir_7$;
 	end;
 OnTimer250000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‡ºæ¥å·´é›·è’‚æ–¯ä¹‹çŸ›ï¼ï¼ï¼ï¼ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º³öÀ´°ÍÀ×µÙË¹Ö®Ã¬£¡£¡£¡£¡£¡£¡", 'fenrir_7$;
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1502,31 +1504,31 @@ OnTimer253000:
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šçŽ°åœ¨ï¼æˆ‘è®©èŽŽæ‹‰å¤„äºŽå±æ€¥çŠ¶æ€ï¼ä½ å¿…é¡»å¹²æŽ‰å¥¹ï¼å¿«ç‚¹æ”»å‡»å¥¹å§ï¼èŽŽæ‹‰å¾ˆå¼ºï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÏÖÔÚ£¡ÎÒÈÃÉ¯À­´¦ÓÚÎ£¼±×´Ì¬£¡Äã±ØÐë¸ÉµôËý£¡¿ìµã¹¥»÷Ëý°É£¡É¯À­ºÜÇ¿£¡", 'fenrir_7$;
 	mapannounce 'map_glast$, "Fenrith Fenrir: Now! I put Sarah in critical condition! You have to finish her off!! Attack her quickly! Sarah is strong!", bc_map,0xEBFF;
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šèµ«å…‹â€¦â€¦è¿™â€¦â€¦ä¸å¯èƒ½å‘ç”Ÿï¼æˆ‘ä¸èƒ½è¾“ï¼ï¼ï¼ï¼", 'sarah_17$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ººÕ¿Ë¡­¡­Õâ¡­¡­²»¿ÉÄÜ·¢Éú£¡ÎÒ²»ÄÜÊä£¡£¡£¡£¡", 'sarah_17$;
 	end;
 OnTimer263000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ—¢ç„¶ä½ ä¸€ä¸ªäººå¯èƒ½æ— æ³•è§£å†³å¥¹ï¼Œæ‰€ä»¥æˆ‘ä¼šå‡†å¤‡ä¸€ä¸ªæœ€åŽçš„å’’è¯­ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º¼ÈÈ»ÄãÒ»¸öÈË¿ÉÄÜÎÞ·¨½â¾öËý£¬ËùÒÔÎÒ»á×¼±¸Ò»¸ö×îºóµÄÖäÓï£¡£¡", 'fenrir_7$;
 	progressbar_npc "000000",50, 'fenrir_7$;
 	end;
 OnTimer273000:
 	specialeffect EF_BOTTOM_BASILICA2, AREA, 'sarah_17$;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šåˆºç ´è‹ç©¹çš„å¤©å‰‘", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º´ÌÆÆ²Ôñ·µÄÌì½£", 'fenrir_7$;
 	specialeffect EF_RECOGNIZED, AREA, 'fenrir_7$;
 	specialeffect EF_BLACKBODY, AREA, 'fenrir_7$;
 	end;
 OnTimer283000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘æƒ³æš‚æ—¶å€Ÿç”¨ä½ çš„åŠ›é‡ï¼ï¼", 'fenrir_7$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÏëÔÝÊ±½èÓÃÄãµÄÁ¦Á¿£¡£¡", 'fenrir_7$;
 	end;
 OnTimer293000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šè®©ä½ è¿žçœŸç©ºéƒ½æ’•è£‚çš„æžé™åŠ›é‡é™ä¸´å§ï¼ï¼";
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÈÃÄãÁ¬Õæ¿Õ¶¼ËºÁÑµÄ¼«ÏÞÁ¦Á¿½µÁÙ°É£¡£¡";
 	end;
 OnTimer303000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šä¸»å®°ç”Ÿæ­»ã€è´¯ç©¿æ—¶ç©ºçš„å‰‘ï¼ï¼ï¼";
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÖ÷Ô×ÉúËÀ¡¢¹á´©Ê±¿ÕµÄ½££¡£¡£¡";
 	end;
 OnTimer313000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‡ºæ¥å·´é›·è’‚æ–¯ä¹‹çŸ›ï¼ï¼ï¼ï¼ï¼ï¼";
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£º³öÀ´°ÍÀ×µÙË¹Ö®Ã¬£¡£¡£¡£¡£¡£¡";
 	specialeffect EF_PRESSURE3, AREA, 'sarah_17$;
 	for ( .@i = 1; .@i <= 8; .@i++ )
 		specialeffect EF_PRESSURE3, AREA, instance_npcname("#effect_glast_event03_" + .@i);
@@ -1568,16 +1570,16 @@ OnTimer6000:
 	enablenpc 'sarah_20$;
 	end;
 OnTimer9000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå“¨å…µå¾®é£Žï¼æˆ‘æ‰‹é‡Œæœ‰å®ƒï¼", 'fenrir_8$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÉÚ±øÎ¢·ç£¡ÎÒÊÖÀïÓÐËü£¡", 'fenrir_8$;
 	end;
 OnTimer12000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šè¹²ä¸‹â€¦â€¦", 'sarah_20$;
+	npctalk "É¯À­¡¤°¬ÁÕ£º¶×ÏÂ¡­¡­", 'sarah_20$;
 	end;
 OnTimer15000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘å¯ä»¥ç”¨è¿™ä¸ªæ‰¾åˆ°åšå¾·å°”ï¼", 'fenrir_8$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒ¿ÉÒÔÓÃÕâ¸öÕÒµ½²©µÂ¶û£¡", 'fenrir_8$;
 	end;
 OnTimer18000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šè¿˜æ²¡æœ‰ï¼ï¼", 'sarah_20$;
+	npctalk "É¯À­¡¤°¬ÁÕ£º»¹Ã»ÓÐ£¡£¡", 'sarah_20$;
 	progressbar_npc "000000",2, 'sarah_20$;
 	end;
 OnTimer21000:
@@ -1586,21 +1588,21 @@ OnTimer21000:
 	enablenpc 'fenrir_9$;
 	end;
 OnTimer24000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šå‘µå‘µâ€¦â€¦ä½ åƒè€é¼ ä¸€æ ·èº²å¾—å¾ˆå¥½ã€‚", 'sarah_20$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ººÇºÇ¡­¡­ÄãÏñÀÏÊóÒ»Ñù¶ãµÃºÜºÃ¡£", 'sarah_20$;
 	end;
 OnTimer27000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šä½†æ˜¯ï¼Œæˆ‘ä¸èƒ½è®©ä½ å¸¦ç€è¿™ä¸ªç¦»å¼€ã€‚", 'sarah_20$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºµ«ÊÇ£¬ÎÒ²»ÄÜÈÃÄã´ø×ÅÕâ¸öÀë¿ª¡£", 'sarah_20$;
 	end;
 OnTimer30000:
-	npctalk "èŽŽæ‹‰Â·è‰¾ç³ï¼šæˆ‘è¦æŠŠæ•´åº§åŸŽå ¡ç‚¸æ¯ï¼å‘€å•Šï¼", 'sarah_20$;
+	npctalk "É¯À­¡¤°¬ÁÕ£ºÎÒÒª°ÑÕû×ù³Ç±¤Õ¨»Ù£¡Ñ½°¡£¡", 'sarah_20$;
 	progressbar_npc "000000",15, 'sarah_20$;
 	end;
 OnTimer33000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå¥¹æ­£æ‰“ç®—æ¯æŽ‰è¿™é‡Œï¼æˆ‘ä¸€å®šè¦è¿›è¡Œä¸€æ¬¡å¤§è§„æ¨¡çš„çž¬ç§»ï¼ï¼ï¼", 'fenrir_9$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºËýÕý´òËã»ÙµôÕâÀï£¡ÎÒÒ»¶¨Òª½øÐÐÒ»´Î´ó¹æÄ£µÄË²ÒÆ£¡£¡£¡", 'fenrir_9$;
 	progressbar_npc "000000",6, 'fenrir_9$;
 	end;
 OnTimer36000:
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ°¸åˆ«äº†ï¼Œç“¦å°”åŸºé‡Œï¼ï¼æˆ‘è¦ä¹˜åå“¨å…µå¾®é£Žå·ï¼è¿™ä¹ˆä¹…ï¼", 'fenrir_9$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÓÀ±ðÁË£¬Íß¶û»ùÀï£¡£¡ÎÒÒª³Ë×øÉÚ±øÎ¢·çºÅ£¡ÕâÃ´¾Ã£¡", 'fenrir_9$;
 	end;
 OnTimer39000:
 	for ( .@i = 1; .@i <= 8; .@i++ )
@@ -1645,7 +1647,7 @@ OnTouch:
 	setpcblock PCBLOCK_NPC, true;
 	sleep2 1500;
 	cutin "fenrir_b.bmp",2;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå‘µå‘µ..ä½ ç¡®å®žå¾ˆç†Ÿç»ƒï¼Œä½†æˆ‘è®¤ä¸ºä½ ä½Žä¼°äº†æˆ‘ï¼Œç“¦å°”åŸºé‡Œã€‚", 'fenrir_10$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ººÇºÇ..ÄãÈ·ÊµºÜÊìÁ·£¬µ«ÎÒÈÏÎªÄãµÍ¹ÀÁËÎÒ£¬Íß¶û»ùÀï¡£", 'fenrir_10$;
 	sleep2 3000;
 	mapannounce 'map_glast$, "Sarah Irene: You rather entertain me Fenrith...", bc_map,0xEBFF;
 	sleep2 3000;
@@ -1653,11 +1655,11 @@ OnTouch:
 	sleep2 3000;
 	mapannounce 'map_glast$, "Sarah Irene: I shall turn Glast Heim into hell!!", bc_map,0xEBFF;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šå¦‚æžœæˆ‘ä»¬çŽ°åœ¨ä¸é€ƒè·‘ï¼Œæˆ‘ä»¬å°†é­å—èŽŽæ‹‰çš„æ€ªç‰©å’Œé­”æ³•çš„å¯æ€•å‘½è¿ï¼", 'fenrir_10$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÈç¹ûÎÒÃÇÏÖÔÚ²»ÌÓÅÜ£¬ÎÒÃÇ½«ÔâÊÜÉ¯À­µÄ¹ÖÎïºÍÄ§·¨µÄ¿ÉÅÂÃüÔË£¡", 'fenrir_10$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæˆ‘ä»¬åœ¨åˆæ¬¡è§é¢çš„æ ¼æ‹‰æ–¯ç‰¹æµ·å§†å…¥å£è§é¢å§ï¼é€ƒé‚£ä¹ˆè¿œåº”è¯¥å°±å®‰å…¨äº†ï¼", 'fenrir_10$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÎÒÃÇÔÚ³õ´Î¼ûÃæµÄ¸ñÀ­Ë¹ÌØº£Ä·Èë¿Ú¼ûÃæ°É£¡ÌÓÄÇÃ´Ô¶Ó¦¸Ã¾Í°²È«ÁË£¡", 'fenrir_10$;
 	sleep2 3000;
-	npctalk "èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”ï¼šæ²¡æ—¶é—´äº†ï¼åŒ†å¿™ï¼", 'fenrir_10$;
+	npctalk "·ÒÀïË¹¡¤·ÒÀï¶û£ºÃ»Ê±¼äÁË£¡´ÒÃ¦£¡", 'fenrir_10$;
 	sleep2 3000;
 	cutin "",255;
 	disablenpc 'fenrir_10$;
@@ -1888,23 +1890,23 @@ OnTouch:
 1@glast,359,294,4	script	Fenrith Fenrir#glast_11	4_F_FENRIR,{
 	if (isbegin_quest(9337) == 0) {
 		cutin "fenrir_a.bmp",2;
-		mes "[èŠ¬é‡Œæ–¯Â·èŠ¬é‡Œå°”]";
-		mes "æ‚¨å·²å®‰å…¨æŠµè¾¾ï¼";
-		mes "å±é™©çš„å¤„å¢ƒ";
-		mes "è®©æˆ‘æ‹…å¿ƒã€‚";
-		mes "è¿™æ˜¯ä¸€é¡¹å›°éš¾ä¸”å±é™©çš„å·¥ä½œ";
-		mes "æ‰€ä»¥æˆ‘å¾ˆæ„Ÿè°¢ä½ çš„å¸®åŠ©ã€‚";
+		mes "[·ÒÀïË¹¡¤·ÒÀï¶û]";
+		mes "ÄúÒÑ°²È«µÖ´ï£¡";
+		mes "Î£ÏÕµÄ´¦¾³";
+		mes "ÈÃÎÒµ£ÐÄ¡£";
+		mes "ÕâÊÇÒ»ÏîÀ§ÄÑÇÒÎ£ÏÕµÄ¹¤×÷";
+		mes "ËùÒÔÎÒºÜ¸ÐÐ»ÄãµÄ°ïÖú¡£";
 		next;
-		mes "[èŠ¬é‡Œå°”]";
-		mes "æˆ‘æ„Ÿè§‰æˆ‘ä»¬ä¼šå†æ¬¡è§é¢";
-		mes "ä½†ä¹Ÿè®¸è¿™åªæ˜¯æˆ‘çš„æƒ³è±¡ï¼Ÿ";
-		mes "å—¯..é‚£å°±å¤ªå¥½äº†ã€‚";
+		mes "[·ÒÀï¶û]";
+		mes "ÎÒ¸Ð¾õÎÒÃÇ»áÔÙ´Î¼ûÃæ";
+		mes "µ«Ò²ÐíÕâÖ»ÊÇÎÒµÄÏëÏó£¿";
+		mes "àÅ..ÄÇ¾ÍÌ«ºÃÁË¡£";
 		next;
-		mes "[èŠ¬é‡Œå°”]";
-		mes "æˆ‘ä»¬åˆä½œå¾—å¾ˆå¥½";
-		mes "æ‰€ä»¥æˆ‘å¸Œæœ›æˆ‘ä»¬èƒ½å†æ¬¡è§é¢ã€‚";
-		mes "ç•™æ„èŽŽæ‹‰ï¼Œ";
-		mes "ä¼¤å®³ä¹Ÿä¼šé™ä¸´åˆ°ä½ èº«ä¸Šã€‚";
+		mes "[·ÒÀï¶û]";
+		mes "ÎÒÃÇºÏ×÷µÃºÜºÃ";
+		mes "ËùÒÔÎÒÏ£ÍûÎÒÃÇÄÜÔÙ´Î¼ûÃæ¡£";
+		mes "ÁôÒâÉ¯À­£¬";
+		mes "ÉËº¦Ò²»á½µÁÙµ½ÄãÉíÉÏ¡£";
 		setquest 9337;// Wrapping up the Adventure
 		getitem 607,1;// Yggdrasilberry
 		getitem 608,1;// Seed_Of_Yggdrasil
@@ -1912,9 +1914,9 @@ OnTouch:
 		cutin "",255;
 		end;
 	}
-	mes "[èŠ¬é‡Œå°”]";
-	mes "æˆ‘ä»¬åˆä½œå¾—å¾ˆå¥½";
-	mes "æ‰€ä»¥æˆ‘å¸Œæœ›æˆ‘ä»¬èƒ½å†æ¬¡è§é¢ã€‚";
+	mes "[·ÒÀï¶û]";
+	mes "ÎÒÃÇºÏ×÷µÃºÜºÃ";
+	mes "ËùÒÔÎÒÏ£ÍûÎÒÃÇÄÜÔÙ´Î¼ûÃæ¡£";
 	close;
 }
 

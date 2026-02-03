@@ -4,6 +4,8 @@
 //= Taekwon Job Change Quest
 //===== Changelogs: ==========================================
 //= 1.0 Split into renewal [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 payon_in01,62,10,5	duplicate(PhoenixTKJobChange)	Phoenix#TKJobChange	753

@@ -12,6 +12,8 @@
 //===== Additional Comments: ================================= 
 //= 1.0 First version. [Euphy]
 //= 1.1 Instance system rewrite. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 // Instance Creation :: oct
@@ -22,114 +24,114 @@ mal_dun01,151,235,5	script	Starfish	551,{
 	set .@md_name$,"Octopus Cave";
 
 	if (!.@party_id) {
-		mes "[海星]";
-		mes "你一个人是无能为力的，呵呵！";
-		mes "最好找个人来帮助你。";
-		mes "举办一个聚会，稍后再回来。";
+		mes "[����]";
+		mes "��һ����������Ϊ���ģ��Ǻǣ�";
+		mes "����Ҹ����������㡣";
+		mes "�ٰ�һ���ۻᣬ�Ժ��ٻ�����";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "[海星]";
-		mes "你的领导在哪里，呵呵。";
-		mes "我不会和一些随机的人说话。";
-		mes "把你的老板带到我这里来。";
+		mes "[����]";
+		mes "����쵼������Ǻǡ�";
+		mes "�Ҳ����һЩ�������˵����";
+		mes "������ϰ��������������";
 		close;
 	}
-	mes "[海星]";
-	mes "我守着这里，呵呵！";
-	mes "目前只是大致封锁。";
-	mes "但总有一天这个山洞必须被永远封印，呵呵！";
+	mes "[����]";
+	mes "����������Ǻǣ�";
+	mes "Ŀǰֻ�Ǵ��·�����";
+	mes "������һ�����ɽ�����뱻��Զ��ӡ���Ǻǣ�";
 	next;
 	while(1) {
-		switch(select("问发生了什么事。：要求开门。：去其他地方。")) {
+		switch(select("�ʷ�����ʲô�¡���Ҫ���š���ȥ�����ط���")) {
 		case 1:
-			mes "[海星]";
-			mes "最近，我们的海星小姐";
-			mes "遇到一些问题，哦哦。";
-			mes "这里面发生了一些不好的事情";
-			mes "安静的地方，呵呵！";
+			mes "[����]";
+			mes "��������ǵĺ���С��";
+			mes "����һЩ���⣬ŶŶ��";
+			mes "�����淢����һЩ���õ�����";
+			mes "�����ĵط����Ǻǣ�";
 			next;
-			mes "[海星]";
-			mes "奇怪的四肢伸出来";
-			mes "从那里的洞里，";
-			mes "试图绑架我们的海星女士。";
-			mes "哦哦。";
+			mes "[����]";
+			mes "��ֵ���֫�����";
+			mes "������Ķ��";
+			mes "��ͼ������ǵĺ���Ůʿ��";
+			mes "ŶŶ��";
 			next;
-			mes "[海星]";
-			mes "看来这些四肢属于";
-			mes "那只丑陋的章鱼。";
-			mes "那个怪物应该被照顾，";
-			mes "但光是我们自己就很难做到，呵呵。";
+			mes "[����]";
+			mes "������Щ��֫����";
+			mes "��ֻ��ª�����㡣";
+			mes "�Ǹ�����Ӧ�ñ��չˣ�";
+			mes "�����������Լ��ͺ����������Ǻǡ�";
 			next;
-			mes "[海星]";
-			mes "我想找一个特别的人";
-			mes "并要求惩罚这只丑陋的章鱼。";
-			mes "我希望这只章鱼永远不会";
-			mes "骚扰我们小姐姐，呵呵。";
+			mes "[����]";
+			mes "������һ���ر����";
+			mes "��Ҫ��ͷ���ֻ��ª�����㡣";
+			mes "��ϣ����ֻ������Զ����";
+			mes "ɧ������С��㣬�Ǻǡ�";
 			next;
-			mes "[海星]";
-			mes "去抓住那只章鱼并将其粘到这个镐上。";
-			mes "如果你带回选秀权，我会";
-			mes "打开这扇门一段时间。";
-			mes "有兴趣的话就来挑战一下吧，呵呵。";
+			mes "[����]";
+			mes "ȥץס��ֻ���㲢����ճ��������ϡ�";
+			mes "��������ѡ��Ȩ���һ�";
+			mes "��������һ��ʱ�䡣";
+			mes "����Ȥ�Ļ�������սһ�°ɣ��Ǻǡ�";
 			next;
 			break;
 		case 2:
 			set .@playtime, checkquest(4197,PLAYTIME);
 			if (.@playtime == 0 || .@playtime == 1) {
-				mes "[海星]";
-				mes "章鱼现在不在了，呵呵。";
-				mes "请稍后再回来。";
+				mes "[����]";
+				mes "�������ڲ����ˣ��Ǻǡ�";
+				mes "���Ժ��ٻ�����";
 				close;
 			}
 			if (.@playtime == 2) erasequest 4197;
 			if (rentalcountitem(6442)) {
 				if (instance_create(.@md_name$) < 0) {
-					mes "[海星]";
-					mes "队伍名称是..."+getpartyname(.@party_id)+".";
-					mes "党的领导人是……"+strcharinfo(0)+".";
-					mes "^0000ff"+.@md_name$+"^000000，我现在打不开，呵呵。";
-					mes "现在还不是时候，请稍等。";
+					mes "[����]";
+					mes "����������..."+getpartyname(.@party_id)+".";
+					mes "�����쵼���ǡ���"+strcharinfo(0)+".";
+					mes "^0000ff"+.@md_name$+"^000000�������ڴ򲻿����Ǻǡ�";
+					mes "���ڻ�����ʱ�����Եȡ�";
 					close;
 				}
-				mes "[海星]";
-				mes "我会打开通往^0000ff"+.@md_name$+"^000000的大门。";
-				mes "请抓住那只变态章鱼";
-				mes "然后回来的时候把它粘在镐上，呵呵。";
+				mes "[����]";
+				mes "�һ��ͨ��^0000ff"+.@md_name$+"^000000�Ĵ��š�";
+				mes "��ץס��ֻ��̬����";
+				mes "Ȼ�������ʱ�����ճ�ڸ��ϣ��Ǻǡ�";
 				close;
 			}
-			mes "[海星]";
-			mes "先准备好挑料，";
-			mes "这样你就可以给章鱼穿线了";
-			mes "与那个选择。";
-			mes "那我就让你进来一会儿，呵呵。";
+			mes "[����]";
+			mes "��׼�������ϣ�";
+			mes "������Ϳ��Ը����㴩����";
+			mes "���Ǹ�ѡ��";
+			mes "���Ҿ��������һ������Ǻǡ�";
 			close;
 		case 3:
-			mes "[海星]";
-			mes "这不是一个好位置，请检查其他地方。";
+			mes "[����]";
+			mes "�ⲻ��һ����λ�ã����������ط���";
 			close;
 		}
 	}
 }
 
 mal_dun01,153,237,5	script	Weird Entrance	844,{
-	mes "有一个奇怪的入口";
-	mes "用一些木板粗暴地挡住了。";
+	mes "��һ����ֵ����";
+	mes "��һЩľ��ֱ��ص�ס�ˡ�";
 	next;
-	switch(select("进去吧。：站住。")) {
+	switch(select("��ȥ�ɡ���վס��")) {
 	case 1:
 		if (rentalcountitem(6442)) {
 			switch(instance_enter("Octopus Cave")) {
 			case IE_OTHER:
-				mes "[海星]";
-				mes "啊，现在还不是时候……";
-				mes "你稍后再回来吗？呵呵。";
+				mes "[����]";
+				mes "�������ڻ�����ʱ�򡭡�";
+				mes "���Ժ��ٻ����𣿺Ǻǡ�";
 				close;
 			case IE_NOINSTANCE:
 			case IE_NOMEMBER:
-				mes "[海星]";
-				mes "那个入口有一个秘密。";
-				mes "所以，请小心一点，好吗？呵呵。";
+				mes "[����]";
+				mes "�Ǹ������һ�����ܡ�";
+				mes "���ԣ���С��һ�㣬���𣿺Ǻǡ�";
 				close;
 			case IE_OK:
 				mapannounce "mal_dun01", getpartyname(getcharid(1))+" party's "+strcharinfo(0)+" member started to hunt the Octopus!",bc_map,"0x00ff99";
@@ -137,22 +139,22 @@ mal_dun01,153,237,5	script	Weird Entrance	844,{
 				//warp instance_mapname("1@cash"),199,99;
 				close;
 			default:
-				mes "[海星]";
-				mes "嘘……奇怪的气息是";
-				mes "从那个入口进来。";
-				mes "如果你现在进去的话，就有大麻烦了。";
+				mes "[����]";
+				mes "�ꡭ����ֵ���Ϣ��";
+				mes "���Ǹ���ڽ�����";
+				mes "��������ڽ�ȥ�Ļ������д��鷳�ˡ�";
 				close;
 			}
 		}
-		mes "[海星]";
-		mes "你绝对应该做好准备";
-		mes "如果你愿意的话，打猎棒";
-		mes "惩罚章鱼。";
-		mes "不然我就不让你进来！呵呵。";
+		mes "[����]";
+		mes "�����Ӧ������׼��";
+		mes "�����Ը��Ļ������԰�";
+		mes "�ͷ����㡣";
+		mes "��Ȼ�ҾͲ�����������Ǻǡ�";
 		close;
 	case 2:
-		mes "[海星]";
-		mes "是的，是的，你最好戒掉。";
+		mes "[����]";
+		mes "�ǵģ��ǵģ�����ý����";
 		close;
 	}
 }
@@ -667,9 +669,9 @@ OnInstanceInit:
 	disablenpc();
 	end;
 OnTouch:
-	mes "你想从章鱼地牢里出去吗？";
+	mes "���������������ȥ��";
 	next;
-	if(select("不！：是！") == 2)
+	if(select("�������ǣ�") == 2)
 		warp "mal_dun01",153,233;
 	close;
 }

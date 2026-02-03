@@ -13,76 +13,78 @@
 //= 1.0 First version, Renewal guide.
 //= 1.1 Optimized (a little bit). [Euphy]
 //= 1.2 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 moscovia,161,76,3	script	Moscovia Guide#01mosc	959,{
-	mes "[莫斯科指南]";
-	mes "海上的天堂，";
-	mes "美丽的海浪和温暖的阳光。";
-	mes "^8B4513莫斯科^000000正在等你。";
-	mes "我支持提供有关这里的信息。";
-	mes "如果您想问什么，请随时告诉我。";
-	F_Navi("[莫斯科指南]");
+	mes "[Ī˹��ָ��]";
+	mes "���ϵ����ã�";
+	mes "�����ĺ��˺���ů�����⡣";
+	mes "^8B4513Ī˹��^000000���ڵ��㡣";
+	mes "��֧���ṩ�й��������Ϣ��";
+	mes "���������ʲô������ʱ�����ҡ�";
+	F_Navi("[Ī˹��ָ��]");
 	set .@str$,"Is there anything else I can do for you?";
 	while (1) {
 		next;
-		switch(select("[卡夫拉员工]：[宫殿]：[教堂]：[武器店]：[盔甲店]：[工具店]：[旅馆]：[返回艾伯塔省]：从小地图上删除标记：取消")) {
+		switch(select("[������Ա��]��[����]��[����]��[������]��[���׵�]��[���ߵ�]��[�ù�]��[���ذ�����ʡ]����С��ͼ��ɾ����ǣ�ȡ��")) {
 		case 1:
-			mes "[莫斯科指南]";
-			mes "^0000FFKafra 员工^000000 有";
-			mes "已标记在您的小地图上";
-			mes "检查你的小地图。";
-			mes "您还需要什么吗？";
+			mes "[Ī˹��ָ��]";
+			mes "^0000FFKafra Ա��^000000 ��";
+			mes "�ѱ��������С��ͼ��";
+			mes "������С��ͼ��";
+			mes "������Ҫʲô��";
 			viewpoint 1,223,191,0,0x0A82FF;
 			break;
 		case 2:
-			mes "[莫斯科指南]";
-			mes "在"+F_Navi("宫殿","莫斯科，255,140","^006400")+"你会找到我们的沙皇主和其他仆人。";
+			mes "[Ī˹��ָ��]";
+			mes "��"+F_Navi("����","Ī˹�ƣ�255,140","^006400")+"����ҵ����ǵ�ɳ�������������ˡ�";
 			mes .@str$;
 			viewpoint 1,255,140,1,0x0A82FF;
 			break;
 		case 3:
-			mes "[莫斯科指南]";
-			mes ""+F_Navi("教堂","莫斯科，253,179","^008080")+" 位于此处。";
+			mes "[Ī˹��ָ��]";
+			mes ""+F_Navi("����","Ī˹�ƣ�253,179","^008080")+" λ�ڴ˴���";
 			mes .@str$;
 			viewpoint 1,253,179,2,0xAAFF00;
 			break;
 		case 4:
-			mes "[莫斯科指南]";
-			mes "如果你去"+F_Navi("武器店","莫斯科维亚，186,191","^FF1493")+".";
+			mes "[Ī˹��ָ��]";
+			mes "�����ȥ"+F_Navi("������","Ī˹��ά�ǣ�186,191","^FF1493")+".";
 			mes .@str$;
 			viewpoint 1,186,191,3,0x008080;
 			break;
 		case 5:
-			mes "[莫斯科指南]";
-			mes "您将在 Moscovia "+F_Navi("盔甲店","moscovia,204,169","^8B4513")+".";
+			mes "[Ī˹��ָ��]";
+			mes "������ Moscovia "+F_Navi("���׵�","moscovia,204,169","^8B4513")+".";
 			mes .@str$;
 			viewpoint 1,204,169,4,0xB200FF;
 			break;
 		case 6:
-			mes "[莫斯科指南]";
-			mes ""+F_Navi("工具店","莫斯科，221,176","^FF1493")+" 位于市中心以南。";
-			mes "您可以找到旅行所需的各种物品。";
+			mes "[Ī˹��ָ��]";
+			mes ""+F_Navi("���ߵ�","Ī˹�ƣ�221,176","^FF1493")+" λ�����������ϡ�";
+			mes "�������ҵ���������ĸ�����Ʒ��";
 			mes .@str$;
 			viewpoint 1,221,176,5,0xFF1493;
 			break;
 		case 7:
-			mes "[莫斯科指南]";
-			mes ""+F_Navi("粘药草树","莫斯科维亚，227,206")+" 旅馆位于市中心以北。";
-			mes "如果您需要休息，没有比这更好的住宿地点了。";
+			mes "[Ī˹��ָ��]";
+			mes ""+F_Navi("ճҩ����","Ī˹��ά�ǣ�227,206")+" �ù�λ���������Ա���";
+			mes "�������Ҫ��Ϣ��û�б�����õ�ס�޵ص��ˡ�";
 			mes .@str$;
 			viewpoint 1,227,206,6,0x8B4513;
 			break;
 		case 8:
-			mes "[莫斯科指南]";
-			mes "您可以找到";
-			mes F_Navi("莫斯科公关官员","莫斯科,166,53")+" 在码头如果";
-			mes "您想返回艾伯塔省。";
+			mes "[Ī˹��ָ��]";
+			mes "�������ҵ�";
+			mes F_Navi("Ī˹�ƹ��ع�Ա","Ī˹��,166,53")+" ����ͷ���";
+			mes "���뷵�ذ�����ʡ��";
 			viewpoint 1,166,53,7,0x00BFFF;
 			break;
 		case 9:
-			mes "[莫斯科指南]";
-			mes "我会从你的小地图上删除所有标记。";
+			mes "[Ī˹��ָ��]";
+			mes "�һ�����С��ͼ��ɾ�����б�ǡ�";
 			mes .@str$;
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
@@ -94,8 +96,8 @@ moscovia,161,76,3	script	Moscovia Guide#01mosc	959,{
 			viewpoint 2,1,1,7,0xFFFFFF;
 			break;
 		case 10:
-			mes "[莫斯科指南]";
-			mes "祝您旅途愉快~！";
+			mes "[Ī˹��ָ��]";
+			mes "ף����;���~��";
 			close;
 		}
 	}

@@ -13,86 +13,88 @@
 //= 1.0 First version, Renewal guide.
 //= 1.1 Fixed and optimized. [Euphy]
 //= 1.2 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
-	mes "[æœ±è¯ºæŒ‡å—]";
-	mes "ä¸€ä¸ªå°†æœªæ¥æ„¿æ™¯ä»˜è¯¸å®è·µçš„åœ°æ–¹ã€‚æ¬¢è¿æ¥åˆ°";
-	mes "^8B4513æœ±è¯º^000000çš„åŸå¸‚ï¼";
-	F_Navi("[æœ±è¯ºæŒ‡å—]");
+	mes "[ÖìÅµÖ¸ÄÏ]";
+	mes "Ò»¸ö½«Î´À´Ô¸¾°¸¶ÖîÊµ¼ùµÄµØ·½¡£»¶Ó­À´µ½";
+	mes "^8B4513ÖìÅµ^000000µÄ³ÇÊĞ£¡";
+	F_Navi("[ÖìÅµÖ¸ÄÏ]");
 	next;
 	while (1) {
-		switch(select("[ä¸»è¦è®¾æ–½]ï¼š[å•†äººå’ŒåŠ©æ‰‹]ï¼šä»å°åœ°å›¾ä¸Šåˆ é™¤æ ‡è®°ï¼šå–æ¶ˆ")) {
+		switch(select("[Ö÷ÒªÉèÊ©]£º[ÉÌÈËºÍÖúÊÖ]£º´ÓĞ¡µØÍ¼ÉÏÉ¾³ı±ê¼Ç£ºÈ¡Ïû")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[å·¥å…·åº—]ï¼š[é”»é€ ]ï¼š[æœºåœº]ï¼š[æ”¿åºœå¤§æ¥¼]ï¼š[ä¹¦åº—è¡—]ï¼š[æ—…é¦†å’Œé…’å§]ï¼š[è´¤è€…åŸå ¡]ï¼š[æ€ªç‰©å­¦é™¢]ï¼š[å…±å’Œå›½å›¾ä¹¦é¦†]ï¼š[æ­¦å™¨å’Œé˜²å…·åº—]ï¼š[æœ±è²ç½—å¹¿åœº]ï¼š[æ€ªç‰©åšç‰©é¦†]:[ æ–½éŸ¦åˆ‡å°”æ¯”å°”é­”æ³•å­¦é™¢ ]:ä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[¹¤¾ßµê]£º[¶ÍÔì]£º[»ú³¡]£º[Õş¸®´óÂ¥]£º[Êéµê½Ö]£º[ÂÃ¹İºÍ¾Æ°É]£º[ÏÍÕß³Ç±¤]£º[¹ÖÎïÑ§Ôº]£º[¹²ºÍ¹úÍ¼Êé¹İ]£º[ÎäÆ÷ºÍ·À¾ßµê]£º[Öì·ÆÂŞ¹ã³¡]£º[¹ÖÎï²©Îï¹İ]:[ Ê©Î¤ÇĞ¶û±È¶ûÄ§·¨Ñ§Ôº ]:ÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
-					callsub L_Mark, F_Navi("å·¥å…·åº—","yuno,194,140","^FF0000");
+					callsub L_Mark, F_Navi("¹¤¾ßµê","yuno,194,140","^FF0000");
 					viewpoint 1,194,140,0,0xFF0000;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("é”»é€ ","yuno,120,137","^FF4500");
+					callsub L_Mark, F_Navi("¶ÍÔì","yuno,120,137","^FF4500");
 					viewpoint 1,120,137,1,0xFF4500;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("é£æœºåœº","yuno,16,261","^DAA520");
+					callsub L_Mark, F_Navi("·É»ú³¡","yuno,16,261","^DAA520");
 					viewpoint 1,16,261,2,0xDAA520;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("æ”¿åºœå¤§æ¥¼","yuno,157,317","^008000");
+					callsub L_Mark, F_Navi("Õş¸®´óÂ¥","yuno,157,317","^008000");
 					viewpoint 1,157,317,3,0x008000;
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("ä¹¦åº—ä¸€æ¡è¡—","yuno,172,100","^0000FF");
+					callsub L_Mark, F_Navi("ÊéµêÒ»Ìõ½Ö","yuno,172,100","^0000FF");
 					viewpoint 1,172,100,4,0x0000FF;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("æ—…é¦†åŠé…’å§","yuno,51,105","^000080");
+					callsub L_Mark, F_Navi("ÂÃ¹İ¼°¾Æ°É","yuno,51,105","^000080");
 					viewpoint 1,51,105,5,0x000080;
 					next;
 					break;
 				case 7:
-					callsub L_Mark, F_Navi("è´¤è€…åŸå ¡","yuno,90,318","^800080");
+					callsub L_Mark, F_Navi("ÏÍÕß³Ç±¤","yuno,90,318","^800080");
 					viewpoint 1,90,318,6,0x800080;
 					next;
 					break;
 				case 8:
-					callsub L_Mark, F_Navi("æ€ªç‰©å­¦é™¢","yuno,95,184","^834683");
+					callsub L_Mark, F_Navi("¹ÖÎïÑ§Ôº","yuno,95,184","^834683");
 					viewpoint 1,95,184,7,0x834683;
 					next;
 					break;
 				case 9:
-					callsub L_Mark, F_Navi("æœ±è¯ºå›¾ä¹¦é¦†","yuno,338,203","^4B0082");
+					callsub L_Mark, F_Navi("ÖìÅµÍ¼Êé¹İ","yuno,338,203","^4B0082");
 					viewpoint 1,338,203,8,0x4B0082;
 					next;
 					break;
 				case 10:
-					callsub L_Mark, F_Navi("æ­¦å™¨ä¸ç›”ç”²åº—","yuno,120,137","^008080");
+					callsub L_Mark, F_Navi("ÎäÆ÷Óë¿ø¼×µê","yuno,120,137","^008080");
 					viewpoint 1,120,137,9,0x008080;
 					next;
 					break;
 				case 11:
-					callsub L_Mark, F_Navi("æœ±è²ç½—å¹¿åœº","yuno,115,57","^FF1493");
+					callsub L_Mark, F_Navi("Öì·ÆÂŞ¹ã³¡","yuno,115,57","^FF1493");
 					viewpoint 1,115,157,10,0xFF1493;
 					next;
 					break;
 				case 12:
-					callsub L_Mark, F_Navi("æ€ªç‰©åšç‰©é¦†","yuno,278,290","^DA70D6");
+					callsub L_Mark, F_Navi("¹ÖÎï²©Îï¹İ","yuno,278,290","^DA70D6");
 					viewpoint 1,278,290,11,0xDA70D6;
 					next;
 					break;
 				case 13:
-					mes "[æœ±è¯ºæŒ‡å—]";
-					mes "æˆ‘ä¼šæ ‡è®°ä½ç½®";
-					mes F_Navi("æ–½éŸ¦åˆ‡å°”æ¯”å°”é­”æ³•å­¦é™¢","å°¤è¯º,323,280","^CD1039");
-					mes "åœ¨ä½ çš„å°åœ°å›¾ä¸Šã€‚";
-					mes "æ‚¨æƒ³æŸ¥çœ‹å…¶ä»–åœ°ç‚¹å—ï¼Ÿ";
+					mes "[ÖìÅµÖ¸ÄÏ]";
+					mes "ÎÒ»á±ê¼ÇÎ»ÖÃ";
+					mes F_Navi("Ê©Î¤ÇĞ¶û±È¶ûÄ§·¨Ñ§Ôº","ÓÈÅµ,323,280","^CD1039");
+					mes "ÔÚÄãµÄĞ¡µØÍ¼ÉÏ¡£";
+					mes "ÄúÏë²é¿´ÆäËûµØµãÂğ£¿";
 					viewpoint 1,323,280,12,0xCD1039;
 					next;
 					break;
@@ -105,7 +107,7 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[å¡å¤«æ‹‰å‘˜å·¥]ï¼š[ä¼Šç”¸ä¼ é€å®˜]ï¼šä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[¿¨·òÀ­Ô±¹¤]£º[ÒÁµé´«ËÍ¹Ù]£ºÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
 					callsub L_Mark, "^FA8072Kafra Employees^000000";
 					viewpoint 1,152,187,13,0xFA8072;
@@ -114,7 +116,7 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("ä¼Šç”¸ä¼ é€å®˜","yuno,144,189","^803232");
+					callsub L_Mark, F_Navi("ÒÁµé´«ËÍ¹Ù","yuno,144,189","^803232");
 					viewpoint 1,144,189,16,0x803232;
 					next;
 					break;
@@ -125,9 +127,9 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 			}
 			break;
 		case 3:
-			mes "[æœ±è¯ºæŒ‡å—]";
-			mes "å½“ç„¶ï¼Œæˆ‘ä¼šä»ä½ çš„å°åœ°å›¾ä¸Šåˆ é™¤æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+			mes "[ÖìÅµÖ¸ÄÏ]";
+			mes "µ±È»£¬ÎÒ»á´ÓÄãµÄĞ¡µØÍ¼ÉÏÉ¾³ıËùÓĞ±ê¼Ç¡£";
+			mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 			viewpoint 2,194,140,0,0xFFFFFF;
 			viewpoint 2,120,137,1,0xFFFFFF;
 			viewpoint 2,16,261,2,0xFFFFFF;
@@ -148,18 +150,18 @@ yuno,59,212,4	script	Juno Guide#yuno01::GuideJuno	700,{
 			next;
 			break;
 		case 4:
-			mes "[æœ±è¯ºæŒ‡å—]";
-			mes "ç¥ä½ å†’é™©æ„‰å¿«ï¼";
+			mes "[ÖìÅµÖ¸ÄÏ]";
+			mes "×£ÄãÃ°ÏÕÓä¿ì£¡";
 			close;
 		}
 	}
 	end;
 L_Mark:
-	mes "[æœ±è¯ºæŒ‡å—]";
-	mes "æˆ‘ä¼šæ ‡è®°ä½ç½®";
-	mes "çš„"+getarg(0);
-	mes "åœ¨ä½ çš„å°åœ°å›¾ä¸Šã€‚";
-	mes "æ‚¨æƒ³æŸ¥çœ‹å…¶ä»–åœ°ç‚¹å—ï¼Ÿ";
+	mes "[ÖìÅµÖ¸ÄÏ]";
+	mes "ÎÒ»á±ê¼ÇÎ»ÖÃ";
+	mes "µÄ"+getarg(0);
+	mes "ÔÚÄãµÄĞ¡µØÍ¼ÉÏ¡£";
+	mes "ÄúÏë²é¿´ÆäËûµØµãÂğ£¿";
 	return;
 }
 yuno,153,47,4	duplicate(GuideJuno)	Juno Guide#yuno02	700

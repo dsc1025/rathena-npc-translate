@@ -5,31 +5,33 @@
 //- Required in Banquet main quest.
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 2@mir,100,17,5	script	Skia#skia01	4_EP16_SKIA,{
-	mes "[æ»‘é›ª]";
-	mes "æ¬¢è¿ï¼";
-	mes "æˆ‘ä¸€ç›´åœ¨æƒ³ä½ ä»€ä¹ˆæ—¶å€™åˆ°è¾¾ã€‚";
+	mes "[»¬Ñ©]";
+	mes "»¶Ó­£¡";
+	mes "ÎÒÒ»Ö±ÔÚÏëÄãÊ²Ã´Ê±ºòµ½´ï¡£";
 	next;
-	mes "[å°¼å¸Œå°”]";
-	mes "ä½ åœ¨è¿™é‡Œï¼";
-	mes "å…¶ä»–å®¶æ—çš„äººéƒ½å·²ç»å…¥åº§ã€‚";
+	mes "[ÄáÏ£¶û]";
+	mes "ÄãÔÚÕâÀï£¡";
+	mes "ÆäËû¼Ò×åµÄÈË¶¼ÒÑ¾­Èë×ù¡£";
 	next;
-	mes "[å°¼å¸Œå°”]";
-	mes "é¡ºä¾¿ä¸€æ.........";
-	mes "å½“æˆ‘ç¦»å¼€å®´ä¼šå…å";
-	mes "....ä¸ï¼Œæ²¡å…³ç³»ã€‚";
-	npctalk "...ï¼Ÿ", instance_npcname("æ»‘é›ª#skia01");
+	mes "[ÄáÏ£¶û]";
+	mes "Ë³±ãÒ»Ìá.........";
+	mes "µ±ÎÒÀë¿ªÑç»áÌüºó";
+	mes "....²»£¬Ã»¹ØÏµ¡£";
+	npctalk "...£¿", instance_npcname("»¬Ñ©#skia01");
 	next;
-	mes "[å°¼å¸Œå°”]";
-	mes "å¦‚æœæˆ‘ä»¬è®©ä»–ä»¬å†ç­‰ä¸‹å»ï¼Œå°±å¬ä¸åˆ°ä»€ä¹ˆå¥½æ¶ˆæ¯äº†ã€‚æˆ‘ä»¬å¼€å§‹å§ã€‚";
+	mes "[ÄáÏ£¶û]";
+	mes "Èç¹ûÎÒÃÇÈÃËûÃÇÔÙµÈÏÂÈ¥£¬¾ÍÌı²»µ½Ê²Ã´ºÃÏûÏ¢ÁË¡£ÎÒÃÇ¿ªÊ¼°É¡£";
 	next;
-	mes "[æ»‘é›ª]";
-	mes "^4d4dffç†æŸ¥å¾·å‹‹çˆµæ—è¾¹è¿˜å‰©ä¸‹ä¸€ä¸ªåº§ä½ã€‚å®ƒå¿…é¡»æ˜¯ä¸ºè§‚å¯Ÿå‘˜ä¿ç•™çš„åº§ä½ã€‚^000000";
+	mes "[»¬Ñ©]";
+	mes "^4d4dffÀí²éµÂÑ«¾ôÅÔ±ß»¹Ê£ÏÂÒ»¸ö×ùÎ»¡£Ëü±ØĞëÊÇÎª¹Û²ìÔ±±£ÁôµÄ×ùÎ»¡£^000000";
 	next;
-	mes "[æ»‘é›ª]";
-	mes "å¥½å§ï¼Œæˆ‘ä»¬èµ°å§ã€‚";
+	mes "[»¬Ñ©]";
+	mes "ºÃ°É£¬ÎÒÃÇ×ß°É¡£";
 	close2;
 	enablenpc instance_npcname("Skia Nerius#skia02");
 	enablenpc instance_npcname("Nyhill M. Heine#nihil02");
@@ -55,29 +57,29 @@ OnEvent:
 	sleep 3000;
 	mapannounce 'map_2mir$, "Kronecker: According to the Royal Assembly which has passed down in the palace,", bc_map,0xFF99;
 	sleep 3000;
-	npctalk "æµ·æ¶…", instance_npcname("å¼—é‡Œå¾·é‡Œå¸ŒÂ·SÂ·æµ·æ¶…#stol_1");
-	npctalk "æµ·æ¶…", instance_npcname("å°¼å¸Œå°”Â·MÂ·æµ·æ¶…#nihil02");
+	npctalk "º£Äù", instance_npcname("¸¥ÀïµÂÀïÏ£¡¤S¡¤º£Äù#stol_1");
+	npctalk "º£Äù", instance_npcname("ÄáÏ£¶û¡¤M¡¤º£Äù#nihil02");
 	sleep 3000;
-	npctalk "æµ·ç¥å±", instance_npcname("æ–¯åŸºäºšÂ·å†…é‡Œä¹Œæ–¯#skia02");
-	npctalk "æµ·ç¥å±", instance_npcname("è§’å®¿ä¸€#spica01");
+	npctalk "º£ÉñÊô", instance_npcname("Ë¹»ùÑÇ¡¤ÄÚÀïÎÚË¹#skia02");
+	npctalk "º£ÉñÊô", instance_npcname("½ÇËŞÒ»#spica01");
 	sleep 3000;
-	npctalk "ç“¦å°”ç‰¹", instance_npcname("è‰¾æ£®éœè¯ºÂ·ç“¦å°”ç‰¹#eisen");
-	npctalk "ç“¦å°”ç‰¹", instance_npcname("ä¼Šæ©Â·ç“¦å°”ç‰¹#ian01");
+	npctalk "Íß¶ûÌØ", instance_npcname("°¬É­»ôÅµ¡¤Íß¶ûÌØ#eisen");
+	npctalk "Íß¶ûÌØ", instance_npcname("ÒÁ¶÷¡¤Íß¶ûÌØ#ian01");
 	sleep 3000;
-	npctalk "ç»´æ ¼çº³", instance_npcname("è±ç»´åŸƒÂ·ç»´æ ¼çº³#louvier1");
-	npctalk "ç»´æ ¼çº³", instance_npcname("äºå°”æ ¹Â·ç»´æ ¼çº³#jurgen01");
-	npctalk "ç»´æ ¼çº³", instance_npcname("è‰¾è¨å…‹Â·ç»´æ ¼çº³#isaac01");
-	npctalk "ç»´æ ¼çº³", instance_npcname("å¡ç‰¹ç³Â·ç»´æ ¼çº³#kath01");
+	npctalk "Î¬¸ñÄÉ", instance_npcname("À³Î¬°£¡¤Î¬¸ñÄÉ#louvier1");
+	npctalk "Î¬¸ñÄÉ", instance_npcname("ÓÚ¶û¸ù¡¤Î¬¸ñÄÉ#jurgen01");
+	npctalk "Î¬¸ñÄÉ", instance_npcname("°¬Èø¿Ë¡¤Î¬¸ñÄÉ#isaac01");
+	npctalk "Î¬¸ñÄÉ", instance_npcname("¿¨ÌØÁÕ¡¤Î¬¸ñÄÉ#kath01");
 	sleep 3000;
-	npctalk "ä¹”åšæ ¼", instance_npcname("å‡¯ç‘Ÿç³Â·DÂ·ä¹”åšæ ¼#ca1");
-	npctalk "ä¹”åšæ ¼", instance_npcname("æ©æ–¯ç‰¹Â·ä¹”åšæ ¼#ernst01");
+	npctalk "ÇÇ²©¸ñ", instance_npcname("¿­ÉªÁÕ¡¤D¡¤ÇÇ²©¸ñ#ca1");
+	npctalk "ÇÇ²©¸ñ", instance_npcname("¶÷Ë¹ÌØ¡¤ÇÇ²©¸ñ#ernst01");
 	sleep 3000;
-	npctalk "ç†æŸ¥å¾·", instance_npcname("ä¿ç†æŸ¥å¾·#po01");
+	npctalk "Àí²éµÂ", instance_npcname("±£Àí²éµÂ#po01");
 	sleep 3000;
-	npctalk "ç½—æ ¹å ¡", instance_npcname("é©¬å…‹è¥¿ç±³åˆ©å®‰Â·ç½—æ ¹å ¡#m1");
-	npctalk "ç½—æ ¹å ¡", instance_npcname("æ²ƒå°”å¤«Â·ç½—æ ¹å ¡#wolf01");
-	npctalk "ç½—æ ¹å ¡", instance_npcname("èµ«å°”ç©†ç‰¹Â·ç½—æ ¹å ¡#helmu");
-	npctalk "ç½—æ ¹å ¡", instance_npcname("è‰¾æ ¼å°¼ä¸Â·ç½—æ ¹å ¡#agnes0_1");
+	npctalk "ÂŞ¸ù±¤", instance_npcname("Âí¿ËÎ÷Ã×Àû°²¡¤ÂŞ¸ù±¤#m1");
+	npctalk "ÂŞ¸ù±¤", instance_npcname("ÎÖ¶û·ò¡¤ÂŞ¸ù±¤#wolf01");
+	npctalk "ÂŞ¸ù±¤", instance_npcname("ºÕ¶ûÄÂÌØ¡¤ÂŞ¸ù±¤#helmu");
+	npctalk "ÂŞ¸ù±¤", instance_npcname("°¬¸ñÄáË¿¡¤ÂŞ¸ù±¤#agnes0_1");
 	sleep 3000;
 	mapannounce 'map_2mir$, "Kronecker: On the behalf of the seven royal families supporting Rune-Midgarts,", bc_map,0xFF99;
 	sleep 3000;
@@ -85,29 +87,29 @@ OnEvent:
 	sleep 3000;
 	mapannounce 'map_2mir$, "Kronecker: The blessing star light may reach the glory of the earth...", bc_map,0xFF99;
 	sleep 3000;
-	npctalk "è¯·å…è®¸èµäºˆä¸€åˆ‡ä¼—ç”Ÿçš„æºå¤´åŠ›é‡ï¼Œ", instance_npcname("å¼—é‡Œå¾·é‡Œå¸ŒÂ·SÂ·æµ·æ¶…#stol_1");
-	npctalk "è¯·å…è®¸èµäºˆä¸€åˆ‡ä¼—ç”Ÿçš„æºå¤´åŠ›é‡ï¼Œ", instance_npcname("å°¼å¸Œå°”Â·MÂ·æµ·æ¶…#nihil02");
+	npctalk "ÇëÔÊĞí´ÍÓèÒ»ÇĞÖÚÉúµÄÔ´Í·Á¦Á¿£¬", instance_npcname("¸¥ÀïµÂÀïÏ£¡¤S¡¤º£Äù#stol_1");
+	npctalk "ÇëÔÊĞí´ÍÓèÒ»ÇĞÖÚÉúµÄÔ´Í·Á¦Á¿£¬", instance_npcname("ÄáÏ£¶û¡¤M¡¤º£Äù#nihil02");
 	sleep 3000;
-	npctalk "å‹‡å¾€ç›´å‰ï¼Œä¹‰æ— åé¡¾ï¼Œç”¨åŒ•é¦–åˆºå‘æ•Œäººï¼Œ", instance_npcname("å‡¯ç‘Ÿç³Â·DÂ·ä¹”åšæ ¼#ca1");
-	npctalk "å‹‡å¾€ç›´å‰ï¼Œä¹‰æ— åé¡¾ï¼Œç”¨åŒ•é¦–åˆºå‘æ•Œäººï¼Œ", instance_npcname("æ©æ–¯ç‰¹Â·ä¹”åšæ ¼#ernst01");
+	npctalk "ÓÂÍùÖ±Ç°£¬ÒåÎŞ·´¹Ë£¬ÓÃØ°Ê×´ÌÏòµĞÈË£¬", instance_npcname("¿­ÉªÁÕ¡¤D¡¤ÇÇ²©¸ñ#ca1");
+	npctalk "ÓÂÍùÖ±Ç°£¬ÒåÎŞ·´¹Ë£¬ÓÃØ°Ê×´ÌÏòµĞÈË£¬", instance_npcname("¶÷Ë¹ÌØ¡¤ÇÇ²©¸ñ#ernst01");
 	sleep 3000;
-	npctalk "æœ‰ä¸€é¢—æ‹¥æŠ±ä¸–é—´ä¸€åˆ‡çš„å¿ƒï¼Œ", instance_npcname("æ–¯åŸºäºšÂ·å†…é‡Œä¹Œæ–¯#skia02");
-	npctalk "æœ‰ä¸€é¢—æ‹¥æŠ±ä¸–é—´ä¸€åˆ‡çš„å¿ƒï¼Œ", instance_npcname("è§’å®¿ä¸€#spica01");
+	npctalk "ÓĞÒ»¿ÅÓµ±§ÊÀ¼äÒ»ÇĞµÄĞÄ£¬", instance_npcname("Ë¹»ùÑÇ¡¤ÄÚÀïÎÚË¹#skia02");
+	npctalk "ÓĞÒ»¿ÅÓµ±§ÊÀ¼äÒ»ÇĞµÄĞÄ£¬", instance_npcname("½ÇËŞÒ»#spica01");
 	sleep 3000;
-	npctalk "æƒ³è¦å®ˆæŠ¤æ€€ä¸­ä¸€åˆ‡çš„åšå¼ºæ„å¿—ï¼Œ", instance_npcname("ä¿ç†æŸ¥å¾·#po01");
+	npctalk "ÏëÒªÊØ»¤»³ÖĞÒ»ÇĞµÄ¼áÇ¿ÒâÖ¾£¬", instance_npcname("±£Àí²éµÂ#po01");
 	sleep 3000;
-	npctalk "æ— è®ºå¦‚ä½•éƒ½ä¸ä¼šå±ˆæœäºæ­£ä¹‰å’Œä¿¡ä»°çš„å®Œæ•´éª„å‚²ï¼Œ", instance_npcname("è‰¾æ£®éœè¯ºÂ·ç“¦å°”ç‰¹#eisen");
-	npctalk "æ— è®ºå¦‚ä½•éƒ½ä¸ä¼šå±ˆæœäºæ­£ä¹‰å’Œä¿¡ä»°çš„å®Œæ•´éª„å‚²ï¼Œ", instance_npcname("ä¼Šæ©Â·ç“¦å°”ç‰¹#ian01");
+	npctalk "ÎŞÂÛÈçºÎ¶¼²»»áÇü·şÓÚÕıÒåºÍĞÅÑöµÄÍêÕû½¾°Á£¬", instance_npcname("°¬É­»ôÅµ¡¤Íß¶ûÌØ#eisen");
+	npctalk "ÎŞÂÛÈçºÎ¶¼²»»áÇü·şÓÚÕıÒåºÍĞÅÑöµÄÍêÕû½¾°Á£¬", instance_npcname("ÒÁ¶÷¡¤Íß¶ûÌØ#ian01");
 	sleep 3000;
-	npctalk "ä»¥è°¦å‘çš„å¿ƒçœ‹å¾…ä»–äººçš„ç¾å¾·ï¼Œ", instance_npcname("é©¬å…‹è¥¿ç±³åˆ©å®‰Â·ç½—æ ¹å ¡#m1");
-	npctalk "ä»¥è°¦å‘çš„å¿ƒçœ‹å¾…ä»–äººçš„ç¾å¾·ï¼Œ", instance_npcname("æ²ƒå°”å¤«Â·ç½—æ ¹å ¡#wolf01");
-	npctalk "ä»¥è°¦å‘çš„å¿ƒçœ‹å¾…ä»–äººçš„ç¾å¾·ï¼Œ", instance_npcname("èµ«å°”ç©†ç‰¹Â·ç½—æ ¹å ¡#helmu");
-	npctalk "ä»¥è°¦å‘çš„å¿ƒçœ‹å¾…ä»–äººçš„ç¾å¾·ï¼Œ", instance_npcname("è‰¾æ ¼å°¼ä¸Â·ç½—æ ¹å ¡#agnes0_1");
+	npctalk "ÒÔÇ«±°µÄĞÄ¿´´ıËûÈËµÄÃÀµÂ£¬", instance_npcname("Âí¿ËÎ÷Ã×Àû°²¡¤ÂŞ¸ù±¤#m1");
+	npctalk "ÒÔÇ«±°µÄĞÄ¿´´ıËûÈËµÄÃÀµÂ£¬", instance_npcname("ÎÖ¶û·ò¡¤ÂŞ¸ù±¤#wolf01");
+	npctalk "ÒÔÇ«±°µÄĞÄ¿´´ıËûÈËµÄÃÀµÂ£¬", instance_npcname("ºÕ¶ûÄÂÌØ¡¤ÂŞ¸ù±¤#helmu");
+	npctalk "ÒÔÇ«±°µÄĞÄ¿´´ıËûÈËµÄÃÀµÂ£¬", instance_npcname("°¬¸ñÄáË¿¡¤ÂŞ¸ù±¤#agnes0_1");
 	sleep 3000;
-	npctalk "ä»¥åŠçœ‹å¾…çœŸç›¸çš„æ™ºæ…§", instance_npcname("è±ç»´åŸƒÂ·ç»´æ ¼çº³#louvier1");
-	npctalk "ä»¥åŠçœ‹å¾…çœŸç›¸çš„æ™ºæ…§", instance_npcname("äºå°”æ ¹Â·ç»´æ ¼çº³#jurgen01");
-	npctalk "ä»¥åŠçœ‹å¾…çœŸç›¸çš„æ™ºæ…§", instance_npcname("è‰¾è¨å…‹Â·ç»´æ ¼çº³#isaac01");
-	npctalk "ä»¥åŠçœ‹å¾…çœŸç›¸çš„æ™ºæ…§", instance_npcname("å¡ç‰¹ç³Â·ç»´æ ¼çº³#kath01");
+	npctalk "ÒÔ¼°¿´´ıÕæÏàµÄÖÇ»Û", instance_npcname("À³Î¬°£¡¤Î¬¸ñÄÉ#louvier1");
+	npctalk "ÒÔ¼°¿´´ıÕæÏàµÄÖÇ»Û", instance_npcname("ÓÚ¶û¸ù¡¤Î¬¸ñÄÉ#jurgen01");
+	npctalk "ÒÔ¼°¿´´ıÕæÏàµÄÖÇ»Û", instance_npcname("°¬Èø¿Ë¡¤Î¬¸ñÄÉ#isaac01");
+	npctalk "ÒÔ¼°¿´´ıÕæÏàµÄÖÇ»Û", instance_npcname("¿¨ÌØÁÕ¡¤Î¬¸ñÄÉ#kath01");
 	sleep 3000;
 	mapannounce 'map_2mir$, "Kronecker: To our new king...", bc_map,0xFF99;
 	sleep 1500;
@@ -125,49 +127,49 @@ OnEvent:
 	sleep 500;
 	.@intruder$ = instance_npcname("Intruder#hunter01");
 	enablenpc .@intruder$;
-	npctalk "å“¦ï¼Œä½ å¥½ï¼ä½ ä¸€å®šå°±æ˜¯å¤§åé¼é¼çš„åœ£äººæ ¼å…°èŒ¨å¤§å…¬å§ï¼", .@intruder$;
+	npctalk "Å¶£¬ÄãºÃ£¡ÄãÒ»¶¨¾ÍÊÇ´óÃû¶¦¶¦µÄÊ¥ÈË¸ñÀ¼´Ä´ó¹«°É£¡", .@intruder$;
 	sleep 3000;
-	npctalk "ä½ åœ¨å¹²ä»€ä¹ˆï¼ï¼ï¼", .@kronecker_2$;
+	npctalk "ÄãÔÚ¸ÉÊ²Ã´£¡£¡£¡", .@kronecker_2$;
 	sleep 3000;
-	npctalk "ä¸ï¼Œæ²¡ä»€ä¹ˆã€‚æ— è®ºå¦‚ä½•ï¼Œè¿™é‡Œæ²¡æœ‰ä»€ä¹ˆå€¼å¾—åšçš„ã€‚", .@intruder$;
+	npctalk "²»£¬Ã»Ê²Ã´¡£ÎŞÂÛÈçºÎ£¬ÕâÀïÃ»ÓĞÊ²Ã´ÖµµÃ×öµÄ¡£", .@intruder$;
 	sleep 3000;
-	npctalk "å¬è¯´è¿™é‡Œè—ç€ä¸€äº›å¾ˆä¸é”™çš„ä¸œè¥¿â€¦â€¦", .@intruder$;
+	npctalk "ÌıËµÕâÀï²Ø×ÅÒ»Ğ©ºÜ²»´íµÄ¶«Î÷¡­¡­", .@intruder$;
 	sleep 3000;
-	npctalk "ä½†è¿™æ˜¯ä»€ä¹ˆï¼Ÿè¿™æ˜¯å‡çš„ï¼", .@intruder$;
+	npctalk "µ«ÕâÊÇÊ²Ã´£¿ÕâÊÇ¼ÙµÄ£¡", .@intruder$;
 	specialeffect EF_BEGINSPELL,AREA,.@kronecker_2$;
 	sleep 500;
 	specialeffect EF_BEGINSPELL6,AREA, .@intruder$;
 	specialeffect EF_LEVEL99,AREA, .@intruder$;
 	sleep 2000;
-	npctalk "ä½ è¿™ä¸ªè€å¤´å­ï¼Œè¿˜æœ‰ä»–èƒŒåçš„è´µäººâ€¦â€¦", .@intruder$;
+	npctalk "ÄãÕâ¸öÀÏÍ·×Ó£¬»¹ÓĞËû±³ºóµÄ¹óÈË¡­¡­", .@intruder$;
 	sleep 3000;
-	npctalk "æŠŠå®ƒæ”¾åœ¨é‚£é‡Œã€‚è¿™ä¸€ç‚¹ä¹Ÿä¸å¥½ç©ã€‚æˆ‘å¯èƒ½æƒ³æ¯æ‰ä¸€äº›ä¸œè¥¿ã€‚", .@intruder$;
+	npctalk "°ÑËü·ÅÔÚÄÇÀï¡£ÕâÒ»µãÒ²²»ºÃÍæ¡£ÎÒ¿ÉÄÜÏë»ÙµôÒ»Ğ©¶«Î÷¡£", .@intruder$;
 	sleep 3000;
-	npctalk "ä¾‹å¦‚...", .@intruder$;
+	npctalk "ÀıÈç...", .@intruder$;
 	sleep 3000;
-	npctalk "è¿™ä¸ªèµå“å¾ˆåƒå°¤å¼¥å°”ä¹‹å¿ƒï¼", .@intruder$;
+	npctalk "Õâ¸öØÍÆ·ºÜÏñÓÈÃÖ¶ûÖ®ĞÄ£¡", .@intruder$;
 	sleep 3000;
-	npctalk "â€¦â€¦ä½ æƒ³è¦ä»€ä¹ˆï¼Ÿ", .@kronecker_2$;
+	npctalk "¡­¡­ÄãÏëÒªÊ²Ã´£¿", .@kronecker_2$;
 	sleep 3000;
-	npctalk "å°¤å¼¥å°”ä¹‹å¿ƒçš„ç¢ç‰‡ã€‚æˆ‘å¬è¯´å®ƒå°±åœ¨è¿™é‡Œï¼Œä½†æˆ‘æ²¡æœ‰çœ‹åˆ°ï¼Œæ˜¯å—ï¼Ÿ", .@intruder$;
+	npctalk "ÓÈÃÖ¶ûÖ®ĞÄµÄËéÆ¬¡£ÎÒÌıËµËü¾ÍÔÚÕâÀï£¬µ«ÎÒÃ»ÓĞ¿´µ½£¬ÊÇÂğ£¿", .@intruder$;
 	sleep 3000;
-	npctalk "...ä½ åœ¨è¯´ä»€ä¹ˆï¼Ÿ", .@kronecker_2$;
+	npctalk "...ÄãÔÚËµÊ²Ã´£¿", .@kronecker_2$;
 	sleep 3000;
-	npctalk "å“¦ï¼Œä½ ä¸çŸ¥é“å—ï¼Ÿ", .@intruder$;
+	npctalk "Å¶£¬Äã²»ÖªµÀÂğ£¿", .@intruder$;
 	sleep 3000;
-	npctalk "å—¯ï¼Œæˆ‘æ˜ç™½äº†ã€‚å¦‚æœä½ çŸ¥é“çš„è¯ï¼Œä½ å°±ä¸ä¼šæŠŠå®ƒåŸ‹åœ¨åœ°ä¸‹ï¼Œæµªè´¹æ—¶é—´åœ¨è¿™ä¸ªä»ªå¼ä¸Šã€‚", .@intruder$;
+	npctalk "àÅ£¬ÎÒÃ÷°×ÁË¡£Èç¹ûÄãÖªµÀµÄ»°£¬Äã¾Í²»»á°ÑËüÂñÔÚµØÏÂ£¬ÀË·ÑÊ±¼äÔÚÕâ¸öÒÇÊ½ÉÏ¡£", .@intruder$;
 	sleep 3000;
-	npctalk "ä½†æˆ‘æ— èƒ½ä¸ºåŠ›ï¼Œè€äººã€‚è¿™æ˜¯å‡çš„ã€‚", .@intruder$;
+	npctalk "µ«ÎÒÎŞÄÜÎªÁ¦£¬ÀÏÈË¡£ÕâÊÇ¼ÙµÄ¡£", .@intruder$;
 	sleep 2000;
-	npctalk "â€¦â€¦ä½ æ€ä¹ˆæ•¢â€¦â€¦", .@kronecker_2$;
+	npctalk "¡­¡­ÄãÔõÃ´¸Ò¡­¡­", .@kronecker_2$;
 	sleep 2000;
-	npctalk "åˆ«ç”¨é‚£ç§çœ¼ç¥çœ‹ç€æˆ‘ã€‚æˆ‘ä¹Ÿåœ¨è¿™é‡Œæµªè´¹äº†æ—¶é—´ï¼Œä½ çŸ¥é“çš„ã€‚", .@intruder$;
+	npctalk "±ğÓÃÄÇÖÖÑÛÉñ¿´×ÅÎÒ¡£ÎÒÒ²ÔÚÕâÀïÀË·ÑÁËÊ±¼ä£¬ÄãÖªµÀµÄ¡£", .@intruder$;
 	sleep 3000;
-	npctalk "å¥½å§ï¼Œè¿™æ¬¡æˆ‘å°±ä¸å»æ‹æ‘„åœºæ™¯äº†ã€‚", .@intruder$;
+	npctalk "ºÃ°É£¬Õâ´ÎÎÒ¾Í²»È¥ÅÄÉã³¡¾°ÁË¡£", .@intruder$;
 	sleep 3000;
-	npctalk "å“ˆ!å½“ä½ ä¸çŸ¥é“å¦‚ä½•ä½¿ç”¨æ—¶ï¼Œå†å¤šçš„åŠ›é‡åˆæœ‰ä»€ä¹ˆç”¨å‘¢ï¼Ÿæˆ‘æƒ³ä½ ä¸å†éœ€è¦è¿™ä¸ªäº†ã€‚", .@intruder$;
+	npctalk "¹ş!µ±Äã²»ÖªµÀÈçºÎÊ¹ÓÃÊ±£¬ÔÙ¶àµÄÁ¦Á¿ÓÖÓĞÊ²Ã´ÓÃÄØ£¿ÎÒÏëÄã²»ÔÙĞèÒªÕâ¸öÁË¡£", .@intruder$;
 	sleep 3000;
-	npctalk "æ˜¯æ—¶å€™è®©è¿™é¢—å‡å°¤å¼¥å°”ä¹‹å¿ƒæ¶ˆå¤±äº†ï¼", .@intruder$;
+	npctalk "ÊÇÊ±ºòÈÃÕâ¿Å¼ÙÓÈÃÖ¶ûÖ®ĞÄÏûÊ§ÁË£¡", .@intruder$;
 	sleep 500;
 	specialeffect EF_BEGINSPELL3,AREA, .@intruder$;
 	sleep 500;
@@ -310,7 +312,7 @@ OnTimer4000:
 	specialeffect EF_HOLYCROSS;
 	end;
 OnTimer5000:
-	npctalk "æ²¡æœ‰ç”¨ï¼";
+	npctalk "Ã»ÓĞÓÃ£¡";
 	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Isenhonor Walther#eisen2");
 	end;
 OnTimer7000:
@@ -324,7 +326,7 @@ OnTimer10000:
 	end;
 OnTimer11000:
 	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Isenhonor Walther#eisen2");
-	npctalk "æˆ‘ä»¬æ²¡æœ‰æ—¶é—´èŠå¤©ï¼", instance_npcname("è‰¾æ£®éœè¯ºÂ·ç“¦å°”ç‰¹#eisen2");
+	npctalk "ÎÒÃÇÃ»ÓĞÊ±¼äÁÄÌì£¡", instance_npcname("°¬É­»ôÅµ¡¤Íß¶ûÌØ#eisen2");
 	initnpctimer;
 	end;
 }
@@ -355,7 +357,7 @@ OnTimer7500:
 	specialeffect EF_HIT2;
 	end;
 OnTimer8500:
-	npctalk "æ²¡æœ‰ç”¨ï¼";
+	npctalk "Ã»ÓĞÓÃ£¡";
 	specialeffect EF_HIT1, AREA, instance_npcname("Skia Nerius#skia03");
 	end;
 OnTimer11100:
@@ -387,7 +389,7 @@ OnTimer3800:
 	specialeffect EF_HIT5;
 	end;
 OnTimer4800:
-	npctalk "å‘µå‘µï¼";
+	npctalk "ºÇºÇ£¡";
 	specialeffect EF_HIT6, AREA, instance_npcname("Friedrich S. Heine#stol_2");
 	end;
 OnTimer8200:
@@ -401,7 +403,7 @@ OnTimer11500:
 	end;
 OnTimer12500:
 	specialeffect EF_AUTOCOUNTER, AREA, instance_npcname("Friedrich S. Heine#stol_2");
-	npctalk "â€¦â€¦è¿™äº›æ··è›‹æ˜¯å“ªé‡Œæ¥çš„ï¼Ÿ", instance_npcname("å¼—é‡Œå¾·é‡Œå¸ŒÂ·SÂ·æµ·æ¶…#stol_2");
+	npctalk "¡­¡­ÕâĞ©»ìµ°ÊÇÄÄÀïÀ´µÄ£¿", instance_npcname("¸¥ÀïµÂÀïÏ£¡¤S¡¤º£Äù#stol_2");
 	initnpctimer;
 	end;
 }
@@ -423,11 +425,11 @@ OnTimer2000:
 	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Helmut Roegenburg#helmu2");
 	end;
 OnTimer4000:
-	npctalk "æ­»ï¼ï¼ï¼";
+	npctalk "ËÀ£¡£¡£¡";
 	specialeffect EF_HIT5;
 	end;
 OnTimer4500:
-	npctalk "çœ‹çœ‹è°åœ¨è¯´è¯ï¼ï¼ï¼", instance_npcname("èµ«å°”ç©†ç‰¹Â·ç½—æ ¹å ¡#helmu2");
+	npctalk "¿´¿´Ë­ÔÚËµ»°£¡£¡£¡", instance_npcname("ºÕ¶ûÄÂÌØ¡¤ÂŞ¸ù±¤#helmu2");
 	specialeffect EF_HIT6, AREA, instance_npcname("Helmut Roegenburg#helmu2");
 	end;
 OnTimer7000:
@@ -441,7 +443,7 @@ OnTimer10000:
 	end;
 OnTimer11000:
 	specialeffect EF_AUTOCOUNTER, AREA, instance_npcname("Helmut Roegenburg#helmu2");
-	npctalk "å•Šå•Šï¼ï¼ï¼", instance_npcname("èµ«å°”ç©†ç‰¹Â·ç½—æ ¹å ¡#helmu2");
+	npctalk "°¡°¡£¡£¡£¡", instance_npcname("ºÕ¶ûÄÂÌØ¡¤ÂŞ¸ù±¤#helmu2");
 	initnpctimer;
 	end;
 }
@@ -463,7 +465,7 @@ OnTimer2000:
 	specialeffect EF_TEIHIT1X, AREA, instance_npcname("Po Richard#po02");
 	end;
 OnTimer4000:
-	npctalk "æ­»ï¼ï¼ï¼";
+	npctalk "ËÀ£¡£¡£¡";
 	specialeffect EF_LIGHTBOLT;
 	end;
 OnTimer5000:
@@ -479,28 +481,28 @@ OnTimer10000:
 	specialeffect EF_NAPALMBEAT;
 	end;
 OnTimer12000:
-	npctalk "å“¦ï¼Œè¿™çœ‹èµ·æ¥ä¸å¤ªå¥½ã€‚", instance_npcname("ä¿ç†æŸ¥å¾·#po02");
+	npctalk "Å¶£¬Õâ¿´ÆğÀ´²»Ì«ºÃ¡£", instance_npcname("±£Àí²éµÂ#po02");
 	specialeffect EF_AUTOCOUNTER, AREA, instance_npcname("Po Richard#po02");
 	initnpctimer;
 	end;
 }
 
 2@mir,97,80,7	script	Friedrich S. Heine#stol_1	4_EP16_STOLZ,{
-	npctalk "... å®‰é™çš„ã€‚";
+	npctalk "... °²¾²µÄ¡£";
 	end;
 }
 
 2@mir,88,78,2	script	Isenhonor Walther#eisen2	4_M_1STPRIN1,{
 	if ('intruder_count < 3) {
-		npctalk "æˆ‘ä»¬æ²¡æœ‰æ—¶é—´èŠå¤©ï¼";
+		npctalk "ÎÒÃÇÃ»ÓĞÊ±¼äÁÄÌì£¡";
 		end;
 	}
-	mes "[è‰¾æ£®éœè¯ºå°”]";
-	mes "åˆ°åº•æ˜¯æ€ä¹ˆå›äº‹...";
-	mes "æˆ‘ä»¬å…ˆç¦»å¼€è¿™ä¸ªåœ°æ–¹ã€‚";
+	mes "[°¬É­»ôÅµ¶û]";
+	mes "µ½µ×ÊÇÔõÃ´»ØÊÂ...";
+	mes "ÎÒÃÇÏÈÀë¿ªÕâ¸öµØ·½¡£";
 	next;
-	mes "[è‰¾æ£®éœè¯ºå°”]";
-	mes "å¤§å®¶è¿˜å¥½å—...";
+	mes "[°¬É­»ôÅµ¶û]";
+	mes "´ó¼Ò»¹ºÃÂğ...";
 	close2;
 	disablenpc instance_npcname("Isenhonor Walther#eisen2");
 	disablenpc instance_npcname("Ian Walther#ian02");
@@ -509,12 +511,12 @@ OnTimer12000:
 
 2@mir,106,85,7	script	Helmut Roegenburg#helmu2	4_EP16_HELMUT,{
 	if ('intruder_count < 3) {
-		npctalk "å—¯ï¼";
+		npctalk "àÅ£¡";
 		end;
 	}
-	mes "[èµ«å°”ç©†ç‰¹]";
-	mes "ä¸€åˆ‡çœ‹èµ·æ¥éƒ½å¾ˆå¥½ã€‚";
-	mes "â€¦â€¦æˆ‘è¦èµ°äº†ã€‚å…„å¼Ÿä¿©çš„è„¸è‰²éƒ½ä¸å¤ªå¥½ã€‚";
+	mes "[ºÕ¶ûÄÂÌØ]";
+	mes "Ò»ÇĞ¿´ÆğÀ´¶¼ºÜºÃ¡£";
+	mes "¡­¡­ÎÒÒª×ßÁË¡£ĞÖµÜÁ©µÄÁ³É«¶¼²»Ì«ºÃ¡£";
 	close2;
 	disablenpc instance_npcname("Helmut Roegenburg#helmu2");
 	disablenpc instance_npcname("Wolf Roegenburg#wolf02");
@@ -525,16 +527,16 @@ OnTimer12000:
 
 2@mir,92,83,2	script	Skia Nerius#skia03	4_EP16_SKIA,{
 	if ('intruder_count < 3) {
-		npctalk "â€¦â€¦å‘ƒâ€¦â€¦ä»–ä»¬æ˜¯ä»å“ªé‡Œæ¥çš„ï¼Ÿ";
+		npctalk "¡­¡­ßÀ¡­¡­ËûÃÇÊÇ´ÓÄÄÀïÀ´µÄ£¿";
 		end;
 	}
-	mes "[æ»‘é›ª]";
-	mes "å‘¼ï¼Œæˆ‘ä»¬ç¦»å¼€è¿™é‡Œå§ã€‚";
-	mes "å§å§ï¼Œæˆ‘ä»¬å‡ºå»å§ï¼";
-	mes "å°¼å¸Œå°”ï¼Œä½ åº”è¯¥è·Ÿæˆ‘ä»¬ä¸€èµ·å»ï¼";
+	mes "[»¬Ñ©]";
+	mes "ºô£¬ÎÒÃÇÀë¿ªÕâÀï°É¡£";
+	mes "½ã½ã£¬ÎÒÃÇ³öÈ¥°É£¡";
+	mes "ÄáÏ£¶û£¬ÄãÓ¦¸Ã¸úÎÒÃÇÒ»ÆğÈ¥£¡";
 	next;
-	mes "[æ»‘é›ª]";
-	mes "å…¶ä»–äººä¼šè‡ªå·±èµ°å‡ºæ¥çš„ï¼";
+	mes "[»¬Ñ©]";
+	mes "ÆäËûÈË»á×Ô¼º×ß³öÀ´µÄ£¡";
 	close2;
 	disablenpc instance_npcname("Skia Nerius#skia03");
 	disablenpc instance_npcname("Spica Nerius#spica02");
@@ -543,10 +545,10 @@ OnTimer12000:
 
 2@mir,109,84,7	script	Po Richard#po02	4_M_6THPRIN1,{
 	if ('intruder_count < 3) {
-		npctalk "â€¦â€¦å“ˆå“ˆï¼Œæ²¡æƒ³åˆ°ä¼šåœ¨è¿™é‡Œæˆ˜æ–—ï¼";
+		npctalk "¡­¡­¹ş¹ş£¬Ã»Ïëµ½»áÔÚÕâÀïÕ½¶·£¡";
 		end;
 	}
-	npctalk "ç”±äºå¤§å…ä¼¼ä¹å·²ç»è¢«æ¸…ç†å¹²å‡€ï¼Œæˆ‘ç°åœ¨å°±ç¦»å¼€ã€‚è¿™ä¸‹å¯éº»çƒ¦äº†ï¼";
+	npctalk "ÓÉÓÚ´óÌüËÆºõÒÑ¾­±»ÇåÀí¸É¾»£¬ÎÒÏÖÔÚ¾ÍÀë¿ª¡£ÕâÏÂ¿ÉÂé·³ÁË£¡";
 	sleep 2000;
 	disablenpc instance_npcname("Po Richard#po02");
 	end;
@@ -554,12 +556,12 @@ OnTimer12000:
 
 2@mir,95,85,1	script	Friedrich S. Heine#stol_2	4_EP16_STOLZ,{
 	if ('intruder_count < 3) {
-		npctalk "è¯·ç…§é¡¾å…¶ä»–äººã€‚";
+		npctalk "ÇëÕÕ¹ËÆäËûÈË¡£";
 		end;
 	}
-	mes "[å¼—é‡Œå¾·é‡Œå¸Œ]";
-	mes "â€¦â€¦å¥½åƒæ²¡æœ‰äººæ­»ã€‚";
-	npctalk "ä½ è¿˜åœ¨ç­‰ä»€ä¹ˆï¼å¸¦ç€ä¼¤å‘˜ç¦»å¼€è¿™é‡Œï¼";
+	mes "[¸¥ÀïµÂÀïÏ£]";
+	mes "¡­¡­ºÃÏñÃ»ÓĞÈËËÀ¡£";
+	npctalk "Äã»¹ÔÚµÈÊ²Ã´£¡´ø×ÅÉËÔ±Àë¿ªÕâÀï£¡";
 	close2;
 OnDisable:
 	disablenpc instance_npcname("Skia Nerius#skia03");
@@ -582,100 +584,100 @@ OnDisable:
 
 2@mir,101,93,7	script	Kronecker G. Heine#gran2	4_EP16_GRANZ,{
 	if ('intruder_count < 3) {
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "å½¼å¾—æƒ…å†µå±æ€¥ã€‚";
-		mes "â€¦â€¦ä½ ä»‹æ„æ›¿æˆ‘ä»¬å¯¹æŠ—å…¥ä¾µè€…å—ï¼Ÿ";
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "±ËµÃÇé¿öÎ£¼±¡£";
+		mes "¡­¡­Äã½éÒâÌæÎÒÃÇ¶Ô¿¹ÈëÇÖÕßÂğ£¿";
 		close;
 	}
 	if (isbegin_quest(7692) == 1) {
-		mes "[å…‹ç½—å†…å…‹]";
+		mes "[¿ËÂŞÄÚ¿Ë]";
 		mes "....";
-		mes "....^4d4dffå¤§åœ°è£è€€^000000ç¼ºå¤±...";
+		mes "....^4d4dff´óµØÈÙÒ«^000000È±Ê§...";
 		next;
-		select("åœŸåœ°è£è€€ï¼Ÿ");
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "è¿™æ˜¯ç¬¦æ–‡ç±³å¾·åŠ ç‰¹ç‹å®«ä¸­æµä¼ ä¸‹æ¥çš„ç‹å† ã€‚";
-		mes "å®ƒçš„æ„ä¹‰ä¸ä»…ä»…æ˜¯ä¸€é¡¶æ™®é€šçš„ç‹å† ã€‚";
+		select("ÍÁµØÈÙÒ«£¿");
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "ÕâÊÇ·ûÎÄÃ×µÂ¼ÓÌØÍõ¹¬ÖĞÁ÷´«ÏÂÀ´µÄÍõ¹Ú¡£";
+		mes "ËüµÄÒâÒå²»½ö½öÊÇÒ»¶¥ÆÕÍ¨µÄÍõ¹Ú¡£";
 		next;
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "è¢«ä»–ä»¬æ‹¿èµ°äº†å—ï¼Ÿ";
-		mes "è¿™åˆ°åº•æ˜¯æ€ä¹ˆå›äº‹â€¦â€¦ï¼";
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "±»ËûÃÇÄÃ×ßÁËÂğ£¿";
+		mes "Õâµ½µ×ÊÇÔõÃ´»ØÊÂ¡­¡­£¡";
 		next;
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "è¿™é‡Œéšè—ç€ä»€ä¹ˆï¼Œæ²¡æœ‰äººçŸ¥é“â€¦â€¦é™¤äº†ä¸ƒå¤§çš‡å®¤â€¦â€¦ï¼";
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "ÕâÀïÒş²Ø×ÅÊ²Ã´£¬Ã»ÓĞÈËÖªµÀ¡­¡­³ıÁËÆß´ó»ÊÊÒ¡­¡­£¡";
 		next;
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "æ˜¯ä¸æ˜¯æ„å‘³ç€...";
-		mes "â€¦â€¦å¥½å§ï¼Œé¦–å…ˆï¼Œæœ‰ä¸€äº›äº‹æƒ…éœ€è¦å¼„æ¸…æ¥šã€‚";
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "ÊÇ²»ÊÇÒâÎ¶×Å...";
+		mes "¡­¡­ºÃ°É£¬Ê×ÏÈ£¬ÓĞÒ»Ğ©ÊÂÇéĞèÒªÅªÇå³ş¡£";
 		next;
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "æˆ‘ä»¬ç°åœ¨å°±ç¦»å¼€è¿™é‡Œå§ã€‚";
-		mes "è¿˜æœ‰å¾ˆå¤šä¸œè¥¿æœ‰å¾…æˆ‘ä»¬å»å‘ç°ã€‚";
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "ÎÒÃÇÏÖÔÚ¾ÍÀë¿ªÕâÀï°É¡£";
+		mes "»¹ÓĞºÜ¶à¶«Î÷ÓĞ´ıÎÒÃÇÈ¥·¢ÏÖ¡£";
 		erasequest 7692;
 		setquest 7693;// Surprise Attack
 		ep16_royal = 9;
 		next;
-		mes "[å…‹ç½—å†…å…‹]";
-		mes "ä¸ç®¡è°ç¦»å¼€è¿™é‡Œï¼Œå¸¦ç€ä½ é™„è¿‘çš„ä¼¤å‘˜ä¸€èµ·æ¸…ç†ï¼";
-		mes "æ„è¯†å®¤å°†å…³é—­ä¸€æ®µæ—¶é—´ï¼";
+		mes "[¿ËÂŞÄÚ¿Ë]";
+		mes "²»¹ÜË­Àë¿ªÕâÀï£¬´ø×ÅÄã¸½½üµÄÉËÔ±Ò»ÆğÇåÀí£¡";
+		mes "ÒâÊ¶ÊÒ½«¹Ø±ÕÒ»¶ÎÊ±¼ä£¡";
 		donpcevent instance_npcname("Friedrich S. Heine#stol_2") + "::OnDisable";
 		disablenpc instance_npcname("Nyhill M. Heine#nihil03");
 		close;
 	}
-	mes "[å…‹ç½—å†…å…‹]";
-	mes "å½¼å¾—å—ä¼¤äº†ã€‚";
-	mes "æˆ‘ä»¬éœ€è¦å¿«é€Ÿç§»åŠ¨ä»–ã€‚";
+	mes "[¿ËÂŞÄÚ¿Ë]";
+	mes "±ËµÃÊÜÉËÁË¡£";
+	mes "ÎÒÃÇĞèÒª¿ìËÙÒÆ¶¯Ëû¡£";
 	next;
-	mes "[å…‹ç½—å†…å…‹]";
-	mes "æˆ‘ä¼šåœ¨é‚£é‡Œè§åˆ°ä½ ã€‚";
-	mes "æ‚¨å¯ä»¥ä»æ‚¨è¿›å…¥çš„é—¨ç¦»å¼€ã€‚";
-	mes "è®©æˆ‘ä»¬åœ¨çš‡å®¤å¾€äº‹å›å¿†ä¸­è§é¢å§ã€‚";
+	mes "[¿ËÂŞÄÚ¿Ë]";
+	mes "ÎÒ»áÔÚÄÇÀï¼ûµ½Äã¡£";
+	mes "Äú¿ÉÒÔ´ÓÄú½øÈëµÄÃÅÀë¿ª¡£";
+	mes "ÈÃÎÒÃÇÔÚ»ÊÊÒÍùÊÂ»ØÒäÖĞ¼ûÃæ°É¡£";
 	close;
 }
 
 2@mir,93,80,2	script	Nyhill M. Heine#nihil03	4_EP16_NIHIL,4,4,{
 	if ('intruder_count < 3) {
-		npctalk "â€¦â€¦å“¦â€¦â€¦æˆ‘çš„â€¦â€¦";
+		npctalk "¡­¡­Å¶¡­¡­ÎÒµÄ¡­¡­";
 		end;
 	}
-	mes "[å°¼å¸Œå°”]";
-	mes "â€¦â€¦è¿™â€¦â€¦éƒ½æ˜¯æˆ‘çš„é”™â€¦â€¦";
+	mes "[ÄáÏ£¶û]";
+	mes "¡­¡­Õâ¡­¡­¶¼ÊÇÎÒµÄ´í¡­¡­";
 	close;
 OnTouch_:
-	npctalk "â€¦â€¦æˆ‘èƒ½å¸®å¿™å—ï¼Ÿ";
+	npctalk "¡­¡­ÎÒÄÜ°ïÃ¦Âğ£¿";
 	npcskill "AL_HEAL",11,99,60;
 	npcskill "PR_KYRIE",10,99,60;
 	end;
 }
 
 2@mir,97,65,5	script	Jurgen Wigner#jurgen02	4_M_4THPRIN1,{
-	npctalk "æˆ‘æŒ‡æœ›ä½ äº†ï¼";
+	npctalk "ÎÒÖ¸ÍûÄãÁË£¡";
 	npcskill "AL_INCAGI",10,99,60;
 	end;
 }
 
 2@mir,111,66,4	script	Catherine D. Geoborg#ca2	4_EP16_EGEO,{
-	npctalk "...å¸Œæœ›å¯¹æ‚¨æœ‰å¸®åŠ©ã€‚";
+	npctalk "...Ï£Íû¶ÔÄúÓĞ°ïÖú¡£";
 	npcskill "AL_HEAL",10,130,115;
 	end;
 }
 
 2@mir,107,61,6	script	Isaac Wigner#isaac02	4_EP16_ISAAC,{
-	npctalk "å¼€å¿ƒç‚¹ï¼";
+	npctalk "¿ªĞÄµã£¡";
 	npcskill "AL_BLESSING",10,99,60;
 	end;
 }
 
 2@mir,112,71,1	script	Agnes Roegenburg#agnes0_2	4_EP16_AGNES,{
-	npctalk "å•Šï¼å½“å¿ƒï¼";
+	npctalk "°¡£¡µ±ĞÄ£¡";
 	end;
 }
 
 2@mir,96,83,2	script	Spica Nerius#spica02	4_EP16_SPICA,{
 	if ('intruder_count < 3)
-		npctalk "...S...åˆ°...ä¸€ä¸ª...";
+		npctalk "...S...µ½...Ò»¸ö...";
 	else
-		npctalk "Skiaï¼Œä¸ºä»€ä¹ˆè¿™å®¶ä¼™æ•‘äº†å°¼å¸Œå°”å‹‹çˆµï¼Œè€Œä¸æ˜¯æˆ‘ï¼Ÿ";
+		npctalk "Skia£¬ÎªÊ²Ã´Õâ¼Ò»ï¾ÈÁËÄáÏ£¶ûÑ«¾ô£¬¶ø²»ÊÇÎÒ£¿";
 	end;
 }
 
@@ -749,7 +751,7 @@ OnInstanceInit:
 		end;
 	}
 	mes "[" + strcharinfo(0) + "]";
-	mes "æˆ‘ä»¬åº”è¯¥è§‚çœ‹ç¥ç¦ä»ªå¼ã€‚";
-	mes "ç°åœ¨åˆ«å‡ºå»ã€‚";
+	mes "ÎÒÃÇÓ¦¸Ã¹Û¿´×£¸£ÒÇÊ½¡£";
+	mes "ÏÖÔÚ±ğ³öÈ¥¡£";
 	close;
 }

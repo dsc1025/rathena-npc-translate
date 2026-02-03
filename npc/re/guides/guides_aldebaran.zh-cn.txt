@@ -13,61 +13,63 @@
 //= 1.0 First version, Renewal guide.
 //= 1.1 Navigation system update. [Euphy]
 //=     Optimized.
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 	cutin "prt_soldier",2;
-	mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-	mes "æ¬¢è¿æ¥åˆ°^8B4513é˜¿å°”å¾·å·´å…°^000000ï¼Œ";
-	mes "è¾¹å¢ƒåŸå¸‚ã€‚";
-	mes "æ‚¨éœ€è¦å¸®åŠ©æ¸¸è§ˆè¿™åº§åŸå¸‚å—ï¼Ÿ";
-	F_Navi("[é˜¿å°”å¾·å·´å…°æŒ‡å—]");
+	mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+	mes "»¶Ó­À´µ½^8B4513°¢¶ûµÂ°ÍÀ¼^000000£¬";
+	mes "±ß¾³³ÇÊĞ¡£";
+	mes "ÄúĞèÒª°ïÖúÓÎÀÀÕâ×ù³ÇÊĞÂğ£¿";
+	F_Navi("[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]");
 	next;
 	set .@str$,"Would you like to check any other locations?";
 	while (1) {
-		switch(select("[ä¸»è¦è®¾æ–½]ï¼š[å•†äººå’ŒåŠ©æ‰‹]ï¼šä»å°åœ°å›¾ä¸Šåˆ é™¤æ ‡è®°ï¼šå–æ¶ˆ")) {
+		switch(select("[Ö÷ÒªÉèÊ©]£º[ÉÌÈËºÍÖúÊÖ]£º´ÓĞ¡µØÍ¼ÉÏÉ¾³ı±ê¼Ç£ºÈ¡Ïû")) {
 		case 1:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[å¡å¤«æ‹‰æ€»éƒ¨]ï¼š[ç‚¼é‡‘æœ¯å£«å…¬ä¼š]ï¼š[é’Ÿæ¥¼]ï¼š[æ—…é¦†å’Œå·¥å…·åº—]ï¼š[ä¿®ç†å’Œè´­ä¹°è£…å¤‡]ï¼š[é…’é¦†]ï¼šä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[¿¨·òÀ­×Ü²¿]£º[Á¶½ğÊõÊ¿¹«»á]£º[ÖÓÂ¥]£º[ÂÃ¹İºÍ¹¤¾ßµê]£º[ĞŞÀíºÍ¹ºÂò×°±¸]£º[¾Æ¹İ]£ºÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
-					callsub L_Mark, F_Navi("å¡å¤«æ‹‰æ€»éƒ¨","aldebaran,61,229","^B9062F");
+					callsub L_Mark, F_Navi("¿¨·òÀ­×Ü²¿","aldebaran,61,229","^B9062F");
 					mes .@str$;
 					viewpoint 1,61,229,0,0xFF0000;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("ç‚¼é‡‘æœ¯å£«å…¬ä¼š","aldebaran,60,60","^0000FF");
+					callsub L_Mark, F_Navi("Á¶½ğÊõÊ¿¹«»á","aldebaran,60,60","^0000FF");
 					mes .@str$;
 					viewpoint 1,60,60,1,0x0A82FF;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("é’Ÿæ¥¼","aldebaran,139,133","^FF5400");
+					callsub L_Mark, F_Navi("ÖÓÂ¥","aldebaran,139,133","^FF5400");
 					mes .@str$;
 					viewpoint 1,139,133,2,0xFFB400;
 					next;
 					break;
 				case 4:
-					mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-					mes "è®©æˆ‘æ ‡è®°ä¸€ä¸‹ä½ç½®";
-					mes F_Navi("æ—…é¦†åŠå·¥å…·åº—","æ¯•å®¿äº”,197,70","^006400")+" å¤§æ¥¼";
-					mes "åœ¨ä½ çš„å°åœ°å›¾ä¸Šã€‚";
+					mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+					mes "ÈÃÎÒ±ê¼ÇÒ»ÏÂÎ»ÖÃ";
+					mes F_Navi("ÂÃ¹İ¼°¹¤¾ßµê","±ÏËŞÎå,197,70","^006400")+" ´óÂ¥";
+					mes "ÔÚÄãµÄĞ¡µØÍ¼ÉÏ¡£";
 					mes .@str$;
 					viewpoint 1,197,70,3,0xAAFF00;
 					next;
 					break;
 				case 5:
-					mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-					mes "å¦‚æœä½ æ„¿æ„";
-					mes F_Navi("è´­ä¹°æˆ–ç»´ä¿®è®¾å¤‡","æ¯•å®¿äº”,197.70","^7F3300")+",";
-					mes "é‚£ä¹ˆè¿™å°±æ˜¯æ‚¨æƒ³è¦å‚è§‚çš„åœ°æ–¹ã€‚";
+					mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+					mes "Èç¹ûÄãÔ¸Òâ";
+					mes F_Navi("¹ºÂò»òÎ¬ĞŞÉè±¸","±ÏËŞÎå,197.70","^7F3300")+",";
+					mes "ÄÇÃ´Õâ¾ÍÊÇÄúÏëÒª²Î¹ÛµÄµØ·½¡£";
 					mes .@str$;
 					viewpoint 1,72,197,4,0xD2691E;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("é…’é¦†","aldebaran,231,106","^800080");
+					callsub L_Mark, F_Navi("¾Æ¹İ","aldebaran,231,106","^800080");
 					viewpoint 1,231,106,5,0xDA70D6;
 					next;
 					break;
@@ -80,9 +82,9 @@ aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ä¼Šç”¸ä¼ é€å®˜]ï¼š[å¡å¤«æ‹‰å‘˜å·¥]ï¼š[å…‹åŠ³æ–¯å…ˆç”Ÿ]ï¼š[å¨å¸ˆåŠ©ç†]ï¼šä¸Šä¸€ä¸ªèœå•")) {
+				switch(select("[ÒÁµé´«ËÍ¹Ù]£º[¿¨·òÀ­Ô±¹¤]£º[¿ËÀÍË¹ÏÈÉú]£º[³øÊ¦ÖúÀí]£ºÉÏÒ»¸ö²Ëµ¥")) {
 				case 1:
-					callsub L_Mark, F_Navi("ä¼Šç”¸ä¼ é€å®˜","aldebaran,133,119","^B9062F");
+					callsub L_Mark, F_Navi("ÒÁµé´«ËÍ¹Ù","aldebaran,133,119","^B9062F");
 					mes .@str$;
 					viewpoint 1,133,119,6,0xFF0000;
 					next;
@@ -93,17 +95,17 @@ aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 					next;
 					break;
 				case 3:
-					mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-					mes "å…‹åŠ³æ–¯å…ˆç”Ÿå¯ä»¥ä¼ é€";
-					mes "æ‚¨åˆ°"+F_Navi("Lutie","æ¯•å®¿äº”ï¼Œ168,168","^006400")+".";
-					mes "è®©æˆ‘æ ‡è®°ä»–çš„ä½ç½®";
-					mes "åœ¨ä½ çš„å°åœ°å›¾ä¸Šã€‚";
+					mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+					mes "¿ËÀÍË¹ÏÈÉú¿ÉÒÔ´«ËÍ";
+					mes "Äúµ½"+F_Navi("Lutie","±ÏËŞÎå£¬168,168","^006400")+".";
+					mes "ÈÃÎÒ±ê¼ÇËûµÄÎ»ÖÃ";
+					mes "ÔÚÄãµÄĞ¡µØÍ¼ÉÏ¡£";
 					mes .@str$;
 					viewpoint 1,168,168,8,0xAAFF00;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("åŠ©ç†å¨å¸ˆé•¿","aldebaran,165,107","^7F3300");
+					callsub L_Mark, F_Navi("ÖúÀí³øÊ¦³¤","aldebaran,165,107","^7F3300");
 					mes .@str$;
 					viewpoint 1,165,107,9,0xD2691E;
 					next;
@@ -115,9 +117,9 @@ aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 			}
 			break;
 		case 3:
-			mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-			mes "å½“ç„¶ï¼Œæˆ‘ä¼šä»ä½ çš„å°åœ°å›¾ä¸Šåˆ é™¤æ‰€æœ‰æ ‡è®°ã€‚";
-			mes "æˆ‘è¿˜èƒ½ä¸ºæ‚¨åšäº›ä»€ä¹ˆå—ï¼Ÿ";
+			mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+			mes "µ±È»£¬ÎÒ»á´ÓÄãµÄĞ¡µØÍ¼ÉÏÉ¾³ıËùÓĞ±ê¼Ç¡£";
+			mes "ÎÒ»¹ÄÜÎªÄú×öĞ©Ê²Ã´Âğ£¿";
 			viewpoint 2,1,1,0,0xFFFF00;
 			viewpoint 2,1,1,1,0x000000;
 			viewpoint 2,1,1,2,0xFF0000;
@@ -131,9 +133,9 @@ aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 			next;
 			break;
 		case 4:
-			mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-			mes "å¥½å§ï¼Œé‚£ä¹ˆï¼Œ";
-			mes "ç¥æ‚¨ä½å®¿æ„‰å¿«ï¼";
+			mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+			mes "ºÃ°É£¬ÄÇÃ´£¬";
+			mes "×£Äú×¡ËŞÓä¿ì£¡";
 			close2;
 			cutin "prt_soldier",255;
 			end;
@@ -141,10 +143,10 @@ aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 	}
 	end;
 L_Mark:
-	mes "[é˜¿å°”å¾·å·´å…°æŒ‡å—]";
-	mes "è®©æˆ‘æ ‡è®°ä¸€ä¸‹ä½ç½®";
+	mes "[°¢¶ûµÂ°ÍÀ¼Ö¸ÄÏ]";
+	mes "ÈÃÎÒ±ê¼ÇÒ»ÏÂÎ»ÖÃ";
 	mes getarg(0);
-	mes "åœ¨ä½ çš„å°åœ°å›¾ä¸Šã€‚";
+	mes "ÔÚÄãµÄĞ¡µØÍ¼ÉÏ¡£";
 	return;
 }
 aldebaran,243,143,2	duplicate(GuideAldearan)	Guide#02aldebaran	105

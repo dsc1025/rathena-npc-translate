@@ -6,13 +6,15 @@
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
 //= 1.1 Updated to match official script. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 verus01,153,155,5	script	Temporary Dimension-mov#pa0829_01	PORTAL,{
 	.@party_id = getcharid(1);
 	if (.@party_id == 0) {
-		mes "[ä¸´æ—¶ç»´åº¦ç§»åŠ¨å™¨]";
-		mes "ä½ æ²¡æœ‰åŒä¼´é™ªä½ å—ï¼Ÿå³ä½¿ç‹¬è‡ªæ—…è¡Œä¹Ÿå¯ä»¥ç»„ç»‡æ‚¨çš„èšä¼šã€‚";
+		mes "[ÁÙÊ±Î¬¶ÈÒÆ¶¯Æ÷]";
+		mes "ÄãÃ»ÓĞÍ¬°éÅãÄãÂğ£¿¼´Ê¹¶À×ÔÂÃĞĞÒ²¿ÉÒÔ×éÖ¯ÄúµÄ¾Û»á¡£";
 		close;
 	}
 	switch( checkquest(12347,PLAYTIME) ) {
@@ -20,12 +22,12 @@ verus01,153,155,5	script	Temporary Dimension-mov#pa0829_01	PORTAL,{
 		switch( instance_enter("Central Laboratory") ) {
 		case IE_NOMEMBER:
 		case IE_NOINSTANCE:
-			mes "[ä¸´æ—¶ç»´åº¦ç§»åŠ¨å™¨]";
-			mes "æ¬¡å…ƒç§»åŠ¨çš„é€šé“è¿˜æ²¡æœ‰è¢«æ¿€æ´»ã€‚";
+			mes "[ÁÙÊ±Î¬¶ÈÒÆ¶¯Æ÷]";
+			mes "´ÎÔªÒÆ¶¯µÄÍ¨µÀ»¹Ã»ÓĞ±»¼¤»î¡£";
 			close;
 		case IE_OTHER:
-			mes "[ä¸´æ—¶ç»´åº¦-mov]";
-			mes "æœªçŸ¥é”™è¯¯ã€‚";
+			mes "[ÁÙÊ±Î¬¶È-mov]";
+			mes "Î´Öª´íÎó¡£";
 			close;
 		case IE_OK:
 			mapannounce "verus01", "" + strcharinfo(0) + " of the party, " + getpartyname(.@party_id) + ", is entering Central Laboratory.",bc_map,"0x00FF99";
@@ -35,11 +37,11 @@ verus01,153,155,5	script	Temporary Dimension-mov#pa0829_01	PORTAL,{
 		end;
 	case 0:
 	case 1:
-		mes "[ä¸´æ—¶ç»´åº¦ç§»åŠ¨å™¨]";
-		mes "è¿˜æ®‹ç•™ç€ä¸Šæ¬¡äº‹ä»¶çš„ç—•è¿¹ã€‚æ‹’ç»è®¿é—®ã€‚";
+		mes "[ÁÙÊ±Î¬¶ÈÒÆ¶¯Æ÷]";
+		mes "»¹²ĞÁô×ÅÉÏ´ÎÊÂ¼şµÄºÛ¼£¡£¾Ü¾ø·ÃÎÊ¡£";
 		close;
 	case 2:
-		mes "^0000ffä½¿ç”¨ç»´åº¦ç§»åŠ¨å™¨ä¼¼ä¹æ˜¯å¯èƒ½çš„ã€‚^000000";
+		mes "^0000ffÊ¹ÓÃÎ¬¶ÈÒÆ¶¯Æ÷ËÆºõÊÇ¿ÉÄÜµÄ¡£^000000";
 		erasequest 12347;// Trace of Laboratory Access
 		close;
 	}
@@ -47,69 +49,69 @@ verus01,153,155,5	script	Temporary Dimension-mov#pa0829_01	PORTAL,{
 
 verus01,149,155,5	script	Civilization Explorer#pa0829_01	4_LGTSCIENCE,{
 	if (BaseLevel < 135) {
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å—¯â€¦â€¦ä¸çŸ¥é“èƒ½ä¸èƒ½æ´¾ä¸Šç”¨åœºï¼Œçœ‹æ¥è¿˜æ˜¯æœ‰å·®è·å•Šï¼";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "àÅ¡­¡­²»ÖªµÀÄÜ²»ÄÜÅÉÉÏÓÃ³¡£¬¿´À´»¹ÊÇÓĞ²î¾à°¡£¡";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "ç­‰ä½ å˜å¼ºäº†ï¼Œå°±å›åˆ°æˆ‘èº«è¾¹å§ã€‚ä½ åº”è¯¥å¿«åˆ°135çº§äº†å§ï¼";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "µÈÄã±äÇ¿ÁË£¬¾Í»Øµ½ÎÒÉí±ß°É¡£ÄãÓ¦¸Ã¿ìµ½135¼¶ÁË°É£¡";
 		close;
 	}
-	mes "^ff0000é©¯æœæ€ªç‰©ä¼šé˜»ç¢è¿™ä¸ªåœ°ä¸‹åŸçš„è¿›å±•ã€‚è¯·æ³¨æ„è¿™ä¸€ç‚¹ã€‚^000000";
+	mes "^ff0000Ñ±·ş¹ÖÎï»á×è°­Õâ¸öµØÏÂ³ÇµÄ½øÕ¹¡£Çë×¢ÒâÕâÒ»µã¡£^000000";
 	next;
-	mes "[æ–‡æ˜æ¢ç´¢è€…]";
+	mes "[ÎÄÃ÷Ì½Ë÷Õß]";
 	switch( isbegin_quest(12346) ) {
 	case 0:
-		mes "è¿™ä¸ªåœ°åŒºçš„å¤ä»£æ–‡æ˜æœ‰å¾ˆå¤šæœ‰è¶£çš„äº‹æƒ…ã€‚";
+		mes "Õâ¸öµØÇøµÄ¹Å´úÎÄÃ÷ÓĞºÜ¶àÓĞÈ¤µÄÊÂÇé¡£";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "è§‚å¯ŸåœŸå±‚ï¼Œä¼°è®¡æœ‰500åˆ°600å¹´çš„å†å²äº†ï¼";
-		mes "ä½†è¿™é‡Œçš„è®¸å¤šå‡ºåœŸæ–‡ç‰©å·²ç»è¿œè¿œè¶…è¿‡äº†æˆ‘ä»¬ç°åœ¨çš„æŠ€æœ¯ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "¹Û²ìÍÁ²ã£¬¹À¼ÆÓĞ500µ½600ÄêµÄÀúÊ·ÁË£¡";
+		mes "µ«ÕâÀïµÄĞí¶à³öÍÁÎÄÎïÒÑ¾­Ô¶Ô¶³¬¹ıÁËÎÒÃÇÏÖÔÚµÄ¼¼Êõ¡£";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "åœ¨æ¢å¤çš„è®°å½•ä¸­è¿˜å‘ç°äº†è®¸å¤šæœªå®šä¹‰çš„æœ¯è¯­ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "ÔÚ»Ö¸´µÄ¼ÇÂ¼ÖĞ»¹·¢ÏÖÁËĞí¶àÎ´¶¨ÒåµÄÊõÓï¡£";
 		next;
-		select("ä»€ä¹ˆæ ·çš„æœªçŸ¥æœ¯è¯­ï¼Ÿ");
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "^0000ffä¸»æœºè®¡ç®—æœº^000000æˆ–ï¼Œ^0000ff LSIèŠ¯ç‰‡^000000æˆ–è€…ï¼Œè¿˜æœ‰ä»€ä¹ˆã€‚ ^0000ffé¸¡^000000ï¼Ÿ";
+		select("Ê²Ã´ÑùµÄÎ´ÖªÊõÓï£¿");
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "^0000ffÖ÷»ú¼ÆËã»ú^000000»ò£¬^0000ff LSIĞ¾Æ¬^000000»òÕß£¬»¹ÓĞÊ²Ã´¡£ ^0000ff¼¦^000000£¿";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å—¯ï¼Œæ²¡é”™ã€‚è‚¯å®šæœ‰â€œé¸¡â€è¿™ä¸ªè¯ã€‚æˆ‘ä¸çŸ¥é“è¿™å¯èƒ½æ˜¯ä¸€ç§ä»€ä¹ˆæ ·çš„æŠ€æœ¯ç»„åˆ......";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "àÅ£¬Ã»´í¡£¿Ï¶¨ÓĞ¡°¼¦¡±Õâ¸ö´Ê¡£ÎÒ²»ÖªµÀÕâ¿ÉÄÜÊÇÒ»ÖÖÊ²Ã´ÑùµÄ¼¼Êõ×éºÏ......";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å®ƒåœ¨äººä»¬çš„è®°å½•ä¸­è¢«å¼•ç”¨ï¼Œè¿™äº›äººä¼¼ä¹åœ¨è®¸å¤šæŠ€æœ¯ç—•è¿¹ä¸­â€œæ‰æ ¹â€ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "ËüÔÚÈËÃÇµÄ¼ÇÂ¼ÖĞ±»ÒıÓÃ£¬ÕâĞ©ÈËËÆºõÔÚĞí¶à¼¼ÊõºÛ¼£ÖĞ¡°Ôú¸ù¡±¡£";
 		next;
-		if (select( "è¿™ä¸æ˜¯æˆ‘æ„Ÿå…´è¶£çš„è¯é¢˜ã€‚", "æœ‰è¶£ã€‚æœ‰ç»“æœäº†å—ï¼Ÿ" ) == 1) {
-			mes "[æ–‡æ˜æ¢ç´¢è€…]";
-			mes "ä¸å¹¸ã€‚";
+		if (select( "Õâ²»ÊÇÎÒ¸ĞĞËÈ¤µÄ»°Ìâ¡£", "ÓĞÈ¤¡£ÓĞ½á¹ûÁËÂğ£¿" ) == 1) {
+			mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+			mes "²»ĞÒ¡£";
 			close;
 		}
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "æˆ‘çš„ç›®çš„æ˜¯ç ”ç©¶ä¸ç›¸å…³æ—¶ä»£ç›¸å…³çš„æŠ€æœ¯çš„ä½¿ç”¨ã€‚å°½ç®¡åˆ°ç›®å‰ä¸ºæ­¢æˆ‘å‘ç°çš„ä¸œè¥¿å¾®ä¸è¶³é“ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "ÎÒµÄÄ¿µÄÊÇÑĞ¾¿ÓëÏà¹ØÊ±´úÏà¹ØµÄ¼¼ÊõµÄÊ¹ÓÃ¡£¾¡¹Üµ½Ä¿Ç°ÎªÖ¹ÎÒ·¢ÏÖµÄ¶«Î÷Î¢²»×ãµÀ¡£";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å¦‚æœæˆ‘æŒ‰ç…§è‡ªå·±çš„æ–¹å¼è¿›è¡Œçš„è¯ï¼Œæˆ‘ä¼šä½¿ç”¨ç»´åº¦ç§»åŠ¨å™¨æ¥äº²è‡ªæŸ¥çœ‹ï¼Œä½†å·¥ä½œé‡å¤ªå¤§äº†ã€‚æ›´ä½•å†µæˆ‘ä¸æ˜¯å†’é™©å®¶â€¦â€¦";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "Èç¹ûÎÒ°´ÕÕ×Ô¼ºµÄ·½Ê½½øĞĞµÄ»°£¬ÎÒ»áÊ¹ÓÃÎ¬¶ÈÒÆ¶¯Æ÷À´Ç××Ô²é¿´£¬µ«¹¤×÷Á¿Ì«´óÁË¡£¸üºÎ¿öÎÒ²»ÊÇÃ°ÏÕ¼Ò¡­¡­";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "æ— è®ºå¦‚ä½•ï¼Œä½ æœ‰å…´è¶£å›åˆ°è¿‡å»å—ï¼Ÿ";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "ÎŞÂÛÈçºÎ£¬ÄãÓĞĞËÈ¤»Øµ½¹ıÈ¥Âğ£¿";
 		next;
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å¦‚æœä½ å‘ç°ä¸€ä¸ªæœ‰è¶£çš„ç‰©ä½“ï¼Œå¸¦æˆ‘å››å¤„çœ‹çœ‹å°±æ›´å¥½äº†ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "Èç¹ûÄã·¢ÏÖÒ»¸öÓĞÈ¤µÄÎïÌå£¬´øÎÒËÄ´¦¿´¿´¾Í¸üºÃÁË¡£";
 		next;
-		if (select( "ä¸æ„Ÿå…´è¶£ã€‚", "å¥½çš„ã€‚" ) == 1) {
-			mes "[æ–‡æ˜æ¢ç´¢è€…]";
-			mes "ä¸å¹¸ã€‚";
+		if (select( "²»¸ĞĞËÈ¤¡£", "ºÃµÄ¡£" ) == 1) {
+			mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+			mes "²»ĞÒ¡£";
 			close;
 		}
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "ä½ æ˜¯ä¸€ä¸ªå†’é™©å®¶ã€‚å‘Šè¯‰æˆ‘ä½ å†³å®šåšä»€ä¹ˆã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "ÄãÊÇÒ»¸öÃ°ÏÕ¼Ò¡£¸æËßÎÒÄã¾ö¶¨×öÊ²Ã´¡£";
 		if (isbegin_quest(12346) == 0)
 			setquest 12346;// Strange Ancient Science
 		break;
 	case 1:
-		mes "æˆ‘è¯¥å¦‚ä½•å¸®åŠ©æ‚¨ï¼Ÿ";
+		mes "ÎÒ¸ÃÈçºÎ°ïÖúÄú£¿";
 		break;
 	case 2:
-		mes "è¿™æ¬¡ä½ æƒ³åšä»€ä¹ˆï¼Ÿ";
+		mes "Õâ´ÎÄãÏë×öÊ²Ã´£¿";
 		break;
 	}
 	next;
@@ -117,36 +119,36 @@ verus01,149,155,5	script	Civilization Explorer#pa0829_01	4_LGTSCIENCE,{
 		completequest 12346;
 	.@party_id = getcharid(1);
 	if (.@party_id == 0) {
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "è¯·åœ¨1äººä»¥ä¸Šç»„æˆé˜Ÿä¼æˆ–åŠ å…¥é˜Ÿä¼åä¸æˆ‘äº¤è°ˆã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "ÇëÔÚ1ÈËÒÔÉÏ×é³É¶ÓÎé»ò¼ÓÈë¶ÓÎéºóÓëÎÒ½»Ì¸¡£";
 		close;
 	}
 	switch( checkquest(12347,PLAYTIME) ) {
 	case -1:
 		if (is_party_leader() == false) {
-			mes "[æ–‡æ˜æ¢ç´¢è€…]";
-			mes "å•Šã€‚ä½ ä¸æ˜¯å…šçš„é¢†è¢–ã€‚å¸¦æˆ‘å»è§ä½ ä»¬çš„é¢†å¯¼ï¼æˆ–è€…å¸¦ä½ çš„é¢†å¯¼æ¥è§æˆ‘ã€‚";
+			mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+			mes "°¡¡£Äã²»ÊÇµ³µÄÁìĞä¡£´øÎÒÈ¥¼ûÄãÃÇµÄÁìµ¼£¡»òÕß´øÄãµÄÁìµ¼À´¼ûÎÒ¡£";
 			close;
 		}
-		if (select( "äº§ç”Ÿæ—¶é—´è£‚ç¼", "å–æ¶ˆ" ) == 2)
+		if (select( "²úÉúÊ±¼äÁÑ·ì", "È¡Ïû" ) == 2)
 			close;
 		if (instance_create("Central Laboratory") < 1) {
-			mes "æ´¾å¯¹ï¼š" + getpartyname( getcharid(1) ) + "";
-			mes "é¢†å¯¼è€…ï¼š" + getpartyleader( getcharid(1) ) + "";
-			mes "^0000ffä¸­å¤®å®éªŒå®¤^000000 - æœªçŸ¥é”™è¯¯";
+			mes "ÅÉ¶Ô£º" + getpartyname( getcharid(1) ) + "";
+			mes "Áìµ¼Õß£º" + getpartyleader( getcharid(1) ) + "";
+			mes "^0000ffÖĞÑëÊµÑéÊÒ^000000 - Î´Öª´íÎó";
 			close;
 		}
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å½“æ—¶é—´çš„è£‚ç¼æ‰“å¼€æ—¶ï¼Œæ·±å¸ä¸€å£æ°”ï¼Œç„¶åå†æ¬¡è¯´è¯ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "µ±Ê±¼äµÄÁÑ·ì´ò¿ªÊ±£¬ÉîÎüÒ»¿ÚÆø£¬È»ºóÔÙ´ÎËµ»°¡£";
 		close;
 	case 0:
 	case 1:
-		mes "[æ–‡æ˜æ¢ç´¢è€…]";
-		mes "å“¦ï¼Œå“¦ä¸ã€‚";
-		mes "ç»´åº¦æ—…è¡Œè¿˜å‰©ä¸‹ä¸€äº›åé—ç—‡ã€‚åœ¨è¿™ç§æƒ…å†µä¸‹æˆ‘ä»¬ä¸èƒ½å†æ—…è¡Œäº†ã€‚";
+		mes "[ÎÄÃ÷Ì½Ë÷Õß]";
+		mes "Å¶£¬Å¶²»¡£";
+		mes "Î¬¶ÈÂÃĞĞ»¹Ê£ÏÂÒ»Ğ©ºóÒÅÖ¢¡£ÔÚÕâÖÖÇé¿öÏÂÎÒÃÇ²»ÄÜÔÙÂÃĞĞÁË¡£";
 		close;
 	case 2:
-		mes "^0000ffæ‰€æœ‰è¿›å…¥ä¸­å¿ƒå®éªŒå®¤çš„ç—•è¿¹éƒ½å·²è¢«æŠ¹å»ã€‚ä¸æ–‡æ˜æ¢ç´¢è€…å¯¹è¯ä¼¼ä¹æ˜¯å¯èƒ½çš„ã€‚^000000";
+		mes "^0000ffËùÓĞ½øÈëÖĞĞÄÊµÑéÊÒµÄºÛ¼£¶¼ÒÑ±»Ä¨È¥¡£ÓëÎÄÃ÷Ì½Ë÷Õß¶Ô»°ËÆºõÊÇ¿ÉÄÜµÄ¡£^000000";
 		erasequest 12347;// Trace of Laboratory Access
 		close;
 	}
@@ -155,30 +157,30 @@ verus01,149,155,5	script	Civilization Explorer#pa0829_01	4_LGTSCIENCE,{
 // Entrance
 1@lab,104,34,4	script	Probationary researcher#pa0829	4_LGTSCIENCE,{
 	if ('switch_enabled == 1) {
-		mes "[è§ä¹ ç ”ç©¶å‘˜]";
-		mes "å…¥å£çš„é—¨å·²ç»æ‰“å¼€äº†ã€‚";
+		mes "[¼ûÏ°ÑĞ¾¿Ô±]";
+		mes "Èë¿ÚµÄÃÅÒÑ¾­´ò¿ªÁË¡£";
 		close;
 	}
 	if (is_party_leader() == false) {
-		mes "[è§ä¹ ç ”ç©¶å‘˜]";
-		mes "è¯·ç¨ç­‰ã€‚æˆ‘æ­£åœ¨ä¸å¯¼æ¸¸è®¨è®ºæ‚¨æ˜¯å¦å·²è·å¾—æˆæƒã€‚";
+		mes "[¼ûÏ°ÑĞ¾¿Ô±]";
+		mes "ÇëÉÔµÈ¡£ÎÒÕıÔÚÓëµ¼ÓÎÌÖÂÛÄúÊÇ·ñÒÑ»ñµÃÊÚÈ¨¡£";
 		close;
 	}
-	mes "[è§ä¹ ç ”ç©¶å‘˜]";
-	mes "æ‚¨ä½œä¸º32001ç ”ç©¶é¡¹ç›®çš„å®éªŒåŠ©ç†å‚ä¸å—ï¼Ÿ";
+	mes "[¼ûÏ°ÑĞ¾¿Ô±]";
+	mes "Äú×÷Îª32001ÑĞ¾¿ÏîÄ¿µÄÊµÑéÖúÀí²ÎÓëÂğ£¿";
 	next;
-	if (select( "æ˜¯çš„ã€‚", "ä¸ã€‚" ) == 2) {
-		mes "[è§ä¹ ç ”ç©¶å‘˜]";
-		mes "çœ‹æ¥ä½ è¿›é”™å®éªŒå®¤äº†ã€‚è¯·é€€å‡ºå¹¶å¯»æ±‚å¸®åŠ©ã€‚";
+	if (select( "ÊÇµÄ¡£", "²»¡£" ) == 2) {
+		mes "[¼ûÏ°ÑĞ¾¿Ô±]";
+		mes "¿´À´Äã½ø´íÊµÑéÊÒÁË¡£ÇëÍË³ö²¢Ñ°Çó°ïÖú¡£";
 		close;
 	}
-	mes "[è§ä¹ ç ”ç©¶å‘˜]";
-	mes "æˆ‘ä»¬éœ€è¦å¤§çº¦ 5 ç§’çš„æ—¶é—´ã€‚ç¡®è®¤è®¿é—®ä»£ç ã€‚";
+	mes "[¼ûÏ°ÑĞ¾¿Ô±]";
+	mes "ÎÒÃÇĞèÒª´óÔ¼ 5 ÃëµÄÊ±¼ä¡£È·ÈÏ·ÃÎÊ´úÂë¡£";
 	close2;
 	sleep 3000;
-	npctalk "è¯•ç”¨ç ”ç©¶å‘˜ï¼šè®¿é—®ä»£ç åŒ¹é…ã€‚æˆ‘ä¼šæ‰“å¼€é—¨ã€‚";
+	npctalk "ÊÔÓÃÑĞ¾¿Ô±£º·ÃÎÊ´úÂëÆ¥Åä¡£ÎÒ»á´ò¿ªÃÅ¡£";
 	sleep 6000;
-	npctalk "è¯•ç”¨ç ”ç©¶å‘˜ï¼šç°åœ¨å¯ä»¥è¿›å…¥äº†ã€‚è¯·æ³¨æ„ï¼Œæ‚¨æ— æ³•ä»å¦ä¸€ä¾§æ‰“å¼€é—¨ã€‚";
+	npctalk "ÊÔÓÃÑĞ¾¿Ô±£ºÏÖÔÚ¿ÉÒÔ½øÈëÁË¡£Çë×¢Òâ£¬ÄúÎŞ·¨´ÓÁíÒ»²à´ò¿ªÃÅ¡£";
 	if ('switch_enabled == 0) {
 		'switch_enabled = 1;
 		enablenpc instance_npcname("lab_warp#1");
@@ -237,10 +239,10 @@ OnInstanceInit:
 1@lab,37,37,3	script	Switch1#	CLEAR_NPC,{
 	.@num = charat( strnpcinfo(1),6 );
 	setarray .@position$[0], "OFF", "ON";
-	mes "[å¼€å…³" + .@num + "]";
-	mes "è¯¥å¼€å…³ç›®å‰å¤„äº" + .@position$[ 'switch_position[.@num] ] + "ä½ç½®ã€‚ä½ ä¼šæ€ä¹ˆåšï¼Ÿ";
+	mes "[¿ª¹Ø" + .@num + "]";
+	mes "¸Ã¿ª¹ØÄ¿Ç°´¦ÓÚ" + .@position$[ 'switch_position[.@num] ] + "Î»ÖÃ¡£Äã»áÔõÃ´×ö£¿";
 	next;
-	'switch_position[.@num] = !( select( "åœ¨","ç¦»å¼€" ) - 1 );
+	'switch_position[.@num] = !( select( "ÔÚ","Àë¿ª" ) - 1 );
 	close;
 }
 1@lab,39,37,3	duplicate(Switch1#)	Switch2#	CLEAR_NPC
@@ -256,15 +258,15 @@ OnInstanceInit:
 		'switch_position[5] + "" + 'switch_position[6] + "" + 'switch_position[7] + "" + 'switch_position[8];
 	.@current_code = strtol( .@string$,2 );
 	.@code = (gettime(DT_MONTH) + gettime(DT_DAYOFMONTH)) * 5;
-	npctalk "ä»Šå¤©çš„è®¿é—®ä»£ç " + .@code + ", å½“å‰è¾“å…¥çš„ä»£ç " + .@current_code + ".";
+	npctalk "½ñÌìµÄ·ÃÎÊ´úÂë" + .@code + ", µ±Ç°ÊäÈëµÄ´úÂë" + .@current_code + ".";
 	sleep 6000;
 	if ('code_found > 0)
-		npctalk "é—¨å·²ç»æ‰“å¼€äº†ã€‚";
+		npctalk "ÃÅÒÑ¾­´ò¿ªÁË¡£";
 	else if (.@current_code != .@code)
-		npctalk "ä»£ç ä¸æ­£ç¡®ã€‚è¯·å†è¯•ä¸€æ¬¡ã€‚";
+		npctalk "´úÂë²»ÕıÈ·¡£ÇëÔÙÊÔÒ»´Î¡£";
 	else {
 		'code_found = 1;
-		npctalk "ä»£ç æ˜¯æ­£ç¡®çš„ã€‚å¼€é—¨ã€‚";
+		npctalk "´úÂëÊÇÕıÈ·µÄ¡£¿ªÃÅ¡£";
 		enablenpc instance_npcname("lab_warp#4");
 		enablenpc instance_npcname("lab_warp#5");
 		enablenpc instance_npcname("DR Silvia#pa0829");
@@ -281,20 +283,20 @@ OnInstanceInit:
 
 1@lab,45,32,3	script	Senior researcher#pa082	4_LGTSCIENCE,{
 	if ('code_found > 0) {
-		mes "[é«˜çº§ç ”ç©¶å‘˜]";
-		mes "é—¨æ˜¯å¼€ç€çš„ï¼Œæ‰€ä»¥ä½ ç°åœ¨å¯ä»¥è¿›å»äº†ã€‚è¯·æ³¨æ„ï¼Œæ‚¨æ— æ³•ä»å¦ä¸€ä¾§æ‰“å¼€é—¨ã€‚";
+		mes "[¸ß¼¶ÑĞ¾¿Ô±]";
+		mes "ÃÅÊÇ¿ª×ÅµÄ£¬ËùÒÔÄãÏÖÔÚ¿ÉÒÔ½øÈ¥ÁË¡£Çë×¢Òâ£¬ÄúÎŞ·¨´ÓÁíÒ»²à´ò¿ªÃÅ¡£";
 		close;
 	}
 	.@code = (gettime(DT_MONTH) + gettime(DT_DAYOFMONTH)) * 5;
-	mes "[é«˜çº§ç ”ç©¶å‘˜]";
-	mes "çœ‹æ¥ä½ æ˜¯æ¥å‚åŠ ç²’å­åŠ é€Ÿå®éªŒçš„ã€‚";
+	mes "[¸ß¼¶ÑĞ¾¿Ô±]";
+	mes "¿´À´ÄãÊÇÀ´²Î¼ÓÁ£×Ó¼ÓËÙÊµÑéµÄ¡£";
 	next;
-	mes "[é«˜çº§ç ”ç©¶å‘˜]";
-	mes "ä»Šå¤©çš„è®¿é—®ä»£ç æ˜¯^0000ff" + .@code + "^000000ã€‚";
-	mes "ä»£ç éœ€è¦ä»¥äºŒè¿›åˆ¶æ•°å½¢å¼è¾“å…¥ã€‚ä½¿ç”¨æˆ‘èº«åçš„å¼€å…³è¿›å…¥å®ƒã€‚";
+	mes "[¸ß¼¶ÑĞ¾¿Ô±]";
+	mes "½ñÌìµÄ·ÃÎÊ´úÂëÊÇ^0000ff" + .@code + "^000000¡£";
+	mes "´úÂëĞèÒªÒÔ¶ş½øÖÆÊıĞÎÊ½ÊäÈë¡£Ê¹ÓÃÎÒÉíºóµÄ¿ª¹Ø½øÈëËü¡£";
 	next;
-	mes "[é«˜çº§ç ”ç©¶å‘˜]";
-	mes "è¾“å…¥ä»£ç åï¼ŒæŒ‰å…¥å£é™„è¿‘çš„ä¸»æŒ‰é’®ã€‚";
+	mes "[¸ß¼¶ÑĞ¾¿Ô±]";
+	mes "ÊäÈë´úÂëºó£¬°´Èë¿Ú¸½½üµÄÖ÷°´Å¥¡£";
 	for ( .@i = 1; .@i <= 8; ++.@i )
 		specialeffect EF_STEAL, AREA, instance_npcname("Switch" + .@i + "#");
 	close2;
@@ -319,46 +321,46 @@ OnStop:
 
 // Experiments
 1@lab,81,84,7	script	DR Silvia#pa0829	4_F_SCIENCE,{
-	mes "[è¥¿å°”ç»´å¨…åšå£«]";
-	mes "å®éªŒç»“æŸåæˆ‘æƒ³å›å®¶äº«å—ä¸€æ¯å†°å•¤é…’å’Œä¸€äº›ç‚¸é¸¡ã€‚";
+	mes "[Î÷¶ûÎ¬æ«²©Ê¿]";
+	mes "ÊµÑé½áÊøºóÎÒÏë»Ø¼ÒÏíÊÜÒ»±­±ùÆ¡¾ÆºÍÒ»Ğ©Õ¨¼¦¡£";
 	next;
-	mes "[è¥¿å°”ç»´å¨…åšå£«]";
-	mes "æˆ‘å·²ç»å¿«ä¸¤å¹´æ²¡å›å®¶äº†ã€‚";
+	mes "[Î÷¶ûÎ¬æ«²©Ê¿]";
+	mes "ÎÒÒÑ¾­¿ìÁ½ÄêÃ»»Ø¼ÒÁË¡£";
 	next;
-	mes "^0000ffè¥¿å°”ç»´å¨…ä¸€è„¸ç–²æƒ«åœ°çœ‹ç€ç²’å­åŠ é€Ÿå™¨ã€‚^000000";
+	mes "^0000ffÎ÷¶ûÎ¬æ«Ò»Á³Æ£±¹µØ¿´×ÅÁ£×Ó¼ÓËÙÆ÷¡£^000000";
 	close;
 }
 
 1@lab,80,87,7	script	DR Federico#pa0829	4_LGTSCIENCE,{
-	mes "[è´¹å¾·é‡Œç§‘åšå£«]";
-	mes "è¿™ä¸ªè£…ç½®æˆ‘è¶Šçœ‹è¶Šè§‰å¾—ç¥å¥‡ã€‚ä»æœªæœ‰è¿‡å¦‚æ­¤è§„æ¨¡çš„ç²’å­åŠ é€Ÿå™¨ã€‚";
+	mes "[·ÑµÂÀï¿Æ²©Ê¿]";
+	mes "Õâ¸ö×°ÖÃÎÒÔ½¿´Ô½¾õµÃÉñÆæ¡£´ÓÎ´ÓĞ¹ıÈç´Ë¹æÄ£µÄÁ£×Ó¼ÓËÙÆ÷¡£";
 	next;
-	mes "[è´¹å¾·é‡Œç§‘åšå£«]";
-	mes "æœ‰äº†è¿™ä¸ªå°ºå¯¸ï¼Œæˆ‘æƒ³çŸ¥é“æ˜¯å¦æœ‰å¯èƒ½åˆ›å»ºä¸€ä¸ªå°è§„æ¨¡çš„é»‘æ´......";
+	mes "[·ÑµÂÀï¿Æ²©Ê¿]";
+	mes "ÓĞÁËÕâ¸ö³ß´ç£¬ÎÒÏëÖªµÀÊÇ·ñÓĞ¿ÉÄÜ´´½¨Ò»¸öĞ¡¹æÄ£µÄºÚ¶´......";
 	next;
-	mes "[è´¹å¾·é‡Œç§‘åšå£«]";
-	mes "å•Šï¼Œæˆ‘åªæ˜¯è¯´è¯´è€Œå·²ã€‚è¿™æ ·çš„äº‹ä»¶ä¸å…¶è¯´æ˜¯å®éªŒï¼Œä¸å¦‚è¯´æ›´æ¥è¿‘äºç¾éš¾å“ˆå“ˆã€‚";
+	mes "[·ÑµÂÀï¿Æ²©Ê¿]";
+	mes "°¡£¬ÎÒÖ»ÊÇËµËµ¶øÒÑ¡£ÕâÑùµÄÊÂ¼şÓëÆäËµÊÇÊµÑé£¬²»ÈçËµ¸ü½Ó½üÓÚÔÖÄÑ¹ş¹ş¡£";
 	close;
 }
 
 1@lab,80,90,6	script	DR Artemia#pa0829	4_F_SCIENCE,{
-	mes "[å¤è™«åšå£«]";
-	mes "çœ‹ï¼Œç°å®ä¸å–œæ¬¢ä½ æŠ“ä½ä¸€æ ¹ç»³å­å¹¶ç”¨åŠ›æ‹‰å®ƒã€‚";
+	mes "[Â±³æ²©Ê¿]";
+	mes "¿´£¬ÏÖÊµ²»Ï²»¶Äã×¥×¡Ò»¸ùÉş×Ó²¢ÓÃÁ¦À­Ëü¡£";
 	next;
-	mes "[å¤è™«åšå£«]";
-	mes "å¦‚æ­¤å¼ºå¤§çš„ç²’å­åŠ é€Ÿå¯èƒ½ä¼šå‘ç”Ÿå°ºå¯¸æ‰­æ›²ã€‚";
+	mes "[Â±³æ²©Ê¿]";
+	mes "Èç´ËÇ¿´óµÄÁ£×Ó¼ÓËÙ¿ÉÄÜ»á·¢Éú³ß´çÅ¤Çú¡£";
 	next;
-	mes "[å¤è™«åšå£«]";
-	mes "æˆ‘å¯¹æ­¤æœ‰ä¸€ç§ä¸å¥½çš„é¢„æ„Ÿï¼Œå› ä¸ºâ€¦â€¦å¤§è‡ªç„¶ä¼šæ‰¾åˆ°åŠæ³•ã€‚";
+	mes "[Â±³æ²©Ê¿]";
+	mes "ÎÒ¶Ô´ËÓĞÒ»ÖÖ²»ºÃµÄÔ¤¸Ğ£¬ÒòÎª¡­¡­´ó×ÔÈ»»áÕÒµ½°ì·¨¡£";
 	close;
 }
 
 1@lab,81,93,6	script	DR Vincent#pa0829	4_LGTSCIENCE,{
-	mes "[æ–‡æ£®ç‰¹åšå£«]";
-	mes "æœºå™¨å¾ˆå®Œç¾ã€‚ä¸€åˆ‡éƒ½ä¸ä¼šå‡ºé”™ï¼";
+	mes "[ÎÄÉ­ÌØ²©Ê¿]";
+	mes "»úÆ÷ºÜÍêÃÀ¡£Ò»ÇĞ¶¼²»»á³ö´í£¡";
 	next;
-	mes "[æ–‡æ£®ç‰¹åšå£«]";
-	mes "å¤è™«æ‹…å¿ƒå¤ªå¤šäº†ã€‚æ— è®ºå¦‚ä½•ï¼Œå®éªŒç»“æŸåæˆ‘è¦å»æ—…è¡Œã€‚";
+	mes "[ÎÄÉ­ÌØ²©Ê¿]";
+	mes "Â±³æµ£ĞÄÌ«¶àÁË¡£ÎŞÂÛÈçºÎ£¬ÊµÑé½áÊøºóÎÒÒªÈ¥ÂÃĞĞ¡£";
 	close;
 }
 
@@ -393,19 +395,19 @@ OnStart:
 	'gen_13$ = instance_npcname("#gen_13");
 	'gen_14$ = instance_npcname("#gen_14");
 
-	npctalk "è´¹å¾·é‡Œç§‘ï¼šè®©æˆ‘ä»¬å¼€å§‹å§ã€‚å—¯...å¼—é›·è¨åšå£«ï¼Œä½ å‡†å¤‡å¥½äº†å—ï¼Ÿ", 'federico$;
+	npctalk "·ÑµÂÀï¿Æ£ºÈÃÎÒÃÇ¿ªÊ¼°É¡£àÅ...¸¥À×Èø²©Ê¿£¬Äã×¼±¸ºÃÁËÂğ£¿", 'federico$;
 	sleep 5000;
-	npctalk "Artemiaï¼šå¯èƒ½ä¼šè¿›è¡Œæœ€åçš„ç¡®è®¤æ£€æŸ¥ã€‚è¿™ç§è§„æ¨¡çš„å®éªŒéœ€è¦å¦‚æ­¤è°¨æ…ã€‚", 'artemia$;
+	npctalk "Artemia£º¿ÉÄÜ»á½øĞĞ×îºóµÄÈ·ÈÏ¼ì²é¡£ÕâÖÖ¹æÄ£µÄÊµÑéĞèÒªÈç´Ë½÷É÷¡£", 'artemia$;
 	sleep 6000;
-	npctalk "Silviaï¼šç¬¬ä¸€æ¬¡å®éªŒçš„æˆå“éœ€è¦å°å¿ƒæ“ä½œã€‚", 'silvia$;
+	npctalk "Silvia£ºµÚÒ»´ÎÊµÑéµÄ³ÉÆ·ĞèÒªĞ¡ĞÄ²Ù×÷¡£", 'silvia$;
 	sleep 4000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šå•Šï¼Œæˆ‘å¸Œæœ›æˆ‘ä»¬èƒ½å¿«ç‚¹ç»“æŸï¼Œè¿™æ ·æˆ‘å°±å¯ä»¥å»åƒé¸¡è‚‰äº†ã€‚", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º°¡£¬ÎÒÏ£ÍûÎÒÃÇÄÜ¿ìµã½áÊø£¬ÕâÑùÎÒ¾Í¿ÉÒÔÈ¥³Ô¼¦ÈâÁË¡£", 'vincent$;
 	sleep 3000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå•Šï¼æˆ‘ä¹Ÿå–œæ¬¢è¿™æ ·ï¼ä½ èµ°çš„æ—¶å€™ç»™æˆ‘æ‰“ç”µè¯ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£º°¡£¡ÎÒÒ²Ï²»¶ÕâÑù£¡Äã×ßµÄÊ±ºò¸øÎÒ´òµç»°¡£", 'silvia$;
 	sleep 6000;
 	mapannounce 'map_name$, "?????: Ah, ah, one two one two, mic test.", bc_map,0x00ff77;
 	sleep 2000;
-	npctalk "è´¹å¾·é‡Œç§‘ï¼šå¥¹åœ¨è¿™é‡Œã€‚", 'federico$;
+	npctalk "·ÑµÂÀï¿Æ£ºËıÔÚÕâÀï¡£", 'federico$;
 	sleep 2500;
 	mapannounce 'map_name$, "?????: Chief director Lona Fresa of project particle accelerator.", bc_map,0x00ff77;
 	sleep 5000;
@@ -413,55 +415,55 @@ OnStart:
 	sleep 5000;
 	mapannounce 'map_name$, "Lona Fresa : Testing the effects of particle acceleration on its surroundings in an open space.", bc_map,0x00ff77;
 	sleep 5000;
-	npctalk "Artemiaï¼šå•Šâ€¦â€¦æˆ‘çœŸçš„ä¸å–œæ¬¢è¿™ä¸ªå®éªŒã€‚", 'artemia$;
+	npctalk "Artemia£º°¡¡­¡­ÎÒÕæµÄ²»Ï²»¶Õâ¸öÊµÑé¡£", 'artemia$;
 	sleep 3000;
 	mapannounce 'map_name$, "Lona Fresa : Starting the experiment. Chief researcher Dr. Federico, Artemia, Silvia, Vincent and assistant researchers.", bc_map,0x00ff77;
 	sleep 5000;
 	'bool_event = true;
 	donpcevent instance_npcname("#npc_con03") + "::OnStart";
-	npctalk "å¤è™«ï¼šæˆ‘ä»¬å¼€å§‹å§~", 'artemia$;
+	npctalk "Â±³æ£ºÎÒÃÇ¿ªÊ¼°É~", 'artemia$;
 	sleep 3000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šå‘ç”µæœºå¼€å§‹æ—‹è½¬ã€‚", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º·¢µç»ú¿ªÊ¼Ğı×ª¡£", 'vincent$;
 	sleep 3000;
-	npctalk "Federicoï¼šå‘ç”µæœºè½¬é€Ÿå›ºå®šä¸º 10000 RPMã€‚", 'federico$;
+	npctalk "Federico£º·¢µç»ú×ªËÙ¹Ì¶¨Îª 10000 RPM¡£", 'federico$;
 	sleep 2500;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šç”µå‹ä»åœ¨å®¹è®¸èŒƒå›´å†…ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ºµçÑ¹ÈÔÔÚÈİĞí·¶Î§ÄÚ¡£", 'silvia$;
 	sleep 3000;
 	mapannounce 'map_name$, "Lona Fresa : This experiment is for the creation of new material that hasn't existed before.", bc_map,0x00ff77;
 	sleep 5000;
 	mapannounce 'map_name$, "Lona Fresa : Recorders make sure to make detailed records of the catalyst bed's reaction when it is installed to the accelerator.", bc_map,0x00ff77;
 	sleep 6000;
-	npctalk "å¤è™«ï¼šæ¥è§¦å‚¬åŒ–å‰‚åºŠæ•° 1ã€‚", 'artemia$;
+	npctalk "Â±³æ£º½Ó´¥´ß»¯¼Á´²Êı 1¡£", 'artemia$;
 	sleep 9000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå‘ç”µæœºç”µå‹ä¸ç¨³å®šã€‚ä»åœ¨å…¬å·®èŒƒå›´å†…ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£º·¢µç»úµçÑ¹²»ÎÈ¶¨¡£ÈÔÔÚ¹«²î·¶Î§ÄÚ¡£", 'silvia$;
 	sleep 3000;
 	donpcevent instance_npcname("#npc_con03") + "::OnStart2";
 	sleep 2000;
-	npctalk "Silviaï¼šæ£€æµ‹åˆ°æ¥è¿‘å‚¬åŒ–å‰‚åºŠå’ŒåŠ é€Ÿå™¨ä¹‹é—´çš„å…¬å·®å¸¦çš„çƒ­é‡ï¼", 'silvia$;
+	npctalk "Silvia£º¼ì²âµ½½Ó½ü´ß»¯¼Á´²ºÍ¼ÓËÙÆ÷Ö®¼äµÄ¹«²î´øµÄÈÈÁ¿£¡", 'silvia$;
 	sleep 5000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šåŠ é€Ÿå™¨æ­£åœ¨åŠ çƒ­ã€‚", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º¼ÓËÙÆ÷ÕıÔÚ¼ÓÈÈ¡£", 'vincent$;
 	sleep 5000;
-	npctalk "æ–‡æ£®ç‰¹ï¼š320cã€‚", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º320c¡£", 'vincent$;
 	sleep 5000;
-	npctalk "Vincentï¼š670c å‡æ¸©å¤ªå¿«äº†ï¼", 'vincent$;
+	npctalk "Vincent£º670c ÉıÎÂÌ«¿ìÁË£¡", 'vincent$;
 	sleep 3000;
-	npctalk "Vincentï¼šçªç ´1000cï¼ï¼ï¼å¼—é›·è¨åšå£«ï¼æˆ‘ä»¬å¿…é¡»æš‚æ—¶åœæ­¢è®¾å¤‡ï¼", 'vincent$;
+	npctalk "Vincent£ºÍ»ÆÆ1000c£¡£¡£¡¸¥À×Èø²©Ê¿£¡ÎÒÃÇ±ØĞëÔİÊ±Í£Ö¹Éè±¸£¡", 'vincent$;
 	sleep 3000;
 	mapannounce 'map_name$, "Lona Fresa : It is fine.", bc_map,0x00ff77;
 	sleep 5000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šè¿™ä¸æ˜¯ä¸€ä¸ªç®€å•çš„é—®é¢˜ã€‚æ°”æ¸©å·²ç»è¿œè¿œè¶…å‡ºäº†é¢„è®¡çš„æ•°å­—ï¼", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ºÕâ²»ÊÇÒ»¸ö¼òµ¥µÄÎÊÌâ¡£ÆøÎÂÒÑ¾­Ô¶Ô¶³¬³öÁËÔ¤¼ÆµÄÊı×Ö£¡", 'silvia$;
 	sleep 3000;
 	mapannounce 'map_name$, "Lona Fresa : This problem was predicted. Maintain current state.", bc_map,0x00ff77;
 	sleep 3000;
-	npctalk "Artemiaï¼šä½†è‡³å°‘â€¦â€¦æˆ‘ç¨åä¼šåƒé¸¡è‚‰ã€‚", 'artemia$;
+	npctalk "Artemia£ºµ«ÖÁÉÙ¡­¡­ÎÒÉÔºó»á³Ô¼¦Èâ¡£", 'artemia$;
 	sleep 5000;
 	mapannounce 'map_name$, "MA-4885: Receiving changed circumstance through main server. Detecting dimensional distortion between particle accelerator and catalyst.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 3000;
-	npctalk "å¤è™«ï¼šå¼—é›·è¨åšå£«ï¼è¿™æ˜¯ä¸»æœºè®¡ç®—æœºçš„å±é™©æƒ…å†µã€‚å…³é—­ä¸»ç”µæºï¼", 'artemia$;
+	npctalk "Â±³æ£º¸¥À×Èø²©Ê¿£¡ÕâÊÇÖ÷»ú¼ÆËã»úµÄÎ£ÏÕÇé¿ö¡£¹Ø±ÕÖ÷µçÔ´£¡", 'artemia$;
 	sleep 5000;
 	mapannounce 'map_name$, "MA-4885: Alert. New unidentified creature approaching from demi-plane.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 3000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šå‘ç”Ÿä»€ä¹ˆäº‹äº†ã€‚æœ‰äººå…³æ‰é‚£å°ç”µè„‘å—ï¼", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º·¢ÉúÊ²Ã´ÊÂÁË¡£ÓĞÈË¹ØµôÄÇÌ¨µçÄÔÂğ£¡", 'vincent$;
 	sleep 3000;
 	mapannounce 'map_name$, "MA-4885: A new organism will be soon transmitted from the demi-plane.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 5000;
@@ -511,13 +513,13 @@ OnStart:
 
 	monster 'map_name$,90,88, "Unidentified creature",.@mob_id,1, instance_npcname("#npc_con05") + "::OnMyMobDead";
 	sleep 3000;
-	npctalk "Artemiaï¼šé‚£â€¦â€¦é‚£æ˜¯ä»€ä¹ˆï¼Ÿï¼", 'artemia$;
+	npctalk "Artemia£ºÄÇ¡­¡­ÄÇÊÇÊ²Ã´£¿£¡", 'artemia$;
 	sleep 3000;
-	npctalk "Silviaï¼šå®ƒæ²¡æœ‰å¯¹æˆ‘ä»¬åšå‡ºååº”ã€‚ä¹Ÿè®¸å®ƒçœ‹ä¸åˆ°æˆ‘ä»¬ï¼Ÿ", 'silvia$;
+	npctalk "Silvia£ºËüÃ»ÓĞ¶ÔÎÒÃÇ×ö³ö·´Ó¦¡£Ò²ĞíËü¿´²»µ½ÎÒÃÇ£¿", 'silvia$;
 	sleep 5000;
-	npctalk "Vincentï¼šä½†æ˜¯å®ƒå¯¹é¡¹ç›®åŠ©ç†å……æ»¡æ•Œæ„ï¼é‚£æ˜¯ä»€ä¹ˆç”Ÿç‰©ï¼ï¼Ÿ", 'vincent$;
+	npctalk "Vincent£ºµ«ÊÇËü¶ÔÏîÄ¿ÖúÀí³äÂúµĞÒâ£¡ÄÇÊÇÊ²Ã´ÉúÎï£¡£¿", 'vincent$;
 	sleep 5000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šæˆ‘çš„èº«ä½“åŠ¨ä¸äº†ï¼æˆ‘è®¤ä¸ºç©ºé—´è¢«å†»ç»“äº†ï¼", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£ºÎÒµÄÉíÌå¶¯²»ÁË£¡ÎÒÈÏÎª¿Õ¼ä±»¶³½áÁË£¡", 'vincent$;
 	end;
 
 OnMyMobDead:
@@ -538,21 +540,21 @@ OnTimer1000:
 	end;
 OnStart:
 	sleep 9000;
-	npctalk "å¤è™«ï¼šMA-4885ï¼ï¼ä½ æŒ‰ç…§è°çš„å‘½ä»¤é‡å¯ï¼åœæ­¢ï¼ï¼", 'artemia$;
+	npctalk "Â±³æ£ºMA-4885£¡£¡Äã°´ÕÕË­µÄÃüÁîÖØÆô£¡Í£Ö¹£¡£¡", 'artemia$;
 	sleep 3000;
 	mapannounce 'map_name$, "MA-4885: Unrecognized command.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 6000;
-	npctalk "Artemiaï¼šå¼—é›·è¨åšå£«ï¼ï¼æˆ‘ä»¬å¿…é¡»åœä¸‹æ¥ï¼è¿™å¤ªå±é™©äº†ï¼", 'artemia$;
+	npctalk "Artemia£º¸¥À×Èø²©Ê¿£¡£¡ÎÒÃÇ±ØĞëÍ£ÏÂÀ´£¡ÕâÌ«Î£ÏÕÁË£¡", 'artemia$;
 	sleep 3000;
 	mapannounce 'map_name$, "Lona Fresa : ......", bc_map,0x00ff77;
 	sleep 3000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šå¼—é›·è¨ï¼æˆ‘ä»¬æ²¡æœ‰æ—¶é—´ï¼å…³æ‰ç”µè„‘ï¼ï¼", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º¸¥À×Èø£¡ÎÒÃÇÃ»ÓĞÊ±¼ä£¡¹ØµôµçÄÔ£¡£¡", 'vincent$;
 	sleep 3000;
 	mapannounce 'map_name$, "MA-4885: Restarting particle acceleration procedure.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 3000;
 	'bool_event = true;
 	donpcevent instance_npcname("#npc_con03") + "::OnStart";
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå¼—é›·è¨ï¼åšå‡ºå†³å®šå§ï¼", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£º¸¥À×Èø£¡×ö³ö¾ö¶¨°É£¡", 'silvia$;
 	sleep 3000;
 	mapannounce 'map_name$, "Lona Fresa : ......", bc_map,0x00ff77;
 	sleep 6000;
@@ -566,13 +568,13 @@ OnStart:
 	sleep 5000;
 	mapannounce 'map_name$, "MA-4885: Access denied. Cannot understand command.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 5000;
-	npctalk "è´¹å¾·é‡Œç§‘ï¼šå¯æ¶ï¼è¿˜æœ‰åˆ«çš„ä¸œè¥¿æ¥äº†ï¼ï¼", 'federico$;
+	npctalk "·ÑµÂÀï¿Æ£º¿É¶ñ£¡»¹ÓĞ±ğµÄ¶«Î÷À´ÁË£¡£¡", 'federico$;
 	sleep 2500;
 	mapannounce 'map_name$, "MA-4885: Alert. New unidentified creature approaching from demi-plane.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 3000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šå™¢â€¦â€¦è¯¥æ­»ã€‚è¿™å°±æ˜¯ä¸ºä»€ä¹ˆæ‚¨ä¸åº”è¯¥å®‰è£…æœ€æ–°çš„ CPUã€‚", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£ºàŞ¡­¡­¸ÃËÀ¡£Õâ¾ÍÊÇÎªÊ²Ã´Äú²»Ó¦¸Ã°²×°×îĞÂµÄ CPU¡£", 'vincent$;
 	sleep 3000;
-	npctalk "Federicoï¼šå•Šâ€¦â€¦æˆ‘çš„èº«ä½“â€¦â€¦åŠ¨ä¸äº†ã€‚è¯¥æ­»", 'federico$;
+	npctalk "Federico£º°¡¡­¡­ÎÒµÄÉíÌå¡­¡­¶¯²»ÁË¡£¸ÃËÀ", 'federico$;
 	sleep 4000;
 	mapannounce 'map_name$, "MA-4885: A new organism will be soon transmitted from the demi-plane.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 5000;
@@ -621,9 +623,9 @@ OnStart:
 
 	monster 'map_name$,90,88, "Unidentified creature",.@mob_id,1, instance_npcname("#npc_con07") + "::OnMyMobDead";
 	sleep 6000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå’Œä¸Šæ¬¡ä¸€æ ·ã€‚å®ƒä¼¼ä¹å¯¹æˆ‘ä»¬æ²¡æœ‰å…´è¶£ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ººÍÉÏ´ÎÒ»Ñù¡£ËüËÆºõ¶ÔÎÒÃÇÃ»ÓĞĞËÈ¤¡£", 'silvia$;
 	sleep 4000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šè®©æˆ‘ä»¬åœ¨ä¸»ç”µæºæš‚æ—¶å…³é—­çš„æƒ…å†µä¸‹ï¼Œå½»åº•å…³é—­æ¯æœºå§ï¼", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£ºÈÃÎÒÃÇÔÚÖ÷µçÔ´ÔİÊ±¹Ø±ÕµÄÇé¿öÏÂ£¬³¹µ×¹Ø±ÕÄ¸»ú°É£¡", 'vincent$;
 	sleep 5000;
 	mapannounce 'map_name$, "MA-4885: Answering question. This space is currently stuck in a distorted phase.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 5000;
@@ -631,9 +633,9 @@ OnStart:
 	sleep 5000;
 	mapannounce 'map_name$, "MA-4885: Conducting calculations to restore balance to distorted phase. Please wait a moment.", bc_map,0xFFFF00,FW_NORMAL,13;
 	sleep 5000;
-	npctalk "Artemiaï¼šé‚£å›¢ç–¯ç‹‚çš„é‡‘å±åœ¨è¯´ä»€ä¹ˆï¼Ÿéš¾é“è¯´æˆ‘ä»¬å’Œé‚£äº›æ€ªç‰©ä¹‹ç±»çš„ä¸œè¥¿ä¸æ˜¯åŒä¸€ä¸ªé˜¶æ®µï¼Ÿ", 'artemia$;
+	npctalk "Artemia£ºÄÇÍÅ·è¿ñµÄ½ğÊôÔÚËµÊ²Ã´£¿ÄÑµÀËµÎÒÃÇºÍÄÇĞ©¹ÖÎïÖ®ÀàµÄ¶«Î÷²»ÊÇÍ¬Ò»¸ö½×¶Î£¿", 'artemia$;
 	sleep 4000;
-	npctalk "Federicoï¼šå•Šï¼Œæˆ‘æƒ³æˆ‘ä»¬åº”è¯¥å¸Œæœ›ä¸»æœºè®¡ç®—æœºæ²¡æœ‰åšå‡ºæ­£ç¡®çš„è®¡ç®—ã€‚", 'federico$;
+	npctalk "Federico£º°¡£¬ÎÒÏëÎÒÃÇÓ¦¸ÃÏ£ÍûÖ÷»ú¼ÆËã»úÃ»ÓĞ×ö³öÕıÈ·µÄ¼ÆËã¡£", 'federico$;
 	end;
 
 OnMyMobDead:
@@ -658,11 +660,11 @@ OnStart:
 	sleep 6000;
 	mapannounce 'map_name$, "MA-4885: That is correct.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	sleep 6000;
-	npctalk "Artemiaï¼šå¼—é›·è¨åšå£«ï¼ï¼è¿™ä¸ªè’å”çš„äº‹ä»¶ä¸æˆ‘ä»¬åŸæ¥çš„å®éªŒå®Œå…¨æ— å…³ï¼", 'artemia$;
+	npctalk "Artemia£º¸¥À×Èø²©Ê¿£¡£¡Õâ¸ö»ÄÌÆµÄÊÂ¼şÓëÎÒÃÇÔ­À´µÄÊµÑéÍêÈ«ÎŞ¹Ø£¡", 'artemia$;
 	sleep 6000;
 	mapannounce 'map_name$, "Lona Fresa: I have fully realized that.", bc_map, 0x00ff77;
 	sleep 6000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šæˆ‘ä»¬ä¸èƒ½å®Œå…¨å…³é—­ä¸»ç”µæºå—ï¼Ÿ", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ºÎÒÃÇ²»ÄÜÍêÈ«¹Ø±ÕÖ÷µçÔ´Âğ£¿", 'silvia$;
 	sleep 6000;
 	mapannounce 'map_name$, "MA-4885: Restarting particle acceleration procedure.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	sleep 5000;
@@ -672,7 +674,7 @@ OnStart:
 	sleep 6000;
 	mapannounce 'map_name$, "Lona Fresa: Ending record with reasons of Mother Computer malfunction and overheating of accelerator.", bc_map, 0x00ff77;
 	sleep 5000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå¥½çš„ï¼ç°åœ¨å¼—é›·è¨åšå£«åªéœ€å…³é—­ç”µæºå³å¯ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ººÃµÄ£¡ÏÖÔÚ¸¥À×Èø²©Ê¿Ö»Ğè¹Ø±ÕµçÔ´¼´¿É¡£", 'silvia$;
 	sleep 6000;
 	mapannounce 'map_name$, "Lona Fresa: Cutting off power to Mother Computer MA-4885.", bc_map, 0x00ff77;
 	sleep 6000;
@@ -681,13 +683,13 @@ OnStart:
 	mapannounce 'map_name$, "MA-4885: .....command... ----!!!  Zizip... ---!! -- following command ----- !! Zizip.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	sleep 5000;
 	'bool_event = false;
-	npctalk "Artemiaï¼šå‘¼â€¦â€¦ç»“æŸäº†å—ï¼Ÿ", 'artemia$;
+	npctalk "Artemia£ººô¡­¡­½áÊøÁËÂğ£¿", 'artemia$;
 	sleep 6000;
 	mapannounce 'map_name$, "Lona Fresa: Completed shut down of Mother computer MA-4885. Confirm equipment suspension.", bc_map, 0x00ff77;
 	sleep 5000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šçœ‹æ¥ä¸€åˆ‡éƒ½ç»“æŸäº†ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£º¿´À´Ò»ÇĞ¶¼½áÊøÁË¡£", 'silvia$;
 	sleep 4000;
-	npctalk "Federicoï¼šå·¥å‚åˆå§‹åŒ–æ˜¯æœ€å¥½çš„ã€‚", 'federico$;
+	npctalk "Federico£º¹¤³§³õÊ¼»¯ÊÇ×îºÃµÄ¡£", 'federico$;
 	sleep 4000;
 	mapannounce 'map_name$, "Lona Fresa: Recording all experiment progress and terminating at current point.", bc_map, 0x00ff77;
 	sleep 5000;
@@ -695,13 +697,13 @@ OnStart:
 	sleep 5000;
 	mapannounce 'map_name$, "Lona Fresa: Good work everybody.", bc_map, 0x00ff77;
 	sleep 5000;
-	npctalk "Artemiaï¼šçœ‹æ¥å·²ç»ç»“æŸäº†ã€‚", 'artemia$;
+	npctalk "Artemia£º¿´À´ÒÑ¾­½áÊøÁË¡£", 'artemia$;
 	sleep 5000;
-	npctalk "Federicoï¼šæˆ‘ä»¥ä¸ºè¿™æ˜¯ Fresa çš„æ•™æ¡å¼å®éªŒã€‚ä½†è¿™æ˜¯æ¯æœºçš„é—®é¢˜ã€‚", 'federico$;
+	npctalk "Federico£ºÎÒÒÔÎªÕâÊÇ Fresa µÄ½ÌÌõÊ½ÊµÑé¡£µ«ÕâÊÇÄ¸»úµÄÎÊÌâ¡£", 'federico$;
 	sleep 5500;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šæˆ‘ä»¬å†·é™ä¸€ä¸‹å§ã€‚ç¦»å¼€è¿™ä¸ªå¯æ€•çš„å®éªŒå®¤ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ºÎÒÃÇÀä¾²Ò»ÏÂ°É¡£Àë¿ªÕâ¸ö¿ÉÅÂµÄÊµÑéÊÒ¡£", 'silvia$;
 	sleep 5000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šé¡ºä¾¿è¯´ä¸€ä¸‹...æˆ‘è¿˜æ˜¯åŠ¨ä¸äº†ï¼Œè¿™æ˜¯æ€ä¹ˆå›äº‹ï¼Ÿ", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£ºË³±ãËµÒ»ÏÂ...ÎÒ»¹ÊÇ¶¯²»ÁË£¬ÕâÊÇÔõÃ´»ØÊÂ£¿", 'vincent$;
 	sleep 5000;
 	'bool_event = true;
 	donpcevent instance_npcname("#npc_con03") + "::OnStart";
@@ -709,11 +711,11 @@ OnStart:
 	sleep 2000;
 	mapannounce 'map_name$, "MA-4885: CODE NAME - DESCENT", bc_map, 0xff0000,FW_NORMAL,16,0;
 	sleep 5000;
-	npctalk "è´¹å¾·é‡Œç§‘ï¼šä»€ä¹ˆï¼Ÿè¿™ä¸æ˜¯åˆå§‹åŒ–é˜¶æ®µå—ï¼Ÿ", 'federico$;
+	npctalk "·ÑµÂÀï¿Æ£ºÊ²Ã´£¿Õâ²»ÊÇ³õÊ¼»¯½×¶ÎÂğ£¿", 'federico$;
 	sleep 2500;
 	mapannounce 'map_name$, "MA-4885: Starting final phase transformation.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	sleep 3000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šä¸€åˆ‡éƒ½ç»“æŸäº†ã€‚", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£ºÒ»ÇĞ¶¼½áÊøÁË¡£", 'silvia$;
 	sleep 5500;
 	mapannounce 'map_name$, "MA-4885: A new organism will be soon transmitted from the demi-plane.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	sleep 5000;
@@ -788,37 +790,37 @@ OnStart:
 	sleep 12000;
 	mapannounce 'map_name$, "MA-4885: Conducting calculations to restore balance to distorted phase. Please wait a moment.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	sleep 5000;
-	npctalk "Federicoï¼šMother comp æ­£åœ¨è¿›è¡Œä¸€é¡¹è¶…å‡ºæˆ‘ä»¬æƒ³è±¡çš„å·¨å¤§å®éªŒã€‚", 'federico$;
+	npctalk "Federico£ºMother comp ÕıÔÚ½øĞĞÒ»Ïî³¬³öÎÒÃÇÏëÏóµÄ¾Ş´óÊµÑé¡£", 'federico$;
 	sleep 2500;
-	npctalk "æ–‡æ£®ç‰¹ï¼šçœ‹èµ·æ¥æ¯”æˆ‘ä»¬å®½å®å¤§é‡ã€‚å¼—é›·è¨ï¼ï¼ï¼ä½ åœ¨å¬å—ï¼Ÿæ‹‰å“è­¦æŠ¥ï¼", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º¿´ÆğÀ´±ÈÎÒÃÇ¿íºê´óÁ¿¡£¸¥À×Èø£¡£¡£¡ÄãÔÚÌıÂğ£¿À­Ïì¾¯±¨£¡", 'vincent$;
 	sleep 5000;
-	npctalk "æ–‡æ£®ç‰¹ï¼šæˆ‘ä»¬è‡³å°‘åº”è¯¥ç–æ•£å…¶ä»–å®éªŒå®¤çš„äººã€‚", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£ºÎÒÃÇÖÁÉÙÓ¦¸ÃÊèÉ¢ÆäËûÊµÑéÊÒµÄÈË¡£", 'vincent$;
 	sleep 5000;
 	mapannounce 'map_name$, "Lona Fresa: But ... you.", bc_map, 0x00ff77;
 	sleep 5000;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå“å‘€ï¼Œæˆ‘ä¸çŸ¥é“ä¼šå‘ç”Ÿä»€ä¹ˆï¼Œä½†æˆ‘å¯¹æ”¹å˜ç»´åº¦å¾ˆå¥½å¥‡ã€‚åˆ«ç®¡æˆ‘ï¼", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£º°¥Ñ½£¬ÎÒ²»ÖªµÀ»á·¢ÉúÊ²Ã´£¬µ«ÎÒ¶Ô¸Ä±äÎ¬¶ÈºÜºÃÆæ¡£±ğ¹ÜÎÒ£¡", 'silvia$;
 	sleep 5000;
-	npctalk "Artemiaï¼šåœ¨å°è¯•æ–°ææ–™ç”Ÿäº§æ—¶è¿›è¡Œç»´åº¦ç§»åŠ¨ã€‚é™·å…¥äº†ä¸åŒçº§åˆ«çš„å®éªŒä¸­ã€‚", 'artemia$;
+	npctalk "Artemia£ºÔÚ³¢ÊÔĞÂ²ÄÁÏÉú²úÊ±½øĞĞÎ¬¶ÈÒÆ¶¯¡£ÏİÈëÁË²»Í¬¼¶±ğµÄÊµÑéÖĞ¡£", 'artemia$;
 	sleep 5000;
 	mapannounce 'map_name$, "Alarm System : Alert! Alert! Class 1 alert issued from the Particle Laboratory. All researchers evacuate to the bunker.", bc_map, 0xff0000,FW_NORMAL,13,0;
 	sleep 5000;
 	mapannounce 'map_name$, "Alarm System : I repeat. Class 1 alert issued from the Particle Laboratory. All researchers evacuate to the bunker.", bc_map, 0xff0000,FW_NORMAL,13,0;
-	npctalk "Federicoï¼šè¿™å°±æ˜¯ç§»åŠ¨ç»´åº¦çš„æ„Ÿè§‰å—ï¼Ÿå¤šä¹ˆå¥‡æ€ªå•Š...", 'federico$;
+	npctalk "Federico£ºÕâ¾ÍÊÇÒÆ¶¯Î¬¶ÈµÄ¸Ğ¾õÂğ£¿¶àÃ´Ææ¹Ö°¡...", 'federico$;
 	sleep 4000;
 	specialeffect EF_SUI_EXPLOSION, AREA, 'federico$;
 	disablenpc 'federico$;
 	mapannounce 'map_name$, "MA-4885: Dimension move at 20% progress. There could be dimensional interference with certain creatures. Please be aware.", bc_map, 0xffff00,FW_NORMAL,13,0;
 	donpcevent instance_npcname("#npc_con03") + "::OnStart2";
-	npctalk "æ–‡æ£®ç‰¹ï¼šä¸çŸ¥é“å…¶ä»–äººæ’¤ç¦»äº†å—ï¼Ÿ", 'vincent$;
+	npctalk "ÎÄÉ­ÌØ£º²»ÖªµÀÆäËûÈË³·ÀëÁËÂğ£¿", 'vincent$;
 	sleep 5000;
 	specialeffect EF_SUI_EXPLOSION, AREA, 'vincent$;
 	disablenpc 'vincent$;
-	npctalk "è¥¿å°”ç»´å¨…ï¼šå•Šâ€¦â€¦æˆ‘åº”è¯¥ä¸€è¾¹åƒé¸¡è‚‰å’Œå•¤é…’ä¸€è¾¹çœ‹è¿™ä¸ªâ€¦â€¦", 'silvia$;
+	npctalk "Î÷¶ûÎ¬æ«£º°¡¡­¡­ÎÒÓ¦¸ÃÒ»±ß³Ô¼¦ÈâºÍÆ¡¾ÆÒ»±ß¿´Õâ¸ö¡­¡­", 'silvia$;
 	sleep 5000;
 	specialeffect EF_SUI_EXPLOSION, AREA, 'silvia$;
 	disablenpc 'silvia$;
 	mapannounce 'map_name$, "MA-4885: Dimension move at 78% progress. Most of the dimension encroached by demi-plane.", bc_map, 0xffff00,FW_NORMAL,13,0;
-	npctalk "Artemiaï¼šå“ˆ...ç°åœ¨è°å»åƒé¸¡ï¼Ÿ", 'artemia$;
+	npctalk "Artemia£º¹ş...ÏÖÔÚË­È¥³Ô¼¦£¿", 'artemia$;
 	sleep 5000;
 	specialeffect EF_SUI_EXPLOSION, AREA, 'artemia$;
 	disablenpc 'artemia$;
@@ -943,10 +945,10 @@ OnStart3:
 1@lab,1,1,3	script	#adsw_	CLEAR_NPC,{
 	if (callfunc("F_GM_NPC",1854,0,0,2000) < 1)
 		end;
-	mes "[æ—¶é—´ç®¡ç†å‘˜]";
-	mes "ä½ æƒ³ä»€ä¹ˆæ—¶é—´å»ï¼Ÿ";
+	mes "[Ê±¼ä¹ÜÀíÔ±]";
+	mes "ÄãÏëÊ²Ã´Ê±¼äÈ¥£¿";
 	next;
-	switch( select( "å–æ¶ˆ", "1 å¼€å§‹", "2 å¼€å§‹", "3 å¼€å§‹", "4 å¼€å§‹" ) ) {
+	switch( select( "È¡Ïû", "1 ¿ªÊ¼", "2 ¿ªÊ¼", "3 ¿ªÊ¼", "4 ¿ªÊ¼" ) ) {
 	case 1:
 		close;
 	case 2:
@@ -970,8 +972,8 @@ verus01,1,5,5	script	Laboratory Administrator#pa0829_01	CLEAR_NPC,{
 		warp "prontera",100,100;
 		end;
 	}
-	mes "[å®éªŒå®¤ç®¡ç†å‘˜]";
-	mes "ä¸€åˆ‡éƒ½å¤„ç†å¾—å¾ˆå¥½ï¼";
+	mes "[ÊµÑéÊÒ¹ÜÀíÔ±]";
+	mes "Ò»ÇĞ¶¼´¦ÀíµÃºÜºÃ£¡";
 	close2;
 	if (isbegin_quest(12347) > 0)
 		erasequest 12347;

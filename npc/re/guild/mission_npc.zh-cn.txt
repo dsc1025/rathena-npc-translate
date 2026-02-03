@@ -5,6 +5,8 @@
 //===== Changelogs: ==========================================
 //= [Official Conversion]
 //= 1.0 First version [Secretdataz]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 alde_gld,176,163,5	duplicate(gld_mission#core)	Luina Training Instructor#gqaldeg	4_M_HUMAN_02

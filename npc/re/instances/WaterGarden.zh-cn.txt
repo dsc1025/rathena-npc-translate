@@ -8,17 +8,19 @@
 //= 1.0 Initial release [crazyarashi]
 //= 1.1 Optimizations and cleanup [Everade]
 //= 1.2 Cleanup [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	if (ep172_watergarden < 3) {
 		cutin "ep172_beta",2;
-		mes "[哈拉德]";
-		mes "你好，客人。";
-		mes "这个地方就是码头。";
+		mes "[������]";
+		mes "��ã����ˡ�";
+		mes "����ط�������ͷ��";
 		next;
-		mes "[哈拉德]";
-		mes "我们现在没有任何船只在运营。不过风景不错，有时间去看看吧！";
+		mes "[������]";
+		mes "��������û���κδ�ֻ����Ӫ�������羰��������ʱ��ȥ�����ɣ�";
 		close3;
 	}
 	switch( checkquest(16439,PLAYTIME) ) {
@@ -27,31 +29,31 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	case 0:
 	case 1:
 		cutin "ep172_beta",2;
-		mes "[哈拉德]";
-		mes "按照园丁的植物种植和除草计划。普通水花园和硬水花园每天仅限一次进入水上花园。";
+		mes "[������]";
+		mes "����԰����ֲ����ֲ�ͳ��ݼƻ�����ͨˮ��԰��Ӳˮ��԰ÿ�����һ�ν���ˮ�ϻ�԰��";
 		next;
-		mes "[哈拉德]";
-		mes "感谢您的理解。";
-		mes "请充分休息，天亮后再回来！";
+		mes "[������]";
+		mes "��л�������⡣";
+		mes "������Ϣ���������ٻ�����";
 		close3;
 	case 2:
 		erasequest 16439;
 		break;
 	}
 	cutin "ep172_beta",2;
-	mes "[哈拉德]";
-	mes "您想乘车去水上花园吗？";
-	mes "该船每天只运行一趟！";
+	mes "[������]";
+	mes "����˳�ȥˮ�ϻ�԰��";
+	mes "�ô�ÿ��ֻ����һ�ˣ�";
 	next;
-	mes "^FF0000请注意，副本内任何异常的怪物处理（例如驯服）均不被视为正常。^000000";
+	mes "^FF0000��ע�⣬�������κ��쳣�Ĺ��ﴦ��������ѱ������������Ϊ������^000000";
 	mes "";
-	mes "^FF0000接到“水上花园”或“水上花园硬”任务的小队队长必须进入副本才能继续。如果队伍领袖发生变化，副本将被取消，您将无法继续。^000000";
+	mes "^FF0000�ӵ���ˮ�ϻ�԰����ˮ�ϻ�԰Ӳ�������С�Ӷӳ�������븱�����ܼ���������������䷢���仯����������ȡ���������޷�������^000000";
 	next;
 	cutin "",255;
 	.@normal = is_party_leader();
 	.@hard = (.@normal && isbegin_quest(16430) == 2);
 	.@md_name$ = "Water Garden";	// default
-	switch( select( (.@normal ? "创建水上花园" : ""), (.@hard ? "创建水上花园困难" : ""), "^0000CD花园入口^000000" ) ) {
+	switch( select( (.@normal ? "����ˮ�ϻ�԰" : ""), (.@hard ? "����ˮ�ϻ�԰����" : ""), "^0000CD��԰���^000000" ) ) {
 	case 1:
 		.@quest_given = 16437;
 		.@other_quest = 16438;
@@ -59,11 +61,11 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	case 2:
 		if (BaseLevel < 180) {
 			cutin "ep172_beta",2;
-			mes "[哈拉德]";
-			mes "如果你想进入水上花园，可以告诉我。";
-			mes "但里面很危险。你现在不能进入。";
+			mes "[������]";
+			mes "����������ˮ�ϻ�԰�����Ը����ҡ�";
+			mes "�������Σ�ա������ڲ��ܽ��롣";
 			next;
-			mes "- 此MD适用于180级或以上。 -";
+			mes "- ��MD������180�������ϡ� -";
 			close3;
 		}
 		.@md_name$ = "Water Garden Hard";
@@ -75,26 +77,26 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 			.@instance_name$ = instance_live_info(ILI_NAME, instance_id(IM_PARTY));
 			if (.@instance_name$ != "Water Garden" && .@instance_name$ != "Water Garden Hard") {
 				cutin "ep172_beta",2;
-				mes "[哈拉德]";
-				mes "该实例尚未创建。";
-				mes "请检查一下。";
+				mes "[������]";
+				mes "��ʵ����δ������";
+				mes "����һ�¡�";
 				close3;
 			}
 			cutin "ep172_beta",2;
-			mes "[哈拉德]";
-			mes "输入^CC0000" + .@instance_name$ + "^000000。";
+			mes "[������]";
+			mes "����^CC0000" + .@instance_name$ + "^000000��";
 			next;
 			cutin "",255;
-			if (select( "^0000CD进入水上花园", "进入水上花园困难^000000" ) == 1)
+			if (select( "^0000CD����ˮ�ϻ�԰", "����ˮ�ϻ�԰����^000000" ) == 1)
 				.@md_name$ = "Water Garden";
 			else
 				.@md_name$ = "Water Garden Hard";
 		}
 		if (instance_enter(.@md_name$) != IE_OK) {
 			cutin "ep172_beta",2;
-			mes "[哈拉德]";
-			mes "该实例尚未创建。";
-			mes "请检查一下。";
+			mes "[������]";
+			mes "��ʵ����δ������";
+			mes "����һ�¡�";
 			close2;
 			cutin "",255;
 			end;
@@ -110,8 +112,8 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	if (isbegin_quest(.@other_quest) > 0)
 		erasequest .@other_quest;
 	setquest .@quest_given;
-	mes "[哈拉德]";
-	mes "当" + .@md_name$ + " MD打开时，请再次对我说话并选择^0000CD输入" + .@md_name$ + "^000000。";
+	mes "[������]";
+	mes "��" + .@md_name$ + " MD��ʱ�����ٴζ���˵����ѡ��^0000CD����" + .@md_name$ + "^000000��";
 	close;
 }
 
@@ -154,7 +156,7 @@ OnTouch:
 	end;
 OnTouch:
 	if ('water_garden == 0) {
-		mes "- 队长进入MD后即可进入水上花园。 -";
+		mes "- �ӳ�����MD�󼴿ɽ���ˮ�ϻ�԰�� -";
 		close;
 	}
 	warp 'map_ghg$,208,57;
@@ -191,20 +193,20 @@ OnTouch:
 	if ('water_garden == 0)
 		end;
 	if ('water_garden == 1) {
-		mes "[海蒂拉]";
-		mes "各位来宾，欢迎来到水上花园，";
-		mes "你要去见帕皮拉吗？帕皮拉最近对入侵者非常敏感……";
-		npctalk "各位来宾，欢迎来到水上花园。你要去见帕皮拉吗？帕皮拉最近对入侵者非常敏感……";
+		mes "[������]";
+		mes "��λ��������ӭ����ˮ�ϻ�԰��";
+		mes "��Ҫȥ����Ƥ������Ƥ������������߷ǳ����С���";
+		npctalk "��λ��������ӭ����ˮ�ϻ�԰����Ҫȥ����Ƥ������Ƥ������������߷ǳ����С���";
 		next;
-		mes "[海蒂拉]";
-		mes "乳头到处玩耍。";
-		mes "它们使用翅膀上的迷幻材料进行短距离移动或对它们使用危险的魔法。";
-		npctalk "乳头到处玩耍。它们使用翅膀上的迷幻材料进行短距离移动或对它们使用危险的魔法。";
+		mes "[������]";
+		mes "��ͷ������ˣ��";
+		mes "����ʹ�ó���ϵ��Իò��Ͻ��ж̾����ƶ��������ʹ��Σ�յ�ħ����";
+		npctalk "��ͷ������ˣ������ʹ�ó���ϵ��Իò��Ͻ��ж̾����ƶ��������ʹ��Σ�յ�ħ����";
 		next;
-		mes "[海蒂拉]";
-		mes "我警告过你高级，但要小心。";
-		mes "修剪所有杂草丛生的植物和动物会在 3 点钟打开通往下一个区域的大门。";
-		npctalk "我警告过你高级，但要小心。修剪所有杂草丛生的植物和动物会在 3 点钟打开通往下一个区域的大门。";
+		mes "[������]";
+		mes "�Ҿ������߼�����ҪС�ġ�";
+		mes "�޼������Ӳݴ�����ֲ��Ͷ������ 3 ���Ӵ�ͨ����һ������Ĵ��š�";
+		npctalk "�Ҿ������߼�����ҪС�ġ��޼������Ӳݴ�����ֲ��Ͷ������ 3 ���Ӵ�ͨ����һ������Ĵ��š�";
 		close2;
 		if ('water_garden == 1) {
 			'water_garden = 2;
@@ -214,9 +216,9 @@ OnTouch:
 		end;
 	}
 	if ('water_garden == 2)
-		npctalk "小心乳头的致幻剂。";
+		npctalk "С����ͷ���»ü���";
 	else
-		npctalk "客人，您已经可以前往下一个区域了。";
+		npctalk "���ˣ����Ѿ�����ǰ����һ�������ˡ�";
 	end;
 }
 
@@ -359,21 +361,21 @@ OnMobDead:
 // Area 2
 1@ghg,316,69,3	script(DISABLED)	Gardener#ghg_g2	4_EP17_SCISSORE,{
 	if ('water_garden == 3) {
-		mes "[尤文图斯]";
-		mes "小心，乳头和其他类型的乳头似乎在四处游荡。";
-		npctalk "小心，乳头和其他类型的乳头似乎在四处游荡。";
+		mes "[����ͼ˹]";
+		mes "С�ģ���ͷ���������͵���ͷ�ƺ����Ĵ��ε���";
+		npctalk "С�ģ���ͷ���������͵���ͷ�ƺ����Ĵ��ε���";
 		next;
-		mes "[尤文图斯]";
-		mes "攻击范围根据乳头的颜色而变化。";
-		npctalk "攻击范围根据乳头的颜色而变化。";
+		mes "[����ͼ˹]";
+		mes "������Χ������ͷ����ɫ���仯��";
+		npctalk "������Χ������ͷ����ɫ���仯��";
 		next;
-		mes "[尤文图斯]";
-		mes "一些园丁也被入侵者摧毁了。";
-		npctalk "一些园丁也被入侵者摧毁了。";
+		mes "[����ͼ˹]";
+		mes "һЩ԰��Ҳ�������ߴݻ��ˡ�";
+		npctalk "һЩ԰��Ҳ�������ߴݻ��ˡ�";
 		next;
-		mes "[尤文图斯]";
-		mes "如果他们攻击客人，他们都是坏园丁，所以请毫不犹豫地把它拿下来。";
-		npctalk "如果他们攻击客人，他们都是坏园丁，所以请毫不犹豫地把它拿下来。";
+		mes "[����ͼ˹]";
+		mes "������ǹ������ˣ����Ƕ��ǻ�԰���������������ԥ�ذ�����������";
+		npctalk "������ǹ������ˣ����Ƕ��ǻ�԰���������������ԥ�ذ�����������";
 		close2;
 		if ('water_garden == 3) {
 			'water_garden = 4;
@@ -383,11 +385,11 @@ OnMobDead:
 		end;
 	}
 	if ('water_garden == 4) {
-		mes "[尤文图斯]";
-		mes "如果园丁攻击了客人，他们都是坏园丁，所以请毫不犹豫地把它拿下来。";
+		mes "[����ͼ˹]";
+		mes "���԰�������˿��ˣ����Ƕ��ǻ�԰���������������ԥ�ذ�����������";
 		close;
 	}
-	npctalk "现在障碍物已经消失，你无法移动到下一个区域。";
+	npctalk "�����ϰ����Ѿ���ʧ�����޷��ƶ�����һ������";
 	end;
 }
 
@@ -556,21 +558,21 @@ S_Skill:
 
 // Area 3
 1@ghg,341,143,3	script(DISABLED)	Gardener#ghg_g3	4_EP17_SCISSORE,5,1,{
-	mes "[访问]";
-	mes "玫瑰园是一个非常美丽的地方，但是最近，由于成群出现的动植物群，我们在维护它方面遇到了麻烦。";
-	npctalk "玫瑰园是一个非常美丽的地方，但是最近，由于成群出现的动植物群，我们在维护它方面遇到了麻烦。";
+	mes "[����]";
+	mes "õ��԰��һ���ǳ������ĵط���������������ڳ�Ⱥ���ֵĶ�ֲ��Ⱥ��������ά���������������鷳��";
+	npctalk "õ��԰��һ���ǳ������ĵط���������������ڳ�Ⱥ���ֵĶ�ֲ��Ⱥ��������ά���������������鷳��";
 	next;
-	mes "[访问]";
-	mes "客人，请您修剪植物和动物。";
-	npctalk "客人，请您修剪植物和动物。";
+	mes "[����]";
+	mes "���ˣ������޼�ֲ��Ͷ��";
+	npctalk "���ˣ������޼�ֲ��Ͷ��";
 	next;
-	mes "[访问]";
-	mes "在花园的尽头，有一位经理正在等待开放下一个区域，所以到达那里时请与她交谈。";
-	npctalk "在花园的尽头，有一位经理正在等待开放下一个区域，所以到达那里时请与她交谈。";
+	mes "[����]";
+	mes "�ڻ�԰�ľ�ͷ����һλ�������ڵȴ�������һ���������Ե�������ʱ��������̸��";
+	npctalk "�ڻ�԰�ľ�ͷ����һλ�������ڵȴ�������һ���������Ե�������ʱ��������̸��";
 	next;
-	mes "[访问]";
-	mes "速度有点慢，所以可能要等一下，但是……下一个区域一定会开放的。";
-	npctalk "速度有点慢，所以可能要等一下，但是……下一个区域一定会开放的。";
+	mes "[����]";
+	mes "�ٶ��е��������Կ���Ҫ��һ�£����ǡ�����һ������һ���Ὺ�ŵġ�";
+	npctalk "�ٶ��е��������Կ���Ҫ��һ�£����ǡ�����һ������һ���Ὺ�ŵġ�";
 	close;
 
 OnTouch_:	// note: hidden player doesn't trigger it!
@@ -760,16 +762,16 @@ OnTouch_:
 
 1@ghg,344,173,3	script(DISABLED)	Gardener#gmck3	4_EP17_SCISSORE,2,2,{
 	if ('water_garden < 6) {
-		npctalk "发生错误...。";
+		npctalk "��������...��";
 		end;
 	}
 	progressbar_npc "00FF00",5;
-	mes "[希格尔]";
-	mes "下一个花园...传送门创建完成...移至12点钟方向...使用...谢谢...";
-	npctalk "下一个花园...传送门创建完成...移至12点钟方向...使用...谢谢...";
+	mes "[ϣ���]";
+	mes "��һ����԰...�����Ŵ������...����12���ӷ���...ʹ��...лл...";
+	npctalk "��һ����԰...�����Ŵ������...����12���ӷ���...ʹ��...лл...";
 	next;
-	mes "[希格尔]";
-	mes "搬家后...迷宫里的乳头...请把它们全部修剪掉。";
+	mes "[ϣ���]";
+	mes "��Һ�...�Թ������ͷ...�������ȫ���޼�����";
 	close2;
 	if ('water_garden == 6) {
 		// note: mobs from traps are not killed
@@ -848,23 +850,23 @@ OnMobDead:
 1@ghg,346,248,3	script(DISABLED)	Gardener#keeper1	4_EP17_SCISSORE,{
 	if (isbegin_quest(16435) == 1) {
 		if (checkweight(1000099,1) == 0) {	// (custom)
-			mes "^008800等一下！！";
-			mes "您无法接收更多物品，因为您携带的物品太多。请等灯亮后再试。^000000";
+			mes "^008800��һ�£���";
+			mes "���޷����ո�����Ʒ����Ϊ��Я������Ʒ̫�ࡣ��ȵ��������ԡ�^000000";
 			close;
 		}
 		if (countitem(1000099) == 0) {
-			npctalk "哦，我忘记定期联系了！我会联系你。你在这儿的时候想要一块饼干吗？", "", bc_self;
+			npctalk "Ŷ�������Ƕ�����ϵ�ˣ��һ���ϵ�㡣���������ʱ����Ҫһ�������", "", bc_self;
 			getitem 1000099,1;
 			end;
 		}
-		npctalk "别担心，我已经联系Alpha了。呵呵。", "", bc_self;
+		npctalk "���ģ����Ѿ���ϵAlpha�ˡ��Ǻǡ�", "", bc_self;
 		end;
 	}
 	if ('water_garden == 7) {
-		npctalk "奇怪了，昨天忘记了，今天也忘记了。";
+		npctalk "����ˣ����������ˣ�����Ҳ�����ˡ�";
 		end;
 	}
-	npctalk "最后的花园开放了。但是……我忘记了我该怎么办……";
+	npctalk "���Ļ�԰�����ˡ����ǡ������������Ҹ���ô�졭��";
 	end;
 }
 1@ghg,334,272,3	duplicate(Gardener#keeper1)	Gardener#keeper2	4_EP17_SCISSORE
@@ -875,17 +877,17 @@ OnMobDead:
 // Area 5 (boss)
 1@ghg,186,287,3	script(DISABLED)	Gardener#ghg_gb	4_EP17_SCISSORE,{
 	if ('water_garden == 8) {
-		mes "[维尔基娜]";
-		mes "如果战斗中出现乳头，让它跟随你到相同颜色的柱子处。";
+		mes "[ά������]";
+		mes "���ս���г�����ͷ�����������㵽��ͬ��ɫ�����Ӵ���";
 		next;
-		mes "[维尔基娜]";
-		mes "如果乳头接触到光，它就会受到伤害并死亡。";
+		mes "[ά������]";
+		mes "�����ͷ�Ӵ����⣬���ͻ��ܵ��˺���������";
 		next;
-		mes "[维尔基娜]";
-		mes "如果你能安全地阻止席尔瓦·帕皮拉，剩下的事情就由我们来处理！";
+		mes "[ά������]";
+		mes "������ܰ�ȫ����ֹϯ���ߡ���Ƥ����ʣ�µ��������������������";
 		next;
-		mes "[维尔基娜]";
-		mes "然后，我会烧香召唤席尔瓦·帕皮拉……";
+		mes "[ά������]";
+		mes "Ȼ���һ������ٻ�ϯ���ߡ���Ƥ������";
 		close2;
 		if ('water_garden == 8) {
 			'water_garden = 9;
@@ -1011,14 +1013,14 @@ OnTouchNPC:
 
 1@ghg,187,287,3	script(DISABLED)	Gardener#ghg_gb1	4_EP17_SCISSORE,2,2,{
 	if ('water_garden == 10) {
-		mes "[维尔基娜]";
-		mes "你没有忘记西柚的委托，才来到这里吧？";
+		mes "[ά������]";
+		mes "��û���������ֵ�ί�У�����������ɣ�";
 		next;
-		mes "[维尔基娜]";
-		mes "别忘了出去和西柚对话，领取今天工作的奖励^000000。";
+		mes "[ά������]";
+		mes "�����˳�ȥ�����ֶԻ�����ȡ���칤���Ľ���^000000��";
 		next;
-		mes "[维尔基娜]";
-		mes "那我再给你带一下外面的路！";
+		mes "[ά������]";
+		mes "�����ٸ����һ�������·��";
 		close2;
 		warp "ba_maison",233,46;
 		end;

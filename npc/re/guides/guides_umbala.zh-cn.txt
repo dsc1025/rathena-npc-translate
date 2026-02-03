@@ -12,78 +12,80 @@
 //===== Additional Comments: ================================= 
 //= 1.0 First version, Renewal guides.
 //= 1.1 Navigation system update. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 umbala,128,94,3	script	Umbala Guide#01umbala::GuideUmbala	702,{
-	mes "[伞指南]";
-	mes "欢迎来到^8B4513安巴拉^000000，";
-	mes "乌坦部落的村庄。";
+	mes "[ɡָ��]";
+	mes "��ӭ����^8B4513������^000000��";
+	mes "��̹����Ĵ�ׯ��";
 	next;
-	mes "[伞指南]";
-	mes "因为我已经在这里探索了几个月了。";
-	mes "我熟悉这个地区的地理和这个村庄的名胜古迹。";
-	mes "您需要帮助游览村庄吗？";
-	F_Navi("[伞指南]");
+	mes "[ɡָ��]";
+	mes "��Ϊ���Ѿ�������̽���˼������ˡ�";
+	mes "����Ϥ��������ĵ����������ׯ����ʤ�ż���";
+	mes "����Ҫ����������ׯ��";
+	F_Navi("[ɡָ��]");
 	while (1) {
 		next;
-		switch(select("[卡夫拉员工]：[酋长之家]：[萨满之家]：[武器店]：[工具店]：[蹦极区]：[世界之树]：从小地图上删除标记：取消")) {
+		switch(select("[������Ա��]��[����֮��]��[����֮��]��[������]��[���ߵ�]��[�ļ���]��[����֮��]����С��ͼ��ɾ����ǣ�ȡ��")) {
 		case 1:
-			mes "[伞指南]";
-			mes "让我标记一下位置";
-			mes "^0000FF卡夫拉员工^000000";
-			mes "在你的小地图上。";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes "���ұ��һ��λ��";
+			mes "^0000FF������Ա��^000000";
+			mes "�����С��ͼ�ϡ�";
+			mes "����鿴�����ص���";
 			viewpoint 1,87,160,0,0x0A82FF;
 			break;
 		case 2:
-			mes "[伞指南]";
-			mes "只有"+F_Navi("首席","umbala,68,251","^006400")+"知道外部世界的语言。";
-			mes "所以你最好先去拜访他。";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes "ֻ��"+F_Navi("��ϯ","umbala,68,251","^006400")+"֪���ⲿ��������ԡ�";
+			mes "�����������ȥ�ݷ�����";
+			mes "����鿴�����ص���";
 			viewpoint 1,68,251,1,0xAAFF00;
 			break;
 		case 3:
-			mes "[伞指南]";
-			mes ""+F_Navi("萨满","umbala,219,188","^008080")+"具有某种神秘的力量。";
-			mes "人们说她可以炼制魔石原石，并将纯净的魔石分成原石。";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes ""+F_Navi("����","umbala,219,188","^008080")+"����ĳ�����ص�������";
+			mes "����˵����������ħʯԭʯ������������ħʯ�ֳ�ԭʯ��";
+			mes "����鿴�����ص���";
 			viewpoint 1,219,188,2,0x008080;
 			break;
 		case 4:
-			mes "[伞指南]";
-			mes "这"+F_Navi("武器店","颜色,125,155","^FF1493")+"内部颜色";
-			mes "供应武器";
-			mes "为了防御他们的敌人。";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes "��"+F_Navi("������","��ɫ,125,155","^FF1493")+"�ڲ���ɫ";
+			mes "��Ӧ����";
+			mes "Ϊ�˷������ǵĵ��ˡ�";
+			mes "����鿴�����ص���";
 			viewpoint 1,125,155,3,0xFF1493;
 			break;
 		case 5:
-			mes "[伞指南]";
-			mes "有很多有用的东西";
-			mes "旅行在"+F_Navi("工具店","颜色,136,127","^8B4513")+"在颜色中。";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes "�кܶ����õĶ���";
+			mes "������"+F_Navi("���ߵ�","��ɫ,136,127","^8B4513")+"����ɫ�С�";
+			mes "����鿴�����ص���";
 			viewpoint 1,136,127,4,0x8B4513;
 			break;
 		case 6:
-			mes "[伞指南]";
-			mes "乌巴拉有一个独特的地方，叫做";
-			mes "这"+F_Navi("蹦极区","颜色,138,198")+".";
-			mes "如果您有兴趣测试";
-			mes "你有勇气，为什么不尝试一下呢？";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes "�ڰ�����һ�����صĵط�������";
+			mes "��"+F_Navi("�ļ���","��ɫ,138,198")+".";
+			mes "���������Ȥ����";
+			mes "����������Ϊʲô������һ���أ�";
+			mes "����鿴�����ص���";
 			viewpoint 1,221,176,5,0x9400D3;
 			break;
 		case 7:
-			mes "[伞指南]";
-			mes "城镇北部有"+F_Navi("世界之树","umbala,107,284")+"。";
-			mes "你应该去参观一下，因为这是我在访问乌巴拉时推荐的地方。";
-			mes "您想查看其他地点吗？";
+			mes "[ɡָ��]";
+			mes "���򱱲���"+F_Navi("����֮��","umbala,107,284")+"��";
+			mes "��Ӧ��ȥ�ι�һ�£���Ϊ�������ڷ����ڰ���ʱ�Ƽ��ĵط���";
+			mes "����鿴�����ص���";
 			viewpoint 1,107,284,6,0xA52A2A;
 			break;
 		case 8:
-			mes "[伞指南]";
-			mes "当然，我会从你的小地图上删除所有标记。";
-			mes "我还能为您做些什么吗？";
+			mes "[ɡָ��]";
+			mes "��Ȼ���һ�����С��ͼ��ɾ�����б�ǡ�";
+			mes "�һ���Ϊ����Щʲô��";
 			viewpoint 2,1,1,0,0xFFFFFF;
 			viewpoint 2,1,1,1,0xFFFFFF;
 			viewpoint 2,1,1,2,0xFFFFFF;
@@ -93,8 +95,8 @@ umbala,128,94,3	script	Umbala Guide#01umbala::GuideUmbala	702,{
 			viewpoint 2,1,1,6,0xFFFFFF;
 			break;
 		case 9:
-			mes "[伞指南]";
-			mes "旅途中请注意安全。";
+			mes "[ɡָ��]";
+			mes "��;����ע�ⰲȫ��";
 			close;
 		}
 	}

@@ -20,6 +20,8 @@
 //= 1.5 Added GM management function. [Euphy]
 //= 1.6 Added VIP features. [Euphy]
 //= 1.7 Fixed PLAYTIME issue. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 que_job01,75,96,3	script	Guild Member#3rdgc01	997,{
@@ -27,57 +29,57 @@ que_job01,75,96,3	script	Guild Member#3rdgc01	997,{
 		if (Class == Job_Assassin || Class == Job_Assassin_Cross || Class == Job_Baby_Assassin) {
 			if (BaseLevel > 98) {
 			L_Mission:
-				mes "[阿卡特]";
-				mes "终于，是时候了...";
-				mes "嘿，你叫什么名字？";
+				mes "[������]";
+				mes "���ڣ���ʱ����...";
+				mes "�٣����ʲô���֣�";
 				next;
 				switch(select(strcharinfo(0),".....")) {
 				case 1:
-					mes "[阿卡特]";
-					mes strcharinfo(0)+"？";
-					mes "知道了。我会记住你的名字。";
-					mes "大师告诉我，你是一个有能力的人。";
+					mes "[������]";
+					mes strcharinfo(0)+"��";
+					mes "֪���ˡ��һ��ס������֡�";
+					mes "��ʦ�����ң�����һ�����������ˡ�";
 					break;
 				case 2:
-					mes "[阿卡特]";
-					mes "什么？你是一个多疑的人。";
-					mes "嗯，不管怎样。";
-					mes "听说你是一个有能力的人。";
+					mes "[������]";
+					mes "ʲô������һ�����ɵ��ˡ�";
+					mes "�ţ�����������";
+					mes "��˵����һ�����������ˡ�";
 					break;
 				}
 				next;
-				mes "[阿卡特]";
-				mes "我的职责是向一位有能力的刺客传达公会信息。";
-				mes "我认为你适合履行公会的职责。";
+				mes "[������]";
+				mes "�ҵ�ְ������һλ�������Ĵ̿ʹ��﹫����Ϣ��";
+				mes "����Ϊ���ʺ����й����ְ��";
 				next;
-				mes "[阿卡特]";
-				mes "那么，你愿意为我们履行这个职责吗？";
-				mes "当然，我会给你完成任务的奖励。";
+				mes "[������]";
+				mes "��ô����Ը��Ϊ�����������ְ����";
+				mes "��Ȼ���һ�����������Ľ�����";
 				next;
-				select("有什么要求？");
-				mes "[阿卡特]";
-				mes "目前还不清楚。";
-				mes "我告诉你了。这是一项特殊的任务。";
-				mes "我唯一知道的就是带一个拥有主人能力的人的条件。";
+				select("��ʲôҪ��");
+				mes "[������]";
+				mes "Ŀǰ���������";
+				mes "�Ҹ������ˡ�����һ�����������";
+				mes "��Ψһ֪���ľ��Ǵ�һ��ӵ�������������˵�������";
 				next;
-				mes "[阿卡特]";
-				mes "第一，要有耐心。";
-				mes "第二，一个安静的人。";
-				mes "第三，一个专注的人。";
+				mes "[������]";
+				mes "��һ��Ҫ�����ġ�";
+				mes "�ڶ���һ���������ˡ�";
+				mes "������һ��רע���ˡ�";
 				next;
-				mes "[阿卡特]";
-				mes "你觉得我告诉你的话怎么样？";
-				mes "这个任务意味着它需要一个能够不顾自己意愿地执行任务的人。";
+				mes "[������]";
+				mes "������Ҹ�����Ļ���ô����";
+				mes "���������ζ������Ҫһ���ܹ������Լ���Ը��ִ��������ˡ�";
 				next;
-				mes "[阿卡特]";
-				mes "有必要对这个请求保密。";
-				mes "但不告诉任何人也是你的责任。";
+				mes "[������]";
+				mes "�б�Ҫ����������ܡ�";
+				mes "���������κ���Ҳ��������Ρ�";
 				next;
-				mes "[阿卡特]";
-				mes "这都是你的选择。";
-				mes "您能帮我们解决这个请求吗？";
+				mes "[������]";
+				mes "�ⶼ�����ѡ��";
+				mes "���ܰ����ǽ�����������";
 				next;
-				switch(select("我会做的：给我时间思考。")) {
+				switch(select("�һ����ģ�����ʱ��˼����")) {
 				case 1:
 					if (VIP_SCRIPT) {
 						callfunc "VIP_Third_Class";
@@ -85,52 +87,52 @@ que_job01,75,96,3	script	Guild Member#3rdgc01	997,{
 						setquest 7101;
 						next;
 					}
-					mes "[阿卡特]";
-					mes "好的，到静脉。";
-					mes "我会联系他们。";
-					mes "前往静脉是你的首要任务。";
+					mes "[������]";
+					mes "�õģ���������";
+					mes "�һ���ϵ���ǡ�";
+					mes "ǰ�������������Ҫ����";
 					next;
-					mes "[阿卡特]";
-					mes "您应该能够轻松找到它。";
-					mes "现在就去吧。";
+					mes "[������]";
+					mes "��Ӧ���ܹ������ҵ�����";
+					mes "���ھ�ȥ�ɡ�";
 					set job_3rd_gc, 3;
 					setquest 7101;
 					close;
 				case 2:
-					mes "[阿卡特]";
-					mes "知道了。";
-					mes "但不要想太久。";
+					mes "[������]";
+					mes "֪���ˡ�";
+					mes "����Ҫ��̫�á�";
 					set job_3rd_gc, 2;
 					close;
 				}
 			}
-			mes "[阿卡特]";
-			mes "嗯，你是我的同辈。";
-			mes "我是阿卡特。我来自静脉。";
-			mes "唔...";
+			mes "[������]";
+			mes "�ţ������ҵ�ͬ����";
+			mes "���ǰ����ء������Ծ�����";
+			mes "��...";
 			next;
-			mes "[阿卡特]";
-			mes "当然，刺客公会的一个分会不仅仅存在于摩洛哥。如果你有机会去那里，一定要去那里看看。";
-			mes "我想你可能会去那里。";
+			mes "[������]";
+			mes "��Ȼ���̿͹����һ���ֻ᲻����������Ħ��硣������л���ȥ���һ��Ҫȥ���￴����";
+			mes "��������ܻ�ȥ���";
 			set job_3rd_gc, 1;
 			close;
 		}
-		mes "[印象深刻的男人]";
+		mes "[ӡ����̵�����]";
 		mes "....";
-		mes "什么……？";
-		mes "你不是刺客。";
+		mes "ʲô������";
+		mes "�㲻�Ǵ̿͡�";
 		close;
 	} else if (job_3rd_gc == 1) {
 		if (BaseLevel > 98) goto L_Mission;
-		mes "[阿卡特]";
-		mes "如果你变得更强、技能更强，那么刺客公会就会给你一项特殊任务。";
-		mes "大胆试试吧。";
+		mes "[������]";
+		mes "������ø�ǿ�����ܸ�ǿ����ô�̿͹���ͻ����һ����������";
+		mes "�����԰ɡ�";
 		close;
 	} else if (job_3rd_gc == 2) {
-		mes "[阿卡特]";
-		mes "你有没有想过更多？";
+		mes "[������]";
+		mes "����û��������ࣿ";
 		next;
-		switch(select("我会做的：我还没准备好。")) {
+		switch(select("�һ����ģ��һ�û׼���á�")) {
 		case 1:
 			if (VIP_SCRIPT) {
 				callfunc "VIP_Third_Class";
@@ -138,31 +140,31 @@ que_job01,75,96,3	script	Guild Member#3rdgc01	997,{
 				setquest 7101;
 				next;
 			}
-			mes "[阿卡特]";
-			mes "好的，到静脉。";
-			mes "我会联系他们。";
-			mes "前往静脉是你的首要任务。";
+			mes "[������]";
+			mes "�õģ���������";
+			mes "�һ���ϵ���ǡ�";
+			mes "ǰ�������������Ҫ����";
 			next;
-			mes "[阿卡特]";
-			mes "您应该能够轻松找到它。";
-			mes "现在就去吧。";
+			mes "[������]";
+			mes "��Ӧ���ܹ������ҵ�����";
+			mes "���ھ�ȥ�ɡ�";
 			set job_3rd_gc, 3;
 			setquest 7101;
 			close;
 		case 2:
-			mes "[阿卡特]";
-			mes "你太谨慎了。";
-			mes "我感觉你不想为我们工作。";
+			mes "[������]";
+			mes "��̫�����ˡ�";
+			mes "�Ҹо��㲻��Ϊ���ǹ�����";
 			close;
 		}
 	} else if (job_3rd_gc == 3) {
-		mes "[阿卡特]";
-		mes "前往静脉并找到一章。";
-		mes "您可以从那里听到更多详细信息。";
+		mes "[������]";
+		mes "ǰ���������ҵ�һ�¡�";
+		mes "�����Դ���������������ϸ��Ϣ��";
 		close;
 	} else {
-		mes "[阿卡特]";
-		mes "祝你好运。";
+		mes "[������]";
+		mes "ף����ˡ�";
 		close;
 	}
 }
@@ -170,670 +172,670 @@ que_job01,75,96,3	script	Guild Member#3rdgc01	997,{
 function	script	func_3rdgc	{
 	set .@n$, "["+strcharinfo(0)+"]";
 	mes .@n$;
-	mes "让我收集所有信息...";
+	mes "�����ռ�������Ϣ...";
 	set .@i,0;
-	if (checkquest(7112) == 1) { mes "马德尔在深夜看到了一个看起来像雷切尔牧师的人。"; set .@i,.@i+1; }
-	if (checkquest(7113) == 1) { mes "Crave说有一个女孩没日没夜地买了很多东西。"; set .@i,.@i+1; }
-	if (checkquest(7114) == 1) { mes "特罗万说，有一个人经常被看见，但他不是酒店的客人，所以他很可疑。"; set .@i,.@i+1; }
+	if (checkquest(7112) == 1) { mes "���¶�����ҹ������һ�������������ж���ʦ���ˡ�"; set .@i,.@i+1; }
+	if (checkquest(7113) == 1) { mes "Crave˵��һ��Ů��û��ûҹ�����˺ܶණ����"; set .@i,.@i+1; }
+	if (checkquest(7114) == 1) { mes "������˵����һ���˾������������������ǾƵ�Ŀ��ˣ��������ܿ��ɡ�"; set .@i,.@i+1; }
 	if (!getarg(0)) {
 		set .@i,.@i-2;
-		if (checkquest(7115) == 1) { mes "一个小贩穿着破旧的衣服，但每天都买新鲜的、昂贵的东西。"; set .@i,.@i+1; }
-		if (checkquest(7116) == 1) { mes "村里的老人说，有一个女孩同时出现在同一个地方，所以可能搬到了这里。"; set .@i,.@i+1; }
+		if (checkquest(7115) == 1) { mes "һ��С�������ƾɵ��·�����ÿ�춼�����ʵġ�����Ķ�����"; set .@i,.@i+1; }
+		if (checkquest(7116) == 1) { mes "���������˵����һ��Ů��ͬʱ������ͬһ���ط������Կ��ܰᵽ�����"; set .@i,.@i+1; }
 	}
 	next;
 	if (.@i == 3) {
 		mes .@n$;
-		mes "有一天，马德尔看到一个看起来像雷切尔神父的人，";
-		mes "Trovan 很怀疑那个人为什么会在这里。";
+		mes "��һ�죬���¶�����һ�������������ж��񸸵��ˣ�";
+		mes "Trovan �ܻ����Ǹ���Ϊʲô�������";
 		next;
 		mes .@n$;
-		mes "但特罗万怀疑他们的原因是……";
+		mes "�������������ǵ�ԭ���ǡ���";
 		next;
-		switch(select("他们陌生：住所不明")) {
+		switch(select("����İ����ס������")) {
 		case 1:
 			mes .@n$;
-			mes "不，不是这个原因。守卫每天都会见到新的冒险者。";
-			mes "此外，马德尔告诉我这是一个男人，而克拉夫说这是一个女孩。";
-			mes "我很困惑。";
+			mes "�����������ԭ������ÿ�춼������µ�ð���ߡ�";
+			mes "���⣬���¶�����������һ�����ˣ���������˵����һ��Ů����";
+			mes "�Һ�����";
 			next;
 			mes .@n$;
-			mes "让我重新考虑一下这一点。";
+			mes "�������¿���һ����һ�㡣";
 			set job_3rd_gc, 7;
 			close;
 		case 2:
 			mes .@n$;
-			mes "是啊，冒险者经常来访，所以这并不是一个正当的理由。";
+			mes "�ǰ���ð���߾������ã������Ⲣ����һ�����������ɡ�";
 			next;
 			mes .@n$;
-			mes "特罗万怀疑的是，他的住所不明。但他经常出现并定期购买用品。";
+			mes "�������ɵ��ǣ�����ס�������������������ֲ����ڹ�����Ʒ��";
 			next;
 			mes .@n$;
-			mes "但克拉夫说那是个女孩。";
-			mes "马德尔说她目睹了一个男人。";
+			mes "��������˵���Ǹ�Ů����";
+			mes "���¶�˵��Ŀ����һ�����ˡ�";
 			next;
 			if (getarg(0)) {
-				if(select("马德尔见证了 2...：有超过 2...") == 1) {
+				if(select("���¶���֤�� 2...���г��� 2...") == 1) {
 					mes .@n$;
-					mes "马德尔说，她在黑暗中又看到了一个人。";
-					mes "那么送物资的是女孩子吗？";
+					mes "���¶�˵�����ںڰ����ֿ�����һ���ˡ�";
+					mes "��ô�����ʵ���Ů������";
 					next;
 				}
 			}
-			else select("它可以是一个帮手。");
+			else select("��������һ�����֡�");
 			mes .@n$;
-			mes "是的。可能还多了一名帮手。";
-			mes "她派了一个人代替她自己去买东西。";
-			mes "或者可能是马德尔看不到的同伴。";
+			mes "�ǵġ����ܻ�����һ�����֡�";
+			mes "������һ���˴������Լ�ȥ������";
+			mes "���߿��������¶���������ͬ�顣";
 			next;
 			mes .@n$;
-			mes "克拉夫说，她经常日夜来这里买东西。";
-			mes "然后我知道我必须做什么。";
+			mes "������˵����������ҹ������������";
+			mes "Ȼ����֪���ұ�����ʲô��";
 			set job_3rd_gc, 8;
 			close;
 		}
 	}
 	mes .@n$;
-	mes "嗯...";
-	mes "我需要更多信息吗？我认为还需要做更多的事情。";
+	mes "��...";
+	mes "����Ҫ������Ϣ������Ϊ����Ҫ����������顣";
 	close;
 }
 
 job3_guil01,82,95,3	script	Daora#3rdgc02	940,{
-	mes "[亲爱的]";
+	mes "[�װ���]";
 	if (Class == Job_Assassin || Class == Job_Assassin_Cross || Class == Job_Baby_Assassin) {
 		if (job_3rd_gc < 4) {
 			if (Sex == SEX_MALE) {
-				mes "哦~你长得真好看！";
-				mes "那么，你想要什么？";
+				mes "Ŷ~�㳤����ÿ���";
+				mes "��ô������Ҫʲô��";
 			} else {
-				mes "嗯，你是个女孩。";
-				mes "好吧，拿起你想要的任何东西。";
+				mes "�ţ����Ǹ�Ů����";
+				mes "�ðɣ���������Ҫ���κζ�����";
 			}
 			next;
-			mes "[亲爱的]";
-			mes "我不确定你是否已经知道，但我们正在销售特殊的摩洛哥酒。";
-			mes "您想要哪一款？";
+			mes "[�װ���]";
+			mes "�Ҳ�ȷ�����Ƿ��Ѿ�֪�����������������������Ħ���ơ�";
+			mes "����Ҫ��һ�";
 			next;
-			switch(select("热带索格拉特：海滩上的朱红：不，谢谢！：......")) {
+			switch(select("�ȴ��������أ���̲�ϵ���죺����лл����......")) {
 			case 1:
-				mes "[亲爱的]";
+				mes "[�װ���]";
 				if (Zeny > 799) {
-					mes "给你了，拿着吧。";
+					mes "�����ˣ����Űɡ�";
 					set Zeny, Zeny - 800;
 					getitem 12112,1; //Tropical_Sograt
 					close;
 				}
-				mes "每杯 Tropical Sograt 售价 800 zeny。";
+				mes "ÿ�� Tropical Sograt �ۼ� 800 zeny��";
 				close;
 			case 2:
-				mes "[亲爱的]";
+				mes "[�װ���]";
 				if (Zeny > 799) {
-					mes "给你了，拿着吧。";
+					mes "�����ˣ����Űɡ�";
 					set Zeny, Zeny - 800;
 					getitem 12113,1; //Vermilion_The_Beach
 					close;
 				}
-				mes "每杯 Vermilion on the Beach 售价 800 泽尼。";
+				mes "ÿ�� Vermilion on the Beach �ۼ� 800 ���ᡣ";
 				close;
 			case 3:
-				mes "[亲爱的]";
-				mes "别让我看到你的紧张！";
+				mes "[�װ���]";
+				mes "�����ҿ�����Ľ��ţ�";
 				specialeffect2 EF_HIT1;
 				percentheal -30,0;
 				close;
 			case 4:
-				mes "[亲爱的]";
-				mes "什么？你为什么这样看着我？";
-				mes "哦？你是这个世界的人。";
-				mes "你的名字是...";
+				mes "[�װ���]";
+				mes "ʲô����Ϊʲô���������ң�";
+				mes "Ŷ���������������ˡ�";
+				mes "���������...";
 				next;
 				mes "["+strcharinfo(0)+"]";
 				mes strcharinfo(0)+".";
 				next;
-				mes "[亲爱的]";
+				mes "[�װ���]";
 				if (job_3rd_gc == 3) {
-					mes "啊~我以前听说过你的名字。";
-					mes "嗯……对了！";
-					mes "您是 Ahcart 推荐的。";
+					mes "��~����ǰ��˵��������֡�";
+					mes "�š������ˣ�";
+					mes "���� Ahcart �Ƽ��ġ�";
 					next;
-					mes "[亲爱的]";
-					mes "是啊，你能在拐角处找到一个小巷的入口吗？";
-					mes "进去之后你就能听到更详细的故事。";
-					mes "接受这个特殊的任务吧~！";
+					mes "[�װ���]";
+					mes "�ǰ��������ڹսǴ��ҵ�һ��С��������";
+					mes "��ȥ֮���������������ϸ�Ĺ��¡�";
+					mes "�����������������~��";
 					set job_3rd_gc, 4;
 					changequest 7101,7102;
 					close;
 				}
-				mes "什么，我不知道这个名字。";
-				mes "嘿，我要去做生意，你能搬过去吗？";
+				mes "ʲô���Ҳ�֪��������֡�";
+				mes "�٣���Ҫȥ�����⣬���ܰ��ȥ��";
 				close;
 			}
 		} else if (job_3rd_gc == 4) {
-			mes "房间在角落里。请随意进入，因为无论如何都没有人进入那个房间。";
-			mes "或者你需要什么东西吗？";
+			mes "�����ڽ������������룬��Ϊ������ζ�û���˽����Ǹ����䡣";
+			mes "��������Ҫʲô������";
 			next;
-			mes "[亲爱的]";
-			mes "啊，我不会把酒卖给开始特殊任务的人。";
+			mes "[�װ���]";
+			mes "�����Ҳ���Ѿ�������ʼ����������ˡ�";
 			next;
-			switch(select("不卖酒...：我需要信息。：好吧，那么朋克！")) {
+			switch(select("������...������Ҫ��Ϣ�����ðɣ���ô��ˣ�")) {
 			case 1:
-				mes "[亲爱的]";
-				mes "嘿，你现在正在执行任务。";
-				mes "你还想让我卖酒给你？！";
-				mes "每个刺客都像你一样吗？懒惰的酒鬼？";
+				mes "[�װ���]";
+				mes "�٣�����������ִ������";
+				mes "�㻹���������Ƹ��㣿��";
+				mes "ÿ���̿Ͷ�����һ��������ľƹ���";
 				close;
 			case 2:
-				mes "[亲爱的]";
-				mes "你敢于在接受任务后索取信息。";
-				mes "你还没遇到高手吗？";
-				mes "就好像因为你问我才会告诉你一样！";
-				mes "你很幼稚。";
+				mes "[�װ���]";
+				mes "������ڽ����������ȡ��Ϣ��";
+				mes "�㻹û����������";
+				mes "�ͺ�����Ϊ�����ҲŻ������һ����";
+				mes "������ɡ�";
 				close;
 			case 3:
-				mes "[亲爱的]";
-				mes "别跟我说话，好像我是你的朋友一样！";
-				mes "你没有权利这样！";
+				mes "[�װ���]";
+				mes "�����˵�������������������һ����";
+				mes "��û��Ȩ��������";
 				specialeffect2 EF_HIT1;
 				percentheal -30,0;
 				close;
 			}
 		} else if (job_3rd_gc == 10) {
-			mes "哦~！对我有好处。";
-			mes "她是谁？";
-			mes "你告诉她我们会保护她？";
+			mes "Ŷ~�������кô���";
+			mes "����˭��";
+			mes "����������ǻᱣ������";
 			next;
-			select("是的，我做到了。");
-			mes "[亲爱的]";
-			mes "嗯，我明白了...";
-			mes "您的意见很重要。";
-			mes "我得到了它。";
+			select("�ǵģ��������ˡ�");
+			mes "[�װ���]";
+			mes "�ţ���������...";
+			mes "�����������Ҫ��";
+			mes "�ҵõ�������";
 			next;
-			mes "[亲爱的]";
-			mes "她好害怕，";
-			mes "所以我给了她一杯热饮";
-			mes "并带她去了她的房间。";
+			mes "[�װ���]";
+			mes "���ú��£�";
+			mes "�����Ҹ�����һ������";
+			mes "������ȥ�����ķ��䡣";
 			next;
-			mes "[亲爱的]";
-			mes "嗯……还有比这个房间更好的地方来监视她。";
+			mes "[�װ���]";
+			mes "�š������б����������õĵط�����������";
 			next;
-			select("不，我只是保护...");
-			mes "[亲爱的]";
-			mes "啊~无论如何你让我工作。";
-			mes "为了保护那个年轻的女孩。";
+			select("������ֻ�Ǳ���...");
+			mes "[�װ���]";
+			mes "��~������������ҹ�����";
+			mes "Ϊ�˱����Ǹ������Ů����";
 			next;
-			mes "[亲爱的]";
-			mes "梅谢尔告诉我，我必须支持你，所以我不会抱怨。";
+			mes "[�װ���]";
+			mes "÷л�������ң��ұ���֧���㣬�����Ҳ��ᱧԹ��";
 			next;
-			mes "[亲爱的]";
-			mes "所以，不用担心。";
-			mes "你应该在这里等她吗？";
-			mes "前进。";
+			mes "[�װ���]";
+			mes "���ԣ����õ��ġ�";
+			mes "��Ӧ�������������";
+			mes "ǰ����";
 			set job_3rd_gc, 11;
 			close;
 		} else if (job_3rd_gc == 11) {
-			mes "她在一个房间里。";
-			mes "主人房前的那个。";
-			mes "你能找到吗？";
+			mes "����һ�������";
+			mes "���˷�ǰ���Ǹ���";
+			mes "�����ҵ���";
 			close;
 		} else if (job_3rd_gc == 12) {
-			mes "那个女孩...";
-			mes "会被送到她家吗？";
-			mes "不用担心这个。";
+			mes "�Ǹ�Ů��...";
+			mes "�ᱻ�͵�������";
+			mes "���õ��������";
 			next;
-			mes "[亲爱的]";
-			mes "梅谢尔和其他人会处理这件事。";
+			mes "[�װ���]";
+			mes "÷л���������˻ᴦ������¡�";
 			close;
 		} else if (job_3rd_gc == 14) {
-			mes "哦，这是完美的时机。";
-			mes "梅谢尔会给你打电话。";
-			mes "去主人的房间。";
+			mes "Ŷ������������ʱ����";
+			mes "÷л��������绰��";
+			mes "ȥ���˵ķ��䡣";
 			close;
 		} else if (job_3rd_gc > 4 && job_3rd_gc < 18) {
-			mes "你需要什么？";
-			mes "我们不会向任何已经开始执行特殊任务的人出售产品。";
+			mes "����Ҫʲô��";
+			mes "���ǲ������κ��Ѿ���ʼִ������������˳��۲�Ʒ��";
 			next;
-			switch(select("....:给我一杯。:那你可以给牛奶吗？")) {
+			switch(select("....:����һ����:������Ը�ţ����")) {
 			case 1:
-				mes "[亲爱的]";
-				mes "为什么？你失望吗？";
-				mes "嗯~";
-				mes "我不能让值班的人喝酒。";
+				mes "[�װ���]";
+				mes "Ϊʲô����ʧ����";
+				mes "��~";
+				mes "�Ҳ�����ֵ����˺Ⱦơ�";
 				close;
 			case 2:
-				mes "[亲爱的]";
+				mes "[�װ���]";
 				if (job_3rd_gc == 5) {
-					mes "我告诉过你我不会卖给你任何东西。";
-					mes "空杯子不喝酒也可以。";
-					mes "我已经告诉过你了...";
+					mes "�Ҹ��߹����Ҳ����������κζ�����";
+					mes "�ձ��Ӳ��Ⱦ�Ҳ���ԡ�";
+					mes "���Ѿ����߹�����...";
 					next;
-					mes "[亲爱的]";
-					mes "我会把我知道的所有信息都告诉你。";
+					mes "[�װ���]";
+					mes "�һ����֪����������Ϣ�������㡣";
 					next;
-					mes "[亲爱的]";
-					mes "如果你需要的话，可以随时来找我，我会在你的任务完成后给你喝一杯。";
+					mes "[�װ���]";
+					mes "�������Ҫ�Ļ���������ʱ�����ң��һ������������ɺ�����һ����";
 					set job_3rd_gc, 6;
 					close;
 				} else if (job_3rd_gc == 6) {
 					if (checkquest(7091) == 1) {
-						mes "你希望玻璃里有东西吗？";
-						mes "信息不可能从空杯子里出来。";
+						mes "��ϣ���������ж�����";
+						mes "��Ϣ�����ܴӿձ����������";
 						close;
 					}
-					mes "你需要一杯吗？";
-					mes "梅谢尔的命令分散了你的注意力，所以你什么也听不懂。";
+					mes "����Ҫһ����";
+					mes "÷л���������ɢ�����ע������������ʲôҲ��������";
 					next;
-					mes "[亲爱的]";
-					mes "好吧，你想知道什么？";
-					mes "你希望玻璃里有东西吗？";
+					mes "[�װ���]";
+					mes "�ðɣ�����֪��ʲô��";
+					mes "��ϣ���������ж�����";
 					next;
-					switch(select("求助：自己处理。")) {
+					switch(select("�������Լ�������")) {
 					case 1:
-						mes "[亲爱的]";
-						mes "那么，就是杀了村里的一个奇怪的家伙？";
-						mes "你为何因此而痛苦？";
-						mes "嗯……让我看看……";
+						mes "[�װ���]";
+						mes "��ô������ɱ�˴����һ����ֵļһ";
+						mes "��Ϊ����˶�ʹ�ࣿ";
+						mes "�š������ҿ�������";
 						next;
-						mes "[亲爱的]";
-						mes "那么还需要跑腿吗？";
-						mes "这个村子里最热闹的地方是哪里？";
-						mes "酒吧和汽车旅馆。";
+						mes "[�װ���]";
+						mes "��ô����Ҫ������";
+						mes "��������������ֵĵط������";
+						mes "�ưɺ������ùݡ�";
 						next;
-						mes "[亲爱的]";
-						mes "村里的守卫总是留意着陌生的人。";
-						mes "或者老商人的视觉学习速度很快。";
+						mes "[�װ���]";
+						mes "�������������������İ�����ˡ�";
+						mes "���������˵��Ӿ�ѧϰ�ٶȺܿ졣";
 						next;
-						mes "[亲爱的]";
-						mes "我可以说特别是...";
-						mes "Trovan、交易员 Crave 和酒吧里的 Madelle 视觉学习速度很快。";
+						mes "[�װ���]";
+						mes "�ҿ���˵�ر���...";
+						mes "Trovan������Ա Crave �;ư���� Madelle �Ӿ�ѧϰ�ٶȺܿ졣";
 						next;
-						mes "[亲爱的]";
-						mes "这是个好信息，不是吗？";
+						mes "[�װ���]";
+						mes "���Ǹ�����Ϣ��������";
 						setquest 7091;
 						next;
-						mes "- Daora 的建议附在任务信息板上。 -";
+						mes "- Daora �Ľ��鸽��������Ϣ���ϡ� -";
 						close;
 					case 2:
-						mes "[亲爱的]";
-						mes "好的。这很棒。";
-						mes "每一句话、每一个行为都将成为事件的重要关键。";
-						mes "所以，仔细环顾四周并找出答案。";
+						mes "[�װ���]";
+						mes "�õġ���ܰ���";
+						mes "ÿһ�仰��ÿһ����Ϊ������Ϊ�¼�����Ҫ�ؼ���";
+						mes "���ԣ���ϸ�������ܲ��ҳ��𰸡�";
 						next;
-						mes "[亲爱的]";
-						mes "会有好事发生。";
+						mes "[�װ���]";
+						mes "���к��·�����";
 						close;
 					}
 				} else if (job_3rd_gc == 7) {
-					mes "你似乎很担心。";
-					mes "这里，是冷水。";
-					mes "你用冷水思考一下。";
+					mes "���ƺ��ܵ��ġ�";
+					mes "�������ˮ��";
+					mes "������ˮ˼��һ�¡�";
 					next;
-					switch(select("根据信息推测：停止舞台。")) {
+					switch(select("������Ϣ�Ʋ⣺ֹͣ��̨��")) {
 					case 1:
 						if (checkquest(7091) == 1) set .@j,1;
 						callfunc "func_3rdgc",.@j;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				} else if (job_3rd_gc == 8) {
 					if (checkquest(7092) == 1) {
-						mes "在她经常出现的小巷里等待，你就可以追问问题了。";
+						mes "�����������ֵ�С����ȴ�����Ϳ���׷�������ˡ�";
 						next;
-						mes "[亲爱的]";
-						mes "尝试不会有什么坏处。";
-						mes "要想找到根，就必须先找到叶子。";
-						mes "努力工作。";
+						mes "[�װ���]";
+						mes "���Բ�����ʲô������";
+						mes "Ҫ���ҵ������ͱ������ҵ�Ҷ�ӡ�";
+						mes "Ŭ��������";
 						close;
 					}
-					mes "你解决了吗？";
-					mes "你会怎么做？";
+					mes "��������";
+					mes "�����ô����";
 					next;
-					switch(select("获得建议：这是一个秘密。")) {
+					switch(select("��ý��飺����һ�����ܡ�")) {
 					case 1:
-						mes "[亲爱的]";
-						mes "您能告诉我您收集的信息吗？";
+						mes "[�װ���]";
+						mes "���ܸ��������ռ�����Ϣ��";
 						next;
-						if(select("你跟他谈心：那不可能。") == 2) {
-							mes "[亲爱的]";
-							mes "怎么，我不能好好支持你吗？";
-							mes "你自己解决吧。";
+						if(select("�����̸�ģ��ǲ����ܡ�") == 2) {
+							mes "[�װ���]";
+							mes "��ô���Ҳ��ܺú�֧������";
+							mes "���Լ�����ɡ�";
 							close;
 						}
-						mes "[亲爱的]";
-						mes "哼。知道了。";
+						mes "[�װ���]";
+						mes "�ߡ�֪���ˡ�";
 						next;
-						mes "[亲爱的]";
-						mes "有一个看起来像牧师的家伙，特罗万和马德尔看到了他。";
-						mes "一个商人看到一个经常买东西的女孩。";
+						mes "[�װ���]";
+						mes "��һ������������ʦ�ļһ����������¶�����������";
+						mes "һ�����˿���һ������������Ů����";
 						next;
-						mes "[亲爱的]";
-						mes "主要目标是一个男人，";
-						mes "但帮手是个女孩。";
-						mes "或许。";
+						mes "[�װ���]";
+						mes "��ҪĿ����һ�����ˣ�";
+						mes "�������Ǹ�Ů����";
+						mes "������";
 						next;
-						mes "[亲爱的]";
-						mes "首先，";
-						mes "这真的很让你感动。";
+						mes "[�װ���]";
+						mes "���ȣ�";
+						mes "����ĺ�����ж���";
 						next;
-						mes "[亲爱的]";
-						mes "那么就简单了。";
-						mes "你为什么不在她经常去的地方见她呢？";
+						mes "[�װ���]";
+						mes "��ô�ͼ��ˡ�";
+						mes "��Ϊʲô����������ȥ�ĵط������أ�";
 						next;
-						mes "[亲爱的]";
-						mes "这是职责的短暂性。";
-						mes "你不知道一块拼图的含义。";
+						mes "[�װ���]";
+						mes "����ְ��Ķ����ԡ�";
+						mes "�㲻֪��һ��ƴͼ�ĺ��塣";
 						next;
-						mes "[亲爱的]";
-						mes "他们可以是相关的人，也可以不是。";
-						mes "好的，我会非常注意我的需求。";
+						mes "[�װ���]";
+						mes "���ǿ�������ص��ˣ�Ҳ���Բ��ǡ�";
+						mes "�õģ��һ�ǳ�ע���ҵ�����";
 						next;
-						mes "[亲爱的]";
-						mes "对吧~？";
-						mes "走到一个可以俯瞰村庄井的地方并找到梅丽莎。";
-						mes "这会有帮助的。";
+						mes "[�װ���]";
+						mes "�԰�~��";
+						mes "�ߵ�һ�����Ը��ׯ���ĵط����ҵ�÷��ɯ��";
+						mes "����а����ġ�";
 						next;
-						mes "- 道拉的建议附在任务板上。 -";
+						mes "- �����Ľ��鸽��������ϡ� -";
 						setquest 7092;
 						close;
 					case 2:
-						mes "[亲爱的]";
-						mes "嗯~。";
-						mes "正确的。有一个秘密";
-						mes "您在执行任务时不能告诉任何人。";
+						mes "[�װ���]";
+						mes "��~��";
+						mes "��ȷ�ġ���һ������";
+						mes "����ִ������ʱ���ܸ����κ��ˡ�";
 						next;
-						mes "[亲爱的]";
-						mes "在这些方面，你超越了标准。";
+						mes "[�װ���]";
+						mes "����Щ���棬�㳬Խ�˱�׼��";
 						close;
 					}
 				} else if (job_3rd_gc == 9) {
 					if (checkquest(7093) == 1) {
-						mes "于是，走到村子的东边，你就可以看到一条通向北方的狭窄小巷。";
+						mes "���ǣ��ߵ����ӵĶ��ߣ���Ϳ��Կ���һ��ͨ�򱱷�����խС�";
 						next;
-						mes "[亲爱的]";
-						mes "梅丽莎所说的死胡同就是指这条街。";
-						mes "你像个孩子一样思考。";
+						mes "[�װ���]";
+						mes "÷��ɯ��˵������ͬ����ָ�����֡�";
+						mes "���������һ��˼����";
 						close;
 					}
-					mes "哈哈……怎么样？";
+					mes "����������ô����";
 					next;
-					switch(select("死胡同在哪里？：没关系。")) {
+					switch(select("����ͬ�������û��ϵ��")) {
 					case 1:
-						mes "[亲爱的]";
-						mes "死胡同？";
-						mes "嗯……好吧。";
-						mes "有像我们酒吧一样的死胡同吗？";
+						mes "[�װ���]";
+						mes "����ͬ��";
+						mes "�š����ðɡ�";
+						mes "�������Ǿư�һ��������ͬ��";
 						next;
-						mes "[亲爱的]";
-						mes "啊，在东北胡同里";
-						mes "指向村庄的上方，";
-						mes "没有街道，因为";
-						mes "那个地区的房子挨得很近。";
+						mes "[�װ���]";
+						mes "�����ڶ�����ͬ��";
+						mes "ָ���ׯ���Ϸ���";
+						mes "û�нֵ�����Ϊ";
+						mes "�Ǹ������ķ��Ӱ��úܽ���";
 						next;
-						mes "[亲爱的]";
-						mes "在梅丽莎家周围，";
-						mes "那是死胡同";
-						mes "对于男孩来说，也许吧。";
+						mes "[�װ���]";
+						mes "��÷��ɯ����Χ��";
+						mes "��������ͬ";
+						mes "�����к���˵��Ҳ���ɡ�";
 						next;
-						mes "[亲爱的]";
-						mes "在村子里走一圈很容易找到。";
+						mes "[�װ���]";
+						mes "�ڴ�������һȦ�������ҵ���";
 						setquest 7093;
 						next;
-						mes "- 道拉的建议附在任务板上。 -";
+						mes "- �����Ľ��鸽��������ϡ� -";
 						close;
 					case 2:
-						mes "[亲爱的]";
-						mes "好的。进展顺利。";
-						mes "我能期待一个好的结果吗？";
+						mes "[�װ���]";
+						mes "�õġ���չ˳����";
+						mes "�����ڴ�һ���õĽ����";
 						close;
 					}
 				} else if (job_3rd_gc == 13) {
-					mes "我派了一个名叫艾斯蒂尔达的女孩到她家。";
-					mes "我们为什么要处理这样毫无价值的事情呢？";
+					mes "������һ�����а�˹�ٶ����Ů�������ҡ�";
+					mes "����ΪʲôҪ�����������޼�ֵ�������أ�";
 					next;
 					if (checkquest(7094) == 1) {
-						mes "[亲爱的]";
-						mes "我不确定他是否还活着...";
-						mes "不管怎样，他是雷切尔的关键工匠，";
-						mes "并且可以识别各种按键。";
+						mes "[�װ���]";
+						mes "�Ҳ�ȷ�����Ƿ񻹻���...";
+						mes "�����������������ж��Ĺؼ�������";
+						mes "���ҿ���ʶ����ְ�����";
 						next;
-						mes "[亲爱的]";
-						mes "什么？住宅？";
-						mes "我告诉过你了，这是雷切尔。";
-						mes "他也许会在雷切尔的余生中过着舒适的生活。";
+						mes "[�װ���]";
+						mes "ʲô��סլ��";
+						mes "�Ҹ��߹����ˣ��������ж���";
+						mes "��Ҳ���������ж��������й������ʵ����";
 						next;
-						mes "[亲爱的]";
-						mes "去雷切尔的一家酒吧里问问...";
+						mes "[�װ���]";
+						mes "ȥ���ж���һ�Ҿư�������...";
 						close;
 					}
-					mes "[亲爱的]";
-					mes "是啊，怎么样？";
+					mes "[�װ���]";
+					mes "�ǰ�����ô����";
 					next;
-					switch(select("进展顺利。：显示密钥。")) {
+					switch(select("��չ˳��������ʾ��Կ��")) {
 					case 1:
-						mes "[亲爱的]";
-						mes "我的玻璃杯，你不需要吗？";
+						mes "[�װ���]";
+						mes "�ҵĲ��������㲻��Ҫ��";
 						next;
 						mes "["+strcharinfo(0)+"]";
-						mes "是的。我已经有足够的信息了。";
-						mes "如果这件事背后有一个很长的故事，";
-						mes "我们只有一种方法。";
+						mes "�ǵġ����Ѿ����㹻����Ϣ�ˡ�";
+						mes "�������±�����һ���ܳ��Ĺ��£�";
+						mes "����ֻ��һ�ַ�����";
 						next;
-						mes "[亲爱的]";
-						mes "正确的。";
-						mes "如果你仔细想一想，";
-						mes "你可以找到办法。";
+						mes "[�װ���]";
+						mes "��ȷ�ġ�";
+						mes "�������ϸ��һ�룬";
+						mes "������ҵ��취��";
 						next;
-						mes "[亲爱的]";
-						mes "祝你好运~";
+						mes "[�װ���]";
+						mes "ף�����~";
 						close;
 					case 2:
-						mes "[亲爱的]";
-						mes "这是什么——";
-						mes "原来如此，那个人有这把钥匙吗……？";
+						mes "[�װ���]";
+						mes "����ʲô����";
+						mes "ԭ����ˣ��Ǹ��������Կ���𡭡���";
 						next;
-						mes "[亲爱的]";
-						mes "这是神社的象征";
-						mes "并且有华丽的图案。";
-						mes "唔...";
+						mes "[�װ���]";
+						mes "�������������";
+						mes "�����л�����ͼ����";
+						mes "��...";
 						next;
-						mes "[亲爱的]";
-						mes "那么，你想知道这把钥匙的用途吗？";
-						mes "如果你这样做，就去找雷切尔。";
-						mes "那里有一位重要的工匠。";
+						mes "[�װ���]";
+						mes "��ô������֪�����Կ�׵���;��";
+						mes "���������������ȥ�����ж���";
+						mes "������һλ��Ҫ�Ĺ�����";
 						next;
-						mes "[亲爱的]";
-						mes "现在，他已经退休了，但他";
-						mes "平静地度过晚年。";
-						mes "你可以自己去问他。";
+						mes "[�װ���]";
+						mes "���ڣ����Ѿ������ˣ�����";
+						mes "ƽ���ضȹ����ꡣ";
+						mes "������Լ�ȥ������";
 						next;
-						mes "[亲爱的]";
-						mes "请问这个钥匙有什么用。";
+						mes "[�װ���]";
+						mes "�������Կ����ʲô�á�";
 						setquest 7094;
 						next;
-						mes "- Daora 的建议附在任务板上。 -";
+						mes "- Daora �Ľ��鸽��������ϡ� -";
 						close;
 					}
 				} else if (job_3rd_gc == 15) {
 					if (checkquest(7095) == 1) {
-						mes "矿脉西北部的田地。";
-						mes "您可以通过地图轻松找到它。";
-						mes "狼很多，要小心。";
+						mes "��������������ء�";
+						mes "������ͨ����ͼ�����ҵ�����";
+						mes "�Ǻܶ࣬ҪС�ġ�";
 						close;
 					}
-					mes "嘿，梅谢尔怎么样？";
-					mes "你能改掉不舒服的说话方式吗？";
+					mes "�٣�÷л����ô����";
+					mes "���ܸĵ��������˵����ʽ��";
 					next;
-					mes "[亲爱的]";
-					mes "不要假装自己是贵妇。";
+					mes "[�װ���]";
+					mes "��Ҫ��װ�Լ��ǹ󸾡�";
 					next;
-					switch(select("我要走了：你知道维因斯附近有一座豪宅吗？")) {
+					switch(select("��Ҫ���ˣ���֪��ά��˹������һ����լ��")) {
 					case 1:
-						mes "[亲爱的]";
-						mes "好的。";
-						mes "不要被不明智的勇敢冲昏了头脑。";
-						mes "嗯……也很难被杀死。";
+						mes "[�װ���]";
+						mes "�õġ�";
+						mes "��Ҫ�������ǵ��¸ҳ����ͷ�ԡ�";
+						mes "�š���Ҳ���ѱ�ɱ����";
 						close;
 					case 2:
-						mes "[亲爱的]";
-						mes "是的，当然。";
-						mes "沟壑之间有一座宅邸。";
-						mes "非常阴暗。";
-						mes "我不明白他的品味。";
+						mes "[�װ���]";
+						mes "�ǵģ���Ȼ��";
+						mes "����֮����һ��լۡ��";
+						mes "�ǳ�������";
+						mes "�Ҳ���������Ʒζ��";
 						next;
-						mes "[亲爱的]";
-						mes "那座豪宅建在峡谷后面......";
-						mes "总是像夜晚一样漆黑。";
+						mes "[�װ���]";
+						mes "������լ����Ͽ�Ⱥ���......";
+						mes "������ҹ��һ����ڡ�";
 						next;
-						mes "[亲爱的]";
-						mes "地点？";
-						mes "出色地...";
-						mes "位于矿脉西北区域。";
-						mes "你可以穿过一条狭窄的道路向东北方向走。";
+						mes "[�װ���]";
+						mes "�ص㣿";
+						mes "��ɫ��...";
+						mes "λ�ڿ�����������";
+						mes "����Դ���һ����խ�ĵ�·�򶫱������ߡ�";
 						setquest 7095;
 						next;
-						mes "- 道拉的建议附在任务板上。 -";
+						mes "- �����Ľ��鸽��������ϡ� -";
 						next;
-						mes "[亲爱的]";
-						mes "那个地方有很多可怕的狼，要小心。";
+						mes "[�װ���]";
+						mes "�Ǹ��ط��кܶ���µ��ǣ�ҪС�ġ�";
 						close;
 					}
 				} else {
-					mes "不，这不再好笑了。";
+					mes "�����ⲻ�ٺ�Ц�ˡ�";
 					close;
 				}
 			case 3:
-				mes "[亲爱的]";
-				mes "我们的牛奶好贵啊！";
-				mes "给我 500 泽尼一杯。";
+				mes "[�װ���]";
+				mes "���ǵ�ţ�̺ù󰡣�";
+				mes "���� 500 ����һ����";
 				next;
-				switch(select("没关系。给我一杯牛奶：你是一个无耻的强盗！")) {
+				switch(select("û��ϵ������һ��ţ�̣�����һ���޳ܵ�ǿ����")) {
 				case 1:
-					mes "[亲爱的]";
+					mes "[�װ���]";
 					if (Zeny > 499) {
-						mes "给你。牛奶。";
-						mes "然后休息一下。";
+						mes "���㡣ţ�̡�";
+						mes "Ȼ����Ϣһ�¡�";
 						set Zeny, Zeny - 500;
 						getitem 519,1; //Milk
 						close;
 					}
-					mes "我告诉过你了，这是 500 zeny。";
-					mes "一个穷人。你只有一个好身材！";
+					mes "�Ҹ��߹����ˣ����� 500 zeny��";
+					mes "һ�����ˡ���ֻ��һ�������ģ�";
 					close;
 				case 2:
-					mes "[亲爱的]";
-					mes "一个无礼的家伙！";
+					mes "[�װ���]";
+					mes "һ������ļһ";
 					specialeffect2 EF_HIT1;
 					percentheal -30,0;
 					close;
 				}
 			}
 		} else {
-			mes "你已经完美地完成了任务。";
-			mes "你现在需要什么？";
-			mes "您还需要其他东西吗？";
+			mes "���Ѿ����������������";
+			mes "��������Ҫʲô��";
+			mes "������Ҫ����������";
 			next;
-			mes "[亲爱的]";
-			mes "如果您决定了一种步行方式，那么就该重新开始了。";
-			mes "每个人都在等你。";
+			mes "[�װ���]";
+			mes "�����������һ�ֲ��з�ʽ����ô�͸����¿�ʼ�ˡ�";
+			mes "ÿ���˶��ڵ��㡣";
 			close;
 		}
 	} else if (Class == Job_Guillotine_Cross || Class == Job_Guillotine_Cross_T || Class == Job_Baby_Guillotine_Cross) {
 		if (Sex == SEX_MALE) {
-			mes "哦~你长得好看~！";
-			mes "开个酒吧还是值得的~";
-			mes "每当看到你这样的人，我就能感受到自己的劳动成果~";
+			mes "Ŷ~�㳤�úÿ�~��";
+			mes "�����ưɻ���ֵ�õ�~";
+			mes "ÿ���������������ˣ��Ҿ��ܸ��ܵ��Լ����Ͷ��ɹ�~";
 		} else {
-			mes "嗯……你看起来和我年轻时一样好。";
-			mes "你想要什么？";
+			mes "�š����㿴������������ʱһ���á�";
+			mes "����Ҫʲô��";
 		}
 		next;
-		switch(select("热带索格拉特：海滩上的朱红：牛奶")) {
+		switch(select("�ȴ��������أ���̲�ϵ���죺ţ��")) {
 		case 1:
-			mes "[亲爱的]";
+			mes "[�װ���]";
 			if (Zeny > 799) {
-				mes "给你了，拿着吧。";
+				mes "�����ˣ����Űɡ�";
 				set Zeny, Zeny - 800;
 				getitem 12112,1; //Tropical_Sograt
 				close;
 			}
-			mes "每 1 杯 Tropical Sograt 售价 800 Zeny。";
+			mes "ÿ 1 �� Tropical Sograt �ۼ� 800 Zeny��";
 			close;
 		case 2:
-			mes "[亲爱的]";
+			mes "[�װ���]";
 			if (Zeny > 799) {
-				mes "给你了，拿着吧。";
+				mes "�����ˣ����Űɡ�";
 				set Zeny, Zeny - 800;
 				getitem 12113,1; //Vermilion_The_Beach
 				close;
 			}
-			mes "[亲爱的]";
-			mes "每 1 杯 Vermilion on the Beach 售价 800 泽尼。";
+			mes "[�װ���]";
+			mes "ÿ 1 �� Vermilion on the Beach �ۼ� 800 ���ᡣ";
 			close;
 		case 3:
-			mes "[亲爱的]";
+			mes "[�װ���]";
 			if (Sex == SEX_MALE) {
-				mes "呃……嗯……";
-				mes "这是一个复杂的顺序。但我别无选择，因为你想要它。";
+				mes "�������š���";
+				mes "����һ�����ӵ�˳�򡣵��ұ���ѡ����Ϊ����Ҫ����";
 				next;
-				mes "[亲爱的]";
+				mes "[�װ���]";
 				if (Zeny > 499) {
-					mes "我很遗憾每瓶要 500 zeny，但我必须这样做。";
-					mes "在静脉中获得牛奶非常困难。";
+					mes "�Һ��ź�ÿƿҪ 500 zeny�����ұ�����������";
+					mes "�ھ����л��ţ�̷ǳ����ѡ�";
 					set Zeny, Zeny - 500;
 					getitem 519,1; //Milk
 					close;
 				}
-				mes "嗯...我想我帮不了你。";
-				mes "静脉中没有牛奶。";
+				mes "��...�����Ұﲻ���㡣";
+				mes "������û��ţ�̡�";
 				close;
 			} else {
-				mes "啊，牛奶。";
-				mes "呼！牛奶！";
+				mes "����ţ�̡�";
+				mes "����ţ�̣�";
 				next;
-				mes "[亲爱的]";
-				mes "我没有那样的东西。";
+				mes "[�װ���]";
+				mes "��û�������Ķ�����";
 				close;
 			}
 		}
 	} else {
 		if (Sex == SEX_MALE) {
-			mes "哦~你长得真好看！";
-			mes "那么，你想要什么？";
+			mes "Ŷ~�㳤����ÿ���";
+			mes "��ô������Ҫʲô��";
 		}
 		else {
-			mes "嗯……你是个女孩。";
-			mes "好吧，拿起你想要的任何东西。";
+			mes "�š������Ǹ�Ů����";
+			mes "�ðɣ���������Ҫ���κζ�����";
 		}
 		next;
-		mes "[亲爱的]";
-		mes "我不知道你是否已经知道，但我们正在销售摩洛哥特产的酒。";
-		mes "您想要哪一款？";
+		mes "[�װ���]";
+		mes "�Ҳ�֪�����Ƿ��Ѿ�֪������������������Ħ����ز��ľơ�";
+		mes "����Ҫ��һ�";
 		next;
-		switch(select("热带索格拉特：朱红海滩：不，谢谢！")) {
+		switch(select("�ȴ��������أ���캣̲������лл��")) {
 		case 1:
-			mes "[亲爱的]";
+			mes "[�װ���]";
 			if (Zeny > 999) {
-				mes "给你了，拿着吧。";
+				mes "�����ˣ����Űɡ�";
 				set Zeny, Zeny - 1000;
 				getitem 12112,1; //Tropical_Sograt
 				close;
 			}
-			mes "每杯 Tropical Sograt 售价 1000 zeny。";
+			mes "ÿ�� Tropical Sograt �ۼ� 1000 zeny��";
 			close;
 		case 2:
-			mes "[亲爱的]";
+			mes "[�װ���]";
 			if (Zeny > 999) {
-				mes "给你了，拿着吧。";
+				mes "�����ˣ����Űɡ�";
 				set Zeny, Zeny - 1000;
 				getitem 12113,1; //Vermilion_The_Beach
 				close;
 			}
-			mes "每杯 Vermilion on the Beach 售价 1000 泽尼。";
+			mes "ÿ�� Vermilion on the Beach �ۼ� 1000 ���ᡣ";
 			close;
 		case 3:
-			mes "[亲爱的]";
-			mes "别让我看到你的紧张！";
+			mes "[�װ���]";
+			mes "�����ҿ�����Ľ��ţ�";
 			specialeffect2 EF_HIT1;
 			percentheal -30,0;
 			close;
@@ -843,211 +845,211 @@ job3_guil01,82,95,3	script	Daora#3rdgc02	940,{
 
 job3_guil01,16,20,4	script	Mayshell#3rdgc03	894,{
 	if (!checkweight(1201,2)) {
-		mes "- 你无法继续这个任务，因为你的物品太多。 -";
+		mes "- ���޷��������������Ϊ�����Ʒ̫�ࡣ -";
 		close;
 	}
-	mes "[梅壳]";
+	mes "[÷��]";
 	if (job_3rd_gc == 4) {
-		mes "你是阿卡特派来的？";
-		mes "我会给你一个任务，不再问任何问题。";
-		mes "好吧，仔细听。";
+		mes "���ǰ����������ģ�";
+		mes "�һ����һ�����񣬲������κ����⡣";
+		mes "�ðɣ���ϸ����";
 		next;
-		mes "[梅壳]";
-		mes "我们正在追捕一个试图解散组织的人。";
-		mes "我们得到了一个看起来像镇领导的人的信息。";
+		mes "[÷��]";
+		mes "��������׷��һ����ͼ��ɢ��֯���ˡ�";
+		mes "���ǵõ���һ�������������쵼���˵���Ϣ��";
 		next;
-		mes "[梅壳]";
-		mes "你的任务是在阴影的掩护下惩罚他。";
+		mes "[÷��]";
+		mes "�������������Ӱ���ڻ��³ͷ�����";
 		next;
-		mes "[梅壳]";
-		mes "我们的目标不应该向任何人透露。";
-		mes "你的记忆应该消失在阴影中。";
-		mes "保持谨慎并避免观察。";
+		mes "[÷��]";
+		mes "���ǵ�Ŀ�겻Ӧ�����κ���͸¶��";
+		mes "��ļ���Ӧ����ʧ����Ӱ�С�";
+		mes "���ֽ���������۲졣";
 		next;
-		select("好吧...：所以任务是...？");
-		mes "[梅壳]";
-		mes "他长什么样？";
-		mes "你怎么认出他？";
-		mes "我不能告诉你。";
-		mes "这有待你去发现。";
+		select("�ð�...������������...��");
+		mes "[÷��]";
+		mes "����ʲô����";
+		mes "����ô�ϳ�����";
+		mes "�Ҳ��ܸ����㡣";
+		mes "���д���ȥ���֡�";
 		next;
-		mes "[梅壳]";
-		mes "您将需要一个指南针。";
-		mes "你需要一盏灯和一盏灯才能在黑暗中看到东西。";
+		mes "[÷��]";
+		mes "������Ҫһ��ָ���롣";
+		mes "����Ҫһյ�ƺ�һյ�Ʋ����ںڰ��п���������";
 		next;
-		mes "[梅壳]";
-		mes "到时候，你就可以喝点东西，休息一下了。";
+		mes "[÷��]";
+		mes "��ʱ����Ϳ��Ժȵ㶫������Ϣһ���ˡ�";
 		next;
-		mes "[梅壳]";
-		mes "克服逆境。";
-		mes "由你来判断。";
-		mes "我们帮不了你，所以你必须自己想办法。";
+		mes "[÷��]";
+		mes "�˷��澳��";
+		mes "�������жϡ�";
+		mes "���ǰﲻ���㣬����������Լ���취��";
 		next;
-		mes "[梅壳]";
-		mes "我们在这个村子里看到了一个陌生人，我们非常确定他就是我们要找的人。";
+		mes "[÷��]";
+		mes "��������������￴����һ��İ���ˣ����Ƿǳ�ȷ������������Ҫ�ҵ��ˡ�";
 		next;
-		mes "[梅壳]";
+		mes "[÷��]";
 		mes strcharinfo(0)+".";
-		mes "时间不等你。";
-		mes "前进。用代表坚忍生活的刀刃洒血。";
+		mes "ʱ�䲻���㡣";
+		mes "ǰ�����ô�����������ĵ�����Ѫ��";
 		set job_3rd_gc, 5;
 		changequest 7102,7103;
 		close;
 	} else if (job_3rd_gc == 5) {
-		mes "您已经收到订单了。";
-		mes "尽管你没有任何证据，但我相信你会做得很好。";
+		mes "���Ѿ��յ������ˡ�";
+		mes "������û���κ�֤�ݣ���������������úܺá�";
 		next;
-		mes "[梅壳]";
-		mes "这是对你的考验。";
-		mes "让我看看，"+strcharinfo(0)+"...";
-		mes "出去先想想你要做什么。";
+		mes "[÷��]";
+		mes "���Ƕ���Ŀ��顣";
+		mes "���ҿ�����"+strcharinfo(0)+"...";
+		mes "��ȥ��������Ҫ��ʲô��";
 		next;
-		mes "[梅壳]";
-		mes "你的任务是寻找一个陌生人。";
+		mes "[÷��]";
+		mes "���������Ѱ��һ��İ���ˡ�";
 		next;
-		mes "[梅壳]";
-		mes "出去努力寻找。";
-		mes "我允许你喝点水。";
+		mes "[÷��]";
+		mes "��ȥŬ��Ѱ�ҡ�";
+		mes "��������ȵ�ˮ��";
 		next;
-		mes "[梅壳]";
-		mes "在开始之前先认识一下 Daora。";
-		mes "她可能对你有帮助。";
+		mes "[÷��]";
+		mes "�ڿ�ʼ֮ǰ����ʶһ�� Daora��";
+		mes "�����ܶ����а�����";
 		close;
 	} else if (job_3rd_gc == 14) {
-		mes "欢迎。";
-		mes "你今天过得怎么样？";
-		mes "我听说了你的活动。";
+		mes "��ӭ��";
+		mes "����������ô����";
+		mes "����˵����Ļ��";
 		next;
-		mes "[梅壳]";
-		mes "你找到钥匙了，对吧？";
-		mes "呼呼。我有我的方法来找出答案。";
+		mes "[÷��]";
+		mes "���ҵ�Կ���ˣ��԰ɣ�";
+		mes "�����������ҵķ������ҳ��𰸡�";
 		next;
-		mes "[梅壳]";
-		mes "你能告诉我钥匙吗？";
-		mes "我要检查一下是否";
-		mes "你有能力还是没有能力...";
+		mes "[÷��]";
+		mes "���ܸ�����Կ����";
+		mes "��Ҫ���һ���Ƿ�";
+		mes "������������û������...";
 		next;
-		select("给他一把钥匙。");
-		mes "[梅壳]";
+		select("����һ��Կ�ס�");
+		mes "[÷��]";
 		if (countitem(6150) == 0) {
-			mes "你没带钥匙吗？";
-			mes "我会遇到很多麻烦。";
+			mes "��û��Կ����";
+			mes "�һ������ܶ��鷳��";
 			close;
 		}
-		mes "没想到你在没有明确目标的情况下就成功了……";
-		mes "你是一个比我想象的更有能力的人。";
+		mes "û�뵽����û����ȷĿ�������¾ͳɹ��ˡ���";
+		mes "����һ����������ĸ����������ˡ�";
 		next;
-		mes "[梅壳]";
-		mes "我认为你找到了我们正在寻找的目标。";
-		mes "然后找到密钥的主机后进行处理。";
+		mes "[÷��]";
+		mes "����Ϊ���ҵ�����������Ѱ�ҵ�Ŀ�ꡣ";
+		mes "Ȼ���ҵ���Կ����������д�����";
 		next;
-		mes "[梅壳]";
-		mes "然后就结束了。";
-		mes "但你必须自己找到密钥的主机。";
+		mes "[÷��]";
+		mes "Ȼ��ͽ����ˡ�";
+		mes "��������Լ��ҵ���Կ��������";
 		next;
-		mes "[梅壳]";
-		mes "当你找到豪宅时，会有一个人在等你。";
+		mes "[÷��]";
+		mes "�����ҵ���լʱ������һ�����ڵ��㡣";
 		next;
-		mes "[梅壳]";
-		mes "这是最后一步。";
-		mes "不要犯任何错误。";
+		mes "[÷��]";
+		mes "�������һ����";
+		mes "��Ҫ���κδ���";
 		delitem 6150,1; //Key_Of_The_Mansion
 		set job_3rd_gc, 15;
 		changequest 7108,7109;
 		close;
 	} else if (job_3rd_gc == 15) {
-		mes "好吧，你有事要做吗？";
-		mes "如果你迟到了，伦扎克可能会生气。";
+		mes "�ðɣ�������Ҫ����";
+		mes "�����ٵ��ˣ������˿��ܻ�������";
 		close;
 	} else if (job_3rd_gc == 18 || job_3rd_gc == 19) {
-		mes "我已经收到了伦扎克的报告。";
+		mes "���Ѿ��յ��������˵ı��档";
 		if (job_3rd_gc == 18) {
-			mes "你很快就完成了任务。";
-			mes "那太棒了。";
+			mes "��ܿ�����������";
+			mes "��̫���ˡ�";
 		} else {
-			mes "我很高兴见到你。";
-			mes "但速度对我们来说非常重要。";
+			mes "�Һܸ��˼����㡣";
+			mes "���ٶȶ�������˵�ǳ���Ҫ��";
 			next;
-			mes "[梅壳]";
-			mes "你没有准时...";
-			mes "至少你活着回来了。";
+			mes "[÷��]";
+			mes "��û��׼ʱ...";
+			mes "��������Ż����ˡ�";
 		}
 		next;
 		set .@all_wine,0;
 		for(set .@i,0; .@i<5; set .@i,.@i+1)
 			if (checkquest(7091+.@i) == 1) set .@all_wine, .@all_wine+1;
-		mes "[梅壳]";
+		mes "[÷��]";
 		if (.@all_wine < 2) {
-			mes "你自己完成了这项工作";
-			mes "即使没有任何";
-			mes "有关它的信息以及您";
-			mes "收集了它。";
+			mes "���Լ�����������";
+			mes "��ʹû���κ�";
+			mes "�й�������Ϣ�Լ���";
+			mes "�ռ�������";
 			next;
-			mes "[梅壳]";
-			mes "您符合所有条件";
-			mes "及时、耐心。";
+			mes "[÷��]";
+			mes "��������������";
+			mes "��ʱ�����ġ�";
 			next;
-			mes "[梅壳]";
+			mes "[÷��]";
 			if (job_3rd_gc == 18) {
-				mes "您的任务评估是...[S]。";
-				mes "[S] 表示“特殊”。";
+				mes "��������������...[S]��";
+				mes "[S] ��ʾ�����⡱��";
 				set .@quest,7099;
 			} else {
-				mes "您的任务评估是...[A]。";
-				mes "如果你准时的话，你会得到更高的分数。";
+				mes "��������������...[A]��";
+				mes "�����׼ʱ�Ļ������õ����ߵķ�����";
 				set .@quest,7096;
 			}
 			next;
 		} else {
-			mes "你充分利用了道拉的建议。";
-			mes "但是，我不是提到了吗？";
+			mes "���������˵����Ľ��顣";
+			mes "���ǣ��Ҳ����ᵽ����";
 			next;
-			mes "[梅壳]";
-			mes "我告诉过你要保守秘密...";
-			mes "当然，我不想责怪你。";
+			mes "[÷��]";
+			mes "�Ҹ��߹���Ҫ��������...";
+			mes "��Ȼ���Ҳ�������㡣";
 			next;
-			mes "[梅壳]";
-			mes "重要的是不仅要自己解决这个问题";
-			mes "还要努力获取信息。";
+			mes "[÷��]";
+			mes "��Ҫ���ǲ���Ҫ�Լ�����������";
+			mes "��ҪŬ����ȡ��Ϣ��";
 			next;
-			mes "[梅壳]";
+			mes "[÷��]";
 			if (.@all_wine > 3) {
 				if (job_3rd_gc == 18) {
-					mes "您的任务评估是...[B]。";
+					mes "��������������...[B]��";
 					set .@quest,7097;
 				} else {
-					mes "您的任务评估为...[C]。";
-					mes "你需要自己行动。";
+					mes "������������Ϊ...[C]��";
+					mes "����Ҫ�Լ��ж���";
 					set .@quest,7098;
 				}
 				next;
 			} else {
-				mes "你以灵活的观点调整了一件事情。";
-				mes "你不依赖他人，并且正确地利用了周围的环境。";
+				mes "�������Ĺ۵������һ�����顣";
+				mes "�㲻�������ˣ�������ȷ����������Χ�Ļ�����";
 				next;
-				mes "[梅壳]";
-				mes "我喜欢这样。";
+				mes "[÷��]";
+				mes "��ϲ��������";
 				if (job_3rd_gc == 18) {
-					mes "您的任务评估是...[A]。";
+					mes "��������������...[A]��";
 					set .@quest,7096;
 				} else {
-					mes "您的任务评估是...[B]。";
+					mes "��������������...[B]��";
 					set .@quest,7097;
 				}
 				next;
 			}
 		}
-		mes "[梅壳]";
-		mes "您获得了完成此任务的新资格。";
-		mes "这是我们刺客的影子，也是世界的影子……";
+		mes "[÷��]";
+		mes "���������ɴ���������ʸ�";
+		mes "�������Ǵ̿͵�Ӱ�ӣ�Ҳ�������Ӱ�ӡ���";
 		next;
-		mes "[梅壳]";
-		mes "我将授予你成为^4d4dff断头台十字^000000的资格。";
-		mes "我不催你，你想什么时候来就什么时候来。";
+		mes "[÷��]";
+		mes "�ҽ��������Ϊ^4d4dff��ͷ̨ʮ��^000000���ʸ�";
+		mes "�Ҳ����㣬����ʲôʱ������ʲôʱ������";
 		next;
-		mes "[梅壳]";
-		mes "我奖励你的劳动成果，并送你一份礼物。";
-		mes "这是我从公会那里得到的，希望对你有帮助。";
+		mes "[÷��]";
+		mes "�ҽ�������Ͷ��ɹ���������һ�����";
+		mes "�����Ҵӹ�������õ��ģ�ϣ�������а�����";
 		set job_3rd_gc, 20;
 		getitem 12106,1; //Accessory_Box
 		erasequest 7091;
@@ -1062,1027 +1064,1027 @@ job3_guil01,16,20,4	script	Mayshell#3rdgc03	894,{
 		if (checkquest(7116) > -1) erasequest 7116;
 		changequest 7111,.@quest;
 		next;
-		mes "[梅壳]";
-		mes "我想告诉你一件事。";
-		mes "我命令你^4d4dff你根本不应该留下任何文件^000000，无论它是什么。";
+		mes "[÷��]";
+		mes "���������һ���¡�";
+		mes "��������^4d4dff�������Ӧ�������κ��ļ�^000000����������ʲô��";
 		next;
-		mes "[梅壳]";
-		mes "有两种类型的信息：";
-		mes "可以分享的东西和不能分享的东西。";
+		mes "[÷��]";
+		mes "���������͵���Ϣ��";
+		mes "���Է����Ķ����Ͳ��ܷ����Ķ�����";
 		next;
-		mes "[梅壳]";
-		mes "永远不要留下记录或告诉任何人你完成的任务......";
-		mes "给你的后辈，他会跟随你的脚步。";
+		mes "[÷��]";
+		mes "��Զ��Ҫ���¼�¼������κ�������ɵ�����......";
+		mes "����ĺ󱲣����������ĽŲ���";
 		next;
-		mes "[梅壳]";
-		mes "别忘了。";
-		mes "而且你做的任务和蕾切尔、符文米德加特以及我们刺客公会有关。";
-		mes "所以其他人应该不知道。当然，你也包括在内，所以请忘记一切。";
+		mes "[÷��]";
+		mes "�����ˡ�";
+		mes "������������������ж��������׵¼����Լ����Ǵ̿͹����йء�";
+		mes "����������Ӧ�ò�֪������Ȼ����Ҳ�������ڣ�����������һ�С�";
 		close;
 	} else if (job_3rd_gc == 20) {
-		mes "你得到了公会的认可。";
-		mes "只要你想成为断头台十字架，就随时来吧。";
+		mes "��õ��˹�����Ͽɡ�";
+		mes "ֻҪ�����Ϊ��ͷ̨ʮ�ּܣ�����ʱ���ɡ�";
 		next;
-		mes "[梅壳]";
-		mes "这个选择就意味着你将不得不再次走上一条血路。";
+		mes "[÷��]";
+		mes "���ѡ�����ζ���㽫���ò��ٴ�����һ��Ѫ·��";
 		next;
-		mes "[梅壳]";
-		mes "贝尔卡塞尔正在对面的房间里等着。";
-		mes "见见他。";
+		mes "[÷��]";
+		mes "�������������ڶ���ķ�������š�";
+		mes "��������";
 		close;
 	} else if (job_3rd_gc > 20) {
-		mes "虽然我给了你资格，";
-		mes "我不想庆祝这个资格。";
+		mes "��Ȼ�Ҹ������ʸ�";
+		mes "�Ҳ�����ף����ʸ�";
 		next;
-		mes "[梅壳]";
-		mes "这是一种放弃思想的方式，也是一种痛苦、逆境的方式。";
-		mes "我就这样推你了。";
+		mes "[÷��]";
+		mes "����һ�ַ���˼��ķ�ʽ��Ҳ��һ��ʹ�ࡢ�澳�ķ�ʽ��";
+		mes "�Ҿ����������ˡ�";
 		next;
-		mes "[梅壳]";
-		mes "很有趣。";
-		mes "我们活着就是为了检查我们的战友...";
-		mes "但这是刺客的规则。";
+		mes "[÷��]";
+		mes "����Ȥ��";
+		mes "���ǻ��ž���Ϊ�˼�����ǵ�ս��...";
+		mes "�����Ǵ̿͵Ĺ���";
 		next;
-		mes "[梅壳]";
-		mes "漆黑的夜晚，走在月影下的人的命运。";
-		mes "我希望你能保持冷静，请...";
+		mes "[÷��]";
+		mes "��ڵ�ҹ����������Ӱ�µ��˵����ˡ�";
+		mes "��ϣ�����ܱ����侲����...";
 		close;
 	} else {
-		mes "你不被允许进入这里。";
+		mes "�㲻�������������";
 		close;
 	}
 }
 
 ve_in,228,108,3	script	Waitress#3rdgc04	80,{
-	mes "[女服务员]";
+	mes "[Ů����Ա]";
 	if (job_3rd_gc < 6) {
-		mes "欢迎光临~";
-		mes "参观并休息~";
+		mes "��ӭ����~";
+		mes "�ι۲���Ϣ~";
 		close;
 	} else if (job_3rd_gc == 6) {
 		if (checkquest(7091) == 1) {
 			if (checkquest(7112) == 1) {
-				mes "这就是我所知道的全部信息。";
-				mes "之后，我就记不起其他事情了。";
+				mes "���������֪����ȫ����Ϣ��";
+				mes "֮���Ҿͼǲ������������ˡ�";
 				next;
-				mes "那我们可以根据你收集到的信息来推测一下吗？-";
+				mes "�����ǿ��Ը������ռ�������Ϣ���Ʋ�һ����-";
 				next;
-				switch(select("做吧：停止吧。")) {
+				switch(select("���ɣ�ֹͣ�ɡ�")) {
 				case 1:
 					callfunc "func_3rdgc",1;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "欢迎。";
-				mes "您准备好订购了吗？";
+				mes "��ӭ��";
+				mes "��׼���ö�������";
 				next;
-				switch(select("你是...：你的名字是..？：请给我水。")) {
+				switch(select("����...�����������..���������ˮ��")) {
 				case 1:
-					mes "[女服务员]";
-					mes "怎么了？";
-					mes "您准备好订购了吗？";
+					mes "[Ů����Ա]";
+					mes "��ô�ˣ�";
+					mes "��׼���ö�������";
 					next;
-					select("我在寻找玛黛尔...");
-					mes "[马黛尔]";
-					mes "啊？马黛尔？你知道达拉吗？";
-					mes "我是马黛尔。";
-					mes "我认为你有生意，因为你来自道拉。";
+					select("����Ѱ�������...");
+					mes "[�����]";
+					mes "�������������֪��������";
+					mes "�����������";
+					mes "����Ϊ�������⣬��Ϊ�����Ե�����";
 					next;
-					select("是不是有可疑的客人？");
-					mes "[马黛尔]";
-					mes "可疑的客人？";
-					mes "什么样的...？";
-					mes "啊，好吧……我们有一些陌生人。";
+					select("�ǲ����п��ɵĿ��ˣ�");
+					mes "[�����]";
+					mes "���ɵĿ��ˣ�";
+					mes "ʲô����...��";
+					mes "�����ðɡ���������һЩİ���ˡ�";
 					next;
-					mes "[马黛尔]";
-					mes "由于村里地势崎岖，我们没有多少流动人口。";
-					mes "几乎所有的人从出生起就来过这里，或者是常客的冒险者。";
+					mes "[�����]";
+					mes "���ڴ��������᫣�����û�ж��������˿ڡ�";
+					mes "�������е��˴ӳ������������������ǳ��͵�ð���ߡ�";
 					next;
-					mes "[马黛尔]";
-					mes "但如果他们不是那样的人……";
-					mes "是的，有陌生人。";
+					mes "[�����]";
+					mes "��������ǲ����������ˡ���";
+					mes "�ǵģ���İ���ˡ�";
 					next;
-					select("你能告诉我关于他们的事吗？");
-					mes "[马黛尔]";
-					mes "嗯……其中一个看起来像雷切尔的牧师。";
-					mes "这个村子里有一个牧师...";
-					mes "也许他是一名军人，我明白。";
+					select("���ܸ����ҹ������ǵ�����");
+					mes "[�����]";
+					mes "�š�������һ�������������ж�����ʦ��";
+					mes "�����������һ����ʦ...";
+					mes "Ҳ������һ�����ˣ������ס�";
 					next;
-					mes "[马黛尔]";
-					mes "有一天，有一个人看上去很疲惫，买了食物。";
-					mes "我记得他是因为他在一家商店关门后来访。";
+					mes "[�����]";
+					mes "��һ�죬��һ���˿���ȥ��ƣ��������ʳ�";
+					mes "�Ҽǵ�������Ϊ����һ���̵���ź����á�";
 					next;
-					mes "[马黛尔]";
-					mes "我不确定，但有一个人戴着兜帽。";
-					mes "他看起来很疲惫，他们想买点饮料和小吃。";
+					mes "[�����]";
+					mes "�Ҳ�ȷ��������һ���˴��Ŷ�ñ��";
+					mes "����������ƣ����������������Ϻ�С�ԡ�";
 					next;
-					mes "[马黛尔]";
-					mes "从那以后我再也没有见过他们中的任何一个人。";
-					mes "所以我不知道了。";
+					mes "[�����]";
+					mes "�����Ժ�����Ҳû�м��������е��κ�һ���ˡ�";
+					mes "�����Ҳ�֪���ˡ�";
 					setquest 7112;
 					next;
-					mes "- 留言板上附有Madelle的信息。";
-					mes "那我们能查出你收集了哪些信息吗？ -";
+					mes "- ���԰��ϸ���Madelle����Ϣ��";
+					mes "�������ܲ�����ռ�����Щ��Ϣ�� -";
 					next;
-					switch(select("做吧：停止吧。")) {
+					switch(select("���ɣ�ֹͣ�ɡ�")) {
 					case 1:
 						callfunc "func_3rdgc",1;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				case 2:
-					mes "[女服务员]";
-					mes "什么？我的名字？";
-					mes "你在打我吗？";
-					mes "不要那样做。";
-					if (Sex == SEX_MALE) mes "你不是我喜欢的类型。";
-					else mes "我不会那样摇摆。";
+					mes "[Ů����Ա]";
+					mes "ʲô���ҵ����֣�";
+					mes "���ڴ�����";
+					mes "��Ҫ��������";
+					if (Sex == SEX_MALE) mes "�㲻����ϲ�������͡�";
+					else mes "�Ҳ�������ҡ�ڡ�";
 					close;
 				case 3:
-					mes "[女服务员]";
-					mes "你想要加冰吗？";
+					mes "[Ů����Ա]";
+					mes "����Ҫ�ӱ���";
 					close;
 				}
 			}
 		} else {
 			if (checkquest(7112) == 1) {
-				mes "这就是我所知道的全部信息。";
-				mes "从那以后我就再没有见过他们。";
+				mes "���������֪����ȫ����Ϣ��";
+				mes "�����Ժ��Ҿ���û�м������ǡ�";
 				next;
-				mes "- 我不知道我是否可以根据我收集到的信息弄清楚...... -";
+				mes "- �Ҳ�֪�����Ƿ���Ը������ռ�������ϢŪ���...... -";
 				next;
-				switch(select("做吧：停止吧。")) {
+				switch(select("���ɣ�ֹͣ�ɡ�")) {
 				case 1:
 					callfunc "func_3rdgc",0;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "欢迎。";
-				mes "您准备好订购了吗？";
+				mes "��ӭ��";
+				mes "��׼���ö�������";
 				next;
-				switch(select("可疑的人？：哪种食物最好？")) {
+				switch(select("���ɵ��ˣ�������ʳ����ã�")) {
 				case 1:
-					mes "[女服务员]";
-					mes "一个可疑的人？";
-					mes "你是一个多疑的人。";
+					mes "[Ů����Ա]";
+					mes "һ�����ɵ��ˣ�";
+					mes "����һ�����ɵ��ˡ�";
 					close;
 				case 2:
-					mes "[女服务员]";
-					mes "嗯？出色地...";
-					mes "如果您想吃简单的菜肴，请从我们的固定菜单中选择。";
-					mes "5000 zeny，你要吗？";
+					mes "[Ů����Ա]";
+					mes "�ţ���ɫ��...";
+					mes "�������Լ򵥵Ĳ��ȣ�������ǵĹ̶��˵���ѡ��";
+					mes "5000 zeny����Ҫ��";
 					next;
-					switch(select("是的，我会尝试一下。：......")) {
+					switch(select("�ǵģ��һ᳢��һ�¡���......")) {
 					case 1:
 						if (Zeny > 4999) {
-							mes "[女服务员]";
-							mes "给你，这是固定菜单上的一顿饭。";
-							mes "当您需要时请随时给我打电话。";
+							mes "[Ů����Ա]";
+							mes "���㣬���ǹ̶��˵��ϵ�һ�ٷ���";
+							mes "������Ҫʱ����ʱ���Ҵ�绰��";
 							next;
-							switch(select("你生意怎么样？：客人多吗？")) {
+							switch(select("��������ô���������˶���")) {
 							case 1:
-								mes "[女服务员]";
-								mes "嗯……还不错。";
-								mes "这是这里唯一的酒吧，所以很不错。";
+								mes "[Ů����Ա]";
+								mes "�š�����������";
+								mes "��������Ψһ�ľưɣ����Ժܲ�����";
 								break;
 							case 2:
-								mes "[女服务员]";
-								mes "最近没那么多了。";
-								mes "就这样吧。";
+								mes "[Ů����Ա]";
+								mes "���û��ô���ˡ�";
+								mes "�������ɡ�";
 								break;
 							}
 							next;
-							mes "[女服务员]";
-							mes "村里的企业可以跟上顾客的脚步。";
-							mes "如今，冒险家们来访的次数越来越多。";
+							mes "[Ů����Ա]";
+							mes "�������ҵ���Ը��Ϲ˿͵ĽŲ���";
+							mes "���ð�ռ������õĴ���Խ��Խ�ࡣ";
 							next;
-							select("有可疑访客吗？");
-							mes "[女服务员]";
-							mes "当然，我每天都会看到一些。";
-							mes "当我看到他们的服装时我就能认出。";
-							mes "因为工作的关系，我必须记住他们的角色。";
+							select("�п��ɷÿ���");
+							mes "[Ů����Ա]";
+							mes "��Ȼ����ÿ�춼�ῴ��һЩ��";
+							mes "���ҿ������ǵķ�װʱ�Ҿ����ϳ���";
+							mes "��Ϊ�����Ĺ�ϵ���ұ����ס���ǵĽ�ɫ��";
 							next;
-							select("很无聊...");
-							mes "[女服务员]";
-							mes "是的，有时。";
-							mes "每天我都得说话";
-							mes "和同样的人。";
-							mes "但...";
+							select("������...");
+							mes "[Ů����Ա]";
+							mes "�ǵģ���ʱ��";
+							mes "ÿ���Ҷ���˵��";
+							mes "��ͬ�����ˡ�";
+							mes "��...";
 							next;
-							mes "[女服务员]";
-							mes "当我看到像你这样的客人时，我感到精神焕发。";
-							mes "我记得几天前发生的一件事。";
+							mes "[Ů����Ա]";
+							mes "���ҿ������������Ŀ���ʱ���Ҹе����������";
+							mes "�Ҽǵü���ǰ������һ���¡�";
 							next;
-							mes "[女服务员]";
-							mes "当我关店时，";
-							mes "他似乎很疲惫，他们想买点饮料和小吃。";
+							mes "[Ů����Ա]";
+							mes "���ҹص�ʱ��";
+							mes "���ƺ���ƣ����������������Ϻ�С�ԡ�";
 							next;
-							mes "[女服务员]";
-							mes "他是个陌生人，但我确信他来自雷切尔。";
-							mes "他看上去像个牧师。";
+							mes "[Ů����Ա]";
+							mes "���Ǹ�İ���ˣ�����ȷ�����������ж���";
+							mes "������ȥ�����ʦ��";
 							next;
-							mes "[女服务员]";
-							mes "我以为有牧师来到这里，但这是错误的。";
-							mes "我开始害怕了。";
+							mes "[Ů����Ա]";
+							mes "����Ϊ����ʦ������������Ǵ���ġ�";
+							mes "�ҿ�ʼ�����ˡ�";
 							next;
-							mes "[女服务员]";
-							mes "我想我可能给小偷开门了。";
-							mes "啊，对不起，我一定说得太多了。";
+							mes "[Ů����Ա]";
+							mes "�����ҿ��ܸ�С͵�����ˡ�";
+							mes "�����Բ�����һ��˵��̫���ˡ�";
 							next;
-							mes "[女服务员]";
-							mes "和那个老头说话真无聊……";
-							mes "无论如何，别再让我打扰你了。";
-							mes "享受你的食物吧！";
+							mes "[Ů����Ա]";
+							mes "���Ǹ���ͷ˵�������ġ���";
+							mes "������Σ��������Ҵ������ˡ�";
+							mes "�������ʳ��ɣ�";
 							next;
-							mes "[女服务员]";
-							mes "哦，顺便说一下，我叫马德尔。";
-							mes "我希望你记住我的名字。";
+							mes "[Ů����Ա]";
+							mes "Ŷ��˳��˵һ�£��ҽ����¶���";
+							mes "��ϣ�����ס�ҵ����֡�";
 							set Zeny, Zeny - 5000;
 							setquest 7112;
 							next;
-							mes "- 马德尔的信息附在任务板上。我收集了哪些信息？ -";
+							mes "- ���¶�����Ϣ����������ϡ����ռ�����Щ��Ϣ�� -";
 							next;
-							switch(select("检查信息：取消。")) {
+							switch(select("�����Ϣ��ȡ����")) {
 							case 1:
 								callfunc "func_3rdgc",0;
 								close;
 							case 2:
-								mes "您停止信息确认。";
+								mes "��ֹͣ��Ϣȷ�ϡ�";
 								close;
 							}
 						} else {
-							mes "[女服务员]";
-							mes "我们菜单上的一顿饭是 5000 zeny。";
-							mes "你必须付钱。";
-							mes "是预付费的吧";
+							mes "[Ů����Ա]";
+							mes "���ǲ˵��ϵ�һ�ٷ��� 5000 zeny��";
+							mes "����븶Ǯ��";
+							mes "��Ԥ���ѵİ�";
 							close;
 						}
 					case 2:
-						mes "[女服务员]";
-						mes "你感到很恼火。";
-						mes "我懂了。我不会催你。";
-						mes "在那里休息一下。";
+						mes "[Ů����Ա]";
+						mes "��е����ջ�";
+						mes "�Ҷ��ˡ��Ҳ�����㡣";
+						mes "��������Ϣһ�¡�";
 						close;
 					}
 				}
 			}
 		}
 	} else {
-		mes "嗨~！";
-		mes "我们可以经常见面。";
+		mes "��~��";
+		mes "���ǿ��Ծ������档";
 		next;
-		mes "[马黛尔]";
-		mes "一顿饭？酒？";
-		mes "呵呵，祝你玩得愉快！";
+		mes "[�����]";
+		mes "һ�ٷ����ƣ�";
+		mes "�Ǻǣ�ף�������죡";
 		close;
 	}
 }
 
 ve_in,246,303,3	script	Young Merchant#3rdgc05	930,{
 	if (job_3rd_gc < 6) {
-		mes "[年轻商人]";
-		mes "如果你想买东西，就去找这个人。";
-		mes "我是经销商。";
+		mes "[��������]";
+		mes "���������������ȥ������ˡ�";
+		mes "���Ǿ����̡�";
 		close;
 	}
 	else if (job_3rd_gc == 6) {
 		if (checkquest(7091) == 1) {
 			if (checkquest(7113) == 1) {
-				mes "[渴望]";
-				mes "我已经把我掌握的所有信息都给你了。";
-				mes "我的视觉学习速度很快。";
-				mes "我找不到第二个女孩，只能找到符合你条件的女孩。";
+				mes "[����]";
+				mes "���Ѿ��������յ�������Ϣ�������ˡ�";
+				mes "�ҵ��Ӿ�ѧϰ�ٶȺܿ졣";
+				mes "���Ҳ����ڶ���Ů����ֻ���ҵ�������������Ů����";
 				next;
-				mes "我们可以根据您收集到的信息来弄清楚吗？";
+				mes "���ǿ��Ը������ռ�������Ϣ��Ū�����";
 				next;
-				switch(select("做吧：停止吧。")) {
+				switch(select("���ɣ�ֹͣ�ɡ�")) {
 				case 1:
 					callfunc "func_3rdgc",1;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "[年轻商人]";
-				mes "下次增加药水怎么样...";
-				mes "嗯，你有什么话要告诉我吗？";
+				mes "[��������]";
+				mes "�´�����ҩˮ��ô��...";
+				mes "�ţ�����ʲô��Ҫ��������";
 				next;
-				switch(select("你认识Crave吗？：给我一瓶药水。")) {
+				switch(select("����ʶCrave�𣿣�����һƿҩˮ��")) {
 				case 1:
-					mes "[渴望]";
-					mes "我是克拉夫，你是谁……？";
+					mes "[����]";
+					mes "���ǿ���������˭������";
 					//mes "You're not a usual stuff in connection.."; //FIXME: Dialogue.
 					next;
-					mes "[渴望]";
-					mes "啊，是关于道拉的吗？";
-					mes "是的，我能为您做什么？";
+					mes "[����]";
+					mes "�����ǹ��ڵ�������";
+					mes "�ǵģ�����Ϊ����ʲô��";
 					next;
-					select("这几天你有看到陌生人吗？");
-					mes "[渴望]";
-					mes "陌生人……关于道拉的事？";
-					mes "好的。我明白你在说什么。";
+					select("�⼸�����п���İ������");
+					mes "[����]";
+					mes "İ���ˡ������ڵ������£�";
+					mes "�õġ�����������˵ʲô��";
 					next;
-					mes "[渴望]";
-					mes "我发现了一张新面孔";
-					mes "观察商店。";
-					mes "那是一个女孩...";
+					mes "[����]";
+					mes "�ҷ�����һ�������";
+					mes "�۲��̵ꡣ";
+					mes "����һ��Ů��...";
 					next;
-					mes "[渴望]";
-					mes "她每天早上和下午都会定期购买食物和生活必需品。";
-					mes "我想更多地了解她，因为她很漂亮。";
-					mes "但没有人知道她的住处。";
+					mes "[����]";
+					mes "��ÿ�����Ϻ����綼�ᶨ�ڹ���ʳ����������Ʒ��";
+					mes "���������˽�������Ϊ����Ư����";
+					mes "��û����֪������ס����";
 					next;
-					mes "[渴望]";
-					mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-					mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+					mes "[����]";
+					mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+					mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 					next;
-					mes "[渴望]";
-					mes "我想跟她说话，但她却跑了……";
-					mes "她肯定有什么事情瞒着。";
+					mes "[����]";
+					mes "�������˵��������ȴ���ˡ���";
+					mes "���϶���ʲô�������š�";
 					setquest 7113;
 					next;
-					mes "- Crave 提供的信息附在任务板上。";
-					mes "那我们可以根据你收集到的信息来了解一下吗？ -";
+					mes "- Crave �ṩ����Ϣ����������ϡ�";
+					mes "�����ǿ��Ը������ռ�������Ϣ���˽�һ���� -";
 					next;
-					switch(select("做吧：停止吧。")) {
+					switch(select("���ɣ�ֹͣ�ɡ�")) {
 					case 1:
 						callfunc "func_3rdgc",1;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				case 2:
-					mes "[年轻商人]";
-					mes "我从事批发贸易，而不是零售贸易。";
-					mes "从工具销售人员那里购买。";
+					mes "[��������]";
+					mes "�Ҵ�������ó�ף�����������ó�ס�";
+					mes "�ӹ���������Ա���ﹺ��";
 					close;
 				}
 			}
 		} else {
 			if (checkquest(7113) == 1) {
-				mes "[渴望]";
-				mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-				mes "我的视觉学习速度很快。";
-				mes "我找不到第二个女孩，只能找到符合你条件的女孩。";
+				mes "[����]";
+				mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+				mes "�ҵ��Ӿ�ѧϰ�ٶȺܿ졣";
+				mes "���Ҳ����ڶ���Ů����ֻ���ҵ�������������Ů����";
 				next;
-				mes "我们可以根据您收集到的信息来弄清楚吗？";
+				mes "���ǿ��Ը������ռ�������Ϣ��Ū�����";
 				next;
-				switch(select("做吧：停止吧。")) {
+				switch(select("���ɣ�ֹͣ�ɡ�")) {
 				case 1:
 					callfunc "func_3rdgc",0;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "[年轻商人]";
-				mes "怎么了？";
-				mes "我是商人，但不​​是零售商。";
-				mes "如果你想买东西，就去别人那里。";
+				mes "[��������]";
+				mes "��ô�ˣ�";
+				mes "�������ˣ������������̡�";
+				mes "���������������ȥ�������";
 				next;
-				switch(select("可疑的人？：听说你很敏锐。")) {
+				switch(select("���ɵ��ˣ�����˵�������")) {
 				case 1:
-					mes "[年轻商人]";
-					mes "一个可疑的人？";
-					mes "持怀疑态度的人还有很多。";
+					mes "[��������]";
+					mes "һ�����ɵ��ˣ�";
+					mes "�ֻ���̬�ȵ��˻��кܶࡣ";
 					next;
-					mes "[年轻商人]";
-					mes "可疑的是那个瘸子，不是吗？";
+					mes "[��������]";
+					mes "���ɵ����Ǹ�ȳ�ӣ�������";
 					close;
 				case 2:
-					mes "[年轻商人]";
-					mes "唔？这是合理的。";
-					mes "作为商人，我必须快速学习视觉。";
+					mes "[��������]";
+					mes "�������Ǻ����ġ�";
+					mes "��Ϊ���ˣ��ұ������ѧϰ�Ӿ���";
 					next;
-					mes "[年轻商人]";
-					mes "我必须记住和我做生意的人的面孔，这样我才能盈利。";
-					mes "这样我就可以建立稳定的客户。";
+					mes "[��������]";
+					mes "�ұ����ס������������˵���ף������Ҳ���ӯ����";
+					mes "�����ҾͿ��Խ����ȶ��Ŀͻ���";
 					next;
-					switch(select("我正在寻找表弟...：结束对话。")) {
+					switch(select("������Ѱ�ұ���...�������Ի���")) {
 					case 1:
-						mes "[年轻商人]";
-						mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+						mes "[��������]";
+						mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 						next;
-						switch(select("Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.")) {
+						switch(select("Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.")) {
 						case 1:
-							mes "[年轻商人]";
-							mes "他是吗？";
-							mes "我不知道。";
-							mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+							mes "[��������]";
+							mes "������";
+							mes "�Ҳ�֪����";
+							mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 							close;
 						case 2:
-							mes "[渴望]";
-							mes "哦，她是？";
-							mes "我是克拉夫。如果您以后找到她，请与我联系。";
+							mes "[����]";
+							mes "Ŷ�����ǣ�";
+							mes "���ǿ�����������Ժ��ҵ�������������ϵ��";
 							next;
-							mes "[渴望]";
-							mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-							mes "我是一个有能力的人。";
+							mes "[����]";
+							mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+							mes "����һ�����������ˡ�";
 							next;
-							select("你在哪里看到她的？");
+							select("�������￴�����ģ�");
 							mes "["+strcharinfo(0)+"]";
-							mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-							mes "我想尽快找到她。";
-							mes "你说你看到那个孩子了？你在哪里看到她的？";
+							mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+							mes "���뾡���ҵ�����";
+							mes "��˵�㿴���Ǹ������ˣ��������￴�����ģ�";
 							next;
-							mes "[渴望]";
-							mes "所以……所以我们不知道她的住处。";
-							mes "我可以理解购买食物和其他用品。";
+							mes "[����]";
+							mes "���ԡ����������ǲ�֪������ס����";
+							mes "�ҿ������⹺��ʳ���������Ʒ��";
 							next;
-							mes "[渴望]";
-							mes "她总是二话不说就跑掉。";
-							mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+							mes "[����]";
+							mes "�����Ƕ�����˵���ܵ���";
+							mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 							next;
-							mes "[渴望]";
-							mes "我认为她离家出走了。";
-							mes "她每天每晚都会定期来这里买东西。";
+							mes "[����]";
+							mes "����Ϊ����ҳ����ˡ�";
+							mes "��ÿ��ÿ�����ᶨ��������������";
 							next;
-							mes "[渴望]";
-							mes "当她看到你时，她可能会逃跑。";
-							mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+							mes "[����]";
+							mes "����������ʱ�������ܻ����ܡ�";
+							mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 							setquest 7113;
 							next;
-							mes "- Crave's information is attached to the quest board.我收集了哪些信息？ -";
+							mes "- Crave's information is attached to the quest board.���ռ�����Щ��Ϣ�� -";
 							next;
-							switch(select("检查信息：取消。")) {
+							switch(select("�����Ϣ��ȡ����")) {
 							case 1:
 								callfunc "func_3rdgc",0;
 								close;
 							case 2:
-								mes "您停止信息确认。";
+								mes "��ֹͣ��Ϣȷ�ϡ�";
 								close;
 							}
 						}
 					case 2:
-						mes "[年轻商人]";
-						mes "为什么当我谈论稳定的客户时你却变了脸色？";
-						mes "哦，你是...";
-						mes "这是一把与记住人的面孔无关的黑暗之剑。";
+						mes "[��������]";
+						mes "Ϊʲô����̸���ȶ��Ŀͻ�ʱ��ȴ������ɫ��";
+						mes "Ŷ������...";
+						mes "����һ�����ס�˵�����޹صĺڰ�֮����";
 						close;
 					}
 				}
 			}
 		}
 	} else {
-		mes "[渴望]";
-		mes "打扰一下？";
-		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+		mes "[����]";
+		mes "����һ�£�";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 		close;
 	}
 }
 
 veins,291,215,3	script	Vigilante#3rdgc06	939,{
 	if (job_3rd_gc < 6) {
-		mes "[守望者]";
-		mes "您出行时有什么不便吗？";
-		mes "在城市的郊区，有很多怪物。当心。";
+		mes "[������]";
+		mes "������ʱ��ʲô������";
+		mes "�ڳ��еĽ������кܶ������ġ�";
 		close;
 	}
 	else if (job_3rd_gc == 6) {
 		if (checkquest(7091) == 1) {
 			if (checkquest(7114) == 1) {
-				mes "[特罗文]";
-				mes "我已经把我掌握的所有信息都给你了。";
-				mes "他是唯一见过的可疑人员。";
-				mes "但还没有发生任何事情，所以我正在观察。";
+				mes "[������]";
+				mes "���Ѿ��������յ�������Ϣ�������ˡ�";
+				mes "����Ψһ�����Ŀ�����Ա��";
+				mes "����û�з����κ����飬���������ڹ۲졣";
 				next;
-				mes "- 我收集了哪些信息？ -";
+				mes "- ���ռ�����Щ��Ϣ�� -";
 				next;
-				switch(select("检查信息：取消。")) {
+				switch(select("�����Ϣ��ȡ����")) {
 				case 1:
 					callfunc "func_3rdgc",1;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "[守望者]";
-				mes "你好？";
-				mes "您需要帮助吗？";
+				mes "[������]";
+				mes "��ã�";
+				mes "����Ҫ������";
 				next;
-				switch(select("你认识 Trovan 吗？：不，谢谢。")) {
+				switch(select("����ʶ Trovan �𣿣�����лл��")) {
 				case 1:
-					mes "[守望者]";
-					mes "呃？我是特罗万，静脉治安团的成员。";
-					mes "怎么了？";
+					mes "[������]";
+					mes "�������������򣬾����ΰ��ŵĳ�Ա��";
+					mes "��ô�ˣ�";
 					next;
-					mes "[特罗文]";
-					mes "啊，你是道拉推荐的。";
-					mes "我记得住在这个村子里的人们的所有面孔。";
+					mes "[������]";
+					mes "�������ǵ����Ƽ��ġ�";
+					mes "�Ҽǵ�ס���������������ǵ�������ס�";
 					next;
-					mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-					mes "也许他是个陌生人。";
-					mes "我们应该排除正常的冒险者。";
+					mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+					mes "Ҳ�����Ǹ�İ���ˡ�";
+					mes "����Ӧ���ų�������ð���ߡ�";
 					next;
-					mes "[特罗文]";
-					mes "而如果道拉找到一个人，那他一定不是一个正常人。";
-					mes "所以我们应该排除普通客人......";
+					mes "[������]";
+					mes "����������ҵ�һ���ˣ�����һ������һ�������ˡ�";
+					mes "��������Ӧ���ų���ͨ����......";
 					next;
-					mes "[特罗文]";
-					mes "然后我们可以设置猜测是谁的限制。";
-					mes "几天前，一位牧师来到这个村庄。";
-					mes "他用兜帽遮住了脸，所以我看不清他。";
+					mes "[������]";
+					mes "Ȼ�����ǿ������ò²���˭�����ơ�";
+					mes "����ǰ��һλ��ʦ���������ׯ��";
+					mes "���ö�ñ��ס�����������ҿ���������";
 					next;
-					mes "[特罗文]";
-					mes "我可以很好地发现可疑的人。";
-					mes "如果他隐藏自己的脸，他可能会成为罪犯。";
+					mes "[������]";
+					mes "�ҿ��Ժܺõط��ֿ��ɵ��ˡ�";
+					mes "����������Լ������������ܻ��Ϊ�ﷸ��";
 					next;
-					mes "[特罗文]";
-					mes "他为什么怀疑？";
-					mes "他经常出现在这里，但没有固定的住所。";
-					mes "当我试图追随他时，我总是失去他。";
+					mes "[������]";
+					mes "��Ϊʲô���ɣ�";
+					mes "�����������������û�й̶���ס����";
+					mes "������ͼ׷����ʱ��������ʧȥ����";
 					next;
-					mes "[特罗文]";
-					mes "我无法提供更多信息。";
-					mes "我要时刻守着村口，所以不能跟着他太久。";
+					mes "[������]";
+					mes "���޷��ṩ������Ϣ��";
+					mes "��Ҫʱ�����Ŵ�ڣ����Բ��ܸ�����̫�á�";
 					next;
-					mes "[特罗文]";
-					mes "反正。他是我唯一怀疑的人。";
-					mes "他没有因任何犯罪行为被抓获";
-					mes "但他总是掩饰自己。";
+					mes "[������]";
+					mes "������������Ψһ���ɵ��ˡ�";
+					mes "��û�����κη�����Ϊ��ץ��";
+					mes "�������������Լ���";
 					setquest 7114;
 					next;
-					mes "- Trovan 的信息附在任务板上。我收集了哪些信息？ -";
+					mes "- Trovan ����Ϣ����������ϡ����ռ�����Щ��Ϣ�� -";
 					next;
-					switch(select("检查信息：取消。")) {
+					switch(select("�����Ϣ��ȡ����")) {
 					case 1:
 						callfunc "func_3rdgc",1;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				case 2:
-					mes "[特罗文]";
-					mes "最近，我见到了很多可疑的人。";
-					mes "我正在严密监视。";
+					mes "[������]";
+					mes "������Ҽ����˺ܶ���ɵ��ˡ�";
+					mes "���������ܼ��ӡ�";
 					close;
 				}
 			}
 		} else {
 			if (checkquest(7114) == 1) {
-				mes "[特罗文]";
-				mes "我已经把我掌握的所有信息都给你了。";
-				mes "他是唯一见过的可疑人员。";
-				mes "但还没有发生任何事情，所以我正在观察。";
+				mes "[������]";
+				mes "���Ѿ��������յ�������Ϣ�������ˡ�";
+				mes "����Ψһ�����Ŀ�����Ա��";
+				mes "����û�з����κ����飬���������ڹ۲졣";
 				next;
-				mes "- 我应该弄清楚收集到的信息吗？ -";
+				mes "- ��Ӧ��Ū����ռ�������Ϣ�� -";
 				next;
-				switch(select("查看信息：取消。")) {
+				switch(select("�鿴��Ϣ��ȡ����")) {
 				case 1:
 					callfunc "func_3rdgc",0;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "[特罗文]";
-				mes "我是特罗凡，静脉的守卫。";
-				mes "怎么了？";
+				mes "[������]";
+				mes "�������޷���������������";
+				mes "��ô�ˣ�";
 				next;
-				switch(select("有通缉犯吗？：没有。")) {
+				switch(select("��ͨ�����𣿣�û�С�")) {
 				case 1:
-					mes "[特罗文]";
-					mes "一个通缉犯？";
-					mes "没有，怎么了？";
+					mes "[������]";
+					mes "һ��ͨ������";
+					mes "û�У���ô�ˣ�";
 					next;
-					mes "[特罗文]";
-					mes "你最近有没有发现有可疑的人进入这个村子？";
-					mes "嗯...";
+					mes "[������]";
+					mes "�������û�з����п��ɵ��˽���������ӣ�";
+					mes "��...";
 					next;
-					mes "[特罗文]";
-					mes "最近，这个村子里出现了一个戴着兜帽的男人。";
-					mes "他不是旅行者。他买了食物，溜出了村子。";
+					mes "[������]";
+					mes "�������������������һ�����Ŷ�ñ�����ˡ�";
+					mes "�����������ߡ�������ʳ�����˴��ӡ�";
 					next;
-					mes "[特罗文]";
-					mes "我很好奇他的身份。";
-					mes "我觉得他和神社有关系……";
-					mes "或者也许他不是...";
+					mes "[������]";
+					mes "�Һܺ����������ݡ�";
+					mes "�Ҿ������������й�ϵ����";
+					mes "����Ҳ��������...";
 					next;
-					mes "[特罗文]";
-					mes "这个村子里的人中，没有一个人像他一样。";
-					mes "我想知道他来自哪里。";
+					mes "[������]";
+					mes "�������������У�û��һ��������һ����";
+					mes "����֪�����������";
 					next;
-					mes "[特罗文]";
-					mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-					mes "除了他之外，没有新人了。 I know almost all of the adventurer's faces that visit here.";
-					mes "所以这不是什么新闻。";
+					mes "[������]";
+					mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+					mes "������֮�⣬û�������ˡ� I know almost all of the adventurer's faces that visit here.";
+					mes "�����ⲻ��ʲô���š�";
 					setquest 7114;
 					next;
-					mes "- Trovan 的信息附在任务板上。我收集了哪些信息？ -";
+					mes "- Trovan ����Ϣ����������ϡ����ռ�����Щ��Ϣ�� -";
 					next;
-					switch(select("检查信息：取消。")) {
+					switch(select("�����Ϣ��ȡ����")) {
 					case 1:
 						callfunc "func_3rdgc",0;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				case 2:
-					mes "[特罗文]";
-					mes "别走得太远。";
+					mes "[������]";
+					mes "���ߵ�̫Զ��";
 					close;
 				}
 			}
 		}
 	} else {
-		mes "[特罗文]";
-		mes "怎么样了？";
+		mes "[������]";
+		mes "��ô���ˣ�";
 		close;
 	}
 }
 
 veins,187,143,5	script	Peddler#3rdgc07	892,{
-	mes "[小贩]";
+	mes "[С��]";
 	if (job_3rd_gc < 6) {
-		mes "好大的沙尘暴啊。";
-		mes "你还好吗？";
+		mes "�ô��ɳ��������";
+		mes "�㻹����";
 		close;
 	}
 	else if (job_3rd_gc == 6) {
 		if (checkquest(7091) == 1) {
-			mes "好大的沙尘暴啊。";
-			mes "你还好吗？";
+			mes "�ô��ɳ��������";
+			mes "�㻹����";
 			close;
 		} else {
 			if (checkquest(7115) == 1) {
-				mes "那么，你找到那个女孩了吗？";
-				mes "如果你这样做了，请让她知道她必须来看我。";
+				mes "��ô�����ҵ��Ǹ�Ů������";
+				mes "������������ˣ�������֪�������������ҡ�";
 				next;
-				mes "- 你无法从小贩那里获得更多信息。我收集了哪些信息？ -";
+				mes "- ���޷���С�������ø�����Ϣ�����ռ�����Щ��Ϣ�� -";
 				next;
-				switch(select("检查信息：取消。")) {
+				switch(select("�����Ϣ��ȡ����")) {
 				case 1:
 					callfunc "func_3rdgc",1;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "嘿。嘿！";
-				mes "我在跟你说话呢！";
+				mes "�١��٣�";
+				mes "���ڸ���˵���أ�";
 				next;
-				switch(select("别理他：听故事。")) {
+				switch(select("�������������¡�")) {
 				case 1:
-					mes "[小贩]";
-					mes "你太冷了。";
+					mes "[С��]";
+					mes "��̫���ˡ�";
 					close;
 				case 2:
-					mes "[小贩]";
-					mes "一个漂亮的女孩刚刚买了食物。";
-					mes "你知道买鱼时新鲜度很重要......";
+					mes "[С��]";
+					mes "һ��Ư����Ů���ո�����ʳ�";
+					mes "��֪������ʱ���ʶȺ���Ҫ......";
 					next;
-					mes "[小贩]";
-					mes "但我给了她错误的鱼。";
-					mes "最近，她从我的商店买了食物。";
-					mes "我找不到她，也许她不住在这里。";
+					mes "[С��]";
+					mes "���Ҹ�����������㡣";
+					mes "����������ҵ��̵�����ʳ�";
+					mes "���Ҳ�������Ҳ������ס�����";
 					next;
-					mes "[小贩]";
-					mes "她看起来很破旧，但她总是买昂贵的食物。";
-					mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
+					mes "[С��]";
+					mes "�����������ƾɣ����������򰺹��ʳ�";
+					mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 					next;
-					mes "[小贩]";
-					mes "有点可疑，不是吗？";
-					mes "但是，我把变质的鱼给了她……";
+					mes "[С��]";
+					mes "�е���ɣ�������";
+					mes "���ǣ��Ұѱ��ʵ������������";
 					next;
-					mes "[小贩]";
-					mes "所以我必须找到她，把鱼换成退款。";
+					mes "[С��]";
+					mes "�����ұ����ҵ��������㻻���˿";
 					next;
-					mes "[小贩]";
-					mes "如果你找到她，请发送这条消息，好吗？";
-					mes "我不能错过像她这样的客人。";
+					mes "[С��]";
+					mes "������ҵ������뷢��������Ϣ������";
+					mes "�Ҳ��ܴ������������Ŀ��ˡ�";
 					next;
-					mes "[小贩]";
-					mes "好吧，让我们看看...";
-					mes "她是金发女郎。";
-					mes "你应该能够";
-					mes "轻松找到她。";
+					mes "[С��]";
+					mes "�ðɣ������ǿ���...";
+					mes "���ǽ�Ů�ɡ�";
+					mes "��Ӧ���ܹ�";
+					mes "�����ҵ�����";
 					next;
-					mes "[小贩]";
-					mes "事实上，没有人知道她来自哪里。";
-					mes "你是冒险家，所以我问你。";
+					mes "[С��]";
+					mes "��ʵ�ϣ�û����֪�����������";
+					mes "����ð�ռң����������㡣";
 					next;
-					select("我会把你的信息发给她：嗯...");
+					select("�һ�������Ϣ����������...");
 					mes "["+strcharinfo(0)+"]";
-					mes "- 虽然我没有空余时间，但小贩提到的那个女孩却很可疑。 -";
+					mes "- ��Ȼ��û�п���ʱ�䣬��С���ᵽ���Ǹ�Ů��ȴ�ܿ��ɡ� -";
 					next;
 					mes "["+strcharinfo(0)+"]";
-					mes "- 一个没有明确住所并购买昂贵食物的女孩。我必须找出答案。 -";
+					mes "- һ��û����ȷס�������򰺹�ʳ���Ů�����ұ����ҳ��𰸡� -";
 					next;
-					mes "[小贩]";
-					mes "请把我的信息发给她。";
-					mes "如果我不能换鱼，它就会变质。";
+					mes "[С��]";
+					mes "����ҵ���Ϣ��������";
+					mes "����Ҳ��ܻ��㣬���ͻ���ʡ�";
 					setquest 7115;
 					next;
-					mes "- 小贩的信息附在任务板上。我收集了哪些信息？ -";
+					mes "- С������Ϣ����������ϡ����ռ�����Щ��Ϣ�� -";
 					next;
-					switch(select("检查信息：取消。")) {
+					switch(select("�����Ϣ��ȡ����")) {
 					case 1:
 						callfunc "func_3rdgc",0;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				}
 			}
 		}
 	} else {
-		mes "你正确地发送了我的消息吗？";
-		mes "那她为什么不来这里交换鱼呢？";
+		mes "����ȷ�ط������ҵ���Ϣ��";
+		mes "����Ϊʲô�������ｻ�����أ�";
 		close;
 	}
 }
 
 veins,235,126,3	script	Old Man#3rdgc07	945,{
-	mes "[老人]";
+	mes "[����]";
 	if (job_3rd_gc < 6) {
-		mes "哈哈……一看到你这样的年轻冒险家，我就想起了我的过去……";
+		mes "��������һ����������������ð�ռң��Ҿ��������ҵĹ�ȥ����";
 		close2;
 	} else if (job_3rd_gc == 6) {
 		if (checkquest(7091) == 1) {
-			mes "哈哈……一看到你这样的年轻冒险家，我就想起了我的过去……";
+			mes "��������һ����������������ð�ռң��Ҿ��������ҵĹ�ȥ����";
 			close;
 		} else {
 			if (checkquest(7116) == 1) {
-				mes "谢谢你跟我说话。";
+				mes "лл�����˵����";
 				next;
-				mes "- 我无法从老人那里得到更多的信息。我收集了哪些信息？ -";
+				mes "- ���޷�����������õ��������Ϣ�����ռ�����Щ��Ϣ�� -";
 				next;
-				switch(select("检查信息：取消。")) {
+				switch(select("�����Ϣ��ȡ����")) {
 				case 1:
 					callfunc "func_3rdgc",0;
 					close;
 				case 2:
-					mes "您停止信息确认。";
+					mes "��ֹͣ��Ϣȷ�ϡ�";
 					close;
 				}
 			} else {
-				mes "什么？怎么了？";
-				mes "你想和我谈谈吗？";
+				mes "ʲô����ô�ˣ�";
+				mes "�������̸̸��";
 				next;
-				switch(select("可疑者……：你看起来不错。")) {
+				switch(select("�����ߡ������㿴����������")) {
 				case 1:
-					mes "[老人]";
-					mes "一个可疑的人？";
-					mes "好吧，特罗万可能比我更了解她。";
+					mes "[����]";
+					mes "һ�����ɵ��ˣ�";
+					mes "�ðɣ���������ܱ��Ҹ��˽�����";
 					close;
 				case 2:
-					mes "[老人]";
-					mes "不管怎样，谢谢。";
-					mes "我就坐在这里吧...";
+					mes "[����]";
+					mes "����������лл��";
+					mes "�Ҿ����������...";
 					next;
-					mes "[老人]";
-					mes "我时常环顾四周，看看路过这里的人们。";
-					mes "我可以通过观察他们的穿着轻松了解他们来自哪里。";
+					mes "[����]";
+					mes "��ʱ���������ܣ�����·����������ǡ�";
+					mes "�ҿ���ͨ���۲����ǵĴ��������˽������������";
 					next;
-					mes "[老人]";
-					mes "因为她那滑稽的装束，我根本无法忘记她。";
-					mes "忘记一个穿着正装的人并不难。";
+					mes "[����]";
+					mes "��Ϊ���ǻ�����װ�����Ҹ����޷���������";
+					mes "����һ��������װ���˲����ѡ�";
 					next;
-					select("那有什么好笑的呢？");
-					mes "[老人]";
-					mes "嗯，这个村庄不再有趣了。";
-					mes "我什么都知道了~连大家的工作都知道了。";
+					select("����ʲô��Ц���أ�");
+					mes "[����]";
+					mes "�ţ������ׯ������Ȥ�ˡ�";
+					mes "��ʲô��֪����~����ҵĹ�����֪���ˡ�";
 					next;
-					mes "[老人]";
-					mes "但...";
-					mes "最近，一个女孩出现了。";
-					mes "早上，她从小贩那里买了一些食物，然后就消失了。";
+					mes "[����]";
+					mes "��...";
+					mes "�����һ��Ů�������ˡ�";
+					mes "���ϣ�����С����������һЩʳ�Ȼ�����ʧ�ˡ�";
 					next;
-					mes "[老人]";
-					mes "而下午她通常会购买生活必需品。";
-					mes "一次一点点。";
-					mes "然后她就去了某个地方……";
+					mes "[����]";
+					mes "��������ͨ���Ṻ���������Ʒ��";
+					mes "һ��һ��㡣";
+					mes "Ȼ������ȥ��ĳ���ط�����";
 					next;
-					mes "[老人]";
-					mes "我想她一定是在准备什么。";
-					mes "如果她买了很多东西，那么很容易找到她。";
+					mes "[����]";
+					mes "������һ������׼��ʲô��";
+					mes "��������˺ܶණ������ô�������ҵ�����";
 					next;
-					mes "[老人]";
-					mes "我认为她储备了大量有助于战斗的食物。";
+					mes "[����]";
+					mes "����Ϊ�������˴���������ս����ʳ�";
 					next;
-					mes "[老人]";
-					mes "她最近才开始这个习惯。";
-					mes "她是新人吗？";
+					mes "[����]";
+					mes "������ſ�ʼ���ϰ�ߡ�";
+					mes "����������";
 					next;
-					mes "[老人]";
-					mes "我要观察你一段时间。";
-					mes "啊，我为什么要拿这个故事来打扰你呢？";
+					mes "[����]";
+					mes "��Ҫ�۲���һ��ʱ�䡣";
+					mes "������ΪʲôҪ������������������أ�";
 					setquest 7116;
 					next;
-					mes "- 老人的信息附在任务板上。我收集了哪些信息？";
+					mes "- ���˵���Ϣ����������ϡ����ռ�����Щ��Ϣ��";
 					next;
-					switch(select("检查信息：取消。")) {
+					switch(select("�����Ϣ��ȡ����")) {
 					case 1:
 						callfunc "func_3rdgc",0;
 						close;
 					case 2:
-						mes "您停止信息确认。";
+						mes "��ֹͣ��Ϣȷ�ϡ�";
 						close;
 					}
 				}
 			}
 		}
 	} else if (job_3rd_gc == 8) {
-		mes "你想知道一些事情吗？";
-		mes "我们村里有一个了不起的女孩。";
+		mes "����֪��һЩ������";
+		mes "���Ǵ�����һ���˲����Ů����";
 		next;
-		mes "[老人]";
-		mes "我不知道她有什么天赋，但她知道如何找人。";
+		mes "[����]";
+		mes "�Ҳ�֪������ʲô�츳������֪��������ˡ�";
 		next;
-		mes "[老人]";
-		mes "如果你想找到她，就去问那个孩子。";
+		mes "[����]";
+		mes "��������ҵ�������ȥ���Ǹ����ӡ�";
 		close;
 	} else {
-		mes "我还是不知道。";
-		mes "我太老了...";
+		mes "�һ��ǲ�֪����";
+		mes "��̫����...";
 		close;
 	}
 }
 
 veins,223,180,3	script	Girl#3rdgc09	941,{
-	mes "[梅丽莎]";
+	mes "[÷��ɯ]";
 	if (job_3rd_gc == 8) {
-		mes "你好？";
-		mes "什么？";
-		mes "你失去了一个朋友吗？";
+		mes "��ã�";
+		mes "ʲô��";
+		mes "��ʧȥ��һ��������";
 		next;
-		switch(select("你知道什么吗？：不……")) {
+		switch(select("��֪��ʲô�𣿣�������")) {
 		case 1:
-			mes "[梅丽莎]";
-			mes "我有一份特殊的礼物，我一生都拥有它。";
-			mes "人们在需要寻找东西时会来找我。";
+			mes "[÷��ɯ]";
+			mes "����һ������������һ����ӵ������";
+			mes "��������ҪѰ�Ҷ���ʱ�������ҡ�";
 			next;
-			mes "[梅丽莎]";
-			mes "正在找人吗？";
-			mes "你能告诉我他们的性格吗？";
+			mes "[÷��ɯ]";
+			mes "����������";
+			mes "���ܸ��������ǵ��Ը���";
 			next;
-			switch(select("你开玩笑吧：让我来吧。")) {
+			switch(select("�㿪��Ц�ɣ��������ɡ�")) {
 			case 1:
-				mes "[梅丽莎]";
-				mes "哈!但当你需要找人的时候你会回来找我的。";
-				mes "我什么都知道。";
+				mes "[÷��ɯ]";
+				mes "��!��������Ҫ���˵�ʱ�����������ҵġ�";
+				mes "��ʲô��֪����";
 				close;
 			case 2:
 				set .@ans00, 0;
-				mes "[梅丽莎]";
-				mes "好吧，回答我的问题。";
-				mes "是男孩还是女孩？";
+				mes "[÷��ɯ]";
+				mes "�ðɣ��ش��ҵ����⡣";
+				mes "���к�����Ů����";
 				next;
-				switch(select("一个男孩：一个女孩")) {
+				switch(select("һ���к���һ��Ů��")) {
 				case 1:
-					mes "[梅丽莎]";
-					mes "一个男孩和...";
+					mes "[÷��ɯ]";
+					mes "һ���к���...";
 					break;
 				case 2:
-					mes "[梅丽莎]";
-					mes "一个女孩和...";
+					mes "[÷��ɯ]";
+					mes "һ��Ů����...";
 					set .@ans00, .@ans00+1;
 					break;
 				}
 				next;
-				mes "[梅丽莎]";
-				mes "头发的颜色是什么？";
+				mes "[÷��ɯ]";
+				mes "ͷ������ɫ��ʲô��";
 				next;
-				switch(select("深色：红色：浅黄色：白色")) {
+				switch(select("��ɫ����ɫ��ǳ��ɫ����ɫ")) {
 				case 1:
-					mes "[梅丽莎]";
-					mes "头发颜色深……嗯……";
-					mes "深棕色或黑色的头发...";
+					mes "[÷��ɯ]";
+					mes "ͷ����ɫ����š���";
+					mes "����ɫ���ɫ��ͷ��...";
 					break;
 				case 2:
-					mes "[梅丽莎]";
-					mes "浅棕色或深橙色...红头发...";
+					mes "[÷��ɯ]";
+					mes "ǳ��ɫ�����ɫ...��ͷ��...";
 					break;
 				case 3:
-					mes "[梅丽莎]";
-					mes "浅橙色到金色的头发。";
+					mes "[÷��ɯ]";
+					mes "ǳ��ɫ����ɫ��ͷ����";
 					set .@ans00, .@ans00+1;
 					break;
 				case 4:
-					mes "[梅丽莎]";
-					mes "灰发……白发……金发……银发……";
+					mes "[÷��ɯ]";
+					mes "�ҷ������׷������𷢡�����������";
 					break;
 				}
 				next;
-				mes "[梅丽莎]";
-				mes "年轻还是年老？";
+				mes "[÷��ɯ]";
+				mes "���ỹ�����ϣ�";
 				next;
-				switch(select("像个孩子。：年轻。：中年。：很老。")) {
+				switch(select("������ӡ������ᡣ�����ꡣ�����ϡ�")) {
 				case 1:
-					mes "[梅丽莎]";
-					mes "还有一个孩子。";
+					mes "[÷��ɯ]";
+					mes "����һ�����ӡ�";
 					break;
 				case 2:
-					mes "[梅丽莎]";
-					mes "一个年轻人。";
-					mes "喜欢你吗？";
+					mes "[÷��ɯ]";
+					mes "һ�������ˡ�";
+					mes "ϲ������";
 					set .@ans00, .@ans00+1;
 					break;
 				case 3:
-					mes "[梅丽莎]";
-					mes "和工具推销员同龄？";
-					mes "中年。";
+					mes "[÷��ɯ]";
+					mes "�͹�������Աͬ�䣿";
+					mes "���ꡣ";
 					break;
 				case 4:
-					mes "[梅丽莎]";
-					mes "是的，很老了。";
+					mes "[÷��ɯ]";
+					mes "�ǵģ������ˡ�";
 					break;
 				}
 				next;
-				mes "[梅丽莎]";
-				mes "嗨，"+((Sex == SEX_MALE)?"哥哥":"姐姐")+">~让我收集一下你提供的所有信息...";
+				mes "[÷��ɯ]";
+				mes "�ˣ�"+((Sex == SEX_MALE)?"���":"���")+">~�����ռ�һ�����ṩ��������Ϣ...";
 				next;
-				mes "- 她开始低声说话，并指着天空。她说着，头发就竖起来了…… -";
+				mes "- ����ʼ����˵������ָ����ա���˵�ţ�ͷ�����������ˡ��� -";
 				next;
 				if (.@ans00 == 3) {
-					mes "[梅丽莎]";
-					mes "知道了！";
-					mes "我认识她。";
-					mes "她的名字是^4d4dff艾斯蒂尔达^000000。";
-					mes "正确的？";
+					mes "[÷��ɯ]";
+					mes "֪���ˣ�";
+					mes "����ʶ����";
+					mes "����������^4d4dff��˹�ٶ���^000000��";
+					mes "��ȷ�ģ�";
 					next;
-					mes "[梅丽莎]";
-					mes "你为什么要找她？她是你的朋友吗？";
-					mes "那天她给了我糖果。";
+					mes "[÷��ɯ]";
+					mes "��ΪʲôҪ�������������������";
+					mes "�������������ǹ���";
 					next;
-					mes "[梅丽莎]";
-					mes "嗯……这个女孩……";
-					mes "将会传递";
-					mes "一条死胡同";
-					mes "约1小时！";
-					mes "呵呵呵呵！";
+					mes "[÷��ɯ]";
+					mes "�š������Ů������";
+					mes "���ᴫ��";
+					mes "һ������ͬ";
+					mes "Լ1Сʱ��";
+					mes "�ǺǺǺǣ�";
 					erasequest 7103;
 					setquest 7104;
 					set job_3rd_gc, 9;
 					next;
-					mes "[梅丽莎]";
-					mes "她一定就是你要找的人。我从来没有错。";
-					mes "告诉我我做得很好！";
+					mes "[÷��ɯ]";
+					mes "��һ��������Ҫ�ҵ��ˡ��Ҵ���û�д���";
+					mes "�����������úܺã�";
 					next;
-					switch(select("拍拍梅丽莎的头：给她竖起大拇指。")) {
+					switch(select("����÷��ɯ��ͷ�����������Ĵָ��")) {
 					case 1:
-						mes "你拍拍梅丽莎的头。";
-						mes "她的反应就像小狗一样。";
+						mes "������÷��ɯ��ͷ��";
+						mes "���ķ�Ӧ����С��һ����";
 						next;
-						mes "[梅丽莎]";
-						mes "呵呵...";
-						mes "我是来帮忙的~！";
+						mes "[÷��ɯ]";
+						mes "�Ǻ�...";
+						mes "��������æ��~��";
 						close;
 					case 2:
-						mes "[梅丽莎]";
-						mes "呵呵...";
-						mes "我做得很好！";
+						mes "[÷��ɯ]";
+						mes "�Ǻ�...";
+						mes "�����úܺã�";
 						close;
 					}
 				} else {
-					mes "[梅丽莎]";
-					mes "嗯...";
-					mes "具有这些特征的人是……";
+					mes "[÷��ɯ]";
+					mes "��...";
+					mes "������Щ���������ǡ���";
 					next;
-					mes "[梅丽莎]";
-					mes "世界卫生大会-...？呃，我从来没有错过。";
-					mes "不知道为什么，我却看不到那个人。";
+					mes "[÷��ɯ]";
+					mes "�����������-...�������Ҵ���û�д�����";
+					mes "��֪��Ϊʲô����ȴ�������Ǹ��ˡ�";
 					next;
-					mes "[梅丽莎]";
-					mes "诶诶诶！哇！";
+					mes "[÷��ɯ]";
+					mes "���������ۣ�";
 					next;
-					mes "- 我能做的就是安抚哭泣的梅丽莎。我得重新考虑一下这个人的特点。 -";
+					mes "- �������ľ��ǰ���������÷��ɯ���ҵ����¿���һ������˵��ص㡣 -";
 					close;
 				}
 			}
 		case 2:
-			mes "[梅丽莎]";
-			mes "很奇怪。";
-			mes "在这个村子里，人们总是在寻找某人。";
+			mes "[÷��ɯ]";
+			mes "����֡�";
+			mes "��������������������Ѱ��ĳ�ˡ�";
 			close;
 		}
 	} else if (job_3rd_gc == 9) {
-		mes "你找到她了吗？";
-		mes "谢谢她那天给我糖果。";
+		mes "���ҵ�������";
+		mes "лл����������ǹ���";
 		close;
 	} else {
-		mes "当我在寻找人的时候，一个穿着黑衣服的天使给了我信息。";
+		mes "������Ѱ���˵�ʱ��һ�����ź��·�����ʹ��������Ϣ��";
 		next;
-		mes "[梅丽莎]";
-		mes "我把这个故事告诉了 Daora，然后她告诉我不要再这样做了。";
-		mes "也许她不是一个好天使。";
+		mes "[÷��ɯ]";
+		mes "�Ұ�������¸����� Daora��Ȼ���������Ҳ�Ҫ���������ˡ�";
+		mes "Ҳ��������һ������ʹ��";
 		close;
 	}
 }
@@ -2092,108 +2094,108 @@ veins,337,284,0	script	#ghostestilla_3rdgc	139,3,3,{
 OnTouch:
 	if (job_3rd_gc == 9) {
 		if ((checkquest(7104,PLAYTIME) == 0) || (checkquest(7105,PLAYTIME) == 0)) {
-			mes "……？";
-			mes "有迹象表明有人在场。";
-			mes "你还有时间。";
+			mes "������";
+			mes "�м�����������ڳ���";
+			mes "�㻹��ʱ�䡣";
 			close;
 		} else if ((checkquest(7104,PLAYTIME) == 2) || (checkquest(7105,PLAYTIME) == 2)) {
-			mes "梅丽莎告诉我的死胡同一定是这条街。";
+			mes "÷��ɯ�����ҵ�����ͬһ���������֡�";
 			next;
-			mes "有迹象表明有人在场。";
-			mes "金发女郎登场！";
+			mes "�м�����������ڳ���";
+			mes "��Ů�ɵǳ���";
 			donpcevent "Estillda#3rdgc10::OnEnable";
 			next;
-			select("发动突然袭击。");
+			select("����ͻȻϮ����");
 			set .@c_spec, readparam(bDex)+readparam(bAspd)+readparam(bCritical);
 			if (.@c_spec > 209 || (!rand(2) && .@c_spec > 190 && .@c_spec < 210) || (!rand(3) && .@c_spec < 191)) {
-				mes "你抓住她的手腕，尽量不让她看到你。";
-				mes "她手里的食物掉到了地板上。";
+				mes "��ץס�������󣬾��������������㡣";
+				mes "�������ʳ������˵ذ��ϡ�";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "啊啊啊！";
-				mes "你是谁？";
-				mes "你在干什么？";
+				mes "[��˹�ٶ���]";
+				mes "��������";
+				mes "����˭��";
+				mes "���ڸ�ʲô��";
 				next;
-				if(select("谁派你来的？：谁来自雷切尔？") == 2) {
-					mes "[艾斯蒂尔达]";
-					mes "我不知道！我不知道。我不认识他！";
+				if(select("˭�������ģ���˭�������ж���") == 2) {
+					mes "[��˹�ٶ���]";
+					mes "�Ҳ�֪�����Ҳ�֪�����Ҳ���ʶ����";
 					next;
 				}
-				mes "[艾斯蒂尔达]";
-				mes "如果我给他买东西...";
-				mes "他说他可以支付我的人工和生产费用。";
+				mes "[��˹�ٶ���]";
+				mes "����Ҹ�������...";
+				mes "��˵������֧���ҵ��˹����������á�";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "我不知道他是谁。";
-				mes "这是真的。";
-				mes "他是坏人吗？";
+				mes "[��˹�ٶ���]";
+				mes "�Ҳ�֪������˭��";
+				mes "������ġ�";
+				mes "���ǻ�����";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "请帮帮我好吗？";
-				mes "帮我。";
-				mes "我会做任何你想做的事。";
+				mes "[��˹�ٶ���]";
+				mes "�����Һ���";
+				mes "���ҡ�";
+				mes "�һ����κ����������¡�";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "我对他一无所知，我不知道他是不是坏人。";
-				mes "我刚买了一些东西……（抽泣）……";
+				mes "[��˹�ٶ���]";
+				mes "�Ҷ���һ����֪���Ҳ�֪�����ǲ��ǻ��ˡ�";
+				mes "�Ҹ�����һЩ��������������������";
 				next;
-				mes "- 艾斯蒂尔达很震惊，因为她认为自己遇到了麻烦。 -";
+				mes "- ��˹�ٶ�����𾪣���Ϊ����Ϊ�Լ��������鷳�� -";
 				next;
-				select("让她冷静下来。");
+				select("�����侲������");
 				mes "["+strcharinfo(0)+"]";
-				mes "放松一下。";
-				mes "我完全明白你在说什么。";
-				mes "你不会遇到任何麻烦。";
-				next;
-				mes "["+strcharinfo(0)+"]";
-				mes "我正在寻找一个犯罪并逃跑的人。";
-				mes "我必须抓住他。";
+				mes "����һ�¡�";
+				mes "����ȫ��������˵ʲô��";
+				mes "�㲻�������κ��鷳��";
 				next;
 				mes "["+strcharinfo(0)+"]";
-				mes "那么是谁让你得到这些物资的呢？";
+				mes "������Ѱ��һ�����ﲢ���ܵ��ˡ�";
+				mes "�ұ���ץס����";
 				next;
 				mes "["+strcharinfo(0)+"]";
-				mes "如果你配合我，我会保护你直到这一切完成。";
-				mes "刺客公会会保护你。";
-				next;
-				mes "[艾斯蒂尔达]";
-				mes "你答应了，对吧？";
-				mes "我怎么帮你？";
-				next;
-				select("你们什么时候见面？");
-				mes "[艾斯蒂尔达]";
-				mes "哦，我已经把东西送过来了。";
-				mes "我正在回来的路上。";
-				next;
-				mes "[艾斯蒂尔达]";
-				mes "啊，这些是我的。";
-				mes "我有很多的禅意。";
+				mes "��ô��˭����õ���Щ���ʵ��أ�";
 				next;
 				mes "["+strcharinfo(0)+"]";
-				mes "然后径直朝这边走，假装什么都没发生。";
+				mes "���������ң��һᱣ����ֱ����һ����ɡ�";
+				mes "�̿͹���ᱣ���㡣";
 				next;
-				mes "- 我要求她像往常一样走路并告诉她如何去道拉的酒吧。 -";
+				mes "[��˹�ٶ���]";
+				mes "���Ӧ�ˣ��԰ɣ�";
+				mes "����ô���㣿";
+				next;
+				select("����ʲôʱ����棿");
+				mes "[��˹�ٶ���]";
+				mes "Ŷ�����Ѿ��Ѷ����͹����ˡ�";
+				mes "�����ڻ�����·�ϡ�";
+				next;
+				mes "[��˹�ٶ���]";
+				mes "������Щ���ҵġ�";
+				mes "���кܶ�����⡣";
+				next;
+				mes "["+strcharinfo(0)+"]";
+				mes "Ȼ��ֱ������ߣ���װʲô��û������";
+				next;
+				mes "- ��Ҫ����������һ����·�����������ȥ�����ľưɡ� -";
 				donpcevent "Estillda#3rdgc10::OnDisable";
 				if (checkquest(7104) > -1) erasequest 7104;
 				if (checkquest(7105) > -1) erasequest 7105;
 				set job_3rd_gc, 10;
 				setquest 7106;
 				next;
-				mes "- 静脉地下的酒吧是保证她安全的最佳场所。 -";
+				mes "- �������µľư��Ǳ�֤����ȫ����ѳ����� -";
 				close;
 			} else {
-				mes "- 我试图抓住她的手腕，但她已经知道并尖叫着跑开了。 -";
+				mes "- ����ͼץס�������󣬵����Ѿ�֪����������ܿ��ˡ� -";
 				donpcevent "Estillda#3rdgc10::OnDisable";
 				if (checkquest(7104) > -1) erasequest 7104;
 				if (checkquest(7105) > -1) erasequest 7105;
 				setquest 7105;
 				next;
-				mes "你抓不到艾斯蒂尔达。";
+				mes "��ץ������˹�ٶ��";
 				close;
 			}
 		} else {
-			mes "发生错误。";
-			mes "请联系 GM 团队来解决此问题。";
+			mes "��������";
+			mes "����ϵ GM �Ŷ�����������⡣";
 			close;
 		}
 	}
@@ -2212,118 +2214,118 @@ OnEnable:
 
 job3_guil01,79,15,1	script	Estillda#3rdgc11	919,{
 	if (job_3rd_gc == 11) {
-		mes "艾斯蒂尔达环顾四周，脸上露出焦虑的表情。";
+		mes "��˹�ٶ��ﻷ�����ܣ�����¶�����ǵı��顣";
 		next;
-		switch(select("你还好吗？：恐吓她。")) {
+		switch(select("�㻹���𣿣���������")) {
 		case 1:
-			mes "[艾斯蒂尔达]";
-			mes "是的？是的...";
-			mes "我觉得刺客很可怕。";
-			mes "但我不这么认为...";
+			mes "[��˹�ٶ���]";
+			mes "�ǵģ��ǵ�...";
+			mes "�Ҿ��ô̿ͺܿ��¡�";
+			mes "���Ҳ���ô��Ϊ...";
 			next;
-			select("你看起来不像是静脉来的");
-			mes "[艾斯蒂尔达]";
-			mes "是的？是的...";
-			mes "我来自雷切尔。";
-			mes "我来这里是为了让zeny。";
-			mes "我在雷切尔的生活过得很凄凉。";
+			select("�㿴���������Ǿ�������");
+			mes "[��˹�ٶ���]";
+			mes "�ǵģ��ǵ�...";
+			mes "���������ж���";
+			mes "����������Ϊ����zeny��";
+			mes "�������ж���������ú�������";
 			next;
-			switch(select("你一个人来到这里？：过着荒凉的生活……")) {
+			switch(select("��һ����������������Ż����������")) {
 			case 1:
-				mes "[艾斯蒂尔达]";
-				mes "不。";
-				mes "我不这么认为。";
-				mes "我和一个男人一起来到这里。";
+				mes "[��˹�ٶ���]";
+				mes "����";
+				mes "�Ҳ���ô��Ϊ��";
+				mes "�Һ�һ������һ���������";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "我通常自己来这里。有时他会检查我的目的地。";
-				mes "我以为他是某个公司的重要人物。";
+				mes "[��˹�ٶ���]";
+				mes "��ͨ���Լ��������ʱ�������ҵ�Ŀ�ĵء�";
+				mes "����Ϊ����ĳ����˾����Ҫ���";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "但我不知道他是谁。";
+				mes "[��˹�ٶ���]";
+				mes "���Ҳ�֪������˭��";
 				break;
 			case 2:
-				mes "[艾斯蒂尔达]";
-				mes "我是本地人，";
-				mes "我在他家工作。";
-				mes "我觉得还不错。";
-				mes "我刚刚离开家...";
+				mes "[��˹�ٶ���]";
+				mes "���Ǳ����ˣ�";
+				mes "�������ҹ�����";
+				mes "�Ҿ��û�������";
+				mes "�Ҹո��뿪��...";
 				next;
-				mes "[艾斯蒂尔达]";
-				mes "他说他需要一个女佣，他可以付给我足够的钱。";
+				mes "[��˹�ٶ���]";
+				mes "��˵����Ҫһ��ŮӶ�������Ը������㹻��Ǯ��";
 				break;
 			}
 			next;
-			mes "[艾斯蒂尔达]";
-			mes "其实我不太了解他。";
-			mes "……我永远不会这么做。";
-			mes "我想回家。我想念我的妈妈。";
+			mes "[��˹�ٶ���]";
+			mes "��ʵ�Ҳ�̫�˽�����";
+			mes "��������Զ������ô����";
+			mes "����ؼҡ��������ҵ����衣";
 			next;
-			switch(select("你能告诉我什么？：告诉我你知道什么！")) {
+			switch(select("���ܸ�����ʲô������������֪��ʲô��")) {
 			case 1:
-				mes "[艾斯蒂尔达]";
-				mes "是的。正确的？";
-				mes "我将告诉你我所知道的一切。";
+				mes "[��˹�ٶ���]";
+				mes "�ǵġ���ȷ�ģ�";
+				mes "�ҽ�����������֪����һ�С�";
 				break;
 			case 2:
-				mes "[艾斯蒂尔达]";
-				mes "对不起。对不起。";
-				mes "我会做你想做的事...";
+				mes "[��˹�ٶ���]";
+				mes "�Բ��𡣶Բ���";
+				mes "�һ�������������...";
 				next;
 				mes "["+strcharinfo(0)+"]";
-				mes "你的态度有问题。";
-				mes "让我们开始讨论主题吧。";
+				mes "���̬�������⡣";
+				mes "�����ǿ�ʼ��������ɡ�";
 				break;
 			}
 			next;
-			mes "[艾斯蒂尔达]";
-			mes "我通常供应食物";
-			mes "以及其他生活必需品。";
+			mes "[��˹�ٶ���]";
+			mes "��ͨ����Ӧʳ��";
+			mes "�Լ������������Ʒ��";
 			next;
-			mes "[艾斯蒂尔达]";
-			mes "我买一些食物给自己吃。";
-			mes "我每天都会给他买昂贵的食物。";
+			mes "[��˹�ٶ���]";
+			mes "����һЩʳ����Լ��ԡ�";
+			mes "��ÿ�춼������򰺹��ʳ�";
 			next;
-			mes "[艾斯蒂尔达]";
-			mes "我觉得他对食物很挑剔...";
-			mes "每当我送食物时我都会得到钱..";
+			mes "[��˹�ٶ���]";
+			mes "�Ҿ�������ʳ�������...";
+			mes "ÿ������ʳ��ʱ�Ҷ���õ�Ǯ..";
 			next;
-			select("你睡哪儿了？");
-			mes "[艾斯蒂尔达]";
-			mes "是的？是的，就在这附近。";
-			mes "有一个士兵住的地方。";
-			mes "他要我留在那里...";
+			select("��˯�Ķ��ˣ�");
+			mes "[��˹�ٶ���]";
+			mes "�ǵģ��ǵģ������⸽����";
+			mes "��һ��ʿ��ס�ĵط���";
+			mes "��Ҫ����������...";
 			next;
-			select("你们什么时候见面？");
-			mes "[艾斯蒂尔达]";
-			mes "几个小时后。";
-			mes "南边的一个地下仓库里。";
-			next;
-			mes "["+strcharinfo(0)+"]";
-			mes "感谢您的合作。";
-			mes "你的房子在雷切尔吗？";
-			mes "艾斯蒂尔达是你的真名吗？";
-			mes "是的，我要去雷切尔那里领取他的口粮。";
+			select("����ʲôʱ����棿");
+			mes "[��˹�ٶ���]";
+			mes "����Сʱ��";
+			mes "�ϱߵ�һ�����²ֿ��";
 			next;
 			mes "["+strcharinfo(0)+"]";
-			mes "才能平安无事地回家。";
+			mes "��л���ĺ�����";
+			mes "��ķ��������ж���";
+			mes "��˹�ٶ��������������";
+			mes "�ǵģ���Ҫȥ���ж�������ȡ���Ŀ�����";
+			next;
+			mes "["+strcharinfo(0)+"]";
+			mes "����ƽ�����µػؼҡ�";
 			set job_3rd_gc, 12;
 			changequest 7106,7107;
 			close;
 		case 2:
-			mes "[艾斯蒂尔达]";
-			mes "是的？";
-			mes "请...";
-			mes "别杀我。";
+			mes "[��˹�ٶ���]";
+			mes "�ǵģ�";
+			mes "��...";
+			mes "��ɱ�ҡ�";
 			next;
-			mes "- 艾斯蒂尔达看起来很害怕。你需要改变话题。 -";
+			mes "- ��˹�ٶ��￴�����ܺ��¡�����Ҫ�ı仰�⡣ -";
 			close;
 		}
 	} else if (job_3rd_gc == 12) {
-		mes "[艾斯蒂尔达]";
-		mes "我们通常在同一时间在同一地点见面。";
-		mes "就在南边的一个地下仓库里。";
-		mes "别告诉他是我告诉你的。";
+		mes "[��˹�ٶ���]";
+		mes "����ͨ����ͬһʱ����ͬһ�ص���档";
+		mes "�����ϱߵ�һ�����²ֿ��";
+		mes "����������Ҹ�����ġ�";
 		close;
 	}
 	end;
@@ -2337,31 +2339,31 @@ OnInit:
 OnTouch_:
 	if (job_3rd_gc == 12) {
 		if (checkquest(7107,PLAYTIME) == 2) {
-			mes "这一定是艾斯蒂尔达告诉我的地方。";
+			mes "��һ���ǰ�˹�ٶ�������ҵĵط���";
 			next;
-			switch(select("进去：观察情况。")) {
+			switch(select("��ȥ���۲������")) {
 			case 1:
 				if ($@3rdgc_room01 == 0) {
 					warp "job3_guil02",34,44;
 					set $@3rdgc_room01, 1;
 				} else {
-					mes "你试图打开门，但门锁着。";
-					mes "它没有任何生命迹象。";
+					mes "����ͼ���ţ��������š�";
+					mes "��û���κ���������";
 					next;
-					mes "稍后再回到这里。";
+					mes "�Ժ��ٻص����";
 				}
 				close;
 			case 2:
-				mes "我倒退观察事态的发展。";
+				mes "�ҵ��˹۲���̬�ķ�չ��";
 				close;
 			}
 		} else if (checkquest(7107,PLAYTIME) == 0) {
-			mes "这一定是艾斯蒂尔达告诉我的地方。";
-			mes "我有足够的时间去开会。";
+			mes "��һ���ǰ�˹�ٶ�������ҵĵط���";
+			mes "�����㹻��ʱ��ȥ���ᡣ";
 			close;
 		} else {
-			mes "发生错误。";
-			mes "联系 GM 团队解决问题。";
+			mes "��������";
+			mes "��ϵ GM �Ŷӽ�����⡣";
 			close;
 		}
 	}
@@ -2385,7 +2387,7 @@ OnTouch_:
 		donpcevent "A man with black clothes::OnEnable";
 		disablenpc "#3rdgc_room01_mag01";
 	} else {
-		mes "你现在不必来这里。";
+		mes "�����ڲ��������";
 		close;
 		warp "veins",178,62;
 		set $@3rdgc_room01, 0;
@@ -2429,34 +2431,34 @@ OnReset:
 	end;
 OnTouch_:
 	if (!.on) end;
-	mes "[黑衣男子]";
-	mes "你刚到这里。";
-	mes "你怎么这么晚？";
-	mes "把你的东西放下。";
+	mes "[��������]";
+	mes "��յ����";
+	mes "����ô��ô����";
+	mes "����Ķ������¡�";
 	next;
 	select("......");
-	mes "[黑衣男子]";
-	mes "愿女神保佑你永远...";
+	mes "[��������]";
+	mes "ԸŮ��������Զ...";
 	npcskill "AL_BLESSING",10,0,0;
 	next;
 	emotion ET_SURPRISE;
-	mes "[黑衣男子]";
-	mes "你……你是谁？！";
-	mes "一个……刺客公会？！";
-	mes "什么？！";
-	mes "我什么时候给你提示了？！";
+	mes "[��������]";
+	mes "�㡭������˭����";
+	mes "һ�������̿͹��᣿��";
+	mes "ʲô����";
+	mes "��ʲôʱ�������ʾ�ˣ���";
 	next;
-	select("你失去了头...");
+	select("��ʧȥ��ͷ...");
 	mes "["+strcharinfo(0)+"]";
-	mes "这是正确的目标吗？";
-	mes "你能和我聊一会儿吗？";
+	mes "������ȷ��Ŀ����";
+	mes "���ܺ�����һ�����";
 	next;
-	mes "[黑衣男子]";
-	mes "决不！！！！";
-	mes "你……我会让你永远闭上眼睛！";
+	mes "[��������]";
+	mes "������������";
+	mes "�㡭���һ�������Զ�����۾���";
 	next;
 	mes "["+strcharinfo(0)+"]";
-	mes "什么？！";
+	mes "ʲô����";
 	close2;
 	donpcevent "A man with black clothes::OnDisable";
 	monster "job3_guil02",51,43,"Dandelion",2031,1,"A man with black clothes::OnMyMobDead";
@@ -2490,36 +2492,36 @@ OnTimer61000:
 
 job3_guil02,49,43,5	script	Dandelion#3rdgc12	457,{
 	if (!checkweight(1201,2)) {
-		mes "- 你无法继续这个任务，因为你的物品太多。 -";
+		mes "- ���޷��������������Ϊ�����Ʒ̫�ࡣ -";
 		close;
 	}
 	if (job_3rd_gc == 12) {
-		mes "[蒲公英]";
-		mes "是的！";
-		mes "你……不会发现任何东西。";
-		mes "一切……都在女神的引导下……";
-		mes "基克！";
+		mes "[�ѹ�Ӣ]";
+		mes "�ǵģ�";
+		mes "�㡭�����ᷢ���κζ�����";
+		mes "һ�С�������Ů��������¡���";
+		mes "���ˣ�";
 		next;
-		mes "- 他把东西放进嘴里然后咽下去。 -";
+		mes "- ���Ѷ����Ž�����Ȼ������ȥ�� -";
 		next;
 		mes "["+strcharinfo(0)+"]";
-		mes "那是什么？";
-		mes "你嘴里含着什么……？";
-		mes "你为什么这么做？";
+		mes "����ʲô��";
+		mes "�����ﺬ��ʲô������";
+		mes "��Ϊʲô��ô����";
 		next;
-		mes "救他已经太晚了。";
-		mes "他去世了。";
-		mes "你发现他脖子上挂着一把带有精美装饰的钥匙。";
+		mes "�����Ѿ�̫���ˡ�";
+		mes "��ȥ���ˡ�";
+		mes "�㷢���������Ϲ���һ�Ѵ��о���װ�ε�Կ�ס�";
 		set job_3rd_gc, 13;
 		getitem 6150,1; //Key_Of_The_Mansion
 		changequest 7107,7108;
 		close;
 	} else {
 		if (job_3rd_gc == 13) {
-			mes "无事可做。";
-			mes "我们离开这里吧。";
+			mes "���¿�����";
+			mes "�����뿪����ɡ�";
 		} else
-			mes "你被一种未知的力量推着。";
+			mes "�㱻һ��δ֪���������š�";
 		close2;
 		warp "veins",178,62;
 		end;
@@ -2534,132 +2536,132 @@ OnEnable:
 }
 
 rachel,115,77,3	script	Girke#3rdgc13	85,{
-	mes "[希腊]";
-	mes "哦~年轻人。";
-	mes "我是吉尔克·萨拉。";
-	mes "就叫我吉尔克吧。";
+	mes "[ϣ��]";
+	mes "Ŷ~�����ˡ�";
+	mes "���Ǽ����ˡ�������";
+	mes "�ͽ��Ҽ����˰ɡ�";
 	next;
-	mes "- 他闻起来像酒精。 -";
+	mes "- ����������ƾ��� -";
 	next;
-	mes "[希腊]";
-	mes "你知道吗？";
-	mes "我们村里住着一位传奇的关键工匠。";
-	mes "打嗝~";
+	mes "[ϣ��]";
+	mes "��֪����";
+	mes "���Ǵ���ס��һλ����Ĺؼ�������";
+	mes "����~";
 	next;
-	mes "[希腊]";
-	mes "啊~哈哈哈哈";
-	mes "我爸爸喜欢这样的作品。";
-	mes "有一天，他对我说。";
+	mes "[ϣ��]";
+	mes "��~��������";
+	mes "�Ұְ�ϲ����������Ʒ��";
+	mes "��һ�죬������˵��";
 	next;
-	mes "[希腊]";
-	mes "“Girke，我的愿望是拥有一把用奥雷莎制作的钥匙。”";
+	mes "[ϣ��]";
+	mes "��Girke���ҵ�Ը����ӵ��һ���ð���ɯ������Կ�ס���";
 	next;
-	mes "[希腊]";
-	mes "但奥雷萨将一切交给徒弟后就消失了。";
-	mes "最后，我爸爸在没有看到这样一把钥匙的情况下就去世了……";
+	mes "[ϣ��]";
+	mes "����������һ�н���ͽ�ܺ����ʧ�ˡ�";
+	mes "����Ұְ���û�п�������һ��Կ�׵�����¾�ȥ���ˡ���";
 	next;
-	mes "[希腊]";
-	mes "你知道。";
-	mes "那个奥蕾莎！他住在我们镇上？！";
-	mes "打嗝~";
+	mes "[ϣ��]";
+	mes "��֪����";
+	mes "�Ǹ�����ɯ����ס���������ϣ���";
+	mes "����~";
 	next;
-	mes "[希腊]";
-	mes "但他太老了……";
-	mes "但工匠是...";
+	mes "[ϣ��]";
+	mes "����̫���ˡ���";
+	mes "��������...";
 	next;
-	mes "[希腊]";
-	mes "……见面难。";
-	mes "就像我父亲一样……他有点孤独。";
+	mes "[ϣ��]";
+	mes "���������ѡ�";
+	mes "�����Ҹ���һ���������е�¶���";
 	next;
-	mes "[希腊]";
-	mes "我跟你说啥呢。";
-	mes "你喝醉了吗？爸爸……（抽泣）";
-	mes "啊……爸爸……";
+	mes "[ϣ��]";
+	mes "�Ҹ���˵ɶ�ء�";
+	mes "��������𣿰ְ֡�����������";
+	mes "�������ְ֡���";
 	next;
-	mes "- 吉尔克开始哭泣。 -";
+	mes "- �����˿�ʼ������ -";
 	close;
 }
 
 ra_in01,175,196,3	script	Oresa Rava#3rdgc13	866,{
-	mes "[奥雷萨·拉瓦]";
+	mes "[������������]";
 	if (job_3rd_gc == 13) {
-		mes "我不知道你为什么来看我，但我不再做手工了。";
-		mes "我太老了，不能做手工了。";
+		mes "�Ҳ�֪����Ϊʲô�����ң����Ҳ������ֹ��ˡ�";
+		mes "��̫���ˣ��������ֹ��ˡ�";
 		next;
-		select("你认识这个钥匙吗？");
-		mes "[奥雷萨·拉瓦]";
-		mes "唔？嗯……给我吧。";
-		mes "这个图案...";
-		mes "你从哪里得到这个？";
+		select("����ʶ���Կ����");
+		mes "[������������]";
+		mes "�����š������Ұɡ�";
+		mes "���ͼ��...";
+		mes "�������õ������";
 		next;
-		switch(select("我刚拿起它：我有一个故事......")) {
+		switch(select("�Ҹ�������������һ������......")) {
 		case 1:
-			mes "[奥雷萨·拉瓦]";
-			mes "嗯？你是刚捡起来的吗？";
-			mes "那是不可能的。";
-			mes "是不是那个屋子里发生了什么事情。";
+			mes "[������������]";
+			mes "�ţ����Ǹռ���������";
+			mes "���ǲ����ܵġ�";
+			mes "�ǲ����Ǹ������﷢����ʲô���顣";
 			next;
-			mes "[奥雷萨·拉瓦]";
-			mes "那么你会用这把钥匙做什么呢？";
+			mes "[������������]";
+			mes "��ô��������Կ����ʲô�أ�";
 			next;
-			select("我这就去找失主。");
-			mes "[奥雷萨·拉瓦]";
-			mes "啊~！这就是你来这里见我的原因。";
-			mes "我把那把钥匙交给了一位牧师。";
+			select("�����ȥ��ʧ����");
+			mes "[������������]";
+			mes "��~�����������������ҵ�ԭ��";
+			mes "�Ұ��ǰ�Կ�׽�����һλ��ʦ��";
 			next;
-			mes "[奥雷萨·拉瓦]";
-			mes "他成为牧师后我看不到我的家，但我做了一把庆祝活动的钥匙。";
+			mes "[������������]";
+			mes "����Ϊ��ʦ���ҿ������ҵļң���������һ����ף���Կ�ס�";
 			next;
-			mes "[奥雷萨·拉瓦]";
-			mes "这是他宅邸的钥匙。";
-			mes "现在我不知道他住在哪里。";
-			mes "但是你能去那里看看并派出避暑别墅的看门人吗？";
+			mes "[������������]";
+			mes "������լۡ��Կ�ס�";
+			mes "�����Ҳ�֪����ס�����";
+			mes "��������ȥ���￴�����ɳ���������Ŀ�������";
 			next;
 			break;
 		case 2:
-			mes "[奥雷萨·拉瓦]";
-			mes "我不知道发生了什么事。";
-			mes "我把那把钥匙交给了一位牧师。";
+			mes "[������������]";
+			mes "�Ҳ�֪��������ʲô�¡�";
+			mes "�Ұ��ǰ�Կ�׽�����һλ��ʦ��";
 			next;
-			mes "[奥雷萨·拉瓦]";
-			mes "他成为牧师后我看不到我的家，但我做了一把庆祝活动的钥匙。";
+			mes "[������������]";
+			mes "����Ϊ��ʦ���ҿ������ҵļң���������һ����ף���Կ�ס�";
 			next;
-			mes "[奥雷萨·拉瓦]";
-			mes "这是他宅邸的钥匙。";
-			mes "现在我不知道他住在哪里。";
-			mes "但是你能去那里看看并派出避暑别墅的看门人吗？";
+			mes "[������������]";
+			mes "������լۡ��Կ�ס�";
+			mes "�����Ҳ�֪����ס�����";
+			mes "��������ȥ���￴�����ɳ���������Ŀ�������";
 			next;
-			mes "[奥雷萨·拉瓦]";
-			mes "其实我无法相信你...";
-			mes "但你带着钥匙出现了。这可能是一种天意。";
+			mes "[������������]";
+			mes "��ʵ���޷�������...";
+			mes "�������Կ�׳����ˡ��������һ�����⡣";
 			next;
-			select("当然。");
+			select("��Ȼ��");
 			break;
 		}
-		mes "[奥雷萨·拉瓦]";
-		mes "那个豪宅是...";
-		mes "建在静脉峡谷中。";
-		mes "虽然我不知道它的具体位置。";
+		mes "[������������]";
+		mes "�Ǹ���լ��...";
+		mes "���ھ���Ͽ���С�";
+		mes "��Ȼ�Ҳ�֪�����ľ���λ�á�";
 		next;
-		select("那应该足够了。");
-		mes "[奥雷萨·拉瓦]";
-		mes "你确定吗？";
-		mes "你真善良。";
-		mes "发送那个密钥。";
+		select("��Ӧ���㹻�ˡ�");
+		mes "[������������]";
+		mes "��ȷ����";
+		mes "����������";
+		mes "�����Ǹ���Կ��";
 		next;
-		mes "- 尽快找到该钥匙的所有者并告诉 Mayshell。 -";
+		mes "- �����ҵ���Կ�׵������߲����� Mayshell�� -";
 		set job_3rd_gc, 14;
 		close;
 	} else if (job_3rd_gc == 14) {
-		mes "这把钥匙是一座建在矿脉峡谷中的宅邸的钥匙。";
-		mes "我确信这一点。";
+		mes "���Կ����һ�����ڿ���Ͽ���е�լۡ��Կ�ס�";
+		mes "��ȷ����һ�㡣";
 		close;
 	} else {
-		mes "关于那位工匠，这是一个古老的故事。";
-		mes "现在... 最好看看我的孙子。";
+		mes "������λ����������һ�����ϵĹ��¡�";
+		mes "����... ��ÿ����ҵ����ӡ�";
 		next;
-		mes "[奥雷萨·拉瓦]";
-		mes "你现在在笑，但你很快就会明白我的意思。";
+		mes "[������������]";
+		mes "��������Ц������ܿ�ͻ������ҵ���˼��";
 		close;
 	}
 }
@@ -2667,35 +2669,35 @@ ra_in01,175,196,3	script	Oresa Rava#3rdgc13	866,{
 //Pre-RE: ve_fild05 (327,308)
 ve_fild02,330,384,3	script	Girl#3rdgc14	466,{
 	if (job_3rd_gc > 14 && job_3rd_gc < 18) {
-		mes "[伦扎克]";
+		mes "[������]";
 		if (job_3rd_gc == 15) {
-			mes "你在这里。";
-			mes "我是伦扎克。";
-			mes "你是从 Mayshell 寄来的吗？";
+			mes "�������";
+			mes "���������ˡ�";
+			mes "���Ǵ� Mayshell ��������";
 			//mes "I'm not dwelling on."; //FIXME: Dialogue.
 			next;
-			mes "[伦扎克]";
-			mes "我们的最终目标就在那里。";
-			mes "这座豪宅四周都是悬崖。";
-			mes "你必须移除宅邸中的目标。";
+			mes "[������]";
+			mes "���ǵ�����Ŀ��������";
+			mes "������լ���ܶ������¡�";
+			mes "������Ƴ�լۡ�е�Ŀ�ꡣ";
 			next;
-			mes "[伦扎克]";
-			mes "我给你 10 分钟。";
-			mes "完成你的任务，然后在豪宅后门等待。";
-			mes "我会在那里等你。";
+			mes "[������]";
+			mes "�Ҹ��� 10 ���ӡ�";
+			mes "����������Ȼ���ں�լ���ŵȴ���";
+			mes "�һ���������㡣";
 		} else if (job_3rd_gc == 16) {
-			mes "你必须达到我们的目标，并在十分钟内从宅邸后门出来。";
-			mes "你可以做到的。";
+			mes "�����ﵽ���ǵ�Ŀ�꣬����ʮ�����ڴ�լۡ���ų�����";
+			mes "����������ġ�";
 		} else {
-			mes "你失败了。";
-			mes "你必须成功。";
+			mes "��ʧ���ˡ�";
+			mes "�����ɹ���";
 			next;
-			mes "[伦扎克]";
-			mes "你必须从宅邸的后门出来。";
-			mes "我会等你。";
+			mes "[������]";
+			mes "������լۡ�ĺ��ų�����";
+			mes "�һ���㡣";
 		}
 		next;
-		switch(select("我明白了：我会准备好的。")) {
+		switch(select("�������ˣ��һ�׼���õġ�")) {
 		case 1:
 			if ($@3rdgc_room02 == 0) {
 				erasequest ((job_3rd_gc == 17)?7110:7109);
@@ -2704,19 +2706,19 @@ ve_fild02,330,384,3	script	Girl#3rdgc14	466,{
 				set $@3rdgc_room02, 1;
 				warp "job3_guil03",22,70;
 			} else {
-				mes "[伦扎克]";
-				mes "等一下。";
-				mes "只要等到天黑就可以了。";
+				mes "[������]";
+				mes "��һ�¡�";
+				mes "ֻҪ�ȵ���ھͿ����ˡ�";
 				next;
-				mes "[伦扎克]";
-				mes "因为有悬崖的阴影覆盖，所以很容易渗透。";
+				mes "[������]";
+				mes "��Ϊ�����µ���Ӱ���ǣ����Ժ�������͸��";
 				set job_3rd_gc, 16;
 			}
 			close;
 		case 2:
-			mes "[伦扎克]";
-			mes "你没有空闲的时间。";
-			mes "你应该准备采取行动。";
+			mes "[������]";
+			mes "��û�п��е�ʱ�䡣";
+			mes "��Ӧ��׼����ȡ�ж���";
 			if (job_3rd_gc == 17) {
 				erasequest 7110;
 				setquest 7109;
@@ -2725,18 +2727,18 @@ ve_fild02,330,384,3	script	Girl#3rdgc14	466,{
 			close;
 		}
 	} else if (job_3rd_gc > 18) {
-		mes "[伦扎克]";
-		mes "你看起来不错。";
-		mes "我？我一直有同样的身材。";
+		mes "[������]";
+		mes "�㿴����������";
+		mes "�ң���һֱ��ͬ�������ġ�";
 		next;
-		mes "[伦扎克]";
-		mes "我只是等待那些愿意按照我的要求去做的人。";
+		mes "[������]";
+		mes "��ֻ�ǵȴ���ЩԸ�ⰴ���ҵ�Ҫ��ȥ�����ˡ�";
 		close;
 	} else {
-		mes "[影面少女]";
+		mes "[Ӱ����Ů]";
 		mes "......";
-		mes "这条路被堵住了。";
-		mes "回去。";
+		mes "����·����ס�ˡ�";
+		mes "��ȥ��";
 		close;
 	}
 OnInit:
@@ -2761,7 +2763,7 @@ OnTouch_:
 		donpcevent "#3rdgc_event_master::OnEnable";
 		disablenpc "#3rdgc_event01";
 	} else {
-		mes "你不必来这里。";
+		mes "�㲻�������";
 		close2;
 		warp "ve_fild02",330,379;	//Pre-RE: ve_fild05 (341,303)
 		set $@3rdgc_room02, 0;
@@ -2839,11 +2841,11 @@ OnDisable:
 	disablenpc "Barbed-Wire Entanglement";
 	end;
 OnTouch_:
-	mes "旧栅栏的底部有空间。";
+	mes "��դ���ĵײ��пռ䡣";
 	next;
-	if(select("另辟蹊径：爬进太空。") == 2) {
-		mes "你爬进狭窄的空间。";
-		mes "这个洞被旧的铁丝网堵住了。";
+	if(select("�����辶������̫�ա�") == 2) {
+		mes "��������խ�Ŀռ䡣";
+		mes "��������ɵ���˿����ס�ˡ�";
 		close2;
 		warp "job3_guil03",57,79;
 		disablenpc "Barbed-Wire Entanglement";
@@ -3437,7 +3439,7 @@ job3_guil03,83,36,5	duplicate(#3rdgc_gojung_kill01)	#3rdgc_gojung_kill03	456,6,6
 job3_guil03,88,71,0	script	#3rdgc_safezone01	139,1,1,{
 	end;
 OnTouch_:
-	mes "这是一个隐藏自己的好灌木丛。";
+	mes "����һ�������Լ��ĺù�ľ�ԡ�";
 	donpcevent strnpcinfo(0)+"::OnTimer";
 	close;
 OnTimer:
@@ -3461,31 +3463,31 @@ job3_guil03,72,53,0	duplicate(#3rdgc_safezone01)	#3rdgc_safezone03	139,1,1
 
 job3_guil03,111,51,7	script	Priest from Rachel	928,{
 	if (!.on) end;
-	mes "[雷切尔的牧师]";
+	mes "[���ж�����ʦ]";
 	if (job_3rd_gc == 17) {
-		mes "你是刺客公会的人吗？";
+		mes "���Ǵ̿͹��������";
 		next;
-		mes "[雷切尔的牧师]";
-		mes "我们组织之所以解散，都是因为你们。";
-		mes "你是一个彻底的人吗？";
+		mes "[���ж�����ʦ]";
+		mes "������֮֯���Խ�ɢ��������Ϊ���ǡ�";
+		mes "����һ�����׵�����";
 		next;
-		mes "[雷切尔的牧师]";
-		mes "因为你，你毁了一切！";
+		mes "[���ж�����ʦ]";
+		mes "��Ϊ�㣬�����һ�У�";
 		setnpcdisplay(strnpcinfo(0),2030);
 		next;
-		mes "[雷切尔的牧师]";
-		mes "你想永远毁灭我们！";
-		mes "我不能让肮脏的奥丁让女神蒙羞！";
+		mes "[���ж�����ʦ]";
+		mes "������Զ�������ǣ�";
+		mes "�Ҳ����ð���İ¶���Ů�����ߣ�";
 		next;
-		mes "[雷切尔的牧师]";
-		mes "我永远不会原谅你！！！";
-		mes "异教徒！正义将会很快到来！";
+		mes "[���ж�����ʦ]";
+		mes "����Զ����ԭ���㣡����";
+		mes "���ͽ�����彫��ܿ쵽����";
 		donpcevent "Priest from Rachel::OnDisable";
 		monster "job3_guil03",111,51,"Priest from Rachel",2030,1,"Priest from Rachel::OnMyMobDead";
 		close;
 	}
-	mes "你是谁？";
-	mes "离开这里。";
+	mes "����˭��";
+	mes "�뿪���";
 	close2;
 	warp "ve_fild02",330,379;	//Pre-RE: ve_fild05 (341,303)
 	end;
@@ -3555,20 +3557,20 @@ OnTimer61500:
 }
 
 job3_guil03,146,70,3	script	Renzak#3rdgc16	466,{
-	mes "[伦扎克]";
+	mes "[������]";
 	if (checkquest(7110,HUNTING) == 2) {
-		mes "我的同伴会来这里解决这件事。";
-		mes "前往 Mayshell 获取报告。";
+		mes "�ҵ�ͬ���������������¡�";
+		mes "ǰ�� Mayshell ��ȡ���档";
 		next;
-		mes "[伦扎克]";
+		mes "[������]";
 		if (checkquest(7110,PLAYTIME) == 0) {
-			mes "你很快就完成了。";
-			mes "好工作。";
+			mes "��ܿ������ˡ�";
+			mes "�ù�����";
 			set job_3rd_gc, 18;
 		} else {
-			mes "我告诉过你你必须在10分钟内完成。";
-			mes "你可能已经筋疲力尽了。";
-			mes "幸运的是你没事。";
+			mes "�Ҹ��߹����������10��������ɡ�";
+			mes "������Ѿ���ƣ�����ˡ�";
+			mes "���˵�����û�¡�";
 			set job_3rd_gc, 19;
 		}
 		erasequest 7110;
@@ -3577,8 +3579,8 @@ job3_guil03,146,70,3	script	Renzak#3rdgc16	466,{
 		warp "job3_guil01",51,50;
 		end;
 	}
-	mes "抓住目标！";
-	mes "事实上，我不应该在这里。你有什么问题吗？";
+	mes "ץסĿ�꣡";
+	mes "��ʵ�ϣ��Ҳ�Ӧ�����������ʲô������";
 	close;
 OnInit:
 	disablenpc "Renzak#3rdgc16";
@@ -3593,80 +3595,80 @@ OnDisable:
 
 job3_guil01,148,53,3	script	Bercasell#3rdgc16	467,{
 	if (!checkweight(1201,2)) {
-		mes "- 你无法继续这个任务，因为你的物品太多。 -";
+		mes "- ���޷��������������Ϊ�����Ʒ̫�ࡣ -";
 		close;
 	}
-	mes "[贝尔卡塞尔]";
+	mes "[����������]";
 	if (Class == Job_Assassin || Class == Job_Assassin_Cross || Class == Job_Baby_Assassin) {
 		if (job_3rd_gc == 20) {
 			if (JobLevel > 49 && SkillPoint == 0 && BaseLevel > 98) {
-				mes "我好累...";
-				mes "你是Mayshell派来的？";
-				mes "告诉我你为什么来看我。";
+				mes "�Һ���...";
+				mes "����Mayshell�����ģ�";
+				mes "��������Ϊʲô�����ҡ�";
 				next;
-				switch(select("什么是断头台十字架？：我想成为断头台十字架。：什么都没有。")) {
+				switch(select("ʲô�Ƕ�ͷ̨ʮ�ּܣ��������Ϊ��ͷ̨ʮ�ּܡ���ʲô��û�С�")) {
 				case 1:
-					mes "[贝尔卡塞尔]";
+					mes "[����������]";
 					mes ".....";
 					next;
-					mes "[贝尔卡塞尔]";
-					mes "那么您想了解断头台十字架吗？";
-					mes "出去！";
+					mes "[����������]";
+					mes "��ô�����˽��ͷ̨ʮ�ּ���";
+					mes "��ȥ��";
 					next;
-					switch(select("告诉我吧……：……")) {
+					switch(select("�����Ұɡ���������")) {
 					case 1:
-						mes "[贝尔卡塞尔]";
+						mes "[����������]";
 						callsub L_Info;
-						mes "[贝尔卡塞尔]";
-						mes "我这样跟你说话真有趣。";
-						mes "我想阻止你因为你的反抗而成为断头台十字架。";
+						mes "[����������]";
+						mes "����������˵������Ȥ��";
+						mes "������ֹ����Ϊ��ķ�������Ϊ��ͷ̨ʮ�ּܡ�";
 						close;
 					case 2:
-						mes "[贝尔卡塞尔]";
-						mes "是的，你不问问题。";
-						mes "那挺好的。你有资格。成为断头台十字架怎么样？";
-						mes "你想成为断头台十字架吗？";
+						mes "[����������]";
+						mes "�ǵģ��㲻�����⡣";
+						mes "��ͦ�õġ������ʸ񡣳�Ϊ��ͷ̨ʮ�ּ���ô����";
+						mes "�����Ϊ��ͷ̨ʮ�ּ���";
 						next;
-						switch(select("是的，换工作。：我需要考虑一下。")) {
+						switch(select("�ǵģ���������������Ҫ����һ�¡�")) {
 						case 1:
 							L_JobChange:
-							mes "[贝尔卡塞尔]";
-							mes "你不后悔吗？";
+							mes "[����������]";
+							mes "�㲻�����";
 							callsub L_Info;
-							mes "[贝尔卡塞尔]";
-							mes "你可以成为一个活生生的进攻武器。";
-							mes "你真的想成为断头台十字架吗？";
+							mes "[����������]";
+							mes "����Գ�Ϊһ���������Ľ���������";
+							mes "��������Ϊ��ͷ̨ʮ�ּ���";
 							next;
-							switch(select("是的，换工作。：我需要重新考虑。")) {
+							switch(select("�ǵģ���������������Ҫ���¿��ǡ�")) {
 							case 1:
-								mes "[贝尔卡塞尔]";
+								mes "[����������]";
 								if (ismounting()) {
-									mes "我无法执行工作变更。";
-									mes "请移除您的坐骑并重试。";
+									mes "���޷�ִ�й��������";
+									mes "���Ƴ��������ﲢ���ԡ�";
 									close;
 								} else if (SkillPoint != 0) {
-									mes "你还有未使用的技能点。";
-									mes "请使用您所有的技能点并重试。";
+									mes "�㻹��δʹ�õļ��ܵ㡣";
+									mes "��ʹ�������еļ��ܵ㲢���ԡ�";
 									close;
 								}
-								mes "您的决定是最终决定吗？";
-								mes "好的。";
+								mes "���ľ��������վ�����";
+								mes "�õġ�";
 								next;
-								mes "[贝尔卡塞尔]";
-								mes "现在，你是刺客，但又不再是刺客了。";
-								mes "你在阴影中，但它与其他阴影不同。";
+								mes "[����������]";
+								mes "���ڣ����Ǵ̿ͣ����ֲ����Ǵ̿��ˡ�";
+								mes "������Ӱ�У�������������Ӱ��ͬ��";
 								next;
-								mes "[贝尔卡塞尔]";
-								mes "你的敌人就是你能看到的一切。";
-								mes "别忘了你自己。";
-								mes "你武器上的血的重量。";
+								mes "[����������]";
+								mes "��ĵ��˾������ܿ�����һ�С�";
+								mes "���������Լ���";
+								mes "�������ϵ�Ѫ��������";
 								next;
-								mes "[贝尔卡塞尔]";
-								mes "好的，把衣服换成新制服吧。";
-								mes "你现在是断头台十字架。";
+								mes "[����������]";
+								mes "�õģ����·��������Ʒ��ɡ�";
+								mes "�������Ƕ�ͷ̨ʮ�ּܡ�";
 								next;
-								mes "[贝尔卡塞尔]";
-								mes "一把暗影之剑……";
+								mes "[����������]";
+								mes "һ�Ѱ�Ӱ֮������";
 								setlook 7,0;
 								jobchange roclass(eaclass()|EAJL_THIRD);
 								if (checkquest(7096) == 1) {
@@ -3685,119 +3687,119 @@ job3_guil01,148,53,3	script	Bercasell#3rdgc16	467,{
 								getitem 2795,1; //Green_Apple_Ring
 								getitem 5755,1; //Silent_Executer
 								next;
-								mes "[贝尔卡塞尔]";
-								mes "而且...这些是庆祝您成为断头台十字架的礼物。";
+								mes "[����������]";
+								mes "����...��Щ����ף����Ϊ��ͷ̨ʮ�ּܵ����";
 								close;
 							case 2:
-								mes "[贝尔卡塞尔]";
-								mes "你很谨慎。这是一件好事。";
-								mes "我会等待你决定加入我们成为断头台十字架的那一天。";
+								mes "[����������]";
+								mes "��ܽ���������һ�����¡�";
+								mes "�һ�ȴ�������������ǳ�Ϊ��ͷ̨ʮ�ּܵ���һ�졣";
 								close;
 							}
 						case 2:
-							mes "[贝尔卡塞尔]";
-							mes "你很谨慎。这是一件好事。";
-							mes "我会等待你决定加入我们成为断头台十字架的那一天。";
+							mes "[����������]";
+							mes "��ܽ���������һ�����¡�";
+							mes "�һ�ȴ�������������ǳ�Ϊ��ͷ̨ʮ�ּܵ���һ�졣";
 							close;
 						}
 					}
 				case 2:
 					goto L_JobChange;
 				case 3:
-					mes "[贝尔卡塞尔]";
-					mes "别打扰我。";
+					mes "[����������]";
+					mes "������ҡ�";
 					close;
 				}
 			}
 			mes "......";
-			mes "我能为你做什么？";
+			mes "����Ϊ����ʲô��";
 			next;
-			switch(select("我想成为断头台：没什么。")) {
+			switch(select("�����Ϊ��ͷ̨��ûʲô��")) {
 			case 1:
-				mes "[贝尔卡塞尔]";
-				mes "你？";
-				mes "做什么的...？";
-				mes "当然，你是带着自己的意愿来到这里的……";
+				mes "[����������]";
+				mes "�㣿";
+				mes "��ʲô��...��";
+				mes "��Ȼ�����Ǵ����Լ�����Ը��������ġ���";
 				next;
-				mes "[贝尔卡塞尔]";
-				mes "断头台·克罗斯是刺客公会法律的执行者。";
-				mes "你能在同伴背后放一把匕首吗？";
+				mes "[����������]";
+				mes "��ͷ̨������˹�Ǵ̿͹��ᷨ�ɵ�ִ���ߡ�";
+				mes "������ͬ�鱳���һ��ذ����";
 				next;
-				mes "[贝尔卡塞尔]";
-				mes "你还没有准备好这样做......";
+				mes "[����������]";
+				mes "�㻹û��׼����������......";
 				close;
 			case 2:
-				mes "[贝尔卡塞尔]";
-				mes "别打扰我。";
+				mes "[����������]";
+				mes "������ҡ�";
 				close;
 			}
 		} else if (job_3rd_gc > 20) {
-			mes "不要只追求实力。";
-			mes "你会累的。";
-			mes "这并不比活着更好。";
-			mes "如果你只追求权力...";
+			mes "��Ҫֻ׷��ʵ����";
+			mes "����۵ġ�";
+			mes "�Ⲣ���Ȼ��Ÿ��á�";
+			mes "�����ֻ׷��Ȩ��...";
 			next;
-			mes "[贝尔卡塞尔]";
-			mes "总有一天，它会回到你身边。";
-			mes "好吧，我只是一个武器，假设我没有权利谈论生命……";
+			mes "[����������]";
+			mes "����һ�죬����ص������ߡ�";
+			mes "�ðɣ���ֻ��һ��������������û��Ȩ��̸����������";
 			close;
 		} else {
-			mes "多拉怎么了？";
-			mes "你为什么在这里？";
-			mes "我有说过你可以来这里吗？";
+			mes "������ô�ˣ�";
+			mes "��Ϊʲô�����";
+			mes "����˵���������������";
 			next;
-			mes "[贝尔卡塞尔]";
-			mes "还是梅谢尔派你来的？";
-			mes "或者什么，你是我的粉丝吗？";
-			mes "你找错地方了！";
+			mes "[����������]";
+			mes "����÷л���������ģ�";
+			mes "����ʲô�������ҵķ�˿��";
+			mes "���Ҵ��ط��ˣ�";
 			next;
-			mes "[贝尔卡塞尔]";
-			mes "赶紧离开这里吧！！！";
+			mes "[����������]";
+			mes "�Ͻ��뿪����ɣ�����";
 			close;
 		}
 	} else if (Class == Job_Guillotine_Cross || Class == Job_Guillotine_Cross_T || Class == Job_Baby_Guillotine_Cross) {
-		mes "不要只追求实力。";
-		mes "你会累的。";
-		mes "这并不比活着更好。";
-		mes "如果你只追求权力...";
+		mes "��Ҫֻ׷��ʵ����";
+		mes "����۵ġ�";
+		mes "�Ⲣ���Ȼ��Ÿ��á�";
+		mes "�����ֻ׷��Ȩ��...";
 		next;
-		mes "[贝尔卡塞尔]";
-		mes "总有一天，它会回到你身边。";
-		mes "好吧，我只是一个武器，假设我没有权利谈论生命……";
+		mes "[����������]";
+		mes "����һ�죬����ص������ߡ�";
+		mes "�ðɣ���ֻ��һ��������������û��Ȩ��̸����������";
 		close;
 	}
-	mes "什么？";
-	mes "嘿，你不应该在这里！";
-	mes "赶紧出去吧！";
+	mes "ʲô��";
+	mes "�٣��㲻Ӧ�������";
+	mes "�Ͻ���ȥ�ɣ�";
 	close;
 
 L_Info:
-	mes "Guillotine Cross 是一名执行者。";
-	mes "活生生的进攻性武器...";
+	mes "Guillotine Cross ��һ��ִ���ߡ�";
+	mes "�������Ľ���������...";
 	next;
-	mes "[贝尔卡塞尔]";
-	mes "谁是刺客的天敌？";
-	mes "剑士？牧师？";
-	mes "巫师？";
-	mes "恶事多多？";
+	mes "[����������]";
+	mes "˭�Ǵ̿͵���У�";
+	mes "��ʿ����ʦ��";
+	mes "��ʦ��";
+	mes "���¶�ࣿ";
 	next;
-	mes "[贝尔卡塞尔]";
-	mes "不，刺客的天敌是其他刺客。";
-	mes "对我们来说最有威胁的就是我们自己。";
+	mes "[����������]";
+	mes "�����̿͵�����������̿͡�";
+	mes "��������˵������в�ľ��������Լ���";
 	next;
-	mes "[贝尔卡塞尔]";
-	mes "在公会的黑暗中，在阴影中我们是断头台十字架。";
-	mes "我们维护刺客公会内的法律和秩序。";
+	mes "[����������]";
+	mes "�ڹ���ĺڰ��У�����Ӱ�������Ƕ�ͷ̨ʮ�ּܡ�";
+	mes "����ά���̿͹����ڵķ��ɺ�����";
 	next;
-	mes "[贝尔卡塞尔]";
-	mes "有时我们为同行树立榜样，有时我们以公会的名义将剑架在会员的脖子上。";
-	mes "我们是断头台十字，刺客公会的剑。";
+	mes "[����������]";
+	mes "��ʱ����Ϊͬ��������������ʱ�����Թ�������彫�����ڻ�Ա�Ĳ����ϡ�";
+	mes "�����Ƕ�ͷ̨ʮ�֣��̿͹���Ľ���";
 	next;
-	mes "[贝尔卡塞尔]";
-	mes "我们有能力找到黑暗中的成员，而你太咄咄逼人了。";
+	mes "[����������]";
+	mes "�����������ҵ��ڰ��еĳ�Ա������̫���ͱ����ˡ�";
 	next;
-	mes "[贝尔卡塞尔]";
-	mes "我们拥有非常先进的战斗技能。";
+	mes "[����������]";
+	mes "����ӵ�зǳ��Ƚ���ս�����ܡ�";
 	next;
 	return;
 }
@@ -3810,9 +3812,9 @@ OnTouch:
 	if (job_3rd_gc > 3)
 		warp "job3_guil01",60,50;
 	else {
-		mes "[亲爱的]";
-		mes "嘿！";
-		mes "严禁擅自闯入！";
+		mes "[�װ���]";
+		mes "�٣�";
+		mes "�Ͻ����Դ��룡";
 		close;
 	}
 	end;
@@ -3824,11 +3826,11 @@ OnTouch:
 		warp "job3_guil01",12,7;
 	else {
 		mes "[----------------------------]";
-		mes "未经许可不得擅自侵入";
-		mes "允许。";
-		mes "我不是一个";
-		mes "慷慨的人。";
-		mes "- 梅谢尔";
+		mes "δ�����ɲ�����������";
+		mes "������";
+		mes "�Ҳ���һ��";
+		mes "�������ˡ�";
+		mes "- ÷л��";
 		mes "[----------------------------]";
 		close;
 	}
@@ -3842,7 +3844,7 @@ OnTouch:
 	else if (job_3rd_gc > 19)
 		warp "job3_guil01",144,57;
 	else {
-		mes "你没什么可做的。";
+		mes "��ûʲô�����ġ�";
 		close;
 	}
 	end;
@@ -3850,64 +3852,64 @@ OnTouch:
 
 job3_guil02,1,3,0	script	#GMhelper01_gc	844,{
 	callfunc "F_GM_NPC";
-	mes "我能为你做什么？";
+	mes "����Ϊ����ʲô��";
 	next;
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
 		set .@room01, $@3rdgc_room01;
-		mes "我查了一下最近的情况。";
-		mes "仓储战况："+.@room01+"";
-		mes "1：正在进行中。 0：待机状态。";
+		mes "�Ҳ���һ������������";
+		mes "�ִ�ս����"+.@room01+"";
+		mes "1�����ڽ����С� 0������״̬��";
 		next;
-		switch(select("重置存储情况：停止。")) {
+		switch(select("���ô洢�����ֹͣ��")) {
 		case 1:
-			mes "您想重置存储情况吗？";
-			mes "请检查里面是否有人。";
+			mes "�������ô洢�����";
+			mes "���������Ƿ����ˡ�";
 			next;
-			switch(select("编号：重置。")) {
+			switch(select("��ţ����á�")) {
 			case 1:
-				mes "我什么也没做。";
+				mes "��ʲôҲû����";
 				close;
 			case 2:
-				mes "重置存储情况。";
+				mes "���ô洢�����";
 				donpcevent "Dandelion#3rdgc12::OnDisable";
 				donpcevent "A man with black clothes::OnDisable";
 				donpcevent "#3rdgc_room01_mag01::OnEnable";
 				set $@3rdgc_room01, 0;
 				next;
-				mes "完成重置。";
+				mes "������á�";
 				close;
 			}
 		case 2:
-			mes "豪宅的管理人员就在豪宅里。";
+			mes "��լ�Ĺ�����Ա���ں�լ�";
 			close;
 		}
 	} else {
-		mes "-_-。";
+		mes "-_-��";
 		close;
 	}
 }
 
 job3_guil03,1,8,0	script	#GMhelper02_gc	844,{
 	callfunc "F_GM_NPC";
-	mes "我能为你做什么？";
+	mes "����Ϊ����ʲô��";
 	next;
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
 		set .@room02, $@3rdgc_room02;
-		mes "检查一下最近的情况。";
-		mes "公馆的战斗情况是："+.@room02+"";
-		mes "1：正在进行中。 0：待机状态。";
+		mes "���һ������������";
+		mes "���ݵ�ս������ǣ�"+.@room02+"";
+		mes "1�����ڽ����С� 0������״̬��";
 		next;
-		switch(select("重置豪宅：停下来。")) {
+		switch(select("���ú�լ��ͣ������")) {
 		case 1:
-			mes "你想重置豪宅吗？";
-			mes "休息结束后，所有内线球员将被驱逐。";
+			mes "�������ú�լ��";
+			mes "��Ϣ����������������Ա��������";
 			next;
-			switch(select("编号：重置。")) {
+			switch(select("��ţ����á�")) {
 			case 1:
-				mes "我什么都没有";
+				mes "��ʲô��û��";
 				close;
 			case 2:
-				mes "重置豪宅。";
+				mes "���ú�լ��";
 				donpcevent "#3rdgc_guard::OnStop";
 				donpcevent "#3rdgc_guardoff::OnReset";
 				donpcevent "#3rdgc_hide01::OnStop";
@@ -3938,10 +3940,10 @@ job3_guil03,1,8,0	script	#GMhelper02_gc	844,{
 				donpcevent "Priest from Rachel::OnDisable";
 				donpcevent "Renzak#3rdgc16::OnDisable";
 				next;
-				mes "完成内部NPC的重置。";
-				mes "全局变量已组织好。";
-				mes "我们开始强行驱逐。";
-				mes "现在只需按下输入按钮即可。";
+				mes "����ڲ�NPC�����á�";
+				mes "ȫ�ֱ�������֯�á�";
+				mes "���ǿ�ʼǿ������";
+				mes "����ֻ�谴�����밴ť���ɡ�";
 				donpcevent "#3rdgc_event01::OnEnable";
 				set $@3rdgc_room02, 0;
 				close2;
@@ -3949,11 +3951,11 @@ job3_guil03,1,8,0	script	#GMhelper02_gc	844,{
 				end;
 			}
 		case 2:
-			mes "存储的管理是在存储中进行的。";
+			mes "�洢�Ĺ������ڴ洢�н��еġ�";
 			close;
 		}
 	} else {
-		mes "-_-。";
+		mes "-_-��";
 		close;
 	}
 }

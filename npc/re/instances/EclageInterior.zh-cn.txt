@@ -12,6 +12,8 @@
 //===== Additional Comments: ================================= 
 //= 1.0 Converted from the official Aegis script. [Dastgir]
 //= 1.1 Converted from Hercules script to rAthena script & Small bug fix. [Skorm]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 ecl_hub01,132,12,3	script	Chief of Staff#tl02	435,{
@@ -19,67 +21,67 @@ ecl_hub01,132,12,3	script	Chief of Staff#tl02	435,{
 	.@md_name$ = "Eclage Interior";
 
 	if (.@party_id == 0 || is_party_leader() == false){
-		mes "-！警告 ！-";
-		mes "当前的任务将在纪念地牢进行。";
-		mes "只有政党领袖才能进入。请创建您的派对。";
+		mes "-������ ��-";
+		mes "��ǰ�������ڼ�����ν��С�";
+		mes "ֻ������������ܽ��롣�봴�������ɶԡ�";
 		close;
 	}
 	if (ep14_2_mylord == 29) {
-		mes "[注释]";
-		mes "这个地方为Orb设置了照明。";
-		mes "如果你支持市长的话，你应该在这方面保持谨慎。";
+		mes "[ע��]";
+		mes "����ط�ΪOrb������������";
+		mes "�����֧���г��Ļ�����Ӧ�����ⷽ�汣�ֽ�����";
 		next;
-		switch (select("输入它：算了。")) {
+		switch (select("�����������ˡ�")) {
 		case 1:
 			if (instance_create(.@md_name$) < 0) {
-				mes "[注释]";
-				mes "不久前，市长派遣了一些士兵。";
-				mes "我当然希望你不是他们要找的麻烦，对吧？";
+				mes "[ע��]";
+				mes "����ǰ���г���ǲ��һЩʿ����";
+				mes "�ҵ�Ȼϣ���㲻������Ҫ�ҵ��鷳���԰ɣ�";
 				close;
 			}
 			ecl_interior_time = gettimetick(2) + 20 * 60;
-			mes "[注释]";
-			mes "鉴于内部安全严密，您应该做好准备。";
-			mes "在这里等一下。";
+			mes "[ע��]";
+			mes "�����ڲ���ȫ���ܣ���Ӧ������׼����";
+			mes "�������һ�¡�";
 			close;
 		case 2:
-			mes "[注释]";
-			mes "这不是一件容易的事。";
+			mes "[ע��]";
+			mes "�ⲻ��һ�����׵��¡�";
 			close;
 		}
 	}
-	mes "[高级拉芬的]";
-	mes "唔？这个房间？";
-	mes "没关系。别担心。";
+	mes "[�߼����ҵ�]";
+	mes "����������䣿";
+	mes "û��ϵ�����ġ�";
 	close;
 }
 
 ecl_hub01,130,15,0	script	It is closed shut.	844,{
 	if (ep14_2_mylord == 29) {
-		mes "这扇门连接到广场的天花板。";
-		mes "这里也是设置灯光的地方，让Orb看起来更加美丽。";
+		mes "���������ӵ��㳡���컨�塣";
+		mes "����Ҳ�����õƹ�ĵط�����Orb����������������";
 		next;
-		if (select("输入它：算了。") == 1) {
+		if (select("�����������ˡ�") == 1) {
 			.@party_id = getcharid(1);
 			.@md_name$ = "Eclage Interior";
 			if (.@party_id == 0 || is_party_leader() == false) {
-				mes "-！警告 ！-";
-				mes "当前的任务将在纪念地牢进行。";
-				mes "只有政党领袖才能进入。请创建您的派对。";
+				mes "-������ ��-";
+				mes "��ǰ�������ڼ�����ν��С�";
+				mes "ֻ������������ܽ��롣�봴�������ɶԡ�";
 				close;
 			}
 			if (gettimetick(2) >= ecl_interior_time){
-				mes "[注释]";
-				mes "看来里面的士兵真的很紧张。";
-				mes "指导像你这样的外人是相当困难的。";
+				mes "[ע��]";
+				mes "���������ʿ����ĺܽ��š�";
+				mes "ָ�������������������൱���ѵġ�";
 				close;
 			}
 			switch (instance_enter(.@md_name$)) {
 			case IE_OTHER:
-				mes "发生未知错误。";
+				mes "����δ֪����";
 				close;
 			case IE_NOINSTANCE:
-				mes "它是关闭的。";
+				mes "���ǹرյġ�";
 				close;
 			case IE_OK:
 				mapannounce "ecl_hub01",getpartyname(.@party_id) + " Party leader " + strcharinfo(0) + " is entering " + .@md_name$,bc_map,"0x00ff99";
@@ -89,27 +91,27 @@ ecl_hub01,130,15,0	script	It is closed shut.	844,{
 		} else
 			close;
 	}
-	mes "这扇门连接到广场的天花板。";
-	mes "这里也是设置灯光的地方，让Orb看起来更加美丽。";
-	mes "它是关闭的。";
+	mes "���������ӵ��㳡���컨�塣";
+	mes "����Ҳ�����õƹ�ĵط�����Orb����������������";
+	mes "���ǹرյġ�";
 	close;
 }
 
 1@ecl,58,69,3	script	Shenime#ecl01	435,{
-	mes "[注释]";
-	mes "哦，这是怎么回事？";
-	mes "他们摧毁了市长派出的额外部队？";
+	mes "[ע��]";
+	mes "Ŷ��������ô���£�";
+	mes "���Ǵݻ����г��ɳ��Ķ��ⲿ�ӣ�";
 	next;
-	select("什么……？：我打倒了怪物！");
-	mes "[注释]";
-	mes "没关系。";
-	mes "你的工作到这里就结束了。";
-	mes "现在你成了背叛者。";
-	mes "那么，再见吧！";
+	select("ʲô���������Ҵ��˹��");
+	mes "[ע��]";
+	mes "û��ϵ��";
+	mes "��Ĺ���������ͽ����ˡ�";
+	mes "��������˱����ߡ�";
+	mes "��ô���ټ��ɣ�";
 	specialeffect EF_BEGINSPELL3;
 	next;
 	mes "[" + strcharinfo(0) + "]";
-	mes "决不！！！";
+	mes "����������";
 	specialeffect2 EF_LORD;
 	percentheal -99,0;
 	soundeffect "wander_man_move.wav",1;
@@ -174,21 +176,21 @@ OnMyMobDead:
 
 OnTouch:
 	if ('mob_summoned > 1) end;
-    mes "在消灭了球体附近的入侵者后，另一种长相奇怪的生物出现了。";
+    mes "�����������帽���������ߺ���һ�ֳ�����ֵ���������ˡ�";
     next;
-    mes "我们也无法和他们交流，其中一个环顾四周，发现自己的同伴都被打败了，显得很愤怒。";
+    mes "����Ҳ�޷������ǽ���������һ���������ܣ������Լ���ͬ�鶼������ˣ��Եúܷ�ŭ��";
     next;
     mes "[" + strcharinfo(0) + "]";
-    mes "他们看起来就像是摩洛哥的化身。";
-    mes "多蒙斯之王是在寻找宝珠吗？";
-    mes "或者这只是巧合？";
+    mes "���ǿ�����������Ħ���Ļ�����";
+    mes "����˹֮������Ѱ�ұ�����";
+    mes "������ֻ���ɺϣ�";
     next;
-    mes "[魔王的部下]";
-    mes "凯亚...凯拉啊！！！";
-    mes "叹！";
+    mes "[ħ���Ĳ���]";
+    mes "����...������������";
+    mes "̾��";
     next;
-    mes "一场战斗是无法避免的！";
-    mes "他们会杀了我！";
+    mes "һ��ս�����޷�����ģ�";
+    mes "���ǻ�ɱ���ң�";
 	close2;
 	hideonnpc instance_npcname("Suspicious Creature#5");
 	hideonnpc instance_npcname("Suspicious Creature#6");
@@ -218,20 +220,20 @@ OnTouch:
 	if ('mob_summoned > 0) end;
 	.@eclmap$ = instance_mapname("1@ecl");
 	.@eventname$ = instance_npcname("#event");
-	mes "空荡荡的房间，里面什么也没有。";
-	mes "房间中央的圆形设备发出一盏灯。";
+	mes "�յ����ķ��䣬����ʲôҲû�С�";
+	mes "���������Բ���豸����һյ�ơ�";
 	next;
-	mes "[可疑生物]";
-	mes "呵呵呵呵呵……";
+	mes "[��������]";
+	mes "�ǺǺǺǺǡ���";
 	next;
-	mes "一群无法辨认的生物正在威胁性地逼近。";
-	mes "他们显得很惊讶，尽管比弗罗斯特的意志依然成立，但却很难沟通。";
+	mes "һȺ�޷����ϵ�����������в�Եرƽ���";
+	mes "�����Եúܾ��ȣ����ܱȸ���˹�ص���־��Ȼ��������ȴ���ѹ�ͨ��";
 	next;
-	mes "[可疑生物]";
-	mes "克亚尔...克...克亚尔亚！！";
+	mes "[��������]";
+	mes "���Ƕ�...��...���Ƕ��ǣ���";
 	next;
-	mes "看起来他们随时都会发起攻击。";
-	mes "我们无法不与他们战斗！";
+	mes "������������ʱ���ᷢ�𹥻���";
+	mes "�����޷���������ս����";
 	close2;
 	hideonnpc instance_npcname("Suspicious Creature#1");
 	hideonnpc instance_npcname("Suspicious Creature#2");
@@ -257,88 +259,88 @@ OnMyMobDead:
 }
 
 1@ecl,148,97,3	script	Avant#	618,{
-	mes "[之前]";
-	mes "嘿，看看谁来了！";
-	mes "你是我儿子的朋友，对吧？";
-	mes "多么奇怪的机缘让我们聚集在这里！";
+	mes "[֮ǰ]";
+	mes "�٣�����˭���ˣ�";
+	mes "�����Ҷ��ӵ����ѣ��԰ɣ�";
+	mes "��ô��ֵĻ�Ե�����Ǿۼ������";
 	cutin "avant01",1;
 	next;
-	mes "[之前]";
-	mes "你发生什么事了吗？";
-	mes "它有一种微妙而神奇的回声。";
-	mes "紧接着，你就被扔到了这里。";
+	mes "[֮ǰ]";
+	mes "�㷢��ʲô������";
+	mes "����һ��΢�������Ļ�����";
+	mes "�����ţ���ͱ��ӵ������";
 	next;
-	if (select("都是因为你！：Shenime说……") == 1) {
-		mes "[之前]";
-		mes "你说的我一个字都听不懂。";
-		mes "你就不能整理一下你的故事吗？你不知道“五个W和一个H”规则吗？";
+	if (select("������Ϊ�㣡��Shenime˵����") == 1) {
+		mes "[֮ǰ]";
+		mes "��˵����һ���ֶ���������";
+		mes "��Ͳ�������һ����Ĺ������㲻֪�������W��һ��H��������";
 		next;
 	}
-	mes "[之前]";
-	mes "哦……原来是这么回事。";
-	mes "所以你是说Shenime是在寻找Orb？";
+	mes "[֮ǰ]";
+	mes "Ŷ����ԭ������ô���¡�";
+	mes "��������˵Shenime����Ѱ��Orb��";
 	next;
-	mes "[之前]";
-	mes "嘿嘿嘿……哈哈哈哈哈哈哈";
-	mes "好吧，好吧……他也找到我了吗？";
-	mes "所有人中的我，阿凡特？！哈哈哈哈！";
+	mes "[֮ǰ]";
+	mes "�ٺٺ١�����������������";
+	mes "�ðɣ��ðɡ�����Ҳ�ҵ�������";
+	mes "�������е��ң������أ�������������";
 	cutin "avant02",1;
 	next;
-	select("你是什​​么意思？");
-	mes "[之前]";
-	mes "我正在独自研究宝珠的力量。";
-	mes "但Shenime只是坚持不懈地催促我。";
+	select("����ʲô��˼��");
+	mes "[֮ǰ]";
+	mes "�����ڶ����о������������";
+	mes "��Shenimeֻ�Ǽ�ֲ�и�شߴ��ҡ�";
 	cutin "avant01",1;
 	next;
-	mes "[之前]";
-	mes "我从思考宝珠的美丽开始，接着想知道宝珠内部到底蕴藏着怎样的力量……";
-	mes "我开始质疑球体力量的原理，因为我们都从中受益。";
+	mes "[֮ǰ]";
+	mes "�Ҵ�˼�������������ʼ��������֪�������ڲ������̲�����������������";
+	mes "�ҿ�ʼ��������������ԭ������Ϊ���Ƕ��������档";
 	next;
-	mes "[之前]";
-	mes "所有拉菲人都认为球体是像空气和水一样自然的东西，但他是第一个让我以不同的方式看待它并调查其起源的人。";
-	mes "对……谢尼梅。他故意激发我的好奇心。";
+	mes "[֮ǰ]";
+	mes "���������˶���Ϊ�������������ˮһ����Ȼ�Ķ����������ǵ�һ�������Բ�ͬ�ķ�ʽ����������������Դ���ˡ�";
+	mes "�ԡ���л��÷�������⼤���ҵĺ����ġ�";
 	next;
-	mes "[之前]";
-	mes "刺激一个不知道空气和水的人，让他认识并继续调查！";
-	mes "呃呃呃……是不是很有趣啊！";
+	mes "[֮ǰ]";
+	mes "�̼�һ����֪��������ˮ���ˣ�������ʶ���������飡";
+	mes "�����������ǲ��Ǻ���Ȥ����";
 	cutin "avant02",1;
 	next;
-	mes "[之前]";
-	mes "哈……哈哈哈……";
-	mes "...我对我刚刚意识到他如何利用我这一事实感到非常愤怒，但更糟糕的是我对我们的人民做了一些可怕的事情。";
-	mes "我想我现在很生气。";
+	mes "[֮ǰ]";
+	mes "����������������";
+	mes "...�Ҷ��Ҹո���ʶ���������������һ��ʵ�е��ǳ���ŭ�������������Ҷ����ǵ���������һЩ���µ����顣";
+	mes "���������ں�������";
 	next;
-	select("你还有良心吗？");
-	mes "[之前]";
-	mes "你觉得我是一个什么样的人，说真的！";
-	mes "是因为我的儿子们吗？";
-	mes "好吧，那么，我也不能太责怪你。";
+	select("�㻹��������");
+	mes "[֮ǰ]";
+	mes "���������һ��ʲô�����ˣ�˵��ģ�";
+	mes "����Ϊ�ҵĶ�������";
+	mes "�ðɣ���ô����Ҳ����̫����㡣";
 	cutin "avant01",1;
 	next;
-	mes "[之前]";
-	mes "...呸。";
-	mes "这并不好玩。";
-	mes "这不再有趣了。我对你不再感兴趣了。";
+	mes "[֮ǰ]";
+	mes "...�ޡ�";
+	mes "�Ⲣ�����档";
+	mes "�ⲻ����Ȥ�ˡ��Ҷ��㲻�ٸ���Ȥ�ˡ�";
 	next;
-	mes "[之前]";
+	mes "[֮ǰ]";
 	mes "......";
-	mes "好像有客人来了";
+	mes "�����п�������";
 	next;
 	cutin "minuel01",4;
-	mes "[米纽尔]";
-	mes "" + strcharinfo(0) + "先生，";
-	mes "虽然你因涉嫌对最近灯光室事件负责而被拘留，";
-	mes "有一些证人可以证明你的清白。";
+	mes "[��Ŧ��]";
+	mes "" + strcharinfo(0) + "������";
+	mes "��Ȼ�������Ӷ�����ƹ����¼��������������";
+	mes "��һЩ֤�˿���֤�������ס�";
 	next;
-	mes "[米纽尔]";
-	mes "我不知道详情，";
-	mes "但我也相信你是无罪的。";
-	mes "我会把你转移到治疗室，因为这看起来像是一个严重的伤口。";
+	mes "[��Ŧ��]";
+	mes "�Ҳ�֪�����飬";
+	mes "����Ҳ������������ġ�";
+	mes "�һ����ת�Ƶ������ң���Ϊ�⿴��������һ�����ص��˿ڡ�";
 	next;
-	mes "[米纽尔]";
-	mes "我认为这没什么大不了的。";
-	mes "...希望如此。";
-	mes "我们走吧。我来指导你。";
+	mes "[��Ŧ��]";
+	mes "����Ϊ��ûʲô���˵ġ�";
+	mes "...ϣ����ˡ�";
+	mes "�����߰ɡ�����ָ���㡣";
 	close2;
 	cutin "",255;
 	warp "1@ecl",146,29;
@@ -346,123 +348,123 @@ OnMyMobDead:
 }
 	
 1@ecl,148,29,3	script	Loki#ecl01	512,{
-	mes "[洛基]";
-	mes "看来我旁边的这个人比我有更多的话要说。";
-	mes "你为什么不先跟他解释一下呢？";
+	mes "[���]";
+	mes "�������Աߵ�����˱����и���Ļ�Ҫ˵��";
+	mes "��Ϊʲô���ȸ�������һ���أ�";
 	close;
 }	
 	
 1@ecl,147,30,3	script	Nydhog#ecl01	510,{
-	mes "[守护者尼德霍]";
-	mes "我认为你应该先和Hisie谈谈。";
+	mes "[�ػ�����»�]";
+	mes "����Ϊ��Ӧ���Ⱥ�Hisie̸̸��";
 	close;
 }
 	
 1@ecl,144,27,5	script	Hisie#ecl01	623,{
 	cutin "hisie01",0;
-	mes "[希西]";
-	mes "你能告诉我到底发生了什么事吗？";
+	mes "[ϣ��]";
+	mes "���ܸ����ҵ��׷�����ʲô����";
 	next;
-	select("我与怪物战斗。");
+	select("�������ս����");
 	cutin "hisie03",0;
-	mes "[希西]";
-	mes "怪物？摩洛哥的下属？";
-	mes "你们想要杀死的是我们的士兵，拉菲人！！";
-	mes "那里到底发生了什么？";
+	mes "[ϣ��]";
+	mes "���Ħ����������";
+	mes "������Ҫɱ���������ǵ�ʿ���������ˣ���";
+	mes "���ﵽ�׷�����ʲô��";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "",255;
-	mes "[洛基]";
-	mes "就是因为这个。";
-	mes "" + strcharinfo(0) + "它在-的体内";
-	mes "这就是沉迷的强大之处。";
+	mes "[���]";
+	mes "������Ϊ�����";
+	mes "" + strcharinfo(0) + "����-������";
+	mes "����ǳ��Ե�ǿ��֮����";
 	next;
-	mes "洛基的手掌上，躺着一小片又薄又干的荆棘。";
+	mes "����������ϣ�����һСƬ�ֱ��ָɵľ�����";
 	next;
 	cutin "hisie03",0;
-	mes "[希西]";
-	mes "谢尼姆，参谋长？";
-	mes "他为何与此事有关？";
+	mes "[ϣ��]";
+	mes "л��ķ����ı����";
+	mes "��Ϊ��������йأ�";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "",255;
-	mes "[洛基]";
-	mes "谢尼姆是摩洛哥的下属之一。";
-	mes "他的力量使他能够直接控制另一个人，或者通过他身体的一部分间接地在精神上影响那个人。";
+	mes "[���]";
+	mes "л��ķ��Ħ��������֮һ��";
+	mes "��������ʹ���ܹ�ֱ�ӿ�����һ���ˣ�����ͨ���������һ���ּ�ӵ��ھ�����Ӱ���Ǹ��ˡ�";
 	next;
-	select("现在我想起来...");
+	select("������������...");
 	mes "[" + strcharinfo(0) + "]";
-	mes "就在来这里之前，Shenime向我伸出了手，当我握着他的手时，我感觉到了火花。";
-	mes "我以为这只是我的想象并忽略了它...也许那时他...";
+	mes "����������֮ǰ��Shenime����������֣���������������ʱ���Ҹо����˻𻨡�";
+	mes "����Ϊ��ֻ���ҵ����󲢺�������...Ҳ����ʱ��...";
 	next;
-	mes "[尼德霍格]";
-	mes "你可能是对的。";
-	mes "他们使用邪恶的伎俩。";
-	mes "这里的这根刺可能影响了你的判断。";
+	mes "[��»���]";
+	mes "������ǶԵġ�";
+	mes "����ʹ��а��ļ�����";
+	mes "���������̿���Ӱ��������жϡ�";
 	next;
 	cutin "hisie03",0;
-	mes "[希西]";
-	mes "所以你是说他欺骗了我们所有人？";
-	mes "参谋长是一位拉菲恩人，和我们住了很长时间！他不可能是...";
+	mes "[ϣ��]";
+	mes "��������˵����ƭ�����������ˣ�";
+	mes "��ı����һλ���ƶ��ˣ�������ס�˺ܳ�ʱ�䣡����������...";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "",255;
-	mes "[洛基]";
-	mes "他可能已经受到影响很长一段时间了。";
-	mes "无论如何，这家伙是无罪的。";
-	mes "我可以证明这一点。";
+	mes "[���]";
+	mes "�������Ѿ��ܵ�Ӱ��ܳ�һ��ʱ���ˡ�";
+	mes "������Σ���һ�������ġ�";
+	mes "�ҿ���֤����һ�㡣";
 	next;
-	mes "[尼德霍格]";
-	mes "我也以世界树守护者的名义发誓。";
-	mes "" + strcharinfo(0) + "-绝对不会做这样的事。";
+	mes "[��»���]";
+	mes "��Ҳ���������ػ��ߵ����巢�ġ�";
+	mes "" + strcharinfo(0) + "-���Բ������������¡�";
 	next;
 	cutin "hisie02",0;
-	mes "[希西]";
-	mes "哈...";
-	mes "但事情却失去了控制。";
-	mes "我没想到这一点。";
+	mes "[ϣ��]";
+	mes "��...";
+	mes "������ȴʧȥ�˿��ơ�";
+	mes "��û�뵽��һ�㡣";
 	next;
-	select("奥布发生了什么？");
-	mes "[希西]";
-	mes "内核被盗。";
-	mes "没有人知道宝珠的内核已经消失，";
-	mes "这就是卡尔没能来到这里的原因。";
+	select("�²�������ʲô��");
+	mes "[ϣ��]";
+	mes "�ں˱�����";
+	mes "û����֪��������ں��Ѿ���ʧ��";
+	mes "����ǿ���û�����������ԭ��";
 	npcskill "AL_HEAL",9,99,80;
 	next;
-	mes "[希西]";
-	mes "更重要的是，有好几个士兵因为你而受伤。";
-	mes "他们没有一人幸运地死去，但大多数都受了重伤。";
-	mes "现在的情况不太好。";
+	mes "[ϣ��]";
+	mes "����Ҫ���ǣ��кü���ʿ����Ϊ������ˡ�";
+	mes "����û��һ�����˵���ȥ������������������ˡ�";
+	mes "���ڵ������̫�á�";
 	next;
 	cutin "",255;
-	mes "[洛基]";
-	mes "那么这里必须有人承担责任。";
-	mes "很有可能，" + strcharinfo(0) + "就是你。";
+	mes "[���]";
+	mes "��ô����������˳е����Ρ�";
+	mes "���п��ܣ�" + strcharinfo(0) + "�����㡣";
 	next;
 	cutin "hisie02",0;
-	mes "[希西]";
-	mes "......这两位先生在这里澄清了所有与宝珠有关的指控，";
-	mes "但你和卡尔都无法逃避你的责任。";
-	mes "你必须抓住Shenime。";
+	mes "[ϣ��]";
+	mes "......����λ��������������������뱦���йص�ָ�أ�";
+	mes "����Ϳ������޷��ӱ�������Ρ�";
+	mes "�����ץסShenime��";
 	npcskill "AL_HEAL",9,99,80;
 	next;
 	cutin "hisie01",0;
-	mes "[希西]";
-	mes "看来你已经休息够了。我们开始吧。";
-	mes "卡尔在等你。";
-	mes "你们两个要做什么？";
+	mes "[ϣ��]";
+	mes "�������Ѿ���Ϣ���ˡ����ǿ�ʼ�ɡ�";
+	mes "�����ڵ��㡣";
+	mes "��������Ҫ��ʲô��";
 	next;
 	cutin "",255;
-	mes "[洛基]";
-	mes "别担心我们。";
-	mes "我们的目标是魔王摩洛哥。";
-	mes "我们在这里找到了证据就足够了。";
+	mes "[���]";
+	mes "�������ǡ�";
+	mes "���ǵ�Ŀ����ħ��Ħ��硣";
+	mes "�����������ҵ���֤�ݾ��㹻�ˡ�";
 	next;
 	cutin "hisie01",0;
-	mes "[希西]";
-	mes "感谢您的帮助。";
-	mes "我们现在就起飞。";
-	mes "我们走吧。" + strcharinfo(0) + ".";
+	mes "[ϣ��]";
+	mes "��л���İ�����";
+	mes "�������ھ���ɡ�";
+	mes "�����߰ɡ�" + strcharinfo(0) + ".";
 	ep14_2_mylord = 30;
 	changequest 7450,7451;
 	close2;

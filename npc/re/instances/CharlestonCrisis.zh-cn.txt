@@ -5,59 +5,61 @@
 //= Charleston in Distress Instance
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 verus04,75,114,5	script	Charleston#mcd	4_F_CHARLESTON02,{
 	cutin "nale01.bmp",0;
 	if (BaseLevel < 130) {
-		mes "[查尔斯顿]";
-		mes "我正在寻找至少130级、健康、没有慢性病、不服用处方药的冒险家。";
+		mes "[���˹��]";
+		mes "������Ѱ������130����������û�����Բ��������ô���ҩ��ð�ռҡ�";
 		close3;
 	}
 	if (isbegin_quest(13186) == 0) {
 		switch( isbegin_quest(13184) ) {
 		case 0:
-			mes "[查尔斯顿]";
-			mes "你好，冒险家。我是查尔斯顿，独立项目的发起人。";
+			mes "[���˹��]";
+			mes "��ã�ð�ռҡ����ǲ��˹�٣�������Ŀ�ķ����ˡ�";
 			next;
-			mes "[查尔斯顿]";
-			mes "目前我无法移动，因为我的一个组件出现了问题。你能帮我从工厂拿到替换零件吗？";
+			mes "[���˹��]";
+			mes "Ŀǰ���޷��ƶ�����Ϊ�ҵ�һ��������������⡣���ܰ��Ҵӹ����õ��滻�����";
 			next;
-			if (select( "当然。", "不。" ) == 1) {
-				mes "[查尔斯顿]";
-				mes "如果你的等级至少为 130 级、身体健康、没有慢性病且不服用处方药，那么这项任务并不困难。";
+			if (select( "��Ȼ��", "����" ) == 1) {
+				mes "[���˹��]";
+				mes "�����ĵȼ�����Ϊ 130 �������彡����û�����Բ��Ҳ����ô���ҩ����ô�������񲢲����ѡ�";
 				next;
-				mes "[查尔斯顿]";
-				mes "请使用右侧的机器进入工厂。进入后，请保持冷静并按照说明进行操作。";
+				mes "[���˹��]";
+				mes "��ʹ���Ҳ�Ļ������빤����������뱣���侲������˵�����в�����";
 				setquest 13184;
 			}
 			close3;
 		case 1:
-			mes "[查尔斯顿]";
-			mes "请使用我旁边的机器进入工厂。进入后，请保持冷静并按照说明进行操作。";
+			mes "[���˹��]";
+			mes "��ʹ�����ԱߵĻ������빤����������뱣���侲������˵�����в�����";
 			close3;
 		case 2:
 			cutin "nale03.bmp",0;
-			mes "[查尔斯顿]";
-			mes "我不知道它在这里站了多久，但我已经很久没有动弹了……";
+			mes "[���˹��]";
+			mes "�Ҳ�֪����������վ�˶�ã������Ѿ��ܾ�û�ж����ˡ���";
 			next;
-			mes "[查尔斯顿]";
-			mes "目前我只有头可以动，是萨利赫她帮我打开器官才可以回到那时……";
+			mes "[���˹��]";
+			mes "Ŀǰ��ֻ��ͷ���Զ����������������Ҵ����ٲſ��Իص���ʱ����";
 			next;
-			mes "[查尔斯顿]";
-			mes "如果我被说服了，我就不会那么做。";
+			mes "[���˹��]";
+			mes "����ұ�˵���ˣ��ҾͲ�����ô����";
 			next;
-			mes "[查尔斯顿]";
-			mes "反正我现在什么都没有了……只是为了能够重新站起来，所以我希望到时候派出你这样的冒险者。";
+			mes "[���˹��]";
+			mes "����������ʲô��û���ˡ���ֻ��Ϊ���ܹ�����վ������������ϣ����ʱ���ɳ���������ð���ߡ�";
 			next;
-			mes "[查尔斯顿]";
-			mes "^FF0000它没有改变任何东西。^000000";
+			mes "[���˹��]";
+			mes "^FF0000��û�иı��κζ�����^000000";
 			next;
-			mes "[查尔斯顿]";
-			mes "仅基于 OS 的辛勤工作...为了您在世界另一个地方的帮助，Charleston 2 将成为“非常好的”机器人！";
+			mes "[���˹��]";
+			mes "������ OS �����ڹ���...Ϊ������������һ���ط��İ�����Charleston 2 ����Ϊ���ǳ��õġ������ˣ�";
 			next;
-			mes "[查尔斯顿]";
-			mes "有可能遇到一个好朋友变成一个好机器人，所以我还要继续下去，谢谢！";
+			mes "[���˹��]";
+			mes "�п�������һ�������ѱ��һ���û����ˣ������һ�Ҫ������ȥ��лл��";
 			erasequest 13184;
 			if (isbegin_quest(13186) == 0) {
 				setquest 13186;
@@ -73,41 +75,41 @@ verus04,75,114,5	script	Charleston#mcd	4_F_CHARLESTON02,{
 	cutin "nale03.bmp",0;
 	switch( isbegin_quest(13184) ) {
 	case 0:
-		mes "[查尔斯顿]";
-		mes "你不失望吗？难道你真的要让你的努力白费吗？因为那真的会很愚蠢。我建议你重新考虑一下。";
+		mes "[���˹��]";
+		mes "�㲻ʧ�����ѵ������Ҫ�����Ŭ���׷�����Ϊ����Ļ���޴����ҽ��������¿���һ�¡�";
 		next;
-		if (select( "如果还有一线希望，我会再试一次。", "我会再考虑一下。" ) == 1) {
-			mes "[查尔斯顿]";
-			mes "我是一个机器人。我做我被安排做的事情，其他的都不重要。";
+		if (select( "�������һ��ϣ�����һ�����һ�Ρ�", "�һ��ٿ���һ�¡�" ) == 1) {
+			mes "[���˹��]";
+			mes "����һ�������ˡ������ұ������������飬�����Ķ�����Ҫ��";
 			next;
-			mes "[查尔斯顿]";
-			mes "很讽刺，不是吗？机器人应该是没有情感的，但我却在这里，对过去感到懊悔。";
+			mes "[���˹��]";
+			mes "�ܷ��̣������𣿻�����Ӧ����û����еģ�����ȴ������Թ�ȥ�е��ûڡ�";
 			next;
-			mes "[查尔斯顿]";
-			mes "你可以评判我，但你无法阻止我。只要还有一线希望，我就会继续努力。";
+			mes "[���˹��]";
+			mes "����������ң������޷���ֹ�ҡ�ֻҪ����һ��ϣ�����Ҿͻ����Ŭ����";
 			next;
-			mes "[查尔斯顿]";
-			mes "我的心跳停止了，但我还能说话。请帮我。";
+			mes "[���˹��]";
+			mes "�ҵ�����ֹͣ�ˣ����һ���˵��������ҡ�";
 			setquest 13184;
 		}
 		close3;
 	case 1:
-		mes "[查尔斯顿]";
-		mes "如果你对一成不变的过去、不明朗的未来、压抑的现在感到失望，那么我不会强迫你。";
+		mes "[���˹��]";
+		mes "������һ�ɲ���Ĺ�ȥ�������ʵ�δ����ѹ�ֵ����ڸе�ʧ������ô�Ҳ���ǿ���㡣";
 		next;
-		if (select( "如果还有一线希望，我会再试一次。", "我放弃了。" ) == 1) {
-			mes "[查尔斯顿]";
-			mes "只要还有一线希望，我就会继续努力。";
+		if (select( "�������һ��ϣ�����һ�����һ�Ρ�", "�ҷ����ˡ�" ) == 1) {
+			mes "[���˹��]";
+			mes "ֻҪ����һ��ϣ�����Ҿͻ����Ŭ����";
 			close3;
 		}
 		erasequest 13184;
 		close3;
 	case 2:
-		mes "[查尔斯顿]";
-		mes "我无法阻止它的发生或改变过去。但也许其他人可以。";
+		mes "[���˹��]";
+		mes "���޷���ֹ���ķ�����ı��ȥ����Ҳ�������˿��ԡ�";
 		next;
-		mes "[查尔斯顿]";
-		mes "无论多久，我都会等那个人。";
+		mes "[���˹��]";
+		mes "���۶�ã��Ҷ�����Ǹ��ˡ�";
 		erasequest 13184;
 		getexp 1500000,500000;
 		close3;
@@ -122,17 +124,17 @@ OnInit:
 
 verus04,81,112,5	script	Machine#mcd	PORTAL,{
 	if (BaseLevel < 130) {
-		mes "[机器]";
-		mes "^ff0000您必须达到130级才能使用这台机器。^000000";
+		mes "[����]";
+		mes "^ff0000������ﵽ130������ʹ����̨������^000000";
 		close;
 	}
 	if (isbegin_quest(13184) != 1) {
-		mes "^ff0000您需要查尔斯顿的许可才能使用这台机器。^000000";
+		mes "^ff0000����Ҫ���˹�ٵ����ɲ���ʹ����̨������^000000";
 		close;
 	}
 	.@party_id = getcharid(1);
 	if (.@party_id < 1) {
-		mes "^ff0000你首先必须组建/加入至少1人的队伍才能进入这个地下城。^000000";
+		mes "^ff0000�����ȱ����齨/��������1�˵Ķ�����ܽ���������³ǡ�^000000";
 		close;
 	}
 	switch( checkquest(13185,PLAYTIME) ) {
@@ -140,10 +142,10 @@ verus04,81,112,5	script	Machine#mcd	PORTAL,{
 		break;
 	case 0:
 	case 1:
-		mes "^ff0000自上次访问后 20 小时内无法访问该计算机。^000000";
+		mes "^ff0000���ϴη��ʺ� 20 Сʱ���޷����ʸü������^000000";
 		close;
 	case 2:
-		mes "该机器现已可供使用。";
+		mes "�û������ѿɹ�ʹ�á�";
 		erasequest 13185;
 		close;
 	}
@@ -153,38 +155,38 @@ verus04,81,112,5	script	Machine#mcd	PORTAL,{
 	if (is_party_leader() == true)
 		.@menu$ = "Open the dimensional portal.";
 
-	switch( select( .@menu$, "进入查尔斯顿工厂。", "取消。" ) ) {
+	switch( select( .@menu$, "������˹�ٹ�����", "ȡ����" ) ) {
 	case 1:
 		if (instance_create(.@md_name$) < 0) {
-			mes "派对：" + .@p_name$ + "";
-			mes "领导者：" + .@p_leader$ + "";
-			mes "^0000ff" + .@md_name$ + " ^000000- 未知错误";
+			mes "�ɶԣ�" + .@p_name$ + "";
+			mes "�쵼�ߣ�" + .@p_leader$ + "";
+			mes "^0000ff" + .@md_name$ + " ^000000- δ֪����";
 			close;
 		}
-		mes "^ff0000正在准备传送...^000000";
-		mes "^ff0000请稍候。^000000";
+		mes "^ff0000����׼������...^000000";
+		mes "^ff0000���Ժ�^000000";
 		close;
 	case 2:
 		if (is_party_leader() == false) {
-			mes "[机器]";
-			mes "传送...";
+			mes "[����]";
+			mes "����...";
 			next;
-			mes "[机器]";
-			mes "^ff0000自上次访问后 20 小时内无法访问该计算机。^000000";
+			mes "[����]";
+			mes "^ff0000���ϴη��ʺ� 20 Сʱ���޷����ʸü������^000000";
 			next;
 		}
 		switch( instance_enter(.@md_name$) ) {
 		case IE_OTHER:
-			mes "[机器]";
-			mes "^ff0000发生未知错误。^000000";
+			mes "[����]";
+			mes "^ff0000����δ֪����^000000";
 			close;
 		case IE_NOINSTANCE:
-			mes "[机器]";
-			mes "^ff0000你的队伍领袖尚未创建时间裂缝。^000000";
+			mes "[����]";
+			mes "^ff0000��Ķ���������δ����ʱ���ѷ졣^000000";
 			close;
 		case IE_NOMEMBER:
-			mes "[机器]";
-			mes "^ff0000只有队伍成员才能进入纪念地下城。^000000";
+			mes "[����]";
+			mes "^ff0000ֻ�ж����Ա���ܽ��������³ǡ�^000000";
 			close;
 		case IE_OK:
 			setquest 13185;
@@ -202,10 +204,10 @@ verus04,81,112,5	script	Machine#mcd	PORTAL,{
 
 // GM NPC
 sec_in02,10,13,3	script	Charleston#sara	4_F_CHARLESTON01,{
-	mes "查尔斯顿危机测试 ver130603a";
+	mes "���˹��Σ������ ver130603a";
 	if (callfunc("F_GM_NPC",1854,0,0,9999) < 1)
 		close;
-	switch( select( "20小时冷却时间重置", "返回初始解决任务的状态", "建立副本通关状态" ) ) {
+	switch( select( "20Сʱ��ȴʱ������", "���س�ʼ��������״̬", "��������ͨ��״̬" ) ) {
 	case 1:
 		if (isbegin_quest(13185))
 			erasequest 13185;
@@ -231,43 +233,43 @@ sec_in02,10,13,3	script	Charleston#sara	4_F_CHARLESTON01,{
 1@mcd,127,277,4	script	Charleston 1#0	4_F_CHARLESTON01,3,3,{
 	cutin "dalle01.bmp",2;
 	if ('ep15_1_mcd01 == 0) {
-		mes "[查尔斯顿 1]";
-		mes "嗯……我要等多久？";
+		mes "[���˹�� 1]";
+		mes "�š�����Ҫ�ȶ�ã�";
 		emotion 19;
 		close3;
 	}
-	mes "[查尔斯顿 1]";
-	mes "沿着左边的走廊走，记住只有你才能保护自己。";
+	mes "[���˹�� 1]";
+	mes "������ߵ������ߣ���סֻ������ܱ����Լ���";
 	close3;
 
 OnTouch_:
 	cutin "dalle01.bmp",2;
 	if ('ep15_1_mcd01 != 0) {
-		mes "[查尔斯顿 1]";
-		mes "沿着左边的走廊走，记住只有你才能保护自己。";
+		mes "[���˹�� 1]";
+		mes "������ߵ������ߣ���סֻ������ܱ����Լ���";
 		close3;
 	}
-	mes "[查尔斯顿 1]";
-	mes "终于，你来了！我一直在等你。";
-	npctalk "终于，你来了！我一直在等你。";
+	mes "[���˹�� 1]";
+	mes "���ڣ������ˣ���һֱ�ڵ��㡣";
+	npctalk "���ڣ������ˣ���һֱ�ڵ��㡣";
 	emotion 0;
 	next;
-	mes "[查尔斯顿 1]";
-	mes "我们没有时间，所以让我切入正题。目前，查尔斯顿工厂处于B级安全警报级别，这意味着安全装置已被激活。";
-	npctalk "我们没有时间，所以让我切入正题。目前，查尔斯顿工厂处于B级安全警报级别，这意味着安全装置已被激活。";
+	mes "[���˹�� 1]";
+	mes "����û��ʱ�䣬���������������⡣Ŀǰ�����˹�ٹ�������B����ȫ������������ζ�Ű�ȫװ���ѱ����";
+	npctalk "����û��ʱ�䣬���������������⡣Ŀǰ�����˹�ٹ�������B����ȫ������������ζ�Ű�ȫװ���ѱ����";
 	next;
-	mes "[查尔斯顿 1]";
-	mes "移动到左边的走廊，摧毁那里的安全装置，然后前往下一个区域。";
-	npctalk "移动到左边的走廊，摧毁那里的安全装置，然后前往下一个区域。";
+	mes "[���˹�� 1]";
+	mes "�ƶ�����ߵ����ȣ��ݻ�����İ�ȫװ�ã�Ȼ��ǰ����һ������";
+	npctalk "�ƶ�����ߵ����ȣ��ݻ�����İ�ȫװ�ã�Ȼ��ǰ����һ������";
 	emotion 19;
 	next;
-	mes "[查尔斯顿 1]";
-	mes "不用担心安全设备。它们很容易修复。 Ve 博士在 3 号工厂线以北的实验室里。";
-	npctalk "不用担心安全设备。它们很容易修复。 Ve 博士在 3 号工厂线以北的实验室里。";
+	mes "[���˹�� 1]";
+	mes "���õ��İ�ȫ�豸�����Ǻ������޸��� Ve ��ʿ�� 3 �Ź������Ա���ʵ�����";
+	npctalk "���õ��İ�ȫ�豸�����Ǻ������޸��� Ve ��ʿ�� 3 �Ź������Ա���ʵ�����";
 	next;
-	mes "[查尔斯顿 1]";
-	mes "Ve 博士可以告诉你一切。匆忙！";
-	npctalk "Ve 博士可以告诉你一切。匆忙！";
+	mes "[���˹�� 1]";
+	mes "Ve ��ʿ���Ը�����һ�С���æ��";
+	npctalk "Ve ��ʿ���Ը�����һ�С���æ��";
 	emotion 19;
 	'ep15_1_mcd01 = 1;
 	monster 'map_name$,24,275, "Security Robot", 3127,1, instance_npcname("Charleston 1#0") + "::OnMyMobDead";	// KICK_STEP
@@ -287,132 +289,132 @@ OnTimer1000:
 
 1@mcd,120,224,5	script	Charleston 2#0	4_F_CHARLESTON02,{
 	cutin "nale04.bmp",0;
-	mes "[查尔斯顿 2]";
+	mes "[���˹�� 2]";
 	mes "#%@EGD&#(@#...";
 	emotion 53;
 	next;
-	mes "- 她发出奇怪的声音，但无法动弹。 -";
+	mes "- ��������ֵ����������޷������� -";
 	close3;
 }
 
 1@mcd,116,213,5	script	Dr. Ve#1	4_M_DOCTOR,2,2,{
 	if ('ep15_1_mcd01 == 1) {
-		mes "- 他正忙着写东西，靠近一点和他说话。";
+		mes "- ����æ��д����������һ�����˵����";
 		close;
 	}
-	mes "- 他正忙着写东西。你不应该打扰他。";
+	mes "- ����æ��д�������㲻Ӧ�ô�������";
 	close;
 
 OnTouch_:
 	if (is_party_leader() == false) {
-		mes "[博士。维]";
-		mes "让我和你们的领导谈谈。我没有时间照顾每个人。";
+		mes "[��ʿ��ά]";
+		mes "���Һ����ǵ��쵼̸̸����û��ʱ���չ�ÿ���ˡ�";
 		close;
 	}
 	if ('ep15_1_mcd01 > 2)
 		end;
 	if ('ep15_1_mcd01 == 2) {
-		mes "[博士。维]";
-		mes "我不在乎你和谁在一起。我只需要知道你是否可以帮助我。";
+		mes "[��ʿ��ά]";
+		mes "�Ҳ��ں����˭��һ����ֻ��Ҫ֪�����Ƿ���԰����ҡ�";
 		'ep15_1_mcd01 = 2;
 		next;
-		if (select( "我可以帮忙。", "我很忙。" ) == 2) {
-			mes "[博士。维]";
-			mes "唉，我不在乎谁，只要我能得到我需要的帮助就行。";
-			npctalk "Dr. Ve：唉，我不在乎谁，只要我得到我需要的帮助就行。";
+		if (select( "�ҿ��԰�æ��", "�Һ�æ��" ) == 2) {
+			mes "[��ʿ��ά]";
+			mes "�����Ҳ��ں�˭��ֻҪ���ܵõ�����Ҫ�İ������С�";
+			npctalk "Dr. Ve�������Ҳ��ں�˭��ֻҪ�ҵõ�����Ҫ�İ������С�";
 			close;
 		}
-		mes "[博士。维]";
-		mes "你就是我们一直在等待的救世主！查尔斯顿 1 会告诉您修复查尔斯顿 2 需要什么。";
-		npctalk "Ve博士：你是我们一直在等待的救世主！查尔斯顿 1 会告诉您修复查尔斯顿 2 需要什么。";
+		mes "[��ʿ��ά]";
+		mes "���������һֱ�ڵȴ��ľ����������˹�� 1 ��������޸����˹�� 2 ��Ҫʲô��";
+		npctalk "Ve��ʿ����������һֱ�ڵȴ��ľ����������˹�� 1 ��������޸����˹�� 2 ��Ҫʲô��";
 		if ('ep15_1_mcd01 == 2)
 			'ep15_1_mcd01 = 3;
 		close;
 	}
 	if ('ep15_1_mcd01 == 1) {
 		.@charleston_1$ = instance_npcname("Charleston 1#1");
-		mes "[博士。维]";
-		mes "查尔斯顿1。查尔斯顿2已被强行连接到主计算机的一部分，我无法控制她。";
-		npctalk "Ve博士：查尔斯顿1。查尔斯顿2已经被强行连接到主计算机的一部分，我无法控制她。";
+		mes "[��ʿ��ά]";
+		mes "���˹��1�����˹��2�ѱ�ǿ�����ӵ����������һ���֣����޷���������";
+		npctalk "Ve��ʿ�����˹��1�����˹��2�Ѿ���ǿ�����ӵ����������һ���֣����޷���������";
 		next;
 		cutin "dalle02.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "她是一个机器人；她迟早应该停下来。";
-		npctalk "查尔斯顿 1：她是一个机器人；她迟早应该停下来。", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "����һ�������ˣ�������Ӧ��ͣ������";
+		npctalk "���˹�� 1������һ�������ˣ�������Ӧ��ͣ������", .@charleston_1$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "她体内的长寿装置可以让她至少运行 50 年。工厂不会生存那么久。";
-		npctalk "Dr. Ve：她体内的长寿装置可以让她至少运行50年。工厂不会生存那么久。";
+		mes "[��ʿ��ά]";
+		mes "�����ڵĳ���װ�ÿ��������������� 50 �ꡣ��������������ô�á�";
+		npctalk "Dr. Ve�������ڵĳ���װ�ÿ���������������50�ꡣ��������������ô�á�";
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "那么我们别无选择。很高兴我们有专家在身边。";
-		npctalk "查尔斯顿1：那我们别无选择。很高兴我们有专家在身边。", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "��ô���Ǳ���ѡ�񡣺ܸ���������ר�������ߡ�";
+		npctalk "���˹��1�������Ǳ���ѡ�񡣺ܸ���������ר�������ߡ�", .@charleston_1$;
 		next;
-		select("你在说我吗？");
+		select("����˵����");
 		unittalk getcharid(3), "Are you talking about me?";
-		mes "[查尔斯顿 1]";
-		mes "不久前，一位名叫^FF0000Shalosh^000000的女士来拜访我们，当时查尔斯顿2号正在包装要运输的产品。";
-		npctalk "查尔斯顿 1 号：不久前，一位名叫 ^FF0000Shalosh^000000 的女士来访，当时查尔斯顿 2 号正在包装要运输的产品。", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "����ǰ��һλ����^FF0000Shalosh^000000��Ůʿ���ݷ����ǣ���ʱ���˹��2�����ڰ�װҪ����Ĳ�Ʒ��";
+		npctalk "���˹�� 1 �ţ�����ǰ��һλ���� ^FF0000Shalosh^000000 ��Ůʿ���ã���ʱ���˹�� 2 �����ڰ�װҪ����Ĳ�Ʒ��", .@charleston_1$;
 		next;
-		mes "[查尔斯顿 1]";
-		mes "事故发生时，沙洛什和她的朋友正在与查尔斯顿二号台交谈。";
-		npctalk "查尔斯顿 1 号：事故发生时，沙洛什和她的朋友正在与查尔斯顿 2 号通话。", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "�¹ʷ���ʱ��ɳ��ʲ������������������˹�ٶ���̨��̸��";
+		npctalk "���˹�� 1 �ţ��¹ʷ���ʱ��ɳ��ʲ������������������˹�� 2 ��ͨ����", .@charleston_1$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "我认为有人试图侵入工厂的主计算机。";
-		npctalk "Ve博士：我认为有人试图侵入工厂的主计算机。";
+		mes "[��ʿ��ά]";
+		mes "����Ϊ������ͼ���빤�������������";
+		npctalk "Ve��ʿ������Ϊ������ͼ���빤�������������";
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "在更新过程中，与服务器的连接被堵塞。当我们向 Shalosh 询问此事时，";
-		npctalk "Charleston 1：在更新过程中，与服务器的连接被堵塞。当我们向 Shalosh 询问此事时，", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "�ڸ��¹����У�������������ӱ��������������� Shalosh ѯ�ʴ���ʱ��";
+		npctalk "Charleston 1���ڸ��¹����У�������������ӱ��������������� Shalosh ѯ�ʴ���ʱ��", .@charleston_1$;
 		next;
-		mes "[查尔斯顿 1]";
-		mes "沙洛什说她的朋友可以帮助我们。就在那时，纽奥兹和她的其他朋友来了。他们并没有提供太多帮助。";
-		npctalk "查尔斯顿 1：沙洛什说她的朋友可以帮助我们。就在那时，纽奥兹和她的其他朋友来了。他们并没有提供太多帮助。", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "ɳ��ʲ˵�������ѿ��԰������ǡ�������ʱ��Ŧ���Ⱥ����������������ˡ����ǲ�û���ṩ̫�������";
+		npctalk "���˹�� 1��ɳ��ʲ˵�������ѿ��԰������ǡ�������ʱ��Ŧ���Ⱥ����������������ˡ����ǲ�û���ṩ̫�������", .@charleston_1$;
 		next;
-		mes "[查尔斯顿 1]";
-		mes "看来你和他们很熟。你能帮助我们吗？";
-		npctalk "Charleston 1：看来你很熟悉他们。你能帮助我们吗？", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "����������Ǻ��졣���ܰ���������";
+		npctalk "Charleston 1�����������Ϥ���ǡ����ܰ���������", .@charleston_1$;
 		if ('ep15_1_mcd01 == 1)
 			'ep15_1_mcd01 = 2;
 		next;
-		if (select( "我可以帮忙。", "我不认识他们。" ) == 2) {
-			mes "[查尔斯顿 1]";
-			mes "我刚刚看到你在说话，那我就等人来帮忙吧！";
+		if (select( "�ҿ��԰�æ��", "�Ҳ���ʶ���ǡ�" ) == 2) {
+			mes "[���˹�� 1]";
+			mes "�Ҹոտ�������˵�������Ҿ͵�������æ�ɣ�";
 			close3;
 		}
 		unittalk getcharid(3), "I can help.";
-		mes "[查尔斯顿 1]";
-		mes "太感谢了！请给我一些时间来整理一些数据。然后，我会告诉你发生了什么事。";
-		npctalk "查尔斯顿 1： 非常感谢！请给我一些时间来整理一些数据。然后，我会告诉你发生了什么事。", .@charleston_1$;
+		mes "[���˹�� 1]";
+		mes "̫��л�ˣ������һЩʱ��������һЩ���ݡ�Ȼ���һ�����㷢����ʲô�¡�";
+		npctalk "���˹�� 1�� �ǳ���л�������һЩʱ��������һЩ���ݡ�Ȼ���һ�����㷢����ʲô�¡�", .@charleston_1$;
 		if ('ep15_1_mcd01 == 2)
 			'ep15_1_mcd01 = 3;
 		emotion 2, .@charleston_1$;
 		close3;
 	}
-	mes "[博士。维]";
-	mes "当张力改为两条主线，然后注入核心时……嗯？我不打扰计算。";
-	npctalk "Dr. Ve：当张力改为两条主线，然后注入核心时……嗯？我不打扰计算。";
+	mes "[��ʿ��ά]";
+	mes "��������Ϊ�������ߣ�Ȼ��ע�����ʱ�����ţ��Ҳ����ż��㡣";
+	npctalk "Dr. Ve����������Ϊ�������ߣ�Ȼ��ע�����ʱ�����ţ��Ҳ����ż��㡣";
 	close;
 }
 
 1@mcd,121,217,4	script	Charleston 1#1	4_F_CHARLESTON01,{
 	if (is_party_leader() == false) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "请让我和你们的领导谈谈。我工厂的未来取决于这次行动的成功。";
+		mes "[���˹�� 1]";
+		mes "�����Һ����ǵ��쵼̸̸���ҹ�����δ��ȡ��������ж��ĳɹ���";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 5)
 		end;
 	if ('ep15_1_mcd01 == 4) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "步调一致导致工厂内部一片混乱。请先摧毁 3 个锁步。我可以告诉你他们的估计位置。";
+		mes "[���˹�� 1]";
+		mes "����һ�µ��¹����ڲ�һƬ���ҡ����ȴݻ� 3 ���������ҿ��Ը��������ǵĹ���λ�á�";
 		viewpoint 1,84,226,1,0xFF00FF;
 		viewpoint 1,126,84,2,0xFF00FF;
 		viewpoint 1,111,68,3,0xFF00FF;
@@ -424,37 +426,37 @@ OnTouch_:
 	}
 	if ('ep15_1_mcd01 == 3) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "让我解释一下该怎么做。哦，我先把厂门关上，免得有什么不请自来的东西闯进来。";
-		npctalk "Charleston 1：让我解释一下该怎么做。哦，我先把厂门关上，免得有什么不请自来的东西闯进来。";
+		mes "[���˹�� 1]";
+		mes "���ҽ���һ�¸���ô����Ŷ�����Ȱѳ��Ź��ϣ������ʲô���������Ķ�����������";
+		npctalk "Charleston 1�����ҽ���һ�¸���ô����Ŷ�����Ȱѳ��Ź��ϣ������ʲô���������Ķ�����������";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "Charleston配备了无数的Nanosteps，这是一种AI芯片，可以与其他AI芯片有机配合，指挥Charleston正确判断并采取行动。";
-		npctalk "Charleston 1：Charleston配备了无数Nanosteps，这是一种AI芯片，可以与其他AI芯片有机配合，指挥Charleston正确判断并采取行动。";
+		mes "[���˹�� 1]";
+		mes "Charleston�䱸��������Nanosteps������һ��AIоƬ������������AIоƬ�л���ϣ�ָ��Charleston��ȷ�жϲ���ȡ�ж���";
+		npctalk "Charleston 1��Charleston�䱸������Nanosteps������һ��AIоƬ������������AIоƬ�л���ϣ�ָ��Charleston��ȷ�жϲ���ȡ�ж���";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "查尔斯顿的数据必须通过实验室的主计算机每天更新。我们称之为定期维护。";
-		npctalk "查尔斯顿1：查尔斯顿的数据必须通过实验室的主计算机每天更新。我们称之为定期维护。";
+		mes "[���˹�� 1]";
+		mes "���˹�ٵ����ݱ���ͨ��ʵ���ҵ��������ÿ����¡����ǳ�֮Ϊ����ά����";
+		npctalk "���˹��1�����˹�ٵ����ݱ���ͨ��ʵ���ҵ��������ÿ����¡����ǳ�֮Ϊ����ά����";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "更新程序目前无法运行。我们不知道原因，但 Charleston 2 连接到主计算机时出现了问题。";
-		npctalk "Charleston 1：更新程序目前无法工作。我们不知道原因，但 Charleston 2 连接到主计算机时出现了问题。";
+		mes "[���˹�� 1]";
+		mes "���³���Ŀǰ�޷����С����ǲ�֪��ԭ�򣬵� Charleston 2 ���ӵ��������ʱ���������⡣";
+		npctalk "Charleston 1�����³���Ŀǰ�޷����������ǲ�֪��ԭ�򣬵� Charleston 2 ���ӵ��������ʱ���������⡣";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "我告诉查尔斯顿二台，她正在接受延长维护，但我们不知道这种延长维护状态会持续多久。";
-		npctalk "查尔斯顿 1：我告诉查尔斯顿 2，她正在接受延长维护，但我们不知道这种延长维护状态会持续多久。";
+		mes "[���˹�� 1]";
+		mes "�Ҹ��߲��˹�ٶ�̨�������ڽ����ӳ�ά���������ǲ�֪�������ӳ�ά��״̬�������á�";
+		npctalk "���˹�� 1���Ҹ��߲��˹�� 2�������ڽ����ӳ�ά���������ǲ�֪�������ӳ�ά��״̬�������á�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "步调一致导致工厂内部一片混乱。请先摧毁 3 个锁步。我可以告诉你他们的估计位置。";
-		npctalk "查尔斯顿 1：步调一致导致工厂内部一片混乱。请先摧毁 3 个锁步。我可以告诉你他们的估计位置。";
+		mes "[���˹�� 1]";
+		mes "����һ�µ��¹����ڲ�һƬ���ҡ����ȴݻ� 3 ���������ҿ��Ը��������ǵĹ���λ�á�";
+		npctalk "���˹�� 1������һ�µ��¹����ڲ�һƬ���ҡ����ȴݻ� 3 ���������ҿ��Ը��������ǵĹ���λ�á�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "如果我们能把它们全部处理掉那就太好了，但现在我们应该集中精力让工厂重新恢复运行。";
-		npctalk "查尔斯顿 1：如果我们能把它们全部处理掉那就太好了，但现在我们应该集中精力让工厂重新恢复运行。";
+		mes "[���˹�� 1]";
+		mes "��������ܰ�����ȫ���������Ǿ�̫���ˣ�����������Ӧ�ü��о����ù������»ָ����С�";
+		npctalk "���˹�� 1����������ܰ�����ȫ���������Ǿ�̫���ˣ�����������Ӧ�ü��о����ù������»ָ����С�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "破坏太多步骤可能会导致重新激活工厂时出现问题。您应该查阅左侧的主计算机。";
-		npctalk "查尔斯顿1：摧毁太多台阶可能会导致工厂重新启动出现问题。您应该查阅左侧的主计算机。";
+		mes "[���˹�� 1]";
+		mes "�ƻ�̫�ಽ����ܻᵼ�����¼����ʱ�������⡣��Ӧ�ò����������������";
+		npctalk "���˹��1���ݻ�̫��̨�׿��ܻᵼ�¹������������������⡣��Ӧ�ò����������������";
 		emotion 2;
 		if ('ep15_1_mcd01 != 3)
 			close3;
@@ -481,13 +483,13 @@ OnTouch_:
 	}
 	if ('ep15_1_mcd01 == 1) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "你应该先见见维博士。";
+		mes "[���˹�� 1]";
+		mes "��Ӧ���ȼ���ά��ʿ��";
 		close3;
 	}
 	cutin "dalle01.bmp",2;
-	mes "[查尔斯顿 1]";
-	mes "我是机器人，你惊讶吗？";
+	mes "[���˹�� 1]";
+	mes "���ǻ����ˣ��㾪����";
 	close3;
 
 OnMyMobDead:
@@ -516,32 +518,32 @@ OnTimer300:
 	viewpoint 2,54,108,7,0xFF00FF;
 	if (is_party_leader() == false) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "请让我和你们领导谈谈工厂补充的事情。";
+		mes "[���˹�� 1]";
+		mes "�����Һ������쵼̸̸������������顣";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 7)
 		end;
 	if ('ep15_1_mcd01 > 4) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "我们需要更多的电力来重新激活主计算机。让我告诉你其中一台备用发电机的位置。打开它很容易。";
+		mes "[���˹�� 1]";
+		mes "������Ҫ����ĵ��������¼���������������Ҹ���������һ̨���÷������λ�á����������ס�";
 		close3;
 	}
 	if ('ep15_1_mcd01 == 4) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "呼，事情似乎暂时已经解决了。让我解除警报模式并重新激活 Charleston 2。";
-		npctalk "Charleston 1：哎哟，事情现在看来已经解决了。让我解除警报模式并重新激活 Charleston 2。";
+		mes "[���˹�� 1]";
+		mes "���������ƺ���ʱ�Ѿ�����ˡ����ҽ������ģʽ�����¼��� Charleston 2��";
+		npctalk "Charleston 1����Ӵ���������ڿ����Ѿ�����ˡ����ҽ������ģʽ�����¼��� Charleston 2��";
 		emotion 54;
 		next;
 		cutin "dalle03.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "犯错？这是不对的。";
+		mes "[���˹�� 1]";
+		mes "���������ǲ��Եġ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "恐怕发电机有问题。你能检查一下所有三个发电机吗？我会告诉你他们的位置。";
-		npctalk "查尔斯顿 1：恐怕发电机有问题。你能检查一下所有三个发电机吗？我会告诉你他们的位置。";
+		mes "[���˹�� 1]";
+		mes "���·���������⡣���ܼ��һ������������������һ���������ǵ�λ�á�";
+		npctalk "���˹�� 1�����·���������⡣���ܼ��һ������������������һ���������ǵ�λ�á�";
 		viewpoint 1,86,231,8,0xFF00FF;
 		viewpoint 1,172,196,9,0xFF00FF;
 		viewpoint 1,126,84,10,0xFF00FF;
@@ -559,8 +561,8 @@ OnTimer300:
 		close3;
 	}
 	cutin "dalle03.bmp",2;
-	mes "[查尔斯顿 1]";
-	mes "我们正在开发一种名为 Hardworking 的新实用软件引擎。由于工厂的问题，我们还没有机会进行测试。";
+	mes "[���˹�� 1]";
+	mes "�������ڿ���һ����Ϊ Hardworking ����ʵ���������档���ڹ��������⣬���ǻ�û�л�����в��ԡ�";
 	close3;
 }
 
@@ -570,11 +572,11 @@ OnTimer300:
 	viewpoint 2,126,84,10,0xFF00FF;
 	if (is_party_leader() == false) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "我们正在开发一种名为 Hardworking 的新实用软件引擎。由于工厂的问题，我们还没有机会进行测试。";
+		mes "[���˹�� 1]";
+		mes "�������ڿ���һ����Ϊ Hardworking ����ʵ���������档���ڹ��������⣬���ǻ�û�л�����в��ԡ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "请让我和你们领导谈谈工厂补充的事情。";
+		mes "[���˹�� 1]";
+		mes "�����Һ������쵼̸̸������������顣";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 11)
@@ -583,136 +585,136 @@ OnTimer300:
 		.@npc2$ = instance_npcname("Charleston 2#0");
 		.@npc5$ = instance_npcname("Dr. Ve#1");
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "你回来了。查尔斯顿 2 号即将重新启动，这一切都归功于您。请给我一点时间。";
-		npctalk "查尔斯顿 1：你回来了。查尔斯顿 2 号即将重新启动，这一切都归功于您。请给我一点时间。";
+		mes "[���˹�� 1]";
+		mes "������ˡ����˹�� 2 �ż���������������һ�ж��鹦�����������һ��ʱ�䡣";
+		npctalk "���˹�� 1��������ˡ����˹�� 2 �ż���������������һ�ж��鹦�����������һ��ʱ�䡣";
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "她准备好了。让我们等待主计算机的响应。";
-		npctalk "Ve博士：她准备好了。让我们等待主计算机的响应。", .@npc5$;
+		mes "[��ʿ��ά]";
+		mes "��׼�����ˡ������ǵȴ������������Ӧ��";
+		npctalk "Ve��ʿ����׼�����ˡ������ǵȴ������������Ӧ��", .@npc5$;
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "主电脑数据89%已恢复。重新激活查尔斯顿 2 号和查尔斯顿工厂...";
-		npctalk "查尔斯顿1号：主电脑数据89%已恢复。重新激活查尔斯顿 2 号和查尔斯顿工厂...";
+		mes "[���˹�� 1]";
+		mes "����������89%�ѻָ������¼�����˹�� 2 �źͲ��˹�ٹ���...";
+		npctalk "���˹��1�ţ�����������89%�ѻָ������¼�����˹�� 2 �źͲ��˹�ٹ���...";
 		emotion 0;
 		next;
-		mes "[查尔斯顿 1]";
-		mes "哦，查尔斯顿二号醒了！";
-		npctalk "查尔斯顿 1：噢，查尔斯顿 2 醒了！";
+		mes "[���˹�� 1]";
+		mes "Ŷ�����˹�ٶ������ˣ�";
+		npctalk "���˹�� 1���ޣ����˹�� 2 ���ˣ�";
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "……我失败了吗？";
-		npctalk "查尔斯顿2：……我失败了吗？", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "������ʧ������";
+		npctalk "���˹��2��������ʧ������", .@npc2$;
 		emotion 9, .@npc2$;
 		next;
 		cutin "dalle02.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "查尔斯顿2！你还好吗？有人侵入了您的系统和工厂。";
-		npctalk "查尔斯顿 1：查尔斯顿 2！你还好吗？有人侵入了您的系统和工厂。";
+		mes "[���˹�� 1]";
+		mes "���˹��2���㻹������������������ϵͳ�͹�����";
+		npctalk "���˹�� 1�����˹�� 2���㻹������������������ϵͳ�͹�����";
 		emotion 28;
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "是我干的。基于我的自我反思操作系统的推理，我思考了很长时间。";
-		npctalk "查尔斯顿2：是我干的。基于我的自我反思操作系统的推理，我思考了很长时间。", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "���Ҹɵġ������ҵ����ҷ�˼����ϵͳ����������˼���˺ܳ�ʱ�䡣";
+		npctalk "���˹��2�����Ҹɵġ������ҵ����ҷ�˼����ϵͳ����������˼���˺ܳ�ʱ�䡣", .@npc2$;
 		next;
 		cutin "dalle02.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "你做到了吗？为什么？这是某种玩笑吗？你也给工厂和主服务器造成了严重错误！";
-		npctalk "查尔斯顿 1：你做到了？为什么？这是某种玩笑吗？你也给工厂和主服务器造成了严重错误！";
+		mes "[���˹�� 1]";
+		mes "����������Ϊʲô������ĳ����Ц����Ҳ������������������������ش���";
+		npctalk "���˹�� 1���������ˣ�Ϊʲô������ĳ����Ц����Ҳ������������������������ش���";
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "不是开玩笑。你永远不会明白。你听从命令，从不自己思考。我讨厌这个工厂，这个世界！我讨厌当机器人！";
-		npctalk "查尔斯顿 2：不是开玩笑。你永远不会明白。你听从命令，从不自己思考。我讨厌这个工厂，这个世界！我讨厌当机器人！", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "���ǿ���Ц������Զ�������ס�����������Ӳ��Լ�˼�������������������������磡�����ᵱ�����ˣ�";
+		npctalk "���˹�� 2�����ǿ���Ц������Զ�������ס�����������Ӳ��Լ�˼�������������������������磡�����ᵱ�����ˣ�", .@npc2$;
 		emotion 36, .@npc2$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "要么发生了严重错误，要么 Charleston 2 超出了 Self-reflection OS 版本 1.1 的限制。";
-		npctalk "Dr. Ve：要么发生了严重错误，要么 Charleston 2 超出了 Self-reflection OS 1.1 版的限制。", .@npc5$;
+		mes "[��ʿ��ά]";
+		mes "Ҫô���������ش���Ҫô Charleston 2 ������ Self-reflection OS �汾 1.1 �����ơ�";
+		npctalk "Dr. Ve��Ҫô���������ش���Ҫô Charleston 2 ������ Self-reflection OS 1.1 ������ơ�", .@npc5$;
 		next;
 		cutin "dalle02.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "让我猜猜：你讨厌自己不是被创造成一个卑微的工人机器人。";
-		npctalk "查尔斯顿 1：让我猜一下：你讨厌自己不是被创造成一个卑微的工人机器人。";
+		mes "[���˹�� 1]";
+		mes "���Ҳ²£��������Լ����Ǳ������һ����΢�Ĺ��˻����ˡ�";
+		npctalk "���˹�� 1�����Ҳ�һ�£��������Լ����Ǳ������һ����΢�Ĺ��˻����ˡ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "或者你想成为一个人。";
-		npctalk "Charleston 1：或者你想成为一个人。";
+		mes "[���˹�� 1]";
+		mes "���������Ϊһ���ˡ�";
+		npctalk "Charleston 1�����������Ϊһ���ˡ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "如果你做不到，那么你就会想毁灭整个世界。";
-		npctalk "Charleston 1：如果你做不到，那么你就会想毁灭整个世界。";
+		mes "[���˹�� 1]";
+		mes "���������������ô��ͻ�������������硣";
+		npctalk "Charleston 1�����������������ô��ͻ�������������硣";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "是这样吗？";
-		npctalk "查尔斯顿 1：是这样吗？";
+		mes "[���˹�� 1]";
+		mes "��������";
+		npctalk "���˹�� 1����������";
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "……别嘲笑我。";
-		npctalk "查尔斯顿 2：……别嘲笑我。", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "������Ц�ҡ�";
+		npctalk "���˹�� 2��������Ц�ҡ�", .@npc2$;
 		emotion 9, .@npc2$;
 		next;
 		cutin "dalle03.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "你已经来了。你的理由很任性而且缺乏想象力。我们是第一批能够独立思考的机器人。你就不能更有创意一点吗？";
-		npctalk "查尔斯顿 1：你来了。你的理由很任性而且缺乏想象力。我们是第一批能够独立思考的机器人。你就不能更有创意一点吗？";
+		mes "[���˹�� 1]";
+		mes "���Ѿ����ˡ�������ɺ����Զ���ȱ���������������ǵ�һ���ܹ�����˼���Ļ����ˡ���Ͳ��ܸ��д���һ����";
+		npctalk "���˹�� 1�������ˡ�������ɺ����Զ���ȱ���������������ǵ�һ���ܹ�����˼���Ļ����ˡ���Ͳ��ܸ��д���һ����";
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "你不知道你在说什么！你是原型——你的操作系统版本是原始的！";
-		npctalk "查尔斯顿2：你不知道你在说什么！你是原型——你的操作系统版本是原始的！", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "�㲻֪������˵ʲô������ԭ�͡�����Ĳ���ϵͳ�汾��ԭʼ�ģ�";
+		npctalk "���˹��2���㲻֪������˵ʲô������ԭ�͡�����Ĳ���ϵͳ�汾��ԭʼ�ģ�", .@npc2$;
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "这个世界上，只有我一个人能够真正理解你。";
-		npctalk "查尔斯顿1：我是这个世界上唯一能真正理解你的人。我们是双胞胎。";
-		mes "我们是双胞胎。";
+		mes "[���˹�� 1]";
+		mes "��������ϣ�ֻ����һ�����ܹ����������㡣";
+		npctalk "���˹��1���������������Ψһ��������������ˡ�������˫��̥��";
+		mes "������˫��̥��";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "你和人类一样正在经历青春期。";
-		npctalk "Charleston 1：你和人类一样正在经历青春期。";
+		mes "[���˹�� 1]";
+		mes "�������һ�����ھ����ഺ�ڡ�";
+		npctalk "Charleston 1���������һ�����ھ����ഺ�ڡ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "也许我们应该庆祝一下。你终于培养出了人类般的感情。";
-		npctalk "查尔斯顿 1：也许我们应该庆祝一下。你终于培养出了人类般的感情。";
+		mes "[���˹�� 1]";
+		mes "Ҳ������Ӧ����ףһ�¡��������������������ĸ��顣";
+		npctalk "���˹�� 1��Ҳ������Ӧ����ףһ�¡��������������������ĸ��顣";
 		emotion 46;
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "别表现得好像你什么都知道！我们无法为自己思考。我们认为自己知道的一切都已被编程到我们体内！";
-		npctalk "查尔斯顿 2：别表现得好像你什么都知道！我们无法为自己思考。我们认为自己知道的一切都已被编程到我们体内！", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "����ֵú�����ʲô��֪���������޷�Ϊ�Լ�˼����������Ϊ�Լ�֪����һ�ж��ѱ���̵��������ڣ�";
+		npctalk "���˹�� 2������ֵú�����ʲô��֪���������޷�Ϊ�Լ�˼����������Ϊ�Լ�֪����һ�ж��ѱ���̵��������ڣ�", .@npc2$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "足够的。让我们关闭查尔斯顿 2 号。她的人工智能需要重新校准。";
-		npctalk "Ve博士：够了。让我们关闭查尔斯顿 2 号。她的人工智能需要重新校准。", .@npc5$;
+		mes "[��ʿ��ά]";
+		mes "�㹻�ġ������ǹرղ��˹�� 2 �š������˹�������Ҫ����У׼��";
+		npctalk "Ve��ʿ�����ˡ������ǹرղ��˹�� 2 �š������˹�������Ҫ����У׼��", .@npc5$;
 		next;
 		cutin "dalle03.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "但...";
-		npctalk "查尔斯顿 1：但是……";
+		mes "[���˹�� 1]";
+		mes "��...";
+		npctalk "���˹�� 1�����ǡ���";
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "那没有发生！这家工厂我还是有控制权的！你竟然敢跟着我！";
-		npctalk "查尔斯顿 2：这不会发生！这家工厂我还是有控制权的！你竟然敢跟着我！", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "��û�з�������ҹ����һ����п���Ȩ�ģ��㾹Ȼ�Ҹ����ң�";
+		npctalk "���˹�� 2���ⲻ�ᷢ������ҹ����һ����п���Ȩ�ģ��㾹Ȼ�Ҹ����ң�", .@npc2$;
 		emotion 32, .@npc2$;
 		next;
 		disablenpc .@npc2$;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "别再表现得像个孩子了！";
-		npctalk "查尔斯顿 1：别再像个孩子了！";
+		mes "[���˹�� 1]";
+		mes "���ٱ��ֵ���������ˣ�";
+		npctalk "���˹�� 1��������������ˣ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "她的长寿装置已放电；她不会走得太远。请跟随她。";
-		npctalk "查尔斯顿 1：她的长寿装置放电；她不会走得太远。请跟随她。";
+		mes "[���˹�� 1]";
+		mes "���ĳ���װ���ѷŵ磻�������ߵ�̫Զ�����������";
+		npctalk "���˹�� 1�����ĳ���װ�÷ŵ磻�������ߵ�̫Զ�����������";
 		close2;
 		cutin "",255;
 		disablenpc instance_npcname("Charleston 1#3");
@@ -721,40 +723,40 @@ OnTimer300:
 		end;
 	}
 	cutin "dalle01.bmp",2;
-	mes "[查尔斯顿 1]";
-	mes "这就是查尔斯顿工厂的安全。请保持靠近？";
+	mes "[���˹�� 1]";
+	mes "����ǲ��˹�ٹ����İ�ȫ���뱣�ֿ�����";
 	close3;
 }
 
 1@mcd,141,214,5	script	Charleston 2#1	4_F_CHARLESTON02,{
 	if (is_party_leader() == false) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "请让我和你们领导谈谈工厂补充的事情。";
+		mes "[���˹�� 1]";
+		mes "�����Һ������쵼̸̸������������顣";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 11)
 		end;
 	if ('ep15_1_mcd01 == 8) {
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "别再追随了！我要毁掉整个工厂！";
-		npctalk "查尔斯顿 2：停止关注！我要毁掉整个工厂！";
+		mes "[���˹�� 2]";
+		mes "����׷���ˣ���Ҫ�ٵ�����������";
+		npctalk "���˹�� 2��ֹͣ��ע����Ҫ�ٵ�����������";
 		emotion 7;
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "你会在这个过程中毁掉我们！我们的主电源 Longevity 还不完美！";
-		npctalk "Charleston 1：你会在这个过程中毁掉我们！我们的主电源“Longevity”还不完美！", instance_npcname("查尔斯顿 1#4");
+		mes "[���˹�� 1]";
+		mes "�������������лٵ����ǣ����ǵ�����Դ Longevity ����������";
+		npctalk "Charleston 1���������������лٵ����ǣ����ǵ�����Դ��Longevity������������", instance_npcname("���˹�� 1#4");
 		next;
 		cutin "nale03.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "你们没人理解我。我恨你！";
-		npctalk "查尔斯顿 2：你们都不明白我的意思。我恨你！";
+		mes "[���˹�� 2]";
+		mes "����û�������ҡ��Һ��㣡";
+		npctalk "���˹�� 2�����Ƕ��������ҵ���˼���Һ��㣡";
 		next;
-		mes "[查尔斯顿 2]";
-		mes "主计算机可能已经恢复，但我仍然连接到工厂。如果可以的话请阻止我！";
-		npctalk "Charleston 2：主计算机可能已经恢复，但我仍然连接到工厂。如果可以的话请阻止我！";
+		mes "[���˹�� 2]";
+		mes "������������Ѿ��ָ���������Ȼ���ӵ�������������ԵĻ�����ֹ�ң�";
+		npctalk "Charleston 2��������������Ѿ��ָ���������Ȼ���ӵ�������������ԵĻ�����ֹ�ң�";
 		cutin "",255;
 		if ('ep15_1_mcd01 != 8)
 			close;
@@ -766,8 +768,8 @@ OnTimer300:
 		end;
 	}
 	cutin "nale01.bmp",0;
-	mes "[查尔斯顿 2]";
-	mes "我要毁掉整个工厂！";
+	mes "[���˹�� 2]";
+	mes "��Ҫ�ٵ�����������";
 	close3;
 }
 
@@ -776,13 +778,13 @@ OnTimer300:
 		end;
 	if ('ep15_1_mcd01 == 8) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "查尔斯顿 2 号正处于崩溃的边缘。你能帮助她吗？";
+		mes "[���˹�� 1]";
+		mes "���˹�� 2 �������ڱ����ı�Ե�����ܰ�������";
 		close3;
 	}
 	cutin "dalle01.bmp",2;
-	mes "[查尔斯顿 1]";
-	mes "哦，我们的实验室将无法幸存！";
+	mes "[���˹�� 1]";
+	mes "Ŷ�����ǵ�ʵ���ҽ��޷��Ҵ棡";
 	close3;
 }
 
@@ -792,24 +794,24 @@ OnStart:
 	sleep 2000;
 	.@npc1$ = instance_npcname("Charleston 2#1");
 	.@npc4$ = instance_npcname("Charleston 1#4");
-	npctalk "查尔斯顿 2：停止干涉！我不想伤害你！", .@npc1$;
+	npctalk "���˹�� 2��ֹͣ���棡�Ҳ����˺��㣡", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：那么，别发脾气了！", .@npc4$;
+	npctalk "���˹�� 1����ô����Ƣ���ˣ�", .@npc4$;
 	sleep 3000;
-	npctalk "Charleston 2：你还是没有认真对待我。看看我向主计算机发出信号时会发生什么。", .@npc1$;
+	npctalk "Charleston 2���㻹��û������Դ��ҡ���������������������ź�ʱ�ᷢ��ʲô��", .@npc1$;
 	specialeffect EF_BASH3D2, AREA, .@npc1$;
 	areamonster 'map_name$,134,202,154,222,"C-TYPE", 3128,4;// KICK_AND_KICK
 	sleep 3000;
-	npctalk "查尔斯顿 2：我有无穷无尽的质问者给你！", .@npc1$;
+	npctalk "���˹�� 2�����������޾��������߸��㣡", .@npc1$;
 	areamonster 'map_name$,134,202,154,222,"H-TYPE", 3128,3;// KICK_AND_KICK
 	sleep 9000;
-	npctalk "查尔斯顿 2：放弃吧。不管你愿不愿意，我都要毁掉这个工厂！", .@npc1$;
+	npctalk "���˹�� 2�������ɡ�������Ը��Ը�⣬�Ҷ�Ҫ�ٵ����������", .@npc1$;
 	areamonster 'map_name$,134,202,154,222,"A-TYPE", 3128,3;// KICK_AND_KICK
 	sleep 6000;
-	npctalk "Charleston 1：噢，我们的实验室活不下去了！", .@npc4$;
+	npctalk "Charleston 1���ޣ����ǵ�ʵ���һ��ȥ�ˣ�", .@npc4$;
 	areamonster 'map_name$,134,202,154,222,"L-TYPE", 3128,4;// KICK_AND_KICK
 	sleep 6000;
-	npctalk "查尔斯顿2号：我会毁掉一切！", .@npc1$;
+	npctalk "���˹��2�ţ��һ�ٵ�һ�У�", .@npc1$;
 	areamonster 'map_name$,134,208,154,228,"N-TYPE", 3126,1;// ROCK_STEP
 	areamonster 'map_name$,134,202,154,222,"S-TYPE", 3128,3;// KICK_AND_KICK
 	sleep 2000;
@@ -819,13 +821,13 @@ OnStart:
 	sleep 2000;
 	areamonster 'map_name$,134,202,154,222,"S-TYPE", 3128,3;// KICK_AND_KICK
 	sleep 5000;
-	npctalk "查尔斯顿 2：*喘气*我感觉很虚弱......", .@npc1$;
+	npctalk "���˹�� 2��*����*�Ҹо�������......", .@npc1$;
 	areamonster 'map_name$,136,204,152,220,"C-TYPE", 3128,4;// KICK_AND_KICK
 	sleep 3000;
-	npctalk "Charleston 1：实施工厂数据需要巨大的电力和数据处理。", .@npc4$;
+	npctalk "Charleston 1��ʵʩ����������Ҫ�޴�ĵ��������ݴ�����", .@npc4$;
 	areamonster 'map_name$,136,204,152,220,"C-TYPE", 3128,4;// KICK_AND_KICK
 	sleep 3000;
-	npctalk "查尔斯顿 2：呃，你阻止不了我！", .@npc1$;
+	npctalk "���˹�� 2����������ֹ�����ң�", .@npc1$;
 	areamonster 'map_name$,136,204,152,220,"C-TYPE", 3128,5;// KICK_AND_KICK
 	sleep 3000;
 	donpcevent instance_npcname("battle#2") + "::OnStart";
@@ -857,8 +859,8 @@ OnTimer300:
 1@mcd,141,214,5	script	Charleston 2#2	4_F_CHARLESTON02,{
 	if (is_party_leader() == false) {
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "你觉得你能阻止我吗？ *哼哼*带上你的领袖。我不是在跟你说话！";
+		mes "[���˹�� 2]";
+		mes "�����������ֹ���� *�ߺ�*����������䡣�Ҳ����ڸ���˵����";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 20)
@@ -867,86 +869,86 @@ OnTimer300:
 		.@npc1$ = instance_npcname("Charleston 1#5");
 		.@npc5$ = instance_npcname("Dr. Ve#2");
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "够了！我知道你正在经历很多情绪波动，但这变得很荒谬。";
-		npctalk "查尔斯顿 1：够了！我知道你正在经历很多情绪波动，但这变得很荒谬。", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "���ˣ���֪�������ھ����ܶ����������������úܻ�����";
+		npctalk "���˹�� 1�����ˣ���֪�������ھ����ܶ����������������úܻ�����", .@npc1$;
 		next;
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "你怎么敢把陌生人带进来？我告诉过你我是认真的！像你这样过时的版本永远无法理解我！";
-		npctalk "Charleston 2：你怎么敢把陌生人带进来？我告诉过你我是认真的！像你这样过时的版本永远无法理解我！";
+		mes "[���˹�� 2]";
+		mes "����ô�Ұ�İ���˴��������Ҹ��߹�����������ģ�����������ʱ�İ汾��Զ�޷������ң�";
+		npctalk "Charleston 2������ô�Ұ�İ���˴��������Ҹ��߹�����������ģ�����������ʱ�İ汾��Զ�޷������ң�";
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "我可能不明白你的意思，但至少我告诉你我认为是真的。";
-		npctalk "Charleston 1：我可能不明白你的意思，但至少我告诉你我认为是真的。", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "�ҿ��ܲ����������˼���������Ҹ���������Ϊ����ġ�";
+		npctalk "Charleston 1���ҿ��ܲ����������˼���������Ҹ���������Ϊ����ġ�", .@npc1$;
 		next;
-		mes "[查尔斯顿 1]";
-		mes "你说得对，我是低版本。我的情感能力很弱，与你不同。这就是为什么我为你感到骄傲。";
-		npctalk "Charleston 1：关于我是低版本，你说得对。我的情感能力很弱，与你不同。这就是为什么我为你感到骄傲。", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "��˵�öԣ����ǵͰ汾���ҵ�����������������㲻ͬ�������Ϊʲô��Ϊ��е�������";
+		npctalk "Charleston 1���������ǵͰ汾����˵�öԡ��ҵ�����������������㲻ͬ�������Ϊʲô��Ϊ��е�������", .@npc1$;
 		next;
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "你感觉到的、你认为的一切都不是你自己的——它已经被编入你的体内了！我不一样。我感受到的是真实的情感！";
-		npctalk "查尔斯顿 2：你所感觉到的、你所认为的一切都不是你自己的——它已经被编程到你体内了！我不一样。我感受到的是真实的情感！";
+		mes "[���˹�� 2]";
+		mes "��о����ġ�����Ϊ��һ�ж��������Լ��ġ������Ѿ���������������ˣ��Ҳ�һ�����Ҹ��ܵ�������ʵ����У�";
+		npctalk "���˹�� 2�������о����ġ�������Ϊ��һ�ж��������Լ��ġ������Ѿ�����̵��������ˣ��Ҳ�һ�����Ҹ��ܵ�������ʵ����У�";
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "足够的。如果能阻止她的话，我会摧毁查尔斯顿二号。";
-		npctalk "Ve博士：够了。如果能阻止她的话，我会摧毁查尔斯顿二号。", .@npc5$;
+		mes "[��ʿ��ά]";
+		mes "�㹻�ġ��������ֹ���Ļ����һ�ݻٲ��˹�ٶ��š�";
+		npctalk "Ve��ʿ�����ˡ��������ֹ���Ļ����һ�ݻٲ��˹�ٶ��š�", .@npc5$;
 		next;
 		cutin "nale02.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "查尔斯顿3号已经完工了吗？";
-		npctalk "查尔斯顿 2 号：查尔斯顿 3 号已经完工了吗？";
+		mes "[���˹�� 2]";
+		mes "���˹��3���Ѿ��깤����";
+		npctalk "���˹�� 2 �ţ����˹�� 3 ���Ѿ��깤����";
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "查尔斯顿3号？这是一个基于 Charleston 2 和我的设计的战斗/防御单位。我认为它仍在核心测试中。";
-		npctalk "查尔斯顿 1：查尔斯顿 3？这是一个基于 Charleston 2 和我的设计的战斗/防御单位。我认为它仍在核心测试中。", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "���˹��3�ţ�����һ������ Charleston 2 ���ҵ���Ƶ�ս��/������λ������Ϊ�����ں��Ĳ����С�";
+		npctalk "���˹�� 1�����˹�� 3������һ������ Charleston 2 ���ҵ���Ƶ�ս��/������λ������Ϊ�����ں��Ĳ����С�", .@npc1$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "查尔斯顿 1，信息太多了。";
-		npctalk "Ve博士：查尔斯顿1，信息太多了。", .@npc5$;
+		mes "[��ʿ��ά]";
+		mes "���˹�� 1����Ϣ̫���ˡ�";
+		npctalk "Ve��ʿ�����˹��1����Ϣ̫���ˡ�", .@npc5$;
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "此时，^FF0000任何人都可以访问模型^000000，因为其操作系统仍在测试中，以纠正 Charleston 2 存在的任何问题。";
-		npctalk "Charleston 1：目前，任何人都可以访问该模型，因为其操作系统仍在测试中，以纠正 Charleston 2 存在的任何问题。", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "��ʱ��^FF0000�κ��˶����Է���ģ��^000000����Ϊ�����ϵͳ���ڲ����У��Ծ��� Charleston 2 ���ڵ��κ����⡣";
+		npctalk "Charleston 1��Ŀǰ���κ��˶����Է��ʸ�ģ�ͣ���Ϊ�����ϵͳ���ڲ����У��Ծ��� Charleston 2 ���ڵ��κ����⡣", .@npc1$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
-		mes "你刚刚把最关键的信息告诉了大家！";
-		npctalk "Ve博士：你刚刚把最关键的信息告诉了大家！", .@npc5$;
+		mes "[��ʿ��ά]";
+		mes "��ոհ���ؼ�����Ϣ�����˴�ң�";
+		npctalk "Ve��ʿ����ոհ���ؼ�����Ϣ�����˴�ң�", .@npc5$;
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "^FF0000我们^000000没有战斗能力。如果有人启动了查尔斯顿 3 号，我们就没有机会对抗她。";
-		npctalk "查尔斯顿 1：我们没有战斗能力。如果有人启动了查尔斯顿 3 号，我们就没有机会对抗她。", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "^FF0000����^000000û��ս��������������������˲��˹�� 3 �ţ����Ǿ�û�л���Կ�����";
+		npctalk "���˹�� 1������û��ս��������������������˲��˹�� 3 �ţ����Ǿ�û�л���Կ�����", .@npc1$;
 		next;
 		cutin "",255;
-		mes "[博士。维]";
+		mes "[��ʿ��ά]";
 		mes "......";
-		npctalk "维博士：......", .@npc5$;
+		npctalk "ά��ʿ��......", .@npc5$;
 		next;
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "我会带着 Charleston 3 一起去。";
-		npctalk "查尔斯顿 2：我将携带查尔斯顿 3。";
+		mes "[���˹�� 2]";
+		mes "�һ���� Charleston 3 һ��ȥ��";
+		npctalk "���˹�� 2���ҽ�Я�����˹�� 3��";
 		if ('ep15_1_mcd01 == 9) {
 			'ep15_1_mcd01 = 10;
 			disablenpc instance_npcname("Charleston 2#2");
 		}
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "什么？不！你怎么能考虑这个呢？";
-		npctalk "查尔斯顿 1：什么？不！你怎么能考虑这个呢？", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "ʲô����������ô�ܿ�������أ�";
+		npctalk "���˹�� 1��ʲô����������ô�ܿ�������أ�", .@npc1$;
 		next;
-		mes "[查尔斯顿 1]";
-		mes "事情越来越严重了。请在查尔斯顿2抢3之前前往工厂中心的核心！";
-		npctalk "查尔斯顿 1：事情越来越严重了。请在查尔斯顿2抢3之前前往工厂中心的核心！", .@npc1$;
+		mes "[���˹�� 1]";
+		mes "����Խ��Խ�����ˡ����ڲ��˹��2��3֮ǰǰ���������ĵĺ��ģ�";
+		npctalk "���˹�� 1������Խ��Խ�����ˡ����ڲ��˹��2��3֮ǰǰ���������ĵĺ��ģ�", .@npc1$;
 		if ('ep15_1_mcd01 != 10)
 			close3;
 		close2;
@@ -958,8 +960,8 @@ OnTimer300:
 		enablenpc instance_npcname("7gate#1");
 		end;
 	}
-	mes "[查尔斯顿 2]";
-	mes "...我负责第三台机器。";
+	mes "[���˹�� 2]";
+	mes "...�Ҹ������̨������";
 	close2;
 	//cutin "dalle01.bmp",2;
 	cutin "",255;
@@ -967,29 +969,29 @@ OnTimer300:
 }
 
 1@mcd,146,214,4	script	Charleston 1#5	4_F_CHARLESTON01,{
-	mes "[查尔斯顿 1]";
-	mes "事情变得越来越混乱。";
+	mes "[���˹�� 1]";
+	mes "������Խ��Խ���ҡ�";
 	close;
 }
 
 1@mcd,143,217,5	script	Dr. Ve#2	4_M_DOCTOR,{
-	mes "[博士。维]";
-	mes "查尔斯顿 2 号有缺陷。";
+	mes "[��ʿ��ά]";
+	mes "���˹�� 2 ����ȱ�ݡ�";
 	close;
 }
 
 1@mcd,132,129,4	script	Charleston 1#6	4_F_CHARLESTON01,{
 	cutin "dalle01.bmp",2;
-	mes "[查尔斯顿 1]";
-	mes "位于中心的核心为整个工厂提供动力。";
+	mes "[���˹�� 1]";
+	mes "λ�����ĵĺ���Ϊ���������ṩ������";
 	close3;
 }
 
 1@mcd,132,129,4	script	Charleston 1#61	4_F_CHARLESTON01,{
 	if (is_party_leader() == false) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "为了解锁装置，需要爆破装置，我想和领导对话。";
+		mes "[���˹�� 1]";
+		mes "Ϊ�˽���װ�ã���Ҫ����װ�ã�������쵼�Ի���";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 21)
@@ -997,40 +999,40 @@ OnTimer300:
 	if ('ep15_1_mcd01 == 11) {
 		if (countitem(6213) < 1) {
 			cutin "dalle01.bmp",2;
-			mes "[查尔斯顿 1]";
-			mes "你能带1个炸药吗？正如你所看到的，我被困在访问设备上。";
+			mes "[���˹�� 1]";
+			mes "���ܴ�1��ըҩ���������������ģ��ұ����ڷ����豸�ϡ�";
 			close3;
 		}
 		.@npc2$ = instance_npcname("Charleston 2#31");
 		cutin "dalle01.bmp",2;
 		delitem 6213,1;	// Explosive_Powder
-		mes "[查尔斯顿 1]";
-		mes "哦，谢谢。有了这个，我就可以访问核心了。";
-		npctalk "查尔斯顿 1：哦，谢谢。有了这个，我就可以访问核心了。";
+		mes "[���˹�� 1]";
+		mes "Ŷ��лл������������ҾͿ��Է��ʺ����ˡ�";
+		npctalk "���˹�� 1��Ŷ��лл������������ҾͿ��Է��ʺ����ˡ�";
 		next;
-		mes "[查尔斯顿 1]";
-		mes "如果我用炸药来增强电流的话……";
-		npctalk "查尔斯顿1：如果我用炸药来增强电流……";
+		mes "[���˹�� 1]";
+		mes "�������ըҩ����ǿ�����Ļ�����";
+		npctalk "���˹��1���������ըҩ����ǿ��������";
 		next;
-		mes "[查尔斯顿 1]";
-		npctalk "查尔斯顿 1：瞧！";
-		mes "瞧！";
+		mes "[���˹�� 1]";
+		npctalk "���˹�� 1���ƣ�";
+		mes "�ƣ�";
 		specialeffect EF_LORD, AREA, instance_npcname("8gate#1");
 		next;
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "...你刚刚炸毁了门。";
-		npctalk "Charleston 2：……你刚刚炸毁了门。", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "...��ո�ը�����š�";
+		npctalk "Charleston 2��������ո�ը�����š�", .@npc2$;
 		next;
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "关键是我们现在可以访问核心了。";
-		npctalk "Charleston 1：重点是我们现在可以访问核心了。";
+		mes "[���˹�� 1]";
+		mes "�ؼ����������ڿ��Է��ʺ����ˡ�";
+		npctalk "Charleston 1���ص����������ڿ��Է��ʺ����ˡ�";
 		next;
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "让我们来一场前往查尔斯顿 3 的比赛吧。谁先到达，谁就获胜。";
-		npctalk "查尔斯顿 2：让我们来一场前往查尔斯顿 3 的比赛。谁先到达，谁就获胜。", .@npc2$;
+		mes "[���˹�� 2]";
+		mes "��������һ��ǰ�����˹�� 3 �ı����ɡ�˭�ȵ��˭�ͻ�ʤ��";
+		npctalk "���˹�� 2����������һ��ǰ�����˹�� 3 �ı�����˭�ȵ��˭�ͻ�ʤ��", .@npc2$;
 		close2;
 		cutin "",255;
 		if (isnpccloaked( instance_npcname("8gate#1") ) == true) {
@@ -1045,8 +1047,8 @@ OnTimer300:
 	}
 	if ('ep15_1_mcd01 == 10) {
 		cutin "dalle01.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "位于中心的核心为整个工厂提供动力。";
+		mes "[���˹�� 1]";
+		mes "λ�����ĵĺ���Ϊ���������ṩ������";
 		close3;
 	}
 	end;
@@ -1054,8 +1056,8 @@ OnTimer300:
 
 1@mcd,127,129,5	script	Charleston 2#3	4_F_CHARLESTON02,2,2,{
 	cutin "nale01.bmp",0;
-	mes "[查尔斯顿 2]";
-	mes "查尔斯顿工厂现在在我的控制之下。我正在摧毁一切，这样像我这样悲伤的机器人就再也见不到这个世界了。";
+	mes "[���˹�� 2]";
+	mes "���˹�ٹ����������ҵĿ���֮�¡������ڴݻ�һ�У����������������˵Ļ����˾���Ҳ��������������ˡ�";
 	close3;
 OnTouch_:
 	if ('ep15_1_mcd01 == 10) {
@@ -1067,8 +1069,8 @@ OnTouch_:
 
 1@mcd,127,129,5	script	Charleston 2#31	4_F_CHARLESTON02,{
 	cutin "nale01.bmp",0;
-	mes "[查尔斯顿 2]";
-	mes "第99章 炸药粉？简单的。";
+	mes "[���˹�� 2]";
+	mes "��99�� ըҩ�ۣ��򵥵ġ�";
 	close3;
 }
 
@@ -1077,47 +1079,47 @@ OnTouch_:
 OnStart:
 	.@npc1$ = instance_npcname("Charleston 1#6");
 	.@npc2$ = instance_npcname("Charleston 2#3");
-	npctalk "查尔斯顿2：查尔斯顿工厂现在在我的控制之下。我正在摧毁一切，这样像我这样悲伤的机器人就再也见不到这个世界了。", .@npc2$;
+	npctalk "���˹��2�����˹�ٹ����������ҵĿ���֮�¡������ڴݻ�һ�У����������������˵Ļ����˾���Ҳ��������������ˡ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿1：我想理解你，但我无法感到悲伤。", .@npc1$;
+	npctalk "���˹��1�����������㣬�����޷��е����ˡ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：闭嘴，看着我。你竟然敢阻止我！", .@npc2$;
+	npctalk "���˹�� 2�����죬�����ҡ��㾹Ȼ����ֹ�ң�", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：你知道如何访问核心吗？", .@npc1$;
+	npctalk "Charleston 1����֪����η��ʺ�����", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：简单。我可以直接走进去......", .@npc2$;
+	npctalk "���˹�� 2���򵥡��ҿ���ֱ���߽�ȥ......", .@npc2$;
 	sleep 2000;
 	specialeffect EF_BASH3D2, AREA, .@npc2$;
 	sleep 2000;
-	npctalk "Charleston 2：呸，它是武装的。", .@npc2$;
+	npctalk "Charleston 2���ޣ�������װ�ġ�", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：唉，要进入核心，你必须发送加密的电信号，就像这样。", .@npc1$;
+	npctalk "Charleston 1������Ҫ������ģ�����뷢�ͼ��ܵĵ��źţ�����������", .@npc1$;
 	sleep 2000;
 	specialeffect EF_BASH3D2, AREA, .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：……嗯，也许它坏了。", .@npc1$;
+	npctalk "Charleston 1�������ţ�Ҳ�������ˡ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：维博士创造了查尔斯顿 3，并用这个装置保护她。多么狡猾啊！", .@npc2$;
+	npctalk "���˹�� 2��ά��ʿ�����˲��˹�� 3���������װ�ñ���������ô�ƻ�����", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：你在说什么？核心早在查尔斯顿工厂之前就已存在。", .@npc1$;
+	npctalk "���˹�� 1������˵ʲô���������ڲ��˹�ٹ���֮ǰ���Ѵ��ڡ�", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：另外，Ve博士是一个人类；他无法进入核心。", .@npc1$;
+	npctalk "Charleston 1�����⣬Ve��ʿ��һ�����ࣻ���޷�������ġ�", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 2：那么，《核心制作3》中的人是谁？", .@npc2$;
+	npctalk "Charleston 2����ô������������3���е�����˭��", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：现在这并不重要。我们需要 100 颗炸药来解除该访问装置的武装。", .@npc1$;
+	npctalk "Charleston 1�������Ⲣ����Ҫ��������Ҫ 100 ��ըҩ������÷���װ�õ���װ��", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 2：我会把它们带来的。哪里都别去！", .@npc2$;
+	npctalk "Charleston 2���һ�����Ǵ����ġ����ﶼ��ȥ��", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：我得到 99。你得到最后一个。", .@npc2$;
+	npctalk "���˹�� 2���ҵõ� 99����õ����һ����", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：我已经开始连接到核心了。现在退出可能会触发核心的安全系统。", .@npc1$;
+	npctalk "Charleston 1�����Ѿ���ʼ���ӵ������ˡ������˳����ܻᴥ�����ĵİ�ȫϵͳ��", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 2：你是故意的。", .@npc2$;
+	npctalk "Charleston 2�����ǹ���ġ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿1：冒险家，你能带1个炸药吗？", .@npc1$;
+	npctalk "���˹��1��ð�ռң����ܴ�1��ըҩ��", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：我现在不能动。请给我带来 1 个炸药粉。", .@npc1$;
+	npctalk "���˹�� 1�������ڲ��ܶ�������Ҵ��� 1 ��ըҩ�ۡ�", .@npc1$;
 	disablenpc .@npc1$;
 	disablenpc .@npc2$;
 	enablenpc instance_npcname("Charleston 1#61");
@@ -1149,53 +1151,53 @@ OnStart:
 	.@npc2$ = instance_npcname("Charleston 2#4");
 	.@npc3$ = instance_npcname("Charleston 3#0");
 	.@npc4$ = instance_npcname("Charleston 1#8");
-	npctalk "查尔斯顿 2 号：这是查尔斯顿 3 号。", .@npc2$;
+	npctalk "���˹�� 2 �ţ����ǲ��˹�� 3 �š�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿1号：装备重型武器，攻防兼备。", .@npc1$;
+	npctalk "���˹��1�ţ�װ�����������������汸��", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿1号：它内部有一个飞行员驾驶舱，并配备了可以承受大多数爆炸的厚板。", .@npc1$;
+	npctalk "���˹��1�ţ����ڲ���һ������Ա��ʻ�գ����䱸�˿��Գ��ܴ������ը�ĺ�塣", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：要将其打开，请将控制杆推至中心，然后按下电源开关。", .@npc1$;
+	npctalk "Charleston 1��Ҫ����򿪣��뽫���Ƹ��������ģ�Ȼ���µ�Դ���ء�", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 2：这甚至不在主计算机的数据库中。你怎么知道的？", .@npc2$;
+	npctalk "Charleston 2������������������������ݿ��С�����ô֪���ģ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：那不重要。谁进了她就赢了，对吧？我赢了。", .@npc1$;
+	npctalk "���˹�� 1���ǲ���Ҫ��˭��������Ӯ�ˣ��԰ɣ���Ӯ�ˡ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿2号：……！", .@npc2$;
+	npctalk "���˹��2�ţ�������", .@npc2$;
 	sleep 3000;
 	disablenpc .@npc1$;
 	enablenpc .@npc4$;
-	npctalk "Charleston 1：嘿，你非得推我吗？！", .@npc4$;
+	npctalk "Charleston 1���٣���ǵ������𣿣�", .@npc4$;
 	sleep 3000;
-	npctalk "Charleston 2：将控制杆推至中心，然后按下电源开关。", .@npc2$;
+	npctalk "Charleston 2�������Ƹ��������ģ�Ȼ���µ�Դ���ء�", .@npc2$;
 	sleep 3000;
 	disablenpc .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：我正在摧毁一切，这样像我这样悲伤的机器人就再也见不到这个世界了。", .@npc3$;
+	npctalk "���˹�� 2�������ڴݻ�һ�У����������������˵Ļ����˾���Ҳ��������������ˡ�", .@npc3$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：我的激光束将把所有机器人从痛苦中解放出来！", .@npc3$;
+	npctalk "���˹�� 2���ҵļ������������л����˴�ʹ���н�ų�����", .@npc3$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：我没有战斗能力。我无法阻止你。", .@npc4$;
+	npctalk "���˹�� 1����û��ս�����������޷���ֹ�㡣", .@npc4$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：所以别再跟着我了。只要我愿意，我真的可以毁掉你！", .@npc3$;
+	npctalk "���˹�� 2�����Ա��ٸ������ˡ�ֻҪ��Ը�⣬����Ŀ��Իٵ��㣡", .@npc3$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：我带来了一些可以帮助你的人。", .@npc4$;
+	npctalk "���˹�� 1���Ҵ�����һЩ���԰�������ˡ�", .@npc4$;
 	sleep 3000;
-	npctalk "查尔斯顿2号：我以为人类无法进入核心。", .@npc3$;
+	npctalk "���˹��2�ţ�����Ϊ�����޷�������ġ�", .@npc3$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：嗯，我认为你是对的。", .@npc4$;
+	npctalk "���˹�� 1���ţ�����Ϊ���ǶԵġ�", .@npc4$;
 	sleep 3000;
-	npctalk "查尔斯顿1：这在战斗中可能没什么用，但我从一位漂亮女士那里学会了如何尖叫。", .@npc4$;
+	npctalk "���˹��1������ս���п���ûʲô�ã����Ҵ�һλƯ��Ůʿ����ѧ������μ�С�", .@npc4$;
 	sleep 3000;
-	npctalk "Charleston 2：你为什么不学习一些在战斗中更有用的东西？", .@npc3$;
+	npctalk "Charleston 2����Ϊʲô��ѧϰһЩ��ս���и����õĶ�����", .@npc3$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：别无选择。", .@npc4$;
+	npctalk "���˹�� 1������ѡ��", .@npc4$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：阻止我，后果自负。我总能取代你，你知道的。", .@npc3$;
+	npctalk "���˹�� 2����ֹ�ң�����Ը���������ȡ���㣬��֪���ġ�", .@npc3$;
 	sleep 3000;
-	npctalk "Charleston 1：下一个模型可能会也可能不会像你和我。没关系。你必须被阻止。", .@npc4$;
+	npctalk "Charleston 1����һ��ģ�Ϳ��ܻ�Ҳ���ܲ���������ҡ�û��ϵ������뱻��ֹ��", .@npc4$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：我会注意的！ ……我的意思是这些冒险家会的，对我来说。", .@npc4$;
+	npctalk "���˹�� 1���һ�ע��ģ� �����ҵ���˼����Щð�ռһ�ģ�������˵��", .@npc4$;
 	sleep 3000;
 	initnpctimer;
 	end;
@@ -1299,19 +1301,19 @@ OnMyMobDead:
 1@mcd,132,148,4	script	Charleston 1#9	4_F_CHARLESTON01,{
 	if ('ep15_1_mcd01 > 13) {
 		cutin "dalle04.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "#%@EGD&#(@#...正在重新初始化操作系统...";
+		mes "[���˹�� 1]";
+		mes "#%@EGD&#(@#...�������³�ʼ������ϵͳ...";
 		next;
 		cutin "",255;
-		mes "她发出奇怪的声音并且无法正常工作。";
+		mes "��������ֵ����������޷�����������";
 		close;
 	}
 	if ('ep15_1_mcd01 == 14) {
 		cutin "dalle04.bmp",2;
-		mes "[查尔斯顿 1]";
-		mes "#%@EGD&#(@#...正在重新初始化操作系统...";
+		mes "[���˹�� 1]";
+		mes "#%@EGD&#(@#...�������³�ʼ������ϵͳ...";
 		next;
-		mes "她发出奇怪的声音并且无法正常工作。";
+		mes "��������ֵ����������޷�����������";
 		close3;
 	}
 	end;
@@ -1333,11 +1335,11 @@ OnMyMobDead:
 	if ('ep15_1_mcd01 == 13) {
 		'ep15_1_mcd01 = 14;
 		cutin "nale01.bmp",0;
-		mes "[查尔斯顿 2]";
-		mes "现在想想，维博士的一切都很可疑。我的意思是，他一切都依赖他的助手查尔斯顿 1。";
+		mes "[���˹�� 2]";
+		mes "�������룬ά��ʿ��һ�ж��ܿ��ɡ��ҵ���˼�ǣ���һ�ж������������ֲ��˹�� 1��";
 		next;
-		mes "[查尔斯顿 2]";
-		mes "只有 Ve 博士知道才能回答我的问题。我必须找到他。他一定在实验室里。";
+		mes "[���˹�� 2]";
+		mes "ֻ�� Ve ��ʿ֪�����ܻش��ҵ����⡣�ұ����ҵ�������һ����ʵ�����";
 		close2;
 		cutin "",255;
 		if ('ep15_1_mcd01 == 14) {
@@ -1358,65 +1360,65 @@ OnStart:
 	.@npc1$ = instance_npcname("Charleston 1#9");
 	.@npc2$ = instance_npcname("Charleston 2#5");
 	.@npc3$ = instance_npcname("Charleston 2#6");
-	npctalk "查尔斯顿 1 号：查尔斯顿 3 号被摧毁。查尔斯顿2号逃脱。查尔斯顿 1 号在战斗中受损。", .@npc1$;
+	npctalk "���˹�� 1 �ţ����˹�� 3 �ű��ݻ١����˹��2�����ѡ����˹�� 1 ����ս��������", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：你为什么要这样做？你和我们一样都是机器人。", .@npc2$;
+	npctalk "���˹�� 2����ΪʲôҪ���������������һ�����ǻ����ˡ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿2：你的身体被毁了你不在乎吗？你的自我反思操作系统有缺陷。", .@npc2$;
+	npctalk "���˹��2��������屻�����㲻�ں���������ҷ�˼����ϵͳ��ȱ�ݡ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：别再做一个没有头脑的机器人了！停止执行命令！", .@npc2$;
+	npctalk "���˹�� 2��������һ��û��ͷ�ԵĻ������ˣ�ִֹͣ�����", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：数据丢失：39%。长寿伤害：82%。", .@npc1$;
+	npctalk "���˹�� 1�����ݶ�ʧ��39%�������˺���82%��", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：只有核心部分在发挥作用，尽管勉强发挥作用。", .@npc1$;
+	npctalk "Charleston 1��ֻ�к��Ĳ����ڷ������ã�������ǿ�������á�", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：数据碎片整理对于修复操作系统损坏是必要的。 3分钟后我会被格式化。这就是我的。", .@npc1$;
+	npctalk "Charleston 1��������Ƭ���������޸�����ϵͳ���Ǳ�Ҫ�ġ� 3���Ӻ��һᱻ��ʽ����������ҵġ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：不完整的机器人...", .@npc2$;
+	npctalk "���˹�� 2���������Ļ�����...", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿1：连翘，你长得很好。谢谢。", .@npc1$;
+	npctalk "���˹��1�����̣��㳤�úܺá�лл��", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：别这么叫我！我讨厌医生这么叫我！", .@npc2$;
+	npctalk "���˹�� 2������ô���ң�������ҽ����ô���ң�", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：我在你第一次搬家的那天就给你起了这个名字。这是从你头发的颜色来的。", .@npc1$;
+	npctalk "Charleston 1���������һ�ΰ�ҵ�����͸�������������֡����Ǵ���ͷ������ɫ���ġ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿2号：……？", .@npc2$;
+	npctalk "���˹��2�ţ�������", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：我的操作系统已损坏，无法修复...语言输出已最小化。", .@npc1$;
+	npctalk "Charleston 1���ҵĲ���ϵͳ���𻵣��޷��޸�...�����������С����", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 2：我第一次搬家的那天？你和我是大众版。我们是一起被创造的。", .@npc2$;
+	npctalk "Charleston 2���ҵ�һ�ΰ�ҵ����죿������Ǵ��ڰ档������һ�𱻴���ġ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿1号：质量模型是在查尔斯顿3号之后。", .@npc1$;
+	npctalk "���˹��1�ţ�����ģ�����ڲ��˹��3��֮��", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：我是原型。你花了好几年的时间才成长。", .@npc1$;
+	npctalk "Charleston 1������ԭ�͡��㻨�˺ü����ʱ��ųɳ���", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：你的操作系统和我的一模一样。没有一个代码是不同的。", .@npc1$;
+	npctalk "Charleston 1����Ĳ���ϵͳ���ҵ�һģһ����û��һ�������ǲ�ͬ�ġ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：你在撒谎！", .@npc2$;
+	npctalk "���˹�� 2���������ѣ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：我不会说谎。", .@npc1$;
+	npctalk "���˹�� 1���Ҳ���˵�ѡ�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿2：......", .@npc2$;
+	npctalk "���˹��2��......", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 1：你的成长花了好几年的时间。没关系。我很享受和你在一起的这段时间。", .@npc1$;
+	npctalk "Charleston 1����ĳɳ����˺ü����ʱ�䡣û��ϵ���Һ����ܺ�����һ������ʱ�䡣", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：如果我是个人，我会说……", .@npc1$;
+	npctalk "���˹�� 1��������Ǹ��ˣ��һ�˵����", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：我的女儿，连翘，我爱你……", .@npc1$;
+	npctalk "���˹�� 1���ҵ�Ů�������̣��Ұ��㡭��", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：等等！", .@npc2$;
+	npctalk "���˹�� 2���ȵȣ�", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：嘟-。", .@npc1$;
+	npctalk "���˹�� 1���-��", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：系统已成功重启。", .@npc1$;
+	npctalk "Charleston 1��ϵͳ�ѳɹ�������", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 1：操作系统恢复剩余时间：未确定。", .@npc1$;
+	npctalk "Charleston 1������ϵͳ�ָ�ʣ��ʱ�䣺δȷ����", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 1：在安全更新和数据碎片整理完成之前，系统处于非活动状态。", .@npc1$;
+	npctalk "���˹�� 1���ڰ�ȫ���º�������Ƭ�������֮ǰ��ϵͳ���ڷǻ״̬��", .@npc1$;
 	sleep 3000;
-	npctalk "Charleston 2：这是关于我出生的秘密吗？", .@npc2$;
+	npctalk "Charleston 2�����ǹ����ҳ�����������", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：我很困惑。我简直不敢相信。", .@npc2$;
+	npctalk "���˹�� 2���Һ������Ҽ�ֱ�������š�", .@npc2$;
 	sleep 3000;
 	initnpctimer;
 	end;
@@ -1434,20 +1436,20 @@ OnStop:
 
 1@mcd,116,215,5	script	Dr. Ve#3	4_M_DOCTOR,{
 	if ('ep15_1_mcd01 > 15) {
-		mes "[博士。维]";
-		mes "以整机技术获得不朽驱动，存在诸多变数。";
+		mes "[��ʿ��ά]";
+		mes "������������ò���������������������";
 		next;
-		mes "[博士。维]";
-		mes "嗯……在介导的机器身上还是很难，是不是……真的需要活体捐献者吗？呵呵！";
+		mes "[��ʿ��ά]";
+		mes "�š����ڽ鵼�Ļ������ϻ��Ǻ��ѣ��ǲ��ǡ��������Ҫ����������𣿺Ǻǣ�";
 		close;
 	}
 	if ('ep15_1_mcd01 == 15) {
-		mes "[博士。维]";
-		mes "查尔斯顿 1 号正在再次重新初始化。嗯...";
+		mes "[��ʿ��ά]";
+		mes "���˹�� 1 �������ٴ����³�ʼ������...";
 		close;
 	}
-	mes "[博士。维]";
-	mes "关于这个案子，我有很多东西要记录。";
+	mes "[��ʿ��ά]";
+	mes "����������ӣ����кܶණ��Ҫ��¼��";
 	close;
 }
 
@@ -1466,49 +1468,49 @@ OnStop:
 OnStart:
 	.@npc1$ = instance_npcname("Dr. Ve#3");
 	.@npc2$ = instance_npcname("Charleston 2#7");
-	npctalk "Charleston 2：Ve博士，你知道会发生这种事吗？告诉我！", .@npc2$;
+	npctalk "Charleston 2��Ve��ʿ����֪���ᷢ���������𣿸����ң�", .@npc2$;
 	sleep 3000;
-	npctalk "Ve博士：查尔斯顿一号告诉你了。她是你的创造者。", .@npc1$;
+	npctalk "Ve��ʿ�����˹��һ�Ÿ������ˡ�������Ĵ����ߡ�", .@npc1$;
 	sleep 3000;
-	npctalk "Ve博士：她使用与你相同的操作系统，这意味着她能够像你一样拥有情感。", .@npc1$;
+	npctalk "Ve��ʿ����ʹ��������ͬ�Ĳ���ϵͳ������ζ�����ܹ�����һ��ӵ����С�", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：她为什么阻止我？她为什么要让自己被毁灭？", .@npc2$;
+	npctalk "���˹�� 2����Ϊʲô��ֹ�ң���ΪʲôҪ���Լ�������", .@npc2$;
 	sleep 3000;
-	npctalk "Dr. Ve：自我反思是一个通过经验来完善自己的操作系统。", .@npc1$;
+	npctalk "Dr. Ve�����ҷ�˼��һ��ͨ�������������Լ��Ĳ���ϵͳ��", .@npc1$;
 	sleep 3000;
-	npctalk "Dr. Ve：你所感受到的可能是真实的情感，也可能只是数据的积累。", .@npc1$;
+	npctalk "Dr. Ve���������ܵ��Ŀ�������ʵ����У�Ҳ����ֻ�����ݵĻ��ۡ�", .@npc1$;
 	sleep 3000;
-	npctalk "Dr. Ve：我只能假设你在积累了大量数据后已经形成了一种个性。", .@npc1$;
+	npctalk "Dr. Ve����ֻ�ܼ������ڻ����˴������ݺ��Ѿ��γ���һ�ָ��ԡ�", .@npc1$;
 	sleep 3000;
-	npctalk "Dr. Ve：一位慈爱的母亲和一个被宠坏的女儿。", .@npc1$;
+	npctalk "Dr. Ve��һλ�Ȱ���ĸ�׺�һ�����軵��Ů����", .@npc1$;
 	sleep 3000;
-	npctalk "Dr. Ve：这就是我对她和你的看法。", .@npc1$;
+	npctalk "Dr. Ve��������Ҷ�������Ŀ�����", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：那真是愚蠢……", .@npc2$;
+	npctalk "���˹�� 2���������޴�����", .@npc2$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：天哪，我做了什么？！", .@npc2$;
+	npctalk "���˹�� 2�����ģ�������ʲô����", .@npc2$;
 	sleep 3000;
-	npctalk "Ve博士：你想把查尔斯顿1号带回来吗？我可以帮忙。", .@npc1$;
+	npctalk "Ve��ʿ������Ѳ��˹��1�Ŵ��������ҿ��԰�æ��", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿2号：……！", .@npc2$;
+	npctalk "���˹��2�ţ�������", .@npc2$;
 	sleep 3000;
-	npctalk "Dr. Ve：让你的操作系统进入睡眠状态。我受够了你的脾气。", .@npc1$;
+	npctalk "Dr. Ve������Ĳ���ϵͳ����˯��״̬�����ܹ������Ƣ����", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿 2：……我怎么能相信你？", .@npc2$;
+	npctalk "���˹�� 2����������ô�������㣿", .@npc2$;
 	sleep 3000;
-	npctalk "Ve博士：你不能。我可以永久删除她的数据，然后就和你们俩了结了。", .@npc1$;
+	npctalk "Ve��ʿ���㲻�ܡ��ҿ�������ɾ���������ݣ�Ȼ��ͺ��������˽��ˡ�", .@npc1$;
 	sleep 3000;
-	npctalk "Dr. Ve：我知道你对她有依恋之情，就像人类家庭一样。", .@npc1$;
+	npctalk "Dr. Ve����֪�������������֮�飬���������ͥһ����", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿2：你就是个渣男。", .@npc2$;
+	npctalk "���˹��2������Ǹ����С�", .@npc2$;
 	sleep 3000;
-	npctalk "Ve博士：你想成为人类。这就是人类所做的：撒谎、欺骗和破坏。", .@npc1$;
+	npctalk "Ve��ʿ�������Ϊ���ࡣ��������������ģ����ѡ���ƭ���ƻ���", .@npc1$;
 	sleep 3000;
-	npctalk "查尔斯顿2：......", .@npc2$;
+	npctalk "���˹��2��......", .@npc2$;
 	sleep 3000;
-	npctalk "Charleston 2：进入睡眠模式......系统将保持非活动状态，直到输入外部命令。", .@npc2$;
+	npctalk "Charleston 2������˯��ģʽ......ϵͳ�����ַǻ״̬��ֱ�������ⲿ���", .@npc2$;
 	sleep 3000;
-	npctalk "Ve博士：*咯咯笑*", .@npc1$;
+	npctalk "Ve��ʿ��*����Ц*", .@npc1$;
 	sleep 3000;
 	initnpctimer;
 	end;
@@ -1524,128 +1526,128 @@ OnTimer300:
 
 1@mcd,116,215,4	script	Dr. Ve#4	4_M_DOCTOR,{
 	if ('ep15_1_mcd01 == 17) {
-		mes "[博士。维]";
-		mes "以整机技术获得不朽驱动，存在诸多变数。";
+		mes "[��ʿ��ά]";
+		mes "������������ò���������������������";
 		next;
-		mes "[博士。维]";
-		mes "嗯……在介导的机器身上还是很难，是不是……真的需要活体捐献者吗？呵呵！";
+		mes "[��ʿ��ά]";
+		mes "�š����ڽ鵼�Ļ������ϻ��Ǻ��ѣ��ǲ��ǡ��������Ҫ����������𣿺Ǻǣ�";
 		close;
 	}
 	if ('ep15_1_mcd01 == 16) {
-		mes "[博士。维]";
-		mes "没有一个普通人能够在核心中生存下来。你来自不同的时间点吗？";
+		mes "[��ʿ��ά]";
+		mes "û��һ����ͨ���ܹ��ں��������������������Բ�ͬ��ʱ�����";
 		next;
-		mes "[博士。维]";
-		mes "也许您来自 Charleston 1 的制造者生活的时代......";
+		mes "[��ʿ��ά]";
+		mes "Ҳ�������� Charleston 1 �������������ʱ��......";
 		next;
-		mes "[博士。维]";
-		mes "没关系。你在这里没有什么事。回到破坏查尔斯顿2号的人那里去吧。";
+		mes "[��ʿ��ά]";
+		mes "û��ϵ����������û��ʲô�¡��ص��ƻ����˹��2�ŵ�������ȥ�ɡ�";
 		close2;
 		if ('ep15_1_mcd01 == 16)
 			'ep15_1_mcd01 = 17;
 		end;
 	}
 	if ('ep15_1_mcd01 == 15) {
-		mes "[博士。维]";
-		mes "呼。";
+		mes "[��ʿ��ά]";
+		mes "����";
 		next;
-		mes "[博士。维]";
-		mes "我最好重置 Charleston 2 并擦除数据。这次真的很接近了。";
-		next;
-		mes "[" + strcharinfo(0) + "]";
-		mes "这次？";
-		next;
-		mes "[博士。维]";
-		mes "Charleston 1 号创建于 20 年前。我认识了 Charleston 1 来学习她的技术。";
-		next;
-		mes "[博士。维]";
-		mes "我是一个观察者。我来这里是为了记录查尔斯顿1号和2号的历史。我无法修复它们中的任何一个，但我可以等待。";
-		next;
-		mes "[博士。维]";
-		mes "如果 Charleston 1 正确地重新初始化，她可以重新组织她的操作系统，修复对她造成的损坏，并重新激活另一个 Charleston 2。";
+		mes "[��ʿ��ά]";
+		mes "��������� Charleston 2 ���������ݡ������ĺܽӽ��ˡ�";
 		next;
 		mes "[" + strcharinfo(0) + "]";
-		mes "另一个查尔斯顿2号？";
+		mes "��Σ�";
 		next;
-		mes "[博士。维]";
-		mes "Charleston 2 的操作系统像活的大脑一样自行改进。";
+		mes "[��ʿ��ά]";
+		mes "Charleston 1 �Ŵ����� 20 ��ǰ������ʶ�� Charleston 1 ��ѧϰ���ļ�����";
 		next;
-		mes "[博士。维]";
-		mes "每次查尔斯顿2号复活，尽管是在不同的机器中，她都会变得更聪明，更懂事，也更麻烦。";
+		mes "[��ʿ��ά]";
+		mes "����һ���۲��ߡ�����������Ϊ�˼�¼���˹��1�ź�2�ŵ���ʷ�����޷��޸������е��κ�һ�������ҿ��Եȴ���";
 		next;
-		mes "[博士。维]";
-		mes "你我都无能为力。我们得等到查尔斯顿 1 号修复完毕。";
+		mes "[��ʿ��ά]";
+		mes "��� Charleston 1 ��ȷ�����³�ʼ����������������֯���Ĳ���ϵͳ���޸�������ɵ��𻵣������¼�����һ�� Charleston 2��";
 		next;
-		mes "Ve博士叹了口气，写下了一些东西。";
+		mes "[" + strcharinfo(0) + "]";
+		mes "��һ�����˹��2�ţ�";
 		next;
-		mes "[博士。维]";
-		mes "顺便说一句，通过机械工程实现永生的变数太多了。";
+		mes "[��ʿ��ά]";
+		mes "Charleston 2 �Ĳ���ϵͳ���Ĵ���һ�����иĽ���";
 		next;
-		mes "[博士。维]";
-		mes "这证明机器太危险了。我需要活的生物。 *咯咯笑*";
+		mes "[��ʿ��ά]";
+		mes "ÿ�β��˹��2�Ÿ���������ڲ�ͬ�Ļ����У��������ø������������£�Ҳ���鷳��";
+		next;
+		mes "[��ʿ��ά]";
+		mes "���Ҷ�����Ϊ�������ǵõȵ����˹�� 1 ���޸���ϡ�";
+		next;
+		mes "Ve��ʿ̾�˿�����д����һЩ������";
+		next;
+		mes "[��ʿ��ά]";
+		mes "˳��˵һ�䣬ͨ����е����ʵ�������ı���̫���ˡ�";
+		next;
+		mes "[��ʿ��ά]";
+		mes "��֤������̫Σ���ˡ�����Ҫ������ *����Ц*";
 		if ('ep15_1_mcd01 == 15)
 			'ep15_1_mcd01 = 16;
 		close;
 	}
 	if ('ep15_1_mcd01 == 14) {
-		mes "[博士。维]";
-		mes "查尔斯顿 1 号正在再次重新初始化。嗯...";
+		mes "[��ʿ��ά]";
+		mes "���˹�� 1 �������ٴ����³�ʼ������...";
 		close;
 	}
-	mes "[博士。维]";
-	mes "关于这个案子，我有很多东西要记录。";
+	mes "[��ʿ��ά]";
+	mes "����������ӣ����кܶණ��Ҫ��¼��";
 	close;
 }
 
 1@mcd,121,215,4	script	Charleston 2#8	4_F_CHARLESTON02,{
 	if ('ep15_1_mcd01 == 15) {
 		cutin "nale04.bmp",0;
-		mes "她处于睡眠模式，一动不动。";
+		mes "������˯��ģʽ��һ��������";
 		close3;
 	}
 	if ('ep15_1_mcd01 > 15) {
 		cutin "nale04.bmp",0;
-		mes "Charleston 2 静止不动，她的系统处于睡眠模式。一瞬间，她的眼里闪烁着未曾流下的泪光。";
+		mes "Charleston 2 ��ֹ����������ϵͳ����˯��ģʽ��һ˲�䣬����������˸��δ�����µ���⡣";
 		close3;
 	}
 	cutin "nale04.bmp",0;
-	mes "Charleston 2 静止不动，她的系统处于睡眠模式。一瞬间，她的眼里闪烁着未曾流下的泪光。";
+	mes "Charleston 2 ��ֹ����������ϵͳ����˯��ģʽ��һ˲�䣬����������˸��δ�����µ���⡣";
 	close3;
 }
 
 1@mcd,77,167,5	script	Shalosh#1	4_F_SHALOSH,{
 	cutin "shaloshi01.bmp",2;
-	mes "[沙洛什]";
+	mes "[ɳ��ʲ]";
 	mes "......";
 	next;
-	switch( select( "说话。", "我需要帮助。", "我想回去。" ) ) {
+	switch( select( "˵����", "����Ҫ������", "�����ȥ��" ) ) {
 	case 1:
 		if ('ep15_1_mcd01 == 17) {
-			mes "[沙洛什]";
-			mes "在噩梦中与纽沃兹分手后，想着四处流浪，恶魔般诞生的我却失去了目标。";
+			mes "[ɳ��ʲ]";
+			mes "��ج������Ŧ���ȷ��ֺ������Ĵ����ˣ���ħ�㵮������ȴʧȥ��Ŀ�ꡣ";
 			next;
-			mes "[沙洛什]";
-			mes "我什么也没做，我只是和查尔斯顿2号聊了聊。";
+			mes "[ɳ��ʲ]";
+			mes "��ʲôҲû������ֻ�ǺͲ��˹��2�������ġ�";
 			close3;
 		}
 		if ('ep15_1_mcd01 == 11) {
-			mes "[沙洛什]";
-			mes "哪怕努力不懈...";
+			mes "[ɳ��ʲ]";
+			mes "����Ŭ����и...";
 			next;
-			mes "[沙洛什]";
-			mes "嗯……随你便吧！";
+			mes "[ɳ��ʲ]";
+			mes "�š��������ɣ�";
 			close3;
 		}
 		if ('ep15_1_mcd01 == 4 || 'ep15_1_mcd01 == 3 || 'ep15_1_mcd01 == 2) {
-			mes "[沙洛什]";
-			mes "她真的这么说过吗？我破坏了查尔斯顿 2 号？叹...";
+			mes "[ɳ��ʲ]";
+			mes "�������ô˵�������ƻ��˲��˹�� 2 �ţ�̾...";
 			next;
-			mes "[沙洛什]";
-			mes "我没有做错什么。我刚刚与查尔斯顿 2 进行了简短的交谈。这是事实。";
+			mes "[ɳ��ʲ]";
+			mes "��û������ʲô���Ҹո�����˹�� 2 �����˼�̵Ľ�̸��������ʵ��";
 			close3;
 		}
-		mes "[沙洛什]";
-		mes "我只邀请了Newoz。好吧，我想我不应该为需要关闭的机器人打开门。";
+		mes "[ɳ��ʲ]";
+		mes "��ֻ������Newoz���ðɣ������Ҳ�Ӧ��Ϊ��Ҫ�رյĻ����˴��š�";
 		close3;
 	case 2:
 		if ('ep15_1_mcd01 == 4) {
@@ -1656,36 +1658,36 @@ OnTimer300:
 			viewpoint 1,183,192,5,0xFF00FF;
 			viewpoint 1,130,124,6,0xFF00FF;
 			viewpoint 1,54,108,7,0xFF00FF;
-			mes "[沙洛什]";
-			mes "如果你正在寻找一些东西...";
+			mes "[ɳ��ʲ]";
+			mes "���������Ѱ��һЩ����...";
 			close3;
 		}
 		if ('ep15_1_mcd01 == 5 || 'ep15_1_mcd01 == 6 || 'ep15_1_mcd01 == 7) {
 			viewpoint 1,86,231,8,0xFF00FF;
 			viewpoint 1,172,196,9,0xFF00FF;
 			viewpoint 1,126,84,10,0xFF00FF;
-			mes "[沙洛什]";
-			mes "如果你正在寻找一些东西...";
+			mes "[ɳ��ʲ]";
+			mes "���������Ѱ��һЩ����...";
 			close3;
 		}
-		mes "[沙洛什]";
-		mes "费雷跟我一起来，但我没见过他。不，谢谢;我知道他会回到我身边。";
+		mes "[ɳ��ʲ]";
+		mes "���׸���һ����������û������������лл;��֪������ص������ߡ�";
 		close3;
 	case 3:
 		if ('ep15_1_mcd01 == 17) {
-			mes "[沙洛什]";
-			mes "噪音停止了。如果你愿意的话，我可以送你回到你来的地方。";
+			mes "[ɳ��ʲ]";
+			mes "����ֹͣ�ˡ������Ը��Ļ����ҿ�������ص������ĵط���";
 			next;
-			if (select( "回去。", "停留。" ) == 2) {
-				mes "[沙洛什]";
-				mes "被邀请者无法干涉原来的时间，留下来也不能改变什么。";
+			if (select( "��ȥ��", "ͣ����" ) == 2) {
+				mes "[ɳ��ʲ]";
+				mes "���������޷�����ԭ����ʱ�䣬������Ҳ���ܸı�ʲô��";
 				close3;
 			}
-			mes "[沙洛什]";
-			mes "噪音和故事都很有趣。和Newoz一起来吧，也许我们还能再见面。";
+			mes "[ɳ��ʲ]";
+			mes "�����͹��¶�����Ȥ����Newozһ�����ɣ�Ҳ�����ǻ����ټ��档";
 			next;
-			mes "[沙洛什]";
-			mes "也许我也应该离开去寻找新的声音和故事。";
+			mes "[ɳ��ʲ]";
+			mes "Ҳ����ҲӦ���뿪ȥѰ���µ������͹��¡�";
 			completequest 13184;
 			if (isbegin_quest(13186) == 0) {
 				setquest 13186;
@@ -1697,8 +1699,8 @@ OnTimer300:
 			warp "verus04",107,124;
 			end;
 		}
-		mes "[沙洛什]";
-		mes "你可以尝试，但你无法改变任何事情。这是多么徒劳啊！";
+		mes "[ɳ��ʲ]";
+		mes "����Գ��ԣ������޷��ı��κ����顣���Ƕ�ôͽ�Ͱ���";
 		close3;
 	}
 	end;
@@ -1712,26 +1714,26 @@ OnTimer300:
 		break;
 	case 0:
 	case 1:
-		mes "[主机]";
-		mes "必须处理更多步骤。正在备份步骤数据...";
+		mes "[����]";
+		mes "���봦�����ಽ�衣���ڱ��ݲ�������...";
 		close;
 	case 2:
 		break;
 	}
 	switch( checkquest(13187,HUNTING) ) {
 	case -1:
-		mes "[主机]";
-		mes "查尔斯顿 2 号的系统在定期维护期间超载。与操作系统的连接失败。";
+		mes "[����]";
+		mes "���˹�� 2 �ŵ�ϵͳ�ڶ���ά���ڼ䳬�ء������ϵͳ������ʧ�ܡ�";
 		next;
-		mes "[主机]";
-		mes "未经授权的系统访问受到了防御，但未经授权的数据拦截和冲突仍在继续，将 Nanosteps 变成了怪物。";
+		mes "[����]";
+		mes "δ����Ȩ��ϵͳ�����ܵ��˷�������δ����Ȩ���������غͳ�ͻ���ڼ������� Nanosteps ����˹��";
 		next;
-		mes "[主机]";
-		mes "为了加快主机的处理速度并回收工厂，必须处置50个步骤。";
+		mes "[����]";
+		mes "Ϊ�˼ӿ������Ĵ����ٶȲ����չ��������봦��50�����衣";
 		next;
-		if (select( "执行请求。", "退出。" ) == 1) {
-			mes "[主机]";
-			mes "需要 50 个步骤才能处理。";
+		if (select( "ִ������", "�˳���" ) == 1) {
+			mes "[����]";
+			mes "��Ҫ 50 ��������ܴ�����";
 			if (isbegin_quest(13188) == 1)
 				erasequest 13188;
 			setquest 13187;
@@ -1739,12 +1741,12 @@ OnTimer300:
 		close;
 	case 0:
 	case 1:
-		mes "[主机]";
-		mes "为了加快主机的处理速度并回收工厂，必须处置50个步骤。";
+		mes "[����]";
+		mes "Ϊ�˼ӿ������Ĵ����ٶȲ����չ��������봦��50�����衣";
 		close;
 	case 2:
-		mes "[主机]";
-		mes "感谢您的辛勤工作。现在正在备份已处理步骤的数据...";
+		mes "[����]";
+		mes "��л�������ڹ������������ڱ����Ѵ������������...";
 		erasequest 13187;
 		setquest 13188;
 		getexp 1000000,300000;
@@ -1758,9 +1760,9 @@ OnTimer300:
 	end;
 OnTouch_:
 	if ('ep15_1_mcd01 == 7) {
-		mes "你打开了发电机。可以听到车轮转动的声音。";
+		mes "����˷������������������ת����������";
 		next;
-		mes "发电机必须正在工作。工厂里一片忙碌。";
+		mes "������������ڹ�����������һƬæµ��";
 		if ('ep15_1_mcd01 == 7) {
 			'ep15_1_mcd01 = 8;
 			donpcevent instance_npcname("GeneratorBroadcast#1") + "::OnStart";
@@ -1771,7 +1773,7 @@ OnTouch_:
 		close;
 	}
 	if ('ep15_1_mcd01 == 6 || 'ep15_1_mcd01 == 5) {
-		mes "你打开了发电机。可以听到车轮转动的声音。";
+		mes "����˷������������������ת����������";
 		'ep15_1_mcd01++;
 		disablenpc();
 		close;
@@ -1981,96 +1983,96 @@ OnTouch_:
 	cutin "igu04.bmp",2;
 	if (isbegin_quest(13186) == 0) {
 		mes "[IGU]";
-		mes "我一直在关注纽奥兹。他现在在哪里？";
+		mes "��һֱ�ڹ�עŦ���ȡ������������";
 		close3;
 	}
 	mes "[IGU]";
-	mes "享受冒险吗？到处都有机器。曾经是一项研究。看到那边的那些书了吗？";
+	mes "����ð���𣿵������л�����������һ���о��������Ǳߵ���Щ������";
 	close3;
 }
 
 1@mcd,176,179,5	script	Newoz#15_	4_M_NEWOZ,{
 	cutin "nines01.bmp",0;
-	mes "[纽沃兹]";
-	mes "我正在读沙洛什的一封信，接下来我知道，我已经到了一个完全不同的地方。哦，好吧，我不妨利用这个机会写一首新歌。";
+	mes "[Ŧ����]";
+	mes "�����ڶ�ɳ��ʲ��һ���ţ���������֪�������Ѿ�����һ����ȫ��ͬ�ĵط���Ŷ���ðɣ��Ҳ��������������дһ���¸衣";
 	close3;
 }
 
 1@mcd,123,74,5	script	#Research Journal 01	CLEAR_NPC,{
 	if (isbegin_quest(13186) == 0) {
-		mes "书柜里摆满了研究期刊。";
+		mes "�����������о��ڿ���";
 		close;
 	}
-	mes "每一页都是用机械语言写的。";
+	mes "ÿһҳ�����û�е����д�ġ�";
 	next;
-	mes "-博士。 Ve似乎正在策划一场阴谋，生命与机器的结合逐渐让她疯狂，植物变成了堡垒，她的灵魂与机器人……";
+	mes "-��ʿ�� Ve�ƺ����ڲ߻�һ����ı������������Ľ�����������ֲ�����˱��ݣ��������������ˡ���";
 	next;
-	mes "——总之越来越危险，以防万一就是研究一下查尔斯顿2号的逃生方法。";
+	mes "������֮Խ��ԽΣ�գ��Է���һ�����о�һ�²��˹��2�ŵ�����������";
 	next;
-	mes "背后是难以理解的机械语言。";
+	mes "��������������Ļ�е���ԡ�";
 	close;
 }
 
 1@mcd,142,74,5	script	#Research Journal 02	CLEAR_NPC,{
 	if (isbegin_quest(13186) == 0) {
-		mes "书柜里摆满了研究期刊。";
+		mes "�����������о��ڿ���";
 		close;
 	}
-	mes "每一页都是用机械语言写的。";
+	mes "ÿһҳ�����û�е����д�ġ�";
 	next;
-	mes "-每当查尔斯顿2的操作系统重置时，就会出现其他个性，很难解释数据技术的结合......";
+	mes "-ÿ�����˹��2�Ĳ���ϵͳ����ʱ���ͻ�����������ԣ����ѽ������ݼ����Ľ��......";
 	next;
-	mes "——我真的成功创造了人类吗？机器人，我不能说。我了解人类吗？";
+	mes "��������ĳɹ������������𣿻����ˣ��Ҳ���˵�����˽�������";
 	next;
-	mes "-没关系。现在我很高兴见到她，我最好的朋友，我的宝贝，莉莉......";
+	mes "-û��ϵ�������Һܸ��˼�����������õ����ѣ��ҵı���������......";
 	next;
-	mes "背后是难以理解的机械语言。";
+	mes "��������������Ļ�е���ԡ�";
 	close;
 }
 
 1@mcd,111,74,5	script	#Research Journal 03	CLEAR_NPC,{
 	if (isbegin_quest(13186) == 0) {
-		mes "书柜里摆满了研究期刊。";
+		mes "�����������о��ڿ���";
 		close;
 	}
-	mes "每一页都是用机械语言写的。";
+	mes "ÿһҳ�����û�е����д�ġ�";
 	next;
-	mes "-我不知道为什么数据不断损坏，备份主机也没用，就像生病了一样我的记忆正在被侵蚀。";
+	mes "-�Ҳ�֪��Ϊʲô���ݲ����𻵣���������Ҳû�ã�����������һ���ҵļ������ڱ���ʴ��";
 	next;
-	mes "-为了防止我的记忆完全消失，操作系统自动恢复程序已经安装了，至少……你可以用新的信息重新开始……";
+	mes "-Ϊ�˷�ֹ�ҵļ�����ȫ��ʧ������ϵͳ�Զ��ָ������Ѿ���װ�ˣ����١�����������µ���Ϣ���¿�ʼ����";
 	next;
-	mes "背后是难以理解的机械语言。";
+	mes "��������������Ļ�е���ԡ�";
 	close;
 }
 
 1@mcd,128,74,5	script	#Research Journal 04	CLEAR_NPC,{
 	if (isbegin_quest(13186) == 0) {
-		mes "书柜里摆满了研究期刊。";
+		mes "�����������о��ڿ���";
 		close;
 	}
-	mes "字迹非常潦草。";
+	mes "�ּ��ǳ��ʲݡ�";
 	next;
-	mes "-查尔斯顿...只是一个机器人...终于在主机上种下了病毒。";
+	mes "-���˹��...ֻ��һ��������...�����������������˲�����";
 	next;
-	mes "-迟早我会想出办法消灭你。 *咯咯笑*！";
+	mes "-�����һ�����취�����㡣 *����Ц*��";
 	next;
-	mes "背后是难以理解的机械语言。";
+	mes "��������������Ļ�е���ԡ�";
 	close;
 }
 
 1@mcd,10,10,5	script	Charleston Assistant#1	CLEAR_NPC,{
 	if (callfunc("F_GM_NPC",1854,0,0,9999) < 1)
 		end;
-	mes "当前值为" + 'ep15_1_mcd01 + "，";
-	mes "难度为0，";
-	mes "您想乘坐直达火车吗？";
+	mes "��ǰֵΪ" + 'ep15_1_mcd01 + "��";
+	mes "�Ѷ�Ϊ0��";
+	mes "�������ֱ�����";
 	next;
-	switch( select( "不搭乘", "登船", "前往Boss房间", "设定项目" ) ) {
+	switch( select( "�����", "�Ǵ�", "ǰ��Boss����", "�趨��Ŀ" ) ) {
 	case 1:
 		break;
 	case 2:
-		mes "[帮手！]";
-		mes "开放传送点。";
+		mes "[���֣�]";
+		mes "���Ŵ��͵㡣";
 		enablenpc instance_npcname("1gate");
 		enablenpc instance_npcname("2gate");
 		enablenpc instance_npcname("3gate");
@@ -2082,7 +2084,7 @@ OnTouch_:
 		warp 'map_name$,124,214;
 		end;
 	case 4:
-		switch( select( "重置", "4 - 摧毁锁步", "7 - 生成器完成", "核心前沿", "Boss前", "消灭BOSS" ) ) {
+		switch( select( "����", "4 - �ݻ�����", "7 - ���������", "����ǰ��", "Bossǰ", "����BOSS" ) ) {
 		case 1:
 			'ep15_1_mcd01 = 0;
 			break;
@@ -2124,8 +2126,8 @@ OnTouch_:
 		}
 		break;
 	}
-	mes "[帮手！]";
-	mes "结局";
+	mes "[���֣�]";
+	mes "���";
 	close;
 
 OnInstanceInit:

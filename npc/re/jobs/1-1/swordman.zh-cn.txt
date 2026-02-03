@@ -11,111 +11,113 @@
 //===== Additional Comments: ================================= 
 //= 1.0 First Version. [Kisuka]
 //= 1.1 Added support for Baby classes. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 izlude_in,74,172,4	script	Swordman#swd	119,{
 	if (Upper == 1) {
 		if (Class == Job_Novice_High && (ADVJOB == Job_Lord_Knight || ADVJOB == Job_Paladin)) {
-			mes "[剑士]";
-			mes "它...";
-			mes "不可能是...";
-			mes "你已经重生了，不是吗？";
+			mes "[��ʿ]";
+			mes "��...";
+			mes "��������...";
+			mes "���Ѿ������ˣ�������";
 			next;
-			mes "[剑士]";
-			mes "我看你是在重走剑士之路！一旦习惯了挥剑，就再也回不去了！！";
+			mes "[��ʿ]";
+			mes "�ҿ����������߽�ʿ֮·��һ��ϰ���˻ӽ�������Ҳ�ز�ȥ�ˣ���";
 			next;
 			if (!callfunc("F_CanChangeJob")) {
-				mes "[剑士]";
-				mes "唔？啊，要成为剑士，首先要掌握基本功。";
+				mes "[��ʿ]";
+				mes "��������Ҫ��Ϊ��ʿ������Ҫ���ջ�������";
 				next;
-				mes "[剑士]";
-				mes "当你学完新手基本技能后，再来找我吧。";
+				mes "[��ʿ]";
+				mes "����ѧ�����ֻ������ܺ��������Ұɡ�";
 				close;
 			}
-			mes "[剑士]";
-			mes "出色的！我马上就将你晋升为剑士！";
+			mes "[��ʿ]";
+			mes "��ɫ�ģ������Ͼͽ������Ϊ��ʿ��";
 			next;
 			skill "NV_TRICKDEAD",0,SKILL_PERM;
 			jobchange Job_Swordman_High;
 			skill "SM_MOVINGRECOVERY",1,SKILL_PERM;
 			skill "SM_FATALBLOW",1,SKILL_PERM;
 			skill "SM_AUTOBERSERK",1,SKILL_PERM;
-			mes "[剑士]";
-			mes "嗯……看来你是一位经验丰富的剑士。尽管如此，我确信你必须训练来提高你的技能并获得力量！";
+			mes "[��ʿ]";
+			mes "�š�����������һλ����ḻ�Ľ�ʿ��������ˣ���ȷ�������ѵ���������ļ��ܲ����������";
 			close;
 		}else{
-			mes "[剑士]";
-			mes "嗯……？";
-			mes "你是重生者";
-			mes "战士，不是吗？";
+			mes "[��ʿ]";
+			mes "�š�����";
+			mes "����������";
+			mes "սʿ��������";
 			next;
-			mes "[剑士]";
-			mes "嗯...";
-			mes "似乎是";
-			mes "剑客不是一部分";
-			mes "你的命运。对不起，";
-			mes "但似乎什么也没有";
-			mes "我可以为你做。";
+			mes "[��ʿ]";
+			mes "��...";
+			mes "�ƺ���";
+			mes "���Ͳ���һ����";
+			mes "������ˡ��Բ���";
+			mes "���ƺ�ʲôҲû��";
+			mes "�ҿ���Ϊ������";
 			close;
 		}
 	}
-	mes "[剑士公会]";
-	mes "这里是剑士公会。";
-	mes "你为什么在这里？";
+	mes "[��ʿ����]";
+	mes "�����ǽ�ʿ���ᡣ";
+	mes "��Ϊʲô�����";
 	next;
-	switch(select("告诉我关于成为剑士的事。：我想成为剑士。：没什么。")) {
+	switch(select("�����ҹ��ڳ�Ϊ��ʿ���¡��������Ϊ��ʿ����ûʲô��")) {
 	case 1:
-		mes "[剑士公会]";
-		mes "那么你想更多地了解强大的剑客吗？好的！";
+		mes "[��ʿ����]";
+		mes "��ô���������˽�ǿ��Ľ����𣿺õģ�";
 		next;
-		mes "[剑士公会]";
-		mes "剑客最显着的特点就是能够在近战中展现出他/她真正的能力。";
-		mes "原因有三个！";
+		mes "[��ʿ����]";
+		mes "���������ŵ��ص�����ܹ��ڽ�ս��չ�ֳ���/��������������";
+		mes "ԭ����������";
 		next;
-		mes "[剑士公会]";
-		mes "首先，剑士的生命值高于其他职业。";
-		mes "其次，除了弓和棍之外，剑士可以使用所有其他武器，以便他们能够发挥最佳能力进行战斗。";
-		mes "第三，剑士的大部分技能都会带来强大的物理攻击。";
+		mes "[��ʿ����]";
+		mes "���ȣ���ʿ������ֵ��������ְҵ��";
+		mes "��Σ����˹��͹�֮�⣬��ʿ����ʹ�����������������Ա������ܹ����������������ս����";
+		mes "��������ʿ�Ĵ󲿷ּ��ܶ������ǿ�������������";
 		next;
-		mes "[剑士公会]";
-		mes "虽然我给你们做了简单的解释，但是我相信你们已经明白什么是剑客的核心意义了。";
-		mes "在我看来，剑侠是有史以来最好的职业！";
+		mes "[��ʿ����]";
+		mes "��Ȼ�Ҹ��������˼򵥵Ľ��ͣ����������������Ѿ�����ʲô�ǽ��͵ĺ��������ˡ�";
+		mes "���ҿ�������������ʷ������õ�ְҵ��";
 		close;
 	case 2:
-		mes "[剑士公会]";
+		mes "[��ʿ����]";
 		if(BaseJob != Job_Novice) {
 			if(BaseJob == Job_Swordman) {
-				mes "你已经是一名优秀的剑士了，不是吗？";
-				mes "只要努力成为一名伟大的剑士就可以了。";
+				mes "���Ѿ���һ������Ľ�ʿ�ˣ�������";
+				mes "ֻҪŬ����Ϊһ��ΰ��Ľ�ʿ�Ϳ����ˡ�";
 			}else{
-				mes "你已经有其他工作之一了，不是吗？";
-				mes "你这个玩笑开得太过分了。";
+				mes "���Ѿ�����������֮һ�ˣ�������";
+				mes "�������Ц����̫�����ˡ�";
 			}
 			close;
 		}else{
 			if (!callfunc("F_CanChangeJob")) {
-				mes "很遗憾地告诉你，要成为一名剑士，你必须至少达到^4A4AFF职业等级10^000000。";
-				mes "和^4A4AFF基本技能9级^000000。";
+				mes "���ź��ظ����㣬Ҫ��Ϊһ����ʿ����������ٴﵽ^4A4AFFְҵ�ȼ�10^000000��";
+				mes "��^4A4AFF��������9��^000000��";
 				next;
-				mes "[剑士公会]";
-				mes "没有最低要求就想成为剑士吗？";
-				mes "你以为当剑士那么容易吗？";
+				mes "[��ʿ����]";
+				mes "û�����Ҫ������Ϊ��ʿ��";
+				mes "����Ϊ����ʿ��ô������";
 				close;
 			}
-			mes "嗯，你的工作级别和基本技能级别都检查一下。";
-			mes "好的。你想立刻成为一名剑士吗？";
+			mes "�ţ���Ĺ�������ͻ������ܼ��𶼼��һ�¡�";
+			mes "�õġ��������̳�Ϊһ����ʿ��";
 			next;
-			if(select("是的，我愿意。:我会再考虑一下。") == 2) {
-				mes "[剑士公会]";
-				mes "是的。选择工作需要谨慎的决定。";
-				mes "但我很遗憾……你在克服了所有困难后又考虑了……";
+			if(select("�ǵģ���Ը�⡣:�һ��ٿ���һ�¡�") == 2) {
+				mes "[��ʿ����]";
+				mes "�ǵġ�ѡ������Ҫ�����ľ�����";
+				mes "���Һ��ź��������ڿ˷����������Ѻ��ֿ����ˡ���";
 				close;
 			}
-			mes "[剑士公会]";
-			mes "恭喜！从现在开始，你就要过剑客的生活了！";
-			mes "我们现在就做吧！";
+			mes "[��ʿ����]";
+			mes "��ϲ�������ڿ�ʼ�����Ҫ�����͵������ˣ�";
+			mes "�������ھ����ɣ�";
 			next;
-			mes "[剑士公会]";
-			mes "再次恭喜你成为剑士，希望你多多参加我们公会的复兴活动。";
+			mes "[��ʿ����]";
+			mes "�ٴι�ϲ���Ϊ��ʿ��ϣ������μ����ǹ���ĸ��˻��";
 			callfunc "Job_Change",Job_Swordman;
 			getitem 13415,1; // N_Falchion
 			close;
