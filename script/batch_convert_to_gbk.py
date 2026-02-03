@@ -21,6 +21,7 @@ import argparse
 import os
 import sys
 from pathlib import Path
+from tqdm import tqdm
 
 # Import the core conversion logic
 from convert_to_gbk import convert_file_to_gbk
@@ -71,15 +72,14 @@ Examples:
 	success_count = 0
 	fail_count = 0
 	
-	for file_path in files:
+	for file_path in tqdm(files, desc="Converting", unit="file"):
 		output_path = file_path if args.force else None
 		success, message = convert_file_to_gbk(file_path, output_path=output_path, insert_header=True)
 		
 		if success:
-			print(f"✓ {message}")
 			success_count += 1
 		else:
-			print(f"✗ {file_path}: {message}", file=sys.stderr)
+			tqdm.write(f"✗ {file_path}: {message}")
 			fail_count += 1
 	
 	print(f"\nSummary: {success_count} succeeded, {fail_count} failed.")
