@@ -13,6 +13,8 @@
 //= 1.0 First Version. Still missing many new NPCs and their dialogues. [Masao]
 //= 1.1 Updated to match the official script. [Euphy]
 //= 1.2 Added Channel Warper and Izlude duplicates. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Izlude
@@ -72,8 +74,8 @@ izlude_c,165,156,2	duplicate(Soldier_izlude)	Soldier#izlude_c	8W_SOLDIER
 izlude_d,165,156,2	duplicate(Soldier_izlude)	Soldier#izlude_d	8W_SOLDIER
 
 -	script	::Guard_izlude	-1,{
-	mes "[伊兹鲁德守卫]";
-	mes "欢迎来到伊兹鲁德。";
+	mes "[����³������]";
+	mes "��ӭ��������³�¡�";
 	close;
 }
 prt_fild08,350,219,4	duplicate(Guard_izlude)	Guard#izlude	8W_SOLDIER
@@ -85,13 +87,13 @@ prt_fild08d,350,219,4	duplicate(Guard_izlude)	Guard#izlude_d	8W_SOLDIER
 // Channel Warper :: channel
 //============================================================
 function	script	F_IzludeChannel	{
-	mes "[频道扭曲官方]";
-	mes "Izlude 是一个非常热闹的地方，不是吗？";
-	mes "我来这里是为了让 Izlude 感觉更顺畅！";
-	mes "我可以给你发送另一份《Izlude》。";
-	mes "你想去另一个副本吗？";
+	mes "[Ƶ��Ť���ٷ�]";
+	mes "Izlude ��һ���ǳ����ֵĵط���������";
+	mes "����������Ϊ���� Izlude �о���˳����";
+	mes "�ҿ��Ը��㷢����һ�ݡ�Izlude����";
+	mes "����ȥ��һ��������";
 	next;
-	set .@i, select(getarg(0)+"：没关系");
+	set .@i, select(getarg(0)+"��û��ϵ");
 	if (.@i < 6) {
 		setarray .@maps$[1],"izlude","izlude_a","izlude_b","izlude_c","izlude_d";
 		savepoint .@maps$[.@i],128,98,1,1;
@@ -112,59 +114,59 @@ izlude,143,205,7	script	Talkative Kid#iz	4_F_KID2,{
 	end;
 
 OnTimer64000:
-	npctalk "多嘴小子：我用完了我所有的新手红色药水。我应该怎么办？";
+	npctalk "����С�ӣ��������������е����ֺ�ɫҩˮ����Ӧ����ô�죿";
 	end;
 
 OnTimer72000:
-	npctalk "爱说话的孩子：商店在哪里？";
+	npctalk "��˵���ĺ��ӣ��̵������";
 	end;
 
 OnTimer136000:
-	npctalk "多嘴的孩子：白痴！您不知道“快捷窗口”吗？";
+	npctalk "����ĺ��ӣ��׳գ�����֪������ݴ��ڡ���";
 	end;
 
 OnTimer144000:
-	npctalk "多嘴小子：可以将库存中的物品拖放到快捷窗口中。";
+	npctalk "����С�ӣ����Խ�����е���Ʒ�Ϸŵ���ݴ����С�";
 	end;
 
 OnTimer212000:
-	npctalk "多嘴小子：学院里有很多初学者的物品！";
+	npctalk "����С�ӣ�ѧԺ���кܶ��ѧ�ߵ���Ʒ��";
 	end;
 
 OnTimer276000:
-	npctalk "多嘴小子：他们还给了我武器和盾牌！";
+	npctalk "����С�ӣ����ǻ������������Ͷ��ƣ�";
 	end;
 
 OnTimer284000:
-	npctalk "爱说话的孩子：只需按<Ctrl+~key>即可打开您拥有的地图。";
+	npctalk "��˵���ĺ��ӣ�ֻ�谴<Ctrl+~key>���ɴ���ӵ�еĵ�ͼ��";
 	end;
 
 OnTimer344000:
-	npctalk "多嘴小子：那你想和我一起去Criatura学院吗？我正在向苏比诺导师学习战斗方法！";
+	npctalk "����С�ӣ����������һ��ȥCriaturaѧԺ�����������ձ�ŵ��ʦѧϰս��������";
 	end;
 
 OnTimer348000:
-	npctalk "多嘴的孩子：学院位于伊兹鲁德的北侧。走吧~！";
+	npctalk "����ĺ��ӣ�ѧԺλ������³�µı��ࡣ�߰�~��";
 	end;
 
 OnTimer416000:
-	npctalk "多嘴小子：这是一个引导你到达目的地的系统。";
+	npctalk "����С�ӣ�����һ�������㵽��Ŀ�ĵص�ϵͳ��";
 	end;
 
 OnTimer424000:
-	npctalk "爱说话的孩子：在基本菜单中，请点击[导航]按钮。";
+	npctalk "��˵���ĺ��ӣ��ڻ����˵��У�����[����]��ť��";
 	end;
 
 OnTimer492000:
-	npctalk "多嘴小子：哎呀，你不会用脑子吗？请立即在聊天窗口中输入 /where！";
+	npctalk "����С�ӣ���ѽ���㲻���������������������촰�������� /where��";
 	end;
 
 OnTimer552000:
-	npctalk "爱说话的孩子：在这种情况下，您可以按<Enter>键。";
+	npctalk "��˵���ĺ��ӣ�����������£������԰�<Enter>����";
 	end;
 
 OnTimer560000:
-	npctalk "多嘴小子：我们只是在重复同样的对话。哈哈哈。";
+	npctalk "����С�ӣ�����ֻ�����ظ�ͬ���ĶԻ�����������";
 	end;
 
 OnTimer565000:
@@ -182,67 +184,67 @@ izlude,146,205,7	script	Talkative Adventurer#iz	4_M_KID1,{
 	end;
 
 OnTimer69000:
-	npctalk "健谈的冒险家：你可以从商人那里购买药水。";
+	npctalk "��̸��ð�ռң�����Դ��������ﹺ��ҩˮ��";
 	end;
 
 OnTimer77000:
-	npctalk "健谈的冒险家：这是小地图中的药水图像。";
+	npctalk "��̸��ð�ռң�����С��ͼ�е�ҩˮͼ��";
 	end;
 
 OnTimer131000:
-	npctalk "多嘴的冒险家：有什么办法可以轻松使用物品吗？";
+	npctalk "�����ð�ռң���ʲô�취��������ʹ����Ʒ��";
 	end;
 
 OnTimer141000:
-	npctalk "多嘴的冒险家：快捷窗口？屏幕顶部的插槽？我该如何使用它？";
+	npctalk "�����ð�ռң���ݴ��ڣ���Ļ�����Ĳ�ۣ��Ҹ����ʹ������";
 	end;
 
 OnTimer149000:
-	npctalk "多嘴的冒险家：对于库存，你是指“物品”菜单吗？哦，是的！";
+	npctalk "�����ð�ռң����ڿ�棬����ָ����Ʒ���˵���Ŷ���ǵģ�";
 	end;
 
 OnTimer217000:
-	npctalk "多嘴的冒险家：我有一堆药剂？";
+	npctalk "�����ð�ռң�����һ��ҩ����";
 	end;
 
 OnTimer281000:
-	npctalk "多嘴的冒险家：什么？！我现在应该去学院！";
+	npctalk "�����ð�ռң�ʲô����������Ӧ��ȥѧԺ��";
 	end;
 
 OnTimer279000:
-	npctalk "健谈的冒险家：伊兹鲁德在哪里？在中心？";
+	npctalk "��̸��ð�ռң�����³������������ģ�";
 	end;
 
 OnTimer339000:
-	npctalk "多嘴的冒险家：我不知道该怎么办。";
+	npctalk "�����ð�ռң��Ҳ�֪������ô�졣";
 	end;
 
 OnTimer349000:
-	npctalk "健谈的冒险家：哦，是吗？我想知道很多事情~我陪你一起去！";
+	npctalk "��̸��ð�ռң�Ŷ����������֪���ܶ�����~������һ��ȥ��";
 	end;
 
 OnTimer411000:
-	npctalk "健谈的冒险家：导航，那是什么？";
+	npctalk "��̸��ð�ռң�����������ʲô��";
 	end;
 
 OnTimer421000:
-	npctalk "多嘴的冒险家：哦——！我应该寻找 Kafra 员工吗？";
+	npctalk "�����ð�ռң�Ŷ��������Ӧ��Ѱ�� Kafra Ա����";
 	end;
 
 OnTimer487000:
-	npctalk "健谈的冒险家：城镇名称是什么？";
+	npctalk "��̸��ð�ռң�����������ʲô��";
 	end;
 
 OnTimer497000:
-	npctalk "多嘴的冒险家：我看不到聊天窗口中可以写东西的部分？";
+	npctalk "�����ð�ռң��ҿ��������촰���п���д�����Ĳ��֣�";
 	end;
 
 OnTimer557000:
-	npctalk "健谈的冒险家：噢，你很聪明……";
+	npctalk "��̸��ð�ռң��ޣ���ܴ�������";
 	end;
 
 OnTimer555000:
-	npctalk "健谈的冒险家：不久前，一位新手对我说，嘿“健谈的冒险家”？。哈哈哈。";
+	npctalk "��̸��ð�ռң�����ǰ��һλ���ֶ���˵���١���̸��ð�ռҡ�������������";
 	end;
 
 OnTimer565000:
@@ -260,11 +262,11 @@ prt_fild08,338,217,7	script	Resting Adventurer#iz	4_F_SITDOWN,{
 	end;
 
 OnTimer60000:
-	npctalk "休息的冒险家：你知道吗？如果坐着，HP和SP恢复得更快。";
+	npctalk "��Ϣ��ð�ռң���֪����������ţ�HP��SP�ָ��ø��졣";
 	end;
 
 OnTimer65000:
-	npctalk "休息冒险家：如果你的基本工作技能水平超过3级，就可以坐着。快捷键是按<INSERT>键。";
+	npctalk "��Ϣð�ռң������Ļ�����������ˮƽ����3�����Ϳ������š���ݼ��ǰ�<INSERT>����";
 OnInit:
 	initnpctimer;
 	end;

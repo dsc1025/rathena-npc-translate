@@ -4,6 +4,8 @@
 //= Lutie - City NPCs
 //===== Additional Comments: =================================
 //= 1.0 First version. [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Teleport to Lutie

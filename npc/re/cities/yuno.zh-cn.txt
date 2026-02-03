@@ -11,6 +11,8 @@
 //= NPCs for the City of Juno
 //===== Additional Comments: ================================= 
 //= 1.0 First version.
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 yuno,150,283,4	duplicate(JunoSoldier1)	Juno Soldier#juno	852

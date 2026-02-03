@@ -14,6 +14,8 @@
 //= 1.9 Rescripted to Aegis 10.3 standards. [L0ne_W0lf]
 //= 2.0 Removed "Hans Solo", as he is a Jawaii NPC. [L0ne_W0lf]
 //= 2.1 Disabled the Library Curator (bugreport:4105) [L0ne_W0lf]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Prontera
