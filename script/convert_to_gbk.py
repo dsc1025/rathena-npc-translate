@@ -1,0 +1,96 @@
+"""convert_to_gbk.py
+
+Convert a single file to GBK (CP936) encoding.
+
+Usage examples:
+	python convert_to_gbk.py input.txt
+
+Behavior:
+	- Source file MUST be UTF-8 (utf-8 or utf-8-sig). If decoding fails the script exits with an error.
+	- If `--force` is omitted, the script creates a new file named <basename>_gbk<ext>.
+	- If `--force` is supplied, the original file is overwritten atomically.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+import tempfile
+
+def read_text(path: str) -> tuple[str, str]:
+	with open(path, "rb") as fh:
+		b = fh.read()
+
+	# Only accept UTF-8 (with optional BOM) as source. Fail otherwise.
+	for enc in ("utf-8-sig", "utf-8"):
+		try:
+			return b.decode(enc), enc
+		except UnicodeDecodeError:
+			continue
+
+	# If we reach here, decoding failed — caller should handle and report that source must be UTF-8.
+	raise UnicodeDecodeError("utf-8", b, 0, 1, "source file is not valid UTF-8")
+
+
+def write_gbk_atomic(text: str, out_path: str) -> None:
+	dirn = os.path.dirname(out_path) or "."
+	fd, tmppath = tempfile.mkstemp(dir=dirn)
+	os.close(fd)
+	try:
+		with open(tmppath, "w", encoding="gbk", errors="strict", newline="") as f:
+			f.write(text)
+		os.replace(tmppath, out_path)
+	finally:
+		if os.path.exists(tmppath):
+			try:
+				os.remove(tmppath)
+			except Exception:
+				pass
+
+
+def main(argv: list[str] | None = None) -> int:
+	parser = argparse.ArgumentParser(description="Convert a single file to GBK encoding.")
+	parser.add_argument("input", help="Input file path")
+	parser.add_argument("--force", action="store_true", help="Overwrite the original file instead of creating <name>_gbk")
+	args = parser.parse_args(argv)
+
+	inp = args.input
+
+	if not os.path.isfile(inp):
+		print(f"Input file not found: {inp}", file=sys.stderr)
+		return 2
+
+	try:
+		text, used_enc = read_text(inp)
+	except UnicodeDecodeError:
+		print("Source file must be UTF-8 (utf-8 or utf-8-sig).", file=sys.stderr)
+		return 3
+	except Exception as e:
+		print(f"Failed to read input file: {e}", file=sys.stderr)
+		return 3
+
+	if args.force:
+		out = inp
+	else:
+		base, ext = os.path.splitext(inp)
+		out = f"{base}_gbk{ext}"
+
+	try:
+		write_gbk_atomic(text, out)
+	except UnicodeEncodeError:
+		print(
+			"Encoding to GBK failed: some characters are not representable in GBK.",
+			file=sys.stderr,
+		)
+		return 4
+	except Exception as e:
+		print(f"Failed to write output file: {e}", file=sys.stderr)
+		return 5
+
+	print(f"Converted `{inp}` ({used_enc}) -> `{out}` (GBK)")
+	return 0
+
+
+if __name__ == "__main__":
+	raise SystemExit(main())
