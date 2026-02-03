@@ -12,6 +12,8 @@
 //===== Additional Comments: ================================= 
 //= 1.0 Updated to match the new Izlude Map. [Masao]
 //= 1.1 Added Izlude duplicates. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 izlude,179,219,2	duplicate(Edgar_izlude)	Edgar#izlude	49

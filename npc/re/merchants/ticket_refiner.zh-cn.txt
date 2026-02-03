@@ -14,6 +14,8 @@
 //===== Additional Comments: =================================
 //= 1.0 First version. [Euphy]
 //= 1.1 Do not refine above ticket level. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Main NPC :: safety_Ref_NPC
@@ -61,39 +63,39 @@ prontera,184,177,6	script	Refine Master	851,{
 	}
 
 	if (.@check == 0) {
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "ä½ å¥½ï¼";
-		mes "è¿™æ˜¯æ€ä¹ˆå›äº‹ï¼Ÿ";
-		mes "æˆ‘æ˜¯ä¸“å®¶";
-		mes "ç”¨äºç²¾ç‚¼ç‰©å“ï¼Œ";
-		mes "ä½†æˆ‘ä¸å†å·¥ä½œäº†ã€‚";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "ÄãºÃ£¡";
+		mes "ÕâÊÇÔõÃ´»ØÊÂ£¿";
+		mes "ÎÒÊÇ×¨¼Ò";
+		mes "ÓÃÓÚ¾«Á¶ÎïÆ·£¬";
+		mes "µ«ÎÒ²»ÔÙ¹¤×÷ÁË¡£";
 		next;
-		switch(select("æˆ‘ä¼šç»§ç»­æˆ‘çš„è·¯ã€‚ï¼šå—¯...è¿™è®©æˆ‘å¾ˆå¥½å¥‡ã€‚")) {
+		switch(select("ÎÒ»á¼ÌĞøÎÒµÄÂ·¡££ºàÅ...ÕâÈÃÎÒºÜºÃÆæ¡£")) {
 		case 1:
-			mes "[ç‚¼å™¨å¤§å¸ˆ]";
-			mes "å°å¿ƒç‚¹ï¼Œå†’é™©å®¶ã€‚";
+			mes "[Á¶Æ÷´óÊ¦]";
+			mes "Ğ¡ĞÄµã£¬Ã°ÏÕ¼Ò¡£";
 			close;
 		case 2:
-			mes "[ç‚¼å™¨å¤§å¸ˆ]";
-			mes "å…¶å®æˆ‘æœ‰æ—¶å€™ä¹Ÿä¼šç”¨ã€Šç²¾ç‚¼åˆ¸ã€‹^000000ä¸ºå†’é™©è€…æä¾›ç²¾ç‚¼æœåŠ¡â€¦â€¦";
-			mes "å†è§~ï¼";
+			mes "[Á¶Æ÷´óÊ¦]";
+			mes "ÆäÊµÎÒÓĞÊ±ºòÒ²»áÓÃ¡¶¾«Á¶È¯¡·^000000ÎªÃ°ÏÕÕßÌá¹©¾«Á¶·şÎñ¡­¡­";
+			mes "ÔÙ¼û~£¡";
 			close;
 		}
 	}
 	emotion ET_SURPRISE;
-	mes "[ç‚¼å™¨å¤§å¸ˆ]";
-	mes "é—®å€™ï¼";
-	mes "æˆ‘å¯ä»¥å°†ç‰©å“ç²¾ç‚¼åˆ°ä¸æ‚¨çš„ç¥¨^000000ç›¸åŒçš„çº§åˆ«^006400ã€‚";
-	mes "æ‚¨ä¸å¿…æ‹…å¿ƒï¼æ²¡æœ‰æœºä¼šæŸåæ‚¨çš„ç‰©å“ã€‚";
+	mes "[Á¶Æ÷´óÊ¦]";
+	mes "ÎÊºò£¡";
+	mes "ÎÒ¿ÉÒÔ½«ÎïÆ·¾«Á¶µ½ÓëÄúµÄÆ±^000000ÏàÍ¬µÄ¼¶±ğ^006400¡£";
+	mes "Äú²»±Øµ£ĞÄ£¡Ã»ÓĞ»ú»áËğ»µÄúµÄÎïÆ·¡£";
 	next;
-	if(select("æˆ‘ç¨åå†å›æ¥ã€‚ï¼šç”¨ç¥¨ç²¾ç‚¼ç‰©å“ã€‚") == 1) {
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "å¥½çš„ã€‚";
-		mes "ä½ å¯ä»¥ç¨åå†æ¥ã€‚";
+	if(select("ÎÒÉÔºóÔÙ»ØÀ´¡££ºÓÃÆ±¾«Á¶ÎïÆ·¡£") == 1) {
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "ºÃµÄ¡£";
+		mes "Äã¿ÉÒÔÉÔºóÔÙÀ´¡£";
 		close;
 	}
-	mes "[ç‚¼å™¨å¤§å¸ˆ]";
-	mes "æ‚¨æƒ³ç²¾ç‚¼å“ªäº›è£…å¤‡ï¼Ÿ";
+	mes "[Á¶Æ÷´óÊ¦]";
+	mes "ÄúÏë¾«Á¶ÄÄĞ©×°±¸£¿";
 	next;
 	setarray .@position$[1],"Head upper","Armor","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head middle","Head lower";
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
@@ -102,15 +104,15 @@ prontera,184,177,6	script	Refine Master	851,{
 
 	.@part = .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "ä½ å¿…é¡»è£…å¤‡ä½ æƒ³è¦ç²¾ç‚¼çš„ç‰©å“ã€‚";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "Äã±ØĞë×°±¸ÄãÏëÒª¾«Á¶µÄÎïÆ·¡£";
 		close;
 	}
 	if (!getequipisenableref(.@part)) {
 		emotion ET_OTL;
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "å“¦ï¼Œå¯¹ä¸èµ·ã€‚";
-		mes "æ­¤ç‰©å“æ— æ³•ç²¾ç‚¼ã€‚";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "Å¶£¬¶Ô²»Æğ¡£";
+		mes "´ËÎïÆ·ÎŞ·¨¾«Á¶¡£";
 		close;
 	}
 	.@refineitemid = getequipid(.@part); // save id of the item
@@ -153,13 +155,13 @@ prontera,184,177,6	script	Refine Master	851,{
 	}
 	if (.@check == 0) {
 		emotion ET_THINK;
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "å¦‚æœæ‚¨æƒ³ç²¾ç‚¼æ­¤^006400"+.@type$+"^000000ï¼Œè¯·é™„ä¸Š^006400"+.@type$+"ç²¾ç‚¼å•^000000ã€‚";
-		mes "ç¨åè§ï¼";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "Èç¹ûÄúÏë¾«Á¶´Ë^006400"+.@type$+"^000000£¬Çë¸½ÉÏ^006400"+.@type$+"¾«Á¶µ¥^000000¡£";
+		mes "ÉÔºó¼û£¡";
 		close;
 	}
-	mes "[ç‚¼å™¨å¤§å¸ˆ]";
-	mes "è¯·é€‰æ‹©æ‚¨è¦ä½¿ç”¨çš„^006400"+.@type$+" Refine Ticket^000000ã€‚";
+	mes "[Á¶Æ÷´óÊ¦]";
+	mes "ÇëÑ¡ÔñÄúÒªÊ¹ÓÃµÄ^006400"+.@type$+" Refine Ticket^000000¡£";
 	next;
 	.@menu$ = "";
 	for ( .@i = 0; .@i < .@size_cert; ++.@i )
@@ -170,41 +172,41 @@ prontera,184,177,6	script	Refine Master	851,{
 
 	if (countitem(.@ticket_id) == 0) {
 		emotion ET_QUESTION;
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes getitemname(.@ticket_id)+"ä¸åœ¨æ‚¨çš„åº“å­˜ä¸­ã€‚ä½ æŠŠå®ƒæ”¾åœ¨ä½ çš„ä»“åº“é‡Œäº†å—ï¼Ÿ";
-		mes "è¯·å†æ¬¡æ£€æŸ¥ã€‚";
-		mes "ç¨åè§ï¼";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes getitemname(.@ticket_id)+"²»ÔÚÄúµÄ¿â´æÖĞ¡£Äã°ÑËü·ÅÔÚÄãµÄ²Ö¿âÀïÁËÂğ£¿";
+		mes "ÇëÔÙ´Î¼ì²é¡£";
+		mes "ÉÔºó¼û£¡";
 		close;
 	}
 	if (getequiprefinerycnt(.@part) >= .@ticket_lv) {
 		emotion ET_PROFUSELY_SWEAT;
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "^8B4513è¯¥ç‰©å“å·²ä¸æ‚¨çš„è¡Œä¸ºä¸€æ ·ç²¾ç‚¼ã€‚^000000";
-		mes "è¯·æºå¸¦ä¸€ä»¶æ¯”æ‚¨çš„é—¨ç¥¨ç²¾è‡´çš„ç‰©å“ã€‚";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "^8B4513¸ÃÎïÆ·ÒÑÓëÄúµÄĞĞÎªÒ»Ñù¾«Á¶¡£^000000";
+		mes "ÇëĞ¯´øÒ»¼ş±ÈÄúµÄÃÅÆ±¾«ÖÂµÄÎïÆ·¡£";
 		close;
 	}
-	mes "[ç‚¼å™¨å¤§å¸ˆ]";
-	mes "æˆ‘è¦ç²¾ç‚¼^006400"+getequipname(.@part)+"^8B4513 åˆ° +"+.@ticket_lv+"çº§åˆ« ^000000 ä¸ ^006400"+getitemname(.@ticket_id)+"^000000ã€‚";
-	mes "æˆ‘å¯ä»¥ç»§ç»­å—ï¼Ÿ";
+	mes "[Á¶Æ÷´óÊ¦]";
+	mes "ÎÒÒª¾«Á¶^006400"+getequipname(.@part)+"^8B4513 µ½ +"+.@ticket_lv+"¼¶±ğ ^000000 Óë ^006400"+getitemname(.@ticket_id)+"^000000¡£";
+	mes "ÎÒ¿ÉÒÔ¼ÌĞøÂğ£¿";
 	next;
-	if(select("å¦ï¼šæ˜¯çš„ã€‚") == 1) {
+	if(select("·ñ£ºÊÇµÄ¡£") == 1) {
 		emotion ET_THINK;
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
-		mes "å“¦ï¼Œä½ æ”¹å˜ä¸»æ„äº†ã€‚";
-		mes "å¥½çš„ã€‚";
-		mes "ä½ å¯ä»¥ç¨åå†å›æ¥ã€‚";
+		mes "[Á¶Æ÷´óÊ¦]";
+		mes "Å¶£¬Äã¸Ä±äÖ÷ÒâÁË¡£";
+		mes "ºÃµÄ¡£";
+		mes "Äã¿ÉÒÔÉÔºóÔÙ»ØÀ´¡£";
 		close;
 	}
-	mes "[ç‚¼å™¨å¤§å¸ˆ]";
-	mes "ä¼Ÿå¤§çš„ã€‚";
-	mes "å¦‚ä½ æ‰€æ„¿ï¼";
-	mes "æˆ‘æœ‰è‡ªå·±ç‹¬ç‰¹çš„ç‚¼åŒ–æ–¹æ³•â€¦â€¦";
-	mes "â€¦â€¦è½°ï¼";
+	mes "[Á¶Æ÷´óÊ¦]";
+	mes "Î°´óµÄ¡£";
+	mes "ÈçÄãËùÔ¸£¡";
+	mes "ÎÒÓĞ×Ô¼º¶ÀÌØµÄÁ¶»¯·½·¨¡­¡­";
+	mes "¡­¡­ºä£¡";
 	specialeffect EF_SUI_EXPLOSION;
 	if (countitem(.@ticket_id) < 1) {
 		next;
-		mes "é”™è¯¯ï¼";
-		mes "è¯·æŠ¥å‘Šæ­¤äº‹ã€‚";
+		mes "´íÎó£¡";
+		mes "Çë±¨¸æ´ËÊÂ¡£";
 		close;
 	}
 	delitem .@ticket_id,1;
@@ -212,21 +214,21 @@ prontera,184,177,6	script	Refine Master	851,{
 	// anti-hack
 	if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) ||
 		callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3])) {
-		mes "[ç‚¼å™¨å¤§å¸ˆ]";
+		mes "[Á¶Æ÷´óÊ¦]";
 		emotion ET_FRET;
-		mes "ç­‰ä¸€ä¸‹...";
-		mes "ä½ ä»¥ä¸ºæˆ‘å‚»å—ï¼Ÿï¼";
-		mes "ä½ è¶æˆ‘ä¸æ³¨æ„çš„æ—¶å€™æŠŠä¸œè¥¿æ¢äº†ï¼ç¦»å¼€è¿™é‡Œï¼";
+		mes "µÈÒ»ÏÂ...";
+		mes "ÄãÒÔÎªÎÒÉµÂğ£¿£¡";
+		mes "Äã³ÃÎÒ²»×¢ÒâµÄÊ±ºò°Ñ¶«Î÷»»ÁË£¡Àë¿ªÕâÀï£¡";
 		close;
 	}
 	successrefitem .@part, .@ticket_lv - getequiprefinerycnt(.@part);
 	next;
 	emotion ET_DELIGHT;
-	mes "[ç‚¼å™¨å¤§å¸ˆ]";
-	mes "å¥½å•¦ï¼Œå°±åˆ°è¿™é‡Œå•¦~";
-	mes "å¥½å§ï¼Œ^0000FF"+strcharinfo(0)+"^000000ï¼";
-	mes "æ­å–œä½ é—ªè€€çš„"+.@type$+".";
-	mes "ä½ çœ‹èµ·æ¥æ£’æäº†ï¼";
-	mes "å†è§~ï¼";
+	mes "[Á¶Æ÷´óÊ¦]";
+	mes "ºÃÀ²£¬¾Íµ½ÕâÀïÀ²~";
+	mes "ºÃ°É£¬^0000FF"+strcharinfo(0)+"^000000£¡";
+	mes "¹§Ï²ÄãÉÁÒ«µÄ"+.@type$+".";
+	mes "Äã¿´ÆğÀ´°ô¼«ÁË£¡";
+	mes "ÔÙ¼û~£¡";
 	close;
 }

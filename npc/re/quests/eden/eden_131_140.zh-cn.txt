@@ -13,141 +13,143 @@
 //= 1.0 First version.
 //= 1.1 Added support to Para_Team_Mark_ in Eden Group. [Ragno]
 //= 1.2 Added use of F_HasEdenGroupMark function. [Ragno]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 	cutin "ragi01",0;
-	mes "[拉吉]";
+	mes "[����]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "这里只欢迎来自伊甸集团的冒险者。";
-		mes "我只向基础等级^FF0000130-140^000000冒险家发出请求。";
+		mes "����ֻ��ӭ�������鼯�ŵ�ð���ߡ�";
+		mes "��ֻ������ȼ�^FF0000130-140^000000ð�ռҷ�������";
 	}
 	else if (para_130lv01 == 0) {
-		mes "你好。我是蒲公英乐队 Ragi 的新成员。我正在代表爱谷创作歌曲。你对一个故事感兴趣吗？";
+		mes "��á������ѹ�Ӣ�ֶ� Ragi ���³�Ա�������ڴ������ȴ������������һ�����¸���Ȥ��";
 		next;
-		mes "[拉吉]";
-		mes "哈哈。虽然我是新人，但还是很抱歉向冒险者提出请求。";
+		mes "[����]";
+		mes "��������Ȼ�������ˣ������Ǻܱ�Ǹ��ð�����������";
 		next;
-		mes "[拉吉]";
-		mes "看看清单就知道了。如果你方便的话可以帮我吗？";
+		mes "[����]";
+		mes "�����嵥��֪���ˡ�����㷽��Ļ����԰�����";
 		para_130lv01 = 1;
 	}
 	else {
-		mes "我正在收集故事，为爱谷创作一首歌。";
+		mes "�������ռ����£�Ϊ���ȴ���һ�׸衣";
 		next;
-		if (select( "请求收集故事", "对话" ) == 1) {
-			mes "[拉吉]";
+		if (select( "�����ռ�����", "�Ի�" ) == 1) {
+			mes "[����]";
 			if (BaseLevel < 131) {
 				cutin "ragi02",0;
-				mes "这是哀姑的要求，但却是危险的。你应该再成长一点。";
+				mes "���ǰ��õ�Ҫ�󣬵�ȴ��Σ�յġ���Ӧ���ٳɳ�һ�㡣";
 			}
 			else if (BaseLevel < 141) {
-				mes "这首歌和故事是关于怪物的。 ^FF0000告诉我你和他们战斗时的感受。^000000";
+				mes "���׸�͹����ǹ��ڹ���ġ� ^FF0000�������������ս��ʱ�ĸ��ܡ�^000000";
 				next;
-				switch( select( "迷失的故事", "恶魔的故事", "来自遥远距离的故事" ) ) {
-					mes "[拉吉]";
+				switch( select( "��ʧ�Ĺ���", "��ħ�Ĺ���", "����ңԶ����Ĺ���" ) ) {
+					mes "[����]";
 				case 1:
-					mes "莱特哈尔森有很多故事，我确信这些故事都是悲伤和失落的。他们的故事不应该被遗忘，所以请告诉我你能做的。";
+					mes "���ع���ɭ�кܶ���£���ȷ����Щ���¶��Ǳ��˺�ʧ��ġ����ǵĹ��²�Ӧ�ñ�������������������������ġ�";
 					next;
-					switch( select( "Egnigem Cenia（剑士怪物）",
+					switch( select( "Egnigem Cenia����ʿ���",
 									"Armeyer Dinze (Merchant Monster)",
 									"Wickebine Tres (Thief Monster)",
 									"Kavach Icarus (Archer Monster)",
 									"Errende Ebecee (Acolyte Monster)",
 									"Laurell Weinder (Mage Monster)" ) ) {
-						mes "[拉吉]";
+						mes "[����]";
 					case 1:
 						if (checkquest(13144,PLAYTIME) == 0)
-							mes "有些冒险家给我讲了一些故事，但不足以创作一首歌。";
+							mes "��Щð�ռҸ��ҽ���һЩ���£��������Դ���һ�׸衣";
 						else if (checkquest(13143,HUNTING) == 1) {
-							cutin "�̱״������Ͼ�ī��",3;  //ygnizem_card
-							mes "她是一个在如此遥远的地方悲伤的剑客。你认为是什么把这里带到了那里？";
+							cutin "&#65533;&#817;&#1524;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#1022;&#65533;��&#65533;&#65533;",3;  //ygnizem_card
+							mes "����һ�������ңԶ�ĵط����˵Ľ��͡�����Ϊ��ʲô��������������";
 							next;
-							mes "[拉吉]";
-							mes "这些对某人来说是非常重要的故事。我想用这些故事创作一首歌。请帮我。";
+							mes "[����]";
+							mes "��Щ��ĳ����˵�Ƿǳ���Ҫ�Ĺ��¡���������Щ���´���һ�׸衣����ҡ�";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13143,HUNTING) == 2) {
-							mes "你听说过什么新故事吗？如果您在旅途中有什么故事，请告诉我。";
+							mes "����˵��ʲô�¹��������������;����ʲô���£�������ҡ�";
 							callsub S_Quest,13143,13144,1100000,300000;
 						}
 						else {
-							cutin "�̱״������Ͼ�ī��",3;  //ygnizem_card
-							mes "比任何剑士都要强大的剑女。埃格尼格姆·塞尼娅.那是她的名字。我不确定那是她还是其他人。";
+							cutin "&#65533;&#817;&#1524;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#1022;&#65533;��&#65533;&#65533;",3;  //ygnizem_card
+							mes "���κν�ʿ��Ҫǿ��Ľ�Ů���������ķ�������.�����������֡��Ҳ�ȷ�����������������ˡ�";
 							next;
-							mes "[拉吉]";
-							mes "我不能失去她的故事。我真的希望你能过来。";
+							mes "[����]";
+							mes "�Ҳ���ʧȥ���Ĺ��¡������ϣ�����ܹ�����";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "这会比你想象的更危险。但故事必须传达给每个人。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "����������ĸ�Σ�ա������±��봫���ÿ���ˡ�";
 								callsub S_Quest,13144,13143;
 							}
 						}
 						break;
 					case 2:
 						if (checkquest(13146,PLAYTIME) == 0)
-							mes "有些冒险家给我讲了一些故事，但不足以创作一首歌。";
+							mes "��Щð�ռҸ��ҽ���һЩ���£��������Դ���һ�׸衣";
 						else if (checkquest(13145,HUNTING) == 1) {
-							cutin "�Ƹ����̾����ī��",3;  //armaia_card
-							mes "她的旅程还能继续走多远？我想她一个人是做不到的。";
+							cutin "&#65533;&#440;&#65533;&#65533;&#65533;&#65533;&#830;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //armaia_card
+							mes "�����ó̻��ܼ����߶�Զ��������һ�������������ġ�";
 							next;
-							mes "[拉吉]";
-							mes "您不会想知道为什么这段旅程应该停止吗？";
+							mes "[����]";
+							mes "��������֪��Ϊʲô����ó�Ӧ��ֹͣ��";
 							next;
-							mes "[拉吉]";
-							mes "我想用这些故事创作一首歌。请帮我。";
+							mes "[����]";
+							mes "��������Щ���´���һ�׸衣����ҡ�";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13145,HUNTING) == 2) {
-							mes "你听说过什么新故事吗？如果您在旅途中有什么故事，请告诉我。";
+							mes "����˵��ʲô�¹��������������;����ʲô���£�������ҡ�";
 							callsub S_Quest,13145,13146,1100000,300000;
 						}
 						else {
-							cutin "�Ƹ����̾����ī��",3;  //armaia_card
-							mes "商人的女儿。 Armeyer Dinze，她看起来像个富婆。但她看上去缺乏安全感。";
+							cutin "&#65533;&#440;&#65533;&#65533;&#65533;&#65533;&#830;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //armaia_card
+							mes "���˵�Ů���� Armeyer Dinze����������������š���������ȥȱ����ȫ�С�";
 							next;
-							mes "[拉吉]";
-							mes "是什么让她消失了？或者为了什么？请听听她的故事。";
+							mes "[����]";
+							mes "��ʲô������ʧ�ˣ�����Ϊ��ʲô�����������Ĺ��¡�";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "这会比你想象的更危险。但故事必须传达。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "����������ĸ�Σ�ա������±��봫�";
 								callsub S_Quest,13146,13145;
 							}
 						}
 						break;
 					case 3:
 						if (checkquest(13148,PLAYTIME) == 0)
-							mes "有些冒险家给我讲了一些故事，但不足以创作一首歌。";
+							mes "��Щð�ռҸ��ҽ���һЩ���£��������Դ���һ�׸衣";
 						else if (checkquest(13147,HUNTING) == 1) {
-							cutin "���ɹ���Ʈ����ī��",3;  //whikebain_card
-							mes "是什么让她动了心？她只在乎钱。";
+							cutin "&#65533;&#65533;&#65533;&#633;&#65533;&#65533;&#65533;&#430;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //whikebain_card
+							mes "��ʲô���������ģ���ֻ�ں�Ǯ��";
 							next;
-							mes "[拉吉]";
-							mes "我不知道她的心已经达到什么程度了？请听听她的故事。请告诉我。";
+							mes "[����]";
+							mes "�Ҳ�֪���������Ѿ��ﵽʲô�̶��ˣ����������Ĺ��¡�������ҡ�";
 							next;
-							mes "[拉吉]";
-							mes "请为我们创作一首歌。";
+							mes "[����]";
+							mes "��Ϊ���Ǵ���һ�׸衣";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13147,HUNTING) == 2) {
-							mes "你听说过什么新故事吗？如果您在旅途中有什么故事，请告诉我。";
+							mes "����˵��ʲô�¹��������������;����ʲô���£�������ҡ�";
 							callsub S_Quest,13147,13148,1100000,300000;
 						}
 						else {
-							cutin "���ɹ���Ʈ����ī��",3;  //whikebain_card
-							mes "没有人知道它是如何开始的。 Wickebine Tres 是一个可以找到真正伴侣的名字。";
+							cutin "&#65533;&#65533;&#65533;&#633;&#65533;&#65533;&#65533;&#430;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //whikebain_card
+							mes "û����֪��������ο�ʼ�ġ� Wickebine Tres ��һ�������ҵ��������µ����֡�";
 							next;
-							mes "[拉吉]";
-							mes "她是一个只关心金钱的人。她的旅程已经持续了多远？请听听她在莱特哈尔森的故事。";
+							mes "[����]";
+							mes "����һ��ֻ���Ľ�Ǯ���ˡ������ó��Ѿ������˶�Զ���������������ع���ɭ�Ĺ��¡�";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "这会比你想象的更危险。但故事必须传达。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "����������ĸ�Σ�ա������±��봫�";
 								emotion ET_BEST;
 								callsub S_Quest,13148,13147;
 							}
@@ -155,138 +157,138 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 						break;
 					case 4:
 						if (checkquest(13150,PLAYTIME) == 0)
-							mes "有些冒险家给我讲了一些故事，但不足以创作一首歌。";
+							mes "��Щð�ռҸ��ҽ���һЩ���£��������Դ���һ�׸衣";
 						else if (checkquest(13149,HUNTING) == 1) {
-							cutin "ī��ũ��ī�罺ī��",3;  //kavac_card
-							mes "是的。好像在佩扬那里听过同一个名字。我不确定它的意思是一样的。";
+							cutin "��&#65533;&#65533;&#361;&#65533;&#65533;��&#65533;�V��&#65533;&#65533;",3;  //kavac_card
+							mes "�ǵġ�������������������ͬһ�����֡��Ҳ�ȷ��������˼��һ���ġ�";
 							next;
-							mes "[拉吉]";
-							mes "请尝试在莱特哈尔森找到他或弓。";
+							mes "[����]";
+							mes "�볢�������ع���ɭ�ҵ����򹭡�";
 							next;
-							mes "[拉吉]";
-							mes "请不要忘记告诉我你听到的任何故事。";
+							mes "[����]";
+							mes "�벻Ҫ���Ǹ��������������κι��¡�";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13149,HUNTING) == 2) {
-							mes "你听说过什么新故事吗？如果您在旅途中有什么故事，请告诉我。";
+							mes "����˵��ʲô�¹��������������;����ʲô���£�������ҡ�";
 							callsub S_Quest,13149,13150,1100000,300000;
 						}
 						else {
-							cutin "ī��ũ��ī�罺ī��",3;  //kavac_card
-							mes "卡瓦奇·伊卡洛斯（Kavach Icarus）是一个手比眼快、射箭迅速的名字。";
+							cutin "��&#65533;&#65533;&#361;&#65533;&#65533;��&#65533;�V��&#65533;&#65533;",3;  //kavac_card
+							mes "�����桤������˹��Kavach Icarus����һ���ֱ��ۿ졢���Ѹ�ٵ����֡�";
 							next;
-							mes "[拉吉]";
-							mes "我听见他的影子和他的箭正在某处徘徊。请去莱特哈尔森告诉我他的故事。";
+							mes "[����]";
+							mes "����������Ӱ�Ӻ����ļ�����ĳ���ǻ�����ȥ���ع���ɭ���������Ĺ��¡�";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "请小心他的箭。在这个故事结束之前，你可能已经躺在冰冷的地板上。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "��С�����ļ�����������½���֮ǰ��������Ѿ����ڱ���ĵذ��ϡ�";
 								callsub S_Quest,13150,13149;
 							}
 						}
 						break;
 					case 5:
 						if (checkquest(13152,PLAYTIME) == 0)
-							mes "有些冒险家给我讲了一些故事，但不足以创作一首歌。";
+							mes "��Щð�ռҸ��ҽ���һЩ���£��������Դ���һ�׸衣";
 						else if (checkquest(13151,HUNTING) == 1) {
-							cutin "�̷��忡����ī��",3;  //erend_card
-							mes "无论是为了友谊还是为了使命。如果那段旅程是为了某个人，想要停止这段旅程并不容易。";
+							cutin "&#65533;&#823;&#65533;&#65533;��&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //erend_card
+							mes "������Ϊ�����껹��Ϊ��ʹ��������Ƕ��ó���Ϊ��ĳ���ˣ���Ҫֹͣ����ó̲������ס�";
 							next;
-							mes "[拉吉]";
-							mes "是什么让他们的旅程停止了？里面有一个什么样的故事呢？";
+							mes "[����]";
+							mes "��ʲô�����ǵ��ó�ֹͣ�ˣ�������һ��ʲô���Ĺ����أ�";
 							next;
-							mes "[拉吉]";
-							mes "请查看 Lighthalzen 的那个故事。";
+							mes "[����]";
+							mes "��鿴 Lighthalzen ���Ǹ����¡�";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13151,HUNTING) == 2) {
-							mes "你听说过什么新故事吗？如果您在旅途中有什么故事，请告诉我。";
+							mes "����˵��ʲô�¹��������������;����ʲô���£�������ҡ�";
 							callsub S_Quest,13151,13152,1100000,300000;
 						}
 						else {
-							cutin "�̷��忡����ī��",3;  //erend_card
-							mes "Errende Ebecee 开始了寻找某人的旅程。";
+							cutin "&#65533;&#823;&#65533;&#65533;��&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //erend_card
+							mes "Errende Ebecee ��ʼ��Ѱ��ĳ�˵��ó̡�";
 							next;
-							mes "[拉吉]";
-							mes "但我猜……他的旅程也可能在莱特哈尔森的某个地方停止。请听听他的故事。";
+							mes "[����]";
+							mes "���Ҳ¡��������ó�Ҳ���������ع���ɭ��ĳ���ط�ֹͣ�����������Ĺ��¡�";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "请小心，不要像这些^FF0000可怜的灵魂^000000一样迷路。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "��С�ģ���Ҫ����Щ^FF0000���������^000000һ����·��";
 								callsub S_Quest,13152,13151;
 							}
 						}
 						break;
 					case 6:
 						if (checkquest(13154,PLAYTIME) == 0)
-							mes "有些冒险家给我讲了一些故事，但不足以创作一首歌。";
+							mes "��Щð�ռҸ��ҽ���һЩ���£��������Դ���һ�׸衣";
 						else if (checkquest(13153,HUNTING) == 1) {
-							cutin "��췼���ī��",3;  //rawrel_card
-							mes "顺便一提。我读过一本书，名为^FF0000如何成为一名巫师^000000...";
+							cutin "&#65533;&#65533;&#52732;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //rawrel_card
+							mes "˳��һ�ᡣ�Ҷ���һ���飬��Ϊ^FF0000��γ�Ϊһ����ʦ^000000...";
 							next;
-							mes "[拉吉]";
-							mes "根据那本书，25岁的人的一些魔法可能比年长的巫师更强。";
+							mes "[����]";
+							mes "�����Ǳ��飬25����˵�һЩħ�����ܱ��곤����ʦ��ǿ��";
 							next;
-							mes "[拉吉]";
-							mes "你在认真听什么？让我们完成有关劳雷尔·温德斯故事的请求吧！";
+							mes "[����]";
+							mes "����������ʲô������������й����׶����µ�˹���µ�����ɣ�";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13153,HUNTING) == 2) {
-							mes "你听说过什么新故事吗？如果您在旅途中有什么故事，请告诉我。";
+							mes "����˵��ʲô�¹��������������;����ʲô���£�������ҡ�";
 							callsub S_Quest,13153,13154,1100000,300000;
 						}
 						else {
-							cutin "��췼���ī��",3;  //rawrel_card
-							mes "劳雷尔·温德 (Laurell Weinder) 决定踏上一段艰难的旅程，以报答巫师们的一些事迹。";
+							cutin "&#65533;&#65533;&#52732;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //rawrel_card
+							mes "���׶����µ� (Laurell Weinder) ����̤��һ�μ��ѵ��ọ́��Ա�����ʦ�ǵ�һЩ�¼���";
 							next;
-							mes "[拉吉]";
-							mes "但是……这些天赋异禀的巫师却再也回不来了？谁制造了它们？在莱特哈尔森寻找线索。";
+							mes "[����]";
+							mes "���ǡ�����Щ�츳��������ʦȴ��Ҳ�ز����ˣ�˭���������ǣ������ع���ɭѰ��������";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "我喜欢这个故事，但如果你不想自己结束一个故事，请小心。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "��ϲ��������£�������㲻���Լ�����һ�����£���С�ġ�";
 								callsub S_Quest,13154,13153;
 							}
 						}
 					}
 					break;
 				case 2:
-					mes "你知道撒旦摩洛哥的故事吗？即使时间流逝，我也想唱一首歌来讲述他们的故事。";
+					mes "��֪������Ħ���Ĺ����𣿼�ʹʱ�����ţ���Ҳ�볪һ�׸����������ǵĹ��¡�";
 					next;
-					switch( select( "天使化身", "黑梦魇化身", "幽灵化身" ) ) {
-						mes "[拉吉]";
+					switch( select( "��ʹ����", "�����ʻ���", "���黯��" ) ) {
+						mes "[����]";
 					case 1:
 						if (checkquest(13156,PLAYTIME) == 0) {
-							mes "来自摩洛哥的怪物拥有天使般的翅膀。也许，撒旦摩洛哥想成为天使？";
+							mes "����Ħ���Ĺ���ӵ����ʹ��ĳ��Ҳ��������Ħ������Ϊ��ʹ��";
 							next;
-							mes "[拉吉]";
-							mes "哈哈，请不要介意。这只是一个讲故事的人的笑话。下次请再给我讲一个故事。";
+							mes "[����]";
+							mes "�������벻Ҫ���⡣��ֻ��һ�������µ��˵�Ц�����´����ٸ��ҽ�һ�����¡�";
 						}
 						else if (checkquest(13155,HUNTING) == 1) {
-							mes "外表看起来不错，但内在..我确信他们是有血有肉的！";
+							mes "���������������������..��ȷ����������Ѫ����ģ�";
 							next;
-							mes "[拉吉]";
-							mes "当然，我没有亲自检查过。但正如你所见，我只是一个讲故事的人。";
+							mes "[����]";
+							mes "��Ȼ����û�����Լ���������������������ֻ��һ�������µ��ˡ�";
 							next;
-							mes "[拉吉]";
-							mes "但这并不安全..所以要小心！请给我更多的故事！也许我可以在这附近的某个地方见到撒旦·莫罗克？";
+							mes "[����]";
+							mes "���Ⲣ����ȫ..����ҪС�ģ�����Ҹ���Ĺ��£�Ҳ���ҿ������⸽����ĳ���ط�����������Ī�޿ˣ�";
 						}
 						else if (checkquest(13155,HUNTING) == 2) {
-							mes "哇。有很多故事向我袭来！谢谢你！";
+							mes "�ۡ��кܶ��������Ϯ����лл�㣡";
 							callsub S_Quest,13155,13156,1100000,200000;
 						}
 						else {
-							mes "嗯……这首歌不是关于黑暗王子的，而是取自那些声称见过他的人。";
+							mes "�š������׸費�ǹ��ںڰ����ӵģ�����ȡ����Щ���Ƽ��������ˡ�";
 							next;
-							mes "[拉吉]";
-							mes "请帮助我通过搜索摩洛哥的飞行化身来制作一个故事。";
+							mes "[����]";
+							mes "�������ͨ������Ħ���ķ��л���������һ�����¡�";
 							next;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "确保获得至少 30 个摩洛哥天使般的化身。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "ȷ��������� 30 ��Ħ�����ʹ��Ļ�����";
 								emotion ET_KEK;
 								callsub S_Quest,13156,13155;
 							}
@@ -294,178 +296,178 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 						break;
 					case 2:
 						if (checkquest(13158,PLAYTIME) == 0) {
-							mes "故事还没有写完，下次再问吧！";
+							mes "���»�û��д�꣬�´����ʰɣ�";
 							cutin "ragi02",0;
 						}
 						else if (checkquest(13157,HUNTING) == 1) {
-							mes "形状尚未完成，但有一个非常锋利的牙齿。";
+							mes "��״��δ��ɣ�����һ���ǳ����������ݡ�";
 							next;
-							mes "[拉吉]";
-							mes "你不觉得这将是一个非常有趣的故事吗？";
+							mes "[����]";
+							mes "�㲻�����⽫��һ���ǳ���Ȥ�Ĺ�����";
 						}
 						else if (checkquest(13157,HUNTING) == 2) {
-							mes "哇。有很多故事向我袭来！谢谢你！";
+							mes "�ۡ��кܶ��������Ϯ����лл�㣡";
 							callsub S_Quest,13157,13158,1100000,200000;
 						}
 						else {
-							mes "我不知道一切是否都来自撒旦摩洛哥本人，但这样的事情看起来很可怕。";
+							mes "�Ҳ�֪��һ���Ƿ���������Ħ��籾�ˣ������������鿴�����ܿ��¡�";
 							next;
-							mes "[拉吉]";
-							mes "但我想这里面也会有一个故事。这就是创造这些生物的原因。请寻找黑色和焦油状的东西。";
+							mes "[����]";
+							mes "������������Ҳ����һ�����¡�����Ǵ�����Щ�����ԭ����Ѱ�Һ�ɫ�ͽ���״�Ķ�����";
 							next;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "找到并消灭 30 个摩洛哥黑暗化身。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "�ҵ������� 30 ��Ħ���ڰ�������";
 								callsub S_Quest,13158,13157;
 							}
 						}
 						break;
 					case 3:
 						if (checkquest(13160,PLAYTIME) == 0)
-							mes "这种没有衣服的生物的形状非常奇怪。哈哈，别当真。我只是一个讲故事的人。";
+							mes "����û���·����������״�ǳ���֡����������档��ֻ��һ�������µ��ˡ�";
 						else if (checkquest(13159,HUNTING) == 1) {
-							mes "这个故事应该为像我这样的弱冒险者传播！因为不是每个人都能成为冒险家。";
+							mes "�������Ӧ��Ϊ������������ð���ߴ�������Ϊ����ÿ���˶��ܳ�Ϊð�ռҡ�";
 							next;
-							mes "[拉吉]";
-							mes "或许，冒险者知道这样的故事也是有好处的。那么你能在摩洛哥附近寻找这些生物吗？";
+							mes "[����]";
+							mes "������ð����֪�������Ĺ���Ҳ���кô��ġ���ô������Ħ��總��Ѱ����Щ������";
 						}
 						else if (checkquest(13159,HUNTING) == 2) {
-							mes "哇。有很多故事向我袭来！谢谢你！";
+							mes "�ۡ��кܶ��������Ϯ����лл�㣡";
 							callsub S_Quest,13159,13160,1100000,200000;
 						}
 						else {
-							mes "这个很奇怪……但他也是摩洛哥人的化身。";
+							mes "�������֡�������Ҳ��Ħ����˵Ļ�����";
 							next;
-							mes "[拉吉]";
-							mes "但我很好奇，因为它看起来像鬼，攻击不起作用。";
+							mes "[����]";
+							mes "���Һܺ��棬��Ϊ������������������������á�";
 							next;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "请在狩猎至少30个摩洛哥幽灵化身后制作一个故事！";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "������������30��Ħ������黯��������һ�����£�";
 								callsub S_Quest,13160,13159;
 							}
 						}
 					}
 					break;
 				case 3:
-					mes "我从来没有去过Ash Vacuum，但我听说Scaraba Hall里有很多有趣的生物。";
+					mes "�Ҵ���û��ȥ��Ash Vacuum��������˵Scaraba Hall���кܶ���Ȥ�����";
 					next;
-					switch( select( "单角甲虫故事", "角甲虫故事", "鹿角甲虫故事", "耙角甲虫故事" ) ) {
-						mes "[拉吉]";
+					switch( select( "���Ǽ׳����", "�Ǽ׳����", "¹�Ǽ׳����", "�ҽǼ׳����" ) ) {
+						mes "[����]";
 					case 1:
 						if (checkquest(13162,PLAYTIME) == 0)
-							mes "我正在写一个关于 Uni-Horn Scaraba 的故事。一意味着少于二！~我开始了，但很难完成。你能帮助我吗？";
+							mes "������дһ������ Uni-Horn Scaraba �Ĺ��¡�һ��ζ�����ڶ���~�ҿ�ʼ�ˣ���������ɡ����ܰ�������";
 						else if (checkquest(13161,HUNTING) == 1) {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "他们也有一些故事吧？首先，我想知道只有一个角的那个的形状。";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "����Ҳ��һЩ���°ɣ����ȣ�����֪��ֻ��һ���ǵ��Ǹ�����״��";
 							next;
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13161,HUNTING) == 2) {
-							mes "不知道独角圣甲虫怎么想？我想创作一首歌。感谢您的帮助！";
+							mes "��֪������ʥ�׳���ô�룿���봴��һ�׸衣��л���İ�����";
 							callsub S_Quest,13161,13162,1100000,200000;
 						}
 						else {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "新世界充满了令人惊奇的怪物。它们将成为那些想成为冒险家的孩子们的梦想。";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "��������������˾���Ĺ�����ǽ���Ϊ��Щ���Ϊð�ռҵĺ����ǵ����롣";
 							next;
-							mes "[拉吉]";
-							mes "我想制作一首关于^FF0000Uni-Horn Scaraba^000000的歌曲！？孩子们一定会喜欢的。";
+							mes "[����]";
+							mes "��������һ�׹���^FF0000Uni-Horn Scaraba^000000�ĸ�������������һ����ϲ���ġ�";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "你可以在东部某个地方的甲虫大厅附近找到它们。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "������ڶ���ĳ���ط��ļ׳���������ҵ����ǡ�";
 								callsub S_Quest,13162,13161;
 							}
 						}
 						break;
 					case 2:
 						if (checkquest(13164,PLAYTIME) == 0)
-							mes "我正在做一个故事...两个意味着小于三个~我开始做一个故事，但我无法完成。你会帮我吗？";
+							mes "��������һ������...������ζ��С������~�ҿ�ʼ��һ�����£������޷���ɡ���������";
 						else if (checkquest(13163,HUNTING) == 1) {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "那个喇叭的事让我有点困扰。一只角和两只角有什么区别？只是外表？";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "�Ǹ����ȵ��������е����š�һֻ�Ǻ���ֻ����ʲô����ֻ�������";
 							next;
-							mes "[拉吉]";
-							mes "也许这是不必要的。但好奇心对于讲故事的人来说很重要。哈哈哈。";
+							mes "[����]";
+							mes "Ҳ�����ǲ���Ҫ�ġ��������Ķ��ڽ����µ�����˵����Ҫ����������";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13163,HUNTING) == 2) {
-							mes "你平安回来了！如何？角甲虫似乎是一个有趣的故事。你确实做得很好。";
+							mes "��ƽ�������ˣ���Σ��Ǽ׳��ƺ���һ����Ȥ�Ĺ��¡���ȷʵ���úܺá�";
 							callsub S_Quest,13163,13164,1100000,200000;
 						}
 						else {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "我们谈论角甲虫？还有一个值得一提的..那就是角甲虫！";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "����̸�۽Ǽ׳棿����һ��ֵ��һ���..�Ǿ��ǽǼ׳棡";
 							next;
-							mes "[拉吉]";
-							mes "我不知道为什么。我刚听人说。我需要创作一首歌，所以请看看他们的世界！";
+							mes "[����]";
+							mes "�Ҳ�֪��Ϊʲô���Ҹ�����˵������Ҫ����һ�׸裬�����뿴�����ǵ����磡";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "你可以在东部某个地方的甲虫大厅附近找到它们。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "������ڶ���ĳ���ط��ļ׳���������ҵ����ǡ�";
 								callsub S_Quest,13164,13163;
 							}
 						}
 						break;
 					case 3:
 						if (checkquest(13166,PLAYTIME) == 0)
-							mes "关于鹿角甲虫的故事似乎还有更多！如果你有时间请帮助我。";
+							mes "����¹�Ǽ׳�Ĺ����ƺ����и��࣡�������ʱ��������ҡ�";
 						else if (checkquest(13165,HUNTING) == 1) {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "据传闻，似乎还有更特殊的圣甲虫。更强大，更可怕。";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "�ݴ��ţ��ƺ����и������ʥ�׳档��ǿ�󣬸����¡�";
 							next;
-							mes "[拉吉]";
-							mes "你认为鹿角甲虫可能是其中之一吗？";
+							mes "[����]";
+							mes "����Ϊ¹�Ǽ׳����������֮һ��";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13165,HUNTING) == 2) {
-							mes "长途跋涉一定很累吧！还有更多有趣的故事请告诉我！";
+							mes "��;����һ�����۰ɣ����и�����Ȥ�Ĺ���������ң�";
 							callsub S_Quest,13165,13166,1100000,200000;
 						}
 						else {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "这个非常独特！角看起来像鹿的角，所以被称为鹿角圣甲虫。";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "����ǳ����أ��ǿ�������¹�Ľǣ����Ա���Ϊ¹��ʥ�׳档";
 							next;
-							mes "[拉吉]";
-							mes "你难道不好奇它为什么有那个角吗？我认为它有一个人们会喜欢的有趣的故事。我要问你冒险者吗？";
+							mes "[����]";
+							mes "���ѵ���������Ϊʲô���Ǹ���������Ϊ����һ�����ǻ�ϲ������Ȥ�Ĺ��¡���Ҫ����ð������";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "你能找到一个关于鹿角甲虫的故事吗？我想，亲身体验才是最好的！";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "�����ҵ�һ������¹�Ǽ׳�Ĺ��������룬�������������õģ�";
 								callsub S_Quest,13166,13165;
 							}
 						}
 						break;
 					case 4:
 						if (checkquest(13168,PLAYTIME) == 0)
-							mes "我觉得 Rake Horn Scaraba 有更多故事。如果你有时间请帮助我。";
+							mes "�Ҿ��� Rake Horn Scaraba �и�����¡��������ʱ��������ҡ�";
 						else if (checkquest(13167,HUNTING) == 1) {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "这是我的计划。我正在为每个 Scaraba 制作 4 个段落。";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "�����ҵļƻ���������Ϊÿ�� Scaraba ���� 4 �����䡣";
 							next;
-							mes "[拉吉]";
-							mes "无论谁听或唱歌都会被迷惑，以为自己唱的是巨魔。听起来很有趣，对吧？";
+							mes "[����]";
+							mes "����˭���򳪸趼�ᱻ�Ի���Ϊ�Լ������Ǿ�ħ������������Ȥ���԰ɣ�";
 							cutin "ragi01",0;
 						}
 						else if (checkquest(13167,HUNTING) == 2) {
-							mes "谢谢 ！我确信我能创作出一首很棒的歌曲。";
+							mes "лл ����ȷ�����ܴ�����һ�׺ܰ��ĸ�����";
 							callsub S_Quest,13167,13168,1100000,200000;
 						}
 						else {
-							cutin "��ī���ī��",3;  //scaraba_card
-							mes "我开始感到困惑了。我要根据 Rake Horn Scarabas 的故事创作一首歌曲。";
+							cutin "&#65533;&#65533;��&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //scaraba_card
+							mes "�ҿ�ʼ�е������ˡ���Ҫ���� Rake Horn Scarabas �Ĺ��´���һ�׸�����";
 							next;
-							mes "[拉吉]";
-							mes "一首歌以 Uni-horn Scaraba 开头，然后与 Rake Horn Scaraba 一起演唱。你会帮我吗？";
+							mes "[����]";
+							mes "һ�׸��� Uni-horn Scaraba ��ͷ��Ȼ���� Rake Horn Scaraba һ���ݳ�����������";
 							next;
 							cutin "ragi01",0;
-							if (select( "接受请求", "退出。" ) == 1) {
-								mes "[拉吉]";
-								mes "请在甲虫馆找到有关耙角甲虫的故事。战斗或经历的故事都可以。";
+							if (select( "��������", "�˳���" ) == 1) {
+								mes "[����]";
+								mes "���ڼ׳���ҵ��йذҽǼ׳�Ĺ��¡�ս�������Ĺ��¶����ԡ�";
 								callsub S_Quest,13168,13167;
 							}
 						}
@@ -474,7 +476,7 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 				}
 			}
 			else {
-				mes "我会继续创作故事或歌曲。但冒险家应该踏入新的冒险。";
+				mes "�һ�����������»��������ð�ռ�Ӧ��̤���µ�ð�ա�";
 				next;
 				callsub S_Erasequest,
 					13143,1,"Egnigem Cenia",
@@ -490,44 +492,44 @@ moc_para01,41,76,3	script	Ragi#1	4_M_RAGI,{
 					13163,3,"Horn Scaraba",
 					13165,3,"Antler Scaraba",
 					13167,3,"Rake Horn Scaraba";
-				mes "[拉吉]";
-				mes "我希望能再次见到你，我们微笑着告别。";
+				mes "[����]";
+				mes "��ϣ�����ٴμ����㣬����΢Ц�Ÿ��";
 			}
 		}
 		else {
-			mes "[拉吉]";
-			mes "嗯，我正忙着为艾古先生办事。您还有什么疑问吗？";
+			mes "[����]";
+			mes "�ţ�����æ��Ϊ�����������¡�������ʲô������";
 			next;
-			switch( select( "你在哪里做头发的？", "请给我唱首歌。", "你有女朋友吗？", "关于爱谷" ) ) {
-				mes "[拉吉]";
+			switch( select( "����������ͷ���ģ�", "����ҳ��׸衣", "����Ů������", "���ڰ���" ) ) {
+				mes "[����]";
 			case 1:
-				mes "艾伯塔省有一位头发细腻的艺术家。他用一把烹饪剪刀剪掉了我的头发。看起来违法。";
+				mes "������ʡ��һλͷ��ϸ��������ҡ�����һ����⿼����������ҵ�ͷ����������Υ����";
 				next;
-				mes "[拉吉]";
-				mes "有时，发型或颜色很奇怪……但我很幸运我没有死。";
+				mes "[����]";
+				mes "��ʱ�����ͻ���ɫ����֡������Һ�������û������";
 				break;
 			case 2:
-				mes "作为乐队成员我还没有创作过一首歌。总有一天，我会为你创作一首好听的歌！";
+				mes "��Ϊ�ֶӳ�Ա�һ�û�д�����һ�׸衣����һ�죬�һ�Ϊ�㴴��һ�׺����ĸ裡";
 				break;
 			case 3:
 				cutin "ragi03",0;
 				mes "......";
 				next;
 				cutin "ragi02",0;
-				mes "[拉吉]";
-				mes "哀姑只在我心里。我想不出别的什么了。哪怕只是单方面的爱我也没关系……";
+				mes "[����]";
+				mes "����ֻ����������벻�����ʲô�ˡ�����ֻ�ǵ�����İ���Ҳû��ϵ����";
 				break;
 			case 4:
-				mes "我永远不会忘记第一次见到她的那一天。在伊兹鲁德港的所有人中，她盯着我看。现在我帮她做些小事。";
+				mes "����Զ�������ǵ�һ�μ���������һ�졣������³�¸۵��������У��������ҿ��������Ұ�����ЩС�¡�";
 				next;
-				mes "[拉吉]";
-				mes "但可惜，我觉得爱古喜欢上了别人。 ^FF0000我们从未见过……但我讨厌他。^000000";
+				mes "[����]";
+				mes "����ϧ���Ҿ��ð���ϲ�����˱��ˡ� ^FF0000���Ǵ�δ��������������������^000000";
 				next;
-				mes "[拉吉]";
-				mes "但我更恨自己，因为我想留在她身边，即使她永远见不到我。哈哈，我是不是太认真了？";
+				mes "[����]";
+				mes "���Ҹ����Լ�����Ϊ�������������ߣ���ʹ����Զ�������ҡ����������ǲ���̫�����ˣ�";
 				next;
-				mes "[拉吉]";
-				mes "我只是一个讲故事的人。任何故事都可以编造。大多数时候它包含真相。";
+				mes "[����]";
+				mes "��ֻ��һ�������µ��ˡ��κι��¶����Ա��졣�����ʱ�����������ࡣ";
 			}
 		}
 	}
@@ -552,30 +554,30 @@ S_Erasequest:
 			continue;
 		case 0:
 		case 1:
-			mes "[拉吉]";
+			mes "[����]";
 			switch( getarg(.@i+1) ) {
 			case 1:
-				mes "故事的其余部分"+ getarg(.@i+2) +"好的，我去问问别人。";
+				mes "���µ����ಿ��"+ getarg(.@i+2) +"�õģ���ȥ���ʱ��ˡ�";
 				break;
 			case 2:
 			case 3:
-				mes "我会向其他冒险者询问故事"+ getarg(.@i+2) +".";
+				mes "�һ�������ð����ѯ�ʹ���"+ getarg(.@i+2) +".";
 				break;
 			}
 			break;
 		case 2:
-			mes "[拉吉]";
+			mes "[����]";
 			switch( getarg(.@i+1) ) {
 			case 1:
-				mes "你听过这个故事吗"+ getarg(.@i+2) +"？感谢您。我保证会创作一首好歌。";
+				mes "���������������"+ getarg(.@i+2) +"����л�����ұ�֤�ᴴ��һ�׺ø衣";
 				getexp 1100000,300000;
 				break;
 			case 2:
-				mes "Morocc的故事适合歌曲吗？你做得很好。";
+				mes "Morocc�Ĺ����ʺϸ����������úܺá�";
 				getexp 1100000,200000;
 				break;
 			case 3:
-				mes "你的冒险经历如何？好玩吗？请有一天让我听听你的冒险故事。";
+				mes "���ð�վ�����Σ�����������һ�������������ð�չ��¡�";
 				getexp 1100000,200000;
 				break;
 			}

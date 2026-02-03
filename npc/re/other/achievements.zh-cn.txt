@@ -5,6 +5,8 @@
 //===== Changelogs: ==========================================
 //= 1.0 Initial release. [Aleos]
 //= 1.1 Corrected the position using official script. [Atemo]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Triggers NPCs

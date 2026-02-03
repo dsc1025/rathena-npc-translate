@@ -13,6 +13,8 @@
 //= 1.0 Updated to match the new Izlude Map. [Masao]
 //= 1.1 Added Izlude duplicates. [Euphy]
 //= 1.2 Added Morocc [zackdreaver]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 izlude,125,175,4	duplicate(SmileHelper)	Smile Assistance#iz	92

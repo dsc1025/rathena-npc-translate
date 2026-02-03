@@ -4,6 +4,8 @@
 //= Warp Points for oz_dun
 //===== Additional Comments: =================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 oz_dun01,112,30,0	warp	to_oz_dun02	1,1,oz_dun02,142,279

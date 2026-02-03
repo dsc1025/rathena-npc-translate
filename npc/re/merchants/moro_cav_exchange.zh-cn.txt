@@ -6,93 +6,95 @@
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
 //= 1.1 Slight change to match official script. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moro_cav,32,73,5	script	Hero Token Exchanger#1	4_F_SHADOWCHASER,{
 	disable_items;
-	mes "[英雄代币兑换器]";
-	mes "如果你与摩洛哥作战";
-	mes "并收集了";
-	mes "英雄代币，";
-	mes "我可以用一枚特殊的戒指给你交换。";
-	mes "你想看看我的戒指吗？";
+	mes "[Ӣ�۴��Ҷһ���]";
+	mes "�������Ħ�����ս";
+	mes "���ռ���";
+	mes "Ӣ�۴��ң�";
+	mes "�ҿ�����һö����Ľ�ָ���㽻����";
+	mes "���뿴���ҵĽ�ָ��";
 	while(true) {
 		next;
 		if (checkweight(2163,2) == 0) {
-			mes "[英雄代币兑换器]";
-			mes "你的包里有很多东西，";
-			mes "请安排好后再来！";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "��İ����кܶණ����";
+			mes "�밲�źú�������";
 			close;
 		}
-		switch( select( "响铃描述", "与响铃交换。", "结束通话。" ) ) {
+		switch( select( "��������", "�����彻����", "����ͨ����" ) ) {
 		case 1:
-			mes "[英雄代币兑换器]";
-			mes "这个英雄戒指";
-			mes "不得";
-			mes "看";
-			mes "感人的，";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "���Ӣ�۽�ָ";
+			mes "����";
+			mes "��";
+			mes "���˵ģ�";
 			next;
-			mes "[英雄代币兑换器]";
-			mes "但把它带到";
-			mes "专家附魔师伯恩斯，";
-			mes "他可以附魔";
-			mes "里面的所有 4 个插座";
-			mes "并带出";
-			mes "它的潜在能力。";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "����������";
+			mes "ר�Ҹ�ħʦ����˹��";
+			mes "�����Ը�ħ";
+			mes "��������� 4 ������";
+			mes "������";
+			mes "����Ǳ��������";
 			next;
-			mes "[英雄代币兑换器]";
-			mes "英雄戒指";
-			mes "可以帮助你";
-			mes "在征服";
-			mes "摩洛哥。";
-			mes "还有其他问题吗？";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "Ӣ�۽�ָ";
+			mes "���԰�����";
+			mes "������";
+			mes "Ħ��硣";
+			mes "��������������";
 			continue;
 		case 2:
-			mes "- 英雄戒指 -";
-			mes "^006400为战士打造的戒指^000000";
-			mes "^006400致力于击败摩洛哥..^000000";
-			mes "^006400魔法时，^000000";
-			mes "^006400它借给它的所有者^000000";
-			mes "^006400对抗摩洛哥的力量。^000000";
-			mes "^006400类别：配件/DEF：0^000000";
-			mes "^006400权重：20/所需等级：160^000000";
-			mes "^006400槽位：0/装备至：所有工作^000000";
+			mes "- Ӣ�۽�ָ -";
+			mes "^006400Ϊսʿ����Ľ�ָ^000000";
+			mes "^006400�����ڻ���Ħ���..^000000";
+			mes "^006400ħ��ʱ��^000000";
+			mes "^006400���������������^000000";
+			mes "^006400�Կ�Ħ����������^000000";
+			mes "^006400������/DEF��0^000000";
+			mes "^006400Ȩ�أ�20/����ȼ���160^000000";
+			mes "^006400��λ��0/װ���������й���^000000";
 			next;
-			mes "[英雄代币兑换器]";
-			mes "英雄戒指需要";
-			mes "30 个英雄代币";
-			mes "用于交换。";
-			mes "你想交换吗？";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "Ӣ�۽�ָ��Ҫ";
+			mes "30 ��Ӣ�۴���";
+			mes "���ڽ�����";
+			mes "���뽻����";
 			next;
-			if (select( "上一菜单。", "兑换 30 个英雄代币。" ) == 1) {
-				mes "[英雄代币兑换器]";
-				mes "思考";
-				mes "再次。";
+			if (select( "��һ�˵���", "�һ� 30 ��Ӣ�۴��ҡ�" ) == 1) {
+				mes "[Ӣ�۴��Ҷһ���]";
+				mes "˼��";
+				mes "�ٴΡ�";
 				continue;
 			}
 			if (countitem(6684) < 30) {
-				mes "[英雄代币兑换器]";
-				mes "^006400英雄令牌^000000";
-				mes "被给予";
-				mes "那些勇敢地与摩洛哥作战的人。";
-				mes "你没有";
-				mes "30 个^006400英雄代币^000000，";
-				mes "因此我无法帮助你。";
+				mes "[Ӣ�۴��Ҷһ���]";
+				mes "^006400Ӣ������^000000";
+				mes "������";
+				mes "��Щ�¸ҵ���Ħ�����ս���ˡ�";
+				mes "��û��";
+				mes "30 ��^006400Ӣ�۴���^000000��";
+				mes "������޷������㡣";
 				continue;
 			}
-			mes "[英雄代币兑换器]";
-			mes "我来交换";
-			mes "30 个^006400英雄代币^000000";
-			mes "带有 1 个^006400英雄戒指^000000。";
-			mes "还要别的吗？";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "��������";
+			mes "30 ��^006400Ӣ�۴���^000000";
+			mes "���� 1 ��^006400Ӣ�۽�ָ^000000��";
+			mes "��Ҫ�����";
 			delitem 6684,30;	// TokenOfHero
 			getitem 2981,1;		// RingOfHero
 			continue;
 		case 3:
-			mes "[英雄代币兑换器]";
-			mes "一天";
-			mes "你会发现自己";
-			mes "需要英雄戒指。";
+			mes "[Ӣ�۴��Ҷһ���]";
+			mes "һ��";
+			mes "��ᷢ���Լ�";
+			mes "��ҪӢ�۽�ָ��";
 			close;
 		}
 	}
@@ -100,27 +102,27 @@ moro_cav,32,73,5	script	Hero Token Exchanger#1	4_F_SHADOWCHASER,{
 
 moro_cav,34,65,5	script	Expert Enchanter Byrnes	1_M_03,{
 	disable_items;
-	mes "[伯恩斯]";
-	mes "你听说过英雄戒指吗？只有真正的英雄才配拥有这枚华丽的戒指，而我一直在等待一枚戒指。";
-	mes "我能为你做什么？";
+	mes "[����˹]";
+	mes "����˵��Ӣ�۽�ָ��ֻ��������Ӣ�۲���ӵ����ö�����Ľ�ָ������һֱ�ڵȴ�һö��ָ��";
+	mes "����Ϊ����ʲô��";
 	next;
-	switch( select( "附魔英雄戒指。", "重置英雄戒指上的附魔。", "取消。" ) ) {
+	switch( select( "��ħӢ�۽�ָ��", "����Ӣ�۽�ָ�ϵĸ�ħ��", "ȡ����" ) ) {
 	case 1:
-		mes "[伯恩斯]";
-		mes "我只能对装备好的戒指进行附魔。您想要为哪一枚已装备的戒指附魔？";
+		mes "[����˹]";
+		mes "��ֻ�ܶ�װ���õĽ�ָ���и�ħ������ҪΪ��һö��װ���Ľ�ָ��ħ��";
 		next;
 		setarray .@eqi_slot[0], EQI_ACC_L, EQI_ACC_R;
-		.@s = select( "左边", "正确的" ) - 1;
+		.@s = select( "���", "��ȷ��" ) - 1;
 		switch( getequipid(.@eqi_slot[.@s]) ) {
 		case -1:
-			mes "[伯恩斯]";
-			mes "请装备您想要附魔的英雄戒指。";
+			mes "[����˹]";
+			mes "��װ������Ҫ��ħ��Ӣ�۽�ָ��";
 			close;
 		case 2981:
 			break;
 		default:
-			mes "[伯恩斯]";
-			mes "请装备你的英雄戒指。我无法对其他任何东西进行附魔。";
+			mes "[����˹]";
+			mes "��װ�����Ӣ�۽�ָ�����޷��������κζ������и�ħ��";
 			close;
 		}
 		// custom at this point
@@ -131,8 +133,8 @@ moro_cav,34,65,5	script	Expert Enchanter Byrnes	1_M_03,{
 			getequipcardid(.@eqi_slot[.@s],3);
 
 		if (.@card[0] > 0) {
-			mes "[伯恩斯]";
-			mes "完全附魔的英雄戒指无法再进行附魔。";
+			mes "[����˹]";
+			mes "��ȫ��ħ��Ӣ�۽�ָ�޷��ٽ��и�ħ��";
 			close;
 		}
 		if (.@card[3] == 0) {
@@ -151,8 +153,8 @@ moro_cav,34,65,5	script	Expert Enchanter Byrnes	1_M_03,{
 			setarray .@enchant_list$[0], "STR", "INT", "AGI", "VIT", "DEX", "LUK";
 			.@slot = 1;
 		}
-		mes "[伯恩斯]";
-		mes "您想要哪种能力作为插槽 " + .@slot + " 上的附魔？";
+		mes "[����˹]";
+		mes "����Ҫ����������Ϊ��� " + .@slot + " �ϵĸ�ħ��";
 		next;
 		.@enchant_list_size = getarraysize(.@enchant_list$);
 		for ( .@i = 0; .@i < .@enchant_list_size; ++.@i )
@@ -221,41 +223,41 @@ moro_cav,34,65,5	script	Expert Enchanter Byrnes	1_M_03,{
 		.@bonus_size = getarraysize(.@bonus);
 		.@card[.@slot-1] = .@bonus[ rand(.@bonus_size) ];	// unknown rates
 		specialeffect2 EF_ANGEL2;
-		mes "[伯恩斯]";
-		mes "附魔完成！";
+		mes "[����˹]";
+		mes "��ħ��ɣ�";
 		delequip .@eqi_slot[.@s];
 		getitem2 2981,1,1,0,0,.@card[0],.@card[1],.@card[2],.@card[3];
 		close;
 	case 2:
-		mes "[伯恩斯]";
-		mes "要重置英雄戒指上的结界，我需要 3 个英雄令牌。";
+		mes "[����˹]";
+		mes "Ҫ����Ӣ�۽�ָ�ϵĽ�磬����Ҫ 3 ��Ӣ�����ơ�";
 		next;
 		if (countitem(6684) < 3) {
-			mes "[伯恩斯]";
-			mes "您没有足够的英雄令牌。我无法重置你的英雄戒指。";
+			mes "[����˹]";
+			mes "��û���㹻��Ӣ�����ơ����޷��������Ӣ�۽�ָ��";
 			close;
 		}
-		mes "[伯恩斯]";
-		mes "我只能重置已装备的戒指。您想要重置哪一枚已装备的戒指？";
+		mes "[����˹]";
+		mes "��ֻ��������װ���Ľ�ָ������Ҫ������һö��װ���Ľ�ָ��";
 		next;
 		setarray .@eqi_slot[0], EQI_ACC_L, EQI_ACC_R;
-		.@s = select( "左边", "正确的" ) - 1;
+		.@s = select( "���", "��ȷ��" ) - 1;
 		switch( getequipid(.@eqi_slot[.@s]) ) {
 		case -1:
-			mes "[伯恩斯]";
-			mes "您首先必须装备该物品以重置其附魔状态。";
+			mes "[����˹]";
+			mes "�����ȱ���װ������Ʒ�������丽ħ״̬��";
 			close;
 		case 2981:
 			break;
 		default:
-			mes "[伯恩斯]";
-			mes "请装备你的英雄戒指。我无法重置其他任何东西。";
+			mes "[����˹]";
+			mes "��װ�����Ӣ�۽�ָ�����޷����������κζ�����";
 			close;
 		}
 		// custom at this point
 		if (countitem(6684) < 3) {
-			mes "[伯恩斯]";
-			mes "您没有足够的英雄令牌。我无法重置你的英雄戒指。";
+			mes "[����˹]";
+			mes "��û���㹻��Ӣ�����ơ����޷��������Ӣ�۽�ָ��";
 			close;
 		}
 		setarray .@card[0],
@@ -265,8 +267,8 @@ moro_cav,34,65,5	script	Expert Enchanter Byrnes	1_M_03,{
 			getequipcardid(.@eqi_slot[.@s],3);
 
 		if (.@card[3] == 0) {
-			mes "[伯恩斯]";
-			mes "你的英雄戒指目前处于没有结界的状态。";
+			mes "[����˹]";
+			mes "���Ӣ�۽�ָĿǰ����û�н���״̬��";
 			close;
 		}
 
@@ -275,8 +277,8 @@ moro_cav,34,65,5	script	Expert Enchanter Byrnes	1_M_03,{
 			close;
 
 		specialeffect2 EF_ANGEL2;
-		mes "[伯恩斯]";
-		mes "初始化完成。";
+		mes "[����˹]";
+		mes "��ʼ����ɡ�";
 		delitem 6684,3;
 		delequip .@eqi_slot[.@s];
 		getitem 2981,1;

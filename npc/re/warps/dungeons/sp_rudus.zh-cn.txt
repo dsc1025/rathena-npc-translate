@@ -2,6 +2,8 @@
 //= Rudus Dungeon Warps Script
 //===== Changelog: ===========================================
 //= 1.0 First version [crazyarashi]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 sp_rudus,200,382,0	warp	rudus_to_field	1,1,ein_fild05,158,289

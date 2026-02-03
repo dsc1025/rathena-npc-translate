@@ -20,6 +20,8 @@
 //= 1.0.2 Convert to rAthena [Anity99]
 //= 1.0.3 Fix typos and update marketshop [Anity99]
 //= 1.0.4 Fixed item id typo [Everade]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // $event_paramk, 0 // Holiday Wednesday
@@ -280,120 +282,120 @@ OnSat2200:
 
 // Eden Market Group Hustler
 moc_para01,106,38,4	script	Market Group Hustler#ent	4_M_YOYOROGUE,{
-	mes "[骗子]";
-	mes "嘿，冒险家。";
-	mes "我可以带你去一个好地方。你有兴趣吗？";
+	mes "[ƭ��]";
+	mes "�٣�ð�ռҡ�";
+	mes "�ҿ��Դ���ȥһ���õط���������Ȥ��";
 	next;
-	switch (select("移至 Eden Market Group！：关于 Eden Market Group。：取消。")) {
+	switch (select("���� Eden Market Group�������� Eden Market Group����ȡ����")) {
 	case 1:
-		mes "[骗子]";
-		mes "搬家啦~！";
+		mes "[ƭ��]";
+		mes "�����~��";
 		close2;
 		warp "paramk",97,17;
 		end;
 	case 2:
-		mes "[骗子]";
-		mes "哈哈哈……伊甸市场群是商人聚集的地方，出售各种物品。";
-		mes "我指的不是像果冻这样的常见东西，你可以在任何地方获得它们。在这里，我们只经营真货。";
+		mes "[ƭ��]";
+		mes "���������������г�Ⱥ�����˾ۼ��ĵط������۸�����Ʒ��";
+		mes "��ָ�Ĳ�������������ĳ�����������������κεط�������ǡ����������ֻ��Ӫ�����";
 		next;
-		mes "[骗子]";
-		mes "简单的原料、宝石、来自地下城和挖掘地点的稀有物品，以及来自另一个维度的奇异文物……";
-		mes "您想要的一切！";
+		mes "[ƭ��]";
+		mes "�򵥵�ԭ�ϡ���ʯ�����Ե��³Ǻ��ھ�ص��ϡ����Ʒ���Լ�������һ��ά�ȵ����������";
+		mes "����Ҫ��һ�У�";
 		next;
-		select("你的意思是，这是黑市？！");
-		mes "[骗子]";
-		mes "啊……我不会这么说。";
-		mes "这个市场在技术上是合法的......";
-		mes "请记住，大多数特殊产品都是^4d4dff数量有限^000000。如果你迟到了，它们可能就卖完了。";
+		select("�����˼�ǣ����Ǻ��У���");
+		mes "[ƭ��]";
+		mes "�������Ҳ�����ô˵��";
+		mes "����г��ڼ������ǺϷ���......";
+		mes "���ס������������Ʒ����^4d4dff��������^000000�������ٵ��ˣ����ǿ��ܾ������ˡ�";
 		next;
-		mes "[骗子]";
-		mes "大多数数量有限的商品不会有折扣。";
-		mes "您必须支付全价。";
+		mes "[ƭ��]";
+		mes "������������޵���Ʒ�������ۿۡ�";
+		mes "������֧��ȫ�ۡ�";
 		next;
-		mes "[骗子]";
-		mes "冒险家有时会过来出售他们在探险中发现的东西。";
-		mes "但你必须亲自看看！";
+		mes "[ƭ��]";
+		mes "ð�ռ���ʱ���������������̽���з��ֵĶ�����";
+		mes "����������Կ�����";
 		next;
-		mes "[骗子]";
-		mes "请记住，大多数商店每周都会休息一天； ^4d4dff大多数商店周三不营业^000000。";
-		mes "不过，并非所有商店都在周三关门。其中大多数仍然开放。";
+		mes "[ƭ��]";
+		mes "���ס��������̵�ÿ�ܶ�����Ϣһ�죻 ^4d4dff������̵�������Ӫҵ^000000��";
+		mes "���������������̵궼���������š����д������Ȼ���š�";
 		next;
-		mes "[骗子]";
-		mes "周末出售更多特别商品。";
-		mes "我什至见过一个" + mesitemlink( 709, false ) + "正在出售~";
-		mes "太棒了。";
-		mes "当然，它非常昂贵，而且只有少数可以出售。";
+		mes "[ƭ��]";
+		mes "��ĩ���۸����ر���Ʒ��";
+		mes "��ʲ������һ��" + mesitemlink( 709, false ) + "���ڳ���~";
+		mes "̫���ˡ�";
+		mes "��Ȼ�����ǳ����󣬶���ֻ���������Գ��ۡ�";
 		next;
-		mes "[骗子]";
-		mes "怎么样？感兴趣的？";
-		mes "难道不值得一去吗？";
-		mes "哈哈哈哈！";
+		mes "[ƭ��]";
+		mes "��ô��������Ȥ�ģ�";
+		mes "�ѵ���ֵ��һȥ��";
+		mes "����������";
 		close;
 	case 3:
-		mes "[骗子]";
-		mes "如果您想去伊甸园市场集团，请随时来！";
+		mes "[ƭ��]";
+		mes "�������ȥ����԰�г����ţ�����ʱ����";
 		close;
 	}
 }
 
 // Eden Market Group Guide
 paramk,101,22,3	script	Market Group Guide#info	4_F_ZONDAGIRL,{
-	mes "[指南]";
-	mes "你好。欢迎来到伊甸市场集团，这是由大陆商人联盟运营并得到伊甸集团支持的官方市场。";
+	mes "[ָ��]";
+	mes "��á���ӭ���������г����ţ������ɴ�½����������Ӫ���õ����鼯��֧�ֵĹٷ��г���";
 	next;
-	switch (select("关于我们的营业时间：关于特殊产品。：关于 Eden Market Group。：取消。")) {
+	switch (select("�������ǵ�Ӫҵʱ�䣺���������Ʒ�������� Eden Market Group����ȡ����")) {
 	case 1:
-		mes "[指南]";
-		mes "Eden Market Group 是一个包含许多不同商店的市场。";
+		mes "[ָ��]";
+		mes "Eden Market Group ��һ���������಻ͬ�̵���г���";
 		next;
-		mes "[指南]";
-		mes "周三为市场指定法定节假日；大多数商店在这一天都关门。";
+		mes "[ָ��]";
+		mes "����Ϊ�г�ָ�������ڼ��գ�������̵�����һ�춼���š�";
 		next;
-		mes "[指南]";
-		mes "然而，根据业主的意愿以及所提供商品的类型，一些商店即使在假期也仍部分营业。";
+		mes "[ָ��]";
+		mes "Ȼ��������ҵ������Ը�Լ����ṩ��Ʒ�����ͣ�һЩ�̵꼴ʹ�ڼ���Ҳ�Բ���Ӫҵ��";
 		next;
-		mes "[指南]";
-		mes "而且，一些商店在一周的某些日子提供特殊商品。请记住这一点。";
+		mes "[ָ��]";
+		mes "���ң�һЩ�̵���һ�ܵ�ĳЩ�����ṩ������Ʒ�����ס��һ�㡣";
 		close;
 	case 2:
-		mes "[指南]";
-		mes "有些商店会在周末、一周中的某些日子甚至在某些时间出售不同的商品；这些物品与平常的日常物品不同。";
+		mes "[ָ��]";
+		mes "��Щ�̵������ĩ��һ���е�ĳЩ����������ĳЩʱ����۲�ͬ����Ʒ����Щ��Ʒ��ƽ�����ճ���Ʒ��ͬ��";
 		next;
-		mes "[指南]";
-		mes "“Wonderful Friends”和“Strong Friends”每个周末都会出售一件稀有物品。";
-		mes "“矿工联盟”只会在周末出售用于锻造的铁砧。";
+		mes "[ָ��]";
+		mes "��Wonderful Friends���͡�Strong Friends��ÿ����ĩ�������һ��ϡ����Ʒ��";
+		mes "�������ˡ�ֻ������ĩ�������ڶ�������衣";
 		next;
-		mes "[指南]";
-		mes "我无法告诉你各个商店卖什么商品，因为它们都不同。";
-		mes "您为什么不经常访问亲自了解一下呢？";
+		mes "[ָ��]";
+		mes "���޷�����������̵���ʲô��Ʒ����Ϊ���Ƕ���ͬ��";
+		mes "��Ϊʲô���������������˽�һ���أ�";
 		close;
 	case 3:
-		mes "[指南]";
-		mes "有很多具有商人灵魂的人愿意将自己的物品出售给有需要的人。";
-		mes "Eden Market Group为这些人指定了一个买卖场所。";
+		mes "[ָ��]";
+		mes "�кܶ��������������Ը�⽫�Լ�����Ʒ���۸�����Ҫ���ˡ�";
+		mes "Eden Market GroupΪ��Щ��ָ����һ������������";
 		next;
-		mes "[指南]";
-		mes "我们与商业联盟和冒险家合作，为原本属于违禁品的商品提供了以公平和透明的方式买卖的手段。";
+		mes "[ָ��]";
+		mes "��������ҵ���˺�ð�ռҺ�����Ϊԭ������Υ��Ʒ����Ʒ�ṩ���Թ�ƽ��͸���ķ�ʽ�������ֶΡ�";
 		next;
-		mes "[指南]";
-		mes "有人嘀咕Eden Market Group是黑市……哈哈，真是愚蠢的想法……";
-		mes "我们只是一个商人联盟。";
+		mes "[ָ��]";
+		mes "�����ֹ�Eden Market Group�Ǻ��С��������������޴����뷨����";
+		mes "����ֻ��һ���������ˡ�";
 		next;
-		mes "[指南]";
-		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-		mes "您可以在这里出售冒险中的战利品，我们赚取的利润将用于提供对您有利的服务。我们确实是一石二鸟。";
+		mes "[ָ��]";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+		mes "���������������ð���е�ս��Ʒ������׬ȡ�����������ṩ���������ķ�������ȷʵ��һʯ����";
 		next;
-		mes "[指南]";
-		mes "请记住，数量有限的商品永远不会打折！";
+		mes "[ָ��]";
+		mes "���ס���������޵���Ʒ��Զ������ۣ�";
 		close;
 	case 4:
-		mes "[指南]";
-		mes "玩的很开心！";
+		mes "[ָ��]";
+		mes "��ĺܿ��ģ�";
 		close;
 	}
 
 OnTimer60000:
-	npctalk "欢迎。这是伊甸市场集团。";
+	npctalk "��ӭ�����������г����š�";
 
 OnInit:
 	initnpctimer;
@@ -405,19 +407,19 @@ paramk,103,17,3	script	Market Guard#1	4_M_YOUNGKNIGHT,{
 	callfunc("F_CoolDown", 5);
 	switch (atoi(strnpcinfo(2))) {
 	default:
-		npctalk "欢迎。";
+		npctalk "��ӭ��";
 		break;
 	case 3:
-		npctalk "欢迎来到伊甸市场集团。";
+		npctalk "��ӭ���������г����š�";
 		break;
 	case 4:
-		npctalk "你好吗？这是伊甸市场集团。";
+		npctalk "��������������г����š�";
 		break;
 	case 5:
-		npctalk "感谢您在 Eden Market Group 购物。";
+		npctalk "��л���� Eden Market Group ���";
 		break;
 	case 6:
-		npctalk "欢迎。伊甸市场集团欢迎您。";
+		npctalk "��ӭ�������г����Ż�ӭ����";
 		break;
 	}
 	end;
@@ -436,7 +438,7 @@ paramk,53,67,3	duplicate(Market Guard#1)	Market Guard#6	4_M_YOUNGKNIGHT
 paramk,78,44,3	script	A wise customer#gst01	4_TOWER_14,6,6,{
 OnTouch:
 	callfunc("F_CoolDown", 4);
-	npctalk "我正在等待周末出售的武器。听说如果我来的时候，红色版和蓝色版都会提供。";
+	npctalk "�����ڵȴ���ĩ���۵���������˵���������ʱ�򣬺�ɫ�����ɫ�涼���ṩ��";
 	end;
 }
 
@@ -444,7 +446,7 @@ OnTouch:
 paramk,119,80,3	script	A dining customer#gst02	4_M_CHN8GUEK,6,6,{
 OnTouch:
 	callfunc("F_CoolDown", 4);
-	npctalk "太辣了！我不管这是不是‘家乡的味道’还是别的什么，太辣了！啊啊啊！";
+	npctalk "̫���ˣ��Ҳ������ǲ��ǡ������ζ�������Ǳ��ʲô��̫���ˣ���������";
 	end;
 }
 
@@ -452,7 +454,7 @@ OnTouch:
 paramk,106,61,3	script	Customer#gst03	4_TOWER_04,6,6,{
 OnTouch:
 	callfunc("F_CoolDown", 4);
-	npctalk "当我需要休息的时候我就来这里。我喜欢这个地方。很舒服，周围有很多有趣的东西。";
+	npctalk "������Ҫ��Ϣ��ʱ���Ҿ��������ϲ������ط������������Χ�кܶ���Ȥ�Ķ�����";
 	end;
 }
 
@@ -460,17 +462,17 @@ OnTouch:
 paramk,77,60,3	script	Window-shopper#gst04	4_TOWER_02,6,6,{
 OnTouch:
 	callfunc("F_CoolDown", 4);
-	npctalk "我想知道我是否真的可以整天逛街而不买任何东西......";
+	npctalk "����֪�����Ƿ���Ŀ��������ֶ������κζ���......";
 	end;
 }
 
 // Cassie
 paramk,113,56,3	script	Cassie#gst05	1_F_PUBGIRL,6,6,{
-	npctalk "欢迎来到Eden Market集团~想要喝点美酒吗？";
-	mes "[卡西]";
-	mes "您想买一杯饮料吗？";
+	npctalk "��ӭ����Eden Market����~��Ҫ�ȵ�������";
+	mes "[����]";
+	mes "������һ��������";
 	next;
-	switch (select("热带索格拉特：海滩上的朱红：不。")) {
+	switch (select("�ȴ��������أ���̲�ϵ���죺����")) {
 	case 1:
 		.@item = 12112;
 		break;
@@ -478,53 +480,53 @@ paramk,113,56,3	script	Cassie#gst05	1_F_PUBGIRL,6,6,{
 		.@item = 12113;
 		break;
 	case 3:
-		mes "[卡西]";
-		mes "玩的很开心。";
+		mes "[����]";
+		mes "��ĺܿ��ġ�";
 		close;
 	}
 	if (Zeny < 800) {
-		mes "[卡西]";
-		mes "一杯饮料要800兹。";
+		mes "[����]";
+		mes "һ������Ҫ800�ȡ�";
 		close;
 	}
-	mes "[卡西]";
-	mes "好好享受";
+	mes "[����]";
+	mes "�ú�����";
 	Zeny -= 800;
 	getitem(.@item, 1);
 	close;
 
 OnTouch:
 	callfunc("F_CoolDown", 4);
-	npctalk "欢迎来到伊甸市场集团。您想喝一杯美味的饮料吗？";
+	npctalk "��ӭ���������г����š������һ����ζ��������";
 	end;
 }
 
 // Leria
 paramk,74,15,0	script	Leria#coin	4_M_BIBI,{
 	if ($event_paramk > 0) {
-		mes "[莱里亚]";
-		mes "我出售从异次元收集的硬币。";
-		mes "购买任何吸引您眼球的东西。";
-		mes "请注意：它们相当昂贵。为了获得它们，我不得不经历巨大的麻烦。";
+		mes "[������]";
+		mes "�ҳ��۴����Ԫ�ռ���Ӳ�ҡ�";
+		mes "�����κ�����������Ķ�����";
+		mes "��ע�⣺�����൱����Ϊ�˻�����ǣ��Ҳ��ò������޴���鷳��";
 		next;
-		if (select("查看正在出售的商品。：取消。") == 1) {
-			mes "[莱里亚]";
-			mes "我可能没有任何库存了，因为我只卖少量的商品。";
+		if (select("�鿴���ڳ��۵���Ʒ����ȡ����") == 1) {
+			mes "[������]";
+			mes "�ҿ���û���κο���ˣ���Ϊ��ֻ����������Ʒ��";
 			close2;
 			callshop "para_coin10";
 			end;
 		}
-		mes "[莱里亚]";
-		mes "由于我走遍世界寻找我出售的物品，所以价格很高......";
-		mes "但无论如何还是有人购买它们。";
+		mes "[������]";
+		mes "�������߱�����Ѱ���ҳ��۵���Ʒ�����Լ۸�ܸ�......";
+		mes "��������λ������˹������ǡ�";
 		next;
-		mes "[莱里亚]";
-		mes "好吧，那些需要它们的人必须付出代价。不是这样吗？";
+		mes "[������]";
+		mes "�ðɣ���Щ��Ҫ���ǵ��˱��븶�����ۡ�����������";
 		close;
 	} else { // holiday
-		mes "[莱里亚]";
-		mes "啊……今天是市场假期。";
-		mes "如果你需要硬币，明天再来。";
+		mes "[������]";
+		mes "�������������г����ڡ�";
+		mes "�������ҪӲ�ң�����������";
 		close;
 	}
 }
@@ -532,26 +534,26 @@ paramk,74,15,0	script	Leria#coin	4_M_BIBI,{
 // Heimhunter
 paramk,71,15,3	script	Heimhunter#hei	4_GEFFEN_11,{
 	if ($event_paramk > 0) {
-		mes "[海姆亨特]";
-		mes "啊，你就是那个想要古堡‘那个’的顾客吗？";
-		mes "我每天只能得到一个，但我会卖掉它。";
+		mes "[��ķ����]";
+		mes "����������Ǹ���Ҫ�ű����Ǹ����Ĺ˿���";
+		mes "��ÿ��ֻ�ܵõ�һ�������һ���������";
 		next;
-		if (select("查看该项目：取消。") == 1) {
-			mes "[海姆亨特]";
-			mes "只有一个..";
-			mes "它可能已经被别人买了。";
-			mes "请理解。";
+		if (select("�鿴����Ŀ��ȡ����") == 1) {
+			mes "[��ķ����]";
+			mes "ֻ��һ��..";
+			mes "�������Ѿ����������ˡ�";
+			mes "�����⡣";
 			close2;
 			callshop "para_hei10";
 			end;
 		}
-		mes "[海姆亨特]";
-		mes "如你所愿。";
+		mes "[��ķ����]";
+		mes "������Ը��";
 		close;
 	} else { // holiday
-		mes "[海姆亨特]";
-		mes "今天是官方市场假期。";
-		mes "我也去休息一下";
+		mes "[��ķ����]";
+		mes "�����ǹٷ��г����ڡ�";
+		mes "��Ҳȥ��Ϣһ��";
 		close;
 	}
 }
@@ -559,28 +561,28 @@ paramk,71,15,3	script	Heimhunter#hei	4_GEFFEN_11,{
 // Zephet
 paramk,68,15,0	script	Zephet#key	4_M_HUMERCHANT,{
 	if ($event_paramk > 3) {
-		mes "[泽菲特]";
-		mes "你需要钥匙吗？";
-		mes "我可能有一些额外的钟楼钥匙吗？";
+		mes "[�����]";
+		mes "����ҪԿ����";
+		mes "�ҿ�����һЩ�������¥Կ����";
 		next;
-		if (select("购买钥匙：取消。") == 1) {
-			mes "[泽菲特]";
-			mes "我自己收集并出售钟楼的钥匙......";
-			mes "尽管我整个星期都在寻找它们，但可用的东西并不多。";
-			mes "它们可能已经卖完了。";
+		if (select("����Կ�ף�ȡ����") == 1) {
+			mes "[�����]";
+			mes "���Լ��ռ���������¥��Կ��......";
+			mes "�������������ڶ���Ѱ�����ǣ������õĶ��������ࡣ";
+			mes "���ǿ����Ѿ������ˡ�";
 			close2;
 			callshop "para_key10";
 			end;
 		}
-		mes "[泽菲特]";
-		mes "你不需要钥匙吗？";
-		mes "请记住，我只在周末在这里出售钥匙。";
-		mes "仅供您参考。";
+		mes "[�����]";
+		mes "�㲻��ҪԿ����";
+		mes "���ס����ֻ����ĩ���������Կ�ס�";
+		mes "�������ο���";
 		close;
 	} else { // holiday
-		mes "[泽菲特]";
-		mes "我还没有足够的钥匙。";
-		mes "周六下午后回来。";
+		mes "[�����]";
+		mes "�һ�û���㹻��Կ�ס�";
+		mes "��������������";
 		close;
 	}
 }
@@ -589,62 +591,62 @@ paramk,68,15,0	script	Zephet#key	4_M_HUMERCHANT,{
 // Strong Friends - Weapon shop
 // Sign
 paramk,72,33,0	script	[Strong Friends]#wp00	HIDDEN_NPC,{
-	mes "==坚强的朋友==";
-	mes "从普通武器到价值连城的镶满宝石的剑！";
-	mes "你想要的每一件武器都在这里供你细读。";
+	mes "==��ǿ������==";
+	mes "����ͨ��������ֵ���ǵ�������ʯ�Ľ���";
+	mes "����Ҫ��ÿһ�������������﹩��ϸ����";
 	close;
 }
 
 // Miffy
 paramk,65,30,3	script	Miffy#wp01	4_F_LGTGIRL,{
 	if ($event_paramk > 1) {
-		mes "[米菲]";
-		mes "限量系列，仅在火热的周五、周六和周日发售！";
-		mes "我们提供冒险家从地下城中取回的各种古代武器！";
+		mes "[�׷�]";
+		mes "����ϵ�У����ڻ��ȵ����塢���������շ��ۣ�";
+		mes "�����ṩð�ռҴӵ��³���ȡ�صĸ��ֹŴ�������";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "[米菲]";
-			mes "让我们向您展示“Strong Friends”特别收藏。";
-			mes "如果你打开箱子却发现里面什么也没有";
-			mes "这意味着该武器已经被出售。";
-			mes "战利品流向反应敏捷的人。";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "[�׷�]";
+			mes "����������չʾ��Strong Friends���ر��ղء�";
+			mes "����������ȴ��������ʲôҲû��";
+			mes "����ζ�Ÿ������Ѿ������ۡ�";
+			mes "ս��Ʒ����Ӧ���ݵ��ˡ�";
 			close2;
 			callshop "para_wp00";
 			end;
 		}
-		mes "[米菲]";
-		mes "周末出售特殊武器！";
-		mes "随时来看我们！";
+		mes "[�׷�]";
+		mes "��ĩ��������������";
+		mes "��ʱ�������ǣ�";
 		close;
 	} else { // Wednesday Holiday
-		mes "[米菲]";
-		mes "你好。这里是武器店‘Strong Friends’。";
-		mes "我们出售冒险家从地下城和战斗中取回的武器，";
-		mes "漫游大陆上空。";
+		mes "[�׷�]";
+		mes "��á������������ꡮStrong Friends����";
+		mes "���ǳ���ð�ռҴӵ��³Ǻ�ս����ȡ�ص�������";
+		mes "���δ�½�Ͽա�";
 		next;
-		mes "[米菲]";
-		mes "^000000周五周六周日，连续三天限量武器领取！^000000";
-		mes "随时来看我们！";
+		mes "[�׷�]";
+		mes "^000000�����������գ�������������������ȡ��^000000";
+		mes "��ʱ�������ǣ�";
 		close;
 	}
 }
 
 // Nelsha
 paramk,70,31,3	script	Nelsha#wp02	4_M_SITDOWN,{
-	mes "[内尔莎]";
-	mes "你好。";
-	mes "这是“Strong Friends”，其中有一系列基本武器可供您细读。";
+	mes "[�ڶ�ɯ]";
+	mes "��á�";
+	mes "���ǡ�Strong Friends����������һϵ�л��������ɹ���ϸ����";
 	next;
 	setarray .@shopname$[0], "para_wp01", "para_wp02", "para_wp03", "para_wp04", "para_wp05";
 	setarray .@shopdesc$[0], "Maces, Rods and Knuckles", "One-Handed Swords and Two-Handed Sword", "Bows, Innstruments and Whips", "Daggers and Katars", "Axes and Spears";
-	.@s = select("狼牙棒、棍棒、指关节：单手剑、双手剑：弓、乐器、鞭子：匕首、卡塔尔石：斧头、长矛：取消") - 1;
+	.@s = select("��������������ָ�ؽڣ����ֽ���˫�ֽ����������������ӣ�ذ�ס�������ʯ����ͷ����ì��ȡ��") - 1;
 	if (.@s == 5) {
-		mes "[内尔莎]";
-		mes "感谢您的购物。";
+		mes "[�ڶ�ɯ]";
+		mes "��л���Ĺ��";
 		close;
 	}
-	mes "[内尔莎]";
-	mes "我会告诉你" + .@shopdesc$[.@s];
+	mes "[�ڶ�ɯ]";
+	mes "�һ������" + .@shopdesc$[.@s];
 	close2;
 	callshop(.@shopname$[.@s], 1);
 	end;
@@ -654,34 +656,34 @@ paramk,70,31,3	script	Nelsha#wp02	4_M_SITDOWN,{
 // Reliable Friends
 // Sign
 paramk,72,33,3	script	[Reliable Friends]#arm00	HIDDEN_NPC,{
-	mes "==可靠的朋友==";
-	mes "你需要盾牌、盔甲和坚固的头盔吗？";
-	mes "您可以信赖可靠的朋友！";
+	mes "==�ɿ�������==";
+	mes "����Ҫ���ơ����׺ͼ�̵�ͷ����";
+	mes "�����������ɿ������ѣ�";
 	close;
 }
 
 // Coco
 paramk,78,31,3	script	Coco#arm01	4_F_SITDOWN,{
-	mes "[可可]";
-	mes "你需要坚固的盔甲来保护你脆弱的身体吗？";
-	mes "或者盾牌，来阻挡敌人的攻击？";
+	mes "[�ɿ�]";
+	mes "����Ҫ��̵Ŀ����������������������";
+	mes "���߶��ƣ����赲���˵Ĺ�����";
 	next;
-	switch (select("查看盔甲。：查看盾牌。：取消。")) {
+	switch (select("�鿴���ס����鿴���ơ���ȡ����")) {
 	case 1:
-		mes "[可可]";
-		mes "廉价而坚固的盔甲。";
+		mes "[�ɿ�]";
+		mes "���۶���̵Ŀ��ס�";
 		close2;
 		callshop "para_arm01",1;
 		end;
 	case 2:
-		mes "[可可]";
-		mes "可能会，也可能不会，阻止以合理力量进行的打击……";
+		mes "[�ɿ�]";
+		mes "���ܻᣬҲ���ܲ��ᣬ��ֹ�Ժ����������еĴ������";
 		close2;
 		callshop "para_arm02",1;
 		end;
 	case 3:
-		mes "[可可]";
-		mes "再来吧。";
+		mes "[�ɿ�]";
+		mes "�����ɡ�";
 		close;
 	}
 }
@@ -690,69 +692,69 @@ paramk,78,31,3	script	Coco#arm01	4_F_SITDOWN,{
 // Handsome Friends
 // Sign
 paramk,84,33,3	script	[Handsome Friends]#cst00	HIDDEN_NPC,{
-	mes "==帅气的朋友==";
-	mes "专为爱打扮的人打造的服装店！";
+	mes "==˧��������==";
+	mes "רΪ�������˴���ķ�װ�꣡";
 	close;
 }
 
 // Minho Doh
 paramk,90,31,3	script	Minho Doh#cst01	4W_M_01,{
 	if ($event_paramk > 2) {
-		mes "[珉豪]";
-		mes "限量物品收集，仅在周末提供！";
-		mes "只有一件物品。想要的话就赶快购买吧！你知道该怎么做。";
+		mes "[���]";
+		mes "������Ʒ�ռ���������ĩ�ṩ��";
+		mes "ֻ��һ����Ʒ����Ҫ�Ļ��͸Ͽ칺��ɣ���֪������ô����";
 		next;
-		if (select("查看收藏：取消。") == 1) {
-			mes "[珉豪]";
-			mes "这是我们的特别收藏！";
-			mes "如果所有箱子都是空的，那就意味着你来得太晚了！";
+		if (select("�鿴�ղأ�ȡ����") == 1) {
+			mes "[���]";
+			mes "�������ǵ��ر��ղأ�";
+			mes "����������Ӷ��ǿյģ��Ǿ���ζ��������̫���ˣ�";
 			close2;
 			callshop "para_arm10";
 			end;
 		}
-		mes "[珉豪]";
-		mes "再见！";
-		mes "哈哈哈哈！";
+		mes "[���]";
+		mes "�ټ���";
+		mes "����������";
 		close;
 	} else { // holiday
-		mes "[珉豪]";
-		mes "您想仔细阅读我们的特别收藏品吗？";
-		mes "但如果你每天都能看到它们，这个收藏就不会很特别，对吧？";
+		mes "[���]";
+		mes "������ϸ�Ķ����ǵ��ر��ղ�Ʒ��";
+		mes "�������ÿ�춼�ܿ������ǣ�����ղؾͲ�����ر𣬶԰ɣ�";
 		next;
-		mes "[珉豪]";
-		mes "如果您想参观我们的特别收藏，请周末前来。";
-		mes "我们在^000000周六和周日^000000每天销售一件商品。";
+		mes "[���]";
+		mes "�������ι����ǵ��ر��ղأ�����ĩǰ����";
+		mes "������^000000����������^000000ÿ������һ����Ʒ��";
 		next;
-		mes "[珉豪]";
-		mes "哈哈哈哈..是不是很期待即将公开的特别单品呢？哈哈哈哈哈哈！";
+		mes "[���]";
+		mes "��������..�ǲ��Ǻ��ڴ������������ر�Ʒ�أ���������������";
 		close;
 	}
 }
 
 // Lapelt
 paramk,94,32,3	script	Lapelt#hat01	4_M_LGTMAN,{
-	mes "[翻领]";
-	mes "欢迎！这就是‘帅哥朋友’，一个让你变得时尚的服装店！";
-	mes "即使在节假日我们也出售普通的衣服和帽子。";
+	mes "[����]";
+	mes "��ӭ������ǡ�˧�����ѡ���һ��������ʱ�еķ�װ�꣡";
+	mes "��ʹ�ڽڼ�������Ҳ������ͨ���·���ñ�ӡ�";
 	next;
-	switch (select("衣服和鞋子。：帽子和眼镜。：取消。")) {
+	switch (select("�·���Ь�ӡ���ñ�Ӻ��۾�����ȡ����")) {
 	case 1:
-		mes "[翻领]";
-		mes "不要因为物品便宜而小看它们。";
-		mes "它们是来自世界各地的制作精良的物品。";
+		mes "[����]";
+		mes "��Ҫ��Ϊ��Ʒ���˶�С�����ǡ�";
+		mes "����������������ص�������������Ʒ��";
 		close2;
 		callshop "para_hat01",1;
 		end;
 	case 2:
-		mes "[翻领]";
-		mes "时尚源自搭配配饰！";
-		mes "搭配好单品，配上一顶好帽子，你就能站在时尚巅峰！";
+		mes "[����]";
+		mes "ʱ��Դ�Դ������Σ�";
+		mes "����õ�Ʒ������һ����ñ�ӣ������վ��ʱ���۷壡";
 		close2;
 		callshop "para_hat02",1;
 		end;
 	case 3:
-		mes "[翻领]";
-		mes "再见。";
+		mes "[����]";
+		mes "�ټ���";
 		close;
 	}
 }
@@ -761,81 +763,81 @@ paramk,94,32,3	script	Lapelt#hat01	4_M_LGTMAN,{
 // Meds for Pharmacists
 // Sign
 paramk,96,33,3	script	[Meds for Pharma]#ptn00	HIDDEN_NPC,{
-	mes "== 药剂师药品 ==";
-	mes "我们出售各种药水。";
+	mes "== ҩ��ʦҩƷ ==";
+	mes "���ǳ��۸���ҩˮ��";
 	mes "";
-	mes "[运行天数]";
-	mes "特殊药水 - 周一、周二、周四、周五、周六";
-	mes "常见药水 - 每天";
+	mes "[��������]";
+	mes "����ҩˮ - ��һ���ܶ������ġ����塢����";
+	mes "����ҩˮ - ÿ��";
 	close;
 }
 
 // Head Pharmacist
 paramk,100,30,3	script	Head Pharmacist#ptn01	4_F_SCIENCE,{
 	if ($event_paramk > 0) {
-		mes "[首席药剂师]";
-		mes "喝一口就能昏倒的剧毒，保护身体和精神的药物，暂时赋予超自然速度的药物。";
-		mes "我们都有。";
-		mes "“药剂师的药物”，在这里为您提供您需要的药物。";
+		mes "[��ϯҩ��ʦ]";
+		mes "��һ�ھ��ܻ赹�ľ綾����������;����ҩ���ʱ���賬��Ȼ�ٶȵ�ҩ�";
+		mes "���Ƕ��С�";
+		mes "��ҩ��ʦ��ҩ���������Ϊ���ṩ����Ҫ��ҩ�";
 		next;
-		if (select("请吃药！：取消。") == 1) {
-			mes "[首席药剂师]";
-			mes "这是我们目前所剩下的。";
-			mes "如果什么都没有，那就说明我们已经卖完了。";
-			mes "我们不会大批量酿造药水。请理解。";
+		if (select("���ҩ����ȡ����") == 1) {
+			mes "[��ϯҩ��ʦ]";
+			mes "��������Ŀǰ��ʣ�µġ�";
+			mes "���ʲô��û�У��Ǿ�˵�������Ѿ������ˡ�";
+			mes "���ǲ������������ҩˮ�������⡣";
 			close2;
 			callshop "para_ptn00";
 			end;
 		}
-		mes "[首席药剂师]";
-		mes "如果您对药物有疑问，请回来。";
+		mes "[��ϯҩ��ʦ]";
+		mes "�������ҩ�������ʣ��������";
 		close;
 	} else { // holiday
-		mes "[首席药剂师]";
-		mes "哦，你需要药水吗？";
-		mes "我们不出售普通药物。我们坚持使用特殊药水。";
-		mes "今天是假期。我们目前正在酿造新药水。";
+		mes "[��ϯҩ��ʦ]";
+		mes "Ŷ������Ҫҩˮ��";
+		mes "���ǲ�������ͨҩ����Ǽ��ʹ������ҩˮ��";
+		mes "�����Ǽ��ڡ�����Ŀǰ����������ҩˮ��";
 		next;
-		mes "[首席药剂师]";
-		mes "如果你明天回来的话，我会给你看我们收集的高级药剂，好吗？";
-		mes "呵呵~";
+		mes "[��ϯҩ��ʦ]";
+		mes "�������������Ļ����һ���㿴�����ռ��ĸ߼�ҩ��������";
+		mes "�Ǻ�~";
 		close;
 	}
 }
 
 // Johanna
 paramk,106,32,3	script	Johanna#ptn02	4_M_BRZ_JACI,{
-	mes "[约翰娜]";
-	mes "欢迎来到“药剂师用药”。";
-	mes "你需要什么？";
+	mes "[Լ����]";
+	mes "��ӭ������ҩ��ʦ��ҩ����";
+	mes "����Ҫʲô��";
 	next;
-	switch (select("查看物品。：出售物品。：操作天数。：取消。")) {
+	switch (select("�鿴��Ʒ����������Ʒ����������������ȡ����")) {
 	case 1:
-		mes "[约翰娜]";
-		mes "这里有治疗药水。";
-		mes "好的药水以实惠的价格出售。";
+		mes "[Լ����]";
+		mes "����������ҩˮ��";
+		mes "�õ�ҩˮ��ʵ�ݵļ۸���ۡ�";
 		close2;
 		callshop "para_ptn01",1;
 		end;
 	case 2:
-		mes "[约翰娜]";
-		mes "我会把它们从你手中夺走，并付出高昂的代价。";
-		mes "不要告诉别人我付出了那么多。";
+		mes "[Լ����]";
+		mes "�һ�����Ǵ������ж��ߣ��������߰��Ĵ��ۡ�";
+		mes "��Ҫ���߱����Ҹ�������ô�ࡣ";
 		close2;
 		callshop "para_ptn01",2;
 		end;
 	case 3:
-		mes "[约翰娜]";
-		mes "Eden Market Group 的大多数商店在节假日期间不营业。";
-		mes "不过，一些商店在节假日仍照常营业。";
+		mes "[Լ����]";
+		mes "Eden Market Group �Ĵ�����̵��ڽڼ����ڼ䲻Ӫҵ��";
+		mes "������һЩ�̵��ڽڼ������ճ�Ӫҵ��";
 		next;
-		mes "[约翰娜]";
-		mes "即使在节假日，我们的药房也提供普通治疗药水，但不提供特殊药水。";
-		mes "利用我们的服务！";
+		mes "[Լ����]";
+		mes "��ʹ�ڽڼ��գ����ǵ�ҩ��Ҳ�ṩ��ͨ����ҩˮ�������ṩ����ҩˮ��";
+		mes "�������ǵķ���";
 		close;
 	case 4:
-		mes "[约翰娜]";
-		mes "再见。";
+		mes "[Լ����]";
+		mes "�ټ���";
 		close;
 	}
 }
@@ -843,32 +845,32 @@ paramk,106,32,3	script	Johanna#ptn02	4_M_BRZ_JACI,{
 // Wyn, independent contractor || Name is too long
 paramk,106,27,3	script	Brewer Wyn#ptn03	4_M_ALCHE_A,{
 	if ($event_paramk > 0) {
-		mes "<<< BR0 >>> 温 <<< BR1 >>>";
-		mes "..你好...";
-		mes "这是“致药物药剂师”......";
-		mes "你需要蓝色药水吗...？";
-		mes "我每天制作 100 个……是的……只有我。";
+		mes "<<< BR0 >>> �� <<< BR1 >>>";
+		mes "..���...";
+		mes "���ǡ���ҩ��ҩ��ʦ��......";
+		mes "����Ҫ��ɫҩˮ��...��";
+		mes "��ÿ������ 100 �������ǵġ���ֻ���ҡ�";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "<<< BR0 >>> 温 <<< BR1 >>>";
-			mes "呃..不确定我们还有没有剩下的。";
-			mes "请稍等一下。如果没有的话我们就卖完了..";
-			mes "啊啊……我还需要做更多吗？";
-			mes "啊啊……药草的臭味";
-			mes "感觉想吐……啊啊啊……";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "<<< BR0 >>> �� <<< BR1 >>>";
+			mes "��..��ȷ�����ǻ���û��ʣ�µġ�";
+			mes "���Ե�һ�¡����û�еĻ����Ǿ�������..";
+			mes "���������һ���Ҫ��������";
+			mes "��������ҩ�ݵĳ�ζ";
+			mes "�о����¡�������������";
 			close2;
 			callshop "para_ptn10";
 			end;
 		}
-		mes "<<< BR0 >>> 温 <<< BR1 >>>";
-		mes "谢谢。。再来吧。";
+		mes "<<< BR0 >>> �� <<< BR1 >>>";
+		mes "лл���������ɡ�";
 		close;
 	} else { // holiday
-		mes "<<< BR0 >>> 温 <<< BR1 >>>";
-		mes "呃……头疼……";
-		mes "为了还大学学费我开始打工";
-		mes "我想要吐。整个星期都被香草的气味包围着。";
-		mes "布莱奇——！";
+		mes "<<< BR0 >>> �� <<< BR1 >>>";
+		mes "������ͷ�ۡ���";
+		mes "Ϊ�˻���ѧѧ���ҿ�ʼ��";
+		mes "����Ҫ�¡��������ڶ�����ݵ���ζ��Χ�š�";
+		mes "�����桪����";
 		close;
 	}
 }
@@ -877,40 +879,40 @@ paramk,106,27,3	script	Brewer Wyn#ptn03	4_M_ALCHE_A,{
 // We-Have-Everything
 // sign
 paramk,108,33,3	script	[WeHaveEverything]#itm00	HIDDEN_NPC,{
-	mes "==我们拥有一切==";
-	mes "元素箭袋、陷阱、毒药 DIY 套件。";
-	mes "随时可用。";
+	mes "==����ӵ��һ��==";
+	mes "Ԫ�ؼ��������塢��ҩ DIY �׼���";
+	mes "��ʱ���á�";
 	mes "";
-	mes "[运行天数]";
-	mes "周三 - 假期！";
-	mes "周五、周六、周日 - 活动销售！";
+	mes "[��������]";
+	mes "���� - ���ڣ�";
+	mes "���塢���������� - ����ۣ�";
 	close;
 }
 
 // Is-this-your-lucky-day Napeed#itm01
 paramk,114,30,3	script	Lucky Day Napeed#itm01	4_F_03,{
 	if ($event_paramk > 0) {
-		mes "[颈背]";
-		mes "感谢您在周末促销期间光临。";
-		mes "100 个随机物品包，仅在周末出售！仅剩一百张！";
-		mes "你有什么想要的吗？";
+		mes "[����]";
+		mes "��л������ĩ�����ڼ���١�";
+		mes "100 �������Ʒ����������ĩ���ۣ���ʣһ���ţ�";
+		mes "����ʲô��Ҫ����";
 		next;
-		if (select("查看项目：取消。")) {
-			mes "[颈背]";
-			mes "最受欢迎的选择是“配件盒”、“礼品包装面具”、“旧相册”、“带回家的礼物”......";
-			mes "如果您没有看到任何东西，则表示我们已售完。下周末再来吧~";
+		if (select("�鿴��Ŀ��ȡ����")) {
+			mes "[����]";
+			mes "���ܻ�ӭ��ѡ���ǡ�����С�������Ʒ��װ��ߡ���������ᡱ�������ؼҵ����......";
+			mes "�����û�п����κζ��������ʾ���������ꡣ����ĩ������~";
 			close2;
 			callshop "para_itm00";
 			end;
 		}
-		mes "[颈背]";
-		mes "感谢您经常光临“我们拥有一切”！";
+		mes "[����]";
+		mes "��л���������١�����ӵ��һ�С���";
 		close;
 	} else { // holiday
-		mes "[颈背]";
-		mes "欢迎欢迎欢迎~！这家商店是“我们拥有一切”。我们拥有的一切，我们都有，我们没有的一切，我们没有！";
-		mes "我们目前没有开放。";
-		mes "今天是假期，所以我们正在泡药水。";
+		mes "[����]";
+		mes "��ӭ��ӭ��ӭ~������̵��ǡ�����ӵ��һ�С�������ӵ�е�һ�У����Ƕ��У�����û�е�һ�У�����û�У�";
+		mes "����Ŀǰû�п��š�";
+		mes "�����Ǽ��ڣ���������������ҩˮ��";
 		close;
 	}
 }
@@ -918,37 +920,37 @@ paramk,114,30,3	script	Lucky Day Napeed#itm01	4_F_03,{
 // Parayo
 paramk,118,31,3	script	Manager Parayo#itm02	4_F_KHELLISIA,{
 	if ($event_paramk > 0) {
-		mes "[帕拉约]";
-		mes "感谢您来到“我们拥有一切”。";
-		mes "我们出售各种元素箭袋和陷阱。";
-		mes "有什么你想要的吗？";
+		mes "[����Լ]";
+		mes "��л������������ӵ��һ�С���";
+		mes "���ǳ��۸���Ԫ�ؼ��������塣";
+		mes "��ʲô����Ҫ����";
 		next;
-		switch (select("查看元素箭袋。：查看陷阱。：取消。")) {
+		switch (select("�鿴Ԫ�ؼ��������鿴���塣��ȡ����")) {
 		case 1:
-			mes "[帕拉约]";
-			mes "我们尽力备货，以便为尽可能多的客户提供服务";
-			mes "但不幸的是，有时我们会卖完。";
+			mes "[����Լ]";
+			mes "���Ǿ����������Ա�Ϊ�����ܶ�Ŀͻ��ṩ����";
+			mes "�����ҵ��ǣ���ʱ���ǻ����ꡣ";
 			close2;
 			callshop "para_itm10";
 			end;
 		case 2:
-			mes "[帕拉约]";
-			mes "这是陷阱。";
-			mes "“我们拥有一切”始终为您服务。";
+			mes "[����Լ]";
+			mes "�������塣";
+			mes "������ӵ��һ�С�ʼ��Ϊ������";
 			close2;
 			callshop "para_itm01",1;
 			end;
 		case 3:
-			mes "[帕拉约]";
-			mes "感谢您成为“我们拥有一切”的忠实客户。";
-			mes "再来吧。";
+			mes "[����Լ]";
+			mes "��л����Ϊ������ӵ��һ�С�����ʵ�ͻ���";
+			mes "�����ɡ�";
 			close;
 		}
 	} else { // holiday
-		mes "[帕拉约]";
-		mes "你好，这是“我们拥有一切”。";
-		mes "周三是 Eden Market Group 的法定假日，因此我们在此期间不营业。";
-		mes "再见。";
+		mes "[����Լ]";
+		mes "��ã����ǡ�����ӵ��һ�С���";
+		mes "������ Eden Market Group �ķ������գ���������ڴ��ڼ䲻Ӫҵ��";
+		mes "�ټ���";
 		close;
 	}
 }
@@ -957,47 +959,47 @@ paramk,118,31,3	script	Manager Parayo#itm02	4_F_KHELLISIA,{
 // Malangdonya
 // sign
 paramk,122,33,3	script	[Malangdonya]#seed00	HIDDEN_NPC,{
-	mes "== 马兰多尼亚 ==";
-	mes "马兰多的特殊物品。";
-	mes "Yggdrasil系列和Doram系列就在这里！";
+	mes "== ���������� ==";
+	mes "�������������Ʒ��";
+	mes "Yggdrasilϵ�к�Doramϵ�о������";
 	mes "";
-	mes "[运行天数]";
-	mes "特别系列 - 周一、周二、周四、周五、周六、周日";
-	mes "一直在卖 - 马斯特拉水果。";
+	mes "[��������]";
+	mes "�ر�ϵ�� - ��һ���ܶ������ġ����塢����������";
+	mes "һֱ���� - ��˹����ˮ����";
 	close;
 }
 
 // Whiteberry
 paramk,126,34,3	script	Whiteberry#seed01	4_CAT_SAILOR1,{
 	if ($event_paramk > 0) {
-		mes "[白莓]";
-		mes "咕噜~欢迎光临。";
-		mes "Catpaw 商人集团很高兴欢迎您。我们卖马兰多的特产，咕噜~";
+		mes "[��ݮ]";
+		mes "����~��ӭ���١�";
+		mes "Catpaw ���˼��źܸ��˻�ӭ������������������ز�������~";
 	} else { // holiday
-		mes "[白莓]";
-		mes "我们有卖玛斯黛拉水果~";
-		mes "节假日也有售卖一些商品~";
+		mes "[��ݮ]";
+		mes "����������˹����ˮ��~";
+		mes "�ڼ���Ҳ������һЩ��Ʒ~";
 	}
 	next;
-	switch (select("查看物品。：出售物品。：取消。")) {
+	switch (select("�鿴��Ʒ����������Ʒ����ȡ����")) {
 	case 1:
-		mes "[白莓]";
-		mes "新鲜的马斯黛拉水果来了，咕噜~";
-		mes "请多多购买。";
-		mes "虽然是我们自己种的，但说实话，它们太酸了……啊……没关系。";
+		mes "[��ݮ]";
+		mes "���ʵ���˹����ˮ�����ˣ�����~";
+		mes "���๺��";
+		mes "��Ȼ�������Լ��ֵģ���˵ʵ��������̫���ˡ���������û��ϵ��";
 		close2;
 		callshop "para_seed01",1;
 		end;
 	case 2:
-		mes "[白莓]";
-		mes "咕噜~会以合理的价格购买。";
-		mes "请出售有用的物品。";
+		mes "[��ݮ]";
+		mes "����~���Ժ����ļ۸���";
+		mes "��������õ���Ʒ��";
 		close2;
 		callshop "para_seed01",2;
 		end;
 	case 3:
-		mes "[白莓]";
-		mes "咕噜~再见~";
+		mes "[��ݮ]";
+		mes "����~�ټ�~";
 		close;
 	}
 }
@@ -1005,27 +1007,27 @@ paramk,126,34,3	script	Whiteberry#seed01	4_CAT_SAILOR1,{
 // Blackphone
 paramk,129,33,3	script	Blackphone#seed02	4_M_MERCAT2,{
 	if ($event_paramk > 0) {
-		mes "[黑手机]";
-		mes "喵～欢迎光临";
-		mes "喵～马郎多尼亚猫爪商团欢迎您。";
-		mes "喵~我们出售马兰多的各种农作物，还有Doram系列。";
+		mes "[���ֻ�]";
+		mes "������ӭ����";
+		mes "�������ɶ�����èצ���Ż�ӭ����";
+		mes "��~���ǳ���������ĸ���ũ�������Doramϵ�С�";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "[黑手机]";
-			mes "喵～这里有多拉姆罐头和瓶子、伊格德拉希尔和荆棘浆果。";
-			mes "喵~如果你什么也没看到，那就说明我们已经卖完了。明天再来。";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "[���ֻ�]";
+			mes "���������ж���ķ��ͷ��ƿ�ӡ��������ϣ���;���������";
+			mes "��~�����ʲôҲû�������Ǿ�˵�������Ѿ������ˡ�����������";
 			close2;
 			callshop "para_seed10";
 			end;
 		}
-		mes "[黑手机]";
-		mes "喵～快点回来吧。我们提供有趣的物品。";
+		mes "[���ֻ�]";
+		mes "�����������ɡ������ṩ��Ȥ����Ʒ��";
 		close;
 	} else { // holiday
-		mes "[黑手机]";
-		mes "喵～节假日不营业。";
-		mes "喵～今天是我们从马兰多发货的日子。";
-		mes "喵~如果你需要瓶装或罐装的Doram，或者Yggdrasil水果，明天再来吧。";
+		mes "[���ֻ�]";
+		mes "�����ڼ��ղ�Ӫҵ��";
+		mes "�������������Ǵ������෢�������ӡ�";
+		mes "��~�������Ҫƿװ���װ��Doram������Yggdrasilˮ�������������ɡ�";
 		close;
 	}
 }
@@ -1035,15 +1037,15 @@ paramk,129,33,3	script	Blackphone#seed02	4_M_MERCAT2,{
 // Restraurant
 // Jeffrey
 paramk,144,13,3	script	Jeffrey#food00	1_M_MERCHANT,{
-	mes "[杰弗里]";
-	mes "每个人都认为我是这里的厨师。我不是！我只是来讨餐馆老板欠我的债的！";
+	mes "[�ܸ���]";
+	mes "ÿ���˶���Ϊ��������ĳ�ʦ���Ҳ��ǣ���ֻ�����ֲ͹��ϰ�Ƿ�ҵ�ծ�ģ�";
 	next;
-	mes "[杰弗里]";
-	mes "我做了几道菜只是为了让抱怨的顾客闭嘴，但这已经失控了！";
+	mes "[�ܸ���]";
+	mes "�����˼�����ֻ��Ϊ���ñ�Թ�Ĺ˿ͱ��죬�����Ѿ�ʧ���ˣ�";
 	close;
 
 OnTimer30000:
-	npctalk "让我说清楚！我不是厨师！不要等待服务！我不会再做任何菜了！";
+	npctalk "����˵������Ҳ��ǳ�ʦ����Ҫ�ȴ������Ҳ��������κβ��ˣ�";
 	initnpctimer;
 	end;
 
@@ -1054,12 +1056,12 @@ OnInit:
 
 // Vincent
 paramk,140,18,3	script	Vincent#food01	4_TOWER_15,{
-	mes "[文森特]";
-	mes "...新厨师做的食物很棒，但显然他很懒。";
+	mes "[��ɭ��]";
+	mes "...�³�ʦ����ʳ��ܰ�������Ȼ��������";
 	close;
 
 OnTimer33000:
-	npctalk "接受订单，不要只站在厨房里！请！";
+	npctalk "���ܶ�������Ҫֻվ�ڳ�����룡";
 	initnpctimer;
 	end;
 
@@ -1070,12 +1072,12 @@ OnInit:
 
 // Panel
 paramk,138,19,3	script	Panel#food02	4_TOWER_14,{
-	mes "[面板]";
-	mes "这家餐厅最近才开业，但自从他们聘请了新厨师后，它就变得非常受欢迎。";
+	mes "[���]";
+	mes "��Ҳ�������ſ�ҵ�����Դ�����Ƹ�����³�ʦ�����ͱ�÷ǳ��ܻ�ӭ��";
 	close;
 
 OnTimer35000:
-	npctalk "谁在乎我是否迟到了。重要的是食物有多美味。";
+	npctalk "˭�ں����Ƿ�ٵ��ˡ���Ҫ����ʳ���ж���ζ��";
 	initnpctimer;
 	end;
 
@@ -1086,12 +1088,12 @@ OnInit:
 
 // Matina
 paramk,136,20,3	script	Matina#food03	4_TOWER_05,{
-	mes "[马蒂娜]";
-	mes "它是什么？你要订购吗？忘了它。看看阵容。";
+	mes "[������]";
+	mes "����ʲô����Ҫ���������������������ݡ�";
 	close;
 
 OnTimer37000:
-	npctalk "你为什么不接受命令？这个地方对消费者来说不太友好......";
+	npctalk "��Ϊʲô�������������ط�����������˵��̫�Ѻ�......";
 	initnpctimer;
 	end;
 
@@ -1102,12 +1104,12 @@ OnInit:
 
 // Lucy
 paramk,134,21,3	script	Lucy#food04	4_TOWER_10,{
-	mes "[露西]";
-	mes "啊。我打算再等一会儿，但如果仍然没有得到服务，我就会离开。";
+	mes "[¶��]";
+	mes "�����Ҵ����ٵ�һ������������Ȼû�еõ������Ҿͻ��뿪��";
 	close;
 
 OnTimer40000:
-	npctalk "这就是极限！我不能再等了。五分钟，我要回家了。";
+	npctalk "����Ǽ��ޣ��Ҳ����ٵ��ˡ�����ӣ���Ҫ�ؼ��ˡ�";
 	initnpctimer;
 	end;
 
@@ -1118,12 +1120,12 @@ OnInit:
 
 // Mara
 paramk,136,16,3	script	Mara#food05	4_TOWER_02,{
-	mes "[玛拉]";
-	mes "听说这家餐厅的老板去远方旅行了，新来的厨师正在经营这家餐厅。听说他的厨艺很厉害。";
+	mes "[����]";
+	mes "��˵��Ҳ������ϰ�ȥԶ�������ˣ������ĳ�ʦ���ھ�Ӫ��Ҳ�������˵���ĳ��պ�������";
 	close;
 
 OnTimer28000:
-	npctalk "新来的厨师脾气似乎很不好。我真的觉得这很有吸引力。";
+	npctalk "�����ĳ�ʦƢ���ƺ��ܲ��á�����ľ����������������";
 	initnpctimer;
 	end;
 
@@ -1134,12 +1136,12 @@ OnInit:
 
 // Lana
 paramk,133,16,3	script	Lana#food06	4_TOWER_04,{
-	mes "[拉娜]";
-	mes "我两天前来过，昨天也来过，今天也来过。他们这里提供的面食很棒。唯一的问题是这里很难订。";
+	mes "[����]";
+	mes "������ǰ����������Ҳ����������Ҳ���������������ṩ����ʳ�ܰ���Ψһ��������������Ѷ���";
 	close;
 
 OnTimer25000:
-	npctalk "我的订单成功了吗？我在这里快饿死了！";
+	npctalk "�ҵĶ����ɹ������������������ˣ�";
 	initnpctimer;
 	end;
 
@@ -1150,12 +1152,12 @@ OnInit:
 
 // Rahoul
 paramk,127,16,3	script	Rahoul#food07	4_TOWER_12,{
-	mes "[拉胡尔]";
-	mes "我已经等了几个小时了，厨师仍然不接受订单。啊，我饿得快要死了。";
+	mes "[������]";
+	mes "���Ѿ����˼���Сʱ�ˣ���ʦ��Ȼ�����ܶ����������Ҷ��ÿ�Ҫ���ˡ�";
 	close;
 
 OnTimer23000:
-	npctalk "呵呵。我想知道他们会让我等多久......";
+	npctalk "�Ǻǡ�����֪�����ǻ����ҵȶ��......";
 	initnpctimer;
 	end;
 
@@ -1166,12 +1168,12 @@ OnInit:
 
 // Nameless Drunk
 paramk,124,20,3	script	Drunk#food08	4_TOWER_06,{
-	mes "[喝醉了]";
-	mes "嘿嘿，多带点酒来……";
+	mes "[������]";
+	mes "�ٺ٣�������������";
 	close;
 
 OnTimer50000:
-	npctalk "呃……酒……";
+	npctalk "�������ơ���";
 	initnpctimer;
 	end;
 
@@ -1182,13 +1184,13 @@ OnInit:
 
 // Annoyed Customer
 paramk,127,10,3	script	Annoyed Customer#food09	4_TOWER_07,{
-	mes "[恼怒的顾客]";
-	mes "主人旅行回来后我会和他谈谈。告诉他解雇后面的员工。";
-	mes "那么多顾客在闲逛，他们甚至不为任何人服务";
+	mes "[��ŭ�Ĺ˿�]";
+	mes "�������л������һ����̸̸����������ͺ����Ա����";
+	mes "��ô��˿����й䣬����������Ϊ�κ��˷���";
 	close;
 
 OnTimer20000:
-	npctalk "我希望能为员工做点什么。";
+	npctalk "��ϣ����ΪԱ������ʲô��";
 	initnpctimer;
 	end;
 
@@ -1199,19 +1201,19 @@ OnInit:
 
 // Kalin
 paramk,124,11,3	script	Kalin#food10	4_F_01,{
-	mes "[卡林]";
-	mes "我是索兰的同事，我喜欢在这家商店当清洁工。我可以随心所欲地偷懒，但仍然可以获得报酬。";
+	mes "[����]";
+	mes "����������ͬ�£���ϲ��������̵굱��๤���ҿ�������������͵��������Ȼ���Ի�ñ��ꡣ";
 	close;
 }
 
 // Thrann
 paramk,121,11,3	script	Thrann#food11	4_F_02,{
-	mes "[字符串]";
-	mes "我会在这里安静地喝咖啡几个小时，尽管我实际上是在工作，假装在打扫卫生。他们甚至没有把我赶出去。";
+	mes "[�ַ���]";
+	mes "�һ������ﰲ���غȿ��ȼ���Сʱ��������ʵ�������ڹ�������װ�ڴ�ɨ��������������û�а��Ҹϳ�ȥ��";
 	close;
 
 OnTimer47000:
-	npctalk "好吵啊！如果他们因为厨房出了问题而不接受订单，那也是可以理解的。";
+	npctalk "�ó��������������Ϊ������������������ܶ�������Ҳ�ǿ�������ġ�";
 	initnpctimer;
 	end;
 
@@ -1222,11 +1224,11 @@ OnInit:
 
 // Sobok the Cook
 paramk,127,88,3	script	Sobok the Cook#fd01	4_M_CHNCOOK,{
-	mes "[索博克]";
-	mes "我叫 Sobok，来自 Eden Market Group 的领先餐厅 Sobokru。";
-	mes "您想订购吗？每道菜的价格是 3000 Zeny，周末特价是 5000 Zeny。";
+	mes "[������]";
+	mes "�ҽ� Sobok������ Eden Market Group �����Ȳ��� Sobokru��";
+	mes "���붩����ÿ���˵ļ۸��� 3000 Zeny����ĩ�ؼ��� 5000 Zeny��";
 	next;
-	switch( select("鹅汤。：通心粉面条。：周末特价。：取消。") ) {
+	switch( select("��������ͨ�ķ�����������ĩ�ؼۡ���ȡ����") ) {
 	case 1:
 		.@hp = 100;
 		.@sp = 0;
@@ -1246,22 +1248,22 @@ paramk,127,88,3	script	Sobok the Cook#fd01	4_M_CHNCOOK,{
 		.@talk$ = "Ultimate combination for body and mind.";
 		break;
 	case 4:
-		mes "[索博克]";
-		mes "你什么时候过来就过来吧。";
+		mes "[������]";
+		mes "��ʲôʱ������͹����ɡ�";
 		close;
 	}
-	mes "[索博克]";
+	mes "[������]";
 	mes .@talk$;
 	next;
-	if (select("是：否") == 2)
+	if (select("�ǣ���") == 2)
 		close;
 	if (Zeny < .@zeny) {
-		mes "[索博克]";
-		mes "你以为你可以免费吃饭吗？";
+		mes "[������]";
+		mes "����Ϊ�������ѳԷ���";
 		close;
 	}
-	mes "[索博克]";
-	mes "很好吃，不是吗？";
+	mes "[������]";
+	mes "�ܺóԣ�������";
 	Zeny -= .@zeny;
 	percentheal(.@hp, .@sp);
 	close;
@@ -1271,32 +1273,32 @@ paramk,127,88,3	script	Sobok the Cook#fd01	4_M_CHNCOOK,{
 // Cafe Mora
 // Pomegranate
 paramk,75,86,3	script	Pomegranate#mora01	4_F_RAFLE_PK,{
-	mes "[石榴]";
-	mes "出来吧，快点！";
-	mes "请问你这是哪里？莫拉咖啡馆，永远营业。";
-	mes "石榴，这个东西那个东西都卖。";
+	mes "[ʯ��]";
+	mes "�����ɣ���㣡";
+	mes "�������������Ī�����ȹݣ���ԶӪҵ��";
+	mes "ʯ����������Ǹ�����������";
 	next;
-	switch (select("检查商店：你为什么这样说话？：还有什么吗？")) {
+	switch (select("����̵꣺��Ϊʲô����˵����������ʲô��")) {
 	case 1:
-		mes "[石榴]";
-		mes "有！莫拉村的闷棍！";
-		mes "卖！牛肉吐司。";
-		mes "可口的。牛肉吐司。很多。好~";
-		mes "石榴！";
+		mes "[ʯ��]";
+		mes "�У�Ī������ƹ���";
+		mes "����ţ����˾��";
+		mes "�ɿڵġ�ţ����˾���ܶࡣ��~";
+		mes "ʯ��";
 		close2;
 		callshop "para_mora01",1;
 		end;
 	case 2:
-		mes "[石榴]";
-		mes "你不知道，莫拉舌头。";
-		mes "石榴。知道。人类言语。";
-		mes "石榴，厉害了";
-		mes "学习了，做了。超级难！";
+		mes "[ʯ��]";
+		mes "�㲻֪����Ī����ͷ��";
+		mes "ʯ��֪�����������";
+		mes "ʯ��������";
+		mes "ѧϰ�ˣ����ˡ������ѣ�";
 		close;
 	case 3:
-		mes "[石榴]";
-		mes "卖。掌握。周五至周六至周日。";
-		mes "可口的。压榨的水果。莫拉最棒！";
+		mes "[ʯ��]";
+		mes "�������ա����������������ա�";
+		mes "�ɿڵġ�ѹե��ˮ����Ī�������";
 		close;
 	}
 }
@@ -1304,26 +1306,26 @@ paramk,75,86,3	script	Pomegranate#mora01	4_F_RAFLE_PK,{
 // Cocktail Master
 paramk,65,86,3	script	Cocktail Master#mora01	4_M_RAFLE_VI,{
 	if ($event_paramk > 1) {
-		mes "[鸡尾酒大师]";
-		mes "欢迎来到莫拉咖啡馆。";
-		mes "我们提供莫拉的水果和饮料。";
-		mes "它们是^4d4dffRafflechino、Mora Hip Tea、Mora Mandarin 和Mora Berry^000000。我们可能会缺货。";
+		mes "[��β�ƴ�ʦ]";
+		mes "��ӭ����Ī�����ȹݡ�";
+		mes "�����ṩĪ����ˮ�������ϡ�";
+		mes "������^4d4dffRafflechino��Mora Hip Tea��Mora Mandarin ��Mora Berry^000000�����ǿ��ܻ�ȱ����";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "[鸡尾酒大师]";
-			mes "如果什么都没有，那就意味着我们已经卖完了。明天再来。";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "[��β�ƴ�ʦ]";
+			mes "���ʲô��û�У��Ǿ���ζ�������Ѿ������ˡ�����������";
 			close2;
 			callshop "para_mora10";
 			end;
 		}
-		mes "[鸡尾酒大师]";
-		mes "我们很感谢您来拜访我们。";
+		mes "[��β�ƴ�ʦ]";
+		mes "���Ǻܸ�л�����ݷ����ǡ�";
 		close;
 	} else { // holiday
-		mes "[鸡尾酒大师]";
-		mes "您想购买特殊的 Mora 饮料吗？";
-		mes "我们很遗憾地通知您，我们只在周末生产饮料。请于^4d4dff周五、周六、周日^000000回来。";
-		mes "石榴，卖这个卖那个。";
+		mes "[��β�ƴ�ʦ]";
+		mes "���빺������� Mora ������";
+		mes "���Ǻ��ź���֪ͨ��������ֻ����ĩ�������ϡ�����^4d4dff���塢����������^000000������";
+		mes "ʯ����������Ǹ���";
 		close;
 	}
 }
@@ -1333,27 +1335,27 @@ paramk,65,86,3	script	Cocktail Master#mora01	4_M_RAFLE_VI,{
 // Hans of the miner coalition
 paramk,49,103,3	script	Hans #ref01	1_M_SIGNMCNT,{
 	if ($event_paramk > 3) {
-		mes "[他的]";
-		mes "我们出售我们联盟开采的金属矿石。";
-		mes "如果您需要铁、钢、煤炭或铁矿石，请四处看看。";
+		mes "[����]";
+		mes "���ǳ����������˿��ɵĽ�����ʯ��";
+		mes "�������Ҫ�����֡�ú̿������ʯ�����Ĵ�������";
 		next;
-		if (select("查看矿石：取消。") == 1) {
-			mes "[他的]";
-			mes "如果这里什么都没有的话，我们已经卖完了。";
-			mes "我们每天都开采铁、钢、煤、铁矿石，所以明天再来。";
+		if (select("�鿴��ʯ��ȡ����") == 1) {
+			mes "[����]";
+			mes "�������ʲô��û�еĻ��������Ѿ������ˡ�";
+			mes "����ÿ�춼���������֡�ú������ʯ����������������";
 			close2;
 			callshop "para_ref10";
 			end;
 		}
-		mes "[他的]";
-		mes "我们的铁、钢、煤炭等基本金属库存每天都会补充。";
-		mes "请记住这一点。";
+		mes "[����]";
+		mes "���ǵ������֡�ú̿�Ȼ����������ÿ�춼�Ჹ�䡣";
+		mes "���ס��һ�㡣";
 		close;
 	} else { // holiday
-		mes "[他的]";
-		mes "我们今天不营业。";
-		mes "我正要去参观矿井。";
-		mes "如果你有什么需要的话明天再来吧。";
+		mes "[����]";
+		mes "���ǽ��첻Ӫҵ��";
+		mes "����Ҫȥ�ιۿ󾮡�";
+		mes "�������ʲô��Ҫ�Ļ����������ɡ�";
 		close;
 	}
 }
@@ -1361,35 +1363,35 @@ paramk,49,103,3	script	Hans #ref01	1_M_SIGNMCNT,{
 // Dus the Smith
 paramk,53,104,3	script	Dus the Smith#ref02	2_M_OLDBLSMITH,{
 	if ($event_paramk > 3) {
-		mes "[铁匠达斯]";
-		mes "Oridecon、Elunium 和 Anvils 在这里。";
-		mes "数量不多，但都是手工制作的，你会看到的。";
+		mes "[������˹]";
+		mes "Oridecon��Elunium �� Anvils �����";
+		mes "�������࣬�������ֹ������ģ���ῴ���ġ�";
 		next;
-		if (select("查看项目：取消。")) {
-			mes "[铁匠达斯]";
-			mes "不确定我们是否还有剩余。";
-			mes "如果我们这样做，请购买。";
+		if (select("�鿴��Ŀ��ȡ����")) {
+			mes "[������˹]";
+			mes "��ȷ�������Ƿ���ʣ�ࡣ";
+			mes "����������������빺��";
 			close2;
 			callshop "para_ref20";
 			end;
 		}
-		mes "[铁匠达斯]";
-		mes "稀有矿石来之不易，提炼也困难。";
-		mes "这就是为什么我们的库存有限。";
+		mes "[������˹]";
+		mes "ϡ�п�ʯ��֮���ף�����Ҳ���ѡ�";
+		mes "�����Ϊʲô���ǵĿ�����ޡ�";
 		close;
 	} else { // holiday
-		mes "[铁匠达斯]";
-		mes "啊，顾客？";
-		mes "抱歉，我们今天不卖矿石。";
+		mes "[������˹]";
+		mes "�����˿ͣ�";
+		mes "��Ǹ�����ǽ��첻����ʯ��";
 		next;
-		mes "[铁匠达斯]";
-		mes "你看，它们很难制作。";
-		mes "你问我们卖什么？";
-		mes "啊啊，我们这里出售 Oridecon、Elunium 和 Anvils。";
+		mes "[������˹]";
+		mes "�㿴�����Ǻ���������";
+		mes "����������ʲô��";
+		mes "����������������� Oridecon��Elunium �� Anvils��";
 		next;
-		mes "[铁匠达斯]";
-		mes "如果您需要稀有矿石或铁砧，请周末来。";
-		mes "周六下午晚些时候会是完美的。";
+		mes "[������˹]";
+		mes "�������Ҫϡ�п�ʯ�����裬����ĩ����";
+		mes "����������Щʱ����������ġ�";
 		close;
 	}
 }
@@ -1398,55 +1400,55 @@ paramk,53,104,3	script	Dus the Smith#ref02	2_M_OLDBLSMITH,{
 // Rain-of-Gems
 // sign
 paramk,63,98,3	script	[Rain-of-Gems]#jw	HIDDEN_NPC,{
-	mes "？宝石雨？";
-	mes "我们经营黄金和宝石！";
+	mes "����ʯ�ꣿ";
+	mes "���Ǿ�Ӫ�ƽ�ͱ�ʯ��";
 	mes "";
-	mes "[运行天数]";
-	mes "节假日我们不营业。";
+	mes "[��������]";
+	mes "�ڼ������ǲ�Ӫҵ��";
 	close;
 }
 
 // Aurora
 paramk,69,102,3	script	Aurora#jew01	4_F_02,{
 	if ($event_paramk > 0) {
-		mes "[极光]";
-		mes "欢迎光临~";
-		mes "这就是《宝石雨》。我们的产品范围从纯金到玫瑰石等未切割的宝石！";
-		mes "我们出售黄金、蛋白石、金云母、白云母等。";
-		mes "它们非常稀有且难以获得，因此价格昂贵！";
+		mes "[����]";
+		mes "��ӭ����~";
+		mes "����ǡ���ʯ�꡷�����ǵĲ�Ʒ��Χ�Ӵ���õ��ʯ��δ�и�ı�ʯ��";
+		mes "���ǳ��ۻƽ𡢵���ʯ������ĸ������ĸ�ȡ�";
+		mes "���Ƿǳ�ϡ�������Ի�ã���˼۸񰺹�";
 		next;
-		switch (select("查看物品。：出售物品。：取消。")) {
+		switch (select("�鿴��Ʒ����������Ʒ����ȡ����")) {
 		case 1:
-			mes "[极光]";
-			mes "如果你没有看到任何东西，那就意味着所有东西都卖完了！";
-			mes "谢谢您的来访~！";
+			mes "[����]";
+			mes "�����û�п����κζ������Ǿ���ζ�����ж����������ˣ�";
+			mes "лл��������~��";
 			close2;
 			callshop "para_jew10";
 			end;
 		case 2:
-			mes "[极光]";
-			mes "我们将以合理的价格购买。";
+			mes "[����]";
+			mes "���ǽ��Ժ����ļ۸���";
 			close2;
 			callshop "para_fod01",2;
 			end;
 		case 3:
-			mes "[极光]";
-			mes "我们经营黄金、金云母、玛瑙和绿松石等产品。";
-			mes "但未切割的宝石很少见。";
+			mes "[����]";
+			mes "���Ǿ�Ӫ�ƽ𡢽���ĸ����觺�����ʯ�Ȳ�Ʒ��";
+			mes "��δ�и�ı�ʯ���ټ���";
 			next;
-			mes "[极光]";
-			mes "我们从矿山采购，但是供应有限~";
-			mes "我们的库存每周都会补充，所以如果你的时间恰到好处……也许可以？哈哈。";
+			mes "[����]";
+			mes "���Ǵӿ�ɽ�ɹ������ǹ�Ӧ����~";
+			mes "���ǵĿ��ÿ�ܶ��Ჹ�䣬����������ʱ��ǡ���ô�����Ҳ�����ԣ�������";
 			close;
 		}
 	} else { // holiday
-		mes "[极光]";
-		mes "哦，抱歉你今天过来了。";
-		mes "我们的市场组每周三不营业。";
-		mes "我们需要时间补货和检查库存水平，当然也需要时间休息。";
+		mes "[����]";
+		mes "Ŷ����Ǹ���������ˡ�";
+		mes "���ǵ��г���ÿ������Ӫҵ��";
+		mes "������Ҫʱ�䲹���ͼ����ˮƽ����ȻҲ��Ҫʱ����Ϣ��";
 		next;
-		mes "[极光]";
-		mes "如果您明天来，我们很乐意为您提供我们的一系列产品，让您的武器变得更加强大！";
+		mes "[����]";
+		mes "����������������Ǻ�����Ϊ���ṩ���ǵ�һϵ�в�Ʒ��������������ø���ǿ��";
 		close;
 	}
 }
@@ -1455,40 +1457,40 @@ paramk,69,102,3	script	Aurora#jew01	4_F_02,{
 // The Alchemical Cat
 // sign
 paramk,73,98,3	script	[Alchemical Cat]#alc00	HIDDEN_NPC,{
-	mes "==炼金猫==";
-	mes "炼金术试剂和";
-	mes "药物成分";
-	mes "都在这里卖~";
+	mes "==����è==";
+	mes "�������Լ���";
+	mes "ҩ��ɷ�";
+	mes "����������~";
 	mes "";
-	mes "[运行天数]";
-	mes "除节假日外每天";
+	mes "[��������]";
+	mes "���ڼ�����ÿ��";
 	close;
 }
 
 // Dye the Alchemist
 paramk,75,102,3	script	Dye the Alchemist#alc01	4_M_ALCHE_C,{
 	if ($event_paramk > 0) {
-		mes "[为炼金术士染色]";
-		mes "炼金术的试剂！";
-		mes "我们出售酒精、Karvodailnirol 和 Detrimindexta！";
-		mes "我们每天卖 20 个！";
+		mes "[Ϊ������ʿȾɫ]";
+		mes "���������Լ���";
+		mes "���ǳ��۾ƾ���Karvodailnirol �� Detrimindexta��";
+		mes "����ÿ���� 20 ����";
 		next;
-		if (select("查看试剂：取消。")) {
-			mes "[为炼金术士染色]";
-			mes "不知道还有没有剩下的！";
-			mes "如果没有的话，所有的东西都卖完了！";
-			mes "它们可能有点贵，但很容易消费……好吧，你知道我在说什么。是的？";
+		if (select("�鿴�Լ���ȡ����")) {
+			mes "[Ϊ������ʿȾɫ]";
+			mes "��֪������û��ʣ�µģ�";
+			mes "���û�еĻ������еĶ����������ˣ�";
+			mes "���ǿ����е�󣬵����������ѡ����ðɣ���֪������˵ʲô���ǵģ�";
 			close2;
 			callshop "para_alc10";
 			end;
 		}
-		mes "[为炼金术士染色]";
-		mes "明天过来，我们每天都在酿造试剂！";
+		mes "[Ϊ������ʿȾɫ]";
+		mes "�������������ÿ�춼�������Լ���";
 		close;
 	} else { // holiday
-		mes "[为炼金术士染色]";
-		mes "我们每周三休息哦~";
-		mes "明天再来吧！";
+		mes "[Ϊ������ʿȾɫ]";
+		mes "����ÿ������ϢŶ~";
+		mes "���������ɣ�";
 		close;
 	}
 }
@@ -1496,42 +1498,42 @@ paramk,75,102,3	script	Dye the Alchemist#alc01	4_M_ALCHE_C,{
 // Earl the Alchemist
 paramk,80,104,3	script	Earl the Alchemist#alc02	4_TOWER_16,{
 	if ($event_paramk > 0) {
-		mes "[炼金术士伯爵]";
-		mes "制作试剂、药剂的原料，";
-		mes "还有用于魔法实验的元素石，都在这里出售！";
+		mes "[������ʿ����]";
+		mes "�����Լ���ҩ����ԭ�ϣ�";
+		mes "��������ħ��ʵ���Ԫ��ʯ������������ۣ�";
 		next;
-		mes "[炼金术士伯爵]";
-		mes "不确定我们的库存还有多少，因为我们的供应有限，但是......";
-		mes "在找东西吗？";
+		mes "[������ʿ����]";
+		mes "��ȷ�����ǵĿ�滹�ж��٣���Ϊ���ǵĹ�Ӧ���ޣ�����......";
+		mes "���Ҷ�����";
 		next;
-		switch (select("看成分。：看元素石。：取消。")) {
+		switch (select("���ɷ֡�����Ԫ��ʯ����ȡ����")) {
 		case 1:
-			mes "[炼金术士伯爵]";
-			mes "不朽之心、茎和来自各个地下城的许多其他成分";
-			mes "这里以合理的价格提供";
+			mes "[������ʿ����]";
+			mes "����֮�ġ��������Ը������³ǵ����������ɷ�";
+			mes "�����Ժ����ļ۸��ṩ";
 			next;
-			mes "[炼金术士伯爵]";
-			mes "如果你看不到任何东西，那就意味着所有东西都卖完了。";
+			mes "[������ʿ����]";
+			mes "����㿴�����κζ������Ǿ���ζ�����ж����������ˡ�";
 			close2;
 			callshop "para_alc20";
 			end;
 		case 2:
-			mes "[炼金术士伯爵]";
-			mes "星尘和星屑在这里。";
-			mes "不确定我们是否还有剩余。";
+			mes "[������ʿ����]";
+			mes "�ǳ�����м�����";
+			mes "��ȷ�������Ƿ���ʣ�ࡣ";
 			close2;
 			callshop "para_alc30";
 			end;
 		case 3:
-			mes "[炼金术士伯爵]";
-			mes "再来吧！";
-			mes "请记住，我们周三不营业，因为那是我们发货的时间！";
+			mes "[������ʿ����]";
+			mes "�����ɣ�";
+			mes "���ס������������Ӫҵ����Ϊ�������Ƿ�����ʱ�䣡";
 			close;
 		}
 	} else { // holiday
-		mes "[炼金术士伯爵]";
-		mes "星期三是假期。";
-		mes "如果你有什么想买的，明天再来。";
+		mes "[������ʿ����]";
+		mes "�������Ǽ��ڡ�";
+		mes "�������ʲô����ģ�����������";
 		close;
 	}
 }
@@ -1540,57 +1542,57 @@ paramk,80,104,3	script	Earl the Alchemist#alc02	4_TOWER_16,{
 // Manbok Groceries
 // sign
 paramk,83,98,3	script	[Manbok Groceries]#fod00	HIDDEN_NPC,{
-	mes "== 曼博克杂货 ==";
-	mes "我们提供令人惊叹的烹饪原料！";
-	mes "狼血和娇小的尾巴！";
+	mes "== �������ӻ� ==";
+	mes "�����ṩ���˾�̾�����ԭ�ϣ�";
+	mes "��Ѫ�ͽ�С��β�ͣ�";
 	mes "";
-	mes "[运行天数]";
-	mes "除节假日外每天";
+	mes "[��������]";
+	mes "���ڼ�����ÿ��";
 	close;
 }
 
 // Manbok
 paramk,87,101,3	script	Manbok#fod01	1_M_03,{
 	if ($event_paramk > 0) {
-		mes "[曼博克]";
-		mes "欢迎。";
-		mes "如果您需要烹饪原料，那么您来对地方了。";
+		mes "[������]";
+		mes "��ӭ��";
+		mes "�������Ҫ���ԭ�ϣ���ô�����Եط��ˡ�";
 		next;
-		switch (select("高级烹饪原料。：酱汁和间谍。：出售物品。：取消。")) {
+		switch (select("�߼����ԭ�ϡ�����֭�ͼ������������Ʒ����ȡ����")) {
 		case 1:
-			mes "[曼博克]";
-			mes "不知道我们还剩下多少。";
-			mes "好吧，^4d4dff如果你什么也没看到，那就意味着所有东西都卖完了^000000。";
-			mes "请随意阅读。";
+			mes "[������]";
+			mes "��֪�����ǻ�ʣ�¶��١�";
+			mes "�ðɣ�^4d4dff�����ʲôҲû�������Ǿ���ζ�����ж�����������^000000��";
+			mes "�������Ķ���";
 			close2;
 			callshop "para_fod10";
 			end;
 		case 2:
-			mes "[曼博克]";
-			mes "来自世界各地的酱汁和香料..";
-			mes "如果你想要烹饪原料，可以找我。";
+			mes "[������]";
+			mes "����������صĽ�֭������..";
+			mes "�������Ҫ���ԭ�ϣ��������ҡ�";
 			close2;
 			callshop "para_fod01",1;
 			end;
 		case 3:
-			mes "[曼博克]";
-			mes "如果是我经营的产品，我会以合理的价格向你购买。";
+			mes "[������]";
+			mes "������Ҿ�Ӫ�Ĳ�Ʒ���һ��Ժ����ļ۸����㹺��";
 			close2;
 			callshop "para_fod01",2;
 			end;
 		case 4:
-			mes "[曼博克]";
-			mes "你可能已经知道了，但我还是要说。";
-			mes "我们的供应有限。如果您犹豫太久，我们的食材经常会卖完。";
+			mes "[������]";
+			mes "������Ѿ�֪���ˣ����һ���Ҫ˵��";
+			mes "���ǵĹ�Ӧ���ޡ��������ԥ̫�ã����ǵ�ʳ�ľ��������ꡣ";
 			next;
-			mes "[曼博克]";
-			mes "只是说。";
+			mes "[������]";
+			mes "ֻ��˵��";
 			close;
 		}
 	} else { // holiday
-		mes "[曼博克]";
-		mes "周三不营业。";
-		mes "我们今天补货了。明天再来。";
+		mes "[������]";
+		mes "������Ӫҵ��";
+		mes "���ǽ��첹���ˡ�����������";
 		close;
 	}
 }
@@ -1599,60 +1601,60 @@ paramk,87,101,3	script	Manbok#fod01	1_M_03,{
 // Magical Store, Ma-Ma-Ma-Ma
 // sign
 paramk,93,98,3	script	Ma-Ma-Ma-Ma#mag	HIDDEN_NPC,{
-	mes "== 在-on-on-in ==";
-	mes "== 魔法商店==";
-	mes "魔法的原料和宝石，";
-	mes "专门研究魔法卷轴";
+	mes "== ��-on-on-in ==";
+	mes "== ħ���̵�==";
+	mes "ħ����ԭ�Ϻͱ�ʯ��";
+	mes "ר���о�ħ������";
 	mes "";
-	mes "[运行天数]";
-	mes "部分商品节假日不售卖";
-	mes "但每天都营业。";
+	mes "[��������]";
+	mes "������Ʒ�ڼ��ղ�����";
+	mes "��ÿ�춼Ӫҵ��";
 	close;
 }
 
 // Madoha
 paramk,95,102,3	script	Madoha#mag01	4_M_SAGE_A,{
 	if ($event_paramk > 0) {
-		mes "[小圆]";
-		mes "欢迎。";
-		mes "这是Ma-Ma-Ma-Ma魔法商店，由Ma兄弟经营，帮助非魔法师使用魔法。";
+		mes "[СԲ]";
+		mes "��ӭ��";
+		mes "����Ma-Ma-Ma-Maħ���̵꣬��Ma�ֵܾ�Ӫ��������ħ��ʦʹ��ħ����";
 		next;
-		mes "[小圆]";
-		mes "我们出售魔法卷轴和宝石。";
-		mes "您正在寻找什么特别的东西吗？";
+		mes "[СԲ]";
+		mes "���ǳ���ħ������ͱ�ʯ��";
+		mes "������Ѱ��ʲô�ر�Ķ�����";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "[小圆]";
-			mes "蓝色、红色、黄色宝石。流星风暴、暴风雨、朱红之主等魔法卷轴……";
-			mes "^4d4dff如果没有任何内容，则表示全部售完^000000，请注意。";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "[СԲ]";
+			mes "��ɫ����ɫ����ɫ��ʯ�����Ƿ籩�������ꡢ���֮����ħ�����ᡭ��";
+			mes "^4d4dff���û���κ����ݣ����ʾȫ������^000000����ע�⡣";
 			close2;
 			callshop "para_mag10";
 			end;
 		}
-		mes "[小圆]";
-		mes "制作魔法卷轴是一项有趣的工作。";
-		mes "魔法卷轴还可以帮助许多非法师冒险家，让他们使用他们不知道的魔法。";
+		mes "[СԲ]";
+		mes "����ħ��������һ����Ȥ�Ĺ�����";
+		mes "ħ�����ỹ���԰�������Ƿ�ʦð�ռң�������ʹ�����ǲ�֪����ħ����";
 		next;
-		mes "[小圆]";
-		mes "但我每周可以抄写的卷轴数量是有限的，所以有时会用完。";
+		mes "[СԲ]";
+		mes "����ÿ�ܿ��Գ�д�ľ������������޵ģ�������ʱ�����ꡣ";
 		close;
 	} else { // holiday
-		mes "[小圆]";
-		mes "哦，顾客？";
-		mes "今天是假期。今天我们只出售基本的魔法成分。没有卷轴。可以吗？";
-		mes "我们有蓝色宝石、积分和符石。";
+		mes "[СԲ]";
+		mes "Ŷ���˿ͣ�";
+		mes "�����Ǽ��ڡ���������ֻ���ۻ�����ħ���ɷ֡�û�о��ᡣ������";
+		mes "��������ɫ��ʯ�����ֺͷ�ʯ��";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "[小圆]";
-			mes "我们尝试尽可能多地备货，但可能已经用完了。";
-			mes "如果你什么也没看到，那就意味着所有东西都卖完了。";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "[СԲ]";
+			mes "���ǳ��Ծ����ܶ�ر������������Ѿ������ˡ�";
+			mes "�����ʲôҲû�������Ǿ���ζ�����ж����������ˡ�";
 			close2;
 			callshop "para_mag11";
 			end;
 		}
-		mes "[小圆]";
-		mes "其他日子出售黄色和红色宝石以及魔法卷轴，";
-		mes "所以明天再来吧。";
+		mes "[СԲ]";
+		mes "�������ӳ��ۻ�ɫ�ͺ�ɫ��ʯ�Լ�ħ�����ᣬ";
+		mes "�������������ɡ�";
 		close;
 	}
 }
@@ -1660,26 +1662,26 @@ paramk,95,102,3	script	Madoha#mag01	4_M_SAGE_A,{
 // Magiha
 paramk,100,102,3	script	Magiha#mag02	4_M_SAGE_C,{
 	if ($event_paramk > 0) {
-		mes "[魔法师]";
-		mes "也欢迎哦哦哦。";
-		mes "妈妈、妈妈、妈妈、妈妈，神奇商店。";
-		mes "我们出售抵抗药水来提高您的元素抵抗力。";
+		mes "[ħ��ʦ]";
+		mes "Ҳ��ӭŶŶŶ��";
+		mes "���衢���衢���衢���裬�����̵ꡣ";
+		mes "���ǳ��۵ֿ�ҩˮ���������Ԫ�صֿ�����";
 		next;
-		if (select("查看项目：取消。") == 1) {
-			mes "[魔法师]";
-			mes "我们酿造并销售四种抵抗水、风、土或火的抵抗药水。";
-			mes "如果你什么也没看到，那就意味着所有药水都卖完了。";
+		if (select("�鿴��Ŀ��ȡ����") == 1) {
+			mes "[ħ��ʦ]";
+			mes "�������첢�������ֵֿ�ˮ���硢�����ĵֿ�ҩˮ��";
+			mes "�����ʲôҲû�������Ǿ���ζ������ҩˮ�������ˡ�";
 			close2;
 			callshop "para_mag20";
 			end;
 		}
-		mes "[魔法师]";
-		mes "再来吧！";
+		mes "[ħ��ʦ]";
+		mes "�����ɣ�";
 		close;
 	} else { // holiday
-		mes "[魔法师]";
-		mes "今天是假期！我今天没有酿造任何药剂...";
-		mes "明天再来。";
+		mes "[ħ��ʦ]";
+		mes "�����Ǽ��ڣ��ҽ���û�������κ�ҩ��...";
+		mes "����������";
 		close;
 	}
 }
@@ -1687,8 +1689,8 @@ paramk,100,102,3	script	Magiha#mag02	4_M_SAGE_C,{
 // Blessings of Yggdrasil
 // sign
 paramk,103,98,3	script	[Yggdrasil Blessing]#00	HIDDEN_NPC,{
-	mes "==世界树的祝福==";
-	mes "即将搬入";
+	mes "==��������ף��==";
+	mes "��������";
 	close;
 }
 
@@ -1696,70 +1698,70 @@ paramk,103,98,3	script	[Yggdrasil Blessing]#00	HIDDEN_NPC,{
 // Exotic Plants
 // sign
 paramk,113,98,3	script	[Exotic Plants]#plt	HIDDEN_NPC,{
-	mes "== 外来植物 ==";
-	mes "有毒植物出售。";
-	mes "运营天数：始终";
+	mes "== ����ֲ�� ==";
+	mes "�ж�ֲ����ۡ�";
+	mes "��Ӫ������ʼ��";
 	close;
 }
 
 // Hwaran
 paramk,116,100,3	script	Hwaran#plt01	4_F_RUSGREEN,{
-	mes "[花兰]";
-	mes "欢迎来到外来植物。";
-	mes "我接触的植物在咀嚼时会非常苦。";
-	mes "你会四处看看吗？";
+	mes "[����]";
+	mes "��ӭ��������ֲ�";
+	mes "�ҽӴ���ֲ���ھ׽�ʱ��ǳ��ࡣ";
+	mes "����Ĵ�������";
 	next;
-	if (select("查看项目：取消。") == 1) {
-		mes "[花兰]";
-		mes "尽管它们是有毒植物，但请给予它们关爱。";
-		mes "这些婴儿是我亲自从农场挑选的。制成药物后非常有效。";
+	if (select("�鿴��Ŀ��ȡ����") == 1) {
+		mes "[����]";
+		mes "�����������ж�ֲ�����������ǹذ���";
+		mes "��ЩӤ���������Դ�ũ����ѡ�ġ��Ƴ�ҩ���ǳ���Ч��";
 		close2;
 		callshop "para_plt01";
 		end;
 	}
-	mes "[花兰]";
-	mes "我店里的这么多常客都是来自刺客公会，这真是太令人惊讶了。我不知道为什么。";
-	mes "显然他们内心一定是热爱和平的人，因为他们如此喜爱植物。";
+	mes "[����]";
+	mes "�ҵ������ô�ೣ�Ͷ������Դ̿͹��ᣬ������̫���˾����ˡ��Ҳ�֪��Ϊʲô��";
+	mes "��Ȼ��������һ�����Ȱ���ƽ���ˣ���Ϊ�������ϲ��ֲ�";
 	close;
 }
 
 // You and Me
 // sign
 paramk,133,98,3	script	[You and Me]#unm00	HIDDEN_NPC,{
-	mes "==你和我==";
-	mes "专注于可爱宠物用品";
-	mes "我们向您介绍可以骑乘的野兽以及可以一起狩猎的伙伴";
-	mes "[运行天数]";
-	mes "总是！";
+	mes "==�����==";
+	mes "רע�ڿɰ�������Ʒ";
+	mes "�����������ܿ�����˵�Ұ���Լ�����һ�����ԵĻ��";
+	mes "[��������]";
+	mes "���ǣ�";
 	close;
 }
 
 // Gecko the Trainer
 paramk,124,97,3	script	Gecko the Trainer#unm01	4_M_DESERT,{
-	mes "[训练师壁虎]";
+	mes "[ѵ��ʦ�ڻ�]";
 	switch( Class ) {
 	case Job_Rune_Knight:
 	case Job_Rune_Knight_T:
 	case Job_Baby_Rune_Knight:
-		mes "欢迎。你想租一条龙吗？";
+		mes "��ӭ��������һ������";
 		next;
-		if (select("是：否") == 2) {
-			mes "[训练师壁虎]";
-			mes "我懂了。然后祝你有美好的一天。";
+		if (select("�ǣ���") == 2) {
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "�Ҷ��ˡ�Ȼ��ף�������õ�һ�졣";
 			close;
 		}
 		// if (!getskilllv("RK_DRAGONTRAINING")) {
 		if (!getskilllv("KN_RIDING")) {
-			mes "[训练师壁虎]";
-			mes "请先学习如何骑龙。";
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "����ѧϰ���������";
 			close;
 		} else if (checkriding() || checkdragon()) {
-			mes "[训练师壁虎]";
-			mes "你已经拥有一条龙了。";
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "���Ѿ�ӵ��һ�����ˡ�";
 			close;
 		} else if (ismounting()) {
-			mes "[训练师壁虎]";
-			mes "请移除您的现金。";
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "���Ƴ������ֽ�";
 			close;
 		}
 		setdragon;
@@ -1768,54 +1770,54 @@ paramk,124,97,3	script	Gecko the Trainer#unm01	4_M_DESERT,{
 	case Job_Royal_Guard:
 	case Job_Royal_Guard_T:
 	case Job_Baby_Royal_Guard:
-		mes "欢迎。您想租一辆狮鹫吗？";
+		mes "��ӭ��������һ��ʨ����";
 		next;
-		if (select("是：否") == 2) {
-			mes "[训练师壁虎]";
-			mes "我懂了。然后祝你有美好的一天。";
+		if (select("�ǣ���") == 2) {
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "�Ҷ��ˡ�Ȼ��ף�������õ�һ�졣";
 			close;
 		}
 		if (!getskilllv("KN_RIDING")) {
-			mes "[训练师壁虎]";
-			mes "请先学习如何骑狮鹫。";
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "����ѧϰ�����ʨ�ա�";
 			close;
 		}
 		if (checkriding()) {
-			mes "[训练师壁虎]";
-			mes "你已经拥有了一只狮鹫。";
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "���Ѿ�ӵ����һֻʨ�ա�";
 			close;
 		}
 		if (ismounting()) {
-			mes "[训练师壁虎]";
-			mes "请移除您的现金。";
+			mes "[ѵ��ʦ�ڻ�]";
+			mes "���Ƴ������ֽ�";
 			close;
 		}
 		setriding;
 		close;
 
 	default:
-		mes "我来这里是为了给符文骑士和皇家卫队提供骑乘生物。";
+		mes "����������Ϊ�˸�������ʿ�ͻʼ������ṩ������";
 		close;
 	}
 }
 
 // Tete
 paramk,126,100,3	script	Tamer Tete#unm02	4_M_DST_CHILD,{
-	mes "[泰特]";
-	mes "“你和我”，我们爱动物！";
-	mes "我们 24/7 全天候营业，为您提供可爱宠物和伴侣动物所需的所有物品！";
-	mes "您需要为您的宠物准备物品吗？";
+	mes "[̩��]";
+	mes "������ҡ������ǰ����";
+	mes "���� 24/7 ȫ���Ӫҵ��Ϊ���ṩ�ɰ�����Ͱ��¶��������������Ʒ��";
+	mes "����ҪΪ���ĳ���׼����Ʒ��";
 	next;
-	if (select("查看项目：取消。") == 1) {
-		mes "[泰特]";
-		mes "我们有多种宠物食品可供选择。";
-		mes "我们也有孵化器！";
+	if (select("�鿴��Ŀ��ȡ����") == 1) {
+		mes "[̩��]";
+		mes "�����ж��ֳ���ʳƷ�ɹ�ѡ��";
+		mes "����Ҳ�з�������";
 		close2;
 		callshop "para_unm01",1;
 		end;
 	}
-	mes "[泰特]";
-	mes "谢谢你的光临~！";
+	mes "[̩��]";
+	mes "лл��Ĺ���~��";
 	close;
 }
 
@@ -1824,131 +1826,131 @@ paramk,130,98,3	script	Mist the Hunter#unm03	4_M_JOB_HUNTER,{
 	if (Upper == 0) .@price = 2500; // Normal Falcon - default price
 	if (Upper == 1) .@price = 2500; // Scarf Falcon
 	if (Upper == 2) .@price = 2500; // Baby Falcon
-	mes "[猎人迷雾]";
+	mes "[��������]";
 	if (BaseJob == Job_Hunter) {
 		if (checkoption(Option_Wug) || checkoption(Option_Wugrider)) {
-			mes "一...";
-			mes "你不能租猎鹰";
-			mes "直到你先解散你的座狼！";
+			mes "һ...";
+			mes "�㲻������ӥ";
+			mes "ֱ�����Ƚ�ɢ������ǣ�";
 			close;
 		}
-		mes "你需要猎鹰吗？";
-		mes "你可以租自己的";
-		mes "值得信赖的猛禽";
-		mes "费用只需" + .@price + " zeny~";
+		mes "����Ҫ��ӥ��";
+		mes "��������Լ���";
+		mes "ֵ������������";
+		mes "����ֻ��" + .@price + " zeny~";
 		next;
-		switch (select("租用猎鹰：购买猎鹰笛子：取消。")) {
+		switch (select("������ӥ��������ӥ���ӣ�ȡ����")) {
 		case 1:
 			if (checkwug()) {
-				mes "[猎人迷雾]";
-				mes "一...";
-				mes "你不能租猎鹰";
-				mes "直到你先解散你的座狼！";
+				mes "[��������]";
+				mes "һ...";
+				mes "�㲻������ӥ";
+				mes "ֱ�����Ƚ�ɢ������ǣ�";
 				close;
 			}
 			if (Zeny < .@price) {
-				mes "[猎人迷雾]";
-				mes "这是什么？";
-				mes "你没有";
-				mes "足够的禅尼吗？！";
-				mes "你最好开始";
-				mes "猎钱";
-				mes "而不是怪物~";
+				mes "[��������]";
+				mes "����ʲô��";
+				mes "��û��";
+				mes "�㹻�������𣿣�";
+				mes "����ÿ�ʼ";
+				mes "��Ǯ";
+				mes "�����ǹ���~";
 				close;
 			}
 			if (getskilllv("HT_FALCON") == 0) {
-				mes "[猎人迷雾]";
-				mes "天哪~";
-				mes "去学习如何";
-				mes "管理猎鹰";
-				mes "第一的！我租不到一个";
-				mes "如果你不能的话";
-				mes "处理它，你知道的。";
+				mes "[��������]";
+				mes "����~";
+				mes "ȥѧϰ���";
+				mes "������ӥ";
+				mes "��һ�ģ����ⲻ��һ��";
+				mes "����㲻�ܵĻ�";
+				mes "����������֪���ġ�";
 				close;
 			}
 			if (checkfalcon()) {
-				mes "[猎人迷雾]";
-				mes "一...";
-				mes "你已经有了";
-				mes "一只猎鹰。是的";
-				mes "在那里，你看不到吗？";
+				mes "[��������]";
+				mes "һ...";
+				mes "���Ѿ�����";
+				mes "һֻ��ӥ���ǵ�";
+				mes "������㿴������";
 				close;
 			}
 			Zeny -= .@price;
 			setfalcon;
 			close;
 		case 2:
-			mes "[猎人迷雾]";
-			mes "有了神奇的长笛，您就可以从任何地方召唤您的猎鹰！";
+			mes "[��������]";
+			mes "��������ĳ��ѣ����Ϳ��Դ��κεط��ٻ�������ӥ��";
 			next;
-			mes "[猎人迷雾]";
-			mes "太棒了，不是吗？哈哈哈！";
+			mes "[��������]";
+			mes "̫���ˣ������𣿹�������";
 			next;
-			mes "[猎人迷雾]";
-			mes "我为什么要卖这些猎鹰笛子？";
-			mes "这是因为我不知道它们是如何工作的。";
-			mes "哈哈哈！";
+			mes "[��������]";
+			mes "��ΪʲôҪ����Щ��ӥ���ӣ�";
+			mes "������Ϊ�Ҳ�֪����������ι����ġ�";
+			mes "��������";
 			next;
-			mes "[猎人迷雾]";
-			mes "当然，你需要技能^ff0000猎鹰掌握^000000。";
-			mes "我没有技能，所以不知道如何对付猎鹰。";
-			mes "就目前而言，我可能永远不会拥有猎鹰。";
+			mes "[��������]";
+			mes "��Ȼ������Ҫ����^ff0000��ӥ����^000000��";
+			mes "��û�м��ܣ����Բ�֪����ζԸ���ӥ��";
+			mes "��Ŀǰ���ԣ��ҿ�����Զ����ӵ����ӥ��";
 			next;
-			mes "[猎人迷雾]";
-			mes "但我不能免费给你一个！";
-			mes "我还要赚钱，因为我也要吃饭！";
+			mes "[��������]";
+			mes "���Ҳ�����Ѹ���һ����";
+			mes "�һ�Ҫ׬Ǯ����Ϊ��ҲҪ�Է���";
 			next;
-			mes "[猎人迷雾]";
-			mes "如果你需要猎鹰笛子，我会以 12,500 泽尼的价格出售。还是那太贵了？";
+			mes "[��������]";
+			mes "�������Ҫ��ӥ���ӣ��һ��� 12,500 ����ļ۸���ۡ�������̫���ˣ�";
 			next;
 			if (eaclass()&EAJL_THIRD) {
-				mes "[猎人迷雾]";
-				mes "不过，对于流浪者队，我有 10,000 泽尼的特价！";
+				mes "[��������]";
+				mes "���������������߶ӣ����� 10,000 ������ؼۣ�";
 				.@price = 10000;
 				next;
 			} else
 				.@price = 12500;
-			if (select("不要买：买一支猎鹰笛子。") == 1) {
-				mes "[猎人迷雾]";
-				mes "那太糟糕了。如果你需要的话，就回来吧！";
+			if (select("��Ҫ����һ֧��ӥ���ӡ�") == 1) {
+				mes "[��������]";
+				mes "��̫����ˡ��������Ҫ�Ļ����ͻ����ɣ�";
 				close;
 			}
 			if (Zeny >= .@price) {
 				if (countitem(12848) >= 1) { // Falcon_Flute
-					mes "[猎人迷雾]";
-					mes "正如我所看到的，你已经拥有了猎鹰长笛！";
-					mes "别担心，我的年轻朋友，一旦您购买了猎鹰笛，您就不需要再购买了";
-					mes "既然隼笛不会因为使用而消失，那不是很好吗？";
+					mes "[��������]";
+					mes "�������������ģ����Ѿ�ӵ������ӥ���ѣ�";
+					mes "���ģ��ҵ��������ѣ�һ������������ӥ�ѣ����Ͳ���Ҫ�ٹ�����";
+					mes "��Ȼ���Ѳ�����Ϊʹ�ö���ʧ���ǲ��Ǻܺ���";
 					close;
 				}
-				mes "[猎人迷雾]";
-				mes "来，拿着这个笛子。";
-				mes "有了它，您可以从任何地方为您的猎鹰吹口哨。";
+				mes "[��������]";
+				mes "��������������ӡ�";
+				mes "�������������Դ��κεط�Ϊ������ӥ�����ڡ�";
 				Zeny -= .@price;
 				getitem(12848, 1); // Falcon_Flute
 				next;
-				mes "[猎人迷雾]";
-				mes "只是一个提醒。";
-				mes "您需要技能^ff0000猎鹰掌握^000000才能使用它！";
+				mes "[��������]";
+				mes "ֻ��һ�����ѡ�";
+				mes "����Ҫ����^ff0000��ӥ����^000000����ʹ������";
 				close;
 			}
-			mes "[猎人迷雾]";
-			mes "抱歉，您没有足够的钱购买隼笛，请等您有钱后再回来！";
+			mes "[��������]";
+			mes "��Ǹ����û���㹻��Ǯ�������ѣ��������Ǯ���ٻ�����";
 			close;
 
 		case 3:
-			mes "[迷雾猎人]";
-			mes "查看我们商店中的其他商品。";
-			mes "我们可能很快就会推出新的宠物用品~";
-			mes "哈哈哈哈！";
+			mes "[��������]";
+			mes "�鿴�����̵��е�������Ʒ��";
+			mes "���ǿ��ܺܿ�ͻ��Ƴ��µĳ�����Ʒ~";
+			mes "����������";
 			close;
 		}
 	} else {
-		mes "年轻的傻瓜！";
-		mes "猎鹰只能";
-		mes "被猎人使用";
-		mes "还有狙击手，卡皮什？";
-		mes "……呵呵，吃醋了？";
+		mes "�����ɵ�ϣ�";
+		mes "��ӥֻ��";
+		mes "������ʹ��";
+		mes "���оѻ��֣���Ƥʲ��";
+		mes "�����Ǻǣ��Դ��ˣ�";
 		close;
 	}
 }

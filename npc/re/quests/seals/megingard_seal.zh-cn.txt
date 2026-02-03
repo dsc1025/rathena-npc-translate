@@ -5,6 +5,8 @@
 //= Quest for breaking the seal of Megingjard.
 //===== Changelogs: ==========================================
 //= 1.0 Renewal script update for ep16.1 [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 prt_cas,180,269,6	duplicate(Rebarev Doug_)	Rebarev Doug	1_M_KNIGHTMASTER

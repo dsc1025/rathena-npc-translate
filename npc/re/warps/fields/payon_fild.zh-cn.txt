@@ -12,6 +12,8 @@
 //= 1.1 Refixed payon field08 -> payon warp
 //= 1.2 Changed trigger area of pay_fild08 -> payon warp. [L0ne_W0lf]
 //= 1.3 Renewal warp adjustments.
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 //= Payon Field's ============================================

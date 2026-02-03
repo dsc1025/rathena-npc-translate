@@ -2,53 +2,55 @@
 //= Reform NPCs in rgsr_in
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 itemmall,14,50,3	script	Equipment Reform PR Agent#it01	4_F_ZONDAGIRL,{
-	mes "[装备改造公关代理]";
-	mes "你好，冒险家！";
-	mes "您现在对自己的装备不满意吗？";
-	mes "您不想尝试一种新的修改而不是任何其他常规方法吗？";
-	mes "加入伞学院！";
+	mes "[װ�����칫�ش���]";
+	mes "��ã�ð�ռң�";
+	mes "�����ڶ��Լ���װ����������";
+	mes "�����볢��һ���µ��޸Ķ������κ��������淽����";
+	mes "����ɡѧԺ��";
 	next;
-	switch( select( "走吧。", "听解释。", "退出。" ) ) {
+	switch( select( "�߰ɡ�", "�����͡�", "�˳���" ) ) {
 	case 1:
-		mes "[装备改造公关代理]";
-		mes "好的！研究所的其他设施都是保密的，无法进入，所以我们会引导您走一条特殊的道路，让外人可以进入！";
+		mes "[װ�����칫�ش���]";
+		mes "�õģ��о�����������ʩ���Ǳ��ܵģ��޷����룬�������ǻ���������һ������ĵ�·�������˿��Խ��룡";
 		close2;
 		warp "rgsr_in",125,170;
 		end;
 	case 2:
-		mes "[装备改造公关代理]";
-		mes "雷根施姆研究所正在世界各地进行研究，以修改武器、装甲、配件和其他装备项目......";
-		mes "我们还在收集数据和研究改装，所以我们需要大量的冒险者装备来增加我们的改装研究。";
+		mes "[װ�����칫�ش���]";
+		mes "�׸�ʩķ�о�������������ؽ����о������޸�������װ�ס����������װ����Ŀ......";
+		mes "���ǻ����ռ����ݺ��о���װ������������Ҫ������ð����װ�����������ǵĸ�װ�о���";
 		next;
-		mes "[装备改造公关代理]";
-		mes "研究正在进行中，敬请期待研究完成后尽快添加多种新设备！";
+		mes "[װ�����칫�ش���]";
+		mes "�о����ڽ����У������ڴ��о���ɺ󾡿����Ӷ������豸��";
 		close;
 	case 3:
-		mes "[装备改造公关代理]";
-		mes "以后有兴趣的话就回来吧！";
+		mes "[װ�����칫�ش���]";
+		mes "�Ժ�����Ȥ�Ļ��ͻ����ɣ�";
 		close;
 	}
 }
 lighthalzen,99,156,3	duplicate(Equipment Reform PR Agent#it01)	Equipment Reform PR Agent#lh01	4_F_ZONDAGIRL
 
 rgsr_in,112,167,7	script	Enchant Researcher#rg02-1	MD_ED_M_SCIENCE,{
-	mes "[圆环]";
-	mes "啊？除了队长之外，我们队里还有其他人吗？";
-	mes "那就是我啦~";
-	mes "我负责附魔。";
-	mes "让我们看看你得到了什么？";
+	mes "[Բ��]";
+	mes "�������˶ӳ�֮�⣬���Ƕ��ﻹ����������";
+	mes "�Ǿ�������~";
+	mes "�Ҹ���ħ��";
+	mes "�����ǿ�����õ���ʲô��";
 	next;
-	if (select( "修改操作系统武器附魔", "退出" ) == 2) {
-		mes "[圆环]";
-		mes "当你需要的时候就回来吧。";
-		mes "我们需要研究。";
+	if (select( "�޸Ĳ���ϵͳ������ħ", "�˳�" ) == 2) {
+		mes "[Բ��]";
+		mes "������Ҫ��ʱ��ͻ����ɡ�";
+		mes "������Ҫ�о���";
 		close;
 	}
-	mes "[圆环]";
-	mes "在哪里...";
+	mes "[Բ��]";
+	mes "������...";
 	close2;
 	item_enchant(33);
 	end;
@@ -59,63 +61,63 @@ OnInit:
 }
 
 rgsr_in,115,169,5	script	Weapon Researcher#rg02	MD_ED_M_SCIENCE,{
-	mes "[弗拉萨]";
-	mes "让我们看看...您是客人。";
-	mes "我喜欢那些明确自己想要什么的人。";
-	mes "可修改的项目也可以读取为 <TIPBOX>[List]<INFO>9163</INFO></TIPBOX>。";
-	mes "我会尽力回答您的任何问题。";
+	mes "[������]";
+	mes "�����ǿ���...���ǿ��ˡ�";
+	mes "��ϲ����Щ��ȷ�Լ���Ҫʲô���ˡ�";
+	mes "���޸ĵ���ĿҲ���Զ�ȡΪ <TIPBOX>[List]<INFO>9163</INFO></TIPBOX>��";
+	mes "�һᾡ���ش������κ����⡣";
 	next;
-	switch( select( "灭霸武器", "操作系统武器", "退出" ) ) {
+	switch( select( "�������", "����ϵͳ����", "�˳�" ) ) {
 	case 1:
-		mes "[弗拉萨]";
-		mes "^0000FF灭霸武器^000000模组在改装方式上有中低等级之分。";
+		mes "[������]";
+		mes "^0000FF�������^000000ģ���ڸ�װ��ʽ�����е͵ȼ�֮�֡�";
 		next;
-		switch( select( "低级模组", "中级模组", "退出" ) ) {
+		switch( select( "�ͼ�ģ��", "�м�ģ��", "�˳�" ) ) {
 		case 1:
-			mes "[弗拉萨]";
-			mes "灭霸武器低阶改装。";
-			mes "^FF0000精炼等级降低5^000000，但消耗的材料更少。";
-			mes "对于 mods，武器需要精炼等级 +9 或更高。";
+			mes "[������]";
+			mes "��������ͽ׸�װ��";
+			mes "^FF0000�����ȼ�����5^000000�������ĵĲ��ϸ��١�";
+			mes "���� mods��������Ҫ�����ȼ� +9 ����ߡ�";
 			close2;
 			item_reform("Thanos_W_Reform_1");
 			end;
 		case 2:
-			mes "[弗拉萨]";
-			mes "灭霸武器中间修改。";
-			mes "^FF0000精炼等级降低1^000000，但消耗更多材料。";
-			mes "对于 mods，武器需要精炼等级 +9 或更高。";
+			mes "[������]";
+			mes "��������м��޸ġ�";
+			mes "^FF0000�����ȼ�����1^000000�������ĸ�����ϡ�";
+			mes "���� mods��������Ҫ�����ȼ� +9 ����ߡ�";
 			close2;
 			item_reform("Thanos_W_Reform_2");
 			end;
 		case 3:
-			mes "[弗拉萨]";
-			mes "如果您需要模组，请回来。";
-			mes "欢迎您随时帮助我们进行研究。";
+			mes "[������]";
+			mes "�������Ҫģ�飬�������";
+			mes "��ӭ����ʱ�������ǽ����о���";
 			close;
 		}
 		end;
 	case 2:
-		mes "[弗拉萨]";
-		mes "^0000FF操作系统武器^000000...";
-		mes "改装时，精炼度必须达到+7以上。";
-		mes "精炼等级不降低。";
-		mes "你带东西了吗？";
+		mes "[������]";
+		mes "^0000FF����ϵͳ����^000000...";
+		mes "��װʱ�������ȱ���ﵽ+7���ϡ�";
+		mes "�����ȼ������͡�";
+		mes "�����������";
 		next;
-		if (select( "转换", "退出" ) == 2) {
-			mes "[弗拉萨]";
-			mes "如果您需要模组，请回来。";
-			mes "欢迎您随时帮助我们进行研究。";
+		if (select( "ת��", "�˳�" ) == 2) {
+			mes "[������]";
+			mes "�������Ҫģ�飬�������";
+			mes "��ӭ����ʱ�������ǽ����о���";
 			close;
 		}
-		mes "[弗拉萨]";
-		mes "让我们看看你带来了什么。";
+		mes "[������]";
+		mes "�����ǿ����������ʲô��";
 		close2;
 		item_reform("OS_Weapon_Reform");
 		end;
 	case 3:
-		mes "[弗拉萨]";
-		mes "如果您需要模组，请回来。";
-		mes "欢迎您随时帮助我们进行研究。";
+		mes "[������]";
+		mes "�������Ҫģ�飬�������";
+		mes "��ӭ����ʱ�������ǽ����о���";
 		close;
 	}
 	end;
@@ -126,11 +128,11 @@ OnInit:
 }
 
 rgsr_in,115,180,5	script	Armor Researcher#rg02	MD_ED_M_SCIENCE,{
-	mes "[代数]";
-	mes "啊，已经走到这一步了，但是我们团队的研究还缺少实验。";
-	mes "下次我会改进一下，得到队长的许可，然后再继续。";
-	mes "好的？";
-	npctalk "鬼脸。", "", bc_self;
+	mes "[����]";
+	mes "�����Ѿ��ߵ���һ���ˣ����������Ŷӵ��о���ȱ��ʵ�顣";
+	mes "�´��һ�Ľ�һ�£��õ��ӳ������ɣ�Ȼ���ټ�����";
+	mes "�õģ�";
+	npctalk "������", "", bc_self;
 	close;
 
 OnInit:
@@ -139,29 +141,29 @@ OnInit:
 }
 
 rgsr_in,135,186, 7	script	Assistant#rg02	4_M_ALCHE_D,{
-	npctalk "助理：别碰它……很危险……", "", bc_self;
+	npctalk "������������������Σ�ա���", "", bc_self;
 	sleep2 300;
-	npctalk "助理：……哦…………", "助手#rg04", bc_self;
-	npctalk "助理：放心吧，没什么的……", "助手#rg03", bc_self;
+	npctalk "����������Ŷ��������", "����#rg04", bc_self;
+	npctalk "���������İɣ�ûʲô�ġ���", "����#rg03", bc_self;
 	end;
 }
 
 rgsr_in,135,189,5	script	Assistant#rg03	4_M_REPAIR,{
-	npctalk "助理：……工资……给我吧……？然后问一些不必要的问题...", "", bc_self;
-	npctalk "助理：当然……", "助手#rg02", bc_self;
+	npctalk "�������������ʡ������Ұɡ�����Ȼ����һЩ����Ҫ������...", "", bc_self;
+	npctalk "��������Ȼ����", "����#rg02", bc_self;
 	end;
 }
 
 rgsr_in,137,187,3	script	Assistant#rg04	4_F_HUWOMAN,{
-	npctalk "助理：不，不是那个……就是这样。就是这样...", "", bc_self;
+	npctalk "���������������Ǹ�����������������������...", "", bc_self;
 	sleep2 300;
-	npctalk "助理：希克……这几乎是一个重要的日子……你没有看到他，是吗？", "助手#rg02", bc_self;
-	npctalk "网格： ？", "矿石研究员#rg02", bc_self;
+	npctalk "������ϣ�ˡ����⼸����һ����Ҫ�����ӡ�����û�п�����������", "����#rg02", bc_self;
+	npctalk "���� ��", "��ʯ�о�Ա#rg02", bc_self;
 	end;
 }
 
 rgsr_in,146,169,3	script	Assistant#rg05	4_M_REPAIR,{
-	npctalk "助理：安静……我……", "", bc_self;
+	npctalk "���������������ҡ���", "", bc_self;
 	end;
 
 OnInit:
@@ -170,7 +172,7 @@ OnInit:
 }
 
 rgsr_in,146,167,3	script	Assistant#rg06	4_M_REPAIR,{
-	npctalk "助理：我们的领导是一个很棒的人。我还年轻...", "", bc_self;
+	npctalk "���������ǵ��쵼��һ���ܰ����ˡ��һ�����...", "", bc_self;
 	end;
 
 OnInit:
@@ -179,7 +181,7 @@ OnInit:
 }
 
 rgsr_in,144,170,5	script	Assistant#rg07	4_M_REPAIR,{
-	npctalk "助理：嘿，这个数据真是太棒了。我跟着你是明智的。", "", bc_self;
+	npctalk "�������٣������������̫���ˡ��Ҹ����������ǵġ�", "", bc_self;
 	end;
 
 OnInit:
@@ -188,9 +190,9 @@ OnInit:
 }
 
 rgsr_in,106,167,5	script	Assistant#rg11	4_M_REPAIR,{
-	npctalk "助理：我们做更多研究后一天可以搬到更大的实验室吗？", "", bc_self;
+	npctalk "�����������������о���һ����԰ᵽ�����ʵ������", "", bc_self;
 	sleep2 300;
-	npctalk "助理：……杭。", "助手#rg10", bc_self;
+	npctalk "��������������", "����#rg10", bc_self;
 	end;
 
 OnInit:
@@ -199,9 +201,9 @@ OnInit:
 }
 
 rgsr_in,109,167,3	script	Assistant#rg10	4_M_REPAIR,{
-	npctalk "助理：……我是。", "", bc_self;
+	npctalk "�������������ǡ�", "", bc_self;
 	sleep2 300;
-	npctalk "助手：冒险家，请小心行走。大楼很旧，地板有点吱吱作响。", "助手#rg11", bc_self;
+	npctalk "���֣�ð�ռң���С�����ߡ���¥�ܾɣ��ذ��е�֨֨���졣", "����#rg11", bc_self;
 	end;
 
 OnInit:
@@ -210,7 +212,7 @@ OnInit:
 }
 
 rgsr_in,146,178,3	script	Assistant#rg20	4_M_REPAIR,{
-	npctalk "助理：如有任何问题，请询问我们的领导。", "", bc_self;
+	npctalk "�����������κ����⣬��ѯ�����ǵ��쵼��", "", bc_self;
 	end;
 
 OnInit:
@@ -219,9 +221,9 @@ OnInit:
 }
 
 rgsr_in,143,180,5	script	Assistant#rg21	4_M_REPAIR,{
-	npctalk "助理：外面是不是有点吵？", "", bc_self;
+	npctalk "�����������ǲ����е㳳��", "", bc_self;
 	sleep2 200;
-	npctalk "助理：我希望我能搬到一个隔音好的地方。", "助手#rg20", bc_self;
+	npctalk "��������ϣ�����ܰᵽһ�������õĵط���", "����#rg20", bc_self;
 	end;
 
 OnInit:
@@ -230,70 +232,70 @@ OnInit:
 }
 
 rgsr_in,131,187,5	script	Ore Researcher#rg02	MD_ED_M_SCIENCE,{
-	mes "[网格]";
-	mes "快点。";
-	mes "这是一个低预算的实验室，所以总是这样。";
-	mes "我和我的助手精炼了这个实验室中使用的宝石。收费。";
+	mes "[����]";
+	mes "��㡣";
+	mes "����һ����Ԥ���ʵ���ң���������������";
+	mes "�Һ��ҵ����־��������ʵ������ʹ�õı�ʯ���շѡ�";
 	next;
-	switch( select( "查看兑换列表", "您兑换什么？", "退出" ) ) {
+	switch( select( "�鿴�һ��б�", "���һ�ʲô��", "�˳�" ) ) {
 	case 1:
-		mes "[网格]";
-		mes "让我们来看看...";
-		mes "现在就有这些东西了。";
+		mes "[����]";
+		mes "������������...";
+		mes "���ھ�����Щ�����ˡ�";
 		next;
-		switch( select( "宝石精炼", "顶级矿石兑换", "购买额外矿石", "取消" ) ) {
+		switch( select( "��ʯ����", "������ʯ�һ�", "��������ʯ", "ȡ��" ) ) {
 		case 1:
-			mes "[网格]";
-			mes "宝石提炼。";
+			mes "[����]";
+			mes "��ʯ������";
 			close2;
 			callshop("barter_rgsr_in_1");
 			end;
 		case 2:
-			mes "[网格]";
-			mes "顶级矿石交易所。";
+			mes "[����]";
+			mes "������ʯ��������";
 			close2;
 			callshop("barter_rgsr_in_2");
 			end;
 		case 3:
-			mes "[网格]";
-			mes "矿石不够？然后还有一些我专门收集的东西...";
-			mes "你有暗影解构吗？";
+			mes "[����]";
+			mes "��ʯ������Ȼ����һЩ��ר���ռ��Ķ���...";
+			mes "���а�Ӱ�⹹��";
 			close2;
 			callshop("barter_rgsr_in_3");
 			end;
 		case 4:
-			mes "[网格]";
-			mes "如果你有什么需要，就再来吧。";
+			mes "[����]";
+			mes "�������ʲô��Ҫ���������ɡ�";
 			close;
 		}
 		end;
 	case 2:
-		mes "[网格]";
-		mes "正如我们在研究中看到的那样，这些材料非常稀有。我们团队雇佣了冒险者，但材料却无法与我们需要的数量相比。";
-		mes "所以当冒险者带着材料来的时候，他们决定提供相应的研究价值。";
+		mes "[����]";
+		mes "�����������о��п�������������Щ���Ϸǳ�ϡ�С������Ŷӹ�Ӷ��ð���ߣ�������ȴ�޷���������Ҫ��������ȡ�";
+		mes "���Ե�ð���ߴ��Ų�������ʱ�����Ǿ����ṩ��Ӧ���о���ֵ��";
 		next;
-		mes "[网格]";
-		mes "幸运的是，我们进行了研究，来找我们的冒险家提供了使用我们技术的材料。";
-		mes "如果您想修改某些内容，只需携带所提供的材料即可。";
+		mes "[����]";
+		mes "���˵��ǣ����ǽ������о����������ǵ�ð�ռ��ṩ��ʹ�����Ǽ����Ĳ��ϡ�";
+		mes "��������޸�ĳЩ���ݣ�ֻ��Я�����ṩ�Ĳ��ϼ��ɡ�";
 		next;
-		mes "[网格]";
-		mes "你是一个冒险家，所以你知道这意味着什么吗？";
+		mes "[����]";
+		mes "����һ��ð�ռң�������֪������ζ��ʲô��";
 		close;
 	case 3:
-		mes "[网格]";
-		mes "如果你有什么需要，就再来吧。";
+		mes "[����]";
+		mes "�������ʲô��Ҫ���������ɡ�";
 		close;
 	}
 }
 
 rgsr_in,137,178,3	script	Accessories Researcher#rg02	MD_ED_M_SCIENCE,{
-	mes "[冠军]";
-	mes "最后，我和一位冒险家交谈，请他确认我的研究，是你吗？";
-	mes "不幸的是，我们的团队还没有做足够的事情来实现这一目标。";
+	mes "[�ھ�]";
+	mes "����Һ�һλð�ռҽ�̸������ȷ���ҵ��о���������";
+	mes "���ҵ��ǣ����ǵ��Ŷӻ�û�����㹻��������ʵ����һĿ�ꡣ";
 	next;
-	mes "[冠军]";
-	mes "它仍然不完整。";
-	mes "下次得到船长的许可后再见。";
+	mes "[�ھ�]";
+	mes "����Ȼ��������";
+	mes "�´εõ����������ɺ��ټ���";
 	close;
 
 OnInit:
@@ -302,90 +304,90 @@ OnInit:
 }
 
 rgsr_in,136,171,5	script	Special Equipment Researcher#rg02	MD_ED_M_SCIENCE,{
-	mes "[堆栈]";
-	mes "看到Team Licht 的表现了吗？";
-	mes "我们为这个实验室感到自豪。";
-	mes "您想修改哪一项？";
-	mes "可修改的项目位于<TIPBOX>[列表]<INFO>9166</INFO></TIPBOX>中。";
+	mes "[��ջ]";
+	mes "����Team Licht �ı�������";
+	mes "����Ϊ���ʵ���Ҹе��Ժ���";
+	mes "�����޸���һ�";
+	mes "���޸ĵ���Ŀλ��<TIPBOX>[�б�]<INFO>9166</INFO></TIPBOX>�С�";
 	next;
-	switch( select( "非标装甲", "非标武器", "退出" ) ) {
+	switch( select( "�Ǳ�װ��", "�Ǳ�����", "�˳�" ) ) {
 	case 1:
-		mes "[堆栈]";
-		mes "^0000FF非标准装甲^000000，改装方式有下级、中级、上级。";
-		mes "不可精炼的铠甲只能进行上层改造。";
+		mes "[��ջ]";
+		mes "^0000FF�Ǳ�׼װ��^000000����װ��ʽ���¼����м����ϼ���";
+		mes "���ɾ���������ֻ�ܽ����ϲ���졣";
 		next;
-		switch( select( "下级模组", "中级模组", "上级模组", "退出" ) ) {
+		switch( select( "�¼�ģ��", "�м�ģ��", "�ϼ�ģ��", "�˳�" ) ) {
 		case 1:
-			mes "[堆栈]";
-			mes "护甲降低模组？好的。";
-			mes "^FF0000精炼等级降低5^000000，但消耗的材料更少。";
-			mes "而改装时，装备的精炼度必须达到+9以上。";
+			mes "[��ջ]";
+			mes "���׽���ģ�飿�õġ�";
+			mes "^FF0000�����ȼ�����5^000000�������ĵĲ��ϸ��١�";
+			mes "����װʱ��װ���ľ����ȱ���ﵽ+9���ϡ�";
 			close2;
 			item_reform("C_Armor_Reform_1");
 			end;
 		case 2:
-			mes "[堆栈]";
-			mes "装甲中级模组？好的。";
-			mes "^FF0000精炼等级降低1^000000，但消耗更多材料。";
-			mes "而改装时，装备的精炼度必须达到+9以上。";
+			mes "[��ջ]";
+			mes "װ���м�ģ�飿�õġ�";
+			mes "^FF0000�����ȼ�����1^000000�������ĸ�����ϡ�";
+			mes "����װʱ��װ���ľ����ȱ���ﵽ+9���ϡ�";
 			close2;
 			item_reform("C_Armor_Reform_2");
 			end;
 		case 3:
-			mes "[堆栈]";
-			mes "装甲上部模组？好的。";
-			mes "^FF0000精炼等级增加1^000000，但消耗更多材料。";
-			mes "而改装时，装备的精炼度必须达到+9以上。";
-			mes "^FF0000不可精炼装备^000000也可以进行高级改装，但精炼等级不会增加。";
+			mes "[��ջ]";
+			mes "װ���ϲ�ģ�飿�õġ�";
+			mes "^FF0000�����ȼ�����1^000000�������ĸ�����ϡ�";
+			mes "����װʱ��װ���ľ����ȱ���ﵽ+9���ϡ�";
+			mes "^FF0000���ɾ���װ��^000000Ҳ���Խ��и߼���װ���������ȼ��������ӡ�";
 			close2;
 			item_reform("C_Armor_Reform_3");
 			end;
 		case 4:
-			mes "[堆栈]";
-			mes "已经要去了吗？";
-			mes "您需要看到更多我们的优秀表现！";
+			mes "[��ջ]";
+			mes "�Ѿ�Ҫȥ����";
+			mes "����Ҫ�����������ǵ�������֣�";
 			close;
 		}
 	case 2:
-		mes "[堆栈]";
-		mes "^0000FF非标准武器^000000，改装方法有下级、中级、上级。";
+		mes "[��ջ]";
+		mes "^0000FF�Ǳ�׼����^000000����װ�������¼����м����ϼ���";
 		next;
-		switch( select( "下级模组", "中级模组", "上级模组", "退出" ) ) {
+		switch( select( "�¼�ģ��", "�м�ģ��", "�ϼ�ģ��", "�˳�" ) ) {
 		case 1:
-			mes "[堆栈]";
-			mes "武器低级模组？好的。";
-			mes "^FF0000精炼等级降低5^000000，但消耗的材料更少。";
-			mes "而改装时，装备的精炼度必须达到+9以上。";
+			mes "[��ջ]";
+			mes "�����ͼ�ģ�飿�õġ�";
+			mes "^FF0000�����ȼ�����5^000000�������ĵĲ��ϸ��١�";
+			mes "����װʱ��װ���ľ����ȱ���ﵽ+9���ϡ�";
 			close2;
 			item_reform("C_Weapon_Reform_1");
 			end;
 		case 2:
-			mes "[堆栈]";
-			mes "武器中级模组？好的。";
-			mes "^FF0000精炼等级降低1^000000，但消耗更多材料。";
-			mes "而改装时，装备的精炼度必须达到+9以上。";
+			mes "[��ջ]";
+			mes "�����м�ģ�飿�õġ�";
+			mes "^FF0000�����ȼ�����1^000000�������ĸ�����ϡ�";
+			mes "����װʱ��װ���ľ����ȱ���ﵽ+9���ϡ�";
 			close2;
 			item_reform("C_Weapon_Reform_2");
 			end;
 		case 3:
-			mes "[堆栈]";
-			mes "武器高级模组？好的。";
-			mes "^FF0000精炼等级增加1^000000，但消耗更多材料。";
-			mes "而改装时，装备的精炼度必须达到+9以上。";
+			mes "[��ջ]";
+			mes "�����߼�ģ�飿�õġ�";
+			mes "^FF0000�����ȼ�����1^000000�������ĸ�����ϡ�";
+			mes "����װʱ��װ���ľ����ȱ���ﵽ+9���ϡ�";
 			close2;
 			item_reform("C_Weapon_Reform_3");
 			end;
 		case 4:
-			mes "[堆栈]";
-			mes "已经要去了吗？";
-			mes "您需要看到更多我们的优秀表现！";
+			mes "[��ջ]";
+			mes "�Ѿ�Ҫȥ����";
+			mes "����Ҫ�����������ǵ�������֣�";
 			close;
 		}
 		end;
 	case 3:
-		mes "[堆栈]";
-		mes "已经要去了吗？";
-		mes "您需要看到更多我们的优秀表现！";
+		mes "[��ջ]";
+		mes "�Ѿ�Ҫȥ����";
+		mes "����Ҫ�����������ǵ�������֣�";
 		close;
 	}
 	end;
@@ -396,55 +398,55 @@ OnInit:
 }
 
 rgsr_in,128,174,5	script	Director#rg02	1_M_LIBRARYMASTER,{
-	mes "[导演]";
-	mes "...快点。";
-	mes "你来的时候可能已经听过解释了，但是要简单介绍一下这个地方，还有很长的路要走。我们正在努力将许多武器、盔甲、配件等改造成不同的东西。";
+	mes "[����]";
+	mes "...��㡣";
+	mes "������ʱ������Ѿ����������ˣ�����Ҫ�򵥽���һ������ط������кܳ���·Ҫ�ߡ���������Ŭ�����������������ס�����ȸ���ɲ�ͬ�Ķ�����";
 	next;
-	mes "[导演]";
-	mes "削减改造装备的精炼度是必要的，但为了获得更大的威力，却是一个劳作。";
+	mes "[����]";
+	mes "��������װ���ľ������Ǳ�Ҫ�ģ���Ϊ�˻�ø����������ȴ��һ��������";
 	next;
-	mes "[导演]";
-	mes "研究正在进行中，因此尚不知道某些东西会在何时何地突然完成并提供给冒险家。";
-	mes "是……只要数据收集起来，就会有某种情况。";
+	mes "[����]";
+	mes "�о����ڽ����У�����в�֪��ĳЩ�������ں�ʱ�ε�ͻȻ��ɲ��ṩ��ð�ռҡ�";
+	mes "�ǡ���ֻҪ�����ռ��������ͻ���ĳ�������";
 	next;
-	mes "[导演]";
-	mes "而这一次，Licht 团队实现了这一目标。";
-	mes "如果您有兴趣，请查看进行了哪些研究。";
+	mes "[����]";
+	mes "����һ�Σ�Licht �Ŷ�ʵ������һĿ�ꡣ";
+	mes "���������Ȥ����鿴��������Щ�о���";
 	next;
-	mes "[导演]";
-	mes "每个人都喜欢安静，所以不要大声说话。";
+	mes "[����]";
+	mes "ÿ���˶�ϲ�����������Բ�Ҫ����˵����";
 	close;
 }
 
 rgsr_in,122,160,5	script	Exit Guard#rg01	4_M_LGTGUARD,{
-	mes "[出口守卫]";
-	mes "你完成了吗？";
-	mes "^FF0000返回莱特哈尔森^000000？";
+	mes "[��������]";
+	mes "���������";
+	mes "^FF0000�������ع���ɭ^000000��";
 	next;
-	if (select( "返回。", "剩余工作。" ) == 2) {
-		mes "[出口守卫]";
-		mes "完成后请随时告诉我们。";
+	if (select( "���ء�", "ʣ�๤����" ) == 2) {
+		mes "[��������]";
+		mes "��ɺ�����ʱ�������ǡ�";
 		close;
 	}
-	mes "[出口守卫]";
-	mes "让我带你走回去的路吧。";
+	mes "[��������]";
+	mes "���Ҵ����߻�ȥ��·�ɡ�";
 	close2;
 	warp "lighthalzen",101,156;
 	end;
 }
 
 rgsr_in,129,160,3	script	Exit Guard#rg02	4_M_LGTGUARD,{
-	mes "[出口守卫]";
-	mes "你完成了吗？";
-	mes "^FF0000返回道具商城^000000？";
+	mes "[��������]";
+	mes "���������";
+	mes "^FF0000���ص����̳�^000000��";
 	next;
-	if (select( "返回。", "剩余工作。" ) == 2) {
-		mes "[出口守卫]";
-		mes "完成后请随时告诉我们。";
+	if (select( "���ء�", "ʣ�๤����" ) == 2) {
+		mes "[��������]";
+		mes "��ɺ�����ʱ�������ǡ�";
 		close;
 	}
-	mes "[出口守卫]";
-	mes "让我带你走回去的路吧。";
+	mes "[��������]";
+	mes "���Ҵ����߻�ȥ��·�ɡ�";
 	close2;
 	warp "itemmall",16,47;
 	end;

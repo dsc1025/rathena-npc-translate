@@ -5,32 +5,34 @@
 //===== Changelog: ===========================================
 //= 1.0 Training Zone revamp : tra_fild splitted into
 //      tra_fild01, tra_fild02 and tra_fild03 [Atemo]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 prontera,246,62,3	script	Training Instructor#prontera_in	8W_SOLDIER,{
-	mes "[åŸ¹è®­è®²å¸ˆ]";
-	mes "ç‹å®¤ä¸ºæƒ³è¦æµ‹è¯•æŠ€èƒ½çš„å†’é™©è€…è®¾ç«‹äº†è®­ç»ƒåœºã€‚å¦‚æœæ‚¨æƒ³åœ¨å„ç§æ¡ä»¶ä¸‹æµ‹è¯•æ‚¨çš„æŠ€èƒ½ï¼Œæˆ‘ä»¬å°†é€æ‚¨åˆ°è®­ç»ƒåœºã€‚";
+	mes "[ÅàÑµ½²Ê¦]";
+	mes "ÍõÊÒÎªÏëÒª²âÊÔ¼¼ÄÜµÄÃ°ÏÕÕßÉèÁ¢ÁËÑµÁ·³¡¡£Èç¹ûÄúÏëÔÚ¸÷ÖÖÌõ¼şÏÂ²âÊÔÄúµÄ¼¼ÄÜ£¬ÎÒÃÇ½«ËÍÄúµ½ÑµÁ·³¡¡£";
 	next;
-	switch( select( "ï¿½ï¿½è¿›å…¥åŸºç¡€è®­ç»ƒåœº", "ï¿½ï¿½è¿›å…¥1/10è®­ç»ƒåœº", "ï¿½ï¿½è¿›å…¥1/100è®­ç»ƒåœº", "ï¿½ï¿½å–æ¶ˆ" ) ) {
+	switch( select( "&#65533;&#65533;½øÈë»ù´¡ÑµÁ·³¡", "&#65533;&#65533;½øÈë1/10ÑµÁ·³¡", "&#65533;&#65533;½øÈë1/100ÑµÁ·³¡", "&#65533;&#65533;È¡Ïû" ) ) {
 	case 1:
-		mes "[åŸ¹è®­è®²å¸ˆ]";
-		mes "æˆ‘é€ä½ å»åŸºç¡€è®­ç»ƒåœºã€‚";
+		mes "[ÅàÑµ½²Ê¦]";
+		mes "ÎÒËÍÄãÈ¥»ù´¡ÑµÁ·³¡¡£";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
 		warp "tra_fild01",.@x,.@y;
 		break;
 	case 2:
-		mes "[åŸ¹è®­è®²å¸ˆ]";
-		mes "æˆ‘é€ä½ å»1/10è®­ç»ƒåœºã€‚";
+		mes "[ÅàÑµ½²Ê¦]";
+		mes "ÎÒËÍÄãÈ¥1/10ÑµÁ·³¡¡£";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
 		warp "tra_fild02",109,94;
 		break;
 	case 3:
-		mes "[åŸ¹è®­è®²å¸ˆ]";
-		mes "æˆ‘é€ä½ å»1/100è®­ç»ƒåœºã€‚";
+		mes "[ÅàÑµ½²Ê¦]";
+		mes "ÎÒËÍÄãÈ¥1/100ÑµÁ·³¡¡£";
 		close2;
 		.@x = rand(109,110);
 		.@y = rand(93,94);
@@ -45,36 +47,36 @@ prontera,246,62,3	script	Training Instructor#prontera_in	8W_SOLDIER,{
 
 // Warps
 tra_fild01,204,117,2	script	Training Ground Manager#fild01_1	8W_SOLDIER,{
-	mes "[è®­ç»ƒåœºç»ç†]";
-	mes "éœ€è¦ç§»åŠ¨åˆ°è®­ç»ƒåœºå†…çš„å…¶ä»–åŒºåŸŸå—ï¼Ÿè¯·é€‰æ‹©æ‚¨æƒ³è¦ç§»åŠ¨åˆ°çš„ä½ç½®ã€‚";
+	mes "[ÑµÁ·³¡¾­Àí]";
+	mes "ĞèÒªÒÆ¶¯µ½ÑµÁ·³¡ÄÚµÄÆäËûÇøÓòÂğ£¿ÇëÑ¡ÔñÄúÏëÒªÒÆ¶¯µ½µÄÎ»ÖÃ¡£";
 	next;
 	switch( atoi( charat(strnpcinfo(2), 7) ) ) {
 	case 1:
-		.@menu$[0] = "ï¿½ï¿½ Central Area";
+		.@menu$[0] = "&#65533;&#65533; Central Area";
 		.@menu$[1] = "";
-		.@menu$[2] = "ï¿½ï¿½ 9 O'Clock Area";
-		.@menu$[3] = "ï¿½ï¿½ 6 O'Clock Area";
+		.@menu$[2] = "&#65533;&#65533; 9 O'Clock Area";
+		.@menu$[3] = "&#65533;&#65533; 6 O'Clock Area";
 		break;
 	case 2:
-		.@menu$[0] = "ï¿½ï¿½ Central Area";
-		.@menu$[1] = "ï¿½ï¿½ 3 O'Clock Area";
+		.@menu$[0] = "&#65533;&#65533; Central Area";
+		.@menu$[1] = "&#65533;&#65533; 3 O'Clock Area";
 		.@menu$[2] = "";
-		.@menu$[3] = "ï¿½ï¿½ 6 O'Clock Area";
+		.@menu$[3] = "&#65533;&#65533; 6 O'Clock Area";
 		break;
 	case 3:
-		.@menu$[0] = "ï¿½ï¿½ Central area";
-		.@menu$[1] = "ï¿½ï¿½ 3 O'Clock Area";
-		.@menu$[2] = "ï¿½ï¿½ 9 O'Clock Area";
+		.@menu$[0] = "&#65533;&#65533; Central area";
+		.@menu$[1] = "&#65533;&#65533; 3 O'Clock Area";
+		.@menu$[2] = "&#65533;&#65533; 9 O'Clock Area";
 		.@menu$[3] = "";
 		break;
 	case 4:
 		.@menu$[0] = "";
-		.@menu$[1] = "ï¿½ï¿½ 3 O'Clock Area";
-		.@menu$[2] = "ï¿½ï¿½ 9 O'Clock Area";
-		.@menu$[3] = "ï¿½ï¿½ 6 O'Clock Area";
+		.@menu$[1] = "&#65533;&#65533; 3 O'Clock Area";
+		.@menu$[2] = "&#65533;&#65533; 9 O'Clock Area";
+		.@menu$[3] = "&#65533;&#65533; 6 O'Clock Area";
 		break;
 	}
-	switch( select( .@menu$[0], .@menu$[1], .@menu$[2], .@menu$[3], "ï¿½ï¿½ æ™®éš†å¾·æ‹‰", "ï¿½ï¿½ å–æ¶ˆ" ) ) {
+	switch( select( .@menu$[0], .@menu$[1], .@menu$[2], .@menu$[3], "&#65533;&#65533; ÆÕÂ¡µÂÀ­", "&#65533;&#65533; È¡Ïû" ) ) {
 	case 1:
 		warp strcharinfo(3),109,94;
 		break;
@@ -115,21 +117,21 @@ OnTouch:
 	switch( atoi( charat(strnpcinfo(1), 9) ) ) {
 	case 1:
 		.@menu$[0] = "";
-		.@menu$[1] = "ï¿½ï¿½Enter 1/10 Training Ground";
-		.@menu$[2] = "ï¿½ï¿½Enter 1/100 Training Ground";
+		.@menu$[1] = "&#65533;&#65533;Enter 1/10 Training Ground";
+		.@menu$[2] = "&#65533;&#65533;Enter 1/100 Training Ground";
 		break;
 	case 2:
-		.@menu$[0] = "ï¿½ï¿½Enter Basic Training Grounds";
+		.@menu$[0] = "&#65533;&#65533;Enter Basic Training Grounds";
 		.@menu$[1] = "";
-		.@menu$[2] = "ï¿½ï¿½Enter 1/100 Training Grounds";
+		.@menu$[2] = "&#65533;&#65533;Enter 1/100 Training Grounds";
 		break;
 	case 3:
-		.@menu$[0] = "ï¿½ï¿½Enter Basic Training Grounds";
-		.@menu$[1] = "ï¿½ï¿½Enter 1/10 Training Grounds";
+		.@menu$[0] = "&#65533;&#65533;Enter Basic Training Grounds";
+		.@menu$[1] = "&#65533;&#65533;Enter 1/10 Training Grounds";
 		.@menu$[2] = "";
 		break;
 	}
-	switch( select( "ï¿½ï¿½è‡³ Frontera", .@menu$[0], .@menu$[1], .@menu$[2], "ï¿½ï¿½å–æ¶ˆ" ) ) {
+	switch( select( "&#65533;&#65533;ÖÁ Frontera", .@menu$[0], .@menu$[1], .@menu$[2], "&#65533;&#65533;È¡Ïû" ) ) {
 	case 1:
 		warp "prontera",246,60;
 		break;

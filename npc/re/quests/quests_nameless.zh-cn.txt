@@ -12,6 +12,8 @@
 //= - Muff's Loan
 //===== Additional Comments: ================================= 
 //= 1.0 Moved Dorian to pre-re/re paths.
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 izlude_in,57,92,3	duplicate(Dorian_izlude)	Dorian	878,2,2

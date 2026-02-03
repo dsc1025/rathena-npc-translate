@@ -11,6 +11,8 @@
 //===== Additional Comments: =================================
 //= 1.0 First Version.
 //= 1.1 Updated to match the official script. [Joseph]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 dic_dun01,371,44,0	warp	dic_field0001	1,1,dic_fild01,28,79

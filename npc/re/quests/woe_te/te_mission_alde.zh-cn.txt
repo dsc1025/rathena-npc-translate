@@ -5,6 +5,8 @@
 //= NPC for mission WoE TE at Aldebaran
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 te_aldecas1,2,2,0	duplicate(#popswitch)	#popswitch_alde01	CLEAR_NPC

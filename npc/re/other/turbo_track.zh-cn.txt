@@ -11,6 +11,8 @@
 //= Renewal duplicates.
 //===== Additional Comments: =================================
 //= 1.0 Split Mount Manager NPC.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 alde_gld,181,199,5	duplicate(MountManager_turbo)	Mount Manager	845

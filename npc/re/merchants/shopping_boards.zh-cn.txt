@@ -7,6 +7,8 @@
 //= https://irowiki.org/wiki/Commerce#Shopping_Boards
 //===== Changelog: ===========================================
 //= 1.0 Initial version. [Pokye]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 -	script	Shopping Board	-1,{

@@ -5,6 +5,8 @@
 //= Official Cooking Quest (10.3)
 //===== Changelogs: ==========================================
 //= 1.0 Location changed in ep16.1 [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 prt_cas,324,200,5	duplicate(Charles Orleans#cook_)	Charles Orleans#cook	4_M_OILMAN

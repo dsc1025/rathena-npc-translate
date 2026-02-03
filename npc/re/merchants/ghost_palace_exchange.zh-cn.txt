@@ -4,37 +4,39 @@
 //= Walkthrough Conversion.
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 dali02,51,130,4	script	Dimension Traveler	4_F_SHABBY,{
 	if (checkweight(28100,1) == 0) {// Thanos Axe
-		mes "- 您无法继续，因为您携带的物品太多。 -";
+		mes "- ���޷���������Ϊ��Я������Ʒ̫�ࡣ -";
 		close;
 	}
 	.@item_name_req$ = getitemname(6672);// Gray_Shard
-	mes "[次元旅行者]";
-	mes "冒险家朋友，" + mesitemlink( 6672 ) + "是我需要的。用我有的东西交换怎么样？";
+	mes "[��Ԫ������]";
+	mes "ð�ռ����ѣ�" + mesitemlink( 6672 ) + "������Ҫ�ġ������еĶ���������ô����";
 	next;
-	.@type = select( "给我看看你的武器。", "给我看看你的盔甲。", "有什么特别的吗？", "我不需要。" ) - 1;
-	mes "[次元旅行者]";
+	.@type = select( "���ҿ������������", "���ҿ�����Ŀ��ס�", "��ʲô�ر����", "�Ҳ���Ҫ��" ) - 1;
+	mes "[��Ԫ������]";
 	switch(.@type) {
 	case 0:
-		mes "哦！你对武器感兴趣吗？从鬼宫能得到的武器我们都有。为什么不选一个呢？";
+		mes "Ŷ�������������Ȥ�𣿴ӹ����ܵõ����������Ƕ��С�Ϊʲô��ѡһ���أ�";
 		break;
 	case 1:
-		mes "盔甲？从鬼宫能得到的铠甲我们都有了。为什么不选一个呢？";
+		mes "���ף��ӹ����ܵõ����������Ƕ����ˡ�Ϊʲô��ѡһ���أ�";
 		break;
 	case 2:
-		mes "呵呵！似乎他们中的许多人已经听说我拥有最好的东西。欢迎查看我的收藏。";
+		mes "�Ǻǣ��ƺ������е��������Ѿ���˵��ӵ����õĶ�������ӭ�鿴�ҵ��ղء�";
 		break;
 	case 3:
-		mes "再见朋友~再来吧！";
+		mes "�ټ�����~�����ɣ�";
 		close;
 	}
 	next;
-	mes "[次元旅行者]";
-	mes "啊!需要写在 " + mesitemlink( 6672 ) + " 旁边的数字。";
-	mes "请记住这一点。";
+	mes "[��Ԫ������]";
+	mes "��!��Ҫд�� " + mesitemlink( 6672 ) + " �Աߵ����֡�";
+	mes "���ס��һ�㡣";
 
 	switch(.@type) {
 	case 0:
@@ -78,41 +80,41 @@ dali02,51,130,4	script	Dimension Traveler	4_F_SHABBY,{
 	while(true) {
 		next;
 		.@s = (select(.@menu$) - 1) * 2;
-		mes "[次元旅行者]";
+		mes "[��Ԫ������]";
 		if (.@type != 1)	// armor type doesn't display item info
-			mes "你是说" + mesitemlink( .@items[.@s] ) + "吗？";
-		mes "交换时需要 " + .@items[.@s+1] + " ^006400" + .@item_name_req$ + "^000000。";
+			mes "����˵" + mesitemlink( .@items[.@s] ) + "��";
+		mes "����ʱ��Ҫ " + .@items[.@s+1] + " ^006400" + .@item_name_req$ + "^000000��";
 		next;
-		switch( select( "我们交流一下。", "让我看看其他东西。", "我稍后再回来。" ) ) {
+		switch( select( "���ǽ���һ�¡�", "���ҿ�������������", "���Ժ��ٻ�����" ) ) {
 		case 1:
 			break;
 		case 2:
-			mes "[次元旅行者]";
+			mes "[��Ԫ������]";
 			switch(.@type) {
 			case 0:
-				mes "我的武器已经足够多了。";
+				mes "�ҵ������Ѿ��㹻���ˡ�";
 				break;
 			case 1:
-				mes "我们为你准备了很多盔甲。你为什么不选一个呢？";
+				mes "����Ϊ��׼���˺ܶ���ס���Ϊʲô��ѡһ���أ�";
 				break;
 			case 2:
-				mes "如果你带我来" + .@item_name_req$ + "，我可以用你想要的任何东西来交换。";
+				mes "����������" + .@item_name_req$ + "���ҿ���������Ҫ���κζ�����������";
 				break;
 			}
 			continue;
 		case 3:
-			mes "[次元旅行者]";
-			mes "保重朋友~下次再见！";
+			mes "[��Ԫ������]";
+			mes "��������~�´��ټ���";
 			close;
 		}
 		if (countitem(6672) < .@items[.@s+1]) {
-			mes "[次元旅行者]";
-			mes "你让我陷入了困境，朋友。";
-			mes "我需要" + .@item_name_req$ + "。我会把它换成^006400" + .@items[.@s+1] + " " + .@item_name_req$ + "^000000。";
+			mes "[��Ԫ������]";
+			mes "���������������������ѡ�";
+			mes "����Ҫ" + .@item_name_req$ + "���һ��������^006400" + .@items[.@s+1] + " " + .@item_name_req$ + "^000000��";
 			close;
 		}
-		mes "[次元旅行者]";
-		mes "谢谢。如果你还需要什么就回来吧。";
+		mes "[��Ԫ������]";
+		mes "лл������㻹��Ҫʲô�ͻ����ɡ�";
 		delitem 6672, .@items[.@s+1];
 		getitem .@items[.@s], 1;
 		close;

@@ -6,14 +6,16 @@
 //= 1.0 Prontera castle map changed in ep16.1 [Capuche]
 //= 1.1 Episode 17.2 Sage's Legacy update [crazyarashi]
 //= 1.2 Added warp to the Illusion Investigation room [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 prt_lib_q,9,25,0	script	lib_q_to_pprt	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal < 21) {
-		mes "è¿˜æœ‰æ›´å¤šéœ€è¦äº†è§£ã€‚";
-		mes "å›åˆ°å°¼å‹’å§†å§ã€‚";
+		mes "»¹ÓĞ¸ü¶àĞèÒªÁË½â¡£";
+		mes "»Øµ½ÄáÀÕÄ·°É¡£";
 		close;
 	}
 	warp "prt_q",155,354;
@@ -24,11 +26,11 @@ prt_cas,152,163,0	script	way_to_qroom_L_qroom_L_to_way	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal == 0) {
-		npctalk "é‚£æ¡è·¯æ˜¯ä¾›è´µå®¾ä½¿ç”¨çš„çš‡å®¶åˆ«å¢…ã€‚å¤–äººæ— æ³•è¿›å…¥è¯¥åœ°æ–¹ã€‚", "çš‡å®¶å®ˆæŠ¤éª‘å£«#02", bc_self;
+		npctalk "ÄÇÌõÂ·ÊÇ¹©¹ó±öÊ¹ÓÃµÄ»Ê¼Ò±ğÊû¡£ÍâÈËÎŞ·¨½øÈë¸ÃµØ·½¡£", "»Ê¼ÒÊØ»¤ÆïÊ¿#02", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 3000;
 		setpcblock PCBLOCK_NPC, false;
-		npctalk "å¦‚æœä½ è¢«é‚€è¯·ï¼ŒæœåŠ¡å‘˜åº”è¯¥åœ¨é‚£é‡Œè¿æ¥ä½ ã€‚è¯·å®˜æ–¹æŒ‡å¯¼ã€‚", "çš‡å®¶å®ˆæŠ¤éª‘å£«#02", bc_self;
+		npctalk "Èç¹ûÄã±»ÑûÇë£¬·şÎñÔ±Ó¦¸ÃÔÚÄÇÀïÓ­½ÓÄã¡£Çë¹Ù·½Ö¸µ¼¡£", "»Ê¼ÒÊØ»¤ÆïÊ¿#02", bc_self;
 		end;
 	}
 	warp "prt_cas_q",150,8;
@@ -39,11 +41,11 @@ prt_cas,278,163,0	script	way_to_qroom_R_qroom_R_to_way	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal == 0) {
-		npctalk "é‚£æ¡è·¯æ˜¯ä¾›è´µå®¾ä½¿ç”¨çš„çš‡å®¶åˆ«å¢…ã€‚å¤–äººæ— æ³•è¿›å…¥è¯¥åœ°æ–¹ã€‚", "çš‡å®¶å®ˆæŠ¤éª‘å£«#03", bc_self;
+		npctalk "ÄÇÌõÂ·ÊÇ¹©¹ó±öÊ¹ÓÃµÄ»Ê¼Ò±ğÊû¡£ÍâÈËÎŞ·¨½øÈë¸ÃµØ·½¡£", "»Ê¼ÒÊØ»¤ÆïÊ¿#03", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 3000;
 		setpcblock PCBLOCK_NPC, false;
-		npctalk "å¦‚æœä½ è¢«é‚€è¯·ï¼ŒæœåŠ¡å‘˜åº”è¯¥åœ¨é‚£é‡Œè¿æ¥ä½ ã€‚è¯·å®˜æ–¹æŒ‡å¯¼ã€‚", "çš‡å®¶å®ˆæŠ¤éª‘å£«#03", bc_self;
+		npctalk "Èç¹ûÄã±»ÑûÇë£¬·şÎñÔ±Ó¦¸ÃÔÚÄÇÀïÓ­½ÓÄã¡£Çë¹Ù·½Ö¸µ¼¡£", "»Ê¼ÒÊØ»¤ÆïÊ¿#03", bc_self;
 		end;
 	}
 	warp "prt_cas_q",135,119;
@@ -54,7 +56,7 @@ prt_cas_q,130,32,0	script	qroom_heine_in_qroom_heine_out	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal > 7 && ep16_royal < 16) {
-		mes "å®ƒå·²è¢«é”å®šã€‚";
+		mes "ËüÒÑ±»Ëø¶¨¡£";
 		close;
 	}
 	warp "prt_cas_q",30,78;
@@ -65,12 +67,12 @@ prt_cas_q,130,56,0	script	qroom_nerius_in_qroom_nerius_out	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal > 2 && ep16_royal < 15 && ep16_royal != 7) {
-		mes "å®ƒå·²è¢«é”å®šã€‚";
+		mes "ËüÒÑ±»Ëø¶¨¡£";
 		close;
 	}
 	if (ep16_royal == 15) {
 		if (isbegin_quest(7697) < 1) {
-			mes "æˆ‘ä»¬å…ˆå›å¤ä»†äººè¯´æ¥å—é‚€è¯·å§ã€‚";
+			mes "ÎÒÃÇÏÈ»Ø¸´ÆÍÈËËµ½ÓÊÜÑûÇë°É¡£";
 			close;
 		}
 	}
@@ -84,8 +86,8 @@ OnTouch_:
 	if (ep16_royal > 13)
 		warp "prt_pri00",60,127;
 	else {
-		mes "[å®ˆæŠ¤éª‘å£«]";
-		mes "ä½ ä¸èƒ½èµ°é‚£æ¡è·¯ã€‚";
+		mes "[ÊØ»¤ÆïÊ¿]";
+		mes "Äã²»ÄÜ×ßÄÇÌõÂ·¡£";
 		close2;
 		warp "prt_lib",60,61;
 	}
@@ -98,7 +100,7 @@ OnTouch_:
 	if (ep16_royal >= 2)
 		warp "prt_pri00",54,134;
 	else {
-		npctalk "ä½ ä¸åº”è¯¥è¿›å…¥é‚£æ ·çš„åœ°æ–¹ã€‚", "å®ˆæŠ¤éª‘å£«#ep16_prigate01", bc_self;
+		npctalk "Äã²»Ó¦¸Ã½øÈëÄÇÑùµÄµØ·½¡£", "ÊØ»¤ÆïÊ¿#ep16_prigate01", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;

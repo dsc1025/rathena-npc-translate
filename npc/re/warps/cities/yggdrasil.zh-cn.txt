@@ -11,6 +11,8 @@
 //===== Additional Comments: =================================
 //= Extracted from Vidar -> Athena
 //= 1.1 Renewal warp adjustments.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //Umbala Entrance

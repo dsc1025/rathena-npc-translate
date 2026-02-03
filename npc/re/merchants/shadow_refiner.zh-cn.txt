@@ -9,19 +9,21 @@
 //=     [Secret]
 //= 1.2 Added Refine UI [Atemo, Lemongrass]
 //= 1.3 Moved to Cash Mall [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 -	script	::ShadowBlacksmith	-1,{
 	if( getbattleflag( "feature.refineui" ) ){
-		mes "[æš—å½±é“åŒ ]";
-		mes "ç°åœ¨å·´æ–¯å¡”è´Ÿè´£æš—å½±ç‰©å“çš„ç²¾ç‚¼ã€‚";
-		mes "å¦‚æœä½ æƒ³ç²¾ç‚¼å½±å­ç‰©å“ï¼Œè¯·æ‹œè®¿ä»–ã€‚";
+		mes "[°µÓ°Ìú½³]";
+		mes "ÏÖÔÚ°ÍË¹Ëş¸ºÔğ°µÓ°ÎïÆ·µÄ¾«Á¶¡£";
+		mes "Èç¹ûÄãÏë¾«Á¶Ó°×ÓÎïÆ·£¬Çë°İ·ÃËû¡£";
 		close;
 	}
 
 	.@zeny_cost = 200000; // Zeny cost is 200,000 according to official script [Secret]
 	disable_items;
-	mes "[æš—å½±é“åŒ ]";
-	mes "ä½ æƒ³ç²¾ç‚¼å½±å­ç‰©å“å—ï¼Ÿé€‰æ‹©ä½ çš„æ¯’è¯ï¼";
+	mes "[°µÓ°Ìú½³]";
+	mes "ÄãÏë¾«Á¶Ó°×ÓÎïÆ·Âğ£¿Ñ¡ÔñÄãµÄ¶¾Ò©£¡";
 	next;
 	setarray .@indices[1], EQI_SHADOW_ARMOR, EQI_SHADOW_WEAPON, EQI_SHADOW_SHIELD, EQI_SHADOW_SHOES, EQI_SHADOW_ACC_R, EQI_SHADOW_ACC_L;
 	.@indlen = getarraysize(.@indices) - 1;
@@ -30,26 +32,26 @@
 	.@menu$ = .@menu$ + "Refine info";
 	.@choice = select(.@menu$);
 	if (.@choice == .@indlen + 1) { // Refine info
-		mes "[æš—å½±é“åŒ ]";
-		mes "å½“å½±å­ç‰©å“ç²¾ç‚¼åï¼Œå®ƒä¼šåƒæ™®é€šç‰©å“ä¸€æ ·è·å¾—é¢å¤–çš„å¥–åŠ±ã€‚";
+		mes "[°µÓ°Ìú½³]";
+		mes "µ±Ó°×ÓÎïÆ·¾«Á¶ºó£¬Ëü»áÏñÆÕÍ¨ÎïÆ·Ò»Ñù»ñµÃ¶îÍâµÄ½±Àø¡£";
 		next;
-		mes "[æš—å½±é“åŒ ]";
-		mes "æ­¦å™¨ï¼šç²¾ç‚¼æˆåŠŸç‡æ¯+1ï¼Œæ”»å‡»åŠ›ã€é­”åŠ›+1ã€‚";
-		mes "ç­‰ç­‰ï¼šæ¯+1ç²¾ç‚¼æˆåŠŸï¼ŒHP+10å¢åŠ ã€‚";
+		mes "[°µÓ°Ìú½³]";
+		mes "ÎäÆ÷£º¾«Á¶³É¹¦ÂÊÃ¿+1£¬¹¥»÷Á¦¡¢Ä§Á¦+1¡£";
+		mes "µÈµÈ£ºÃ¿+1¾«Á¶³É¹¦£¬HP+10Ôö¼Ó¡£";
 		next;
-		mes "[æš—å½±é“åŒ ]";
-		mes "æ‰€æœ‰ç±»å‹çš„ Oridecon å’Œ Elunium éƒ½å¯ä»¥ç”¨æ¥ç²¾ç‚¼å½±å­ç‰©å“ã€‚æ¯æ¬¡å°è¯•ä¹Ÿå°†èŠ±è´¹ 20,000 zenyã€‚";
+		mes "[°µÓ°Ìú½³]";
+		mes "ËùÓĞÀàĞÍµÄ Oridecon ºÍ Elunium ¶¼¿ÉÒÔÓÃÀ´¾«Á¶Ó°×ÓÎïÆ·¡£Ã¿´Î³¢ÊÔÒ²½«»¨·Ñ 20,000 zeny¡£";
 		next;
-		mes "[æš—å½±é“åŒ ]";
-		mes "HDçŸ¿çŸ³å¯ç”¨äºç²¾ç‚¼åº¦è‡³å°‘ä¸º+7çš„è£…å¤‡ï¼Œå¹¶ä¸”åªè¦ä½ ç»§ç»­è·Ÿæˆ‘è¯´è¯å°±å¯ä»¥é˜²æ­¢æŸåã€‚";
+		mes "[°µÓ°Ìú½³]";
+		mes "HD¿óÊ¯¿ÉÓÃÓÚ¾«Á¶¶ÈÖÁÉÙÎª+7µÄ×°±¸£¬²¢ÇÒÖ»ÒªÄã¼ÌĞø¸úÎÒËµ»°¾Í¿ÉÒÔ·ÀÖ¹Ëğ»µ¡£";
 		close;
 	}
 
 	.@part = .@indices[.@choice];
 
 	if (!getequipisequiped(.@part)) {
-		mes "[æš—å½±é“åŒ ]";
-		mes "è¿™é‡Œä»€ä¹ˆéƒ½æ²¡æœ‰ï¼";
+		mes "[°µÓ°Ìú½³]";
+		mes "ÕâÀïÊ²Ã´¶¼Ã»ÓĞ£¡";
 		close;
 	}
 	.@equip_id = getequipid(.@part);
@@ -57,9 +59,9 @@
 
 	while(1) {
 		.@equip_refine = getequiprefinerycnt(.@part);
-		mes "[æš—å½±é“åŒ ]";
-		mes "æˆ‘éœ€è¦ " + callfunc("F_InsertComma", .@zeny_cost) + " zeny ä½œä¸ºæ¯æ¬¡ç²¾ç‚¼å°è¯•çš„è´¹ç”¨ã€‚";
-		mes "é€‰æ‹©ä½ çš„çŸ¿çŸ³å¹¶å¼€å§‹ç²¾ç‚¼ã€‚";
+		mes "[°µÓ°Ìú½³]";
+		mes "ÎÒĞèÒª " + callfunc("F_InsertComma", .@zeny_cost) + " zeny ×÷ÎªÃ¿´Î¾«Á¶³¢ÊÔµÄ·ÑÓÃ¡£";
+		mes "Ñ¡ÔñÄãµÄ¿óÊ¯²¢¿ªÊ¼¾«Á¶¡£";
 		next;
 
 		.@material[0] = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_MATERIAL_ID);
@@ -80,7 +82,7 @@
 		else
 			.@mate$[2] = "^8C8C8C"+ getitemname(.@material[2]) +"^000000";
 
-		switch( select( .@mate$[0], .@mate$[1], .@mate$[2], "å–æ¶ˆ" ) ) {
+		switch( select( .@mate$[0], .@mate$[1], .@mate$[2], "È¡Ïû" ) ) {
 		case 1:// NORMAL
 			.@choose = .@material[0];
 			break;
@@ -90,54 +92,54 @@
 			break;
 		case 3:// HD
 			if (.@equip_refine < 7) {
-				mes "[æš—å½±é“åŒ ]";
-				mes "HDçŸ¿çŸ³åªèƒ½ç”¨äº+7æˆ–æ›´é«˜ç²¾ç‚¼åº¦çš„ç‰©å“ã€‚";
+				mes "[°µÓ°Ìú½³]";
+				mes "HD¿óÊ¯Ö»ÄÜÓÃÓÚ+7»ò¸ü¸ß¾«Á¶¶ÈµÄÎïÆ·¡£";
 				close;
 			}
 			.@hoihoi = 1;
 			.@choose = .@material[2];
 			break;
 		case 4:
-			mes "[æš—å½±é“åŒ ]";
-			mes "æ‚¨å·²å–æ¶ˆç²¾ç‚¼ã€‚";
+			mes "[°µÓ°Ìú½³]";
+			mes "ÄúÒÑÈ¡Ïû¾«Á¶¡£";
 			close;
 		}
 		if (!countitem(.@choose)) {
-			mes "[æš—å½±é“åŒ ]";
-			mes "æ‚¨æ²¡æœ‰è¶³å¤Ÿçš„"+ getitemname(.@choose) +".";
+			mes "[°µÓ°Ìú½³]";
+			mes "ÄúÃ»ÓĞ×ã¹»µÄ"+ getitemname(.@choose) +".";
 			close;
 		}
 		if (Zeny < .@zeny_cost) {
-			mes "[æš—å½±é“åŒ ]";
-			mes "ä½ æ²¡æœ‰è¶³å¤Ÿçš„ zenyã€‚";
+			mes "[°µÓ°Ìú½³]";
+			mes "ÄãÃ»ÓĞ×ã¹»µÄ zeny¡£";
 			close;
 		}
 		if (.@equip_refine > 9) {
-			mes "[æš—å½±é“åŒ ]";
-			mes "æš—å½±è£…å¤‡æœ€å¤šå¯ä»¥ç²¾ç‚¼åˆ°10...";
+			mes "[°µÓ°Ìú½³]";
+			mes "°µÓ°×°±¸×î¶à¿ÉÒÔ¾«Á¶µ½10...";
 			close;
 		}
 		if (!getequipisenableref(.@part)) {
-			mes "[æš—å½±é“åŒ ]";
-			mes "è¯¥ç‰©å“æ— æ³•ç²¾ç‚¼ã€‚";
+			mes "[°µÓ°Ìú½³]";
+			mes "¸ÃÎïÆ·ÎŞ·¨¾«Á¶¡£";
 			close;
 		}
 		if (getequippercentrefinery(.@part) < 100) {
-			mes "[æš—å½±é“åŒ ]";
-			mes "æš—å½±è£…å¤‡çš„å®‰å…¨ç²¾ç‚¼åº¦+4ã€‚";
+			mes "[°µÓ°Ìú½³]";
+			mes "°µÓ°×°±¸µÄ°²È«¾«Á¶¶È+4¡£";
 			if (!.@hoihoi)
-				mes "æš—å½±è£…å¤‡å¯èƒ½ä¼šåœ¨åç»­çš„ç²¾ç‚¼ä¸­è¢«ç ´åã€‚æƒ³å¼€å§‹å—ï¼Ÿ";
+				mes "°µÓ°×°±¸¿ÉÄÜ»áÔÚºóĞøµÄ¾«Á¶ÖĞ±»ÆÆ»µ¡£Ïë¿ªÊ¼Âğ£¿";
 			else
-				mes "ä¸‹æ¬¡ç²¾ç‚¼å¦‚æœå¤±è´¥çš„è¯ï¼Œç²¾ç‚¼å°±ä¼šé™çº§ã€‚ä½ æƒ³ç²¾è¿›å—ï¼Ÿ";
+				mes "ÏÂ´Î¾«Á¶Èç¹ûÊ§°ÜµÄ»°£¬¾«Á¶¾Í»á½µ¼¶¡£ÄãÏë¾«½øÂğ£¿";
 			next;
-			if (select("ç»§ç»­","å–æ¶ˆ") == 2) {
-				mes "[æš—å½±é“åŒ ]";
-				mes "å‘µå‘µï¼Œæˆ‘å°±çŸ¥é“äº†ï¼";
+			if (select("¼ÌĞø","È¡Ïû") == 2) {
+				mes "[°µÓ°Ìú½³]";
+				mes "ºÇºÇ£¬ÎÒ¾ÍÖªµÀÁË£¡";
 				close;
 			}
 		}
-		mes "[æš—å½±é“åŒ ]";
-		mes "é‚£ä¹ˆâ€¦â€¦è¿™é‡Œä»€ä¹ˆä¹Ÿæ²¡æœ‰ï¼";
+		mes "[°µÓ°Ìú½³]";
+		mes "ÄÇÃ´¡­¡­ÕâÀïÊ²Ã´Ò²Ã»ÓĞ£¡";
 		next;
 		delitem .@choose,1;
 		Zeny -= .@zeny_cost;
@@ -148,16 +150,16 @@
 
 		if (getequippercentrefinery(.@part, .@is_enriched) > rand(100)) {
 			successrefitem .@part;
-			mes "[æš—å½±é“åŒ ]";
-			mes "æˆåŠŸäº†ï¼æˆåŠŸäº†ï¼";
+			mes "[°µÓ°Ìú½³]";
+			mes "³É¹¦ÁË£¡³É¹¦ÁË£¡";
 			next;
 		} else {
 			if (.@hoihoi)
 				downrefitem .@part;
 			else
 				failedrefitem .@part;
-			mes "[æš—å½±é“åŒ ]";
-			mes "å“¦å¥¥ä¸ä¸ï¼";
+			mes "[°µÓ°Ìú½³]";
+			mes "Å¶°Â¶¡²»£¡";
 			close;
 		}
 	}

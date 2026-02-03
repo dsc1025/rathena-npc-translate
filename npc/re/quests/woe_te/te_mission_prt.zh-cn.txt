@@ -5,6 +5,8 @@
 //= NPC for mission WoE TE at Prontera
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 te_prtcas01,2,2,0	duplicate(#popswitch)	#popswitch_prt01	CLEAR_NPC

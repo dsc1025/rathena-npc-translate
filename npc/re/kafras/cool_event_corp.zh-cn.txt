@@ -4,6 +4,8 @@
 //= Cool Event Corp. Staff (Save, Storage & Pushcart Service)
 //===== Changelogs: ==========================================
 //= 1.0 Added Verus. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 verus04,121,243,4	script	Cool Event Corp Staff::CoolEventCorpStaffVerus	4_M_ZONDAMAN,{

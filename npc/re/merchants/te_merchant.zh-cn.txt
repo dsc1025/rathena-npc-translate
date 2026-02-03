@@ -6,6 +6,8 @@
 //	(duplicates in re/woe_te/<castle file>).
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 te_prt_gld,114,153,4	shop	TE Potion Merchant#prt	4_M_TELEPORTER,11557:-1,11558:-1
@@ -14,7 +16,7 @@ te_alde_gld,215,184,4	duplicate(TE Potion Merchant#prt)	TE Potion Merchant#alde	
 // Rental Items manager
 //=======================================
 -	script	rental_woe_TE	-1,{
-	mes "[ç§Ÿèµç‰©å“ç»ç†]";
+	mes "[×âÁŞÎïÆ·¾­Àí]";
 	if (jobcanentermap("te_prtcas01") == 1) {
 		.@list01$ = "[Shield] [Armor] [Garment]";
 		.@list02$ = "[Helmet] [Accessory] [Shoes]";
@@ -22,21 +24,21 @@ te_alde_gld,215,184,4	duplicate(TE Potion Merchant#prt)	TE Potion Merchant#alde	
 		.@list04$ = "[Mace] [Staff] [Fist] [Book]";
 		.@list05$ = "[Bow] [Gun] [Musical Instrument] [Whip]";
 
-		mes "^4d4dffæ ¹æ®æ”»åŸæˆ˜TEçš„è§„åˆ™ï¼Œæˆ‘ä»¬æä¾›äº†æ‚¨å¯ä»¥åœ¨Gloriaå’ŒKafragartenåœ°åŒºä½¿ç”¨çš„å„ç§æˆ˜æ–—è£…å¤‡ã€‚^000000";
+		mes "^4d4dff¸ù¾İ¹¥³ÇÕ½TEµÄ¹æÔò£¬ÎÒÃÇÌá¹©ÁËÄú¿ÉÒÔÔÚGloriaºÍKafragartenµØÇøÊ¹ÓÃµÄ¸÷ÖÖÕ½¶·×°±¸¡£^000000";
 		next;
-		mes "[ç§Ÿèµç‰©å“ç»ç†]";
-		mes "^4d4dffæˆ‘ä»¬æä¾›1å¤©å…è´¹ç§ŸèµæœŸã€‚^000000";
-		mes "ä½†æ‰€æä¾›çš„ç§Ÿèµç‰©å“^4d4dffåœ¨æ”»åŸæˆ˜TEåŒºåŸŸå¤–æ— æ•ˆã€‚^000000";
+		mes "[×âÁŞÎïÆ·¾­Àí]";
+		mes "^4d4dffÎÒÃÇÌá¹©1ÌìÃâ·Ñ×âÁŞÆÚ¡£^000000";
+		mes "µ«ËùÌá¹©µÄ×âÁŞÎïÆ·^4d4dffÔÚ¹¥³ÇÕ½TEÇøÓòÍâÎŞĞ§¡£^000000";
 		next;
-		mes "[ç§Ÿèµç‰©å“ç»ç†]";
-		mes "^4d4dffæ‚¨å¿…é¡»è¾¾åˆ° Lv 40 æˆ–æ›´é«˜æ‰èƒ½ç§Ÿèµç‰©å“ã€‚^000000";
-		mes "é€‰æ‹©æ‰€éœ€çš„è®¾å¤‡ã€‚";
+		mes "[×âÁŞÎïÆ·¾­Àí]";
+		mes "^4d4dffÄú±ØĞë´ïµ½ Lv 40 »ò¸ü¸ß²ÅÄÜ×âÁŞÎïÆ·¡£^000000";
+		mes "Ñ¡ÔñËùĞèµÄÉè±¸¡£";
 		next;
 		while(1) {
-			switch( select( "æŸ¥çœ‹ç§Ÿèµè®¾å¤‡", .@list01$, .@list02$, .@list03$, .@list04$, .@list05$, "ç¦»å¼€" ) ) {
+			switch( select( "²é¿´×âÁŞÉè±¸", .@list01$, .@list02$, .@list03$, .@list04$, .@list05$, "Àë¿ª" ) ) {
 			case 1:
-				mes "[ç§Ÿèµç‰©å“ç»ç†]";
-				mes "è¿™æ˜¯ç§Ÿèµç‰©å“å’Œè¯´æ˜çš„åˆ—è¡¨ã€‚";
+				mes "[×âÁŞÎïÆ·¾­Àí]";
+				mes "ÕâÊÇ×âÁŞÎïÆ·ºÍËµÃ÷µÄÁĞ±í¡£";
 				close2;
 				readbook 11059,1;// WoE_TE_Rental_List
 				end;
@@ -96,28 +98,28 @@ te_alde_gld,215,184,4	duplicate(TE Potion Merchant#prt)	TE Potion Merchant#alde	
 					1987,"TE Siege Rope" );			// TE_Woe_Rope
 				break;
 			case 7:
-				mes "[ç§Ÿèµç‰©å“ç»ç†]";
-				mes "é‚£å°±éšæ—¶å›æ¥å§ã€‚";
+				mes "[×âÁŞÎïÆ·¾­Àí]";
+				mes "ÄÇ¾ÍËæÊ±»ØÀ´°É¡£";
 				close;
 			}
 		}
 	}
-	mes "æ ¹æ®æ”»åŸæˆ˜TEçš„è§„åˆ™ï¼Œæˆ‘ä»¬æä¾›äº†æ‚¨å¯ä»¥åœ¨Gloriaå’ŒKafragartenåœ°åŒºä½¿ç”¨çš„å„ç§æˆ˜æ–—è£…å¤‡ã€‚";
+	mes "¸ù¾İ¹¥³ÇÕ½TEµÄ¹æÔò£¬ÎÒÃÇÌá¹©ÁËÄú¿ÉÒÔÔÚGloriaºÍKafragartenµØÇøÊ¹ÓÃµÄ¸÷ÖÖÕ½¶·×°±¸¡£";
 	next;
-	mes "[ç§Ÿèµç‰©å“ç»ç†]";
-	mes "å¾ˆæŠ±æ­‰ï¼Œæ‚¨çš„èŒä¸šç±»åˆ«ä¸å…è®¸å‚åŠ æ”»åŸæˆ˜ TEã€‚";
-	mes "ææ€•æˆ‘æ— æ³•å‘æ‚¨æä¾›ä»»ä½•ç‰©å“ã€‚";
+	mes "[×âÁŞÎïÆ·¾­Àí]";
+	mes "ºÜ±§Ç¸£¬ÄúµÄÖ°ÒµÀà±ğ²»ÔÊĞí²Î¼Ó¹¥³ÇÕ½ TE¡£";
+	mes "¿ÖÅÂÎÒÎŞ·¨ÏòÄúÌá¹©ÈÎºÎÎïÆ·¡£";
 	close;
 
 S_Rent:
-	mes "[ç§Ÿèµç‰©å“ç»ç†]";
+	mes "[×âÁŞÎïÆ·¾­Àí]";
 	if (checkweight(1304,3) == 0) {
-		mes "æ‚¨å·²ç»æ‹¥æœ‰å¤ªå¤šç‰©å“è€Œæ— æ³•æ¥æ”¶æ–°çš„ç§Ÿèµè®¾å¤‡ã€‚";
-		mes "è¯·æ•´ç†æ‚¨çš„ç‰©å“å¹¶é‡è¯•ã€‚";
+		mes "ÄúÒÑ¾­ÓµÓĞÌ«¶àÎïÆ·¶øÎŞ·¨½ÓÊÕĞÂµÄ×âÁŞÉè±¸¡£";
+		mes "ÇëÕûÀíÄúµÄÎïÆ·²¢ÖØÊÔ¡£";
 		close;
 	}
-	mes "æˆ‘ä»¬å·²ä¸ºæ‚¨å‡†å¤‡å¥½"+ getarg(0) +"ã€‚";
-	mes "é€‰æ‹©æ‰€éœ€çš„é¡¹ç›®ã€‚";
+	mes "ÎÒÃÇÒÑÎªÄú×¼±¸ºÃ"+ getarg(0) +"¡£";
+	mes "Ñ¡ÔñËùĞèµÄÏîÄ¿¡£";
 	next;
 	for ( .@i = 1; .@i < getargcount(); .@i += 2 ) {
 		if (rentalcountitem(getarg(.@i)) > isequippedcnt(getarg(.@i)))// don't count item equipped
@@ -126,18 +128,18 @@ S_Rent:
 			.@menu$ = .@menu$ + getarg(.@i+1) + ":";
 	}
 	.@total_item = (getargcount() -1) /2;
-	.@s = select( .@menu$ + ":æŸ¥çœ‹å…¶ä»–é¡¹ç›®" ) -1;
+	.@s = select( .@menu$ + ":²é¿´ÆäËûÏîÄ¿" ) -1;
 	if (.@s <= .@total_item) {
 		.@index = .@s *2 +1;
-		mes "[ç§Ÿèµç‰©å“ç»ç†]";
+		mes "[×âÁŞÎïÆ·¾­Àí]";
 		if (rentalcountitem(getarg(.@index)) > isequippedcnt(getarg(.@index)))
-			mes "æ‚¨å·²ç»æ‹¥æœ‰"+ getarg(.@index+1) +".";
+			mes "ÄúÒÑ¾­ÓµÓĞ"+ getarg(.@index+1) +".";
 		else {
-			mes "è¿™æ˜¯"+ getarg(.@index+1) +".";
-			mes "^4d4dffæ­¤é¡¹ç›®åœ¨æ¥ä¸‹æ¥çš„ 24 å°æ—¶å†…æœ‰æ•ˆ^000000ï¼Œæ­¤åå°†è¿‡æœŸã€‚";
+			mes "ÕâÊÇ"+ getarg(.@index+1) +".";
+			mes "^4d4dff´ËÏîÄ¿ÔÚ½ÓÏÂÀ´µÄ 24 Ğ¡Ê±ÄÚÓĞĞ§^000000£¬´Ëºó½«¹ıÆÚ¡£";
 			rentitem getarg(.@index),86400;
 		}
-		mes "æ‚¨è¿˜éœ€è¦ä»€ä¹ˆå—ï¼Ÿ";
+		mes "Äú»¹ĞèÒªÊ²Ã´Âğ£¿";
 		next;
 	}
 	return;

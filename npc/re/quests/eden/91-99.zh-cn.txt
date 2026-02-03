@@ -15,53 +15,55 @@
 //= 1.3 Updated to match the official script. [Euphy]
 //= 1.4 Added support to Para_Team_Mark_ in Eden Group. [Ragno]
 //= 1.5 Added use of F_HasEdenGroupMark function. [Ragno]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_para01,48,177,3	script	91-99 Mission Board	857,{
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "ç­‰ä¸€ä¸‹ï¼";
-		mes "-ä½ éœ€è¦æœ‰ä¸€ä¸ª-";
-		mes "-^4d4dff'ä¼Šç”¸é›†å›¢æ ‡è®°'^000000-";
-		mes "-æ¥å—è¿™äº›ä»»åŠ¡ã€‚-";
+		mes "µÈÒ»ÏÂ£¡";
+		mes "-ÄãĞèÒªÓĞÒ»¸ö-";
+		mes "-^4d4dff'ÒÁµé¼¯ÍÅ±ê¼Ç'^000000-";
+		mes "-½ÓÊÜÕâĞ©ÈÎÎñ¡£-";
 		next;
-		switch(select("èµ°å¼€å§ã€‚:^0000FFä¼Šç”¸é›†å›¢^000000ä»»åŠ¡ï¼Ÿ:æˆ‘æ€æ ·æ‰èƒ½æˆä¸º^0000FFä¼Šç”¸é›†å›¢^000000çš„æˆå‘˜ï¼Ÿ")) {
+		switch(select("×ß¿ª°É¡£:^0000FFÒÁµé¼¯ÍÅ^000000ÈÎÎñ£¿:ÎÒÔõÑù²ÅÄÜ³ÉÎª^0000FFÒÁµé¼¯ÍÅ^000000µÄ³ÉÔ±£¿")) {
 		case 1:
 			close;
 		case 2:
-			mes "::ä¼Šç”¸å›­é›†å›¢ä½¿å‘½";
-			mes ":: åŸºæœ¬ä¸Šæ˜¯ä»»åŠ¡";
-			mes "::è¯·æ±‚è€…";
-			mes "::æ¥è‡ªç‹å›½å„åœ°çš„äººä»¬ã€‚";
-			mes "::æˆ‘ä»¬åªæ˜¯å¯¹å®ƒä»¬è¿›è¡Œåˆ†ç±»ã€‚";
+			mes "::ÒÁµéÔ°¼¯ÍÅÊ¹Ãü";
+			mes ":: »ù±¾ÉÏÊÇÈÎÎñ";
+			mes "::ÇëÇóÕß";
+			mes "::À´×ÔÍõ¹ú¸÷µØµÄÈËÃÇ¡£";
+			mes "::ÎÒÃÇÖ»ÊÇ¶ÔËüÃÇ½øĞĞ·ÖÀà¡£";
 			next;
-			mes "::åœ¨ä¼Šç”¸å›­é›†å›¢ï¼Œ";
-			mes "::æˆ‘ä»¬æ•´ç†äº†ä»»åŠ¡";
-			mes "::æ ¹æ®éš¾åº¦ã€‚";
-			mes "::æŒ‰ç…§è¿™ä¸ªçº§åˆ«ï¼Œ";
-			mes "::ä½ å¯ä»¥æ‰¾åˆ°";
-			mes "::ä»»åŠ¡";
-			mes "::é€‚åˆä½ ã€‚";
+			mes "::ÔÚÒÁµéÔ°¼¯ÍÅ£¬";
+			mes "::ÎÒÃÇÕûÀíÁËÈÎÎñ";
+			mes "::¸ù¾İÄÑ¶È¡£";
+			mes "::°´ÕÕÕâ¸ö¼¶±ğ£¬";
+			mes "::Äã¿ÉÒÔÕÒµ½";
+			mes "::ÈÎÎñ";
+			mes "::ÊÊºÏÄã¡£";
 			next;
-			mes "::å½“ä½ å®Œæˆåï¼Œ";
-			mes "::ä½ å¯ä»¥å›æ¥äº†";
-			mes "::è‡´å®£æ•™å§”å‘˜ä¼šã€‚";
+			mes "::µ±ÄãÍê³Éºó£¬";
+			mes "::Äã¿ÉÒÔ»ØÀ´ÁË";
+			mes "::ÖÂĞû½ÌÎ¯Ô±»á¡£";
 			next;
-			mes "::é‚£ä¹ˆä½ å°†ä¼šæ˜¯";
-			mes "::å¥–åŠ±ï¼ï¼";
-			mes "::å¾ˆç®€å•ä¸æ˜¯å—ï¼ï¼";
-			mes "::æ— éœ€ä½£é‡‘ï¼";
+			mes "::ÄÇÃ´Äã½«»áÊÇ";
+			mes "::½±Àø£¡£¡";
+			mes "::ºÜ¼òµ¥²»ÊÇÂğ£¡£¡";
+			mes "::ÎŞĞèÓ¶½ğ£¡";
 			close;
 		case 3:
-			mes "::æ‚¨å¯ä»¥æˆä¸ºä¼šå‘˜";
-			mes "::ä¼Šç”¸å›­é›†å›¢";
-			mes "::è‡´^0000FFè±æ¢…Â·åŸƒæ–‡è¯º^000000ï¼Œ";
-			mes ":: è°åœ¨ä¸€æ¥¼ç­‰å€™ã€‚";
+			mes "::Äú¿ÉÒÔ³ÉÎª»áÔ±";
+			mes "::ÒÁµéÔ°¼¯ÍÅ";
+			mes "::ÖÂ^0000FFÀ³Ã·¡¤°£ÎÄÅµ^000000£¬";
+			mes ":: Ë­ÔÚÒ»Â¥µÈºò¡£";
 			next;
-			mes "::å¦‚æœæ‚¨æˆä¸ºä¼šå‘˜ï¼Œ";
-			mes "::ä½ ä¼šå¾—åˆ°ä¸€ä¸ª";
+			mes "::Èç¹ûÄú³ÉÎª»áÔ±£¬";
+			mes "::Äã»áµÃµ½Ò»¸ö";
 			mes "::\"^006400Eden Group Mark^000000\".";
-			mes "::é‚£ä¹ˆä½ å°±å¯ä»¥";
-			mes ":: ä¼šè§å®£æ•™å§”å‘˜ä¼šã€‚";
+			mes "::ÄÇÃ´Äã¾Í¿ÉÒÔ";
+			mes ":: »á¼ûĞû½ÌÎ¯Ô±»á¡£";
 			close;
 		}
 	}
@@ -80,25 +82,25 @@ moc_para01,48,177,3	script	91-99 Mission Board	857,{
 			96000,102000,110000,
 			102000,108000,
 			110000,138000,118000,96000,134000;
-		mes "æ‚¨çš„ç­‰çº§å¿…é¡»åœ¨ 91-99 çº§ä¹‹é—´æ‰èƒ½æ¥å—è¿™äº›ä»»åŠ¡ã€‚";
+		mes "ÄúµÄµÈ¼¶±ØĞëÔÚ 91-99 ¼¶Ö®¼ä²ÅÄÜ½ÓÊÜÕâĞ©ÈÎÎñ¡£";
 		for(set .@quest,4181; .@quest<=4196; set .@quest,.@quest+1) {
 			set .@hunting, checkquest(.@quest,HUNTING);
 			if (.@hunting == 0 || .@hunting == 1) {
 				next;
-				mes ":: ä½ ä¸èƒ½ç»§ç»­è¿›å…¥";
-				mes ":: ^0000FF"+.@names$[.@quest-4181]+" ç‹©çŒ^000000ã€‚";
-				mes "* ä»£è¡¨å›¢ç™»è®°";
-				mes ":: å·²å–æ¶ˆã€‚";
+				mes ":: Äã²»ÄÜ¼ÌĞø½øÈë";
+				mes ":: ^0000FF"+.@names$[.@quest-4181]+" á÷ÁÔ^000000¡£";
+				mes "* ´ú±íÍÅµÇ¼Ç";
+				mes ":: ÒÑÈ¡Ïû¡£";
 				erasequest .@quest;
 				close;
 			} else if (.@hunting == 2) {
 				next;
-				mes ":: æ‚¨æ·»åŠ äº†ä¿¡æ¯";
-				mes "* å…³äºä½¿å‘½";
-				mes ":: ^0000FF"+.@names$[.@quest-4181]+" ç‹©çŒ^000000";
-				mes "* åœ¨å®£æ•™å§”å‘˜ä¼šã€‚";
-				mes ":: ä½ æœ‰ä¸€ä¸ª";
-				mes "* æœ‰ç›Šçš„ç»éªŒã€‚";
+				mes ":: ÄúÌí¼ÓÁËĞÅÏ¢";
+				mes "* ¹ØÓÚÊ¹Ãü";
+				mes ":: ^0000FF"+.@names$[.@quest-4181]+" á÷ÁÔ^000000";
+				mes "* ÔÚĞû½ÌÎ¯Ô±»á¡£";
+				mes ":: ÄãÓĞÒ»¸ö";
+				mes "* ÓĞÒæµÄ¾­Ñé¡£";
 				erasequest .@quest;
 				getexp .@exp[.@quest-4181],0;
 				close;
@@ -106,55 +108,55 @@ moc_para01,48,177,3	script	91-99 Mission Board	857,{
 		}
 		close;
 	}
-	mes "[91-99ä»»åŠ¡æ¿]";
-	mes "è¯¥æ¿ä¸Šæœ‰å‡ ä¸ªè¯·æ±‚ã€‚";
+	mes "[91-99ÈÎÎñ°å]";
+	mes "¸Ã°åÉÏÓĞ¼¸¸öÇëÇó¡£";
 	next;
-	switch(select("^8B4513æµ·é¾Ÿå²›^000000:^8B4513æ ¼æ‹‰æ–¯ç‰¹æµ·å§†^000000:^8B4513é›·åˆ‡å°”/é™è„‰^000000:^8B4513æ‰©å¼ åŸå¸‚^000000:^8B4513å…¶ä»–åœ°åŒº^000000")) {
+	switch(select("^8B4513º£¹êµº^000000:^8B4513¸ñÀ­Ë¹ÌØº£Ä·^000000:^8B4513À×ÇĞ¶û/¾²Âö^000000:^8B4513À©ÕÅ³ÇÊĞ^000000:^8B4513ÆäËûµØÇø^000000")) {
 	case 1:
-		mes "^8B4513æµ·é¾Ÿå²›^000000ã€‚";
-		mes "ä½ è¦çŒæ€å“ªä¸ªæ€ªç‰©æˆ–è€…ä½ å·²ç»çŒæ€å®Œæ¯•äº†å—ï¼Ÿ";
+		mes "^8B4513º£¹êµº^000000¡£";
+		mes "ÄãÒªÁÔÉ±ÄÄ¸ö¹ÖÎï»òÕßÄãÒÑ¾­ÁÔÉ±Íê±ÏÁËÂğ£¿";
 		next;
-		switch(select("^0000FFå›ºä½“^000000ï¼š^0000FFå†·å†»å®¤^000000ï¼š^0000FFåŠ çƒ­å™¨^000000")) {
-			case 1: callsub L_Quest,4181,"Solider",90000,"ï¿½Ö¸ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster that only can be found on ^8B4513Turtle Island^000000.";
-			case 2: callsub L_Quest,4182,"Freezer",94000,"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster that only can be found on ^8B4513Turtle Island^000000.";
-			case 3: callsub L_Quest,4183,"Heater",114000,"ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster that only can be found on ^8B4513Turtle Island^000000.";
+		switch(select("^0000FF¹ÌÌå^000000£º^0000FFÀä¶³ÊÒ^000000£º^0000FF¼ÓÈÈÆ÷^000000")) {
+			case 1: callsub L_Quest,4181,"Solider",90000,"&#65533;&#1464;&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster that only can be found on ^8B4513Turtle Island^000000.";
+			case 2: callsub L_Quest,4182,"Freezer",94000,"&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster that only can be found on ^8B4513Turtle Island^000000.";
+			case 3: callsub L_Quest,4183,"Heater",114000,"&#65533;&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster that only can be found on ^8B4513Turtle Island^000000.";
 		}
 	case 2:
-		mes "^8B4513ç»ç’ƒæµ·å§†^000000ã€‚";
-		mes "ä½ è¦çŒæ€å“ªä¸ªæ€ªç‰©æˆ–è€…ä½ å·²ç»çŒæ€å®Œæ¯•äº†å—ï¼Ÿ";
+		mes "^8B4513²£Á§º£Ä·^000000¡£";
+		mes "ÄãÒªÁÔÉ±ÄÄ¸ö¹ÖÎï»òÕßÄãÒÑ¾­ÁÔÉ±Íê±ÏÁËÂğ£¿";
 		next;
-		switch(select("^0000FFä¸ä¹‰^000000:^0000FFç‘æ¯”å¥¥^000000:^0000FFé»‘æš—ç‰§å¸ˆ^000000")) {
-			case 1: callsub L_Quest,4184,"Injustice",96000,"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Glast Heim prison^000000.";
-			case 2: callsub L_Quest,4185,"Rybio",96000,"ï¿½ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Glast Heim prison^000000.";
-			case 3: callsub L_Quest,4186,"Dark Priest",146000,"ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Glast Heim prison^000000.";
+		switch(select("^0000FF²»Òå^000000:^0000FFÈğ±È°Â^000000:^0000FFºÚ°µÄÁÊ¦^000000")) {
+			case 1: callsub L_Quest,4184,"Injustice",96000,"&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#444;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Glast Heim prison^000000.";
+			case 2: callsub L_Quest,4185,"Rybio",96000,"&#65533;&#65533;&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Glast Heim prison^000000.";
+			case 3: callsub L_Quest,4186,"Dark Priest",146000,"&#65533;&#65533;&#361;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#430;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Glast Heim prison^000000.";
 		}
 	case 3:
-		mes "^8B4513é›·åˆ‡å°”/é™è„‰^000000ã€‚";
-		mes "ä½ è¦çŒæ€å“ªä¸ªæ€ªç‰©æˆ–è€…ä½ å·²ç»çŒæ€å®Œæ¯•äº†å—ï¼Ÿ";
+		mes "^8B4513À×ÇĞ¶û/¾²Âö^000000¡£";
+		mes "ÄãÒªÁÔÉ±ÄÄ¸ö¹ÖÎï»òÕßÄãÒÑ¾­ÁÔÉ±Íê±ÏÁËÂğ£¿";
 		next;
-		switch(select("^0000FFæ–¯å¡”æ³¢^000000:^0000FFç½—æ–‡^000000:^0000FFè¥¿ç½—é©¬^000000")) {
-			case 1: callsub L_Quest,4187,"Stapo",96000,"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Veins^000000.";
-			case 2: callsub L_Quest,4188,"Roween",102000,"ï¿½Î¿ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Rachel^000000.";
-			case 3: callsub L_Quest,4189,"Siroma",110000,"ï¿½Ã·Î¸ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Ice Dungeon^000000.";
+		switch(select("^0000FFË¹Ëş²¨^000000:^0000FFÂŞÎÄ^000000:^0000FFÎ÷ÂŞÂí^000000")) {
+			case 1: callsub L_Quest,4187,"Stapo",96000,"&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Veins^000000.";
+			case 2: callsub L_Quest,4188,"Roween",102000,"&#65533;¦Ï&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Rachel^000000.";
+			case 3: callsub L_Quest,4189,"Siroma",110000,"&#65533;¡Â¦È&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Ice Dungeon^000000.";
 		}
 	case 4:
-		mes "^8B4513æ‰©å¼ åŸå¸‚^000000ã€‚";
-		mes "ä½ è¦çŒæ€å“ªä¸ªæ€ªç‰©æˆ–è€…ä½ å·²ç»çŒæ€å®Œæ¯•äº†å—ï¼Ÿ";
+		mes "^8B4513À©ÕÅ³ÇÊĞ^000000¡£";
+		mes "ÄãÒªÁÔÉ±ÄÄ¸ö¹ÖÎï»òÕßÄãÒÑ¾­ÁÔÉ±Íê±ÏÁËÂğ£¿";
 		next;
-		switch(select("^0000FFå¿è€…^000000ï¼š^0000FFé‚ªæ¶ä»™å¥³^000000")) {
-			case 1: callsub L_Quest,4190,"Shinobi",102000,"ï¿½Ã³ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Amatsu Dungeon^000000.";
-			case 2: callsub L_Quest,4191,"Evil Nymph",108000,"ï¿½ä¼±ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Kunlun Dungeon^000000.";
+		switch(select("^0000FFÈÌÕß^000000£º^0000FFĞ°¶ñÏÉÅ®^000000")) {
+			case 1: callsub L_Quest,4190,"Shinobi",102000,"&#65533;¨®&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Amatsu Dungeon^000000.";
+			case 2: callsub L_Quest,4191,"Evil Nymph",108000,"&#65533;Ã&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Kunlun Dungeon^000000.";
 		}
 	case 5:
-		mes "å…¶ä»–åœ°åŒºã€‚";
-		mes "ä½ è¦çŒæ€å“ªä¸ªæ€ªç‰©æˆ–è€…ä½ å·²ç»çŒæ€å®Œæ¯•äº†å—ï¼Ÿ";
+		mes "ÆäËûµØÇø¡£";
+		mes "ÄãÒªÁÔÉ±ÄÄ¸ö¹ÖÎï»òÕßÄãÒÑ¾­ÁÔÉ±Íê±ÏÁËÂğ£¿";
 		next;
-		switch(select("^0000FFDeviruchi^000000:^0000FFçŸ¿ç‰©^000000:^0000FFKaho^000000:^0000FFNeraid^000000:^0000FFä¼ªè£…^000000")) {
-			case 1: callsub L_Quest,4192,"Deviruchi",110000,"ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Geffen Dungeon^000000.";
-			case 2: callsub L_Quest,4193,"Mineral",138000,"ï¿½Ì³×¶ï¿½","There is a monster only found in ^8B4513Einbech Dungeon^000000.";
-			case 3: callsub L_Quest,4194,"Kaho",118000,"Ä«È£Ä«ï¿½ï¿½","There is a monster found in ^8B4513Nogg Road Magma 1^000000.";
-			case 4: callsub L_Quest,4195,"Neraid",96000,"ï¿½×·ï¿½ï¿½Ìµï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Comodo Dungeon^000000.";
-			case 5: callsub L_Quest,4196,"Disguise",134000,"ï¿½ğ½º°ï¿½ï¿½ï¿½ï¿½ï¿½Ä«ï¿½ï¿½","There is a monster only found in ^8B4513Niflheim^000000.";
+		switch(select("^0000FFDeviruchi^000000:^0000FF¿óÎï^000000:^0000FFKaho^000000:^0000FFNeraid^000000:^0000FFÎ±×°^000000")) {
+			case 1: callsub L_Quest,4192,"Deviruchi",110000,"&#65533;&#65533;&#65533;&#65533;&#65533;&#289;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Geffen Dungeon^000000.";
+			case 2: callsub L_Quest,4193,"Mineral",138000,"&#65533;&#819;&#1526;&#65533;","There is a monster only found in ^8B4513Einbech Dungeon^000000.";
+			case 3: callsub L_Quest,4194,"Kaho",118000,"¨©&#547;¨©&#65533;&#65533;","There is a monster found in ^8B4513Nogg Road Magma 1^000000.";
+			case 4: callsub L_Quest,4195,"Neraid",96000,"&#65533;&#1527;&#65533;&#65533;&#821;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Comodo Dungeon^000000.";
+			case 5: callsub L_Quest,4196,"Disguise",134000,"&#65533;&#253616;&#65533;&#65533;&#65533;&#65533;&#65533;¨©&#65533;&#65533;","There is a monster only found in ^8B4513Niflheim^000000.";
 		}
 	}
 	end;
@@ -166,19 +168,19 @@ L_Quest:
 	.@cutin$ = getarg(3);
 	set .@playtime, checkquest(.@quest2,PLAYTIME);
 	if (.@playtime == 0 || .@playtime == 1) {
-		mes "[91-99ä»»åŠ¡æ¿]";
-		mes "æ‚¨éœ€è¦ç­‰å¾…3ä¸ªå°æ—¶æ‰èƒ½å†æ¬¡æ‰§è¡Œæ­¤ä»»åŠ¡ã€‚";
+		mes "[91-99ÈÎÎñ°å]";
+		mes "ÄúĞèÒªµÈ´ı3¸öĞ¡Ê±²ÅÄÜÔÙ´ÎÖ´ĞĞ´ËÈÎÎñ¡£";
 		close;
 	}
 	set .@hunting, checkquest(.@quest1,HUNTING);
 	if (.@hunting == 0 || .@hunting == 1) {
-		mes "[91-99ä»»åŠ¡æ¿]";
-		mes "æ‚¨å·²ç»å®Œæˆäº†æ‰€æœ‰ 30 ä¸ª"+getarg(1)+getarg(5,"")+" çš„ç‹©çŒäº†å—ï¼Ÿ";
+		mes "[91-99ÈÎÎñ°å]";
+		mes "ÄúÒÑ¾­Íê³ÉÁËËùÓĞ 30 ¸ö"+getarg(1)+getarg(5,"")+" µÄá÷ÁÔÁËÂğ£¿";
 		close;
 	} else if (.@hunting == 2) {
-		mes "[91-99ä»»åŠ¡æ¿]";
-		mes "ä½ å·²ç»å®Œæˆäº†ç‹©çŒã€‚";
-		mes "è¯·æ¥å—è¿™ä¸ªå¥–åŠ±ä½œä¸ºè¡¥å¿ã€‚";
+		mes "[91-99ÈÎÎñ°å]";
+		mes "ÄãÒÑ¾­Íê³ÉÁËá÷ÁÔ¡£";
+		mes "Çë½ÓÊÜÕâ¸ö½±Àø×÷Îª²¹³¥¡£";
 		erasequest .@quest1;
 		if (.@playtime > -1) erasequest .@quest2;
 		setquest .@quest2;
@@ -195,21 +197,21 @@ L_Quest:
 	}/* else if (.@hunting == 3) {
 //		recall_completequest .@quest1
 		erasequest .@quest1;
-		mes "[91-99ä»»åŠ¡æ¿]";
-		mes "æ‚¨å·²é‡æ–°æ¥å—"+getarg(1)+"ç‹©çŒä»»åŠ¡ã€‚";
+		mes "[91-99ÈÎÎñ°å]";
+		mes "ÄúÒÑÖØĞÂ½ÓÊÜ"+getarg(1)+"á÷ÁÔÈÎÎñ¡£";
 		close;
 	}*/ else {
-		mes "[91-99ä»»åŠ¡æ¿]";
+		mes "[91-99ÈÎÎñ°å]";
 		mes getarg(4);
 		next;
 		if (.@cutin$ != "") cutin .@cutin$,3;
-		mes "[91-99ä»»åŠ¡æ¿]";
-		mes "åœ¨é‚£é‡Œç‹©çŒ 30 ä¸ª"+getarg(1)+" æ€ªç‰©å¹¶å°†ä½ çš„æˆåŠŸå‘å¸ƒåˆ°è¿™ä¸ªæ¿ä¸Šã€‚";
+		mes "[91-99ÈÎÎñ°å]";
+		mes "ÔÚÄÇÀïá÷ÁÔ 30 ¸ö"+getarg(1)+" ¹ÖÎï²¢½«ÄãµÄ³É¹¦·¢²¼µ½Õâ¸ö°åÉÏ¡£";
 		next;
 		if (.@cutin$ != "") cutin .@cutin$,255;
-		if(select("æˆ‘ä¼šè¿½æ•ä»–ä»¬ã€‚ï¼šä¸ï¼Œè°¢è°¢ã€‚") == 1) {
-			mes "[91-99ä»»åŠ¡æ¿]";
-			mes "å®Œæˆä»»åŠ¡åï¼Œå°†å…¶å‘å¸ƒåˆ°æ­¤æ¿ä¸Šå¹¶é¢†å–å¥–åŠ±ã€‚";
+		if(select("ÎÒ»á×·²¶ËûÃÇ¡££º²»£¬Ğ»Ğ»¡£") == 1) {
+			mes "[91-99ÈÎÎñ°å]";
+			mes "Íê³ÉÈÎÎñºó£¬½«Æä·¢²¼µ½´Ë°åÉÏ²¢ÁìÈ¡½±Àø¡£";
 			if (.@playtime > -1) erasequest .@quest2;
 			setquest .@quest1;
 		}

@@ -10,6 +10,8 @@
 //= Warp Points for Bifrost Tower
 //===== Additional Comments: =================================
 //= 1.0 First Version.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ecl_fild01,182,82,0	warp	eclage_dun0001	1,1,ecl_tdun01,60,13

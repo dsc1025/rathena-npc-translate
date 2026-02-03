@@ -10,6 +10,8 @@
 //= Warp Points for Morocc Pyramid Nightmare Mode
 //===== Additional Comments: =================================
 //= 1.0 First Version.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_prydn1,223,9,0	warp	PyramidsN1-2	2,2,moc_prydn2,192,8

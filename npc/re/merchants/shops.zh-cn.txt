@@ -21,6 +21,8 @@
 //= 1.9 Added Renewal Ninja shops. [Euphy]
 //= 2.0 Moved and updated Morocc merchants. [zackdreaver]
 //= 2.1 Moved Pet Groomer merchants. [Haydrich]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //=======================================================

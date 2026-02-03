@@ -19,578 +19,580 @@
 //= 1.3 Fixes checkquest calls. [Everade]
 //= 1.4 Added EAJ_WARLOCK so that jobs after Warlock such as 
 //      Arch Mage can enter. [Mazvi]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 // Main Quest :: war_book
 //============================================================
 geffen_in,176,105,4	script	Master Velofos	1_M_WIZARD,{
 	if (checkweight(1201,1) == 0) {
-		mes "你携带的物品太多了。请先在包里腾出一些空间。";
+		mes "��Я������Ʒ̫���ˡ������ڰ����ڳ�һЩ�ռ䡣";
 		close;
 	}
 	if ((MaxWeight - Weight) < 1000) {
-		mes "您的物品超重。请先减轻一些物品重量。";
+		mes "������Ʒ���ء����ȼ���һЩ��Ʒ������";
 		close;
 	}
 	if ((Upper == 2) && (Class != Job_Baby_Warlock)) {
-		mes "[Velofos大师]";
-		mes "你是什​​么啊，宝宝？";
-		mes "我不是来照顾孩子的迷路！";
+		mes "[Velofos��ʦ]";
+		mes "����ʲô����������";
+		mes "�Ҳ������չ˺��ӵ���·��";
 		close;
 	}
 	if ((eaclass()&EAJ_THIRDMASK)!=EAJ_WARLOCK) {
-		mes "[Velofos大师]";
-		mes "哈哈，你也在寻求新知识吗？";
+		mes "[Velofos��ʦ]";
+		mes "��������Ҳ��Ѱ����֪ʶ��";
 		next;
-		mes "[Velofos大师]";
-		mes "抱歉，我的知识与你无关。";
+		mes "[Velofos��ʦ]";
+		mes "��Ǹ���ҵ�֪ʶ�����޹ء�";
 		close;
 	}
 	if (getskilllv(2230) < 1) {
-		mes "[Velofos大师]";
-		mes "好吧，你已经满足了所有条件，除了一个：你需要释放咒语。";
+		mes "[Velofos��ʦ]";
+		mes "�ðɣ����Ѿ���������������������һ��������Ҫ�ͷ����";
 		next;
-		mes "[Velofos大师]";
-		mes "先学咒语。我有很多话要告诉你。";
+		mes "[Velofos��ʦ]";
+		mes "��ѧ������кܶ໰Ҫ�����㡣";
 		close;
 	}
-	mes "[Velofos大师]";
-	mes "欢迎，我的朋友。";
-	mes "恭喜您进入一个全新的魔法世界。";
+	mes "[Velofos��ʦ]";
+	mes "��ӭ���ҵ����ѡ�";
+	mes "��ϲ������һ��ȫ�µ�ħ�����硣";
 	next;
-	mes "[Velofos大师]";
-	mes "我们魔法修行者总是渴望新的知识和力量。";
+	mes "[Velofos��ʦ]";
+	mes "����ħ�����������ǿ����µ�֪ʶ��������";
 	next;
-	mes "[Velofos大师]";
-	mes "我们忍受巨大的艰辛和痛苦来实现我们想要的。当我们最终做到的时候，那种成就感是无法形容的。这就是为什么你我都选择了魔法之路。";
+	mes "[Velofos��ʦ]";
+	mes "�������ܾ޴�ļ�����ʹ����ʵ��������Ҫ�ġ�����������������ʱ�����ֳɾ͸����޷����ݵġ������Ϊʲô���Ҷ�ѡ����ħ��֮·��";
 	next;
-	mes "[Velofos大师]";
-	mes "顺便问一下，你今天来找我有什么事吗？";
+	mes "[Velofos��ʦ]";
+	mes "˳����һ�£��������������ʲô����";
 	next;
-	switch (select("什么都没有:你知道阅读咒语书吗?:什么是冰冻咒语?:我可以有一本魔法书吗?:我可以在没有冰冻咒语的情况下使用阅读咒语书吗?:关于终极魔法书")) {
+	switch (select("ʲô��û��:��֪���Ķ���������?:ʲô�Ǳ�������?:�ҿ�����һ��ħ������?:�ҿ�����û�б�������������ʹ���Ķ���������?:�����ռ�ħ����")) {
 	case 1:
-		mes "[Velofos大师]";
-		mes "哈！你真傻。";
+		mes "[Velofos��ʦ]";
+		mes "��������ɵ��";
 		close;
 	case 2:
-		mes "[Velofos大师]";
-		mes "阅读咒语书的字面意思是“阅读咒语书”。你知道如何使用魔法书吗？";
+		mes "[Velofos��ʦ]";
+		mes "�Ķ��������������˼�ǡ��Ķ������顱����֪�����ʹ��ħ������";
 		next;
-		switch (select("是的，我愿意。：不，我不这样做。")) {
+		switch (select("�ǵģ���Ը�⡣�������Ҳ���������")) {
 		case 1:
-			mes "[Velofos大师]";
-			mes "那么，你就不需要额外的讲座了。";
+			mes "[Velofos��ʦ]";
+			mes "��ô����Ͳ���Ҫ����Ľ����ˡ�";
 			close;
 		case 2:
-			mes "[Velofos大师]";
-			mes "魔法书是魔法卷轴的高级类型。卷轴上的咒语在使用一次后就会消失，而魔法书中的咒语可以多次施放。";
+			mes "[Velofos��ʦ]";
+			mes "ħ������ħ������ĸ߼����͡������ϵ�������ʹ��һ�κ�ͻ���ʧ����ħ�����е�������Զ��ʩ�š�";
 			next;
-			mes "[Velofos大师]";
-			mes "让我们将卷轴上的咒语与电线进行比较。当金属丝用于开门或做其他事情时，它会弯曲和挤压，失去原来的形状。魔法书中的咒语更像是形状记忆合金。";
+			mes "[Velofos��ʦ]";
+			mes "�����ǽ������ϵ���������߽��бȽϡ�������˿���ڿ��Ż�����������ʱ�����������ͼ�ѹ��ʧȥԭ������״��ħ�����е������������״����Ͻ�";
 			next;
-			mes "[Velofos大师]";
-			mes "呵呵，你现在还不知道什么是形状记忆合金吗？呃，只要记住这一点：由形状记忆合金制成的线会随着时间的推移恢复其形状。";
+			mes "[Velofos��ʦ]";
+			mes "�Ǻǣ������ڻ���֪��ʲô����״����Ͻ�������ֻҪ��ס��һ�㣺����״����Ͻ��Ƴɵ��߻�����ʱ������ƻָ�����״��";
 			next;
-			mes "[Velofos大师]";
-			mes "与合金一样，魔法书上的咒语在使用后仍然存在，尽管重复使用该咒语需要一段恢复时间。";
+			mes "[Velofos��ʦ]";
+			mes "��Ͻ�һ����ħ�����ϵ�������ʹ�ú���Ȼ���ڣ������ظ�ʹ�ø�������Ҫһ�λָ�ʱ�䡣";
 			next;
-			mes "[Velofos大师]";
-			mes "……哦，我本来不想讲太久的。无论如何，你可以使用魔法书来施放你学到的咒语。它的概念与普通法术不同。";
+			mes "[Velofos��ʦ]";
+			mes "����Ŷ���ұ������뽲̫�õġ�������Σ������ʹ��ħ������ʩ����ѧ����������ĸ�������ͨ������ͬ��";
 			next;
-			select("有什么区别？");
-			mes "[Velofos大师]";
-			mes "你问为什么你必须把现有的咒语写在魔法书中？";
+			select("��ʲô����");
+			mes "[Velofos��ʦ]";
+			mes "����Ϊʲô���������е�����д��ħ�����У�";
 			next;
-			mes "[Velofos大师]";
-			mes "这是个好问题。与魔法绑定有关。";
+			mes "[Velofos��ʦ]";
+			mes "���Ǹ������⡣��ħ�����йء�";
 			next;
-			mes "[Velofos大师]";
-			mes "您已经学会了释放，它允许您在实际施法之前保留四种不同元素的能量。魔法绑定与释放类似。";
+			mes "[Velofos��ʦ]";
+			mes "���Ѿ�ѧ�����ͷţ�����������ʵ��ʩ��֮ǰ�������ֲ�ͬԪ�ص�������ħ�������ͷ����ơ�";
 			next;
-			mes "[Velofos大师]";
-			mes "既然您已经学习了发布，那么您也能够使用魔法绑定。好吧，我们稍后再谈。";
+			mes "[Velofos��ʦ]";
+			mes "��Ȼ���Ѿ�ѧϰ�˷�������ô��Ҳ�ܹ�ʹ��ħ���󶨡��ðɣ������Ժ���̸��";
 			next;
-			mes "[Velofos大师]";
-			mes "你知道如何保持现有的法术，然后通过释放在所需的时间施放它。";
+			mes "[Velofos��ʦ]";
+			mes "��֪����α������еķ�����Ȼ��ͨ���ͷ��������ʱ��ʩ������";
 			next;
-			mes "[Velofos大师]";
-			mes "携带四种元素的球体也与魔法束缚有关。";
+			mes "[Velofos��ʦ]";
+			mes "Я������Ԫ�ص�����Ҳ��ħ�������йء�";
 			next;
-			mes "[Velofos大师]";
-			mes "众所周知，四种元素是火、水、风、土。能够自由地运用它们，是魔法的基本原理。";
+			mes "[Velofos��ʦ]";
+			mes "������֪������Ԫ���ǻ�ˮ���硢�����ܹ����ɵ��������ǣ���ħ���Ļ���ԭ����";
 			next;
-			mes "[Velofos大师]";
-			mes "我们人类用火把来生火，用风扇来吹风，用碗来盛水。我们还使用粘土来制作陶器。";
+			mes "[Velofos��ʦ]";
+			mes "���������û���������÷��������磬������ʢˮ�����ǻ�ʹ��ճ��������������";
 			next;
-			mes "[Velofos大师]";
-			mes "这些活动可能与魔法不同，但在使用四种元素的意义上，两者是相同的。";
+			mes "[Velofos��ʦ]";
+			mes "��Щ�������ħ����ͬ������ʹ������Ԫ�ص������ϣ���������ͬ�ġ�";
 			next;
-			mes "[Velofos大师]";
-			mes "当你使用复杂的魔法咒语来召唤风暴、掉落闪电或燃烧一个区域时，这会消耗你大量的身体和精神能量。";
+			mes "[Velofos��ʦ]";
+			mes "����ʹ�ø��ӵ�ħ���������ٻ��籩�����������ȼ��һ������ʱ��������������������;���������";
 			next;
-			mes "[Velofos大师]";
-			mes "当你无法束缚或控制如此强大的魔法咒语时，你的身心都会受到无法弥补的伤害。";
+			mes "[Velofos��ʦ]";
+			mes "�����޷�������������ǿ���ħ������ʱ��������Ķ����ܵ��޷��ֲ����˺���";
 			next;
-			mes "[Velofos大师]";
-			mes "这就是为什么我们使用魔法书来减轻这种负担。当你专注于绑定魔法力量时，它可以帮助召唤预施法术。";
+			mes "[Velofos��ʦ]";
+			mes "�����Ϊʲô����ʹ��ħ�������������ָ���������רע�ڰ�ħ������ʱ�������԰����ٻ�Ԥʩ������";
 			next;
-			mes "[Velofos大师]";
-			mes "但有一个缺点：魔法书不能用于你还没有学过的咒语。";
+			mes "[Velofos��ʦ]";
+			mes "����һ��ȱ�㣺ħ���鲻�������㻹û��ѧ�������";
 			next;
-			mes "[Velofos大师]";
-			mes "正如我之前所说，魔法书中的咒语往往会回到它们本来的样子。";
+			mes "[Velofos��ʦ]";
+			mes "������֮ǰ��˵��ħ�����е�����������ص����Ǳ��������ӡ�";
 			next;
-			mes "[Velofos大师]";
-			mes "也就是说，作为圆环者，您无法在魔法书中更改或创建咒语。";
+			mes "[Velofos��ʦ]";
+			mes "Ҳ����˵����ΪԲ���ߣ����޷���ħ�����и��Ļ򴴽����";
 			next;
-			mes "[Velofos大师]";
-			mes "即使你创造了一个，它的力量也将超出你的能力。";
+			mes "[Velofos��ʦ]";
+			mes "��ʹ�㴴����һ������������Ҳ���������������";
 			next;
-			mes "[Velofos大师]";
-			mes "为了使用阅读魔法书，你必须学习冻结魔法来束缚魔法。";
+			mes "[Velofos��ʦ]";
+			mes "Ϊ��ʹ���Ķ�ħ���飬�����ѧϰ����ħ��������ħ����";
 			close;
 		}
 	case 3:
-		mes "[Velofos大师]";
-		mes "冰冻法术用于魔法绑定。它可以帮助您在圆圈中插入魔法咒语。";
+		mes "[Velofos��ʦ]";
+		mes "������������ħ���󶨡������԰�������ԲȦ�в���ħ�����";
 		next;
-		mes "[Velofos大师]";
-		mes "魔法圈彼此有机地运作。当你使用冰冻法术来绑定法术时，除非你施放释放法术，否则该法术不会激活。";
+		mes "[Velofos��ʦ]";
+		mes "ħ��Ȧ�˴��л�������������ʹ�ñ����������󶨷���ʱ��������ʩ���ͷŷ���������÷������ἤ�";
 		next;
-		mes "[Velofos大师]";
-		mes "当然，绑定法术会持续消耗你的法力，但它比传统的魔法法术消耗的法力要少。";
+		mes "[Velofos��ʦ]";
+		mes "��Ȼ���󶨷��������������ķ����������ȴ�ͳ��ħ���������ĵķ���Ҫ�١�";
 		next;
-		mes "[Velofos大师]";
-		mes "当你使用更强大的魔法咒语时，魔法束缚会变得更加困难。";
+		mes "[Velofos��ʦ]";
+		mes "����ʹ�ø�ǿ���ħ������ʱ��ħ���������ø������ѡ�";
 		next;
-		mes "[Velofos大师]";
-		mes "对于较弱的法术，你可以用你的法阵将其中的两到三个束缚起来。对于更强大的法术，也许一两个都是可能的。";
+		mes "[Velofos��ʦ]";
+		mes "���ڽ����ķ��������������ķ������е����������������������ڸ�ǿ��ķ�����Ҳ��һ�������ǿ��ܵġ�";
 		next;
-		mes "[Velofos大师]";
-		mes "这一切都取决于你控制法术的能力。当你第一次学习魔法绑定后，你必须尝试并体验它才能真正理解它。";
+		mes "[Velofos��ʦ]";
+		mes "��һ�ж�ȡ��������Ʒ����������������һ��ѧϰħ���󶨺�����볢�Բ�����������������������";
 		close;
 	case 4:
-		mes "[Velofos大师]";
-		mes "抱歉，我只有初学者的魔法书，但它们显然不适合你。你还想要一个吗？";
+		mes "[Velofos��ʦ]";
+		mes "��Ǹ����ֻ�г�ѧ�ߵ�ħ���飬��������Ȼ���ʺ��㡣�㻹��Ҫһ����";
 		next;
-		switch (select("当然可以。：我在哪里可以找到高级书籍？")) {
+		switch (select("��Ȼ���ԡ���������������ҵ��߼��鼮��")) {
 		case 1:
-			mes "[Velofos大师]";
-			mes "请去档案馆与[Lea]交谈。告诉她你需要一本我存放在那里的魔法书。";
+			mes "[Velofos��ʦ]";
+			mes "��ȥ��������[Lea]��̸������������Ҫһ���Ҵ���������ħ���顣";
 			next;
-			mes "[Velofos大师]";
-			mes "供您参考，她不会在没有任何回报的情况下将其提供给您。期待她向你询问一些事情！";
+			mes "[Velofos��ʦ]";
+			mes "�����ο�����������û���κλر�������½����ṩ�������ڴ�������ѯ��һЩ���飡";
 			if (wm_book < 1) set wm_book, 1;
 			close;
 		case 2:
-			mes "[Velofos大师]";
-			mes "抱歉，我们的管理层最近决定限制 Multi Circlers 的 Magic Books 的可用性。这是因为他们的数量增长速度比我们预期的要快。";
+			mes "[Velofos��ʦ]";
+			mes "��Ǹ�����ǵĹ���������������� Multi Circlers �� Magic Books �Ŀ����ԡ�������Ϊ���ǵ����������ٶȱ�����Ԥ�ڵ�Ҫ�졣";
 			next;
-			mes "[Velofos大师]";
-			mes "如果你努力的话，一定能找到，但我没有。";
+			mes "[Velofos��ʦ]";
+			mes "�����Ŭ���Ļ���һ�����ҵ�������û�С�";
 			next;
-			mes "[Velofos大师]";
-			mes "如果我们的管理层解除限制，您将是第一个知道的人。不用担心。";
+			mes "[Velofos��ʦ]";
+			mes "������ǵĹ����������ƣ������ǵ�һ��֪�����ˡ����õ��ġ�";
 			close;
 		}
 	case 5:
-		mes "[Velofos大师]";
-		mes "当你尝试在不使用魔法绑定的情况下绑定魔法时，什么也不会发生，因为你没有任何东西可以容纳魔法。";
+		mes "[Velofos��ʦ]";
+		mes "���㳢���ڲ�ʹ��ħ���󶨵�����°�ħ��ʱ��ʲôҲ���ᷢ������Ϊ��û���κζ�����������ħ����";
 		next;
-		mes "[Velofos大师]";
-		mes "这就像水需要一个碗才能保持原位。";
+		mes "[Velofos��ʦ]";
+		mes "�����ˮ��Ҫһ������ܱ���ԭλ��";
 		next;
-		mes "[Velofos大师]";
-		mes "问题是当你试图强行施展你还没有学过的咒语时。肯定会给你带来适得其反的效果。";
+		mes "[Velofos��ʦ]";
+		mes "�����ǵ�����ͼǿ��ʩչ�㻹û��ѧ��������ʱ���϶����������ʵ��䷴��Ч����";
 		next;
-		mes "[Velofos大师]";
-		mes "当然，损害不会很严重：你会睡着或陷入混乱。这都是因为当你试图召唤并持有未学习的法术时，你的魔法书和魔法束缚的力量之间存在冲突。";
+		mes "[Velofos��ʦ]";
+		mes "��Ȼ���𺦲�������أ����˯�Ż�������ҡ��ⶼ����Ϊ������ͼ�ٻ�������δѧϰ�ķ���ʱ�����ħ�����ħ������������֮����ڳ�ͻ��";
 		next;
-		mes "[Velofos大师]";
-		mes "不要只是为了看看自己会发生什么而尝试！施法时睡着了？对于我们这些魔法修行者来说，没有什么比这更羞辱的了。";
+		mes "[Velofos��ʦ]";
+		mes "��Ҫֻ��Ϊ�˿����Լ��ᷢ��ʲô�����ԣ�ʩ��ʱ˯���ˣ�����������Щħ����������˵��û��ʲô�����������ˡ�";
 		close;
 	case 6:
 		if ((BaseLevel > 139) && (getskilllv(2217) > 0 || getskilllv(2213) > 0)) {
 			if (mac_book < 1) {
-				mes "[Velofos大师]";
-				mes "抱歉，你能问问其他人吗？我现在有点忙。";
+				mes "[Velofos��ʦ]";
+				mes "��Ǹ�������������������������е�æ��";
 				close;
 			}
 			if (mac_book == 1) {
-				mes "[Velofos大师]";
-				mes "嗯，你在寻找终极魔法书吗？谁派你来的？";
+				mes "[Velofos��ʦ]";
+				mes "�ţ�����Ѱ���ռ�ħ������˭�������ģ�";
 				next;
-				select("莉亚女士。");
-				mes "[Velofos大师]";
-				mes "抱歉，关于终极魔法书的信息已经不多了。";
+				select("����Ůʿ��");
+				mes "[Velofos��ʦ]";
+				mes "��Ǹ�������ռ�ħ�������Ϣ�Ѿ������ˡ�";
 				next;
-				mes "[Velofos大师]";
-				mes "米德加尔特大陆的一些学者曾经试图收集古代魔法书并复制那本书，但是……";
+				mes "[Velofos��ʦ]";
+				mes "�׵¼Ӷ��ش�½��һЩѧ��������ͼ�ռ��Ŵ�ħ���鲢�����Ǳ��飬���ǡ���";
 				next;
-				select("但什么？");
-				mes "[Velofos大师]";
-				mes "哦，是的，也许他可能知道一些事情。";
+				select("��ʲô��");
+				mes "[Velofos��ʦ]";
+				mes "Ŷ���ǵģ�Ҳ��������֪��һЩ���顣";
 				next;
-				select("是的，我知道这会到来！");
-				mes "[Velofos大师]";
-				mes "我的兄弟和你一样。他对重新制作终极魔法书很感兴趣。";
+				select("�ǵģ���֪����ᵽ����");
+				mes "[Velofos��ʦ]";
+				mes "�ҵ��ֵܺ���һ�����������������ռ�ħ����ܸ���Ȥ��";
 				next;
-				mes "[Velofos大师]";
-				mes "他的名字叫加尔福斯。";
-				mes "他对古代魔法书很感兴趣。";
+				mes "[Velofos��ʦ]";
+				mes "�������ֽмӶ���˹��";
+				mes "���ԹŴ�ħ����ܸ���Ȥ��";
 				next;
-				mes "[Velofos大师]";
-				mes "我没有支持他，也没有给他的研究提供任何建议，因为我认为他很快就会放弃，但是......";
+				mes "[Velofos��ʦ]";
+				mes "��û��֧������Ҳû�и������о��ṩ�κν��飬��Ϊ����Ϊ���ܿ�ͻ����������......";
 				next;
-				mes "[Velofos大师]";
-				mes "如果他发现了任何有用的东西，也许对你有帮助。";
+				mes "[Velofos��ʦ]";
+				mes "������������κ����õĶ�����Ҳ�������а�����";
 				next;
-				select("加尔福斯现在在哪里？");
-				mes "[Velofos大师]";
-				mes "听说他正在时空裂缝之外的探险营地附近寻找有关古代魔法书的信息。";
+				select("�Ӷ���˹���������");
+				mes "[Velofos��ʦ]";
+				mes "��˵������ʱ���ѷ�֮���̽��Ӫ�ظ���Ѱ���йعŴ�ħ�������Ϣ��";
 				next;
-				mes "[Velofos大师]";
-				mes "如果你想见他，就得做好长途跋涉的准备。";
+				mes "[Velofos��ʦ]";
+				mes "�������������͵����ó�;�����׼����";
 				set mac_book,2;
 				close;
 			}
 			if (mac_book > 1) {
-				mes "[Velofos大师]";
-				mes "加尔福斯位于次元裂缝之外的远征营地附近。";
+				mes "[Velofos��ʦ]";
+				mes "�Ӷ���˹λ�ڴ�Ԫ�ѷ�֮���Զ��Ӫ�ظ�����";
 				next;
-				mes "[Velofos大师]";
-				mes "如果你想见他，就得做好长途跋涉的准备。";
+				mes "[Velofos��ʦ]";
+				mes "�������������͵����ó�;�����׼����";
 				close;
 			}
 		}
-		mes "[Velofos大师]";
-		mes "哈哈，抱歉，你应该专注于强化身体，而不是创作魔法书。";
+		mes "[Velofos��ʦ]";
+		mes "��������Ǹ����Ӧ��רע��ǿ�����壬�����Ǵ���ħ���顣";
 		close;
 	}
 }
 
 geffen_in,175,112,4	script	Lea	2_F_MAGICMASTER,{
 	if (checkweight(1201,1) == 0) {
-		mes "你携带的物品太多了。请先在包里腾出一些空间。";
+		mes "��Я������Ʒ̫���ˡ������ڰ����ڳ�һЩ�ռ䡣";
 		close;
 	}
 	if ((MaxWeight - Weight) < 1000) {
-		mes "您的物品超重。请先减轻一些物品重量。";
+		mes "������Ʒ���ء����ȼ���һЩ��Ʒ������";
 		close;
 	}
 	if (wm_book > 0 && ((eaclass()&EAJ_THIRDMASK)==EAJ_WARLOCK)) {
-		mes "[莉亚]";
-		mes "我可以怎样帮助您？";
+		mes "[����]";
+		mes "�ҿ���������������";
 		next;
-		select("维罗福斯大师让我带上他的魔法书。");
-		mes "[莉亚]";
-		mes "你借书吗？";
+		select("ά�޸�˹��ʦ���Ҵ�������ħ���顣");
+		mes "[����]";
+		mes "�������";
 		next;
-		switch (select("让我想想：我想要中级魔法书。：我想要高级魔法书。：我想要终极魔法书。")) {
+		switch (select("�������룺����Ҫ�м�ħ���顣������Ҫ�߼�ħ���顣������Ҫ�ռ�ħ���顣")) {
 		case 1:
-			mes "[莉亚]";
-			mes "没问题。";
+			mes "[����]";
+			mes "û���⡣";
 			close;
 		case 2:
-			mes "[莉亚]";
-			mes "啊，原来你想要中级魔法书啊。如果您支付^4d4dff贷款押金100,000z^000000，我们将借给您一本中级魔法书。";
+			mes "[����]";
+			mes "����ԭ������Ҫ�м�ħ���鰡�������֧��^4d4dff����Ѻ��100,000z^000000�����ǽ������һ���м�ħ���顣";
 			next;
-			mes "[莉亚]";
-			mes "你想要一本什么样的魔法书？";
+			mes "[����]";
+			mes "����Ҫһ��ʲô����ħ���飿";
 			next;
-			set .@i, select("让我想想：魔法书（风暴阵风）：魔法书（朱红领主）：魔法书（流星风暴）")-1;
-			mes "[莉亚]";
+			set .@i, select("�������룺ħ���飨�籩��磩��ħ���飨�����������ħ���飨���Ƿ籩��")-1;
+			mes "[����]";
 			if (!.@i) {
-				mes "没问题。";
+				mes "û���⡣";
 				close;
 			}
 			setarray .@Books[0],100065,100066,100067;
 			if (countitem(.@Books[.@i-1])) {
-				mes "你已经有了那本魔法书。在归还当前书籍之前，您无法借用新书。";
+				mes "���Ѿ������Ǳ�ħ���顣�ڹ黹��ǰ�鼮֮ǰ�����޷��������顣";
 				next;
-				mes "[莉亚]";
-				mes "你不知道有多少人会想要你已经拥有的这本书吗？你知道，想要多个就有点自私了。";
+				mes "[����]";
+				mes "�㲻֪���ж����˻���Ҫ���Ѿ�ӵ�е��Ȿ������֪������Ҫ������е���˽�ˡ�";
 				close;
 			}
 			if (Zeny > 99999) {
-				mes "感谢您的存款。该书的归还日期写在该书封底的借阅卡上。请尽量避免丢失或损坏图书，并避免赔偿。";
+				mes "��л���Ĵ�����Ĺ黹����д�ڸ����׵Ľ��Ŀ��ϡ��뾡�����ⶪʧ����ͼ�飬�������⳥��";
 				next;
-				mes "[莉亚]";
-				mes "借用终极魔法书时，中级和高级魔法书必须归还。请记住，您只是借用它们，因此请确保妥善保管这些书。";
+				mes "[����]";
+				mes "�����ռ�ħ����ʱ���м��͸߼�ħ�������黹�����ס����ֻ�ǽ������ǣ������ȷ�����Ʊ�����Щ�顣";
 				Zeny -= 100000;
 				getitem .@Books[.@i-1],1; //WL_MB_SG, WL_MB_LOV, WL_MB_MS
 				close;
 			}
-			mes "^4d4dff贷款存款为100,000z^000000。押金随着魔法书的变化而调整。";
+			mes "^4d4dff������Ϊ100,000z^000000��Ѻ������ħ����ı仯��������";
 			close;
 		case 3:
-			mes "[莉亚]";
-			mes "哦，你想要高级魔法书吗？该政策已改为无条件接受贷款存款，而不是现有的苛刻贷款条件。";
-			mes "高级魔法书^4d4dff借阅押金为500,000z^000000。";
+			mes "[����]";
+			mes "Ŷ������Ҫ�߼�ħ�����𣿸������Ѹ�Ϊ���������ܴ�������������еĿ��̴���������";
+			mes "�߼�ħ����^4d4dff����Ѻ��Ϊ500,000z^000000��";
 			next;
-			mes "[莉亚]";
-			mes "你想要一本什么样的魔法书？";
+			mes "[����]";
+			mes "����Ҫһ��ʲô����ħ���飿";
 			next;
-			set .@i, select("让我想想：魔法书（汲取生命）：魔法书（杰克·弗罗斯特）：魔法书（大地应变）：魔法书（深红岩）：魔法书（闪电链）")-1;
-			mes "[莉亚]";
+			set .@i, select("�������룺ħ���飨��ȡ��������ħ���飨�ܿˡ�����˹�أ���ħ���飨���Ӧ�䣩��ħ���飨����ң���ħ���飨��������")-1;
+			mes "[����]";
 			if (!.@i) {
-				mes "没问题。";
+				mes "û���⡣";
 				close;
 			}
 			setarray .@Books[0],100068,100069,100070,100071,100072;
 			if (countitem(.@Books[.@i-1])) {
-				mes "你已经有了那本魔法书。在归还当前书籍之前，您无法借用新书。";
+				mes "���Ѿ������Ǳ�ħ���顣�ڹ黹��ǰ�鼮֮ǰ�����޷��������顣";
 				next;
-				mes "[莉亚]";
-				mes "你不知道有多少人会想要你已经拥有的这本书吗？你知道，想要多个就有点自私了。";
+				mes "[����]";
+				mes "�㲻֪���ж����˻���Ҫ���Ѿ�ӵ�е��Ȿ������֪������Ҫ������е���˽�ˡ�";
 				close;
 			}
 			if (Zeny > 499999) {
-				mes "感谢您的存款。该书的归还日期写在该书封底的借阅卡上。请尽量避免丢失或损坏图书，并避免赔偿。";
+				mes "��л���Ĵ�����Ĺ黹����д�ڸ����׵Ľ��Ŀ��ϡ��뾡�����ⶪʧ����ͼ�飬�������⳥��";
 				next;
-				mes "[莉亚]";
-				mes "借用终极魔法书时，中级和高级魔法书必须归还。请记住，您只是借用它们，因此请确保妥善保管这些书。";
+				mes "[����]";
+				mes "�����ռ�ħ����ʱ���м��͸߼�ħ�������黹�����ס����ֻ�ǽ������ǣ������ȷ�����Ʊ�����Щ�顣";
 				Zeny -= 500000;
 				getitem .@Books[.@i-1],1; //WL_MB_DL, WL_MB_JF, WL_MB_ES, WL_MB_CR, WL_MB_CL
 				close;
 			}
-			mes "^4d4dff贷款存款为 500,000z^000000。押金随着魔法书的变化而调整。";
+			mes "^4d4dff������Ϊ 500,000z^000000��Ѻ������ħ����ı仯��������";
 			close;
 		case 4:
 			if ((BaseLevel > 139) && (mac_book < 1) && ((getskilllv(2217) > 0) || (getskilllv(2213) > 0))) {
-				mes "[莉亚]";
-				mes "难道……你刚才说的是终极魔法书？";
+				mes "[����]";
+				mes "�ѵ�������ղ�˵�����ռ�ħ���飿";
 				next;
-				mes "[莉亚]";
-				mes "哦，我的....";
-				mes "我不敢相信有人真的想要那本书。";
+				mes "[����]";
+				mes "Ŷ���ҵ�....";
+				mes "�Ҳ����������������Ҫ�Ǳ��顣";
 				next;
-				select("请不要说你没有。");
-				mes "[莉亚]";
-				mes "说实话，我连终极魔法书都没见过。";
+				select("�벻Ҫ˵��û�С�");
+				mes "[����]";
+				mes "˵ʵ���������ռ�ħ���鶼û������";
 				next;
-				mes "[莉亚]";
-				mes "如果你想了解更多关于那本书的信息，你应该询问 Velofos 大师。";
+				mes "[����]";
+				mes "��������˽��������Ǳ������Ϣ����Ӧ��ѯ�� Velofos ��ʦ��";
 				next;
-				mes "[莉亚]";
-				mes "很抱歉我无法为您提供更多帮助。";
+				mes "[����]";
+				mes "�ܱ�Ǹ���޷�Ϊ���ṩ���������";
 				set mac_book,1;
 				close;
 			}
 			if ((BaseLevel > 139) && (mac_book > 0) && ((getskilllv(2217) > 0) || (getskilllv(2213) > 0))) {
-				mes "[莉亚]";
-				mes "你应该向 Velofos 大师询问有关那本书的一些信息。";
+				mes "[����]";
+				mes "��Ӧ���� Velofos ��ʦѯ���й��Ǳ����һЩ��Ϣ��";
 				close;
 			}
-			mes "[莉亚]";
-			mes "嗯……你为什么不在这之前多练习一会儿呢？";
+			mes "[����]";
+			mes "�š�����Ϊʲô������֮ǰ����ϰһ����أ�";
 			next;
-			mes "[莉亚]";
-			mes "为了获得终极魔法书，你必须达到140级并学习泰特拉闪电和彗星。";
+			mes "[����]";
+			mes "Ϊ�˻���ռ�ħ���飬�����ﵽ140����ѧϰ̩������������ǡ�";
 			next;
-			mes "[莉亚]";
-			mes "那本书不是任何人都可以使用的，你知道吗？";
+			mes "[����]";
+			mes "�Ǳ��鲻���κ��˶�����ʹ�õģ���֪����";
 			close;
 		}
 	}
-	mes "[莉亚]";
-	mes "欢迎来到魔法档案馆。在一定条件下，您可以从这里阅读和借阅书籍。";
+	mes "[����]";
+	mes "��ӭ����ħ�������ݡ���һ�������£������Դ������Ķ��ͽ����鼮��";
 	close;
 }
 
 mid_camp,255,244,4	script	Galfos	4_M_JOB_WIZARD,{
 	if (checkweight(1201,1) == 0) {
-		mes "你携带的物品太多了。请先在包里腾出一些空间。";
+		mes "��Я������Ʒ̫���ˡ������ڰ����ڳ�һЩ�ռ䡣";
 		close;
 	}
 	if ((MaxWeight - Weight) < 1000) {
-		mes "您的物品超重。请先减轻一些物品重量。";
+		mes "������Ʒ���ء����ȼ���һЩ��Ʒ������";
 		close;
 	}
 	if ((Upper == 2) && (Class != Job_Baby_Warlock)) {
-		mes "[加尔福斯]";
-		mes "你是什​​么啊，宝宝？";
-		mes "我不是来照顾孩子的迷路！";
+		mes "[�Ӷ���˹]";
+		mes "����ʲô����������";
+		mes "�Ҳ������չ˺��ӵ���·��";
 		close;
 	}
 	if ((eaclass()&EAJ_THIRDMASK)!=EAJ_WARLOCK) {
-		mes "[加尔福斯]";
-		mes "我的右臂感觉很热，而左臂感觉很冷。我永远无法适应这种奇怪的天气！";
+		mes "[�Ӷ���˹]";
+		mes "�ҵ��ұ۸о����ȣ�����۸о����䡣����Զ�޷���Ӧ������ֵ�������";
 		close;
 	}
 	if (getskilllv(2230) < 1) {
-		mes "[加尔福斯]";
-		mes "啊，再呆在这里的话，我会遇到麻烦的。也许我已经在...";
+		mes "[�Ӷ���˹]";
+		mes "�����ٴ�������Ļ����һ������鷳�ġ�Ҳ�����Ѿ���...";
 		close;
 	}
 	if (BaseLevel < 140 || (getskilllv(2217) < 1 && getskilllv(2213) < 1)) {
-		mes "[加尔福斯]";
-		mes "抱歉，我不会和那些还没有准备好的人说话。";
+		mes "[�Ӷ���˹]";
+		mes "��Ǹ���Ҳ������Щ��û��׼���õ���˵����";
 		close;
 	}
 	if (mac_book < 2) {
-		mes "[加尔福斯]";
-		mes "你看起来很坚强，但你似乎与我没有任何关系。";
+		mes "[�Ӷ���˹]";
+		mes "�㿴�����ܼ�ǿ�������ƺ�����û���κι�ϵ��";
 		close;
 	}
 	if (mac_book == 2) {
-		mes "[加尔福斯]";
-		mes "是什么让你来到我身边？";
+		mes "[�Ӷ���˹]";
+		mes "��ʲô�������������ߣ�";
 		next;
-		select("听说你研究过究极魔法书了。");
-		mes "[加尔福斯]";
-		mes "怎么，你也有兴趣吗？";
-		mes "我不知道有人真的会对那本书感兴趣。是的，我正在研究那本魔法书。你是怎么发现的？";
+		select("��˵���о�������ħ�����ˡ�");
+		mes "[�Ӷ���˹]";
+		mes "��ô����Ҳ����Ȥ��";
+		mes "�Ҳ�֪��������Ļ���Ǳ������Ȥ���ǵģ��������о��Ǳ�ħ���顣������ô���ֵģ�";
 		next;
-		select("你是维洛夫的弟弟，对吧？");
-		mes "[加尔福斯]";
-		mes "是的，我是加尔福斯，维罗福斯是我的兄弟。";
+		select("����ά���ĵܵܣ��԰ɣ�");
+		mes "[�Ӷ���˹]";
+		mes "�ǵģ����ǼӶ���˹��ά�޸�˹���ҵ��ֵܡ�";
 		next;
-		mes "[加尔福斯]";
-		mes "等一下，";
-		mes "老头子有推荐我给你吗？";
+		mes "[�Ӷ���˹]";
+		mes "��һ�£�";
+		mes "��ͷ�����Ƽ��Ҹ�����";
 		next;
-		select("这是正确的。");
-		mes "[加尔福斯]";
-		mes "哇！";
-		mes "这令人惊讶。他从来没有认真对待过我的研究。我很高兴他终于改变了主意。";
+		select("������ȷ�ġ�");
+		mes "[�Ӷ���˹]";
+		mes "�ۣ�";
+		mes "�����˾��ȡ�������û������Դ����ҵ��о����Һܸ��������ڸı������⡣";
 		next;
-		mes "[加尔福斯]";
-		mes "呵呵！你的时机再好不过了：我正在寻找一个测试对象。";
+		mes "[�Ӷ���˹]";
+		mes "�Ǻǣ����ʱ���ٺò����ˣ�������Ѱ��һ�����Զ���";
 		next;
-		select("测试对象？");
-		mes "[加尔福斯]";
-		mes "坦白说，我只对创造终极魔法书感兴趣。";
+		select("���Զ���");
+		mes "[�Ӷ���˹]";
+		mes "̹��˵����ֻ�Դ����ռ�ħ�������Ȥ��";
 		next;
-		mes "[加尔福斯]";
-		mes "我不擅长使用魔法，更不用说我更喜欢用拳头战斗。尽管如此，我发现《魔法书》非常有趣。";
+		mes "[�Ӷ���˹]";
+		mes "�Ҳ��ó�ʹ��ħ����������˵�Ҹ�ϲ����ȭͷս����������ˣ��ҷ��֡�ħ���顷�ǳ���Ȥ��";
 		next;
-		mes "[加尔福斯]";
-		mes "问题是我无法使用终极魔法书，即使我做了一本。这就是为什么我无法亲自测试它。";
+		mes "[�Ӷ���˹]";
+		mes "���������޷�ʹ���ռ�ħ���飬��ʹ������һ���������Ϊʲô���޷����Բ�������";
 		next;
-		mes "[加尔福斯]";
-		mes "这就是为什么我一直在等待像你这样的真正的魔法修行者可以帮助我测试我的终极魔法书。";
+		mes "[�Ӷ���˹]";
+		mes "�����Ϊʲô��һֱ�ڵȴ�����������������ħ�������߿��԰����Ҳ����ҵ��ռ�ħ���顣";
 		next;
-		select("（他在说什么？）");
-		mes "[加尔福斯]";
-		mes "我的研究快完成了";
-		mes "我需要解决最后一个问题才能创建魔法书。";
+		select("������˵ʲô����");
+		mes "[�Ӷ���˹]";
+		mes "�ҵ��о��������";
+		mes "����Ҫ������һ��������ܴ���ħ���顣";
 		next;
-		mes "[加尔福斯]";
-		mes "为了制作这本古老的终极魔法书，我需要一件神器和一些咒语来融入它。";
+		mes "[�Ӷ���˹]";
+		mes "Ϊ�������Ȿ���ϵ��ռ�ħ���飬����Ҫһ��������һЩ��������������";
 		next;
-		mes "[加尔福斯]";
-		mes "我已经根据古代文献完美地恢复了法术，但我仍然没有关于必要神器的信息。";
+		mes "[�Ӷ���˹]";
+		mes "���Ѿ����ݹŴ����������ػָ��˷�����������Ȼû�й��ڱ�Ҫ��������Ϣ��";
 		next;
-		mes "[加尔福斯]";
-		mes "啊，但还有一线希望！";
+		mes "[�Ӷ���˹]";
+		mes "����������һ��ϣ����";
 		next;
-		select("（现在我们已经取得进展了！）");
-		mes "[加尔福斯]";
-		mes "哈哈...";
-		mes "在邪恶巨人的首都埃尔迪卡斯特斯有一个巨大的档案馆，那里存储着这个世界上的所有知识。";
+		select("�����������Ѿ�ȡ�ý�չ�ˣ���");
+		mes "[�Ӷ���˹]";
+		mes "����...";
+		mes "��а����˵��׶������Ͽ�˹��˹��һ���޴�ĵ����ݣ�����洢����������ϵ�����֪ʶ��";
 		next;
-		mes "[加尔福斯]";
-		mes "也许这是找到有关这本终极魔法书的神器的一些信息的地方。";
+		mes "[�Ӷ���˹]";
+		mes "Ҳ�������ҵ��й��Ȿ�ռ�ħ�����������һЩ��Ϣ�ĵط���";
 		next;
-		mes "[加尔福斯]";
-		mes "你知道该怎么做，不是吗？尽你所能，在 El Dicastes 档案馆中查找有关神器的信息。";
+		mes "[�Ӷ���˹]";
+		mes "��֪������ô���������𣿾������ܣ��� El Dicastes �������в����й���������Ϣ��";
 		next;
-		mes "[加尔福斯]";
-		mes "然后，创建神器并将其带给我。之后我们将讨论创建魔法书。";
+		mes "[�Ӷ���˹]";
+		mes "Ȼ�󣬴�����������������ҡ�֮�����ǽ����۴���ħ���顣";
 		set mac_book,3;
 		close;
 	}
 	if (mac_book == 3) {
-		mes "[加尔福斯]";
-		mes "你知道该怎么做，不是吗？尽你所能，在 El Dicastes 档案馆中查找有关神器的信息。";
+		mes "[�Ӷ���˹]";
+		mes "��֪������ô���������𣿾������ܣ��� El Dicastes �������в����й���������Ϣ��";
 		next;
-		mes "[加尔福斯]";
-		mes "然后，创建神器并将其带给我。之后我们将讨论创建魔法书。";
+		mes "[�Ӷ���˹]";
+		mes "Ȼ�󣬴�����������������ҡ�֮�����ǽ����۴���ħ���顣";
 		close;
 	}
 	if (mac_book == 4) {
-		mes "[加尔福斯]";
-		mes "哦，你发现了吗";
-		mes "有什么有用的吗？";
+		mes "[�Ӷ���˹]";
+		mes "Ŷ���㷢������";
+		mes "��ʲô���õ���";
 		next;
-		set .@i, select("我已经发现了关于彗星的一切。：我已经掌握了四旋涡的顶峰。");
-		mes "[加尔福斯]";
+		set .@i, select("���Ѿ������˹������ǵ�һ�С������Ѿ������������еĶ��塣");
+		mes "[�Ӷ���˹]";
 		if ((.@i == 1 && countitem(100073)) || (.@i == 2 && countitem(100074))) {
-			mes "你在开玩笑吧？你已经有了这本书！";
+			mes "���ڿ���Ц�ɣ����Ѿ������Ȿ�飡";
 			close;
 		}
 		if ((.@i == 1 && checkquest(12218) == 2) || (.@i == 2 && checkquest(12219) == 2 && checkquest(12220) == 2 && checkquest(12221) == 2 && checkquest(12222) == 2)) {
-			mes "天啊，我感觉到你身上散发出不可思议的能量。这太棒了！现在我们准备制作终极魔法书了。";
+			mes "�찡���Ҹо���������ɢ��������˼�����������̫���ˣ���������׼�������ռ�ħ�����ˡ�";
 			next;
-			mes "[加尔福斯]";
-			mes "但有一个问题：我身无分文，甚至没有足够的钱购买制作这本书的工具。";
+			mes "[�Ӷ���˹]";
+			mes "����һ�����⣺�����޷��ģ�����û���㹻��Ǯ���������Ȿ��Ĺ��ߡ�";
 			next;
-			mes "[加尔福斯]";
-			mes "我至少需要^0000aa500,000 zeny^000000来购买所有必要的工具。你有钱吗？";
+			mes "[�Ӷ���˹]";
+			mes "��������Ҫ^0000aa500,000 zeny^000000���������б�Ҫ�Ĺ��ߡ�����Ǯ��";
 			next;
-			if(select("什-什么？不！：当然。") == 1) {
-				mes "[加尔福斯]";
-				mes "哦，你不知道吗？很失望，但我也无能为力。等你钱够了再回来，好吗？";
+			if(select("ʲ-ʲô����������Ȼ��") == 1) {
+				mes "[�Ӷ���˹]";
+				mes "Ŷ���㲻֪���𣿺�ʧ��������Ҳ����Ϊ��������Ǯ�����ٻ���������";
 				close;
 			}
-			mes "[加尔福斯]";
+			mes "[�Ӷ���˹]";
 			if (Zeny >= 500000) {
-				mes "好吧，让我们开始吧！";
+				mes "�ðɣ������ǿ�ʼ�ɣ�";
 				next;
 				specialeffect2 EF_DISPELL;
 				progressbar "ffff00",4;
 				specialeffect2 EF_LORD;
 				set Zeny, Zeny - 500000;
 				getitem 100072+.@i,1; //WL_MB_CM, WL_MB_TV
-				mes "[加尔福斯]";
-				mes "天啊，我差点就失去了对这不可思议的魔法能量的控制！这是你的魔法书。";
+				mes "[�Ӷ���˹]";
+				mes "�찡���Ҳ���ʧȥ�˶��ⲻ��˼���ħ�������Ŀ��ƣ��������ħ���顣";
 				next;
-				mes "[加尔福斯]";
-				mes "谢谢你让我梦想成真。如果您需要另一本书，请随时回来。";
+				mes "[�Ӷ���˹]";
+				mes "лл������������档�������Ҫ��һ���飬����ʱ������";
 				close;
 			}
-			mes "嘿，我告诉你什么了？没有钱我买不到制作书的工具！";
+			mes "�٣��Ҹ�����ʲô�ˣ�û��Ǯ���򲻵�������Ĺ��ߣ�";
 			close;
 		}
-		mes "你确定你找到了什么吗？看来你还没有学到我们需要的东西......";
+		mes "��ȷ�����ҵ���ʲô�𣿿����㻹û��ѧ��������Ҫ�Ķ���......";
 		close;
 	}
-	mes "[加尔福斯]";
-	mes "您还需要什么吗？";
+	mes "[�Ӷ���˹]";
+	mes "������Ҫʲô��";
 	close;
 }
 
 dic_in01,25,190,0	script	Mysterious Documents	CLEAR_NPC,{
 	if (isequipped(2782) < 1) {
-		mes "我最好别忘记装备我的戒指。";
+		mes "����ñ�����װ���ҵĽ�ָ��";
 		close;
 	}
 	if (ep13_3_invite < 5) {
-		mes "当你接近这些文件时，一个看起来像档案管理员的邪恶巨人试图呼叫警卫高尔顿。你应该尽快离开这里。";
+		mes "����ӽ���Щ�ļ�ʱ��һ���������񵵰�����Ա��а�������ͼ���о����߶��١���Ӧ�þ����뿪���";
 		close;
 	}
 	if (checkquest(12165,PLAYTIME) == 1) {
-		mes "这些文件让你感到恶心。等你的胃平静下来之后再回来。";
+		mes "��Щ�ļ�����е����ġ������θƽ������֮���ٻ�����";
 		close;
 	}
 	if (checkquest(12165,PLAYTIME) == 2) {
-		mes "你不再感到恶心了。现在继续应该是安全的。";
+		mes "�㲻�ٸе������ˡ����ڼ���Ӧ���ǰ�ȫ�ġ�";
 		erasequest 12165;
 		close;
 	}
 	if ((BaseLevel < 140) || (getskilllv(2217) < 1) && (getskilllv(2213) < 1)) {
-		mes "该容器中的文件无法辨认。试图阅读它们是没有用的。";
+		mes "�������е��ļ��޷����ϡ���ͼ�Ķ�������û���õġ�";
 		close;
 	}
 	specialeffect2 EF_DISPELL;
 	progressbar "ffff00",4;
 	if (mac_book < 3) {
-		mes "你发现了有关魔法、加速度和粒子波的记录。";
+		mes "�㷢�����й�ħ�������ٶȺ����Ӳ��ļ�¼��";
 		close;
 	}
 	if (mac_book == 3) {
-		mes "你发现了有关魔法、加速度和粒子波的记录。这些文件肯定就是加尔福斯要找的文件。";
+		mes "�㷢�����й�ħ�������ٶȺ����Ӳ��ļ�¼����Щ�ļ��϶����ǼӶ���˹Ҫ�ҵ��ļ���";
 		set mac_book, 4;
 		close;
 	}
@@ -599,107 +601,107 @@ dic_in01,25,190,0	script	Mysterious Documents	CLEAR_NPC,{
 		if (.@r == 1) {
 			if (getskilllv(2213) > 0) {
 				if (checkquest(12218) == 1) {
-					mes "您已经拥有该文档。";
+					mes "���Ѿ�ӵ�и��ĵ���";
 					close;
 				}
-				mes "^660066为了制造熔岩精华，你必须在雷神火山地下城第二层最热的地方精炼40颗燃烧之心。^000000";
-				mes "^660066你必须使用那个地方最大的力量来做到这一点。人类自古以来就用这种方法来研究魔法粒子的加速。^000000";
+				mes "^660066Ϊ���������Ҿ�����������������ɽ���³ǵڶ������ȵĵط�����40��ȼ��֮�ġ�^000000";
+				mes "^660066�����ʹ���Ǹ��ط�����������������һ�㡣�����Թ������������ַ������о�ħ�����ӵļ��١�^000000";
 				next;
-				mes "您已发现^990099熔岩精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				mes "���ѷ���^990099���Ҿ�����������^000000�������������񴰿����˽������ϸ��Ϣ��";
 				specialeffect2 EF_STEAL;
 				close2;
 				setquest 12218;
 				end;
 			}
-			mes "该文档中看起来没有任何有用的内容。";
+			mes "���ĵ��п�����û���κ����õ����ݡ�";
 			close;
 		}
 		if (.@r == 2) {
 			if (getskilllv(2217) > 0) {
 				if (checkquest(12219) == 1) {
-					mes "您已经拥有该文档。";
+					mes "���Ѿ�ӵ�и��ĵ���";
 					close;
 				}
-				mes "^660066火焰精华可以在雷神火山地下城一层稳定的地面上炼制。提炼精髓需要10颗爱之煤。^000000";
-				mes "^660066根据人类的信息，这种本质构成了四大自然元素之一。^000000";
+				mes "^660066���澫�������������ɽ���³�һ���ȶ��ĵ��������ơ�����������Ҫ10�Ű�֮ú��^000000";
+				mes "^660066�����������Ϣ�����ֱ��ʹ������Ĵ���ȻԪ��֮һ��^000000";
 				next;
-				mes "你已发现^990099火焰精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				mes "���ѷ���^990099���澫����������^000000�������������񴰿����˽������ϸ��Ϣ��";
 				specialeffect2 EF_STEAL;
 				close2;
 				setquest 12219;
 				end;
 			}
-			mes "该文档中看起来没有任何有用的内容。";
+			mes "���ĵ��п�����û���κ����õ����ݡ�";
 			close;
 		}
 		if (.@r == 3) {
 			if (getskilllv(2217) > 0) {
 				if (checkquest(12220) == 1) {
-					mes "您已经拥有该文档。";
+					mes "���Ѿ�ӵ�и��ĵ���";
 					close;
 				}
-				mes "^660066我成功炼化了冰洞第三层深处的冰川精华。如果你想尝试一下，请准备 10 个冰心并前往以下位置。^000000";
+				mes "^660066�ҳɹ������˱�����������ı���������������볢��һ�£���׼�� 10 �����Ĳ�ǰ������λ�á�^000000";
 				next;
-				mes "你已发现^990099冰川精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				mes "���ѷ���^990099����������������^000000�������������񴰿����˽������ϸ��Ϣ��";
 				specialeffect2 EF_STEAL;
 				close2;
 				setquest 12220;
 				end;
 			}
-			mes "该文档中看起来没有任何有用的内容。";
+			mes "���ĵ��п�����û���κ����õ����ݡ�";
 			close;
 		}
 		if (.@r == 4) {
 			if (getskilllv(2217) > 0) {
 				if (checkquest(12221) == 1) {
-					mes "您已经拥有该文档。";
+					mes "���Ѿ�ӵ�и��ĵ���";
 					close;
 				}
-				mes "^660066我在矿山地下城二层的古老岩石中提炼出了化石的精华。到目前为止，那里是所有试炼场中最稳定的地方。";
-				mes "如果你想尝试，请准备 10 个 Jubilee，然后前往地牢。祝你好运。^000000";
+				mes "^660066���ڿ�ɽ���³Ƕ���Ĺ�����ʯ���������˻�ʯ�ľ�������ĿǰΪֹ�����������������������ȶ��ĵط���";
+				mes "������볢�ԣ���׼�� 10 �� Jubilee��Ȼ��ǰ�����Ρ�ף����ˡ�^000000";
 				next;
-				mes "你已发现^990099化石精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				mes "���ѷ���^990099��ʯ������������^000000�������������񴰿����˽������ϸ��Ϣ��";
 				specialeffect2 EF_STEAL;
 				close2;
 				setquest 12221;
 				end;
 			}
-			mes "该文档中看起来没有任何有用的内容。";
+			mes "���ĵ��п�����û���κ����õ����ݡ�";
 			close;
 		}
 		if (.@r == 5) {
 			if (getskilllv(2217) > 0) {
 				if (checkquest(12222) == 1) {
-					mes "您已经拥有该文档。";
+					mes "���Ѿ�ӵ�и��ĵ���";
 					close;
 				}
-				mes "^660066为了炼化风暴的本质，我拜访了风之精灵所在的昆仑隐者棋盘。";
-				mes "炼制过程很简单，但找到催化剂龙牙却很难。^000000";
+				mes "^660066Ϊ�������籩�ı��ʣ��Ұݷ��˷�֮�������ڵ������������̡�";
+				mes "���ƹ��̺ܼ򵥣����ҵ��߻�������ȴ���ѡ�^000000";
 				next;
-				mes "你已发现^990099风暴精华制作方法^000000。请检查您的任务窗口以了解更多详细信息。";
+				mes "���ѷ���^990099�籩������������^000000�������������񴰿����˽������ϸ��Ϣ��";
 				specialeffect2 EF_STEAL;
 				close2;
 				setquest 12222;
 				end;
 			}
-			mes "该文档中看起来没有任何有用的内容。";
+			mes "���ĵ��п�����û���κ����õ����ݡ�";
 			close;
 		}
 		if (.@r == 10) {
-			mes "你突然感到恶心，而且这种恶心不会轻易消失。您应该稍后尝试查找所需的文档。";
+			mes "��ͻȻ�е����ģ��������ֶ��Ĳ���������ʧ����Ӧ���Ժ��Բ���������ĵ���";
 			setquest 12165;
 			close;
 		}
-		mes "这里看起来没什么特别的。";
+		mes "���￴����ûʲô�ر�ġ�";
 		close;
 	}
-	mes "您不再需要搜索这个地方。";
+	mes "��������Ҫ��������ط���";
 	close;
 }
 
 function	script	Magic_Book_Essence	{
 	if (MaxWeight - Weight < 1000) {
-		mes "请减轻你的包。";
+		mes "�������İ���";
 		close;
 	}
 	.@item_req = getarg(1);
@@ -710,21 +712,21 @@ function	script	Magic_Book_Essence	{
 		progressbar "ffff00",4;
 		delitem .@item_req,.@req_amount;
 		if (rand(2)) {
-			mes "您已使用"+ callfunc("F_InsertPlural",.@req_amount,getitemname(.@item_req)) +"创建了^999900"+ getarg(3) +" Essence^000000。";
+			mes "����ʹ��"+ callfunc("F_InsertPlural",.@req_amount,getitemname(.@item_req)) +"������^999900"+ getarg(3) +" Essence^000000��";
 			next;
-			mes "^008800"+getarg(3)+"精华将永久持续，除非出现问题。^000000";
+			mes "^008800"+getarg(3)+"���������ó��������ǳ������⡣^000000";
 			completequest getarg(0);
 			specialeffect2 EF_LORD;
 			close;
 		}
-		mes "^008888您未能使用"+ callfunc("F_InsertPlural",.@req_amount,getitemname(.@item_req)) +"提炼本质。^000000";
+		mes "^008888��δ��ʹ��"+ callfunc("F_InsertPlural",.@req_amount,getitemname(.@item_req)) +"�������ʡ�^000000";
 		close;
 	}
 	if (checkquest(getarg(0)) == 2) {
-		mes "您已经在该区域创建了"+getarg(3)+" 精华。";
+		mes "���Ѿ��ڸ����򴴽���"+getarg(3)+" ������";
 		close;
 	}
-	mes "已经有人使用过这个区域了。";
+	mes "�Ѿ�����ʹ�ù���������ˡ�";
 	close;
 }
 thor_v02,163,104,0	script	Powerful Lava Energy#33	CLEAR_NPC,{ callfunc "Magic_Book_Essence",12218,7097,40,"Lava"; end; }

@@ -13,6 +13,8 @@
 //= 1.0 First version.
 //= 1.1 Duplicates now spawn from floating NPCs. [L0ne_W0lf]
 //= 1.1a Added 'disable_items' command. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 morocc,270,159,3	duplicate(SocketEnchant2)	Leablem#moc	86

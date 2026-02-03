@@ -9,33 +9,35 @@
 //===== Additional Comments: =================================
 //= 1.0 Initial release [Ridley8819]
 //= 1.1 Dialogue cleanup [Aleos]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 glast_01,195,273,3	script	Hugin's follower#1	2_F_MAGICMASTER,{
-	mes "[休金的追随者]";
-	mes "我无法像休金大师那样在时间和维度之间移动，但我可以假装可以。";
+	mes "[�ݽ��׷����]";
+	mes "���޷����ݽ��ʦ������ʱ���ά��֮���ƶ������ҿ��Լ�װ���ԡ�";
 	next;
-	mes "[休金的追随者]";
-	mes "是什么让这个格拉斯海姆充满了如此强大的黑暗力量？";
+	mes "[�ݽ��׷����]";
+	mes "��ʲô���������˹��ķ���������ǿ��ĺڰ�������";
 	next;
-	if( select( "我不在乎：这很有趣，请告诉我更多" ) == 2 ){
-		mes "[休金的追随者]";
-		mes "感谢休金，我找到了进入这个充满强大黑暗力量的古格拉斯海姆的方法。";
+	if( select( "�Ҳ��ں��������Ȥ��������Ҹ���" ) == 2 ){
+		mes "[�ݽ��׷����]";
+		mes "��л�ݽ����ҵ��˽����������ǿ��ڰ������ĹŸ���˹��ķ�ķ�����";
 		next;
-		mes "[休金的追随者]";
-		mes "你怎么说？你想探索那里吗？";
+		mes "[�ݽ��׷����]";
+		mes "����ô˵������̽��������";
 		next;
-		if( select( "对我来说没有探索：我真的很想探索！" ) == 2 ){
-			mes "[休金的追随者]";
-			mes "当然可以，但这不是免费服务！我必须得到一些回报。呵呵...";
+		if( select( "������˵û��̽��������ĺ���̽����" ) == 2 ){
+			mes "[�ݽ��׷����]";
+			mes "��Ȼ���ԣ����ⲻ����ѷ����ұ���õ�һЩ�ر����Ǻ�...";
 			next;
-			mes "[休金的追随者]";
-			mes "我可以送你去两个地方。您希望我送您去哪个地方？";
+			mes "[�ݽ��׷����]";
+			mes "�ҿ�������ȥ�����ط�����ϣ��������ȥ�ĸ��ط���";
 			next;
-			switch( select( "取消：修道院墓地（Lv100~130）- 5000z：二楼走廊（Lv140以上）- 10000z" ) ){
+			switch( select( "ȡ�����޵�ԺĹ�أ�Lv100~130��- 5000z����¥���ȣ�Lv140���ϣ�- 10000z" ) ){
 				case 1:
-					mes "[休金的追随者]";
-					mes "好吧，你什么时候改变主意就回来吧。我想你会有很多话要跟我聊……";
+					mes "[�ݽ��׷����]";
+					mes "�ðɣ���ʲôʱ��ı�����ͻ����ɡ���������кܶ໰Ҫ�����ġ���";
 					close;
 				case 2:
 					.@map$ = "gl_chyard_";
@@ -51,8 +53,8 @@ glast_01,195,273,3	script	Hugin's follower#1	2_F_MAGICMASTER,{
 					break;
 			}
 			if( Zeny < .@zeny ){
-				mes "[休金的追随者]";
-				mes "什么？您期望这项服务是免费的吗？";
+				mes "[�ݽ��׷����]";
+				mes "ʲô�������������������ѵ���";
 				close;
 			}
 			Zeny -= .@zeny;
@@ -60,19 +62,19 @@ glast_01,195,273,3	script	Hugin's follower#1	2_F_MAGICMASTER,{
 			end;
 		}
 	}
-	mes "[休金的追随者]";
-	mes "好吧，如果你对此不感兴趣，没关系。";
+	mes "[�ݽ��׷����]";
+	mes "�ðɣ������Դ˲�����Ȥ��û��ϵ��";
 	close;
 }
 
 gl_chyard_,148,149,4	script	Hugin's Follower#n_gh1	123,{
-	mes "[休金的追随者]";
-	mes "你想回来吗？";
-	mes "好吧，我们离开这里吧。";
+	mes "[�ݽ��׷����]";
+	mes "���������";
+	mes "�ðɣ������뿪����ɡ�";
 	next;
-	if( select( "我不是故意跟你说话的：请带我离开这里" ) == 1 ){
-		mes "[休金的追随者]";
-		mes "好吧，只要你想离开就告诉我。";
+	if( select( "�Ҳ��ǹ������˵���ģ�������뿪����" ) == 1 ){
+		mes "[�ݽ��׷����]";
+		mes "�ðɣ�ֻҪ�����뿪�͸����ҡ�";
 		close;
 	}
 	warp "glast_01", 210, 269;

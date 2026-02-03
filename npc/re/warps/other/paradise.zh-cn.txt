@@ -10,6 +10,8 @@
 //= Warp Points for Paradise Group
 //===== Additional Comments: =================================
 //= 1.0 First Release
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_para01,57,27,0	warp2	#warp_2_pub	1,1,moc_para01,162,26

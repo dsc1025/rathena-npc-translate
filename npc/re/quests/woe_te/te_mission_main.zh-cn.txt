@@ -5,6 +5,8 @@
 //= Template for mission WoE TE
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // This npc call the duplicate of pop_mission_TE npc in order to spawn the mobs mission.
@@ -126,8 +128,8 @@ S_Coord:
 
 -	script	Training_Instructor_TE	-1,{
 	if (checkweight(1201,5) == 0) {
-		mes "您的物品太多，无法继续任务。";
-		mes "请减轻负担并重试。";
+		mes "������Ʒ̫�࣬�޷���������";
+		mes "����Ḻ�������ԡ�";
 		close;
 	}
 	.@map$ = strnpcinfo(4);
@@ -161,46 +163,46 @@ S_Coord:
 	}
 	mes "["+ .@npc_name$ +"]";
 	if (jobcanentermap("te_prtcas01") == 0) {
-		mes "啊……你……";
-		mes "根据 TE 规则，不幸的是，我不会命令你或要求你帮忙。";
+		mes "�������㡭��";
+		mes "���� TE ���򣬲��ҵ��ǣ��Ҳ����������Ҫ�����æ��";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "哎呀，既然这里只是初级职级和次级职级以及没有拓展等级的用户，那你没事的话就可以离开了吗？";
+		mes "��ѽ����Ȼ����ֻ�ǳ���ְ���ʹμ�ְ���Լ�û����չ�ȼ����û�������û�µĻ��Ϳ����뿪����";
 		close;
 	}
-	mes "您可以在TE地区完成一些任务。";
-	mes "让我们看看，你想要什么？";
+	mes "��������TE�������һЩ����";
+	mes "�����ǿ���������Ҫʲô��";
 	next;
-	switch( select( "接受/遵守任务", "任务是什么意思？", "我没有。" ) ) {
+	switch( select( "����/��������", "������ʲô��˼��", "��û�С�" ) ) {
 	case 1:
 		mes "["+ .@npc_name$ +"]";
 		if (BaseLevel < 70) {
-			mes "嗯，很抱歉，任务是为^4d4dff70级^000000或更高等级的用户准备的。";
-			mes "老实说，等级太低的话，任务是很难完成的。";
+			mes "�ţ��ܱ�Ǹ��������Ϊ^4d4dff70��^000000����ߵȼ����û�׼���ġ�";
+			mes "��ʵ˵���ȼ�̫�͵Ļ��������Ǻ�����ɵġ�";
 			close;
 		}
 		.@time_check = WoeTETimeStart(3600);
 		.@siege_check = agitcheck3();
-		mes "你已经知道你必须在一段时间内接受任务了吧？";
+		mes "���Ѿ�֪���������һ��ʱ���ڽ��������˰ɣ�";
 		if (.@time_check == 1 || .@siege_check == 1)
-			mes "而且，你要记住，如果高级别和低级别的任务内容相同，你不能同时接受它们。";
+			mes "���ң���Ҫ��ס������߼���͵ͼ��������������ͬ���㲻��ͬʱ�������ǡ�";
 		else {
-			mes "不幸的是，您现在无法接受任务。";
+			mes "���ҵ��ǣ��������޷���������";
 			next;
 			mes "["+ .@npc_name$ +"]";
 			.@playtime_check2 = checkquest(7516,PLAYTIME);// A Break for Commercial Development
 			if (.@playtime_check2 == 2) {
 				erasequest 7516;
-				mes "嗯，你休息了吗？";
-				mes "好吧，这已经不重要了。";
+				mes "�ţ�����Ϣ����";
+				mes "�ðɣ����Ѿ�����Ҫ�ˡ�";
 			}
-			mes "您只能查看已接受的任务的结果。";
+			mes "��ֻ�ܲ鿴�ѽ��ܵ�����Ľ����";
 		}
 		next;
-		.@s = select( .@menu$ + "取消" ) -1;
+		.@s = select( .@menu$ + "ȡ��" ) -1;
 		mes "["+ .@npc_name$ +"]";
 		if (.@s == 9) {
-			mes "到时候见。";
+			mes "��ʱ�����";
 			close;
 		}
 
@@ -238,9 +240,9 @@ S_Coord:
 			if (.@mission01 == 1) {
 				if (.@playtime_check == 0) {
 					if (.@hunting_check == 2) {
-						mes "你做的很及时。";
-						mes "我不明白为什么"+ .@mob_name$[0] +"会出现在一天中的那个时间。";
-						mes "不管怎样，干得好。";
+						mes "�����ĺܼ�ʱ��";
+						mes "�Ҳ�����Ϊʲô"+ .@mob_name$[0] +"�������һ���е��Ǹ�ʱ�䡣";
+						mes "�����������ɵúá�";
 						if (.@num_tool_box == 0) {
 							erasequest .@main_quest;
 							getitem 11558,5;// TE_White_Slim_Potion
@@ -249,11 +251,11 @@ S_Coord:
 						}
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "既然你做得很好，我就让你" + .@num_tool_box + "次打开我的工具箱。";
-						mes "虽然你大多不会发现任何东西......";
-						mes "这是一个奖励，所以即使你没有找到任何东西也不要抱怨。";
+						mes "��Ȼ�����úܺã��Ҿ�����" + .@num_tool_box + "�δ��ҵĹ����䡣";
+						mes "��Ȼ���಻�ᷢ���κζ���......";
+						mes "����һ�����������Լ�ʹ��û���ҵ��κζ���Ҳ��Ҫ��Թ��";
 						next;
-						mes "就像"+ .@npc_name$ +"说的，你穿过前面的盒子，然后……";
+						mes "����"+ .@npc_name$ +"˵�ģ��㴩��ǰ��ĺ��ӣ�Ȼ�󡭡�";
 						erasequest .@main_quest;
 						getitem .@reward[0],.@reward[1];
 						getexp .@exp[0],.@exp[1];
@@ -261,34 +263,34 @@ S_Coord:
 					}
 					callsub( S_Cancelquest, .@main_quest, .@npc_name$, "This mission is to eliminate "+ .@mob_name$[1] +" that secretly appear at the fortress in "+ .@fortress$ +"." );
 				}
-				mes "时间到了。";
-				mes "不幸的是，任务失败了！";
-				mes "下一次吧！";
+				mes "ʱ�䵽�ˡ�";
+				mes "���ҵ��ǣ�����ʧ���ˣ�";
+				mes "��һ�ΰɣ�";
 				erasequest .@main_quest;
 				close;
 			}
 			if (.@time_check != 1 && .@siege_check != 1) {
-				mes "您目前没有执行此任务。";
-				mes "你能再检查一下吗？";
+				mes "��Ŀǰû��ִ�д�����";
+				mes "�����ټ��һ����";
 				close;
 			}
 			if (.@mission02 == 1 || .@mission03 == 1) {
 				if (.@num_tool_box == 0) {
-					mes "你已经在执行高级任务了！";
-					mes "如果您已经在执行相同内容的高级任务，则无法接受低级任务！";
+					mes "���Ѿ���ִ�и߼������ˣ�";
+					mes "������Ѿ���ִ����ͬ���ݵĸ߼��������޷����ܵͼ�����";
 				}
 				else {
-					mes "你已经在执行消灭任务了！";
-					mes "我希望你照顾好你已经拥有的东西，除非你想取消它。";
+					mes "���Ѿ���ִ�����������ˣ�";
+					mes "��ϣ�����չ˺����Ѿ�ӵ�еĶ�������������ȡ������";
 				}
 				next;
 				mes "["+ .@npc_name$ +"]";
-				mes "只有这样才有意义，不是吗？";
-				mes "你不这么认为吗？";
+				mes "ֻ�������������壬������";
+				mes "�㲻��ô��Ϊ��";
 				close;
 			}
-			mes "我被告知"+ .@mob_name$[1] +"会在"+ .@fortress$ +".";
-			mes "我希望您^4d4dff消除"+ .@num_kill +"或更多"+ .@mob_name$[1] +"^000000。";
+			mes "�ұ���֪"+ .@mob_name$[1] +"����"+ .@fortress$ +".";
+			mes "��ϣ����^4d4dff����"+ .@num_kill +"�����"+ .@mob_name$[1] +"^000000��";
 			callsub( S_Acceptquest, .@main_quest, .@npc_name$ );
 		}
 		else if (.@s == 3 || .@s == 4 || .@s == 5) {// Breaking Emperiums
@@ -313,16 +315,16 @@ S_Coord:
 			if (.@mission01 == 1) {
 				if (.@playtime_check == 0) {
 					if (.@hunting_check == 2) {
-						mes "极好的！";
-						mes "打破帝国绝对不是一件容易的事。";
-						mes "你一定为你的公会做出了很多贡献。好工作！";
+						mes "���õģ�";
+						mes "���Ƶ۹����Բ���һ�����׵��¡�";
+						mes "��һ��Ϊ��Ĺ��������˺ܶ๱�ס��ù�����";
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "既然你做得很好，我就让你"+ .@num_tool_box +"次打开我的工具箱。";
-						mes "虽然你大多不会发现任何东西......";
-						mes "这是一个奖励，所以即使你没有找到任何东西也不要抱怨。";
+						mes "��Ȼ�����úܺã��Ҿ�����"+ .@num_tool_box +"�δ��ҵĹ����䡣";
+						mes "��Ȼ���಻�ᷢ���κζ���......";
+						mes "����һ�����������Լ�ʹ��û���ҵ��κζ���Ҳ��Ҫ��Թ��";
 						next;
-						mes "就像"+ .@npc_name$ +"说的，你穿过前面的盒子，然后……";
+						mes "����"+ .@npc_name$ +"˵�ģ��㴩��ǰ��ĺ��ӣ�Ȼ�󡭡�";
 						erasequest .@main_quest;
 						setquest 7516;
 						getitem .@reward[0],.@reward[1];
@@ -331,53 +333,53 @@ S_Coord:
 					}
 					callsub( S_Cancelquest, .@main_quest, .@npc_name$, "This mission is to ^4d4dff destroy Emperiums that exist all over Gloria and Kafragarten regions.^000000" );
 				}
-				mes "时间到了。";
-				mes "不幸的是，任务失败了！";
-				mes "下一次吧！";
+				mes "ʱ�䵽�ˡ�";
+				mes "���ҵ��ǣ�����ʧ���ˣ�";
+				mes "��һ�ΰɣ�";
 				erasequest .@main_quest;
 				close;
 			}
 			if (.@time_check != 1 && .@siege_check != 1) {
-				mes "您目前没有执行此任务。";
-				mes "你能再检查一下吗？";
+				mes "��Ŀǰû��ִ�д�����";
+				mes "�����ټ��һ����";
 				close;
 			}
 			if (.@mission02 == 1 || .@mission03 == 1) {
-				mes "你已经在执行相同内容的任务，";
-				mes "虽然水平不一样";
-				mes "我希望你照顾好你已经拥有的东西，除非你想取消它。";
+				mes "���Ѿ���ִ����ͬ���ݵ�����";
+				mes "��Ȼˮƽ��һ��";
+				mes "��ϣ�����չ˺����Ѿ�ӵ�еĶ�������������ȡ������";
 				next;
 				mes "["+ .@npc_name$ +"]";
-				mes "只有这样才有意义，不是吗？";
-				mes "你不这么认为吗？";
+				mes "ֻ�������������壬������";
+				mes "�㲻��ô��Ϊ��";
 				close;
 			}
 			.@playtime_check2 = checkquest(7516,PLAYTIME);
 			if (.@playtime_check2 == 0) {
-				mes "每个要塞里都有一个叫做‘商业发展水平’的东西。";
-				mes "每个公会投资多少，它就会增加多少。";
+				mes "ÿ��Ҫ���ﶼ��һ����������ҵ��չˮƽ���Ķ�����";
+				mes "ÿ������Ͷ�ʶ��٣����ͻ����Ӷ��١�";
 				next;
 				mes "["+ .@npc_name$ +"]";
-				mes "然而，这与Emperiums密切相关。";
-				mes "不断摧毁帝国会扰乱商业发展水平。";
+				mes "Ȼ��������Emperiums������ء�";
+				mes "���ϴݻٵ۹���������ҵ��չˮƽ��";
 				next;
 				mes "["+ .@npc_name$ +"]";
-				mes "所以，现在我们休息一下，防止商业发展水平过度下降。";
-				mes "一会儿见。";
+				mes "���ԣ�����������Ϣһ�£���ֹ��ҵ��չˮƽ�����½���";
+				mes "һ�������";
 				close;
 			}
 			else if (.@playtime_check2 == 2) {
 				erasequest 7516;
-				mes "要塞的商业开发间歇期现已结束。";
-				mes "好的。想想你想要什么样的任务，然后再回来。";
+				mes "Ҫ������ҵ������Ъ�����ѽ�����";
+				mes "�õġ���������Ҫʲô��������Ȼ���ٻ�����";
 				close;
 			}
-			mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-			mes "它正在摧毁帝国！让我给你摧毁帝国的确切任务！";
+			mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+			mes "�����ڴݻٵ۹������Ҹ���ݻٵ۹���ȷ������";
 			next;
 			mes "["+ .@npc_name$ +"]";
-			mes "Gloria 或 Kafragarten，无论它在哪里！现在，就在这个时刻，^4d4dff摧毁帝国！^000000";
-			mes "^4d4dff目标编号为"+ .@num_kill +"或更多！^000000";
+			mes "Gloria �� Kafragarten����������������ڣ��������ʱ�̣�^4d4dff�ݻٵ۹���^000000";
+			mes "^4d4dffĿ����Ϊ"+ .@num_kill +"����࣡^000000";
 			callsub( S_Acceptquest, .@main_quest, .@npc_name$ );
 		}
 		else if (.@s == 6 || .@s == 7 || .@s == 8) {
@@ -411,20 +413,20 @@ S_Coord:
 			if (.@mission01 == 1) {
 				if (.@playtime_check == 0) {
 					if (countitem(.@item_quest) > 9) {
-						mes .@num_items +"或更多"+ .@string$[0] +" 让我们看看您是否做对了。";
+						mes .@num_items +"�����"+ .@string$[0] +" �����ǿ������Ƿ������ˡ�";
 						mes .@string$[1];
-						mes "不管怎样，干得好。";
+						mes "�����������ɵúá�";
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "让我来谈谈"+ .@string$[0] +".";
-						mes "我会把它还给它原来的主人。";
+						mes "������̸̸"+ .@string$[0] +".";
+						mes "�һ����������ԭ�������ˡ�";
 						next;
 						mes "["+ .@npc_name$ +"]";
-						mes "既然你做得很好，我就让你"+ .@num_tool_box +"次打开我的工具箱。";
-						mes "虽然你大多不会发现任何东西......";
-						mes "这是一个奖励，所以即使你没有找到任何东西也不要抱怨。";
+						mes "��Ȼ�����úܺã��Ҿ�����"+ .@num_tool_box +"�δ��ҵĹ����䡣";
+						mes "��Ȼ���಻�ᷢ���κζ���......";
+						mes "����һ�����������Լ�ʹ��û���ҵ��κζ���Ҳ��Ҫ��Թ��";
 						next;
-						mes "就像"+ .@npc_name$ +"说的，你穿过前面的盒子，然后……";
+						mes "����"+ .@npc_name$ +"˵�ģ��㴩��ǰ��ĺ��ӣ�Ȼ�󡭡�";
 						delitem .@item_quest, countitem(.@item_quest);
 						erasequest .@main_quest;
 						getitem .@reward[0],.@reward[1];
@@ -433,94 +435,94 @@ S_Coord:
 					}
 					callsub( S_Cancelquest, .@main_quest, .@npc_name$, "This mission is to ^4d4dffcollect "+ .@string$[2] +"^000000 at the fortress in "+ .@fortress$ +"." );
 				}
-				mes "时间到了。";
-				mes "不幸的是，任务失败了！";
-				mes "下一次吧！";
+				mes "ʱ�䵽�ˡ�";
+				mes "���ҵ��ǣ�����ʧ���ˣ�";
+				mes "��һ�ΰɣ�";
 				erasequest .@main_quest;
 				close;
 			}
 			if (.@time_check != 1 && .@siege_check != 1) {
-				mes "您目前没有执行此任务。";
-				mes "你能再检查一下吗？";
+				mes "��Ŀǰû��ִ�д�����";
+				mes "�����ټ��һ����";
 				close;
 			}
 			if (.@mission02 == 1 || .@mission03 == 1) {
-				mes "你已经在执行相同内容的任务，";
-				mes "虽然水平不一样";
-				mes "我希望你照顾好你已经拥有的东西，除非你想取消它。";
+				mes "���Ѿ���ִ����ͬ���ݵ�����";
+				mes "��Ȼˮƽ��һ��";
+				mes "��ϣ�����չ˺����Ѿ�ӵ�еĶ�������������ȡ������";
 				next;
 				mes "["+ .@npc_name$ +"]";
-				mes "只有这样才有意义，不是吗？";
-				mes "你不这么认为吗？";
+				mes "ֻ�������������壬������";
+				mes "�㲻��ô��Ϊ��";
 				close;
 			}
-			mes "嗯，你可能不会相信，但这个任务与盗窃有关。";
-			mes "他们告诉我"+ .@string$[2] +"的堡垒里缺少一堆"+ .@fortress$ +".";
+			mes "�ţ�����ܲ������ţ����������������йء�";
+			mes "���Ǹ�����"+ .@string$[2] +"�ı�����ȱ��һ��"+ .@fortress$ +".";
 			next;
 			mes "["+ .@npc_name$ +"]";
-			mes "窃贼很可能利用了围攻时间。";
-			mes "这是查找 ^4d4dff"+ .@num_items +" 或更多 "+ .@string$[2] +"^000000 的请求。";
+			mes "�����ܿ���������Χ��ʱ�䡣";
+			mes "���ǲ��� ^4d4dff"+ .@num_items +" ����� "+ .@string$[2] +"^000000 ������";
 			callsub( S_Acceptquest, .@main_quest, .@npc_name$ );
 		}
 	case 2:
 		mes "["+ .@npc_name$ +"]";
-		mes "由于TE地区的氛围比较休闲，";
-		mes "仅仅攻城战并不好玩，对吧？";
-		mes "所以，我带来了^4d4dff攻城期间可以做的一些作品^000000>~";
+		mes "����TE�����ķ�Χ�Ƚ����У�";
+		mes "��������ս�������棬�԰ɣ�";
+		mes "���ԣ��Ҵ�����^4d4dff�����ڼ��������һЩ��Ʒ^000000>~";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "你可以接受任务^4d4dff从攻城开始前1小时开始，直到攻城战TE^000000结束，";
-		mes "每个任务都有^4d4dff 4 小时的时间限制^000000 完成。";
+		mes "����Խ�������^4d4dff�ӹ��ǿ�ʼǰ1Сʱ��ʼ��ֱ������սTE^000000������";
+		mes "ÿ��������^4d4dff 4 Сʱ��ʱ������^000000 ��ɡ�";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "简单来说，你在攻城期间接受我的任务，";
-		mes "^4d4dff限时回来给我报告^000000。";
+		mes "����˵�����ڹ����ڼ�����ҵ�����";
+		mes "^4d4dff��ʱ�������ұ���^000000��";
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "尝试一下吧。";
+		mes "����һ�°ɡ�";
 		close;
 	case 3:
 		mes "["+ .@npc_name$ +"]";
-		mes "我懂了。";
-		mes "如果您改变主意，请随时回来。";
-		mes "不过，我可能没空。呵呵。";
+		mes "�Ҷ��ˡ�";
+		mes "������ı����⣬����ʱ������";
+		mes "�������ҿ���û�ա��Ǻǡ�";
 		close;
 	}
 
 S_Cancelquest:
 	.@npc_name$ = getarg(1);
 	if (WoeTETimeStart(3600) == 1 || agitcheck3()) {
-		mes "看来你的任务还没有完成？";
+		mes "�����������û����ɣ�";
 		mes getarg(2);
 		next;
 		mes "["+ .@npc_name$ +"]";
-		mes "您想取消吗？";
+		mes "����ȡ����";
 		next;
-		switch( select( "不。","是的。" ) ) {
+		switch( select( "����","�ǵġ�" ) ) {
 		case 1:
 			mes "["+ .@npc_name$ +"]";
-			mes "祝你好运！";
+			mes "ף����ˣ�";
 			close;
 		case 2:
 			mes "["+ .@npc_name$ +"]";
-			mes "如你所愿，这个任务被取消了。";
+			mes "������Ը���������ȡ���ˡ�";
 			erasequest getarg(0);
 			close;
 		}
 	}
 	else {
-		mes "嗯，你还有一些时间，但现在还不是攻城时刻";
-		mes "我认为你不应该继续下去。";
-		mes "你应该取消这个任务。我会说它失败了。";
+		mes "�ţ��㻹��һЩʱ�䣬�����ڻ����ǹ���ʱ��";
+		mes "����Ϊ�㲻Ӧ�ü�����ȥ��";
+		mes "��Ӧ��ȡ����������һ�˵��ʧ���ˡ�";
 		next;
-		switch( select( "我想继续。","是的，我会取消它。" ) ) {
+		switch( select( "���������","�ǵģ��һ�ȡ������" ) ) {
 		case 1:
 			mes "["+ .@npc_name$ +"]";
-			mes "我认为这不值得。好吧，祝你好运！";
+			mes "����Ϊ�ⲻֵ�á��ðɣ�ף����ˣ�";
 			close;
 		case 2:
 			mes "["+ .@npc_name$ +"]";
-			mes "如你所愿，这个任务被取消了。";
+			mes "������Ը���������ȡ���ˡ�";
 			erasequest getarg(0);
 			close;
 		}
@@ -529,16 +531,16 @@ S_Cancelquest:
 S_Acceptquest:
 	.@npc_name$ = getarg(1);
 	next;
-	switch( select( "接受它。","不接受它。" ) ) {
+	switch( select( "��������","����������" ) ) {
 	case 1:
 		mes "["+ .@npc_name$ +"]";
-		mes "^4d4dff时间限制为4小时。^000000";
-		mes "到时候完成任务并向我汇报。";
+		mes "^4d4dffʱ������Ϊ4Сʱ��^000000";
+		mes "��ʱ������������һ㱨��";
 		setquest getarg(0);
 		close;
 	case 2:
 		mes "["+ .@npc_name$ +"]";
-		mes "然后尝试另一个任务。";
+		mes "Ȼ������һ������";
 		close;
 	}
 
@@ -547,10 +549,10 @@ S_Rentbox:
 	for ( .@count = 0; .@count < getarg(0); .@count++ ) {
 		.@miss_item01 = rand(100);
 		if (.@miss_item01 > 3)
-			mes "你什么也没找到。";
+			mes "��ʲôҲû�ҵ���";
 		else {
 			rentitem .@item_id[ .@miss_item01 ],86400;
-			mes "您找到了“"+ getitemname(.@item_id[ .@miss_item01 ]) +"！”";
+			mes "���ҵ��ˡ�"+ getitemname(.@item_id[ .@miss_item01 ]) +"����";
 		}
 	}
 	close;

@@ -12,6 +12,8 @@
 //= 1.0 Moved Izlude NPC to pre-re/re paths. [Euphy]
 //= 1.1 Added Izlude duplicates. [Euphy]
 //= 1.1 Renewal script update for ep16.1 [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 izlude,102,171,6	duplicate(PromotionalStaff_izlude)	Promotional Staff#iz	100

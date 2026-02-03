@@ -11,6 +11,8 @@
 //= Includes Yoyo Mode, Nightmare Mode, and Event Mode.
 //===== Additional Comments: ================================= 
 //= 1.0 First version, Renewal.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // PVP Warpers
@@ -54,9 +56,9 @@ OnInit:
 pvp_y_room,62,85,4	script	Fight Square Reception#4	105,{
 	//if (ADVJOB > 0) {
 	if (Upper == 1) {
-		mes "[PVP战斗广场接待人员]";
-		mes "你已经被超越了。";
-		mes "您不得进入。";
+		mes "[PVPս���㳡�Ӵ���Ա]";
+		mes "���Ѿ�����Խ�ˡ�";
+		mes "�����ý��롣";
 		close;
 	}
 	callfunc "F_PVP_FSRS";
@@ -70,9 +72,9 @@ OnInit:
 pvp_y_room,70,85,4	script	Fight Square Reception#5	105,{
 	//if (ADVJOB == 0) {
 	if (Upper != 1) {
-		mes "[PVP战斗广场接待人员]";
-		mes "你还没有超越。";
-		mes "您不得进入。";
+		mes "[PVPս���㳡�Ӵ���Ա]";
+		mes "�㻹û�г�Խ��";
+		mes "�����ý��롣";
 		close;
 	}
 	callfunc "F_PVP_FSRS";

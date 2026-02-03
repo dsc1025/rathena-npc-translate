@@ -11,6 +11,8 @@
 //===== Additional Comments: =================================
 //= 1.0 First Release
 //= 1.1 Added warps for Shadow Chaser job quest. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 rachel,180,115,0	warp	s_atelier0001	1,1,s_atelier,131,72

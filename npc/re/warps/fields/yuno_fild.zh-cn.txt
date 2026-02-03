@@ -12,6 +12,8 @@
 //= 1.1 - Updated for the new Juno Fields
 //= 1.2 New field update - Hugel Field by Sara - Version 1
 //= 1.3 Renewal warp adjustments.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //= Juno Field ===============================================

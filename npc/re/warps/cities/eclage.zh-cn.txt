@@ -13,6 +13,8 @@
 //= 1.0a Disabled quest warp. [Euphy]
 //= 1.1 Warps corresponds to official co-ordinates and
 //=	Warp Portal official names. [Dastgir]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Town Warps

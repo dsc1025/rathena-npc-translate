@@ -5,42 +5,44 @@
 //= Gives players access to their guild storage and log.
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 -	script	GuildWarehouse	-1,{
-	mes "[仓库经理]";
-	mes "你好吗？我们专门从事公会仓库。这是我们的^0000cd故事^000000：";
-	mes "为什么公会成员不能共享存储空间？我们从这个简单的问题开始。";
+	mes "[�ֿ⾭��]";
+	mes "���������ר�Ŵ��¹���ֿ⡣�������ǵ�^0000cd����^000000��";
+	mes "Ϊʲô�����Ա���ܹ����洢�ռ䣿���Ǵ�����򵥵����⿪ʼ��";
 	next;
-	mes "[仓库经理]";
-	mes "你可以用1000 Zeny打开仓库或者查看公会的使用历史。";
-	mes "我怎么帮你？";
+	mes "[�ֿ⾭��]";
+	mes "�������1000 Zeny�򿪲ֿ���߲鿴�����ʹ����ʷ��";
+	mes "����ô���㣿";
 	next;
-	if( select( "开放公会仓库：查看仓库使用历史" ) == 1 ){
+	if( select( "���Ź���ֿ⣺�鿴�ֿ�ʹ����ʷ" ) == 1 ){
 		.@guildid = getcharid( 2 );
 
 		if( .@guildid == 0 ){
-			mes "[仓库经理]";
-			mes "公会仓库仅供公会成员使用。";
+			mes "[�ֿ⾭��]";
+			mes "����ֿ���������Աʹ�á�";
 			close;
 		}
 
 		if( getgdskilllv( .@guildid, "GD_GUILD_STORAGE" ) == 0 || !guild_has_permission( GUILD_PERM_STORAGE ) ){
-			mes "[仓库经理]";
-			mes "看来你的公会还不能使用公会仓库或者你没有仓库的访问权限。";
-			mes "请检查公会技能和仓库访问权限后再回来。";
+			mes "[�ֿ⾭��]";
+			mes "������Ĺ��ỹ����ʹ�ù���ֿ������û�вֿ�ķ���Ȩ�ޡ�";
+			mes "���鹫�Ἴ�ܺͲֿ����Ȩ�޺��ٻ�����";
 			close;
 		}
 
 		if( Zeny < 1000 ){
-			mes "[仓库经理]";
-			mes "恐怕你没有足够的钱来支付费用。";
-			mes "费用为1000 Zeny。";
+			mes "[�ֿ⾭��]";
+			mes "������û���㹻��Ǯ��֧�����á�";
+			mes "����Ϊ1000 Zeny��";
 			close;
 		}
 
-		mes "[仓库经理]";
-		mes "那我就给你打开公会仓库。度过一段难忘的时光！";
+		mes "[�ֿ⾭��]";
+		mes "���Ҿ͸���򿪹���ֿ⡣�ȹ�һ��������ʱ�⣡";
 		close2;
 
 		if( Zeny < 1000 ){
@@ -52,30 +54,30 @@
 			Zeny -= 1000;
 			end;
 		}else{
-			mes "[仓库经理]";
-			mes "恐怕现在有其他人正在使用仓库。";
-			mes "请稍后再试。";
+			mes "[�ֿ⾭��]";
+			mes "��������������������ʹ�òֿ⡣";
+			mes "���Ժ����ԡ�";
 			close;
 		}
 	}else{
 		.@guildid = getcharid( 2 );
 
 		if( .@guildid == 0 ){
-			mes "[仓库经理]";
-			mes "公会仓库仅供公会成员使用。";
+			mes "[�ֿ⾭��]";
+			mes "����ֿ���������Աʹ�á�";
 			close;
 		}
 
 		if( getgdskilllv( .@guildid, "GD_GUILD_STORAGE" ) == 0 || !guild_has_permission( GUILD_PERM_STORAGE ) ){
-			mes "[仓库经理]";
-			mes "看来你的公会还不能使用公会仓库或者你没有仓库的访问权限。";
-			mes "请检查公会技能和仓库访问权限后再回来。";
+			mes "[�ֿ⾭��]";
+			mes "������Ĺ��ỹ����ʹ�ù���ֿ������û�вֿ�ķ���Ȩ�ޡ�";
+			mes "���鹫�Ἴ�ܺͲֿ����Ȩ�޺��ٻ�����";
 			close;
 		}
 
-		mes "[仓库经理]";
-		mes "我将向您展示仓库的使用历史。使用历史记录最多将保留 3 个月。";
-		mes "度过一段难忘的时光！";
+		mes "[�ֿ⾭��]";
+		mes "�ҽ�����չʾ�ֿ��ʹ����ʷ��ʹ����ʷ��¼��ཫ���� 3 ���¡�";
+		mes "�ȹ�һ��������ʱ�⣡";
 		close2;
 		guildopenstorage_log();
 		end;

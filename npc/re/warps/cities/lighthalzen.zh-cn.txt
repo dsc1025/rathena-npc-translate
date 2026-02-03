@@ -4,6 +4,8 @@
 //= Warp Points for Lighthalzen
 //===== Changelog: ===========================================
 //= 1.0 First Version [crazyarashi]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Rekenber Research Institute

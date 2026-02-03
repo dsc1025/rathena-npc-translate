@@ -21,192 +21,194 @@
 //= 1.8 Updated to match the latest official script. [Euphy]
 //= 1.9 Added support to Para_Team_Mark_ in Eden Group. [AtlantisRO/Ragno]
 //= 2.0 Added use of F_HasEdenGroupMark function. [Ragno]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Common NPCs :: lv_tre
 //============================================================
 moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 	if (checkweight(1201,1) == 0 || (MaxWeight - Weight) < 2000) {
-		mes "- 等一下 ！！ -";
-		mes "- 目前你携带的是 -";
-		mes "- 你身上带的东西太多了。 -";
-		mes "- 请再试一次 -";
-		mes "- 当你减掉一些体重后。 -";
+		mes "- ��һ�� ���� -";
+		mes "- Ŀǰ��Я������ -";
+		mes "- �����ϴ��Ķ���̫���ˡ� -";
+		mes "- ������һ�� -";
+		mes "- �������һЩ���غ� -";
 		close;
 	}
 	if (countitem(6219) > 0) {
-		mes "[石灰均匀]";
-		mes "感谢众多冒险家参观我们的伊甸集团，我们最近为参观者准备了新版本的伊甸集团标记。";
-		mes "并且还可以将旧版伊甸集团标志更换为新版。";
+		mes "[ʯ�Ҿ���]";
+		mes "��л�ڶ�ð�ռҲι����ǵ����鼯�ţ��������Ϊ�ι���׼�����°汾�����鼯�ű�ǡ�";
+		mes "���һ����Խ��ɰ����鼯�ű�־����Ϊ�°档";
 		next;
-		mes "[石灰均匀]";
-		mes "虽然有轻微的时间延迟，但这个新版本的伊甸园集团标记会将您带回到当前保存的位置。";
-		mes "你想交换你的吗？";
+		mes "[ʯ�Ҿ���]";
+		mes "��Ȼ����΢��ʱ���ӳ٣�������°汾������԰���ű�ǻὫ�����ص���ǰ�����λ�á�";
+		mes "���뽻�������";
 		next;
-		if (select("Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.") == 2){
-			mes "[石灰均匀]";
-			mes "您有什么可能的理由...不交换？";
+		if (select("Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.") == 2){
+			mes "[ʯ�Ҿ���]";
+			mes "����ʲô���ܵ�����...��������";
 			close;
 		}
 		delitem 6219,1;
 		getitem 22508,1;
-		mes "Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.";
-		mes "就这样吧。又回来啦~";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
+		mes "�������ɡ��ֻ�����~";
 		close;
 	}
-	mes "[石灰均匀]";
-	mes "追随梦想和浪漫的人们会听我的。我们是被称为“伊甸园”的天堂被称为伊甸集团的代表。任何地方都没有这样的地方。";
-	mes "你好。我可以帮你吗？";
+	mes "[ʯ�Ҿ���]";
+	mes "׷����������������ǻ����ҵġ������Ǳ���Ϊ������԰�������ñ���Ϊ���鼯�ŵĴ������κεط���û�������ĵط���";
+	mes "��á��ҿ��԰�����";
 	next;
 	while (1) {
-		switch (select("什么是 Eden 小组？:加入 Eden 小组。:注册新任务。:搜索任务。:取消。")) {
+		switch (select("ʲô�� Eden С�飿:���� Eden С�顣:ע��������:��������:ȡ����")) {
 		case 1:
-			mes "[石灰均匀]";
-			mes "伊甸集团是一个帮助米德加德遭受苦难的人们的团体。";
+			mes "[ʯ�Ҿ���]";
+			mes "���鼯����һ�������׵¼ӵ����ܿ��ѵ����ǵ����塣";
 			next;
-			mes "[石灰均匀]";
-			mes "如果有人需要帮助，我们会将案例张贴在公告栏上，并介绍给我们热心帮助有需要的人的会员。";
+			mes "[ʯ�Ҿ���]";
+			mes "���������Ҫ���������ǻὫ���������ڹ������ϣ������ܸ��������İ�������Ҫ���˵Ļ�Ա��";
 			next;
-			mes "[石灰均匀]";
-			mes "伊甸园成员将审查任务并帮助发布任务的人。";
-			mes "成员执行这些任务是为了获得奖励。";
+			mes "[ʯ�Ҿ���]";
+			mes "����԰��Ա��������񲢰�������������ˡ�";
+			mes "��Աִ����Щ������Ϊ�˻�ý�����";
 			next;
-			mes "[石灰均匀]";
-			mes "如果您对米德加德不太熟悉，这是探索世界的好方法。";
-			mes "或者，如果你足够成熟，你可以在执行任务的同时环游世界并结交新朋友。您的光荣名声将传遍四海。";
+			mes "[ʯ�Ҿ���]";
+			mes "��������׵¼ӵ²�̫��Ϥ������̽������ĺ÷�����";
+			mes "���ߣ�������㹻���죬�������ִ�������ͬʱ�������粢�ύ�����ѡ����Ĺ��������������ĺ���";
 			next;
 			break;
 		case 2:
 			if (!callfunc("F_HasEdenGroupMark")) {
-				mes "[石灰均匀]";
-				mes "您只需向我注册即可成为伊甸园会员。";
-				mes "您想加入伊甸集团吗？";
+				mes "[ʯ�Ҿ���]";
+				mes "��ֻ������ע�ἴ�ɳ�Ϊ����԰��Ա��";
+				mes "����������鼯����";
 				next;
-				switch (select("是的，我想加入。:不，我不想加入。")) {
+				switch (select("�ǵģ�������롣:�����Ҳ�����롣")) {
 				case 1:
-					mes "[石灰均匀]";
-					mes "好吧。出色的！请在这里写下您的名字。";
+					mes "[ʯ�Ҿ���]";
+					mes "�ðɡ���ɫ�ģ���������д���������֡�";
 					input .@input$;
 					next;
-					mes "[石灰均匀]";
-					mes "你完成了吗？";
-					mes "让我看看。";
+					mes "[ʯ�Ҿ���]";
+					mes "���������";
+					mes "���ҿ�����";
 					next;
-					mes "[石灰均匀]";
-					mes "你的名字是^3131FFBo"+.@input$+"Ba^000000...？是这样吗？";
-					mes "啊？不是吗？？";
+					mes "[ʯ�Ҿ���]";
+					mes "���������^3131FFBo"+.@input$+"Ba^000000...����������";
+					mes "���������𣿣�";
 					next;
 					emotion ET_SWEAT;
-					mes "[石灰均匀]";
-					mes "嗯，这不是你写的吗？";
-					mes "好吧，嗯，看起来有点难读。";
+					mes "[ʯ�Ҿ���]";
+					mes "�ţ��ⲻ����д����";
+					mes "�ðɣ��ţ��������е��Ѷ���";
 					next;
-					mes "[石灰均匀]";
-					mes "请您再写一次您的名字好吗？请写清楚^3131FF^000000。";
+					mes "[ʯ�Ҿ���]";
+					mes "������дһ���������ֺ�����д���^3131FF^000000��";
 					input .@input$;
 					next;
-					mes "[石灰均匀]";
-					mes "啊~哈。您是^3131FF"+strcharinfo(0)+"^000000。";
-					mes "这次我做对了。";
+					mes "[ʯ�Ҿ���]";
+					mes "��~��������^3131FF"+strcharinfo(0)+"^000000��";
+					mes "����������ˡ�";
 					next;
 					emotion ET_BEST;
-					mes "[石灰均匀]";
-					mes "我们已经把你的名字列入名单了。";
-					mes "欢迎加入伊甸园新成员！";
+					mes "[ʯ�Ҿ���]";
+					mes "�����Ѿ�������������������ˡ�";
+					mes "��ӭ��������԰�³�Ա��";
 					next;
-					mes "[石灰均匀]";
-					mes "希望您作为 Eden 的成员能够做出出色的工作。";
+					mes "[ʯ�Ҿ���]";
+					mes "ϣ������Ϊ Eden �ĳ�Ա�ܹ�������ɫ�Ĺ�����";
 					getitem 22508,1; //Para_Team_Mark_
 					next;
 					break;
 				case 2:
-					mes "[石灰均匀]";
-					mes "您对伊甸集团还有疑问吗？";
+					mes "[ʯ�Ҿ���]";
+					mes "�������鼯�Ż���������";
 					next;
 					break;
 				}
 			} else {
-				mes "[石灰均匀]";
-				mes "您已经是伊甸集团的成员。";
+				mes "[ʯ�Ҿ���]";
+				mes "���Ѿ������鼯�ŵĳ�Ա��";
 				next;
 			}
 			break;
 		case 3:
-			mes "[石灰均匀]";
-			mes "您想注册一些您希望我们执行的任务吗？";
+			mes "[ʯ�Ҿ���]";
+			mes "����ע��һЩ��ϣ������ִ�е�������";
 			next;
-			if(select("是的，我想注册。:不，我不想。") == 1) {
-				mes "[石灰均匀]";
-				mes "好吧。请在上面写下您的名字。";
+			if(select("�ǵģ�����ע�ᡣ:�����Ҳ��롣") == 1) {
+				mes "[ʯ�Ҿ���]";
+				mes "�ðɡ���������д���������֡�";
 				input .@input$;
 				next;
-				mes "[石灰均匀]";
-				mes "^3131FF"+strcharinfo(0)+"^000000.. 这是你的名字吗？";
-				mes "嗯，你的字迹不清晰。我无法阅读。它";
+				mes "[ʯ�Ҿ���]";
+				mes "^3131FF"+strcharinfo(0)+"^000000.. �������������";
+				mes "�ţ�����ּ������������޷��Ķ�����";
 				next;
-				mes "[石灰均匀]";
-				mes "^3131FF"+strcharinfo(0)+"^000000，告诉我你想注册什么。";
-				mes "我们应该去哪个地图？";
+				mes "[ʯ�Ҿ���]";
+				mes "^3131FF"+strcharinfo(0)+"^000000������������ע��ʲô��";
+				mes "����Ӧ��ȥ�ĸ���ͼ��";
 				input .@input$;
 				next;
-				mes "[石灰均匀]";
-				mes "^3131FF任务地图："+.@inputstr$+"^000000";
-				mes "嗯，我会注意到这一点。";
+				mes "[ʯ�Ҿ���]";
+				mes "^3131FF�����ͼ��"+.@inputstr$+"^000000";
+				mes "�ţ��һ�ע�⵽��һ�㡣";
 				next;
-				mes "[石灰均匀]";
-				mes "请让我知道您正在寻找什么样的任务。";
-				mes "它应该简短地类似于“狩猎 10 个波林”。";
+				mes "[ʯ�Ҿ���]";
+				mes "������֪��������Ѱ��ʲô��������";
+				mes "��Ӧ�ü�̵������ڡ����� 10 �����֡���";
 				input .@input$;
 				next;
-				mes "[石灰均匀]";
-				mes "你完成了吗？";
-				mes "让我检查一下。";
+				mes "[ʯ�Ҿ���]";
+				mes "���������";
+				mes "���Ҽ��һ�¡�";
 				next;
-				mes "[石灰均匀]";
-				mes "呃…………";
+				mes "[ʯ�Ҿ���]";
+				mes "����������";
 				next;
-				mes "[石灰均匀]";
-				mes "嗯……嗯？？…………";
+				mes "[ʯ�Ҿ���]";
+				mes "�š����ţ�����������";
 				next;
 				emotion ET_THINK;
-				mes "[石灰均匀]";
-				mes "我认为你应该先完成我们的一项任务，然后再接受新的任务。";
+				mes "[ʯ�Ҿ���]";
+				mes "����Ϊ��Ӧ����������ǵ�һ������Ȼ���ٽ����µ�����";
 				next;
 				emotion ET_HNG;
-				mes "[石灰均匀]";
-				mes "^3131FF客户端：Lime Evenor^000000";
-				mes "^3131FF任务：练字一个月。^000000";
-				mes "你的文笔实在是太差了！";
+				mes "[ʯ�Ҿ���]";
+				mes "^3131FF�ͻ��ˣ�Lime Evenor^000000";
+				mes "^3131FF��������һ���¡�^000000";
+				mes "����ı�ʵ����̫���ˣ�";
 				next;
-				mes "[石灰均匀]";
-				mes "^3131FF使命："+.@input$+"^000000";
-				mes "不管怎样，你已经完成了新任务的注册。";
+				mes "[ʯ�Ҿ���]";
+				mes "^3131FFʹ����"+.@input$+"^000000";
+				mes "�������������Ѿ�������������ע�ᡣ";
 				next;
-				mes "[石灰均匀]";
-				mes "任务已满。你必须等待一个地方被清理干净。";
-				mes "请耐心等待。";
+				mes "[ʯ�Ҿ���]";
+				mes "���������������ȴ�һ���ط��������ɾ���";
+				mes "�����ĵȴ���";
 				next;
 			}
 			break;
 		case 4:
 			if (callfunc("F_HasEdenGroupMark")) {
-				mes "[石灰均匀]";
-				mes "想作为伊甸园成员尝试一些任务吗？";
+				mes "[ʯ�Ҿ���]";
+				mes "����Ϊ����԰��Ա����һЩ������";
 				next;
-				mes "[石灰均匀]";
-				mes "查看右侧布告栏，有各种任务等着你。";
-				mes "请仔细阅读任务列表和资格并选择其中一项。";
+				mes "[ʯ�Ҿ���]";
+				mes "�鿴�Ҳ಼�������и�����������㡣";
+				mes "����ϸ�Ķ������б����ʸ�ѡ������һ�";
 				next;
 			}
 			else {
-				mes "[石灰均匀]";
-				mes "如果你想做一些任务，你需要先加入伊甸集团。";
+				mes "[ʯ�Ҿ���]";
+				mes "���������һЩ��������Ҫ�ȼ������鼯�š�";
 				close;
 			}
 			break;
 		case 5:
-			mes "[石灰均匀]";
-			mes "如果您有任何疑问，请再次回来。";
+			mes "[ʯ�Ҿ���]";
+			mes "��������κ����ʣ����ٴλ�����";
 			close;
 		}
 	}
@@ -214,27 +216,27 @@ moc_para01,27,35,5	script	Secretary Lime Evenor	4_F_EDEN_OFFICER,{
 }
 
 -	script	Eden Teleport Officer#0::eto	-1,{
-	mes "[伊甸传送官]";
-	mes "那些在这个陌生的世界里漫无目的地游荡的人们，听着，来找我吧！";
-	mes "伊甸集团竭诚为您服务，为您展现美好未来。";
+	mes "[���鴫�͹�]";
+	mes "��Щ�����İ��������������Ŀ�ĵ��ε������ǣ����ţ������Ұɣ�";
+	mes "���鼯�Ž߳�Ϊ������Ϊ��չ������δ����";
 	next;
-	mes "[伊甸传送官]";
-	mes "你除了浪费时间之外没有什么可做的吗？";
-	mes "您渴望做一些好事但没有人为您提供工作？";
-	mes "您想成为一名问题解决者吗？";
-	mes "伊甸集团来解决您的问题。";
+	mes "[���鴫�͹�]";
+	mes "������˷�ʱ��֮��û��ʲô��������";
+	mes "��������һЩ���µ�û����Ϊ���ṩ������";
+	mes "�����Ϊһ������������";
+	mes "���鼯��������������⡣";
 	next;
-	switch (select("转到伊甸集团：不想再说话了。")) {
+	switch (select("ת�����鼯�ţ�������˵���ˡ�")) {
 	case 1:
-		mes "[伊甸传送官]";
-		mes "我们去我们的秘密基地吧！";
+		mes "[���鴫�͹�]";
+		mes "����ȥ���ǵ����ܻ��ذɣ�";
 		set nak_warp,strnpcinfo(2);
 		close2;
 		warp "moc_para01",31,14;
 		end;
 	case 2:
-		mes "[伊甸传送官]";
-		mes "如果你不知道自己的未来该做什么，请随时告诉我。过来跟我说话吧！好的？";
+		mes "[���鴫�͹�]";
+		mes "����㲻֪���Լ���δ������ʲô������ʱ�����ҡ���������˵���ɣ��õģ�";
 		close;
 	}
 }
@@ -319,35 +321,35 @@ OnTouch:
 
 moc_para01,47,39,3	script	#warp_2_pass	111,{
 	if (callfunc("F_HasEdenGroupMark")) {
-		mes "[石灰均匀]";
-		mes "哦，这是伊甸园会员专属的地方。";
-		mes "如果你是会员，你想什么时候来就什么时候来！";
+		mes "[ʯ�Ҿ���]";
+		mes "Ŷ����������԰��Աר���ĵط���";
+		mes "������ǻ�Ա������ʲôʱ������ʲôʱ������";
 		next;
-		switch (select("输入：不要输入。")) {
+		switch (select("���룺��Ҫ���롣")) {
 		case 1:
-			mes "这扇门装饰得很漂亮，但似乎有点太重了。";
+			mes "������װ�εú�Ư�������ƺ��е�̫���ˡ�";
 			close2;
 			warp "moc_para01",106,14;
 			end;
 		case 2:
-			mes "[石灰均匀]";
-			mes "好吧，如果你不感兴趣的话。";
+			mes "[ʯ�Ҿ���]";
+			mes "�ðɣ�����㲻����Ȥ�Ļ���";
 			close;
 		}
 	}
-	mes "[石灰均匀]";
-	mes "哦，这是伊甸园会员专属的地方。";
-	mes "想要进去，就必须加入伊甸集团。";
+	mes "[ʯ�Ҿ���]";
+	mes "Ŷ����������԰��Աר���ĵط���";
+	mes "��Ҫ��ȥ���ͱ���������鼯�š�";
 	close;
 }
 
 moc_para01,16,22,7	script	Old Adventurer#eden	900,{
-	mes "[老冒险家]";
-	mes "狠了，我就算看起来老了，也足够坚强了！她叫什么名字？石灰埃文纳？她只是无视我，就像我是一个老混蛋一样。";
+	mes "[��ð�ռ�]";
+	mes "���ˣ��Ҿ��㿴�������ˣ�Ҳ�㹻��ǿ�ˣ�����ʲô���֣�ʯ�Ұ����ɣ���ֻ�������ң���������һ���ϻ쵰һ����";
 	next;
-	mes "[老冒险家]";
-	mes "我是来加入伊甸园的！我不值得这样！";
-	mes "你是不是也觉得我像个老态龙钟的人？";
+	mes "[��ð�ռ�]";
+	mes "��������������԰�ģ��Ҳ�ֵ��������";
+	mes "���ǲ���Ҳ�����������̬���ӵ��ˣ�";
 	close;
 }
 
@@ -356,80 +358,80 @@ moc_para01,182,48,3	script	Eden's Chief#eden	886,{
 	set .@eggf_1,.@eggf + 1;
 	set .@eggf_2,.@eggf + 2;
 	set .@eggf_6,.@eggf + 6;
-	mes "[伊甸园酋长]";
-	mes ""+.@eggf+".. "+.@eggf_1+"... "+.@eggf_2+".... "+.@eggf_6+"..？";
+	mes "[����԰����]";
+	mes ""+.@eggf+".. "+.@eggf_1+"... "+.@eggf_2+".... "+.@eggf_6+"..��";
 	next;
 	emotion ET_CRY;
-	mes "[伊甸园酋长]";
-	mes "哦，射击！我做了多少个鸡蛋？";
-	mes "哇！！！我完全忘记了！我还得再数一遍！";
+	mes "[����԰����]";
+	mes "Ŷ������������˶��ٸ�������";
+	mes "�ۣ���������ȫ�����ˣ��һ�������һ�飡";
 	next;
 	emotion ET_CRY;
-	mes "[伊甸园酋长]";
-	mes "你为什么要我这么做？那是什么样的使命？";
+	mes "[����԰����]";
+	mes "��ΪʲôҪ����ô��������ʲô����ʹ����";
 	next;
 	emotion ET_CRY;
-	mes "[伊甸园酋长]";
-	mes "你打算用这些煎鸡蛋做什么？我确信你不能把它们全部吃掉。你只是想打扰我，对吗？";
+	mes "[����԰����]";
+	mes "���������Щ�弦����ʲô����ȷ���㲻�ܰ�����ȫ���Ե�����ֻ��������ң�����";
 	close;
 }
 
 moc_para01,172,28,5	script	Eden's Intern#eden	883,{
-	mes "[伊甸园实习生]";
-	mes "事实上，我意识到了这一点。";
+	mes "[����԰ʵϰ��]";
+	mes "��ʵ�ϣ�����ʶ������һ�㡣";
 	next;
-	mes "[伊甸园实习生]";
-	mes "我们必须非常努力工作，除非你想失败。";
+	mes "[����԰ʵϰ��]";
+	mes "���Ǳ���ǳ�Ŭ����������������ʧ�ܡ�";
 	next;
-	mes "[伊甸园实习生]";
-	mes "但是，我还没有学过药品。";
+	mes "[����԰ʵϰ��]";
+	mes "���ǣ��һ�û��ѧ��ҩƷ��";
 	next;
-	mes "[伊甸园实习生]";
-	mes "我会失败。我不能这样做。";
+	mes "[����԰ʵϰ��]";
+	mes "�һ�ʧ�ܡ��Ҳ�����������";
 	close;
 }
 
 moc_para01,20,35,5	script	Office Assistant Neede	814,{
-	mes "[针]";
-	mes "几年前我成为了伊甸园的会员，但感觉就像是昨天的事。";
-	mes "我一直在做很多工作，所以我什至没有注意到我在这里度过了多少年。";
+	mes "[��]";
+	mes "����ǰ�ҳ�Ϊ������԰�Ļ�Ա�����о�������������¡�";
+	mes "��һֱ�����ܶ๤����������ʲ��û��ע�⵽��������ȹ��˶����ꡣ";
 	next;
-	mes "[针]";
-	mes "这让我想起每天都像一场战争。";
+	mes "[��]";
+	mes "����������ÿ�춼��һ��ս����";
 	next;
-	mes "[针]";
-	mes "右侧餐厅^3131FF的店长^000000";
-	mes "每次做饭用的调料太多，整个大厅都是味道。我们必须定期打开窗户，因为我们受不了这种气味！";
+	mes "[��]";
+	mes "�Ҳ����^3131FF�ĵ곤^000000";
+	mes "ÿ�������õĵ���̫�࣬������������ζ�������Ǳ��붨�ڴ򿪴�������Ϊ�����ܲ���������ζ��";
 	next;
-	mes "[针]";
-	mes "还有，你看到大厅北侧^000000十字路口的^3131FF体育馆^000000了吗？他们运动时总是喊叫，我在这儿都能听到！";
+	mes "[��]";
+	mes "���У��㿴����������^000000ʮ��·�ڵ�^3131FF������^000000���������˶�ʱ���Ǻ��У������������������";
 	next;
 	emotion ET_ANGER;
-	mes "[针]";
-	mes "而且，来自《CLR0》二楼《CLR1》的怪异女孩一直在哭。她的哭声让我发疯。";
+	mes "[��]";
+	mes "���ң����ԡ�CLR0����¥��CLR1���Ĺ���Ů��һֱ�ڿޡ����Ŀ������ҷ��衣";
 	next;
-	mes "[针]";
-	mes "啊，那个奇怪的女孩居然是我们的老板……";
+	mes "[��]";
+	mes "�����Ǹ���ֵ�Ů����Ȼ�����ǵ��ϰ塭��";
 	next;
-	mes "[针]";
-	mes "我不知道她最近在忙什么。但她一直在哭、喊。哦，有时我会听到“砰”的一声，巨大的轰鸣声……我不知道它从哪里来。";
+	mes "[��]";
+	mes "�Ҳ�֪���������æʲô������һֱ�ڿޡ�����Ŷ����ʱ�һ��������顱��һ�����޴�ĺ����������Ҳ�֪��������������";
 	next;
 	emotion ET_HUK;
-	mes "[针]";
-	mes "等待！";
-	mes "嘘！这是秘密，不能告诉任何人！";
+	mes "[��]";
+	mes "�ȴ���";
+	mes "�꣡�������ܣ����ܸ����κ��ˣ�";
 	next;
-	mes "[针]";
+	mes "[��]";
 	emotion ET_OHNO;
-	mes "我不相信埃文诺。她从不表露自己的感受……她会向我的老板告密我。";
+	mes "�Ҳ����Ű���ŵ�����Ӳ���¶�Լ��ĸ��ܡ����������ҵ��ϰ�����ҡ�";
 	next;
 	emotion ET_HNG, getnpcid(0, "Secretary Lime Evenor");
-	mes "[石灰均匀]";
-	mes "我不是那种女孩。";
+	mes "[ʯ�Ҿ���]";
+	mes "�Ҳ�������Ů����";
 	next;
 	emotion ET_KEK;
-	mes "[针]";
-	mes "啊？你听到了吗？天哪~！";
+	mes "[��]";
+	mes "������������������~��";
 	close;
 }
 

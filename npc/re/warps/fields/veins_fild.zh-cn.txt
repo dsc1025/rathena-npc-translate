@@ -11,6 +11,8 @@
 //===== Additional Comments: =================================
 //= 1.4 Rescripted to Aegis 11.2 Standards. [L0ne_W0lf]
 //= 1.5 Renewal warp adjustments.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ve_fild01,366,267,0	warp	ve_fild1-1	1,1,ve_fild02,36,263

@@ -10,62 +10,64 @@
 //===== Changelog: ===========================================
 //= 1.0 First version. [Euphy]
 //= 1.1 Removed re-roll behavior. [Secret]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Main NPC :: new_smelting612
 //============================================================
 -	script	::BlacksmithDister	-1,{
 	disable_items;
-	mes "[é“åŒ åŒº]";
-	mes "åœ¨è¿™ä¸ªç«äº‰æ¿€çƒˆçš„ç¤¾ä¼šï¼Œæˆ‘ä»¬å¿…é¡»ä¸ä¼—ä¸åŒæ‰èƒ½ç”Ÿå­˜ï¼";
-	mes "æˆ‘åªç²¾ç‚¼+6~12çº§çš„è£…å¤‡ã€‚";
+	mes "[Ìú½³Çø]";
+	mes "ÔÚÕâ¸ö¾ºÕù¼¤ÁÒµÄÉç»á£¬ÎÒÃÇ±ØĞëÓëÖÚ²»Í¬²ÅÄÜÉú´æ£¡";
+	mes "ÎÒÖ»¾«Á¶+6~12¼¶µÄ×°±¸¡£";
 	next;
-	mes "[é“åŒ åŒº]";
-	mes "æˆ‘éœ€è¦^ff9999ç¥ç¦Oridecon^000000ä½œä¸ºæ­¦å™¨ï¼Œä»¥åŠ^ff9999ç¥ç¦Elunium^000000ä½œä¸ºç›”ç”²ã€‚";
-	mes "å¤±è´¥çš„ç²¾ç‚¼^FF0000ä¸ä¼šç ´åæˆ–é™ä½ç²¾ç‚¼ç­‰çº§^000000ã€‚";
+	mes "[Ìú½³Çø]";
+	mes "ÎÒĞèÒª^ff9999×£¸£Oridecon^000000×÷ÎªÎäÆ÷£¬ÒÔ¼°^ff9999×£¸£Elunium^000000×÷Îª¿ø¼×¡£";
+	mes "Ê§°ÜµÄ¾«Á¶^FF0000²»»áÆÆ»µ»ò½µµÍ¾«Á¶µÈ¼¶^000000¡£";
 	next;
-	mes "[é“åŒ åŒº]";
-	mes "æ€ä¹ˆæ ·ï¼Ÿä½ æƒ³ç²¾è¿›å—ï¼Ÿ";
+	mes "[Ìú½³Çø]";
+	mes "ÔõÃ´Ñù£¿ÄãÏë¾«½øÂğ£¿";
 	next;
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R, EQI_HEAD_MID, EQI_HEAD_LOW;
 	for(set .@i,1; .@i<=10; set .@i,.@i+1)
 		set .@menu$, .@menu$ + ( getequipisequiped(.@indices[.@i]) ? getequipname(.@indices[.@i]) : F_getpositionname(.@indices[.@i]) +"-[Unequipped]" ) +":";
 	set .@part, .@indices[ select(.@menu$) ];
 	if (!getequipisequiped(.@part)) {
-		mes "[é“åŒ åŒº]";
+		mes "[Ìú½³Çø]";
 		switch(.@part) {
 		case EQI_HEAD_TOP:
-			mes "æˆ‘æ˜¯é“åŒ ï¼Œä¸æ˜¯å‘å‹å¸ˆã€‚";
+			mes "ÎÒÊÇÌú½³£¬²»ÊÇ·¢ĞÍÊ¦¡£";
 			break;
 		case EQI_ARMOR:
-			mes "ç”¨æˆ‘çš„é”¤å­ï¼Œæˆ‘ä¼šè®©ä½ æˆä¸ºå¤©ä¸Šçš„æ˜Ÿæ˜Ÿã€‚";
+			mes "ÓÃÎÒµÄ´¸×Ó£¬ÎÒ»áÈÃÄã³ÉÎªÌìÉÏµÄĞÇĞÇ¡£";
 			break;
 		case EQI_HAND_L:
 		case EQI_HAND_R:
-			mes "åˆ¶ä½œå‡æ‰‹ä¸æ˜¯æˆ‘çš„ä¸“é•¿ã€‚";
+			mes "ÖÆ×÷¼ÙÊÖ²»ÊÇÎÒµÄ×¨³¤¡£";
 			break;
 		case EQI_GARMENT:
-			mes "æŠŠç‰©å“æ‹¿å‡ºæ¥æˆ‘å¯ä»¥ç²¾ç‚¼å®ƒï¼";
+			mes "°ÑÎïÆ·ÄÃ³öÀ´ÎÒ¿ÉÒÔ¾«Á¶Ëü£¡";
 			break;
 		case EQI_SHOES:
-			mes "è¿™è‚¡æ€ªå‘³æ˜¯ä»å“ªé‡Œæ¥çš„ï¼Ÿ";
+			mes "Õâ¹É¹ÖÎ¶ÊÇ´ÓÄÄÀïÀ´µÄ£¿";
 			break;
 		case EQI_ACC_L:
 		case EQI_ACC_R:
-			mes "é…ä»¶åœ¨å“ªé‡Œï¼Ÿ";
+			mes "Åä¼şÔÚÄÄÀï£¿";
 			break;
 		case EQI_HEAD_MID:
-			mes "ä½ è¦æˆ‘ç‚¼åˆ¶ä»€ä¹ˆï¼Ÿ";
+			mes "ÄãÒªÎÒÁ¶ÖÆÊ²Ã´£¿";
 			break;
 		case EQI_HEAD_LOW:
-			mes "å•Šï¼Ÿä½ æƒ³è®©æˆ‘åšä»€ä¹ˆï¼Ÿ";
+			mes "°¡£¿ÄãÏëÈÃÎÒ×öÊ²Ã´£¿";
 			break;
 		}
 		close;
 	}
 	if (!getequipisenableref(.@part)) {
-		mes "[é“åŒ åŒº]";
-		mes "è¯¥ç‰©å“æ— æ³•ç²¾ç‚¼ã€‚";
+		mes "[Ìú½³Çø]";
+		mes "¸ÃÎïÆ·ÎŞ·¨¾«Á¶¡£";
 		close;
 	}
 	.@equip_id = getequipid(.@part);
@@ -74,8 +76,8 @@
 	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
 
 	if (.@equip_refine < 6 || .@equip_refine > 12) {
-		mes "[é“åŒ åŒº]";
-		mes "è¯¥è£…å¤‡å·²ç²¾ç‚¼è‡³"+.@equip_refine+"ã€‚æˆ‘åªå¤„ç†ç²¾ç‚¼åº¦ä»+6åˆ°+12çš„ç‰©å“ï¼";
+		mes "[Ìú½³Çø]";
+		mes "¸Ã×°±¸ÒÑ¾«Á¶ÖÁ"+.@equip_refine+"¡£ÎÒÖ»´¦Àí¾«Á¶¶È´Ó+6µ½+12µÄÎïÆ·£¡";
 		close;
 	}
 	if( .@itemtype == IT_ARMOR ){
@@ -121,32 +123,32 @@
 		close;
 	}
 	set .@ore$,"^ff9999Blessed "+.@type$+" Ore^000000";
-	mes "[é“åŒ åŒº]";
-	mes "æ­¤"+.@type$+"å·²ç»†åŒ–ä¸º"+.@equip_refine+"ã€‚ä¸ºäº†ç²¾ç‚¼å®ƒï¼Œæˆ‘éœ€è¦ "+.@ore$+" å’Œ "+callfunc("F_InsertComma",.@price)+" zeny ç²¾ç‚¼è´¹ã€‚";
-	mes "æ‚¨æƒ³ç»§ç»­å—ï¼Ÿ";
+	mes "[Ìú½³Çø]";
+	mes "´Ë"+.@type$+"ÒÑÏ¸»¯Îª"+.@equip_refine+"¡£ÎªÁË¾«Á¶Ëü£¬ÎÒĞèÒª "+.@ore$+" ºÍ "+callfunc("F_InsertComma",.@price)+" zeny ¾«Á¶·Ñ¡£";
+	mes "ÄúÏë¼ÌĞøÂğ£¿";
 	next;
-	if(select("æ˜¯ï¼šå¦") == 2) {
-		mes "[é“åŒ åŒº]";
-		mes "æˆ‘å¾ˆå¿™ï¼Œåˆ«è·Ÿæˆ‘å¼€ç©ç¬‘ï¼";
+	if(select("ÊÇ£º·ñ") == 2) {
+		mes "[Ìú½³Çø]";
+		mes "ÎÒºÜÃ¦£¬±ğ¸úÎÒ¿ªÍæĞ¦£¡";
 		close;
 	}
 	if (getequippercentrefinery(.@part) < 100) {
-		mes "[é“åŒ åŒº]";
-		mes "è¿™"+.@type$+"ç»è¿‡å¤šæ¬¡ç»†åŒ–ã€‚è™½ç„¶å¤±è´¥åå®ƒä¸ä¼šæ¶ˆå¤±ï¼Œ"+.@ore$+"å°†ä¼šæ¶ˆå¤±ï¼";
+		mes "[Ìú½³Çø]";
+		mes "Õâ"+.@type$+"¾­¹ı¶à´ÎÏ¸»¯¡£ËäÈ»Ê§°ÜºóËü²»»áÏûÊ§£¬"+.@ore$+"½«»áÏûÊ§£¡";
 		next;
-		mes "[é“åŒ åŒº]";
-		mes "å½“ç„¶ï¼Œç‚¼åŒ–è´¹æ˜¯ä¸ä¼šé€€è¿˜çš„ï¼æ‚¨æƒ³ç»§ç»­å—ï¼Ÿ";
+		mes "[Ìú½³Çø]";
+		mes "µ±È»£¬Á¶»¯·ÑÊÇ²»»áÍË»¹µÄ£¡ÄúÏë¼ÌĞøÂğ£¿";
 		next;
-		if(select("æ˜¯ï¼šå¦") == 2) {
-			mes "[é“åŒ åŒº]";
-			mes "å¥½çš„ã€‚å¦‚æœå¤±è´¥çš„è¯æˆ‘ä¹Ÿä¼šå¾ˆéš¾è¿‡ã€‚";
+		if(select("ÊÇ£º·ñ") == 2) {
+			mes "[Ìú½³Çø]";
+			mes "ºÃµÄ¡£Èç¹ûÊ§°ÜµÄ»°ÎÒÒ²»áºÜÄÑ¹ı¡£";
 			close;
 		}
 	}
 	if (countitem(.@material) == 0 || Zeny < .@price) {
-		mes "[é“åŒ åŒº]";
-		mes "ææ–™ä¸è¶³ã€‚";
-		mes "è¦ç²¾ç‚¼ç­‰çº§"+.@equip_lv+" "+.@type$+"ï¼Œæˆ‘éœ€è¦"+.@ore$+"å’Œ"+callfunc("F_InsertComma",.@price)+" zenyç²¾ç‚¼è´¹ã€‚";
+		mes "[Ìú½³Çø]";
+		mes "²ÄÁÏ²»×ã¡£";
+		mes "Òª¾«Á¶µÈ¼¶"+.@equip_lv+" "+.@type$+"£¬ÎÒĞèÒª"+.@ore$+"ºÍ"+callfunc("F_InsertComma",.@price)+" zeny¾«Á¶·Ñ¡£";
 		close;
 	}
 	delitem .@material,1;
@@ -156,31 +158,31 @@
 	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine))
 		close;
 
-	mes "[é“åŒ åŒº]";
-	mes "å¡”å…‹ï¼å¡”å…‹ï¼å¡”å…‹ï¼";
+	mes "[Ìú½³Çø]";
+	mes "Ëş¿Ë£¡Ëş¿Ë£¡Ëş¿Ë£¡";
 	if (getequippercentrefinery(.@part, true) > rand(100)) {
 		specialeffect EF_BLESSING;
 		successrefitem .@part;
 		next;
-		mes "[é“åŒ åŒº]";
-		mes "å“ˆå“ˆå“ˆå“ˆå“ˆå“ˆï¼ï¼ï¼";
+		mes "[Ìú½³Çø]";
+		mes "¹ş¹ş¹ş¹ş¹ş¹ş£¡£¡£¡";
 		next;
-		mes "[é“åŒ åŒº]";
-		mes "Refineå¤§è·æˆåŠŸ~å“ˆå“ˆå“ˆï¼";
+		mes "[Ìú½³Çø]";
+		mes "Refine´ó»ñ³É¹¦~¹ş¹ş¹ş£¡";
 		close;
 	}
 	specialeffect EF_CURSEATTACK;
 	specialeffect2 EF_SUI_EXPLOSION;
 	next;
 	emotion (!rand(5))?ET_ANGER:ET_HUK;
-	mes "[é“åŒ åŒº]";
-	mes "å“¦ï¼Œæˆ‘çš„å¤©å•Šï¼ï¼ï¼ï¼";
+	mes "[Ìú½³Çø]";
+	mes "Å¶£¬ÎÒµÄÌì°¡£¡£¡£¡£¡";
 	next;
-	mes "[é“åŒ åŒº]";
-	mes "å“¦ï¼è™½ç„¶å®ƒå—åˆ°äº†ç¥ç¦"+.@ore$+"ä¿ç•™è®¾å¤‡...";
+	mes "[Ìú½³Çø]";
+	mes "Å¶£¡ËäÈ»ËüÊÜµ½ÁË×£¸£"+.@ore$+"±£ÁôÉè±¸...";
 	next;
-	mes "[é“åŒ åŒº]";
-	mes "å½“æˆ‘å¤±è´¥çš„æ—¶å€™æˆ‘çš„å¿ƒæƒ…ä¼šå˜å¾—æ›´ç³Ÿï¼";
+	mes "[Ìú½³Çø]";
+	mes "µ±ÎÒÊ§°ÜµÄÊ±ºòÎÒµÄĞÄÇé»á±äµÃ¸üÔã£¡";
 	close;
 }
 prt_in,52,56,3	duplicate(BlacksmithDister)	Blacksmith Dister#prt	826

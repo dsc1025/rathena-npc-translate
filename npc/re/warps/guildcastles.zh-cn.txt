@@ -12,6 +12,8 @@
 //= 1.0 First version. [Euphy]
 //= 2.0 Added WoE:TE warps. [Capuche]
 //= 3.0 Prontera castle map changed in ep16.1 [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Prontera Castle Map
@@ -85,7 +87,7 @@ OnTouch:
 S_Warp:
 	.@castle$ = getarg(0);
 	if (jobcanentermap(.@castle$) == 0) {
-		mes "ç¬¬ä¸‰çº§å’Œæ‰©å±•å·¥ä½œçº§åˆ«ä¸èƒ½è¿›å…¥WoE TEã€‚";
+		mes "µÚÈı¼¶ºÍÀ©Õ¹¹¤×÷¼¶±ğ²»ÄÜ½øÈëWoE TE¡£";
 		close;
 	}
 
@@ -99,14 +101,14 @@ S_Warp:
 
 	if (WoeTETimeStart(3600) == 1) {
 		if (!.@guild_id || !.@my_guild_id) {
-			mes "æ˜¯æ—¶å€™å‡†å¤‡ WoE äº†ã€‚åªæœ‰è”ç›Ÿå…¬ä¼šæ‰èƒ½è¿›å…¥ã€‚";
+			mes "ÊÇÊ±ºò×¼±¸ WoE ÁË¡£Ö»ÓĞÁªÃË¹«»á²ÅÄÜ½øÈë¡£";
 			close;
 		}
 		if (getguildalliance(.@my_guild_id,.@guild_id) != 1) {
-			mes "æ˜¯æ—¶å€™å‡†å¤‡ WoE äº†ã€‚åªæœ‰è”ç›Ÿå…¬ä¼šæ‰èƒ½è¿›å…¥ã€‚";
+			mes "ÊÇÊ±ºò×¼±¸ WoE ÁË¡£Ö»ÓĞÁªÃË¹«»á²ÅÄÜ½øÈë¡£";
 			close;
 		}
-		mes "æ¬¢è¿è”ç›Ÿå…¬ä¼šã€‚";
+		mes "»¶Ó­ÁªÃË¹«»á¡£";
 		close2;
 	}
 	warp .@castle$,getarg(1),getarg(2);

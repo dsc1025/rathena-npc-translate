@@ -6,6 +6,8 @@
 //= 1.0 Added "dummy_npc" and "dummy_cloaked_npc". [Capuche]
 //= 1.1 Added "dummy_disabled_npc". [Capuche]
 //= 1.2 Added "dummy_hidden_npc". [Strawberrysherbet]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 -	script	dummy_npc	-1,{

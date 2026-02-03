@@ -12,6 +12,8 @@
 //= 1.0 First Version.
 //= 1.1 Corrected Warp Co-ordinates and 
 //=      name of Warp Portal. [Dastgir]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ecl_fild01,182,82,0	warp	Tenter_TOut	1,1,ecl_tdun01,60,13

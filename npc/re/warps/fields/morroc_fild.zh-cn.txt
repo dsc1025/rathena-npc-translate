@@ -16,6 +16,8 @@
 //= 1.4a Uncommented yet ANOTHER warp that was taken out. [L0ne_W0lf]
 //= 1.4b Uncommented ANOTHER warp! Yay! :D [L0ne_W0lf]
 //= 1.5 Commented moc_fild20 warps replaced with new NPCs. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //= Sograt Desert ===========================================

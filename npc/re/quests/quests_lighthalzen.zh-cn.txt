@@ -13,6 +13,8 @@
 //= 1.1 Added Somatology Laboratory F4 quest. [Euphy]
 //= 1.2 Added Izlude duplicates. [Euphy]
 //= 1.3 Removed Somatology Laboratory F4 quest. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 // Renewal split [Daegaladh]

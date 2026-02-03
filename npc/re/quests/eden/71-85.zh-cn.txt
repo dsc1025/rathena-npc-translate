@@ -15,13 +15,15 @@
 //= 1.3 Updated to match the official scripts. [Euphy]
 //= 1.4 Added support to Para_Team_Mark_ in Eden Group. [Ragno]
 //= 1.5 Added use of F_HasEdenGroupMark function. [Ragno]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_para01,44,38,3	script	Mission [71 - 85]	857,{
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "- ä»…é™ - çš„æˆå‘˜";
-		mes "-ä¼Šç”¸å›­é›†å›¢å¯ä»¥é˜…è¯»-";
-		mes "- è¿™ä¸ªå…¬å‘Šæ¿ã€‚ -";
+		mes "- ½öÏŞ - µÄ³ÉÔ±";
+		mes "-ÒÁµéÔ°¼¯ÍÅ¿ÉÒÔÔÄ¶Á-";
+		mes "- Õâ¸ö¹«¸æ°å¡£ -";
 		close;
 	}
 
@@ -32,18 +34,18 @@ moc_para01,44,38,3	script	Mission [71 - 85]	857,{
 			if (checkquest(.@quest) > -1)
 				erasequest .@quest;
 		}
-		mes "- ç”±äºå®¢æˆ·æ¬å®¶äº† -";
-		mes "- åˆ°å¦ä¸€ä¸ªåœ°æ–¹ï¼Œ-";
-		mes "- ç”³è¯·è¡¨å·²è¢«åˆ é™¤ã€‚ -";
+		mes "- ÓÉÓÚ¿Í»§°á¼ÒÁË -";
+		mes "- µ½ÁíÒ»¸öµØ·½£¬-";
+		mes "- ÉêÇë±íÒÑ±»É¾³ı¡£ -";
 		next;
 	}
 
 	if (BaseLevel < 71) {
-		mes "- ä»…é™ - çš„æˆå‘˜";
-		mes "- æ°´å¹³åˆé€‚å¯ä»¥é˜…è¯» -";
-		mes "- è¿™ä¸ªå…¬å‘Šæ¿ã€‚ -";
-		mes "- å°è¯•æ‰¾ä¸€å—æ¿å­ -";
-		mes "- é€‚åˆä½ çš„æ°´å¹³ã€‚ -";
+		mes "- ½öÏŞ - µÄ³ÉÔ±";
+		mes "- Ë®Æ½ºÏÊÊ¿ÉÒÔÔÄ¶Á -";
+		mes "- Õâ¸ö¹«¸æ°å¡£ -";
+		mes "- ³¢ÊÔÕÒÒ»¿é°å×Ó -";
+		mes "- ÊÊºÏÄãµÄË®Æ½¡£ -";
 		close;
 	} else if (BaseLevel > 85) {
 		// Quest IDs: 10107-10123, 5055-5057
@@ -60,84 +62,84 @@ moc_para01,44,38,3	script	Mission [71 - 85]	857,{
 		if (checkquest(5057) > -1 && countitem(7187) >= 30)
 			set .@complete[getarraysize(.@complete)],5057;
 		if (getarraysize(.@complete)) {
-			mes "æ‚¨æœ‰ä»»åŠ¡æ­£åœ¨è¿›è¡Œä¸­ã€‚";
-			mes "ä½ æƒ³æŠŠä»–ä»¬äº¤å‡ºæ¥å—ï¼Ÿ";
+			mes "ÄúÓĞÈÎÎñÕıÔÚ½øĞĞÖĞ¡£";
+			mes "ÄãÏë°ÑËûÃÇ½»³öÀ´Âğ£¿";
 			next;
-			if(select("å½“ç„¶ã€‚ï¼šä¸ã€‚") == 2)
+			if(select("µ±È»¡££º²»¡£") == 2)
 				close;
 			for(set .@i,0; .@i<getarraysize(.@complete); set .@i,.@i+1)
 				callsub L_Quest,.@complete[.@i];
 			close;
 		}
-		mes "- ä»…é™ - çš„æˆå‘˜";
-		mes "- æ°´å¹³åˆé€‚å¯ä»¥é˜…è¯» -";
-		mes "- è¿™ä¸ªå…¬å‘Šæ¿ã€‚ -";
-		mes "- å°è¯•æ‰¾ä¸€å—æ¿å­ -";
-		mes "- é€‚åˆä½ çš„æ°´å¹³ã€‚ -";
+		mes "- ½öÏŞ - µÄ³ÉÔ±";
+		mes "- Ë®Æ½ºÏÊÊ¿ÉÒÔÔÄ¶Á -";
+		mes "- Õâ¸ö¹«¸æ°å¡£ -";
+		mes "- ³¢ÊÔÕÒÒ»¿é°å×Ó -";
+		mes "- ÊÊºÏÄãµÄË®Æ½¡£ -";
 		close;
 	}
-	mes "- é€‰æ‹©ä½ æ‰€åœ¨çš„åœ°æ–¹ -";
-	mes "- æƒ³è¦ç‹©çŒã€‚ -";
+	mes "- Ñ¡ÔñÄãËùÔÚµÄµØ·½ -";
+	mes "- ÏëÒªá÷ÁÔ¡£ -";
 	next;
-	switch(select("ç‹®èº«äººé¢åƒåœ°ä¸‹åŸï¼šæ ¼æ‹‰æ–¯ç‰¹Â·æµ·å§†ï¼šæœ±è¯ºåŒºåŸŸï¼šé’Ÿæ¥¼ï¼šå±€éƒ¨å²›å±¿")) {
+	switch(select("Ê¨ÉíÈËÃæÏñµØÏÂ³Ç£º¸ñÀ­Ë¹ÌØ¡¤º£Ä·£ºÖìÅµÇøÓò£ºÖÓÂ¥£º¾Ö²¿µºÓì")) {
 	case 1:
-		mes "- æœ‰å‡ ä¸ªè¦æ±‚ -";
-		mes "- ä¸ç‹®èº«äººé¢åƒåœ°ç‰¢æœ‰å…³ -";
-		mes "- åœ¨è¿™ä¸ªä½¿å‘½æ¿ä¸Šã€‚ -";
+		mes "- ÓĞ¼¸¸öÒªÇó -";
+		mes "- ÓëÊ¨ÉíÈËÃæÏñµØÀÎÓĞ¹Ø -";
+		mes "- ÔÚÕâ¸öÊ¹Ãü°åÉÏ¡£ -";
 		next;
 		set .@str1$,"The villagers of Morocc are worried by the increasing number of monsters in the Sphinx Dungeon. ";
 		set .@str2$,"- Meidi from Morocc -";
-		switch(select("ç‹©çŒå®‰é­‚æ›²ï¼šç‹©çŒé©¬æœå…‹ï¼šç‹©çŒå¸•è¨çº³")) {
+		switch(select("á÷ÁÔ°²»êÇú£ºá÷ÁÔÂí¶Å¿Ë£ºá÷ÁÔÅÁÈøÄÉ")) {
 			case 1: callsub L_Quest,10107,.@str1$+"Hunt 10 Requiems.",.@str2$;
 			case 2: callsub L_Quest,10108,.@str1$+"Hunt 10 Marduks.",.@str2$;
 			case 3: callsub L_Quest,10109,.@str1$+"Hunt 10 Pasanas.",.@str2$;
 		}
 	case 2:
-		mes "- æœ‰å‡ ä¸ªè¦æ±‚ -";
-		mes "- ä¸æ ¼æ‹‰æ–¯ç‰¹Â·æµ·å§†ç›¸å…³ -";
-		mes "- åœ¨è¿™ä¸ªä½¿å‘½æ¿ä¸Šã€‚ -";
+		mes "- ÓĞ¼¸¸öÒªÇó -";
+		mes "- Óë¸ñÀ­Ë¹ÌØ¡¤º£Ä·Ïà¹Ø -";
+		mes "- ÔÚÕâ¸öÊ¹Ãü°åÉÏ¡£ -";
 		next;
 		set .@str1$,"I am very afraid that the monsters from Glast Heim will attack us. ";
 		set .@str2$,"- Ancellia from Geffen -";
-		switch(select("ç‹©çŒé»‘æš—æ¡†æ¶ï¼šç‹©çŒé‚ªæ¶å¾·é²ä¼Šï¼šç‹©çŒå¹½çµï¼šç‹©çŒé›·å¾·é‡Œå…‹å¼“ç®­æ‰‹")) {
+		switch(select("á÷ÁÔºÚ°µ¿ò¼Ü£ºá÷ÁÔĞ°¶ñµÂÂ³ÒÁ£ºá÷ÁÔÓÄÁé£ºá÷ÁÔÀ×µÂÀï¿Ë¹­¼ıÊÖ")) {
 			case 1: callsub L_Quest,10110,.@str1$+"Hunt 10 Dark Frames.",.@str2$;
 			case 2: callsub L_Quest,10111,.@str1$+"Hunt 10 Evil Druids.",.@str2$;
 			case 3: callsub L_Quest,10112,.@str1$+"Hunt 10 Wraiths.",.@str2$;
 			case 4: callsub L_Quest,10113,.@str1$+"Hunt 10 Raydric Archers.",.@str2$;
 		}
 	case 3:
-		mes "- æœ‰å‡ ä¸ªè¦æ±‚ -";
-		mes "- ä¸åœ°åŒºç›¸å…³ -";
-		mes "- æœ±è¯ºå‘¨å›´ã€‚ -";
+		mes "- ÓĞ¼¸¸öÒªÇó -";
+		mes "- ÓëµØÇøÏà¹Ø -";
+		mes "- ÖìÅµÖÜÎ§¡£ -";
 		next;
 		set .@str1$,"Those who can't fight, like me, find it much more difficult to travel due to the large number of monsters. ";
 		set .@str2$,"- Jeanbai, traveler -";
-		switch(select("ç‹©çŒå¤§ä½©ç§‘:ç‹©çŒæ²‰ç¡è€…:ç‹©çŒå±±ç¾Š:ç‹©çŒé¹°èº«å¥³å¦–")) {
+		switch(select("á÷ÁÔ´óÅå¿Æ:á÷ÁÔ³ÁË¯Õß:á÷ÁÔÉ½Ñò:á÷ÁÔÓ¥ÉíÅ®Ñı")) {
 			case 1: callsub L_Quest,10114,.@str1$+"Hunt 20 Grand Pecos.",.@str2$;
 			case 2: callsub L_Quest,10115,.@str1$+"Hunt 20 Sleepers.",.@str2$;
 			case 3: callsub L_Quest,10116,.@str1$+"Hunt 20 Goats.",.@str2$;
 			case 4: callsub L_Quest,10117,.@str1$+"Hunt 20 Harpies.",.@str2$;
 		}
 	case 4:
-		mes "- æœ‰å‡ ä¸ªè¦æ±‚ -";
-		mes "- ä¸é’Ÿæ¥¼æœ‰å…³ -";
-		mes "- åœ¨è¿™ä¸ªä½¿å‘½æ¿ä¸Šã€‚ -";
+		mes "- ÓĞ¼¸¸öÒªÇó -";
+		mes "- ÓëÖÓÂ¥ÓĞ¹Ø -";
+		mes "- ÔÚÕâ¸öÊ¹Ãü°åÉÏ¡£ -";
 		next;
 		set .@str1$,"I used to love listening to the sweet melody of the Al De Baran Clock Tower but I can't hear anything anymore because of all the noises the monsters are making. ";
 		set .@str2$,"- Rizingsetter, President of the Love Clock community -";
-		switch(select("ç‹©çŒæ—¶é’Ÿï¼šç‹©çŒæœ‹å…‹ï¼šç‹©çŒéª‘æœ¯")) {
+		switch(select("á÷ÁÔÊ±ÖÓ£ºá÷ÁÔÅó¿Ë£ºá÷ÁÔÆïÊõ")) {
 			case 1: callsub L_Quest,10118,.@str1$+"Hunt 15 Clocks before it breaks.",.@str2$;
 			case 2: callsub L_Quest,10119,.@str1$+"Hunt 15 Punks before it breaks.",.@str2$;
 			case 3: callsub L_Quest,10120,.@str1$+"Hunt 15 Ridewords before it breaks.",.@str2$;
 		}
 	case 5:
-		mes "- æœ‰å‡ ä¸ªè¦æ±‚ -";
-		mes "- ä¸å±€éƒ¨å²›å±¿ç›¸å…³ -";
-		mes "- åœ¨è¿™ä¸ªä½¿å‘½æ¿ä¸Šã€‚ -";
+		mes "- ÓĞ¼¸¸öÒªÇó -";
+		mes "- Óë¾Ö²¿µºÓìÏà¹Ø -";
+		mes "- ÔÚÕâ¸öÊ¹Ãü°åÉÏ¡£ -";
 		next;
 		set .@str1$,"I want to go on an adventure but there are so many things I have to deal with. If I can't, then others can't either! ";
 		set .@str2$,"- Funfy, who wants to go on an adventure -";
-		switch(select("ç‹©çŒå¥‡å¥‡è«æ‹‰ï¼šç‹©çŒé›…å¨ƒå¨ƒï¼šç‹©çŒç±³é«˜ï¼šç‹©çŒæ— å¤´éª¡å­ï¼šç‹©çŒå¡”å§†é²å®‰ï¼šæ”¶é›†èŠ‚æ—¥é¢å…·")) {
+		switch(select("á÷ÁÔÆæÆæÄªÀ­£ºá÷ÁÔÑÅÍŞÍŞ£ºá÷ÁÔÃ×¸ß£ºá÷ÁÔÎŞÍ·Ââ×Ó£ºá÷ÁÔËşÄ·Â³°²£ºÊÕ¼¯½ÚÈÕÃæ¾ß")) {
 			case 1: callsub L_Quest,10121,.@str1$+"Hunt 15 Kikimoras in Moscovia!",.@str2$;
 			case 2: callsub L_Quest,10122,.@str1$+"Hunt 15 Miyabi Dolls in Amatsu!",.@str2$;
 			case 3: callsub L_Quest,10123,.@str1$+"Hunt 15 Mi Gaos in Luoyang!",.@str2$;
@@ -174,13 +176,13 @@ L_Quest:
 		case 5057: set .@name$,"Gather Festival Masks for the Festival"; set .@exp,30000; break;
 	}
 	if (getargcount() == 1) {
-		mes "'"+.@name$+"' å®Œå…¨çš„ã€‚æ‚¨æƒ³ä¸Šäº¤å¹¶è·å¾—å¥–åŠ±å—ï¼Ÿ";
+		mes "'"+.@name$+"' ÍêÈ«µÄ¡£ÄúÏëÉÏ½»²¢»ñµÃ½±ÀøÂğ£¿";
 		next;
-		if(select("äº¤ä»»åŠ¡ï¼šå–æ¶ˆã€‚") == 1) {
+		if(select("½»ÈÎÎñ£ºÈ¡Ïû¡£") == 1) {
 			if (.@quest == 5057) delitem 7187,30; //Festival_Mask
 			erasequest .@quest;
 			getexp .@exp,0;
-			mes "æ‚¨å·²å› å®Œæˆä»»åŠ¡è€Œè·å¾— EXPã€‚";
+			mes "ÄúÒÑÒòÍê³ÉÈÎÎñ¶ø»ñµÃ EXP¡£";
 			next;
 			return;
 		}
@@ -198,28 +200,28 @@ L_Quest:
 			mes getarg(1);
 			mes getarg(2);
 			next;
-			mes "å®Œæˆä»»åŠ¡åè¿”å›è¿™é‡Œã€‚";
+			mes "Íê³ÉÈÎÎñºó·µ»ØÕâÀï¡£";
 		} else if (.@hunting == 2) {
-			mes "æ‚¨å·²å®Œæˆä»»åŠ¡ã€‚";
+			mes "ÄúÒÑÍê³ÉÈÎÎñ¡£";
 			next;
-			if(select("äº¤ä»»åŠ¡ï¼šå–æ¶ˆã€‚") == 1) {
+			if(select("½»ÈÎÎñ£ºÈ¡Ïû¡£") == 1) {
 				if (.@quest == 5057) delitem 7187,30; //Festival_Mask
 				erasequest .@quest;
 				getexp .@exp,0;
-				mes "æ‚¨å·²å› å®Œæˆä»»åŠ¡è€Œè·å¾— EXPã€‚";
+				mes "ÄúÒÑÒòÍê³ÉÈÎÎñ¶ø»ñµÃ EXP¡£";
 			}
 		}/* else if (.@hunting == 3) {
 //			recall_completequest .@quest
 			erasequest .@quest;
-			mes "æ‚¨å·²é‡æ–°æ¥å—ä»»åŠ¡â€œ"+.@name$+"â€ã€‚";
+			mes "ÄúÒÑÖØĞÂ½ÓÊÜÈÎÎñ¡°"+.@name$+"¡±¡£";
 		}*/ else {
 			mes getarg(1);
 			mes getarg(2);
 			next;
-			mes "ä½ æƒ³æ¥å—ä»»åŠ¡å—ï¼Ÿ";
+			mes "ÄãÏë½ÓÊÜÈÎÎñÂğ£¿";
 			next;
-			if(select("æ˜¯çš„ã€‚ï¼šæ²¡æœ‰ã€‚") == 1) {
-				mes "æ‚¨å·²æ”¶åˆ°ä»»åŠ¡â€œ"+.@name$+"â€ã€‚æŸ¥çœ‹æ‚¨çš„ä»»åŠ¡ä¿¡æ¯ä»¥äº†è§£æ›´å¤šè¯¦ç»†ä¿¡æ¯ã€‚";
+			if(select("ÊÇµÄ¡££ºÃ»ÓĞ¡£") == 1) {
+				mes "ÄúÒÑÊÕµ½ÈÎÎñ¡°"+.@name$+"¡±¡£²é¿´ÄúµÄÈÎÎñĞÅÏ¢ÒÔÁË½â¸ü¶àÏêÏ¸ĞÅÏ¢¡£";
 				setquest .@quest;
 			}
 		}

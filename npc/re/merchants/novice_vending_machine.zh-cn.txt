@@ -6,25 +6,27 @@
 //===== Additional Comments: =================================
 //= 1.0 Firt version. [Aleos] [Secret]
 //= 1.1 Additionnal clean-up. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 -	script	novice_vending_machine#main	-1,{
 	.@storage_ticket = 7059;	// Cargo_Free_Ticket
 	.@storage_ticket_name$ = getitemname(.@storage_ticket);
 
-	mes "æ–°æ‰‹è‡ªåŠ¨å”®è´§æœºã€‚";
-	mes "æœ‰å¾ˆå¤šæŒ‰é’®ã€‚";
+	mes "ĞÂÊÖ×Ô¶¯ÊÛ»õ»ú¡£";
+	mes "ÓĞºÜ¶à°´Å¥¡£";
 	next;
-	switch( select( "æ‰‹å†Œ", "äº¤æ˜“" + .@storage_ticket_name$, "äº¤æ˜“æ–°æ‰‹è£…å¤‡" ) ) {
+	switch( select( "ÊÖ²á", "½»Ò×" + .@storage_ticket_name$, "½»Ò×ĞÂÊÖ×°±¸" ) ) {
 	case 1:
-		mes "[äº¤æ¢" + .@storage_ticket_name$ + "]";
-		mes "4ä¸ª" + .@storage_ticket_name$ + "å¯å…‘æ¢1å¼ æ›²é€Ÿã€é£è‰‡æˆ–é©¬è½¦æœåŠ¡å…è´¹é—¨ç¥¨ï¼Œæˆ–1å¼ ä½©ç§‘éª‘è¡Œå…è´¹é—¨ç¥¨ã€15ä¸ªæ–°æ‰‹é£ç¿¼ã€5ä¸ªæ–°æ‰‹è´è¶ç¿…è†€ã€30ä¸ªæ–°æ‰‹è¯æ°´ã€‚";
+		mes "[½»»»" + .@storage_ticket_name$ + "]";
+		mes "4¸ö" + .@storage_ticket_name$ + "¿É¶Ò»»1ÕÅÇúËÙ¡¢·ÉÍ§»òÂí³µ·şÎñÃâ·ÑÃÅÆ±£¬»ò1ÕÅÅå¿ÆÆïĞĞÃâ·ÑÃÅÆ±¡¢15¸öĞÂÊÖ·ÉÒí¡¢5¸öĞÂÊÖºûµû³á°ò¡¢30¸öĞÂÊÖÒ©Ë®¡£";
 		next;
-		mes "[äº¤æ˜“æ–°æ‰‹è£…å¤‡]";
-		mes "å…‹é‡Œé˜¿å›¾æ‹‰å­¦é™¢çš„ç›”ç”²ã€å…œå¸½ã€å‡‰é‹ã€ä¸»è£…å’Œæ–°æ‰‹å®ˆå«å¯ä»¥å…‘æ¢æˆ4ä¸ª" + .@storage_ticket_name$ + ".";
+		mes "[½»Ò×ĞÂÊÖ×°±¸]";
+		mes "¿ËÀï°¢Í¼À­Ñ§ÔºµÄ¿ø¼×¡¢¶µÃ±¡¢Á¹Ğ¬¡¢Ö÷×°ºÍĞÂÊÖÊØÎÀ¿ÉÒÔ¶Ò»»³É4¸ö" + .@storage_ticket_name$ + ".";
 		next;
-		mes "[äº¤æ˜“æ–°æ‰‹è£…å¤‡]";
-		mes "æ–°æ‰‹è›‹å£³å¯ä»¥å…‘æ¢æˆCriaturaå‘å¡ï¼Œç”¨äºæ›´æ¢å‘å‹ã€‚";
+		mes "[½»Ò×ĞÂÊÖ×°±¸]";
+		mes "ĞÂÊÖµ°¿Ç¿ÉÒÔ¶Ò»»³ÉCriatura·¢¿¨£¬ÓÃÓÚ¸ü»»·¢ĞÍ¡£";
 		close;
 	case 2:
 		setarray .@exchange[0],
@@ -44,24 +46,24 @@
 		}
 		.@s = (select(.@menu$) - 1) * 2;
 		if (countitem(.@storage_ticket) < 4) {
-			mes "" + .@storage_ticket_name$ + " æ•°é‡ä¸è¶³ä»¥ç»§ç»­å…‘æ¢ã€‚";
+			mes "" + .@storage_ticket_name$ + " ÊıÁ¿²»×ãÒÔ¼ÌĞø¶Ò»»¡£";
 			close;
 		}
 		if (.@exchange[.@s+1] > 1)
 			.@amount$ = .@exchange[.@s+1] + " ";
-		mes "äº¤æ¢ 4 " + .@storage_ticket_name$ + " è‡³" + .@amount$ + getitemname(.@exchange[.@s]);
+		mes "½»»» 4 " + .@storage_ticket_name$ + " ÖÁ" + .@amount$ + getitemname(.@exchange[.@s]);
 		delitem .@storage_ticket,4;
 		getitem .@exchange[.@s],.@exchange[.@s+1];
 		close;
 	case 3:
-		mes "å°†æ‰€æœ‰æ–°æ‰‹è£…å¤‡å…‘æ¢æˆä¼˜æƒ åˆ¸ã€‚";
-		mes "é€‰æ‹©ç»§ç»­ç»§ç»­ã€‚";
+		mes "½«ËùÓĞĞÂÊÖ×°±¸¶Ò»»³ÉÓÅ»İÈ¯¡£";
+		mes "Ñ¡Ôñ¼ÌĞø¼ÌĞø¡£";
 		next;
-		if (select( "ç»§ç»­", "å–æ¶ˆã€‚" ) == 2) {
-			mes "è´¸æ˜“è¢«ä¸­æ–­ã€‚";
+		if (select( "¼ÌĞø", "È¡Ïû¡£" ) == 2) {
+			mes "Ã³Ò×±»ÖĞ¶Ï¡£";
 			close;
 		}
-		mes "å°†æ‰€æœ‰è£…å¤‡å…‘æ¢æˆä¼˜æƒ åˆ¸ã€‚";
+		mes "½«ËùÓĞ×°±¸¶Ò»»³ÉÓÅ»İÈ¯¡£";
 		setarray .@list[0],2352,2510,2414,1243,2112,5055;
 		.@size = getarraysize(.@list);
 		

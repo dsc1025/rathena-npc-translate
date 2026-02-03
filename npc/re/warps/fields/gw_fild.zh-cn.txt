@@ -4,6 +4,8 @@
 //= Warp Points for gw_fild
 //===== Additional Comments: =================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 gw_fild01,135,9,0	warp	gw_fild01_to_gw_fild02	1,1,gw_fild02,122,385

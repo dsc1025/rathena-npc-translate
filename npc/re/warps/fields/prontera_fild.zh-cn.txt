@@ -15,6 +15,8 @@
 //= 1.3a Moved Izlude warp to other file. [Euphy]
 //= 1.4 Commented moc_fild20 warps replaced with new NPCs. [Euphy]
 //= 1.5 Added Prontera Field 8 duplicates. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //= Prontera Fields ==========================================

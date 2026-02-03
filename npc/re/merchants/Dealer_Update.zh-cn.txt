@@ -4,6 +4,8 @@
 // This script is linked to the Extension of Ammunition Sales!
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [JohnnyPlayy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //= When the Barter Shop Feature is deactivated

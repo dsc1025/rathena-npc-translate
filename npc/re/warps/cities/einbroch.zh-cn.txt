@@ -5,6 +5,8 @@
 //===== Changelog: ===========================================
 //= 1.0 Some warps have been changed in renewal ep16.2 [Capuche]
 //= 1.1 Episode 17.1 - Illusion update [crazyarashi]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ein_in01,274,246,0	script	#ep162_warp01	WARPNPC,1,1,{
@@ -12,8 +14,8 @@ ein_in01,274,246,0	script	#ep162_warp01	WARPNPC,1,1,{
 OnTouch:
 	if (terra_gloria_main == 18 || terra_gloria_main == 22) {
 		cutin "ep16_tes01.bmp",0;
-		mes "[è‹”ä¸]";
-		mes "æ¬¢è¿ã€‚è¯·è¿›æ¥ã€‚";
+		mes "[Ì¦Ë¿]";
+		mes "»¶Ó­¡£Çë½øÀ´¡£";
 		close2;
 	}
 	warp "ein_in01",273,276;

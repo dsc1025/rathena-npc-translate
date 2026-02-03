@@ -12,6 +12,8 @@
 //= 1.0 First version
 //= 1.1 Disabled warps that clash with quest warps. [Euphy]
 //= 1.2 Updated to match official scripts. [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 dewata,44,252,0	warp	dewata0001	1,1,dew_fild01,373,212

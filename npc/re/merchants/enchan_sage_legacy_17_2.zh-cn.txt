@@ -7,27 +7,29 @@
 //= 1.0 Initial release [crazyarashi]
 //= 1.1 Optimizations and cleanup [Everade]
 //= 1.2 Cleanup [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 ba_in01,87,370,3	script	Lisa#ep172_merchant	20698,{
 	if (checkweight(1201,3) == 0) {
-		mes "^ff0000您拥有的物品的类型或重量似乎太多了。请整理您的库存。^000000";
+		mes "^ff0000��ӵ�е���Ʒ�����ͻ������ƺ�̫���ˡ����������Ŀ�档^000000";
 		close;
 	}
 	disable_items;
-	mes "[丽莎]";
-	mes "欢迎欢迎~";
+	mes "[��ɯ]";
+	mes "��ӭ��ӭ~";
 	next;
-	switch( select( "探索设备", "自动发动机机翼增强", "自动装甲增强", "自动腿部增强", "自动配件（R）增强", "自动配件（L）增强" ) ) {
+	switch( select( "̽���豸", "�Զ�������������ǿ", "�Զ�װ����ǿ", "�Զ��Ȳ���ǿ", "�Զ������R����ǿ", "�Զ������L����ǿ" ) ) {
 	case 1:
-		mes "[丽莎]";
-		mes "如果您携带自动装备和强化模块，我们可以在装备上附魔相应的模块。";
+		mes "[��ɯ]";
+		mes "�����Я���Զ�װ����ǿ��ģ�飬���ǿ�����װ���ϸ�ħ��Ӧ��ģ�顣";
 		next;
-		mes "[丽莎]";
-		mes "这是按照规范模块完成的，因此设备不会被破坏。但是，升级次数可能因模块而异。";
+		mes "[��ɯ]";
+		mes "���ǰ��չ淶ģ����ɵģ�����豸���ᱻ�ƻ������ǣ���������������ģ����졣";
 		next;
-		mes "[丽莎]";
-		mes "以后需要帮助时请再次访问~";
+		mes "[��ɯ]";
+		mes "�Ժ���Ҫ����ʱ���ٴη���~";
 		close;
 	case 2:
 		.@part = EQI_GARMENT;
@@ -56,17 +58,17 @@ ba_in01,87,370,3	script	Lisa#ep172_merchant	20698,{
 	for ( .@i = 0; .@i < 4; ++.@i )
 		.@card[.@i] = getequipcardid(.@part,.@i);
 
-	mes "[丽莎]";
-	mes "如果您携带自动装备和强化模块，我们可以在装备上附魔相应的模块。";
+	mes "[��ɯ]";
+	mes "�����Я���Զ�װ����ǿ��ģ�飬���ǿ�����װ���ϸ�ħ��Ӧ��ģ�顣";
 	next;
-	mes "[丽莎]";
+	mes "[��ɯ]";
 	mes strcharinfo(0) + ".";
-	mes "请选择您要使用的模块等级。";
+	mes "��ѡ����Ҫʹ�õ�ģ��ȼ���";
 	next;
-	switch( select( "取消", "普通等级", "稀有等级", "独特等级", "传奇等级", "史诗1级", "史诗2级", "史诗3级" ) ) {
+	switch( select( "ȡ��", "��ͨ�ȼ�", "ϡ�еȼ�", "���صȼ�", "����ȼ�", "ʷʫ1��", "ʷʫ2��", "ʷʫ3��" ) ) {
 	case 1:
-		mes "[丽莎]";
-		mes "停止谈话。";
+		mes "[��ɯ]";
+		mes "̸ֹͣ����";
 		close;
 	case 2:
 		setarray .@module_etc[0],1000105,1000106,1000107,1000108,1000109,1000110,1000111,1000112;
@@ -106,31 +108,31 @@ ba_in01,87,370,3	script	Lisa#ep172_merchant	20698,{
 	}
 	.@s = select(.@menu$) - 2;
 	if (.@s == -1) {
-		mes "[丽莎]";
-		mes "停止谈话。";
+		mes "[��ɯ]";
+		mes "̸ֹͣ����";
 		close;
 	}
 	.@module_id = .@module_etc[.@s];
 
 	if (countitem(.@module_id) < 1) {
-		mes "[丽莎]";
-		mes "您的库存中必须拥有一个与继续升级功能相匹配的模块。";
+		mes "[��ɯ]";
+		mes "���Ŀ���б���ӵ��һ�����������������ƥ���ģ�顣";
 		close;
 	}
 	if (.@equip_required[0] != .@equip_id && .@equip_required[1] != .@equip_id) {
-		mes "[丽莎]";
-		mes "请确保您已配备了您想要增强的适当的自动化设备。";
+		mes "[��ɯ]";
+		mes "��ȷ�������䱸������Ҫ��ǿ���ʵ����Զ����豸��";
 		close;
 	}
 	if (.@card[1] > 0) {
-		mes "[丽莎]";
-		mes "该自动设备已达到最大容量。";
-		mes "请尝试其他自动设备。";
+		mes "[��ɯ]";
+		mes "���Զ��豸�Ѵﵽ���������";
+		mes "�볢�������Զ��豸��";
 		close;
 	}
 	if (.@module_id < 1000105 || .@module_id == 1000150 || .@module_id == 1000151 || (.@module_id >= 1000203 && .@module_id != 1000207 && .@module_id != 1000208)) {
-		mes "[丽莎]";
-		mes "发生未知错误。";
+		mes "[��ɯ]";
+		mes "����δ֪����";
 		close;
 	}
 
@@ -163,8 +165,8 @@ ba_in01,87,370,3	script	Lisa#ep172_merchant	20698,{
 	.@data_index = inarray(.@module_etc_data, .@module_id);
 
 	if (.@data_index == -1) {
-		mes "[丽莎]";
-		mes "您不能将该模块附魔到该自动设备上。";
+		mes "[��ɯ]";
+		mes "�����ܽ���ģ�鸽ħ�����Զ��豸�ϡ�";
 		close;
 	}
 	// Max number of the selected module allowed
@@ -183,22 +185,22 @@ ba_in01,87,370,3	script	Lisa#ep172_merchant	20698,{
 	// Check the count of the corresponding enchant in card slots
 	.@enchant_id = .@auto_module[.@module_id];
 	if (.@enchant_id == 0) {
-		mes "[丽莎]";
-		mes "发生未知错误。";
+		mes "[��ɯ]";
+		mes "����δ֪����";
 		close;
 	}
 	if (countinarray(.@card[0], .@enchant_id) >= .@max_module) {
-		mes "[丽莎]";
-		mes "该自动化设备已经最大限度地增强了该模块的性能。";
-		mes "请尝试另一个模块。";
+		mes "[��ɯ]";
+		mes "���Զ����豸�Ѿ�����޶ȵ���ǿ�˸�ģ������ܡ�";
+		mes "�볢����һ��ģ�顣";
 		close;
 	}
-	mes "[丽莎]";
-	mes "您确定要使用 <<<CLR1>>>" + .@equip_name$ + "^000000 来增强您的 ^000000" + getitemname(.@module_id) + "^000000 吗？此过程无法逆转。";
+	mes "[��ɯ]";
+	mes "��ȷ��Ҫʹ�� <<<CLR1>>>" + .@equip_name$ + "^000000 ����ǿ���� ^000000" + getitemname(.@module_id) + "^000000 �𣿴˹����޷���ת��";
 	next;
-	if (select( "等等...不要", "我确定。做吧。" ) == 1) {
-		mes "[丽莎]";
-		mes "停止谈话。";
+	if (select( "�ȵ�...��Ҫ", "��ȷ�������ɡ�" ) == 1) {
+		mes "[��ɯ]";
+		mes "̸ֹͣ����";
 		close;
 	}
 	delitem .@module_id,1;
@@ -214,40 +216,40 @@ ba_in01,87,370,3	script	Lisa#ep172_merchant	20698,{
 	}
 	delequip .@part;
 	getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];
-	mes "[丽莎]";
-	mes "哇啊啊啊~我已经感受到你的自动装备的威力了~！";
+	mes "[��ɯ]";
+	mes "�۰�����~���Ѿ����ܵ�����Զ�װ����������~��";
 	close;
 }
 
 //= Merchants
 -	marketshop	ep172littlemanager00	-1,1000227:172:999999
 
-ba_in01,87,386,3	script	Child Manager ��#ep172_pet	EP17_2_CHILD_ADMIN1,{
+ba_in01,87,386,3	script	Child Manager &#65533;&#65533;#ep172_pet	EP17_2_CHILD_ADMIN1,{
 	if (checkweight(1201,3) == 0) {
-		mes "- 你的物品太多了。";
-		mes "请清理您的库存并重试。 -";
+		mes "- �����Ʒ̫���ˡ�";
+		mes "���������Ŀ�沢���ԡ� -";
 		close;
 	}
-	mes "[儿童经理��]";
-	mes "我有一大堆小东西！";
+	mes "[��ͯ����&#65533;&#65533;]";
+	mes "����һ���С������";
 	next;
-	switch( select( "小经理", "云棉", "小头饰", "取消" ) ) {
+	switch( select( "С����", "����", "Сͷ��", "ȡ��" ) ) {
 	case 1:
-		mes "[儿童经理��]";
-		mes "如果你想和小经理一起玩，就需要30张Barmeal门票。";
+		mes "[��ͯ����&#65533;&#65533;]";
+		mes "��������С����һ���棬����Ҫ30��Barmeal��Ʊ��";
 		next;
-		if (select( "交换。", "停止。" ) == 2) {
-			mes "[儿童经理��]";
-			mes "那么，到了我玩的时间了！";
+		if (select( "������", "ֹͣ��" ) == 2) {
+			mes "[��ͯ����&#65533;&#65533;]";
+			mes "��ô�����������ʱ���ˣ�";
 			close;
 		}
 		if (countitem(1000103) < 30) {
-			mes "[儿童经理��]";
-			mes "就像我说的，如果你想和小经理一起玩，你需要30张Barmeal门票！";
+			mes "[��ͯ����&#65533;&#65533;]";
+			mes "������˵�ģ���������С����һ���棬����Ҫ30��Barmeal��Ʊ��";
 			close;
 		}
-		mes "[儿童经理��]";
-		mes "和你的新朋友一起玩得开心！";
+		mes "[��ͯ����&#65533;&#65533;]";
+		mes "�����������һ����ÿ��ģ�";
 		delitem 1000103,30;
 		getitem 9123,1;
 		close;
@@ -258,8 +260,8 @@ ba_in01,87,386,3	script	Child Manager ��#ep172_pet	EP17_2_CHILD_ADMIN1,{
 		callshop "barter_Ep_17_2_C_Admin_Acc";
 		end;
 	case 4:
-		mes "[儿童经理��]";
-		mes "那么，到了我玩的时间了！";
+		mes "[��ͯ����&#65533;&#65533;]";
+		mes "��ô�����������ʱ���ˣ�";
 		close;
 	}
 	end;
@@ -269,9 +271,9 @@ ba_in01,87,386,3	script	Child Manager ��#ep172_pet	EP17_2_CHILD_ADMIN1,{
 -	marketshop	ep172cubeshop00	-1,100251:10000000:-1,100252:30000000:-1
 
 ba_in01,87,376,3	script	Cube Lane#ep172cube	4_EP17_GUARD_B,{
-	mes "[方块巷]";
-	mes "我们提供强化方块，可将您的^0000CD+4^000000幻象和自动装备瞬间提升至^FF0000+7^000000！";
-	mes "瓦蒙特无疑是世界上最好的男人！";
+	mes "[������]";
+	mes "�����ṩǿ�����飬�ɽ�����^0000CD+4^000000������Զ�װ��˲��������^FF0000+7^000000��";
+	mes "��������������������õ����ˣ�";
 	close2;
 	callshop "ep172cubeshop00";
 	end;
@@ -287,27 +289,27 @@ ba_in01,87,373,3	script	Spiera#ep172_soapstone	MD_ASSISTANT,{
 ba_in01,87,383,3	script	Yeoncheong#equipment_exchange	4_EP17_CLEANER_W,{
 	if (checkweight(1201,3) == 0) {
 		cutin "ep172_omega.bmp",2;
-		mes "[延清]";
-		mes "袋子已经满了。在再次交谈之前，请检查您所携带物品的重量和数量。";
+		mes "[����]";
+		mes "�����Ѿ����ˡ����ٴν�̸֮ǰ����������Я����Ʒ��������������";
 		close3;
 	}
 	disable_items;
 	cutin "ep172_omega",2;
-	mes "[延清]";
-	mes "我们接受 Barmeal 门票，用于将您的幻象装备升级为自动装备。";
-	mes "你想交换什么？";
+	mes "[����]";
+	mes "���ǽ��� Barmeal ��Ʊ�����ڽ����Ļ���װ������Ϊ�Զ�װ����";
+	mes "���뽻��ʲô��";
 	next;
-	switch( select( "交换信息", "自动设备交换", "自动配件交换", "退出" ) ) {
+	switch( select( "������Ϣ", "�Զ��豸����", "�Զ��������", "�˳�" ) ) {
 	case 1:
-		mes "[延清]";
-		mes "您可以将^0000CD+9幻象装甲、引擎或腿部以及900张麦芽券^000000兑换成^FF0000自动装甲、引擎或腿部^000000。";
+		mes "[����]";
+		mes "�����Խ�^0000CD+9����װ�ס�������Ȳ��Լ�900����ѿȯ^000000�һ���^FF0000�Զ�װ�ס�������Ȳ�^000000��";
 		next;
-		mes "[延清]";
-		mes "^FF0000自动配件^000000可以兑换^0000CD幻象配件和1500张Barmeal券^000000。";
+		mes "[����]";
+		mes "^FF0000�Զ����^000000���Զһ�^0000CD���������1500��Barmealȯ^000000��";
 		next;
-		mes "[延清]";
-		mes "你想要兑换的装备必须在你的库存里，然后跟我说。";
-		mes "^FF0000仅携带一件您想要交换的装备并继续。^000000";
+		mes "[����]";
+		mes "����Ҫ�һ���װ����������Ŀ���Ȼ�����˵��";
+		mes "^FF0000��Я��һ������Ҫ������װ����������^000000";
 		close3;
 	case 2:
 		.@shop$ = "barter_auto_equip_1";
@@ -316,13 +318,13 @@ ba_in01,87,383,3	script	Yeoncheong#equipment_exchange	4_EP17_CLEANER_W,{
 		.@shop$ = "barter_auto_equip_2";
 		break;
 	case 4:
-		mes "[延清]";
-		mes "亲爱的客人，祝你有美好的一天~";
+		mes "[����]";
+		mes "�װ��Ŀ��ˣ�ף�������õ�һ��~";
 		close3;
 	}
-	mes "[延清]";
-	mes "^FF0000仅携带一件您想要交换的装备并继续。^000000";
-	mes "如果你的库存中有多件装备，符合条件的话会随机兑换。";
+	mes "[����]";
+	mes "^FF0000��Я��һ������Ҫ������װ����������^000000";
+	mes "�����Ŀ�����ж��װ�������������Ļ�������һ���";
 	close2;
 	cutin "",255;
 	callshop .@shop$;
@@ -333,48 +335,48 @@ ba_in01,87,383,3	script	Yeoncheong#equipment_exchange	4_EP17_CLEANER_W,{
 ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 	if (checkweight(1201,3) == 0) {
 		cutin "ep172_omega",2;
-		mes "[醴泉]";
-		mes "袋子已经满了。在再次交谈之前，请检查您所携带物品的重量和数量。";
+		mes "[��Ȫ]";
+		mes "�����Ѿ����ˡ����ٴν�̸֮ǰ����������Я����Ʒ��������������";
 		close3;
 	}
 	disable_items;
 	cutin "ep172_omega",2;
-	mes "[醴泉]";
-	mes "我可以给你提供自动模块、物理自动提升装置、魔法自动提升装置。它将帮助您提高自动化设备的能力。";
+	mes "[��Ȫ]";
+	mes "�ҿ��Ը����ṩ�Զ�ģ�顢�����Զ�����װ�á�ħ���Զ�����װ�á���������������Զ����豸��������";
 	next;
 	cutin "",255;
-	switch( select( "更多信息。", "获取自动模块", "获取物理自动提升装置", "获取魔法自动提升装置", "取消" ) ) {
+	switch( select( "������Ϣ��", "��ȡ�Զ�ģ��", "��ȡ�����Զ�����װ��", "��ȡħ���Զ�����װ��", "ȡ��" ) ) {
 	case 1:
 		cutin "ep172_omega",2;
-		mes "[醴泉]";
-		mes "您可以用^0000CD90张Barmeal券^000000获得^FF0000自动模块^000000。我会给你一个随机的自动模块，不包括史诗级模块。";
+		mes "[��Ȫ]";
+		mes "��������^0000CD90��Barmealȯ^000000���^FF0000�Զ�ģ��^000000���һ����һ��������Զ�ģ�飬������ʷʫ��ģ�顣";
 		next;
-		mes "[醴泉]";
-		mes "我还提供^FF0000物理自动强化装置和魔法自动强化装置^000000。您可以用它兑换^0000CD45 Barmeal券^000000，或^0000CD1500000 Zeny^000000。";
+		mes "[��Ȫ]";
+		mes "�һ��ṩ^FF0000�����Զ�ǿ��װ�ú�ħ���Զ�ǿ��װ��^000000�������������һ�^0000CD45 Barmealȯ^000000����^0000CD1500000 Zeny^000000��";
 		next;
-		mes "[醴泉]";
-		mes "那么，战斗专精的客人，就放心地提升自己的能力吧。";
+		mes "[��Ȫ]";
+		mes "��ô��ս��ר���Ŀ��ˣ��ͷ��ĵ������Լ��������ɡ�";
 		close3;
 	case 2:
 		.@price = 90;
 		cutin "ep172_omega",2;
-		mes "[醴泉]";
-		mes "我将用 1 个随机自动模块（不包括史诗级模块）来交换 " + .@price + " " + mesitemlink(1000103) + ".";
+		mes "[��Ȫ]";
+		mes "�ҽ��� 1 ������Զ�ģ�飨������ʷʫ��ģ�飩������ " + .@price + " " + mesitemlink(1000103) + ".";
 		next;
 		cutin "",255;
-		if (select( "兑换Barmeal券。", "不兑换" ) == 2) {
-			mes "[醴泉]";
-			mes "交易结束。";
+		if (select( "�һ�Barmealȯ��", "���һ�" ) == 2) {
+			mes "[��Ȫ]";
+			mes "���׽�����";
 			close3;
 		}
 		cutin "ep172_omega",2;
 		if (countitem(1000103) < .@price) {
-			mes "[醴泉]";
-			mes "您没有足够的 Barmeal 门票用于兑换。";
+			mes "[��Ȫ]";
+			mes "��û���㹻�� Barmeal ��Ʊ���ڶһ���";
 			close3;
 		}
-		mes "[醴泉]";
-		mes "我把它换成了一个随机的自动模块。";
+		mes "[��Ȫ]";
+		mes "�Ұ���������һ��������Զ�ģ�顣";
 		delitem 1000103,.@price;
 		getitem rand(1000105,1000149),1;
 		close3;
@@ -382,16 +384,16 @@ ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 		.@price = 45;
 		.@zeny = 1500000;
 		cutin "ep172_omega",2;
-		mes "[醴泉]";
-		mes "我会将《^FF00001个物理自动提升装置^000000换成" + .@price + " " + mesitemlink(1000103) + "或" + .@zeny + " Zeny。";
+		mes "[��Ȫ]";
+		mes "�һὫ��^FF00001�������Զ�����װ��^000000����" + .@price + " " + mesitemlink(1000103) + "��" + .@zeny + " Zeny��";
 		next;
 		cutin "",255;
-		switch( select( "兑换 Barmeal 券。", "兑换 1500000 Zeny。", "不兑换。" ) ) {
+		switch( select( "�һ� Barmeal ȯ��", "�һ� 1500000 Zeny��", "���һ���" ) ) {
 		case 1:
 			cutin "ep172_omega",2;
 			if (countitem(1000103) < .@price) {
-				mes "[醴泉]";
-				mes "您没有足够的 Barmeal 门票用于兑换。";
+				mes "[��Ȫ]";
+				mes "��û���㹻�� Barmeal ��Ʊ���ڶһ���";
 				close3;
 			}
 			delitem 1000103,.@price;
@@ -399,19 +401,19 @@ ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 		case 2:
 			cutin "ep172_omega",2;
 			if (Zeny < .@zeny) {
-				mes "[醴泉]";
-				mes "您没有足够的 Zeny 来进行兑换。";
+				mes "[��Ȫ]";
+				mes "��û���㹻�� Zeny �����жһ���";
 				close3;
 			}
 			Zeny -= .@zeny;
 			break;
 		case 3:
-			mes "[醴泉]";
-			mes "交易结束。";
+			mes "[��Ȫ]";
+			mes "���׽�����";
 			close3;
 		}
-		mes "[醴泉]";
-		mes "我用它兑换了随机的体质自动提升装置一件。";
+		mes "[��Ȫ]";
+		mes "�������һ�������������Զ�����װ��һ����";
 		.@r = rand(100);
 		if (.@r < 50)
 			getitem 100164,1;
@@ -424,16 +426,16 @@ ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 		.@price = 45;
 		.@zeny = 1500000;
 		cutin "ep172_omega",2;
-		mes "[醴泉]";
-		mes "我会将《^FF00001个魔法自动强化装置^000000换成" + .@price + " " + mesitemlink(1000103) + "或" + .@zeny + " Zeny。";
+		mes "[��Ȫ]";
+		mes "�һὫ��^FF00001��ħ���Զ�ǿ��װ��^000000����" + .@price + " " + mesitemlink(1000103) + "��" + .@zeny + " Zeny��";
 		next;
 		cutin "",255;
-		switch( select( "兑换 Barmeal 券。", "兑换 1500000 Zeny。", "不兑换。" ) ) {
+		switch( select( "�һ� Barmeal ȯ��", "�һ� 1500000 Zeny��", "���һ���" ) ) {
 		case 1:
 			cutin "ep172_omega",2;
 			if (countitem(1000103) < .@price) {
-				mes "[醴泉]";
-				mes "您没有足够的 Barmeal 门票用于兑换。";
+				mes "[��Ȫ]";
+				mes "��û���㹻�� Barmeal ��Ʊ���ڶһ���";
 				close3;
 			}
 			delitem 1000103,.@price;
@@ -441,19 +443,19 @@ ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 		case 2:
 			cutin "ep172_omega",2;
 			if (Zeny < .@zeny) {
-				mes "[醴泉]";
-				mes "您没有足够的 Zeny 来进行兑换。";
+				mes "[��Ȫ]";
+				mes "��û���㹻�� Zeny �����жһ���";
 				close3;
 			}
 			Zeny -= .@zeny;
 			break;
 		case 3:
-			mes "[醴泉]";
-			mes "交易结束。";
+			mes "[��Ȫ]";
+			mes "���׽�����";
 			close3;
 		}
-		mes "[醴泉]";
-		mes "我用它兑换了随机的一件魔法自动强化装置。";
+		mes "[��Ȫ]";
+		mes "�������һ��������һ��ħ���Զ�ǿ��װ�á�";
 		.@r = rand(100);
 		if (.@r < 50)
 			getitem 100167,1;
@@ -463,8 +465,8 @@ ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 			getitem 100169,1;
 		close3;
 	case 5:
-		mes "[醴泉]";
-		mes "交易结束。";
+		mes "[��Ȫ]";
+		mes "���׽�����";
 		close3;
 	}
 	end;
@@ -472,13 +474,13 @@ ba_in01,87,380,3	script	Yecheon#ep172module_trader	4_EP17_CLEANER_W,{
 
 ba_in01,87,389,2	script	Butterfly Merchant#ba_in01	4_EP17_MASTER_A,{
 	if (ep17_2_main < 8) {
-		mes "[蝴蝶商人]";
-		mes "对不起。购买蝴蝶需要注册。";
+		mes "[��������]";
+		mes "�Բ��𡣹��������Ҫע�ᡣ";
 		close;
 	}
-	mes "[蝴蝶商人]";
-	mes "欢迎。";
-	mes "您需要翅膀才能搬到巴蒙德大厦吗？";
+	mes "[��������]";
+	mes "��ӭ��";
+	mes "����Ҫ�����ܰᵽ���ɵ´�����";
 	close2;
 	callshop "barter_Teleport_Ep17_02";
 	end;

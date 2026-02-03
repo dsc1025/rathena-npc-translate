@@ -5,78 +5,80 @@
 //- NPC for skills Pushcart Decoration.
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 alberta,47,37,5	script	Cart Remodel Expert	4_M_REPAIR,{
 	.@max_skill_lvl = 1;
 	if (cart_remodel == 0) {
-		mes "[杰森]";
-		mes "原来的手推车很漂亮！";
+		mes "[��ɭ]";
+		mes "ԭ�������Ƴ���Ư����";
 		next;
-		mes "[杰森]";
-		mes "纯灰色手推车。";
+		mes "[��ɭ]";
+		mes "����ɫ���Ƴ���";
 		next;
-		mes "[杰森]";
-		mes "我可以把它改造成新的可爱的设计。";
+		mes "[��ɭ]";
+		mes "�ҿ��԰���������µĿɰ�����ơ�";
 		next;
-		switch( select( "什么是手推车装饰？", "学习手推车装饰", "结束对话框" ) ) {
+		switch( select( "ʲô�����Ƴ�װ�Σ�", "ѧϰ���Ƴ�װ��", "�����Ի���" ) ) {
 		case 1:
-			mes "[杰森]";
-			mes "我想彻底改造这辆可怜的手推车。";
+			mes "[��ɭ]";
+			mes "���볹�׸����������������Ƴ���";
 			next;
-			mes "[杰森]";
-			mes "一点点改造是不够的，你不同意吗？";
+			mes "[��ɭ]";
+			mes "һ�������ǲ����ģ��㲻ͬ����";
 			next;
-			mes "[杰森]";
-			mes "因此我发明了一些新的设计。";
+			mes "[��ɭ]";
+			mes "����ҷ�����һЩ�µ���ơ�";
 			next;
-			mes "[杰森]";
-			mes "真是可爱又清爽！";
+			mes "[��ɭ]";
+			mes "���ǿɰ�����ˬ��";
 			close;
 		case 2:
 			if (BaseClass != Job_Merchant) {
-				mes "[杰森]";
-				mes "你为什么想学习手推车装饰？别打扰我！";
+				mes "[��ɭ]";
+				mes "��Ϊʲô��ѧϰ���Ƴ�װ�Σ�������ң�";
 				close;
 			}
 			if (countitem(6606) == 0) {
-				mes "[杰森]";
-				mes "手推车装饰很难学。";
+				mes "[��ɭ]";
+				mes "���Ƴ�װ�κ���ѧ��";
 				next;
-				mes "[杰森]";
-				mes "如果你把^3131FF可爱的车改装优惠券^000000带给我，我会教你。";
+				mes "[��ɭ]";
+				mes "������^3131FF�ɰ��ĳ���װ�Ż�ȯ^000000�����ң��һ���㡣";
 				close;
 			}
-			mes "[杰森]";
-			mes "您带来了可爱的购物车改装优惠券。您确定要学习手推车装饰吗？";
+			mes "[��ɭ]";
+			mes "�������˿ɰ��Ĺ��ﳵ��װ�Ż�ȯ����ȷ��Ҫѧϰ���Ƴ�װ����";
 			next;
-			if (select("是的", "不") == 2) {
-				mes "[杰森]";
-				mes "改变主意后再来吧！";
+			if (select("�ǵ�", "��") == 2) {
+				mes "[��ɭ]";
+				mes "�ı�����������ɣ�";
 				close;
 			}
-			mes "[杰森]";
-			mes "好吧！跟我来。";
+			mes "[��ɭ]";
+			mes "�ðɣ���������";
 			next;
-			mes "[杰森]";
-			mes "这个设计";
-			mes "需要赶上手推车...";
+			mes "[��ɭ]";
+			mes "������";
+			mes "��Ҫ�������Ƴ�...";
 			next;
-			mes "[杰森]";
-			mes "这个设计";
-			mes "需要抓住手推车。";
-			mes "然后添加这个....";
+			mes "[��ɭ]";
+			mes "������";
+			mes "��Ҫץס���Ƴ���";
+			mes "Ȼ���������....";
 			mes "...";
 			next;
-			mes "[杰森]";
-			mes "你是个天才！你已经学会了！";
+			mes "[��ɭ]";
+			mes "���Ǹ���ţ����Ѿ�ѧ���ˣ�";
 			next;
-			mes "[杰森]";
-			mes "现在轮到你做这件事了。";
-			mes "按 Alt+S 更改您的手推车！";
+			mes "[��ɭ]";
+			mes "�����ֵ�����������ˡ�";
+			mes "�� Alt+S �����������Ƴ���";
 			next;
-			mes "[杰森]";
-			mes "这是新型可爱设计的手推车。你现在是我们家人的一员了……！";
+			mes "[��ɭ]";
+			mes "�������Ϳɰ���Ƶ����Ƴ��������������Ǽ��˵�һԱ�ˡ�����";
 			delitem 6606,1;	// P_Cart_C
 			cart_remodel = 1;
 			skill "MC_CARTDECORATE",1,SKILL_PERM;
@@ -85,68 +87,68 @@ alberta,47,37,5	script	Cart Remodel Expert	4_M_REPAIR,{
 			close;
 		}
 	}
-	mes "[杰森]";
-	mes "你装饰过手推车吗？";
+	mes "[��ɭ]";
+	mes "��װ�ι����Ƴ���";
 	next;
-	switch( select( "还有更多要学的吗？", "我忘记了如何装饰我的手推车" ) ) {
+	switch( select( "���и���Ҫѧ����", "�����������װ���ҵ����Ƴ�" ) ) {
 	case 1:
 		if (cart_remodel == .@max_skill_lvl) {
-			mes "[杰森]";
-			mes "不，我仍在探索新的设计。等我学会了我就教你。";
+			mes "[��ɭ]";
+			mes "����������̽���µ���ơ�����ѧ�����Ҿͽ��㡣";
 			close;
 		}
-		mes "[杰森]";
-		mes "我有东西要教，你想学吗？";
+		mes "[��ɭ]";
+		mes "���ж���Ҫ�̣�����ѧ��";
 		next;
-		mes "[杰森]";
-		mes "我需要一张^3131FF可爱的购物车改装优惠券^000000。";
+		mes "[��ɭ]";
+		mes "����Ҫһ��^3131FF�ɰ��Ĺ��ﳵ��װ�Ż�ȯ^000000��";
 		next;
-		if (select("我想学习", "否") == 2) {
-			mes "[杰森]";
-			mes "你可以随时回来。";
+		if (select("����ѧϰ", "��") == 2) {
+			mes "[��ɭ]";
+			mes "�������ʱ������";
 			close;
 		}
 		if (countitem(6606) < 0) {
-			mes "[杰森]";
-			mes "您没有可爱的购物车改装优惠券吗？";
+			mes "[��ɭ]";
+			mes "��û�пɰ��Ĺ��ﳵ��װ�Ż�ȯ��";
 			close;
 		}
-		mes "[杰森]";
-		mes "好的，我们开始吧！";
+		mes "[��ɭ]";
+		mes "�õģ����ǿ�ʼ�ɣ�";
 		next;
-		mes "[杰森]";
-		mes "这样做比较好。";
-		mes "也像这样做吧...";
+		mes "[��ɭ]";
+		mes "�������ȽϺá�";
+		mes "Ҳ����������...";
 		next;
-		mes "[杰森]";
+		mes "[��ɭ]";
 		mes "....";
-		mes "我们开始做吧！";
+		mes "���ǿ�ʼ���ɣ�";
 		next;
-		mes "[杰森]";
-		mes "我已经教你技巧了，你现在就可以尝试一下。";
+		mes "[��ɭ]";
+		mes "���Ѿ����㼼���ˣ������ھͿ��Գ���һ�¡�";
 		delitem 6606,1;	// P_Cart_C
 		cart_remodel++;
 		skill "MC_CARTDECORATE", cart_remodel ,SKILL_PERM;
 		close;
 	case 2:
-		mes "[杰森]";
-		mes "哦？让我看看。";
+		mes "[��ɭ]";
+		mes "Ŷ�����ҿ�����";
 		next;
 		if (BaseClass != Job_Merchant) {
-			mes "[杰森]";
-			mes "可以使用手推车后请再来！";
+			mes "[��ɭ]";
+			mes "����ʹ�����Ƴ�����������";
 			close;
 		}
-		mes "[杰森]";
-		mes "你不记得我教过你什么了吗？";
-		mes "这个方法我已经教给你了。";
+		mes "[��ɭ]";
+		mes "�㲻�ǵ��ҽ̹���ʲô����";
+		mes "����������Ѿ��̸����ˡ�";
 		next;
-		mes "[杰森]";
-		mes "你忘记了吗？";
-		mes "现在我们来回忆一下吧！";
+		mes "[��ɭ]";
+		mes "����������";
+		mes "��������������һ�°ɣ�";
 		next;
-		mes "[杰森]";
-		mes "仔细想想，你会再次记住它。";
+		mes "[��ɭ]";
+		mes "��ϸ���룬����ٴμ�ס����";
 		skill "MC_CARTDECORATE",1,SKILL_PERM;
 		close;
 	}

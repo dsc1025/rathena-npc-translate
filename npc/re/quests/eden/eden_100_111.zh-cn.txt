@@ -13,89 +13,91 @@
 //= 1.0 First version.
 //= 1.1 Added support to Para_Team_Mark_ in Eden Group. [Ragno]
 //= 1.2 Added use of F_HasEdenGroupMark function. [Ragno]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 	cutin "gelca01",2;
 	if (checkweight(1201,1) == 0) {
-		mes "^FF0000-警告消息-";
-		mes "- 等一下！！ -";
-		mes "- 你的物品太多了 -";
-		mes "- 无法接收物品。 -";
-		mes "- 减轻身体重量 -";
-		mes "- 请再试一次。 -^000000";
+		mes "^FF0000-������Ϣ-";
+		mes "- ��һ�£��� -";
+		mes "- �����Ʒ̫���� -";
+		mes "- �޷�������Ʒ�� -";
+		mes "- ������������ -";
+		mes "- ������һ�Ρ� -^000000";
 		close2;
 		cutin "",255;
 		end;
 	}
-	mes "[格尔卡]";
+	mes "[�����]";
 	if (!callfunc("F_HasEdenGroupMark")) {
-		mes "请出示证据，证明您是 Eden Group 的成员，否则我与您没有任何关系。";
-		mes "我正在向基础等级^FF0000100 - 110^000000冒险家发出请求。";
+		mes "���ʾ֤�ݣ�֤������ Eden Group �ĳ�Ա������������û���κι�ϵ��";
+		mes "������������ȼ�^FF0000100 - 110^000000ð�ռҷ�������";
 	}
 	else if (BaseLevel < 100) {
-		mes "你还不是一个足够成熟的冒险家。你的基础等级至少应该达到 100 级。所以基本上至少是三级。";
+		mes "�㻹����һ���㹻�����ð�ռҡ���Ļ����ȼ�����Ӧ�ôﵽ 100 �������Ի�����������������";
 		next;
-		mes "[格尔卡]";
-		mes "该请求来自米德加德以外的^FF0000其他地方^000000。";
+		mes "[�����]";
+		mes "�����������׵¼ӵ������^FF0000�����ط�^000000��";
 	}
 	else if (BaseLevel < 111) {
 		if (para_100lv01 == 0) {
-			mes "冒险家们！";
+			mes "ð�ռ��ǣ�";
 			emotion ET_SMILE;
 			next;
 			cutin "gelca03",2;
-			mes "[格尔卡]";
-			mes "我最近收到了一些来自客户的请求，他们需要像您一样的冒险家的帮助。";
+			mes "[�����]";
+			mes "������յ���һЩ���Կͻ�������������Ҫ����һ����ð�ռҵİ�����";
 			next;
-			if (select( "我喜欢请求！", "无聊的任务...不，谢谢！" ) == 2) {
-				mes "[格尔卡]";
-				mes "您知道更困难的请求会带来更好的回报吗？";
+			if (select( "��ϲ������", "���ĵ�����...����лл��" ) == 2) {
+				mes "[�����]";
+				mes "��֪�������ѵ������������õĻر���";
 				next;
 			}
-			mes "[格尔卡]";
-			mes "事实上，我不能仅仅接受街上的任何蠢事。我的主人最讨厌优柔寡断的人。";
+			mes "[�����]";
+			mes "��ʵ�ϣ��Ҳ��ܽ������ܽ��ϵ��κδ��¡��ҵ���������������Ѷϵ��ˡ�";
 			next;
-			if (select( "谁是你的主人？", "我没有优柔寡断！" ) == 1) {
+			if (select( "˭��������ˣ�", "��û������Ѷϣ�" ) == 1) {
 				cutin "gelca03",2;
-				mes "[格尔卡]";
-				mes "站在我身边的那个人就是我的师父……他历尽千辛万苦修行回来了。";
+				mes "[�����]";
+				mes "վ�������ߵ��Ǹ��˾����ҵ�ʦ������������ǧ��������л����ˡ�";
 				next;
-				mes "[格尔卡]";
-				mes "我理解你可能想知道为什么苏拉想要大主教作为老师......";
+				mes "[�����]";
+				mes "�������������֪��Ϊʲô������Ҫ��������Ϊ��ʦ......";
 			}
 			else {
 				cutin "gelca03",2;
-				mes "[格尔卡]";
+				mes "[�����]";
 				if (BaseLevel < 110)
-					mes "你以为自己是老兵了，就因为你变成了三等兵……";
+					mes "����Ϊ�Լ����ϱ��ˣ�����Ϊ���������ȱ�����";
 				else
-					mes "我知道你不是什么新手，但我的主人认为你和新手没有什么不同。在我看来，你是一位伟大的冒险家！";
+					mes "��֪���㲻��ʲô���֣����ҵ�������Ϊ�������û��ʲô��ͬ�����ҿ���������һλΰ���ð�ռң�";
 			}
 			next;
-			mes "[格尔卡]";
-			mes "We need adventurers that are willing to help.你会帮助我们吗？";
+			mes "[�����]";
+			mes "We need adventurers that are willing to help.������������";
 			next;
 			cutin "gelca01",2;
-			if (select( "好的，我会帮忙的。", "我没有兴趣帮助你。" ) == 2) {
-				mes "[格尔卡]";
-				mes "不做怎么知道呢。";
+			if (select( "�õģ��һ��æ�ġ�", "��û����Ȥ�����㡣" ) == 2) {
+				mes "[�����]";
+				mes "������ô֪���ء�";
 			}
 			else {
-				mes "[格尔卡]";
-				mes "这就是冒险家该做的事！";
+				mes "[�����]";
+				mes "�����ð�ռҸ������£�";
 				next;
-				mes "[格尔卡]";
-				mes "我想知道您是否有能力执行请求。让我看看...";
+				mes "[�����]";
+				mes "����֪�����Ƿ�������ִ���������ҿ���...";
 				next;
-				mes "[格尔卡]";
-				mes "收集50个^ff0000Brigan。^000000这是一个简单又复杂的测试。";
+				mes "[�����]";
+				mes "�ռ�50��^ff0000Brigan��^000000����һ�����ָ��ӵĲ��ԡ�";
 				next;
-				mes "[格尔卡]";
-				mes "从海龟岛或格拉斯海姆的怪物那里很容易找到。";
+				mes "[�����]";
+				mes "�Ӻ��굺�����˹��ķ�Ĺ�������������ҵ���";
 				next;
-				mes "[格尔卡]";
-				mes "解决了简单的请求之后，我们就可以做真正的请求了。";
+				mes "[�����]";
+				mes "����˼򵥵�����֮�����ǾͿ����������������ˡ�";
 				setquest 13002;// Brigan collecting
 				para_100lv01 = 1;
 				para_100lv02 += 1;
@@ -103,35 +105,35 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 		}
 		else if (para_100lv01 == 1) {
 			if (countitem(7054) > 49) {// Brigan
-				mes "我要的布里根人你都带来了吗？";
+				mes "��Ҫ�Ĳ�������㶼��������";
 				next;
-				mes "[格尔卡]";
-				mes "我不需要一一数。这个请求是为了选出最好的冒险者。";
+				mes "[�����]";
+				mes "�Ҳ���Ҫһһ�������������Ϊ��ѡ����õ�ð���ߡ�";
 				next;
-				mes "[格尔卡]";
-				mes "请不要沮丧，因为如果冒险家在请求期间受伤，主人负有最终责任。";
+				mes "[�����]";
+				mes "�벻Ҫ��ɥ����Ϊ���ð�ռ��������ڼ����ˣ����˸����������Ρ�";
 				next;
-				mes "[格尔卡]";
-				mes "Master认为冒险者的安全很重要，因为许多新的请求都是危险的。";
+				mes "[�����]";
+				mes "Master��Ϊð���ߵİ�ȫ����Ҫ����Ϊ�����µ�������Σ�յġ�";
 				next;
 				cutin "rote01",2;
-				mes "[罗特特]";
-				mes "唔...";
+				mes "[������]";
+				mes "��...";
 				emotion ET_HNG, getnpcid(0, "Rohtert#12");
 				next;
 				cutin "gelca01",2;
-				mes "[格尔卡]";
-				mes "我希望你没有偷看。对您满足标准要求的能力的评估即将完成。";
+				mes "[�����]";
+				mes "��ϣ����û��͵�������������׼Ҫ�������������������ɡ�";
 				next;
-				mes "[格尔卡]";
-				mes "没时间制作^ff0000高级伊甸集团的徽章。^000000";
+				mes "[�����]";
+				mes "ûʱ������^ff0000�߼����鼯�ŵĻ��¡�^000000";
 				next;
-				mes "[格尔卡]";
-				mes "^ff0000新手时间就是金钱！^000000";
-				mes "我想这才是真正的大师应该有的样子吧？";
+				mes "[�����]";
+				mes "^ff0000����ʱ����ǽ�Ǯ��^000000";
+				mes "��������������Ĵ�ʦӦ���е����Ӱɣ�";
 				next;
-				mes "[格尔卡]";
-				mes strcharinfo(0) +"我会为你列出一份请求清单，所以现在就去和我的主人交谈并表达你的敬意。";
+				mes "[�����]";
+				mes strcharinfo(0) +"�һ�Ϊ���г�һ�������嵥���������ھ�ȥ���ҵ����˽�̸��������ľ��⡣";
 				delitem 7054,50;// Brigan
 				completequest 13002;// Brigan collecting
 				para_100lv01 = 2;
@@ -139,478 +141,478 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 			}
 			else {
 				cutin "gelca02",2;
-				mes "还没找到 50 Brigan 吗？师父说这是多么简单的事情啊……";
+				mes "��û�ҵ� 50 Brigan ��ʦ��˵���Ƕ�ô�򵥵����鰡����";
 				next;
-				mes "[格尔卡]";
-				mes "请快点！我们需要一个真正的冒险家来执行这个请求。";
+				mes "[�����]";
+				mes "���㣡������Ҫһ��������ð�ռ���ִ���������";
 			}
 		}
 		else if (para_100lv01 == 2)
-			mes "等一下。我正在制作一份请求清单。我只是不知道该给你哪一份。我是个好人。";
+			mes "��һ�¡�����������һ�������嵥����ֻ�ǲ�֪���ø�����һ�ݡ����Ǹ����ˡ�";
 		else if (para_100lv01 > 2) {
-			mes "请求列表已准备就绪。你想开始吗？";
+			mes "�����б���׼�����������뿪ʼ��";
 			next;
-			switch( select( "狩猎任务", "询问问候", "出示善意通行证" ) ) {
-				mes "[格尔卡]";
+			switch( select( "��������", "ѯ���ʺ�", "��ʾ����ͨ��֤" ) ) {
+				mes "[�����]";
 			case 1:
-				mes "您不需要一次接受所有请求。选择适合您特定技能的请求领域。它使您能够在执行请求的同时享受旅程。";
+				mes "������Ҫһ�ν�����������ѡ���ʺ����ض����ܵ�����������ʹ���ܹ���ִ�������ͬʱ�����ó̡�";
 				next;
-				switch( select( "格拉斯海姆相关请求", "灰烬真空相关请求", "冰之迷宫相关请求", "岩浆迷宫相关请求", "其他请求" ) ) {
-					mes "[格尔卡]";
+				switch( select( "����˹��ķ�������", "�ҽ�����������", "��֮�Թ��������", "�ҽ��Թ��������", "��������" ) ) {
+					mes "[�����]";
 				case 1:
-					mes "以下是格拉斯海姆地区的请求。";
+					mes "�����Ǹ���˹��ķ����������";
 					next;
-					switch( select( "克拉狩猎", "Arclouse狩猎", "Anolian狩猎", "毒刺狩猎", "Majoruros狩猎" ) ) {
-						mes "[格尔卡]";
+					switch( select( "��������", "Arclouse����", "Anolian����", "��������", "Majoruros����" ) ) {
+						mes "[�����]";
 					case 1:
 						if (checkquest(13004,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。休息一会儿很重要。总会有一个请求在等待着您。";
+							mes "���ո����һ��������Ϣһ�������Ҫ���ܻ���һ�������ڵȴ�������";
 						else if (checkquest(13003,HUNTING) == 1) {
-							cutin "ĳ��ī��",3;  //carat_card
-							mes "该请求是为了清除格拉斯海姆城堡一楼内的^0000FF30^000000^FF0000克拉^000000。";
+							cutin "&#307;&#65533;&#65533;��&#65533;&#65533;",3;  //carat_card
+							mes "��������Ϊ���������˹��ķ�Ǳ�һ¥�ڵ�^0000FF30^000000^FF0000����^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "完成请求后请通知我。";
+							mes "[�����]";
+							mes "����������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13003,HUNTING) == 2) {
-							mes "参观可怕的古老城堡一定很艰难。我相信有一天这对我来说将是一次很好的经历。";
+							mes "�ιۿ��µĹ��ϳǱ�һ���ܼ��ѡ���������һ���������˵����һ�κܺõľ�����";
 							callsub S_Quest,13003,13004,106000,148000;
 						}
 						else {
-							cutin "ĳ��ī��",3;  //carat_card
-							mes "这个请求来自摩洛哥的一位商人，他不知何故从格拉斯海姆的这些怪物那里失去了生意。";
+							cutin "&#307;&#65533;&#65533;��&#65533;&#65533;",3;  //carat_card
+							mes "�����������Ħ����һλ���ˣ�����֪�ιʴӸ���˹��ķ����Щ��������ʧȥ�����⡣";
 							next;
-							mes "[格尔卡]";
-							mes "伊甸集团知道这不是一个很好的理由，但请求就是请求。所以请清除格拉斯海姆城堡内的^FF000030克拉^000000怪物。";
+							mes "[�����]";
+							mes "���鼯��֪���ⲻ��һ���ܺõ����ɣ���������������������������˹��ķ�Ǳ��ڵ�^FF000030����^000000���";
 							callsub S_Quest,13004,13003;
 						}
 						break;
 					case 2:
 						if (checkquest(13006,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。请休息一下。总会有人向你提出请求。";
+							mes "���ո����һ����������Ϣһ�¡��ܻ����������������";
 						else if (checkquest(13005,HUNTING) == 1) {
-							cutin "��ũ��콺ī��",3;  //arclouse_card
-							mes "请清除^FF000022 Arclouse^000000。";
+							cutin "&#65533;&#65533;&#361;&#65533;&#65533;&#53114;��&#65533;&#65533;",3;  //arclouse_card
+							mes "�����^FF000022 Arclouse^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13005,HUNTING) == 2) {
-							mes "你做得很好。";
+							mes "�����úܺá�";
 							emotion ET_BEST;
 							callsub S_Quest,13005,13006,106000,148000;
 						}
 						else {
-							cutin "��ũ��콺ī��",3;  //arclouse_card
-							mes "你知道米德加德有豆子作为食物吗？当Arclouse滚动时，它就像一颗豆子。";
+							cutin "&#65533;&#65533;&#361;&#65533;&#65533;&#53114;��&#65533;&#65533;",3;  //arclouse_card
+							mes "��֪���׵¼ӵ��ж�����Ϊʳ���𣿵�Arclouse����ʱ��������һ�Ŷ��ӡ�";
 							next;
-							mes "[格尔卡]";
-							mes "伊甸园集团总部希望研究Arclouse作为可能的吉祥物。";
+							mes "[�����]";
+							mes "����԰�����ܲ�ϣ���о�Arclouse��Ϊ���ܵļ����";
 							next;
-							mes "[格尔卡]";
-							mes "请清除^FF000022 Arclouse^000000。";
+							mes "[�����]";
+							mes "�����^FF000022 Arclouse^000000��";
 							if (callsub( S_Quest,13006,13005 ) == 0) {
-								mes "[格尔卡]";
-								mes "那太糟糕了。这是一个有趣的请求。";
+								mes "[�����]";
+								mes "��̫����ˡ�����һ����Ȥ������";
 							}
 						}
 						break;
 					case 3:
 						if (checkquest(13008,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。总会有一个请求在等待。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ���ܻ���һ�������ڵȴ���";
 						else if (checkquest(13007,HUNTING) == 1) {
-							cutin "�Ƴ��ī��",3;  //anolian_card
-							mes "一名僧侣正在朝圣，并寻求保护以免受一些类似鳄鱼的生物的侵害。";
+							cutin "&#65533;&#435;&#60974;&#65533;&#65533;��&#65533;&#65533;",3;  //anolian_card
+							mes "һ��ɮ�����ڳ�ʥ����Ѱ�󱣻�������һЩ���������������ֺ���";
 							next;
-							mes "[格尔卡]";
-							mes "不管怎样，这个请求是为了清除地下水道中的阿诺利亚人，为安全朝圣让路。";
+							mes "[�����]";
+							mes "�������������������Ϊ���������ˮ���еİ�ŵ�����ˣ�Ϊ��ȫ��ʥ��·��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13007,HUNTING) == 2) {
-							mes "你对这个要求表现得很好。";
+							mes "������Ҫ����ֵúܺá�";
 							callsub S_Quest,13007,13008,112000,186500;
 						}
 						else {
-							cutin "�Ƴ��ī��",3;  //anolian_card
-							mes "格拉斯海姆似乎不仅对冒险家来说，而且对僧侣来说都是一个不错的圣地。我不知道那里真正吸引他们的是什么。";
+							cutin "&#65533;&#435;&#60974;&#65533;&#65533;��&#65533;&#65533;",3;  //anolian_card
+							mes "����˹��ķ�ƺ�������ð�ռ���˵�����Ҷ�ɮ����˵����һ��������ʥ�ء��Ҳ�֪�����������������ǵ���ʲô��";
 							next;
-							mes "[格尔卡]";
-							mes "从修道院到地下水道的朝圣是一段旅程。请求是清除格拉斯海姆下水道中的^FF000030 Anolian^000000以进行安全朝圣。";
+							mes "[�����]";
+							mes "���޵�Ժ������ˮ���ĳ�ʥ��һ���ó̡��������������˹��ķ��ˮ���е�^FF000030 Anolian^000000�Խ��а�ȫ��ʥ��";
 							callsub S_Quest,13008,13007;
 						}
 						break;
 					case 4:
 						if (checkquest(13010,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。总会有一个请求在等待。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ���ܻ���һ�������ڵȴ���";
 						else if (checkquest(13009,HUNTING) == 1) {
-							cutin "����ī��",3;  //sting_card
-							mes "地下水道和地下洞穴里有很多刺怪，很容易清除。";
+							cutin "&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //sting_card
+							mes "����ˮ���͵��¶�Ѩ���кܶ�̹֣������������";
 							next;
-							mes "[格尔卡]";
-							mes "请求是清除地下水道和地下洞穴中的^FF000030 Sting^000000以安全朝圣。";
+							mes "[�����]";
+							mes "�������������ˮ���͵��¶�Ѩ�е�^FF000030 Sting^000000�԰�ȫ��ʥ��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13009,HUNTING) == 2) {
-							mes "参观又脏又臭的地下一定很艰难。这对您来说将是一次很好的经历。";
+							mes "�ι������ֳ��ĵ���һ���ܼ��ѡ��������˵����һ�κܺõľ�����";
 							callsub S_Quest,13009,13010,112000,186500;
 						}
 						else {
-							cutin "����ī��",3;  //sting_card
-							mes "你听说过和尚朝圣吗？地下水道和洞穴里有很多蜇虫，扰乱了平静的僧人。";
+							cutin "&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //sting_card
+							mes "����˵�����г�ʥ�𣿵���ˮ���Ͷ�Ѩ���кܶ��س棬������ƽ����ɮ�ˡ�";
 							next;
-							mes "[格尔卡]";
-							mes "师父接受了这个请求，因为他尊重那些僧人。请求是清除地下水道中的^FF000030个毒刺^000000怪物，以安全朝圣。";
+							mes "[�����]";
+							mes "ʦ�����������������Ϊ��������Щɮ�ˡ��������������ˮ���е�^FF000030������^000000����԰�ȫ��ʥ��";
 							callsub S_Quest,13010,13009;
 						}
 						break;
 					case 5:
 						if (checkquest(13012,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。朝圣还将继续，因此还会有另一个请求。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ����ʥ������������˻�������һ������";
 						else if (checkquest(13011,HUNTING) == 1) {
-							cutin "��������ν�ī��",3;  //majoruros_card
-							mes "我想知道这些僧人朝圣的原因是什么，为什么他们一直这样做……一定有一个隐藏的原因。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;��&#65533;��&#65533;&#65533;",3;  //majoruros_card
+							mes "����֪����Щɮ�˳�ʥ��ԭ����ʲô��Ϊʲô����һֱ����������һ����һ�����ص�ԭ��";
 							next;
-							mes "[格尔卡]";
-							mes "我曾经满足过这个请求，但我很担心。请求是清除地下洞窟二层的^FF000030个Majoruros^000000。";
+							mes "[�����]";
+							mes "�����������������󣬵��Һܵ��ġ�������������¶��߶����^FF000030��Majoruros^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13011,HUNTING) == 2) {
-							mes "长途朝圣一定会很累。";
-							mes "这对您来说将是一次很好的经历。";
+							mes "��;��ʥһ������ۡ�";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13011,13012,112000,252000;
 						}
 						else {
-							cutin "��������ν�ī��",3;  //majoruros_card
-							mes "修道士的朝圣目的地位于格拉斯海姆城堡地下洞穴的二楼。这不是一次轻松的旅程，但将是一次很好的经历。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;��&#65533;��&#65533;&#65533;",3;  //majoruros_card
+							mes "�޵�ʿ�ĳ�ʥĿ�ĵ�λ�ڸ���˹��ķ�Ǳ����¶�Ѩ�Ķ�¥���ⲻ��һ�����ɵ��ọ́�������һ�κܺõľ�����";
 							next;
-							mes "[格尔卡]";
-							mes "Majoururos 并不容易狩猎，所以要小心。请求是清除地下洞窟二层的《<<CLR0>>>30个Majoruros^000000。";
+							mes "[�����]";
+							mes "Majoururos �����������ԣ�����ҪС�ġ�������������¶��߶���ġ�<<CLR0>>>30��Majoruros^000000��";
 							callsub S_Quest,13012,13011;
 						}
 					}
 					break;
 				case 2:
-					mes "米德加德远征队收到了许多请求。";
+					mes "�׵¼ӵ�Զ�����յ�����������";
 					next;
-					if (select( "狩猎任务","创伤" ) == 1) {
-						mes "[格尔卡]";
+					if (select( "��������","����" ) == 1) {
+						mes "[�����]";
 						if (checkquest(13014,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。请休息一下。总会有人向你提出请求。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ������Ϣһ�¡��ܻ����������������";
 						else if (checkquest(13013,HUNTING) == 1) {
-							cutin "�ɱ�ŧ��ī��",3;  //pinguicula_card
-							mes "出境空间很神秘。怪物是独一无二的。";
+							cutin "&#65533;&#625;&#65533;&#359;&#65533;&#65533;��&#65533;&#65533;",3;  //pinguicula_card
+							mes "�����ռ�����ء������Ƕ�һ�޶��ġ�";
 							next;
-							mes "[格尔卡]";
-							mes "这是一个不寻常的要求。请清除^FF000030 Pinguicula^000000。";
+							mes "[�����]";
+							mes "����һ����Ѱ����Ҫ�������^FF000030 Pinguicula^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13013,HUNTING) == 2) {
-							mes "参观灰烬真空吸尘器一定很困难。";
-							mes "这对您来说将是一次很好的经历。";
+							mes "�ιۻҽ����������һ�������ѡ�";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13013,13014,106000,148000;
 						}
 						else {
-							cutin "�ɱ�ŧ��ī��",3;  //pinguicula_card
-							mes "Pinguicula 是冒险者踏入灰真空时首先遇到的怪物之一。他们希望我们能减少探险营地周围的怪物。";
+							cutin "&#65533;&#625;&#65533;&#359;&#65533;&#65533;��&#65533;&#65533;",3;  //pinguicula_card
+							mes "Pinguicula ��ð����̤������ʱ���������Ĺ���֮һ������ϣ�������ܼ���̽��Ӫ����Χ�Ĺ��";
 							next;
-							mes "[格尔卡]";
-							mes "遇到新怪物自然会出现更多的意外。这是一个常见的要求。请清除^FF000030 Pinguicula^000000。";
+							mes "[�����]";
+							mes "�����¹�����Ȼ����ָ�������⡣����һ��������Ҫ�������^FF000030 Pinguicula^000000��";
 							callsub S_Quest,13014,13013;
 						}
 					}
 					else {
-						mes "[格尔卡]";
+						mes "[�����]";
 						if (checkquest(13016,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。请休息一下。这个要求不值得这么辛苦。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ������Ϣһ�¡����Ҫ��ֵ����ô���ࡣ";
 						else if (checkquest(13015,HUNTING) == 1) {
-							cutin "��ÿö󺣽���ī��",3;  //luciola_vespa_card
-							mes "这是一个奇怪的要求和一个奇怪的理由，但无论如何我们都应该接受它。";
+							cutin "&#65533;&#65533;&#255;&#246;&#1026301;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //luciola_vespa_card
+							mes "����һ����ֵ�Ҫ���һ����ֵ����ɣ�������������Ƕ�Ӧ�ý�������";
 							next;
-							mes "[格尔卡]";
-							mes "请清除^FF000030 Luciola Vespa^000000。";
+							mes "[�����]";
+							mes "�����^FF000030 Luciola Vespa^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13015,HUNTING) == 2) {
-							mes "做出这样奇怪的要求一定很困难吧。";
+							mes "����������ֵ�Ҫ��һ�������Ѱɡ�";
 							callsub S_Quest,13015,13016,112000,186500;
 						}
 						else {
-							cutin "��ÿö󺣽���ī��",3;  //luciola_vespa_card
-							mes "这是一个非常个人化的要求。虽然很不寻常，但这个请求是来自与罗赫特特友好的冒险家……是漂亮男孩的请求。他为什么写这个？";
+							cutin "&#65533;&#65533;&#255;&#246;&#1026301;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //luciola_vespa_card
+							mes "����һ���ǳ����˻���Ҫ����Ȼ�ܲ�Ѱ����������������������޺������Ѻõ�ð�ռҡ�����Ư���к���������Ϊʲôд�����";
 							next;
-							mes "[格尔卡]";
-							mes "他年轻时被蜜蜂蛰过，这太私人了。这对他造成了创伤，所以他无法前往灰烬真空。";
+							mes "[�����]";
+							mes "������ʱ���۷��ݹ�����̫˽���ˡ����������˴��ˣ��������޷�ǰ���ҽ���ա�";
 							next;
-							mes "格尔卡盯着罗特特。";
+							mes "��������������ء�";
 							next;
-							mes "[格尔卡]";
-							mes "这似乎是对更多前往新世界的旅行者的要求。请清除^FF000030 Luciola Vespa^000000。";
+							mes "[�����]";
+							mes "���ƺ��ǶԸ���ǰ��������������ߵ�Ҫ�������^FF000030 Luciola Vespa^000000��";
 							callsub S_Quest,13016,13015;
 						}
 					}
 					break;
 				case 3:
-					mes "雷切尔的冰地牢附近或里面有很多请求。";
+					mes "���ж��ı����θ����������кܶ�����";
 					next;
-					switch( select( "沙漠狼狩猎", "雪地狩猎", "冰泰坦..." ) ) {
-						mes "[格尔卡]";
+					switch( select( "ɳĮ������", "ѩ������", "��̩̹..." ) ) {
+						mes "[�����]";
 					case 1:
 						if (checkquest(13018,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ��";
 						else if (checkquest(13017,HUNTING) == 1) {
-							cutin "����Ʈ����ī��",3;  //desert_wolf_card
-							mes "你读过旧书吗？这是关于一个冒险家与大狼战斗并最终建立了友谊的故事。这就是《桑巴与狼》。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#430;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //desert_wolf_card
+							mes "��������������ǹ���һ��ð�ռ������ս�������ս���������Ĺ��¡�����ǡ�ɣ�����ǡ���";
 							next;
-							mes "[格尔卡]";
-							mes "小说就是小说。请清除雷切尔冰地牢入口附近的^FF000030沙漠之狼^000000。";
+							mes "[�����]";
+							mes "С˵����С˵����������ж���������ڸ�����^FF000030ɳĮ֮��^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13017,HUNTING) == 2) {
-							mes "那不是很可爱吗？";
-							mes "这对您来说将是一次很好的经历。";
+							mes "�ǲ��Ǻܿɰ���";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13017,13018,106000,148000;
 						}
 						else {
-							cutin "����Ʈ����ī��",3;  //desert_wolf_card
-							mes "冰洞位于雷切尔的正北方。问题是，当游客前往冰洞参观时，狼会吓到他们。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#430;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //desert_wolf_card
+							mes "����λ�����ж����������������ǣ����ο�ǰ�������ι�ʱ���ǻ��ŵ����ǡ�";
 							next;
-							mes "[格尔卡]";
-							mes "如果我们能和狼聊天、跳桑巴那就太有趣了！请清除冰地牢附近的^FF000030沙漠之狼^000000。";
+							mes "[�����]";
+							mes "��������ܺ������졢��ɣ���Ǿ�̫��Ȥ�ˣ�����������θ�����^FF000030ɳĮ֮��^000000��";
 							callsub S_Quest,13018,13017;
 						}
 						break;
 					case 2:
 						if (checkquest(13020,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ��";
 						else if (checkquest(13019,HUNTING) == 1) {
-							cutin "�����̾�ī��",3;  //snowier_card
-							mes "粗重的呼吸、缺乏安全感的眼睛、寒冷……这不是一件容易的事，所以要让自己暖和起来。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#65533;&#830;&#65533;��&#65533;&#65533;",3;  //snowier_card
+							mes "���صĺ�����ȱ����ȫ�е��۾������䡭���ⲻ��һ�����׵��£�����Ҫ���Լ�ů��������";
 							next;
-							mes "[格尔卡]";
-							mes "请通关冰雪地下城二楼的^FF000030雪地^000000。";
+							mes "[�����]";
+							mes "��ͨ�ر�ѩ���³Ƕ�¥��^FF000030ѩ��^000000��";
 							cutin "gelca01",2;
 							next;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13019,HUNTING) == 2) {
-							mes "参观冰冷的冰地牢一定很艰难。";
-							mes "这对您来说将是一次很好的经历。";
+							mes "�ι۱���ı�����һ���ܼ��ѡ�";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13019,13020,106000,148000;
 						}
 						else {
-							cutin "�����̾�ī��",3;  //snowier_card
-							mes "去过冰之迷宫的人都说那里有吵闹的怪物打扰他们的参观。如果你能忍受的话，请清除它们。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#65533;&#830;&#65533;��&#65533;&#65533;",3;  //snowier_card
+							mes "ȥ����֮�Թ����˶�˵�����г��ֵĹ���������ǵĲιۡ�����������ܵĻ�����������ǡ�";
 							next;
-							mes "[格尔卡]";
-							mes "请通关冰雪地下城二楼的^FF000030雪地^000000。";
+							mes "[�����]";
+							mes "��ͨ�ر�ѩ���³Ƕ�¥��^FF000030ѩ��^000000��";
 							callsub S_Quest,13020,13019;
 						}
 						break;
 					case 3:
 						if (checkquest(13022,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。冒险很重要，但休息也很重要。";
+							mes "���ո����һ������ð�պ���Ҫ������ϢҲ����Ҫ��";
 						else if (checkquest(13021,HUNTING) == 1) {
-							cutin "���̽�Ƽźī��",3;  //ice_titan_card
-							mes "请清除冰洞中的^FF000030冰泰坦^000000。";
+							cutin "&#65533;&#65533;&#65533;&#829;&#65533;&#444;&#378;��&#65533;&#65533;",3;  //ice_titan_card
+							mes "����������е�^FF000030��̩̹^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13021,HUNTING) == 2) {
-							mes "参观那个寒冷黑暗的洞穴一定很艰难。";
-							mes "这对您来说将是一次很好的经历。";
+							mes "�ι��Ǹ�����ڰ��Ķ�Ѩһ���ܼ��ѡ�";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13021,13022,112000,186500;
 						}
 						else {
-							cutin "���̽�Ƽźī��",3;  //ice_titan_card
-							mes "你去过雷切尔以北的冰洞吗？地牢深处有被称为冰泰坦的怪物。学者们想要确定它们是否是傀儡。";
+							cutin "&#65533;&#65533;&#65533;&#829;&#65533;&#444;&#378;��&#65533;&#65533;",3;  //ice_titan_card
+							mes "��ȥ�����ж��Ա��ı����𣿵�����б���Ϊ��̩̹�Ĺ��ѧ������Ҫȷ�������Ƿ��ǿ��ܡ�";
 							next;
-							mes "[格尔卡]";
-							mes "请求是为了学者的安全而减少他们的数量。请清除冰洞中的^FF000030冰泰坦^000000。";
+							mes "[�����]";
+							mes "������Ϊ��ѧ�ߵİ�ȫ���������ǵ�����������������е�^FF000030��̩̹^000000��";
 							callsub S_Quest,13022,13021;
 						}
 					}
 					break;
 				case 4:
-					mes "有在岩浆地下城进行怪物狩猎的请求。 ^DA26DA美少女流浪者^000000正在向Comodo请求这个。";
+					mes "�����ҽ����³ǽ��й������Ե����� ^DA26DA����Ů������^000000������Comodo���������";
 					next;
-					if (select( "噩梦恐怖狩猎","删除者狩猎" ) == 1) {
-						mes "[格尔卡]";
+					if (select( "ج�οֲ�����","ɾ��������" ) == 1) {
+						mes "[�����]";
 						if (checkquest(13024,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。感谢您保留记忆..但您应该休息一下。";
+							mes "���ո����һ�����󡣸�л����������..����Ӧ����Ϣһ�¡�";
 						else if (checkquest(13023,HUNTING) == 1) {
-							cutin "����Ʈ�޾��׷�ī��",3;  //nightmare_terror_card
-							mes "女生的记忆力很重要！请清除^FF000030梦魇恐怖^000000。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#430;&#65533;&#1982;&#65533;&#65533;&#1527;&#65533;��&#65533;&#65533;",3;  //nightmare_terror_card
+							mes "Ů���ļ���������Ҫ�������^FF000030���ʿֲ�^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13023,HUNTING) == 2) {
-							mes "考虑一下别人的记忆。世界上依然有美好。这对您来说将是一次很好的经历。";
+							mes "����һ�±��˵ļ��䡣��������Ȼ�����á��������˵����һ�κܺõľ�����";
 							callsub S_Quest,13023,13024,106000,148000;
 						}
 						else {
-							cutin "����Ʈ�޾��׷�ī��",3;  //nightmare_terror_card
-							mes "这个请求来自一位客户，她在与恋人分手后回来时，因为岩浆地牢里充满了怪物而感到悲伤。显然，她在那里和他一起度过了很多时间，想要一些平静。";
+							cutin "&#65533;&#65533;&#65533;&#65533;&#430;&#65533;&#1982;&#65533;&#65533;&#1527;&#65533;��&#65533;&#65533;",3;  //nightmare_terror_card
+							mes "�����������һλ�ͻ������������˷��ֺ����ʱ����Ϊ�ҽ�����������˹�����е����ˡ���Ȼ�������������һ��ȹ��˺ܶ�ʱ�䣬��ҪһЩƽ����";
 							next;
-							mes "[格尔卡]";
-							mes "女生的记忆力很重要！请清除^FF000030梦魇恐怖^000000。";
+							mes "[�����]";
+							mes "Ů���ļ���������Ҫ�������^FF000030���ʿֲ�^000000��";
 							callsub S_Quest,13024,13023;
 						}
 					}
 					else {
-						mes "[格尔卡]";
+						mes "[�����]";
 						if (checkquest(13026,PLAYTIME) == 0)
-							mes "您刚刚完成一个请求。你花了足够的时间冷静下来吗？充分休息。";
+							mes "���ո����һ�������㻨���㹻��ʱ���侲�����𣿳����Ϣ��";
 						else if (checkquest(13025,HUNTING) == 1) {
-							cutin "���ߵ�����ī��",3;  //flying_deleter_card
-							mes "一位客户向爱人展示了一段精彩的舞蹈。有一天，他们在岩浆地牢里跳舞时遭到了删除者的攻击。";
+							cutin "&#65533;&#65533;&#65533;&#2037;&#65533;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //flying_deleter_card
+							mes "һλ�ͻ�����չʾ��һ�ξ��ʵ��赸����һ�죬�������ҽ�����������ʱ�⵽��ɾ���ߵĹ�����";
 							next;
-							mes "[格尔卡]";
-							mes "这次袭击毁了他们的舞蹈，最终毁了他们的关系，因为男孩指责女孩受到了袭击。";
+							mes "[�����]";
+							mes "���Ϯ���������ǵ��赸�����ջ������ǵĹ�ϵ����Ϊ�к�ָ��Ů���ܵ���Ϯ����";
 							next;
-							mes "[格尔卡]";
-							mes "现在她责怪删除者，所以她提出了这个要求。请清除^FF000030飞行删除器^000000。";
+							mes "[�����]";
+							mes "���������ɾ���ߣ���������������Ҫ�������^FF000030����ɾ����^000000��";
 							next;
 							cutin "gelca03",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13025,HUNTING) == 2) {
 							cutin "gelca03",2;
-							mes "伊甸集团守护爱、正义、米德加德！欢呼！";
-							mes "这将是一个美好的回忆。";
+							mes "���鼯���ػ��������塢�׵¼ӵ£�������";
+							mes "�⽫��һ�����õĻ��䡣";
 							callsub S_Quest,13025,13026,106000,148000;
 						}
 						else {
-							cutin "���ߵ�����ī��",3;  //flying_deleter_card
-							mes "一位客户向爱人展示了一段精彩的舞蹈。有一天，他们在岩浆地牢里跳舞时遭到了删除者的攻击。";
+							cutin "&#65533;&#65533;&#65533;&#2037;&#65533;&#65533;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //flying_deleter_card
+							mes "һλ�ͻ�����չʾ��һ�ξ��ʵ��赸����һ�죬�������ҽ�����������ʱ�⵽��ɾ���ߵĹ�����";
 							next;
-							mes "[格尔卡]";
-							mes "这次袭击毁了他们的舞蹈，最终毁了他们的关系，因为男孩指责女孩受到了袭击。";
+							mes "[�����]";
+							mes "���Ϯ���������ǵ��赸�����ջ������ǵĹ�ϵ����Ϊ�к�ָ��Ů���ܵ���Ϯ����";
 							next;
-							mes "[格尔卡]";
-							mes "现在她责怪删除者，所以她提出了这个要求。请清除^FF000030飞行删除器^000000。";
+							mes "[�����]";
+							mes "���������ɾ���ߣ���������������Ҫ�������^FF000030����ɾ����^000000��";
 							callsub S_Quest,13026,13025;
 						}
 					}
 					break;
 				case 5:
-					mes "以下是来自米德加德各地的其他请求的列表。";
+					mes "�����������׵¼ӵ¸��ص�����������б���";
 					next;
-					switch( select( "宋萝莉-Nifhem", "狩猎水母 - 方便", "阿努比斯狩猎 - 狮身人面像" ) ) {
-						mes "[格尔卡]";
+					switch( select( "������-Nifhem", "����ˮĸ - ����", "��Ŭ��˹���� - ʨ��������" ) ) {
+						mes "[�����]";
 					case 1:
 						if (checkquest(13041,PLAYTIME) == 0)
-							mes "我想你应该休息一下。冒险者也需要休息吧？";
+							mes "������Ӧ����Ϣһ�¡�ð����Ҳ��Ҫ��Ϣ�ɣ�";
 						else if (checkquest(13040,HUNTING) == 1) {
-							cutin "�θ��縮ī��",3;  //loli_ruri_card
-							mes "伊甸集团正计划发出通知，不成熟的冒险者不会被派往夜间请求，因为这太危险了。";
+							cutin "&#65533;��&#65533;&#65533;�s��&#65533;&#65533;",3;  //loli_ruri_card
+							mes "���鼯�����ƻ�����֪ͨ���������ð���߲��ᱻ����ҹ��������Ϊ��̫Σ���ˡ�";
 							next;
-							mes "[格尔卡]";
-							mes "我想知道他们为什么要策划这种^FF0000废话^000000...让我想知道他们是否懂得冒险。";
+							mes "[�����]";
+							mes "����֪������ΪʲôҪ�߻�����^FF0000�ϻ�^000000...������֪�������Ƿ񶮵�ð�ա�";
 							next;
-							mes "[格尔卡]";
-							mes "在我们开始收到更多无意义的请求之前，我们应该接受这个简单的请求。请清除尼福尔海姆的^FF000030 Loli Ruri^000000。";
+							mes "[�����]";
+							mes "�����ǿ�ʼ�յ����������������֮ǰ������Ӧ�ý�������򵥵�����������ḣ����ķ��^FF000030 Loli Ruri^000000��";
 							next;
 							cutin "gelca02",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13040,HUNTING) == 2) {
-							mes "你精神上受过伤吗？我很高兴你安全回来了。";
-							mes "这对您来说将是一次很好的经历。";
+							mes "�㾫�����ܹ������Һܸ����㰲ȫ�����ˡ�";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13040,13041,112000,186500;
 						}
 						else {
-							cutin "�θ��縮ī��",3;  //loli_ruri_card
-							mes "一个秘密社团请求保护伊甸集团免受萝莉鲁里斯的侵害，因为他们相信自己拥有精神力量。";
+							cutin "&#65533;��&#65533;&#65533;�s��&#65533;&#65533;",3;  //loli_ruri_card
+							mes "һ�������������󱣻����鼯����������³��˹���ֺ�����Ϊ���������Լ�ӵ�о���������";
 							next;
-							mes "[格尔卡]";
-							mes "他们表示，他们会治愈疲惫不堪的伊甸集团冒险者，以换取这一请求，但我们不确定他们是否会遵守。";
+							mes "[�����]";
+							mes "���Ǳ�ʾ�����ǻ�����ƣ�����������鼯��ð���ߣ��Ի�ȡ��һ���󣬵����ǲ�ȷ�������Ƿ�����ء�";
 							next;
-							mes "[格尔卡]";
-							mes "无论如何，我们应该接受这个简单的请求。请清除尼福尔海姆的^FF000030 Loli Ruri^000000。";
+							mes "[�����]";
+							mes "������Σ�����Ӧ�ý�������򵥵�����������ḣ����ķ��^FF000030 Loli Ruri^000000��";
 							callsub S_Quest,13041,13040;
 						}
 						break;
 					case 2:
 						if (checkquest(13043,PLAYTIME) == 0)
-							mes "冒险很重要，但休息也很重要。";
+							mes "ð�պ���Ҫ������ϢҲ����Ҫ��";
 						else if (checkquest(13042,HUNTING) == 1) {
-							cutin "�޵λ�ī��",3;  //medusa_card
-							mes "我不知道为什么主人会喜欢这样的要求。他还说过，对于冒险者来说，任何要求都是好的……";
+							cutin "&#65533;&#1973;��&#65533;��&#65533;&#65533;",3;  //medusa_card
+							mes "�Ҳ�֪��Ϊʲô���˻�ϲ��������Ҫ������˵��������ð������˵���κ�Ҫ���Ǻõġ���";
 							next;
-							mes "[格尔卡]";
-							mes "请清除科摩多西部洞穴中的^FF000030美杜莎^000000。";
+							mes "[�����]";
+							mes "�������Ħ��������Ѩ�е�^FF000030����ɯ^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13042,HUNTING) == 2) {
-							mes "科莫多海滩怎么样？环顾四周，而不是过多关注请求。";
-							mes "这肯定会是一次很好的体验。";
+							mes "��Ī�ຣ̲��ô�����������ܣ������ǹ����ע����";
+							mes "��϶�����һ�κܺõ����顣";
 							callsub S_Quest,13042,13043,106000,148000;
 						}
 						else {
-							cutin "�޵λ�ī��",3;  //medusa_card
-							mes "这是艾伯塔省一位发型设计师的请求。他想知道美杜莎头上的蛇到底是蛇还是花哨的头发……";
+							cutin "&#65533;&#1973;��&#65533;��&#65533;&#65533;",3;  //medusa_card
+							mes "���ǰ�����ʡһλ�������ʦ����������֪������ɯͷ�ϵ��ߵ������߻��ǻ��ڵ�ͷ������";
 							next;
-							mes "[格尔卡]";
-							mes "显然它们是蛇，但我们有什么资格去践踏这个疯子的梦想，对吧？";
+							mes "[�����]";
+							mes "��Ȼ�������ߣ���������ʲô�ʸ�ȥ��̤������ӵ����룬�԰ɣ�";
 							next;
-							mes "[格尔卡]";
-							mes "我的主人接受了这个请求，只是因为它太疯狂了。请清除科莫多西洞的^FF000030个美杜莎^000000怪物。";
+							mes "[�����]";
+							mes "�ҵ����˽������������ֻ����Ϊ��̫����ˡ��������Ī��������^FF000030������ɯ^000000���";
 							callsub S_Quest,13043,13042;
 						}
 						break;
 					case 3:
 						if (checkquest(13045,PLAYTIME) == 0)
-							mes "Sphinx 的请求已完成。请休息一下。";
+							mes "Sphinx ����������ɡ�����Ϣһ�¡�";
 						else if (checkquest(13044,HUNTING) == 1) {
-							cutin "�ƴ���ī��",3;  //anubis_card
-							mes "我应该亲自调查客户的情况，但现在请清理斯芬克斯地下城四楼的^FF000020个阿努比斯^000000。";
+							cutin "&#65533;&#436;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //anubis_card
+							mes "��Ӧ�����Ե���ͻ��������������������˹�ҿ�˹���³���¥��^FF000020����Ŭ��˹^000000��";
 							next;
 							cutin "gelca01",2;
-							mes "[格尔卡]";
-							mes "当您清除此请求后，请通知我。";
+							mes "[�����]";
+							mes "����������������֪ͨ�ҡ�";
 						}
 						else if (checkquest(13044,HUNTING) == 2) {
 							cutin "gelca02",2;
-							mes "狮身人面像地牢就是这样一个迷宫。";
-							mes "这对您来说将是一次很好的经历。";
+							mes "ʨ����������ξ�������һ���Թ���";
+							mes "�������˵����һ�κܺõľ�����";
 							callsub S_Quest,13044,13045,112000,186500;
 						}
 						else {
-							cutin "�ƴ���ī��",3;  //anubis_card
-							mes "一位匿名客户发送了帮助清除狮身人面像地牢中的怪物的请求，因为冒险者几乎不再访问摩洛哥了。那里的怪物似乎十分猖獗。";
+							cutin "&#65533;&#436;&#65533;&#65533;&#65533;��&#65533;&#65533;",3;  //anubis_card
+							mes "һλ�����ͻ������˰������ʨ������������еĹ����������Ϊð���߼������ٷ���Ħ����ˡ�����Ĺ����ƺ�ʮ�ֲ�ⱡ�";
 							next;
-							mes "[格尔卡]";
-							mes "请通关狮身人面像地下城四楼的^FF000020阿努比斯^000000。";
+							mes "[�����]";
+							mes "��ͨ��ʨ����������³���¥��^FF000020��Ŭ��˹^000000��";
 							callsub S_Quest,13045,13044;
 						}
 					}
@@ -620,41 +622,41 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				if (para_100lv02 < 20) {
 					.@ran = rand(1,3);
 					if (.@ran == 1)
-						mes "我们正忙于处理需要处理的请求。这是我第一次承受这么大的压力。";
+						mes "������æ�ڴ�����Ҫ���������������ҵ�һ�γ�����ô���ѹ����";
 					else if (.@ran == 2)
-						mes "我以为伊甸集团很忙，但没想到这么忙。作为冒险者我应该做更多的事情！";
+						mes "����Ϊ���鼯�ź�æ����û�뵽��ôæ����Ϊð������Ӧ������������飡";
 					else {
 						cutin "gelca02",2;
-						mes "我希望我能喝一杯新鲜果汁......";
+						mes "��ϣ�����ܺ�һ�����ʹ�֭......";
 					}
 				}
 				else if (para_100lv02 < 40) {
 					.@ran = rand(1,3);
 					if (.@ran == 1) {
 						cutin "gelca03",2;
-						mes "冒险者有时会根据要求从他们访问的地方带来特殊的东西或战利品。非常好！";
+						mes "ð������ʱ�����Ҫ������Ƿ��ʵĵط���������Ķ�����ս��Ʒ���ǳ��ã�";
 					}
 					else if (.@ran == 2)
-						mes "如果有什么好的东西"+ strcharinfo(0) +"我会尽力给你一些东西。由于冒险者太多，我不知道是否能提供足够的东西。";
+						mes "�����ʲô�õĶ���"+ strcharinfo(0) +"�һᾡ������һЩ����������ð����̫�࣬�Ҳ�֪���Ƿ����ṩ�㹻�Ķ�����";
 					else
-						mes "处理文件一定很困难。到野外去就容易多了。";
+						mes "�����ļ�һ�������ѡ���Ұ��ȥ�����׶��ˡ�";
 				}
 				else if (para_100lv02 < 60) {
 					if (para_100lv01 > 3) {
 						.@ran = rand(1,3);
 						if (.@ran == 1)
-							mes "如果有什么好东西我会告诉你的。";
+							mes "�����ʲô�ö����һ������ġ�";
 						else if (.@ran == 2)
-							mes "你习惯这些要求吗？奇怪的是，我并没有亲自接受委托，而是在引导冒险者们。";
+							mes "��ϰ����ЩҪ������ֵ��ǣ��Ҳ�û�����Խ���ί�У�����������ð�����ǡ�";
 						else
-							mes "收到来自格拉斯海姆的所有请求后，一次清除一个就好了。";
+							mes "�յ����Ը���˹��ķ�����������һ�����һ���ͺ��ˡ�";
 					}
 					else {
 						cutin "gelca03",2;
-						mes "我很忙，但解决了很多请求"+ strcharinfo(0) +" 我很感激。让我们来看看。我从冒险者那里得到了一些他在委托时收到的美味食物。";
+						mes "�Һ�æ��������˺ܶ�����"+ strcharinfo(0) +" �Һܸм������������������Ҵ�ð��������õ���һЩ����ί��ʱ�յ�����ζʳ�";
 						next;
-						mes "[格尔卡]";
-						mes "哎呀我都吃完了？好吧，只剩下一张了。请稍后再来！";
+						mes "[�����]";
+						mes "��ѽ�Ҷ������ˣ��ðɣ�ֻʣ��һ���ˡ����Ժ�������";
 						para_100lv01 = 4;
 						getitem 608,1;// Seed_Of_Yggdrasil
 					}
@@ -662,106 +664,106 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 				else if (para_100lv02 < 80) {
 					cutin "gelca03",2;
 					if (para_100lv01 > 4)
-						mes "开心点！ "+ strcharinfo(0) +" 我不确定他是否把你当作他的学生。他只是失控了。";
+						mes "���ĵ㣡 "+ strcharinfo(0) +" �Ҳ�ȷ�����Ƿ���㵱������ѧ������ֻ��ʧ���ˡ�";
 					else {
-						mes "只要有效地完成请求，就会收到很多礼物。喏，把这个当作奖品吧。";
+						mes "ֻҪ��Ч��������󣬾ͻ��յ��ܶ�������������������Ʒ�ɡ�";
 						para_100lv01 = 5;
 						getitem 607,1;// Yggdrasilberry
 					}
 				}
 				else if (para_100lv02 > 100) {
-					mes "和师傅一起工作很辛苦，但也很有趣吧"+ strcharinfo(0) +"？";
+					mes "��ʦ��һ���������࣬��Ҳ����Ȥ��"+ strcharinfo(0) +"��";
 					next;
-					switch( select( "我讨厌那个脾气暴躁的傻瓜。", "我要你做主。", "我会跟随你去任何战斗。" ) ) {
-						mes "[格尔卡]";
+					switch( select( "�������Ǹ�Ƣ�������ɵ�ϡ�", "��Ҫ��������", "�һ������ȥ�κ�ս����" ) ) {
+						mes "[�����]";
 					case 1:
-						mes "我理解你。在莫拉村第一次见到师父的时候，我就打了一架。";
+						mes "�������㡣��Ī�����һ�μ���ʦ����ʱ���Ҿʹ���һ�ܡ�";
 						next;
-						mes "[格尔卡]";
-						mes "当我第一次见到他时，他几乎哭了。假装输给他是很困难的。请保守秘密。";
+						mes "[�����]";
+						mes "���ҵ�һ�μ�����ʱ�����������ˡ���װ������Ǻ����ѵġ��뱣�����ܡ�";
 						emotion ET_SMILE;
 						break;
 					case 2:
 						if (Sex == SEX_MALE)
-							mes "我不确定我是否适合这份工作。除了...";
+							mes "�Ҳ�ȷ�����Ƿ��ʺ���ݹ���������...";
 						else
-							mes "很抱歉这么说，但我现在和永远都是师父唯一的弟子……他说^FF0000我不需要一个丑陋的女弟子^000000但我仍然坚持他。";
+							mes "�ܱ�Ǹ��ô˵���������ں���Զ����ʦ��Ψһ�ĵ��ӡ�����˵^FF0000�Ҳ���Ҫһ����ª��Ů����^000000������Ȼ�������";
 						break;
 					case 3:
 						cutin "gelca04",2;
-						mes "哦不...请不要这样做。抱歉，请大师保守秘密。我粗心了。";
+						mes "Ŷ��...�벻Ҫ����������Ǹ�����ʦ�������ܡ��Ҵ����ˡ�";
 						emotion ET_SHY;
 						break;
 					}
 					next;
 					cutin "gelca03",2;
-					mes "[格尔卡]";
+					mes "[�����]";
 					if (para_100lv01 > 5)
-						mes "祝剩下的请求好运。";
+						mes "ףʣ�µ�������ˡ�";
 					else {
-						mes "祝剩下的请求好运。 ^FF0000主人说他有话要对你说。^000000";
+						mes "ףʣ�µ�������ˡ� ^FF0000����˵���л�Ҫ����˵��^000000";
 						para_100lv01 = 6;
 					}
 				}
 				else
-					mes "抱歉，我有点忙。我们可以稍后再谈吗？";
+					mes "��Ǹ�����е�æ�����ǿ����Ժ���̸��";
 				break;
 			case 3:
 				cutin "gelca03",2;
-				mes "你带了善意通行证吗？";
+				mes "���������ͨ��֤��";
 				next;
 				if (countitem(6549) > 0) {// Courtesy_Ticket
-					if (select( "^FF0000善意通行证^000000？", "用通行证兑换奖品。" ) == 1) {
-						mes "[格尔卡]";
-						mes "我知道这听起来很幼稚。正确的？形状就像我们小时候玩的卡片一样。";
+					if (select( "^FF0000����ͨ��֤^000000��", "��ͨ��֤�һ���Ʒ��" ) == 1) {
+						mes "[�����]";
+						mes "��֪���������������ɡ���ȷ�ģ���״��������Сʱ����Ŀ�Ƭһ����";
 						next;
-						if (select( "一张卡？这是什么？", "呃，是的，那些很有趣......" ) == 1) {
+						if (select( "һ�ſ�������ʲô��", "�����ǵģ���Щ����Ȥ......" ) == 1) {
 							cutin "gelca02",2;
-							mes "[格尔卡]";
-							mes "抱歉……这肯定只在我们村流行。扔，加热，让它飞。";
+							mes "[�����]";
+							mes "��Ǹ������϶�ֻ�����Ǵ����С��ӣ����ȣ������ɡ�";
 							emotion ET_SORRY;
 							next;
 						}
 						cutin "gelca01",2;
-						mes "[格尔卡]";
-						mes "你看，是师父自己做的，上面还贴了他的照片。他曾经四处奔走寻找制作卡片的纸质材料。";
+						mes "[�����]";
+						mes "�㿴����ʦ���Լ����ģ����滹����������Ƭ���������Ĵ�����Ѱ��������Ƭ��ֽ�ʲ��ϡ�";
 						next;
 						cutin "gelca02",2;
-						mes "[格尔卡]";
-						mes "如果未正确提交，找论文的请求将被列入请求列表中。";
+						mes "[�����]";
+						mes "���δ��ȷ�ύ�������ĵ����󽫱����������б��С�";
 						next;
-						mes "[格尔卡]";
-						mes "他非常善良，尽管他看起来不像。主人用它来奖励冒险者们的奉献精神。";
+						mes "[�����]";
+						mes "���ǳ�������������������������������������ð�����ǵķ��׾���";
 						next;
 						cutin "gelca01",2;
-						mes "[格尔卡]";
-						mes "使用 1、10、20 和 30 张卡片讲述有关冒险或奖杯的故事。";
+						mes "[�����]";
+						mes "ʹ�� 1��10��20 �� 30 �ſ�Ƭ�����й�ð�ջ򽱱��Ĺ��¡�";
 						next;
-						mes "[格尔卡]";
-						mes "听冒险家的故事会是一次很好的体验。我们从大师那里听到了很多冒险经历。";
+						mes "[�����]";
+						mes "��ð�ռҵĹ��»���һ�κܺõ����顣���ǴӴ�ʦ���������˺ܶ�ð�վ�����";
 						next;
-						mes "[格尔卡]";
-						mes "如果您足够成熟，不需要请求，请确保您不被允许使用通行证。";
+						mes "[�����]";
+						mes "������㹻���죬����Ҫ������ȷ������������ʹ��ͨ��֤��";
 					}
 					else {
-						mes "[格尔卡]";
-						mes "您想如何使用这张通行证？";
+						mes "[�����]";
+						mes "�������ʹ������ͨ��֤��";
 						next;
-						if (select( "兑换奖品", "听故事，获得EXP" ) == 1) {
+						if (select( "�һ���Ʒ", "�����£����EXP" ) == 1) {
 							cutin "gelca03",2;
-							mes "[格尔卡]";
-							mes "你可以在这个袋子里挑选一个奖杯。即使您买到了不想要的东西，也请不要失望。你想兑换多少？";
+							mes "[�����]";
+							mes "������������������ѡһ����������ʹ�����˲���Ҫ�Ķ�����Ҳ�벻Ҫʧ��������һ����٣�";
 							next;
-							.@amount = select( "交换善意^FF00001^000000通过", "交换善意^FF000010^000000通过" ) == 1 ? 1 : 10;
-							mes "[格尔卡]";
-							mes "请给我一张通行证，并将您的手放入袋子中进行挑选。";
+							.@amount = select( "��������^FF00001^000000ͨ��", "��������^FF000010^000000ͨ��" ) == 1 ? 1 : 10;
+							mes "[�����]";
+							mes "�����һ��ͨ��֤�����������ַ�������н�����ѡ��";
 							next;
 							if (countitem(6549) < .@amount) {// Courtesy_Ticket
-								mes "[格尔卡]";
-								mes "^FF0000善意通行证^000000不足。";
+								mes "[�����]";
+								mes "^FF0000����ͨ��֤^000000���㡣";
 							}
 							else {
-								mes "浏览";
+								mes "���";
 								next;
 								.@ran = rand(1,1000);
 								if (.@amount == 1) {
@@ -792,47 +794,47 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								}
 								delitem 6549,.@amount;// Courtesy_Ticket
 								getitem .@item[0], .@item[1];
-								mes "你把手伸进包里，抓起^0000FF"+ .@item[1] +" "+ getitemname(.@item[0]) +"^000000。";
+								mes "�����������ץ��^0000FF"+ .@item[1] +" "+ getitemname(.@item[0]) +"^000000��";
 								next;
 								if (.@amount == 10)
 									cutin "gelca03",2;
-								mes "[格尔卡]";
-								mes "好好利用它。";
+								mes "[�����]";
+								mes "�ú���������";
 							}
 						}
 						else {
-							mes "[格尔卡]";
-							mes "好的，我有一个故事给你，以换取善意通行证。";
+							mes "[�����]";
+							mes "�õģ�����һ�����¸��㣬�Ի�ȡ����ͨ��֤��";
 							next;
-							switch( select( "给予^FF000010^000000善意通行证", "给予^FF000020^000000善意通行证", "给予^FF000030^000000善意通行证" ) ) {
-								mes "[格尔卡]";
+							switch( select( "����^FF000010^000000����ͨ��֤", "����^FF000020^000000����ͨ��֤", "����^FF000030^000000����ͨ��֤" ) ) {
+								mes "[�����]";
 							case 1:
 								if (countitem(6549) < 10)// Courtesy_Ticket
-									mes "你没有足够的善意通行证。";
+									mes "��û���㹻������ͨ��֤��";
 								else {
 									.@story = rand(1,3);
 									if (.@story == 1) {
 										cutin "gelca02",2;
-										mes "你见过艾伯塔省附近的沉船吗？";
+										mes "�����������ʡ�����ĳ�����";
 										next;
-										mes "罗特大师和我深入飞船深处，与名为^FF0000德雷克^000000的怪物战斗。那天我就下定决心，我要成为最好的冒险家。";
+										mes "���ش�ʦ��������ɴ��������Ϊ^FF0000���׿�^000000�Ĺ���ս���������Ҿ��¶����ģ���Ҫ��Ϊ��õ�ð�ռҡ�";
 										.@exp = 200000;
 										.@jexp = 148000;
 									}
 									else if (.@story == 2) {
 										cutin "gelca03",2;
-										mes "有一次，我和师父去科摩多西边的山洞里，看到了美杜莎怪物……";
+										mes "��һ�Σ��Һ�ʦ��ȥ��Ħ�����ߵ�ɽ�������������ɯ�����";
 										next;
-										mes "天哪，他脸上的表情是无价的！";
+										mes "���ģ������ϵı������޼۵ģ�";
 										emotion ET_BIGTHROB;
 										emotion ET_THINK, playerattached();
 										.@exp = 180000;
 										.@jexp = 168000;
 									}
 									else {
-										mes "我曾经在普隆德拉北部的一个迷宫中迷路了。我以为我会一直在兜圈子，直到我最终找到了答案。";
+										mes "����������¡����������һ���Թ�����·�ˡ�����Ϊ�һ�һֱ�ڶ�Ȧ�ӣ�ֱ���������ҵ��˴𰸡�";
 										next;
-										mes "有传言说，如果你在那个迷宫中迷路，你就会变成那里的怪物之一。";
+										mes "�д���˵����������Ǹ��Թ�����·����ͻ�������Ĺ���֮һ��";
 										.@exp = 220000;
 										.@jexp = 128000;
 									}
@@ -845,30 +847,30 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								break;
 							case 2:
 								if (countitem(6549) < 20)// Courtesy_Ticket
-									mes "你没有足够的善意通行证。";
+									mes "��û���㹻������ͨ��֤��";
 								else {
 									.@story = rand(1,3);
 									if (.@story == 1) {
 										cutin "gelca04",2;
-										mes "有一次我发现了一条去贾瓦伊的秘密路线……它只适合情侣，但我们中的一些人仍然知道如何到达那里。";
+										mes "��һ���ҷ�����һ��ȥ������������·�ߡ�����ֻ�ʺ����£��������е�һЩ����Ȼ֪����ε������";
 										next;
-										mes "没有搭档去那里有点没用，但是哦，好吧。";
+										mes "û�дȥ�����е�û�ã�����Ŷ���ðɡ�";
 										emotion ET_THROB;
 										.@exp = 550000;
 										.@jexp = 340000;
 									}
 									else if (.@story == 2) {
 										cutin "gelca03",2;
-										mes "那么有一次，主人是一个名为“wing Something”的公会的一员……鸡翅……？";
+										mes "��ô��һ�Σ�������һ����Ϊ��wing Something���Ĺ����һԱ�������ᡭ����";
 										next;
-										mes "这是一个有趣的公会，因为没有人认真对待事情，但主人厌倦了他们的懒惰，所以他离开了。";
+										mes "����һ����Ȥ�Ĺ��ᣬ��Ϊû��������Դ����飬��������������ǵ����裬�������뿪�ˡ�";
 										.@exp = 400000;
 										.@jexp = 240000;
 									}
 									else {
-										mes "你去过^FF0000无尽之塔^000000吗？我和师父去了，但只到了二十楼，因为他爬的时候膝盖不行了……";
+										mes "��ȥ��^FF0000�޾�֮��^000000���Һ�ʦ��ȥ�ˣ���ֻ���˶�ʮ¥����Ϊ������ʱ��ϥ�ǲ����ˡ���";
 										next;
-										mes "^FF0000无尽之塔^000000位于大海的某处。你必须在艾伯塔省找到一个叫 Jansor 或 Jans 的人，他会带你去那里。";
+										mes "^FF0000�޾�֮��^000000λ�ڴ󺣵�ĳ����������ڰ�����ʡ�ҵ�һ���� Jansor �� Jans ���ˣ��������ȥ���";
 										.@exp = 550000;
 										.@jexp = 290000;
 									}
@@ -881,27 +883,27 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 								break;
 							case 3:
 								if (countitem(6549) < 30)// Courtesy_Ticket
-									mes "你没有足够的善意通行证。";
+									mes "��û���㹻������ͨ��֤��";
 								else {
 									.@story = rand(1,2);
 									if (.@story == 1) {
 										cutin "gelca04",2;
-										mes "灰烬真空中的大师公会被解散，因为他们的公会大师在与一些山茱萸怪物的战斗后失踪了。";
+										mes "�ҽ�����еĴ�ʦ���ᱻ��ɢ����Ϊ���ǵĹ����ʦ����һЩɽ���ǹ����ս����ʧ���ˡ�";
 										next;
-										mes "[格尔卡]";
-										mes "从那时起，他就开始对弱小的冒险者刻薄……";
+										mes "[�����]";
+										mes "����ʱ�����Ϳ�ʼ����С��ð���߿̱�����";
 										next;
-										mes "[格尔卡]";
-										mes "我想自从那天之后他就再也没有见过那位会长了。";
+										mes "[�����]";
+										mes "�����Դ�����֮��������Ҳû�м�����λ�᳤�ˡ�";
 										getexp 650000,488000;
 									}
 									else {
 										cutin "gelca03",2;
-										mes "[格尔卡]";
-										mes "师父最初是普隆德拉修道院的一名受欢迎的支持僧人。";
+										mes "[�����]";
+										mes "ʦ���������¡�����޵�Ժ��һ���ܻ�ӭ��֧��ɮ�ˡ�";
 										next;
-										mes "[格尔卡]";
-										mes "但由于他的好胜性格，他也被视为麻烦制造者，因此他离开了。";
+										mes "[�����]";
+										mes "���������ĺ�ʤ�Ը���Ҳ����Ϊ�鷳�����ߣ�������뿪�ˡ�";
 										getexp 700000,430000;
 									}
 									delitem 6549,30;
@@ -913,8 +915,8 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 					}
 				}
 				else {
-					mes "[格尔卡]";
-					mes "如果您收到更多善意通行证，请回来找我！";
+					mes "[�����]";
+					mes "������յ���������ͨ��֤����������ң�";
 				}
 			}
 		}
@@ -922,9 +924,9 @@ moc_para01,37,95,5	script	Gelkah#1	4_F_GELKA,{
 	else {
 		cutin "gelca03",2;
 		if (para_100lv02 > 100)
-			mes strcharinfo(0) +"！你做得很好！还有更多请求，但请保留给其他冒险家。";
+			mes strcharinfo(0) +"�������úܺã����и������󣬵��뱣��������ð�ռҡ�";
 		if (para_100lv02 < 101)
-			mes "我认为你不适合我提出的要求。请寻找其他冒险。";
+			mes "����Ϊ�㲻�ʺ��������Ҫ����Ѱ������ð�ա�";
 		callsub S_Hunting,13003,106000,148000,"Carat";// <quest id>, <job exp if joblevel < 6>, <job exp>, <quest name>
 		callsub S_Hunting,13005,106000,148000,"Arclouse";
 		callsub S_Hunting,13007,112000,186500,"Anolian";
@@ -963,14 +965,14 @@ S_Quest:
 	else {
 		next;
 		cutin "gelca01",2;
-		if (select( "接受请求。","拒绝。" ) == 2)
+		if (select( "��������","�ܾ���" ) == 2)
 			return 0;
-		mes "[格尔卡]";
-		mes "当您清除请求后请通知我。";
+		mes "[�����]";
+		mes "��������������֪ͨ�ҡ�";
 		if (getarg(0) == 13012) {
 			next;
-			mes "[格尔卡]";
-			mes "前往格拉斯海姆最底层的旅程是一段漫长的旅程，但如果您参加聚会，那会很有趣。";
+			mes "[�����]";
+			mes "ǰ������˹��ķ��ײ���ó���һ���������ọ́���������μӾۻᣬ�ǻ����Ȥ��";
 		}
 	}
 	if (isbegin_quest(getarg(0)))
@@ -984,10 +986,10 @@ S_Hunting:
 		return;
 	case 2:
 		next;
-		mes "[格尔卡]";
-		mes "您已完成请求";
-		mes "^FF0000"+ getarg(3) +" 狩猎^000000。";
-		mes "我会将您标记为已完成此请求。";
+		mes "[�����]";
+		mes "�����������";
+		mes "^FF0000"+ getarg(3) +" ����^000000��";
+		mes "�һὫ�����Ϊ����ɴ�����";
 		para_100lv02 += 1;
 		if (JobLevel < 6)
 			getexp 550000,getarg(1);
@@ -1004,21 +1006,21 @@ S_Hunting:
 }
 
 moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
-	mes "[罗特特]";
+	mes "[������]";
 	if (!callfunc("F_HasEdenGroupMark")) {
 		cutin "rote01",2;
-		mes "你甚至不是伊甸集团的成员。你在这里做什么？";
-		mes "我只与基础等级^FF0000100 - 110^000000冒险家打交道。";
+		mes "�������������鼯�ŵĳ�Ա������������ʲô��";
+		mes "��ֻ������ȼ�^FF0000100 - 110^000000ð�ռҴ򽻵���";
 	}
 	else {
 		cutin "rote03",2;
 		mes "......";
 		next;
-		mes "[罗特特]";
+		mes "[������]";
 		if (BaseLevel < 100)
-			mes "这样的新手……多去锻炼自己吧。什么？不喜欢我说话的方式？然后变得更强。";
+			mes "���������֡�����ȥ�����Լ��ɡ�ʲô����ϲ����˵���ķ�ʽ��Ȼ���ø�ǿ��";
 		else if (BaseLevel > 110) {
-			mes "作为一个冒险家，你有点太成熟了。你跟我没有关系。离开吧。我的任务是与 110 级以下的新三级冒险家打交道。";
+			mes "��Ϊһ��ð�ռң����е�̫�����ˡ������û�й�ϵ���뿪�ɡ��ҵ��������� 110 �����µ�������ð�ռҴ򽻵���";
 			if (checkquest(13047,PLAYTIME) == 2)
 				erasequest 13047;
 			if (checkquest(13049,PLAYTIME) == 2)
@@ -1029,100 +1031,100 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 				erasequest 13046;
 		}
 		else if (para_100lv01 < 2) {
-			mes "是的，孩子想要我吗？你以为我会说好吧，我会成为你的主人并教你我所知道的一切？";
+			mes "�ǵģ�������Ҫ��������Ϊ�һ�˵�ðɣ��һ��Ϊ������˲���������֪����һ�У�";
 			next;
-			mes "[罗特特]";
-			mes "我不是慈善机构，所以迷路吧。";
+			mes "[������]";
+			mes "�Ҳ��Ǵ��ƻ�����������·�ɡ�";
 		}
 		else if (para_100lv01 == 2) {
-			mes "你是新冒险家吗？";
+			mes "������ð�ռ���";
 			next;
-			mes "[罗特特]";
-			mes "有那么多事情要做，你却在我身上浪费时间。和格尔卡谈谈，她比我对你更健谈。";
+			mes "[������]";
+			mes "����ô������Ҫ������ȴ���������˷�ʱ�䡣�͸����̸̸�������Ҷ������̸��";
 			next;
-			mes "[罗特特]";
-			mes "你看起来很勇敢，可以成为一名优秀的冒险家，但在我眼里你只不过是一个新手。";
+			mes "[������]";
+			mes "�㿴�������¸ң����Գ�Ϊһ�������ð�ռң�������������ֻ������һ�����֡�";
 			para_100lv01 = 3;
 		}
 		else if (para_100lv01 == 3) {
-			mes "我和你一样，曾经是伊甸集团的冒险家，但我当然是最好的。";
+			mes "�Һ���һ�������������鼯�ŵ�ð�ռң����ҵ�Ȼ����õġ�";
 			next;
-			mes "[罗特特]";
-			mes "我想我现在已经退休了，因为我的冒险技能太好了，无法与你们所有的孩子竞争。";
+			mes "[������]";
+			mes "�����������Ѿ������ˣ���Ϊ�ҵ�ð�ռ���̫���ˣ��޷����������еĺ��Ӿ�����";
 		}
 		else if (para_100lv01 == 4) {
-			mes "不管怎样，我这是在帮伊甸集团一个忙。";
+			mes "�����������������ڰ����鼯��һ��æ��";
 			next;
-			mes "[罗特特]";
-			mes "我正在寻找像勺子存根一样对待友谊或忠诚的人。";
+			mes "[������]";
+			mes "������Ѱ�������Ӵ��һ���Դ�������ҳϵ��ˡ�";
 			next;
-			if (select( "勺子什么？", "你是个坏人。" ) == 1) {
+			if (select( "����ʲô��", "���Ǹ����ˡ�" ) == 1) {
 				cutin "rote03",2;
-				mes "[罗特特]";
-				mes "你知道？勺子存根。僵尸囚犯会掉落它们，它们看起来很有用，但实际上它们有点毫无价值。";
+				mes "[������]";
+				mes "��֪�������Ӵ������ʬ������������ǣ����ǿ����������ã���ʵ���������е���޼�ֵ��";
 				next;
-				mes "[罗特特]";
-				mes "无论如何，我猜你看起来像是忠诚的类型……有点……";
+				mes "[������]";
+				mes "������Σ��Ҳ��㿴���������ҳϵ����͡����е㡭��";
 			}
 			else {
-				mes "[罗特特]";
-				mes "这让我感觉很奇怪。这还不错，但我想我很糟糕，但我不在乎。";
+				mes "[������]";
+				mes "�����Ҹо�����֡��⻹�������������Һ���⣬���Ҳ��ں���";
 			}
 			next;
 			cutin "rote04",2;
-			mes "[罗特特]";
-			mes "记住要保持勇敢，你这个愚蠢的冒险家。";
+			mes "[������]";
+			mes "��סҪ�����¸ң�������޴���ð�ռҡ�";
 		}
 		else if (para_100lv01 == 5) {
 			cutin "rote03",2;
-			mes "好的 ！你正在尽你所能。";
+			mes "�õ� �������ھ������ܡ�";
 			next;
-			mes "[罗特特]";
-			mes "我担心你会变得像格尔卡一样。她就像一只迷路的小狗。别像她一样。好的？";
+			mes "[������]";
+			mes "�ҵ��������������һ����������һֻ��·��С����������һ�����õģ�";
 		}
 		else if (para_100lv01 == 6) {
 			cutin "rote03",2;
-			mes "你忙着四处张望。";
+			mes "��æ���Ĵ�������";
 			next;
-			mes "[罗特特]";
+			mes "[������]";
 			if (checkquest(13046) == 2) {
 				if (checkquest(13047,PLAYTIME) == 0) {
-					mes "我的事已经做完了。";
-					mes "我负责清理文件。我讨厌做这种事。";
+					mes "�ҵ����Ѿ������ˡ�";
+					mes "�Ҹ��������ļ����������������¡�";
 					next;
-					mes "[罗特特]";
-					mes "我想我应该再跟他谈谈……明天再来吧！";
+					mes "[������]";
+					mes "������Ӧ���ٸ���̸̸�������������ɣ�";
 				}
 				else if (checkquest(13047,PLAYTIME) == 2) {
-					mes "哦，已经多久了？";
+					mes "Ŷ���Ѿ�����ˣ�";
 					erasequest 13047;// Tendrilion Request Timer
 				}
 				else if (checkquest(13049,PLAYTIME) == 0)
-					mes "白色是纸，黑色是字母。我讨厌公开文件。但是，我必须这样做，所以我要忙一段时间。";
+					mes "��ɫ��ֽ����ɫ����ĸ�������ṫ���ļ������ǣ��ұ�����������������Ҫæһ��ʱ�䡣";
 				else if (checkquest(13048,HUNTING) == 1)
-					mes "我知道狩猎十钻对你来说不会太困难。";
+					mes "��֪������ʮ�������˵����̫���ѡ�";
 				else if (checkquest(13048,HUNTING) == 2) {
 					cutin "rote02",2;
-					mes "好的 ！你正在成为一名优秀的冒险家！尽力而为吧！";
+					mes "�õ� �������ڳ�Ϊһ�������ð�ռң�������Ϊ�ɣ�";
 					erasequest 13048;// Tendrilion Request
 					setquest 13049;// Tendrilion Request Timer
 					getexp 352000,253000;
 				}
 				else {
 					cutin "rote02",2;
-					mes "数十钻 我认为我们应该给它更多的教训，让它看看谁才是老大！";
+					mes "��ʮ�� ����Ϊ����Ӧ�ø�������Ľ�ѵ����������˭�����ϴ�";
 					next;
-					if (select( "我们一定要好好教训一下。", "我想一次就足够了。" ) == 2) {
-						mes "[罗特特]";
-						mes "还好还有很多冒险者能做到这一点。";
+					if (select( "����һ��Ҫ�úý�ѵһ�¡�", "����һ�ξ��㹻�ˡ�" ) == 2) {
+						mes "[������]";
+						mes "���û��кܶ�ð������������һ�㡣";
 					}
 					else {
 						cutin "rote04",2;
-						mes "[罗特特]";
-						mes "这并不是因为我胆小。";
+						mes "[������]";
+						mes "�Ⲣ������Ϊ�ҵ�С��";
 						next;
-						mes "[罗特特]";
-						mes "祝你好运。这次一定要完成它。哈哈哈！";
+						mes "[������]";
+						mes "ף����ˡ����һ��Ҫ���������������";
 						if (checkquest(13049,PLAYTIME) == 2)
 							erasequest 13049;
 						setquest 13048;// Tendrilion Request
@@ -1130,98 +1132,98 @@ moc_para01,41,95,5	script	Rohtert#12	4_M_ROTERT,{
 				}
 			}
 			else if (checkquest(13046,HUNTING) == 1)
-				mes "你还是新手吗？如果您自己无法处理此问题，请询问您的朋友，因为这不是最容易做到的事情。";
+				mes "�㻹��������������Լ��޷����������⣬��ѯ���������ѣ���Ϊ�ⲻ�����������������顣";
 			else if (checkquest(13046,HUNTING) == 2) {
-				mes "哦，你平安回来了！";
-				mes "我想你并不像我想象的那样是个磨砂膏。";
+				mes "Ŷ����ƽ�������ˣ�";
+				mes "�����㲢����������������Ǹ�ĥɰ�ࡣ";
 				completequest 13046;// Tendrilion Request
 				setquest 13047;// Tendrilion Request Timer
 				getexp 352000,253000;
 			}
 			else {
 				cutin "rote04",2;
-				mes "你介意做一件简单的事吗？";
+				mes "�������һ���򵥵�����";
 				next;
-				if (select( "不，我不介意！", "简单的差事是傻子的事。" ) == 2) {
-					mes "[罗特特]";
-					mes "你是一个奇怪的冒险家......";
+				if (select( "�����Ҳ����⣡", "�򵥵Ĳ�����ɵ�ӵ��¡�" ) == 2) {
+					mes "[������]";
+					mes "����һ����ֵ�ð�ռ�......";
 				}
 				else {
-					mes "[罗特特]";
-					mes "一个风和日丽的日子，我正在米德加德联军哨所的西南边采花，以满足伊甸集团的要求。";
+					mes "[������]";
+					mes "һ��������������ӣ��������׵¼ӵ��������������ϱ߲ɻ������������鼯�ŵ�Ҫ��";
 					next;
-					mes "[罗特特]";
-					mes "然后那个人突然出现了。";
+					mes "[������]";
+					mes "Ȼ���Ǹ���ͻȻ�����ˡ�";
 					next;
-					select("一个什么？");
+					select("һ��ʲô��");
 					cutin "rote02",2;
-					mes "[罗特特]";
-					mes "这是一个^FF0000数十个钻头。^000000";
+					mes "[������]";
+					mes "����һ��^FF0000��ʮ����ͷ��^000000";
 					next;
 					cutin "gelca03",2;
-					mes "[^FF0000格尔卡^000000]";
-					mes "哎呀！它实际上是^FF0000Tendrilion^000000！掌握！";
+					mes "[^FF0000�����^000000]";
+					mes "��ѽ����ʵ������^FF0000Tendrilion^000000�����գ�";
 					next;
 					cutin "rote04",2;
-					mes "[罗特特]";
-					mes "是啊是啊土豆po-tah-toh！";
+					mes "[������]";
+					mes "�ǰ��ǰ�����po-tah-toh��";
 					emotion ET_HNG;
 					next;
 					cutin "gelca02",2;
-					mes "[^FF0000格尔卡^000000]";
+					mes "[^FF0000�����^000000]";
 					mes "......";
 					next;
 					cutin "rote04",2;
-					mes "[罗特特]";
-					mes "当我们面对这头野兽的眼睛时，我们意识到它看起来像狮子，但它不是任何普通的动物。";
+					mes "[������]";
+					mes "�����������ͷҰ�޵��۾�ʱ��������ʶ������������ʨ�ӣ����������κ���ͨ�Ķ��";
 					emotion ET_HNG;
 					next;
-					mes "[罗特特]";
-					mes "^8008F8我知道它要么被杀，要么被杀。^000000";
+					mes "[������]";
+					mes "^8008F8��֪����Ҫô��ɱ��Ҫô��ɱ��^000000";
 					next;
-					mes "[罗特特]";
-					mes "我当然轻而易举地打败了那只野兽！这比从波利人那里拿糖果容易多了。";
+					mes "[������]";
+					mes "�ҵ�Ȼ����׾ٵش������ֻҰ�ޣ���ȴӲ������������ǹ����׶��ˡ�";
 					next;
-					mes "[罗特特]";
-					mes "但令我惊讶的是，那头野兽又站起来了。我被迫又把它打倒了 12 次才让它倒下去。这不是一个普通的十钻。";
+					mes "[������]";
+					mes "�����Ҿ��ȵ��ǣ���ͷҰ����վ�����ˡ��ұ����ְ������� 12 �β���������ȥ���ⲻ��һ����ͨ��ʮ�ꡣ";
 					next;
-					mes "[罗特特]";
-					mes "我听说它仍然是一个徘徊的地方，但我现在有点忙。";
+					mes "[������]";
+					mes "����˵����Ȼ��һ���ǻ��ĵط������������е�æ��";
 					next;
-					mes "[罗特特]";
-					mes "我要你照顾它。对我来说，独自一人在那里很好。不过对于你来说..我建议你多带一些冒险者。";
+					mes "[������]";
+					mes "��Ҫ���չ�����������˵������һ��������ܺá�������������˵..�ҽ�������һЩð���ߡ�";
 					next;
-					select("你确定这是你自己做的吗？");
-					mes "[罗特特]";
-					mes "我的实力比数量更重要。只要去那里把野兽带走就可以了。";
+					select("��ȷ���������Լ�������");
+					mes "[������]";
+					mes "�ҵ�ʵ������������Ҫ��ֻҪȥ�����Ұ�޴��߾Ϳ����ˡ�";
 					next;
-					mes "[罗特特]";
-					mes "你会在灰烬真空吸尘器的米德加德联军哨所以西找到它。";
+					mes "[������]";
+					mes "����ڻҽ�������������׵¼ӵ��������������ҵ�����";
 					next;
-					select("我想我别无选择。");
+					select("�����ұ���ѡ��");
 					cutin "rote03",2;
-					mes "[罗特特]";
-					mes "你还是新手吗？如果您自己无法处理，请向您的朋友询问，因为这并不容易。";
+					mes "[������]";
+					mes "�㻹��������������Լ��޷�������������������ѯ�ʣ���Ϊ�Ⲣ�����ס�";
 					next;
 					cutin "gelca02",2;
-					mes "[^FF0000格尔卡^000000]";
-					mes "......."+ strcharinfo(0) +"等待...";
+					mes "[^FF0000�����^000000]";
+					mes "......."+ strcharinfo(0) +"�ȴ�...";
 					next;
 					cutin "gelca01",2;
-					mes "[^FF0000格尔卡^000000]";
-					mes "如果你发现它，不要害怕。 Master不必与Tendrilion战斗12次。";
+					mes "[^FF0000�����^000000]";
+					mes "����㷢��������Ҫ���¡� Master������Tendrilionս��12�Ρ�";
 					next;
 					cutin "gelca03",2;
-					mes "[^FF0000格尔卡^000000]";
-					mes "事实上，主人喝醉了，几乎不记得这件事了。";
+					mes "[^FF0000�����^000000]";
+					mes "��ʵ�ϣ����˺����ˣ��������ǵ�������ˡ�";
 					next;
 					cutin "gelca04",2;
-					mes "[^FF0000格尔卡^000000]";
-					mes "我只是把它放在一边，因为一个大师与一根卷须战斗有点可爱。现在它成为一个问题。";
+					mes "[^FF0000�����^000000]";
+					mes "��ֻ�ǰ�������һ�ߣ���Ϊһ����ʦ��һ������ս���е�ɰ�����������Ϊһ�����⡣";
 					next;
 					cutin "gelca01",2;
-					mes "[^FF0000格尔卡^000000]";
-					mes "请在清除一根卷须后回来。哦，请对主人保密。";
+					mes "[^FF0000�����^000000]";
+					mes "�������һ������������Ŷ��������˱��ܡ�";
 					setquest 13046;// Tendrilion Request
 				}
 			}

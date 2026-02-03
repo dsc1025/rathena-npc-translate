@@ -3,6 +3,8 @@
 //===== Changelogs: ==========================================
 //= 1.0 First Version. [Capuche]
 //= 1.1 Official conversion. [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 lasa_fild02,348,244,0	warp	lasadun01_in	1,1,lasa_dun01,24,143

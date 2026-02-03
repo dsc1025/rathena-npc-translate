@@ -14,58 +14,60 @@
 //= 1.0 First version, currently useless/disabled.
 //= 1.1 Implemented the 'mergeitem' script command. [Cydh]
 //= 1.2 Updated and moved to Cash Mall [Lemongrass]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //prontera,146,95,3	script	Mergician#pron	1_M_WIZARD,{
 itemmall,35,75,3	script	Mergician#mall	1_M_WIZARD,{
 	if (checkweight(1301,1) == 0) {
-		mes "- ç­‰ä¸€ä¸‹ï¼ï¼ -";
-		mes "- ä½ æºå¸¦çš„ç‰©å“å¤ªå¤š -";
-		mes "- æˆ–é‡é‡å¤ªå¤§è€Œæ— æ³•ç»§ç»­ã€‚ -";
-		mes "- ä¹‹åŽå›žæ¥ -";
-		mes "- å®‰æŽ’ä½ çš„åº“å­˜ã€‚ -";
+		mes "- µÈÒ»ÏÂ£¡£¡ -";
+		mes "- ÄãÐ¯´øµÄÎïÆ·Ì«¶à -";
+		mes "- »òÖØÁ¿Ì«´ó¶øÎÞ·¨¼ÌÐø¡£ -";
+		mes "- Ö®ºó»ØÀ´ -";
+		mes "- °²ÅÅÄãµÄ¿â´æ¡£ -";
 		close;
 	}
-	mes "[éº¦å‰è¥¿äºš]";
-	mes "ä½ ç›¸ä¿¡èžåˆç¥žçš„å¥‡è¿¹å—ï¼Ÿå¦‚æžœæ˜¯è¿™æ ·ï¼Œè¯·åœ¨æˆ‘å‘éŸ³æ—¶å¤§å£°é‡å¤æˆ‘çš„å’’è¯­ï¼";
-	mes "èµ°å§ï¼Œæ¢…å°”æ ¼ï¼ï¼ï¼";
+	mes "[Âó¼ªÎ÷ÑÇ]";
+	mes "ÄãÏàÐÅÈÚºÏÉñµÄÆæ¼£Âð£¿Èç¹ûÊÇÕâÑù£¬ÇëÔÚÎÒ·¢ÒôÊ±´óÉùÖØ¸´ÎÒµÄÖäÓï£¡";
+	mes "×ß°É£¬Ã·¶û¸ñ£¡£¡£¡";
 	next;
-	switch(select("Merrrrrgeï¼ï¼ï¼ï¼šåˆå¹¶çš„å¥‡è¿¹æ˜¯ä»€ä¹ˆï¼Ÿï¼šæ”¾å¼ƒâ€¦â€¦")) {
+	switch(select("Merrrrrge£¡£¡£¡£ººÏ²¢µÄÆæ¼£ÊÇÊ²Ã´£¿£º·ÅÆú¡­¡­")) {
 	case 2:
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "æœ‰ä¸€ç§ç§©åºç»Ÿæ²»ç€ä¸–ç•Œå¹¶è®©ä¸–ç•Œä¿æŒè‰¯å¥½è¿è½¬ã€‚";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "ÓÐÒ»ÖÖÖÈÐòÍ³ÖÎ×ÅÊÀ½ç²¢ÈÃÊÀ½ç±£³ÖÁ¼ºÃÔË×ª¡£";
 		next;
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "ä½†æœ‰ä¸€ä¸ªåå› ç´ å®Œå…¨ç ´åäº†è¿™æ¡è§„åˆ™ï¼";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "µ«ÓÐÒ»¸ö»µÒòËØÍêÈ«ÆÆ»µÁËÕâÌõ¹æÔò£¡";
 		next;
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "é‚£äº›å³ä½¿æ˜¯ç”±ç›¸åŒææ–™ç»„æˆå´è¢«åˆ†å¼€çš„ä¸œè¥¿ï¼ï¼";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "ÄÇÐ©¼´Ê¹ÊÇÓÉÏàÍ¬²ÄÁÏ×é³ÉÈ´±»·Ö¿ªµÄ¶«Î÷£¡£¡";
 		next;
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "ä½ æ²¡æœ‰ç»åŽ†è¿‡è¿™ç§ç³Ÿç³•çš„äº‹ä»¶å—ï¼Ÿ";
-		mes "äº‹å®žä¸Šï¼Œæˆ‘æœ‰^3131FFç›¸åŒçš„è¯æ°´ï¼Œä½†åœ¨ä½ çš„åº“å­˜ä¸­å‡ºçŽ°äº†ä¸¤æ¬¡ä»¥ä¸Šï¼ï¼^000000å¤ªä¸æ„‰å¿«äº†ï¼";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "ÄãÃ»ÓÐ¾­Àú¹ýÕâÖÖÔã¸âµÄÊÂ¼þÂð£¿";
+		mes "ÊÂÊµÉÏ£¬ÎÒÓÐ^3131FFÏàÍ¬µÄÒ©Ë®£¬µ«ÔÚÄãµÄ¿â´æÖÐ³öÏÖÁËÁ½´ÎÒÔÉÏ£¡£¡^000000Ì«²»Óä¿ìÁË£¡";
 		next;
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "ç›¸ä¿¡åˆå¹¶ä¸»ä¹‰ã€‚è¿™æ˜¯äº‹å®žã€‚";
-		mes "ç„¶åŽæˆ‘å°±èƒ½å¸®åŠ©ä½ å¿«ä¹å’Œæ»¡è¶³ã€‚";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "ÏàÐÅºÏ²¢Ö÷Òå¡£ÕâÊÇÊÂÊµ¡£";
+		mes "È»ºóÎÒ¾ÍÄÜ°ïÖúÄã¿ìÀÖºÍÂú×ã¡£";
 		close;
 	case 1:
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "è¿™å°±æ˜¯å‘å¤§ç¥žç¥ˆæ±‚çš„å®Œå…¨ç¥žåœ£çš„ä»ªå¼ï¼Œåˆå¹¶ï¼æˆ‘å€Ÿç”¨äº†ä¸€æ®µæ—¶é—´çš„åŠ›é‡ï¼";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "Õâ¾ÍÊÇÏò´óÉñÆíÇóµÄÍêÈ«ÉñÊ¥µÄÒÇÊ½£¬ºÏ²¢£¡ÎÒ½èÓÃÁËÒ»¶ÎÊ±¼äµÄÁ¦Á¿£¡";
 		next;
-		mes "[éº¦å‰è¥¿äºš]";
-		mes "å¦‚æžœä½ æ¸´æœ›å¾—åˆ°åˆå¹¶çš„ç¥ç¦ï¼Œé‚£å°±è¦è°¦è™šå¹¶å¤§å£°å–Šå‡ºæ¥ï¼åˆå¹¶åˆå¹¶ï¼Œåˆå¹¶ï¼ï¼ï¼";
+		mes "[Âó¼ªÎ÷ÑÇ]";
+		mes "Èç¹ûÄã¿ÊÍûµÃµ½ºÏ²¢µÄ×£¸££¬ÄÇ¾ÍÒªÇ«Ðé²¢´óÉùº°³öÀ´£¡ºÏ²¢ºÏ²¢£¬ºÏ²¢£¡£¡£¡";
 		next;
-		switch(select("Merrrrge!:åˆ«å¬ä»–è¯´çš„ã€‚")) {
+		switch(select("Merrrrge!:±ðÌýËûËµµÄ¡£")) {
 		case 1:
 			mergeitem;
-			mes "[éº¦å‰è¥¿äºš]";
-			mes "Merge åˆšåˆšå¬åˆ°æ‚¨çš„æ„¿æœ›ï¼Œè®©å®ƒå®žçŽ°ï¼";
-			mes "æ‰“å¼€ä½ çš„åº“å­˜æ¥æ£€æŸ¥å¥‡è¿¹ï¼";
+			mes "[Âó¼ªÎ÷ÑÇ]";
+			mes "Merge ¸Õ¸ÕÌýµ½ÄúµÄÔ¸Íû£¬ÈÃËüÊµÏÖ£¡";
+			mes "´ò¿ªÄãµÄ¿â´æÀ´¼ì²éÆæ¼££¡";
 			close;
 		case 2:
-			mes "[éº¦å‰è¥¿äºš]";
-			mes "ä½ è¿™ä¸ªæ··è›‹ï¼ï¼ï¼ä½ ç®€ç›´æ‰“ç ´äº†æ•´ä¸ªèŠ‚å¥ï¼ä¸ºä»€ä¹ˆä½ å°±ä¸èƒ½èŽ·å–æˆ‘çš„æµé‡å¹¶å…³æ³¨æˆ‘ï¼Ÿï¼ç¬¨è›‹ï¼";
+			mes "[Âó¼ªÎ÷ÑÇ]";
+			mes "ÄãÕâ¸ö»ìµ°£¡£¡£¡Äã¼òÖ±´òÆÆÁËÕû¸ö½Ú×à£¡ÎªÊ²Ã´Äã¾Í²»ÄÜ»ñÈ¡ÎÒµÄÁ÷Á¿²¢¹Ø×¢ÎÒ£¿£¡±¿µ°£¡";
 			close;
 		}
 	case 3:

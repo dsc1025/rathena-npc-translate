@@ -11,6 +11,8 @@
 //= Pickup and write mail from/to players in game.
 //===== Additional Comments: =================================
 //= 1.0 First version, Renewal duplicates.
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 // Izlude

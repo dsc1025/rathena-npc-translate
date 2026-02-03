@@ -4,16 +4,18 @@
 //= 1.0 First Version. [JohnnyPlayy]
 //===== Description: ========================================= 
 // Texts from this script were translated according to KRO
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 -	script	ZondaTeleportationServices	HIDDEN_NPC,{
 	cutin "zonda_do01", 2;
-	mes "[Zondaå‘˜å·¥]";
-	mes "æ¬¢è¿ã€‚";
-	mes "æˆ‘ä»¬çš„å›¢é˜Ÿå§‹ç»ˆè‡´åŠ›äºè¶…è¶Šæ‚¨å¯¹æœåŠ¡è´¨é‡çš„æœŸæœ›ã€‚";
-	mes "è¯·é€‰æ‹©æ‚¨çš„ç›®çš„åœ°ã€‚";
+	mes "[ZondaÔ±¹¤]";
+	mes "»¶Ó­¡£";
+	mes "ÎÒÃÇµÄÍÅ¶ÓÊ¼ÖÕÖÂÁ¦ÓÚ³¬Ô½Äú¶Ô·şÎñÖÊÁ¿µÄÆÚÍû¡£";
+	mes "ÇëÑ¡ÔñÄúµÄÄ¿µÄµØ¡£";
 	next;
-	switch( select( "åŒ—æ¯”å¼—ç½—æ–¯ç‰¹", "Eclage", "Splendide", "Midgardæ¢é™©è¥åœ°", "é©¬åŠªå…‹", "å¡ç±³è¾¾å°”å±±éƒŠåŒº", "å–æ¶ˆã€‚") ) {
+	switch( select( "±±±È¸¥ÂŞË¹ÌØ", "Eclage", "Splendide", "MidgardÌ½ÏÕÓªµØ", "ÂíÅ¬¿Ë", "¿¨Ã×´ï¶ûÉ½½¼Çø", "È¡Ïû¡£") ) {
 	case 1:
 		callsub( S_Zone, "North Bifrost", 17000,850, 7213 ); // Teleport value not confirmed
 		warp "bif_fild02",160,230; // Unverified Coordinates
@@ -39,9 +41,9 @@
 		warp "dic_fild01",188,187;
 		end;
 	case 7:
-		mes "[Zondaå‘˜å·¥]";
-		mes "æˆ‘ä»¬å§‹ç»ˆè‡´åŠ›äºç¡®ä¿ä¸ºå®¢æˆ·æä¾›æœ€å¥½çš„æœåŠ¡ã€‚";
-		mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨æˆ‘ä»¬çš„æœåŠ¡ã€‚";
+		mes "[ZondaÔ±¹¤]";
+		mes "ÎÒÃÇÊ¼ÖÕÖÂÁ¦ÓÚÈ·±£Îª¿Í»§Ìá¹©×îºÃµÄ·şÎñ¡£";
+		mes "¸ĞĞ»ÄúÊ¹ÓÃÎÒÃÇµÄ·şÎñ¡£";
 		close3;
 	}
 
@@ -51,15 +53,15 @@ S_Zone:
 	.@quest_req = getarg(3);
 	
 	if (isbegin_quest(.@quest_req) == 0) {
-		mes "[Zondaå‘˜å·¥]";
+		mes "[ZondaÔ±¹¤]";
 		//mes getarg(0);
-		mes "åœ¨ä½¿ç”¨æˆ‘ä»¬çš„ä¼ é€æœåŠ¡ä¹‹å‰ï¼Œæ‚¨å¿…é¡»å®Œæˆä¼ é€åˆ°" + getarg(0) + "çš„è®¿é—®ä»»åŠ¡ã€‚";
+		mes "ÔÚÊ¹ÓÃÎÒÃÇµÄ´«ËÍ·şÎñÖ®Ç°£¬Äú±ØĞëÍê³É´«ËÍµ½" + getarg(0) + "µÄ·ÃÎÊÈÎÎñ¡£";
 		close3;
 	}
-	mes "[Zondaå‘˜å·¥]";
-	mes getarg(0) + "é€‚ç”¨äº ^ff0000" + .@zeny_req + " Zenys^000000 æˆ– ^ff0000" + .@item_req + " Malang Sp Can^000000ã€‚";
+	mes "[ZondaÔ±¹¤]";
+	mes getarg(0) + "ÊÊÓÃÓÚ ^ff0000" + .@zeny_req + " Zenys^000000 »ò ^ff0000" + .@item_req + " Malang Sp Can^000000¡£";
 	next;
-	switch( select( .@zeny_req + "å¥³æ€§", .@item_req + "ç›ç…Sp Can", "å–æ¶ˆ" ) ) {
+	switch( select( .@zeny_req + "Å®ĞÔ", .@item_req + "ÂêÀÅSp Can", "È¡Ïû" ) ) {
 	case 1:
 		if (Zeny < .@zeny_req)
 			break;
@@ -71,13 +73,13 @@ S_Zone:
 		delitem 12636,.@item_req; // Malang_Sp_Can
 		return;
 	case 3:
-		mes "[Zondaå‘˜å·¥]";
-		mes "æ‚¨èƒ½å‘Šè¯‰æˆ‘å…¶ä»–æœåŠ¡é¢†åŸŸå—ï¼Ÿ";
+		mes "[ZondaÔ±¹¤]";
+		mes "ÄúÄÜ¸æËßÎÒÆäËû·şÎñÁìÓòÂğ£¿";
 		close3;
 	}
-	mes "[Zondaå‘˜å·¥]";
-	mes "å…ˆç”Ÿï¼æ‚¨æ²¡æœ‰æä¾›æˆ‘ä»¬æ‰€è¦æ±‚çš„è¶³å¤Ÿä»·å€¼ã€‚";
-	mes "è¯·å†æ¬¡å›æ¥æŸ¥çœ‹ã€‚";
+	mes "[ZondaÔ±¹¤]";
+	mes "ÏÈÉú£¡ÄúÃ»ÓĞÌá¹©ÎÒÃÇËùÒªÇóµÄ×ã¹»¼ÛÖµ¡£";
+	mes "ÇëÔÙ´Î»ØÀ´²é¿´¡£";
 	close3;
 }
 

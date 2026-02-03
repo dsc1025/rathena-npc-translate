@@ -2,6 +2,8 @@
 //= Amicitia dungeon warps script
 //===== Changelogs: ==========================================
 //= 1.0 First version. [Capuche]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 amicitia1,248,244,0	warp2	#wami1	2,2,ein_fild08,152,95
@@ -10,7 +12,7 @@ amicitia1,149,19,0	script	#wami2	WARPNPC,2,2,{
 	end;
 OnTouch:
 	if (BaseLevel < 230) {
-		mes "- 230 绾т互涓嬬姝㈣繘鍏ワ紒 -";
+		mes "- 230 级以下禁止进入！ -";
 		close;
 	}
 	warp "amicitia2",146,274;

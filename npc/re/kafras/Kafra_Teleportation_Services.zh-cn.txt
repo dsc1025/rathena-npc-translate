@@ -4,20 +4,22 @@
 //= 1.0 First Version. [JohnnyPlayy]
 //===== Description: ========================================= 
 // Texts from this script were translated according to KRO
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 function	script	F_KafTeleDoram	{
 	.@menu_choice = getarg(0);
 
 	cutin "kafra_do01", 2;
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes "æ¬¢è¿ã€‚";
-	mes "Kafra æœåŠ¡å§‹ç»ˆåœ¨æ‚¨èº«è¾¹ã€‚";
-	mes "è¯·é€‰æ‹©æ‚¨çš„ç›®çš„åœ°ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes "»¶Ó­¡£";
+	mes "Kafra ·şÎñÊ¼ÖÕÔÚÄúÉí±ß¡£";
+	mes "ÇëÑ¡ÔñÄúµÄÄ¿µÄµØ¡£";
 	next;
 	switch(.@menu_choice) {
 	case 1: // Alberta
-		switch( select( "ä½©æ°¸ä¸œå—åœº", "æ²‰èˆ¹", "å–æ¶ˆã€‚") ) {
+		switch( select( "ÅåÓÀ¶«ÄÏ³¡", "³Á´¬", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Southeast Field of Payon", 250,13 );
 			warp "pay_fild06",199,152;
@@ -30,7 +32,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 2: // Aldebaran
-		switch( select( "æ¯•å®¿äº”è¾¹å¢ƒ", "å–æ¶ˆã€‚") ) {
+		switch( select( "±ÏËŞÎå±ß¾³", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Aldebaran Border", 50,3 );
 			warp "yuno_fild01",194,150;
@@ -39,7 +41,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 3: // Einbroch
-		switch( select( "æ·±æ¸Šè°·è¥¿åŸŸ", "è±å“ˆå°”æ£®åŒ—åŸŸ", "å–æ¶ˆã€‚") ) {
+		switch( select( "ÉîÔ¨¹ÈÎ÷Óò", "À³¹ş¶ûÉ­±±Óò", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "West Field of the Abyss Valley", 600,30 );
 			warp "ein_fild06",199,152;
@@ -52,7 +54,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 4: // Geffen
-		switch( select( "æ ¼èŠ¬å¡”åœ°ä¸‹å…¥å£", "é›·ç¥å±±åŒ—ç”°", "å…½äººæ‘åº„", "æ ¼æ‹‰æ–¯ç‰¹æµ·å§†å…¥å£", "å–æ¶ˆã€‚") ) {
+		switch( select( "¸ñ·ÒËşµØÏÂÈë¿Ú", "À×ÉñÉ½±±Ìï", "ÊŞÈË´å×¯", "¸ñÀ­Ë¹ÌØº£Ä·Èë¿Ú", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Geffen Tower Underground Entrance", 300,15 );
 			warp "gef_tower",153,46;
@@ -73,7 +75,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 5: // Lighthalzen
-		switch( select( "è±ç‰¹å“ˆå°”å²‘åŒ—åœº", "å–æ¶ˆã€‚") ) {
+		switch( select( "À³ÌØ¹ş¶ûá¯±±³¡", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "North Field of Lighthalzen", 200,10 );
 			warp "lhz_fild01",244,130;
@@ -82,7 +84,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 6: // Morocc
-		switch( select( "æ‘©æ´›å“¥é—å€é‡‘å­—å¡”", "è‹æ ¼æ‹‰ç‰¹æ²™æ¼ ç‹®èº«äººé¢åƒ", "æ‘©æ´›å“¥ä¸œå—åŸé‡", "ç§‘æ‘©å¤šæµ·æ»©", "æ­»äº¡ç‹å›½", "å–æ¶ˆã€‚") ) {
+		switch( select( "Ä¦Âå¸çÒÅÖ·½ğ×ÖËş", "ËÕ¸ñÀ­ÌØÉ³Ä®Ê¨ÉíÈËÃæÏñ", "Ä¦Âå¸ç¶«ÄÏÔ­Ò°", "¿ÆÄ¦¶àº£Ì²", "ËÀÍöÍõ¹ú", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Morocc Ruins Pyramid", 50,3 );
 			warp "moc_ruins",100,140;
@@ -107,7 +109,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 7: // Payon
-		switch( select( "é˜¿åˆ‡å°”æ‘", "ä¸œå—ä½©æ°¸çƒåœº", "æ™®éš†å¾·æ‹‰å—çƒåœº", "å–æ¶ˆã€‚") ) {
+		switch( select( "°¢ÇĞ¶û´å", "¶«ÄÏÅåÓÀÇò³¡", "ÆÕÂ¡µÂÀ­ÄÏÇò³¡", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Archer's Village", 50,3 );
 			warp "pay_arche",69,130;
@@ -124,7 +126,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 8: // Prontera
-		switch( select( "è¥¿å—æ™®éš†å¾·æ‹‰æ²¹ç”°", "æ™®éš†å¾·æ‹‰åŒ—åœº", "æ¯”äºšå…°å²›", "æ™®éš†å¾·æ‹‰å—åœº", "å–æ¶ˆã€‚") ) {
+		switch( select( "Î÷ÄÏÆÕÂ¡µÂÀ­ÓÍÌï", "ÆÕÂ¡µÂÀ­±±³¡", "±ÈÑÇÀ¼µº", "ÆÕÂ¡µÂÀ­ÄÏ³¡", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Southwestern Prontera Field", 100,5 );
 			warp "prt_fild07",250,257;
@@ -145,7 +147,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 9: // Rachel
-		switch( select( "å—å†°æ´åœº", "é›·ç¥ç«å±±ä¸œåœº", "å–æ¶ˆã€‚") ) {
+		switch( select( "ÄÏ±ù¶´³¡", "À×Éñ»ğÉ½¶«³¡", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Southern Ice Cave Field", 600,30 );
 			warp "ra_fild04",214,220;
@@ -158,7 +160,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 10: // Veins
-		switch( select( "æ‰˜å°”ç«å±±ä¸œåœº", "å—è„‰åœº", "å–æ¶ˆã€‚") ) {
+		switch( select( "ÍĞ¶û»ğÉ½¶«³¡", "ÄÏÂö³¡", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "Thor Volcano East Field", 400,20 );
 			warp "ra_fild04",198,174;
@@ -171,7 +173,7 @@ function	script	F_KafTeleDoram	{
 			callfunc( "F_KafEnd",0,0 );
 		}
 	case 11: // Yuno
-		switch( select( "æ·±æ¸Šè°·è¥¿åŸŸ", "æ·±æ¸Šè°·çš„å¥‡å¹»å‘æ˜", "å²©æµ†è¿·å®«æœ±è¯ºé«˜åŸ", "æ·±æ¸Šæ¹–è¥¿åŸŸ", "å–æ¶ˆã€‚") ) {
+		switch( select( "ÉîÔ¨¹ÈÎ÷Óò", "ÉîÔ¨¹ÈµÄÆæ»Ã·¢¾ò", "ÑÒ½¬ÃÔ¹¬ÖìÅµ¸ßÔ­", "ÉîÔ¨ºşÎ÷Óò", "È¡Ïû¡£") ) {
 		case 1:
 			callsub( S_Zone, "West Field of the Abyss Valley", 400,20 );
 			warp "ein_fild06",199,152;
@@ -197,10 +199,10 @@ S_Zone:
 	.@zeny_req = getarg(1);
 	.@item_req = getarg(2);
 
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes getarg(0) + "é€‚ç”¨äº ^ff0000" + .@zeny_req + " Zenys^000000 æˆ– ^ff0000" + .@item_req + " Malang Sp Can^000000ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes getarg(0) + "ÊÊÓÃÓÚ ^ff0000" + .@zeny_req + " Zenys^000000 »ò ^ff0000" + .@item_req + " Malang Sp Can^000000¡£";
 	next;
-	switch( select( .@zeny_req + "å¥³æ€§", .@item_req + "ç›ç…Sp Can", "å–æ¶ˆ" ) ) {
+	switch( select( .@zeny_req + "Å®ĞÔ", .@item_req + "ÂêÀÅSp Can", "È¡Ïû" ) ) {
 	case 1:
 		if (Zeny < .@zeny_req)
 			break;
@@ -212,72 +214,72 @@ S_Zone:
 		delitem 12636,.@item_req; // Malang_Sp_Can
 		return;
 	case 3:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ‚¨èƒ½å‘Šè¯‰æˆ‘å…¶ä»–æœåŠ¡é¢†åŸŸå—ï¼Ÿ";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÄúÄÜ¸æËßÎÒÆäËû·şÎñÁìÓòÂğ£¿";
 		close3;
 	}
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes "å…ˆç”Ÿï¼æ‚¨æ²¡æœ‰æä¾›æˆ‘ä»¬æ‰€è¦æ±‚çš„è¶³å¤Ÿä»·å€¼ã€‚";
-	mes "è¯·å†æ¬¡å›æ¥æŸ¥çœ‹ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes "ÏÈÉú£¡ÄúÃ»ÓĞÌá¹©ÎÒÃÇËùÒªÇóµÄ×ã¹»¼ÛÖµ¡£";
+	mes "ÇëÔÙ´Î»ØÀ´²é¿´¡£";
 	close3;
 }
 
 moc_para01,35,23,3	script	Kafra Teleportation#eden	4_F_DRKAFRA01,{
 	cutin "kafra_do01", 2;
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes "æ¬¢è¿ã€‚";
-	mes "Kafra æœåŠ¡å§‹ç»ˆåœ¨æ‚¨èº«è¾¹ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes "»¶Ó­¡£";
+	mes "Kafra ·şÎñÊ¼ÖÕÔÚÄúÉí±ß¡£";
 	next;
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes "ä¸ºäº†å¥–åŠ±å†’é™©å®¶çš„æ”¯æŒï¼Œå¡å¤«æ‹‰å…¬å¸ä¸ä¼Šç”¸é›†å›¢åˆä½œï¼Œä¸º^ff000039çº§ä»¥ä¸‹çš„åˆçº§å†’é™©å®¶^000000æä¾›å…è´¹æœåŠ¡ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes "ÎªÁË½±ÀøÃ°ÏÕ¼ÒµÄÖ§³Ö£¬¿¨·òÀ­¹«Ë¾ÓëÒÁµé¼¯ÍÅºÏ×÷£¬Îª^ff000039¼¶ÒÔÏÂµÄ³õ¼¶Ã°ÏÕ¼Ò^000000Ìá¹©Ãâ·Ñ·şÎñ¡£";
 	next;
 	if (BaseLevel > 40) {
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æˆ‘ä»¬ä¸ä¸º40çº§ä»¥ä¸Š^ff0000å†’é™©å®¶^000000æä¾›å…è´¹ä¼ é€æœåŠ¡ã€‚";
-		mes "åœ¨åŸå¸‚ä¸­æœç´¢å¡å¤«æ‹‰ä¼ é€æœåŠ¡ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÎÒÃÇ²»Îª40¼¶ÒÔÉÏ^ff0000Ã°ÏÕ¼Ò^000000Ìá¹©Ãâ·Ñ´«ËÍ·şÎñ¡£";
+		mes "ÔÚ³ÇÊĞÖĞËÑË÷¿¨·òÀ­´«ËÍ·şÎñ¡£";
 		close3;
 	}
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes "è¯·é€‰æ‹©æ‚¨çš„ç›®çš„åœ°ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes "ÇëÑ¡ÔñÄúµÄÄ¿µÄµØ¡£";
 	next;
-	switch( select( "æ™®éš†å¾·æ‹‰è¥¿åœº", "æ™®éš†å¾·æ‹‰è¥¿å—åœº", "æ™®éš†å¾·æ‹‰æ¹–åœº", "ä½©æ°¸åœ°ä¸‹åŸå…¥å£", "è¥¿å—ä¼Šå…¹é²å¾·åœº", "å–æ¶ˆã€‚") ) {
+	switch( select( "ÆÕÂ¡µÂÀ­Î÷³¡", "ÆÕÂ¡µÂÀ­Î÷ÄÏ³¡", "ÆÕÂ¡µÂÀ­ºş³¡", "ÅåÓÀµØÏÂ³ÇÈë¿Ú", "Î÷ÄÏÒÁ×ÈÂ³µÂ³¡", "È¡Ïû¡£") ) {
 	case 1:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ™®éš†å¾·æ‹‰åœºï¼š";
-		mes "æ™®éš†å¾·æ‹‰è¥¿ç”°æ˜¯ä¸€ç‰‡å±±åœ°ï¼Œä½ ä¹Ÿå¯ä»¥é€šè¿‡^ff0000æ™®éš†å¾·æ‹‰ä¸‹æ°´é“^000000è¿›å…¥ã€‚";
-		mes "^ff0000é»„èœ‚^000000å±…ä½åœ¨é‚£é‡Œï¼Œæ‰€ä»¥æ–°æ‰‹å†’é™©è€…åº”è¯¥å°å¿ƒï¼";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÆÕÂ¡µÂÀ­³¡£º";
+		mes "ÆÕÂ¡µÂÀ­Î÷ÌïÊÇÒ»Æ¬É½µØ£¬ÄãÒ²¿ÉÒÔÍ¨¹ı^ff0000ÆÕÂ¡µÂÀ­ÏÂË®µÀ^000000½øÈë¡£";
+		mes "^ff0000»Æ·ä^000000¾Ó×¡ÔÚÄÇÀï£¬ËùÒÔĞÂÊÖÃ°ÏÕÕßÓ¦¸ÃĞ¡ĞÄ£¡";
 		next;
 		callsub( S_Zone );
 		warp "prt_fild05",276,241;
 		end;
 	case 2:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ™®éš†å¾·æ‹‰åœºï¼š";
-		mes "è¥¿å—æ™®éš†å¾·æ‹‰åœºæ˜¯^ff0000æ‘‡æ»šä¹é˜Ÿ^000000å±…ä½çš„åœ°æ–¹ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÆÕÂ¡µÂÀ­³¡£º";
+		mes "Î÷ÄÏÆÕÂ¡µÂÀ­³¡ÊÇ^ff0000Ò¡¹öÀÖ¶Ó^000000¾Ó×¡µÄµØ·½¡£";
 		next;
 		callsub( S_Zone );
 		warp "prt_fild07",250,257;
 		end;
 	case 3:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ™®éš†å¾·æ‹‰åœºï¼š";
-		mes "æ™®éš†å¾·æ‹‰æ¹–åŸæ˜¯^ff0000å®‰ä¼¯å°¼äºº^000000å±…ä½çš„åœ°æ–¹ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÆÕÂ¡µÂÀ­³¡£º";
+		mes "ÆÕÂ¡µÂÀ­ºşÔ­ÊÇ^ff0000°²²®ÄáÈË^000000¾Ó×¡µÄµØ·½¡£";
 		next;
 		callsub( S_Zone );
 		warp "prt_fild04",204,109;
 		end;
 	case 4:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "å¼“ç®­æ‰‹æ‘ï¼š";
-		mes "ä½©æ°¸æ´ç©´æ˜¯ä¸€ä¸ªå¯æ€•çš„åœ°æ–¹ï¼Œæœ‰å¾ˆå¤š^ff0000åƒµå°¸^000000å’Œ^ff0000éª·é«…^000000ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "¹­¼ıÊÖ´å£º";
+		mes "ÅåÓÀ¶´Ñ¨ÊÇÒ»¸ö¿ÉÅÂµÄµØ·½£¬ÓĞºÜ¶à^ff0000½©Ê¬^000000ºÍ^ff0000÷¼÷Ã^000000¡£";
 		next;
 		callsub( S_Zone );
 		warp "pay_arche",69,130;
 		end;
 	case 5:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "è‹æ ¼æ‹‰ç‰¹æ²™æ¼ ï¼š";
-		mes "æ™®éš†å¾·æ‹‰è¥¿å—éƒ¨å’Œä¼Šå…¹é²å¾·è¥¿å—éƒ¨ï¼Œè¿™ä¸ªåœ°æ–¹å……æ»¡äº†^ff0000Mukas^000000å’Œ^ff0000Peco Pecos^000000ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ËÕ¸ñÀ­ÌØÉ³Ä®£º";
+		mes "ÆÕÂ¡µÂÀ­Î÷ÄÏ²¿ºÍÒÁ×ÈÂ³µÂÎ÷ÄÏ²¿£¬Õâ¸öµØ·½³äÂúÁË^ff0000Mukas^000000ºÍ^ff0000Peco Pecos^000000¡£";
 		next;
 		callsub( S_Zone );
 		warp "moc_fild01",232,250;
@@ -286,12 +288,12 @@ moc_para01,35,23,3	script	Kafra Teleportation#eden	4_F_DRKAFRA01,{
 		callfunc( "F_KafEnd",0,0 );
 	}
 S_Zone:
-	switch( select( "æˆ‘æƒ³å»ã€‚", "æˆ‘æƒ³ç•™ä¸‹æ¥ã€‚" ) ) {
+	switch( select( "ÎÒÏëÈ¥¡£", "ÎÒÏëÁôÏÂÀ´¡£" ) ) {
 	case 1:
 		return;
 	case 2:
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æƒ³äº†è§£æˆ‘ä»¬çš„å…¶ä»–æœåŠ¡å—ï¼Ÿ";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÏëÁË½âÎÒÃÇµÄÆäËû·şÎñÂğ£¿";
 		close3;
 	}	
 }
