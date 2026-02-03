@@ -1,0 +1,1005 @@
+//===== rAthena Script =======================================
+//= God Items Quest
+//===== Description: =========================================
+//= [Official Conversion]
+//= God Item Hervor Creation script (WoE TE)
+//===== Changelogs: ==========================================
+//= 1.0 First Version. [Capuche]
+//============================================================
+
+te_prtcas01,204,204,3	script	Blacksmith Kai#tegod01	4_M_RACHMAN2,{
+	if (checkweight(1201,1) == 0) {
+		mes "您的物品太多，无法继续任务。";
+		mes "请减轻负担并重试。";
+		close;
+	}
+
+	.@guild_id = getcastledata("te_prtcas01",1);
+	.@economy  = getcastledata("te_prtcas01",2);
+	.@npc_name$ = "Kai";
+
+	mes "["+ .@npc_name$ +"]";
+	if (.@guild_id != getcharid(2)) {
+		mes "你……我看起来不熟悉……？";
+		mes "你要威胁我吗？";
+		mes "不，对吧？";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "我有我的理由。";
+		mes "请假装没有看到我。";
+		close;
+	}
+	if (WoeTETimeStart(14400) == 1 || agitcheck3() == 1) {// cannot start the quest 4 hours before and during WOE TE
+		mes "从现在开始，我就静静地待在这里，不打扰任何人，直到围城结束。";
+		mes "别担心我。";
+		close;
+	}
+	if (is_guild_leader() == false) {
+		mes "我一直很感激你让我留在这里。";
+		mes "没什么特别的……但如果你愿意的话，我可以给你做一些有用的工具。";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "我的意思是如果公会会长想要的话。";
+		mes "我也是一个追求极致之道的高手。";
+		mes "我希望我能在这里找到那条路。";
+		close;
+	}
+	if ($2012_tegod_gloria == 0) {// event status
+		mes "啊……师父。";
+		mes "我一直感到非常感激。";
+		mes "因为我欠你很多，所以我会随时帮助你。";
+		next;
+		switch( select( "制作 Hervor。","融合材料。","放松。" ) ) {
+		case 1:
+			if (.@economy > 29) {
+				if (countitem(6595) > 1 && countitem(6596) > 0 && countitem(6594) > 3 && countitem(6597) > 2 && countitem(6602) > 0 && countitem(6605) > 0 && countitem(6604) > 0 && countitem(2115) > 0) {
+					mes "^ff0000在制作赫沃的过程中需要瓦尔基亚之盾。";
+					mes "为了继续任务，你不应该拥有除女武神之盾之外的任何其他物品。^ff0000";
+					next;
+					mes "^ff0000即使已经应用了精炼等级和卡牌，该过程也需要您可能拥有的任何一个女武神之盾。";
+					mes "请整理好您的物品后重试。^000000";
+					next;
+					if (select( "整理财产。","照原样继续。" ) == 1) {
+						mes "你决定只保留女武神之盾。";
+						close;
+					}
+					mes "["+ .@npc_name$ +"]";
+					mes "我看到你已经按照你的承诺开发了要塞。";
+					mes "而且，你还找到了维伦德的物品……";
+					next;
+					mes "["+ .@npc_name$ +"]";
+					mes "...所以...让我们完成工作。";
+					mes "在女孩们找到我们之前...";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "女孩们……？";
+					next;
+					mes "["+ .@npc_name$ +"]";
+					mes "...是的，有一些女孩..";
+					mes "因为他们，我不得不逃跑……";
+					donpcevent "#tequest_master_prt01::OnCommandOn";
+					mapannounce "te_prtcas01","A girl's voice: Hey, were you talking about us? It's "+ .@npc_name$ +", right? I can't believe you ran away to a place like this.",bc_map,"0x00FF00",FW_BOLD,20,0,40;
+					next;
+					mes "["+ .@npc_name$ +"]";
+					mes "哦，不……！";
+					mes "他们在这里..!!";
+					next;
+					mes "[" + strcharinfo(0) + "]";
+					mes "交给我吧。";
+					next;
+					mes "^4d4dff!- 指令-!";
+					mes "很快，7个女孩就跟着"+ .@npc_name$ +"会尝试入侵要塞。";
+					mes "您必须保护"+ .@npc_name$ +" 1小时。^000000";
+					next;
+					mes "^4d4dff!- 指令-!";
+					mes "当真正的攻击开始时，帝国区域的门口将被封锁以进行保护。^000000";
+					close;
+				}
+				mes "["+ .@npc_name$ +"]";
+				mes "赫沃尔（Hervor）是以女武神赫沃尔（Hervor the Valkyrie）命名的盾牌。";
+				mes "我不知道这座堡垒里会有曾经属于赫沃的丈夫维伦德的物品……";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "如果我们使用它们，我们就可以制造赫沃。";
+				mes "这对我来说就像梦想成真一样……我的手在颤抖。";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "不过，看来我们还需要更多的材料。";
+				mes "你能再检查一下吗？我会给你我们需要的清单。";
+				callsub S_Material, .@npc_name$,1,"since it is a crystal of Velund's love.";
+			}
+			mes "["+ .@npc_name$ +"]";
+			mes "不过，我说句话可以吗？";
+			mes "赫沃尔是我制作的最强大的战斗装备之一，你应该从我这里得到这样的东西......";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "但我希望你至少有最低限度的资格。";
+			mes "管理好这座堡垒，将其商业等级提高^4d4dff30级或更多^000000。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "权力越大，责任和义务也越大。";
+			mes "我希望你先掌握基础知识。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "之后我会让你成为赫沃尔。";
+			mes "如果您需要的话，我可以给您材料清单。";
+			callsub S_Material, .@npc_name$,0,"since it is a crystal of Velund's love.";
+		case 2:
+			callsub S_Fuse, .@npc_name$, "Hervor";
+		case 3:
+			mes "["+ .@npc_name$ +"]";
+			mes "你这么说真是太好了。";
+			mes "对了，我想知道我的弟弟卡诺怎么样了？";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "我确信他和我一样过得很好。";
+			mes "……我希望事情能像现在一样平静。";
+			close;
+		}
+	}
+	if ($2012_tegod_gloria == 1) {// event started
+		mes "你听到这个消息了吗？";
+		mes "女孩们来了。";
+		mes "无情的少女们！！！";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "自从他们已经宣战以来，他们随时都会到达这里。";
+		mes "我确信他们是来抓赫沃尔的。";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "阻止他们。请！";
+		next;
+		switch( select( "交给我吧。","“女孩们”是什么意思？" ) ) {
+		case 1:
+			mes "["+ .@npc_name$ +"]";
+			mes "谢谢...";
+			mes "很抱歉给你带来麻烦，但我的双手被束缚了。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "请帮我阻止他们！";
+			close;
+		case 2:
+			mes "["+ .@npc_name$ +"]";
+			mes "……她们是想成为瓦尔基里的女孩……";
+			mes "他们总是七人一组。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "他们想要的是强大的战甲……";
+			mes "他们总是威胁我和我弟弟卡诺。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "起初他们对基本武器感到满意，但是";
+			mes "很快他们就开始威胁我们，说他们需要更强大的东西才能成为瓦尔基里。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "我受不了了，所以我逃跑了……但他们来了……";
+			mes "你必须小心，因为他们发现这里有赫沃的材料。";
+			close;
+		}
+	}
+	if ($2012_tegod_gloria == 2) {// after 10 minutes delay
+		mes "啊，别再跟着我了！";
+		mes "如果你能干掉他们的话……赫沃，没错！我会让你成为赫沃尔！";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "他们什么时候才能不再跟着我……";
+		mes "现在我普遍害怕女孩......而且我害怕做任何事情......";
+		next;
+		mes "他现在正在胡言乱语。";
+		mes "等一下，他就会平静下来。";
+		mes "你必须先摆脱那些女孩。";
+		close;
+	}
+	if ($2012_tegod_gloria == 3) {// event failed
+		mes "……虽然我又成功地从他们手中逃脱了……";
+		mes "这很难。";
+		mes "生活实在是……太艰难了。";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "我太累了，什么也做不了。";
+		mes "...我想我暂时什么都做不了，无论是生产还是锻造或者其他什么。";
+		mes "对不起。我会休息一下。";
+		close;
+	}
+	if ($2012_tegod_gloria == 4) {
+		mes "我现在终于可以呼吸了。";
+		mes "我会按照承诺开始制作 Hervor。";
+		next;
+		switch( select( "制作 Hervor。","融合材料。","现在不行。" ) ) {
+		case 1:
+			if (countitem(6595) > 1 && countitem(6596) > 0 && countitem(6594) > 3 && countitem(6597) > 2 && countitem(6602) > 0 && countitem(6605) > 0 && countitem(6604) > 0 && countitem(2115) > 0) {
+				mes "^ff0000在制作赫沃的过程中需要瓦尔基亚之盾。";
+				mes "为了继续任务，你不应该拥有除女武神之盾之外的任何其他物品。^ff0000";
+				next;
+				mes "^ff0000即使已经应用了精炼等级和卡牌，该过程也需要您可能拥有的任何一个女武神之盾。";
+				mes "请整理好您的物品后重试。^000000";
+				next;
+				if (select( "整理财产。","照原样继续。" ) == 1) {
+					mes "你决定只保留女武神之盾。";
+					close;
+				}
+				mes "["+ .@npc_name$ +"]";
+				mes "哦...谢谢你。";
+				mes "我不敢相信我终于亲自接触到这些材料了......";
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "这里是。";
+				mes "虽然要经过很多步骤，是不是很快呢？";
+				mes "我是如此的不知所措，感觉那一刻就那么短暂。";
+				next;
+				mes "铁匠维伦德为妻子赫沃制作的盾牌赫沃终于制作完成";
+				mes "在"+ .@npc_name$ +".";
+				delitem 6595,2;// Hammer_Of_Velund
+				delitem 6596,1;// Anvil_Of_Velund
+				delitem 6594,4;// Magic_Bronze_Bullion
+				delitem 6597,3;// Bracelet_Of_Velund
+				delitem 6602,1;// Secret_Of_Rune
+				delitem 6605,1;// Muspellium
+				delitem 6604,1;// Essence_Of_Rune
+				delitem 2115,1;// Valkyrja's_Shield
+				$2012_tegod_gloria = 5;
+				getitem 2181,1;// Hervor
+				announce "Velund's gift [ Hervor ] is introduced to this world by ["+ strcharinfo(0) +"] of ["+ getguildname(.@guild_id) +"] Guild.",bc_all,"0x70dbdb",FW_NORMAL,12;
+				if (.@economy > 20)
+					setcastledata "te_prtcas01",2,(.@economy-20);
+				else
+					setcastledata "te_prtcas01",2,1;// min is 1 for WOE TE
+				next;
+				mes "["+ .@npc_name$ +"]";
+				mes "呼..我想我暂时不能工作了。";
+				mes "我都累坏了。哈哈哈...";
+				close;
+			}
+			mes "["+ .@npc_name$ +"]";
+			mes "不过，看来我们还需要更多的材料。";
+			mes "你能再检查一下吗？我会给你我们需要的清单。";
+			callsub S_Material, .@npc_name$,1;
+		case 2:
+			callsub S_Fuse, .@npc_name$, "Hervor";
+		case 3:
+			mes "["+ .@npc_name$ +"]";
+			mes "现在确实是实现这一目标的最佳时机。";
+			mes "到下一个帝国出现的时候，已经没有任何机会了。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "另外，请记住我每周只能这样做一次。";
+			close;
+		}
+	}
+	if ($2012_tegod_gloria == 5) {
+		mes "我有点累了。";
+		mes "我想我应该休息几天。";
+		mes "我可能看起来很好，但我的精神很累。";
+		close;
+	}
+	mes "很奇怪。";
+	mes "我说不出我的感受。";
+	mes "我有某种健康问题吗？";
+	mes "难道是有什么不治之症吗？";
+	close;
+
+S_Material:
+	.@npc_name$ = getarg(0);
+	next;
+	mes "["+ .@npc_name$ +"]";
+	mes "^4d4dff维伦德之锤2";
+	mes "1 维伦德的铁砧";
+	mes "4 根具有神奇力量的青铜锭";
+	mes "维伦德手镯 3";
+	mes "1 符文人物的秘密";
+	mes "1 瓦尔基亚之盾";
+	mes "1 个 Muspellium 和符文精华，分别^000000";
+	next;
+	mes "["+ .@npc_name$ +"]";
+	mes "我们需要这么多的材料。";
+	mes getarg(2,"");
+	mes "顺便说一句，穆斯佩利姆和符文精华需要单独用额外材料制作。";
+	next;
+	mes "["+ .@npc_name$ +"]";
+	mes "为了制作Muspellium，您需要^4d4dff将50个Eluniums和50个Oridecons^000000组合起来。";
+	mes "符文精髓需^4d4dff合成 200 粒古符石原石及 100 粒神秘符石原石^000000。";
+	next;
+	mes "["+ .@npc_name$ +"]";
+	mes "我会根据您的要求随时制作穆斯佩利姆和符文精华，";
+	mes "当然，一旦我们收集到所有需要的材料，我就会制作Jormungand。";
+	next;
+	mes "["+ .@npc_name$ +"]";
+	if (getarg(1))
+		mes "与你为我所做的相比，我所做的远远不够。";
+	else {
+		mes "然而，你将无法找到维伦德的物品。";
+		mes "...但人们说他们肯定会出现在那些真正想要它的人面前。祝你一切顺利。";
+	}
+	close;
+
+S_Fuse:
+	.@npc_name$ = getarg(0);
+	mes "["+ .@npc_name$ +"]";
+	mes "您想制作哪种材料？";
+	next;
+	switch( select( "穆斯佩利姆","符文精华","算了。" ) ) {
+	case 1:
+		mes "["+ .@npc_name$ +"]";
+		if (countitem(985) > 49 && countitem(984) > 49) {
+			mes "我会用你准备的材料制作Muspellium。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "应该不会花很长时间。";
+			mes "这里是。";
+			mes "它是制作赫沃和耶梦加得的必备材料。";
+			delitem 985,50;// Elunium
+			delitem 984,50;// Oridecon
+			getitem 6605,1;// Muspellium
+			close;
+		}
+		mes "为了制作Muspellium，";
+		mes "^4d4dff你需要 50 个 Eluniums 和 50 个 Oridecons。^000000";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "材料应该都准备好了吧？";
+		close;
+	case 2:
+		mes "["+ .@npc_name$ +"]";
+		if (countitem(12735) > 199 && countitem(12736) > 99) {
+			mes "我会用你准备的材料制作符文精华。";
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "应该不会花很长时间。";
+			mes "这里是。";
+			mes "它是制作赫沃和耶梦加得的必备材料。";
+			delitem 12735,200;// Runstone_Ancient
+			delitem 12736,100;// Runstone_Mystic
+			getitem 6604,1;// Essence_Of_Rune
+			close;
+		}
+		mes "对于符文精华，";
+		mes "^4d4dff需要古符石原石 200 粒、玄符石原石 100 粒。^000000";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "当然，这需要很多...";
+		close;
+	case 3:
+		mes "["+ .@npc_name$ +"]";
+		mes "当你需要的时候告诉我。";
+		mes "我很高兴至少能为你做这件事。";
+		next;
+		mes "["+ .@npc_name$ +"]";
+		mes "另外，还有一个可以找到"+ getarg(1) +"...";
+		mes "这对我来说也是一个梦想之地。";
+		close;
+	}
+
+OnInit:
+	if ($2012_tegod_gloria == 3 || agitcheck3())// 3 -> quest failed
+		disablenpc();
+	else
+		enablenpc();
+	end;
+}
+
+te_prtcas01,190,2,0	script	#tequest_master_prt01	CLEAR_NPC,{
+	mes "密码？";
+	next;
+	if ( callfunc( "F_GM_NPC", 1854,0, 0,9999 ) < 1 ) {
+		mes "离开";
+		close;
+	}
+	.@map$ = "te_prtcas01";
+	mes "目前状态：" + $2012_tegod_gloria;
+	mes "0：能够继续任务";
+	mes "1：继续任务。等待10分钟";
+	mes "2：任务正在进行中";
+	mes "3：任务失败";
+	mes "4：能够生产物品，5：生产成功。";
+	next;
+	mes "公主状态：" + $@2012_tegirls_prt01;
+	mes "要塞目前的商业等级：" + getcastledata(.@map$,2);
+	next;
+	switch( select( "不继续","初始化","提高商务级别","降低商务级别" ) ) {
+	case 1:
+		end;
+	case 2:
+		mes "初始化";
+		donpcevent "#tequest_master_prt01::OnReset";
+		close;
+	case 3:
+		.@economy = getcastledata(.@map$,2) +30;
+		.@economy = .@economy > 100 ? 100 : .@economy;
+		setcastledata .@map$,2,.@economy;
+		mes "将商业等级提高 30 级";
+		mes "修改后的商业级别：" + .@economy;
+		close;
+	case 4:
+		.@economy1 = getcastledata(.@map$,2);
+		.@economy2 = .@economy1 > 30 ? (.@economy1 -30) : 1;
+		if (.@economy1 > 30) {
+			mes "商业等级降低 30";
+			setcastledata .@map$,2,.@economy2;
+		}
+		else {
+			mes "由于当前等级低于 30，商业等级降低至 0。";
+			setcastledata .@map$,2,1;// min is 1 for WOE TE
+		}
+		mes "修改后的商业级别：" + .@economy2;
+		close;
+	}
+
+OnReset:// gm Initialization
+	callsub S_EventReset;// kill some quests mobs and stop timer of others npcs
+	callsub S_EventOff;// clear setnpcdisplay
+	$2012_tegod_gloria = 0;
+	$@2012_tegirls_prt01 = 0;
+	.npc_name$ = "";
+	enablenpc "prtg-1-22_prtg-1-31#te";
+	enablenpc "Blacksmith Kai#tegod01";
+	stopnpctimer;
+	end;
+
+OnCommandOn:
+	$2012_tegod_gloria = 1;
+	.npc_name$ = strnpcinfo(0);// for script readability
+	initnpctimer;
+	end;
+
+OnTimer10000:
+	announce "Girls' voices: Kai~ We already know where you are. It's over!",bc_all,"0xFF0000",FW_NORMAL,10;
+	end;
+OnTimer15000:
+	announce "Girls' Voices: We'll wait just 10 minutes. If you don't show up in the meantime, we'll storm the fortress!",bc_all,"0xFF0000",FW_NORMAL,10;
+	end;
+OnTimer595000:
+	mapannounce "te_prtcas01", "A girl's voice: Kai! How dare you ignore our warning! So, you have company there, huh? But how long do you think they'll stay with you?!",bc_map,"0x00ff00",FW_NORMAL,12;
+	end;
+OnTimer598000:
+	mapannounce "te_prtcas01", "You are forced out of the fortress by unknown power.",bc_map,"0x00ff00",FW_NORMAL,12;
+	end;
+
+OnTimer600000:
+	$2012_tegod_gloria = 2;
+	mapwarp "te_prtcas01", "te_prt_gld",159,211;
+	donpcevent "Aira#fake01_prt01::OnCommandOn";
+	donpcevent "Kuluna#fake01_prt01::OnCommandOn";
+	donpcevent "Mallina#fake01_prt01::OnCommandOn";
+	donpcevent "Ezella#fake01_prt01::OnCommandOn";
+	donpcevent "Lune#fake01_prt01::OnCommandOn";
+	donpcevent "Morin#fake01_prt01::OnCommandOn";
+	donpcevent "Nasarin#fake01_prt01::OnCommandOn";
+
+	disablenpc "prtg-1-22_prtg-1-31#te";// warp to emperium room
+	end;
+
+OnTimer602000:
+	announce "Gaebolg in Gloria region is being attacked by a group of unidentified beings.",bc_all,"0xFF0000",FW_NORMAL,10;
+	monster "te_prtcas01",0,0,"Raydric",1163,15, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Khalitzburg",1132,10, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Abysmal Knight",1219,5, .npc_name$ +"::OnMyMobDead";
+
+	monster "te_prtcas01",197,197,"Dalongee",1272,1, .npc_name$ +"::OnMyMobDead";// DARK_LORD
+	monster "te_prtcas01",197,197,"Summoned Reindeer",1251,1, .npc_name$ +"::OnMyMobDead";// KNIGHT_OF_WINDSTORM
+	monster "te_prtcas01",197,197,"Summoned Wolf",1252,1, .npc_name$ +"::OnMyMobDead";// GARM
+
+	monster "te_prtcas01",40,26,"Dalongee",1272,1, .npc_name$ +"::OnMyMobDead";// DARK_LORD
+	monster "te_prtcas01",80,33,"Summoned Reindeer",1251,1, .npc_name$ +"::OnMyMobDead";// KNIGHT_OF_WINDSTORM
+	monster "te_prtcas01",151,96,"Summoned Wolf",1252,1, .npc_name$ +"::OnMyMobDead";// GARM
+	end;
+
+OnTimer610000:
+	monster "te_prtcas01",0,0,"Raydric",1163,15, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Khalitzburg",1132,10, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Abysmal Knight",1219,5, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Bloody Knight",1268,5, .npc_name$ +"::OnMyMobDead";
+	end;
+
+OnTimer1000000:
+OnTimer1300000:
+OnTimer1900000:
+OnTimer2500000:
+OnTimer3100000:
+	callsub S_MobRedondant;
+	end;
+S_MobRedondant:
+	monster "te_prtcas01",0,0,"Raydric",1163,10, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Khalitzburg",1132,10, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Abysmal Knight",1219,10, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"High Orc",1213,10, .npc_name$ +"::OnMyMobDead";
+	monster "te_prtcas01",0,0,"Bloody Knight",1268,5, .npc_name$ +"::OnMyMobDead";
+	end;
+
+OnTimer4200000:
+	mapannounce "te_prtcas01", "Girls: ... how long do we have to wait?",bc_map,"0x00ff00",FW_NORMAL,12;
+	end;
+OnTimer4205000:
+	mapannounce "te_prtcas01", "Girls: Hervor should be made for us!",bc_map,"0x00ff00",FW_NORMAL,12;
+	end;
+OnTimer4210000:
+	mapannounce "te_prtcas01", "Girls: Come on, cut if off! You guys are so persistent!!",bc_map,"0x00ff00",FW_NORMAL,12;
+	end;
+OnTimer4220000:
+	mapannounce "te_prtcas01", "Aira: Ah! I can't take it anymore! Girls, come here!",bc_map,"0x00ff00",FW_NORMAL,12;
+
+	$2012_tegod_gloria = 3;// quest off until someone break the emp
+	callsub S_EventReset;
+	enablenpc "prtg-1-22_prtg-1-31#te";
+	end;
+
+OnTimer4225000:
+	donpcevent "#eproom_girls_prt01::OnReset";
+	donpcevent "#end_aira_prt01::OnCommandOn";
+	donpcevent "#end_kuluna_prt01::OnCommandOn";
+	donpcevent "#end_mallina_prt01::OnCommandOn";
+	donpcevent "#end_ezella_prt01::OnCommandOn";
+	donpcevent "#end_lune_prt01::OnCommandOn";
+	donpcevent "#end_morin_prt01::OnCommandOn";
+	donpcevent "#end_nasarin_prt01::OnCommandOn";
+	end;
+
+OnTimer4227000:
+	npctalk "凯：噢……不！你要对我做什么？！", "铁匠凯#tegod01";
+	end;
+OnTimer4230000:
+	npctalk "爱拉：嗯？嘿凯。你要回家了。", "#end_aira_prt01";
+	end;
+OnTimer4233000:
+	npctalk "库鲁娜：是的~你回来后一定要修理我坏掉的魔杖，并为我制造强大的武器！", "#end_kuluna_prt01";
+	end;
+OnTimer4236000:
+	npctalk "艾泽拉：再次尝试逃跑。你会后悔的，明白吗？", "#end_ezella_prt01";
+	end;
+OnTimer4237000:
+	npctalk "纳萨林：……带上他吧。你们为什么要跟他说这么多？", "#end_nasarin_prt01";
+	end;
+OnTimer4240000:
+	npctalk "艾拉：你说得对！那么好吧！", "#end_aira_prt01";
+	npctalk "凯：哦...不...不！！！！！！", "铁匠凯#tegod01";
+	end;
+
+OnTimer4243000:
+	mapannounce "te_prtcas01", "You've failed to recapture the fortress. Kai is now gone.",bc_map,"0x00ff00",FW_NORMAL,12;
+	disablenpc "Blacksmith Kai#tegod01";
+	callsub S_EventOff;// clear setnpcdisplay
+	.npc_name$ = "";
+	stopnpctimer;
+	end;
+
+S_EventOff:
+	donpcevent "#end_aira_prt01::OnCommandOff";
+	donpcevent "#end_kuluna_prt01::OnCommandOff";
+	donpcevent "#end_mallina_prt01::OnCommandOff";
+	donpcevent "#end_ezella_prt01::OnCommandOff";
+	donpcevent "#end_lune_prt01::OnCommandOff";
+	donpcevent "#end_morin_prt01::OnCommandOff";
+	donpcevent "#end_nasarin_prt01::OnCommandOff";
+	return;
+
+OnStop:// all girls have been defeated, kill remaining mobs and stop timer
+	callsub S_EventReset;
+	$@2012_tegirls_prt01 = 0;
+	.npc_name$ = "";
+	stopnpctimer;
+	end;
+
+S_EventReset:
+	killmonster "te_prtcas01", .npc_name$ +"::OnMyMobDead";
+	donpcevent "#eproom_girls_prt01::OnReset";
+	donpcevent "Aira#fake01_prt01::OnReset";
+	donpcevent "Kuluna#fake01_prt01::OnReset";
+	donpcevent "Mallina#fake01_prt01::OnReset";
+	donpcevent "Ezella#fake01_prt01::OnReset";
+	donpcevent "Lune#fake01_prt01::OnReset";
+	donpcevent "Morin#fake01_prt01::OnReset";
+	donpcevent "Nasarin#fake01_prt01::OnReset";
+
+	donpcevent "#aira_real_prt01::OnReset";
+	donpcevent "#kuluna_real_prt01::OnReset";
+	donpcevent "#mallina_real_prt01::OnReset";
+	donpcevent "#ezella_real_prt01::OnReset";
+	donpcevent "#lune_real_prt01::OnReset";
+	donpcevent "#morin_real_prt01::OnReset";
+	donpcevent "#nasarin_real_prt01::OnReset";
+	return;
+
+OnMyMobDead:
+	end;
+
+OnInit:
+	$@2012_tegirls_prt01 = 0;// girls mobs killed count
+	if ($2012_tegod_gloria < 3)
+		$2012_tegod_gloria = 0;
+	end;
+}
+
+
+te_prtcas01,64,20,3	script	Aira#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Aira#fake01_prt01";
+	setnpcdisplay "Aira#fake01_prt01",2443;// AIRA
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Aira#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#aira_real_prt01::OnCommandOn";
+	npctalk "艾拉：我的召唤水球！我会抓住你的！用我自己的双手！！";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Aira#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Aira#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Aira#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",65,28,"Bodyguard",1213,5, "Aira#fake01_prt01::OnMyMobDead";// HIGH_ORC
+	monster "te_prtcas01",65,28,"Bodyguard",1309,5, "Aira#fake01_prt01::OnMyMobDead";// GAJOMART
+	end;
+OnTimer2000:
+	monster "te_prtcas01",65,28,"Bodyguard",1367,5, "Aira#fake01_prt01::OnMyMobDead";// BLAZZER
+	monster "te_prtcas01",65,10,"Bodyguard",1837,5, "Aira#fake01_prt01::OnMyMobDead";// IMP
+	end;
+OnTimer3000:
+	monster "te_prtcas01",65,10,"Bodyguard",1949,1, "Aira#fake01_prt01::OnMyMobDead";// B_S_GUARDIAN
+	monster "te_prtcas01",65,28,"Bodyguard",1833,2, "Aira#fake01_prt01::OnMyMobDead";// KASA
+	monster "te_prtcas01",65,28,"Bodyguard",1831,2, "Aira#fake01_prt01::OnMyMobDead";// SALAMANDER
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,50,54,3	script	Kuluna#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Kuluna#fake01_prt01";
+	setnpcdisplay "Kuluna#fake01_prt01",2444;// KULUNA
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Kuluna#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#kuluna_real_prt01::OnCommandOn";
+	npctalk "库鲁娜：嗯？那么你就会变成这样吗？你最好做好准备！";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Kuluna#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Kuluna#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Kuluna#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",54,61,"Guardian",1143,10, "Kuluna#fake01_prt01::OnMyMobDead";// MARIONETTE
+	end;
+OnTimer2000:
+	monster "te_prtcas01",54,61,"Guardian",1693,10, "Kuluna#fake01_prt01::OnMyMobDead";// PLASMA_Y
+	end;
+OnTimer3000:
+	monster "te_prtcas01",54,61,"Guardian",1869,5, "Kuluna#fake01_prt01::OnMyMobDead";// FLAME_SKULL
+	monster "te_prtcas01",54,61,"Guardian",1704,1, "Kuluna#fake01_prt01::OnMyMobDead";// THA_ODIUM
+	monster "te_prtcas01",54,61,"Guardian",1705,1, "Kuluna#fake01_prt01::OnMyMobDead";// THA_DESPERO
+	monster "te_prtcas01",54,61,"Guardian",1706,1, "Kuluna#fake01_prt01::OnMyMobDead";// THA_MAERO
+	monster "te_prtcas01",54,61,"Guardian",1707,1, "Kuluna#fake01_prt01::OnMyMobDead";// THA_DOLOR
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,175,92,3	script	Mallina#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Mallina#fake01_prt01";
+	setnpcdisplay "Mallina#fake01_prt01",2445;// MALLINA
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Mallina#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#mallina_real_prt01::OnCommandOn";
+	npctalk "玛莉娜：别说了！！别再烦我了！！";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Mallina#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Mallina#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Mallina#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",182,92,"The Absolute",1993,10, "Mallina#fake01_prt01::OnMyMobDead";// NAGA
+	end;
+OnTimer3000:
+	monster "te_prtcas01",182,92,"The Absolute",1695,10, "Mallina#fake01_prt01::OnMyMobDead";// PLASMA_G
+	end;
+OnTimer5000:
+	monster "te_prtcas01",182,92,"The Absolute",1717,5, "Mallina#fake01_prt01::OnMyMobDead";// FERUS_
+	monster "te_prtcas01",182,92,"The Absolute",1991,2, "Mallina#fake01_prt01::OnMyMobDead";// TENDRILRION
+	monster "te_prtcas01",182,92,"The Absolute",1989,2, "Mallina#fake01_prt01::OnMyMobDead";// HILLSRION
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,159,113,3	script	Ezella#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Ezella#fake01_prt01";
+	setnpcdisplay "Ezella#fake01_prt01",2446;// EZELLA
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Ezella#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#ezella_real_prt01::OnCommandOn";
+	npctalk "艾泽拉：啊……这只会让我们俩更累……";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Ezella#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Ezella#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Ezella#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",161,111,"Convoy",1692,10, "Ezella#fake01_prt01::OnMyMobDead";// BREEZE
+	end;
+OnTimer2000:
+	monster "te_prtcas01",161,111,"Convoy",1627,2, "Ezella#fake01_prt01::OnMyMobDead";// ANOPHELES
+	monster "te_prtcas01",161,111,"Convoy",1656,2, "Ezella#fake01_prt01::OnMyMobDead";// KAVAC
+	monster "te_prtcas01",161,111,"Convoy",1315,6, "Ezella#fake01_prt01::OnMyMobDead";// ASSULTER
+	end;
+OnTimer3000:
+	monster "te_prtcas01",161,111,"Convoy",1669,5, "Ezella#fake01_prt01::OnMyMobDead";// DIMIK
+	monster "te_prtcas01",161,111,"Convoy",1259,2, "Ezella#fake01_prt01::OnMyMobDead";// GRYPHON
+	monster "te_prtcas01",161,111,"Convoy",1783,1, "Ezella#fake01_prt01::OnMyMobDead";// GALION
+	monster "te_prtcas01",161,111,"Convoy",1950,1, "Ezella#fake01_prt01::OnMyMobDead";// B_B_GUARDIAN
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,152,102,3	script	Lune#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Lune#fake01_prt01";
+	setnpcdisplay "Lune#fake01_prt01",2447;// LUNE
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Lune#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#lune_real_prt01::OnCommandOn";
+	npctalk "Lune：..你想被淹死在深海里吗？啊？";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Lune#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Lune#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Lune#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",144,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";// GAZETI
+	monster "te_prtcas01",145,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",146,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",147,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",148,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",149,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",150,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",151,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",152,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",153,97,"Bodyguard",1778,1, "Lune#fake01_prt01::OnMyMobDead";
+	end;
+
+OnTimer2000:
+	monster "te_prtcas01",155,97,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";// AQUA_ELEMENTAL
+	monster "te_prtcas01",155,96,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,95,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,94,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,93,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,92,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,91,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,90,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,89,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	monster "te_prtcas01",155,87,"Bodyguard",2016,1, "Lune#fake01_prt01::OnMyMobDead";
+	end;
+
+OnTimer3000:
+	monster "te_prtcas01",149,97,"Bodyguard",1777,5, "Lune#fake01_prt01::OnMyMobDead";// ICE_TITAN
+	monster "te_prtcas01",149,97,"Bodyguard",1681,1, "Lune#fake01_prt01::OnMyMobDead";// GEMINI
+	monster "te_prtcas01",149,97,"Bodyguard",2021,1, "Lune#fake01_prt01::OnMyMobDead";// PHYLLA
+	monster "te_prtcas01",149,97,"Bodyguard",2020,2, "Lune#fake01_prt01::OnMyMobDead";// RHYNCHO
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,99,180,3	script	Morin#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Morin#fake01_prt01";
+	setnpcdisplay "Morin#fake01_prt01",2448;// MORIN
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Morin#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#morin_real_prt01::OnCommandOn";
+	npctalk "莫兰：…… ...";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Morin#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Morin#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Morin#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",99,176,"Nightmare Gang",1379,10, "Morin#fake01_prt01::OnMyMobDead";// NIGHTMARE_TERROR
+	end;
+OnTimer2000:
+	monster "te_prtcas01",99,176,"Nightmare Gang",1701,5, "Morin#fake01_prt01::OnMyMobDead";// SHELTER
+	monster "te_prtcas01",99,176,"Nightmare Gang",1753,5, "Morin#fake01_prt01::OnMyMobDead";// FRUS
+	end;
+OnTimer3000:
+	monster "te_prtcas01",99,176,"Nightmare Gang",1752,5, "Morin#fake01_prt01::OnMyMobDead";// SKOGUL
+	monster "te_prtcas01",99,176,"Nightmare Gang",1733,1, "Morin#fake01_prt01::OnMyMobDead";// KIEL
+	monster "te_prtcas01",99,176,"Nightmare Gang",1205,1, "Morin#fake01_prt01::OnMyMobDead";// EXECUTIONER
+	monster "te_prtcas01",99,176,"Nightmare Gang",2040,1, "Morin#fake01_prt01::OnMyMobDead";// TIRFING_R
+	monster "te_prtcas01",99,176,"Nightmare Gang",1203,1, "Morin#fake01_prt01::OnMyMobDead";// MYSTELTAINN
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,120,174,3	script	Nasarin#fake01_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "Nasarin#fake01_prt01";
+	setnpcdisplay "Nasarin#fake01_prt01",2449;// NASARIN
+	initnpctimer;
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","Nasarin#fake01_prt01::OnMyMobDead" )) end;
+	donpcevent "#nasarin_real_prt01::OnCommandOn";
+	npctalk "Nasarin：..啊啊..成为女武神太难了！";
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "Nasarin#fake01_prt01::OnMyMobDead";
+	setnpcdisplay "Nasarin#fake01_prt01",CLEAR_NPC;
+OnInit:
+	disablenpc "Nasarin#fake01_prt01";
+	end;
+
+OnTimer1000:
+	monster "te_prtcas01",125,170,"Gang of Poison",1987,10, "Nasarin#fake01_prt01::OnMyMobDead";// CENTIPEDE
+	end;
+OnTimer2000:
+	monster "te_prtcas01",125,170,"Gang of Poison",2015,10, "Nasarin#fake01_prt01::OnMyMobDead";// PINGUICULA_D
+	end;
+OnTimer3000:
+	monster "te_prtcas01",125,170,"Gang of Poison",1618,3, "Nasarin#fake01_prt01::OnMyMobDead";// UNGOLIANT
+	monster "te_prtcas01",125,170,"Khalitz",1949,1, "Nasarin#fake01_prt01::OnMyMobDead";// B_S_GUARDIAN
+	stopnpctimer;
+	end;
+}
+
+-	script	real_prt01	-1,{
+	end;
+OnCommandOn:
+	.@npc_name$ = strnpcinfo(0);
+	if (.@npc_name$ == "#aira_real_prt01")
+		monster "te_prtcas01",65,28,"Aira in a blaze",2443,1, .@npc_name$ +"::OnMyMobDead";
+	else if (.@npc_name$ == "#kuluna_real_prt01")
+		monster "te_prtcas01",54,61,"Passionate Kuluna",2444,1, .@npc_name$ +"::OnMyMobDead";
+	else if (.@npc_name$ == "#mallina_real_prt01")
+		monster "te_prtcas01",182,92,"Mallina of the Earth",2445,1, .@npc_name$ +"::OnMyMobDead";
+	else if (.@npc_name$ == "#ezella_real_prt01")
+		monster "te_prtcas01",161,111,"Ezella of Verdure",2446,1, .@npc_name$ +"::OnMyMobDead";
+	else if (.@npc_name$ == "#lune_real_prt01")
+		monster "te_prtcas01",149,97,"Lune of the Eternal Glacier",2447,1, .@npc_name$ +"::OnMyMobDead";
+	else if (.@npc_name$ == "#morin_real_prt01")
+		monster "te_prtcas01",99,176,"Morin of the Abyss",2448,1, .@npc_name$ +"::OnMyMobDead";
+	else if (.@npc_name$ == "#nasarin_real_prt01")
+		monster "te_prtcas01",125,170,"Fatal Nasarin",2449,1, .@npc_name$ +"::OnMyMobDead";
+	end;
+
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", strnpcinfo(0) +"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01",strnpcinfo(0) +"::OnMyMobDead" ) == 0)
+		initnpctimer;
+	end;
+
+OnTimer1000:
+	if (mobcount( "te_prtcas01",strnpcinfo(0) +"::OnMyMobDead" ) == 0) {
+		$@2012_tegirls_prt01++;
+		if ($@2012_tegirls_prt01 == 7) {
+			mapannounce "te_prtcas01","Kai: aaahh!! The girls broke the shields and made their way into where Emperium is!!!!",bc_map,"0x00ff00",FW_NORMAL,12;
+			donpcevent "#eproom_girls_prt01::OnCommandOn";
+		}
+		else {
+			.@npc_name$ = strnpcinfo(0);
+			if (.@npc_name$ == "#aira_real_prt01")
+				mapannounce "te_prtcas01","Aira: You think I lost? You're wrong! We force our way to where Kai is!!",bc_map,"0x00ff00",FW_NORMAL,12;
+			else if (.@npc_name$ == "#kuluna_real_prt01")
+				mapannounce "te_prtcas01","Kuluna: ... This is called a strategic retreat.",bc_map,"0x00ff00",FW_NORMAL,12;
+			else if (.@npc_name$ == "#mallina_real_prt01")
+				mapannounce "te_prtcas01","Mallina: ... Why are you disturbing us so much? But victory will be ours in the end!!",bc_map,"0x00ff00",FW_NORMAL,12;
+			else if (.@npc_name$ == "#ezella_real_prt01")
+				mapannounce "te_prtcas01","Ezella: Oh you, a weakling that would just disappear like the wind... !!!",bc_map,"0x00ff00",FW_NORMAL,12;
+			else if (.@npc_name$ == "#lune_real_prt01")
+				mapannounce "te_prtcas01","Lune: ..Alright. Let the battle begin!",bc_map,"0x00ff00",FW_NORMAL,12;
+			else if (.@npc_name$ == "#morin_real_prt01")
+				mapannounce "te_prtcas01","Morin: It's not... interesting anymore.",bc_map,"0x00ff00",FW_NORMAL,12;
+			else if (.@npc_name$ == "#nasarin_real_prt01")
+				mapannounce "te_prtcas01","Nasarin: .. I wasted my time. Kai is in the center of this fortress?",bc_map,"0x00ff00",FW_NORMAL,12;
+		}
+	}
+	stopnpctimer;
+	end;
+}
+te_prtcas01,192,2,0	duplicate(real_prt01)	#aira_real_prt01	CLEAR_NPC
+te_prtcas01,193,2,0	duplicate(real_prt01)	#kuluna_real_prt01	CLEAR_NPC
+te_prtcas01,194,2,0	duplicate(real_prt01)	#mallina_real_prt01	CLEAR_NPC
+te_prtcas01,194,2,0	duplicate(real_prt01)	#ezella_real_prt01	CLEAR_NPC
+te_prtcas01,196,2,0	duplicate(real_prt01)	#lune_real_prt01	CLEAR_NPC
+te_prtcas01,197,2,0	duplicate(real_prt01)	#morin_real_prt01	CLEAR_NPC
+te_prtcas01,198,2,0	duplicate(real_prt01)	#nasarin_real_prt01	CLEAR_NPC
+
+
+te_prtcas01,199,2,0	script	#eproom_girls_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	enablenpc "prtg-1-22_prtg-1-31#te";
+	monster "te_prtcas01",184,188,"Fatal Nasarin",2449,1, "#eproom_girls_prt01::OnMyMobDead";
+	monster "te_prtcas01",191,182,"Morin of the Abyss",2448,1, "#eproom_girls_prt01::OnMyMobDead";
+	monster "te_prtcas01",183,183,"Lune of the Eternal Glacier",2447,1, "#eproom_girls_prt01::OnMyMobDead";
+	monster "te_prtcas01",197,188,"Ezella of Verdure",2446,1, "#eproom_girls_prt01::OnMyMobDead";
+	monster "te_prtcas01",202,190,"Mallina of the Earth",2445,1, "#eproom_girls_prt01::OnMyMobDead";
+	monster "te_prtcas01",199,192,"Passionate Kuluna",2444,1, "#eproom_girls_prt01::OnMyMobDead";
+	monster "te_prtcas01",200,195,"Aira in a blaze",2443,1, "#eproom_girls_prt01::OnMyMobDead";
+	end;
+
+OnReset:
+	stopnpctimer;
+	killmonster "te_prtcas01", "#eproom_girls_prt01::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	if (mobcount( "te_prtcas01","#eproom_girls_prt01::OnMyMobDead" ) == 0)
+		initnpctimer;
+	end;
+
+OnTimer3000:
+	if (mobcount( "te_prtcas01","#eproom_girls_prt01::OnMyMobDead" ) == 0) {
+		donpcevent "#tequest_master_prt01::OnStop";
+		$2012_tegod_gloria = 4;
+		mapannounce "te_prtcas01","You have defeated the girls and recaptured the fortress successfully.",bc_map,"0x00ff00",FW_NORMAL,12;
+	}
+	stopnpctimer;
+	end;
+}
+
+te_prtcas01,203,204,5	script	#end_aira_prt01	CLEAR_NPC,{
+	end;
+OnCommandOn:
+	.@npc_name$ = strnpcinfo(0);
+	enablenpc .@npc_name$;
+	if (compare(.@npc_name$,"aira")) setnpcdisplay .@npc_name$,2443;
+	else if (compare(.@npc_name$,"kuluna")) setnpcdisplay .@npc_name$,2444;
+	else if (compare(.@npc_name$,"mallina")) setnpcdisplay .@npc_name$,2445;
+	else if (compare(.@npc_name$,"ezella")) setnpcdisplay .@npc_name$,2446;
+	else if (compare(.@npc_name$,"lune")) setnpcdisplay .@npc_name$,2447;
+	else if (compare(.@npc_name$,"morin")) setnpcdisplay .@npc_name$,2448;
+	else if (compare(.@npc_name$,"nasarin")) setnpcdisplay .@npc_name$,2449;
+	end;
+
+OnCommandOff:
+	setnpcdisplay strnpcinfo(0),CLEAR_NPC;
+OnInit:
+	disablenpc();
+	end;
+}
+te_prtcas01,205,205,3	duplicate(#end_aira_prt01)	#end_kuluna_prt01	CLEAR_NPC
+te_prtcas01,204,203,7	duplicate(#end_aira_prt01)	#end_mallina_prt01	CLEAR_NPC
+te_prtcas01,203,205,5	duplicate(#end_aira_prt01)	#end_ezella_prt01	CLEAR_NPC
+te_prtcas01,205,204,3	duplicate(#end_aira_prt01)	#end_lune_prt01	CLEAR_NPC
+te_prtcas01,204,205,4	duplicate(#end_aira_prt01)	#end_morin_prt01	CLEAR_NPC
+te_prtcas01,205,203,1	duplicate(#end_aira_prt01)	#end_nasarin_prt01	CLEAR_NPC

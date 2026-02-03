@@ -1,0 +1,91 @@
+//===== rAthena Script =======================================
+//= Training Zone
+//===== Description: =========================================
+//= NPC warp related to the training zone.
+//===== Changelog: ===========================================
+//= 1.0 Initial Release [Capuche]
+//============================================================
+
+prontera,246,62,3	script	Training Instructor#sol1	8W_SOLDIER,{
+	mes "[培训讲师]";
+	mes "如果你想去更广阔的地方训练，我就让你进去。";
+	next;
+	mes "[培训讲师]";
+	mes "训练场分为两个主要区域。";
+	next;
+	mes "[培训讲师]";
+	mes "上部区域，您可以根据怪物的大小检查施加的力。";
+	next;
+	mes "[培训讲师]";
+	mes "您可以在下方区域检查根据怪物的属性和形态所施加的力量。";
+	next;
+	mes "[培训讲师]";
+	mes "您想进入哪里？";
+	next;
+	switch( select( "上区", "下区", "请勿进入" ) ) {
+	case 1:
+		mes "[培训讲师]";
+		mes "然后我会指导你。";
+		close2;
+		warp "tra_fild",112,167;
+		end;
+	case 2:
+		mes "[培训讲师]";
+		mes "然后我会指导你。";
+		close2;
+		warp "tra_fild",111,74;
+		end;
+	case 3:
+		mes "[培训讲师]";
+		mes "如果您需要指导，请来找我。";
+		close;
+	}
+}
+
+tra_fild,111,79,3	script	Training Instructor#sol3	8W_SOLDIER,{
+	mes "[培训讲师]";
+	mes "您确定要移至上半部分吗？";
+	next;
+	switch( select( "移动", "不要移动", "传送到普隆德拉。" ) ) {
+	case 1:
+		mes "[培训讲师]";
+		mes "转到上半部分！！！";
+		close2;
+		warp "tra_fild",112,167;
+		end;
+	case 2:
+		mes "[培训讲师]";
+		mes "如果您需要搬家，请告诉我。";
+		close;
+	case 3:
+		mes "[培训讲师]";
+		mes "我会扭曲你。";
+		close2;
+		warp "prontera",246,60;
+		end;
+	}
+}
+
+tra_fild,112,171,3	script	Training Instructor#sol2	8W_SOLDIER,{
+	mes "[培训讲师]";
+	mes "您确定要移至下方部分吗？";
+	next;
+	switch( select( "移动", "不要移动", "传送到普隆德拉。" ) ) {
+	case 1:
+		mes "[培训讲师]";
+		mes "转到下面部分！";
+		close2;
+		warp "tra_fild",111,74;
+		end;
+	case 2:
+		mes "[培训讲师]";
+		mes "如果您需要搬家，请告诉我。";
+		close;
+	case 3:
+		mes "[培训讲师]";
+		mes "我会扭曲你。";
+		close2;
+		warp "prontera",246,60;
+		end;
+	}
+}

@@ -1,0 +1,1107 @@
+//===== rAthena Script =======================================
+//= 2010 Headgear Quests
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= [Official Conversion]
+//= Fairy Flower, Necktie, Hair Brush, Statue Of Baby Angel,
+//= Frog Hat, Soloplay Boxes (Indifferent/Angry Solo Hat)
+//=
+//= Although the variables include '2009', this quest is
+//= actually for 2010 headgears, and is Renewal-only.
+//===== Additional Comments: =================================
+//= 1.0 First version. [Euphy]
+//=     Original variable names: 2009_hat, 2009_1_hat
+//============================================================
+
+// Main Quest :: 2010_hat_0405
+//============================================================
+gonryun,149,189,0	script	Yotang#Flower_Of_Fairy	50,{
+	mes "[Yotang]";
+	mes "昆仑三楼住着一位仙女。";
+	mes "她因美丽而闻名";
+	mes "她甚至还有一个粉丝俱乐部。";
+	next;
+	mes "[Yotang]";
+	mes "当然，我是歌迷会的主人。";
+	mes "加入仙女粉丝俱乐部怎么样？";
+	next;
+	if(select("我没那么感兴趣！！：我马上就加入！！") == 1) {
+		mes "[Yotang]";
+		mes "什么！我要告发你！";
+		close;
+	}
+	if (countitem(7165) > 99 && countitem(7166) > 99 && countitem(745) > 0 && countitem(981) > 0 && countitem(2211) > 0) {
+		mes "[Yotang]";
+		mes "啊，那些不是……！";
+		mes "仙女之花的材料？";
+		mes "我们以前见过吗？你已经知道一切了...";
+		next;
+		mes "[Yotang]";
+		mes "不管怎样，你想让我制作仙女之花吗？";
+		next;
+		mes "[Yotang]";
+		mes "^FF0000请注意";
+		mes "对材料的精炼将全部消失";
+		mes "如果你把它们结合起来。^000000";
+		next;
+		if(select("不，下次。：现在就做！") == 1) {
+			mes "[Yotang]";
+			mes "你会后悔的！";
+			close;
+		}
+		callsub L_CheckWeight;
+		mes "[Yotang]";
+		mes "你速度真快啊！";
+		mes "下学期你不愧是粉丝俱乐部的主人。";
+		next;
+		emotion ET_SWEAT;
+		mes "结合…………";
+		next;
+		if (countitem(7165) > 99 && countitem(7166) > 99 && countitem(745) > 0 && countitem(981) > 0 && countitem(2211) > 0) {
+			callsub L_CheckWeight;
+			mes "[Yotang]";
+			mes "这里，仙女之花。";
+			delitem 7165,100; //Limpid_Celestial_Robe
+			delitem 7166,100; //Soft_Silk_Cloth
+			delitem 745,1; //Wedding_Bouquet
+			delitem 981,1; //Violet_Dyestuffs
+			delitem 2211,1; //Bandana
+			getitem 5437,1; //Flower_Of_Fairy
+			emotion ET_BEST;
+			next;
+			mes "[Yotang]";
+			mes "粉丝见面会上见！";
+			close;
+		}
+		mes "[Yotang]";
+		mes "啊？你还不够";
+		mes "为它准备的材料..";
+		mes "你没戴头巾吗？";
+		mes "一探究竟！";
+		next;
+		mes "[Yotang]";
+		mes "把所有材料都给我吧";
+		mes "如果你想获得仙女之花。";
+		next;
+		mes "[Yotang]";
+		mes "如果你给我带来^0000FF100件透明仙袍，100件软丝布，";
+		mes "1 婚礼花束、1 紫罗兰染料";
+		mes "和 ^0000FF1 头巾^000000，您可以在商店找到，";
+		mes "我会让你成为^0000FF妖精之花^000000。";
+		close;
+	}
+	mes "[Yotang]";
+	mes "很快就能见到仙女了";
+	mes "因为会有粉丝见面会";
+	mes "在不久的将来。";
+	mes "仙女之花是必须的";
+	mes "为了参加粉丝见面会。每个人都戴着它。";
+	next;
+	mes "[Yotang]";
+	mes "如果你给我带来一些材料";
+	mes "我会为你做的。";
+	next;
+	mes "[Yotang]";
+	mes "我需要^0000FF透明仙袍100件，软丝布10​​0件，";
+	mes "1 婚礼花束、1 紫罗兰染料";
+	mes "和 ^0000FF1 头巾^000000，您可以在商店找到，";
+	next;
+	mes "[Yotang]";
+	mes "如果你给我带来^0000FF100件透明仙袍，100件软丝布，";
+	mes "1 婚礼花束、1 紫罗兰染料";
+	mes "和 ^0000FF1 头巾^000000，您可以在商店找到，";
+	mes "我会让你成为^0000FF妖精之花^000000。";
+	next;
+	mes "[Yotang]";
+	mes "^FF0000请注意";
+	mes "对材料的精炼将全部消失";
+	mes "如果你把它们结合起来。^000000";
+	next;
+	if(select("Error 500 (Server Error)!!1500.That’s an error.There was an error. Please try again later.That’s all we know.") == 1) {
+		mes "[Yotang]";
+		mes "你会后悔的！";
+		close;
+	}
+	mes "[Yotang]";
+	mes "啊？你在开玩笑吧？";
+	next;
+	mes "[Yotang]";
+	mes "我需要^0000FF透明仙袍100件，软丝布10​​0件，";
+	mes "1 婚礼花束、1 紫罗兰染料";
+	mes "和^0000FF1条头巾^000000，您可以在商店找到";
+	mes "制作^0000FF仙女之花^000000。";
+	close;
+
+L_CheckWeight:
+	if (MaxWeight - Weight < 200) {
+		mes "[Yotang]";
+		mes "你的包太重了，是吗？";
+		mes "再次来到我身边";
+		mes "清空你的包后。";
+		close;
+	}
+	if (checkweight(5437,1) == 0) {
+		mes "- 等待 ！！ -";
+		mes "- 你的物品太多了，所以 -";
+		mes "- 不可能有更多。 -";
+		mes "-再次来到我身边-";
+		mes "- 清空一些之后。 -";
+		close;
+	}
+	return;
+}
+
+lhz_in02,276,281,1	script	Drunken Man#Necktie	748,{
+	mes "[醉汉]";
+	mes "喂……你想打架吗？！";
+	next;
+	mes "他似乎喝得很厉害。我应该怎么办？";
+	next;
+	if(select("不理他就行了：打吧！") == 1) {
+		mes "[醉汉]";
+		mes "你为什么不理我？";
+		mes "你害怕我吗？";
+		close;
+	}
+	if (BaseLevel < 65) {
+		mes "[醉汉]";
+		mes "什么……你比我弱。";
+		mes "去达到更高的水平吧！";
+		emotion ET_GO;
+		close;
+	}
+	mes "[醉汉]";
+	mes "抓住！我需要一些盔甲来穿。";
+	mes "就是这样，领带，领带……";
+	next;
+	mes "[醉汉]";
+	mes "一旦我把领带系在头上，";
+	mes "我不会是你的对手！";
+	mes "你一定很紧张。";
+	mes "唔！领带在哪里？";
+	next;
+	if (countitem(978) > 0 && countitem(7151) > 29 && countitem(1059) > 99 && countitem(7217) > 19) {
+		mes "[醉汉]";
+		mes "哦，你有领带的材料了！把它们给我！！";
+		next;
+		if(select("不可能！：给你。") == 1) {
+			mes "[醉汉]";
+			mes "呵呵，你害怕了！";
+			mes "我又赢了！！";
+			close;
+		}
+		callsub L_CheckWeight;
+		mes "[醉汉]";
+		mes "太好了，稍等一下！";
+		next;
+		mes "结合...ch...ch... ...";
+		emotion ET_SWEAT;
+		next;
+		mes "[醉汉]";
+		mes "醉了……醉了……呜呜……";
+		emotion ET_QUESTION, playerattached();
+		next;
+		if (countitem(978) > 0 && countitem(7151) > 29 && countitem(1059) > 99 && countitem(7217) > 19) {
+			callsub L_CheckWeight;
+			mes "他一恍惚就昏过去了";
+			mes "他完成了。";
+			mes "我们就拿领带吧。";
+			delitem 978,1; //Cobaltblue_Dyestuffs
+			delitem 7151,30; //Oil_Paper
+			delitem 1059,100; //Transparent_Cloth
+			delitem 7217,20; //Spool
+			getitem 5442,1; //Necktie
+			close;
+		}
+		mes "[醉汉]";
+		mes "啊？所有的材料都去哪儿了？";
+		mes "你收回这么怕我的话了吗？";
+		close;
+	}
+	mes "[醉汉]";
+	mes "嘿，去拿吧";
+	mes "^FF00001 钴蓝色染料、30 张油纸、100 块布料、20 个线轴^000000！";
+	next;
+	mes "[醉汉]";
+	mes "我会穿着传说中的领带打败你！";
+	next;
+	if(select("我不会：我们去找他们吧。") == 1) {
+		mes "[醉汉]";
+		mes "你要退学吗？";
+		mes "我又赢了吗？";
+		close;
+	}
+	mes "[醉汉]";
+	mes "我再告诉你一次";
+	mes "因为你可能会忘记它，笨蛋！";
+	next;
+	mes "[醉汉]";
+	mes "^FF00001 钴蓝色染料、30 张油纸、100 块布料、20 个线轴^000000！";
+	mes "匆忙！我会和别人一起胡闹。";
+	emotion ET_GO;
+	close;
+
+L_CheckWeight:
+	if (MaxWeight - Weight < 100) {
+		mes "领带比我想象的要重。";
+		mes "看起来就像非常传奇的领带。";
+		close;
+	}
+	if (checkweight(5442,1) == 0) {
+		mes "- 等待 ！！ -";
+		mes "- 你的物品太多了，所以 -";
+		mes "- 不可能有更多。 -";
+		mes "-再次来到我身边-";
+		mes "- 清空一些之后。 -";
+		close;
+	}
+	return;
+}
+
+comodo,236,164,0	script	Hat Girl#Hair_Brush	69,{
+	mes "[帽子女孩]";
+	mes "独特的帽子不是更好吗";
+	mes "比普通的发带呢？";
+	next;
+	if(select("我还是更喜欢发带！：帽子最好！") == 1) {
+		mes "[帽子女孩]";
+		mes "戴上你那无聊的发带一辈子吧！";
+		emotion ET_HNG;
+		close;
+	}
+	mes "[帽子女孩]";
+	mes "你的感觉很好！";
+	mes "我以为我会做";
+	mes "一顶时髦的帽子。";
+	next;
+	mes "[帽子女孩]";
+	mes "我会给你一份荣誉，";
+	mes "成为时尚巨星，";
+	mes "如果你给我带来它的材料。";
+	next;
+	if (countitem(974) > 0 && countitem(975) > 0 && countitem(943) > 49 && countitem(985) > 4 && countitem(1302) > 0) {
+		mes "[帽子女孩]";
+		mes "哦！你带来了^0000FF发刷的材料^000000。";
+		mes "你想让我现在就做吗？";
+		next;
+		if(select("我认为发带更好...：是的，请制作！") == 1) {
+			mes "[帽子女孩]";
+			mes "戴上你那无聊的发带一辈子吧！";
+			emotion ET_HNG;
+			close;
+		}
+		callsub L_CheckWeight;
+		mes "[帽子女孩]";
+		mes "好的，我马上去做！";
+		next;
+		mes "ch ch ch... 结合... ch ch。";
+		emotion ET_PROFUSELY_SWEAT, playerattached();
+		next;
+		mes "[帽子女孩]";
+		mes "到这里，大功告成了！";
+		mes "现在你就是时尚达人了！";
+		next;
+		if (countitem(974) > 0 && countitem(975) > 0 && countitem(943) > 49 && countitem(985) > 4 && countitem(1302) > 0) {
+			callsub L_CheckWeight;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我拿到了发刷。";
+			mes "……但这让我很难过。";
+			delitem 974,1; //Mixture
+			delitem 975,1; //Scarlet_Dyestuffs
+			delitem 943,50; //Solid_Shell
+			delitem 985,5; //Elunium
+			delitem 1302,1; //Axe_
+			getitem 5444,1; //Hair_Brush
+			close;
+		}
+		mes "[帽子女孩]";
+		mes "啊？难道你不想成为";
+		mes "最好的时尚达人？";
+		mes "你的材料还不够吗？";
+		close;
+	}
+	mes "[帽子女孩]";
+	mes "制作最新款式^0000FF发刷^000000，";
+	mes "我需要 ^0000FF1 混合物，1 猩红色染料，";
+	mes "50 个实心炮弹、5 个铿合金、^000000";
+	mes "还有 1 个 ^0000FFAxe^000000，上面有 4 个插槽。";
+	next;
+	mes "[帽子女孩]";
+	mes "你在干什么？匆忙！";
+	next;
+	mes "[帽子女孩]";
+	mes "这是给您的一个提示。";
+	mes "你可以轻松地从怪物身上获得坚固的贝壳和艾卢金。";
+	close;
+
+L_CheckWeight:
+	if (MaxWeight - Weight < 100) {
+		mes "[帽子女孩]";
+		mes "你背负的东西太多了";
+		mes "清空行李后再来。";
+		close;
+	}
+	if (checkweight(5443,1) == 0) {
+		mes "- 等待 ！！ -";
+		mes "- 你的物品太多了，所以 -";
+		mes "- 不可能有更多。 -";
+		mes "-再次来到我身边-";
+		mes "- 清空一些之后。 -";
+		close;
+	}
+	return;
+}
+
+alberta,151,78,0	script	Bebete#Baby_Angel	96,{
+	if (isequipped(5074) > 0 || isequipped(2254) > 0 || isequipped(5210) > 0) {
+		if (BaseLevel < 65) {
+			mes "[贝贝特]";
+			mes "假天使？离开！";
+			next;
+			mes "[贝贝特]";
+			mes "真正的天使";
+			mes "没有你那么弱。";
+			close;
+		}
+		if (isequipped(5443) > 0) {
+			mes "[贝贝特]";
+			mes "噢，天使又来了。";
+			mes "您对《^FF0000小天使雕像^000000还满意吗？";
+			close;
+		}
+		if (countitem(523) > 0 && countitem(916) > 499 && countitem(7292) > 9 && countitem(2282) > 0 && countitem(640) > 0) {
+			mes "[贝贝特]";
+			mes "啊!嘿，天使~天使~";
+			next;
+			mes "[贝贝特]";
+			mes "请给我看小天使的雕像！";
+			mes "听说每个天使都有它！";
+			next;
+			select("小天使雕像？");
+			mes "[贝贝特]";
+			mes "你弄丢了吗？";
+			mes "你想让我给你做吗？";
+			next;
+			if(select("不，谢谢。：是的，我现在就想要。") == 1) {
+				mes "[贝贝特]";
+				mes "唉……谋生不容易啊！";
+				close;
+			}
+			callsub L_CheckWeight;
+			mes "[贝贝特]";
+			mes "哇，你已经知道所有材料了，天使。";
+			emotion ET_BIGTHROB;
+			next;
+			mes "[贝贝特]";
+			mes "你很幸运。我有一尊雕像正在进行中。";
+			mes "所以你不需要等待太久。";
+			next;
+			if (countitem(523) > 0 && countitem(916) > 499 && countitem(7292) > 9 && countitem(2282) > 0 && countitem(640) > 0) {
+				callsub L_CheckWeight;
+				mes "我得到了^FF0000小天使雕像^000000。";
+				delitem 916,500; //Feather_Of_Birds
+				delitem 523,1; //Holy_Water
+				delitem 7292,10; //Muscovite
+				delitem 2282,1; //Spirit_Chain
+				delitem 640,1; //Shining_Stone
+				getitem 5443,1; //Status_Of_Baby_Angel
+				next;
+				mes "[贝贝特]";
+				mes "又见面了，我的天使~！";
+				emotion ET_THANKS;
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "……";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "嗯……估计是被那小子给骗了。";
+				close;
+			}
+			mes "[贝贝特]";
+			mes "嘿嘿，没看到";
+			mes "你包里的任何材料..";
+			emotion ET_CRY;
+			close;
+		}
+		mes "[贝贝特]";
+		mes "嘿，天使...";
+		next;
+		mes "[贝贝特]";
+		mes "哇，天使！";
+		emotion ET_HUK;
+		next;
+		mes "[贝贝特]";
+		mes "你是真正的天使吗？你去过天堂吗？";
+		next;
+		if(select("胡说八道！：让我们保持童年的纯真吧！") == 1) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "天使和天堂？一切都是编出来的！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "什么都没有。一切都是谎言！";
+			emotion ET_KIK, playerattached();
+			next;
+			mes "[贝贝特]";
+			mes "你是个魔鬼！一个怪物！一个白痴！";
+			emotion ET_OHNO;
+			close;
+		}
+		mes "[" + strcharinfo(0) + "]";
+		mes "当然。我曾经与龙和斑马共舞";
+		mes "在香草味的云朵上。";
+		next;
+		mes "[贝贝特]";
+		mes "这正是我一直在想象的！";
+		next;
+		mes "[贝贝特]";
+		mes "请给我看小天使的雕像！";
+		mes "听说每个天使都有它！";
+		next;
+		mes "[贝贝特]";
+		mes "哎呀，你丢了吗？";
+		mes "要我给你做一份吗？";
+		next;
+		mes "[贝贝特]";
+		mes "我之前做过好几次";
+		mes "对于像你这样的天使。";
+		next;
+		mes "[贝贝特]";
+		mes "我可以用^FF0000500个鸟羽、1个圣水、10个白云母、1个天堂戒指和1个闪光石^000000来完成。";
+		next;
+		mes "[贝贝特]";
+		mes "好的，快点！";
+		close;
+	} else {
+		mes "[贝贝特]";
+		mes "假天使？离开！！";
+		next;
+		mes "[贝贝特]";
+		mes "真正的天使有";
+		mes "头上的翅膀！";
+		close;
+	}
+	end;
+
+L_CheckWeight:
+	if (MaxWeight - Weight < 600) {
+		mes "[贝贝特]";
+		mes "天使，你带那么多东西干什么？";
+		mes "我无法给你该物品";
+		mes "因为你的包太满了。";
+		close;
+	}
+	if (checkweight(5443,1) == 0) {
+		mes "- 等待 ！！ -";
+		mes "- 你的物品太多了，所以 -";
+		mes "- 不可能有更多。 -";
+		mes "-再次来到我身边-";
+		mes "- 清空一些之后。 -";
+		close;
+	}
+	return;
+}
+
+gef_fild07,108,161,4	script	Roda Frog#Frog_Cap	1012,1,1,{
+	if (!.Active) end;
+	if (hat_2009 == 0) {
+		mes "[???]";
+		mes "嗯..嗯..";
+		mes "看来我向孩子模样的转变是成功的。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "…………";
+		next;
+		mes "[???]";
+		mes "人类！我来这里是想请你帮忙。";
+		next;
+		if (BaseLevel < 65) {
+			mes "[???]";
+			mes "…………";
+			next;
+			mes "[???]";
+			mes "我是伟大的青蛙七世！";
+			next;
+			mes "[青蛙王七号]";
+			mes "但我认为你还不够强大来帮助我们。";
+			mes "多去训练吧！";
+			next;
+			mes "[青蛙王七号]";
+			mes "65级以上的人类对我们来说就可以了。";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		} else {
+			mes "[???]";
+			mes "我是伟大的国王，青蛙七世..";
+			mes "我需要你的帮助！";
+			next;
+			if(select("忽略它吧：我们来帮助他吧。") == 1) {
+				mes "[" + strcharinfo(0) + "]";
+				mes "会说话的青蛙...";
+				next;
+				mes "[" + strcharinfo(0) + "]";
+				mes "现在我已经看到了一切。";
+				next;
+				mes "[青蛙王七号]";
+				mes "嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎婆婆";
+				close2;
+				donpcevent "Roda Frog#Frog_Cap::OnDisable";
+				end;
+			}
+			mes "[" + strcharinfo(0) + "]";
+			mes "我能帮您什么？";
+			next;
+			mes "[青蛙王七号]";
+			mes "我们伟大的青蛙比赛现在濒临灭绝，因为许多游客来到这里，把我们的鸡蛋当作纪念品。我什至听说地面上各处还剩下很多人，所以我需要你的帮助。请带回^FF0000100个生成^000000。";
+			setquest 5000;
+			set hat_2009,1;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "当然，我会的。";
+			next;
+			mes "[青蛙王七号]";
+			mes "我会等你的！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		}
+	} else if (hat_2009 == 1) {
+		if (countitem(908) < 100) {
+			mes "[青蛙王七号]";
+			mes "你在这里做什么？";
+			mes "去获取^FF0000100个生成^000000！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		} else {
+			mes "[青蛙王七号]";
+			mes "哦，你把它们都带来了！";
+			next;
+			mes "[青蛙王七号]";
+			mes "太感谢了，" + strcharinfo(0) + ".";
+			emotion ET_THANKS;
+			next;
+			mes "[青蛙王七号]";
+			mes "顺便说一下，我们还有一件紧急的事情。所以我想再请你帮忙。";
+			next;
+			mes "[青蛙王七号]";
+			mes "青蛙是蛇的健康食物。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我很清楚。";
+			next;
+			mes "[青蛙王七号]";
+			mes "嗯，那很好。你不为我们的种族感到难过吗？";
+			next;
+			mes "[青蛙王七号]";
+			mes "所以，我请求你们向他们报仇。为我们杀死^FF000050个侧绕者^000000。";
+			delitem 908,100; //Spawn
+			changequest 5000,5001;
+			set hat_2009,2;
+			next;
+			mes "[青蛙王七号]";
+			mes "我会等你的消息！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		}
+	} else if (hat_2009 == 2) {
+		set .@hunting, checkquest(5001,HUNTING);
+		if (.@hunting == 0 || .@hunting == 1) {
+			mes "[青蛙王七号]";
+			mes "我在等你的好消息。";
+			mes "这对你来说是小菜一碟";
+			mes "杀死^FF000050个侧绕者^000000。继续努力吧！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		} else if (.@hunting == 2) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "我回来了。";
+			next;
+			mes "[青蛙王七号]";
+			mes "你似乎杀死了所有的 Side Winders！";
+			next;
+			mes "[青蛙王七号]";
+			mes "你成为了小青蛙的榜样。再次感谢您。";
+			emotion ET_THANKS;
+			next;
+			mes "[青蛙王七号]";
+			mes "因此，我正在考虑将你的杰出功绩写入我们青蛙的历史书中。但我需要你的工作证据。";
+			next;
+			mes "[青蛙王七号]";
+			mes "请给我带来^FF0000 100条^000000 ^FF0000蛇毒犬^000000。";
+			changequest 5001,5002;
+			set hat_2009,3;
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "我很高兴被载入史册。我去接他们。";
+			next;
+			mes "[青蛙王七号]";
+			mes "听话、勤奋……我希望我有一只像你一样忠诚的青蛙。";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		}
+	} else if (hat_2009 == 3) {
+		if (countitem(937) < 100) {
+			mes "[青蛙王七号]";
+			mes "^FF0000100只毒犬^000000怎么样？";
+			mes "快点，这是载入青蛙历史书的难得机会！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		} else {
+			mes "[青蛙王七号]";
+			mes "哦，你带来了毒犬！现在，我可以正式将你载入青蛙史册了。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "这对我有好处。";
+			next;
+			mes "[青蛙王七号]";
+			mes "我有一个更好的消息！";
+			next;
+			mes "[青蛙王七号]";
+			mes "当我查阅历史书时，我发现了一个保持比赛的好方法！";
+			next;
+			mes "[青蛙王七号]";
+			mes "答案就在青蛙的历史书中。昔日，伟大的青蛙国王三世配制了一种秘药，使我们能够使用隐藏技能来躲避蛇。";
+			next;
+			mes "[青蛙王七号]";
+			mes "我应该早点知道这一点...";
+			mes "请给我^FF000050 鳞片贝壳^000000。";
+			delitem 937,100; //Posionous_Canine
+			changequest 5002,5003;
+			set hat_2009,4;
+			next;
+			mes "[青蛙王七号]";
+			mes "这并不容易，但我相信你能做到。";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		}
+	} else if (hat_2009 == 4) {
+		if (countitem(936) < 50) {
+			mes "[青蛙王七号]";
+			mes "还在这里吗？去获取^FF000050个鳞片贝壳^000000！请快点！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		} else {
+			mes "[青蛙王七号]";
+			mes "出色的！";
+			mes "你就像年轻时伟大的青蛙三世一样！";
+			next;
+			mes "[青蛙王七号]";
+			mes "你已经是我们青蛙的英雄了！如果我有孩子，我会把你和我的孩子一起嫁给。";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "啊...不，谢谢。";
+			mes "^FF0000（你是在叫我嫁给一只青蛙吗？？？）^000000";
+			next;
+			mes "[青蛙王七号]";
+			mes "多亏了你，青蛙的数量增加了，但我们却缺乏食物。";
+			next;
+			mes "[青蛙王七号]";
+			mes "对我们来说最好的食物是^FF0000金蛛^000000。";
+			next;
+			mes "[青蛙王七号]";
+			mes "现在，我们的英雄，你在做什么？";
+			mes "去获取^FF000050个金金鱼^000000！";
+			delitem 936,50; //Scales_Shell
+			set hat_2009,5;
+			changequest 5003,5004;
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		}
+	} else if (hat_2009 == 5) {
+		set .@hunting, checkquest(5004,HUNTING);
+		if (.@hunting == 0 || .@hunting == 1) {
+			mes "[青蛙王七号]";
+			mes "我的英雄，你要把我们饿死吗？";
+			mes "去给我们带来^FF000050只金鱼^000000！";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		} else if (.@hunting == 2) {
+			mes "[青蛙王七号]";
+			mes "我想我不久前见过你，但现在你成了青蛙的英雄......";
+			next;
+			mes "[青蛙王七号]";
+			mes "能请你帮忙对我来说真的很幸运。";
+			next;
+			if (MaxWeight - Weight < 500) {
+				mes "[青蛙王七号]";
+				mes "我想给你一份奖励，我们的英雄。但你的包现在太重了。";
+				close2;
+				donpcevent "Roda Frog#Frog_Cap::OnDisable";
+				end;
+			}
+			if (checkweight(5447,1) == 0) {
+				mes "- 等待 ！！ -";
+				mes "- 你的物品太多了，所以 -";
+				mes "- 不可能有更多。 -";
+				mes "-再次来到我身边-";
+				mes "- 清空一些之后。 -";
+				close;
+			}
+			mes "[青蛙王七号]";
+			mes "青蛙们，你们有异议吗？";
+			mes "献给我们的英雄，" + strcharinfo(0) + "";
+			mes "青蛙帽是我们的宝贵财富之一？";
+			next;
+			mes "[某处传来声音]";
+			mes "嘎嘎……嘎嘎……";
+			mes "克罗索普洛克~~~";
+			mes "呱呱呱呱";
+			next;
+			mes "[青蛙王七号]";
+			mes "嗯，没有异议。";
+			next;
+			mes "[青蛙王七号]";
+			mes "我特此给予" + strcharinfo(0) + "，我们的英雄，这顶青蛙帽。";
+			specialeffect2 EF_MAPPILLAR2;
+			specialeffect2 EF_BLESSING;
+			erasequest 5004;
+			set hat_2009,6;
+			getitem 5447,1; //Frog_Cap
+			next;
+			mes "[青蛙王七号]";
+			mes "随时欢迎您。";
+			mes "随时访问这里。";
+			close2;
+			donpcevent "Roda Frog#Frog_Cap::OnDisable";
+			end;
+		}
+	} else if (hat_2009 == 6) {
+		mes "[青蛙王七号]";
+		mes "世界上所有的青蛙，赞美" + strcharinfo(0) + "，我们永远的英雄！";
+		emotion ET_THANKS;
+		close2;
+		donpcevent "Roda Frog#Frog_Cap::OnDisable";
+		end;
+	}
+	end;
+//OnInit:
+//	setnpcdisplay "Roda Frog#Frog_Cap",1012; //RODA_FROG
+//	end;
+OnEnable:
+	setnpcdisplay "Roda Frog#Frog_Cap",716; //4_M_KID2
+	set .Active,1;
+	end;
+OnDisable:
+	set .Active,0;
+	disablenpc "Roda Frog#Frog_Cap";
+	initnpctimer;
+	end;
+OnReset:
+	setnpcdisplay "Roda Frog#Frog_Cap",1012; //RODA_FROG
+	enablenpc "Roda Frog#Frog_Cap";
+	end;
+OnTimer2000:
+	donpcevent "Roda Frog#Frog_Cap::OnReset";
+	stopnpctimer;
+	end;
+OnTouch:
+	if (.Active) end;
+	mes "有一只青蛙。我应该怎么办？";
+	next;
+	switch(select("扔石头吧：谈谈吧。")) {
+	case 1:
+		donpcevent "Roda Frog#Frog_Cap::OnDisable";
+		mes "哎哟~";
+		close;
+	case 2:
+		donpcevent "Roda Frog#Frog_Cap::OnEnable";
+		if (hat_2009 > 0) {
+			emotion ET_THINK, playerattached();
+			mes "[" + strcharinfo(0) + "]";
+			mes "真是太神奇了";
+			mes "改变自己的青蛙。";
+			close;
+		} else {
+			emotion ET_HUK, playerattached();
+			mes "[" + strcharinfo(0) + "]";
+			mes "天哪……青蛙变成了孩子……";
+			close;
+		}
+	}
+	end;
+}
+
+alberta,120,206,3	script	Alonie#Solo_Play_Box	787,{
+	if (hat_1_2009 == 0) {
+		mes "[阿罗尼亚]";
+		mes "我是一个人玩的专家。";
+		mes "我正在努力一个人玩！";
+		next;
+		mes "[阿罗尼亚]";
+		mes "呼呼，耶！";
+		mes "我能感受到你对我的钦佩。";
+		mes "想成为我的学生吗？";
+		next;
+		switch(select("你疯了！：请让我成为你的弟子吧！")) {
+		case 1:
+			mes "[阿罗尼亚]";
+			mes "是的，我疯了。";
+			mes "呼呼，耶耶普！";
+			close;
+		case 2:
+			mes "[阿罗尼亚]";
+			mes "我能感觉到你缺乏感情。好的！";
+			mes "现在，让我们开始训练吧！";
+			next;
+			mes "[阿罗尼亚]";
+			mes "特训，独自闯入狮身人面像地下城！";
+			mes "为了做到";
+			mes "卓有成效的培训，";
+			mes "绕过去杀掉";
+			mes "^FF000020首零音，20首安魂曲^000000！";
+			mes "匆忙！";
+			next;
+			switch(select("胡说八道！：我们走吧！")) {
+			case 1:
+				mes "[阿罗尼亚]";
+				mes "当然，我不在乎。";
+				mes "呼呼，耶耶普！";
+				close;
+			case 2:
+				mes "[阿罗尼亚]";
+				mes "快点吧，我的学生。";
+				mes "我就是这么任性";
+				mes "所以我不知道我会做什么";
+				mes "给你作为奖励！";
+				setquest 1100;
+				setquest 1101;
+				set hat_1_2009,1;
+				close;
+			}
+		}
+	} else if (hat_1_2009 == 1) {
+		if (checkquest(1100,HUNTING) == 2 && checkquest(1101,HUNTING) == 2) {
+			mes "[阿罗尼亚]";
+			mes "已经完成了吗？";
+			mes "好，接下来的训练就到这里了";
+			mes "成为单打高手！";
+			next;
+			mes "[阿罗尼亚]";
+			mes "特训，独自在钟楼玩耍！";
+			mes "为了做到";
+			mes "卓有成效的培训，";
+			mes "绕过去杀掉";
+			mes "^FF000040名阿尔克洛斯和30名高级兽人^000000！";
+			next;
+			switch(select("胡说八道！：我们走吧！")) {
+			case 1:
+				mes "[阿罗尼亚]";
+				mes "当然，我不在乎。";
+				mes "呼呼，耶耶普！";
+				close;
+			case 2:
+				mes "[阿罗尼亚]";
+				mes "快点吧，我的学生。";
+				mes "我就是这么任性";
+				mes "所以我不知道我会做什么";
+				mes "给你作为奖励！";
+				changequest 1100,1102;
+				changequest 1101,1103;
+				set hat_1_2009,2;
+				close;
+			}
+		} else {
+			mes "[阿罗尼亚]";
+			mes "嗯，还不够。";
+			mes "一个人玩可没那么容易！";
+			mes "去杀吧";
+			mes "^FF000020首零音，20首安魂曲^000000！";
+			close;
+		}
+	} else if (hat_1_2009 == 2) {
+		if (checkquest(1102,HUNTING) == 2 && checkquest(1103,HUNTING) == 2) {
+			mes "[阿罗尼亚]";
+			mes "你一个人玩真的很厉害……！";
+			mes "你孤独吗？";
+			mes "嗯，接下来的训练就到这里了";
+			mes "成为单打高手！";
+			next;
+			mes "[阿罗尼亚]";
+			mes "特训，孤身一人去洛阳玩！";
+			mes "为了做到";
+			mes "卓有成效的培训，";
+			mes "绕过去杀掉";
+			mes "^FF000020个绿少女和50个毛怪^000000！";
+			next;
+			switch(select("胡说八道！：我们走吧！")) {
+			case 1:
+				mes "[阿罗尼亚]";
+				mes "当然，我不在乎。";
+				mes "呼呼，耶耶普！";
+				close;
+			case 2:
+				mes "[阿罗尼亚]";
+				mes "快点吧，我的学生。";
+				mes "我就是这么任性";
+				mes "所以我不知道我会做什么";
+				mes "给你作为奖励！";
+				changequest 1102,1108;
+				changequest 1103,1105;
+				set hat_1_2009,3;
+				close;
+			}
+		} else {
+			mes "[阿罗尼亚]";
+			mes "嗯，还不够。";
+			mes "一个人玩可没那么容易！";
+			mes "去杀吧";
+			mes "^FF000040名阿尔克洛斯和30名高级兽人^000000！";
+			close;
+		}
+	} else if (hat_1_2009 == 3) {
+		if (checkquest(1108,HUNTING) == 2 && checkquest(1105,HUNTING) == 2) {
+			mes "[阿罗尼亚]";
+			mes "干得好。";
+			mes "你是多么孤独啊！";
+			mes "好的，这是最后一次训练";
+			mes "成为真正的单机高手！";
+			next;
+			mes "[阿罗尼亚]";
+			mes "特训，独自一人畅游天松地下城！";
+			mes "为了做到";
+			mes "卓有成效的培训，";
+			mes "绕过去杀掉";
+			mes "^FF000020份文件和40名火枪士兵^000000！";
+			next;
+			switch(select("胡说八道！：我们走吧！")) {
+			case 1:
+				mes "[阿罗尼亚]";
+				mes "当然，我不在乎。";
+				mes "哈，亚亚普！";
+				close;
+			case 2:
+				mes "[阿罗尼亚]";
+				mes "快点吧，我的学生！";
+				mes "我就是这么任性";
+				mes "所以我不知道我会做什么";
+				mes "给你作为奖励！";
+				changequest 1108,1106;
+				changequest 1105,1107;
+				set hat_1_2009,4;
+				close;
+			}
+		} else if (checkquest(1104,HUNTING) == 2 && checkquest(1105,HUNTING) == 2) {
+			mes "[阿罗尼亚]";
+			mes "干得好。";
+			mes "你是多么孤独啊！";
+			mes "好的，这是最后一次训练";
+			mes "成为真正的单机高手！";
+			next;
+			mes "[阿罗尼亚]";
+			mes "特训，独自一人畅游天松地下城！";
+			mes "为了做到";
+			mes "卓有成效的培训，";
+			mes "绕过去杀掉";
+			mes "^FF000020份文件和40名火枪士兵^000000！";
+			next;
+			switch(select("胡说八道！：我们走吧！")) {
+			case 1:
+				mes "[阿罗尼亚]";
+				mes "当然，我不在乎。";
+				mes "哈，亚亚普！";
+				close;
+			case 2:
+				mes "[阿罗尼亚]";
+				mes "快点吧，我的学生！";
+				mes "我就是这么任性";
+				mes "所以我不知道我会做什么";
+				mes "给你作为奖励！";
+				changequest 1104,1106;
+				changequest 1105,1107;
+				set hat_1_2009,4;
+				close;
+			}
+		} else {
+			mes "[阿罗尼亚]";
+			mes "嗯，还不够。";
+			mes "一个人玩可没那么容易！";
+			mes "去杀吧";
+			mes "^FF000020个绿少女和50个毛怪^000000！";
+			if (checkquest(1104,HUNTING) == 1) {
+				erasequest 1104;
+				setquest 1108;
+			}
+			close;
+		}
+	} else if (hat_1_2009 == 4) {
+		if (MaxWeight - Weight < 300) {
+			mes "[阿罗尼亚]";
+			mes "背着这么重的包在外面玩吗？";
+			mes "你才是真正的";
+			mes "高手单独玩！";
+			next;
+			mes "[阿罗尼亚]";
+			mes "如果你想要奖励，请先清空你的包！";
+			close;
+		}
+		if (checkquest(1106,HUNTING) == 2 && checkquest(1107,HUNTING) == 2) {
+			mes "[阿罗尼亚]";
+			mes "最后你做到了。";
+			mes "我这个缺爱的学生！";
+			mes "您的训练到此结束！";
+			next;
+			if (gettime(DT_HOUR) < 12) {
+				set .@item,5448; //Solo_Play_Box1
+				set .@time$,"AM";
+			} else {
+				set .@item,5449; //Solo_Play_Box2
+				set .@time$,"PM";
+			}
+			if (checkweight(.@item,1) == 0) {
+				mes "[阿罗尼亚]";
+				mes "背着这么重的包在外面玩吗？";
+				mes "你才是真正的";
+				mes "高手单独玩！";
+				next;
+				mes "[阿罗尼亚]";
+				mes "如果你想要奖励，请先清空你的包！";
+				close;
+			}
+			mes "[阿罗尼亚]";
+			mes "这里！单人游戏盒";
+			mes "最有效的是" + .@time$ + "！";
+			mes "装上这个盒子后，";
+			mes "你是最孤独的人！";
+			next;
+			mes "[阿罗尼亚]";
+			emotion ET_BEST;
+			mes "强忍住你的眼泪！";
+			mes "呼呼，耶耶普！";
+			completequest 1106;
+			completequest 1107;
+			set hat_1_2009,5;
+			getitem .@item,1;
+			close;
+		} else {
+			mes "[阿罗尼亚]";
+			mes "嗯嗯，还不够。";
+			mes "一个人玩可不是那么容易的事！";
+			mes "去杀吧";
+			mes "^FF000020份文件和40名火枪士兵^000000！";
+			close;
+		}
+	} else if (hat_1_2009 == 5) {
+		mes "[阿罗尼亚]";
+		mes "我是独奏专家。";
+		mes "总是尽力一个人玩！";
+		next;
+		mes "[阿罗尼亚]";
+		mes "呼呼，耶耶普！";
+		close;
+	}
+	end;
+}

@@ -1,0 +1,34 @@
+//===== rAthena Script ======================================= 
+//= Niflheim dungeon warps script
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Capuche]
+//============================================================
+
+niflheim,149,124,0	script	nifla_nifdun01a	WARPNPC,1,1,{
+	end;
+OnTouch:
+	if (isbegin_quest(8640) == 0) {
+		npctalk "愤怒的守门人：冒险家你怎么样？进去吗？你想进去吗？踢！", "愤怒的守门人#lv200", bc_self;
+		npctalk "有趣的看门人朋友：太棒了！", "有趣的看门人的朋友#lv20", bc_self;
+		end;
+	}
+	warp "nif_dun01",145,85;
+	end;
+}
+
+nif_dun01,145,82,0	warp2	nifdun01a_nifla	1,1,niflheim,146,122
+	
+nif_dun01,146,36,0	script	nifdun01a_nifdun02a	WARPNPC,1,1,{
+	end;
+OnTouch:
+	if (BaseLevel < 240) {
+		npctalk "乐于助人的看门人：嘿，看看你的样子！你怎么能千里迢迢来到这里！", "乐于助人的看门人#240", bc_self;
+		npctalk "沉默的看门人：……意味着缺乏训练。", "沉默的看门人#240", bc_self;
+		end;
+	}
+	warp "nif_dun02",149,23;
+	end;
+}
+
+nif_dun02,162,15,0	warp2	nifdun02a_nifdun01a	1,1,nif_dun01,146,39
+nif_dun02,137,15,0	warp2	nifdun02a_nifdun01a_	1,1,nif_dun01,146,39

@@ -1,0 +1,193 @@
+//===== rAthena Script ======================================= 
+//= God Item Quest - Brisingamen Seal
+//===== Description: ========================================= 
+//= [Official Conversion]
+//= Quest for breaking the seal of Brisingamen.
+//===== Changelogs: ==========================================
+//= 1.0 Renewal script update for ep16.1 [Capuche]
+//============================================================
+
+prt_cas,372,74,0	script	Personnel Record#hidden	HIDDEN_NPC,{
+	if ($God2 < $@god_check1) {
+		mes "[图书管理员]";
+		mes "你在干什么？";
+		mes "不要碰任何东西！";
+		close;
+	}
+	if ($God3 >= $@god_check2) {
+		mes "[图书管理员]";
+		mes "你在干什么？";
+		mes "不要碰任何东西！";
+		close;
+	}
+	if (god_brising == 26) {
+		mes "[" + strcharinfo(0) + "]";
+		mes "我应该读这个";
+		mes "从点";
+		mes "我离开了...";
+		next;
+		mes "["+ strcharinfo(0) +"]";
+		mes "呃……？";
+		mes "这个标志是什么";
+		mes "在底部吗？";
+		mes "某种秘密？";
+		next;
+		mes "["+ strcharinfo(0) +"]";
+		mes "难怪图书管理员";
+		mes "之前似乎犹豫过";
+		mes "说任何话。呵呵。";
+		mes "现在让我们看看...";
+		next;
+		set .@bookrand,rand(1,3);
+		if (.@bookrand == 1) {
+			mes "[人员记录]";
+			mes "^663300第二小队的洛文在事件发生三天后回到了她的分队。审判进行了，她被判犯有临阵脱逃罪。^000000";
+			next;
+			mes "[人员记录]";
+			mes "^663300尽管罪行很严重，但她只是被十字军开除，授予她的神圣力量也被强行移除......^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "她被迫离开十字军？！太荒谬了！";
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "他们是想判她死刑还是怎么的？这简直太残酷了。她一定是被羞辱了……";
+			next;
+			mes "[人员记录]";
+			mes "^663300事件发生两年后，一支探险队发现了生锈的盔甲碎片、一把断剑";
+			mes "以及一些属于";
+			mes "洛文·艾伦。^000000";
+			next;
+			mes "[人员记录]";
+			mes "^663300但是，这个信息";
+			mes "是高度机密的。据官方说法，洛文·艾伦在任务期间死亡。^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "他们以为她带来了";
+			mes "十字军的耻辱？";
+			mes "这听起来很混乱。";
+			mes "我应该尝试再次见到她吗？";
+			next;
+			mes "[图书管理员]";
+			mes "^666666*打哈欠...*^000000";
+			mes "什么……？";
+			mes "你是谁！";
+			mes "见鬼去吧";
+			mes "离开这里！";
+			set god_brising,30;
+			close2;
+			warp "prt_cas",349,68;
+			end;
+		}
+		else {
+			mes "[图书管理员]";
+			mes "^666666*打哈欠...*^000000";
+			mes "什么……？";
+			mes "你是谁！";
+			mes "见鬼去吧";
+			mes "离开这里！";
+			close2;
+			warp "prt_cas",349,68;
+			end;
+		}
+	}
+	else if (god_brising == 25) {
+		mes "^3355FF当图书管理员打瞌睡时，你从书架上拿走了这本书。根据十字军人员记录，只有一名新兵名叫洛文·埃伦 (Lowen Ellenen)。";
+		next;
+		mes "[" + strcharinfo(0) + "]";
+		mes "爱艾伦...";
+		mes "成员";
+		mes "第二小队...";
+		mes "22岁...";
+		mes "女性...";
+		next;
+		mes "["+ strcharinfo(0) +"]";
+		mes "成了逃犯？";
+		mes "这不一样";
+		mes "信息的";
+		mes "图书馆员告诉我的！";
+		next;
+		set .@bookrand,rand(1,3);
+		if (.@bookrand == 1) {
+			mes "[" + strcharinfo(0) + "]";
+			mes "我应该读这个";
+			mes "从点";
+			mes "我离开了...";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "呃……？";
+			mes "这个标志是什么";
+			mes "在底部吗？";
+			mes "某种秘密？";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "难怪图书管理员";
+			mes "之前似乎犹豫过";
+			mes "说任何话。呵呵。";
+			mes "现在让我们看看...";
+			next;
+			mes "[人员记录]";
+			mes "^663300第二小队的洛文在事件发生三天后回到了她的分队。审判进行了，她被判犯有临阵脱逃罪。^000000";
+			next;
+			mes "[人员记录]";
+			mes "^663300尽管罪行很严重，但她只是被十字军开除，授予她的神圣力量也被强行移除......^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "她被迫离开十字军？！太荒谬了！";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "他们是想判她死刑还是怎么的？这简直太残酷了。她一定是被羞辱了……";
+			next;
+			mes "[人员记录]";
+			mes "^663300事件发生两年后，一支探险队发现了生锈的盔甲碎片、一把断剑";
+			mes "以及一些属于";
+			mes "洛文·艾伦。^000000";
+			next;
+			mes "[人员记录]";
+			mes "^663300但是，这个信息";
+			mes "是高度机密的。据官方说法，洛文·艾伦在任务期间死亡。^000000";
+			next;
+			mes "[" + strcharinfo(0) + "]";
+			mes "他们以为她带来了";
+			mes "十字军的耻辱？";
+			mes "这听起来很混乱。";
+			mes "我应该尝试再次见到她吗？";
+			next;
+			mes "[图书管理员]";
+			mes "^666666*打哈欠...*^000000";
+			mes "什么……？";
+			mes "你是谁！";
+			mes "见鬼去吧";
+			mes "离开这里！";
+			set god_brising,30;
+			close2;
+			warp "prt_cas",349,68;
+			end;
+		}
+		else {
+			mes "[图书管理员]";
+			mes "^666666*打哈欠...*^000000";
+			mes "什么……？";
+			mes "你是谁！";
+			mes "见鬼去吧";
+			mes "离开这里！";
+			set god_brising,26;
+			next;
+			mes "["+ strcharinfo(0) +"]";
+			mes "（胡说八道……！";
+			mes "我没有得到";
+			mes "完成阅读！）";
+			close2;
+			warp "prt_cas",349,68;
+			end;
+		}
+	}
+	else  {
+		mes "[图书管理员]";
+		mes "你在这里做什么？";
+		mes "不要碰任何东西！";
+		close;
+	}
+}
+
+//-----------librarian----------------------------------------------------------
+prt_cas,373,75,3	duplicate(Librarian#2_)	Librarian#2	8W_SOLDIER

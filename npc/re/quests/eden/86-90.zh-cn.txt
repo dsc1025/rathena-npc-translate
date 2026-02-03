@@ -1,0 +1,201 @@
+//===== rAthena Script =======================================
+//= Eden Group Quests - Mission [86 - 90]
+//===== By: ==================================================
+//= Chilly
+//===== Current Version: =====================================
+//= 1.5
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Repetable Quests for Players between Baselevel 86 - 90.
+//===== Additional Comments: =================================
+//= 1.0 First Version. [Chilly]
+//= 1.1 Some little improvements here and there. [Masao]
+//= 1.2 Optimized. [Euphy]
+//= 1.3 Updated to match the official script. [Euphy]
+//= 1.4 Added support to Para_Team_Mark_ in Eden Group. [Ragno]
+//= 1.5 Added use of F_HasEdenGroupMark function. [Ragno]
+//============================================================
+
+moc_para01,48,175,3	script	86-90 Mission Board	857,{
+	if (!callfunc("F_HasEdenGroupMark")) {
+		mes "等一下！";
+		mes "-你需要有一个-";
+		mes "-^4d4dff'伊甸集团标记'^000000-";
+		mes "-接受这些任务。-";
+		next;
+		switch(select("走开吧。:^0000FF伊甸集团^000000任务？:我怎样才能成为^0000FF伊甸集团^000000的成员？")) {
+		case 1:
+			close;
+		case 2:
+			mes "::伊甸园集团使命";
+			mes ":: 基本上是任务";
+			mes "::请求者";
+			mes "::来自王国各地的人们。";
+			mes "::我们只是对它们进行分类。";
+			next;
+			mes "::在伊甸园集团，";
+			mes "::我们整理了任务";
+			mes "::根据难度。";
+			mes "::按照这个级别，";
+			mes "::你可以找到";
+			mes "::任务";
+			mes "::适合你。";
+			next;
+			mes "::当你完成后，";
+			mes "::你可以回来了";
+			mes "::致宣教委员会。";
+			next;
+			mes "::那么你将会是";
+			mes "::奖励！！";
+			mes "::很简单不是吗！！";
+			mes "::无需佣金！";
+			close;
+		case 3:
+			mes "::您可以成为会员";
+			mes "::伊甸园集团";
+			mes "::致^0000FF莱梅·埃文诺^000000，";
+			mes ":: 谁在一楼等候。";
+			next;
+			mes "::如果您成为会员，";
+			mes "::你会得到一个";
+			mes "::\"^006400Eden Group Mark^000000\".";
+			mes "::那么你就可以";
+			mes ":: 会见宣教委员会。";
+			close;
+		}
+	}
+	if (BaseLevel < 86  || BaseLevel > 90) {
+		// Quest IDs: 4167-4180
+		// Quest cooldown IDs: 4198-4211
+		setarray .@names$[0],
+			"Dragon Tail","Spring Rabbit","Pest",
+			"Bathory","Alarm",
+			"Baba Yaga","Yao Jun","Firelock Soldier","Zipper Bear",
+			"Ground Petite","Rafflesia","Venomous","Pitman","Yellow Novus";
+		setarray .@exp[0],
+			76000,82000,82000,
+			72000,76000,
+			72000,78000,82000,80000,
+			72000,72000,72000,86000,80000;
+		mes "您的等级必须在 86-90 级之间才能接受这些任务。";
+		for(set .@quest,4167; .@quest<=4180; set .@quest,.@quest+1) {
+			set .@hunting, checkquest(.@quest,HUNTING);
+			if (.@hunting == 0 || .@hunting == 1) {
+				next;
+				mes ":: 你不能继续进入";
+				mes ":: ^0000FF"+.@names$[.@quest-4167]+" 狩猎^000000。";
+				mes "* 代表团登记";
+				mes ":: 已取消。";
+				erasequest .@quest;
+				close;
+			} else if (.@hunting == 2) {
+				next;
+				mes ":: 您添加了信息";
+				mes "* 关于使命";
+				mes ":: ^0000FF"+.@names$[.@quest-4167]+" 狩猎^000000";
+				mes "* 在宣教委员会。";
+				mes ":: 你有一个";
+				mes "* 有益的经验。";
+				erasequest .@quest;
+				getexp .@exp[.@quest-4167],0;
+				close;
+			}
+		}
+		close;
+	}
+	mes "[86-90 任务板]";
+	mes "该板上有几个请求。";
+	next;
+	switch(select("^8B4513海龟岛^000000：^8B4513钟楼地下城^000000：^8B4513扩展城镇^000000：^8B4513其他地区^000000")) {
+	case 1:
+		mes "^8B4513海龟岛^000000。";
+		mes "你要猎杀哪个怪物或者你已经猎杀完毕了吗？";
+		next;
+		switch(select("^0000FF龙尾^000000：^0000FF春兔^000000：^0000FF害虫^000000")) {
+			case 1: callsub L_Quest,4167,"Dragon Tail",76000,"�巡������ī��","There is a monster that only can be found on ^8B4513Turtle Island^000000.","s";
+			case 2: callsub L_Quest,4168,"Spring Rabbit",82000,"����������ī��","There is a monster that only can be found on ^8B4513Turtle Island^000000.","s";
+			case 3: callsub L_Quest,4169,"Pest",82000,"�佺Ʈī��","There is a monster that only can be found on ^8B4513Turtle Island^000000.","s";
+		}
+	case 2:
+		mes "^8B4513钟楼地下城^000000。";
+		mes "你要猎杀哪个怪物或者你已经猎杀完毕了吗？";
+		next;
+		switch(select("^0000FF电池^000000:^0000FF报警^000000")) {
+			case 1: callsub L_Quest,4170,"Bathory",72000,"�ټҸ�ī��","The Clock Tower Dungeon is full of dangerous monsters.";
+			case 2: callsub L_Quest,4171,"Alarm",76000,"�˶�ī��","The Clock Tower Dungeon is full of dangerous monsters.";
+		}
+	case 3:
+		mes "^8B4513扩张城市^000000";
+		mes "你要猎杀哪个怪物或者你已经猎杀完毕了吗？";
+		next;
+		switch(select("^0000FF雅嘎巴巴^000000:^0000FF耀军^000000:^0000FF火枪士兵^000000:^0000FF拉链熊^000000")) {
+			case 1: callsub L_Quest,4172,"Baba Yaga",72000,"","The witch Baba Yaga can be found in the outskirts of Moscovia.";
+			case 2: callsub L_Quest,4173,"Yao Jun",117000,"����ī��","There are human-like monsters that roam around the dungeon in Luoyang.";
+			case 3: callsub L_Quest,4174,"Firelock Soldier",82000,"�������Ѻ�ī��","There are human-like monsters that roam around the dungeon in Amatsu.","s";
+			case 4: callsub L_Quest,4175,"Zipper Bear",120000,"���ۺ���ī��","There are bear monsters swarming in the Kunlun dungeon.";
+		}
+	case 4:
+		mes "[86-90 任务板]";
+		mes "以下是在米德加德其他地区狩猎怪物的随机请求列表。";
+		mes "你要猎杀哪个怪物或者你已经猎杀完毕了吗？";
+		next;
+		switch(select("^0000FF地面娇小^000000：^0000FF大王花^000000：^0000FF有毒^000000：^0000FF皮特曼^000000：^0000FF黄色诺维斯^000000")) {
+			case 1: callsub L_Quest,4176,"Ground Petite",72000,"����ڶ�ī��","There are dragon type monsters swarming the western region of Geffen.";
+			case 2: callsub L_Quest,4177,"Rafflesia",72000,"���÷��þ�ī��","There are plant type monsters infesting the fields of Lighthalzen.";
+			case 3: callsub L_Quest,4178,"Venomous",72000,"����ӽ�","There are formless monsters floating around the fields of Einbroch.";
+			case 4: callsub L_Quest,4179,"Pitman",86000,"�͸�","There are undead monsters pushing a cart around the fields and dungeons of Einbroch.";
+			case 5: callsub L_Quest,4180,"Yellow Novus",80000,"���ο�����","There are yellow dragon type monsters terrorizing the fields of Hugel.";
+		}
+	}
+	end;
+
+//callsub L_Quest,<quest ID>,"<monster name>",<reward EXP>,"<cutin image>","<description>"{,"s"};
+L_Quest:
+	set .@quest1, getarg(0);
+	set .@quest2, .@quest1+31;
+	.@cutin$ = getarg(3);
+	set .@playtime, checkquest(.@quest2,PLAYTIME);
+	if (.@playtime == 0 || .@playtime == 1) {
+		mes "[86-90 任务板]";
+		mes "您需要等待3个小时才能再次执行此任务。";
+		close;
+	}
+	set .@hunting, checkquest(.@quest1,HUNTING);
+	if (.@hunting == 0 || .@hunting == 1) {
+		mes "[86-90 任务板]";
+		mes "您已经完成了所有 30 个"+getarg(1)+getarg(5,"")+" 的狩猎了吗？";
+		close;
+	} else if (.@hunting == 2) {
+		mes "[86-90 任务板]";
+		mes "你已经完成了狩猎。";
+		mes "请接受这个奖励作为补偿。";
+		erasequest .@quest1;
+		if (.@playtime > -1) erasequest .@quest2;
+		setquest .@quest2;
+		getexp getarg(2),0;
+		close;
+	}/* else if (.@hunting == 3) {
+//		recall_completequest .@quest1
+		erasequest .@quest1;
+		mes "[86-90 任务板]";
+		mes "您已重新接受"+getarg(1)+"狩猎任务。";
+		close;
+	}*/ else {
+		mes "[86-90 任务板]";
+		mes getarg(4);
+		next;
+		if (.@cutin$ != "") cutin .@cutin$,3;
+		mes "[86-90 任务板]";
+		mes "在那里狩猎 30 个"+getarg(1)+" 怪物并将你的成功发布到这个板上。";
+		next;
+		if (.@cutin$ != "") cutin .@cutin$,255;
+		if(select("我会追捕他们。：不，谢谢。") == 1) {
+			mes "[86-90 任务板]";
+			mes "完成任务后，将其发布到此板上并领取奖励。";
+			if (.@playtime > -1) erasequest .@quest2;
+			setquest .@quest1;
+		}
+		close;
+	}
+}

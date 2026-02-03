@@ -1,0 +1,366 @@
+//===== rAthena Script =======================================
+//= Eden Group Quests - Mission [56 - 70]
+//===== By: ==================================================
+//= L0ne_W0lf
+//===== Current Version: =====================================
+//= 1.7
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Repetable Quests for Players between Baselevel 56 - 70.
+//===== Additional Comments: =================================
+//= 1.0 First Version.
+//= 1.1 Some little optimization here and there. [Masao]
+//= 1.2 Added checkquest confirmation for -1. [Euphy]
+//= 1.3 Fixed Puppet Master's Agony Quest (12217 -> 3259). [Joseph]
+//= 1.4 Fixed invalid check (Magic Wand Quest). [Joseph]
+//= 1.5 Optimized, based on code by Zopokx. [Euphy]
+//= 1.6 Added support to Para_Team_Mark_ in Eden Group. [Ragno]
+//= 1.7 Added use of F_HasEdenGroupMark function. [Ragno]
+//= 1.8 Reverting Magic Wand Quest to request Trunks. [Carlosgrr]
+//============================================================
+
+moc_para01,42,38,3	script	Mission [56 - 70]	857,{
+	if (!callfunc("F_HasEdenGroupMark")) {
+		mes "为了获得这些任务，我需要先加入伊甸集团。我必须找到莱姆·埃文纳部长并成为会员。";
+		close;
+	}
+	mes "这里是56~70级冒险家的各种冒险列表。";
+	next;
+	mes "许多任务，如怪物狩猎、送货、寻找人。";
+	next;
+	switch(select("任务编号 1~5：任务编号 6~10：任务编号 11~15")) {
+	case 1:
+		switch(select("这是什么绷带？：危险的鳄鱼。：那不是美人鱼...：我的国家在呼唤我！")) {
+			case 1: callsub L_HuntingQuest,3250,15000,5000,930,30;
+			case 2: callsub L_HuntingQuest,3251,16000,6000;
+			case 3: callsub L_HuntingQuest,3252,17000,8000;
+			case 4: callsub L_Quest,3254,18000,8000,7043,10,1056,30;
+		}
+	case 2:
+		switch(select("狩猎野猪：准备夏天：女人的怨恨：特殊材料：傀儡师的痛苦")) {
+			case 1: callsub L_HuntingQuest,3255,16000,7000;
+			case 2: callsub L_Quest,3256,15000,5000,918,30;
+			case 3: callsub L_HuntingQuest,3257,17000,8000;
+			case 4: callsub L_Quest,3258,16000,7000,7198,40;
+			case 5: callsub L_HuntingQuest,3259,17000,7000,1060,30;
+		}
+	case 3:
+		switch(select("烦人的苍蝇：危险的穆纳克：让世界变得绿色：魔杖")) {
+			case 1: callsub L_HuntingQuest,3260,16000,6000;
+			case 2: callsub L_HuntingQuest,3261,16000,7000;
+			case 3: callsub L_Quest,3262,17000,7000,1032,40;
+			case 4: callsub L_Quest,3263,18000,8000,1021,30,1019,30;
+		}
+	}
+	end;
+
+L_Quest:
+	.@quest_id = getarg(0);
+	if (checkquest(.@quest_id) == -1) {
+		callsub L_Details, .@quest_id;
+		next;
+		mes "你愿意接受这个使命吗？";
+		next;
+		if(select("接受任务：不接受任务。") == 1) {
+			if (BaseLevel < 55 || BaseLevel > 70) {
+				mes "这些任务不适合我的水平。我应该寻找其他任务。";
+				close;
+			}
+			setquest .@quest_id;
+			mes "我已经成功接受了任务。完成任务后我必须回来确认我的工作。";
+			next;
+			mes "此任务没有时间限制。";
+		}
+		close;
+	}
+	if (getargcount() > 5) {
+		if (countitem(getarg(5)) < getarg(6))
+			set .@items,1; //incomplete
+		else
+			set .@items,2; //complete
+	}
+	if (checkquest(.@quest_id) < 2 && (countitem(getarg(3)) < getarg(4) || .@items == 1)) {
+		mes "你有一个持续的使命。您想查看详细信息吗？";
+		next;
+		if(select("查看详情：取消。") == 1)
+			callsub L_Details, .@quest_id;
+		close;
+	} else {
+		mes "我为这次任务做得很好。我现在应该举报吗？";
+		next;
+		if(select("报告任务：暂不报告。") == 1) {
+			delitem getarg(3),getarg(4);
+			if (.@items)
+				delitem getarg(5),getarg(6);
+			getexp getarg(1),getarg(2);
+			erasequest .@quest_id;
+			mes "你已经完成了任务。获得奖励。";
+		}
+		close;
+	}
+	end;
+
+L_HuntingQuest:
+	.@quest_id = getarg(0);
+	if (checkquest(.@quest_id) == -1) {
+		callsub L_Details, .@quest_id;
+		next;
+		mes "你愿意接受这个使命吗？";
+		next;
+		if(select("接受任务：不接受任务。") == 1) {
+			if (BaseLevel < 55 || BaseLevel > 70) {
+				mes "这些任务不适合我的水平。我应该寻找其他任务。";
+				close;
+			}
+			setquest .@quest_id;
+			mes "我已经成功接受了任务。完成任务后我必须回来确认我的工作。";
+			next;
+			mes "此任务没有时间限制。";
+		}
+		close;
+	}
+	if (getargcount() > 3) {
+		if (countitem(getarg(3)) < getarg(4))
+			set .@items,1; //incomplete
+		else
+			set .@items,2; //complete
+	}
+	if (checkquest(.@quest_id,HUNTING) < 2 || .@items == 1) {
+		mes "你有一个持续的使命。您想查看详细信息吗？";
+		next;
+		if(select("查看详情：取消。") == 1)
+			callsub L_Details, .@quest_id;
+		close;
+	} else if (checkquest(.@quest_id,HUNTING) == 2) {
+		mes "我为这次任务做得很好。我现在应该举报吗？";
+		next;
+		if(select("报告任务：暂不报告。") == 1) {
+			if (.@items)
+				delitem getarg(3),getarg(4);
+			getexp getarg(1),getarg(2);
+			erasequest .@quest_id;
+			mes "你已经完成了任务。获得奖励。";
+		}
+		close;
+	}
+	end;
+
+L_Details:
+	switch(getarg(0)) {
+	case 3250:
+		mes "这个任务是由莱特哈尔森的雷肯贝尔公司指派的。以下是详细信息。";
+		next;
+		mes "Rekenber公司即将启动一个名为“绿色医疗中心”的新项目。对于该项目的第一个产品，我们正在准备幸福绷带。";
+		next;
+		mes "关于这个项目，我们需要研究怪物被腐烂绷带包裹时的反应。";
+		next;
+		mes "如果您有兴趣，请狩猎 30 个木乃伊并携带 30 个腐烂绷带。您可以在摩洛哥的金字塔西部找到它们。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "- Rekenber公司首席董事'Julie E Delph' -";
+		break;
+	case 3251:
+		mes "该任务由Comodo合作社委托。以下是详细信息。";
+		next;
+		mes "这些天鳄鱼变得疯狂，它们攻击在海滩附近闲逛的妇女和醉酒的人。";
+		next;
+		mes "对于我们这个符文米德加特最美妙的度假胜地来说，这是一个非常耻辱的情况。";
+		next;
+		mes "因此，如果你猎杀 30 只鳄鱼来解决这种情况，将会非常有帮助。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		break;
+	case 3252:
+		mes "该任务是由伊兹鲁德的一位未知客户指派的。";
+		next;
+		mes "从我出生起，我就很喜欢伊兹鲁德的海滩。";
+		next;
+		mes "当我年轻的时候，我在伊兹鲁德地牢中发现了一种神秘的生物，我以前从未见过这样的东西......";
+		next;
+		mes "我立刻以为那是美人鱼。我很惊讶，我一生都在研究美人鱼。";
+		next;
+		mes "但是，随着我更加努力的研究，我发现那个生物并不是美人鱼……是的，它一点也不像其他美人鱼那样美丽……";
+		next;
+		mes "我终于查明那是人鱼，不是美人鱼！";
+		next;
+		mes "人鱼……我浪费了我的一生来研究这个怪物！所以请猎杀 30 条人鱼让我感觉好一点。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——伊兹鲁德《失落的梦中美人鱼》——";
+		break;
+	case 3254:
+		mes "这个任务是由符文米德加尔特王国的政府官员指派的。";
+		next;
+		mes "为了防止普隆德拉发生洪水，我们决定建造一座巨大的水坝来调节供水。";
+		next;
+		mes "但是，我们的物资短缺，我们需要收集细沙和砂砾。";
+		next;
+		mes "因此，我们想寻求帮助。各位，请给我们每人 10 个细沙和 30 个砂砾，以便我们建造大坝。";
+		next;
+		mes "这些材料你可以从沙人那里得到，祝你好运！";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——符文米德加尔特王国政府官员，杜弗雷·肯特——";
+		break;
+	case 3255:
+		mes "该任务由佩永市政厅指派。";
+		next;
+		mes "野生动物始终是农民的烦恼。";
+		next;
+		mes "他们攻击我们的农场并毁掉了整个庄稼！我们已经受不了了！";
+		next;
+		mes "所以，我们想请求勇敢的冒险者的帮助。";
+		next;
+		mes "请狩猎 30 名野蛮人来拯救我们的庄稼！";
+		next;
+		mes "你可以很容易地在我们的城镇和田野周围找到那些怪物。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——佩永市政厅成员——";
+		break;
+	case 3256:
+		mes "该任务由摩洛哥铁匠阿拉格姆指派。";
+		next;
+		mes "各位冒险家们大家好~~~~！这是摩洛哥最炙手可热的铁匠阿拉甘姆！";
+		next;
+		mes "不管怎样，我有一个儿子，名叫小阿拉加姆，很可爱。哈哈。";
+		next;
+		mes "今年夏天他要参加夏令营，但他不会游泳。";
+		next;
+		mes "我想教他，但你也知道我是铁匠，和游泳相差甚远！呵呵。";
+		next;
+		mes "不过，我想，如果我做游泳脚蹼的话，对他的自信心会很大~！";
+		next;
+		mes "为了做到这一点，我需要罗达青蛙的 30 个粘性蹼足。你能把它们带给我吗？";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "附言。不要将我与Hollgrehenn 或Antonio 进行比较！！！！";
+		next;
+		mes "——最火铁匠，摩洛哥铁匠阿拉格姆——";
+		break;
+	case 3257:
+		mes "这个任务是由来自伊兹鲁德的发明家多里安指派的。";
+		next;
+		mes "你听过这样的故事吗：女人心怀怨恨，就会带来天灾。";
+		next;
+		mes "哇，所以男人们一定要小心那些敏感的女人！确保他们与你没有任何恩怨。";
+		next;
+		mes "女人会带来奇怪的现象！";
+		next;
+		mes "我对这个故事很感兴趣，所以我想证明它是真的。";
+		next;
+		mes "所以我需要让女人不高兴！哈哈，我知道这是多么卑鄙的想法，对吧？";
+		next;
+		mes "但这真的只是为了研究......所以请猎杀30个似乎从受害灵魂中复活的昭熙。";
+		next;
+		mes "这样我就可以继续观察这个案子。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——优雅发明者多里安——";
+		break;
+	case 3258:
+		mes "这个任务是由Payon的Wallah指派的。";
+		next;
+		mes "你好，冒险家。你好吗？您的健康状况如何？";
+		next;
+		mes "我是一名药剂师，最近很难获得特殊成分。";
+		next;
+		mes "因为我是一个小敏感的女孩，我一个人怎么可能得到那些东西。";
+		next;
+		mes "所以，请帮助我。只要给我带来四十片巨叶，就足以完成我的特殊药剂了！";
+		next;
+		mes "请尽快拿过来，人们需要我的药。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——瓦拉——";
+		break;
+	case 3259:
+		mes "这个任务是由来自格芬的木偶大师乌努特指派的。";
+		next;
+		mes "你知道，当一个傀儡师是一件很难让人们满意的工作。";
+		next;
+		mes "如今，人们可以自己搜索并看到很多不同的东西。";
+		next;
+		mes "他们的期望越来越高，我无法再满足他们了。";
+		next;
+		mes "但如果我能创造出新的玩具概念，比如活体玩具，那将是开创性的。";
+		next;
+		mes "听说有一种活人娃娃，叫木偶。你能帮我猎取 30 个木偶吗？并且还带了30根金毛，这些将是新玩具的绝佳材料。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——木偶大师乌努特——";
+		break;
+	case 3260:
+		mes "这个任务是由来自普隆德拉的消灭者指派的。";
+		next;
+		mes "随着天气变暖，昆虫的繁殖也越来越多。它已经失控了。";
+		next;
+		mes "普隆德拉的人们因为家里有虫子而无法入睡。";
+		next;
+		mes "所以，请帮助我们，捕猎 30 只猎人蝇。然后可以慢慢减少苍蝇。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——普隆德拉消灭者——";
+		break;
+	case 3261:
+		mes "这个任务是由Payon的Cheese Dongja指派的。";
+		next;
+		mes "你听说过穆纳克吗？";
+		next;
+		mes "丑陋的怪物穆纳克正在威胁佩永的人们。";
+		next;
+		mes "所以我们需要像你这样勇敢的冒险家！";
+		next;
+		mes "请猎杀 30 只穆纳克，这样佩永就能得到安宁。";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "- 福天小 -";
+		break;
+	case 3262:
+		mes "这个任务是由来自摩洛哥的宝石商人 Ibraham 指派的。";
+		next;
+		mes "荒芜的沙漠中一朵美丽的小花……那将是多么令人难以置信的景象啊！";
+		next;
+		mes "种花可以让世界变得绿色，到处都是美丽的。";
+		next;
+		mes "我计划在摩洛哥沙漠种植强壮的花朵，这样土壤就会变得更好。";
+		next;
+		mes "我需要 Flora 的 40 颗食人花，我知道食人花是一朵丑陋的花，但它仍然是一种植物。";
+		next;
+		mes "我希望你能猎杀弗洛拉并为我找到 40 朵食人花。您正在让世界变得绿色！骄傲吧！";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——摩洛哥·易卜拉欣——";
+		break;
+	case 3263:
+		mes "这个任务是由佩永铁匠安东尼奥指派的。";
+		next;
+		mes "魔法棒！你听说过吗？这是一根不可思议的魔杖！";
+		next;
+		mes "如果你说出咒语并挥动魔杖，你的愿望就会成真。";
+		next;
+		mes "所以，我决定自己做。那我就变得有钱有势了~！哈哈！！";
+		next;
+		mes "为了制作魔杖，我需要一些特殊的材料。";
+		next;
+		mes "请给我带来 30 个多克比角和 30 个树干。如果你这样做，我就把我的魔杖借给你一次。哈哈，好买卖吗？";
+		next;
+		mes "请您完成任务后向我们确认，我们将给予您适当的奖励。";
+		next;
+		mes "——佩永铁匠安东尼奥——";
+		break;
+	}
+	return;
+}
