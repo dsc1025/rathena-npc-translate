@@ -33,7 +33,58 @@ def read_text(path: str) -> tuple[str, str]:
 	raise UnicodeDecodeError("utf-8", b, 0, 1, "source file is not valid UTF-8")
 
 
+def insert_translated_by_header(text: str) -> str:
+	"""Insert 'Translated By: dsc' header block if not already present."""
+	if "Translated By" in text:
+		return text
+	
+	lines = text.splitlines(True)  # preserve line endings
+	nl = "\r\n" if "\r\n" in text else "\n"
+	
+	# Try to find the header separator line to insert before it
+	insert_at = None
+	for i, ln in enumerate(lines):
+		if ln.strip() == "//============================================================":
+			insert_at = i
+			break
+
+	# Fallback: if separator not found, insert after initial header comment block
+	if insert_at is None:
+		header_end = None
+		for i, ln in enumerate(lines):
+			if not ln.lstrip().startswith("//"):
+				break
+			if "=" in ln:
+				header_end = i
+		insert_at = (header_end + 1) if header_end is not None else 0
+
+	# Build header block matching other header lines (not the separator)
+	# Find a reference header line to match length (strip all trailing whitespace)
+	ref_line = None
+	for ln in lines[:insert_at]:
+		stripped = ln.rstrip()
+		if stripped.startswith("//===== ") and ":" in stripped:
+			ref_line = stripped
+			break
+	
+	if ref_line:
+		total_len = len(ref_line)
+	else:
+		total_len = 60  # fallback
+	
+	prefix = "//===== "
+	title = "Translated By:"
+	equals_count = total_len - len(prefix) - len(title) - 1
+	first = prefix + title + " " + ("=" * equals_count)
+	second = "//= dsc"
+	block = [first + nl, second + nl]
+
+	lines[insert_at:insert_at] = block
+	return "".join(lines)
+
+
 def write_gbk_atomic(text: str, out_path: str) -> None:
+	"""Write text to file in GBK encoding atomically."""
 	dirn = os.path.dirname(out_path) or "."
 	fd, tmppath = tempfile.mkstemp(dir=dirn)
 	os.close(fd)
@@ -49,103 +100,61 @@ def write_gbk_atomic(text: str, out_path: str) -> None:
 				pass
 
 
+def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_header: bool = True) -> tuple[bool, str]:
+	"""
+	Convert a single UTF-8 file to GBK encoding.
+	
+	Args:
+		input_path: Path to input UTF-8 file
+		output_path: Path to output file (if None, creates <name>_gbk variant)
+		insert_header: Whether to insert 'Translated By' header
+	
+	Returns:
+		(success: bool, message: str)
+	"""
+	if not os.path.isfile(input_path):
+		return False, f"Input file not found: {input_path}"
+
+	try:
+		text, used_enc = read_text(input_path)
+	except UnicodeDecodeError:
+		return False, "Source file must be UTF-8 (utf-8 or utf-8-sig)."
+	except Exception as e:
+		return False, f"Failed to read input file: {e}"
+
+	if insert_header:
+		text = insert_translated_by_header(text)
+
+	if output_path is None:
+		base, ext = os.path.splitext(input_path)
+		output_path = f"{base}_gbk{ext}"
+
+	try:
+		write_gbk_atomic(text, output_path)
+	except UnicodeEncodeError:
+		return False, "Encoding to GBK failed: some characters are not representable in GBK."
+	except Exception as e:
+		return False, f"Failed to write output file: {e}"
+
+	return True, f"Converted `{input_path}` ({used_enc}) -> `{output_path}` (GBK)"
+
+
 def main(argv: list[str] | None = None) -> int:
+	"""CLI entry point for single file conversion."""
 	parser = argparse.ArgumentParser(description="Convert a single file to GBK encoding.")
 	parser.add_argument("input", help="Input file path")
 	parser.add_argument("--force", action="store_true", help="Overwrite the original file instead of creating <name>_gbk")
 	args = parser.parse_args(argv)
 
-	inp = args.input
-
-	if not os.path.isfile(inp):
-		print(f"Input file not found: {inp}", file=sys.stderr)
-		return 2
-
-	try:
-		text, used_enc = read_text(inp)
-	except UnicodeDecodeError:
-		print("Source file must be UTF-8 (utf-8 or utf-8-sig).", file=sys.stderr)
-		return 3
-	except Exception as e:
-		print(f"Failed to read input file: {e}", file=sys.stderr)
-		return 3
-
-	# Insert "Translated By" block into the header before conversion, if not present.
-	if "Translated By" not in text:
-		lines = text.splitlines(True)  # preserve line endings
-		# detect newline style
-		nl = "\r\n" if lines and lines[0].endswith("\r\n") else "\n"
-		header_end = None
-		for i, ln in enumerate(lines):
-			if not ln.lstrip().startswith("//"):
-				break
-			if "=" in ln:
-				header_end = i
-		if header_end is not None:
-			insert_at = header_end + 1
-		# detect newline style from the file (prefer CRLF when present)
-		nl = "\r\n" if "\r\n" in text else "\n"
-		# Try to find the header separator line to insert before it
-		insert_at = None
-		for i, ln in enumerate(lines):
-			if ln.strip() == "//============================================================":
-				insert_at = i
-				break
-
-		# Fallback: if separator not found, insert after initial header comment block
-		if insert_at is None:
-			header_end = None
-			for i, ln in enumerate(lines):
-				if not ln.lstrip().startswith("//"):
-					break
-				if "=" in ln:
-					header_end = i
-			insert_at = (header_end + 1) if header_end is not None else 0
-
-		# Build header block matching other header lines (not the separator)
-		# Find a reference header line to match length (strip all trailing whitespace)
-		ref_line = None
-		for ln in lines[:insert_at]:
-			stripped = ln.rstrip()
-			if stripped.startswith("//===== ") and ":" in stripped:
-				ref_line = stripped
-				break
-		
-		if ref_line:
-			total_len = len(ref_line)
-		else:
-			total_len = 60  # fallback
-		
-		prefix = "//===== "
-		title = "Translated By:"
-		equals_count = total_len - len(prefix) - len(title) - 1
-		first = prefix + title + " " + ("=" * equals_count)
-		second = "//= dsc"
-		block = [first + nl, second + nl]
-
-		lines[insert_at:insert_at] = block
-		text = "".join(lines)
-
-	if args.force:
-		out = inp
+	output_path = args.input if args.force else None
+	success, message = convert_file_to_gbk(args.input, output_path, insert_header=True)
+	
+	if success:
+		print(message)
+		return 0
 	else:
-		base, ext = os.path.splitext(inp)
-		out = f"{base}_gbk{ext}"
-
-	try:
-		write_gbk_atomic(text, out)
-	except UnicodeEncodeError:
-		print(
-			"Encoding to GBK failed: some characters are not representable in GBK.",
-			file=sys.stderr,
-		)
-		return 4
-	except Exception as e:
-		print(f"Failed to write output file: {e}", file=sys.stderr)
-		return 5
-
-	print(f"Converted `{inp}` ({used_enc}) -> `{out}` (GBK)")
-	return 0
+		print(message, file=sys.stderr)
+		return 1
 
 
 if __name__ == "__main__":

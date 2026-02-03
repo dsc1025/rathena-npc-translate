@@ -1,0 +1,88 @@
+"""batch_convert_to_gbk.py
+
+Batch convert multiple *.zh-cn.txt UTF-8 files to GBK encoding with Translated By header insertion.
+
+Usage examples:
+	python batch_convert_to_gbk.py npc/re/guides/
+	python batch_convert_to_gbk.py npc/re/ --recursive
+
+Behavior:
+	- Automatically finds all *.zh-cn.txt files in given paths
+	- Recursively processes directories when --recursive is specified
+	- Creates <name>_gbk.txt for each file
+	- Inserts 'Translated By: dsc' header if not present
+	- Prints summary of conversions (success/fail counts)
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+# Import the core conversion logic
+from convert_to_gbk import convert_file_to_gbk
+
+
+def find_files(paths: list[str], recursive: bool = False) -> list[str]:
+	"""Find all *.zh-cn.txt files in the given paths."""
+	files = []
+	pattern = "*.zh-cn.txt"
+	
+	for path in paths:
+		p = Path(path)
+		if p.is_file():
+			files.append(str(p.resolve()))
+		elif p.is_dir():
+			if recursive:
+				files.extend(str(f.resolve()) for f in p.rglob(pattern) if f.is_file())
+			else:
+				files.extend(str(f.resolve()) for f in p.glob(pattern) if f.is_file())
+	
+	return files
+
+
+def main(argv: list[str] | None = None) -> int:
+	"""CLI entry point for batch conversion."""
+	parser = argparse.ArgumentParser(
+		description="Batch convert UTF-8 files to GBK encoding.",
+		formatter_class=argparse.RawDescriptionHelpFormatter,
+		epilog="""
+Examples:
+  %(prog)s npc/re/guides/
+  %(prog)s npc/re/ --recursive
+		"""
+	)
+	parser.add_argument("paths", nargs="+", help="Input file paths or directories")
+	parser.add_argument("--recursive", "-r", action="store_true", help="Recursively process directories")
+	args = parser.parse_args(argv)
+
+	# Find all files to process
+	files = find_files(args.paths, args.recursive)
+	
+	if not files:
+		print("No *.zh-cn.txt files found.", file=sys.stderr)
+		return 1
+
+	print(f"Found {len(files)} file(s) to convert.\n")
+	
+	success_count = 0
+	fail_count = 0
+	
+	for file_path in files:
+		success, message = convert_file_to_gbk(file_path, output_path=None, insert_header=True)
+		
+		if success:
+			print(f"✓ {message}")
+			success_count += 1
+		else:
+			print(f"✗ {file_path}: {message}", file=sys.stderr)
+			fail_count += 1
+	
+	print(f"\nSummary: {success_count} succeeded, {fail_count} failed.")
+	return 0 if fail_count == 0 else 1
+
+
+if __name__ == "__main__":
+	raise SystemExit(main())
