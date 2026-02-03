@@ -5,11 +5,12 @@ Batch convert multiple *.zh-cn.txt UTF-8 files to GBK encoding with Translated B
 Usage examples:
 	python batch_convert_to_gbk.py npc/re/guides/
 	python batch_convert_to_gbk.py npc/re/ --recursive
+	python batch_convert_to_gbk.py npc/re/guides/ --force
 
 Behavior:
 	- Automatically finds all *.zh-cn.txt files in given paths
 	- Recursively processes directories when --recursive is specified
-	- Creates <name>_gbk.txt for each file
+	- Creates <name>_gbk.txt for each file (or overwrites original with --force)
 	- Inserts 'Translated By: dsc' header if not present
 	- Prints summary of conversions (success/fail counts)
 """
@@ -51,11 +52,11 @@ def main(argv: list[str] | None = None) -> int:
 		epilog="""
 Examples:
   %(prog)s npc/re/guides/
-  %(prog)s npc/re/ --recursive
-		"""
+  %(prog)s npc/re/ --recursive  %(prog)s npc/re/guides/ --force		"""
 	)
 	parser.add_argument("paths", nargs="+", help="Input file paths or directories")
 	parser.add_argument("--recursive", "-r", action="store_true", help="Recursively process directories")
+	parser.add_argument("--force", action="store_true", help="Overwrite original files instead of creating <name>_gbk variants")
 	args = parser.parse_args(argv)
 
 	# Find all files to process
@@ -71,7 +72,8 @@ Examples:
 	fail_count = 0
 	
 	for file_path in files:
-		success, message = convert_file_to_gbk(file_path, output_path=None, insert_header=True)
+		output_path = file_path if args.force else None
+		success, message = convert_file_to_gbk(file_path, output_path=output_path, insert_header=True)
 		
 		if success:
 			print(f"✓ {message}")
