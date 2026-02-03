@@ -142,6 +142,17 @@ def write_gbk_atomic(text: str, out_path: str) -> None:
 				pass
 
 
+def find_non_gbk_chars(text: str) -> dict:
+	"""Return a mapping of non-GBK characters to their occurrence counts."""
+	bad = {}
+	for ch in text:
+		try:
+			ch.encode("gbk")
+		except UnicodeEncodeError:
+			bad[ch] = bad.get(ch, 0) + 1
+	return bad
+
+
 def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_header: bool = True) -> tuple[bool, str]:
 	"""
 	Convert a single UTF-8 file to GBK encoding.
@@ -177,10 +188,29 @@ def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_
 		base, ext = os.path.splitext(input_path)
 		output_path = f"{base}_gbk{ext}"
 
+	# Try a strict GBK encode first to detect unrepresentable characters.
 	try:
+		_ = text.encode("gbk")
 		write_gbk_atomic(text, output_path)
+		fallback_used = False
+		bad_chars = {}
 	except UnicodeEncodeError:
-		return False, "Encoding to GBK failed: some characters are not representable in GBK."
+		# Find the problematic characters and write using xmlcharrefreplace
+		bad_chars = find_non_gbk_chars(text)
+		try:
+			dirn = os.path.dirname(output_path) or "."
+			fd, tmppath = tempfile.mkstemp(dir=dirn)
+			os.close(fd)
+			with open(tmppath, "w", encoding="gbk", errors="xmlcharrefreplace", newline="") as f:
+				f.write(text)
+			os.replace(tmppath, output_path)
+			fallback_used = True
+		finally:
+			if 'tmppath' in locals() and os.path.exists(tmppath):
+				try:
+					os.remove(tmppath)
+				except Exception:
+					pass
 	except Exception as e:
 		return False, f"Failed to write output file: {e}"
 
@@ -192,6 +222,16 @@ def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_
 		extra_parts.append(f"normalized {normalized_count} ambiguous character(s)")
 	if extra_parts:
 		msg += "; " + "; ".join(extra_parts)
+
+	# If we had to fall back to xmlcharrefreplace, include details about bad characters.
+	if 'fallback_used' in locals() and fallback_used:
+		if bad_chars:
+			unique = len(bad_chars)
+			# show up to 8 example code points
+			sample = ', '.join(f"U+{ord(ch):04X}" for ch in list(bad_chars)[:8])
+			msg += f"; fallback: replaced {unique} unique non-GBK character(s) (examples: {sample})"
+		else:
+			msg += "; fallback: used xmlcharrefreplace for unrepresentable characters"
 
 	return True, msg
 
