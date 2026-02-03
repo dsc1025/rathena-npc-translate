@@ -106,6 +106,25 @@ def remove_zero_width_chars(text: str) -> tuple[str, int]:
 	return text, removed
 
 
+def normalize_ambiguous_chars(text: str) -> tuple[str, int]:
+	"""Normalize a small set of Unicode characters that are visually similar
+	but not representable in GBK. Returns (text, replacements_count).
+
+	Currently normalizes:\
+	- U+301C (WAVE DASH) -> U+FF5E (FULLWIDTH TILDE)
+	"""
+	replacements = 0
+	mapping = {
+		"\u301c": "\uff5e",
+	}
+	for src, dst in mapping.items():
+		if src in text:
+			cnt = text.count(src)
+			replacements += cnt
+			text = text.replace(src, dst)
+	return text, replacements
+
+
 def write_gbk_atomic(text: str, out_path: str) -> None:
 	"""Write text to file in GBK encoding atomically."""
 	dirn = os.path.dirname(out_path) or "."
@@ -148,6 +167,9 @@ def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_
 	# Remove zero-width characters that GBK cannot encode (e.g. U+200B)
 	text, removed_count = remove_zero_width_chars(text)
 
+	# Normalize a few ambiguous Unicode characters that are not present in GBK
+	text, normalized_count = normalize_ambiguous_chars(text)
+
 	if insert_header:
 		text = insert_translated_by_header(text)
 
@@ -163,8 +185,13 @@ def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_
 		return False, f"Failed to write output file: {e}"
 
 	msg = f"Converted `{input_path}` ({used_enc}) -> `{output_path}` (GBK)"
+	extra_parts: list[str] = []
 	if removed_count:
-		msg += f"; removed {removed_count} zero-width character(s)"
+		extra_parts.append(f"removed {removed_count} zero-width character(s)")
+	if normalized_count:
+		extra_parts.append(f"normalized {normalized_count} ambiguous character(s)")
+	if extra_parts:
+		msg += "; " + "; ".join(extra_parts)
 
 	return True, msg
 
