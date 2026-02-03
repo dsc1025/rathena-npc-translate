@@ -28,11 +28,11 @@ dicastes01,194,159,5	script	Excited Galten#a	492,{
 		mes "will rule this land.";
 		close; 
 	}
-	mes "¡ø¢²¢£ ¡Ğ ¡ò¡ğ¡ğ";
-	mes "¡÷¡ø¡ñ ¡ü ¡ü";
-	mes "¡ù¢²¢³ ¢²";
-	mes "¡ó¡õ¡ô ¢£ ¡Ğ¡û¡ü ¡ò ¡ğ¡ö¢£";
-	mes "¢¤¡õ¡ş ¡÷ ¡ñ";
+	mes "â–²â’‰â…² âŒ’ â—â—‹â—‹";
+	mes "â–³â–²â— â†‘ â†‘";
+	mes "â€»â’‰â’Š â’‰";
+	mes "â—‡â–¡â—† â…² âŒ’â†â†‘ â— â—‹â– â…²";
+	mes "â…³â–¡ã€“ â–³ â—";
 	close;
 }
 
@@ -51,15 +51,15 @@ dicastes01,202,86,3	script	Sentinel#a	4_MAN_GALTUN,{
 		mes "Hey, you are an outsider!";
 		close; 
 	}
-	mes "¡ô¢±¢± ¡û ¡ó¡Ğ¡ñ ¢£ ¢¤¡ú";
-	mes "¡ø¡ó¢² ¢¤ ";
-	mes "¡õ¡ó¡Ğ ¢³ ¡Ğ¡õ¢£ ¡û ¡ú¡ï";
+	mes "â—†â’ˆâ’ˆ â† â—‡âŒ’â— â…² â…³â†’";
+	mes "â–²â—‡â’‰ â…³ ";
+	mes "â–¡â—‡âŒ’ â’Š âŒ’â–¡â…² â† â†’â˜…";
 	next;
 	mes "[Sentinel]";
-	mes "¡ù";
+	mes "â€»";
 	next;
 	mes "[Sentinel]";
-	mes "¡ñ¡ö¡ï ¡ú ¡ó¢³¡ô";
+	mes "â—â– â˜… â†’ â—‡â’Šâ—†";
 	close;	
 }
 
@@ -71,9 +71,9 @@ dicastes01,194,95,5	script	Sentinel#b	450,{
 		mes "you won't know what hit you. Beware!";
 		close; 
 	}
-	mes "¡ø¡ô¡ü ¡ø ¡ó";
-	mes "¡ø¡ï¡û ¡ó ¡û¢¤¢² ¡÷ ¢£";
-	mes "¢¤¡ô¡ø ¢³ ¡÷¡û¡ö ¡õ ¡ø";
+	mes "â–²â—†â†‘ â–² â—‡";
+	mes "â–²â˜…â† â—‡ â†â…³â’‰ â–³ â…²";
+	mes "â…³â—†â–² â’Š â–³â†â–  â–¡ â–²";
 	close;
 }
 
@@ -84,8 +84,8 @@ dicastes01,234,158,0	script	Training Galten#a	450,{
 		mes "if I keep up with my training every day.";
 		close;
 	}
-	mes "¡ø¡ô¡ü ¡ø ¡ø¡ô¡ü ¡ø";
-	mes "¡ô ¡ø";
+	mes "â–²â—†â†‘ â–² â–²â—†â†‘ â–²";
+	mes "â—† â–²";
 	next;
 	mes "Don't know what it means.";
 	close;
@@ -98,8 +98,8 @@ dicastes01,244,166,0	script	Training Galten#b	450,{
 		mes "hard I am training.";
 		close; 
 	}
-	mes "¡ø¡ô¡ü ¡ø";
-	mes "¡ø¡ô¡ü ¡ø ¡ø¡ô¡ü ¡ø ¡ø¡ô¡ü ¡ø";
+	mes "â–²â—†â†‘ â–²";
+	mes "â–²â—†â†‘ â–² â–²â—†â†‘ â–² â–²â—†â†‘ â–²";
 	next;
 	mes "Don't know what it means.";
 	close;
@@ -113,8 +113,8 @@ dicastes01,272,166,0	script	Training Galten#c	450,{
 		mes "I am never lazy with my training.";
 		close;
 	}
-	mes "¡ø¡ô¡ü ¡ø ¡ø¡ô¡ü ¡ø";
-	mes "¡ø¡ô¡ü ¡ø";
+	mes "â–²â—†â†‘ â–² â–²â—†â†‘ â–²";
+	mes "â–²â—†â†‘ â–²";
 	next;
 	mes "Don't know what it means.";
 	close;
@@ -129,8 +129,8 @@ dicastes01,248,129,0	script	Training Galten#d	450,{
 		mes "for trainees like me.";
 		close; 
 	}
-	mes "¡ø¡ô¡ü ¡ø ¡ø¡ô¡ü";
-	mes "¡ø¡ô¡ü ¡ø ¡ø¡ô¡ü ¡ø";
+	mes "â–²â—†â†‘ â–² â–²â—†â†‘";
+	mes "â–²â—†â†‘ â–² â–²â—†â†‘ â–²";
 	next;
 	mes "Don't know what it means.";
 	close;
@@ -144,8 +144,8 @@ dicastes01,271,152,0	script	Training Galten#e	450,{
 		mes "if I do my best, right?";
 		close;
 	}
-	mes "¡ø¢²¡û ¡ô ¢£¢³¡ô";
-	mes "¡ü¡ô";
+	mes "â–²â’‰â† â—† â…²â’Šâ—†";
+	mes "â†‘â—†";
 	close;
 }
 */
@@ -157,9 +157,9 @@ dic_in01,349,282,4	script	Waiting Galten#in_1	492,{
 		mes "We are all tensed up to be ready for action.";
 		close;	 
 	}
-	mes "[¢²¡Ğ¡û ¡ù ¡Ğ]";
-	mes "¡ñ¡õ¡ü ¢£ ¡ó";
-	mes "¢¤¡ó¡õ ¢£ ¢£¡ò¡ô ¡ö ¡ú¢¤¡ú ¢¤ ¡ò¡ö¡õ ¢¤ ";
+	mes "[â’‰âŒ’â† â€» âŒ’]";
+	mes "â—â–¡â†‘ â…² â—‡";
+	mes "â…³â—‡â–¡ â…² â…²â—â—† â–  â†’â…³â†’ â…³ â—â– â–¡ â…³ ";
 	close;
 }
 
@@ -169,8 +169,8 @@ dic_in01,370,261,1	script	Waiting Galten#in_2	492,{
 		mes "Boring.";
 		close; 
 	}
-	mes "[¢²¡Ğ¡û ¡ù ¡Ğ]";
-	mes "¡ù¢¤¢±";
+	mes "[â’‰âŒ’â† â€» âŒ’]";
+	mes "â€»â…³â’ˆ";
 	close;
 }
 
@@ -180,8 +180,8 @@ dic_in01,381,261,1	script	Waiting Galten#in_3	492,{
 		mes "Zzzzz...";
 		close; 
 	}
-	mes "[¢²¡Ğ¡û ¡ù ¡Ğ]";
-	mes "¡ú¡ô";
+	mes "[â’‰âŒ’â† â€» âŒ’]";
+	mes "â†’â—†";
 	close;
 }
 
@@ -191,8 +191,8 @@ dic_in01,370,282,4	script	Waiting Galten#in_4	492,{
 		mes "El Dicastes is the most peaceful place in this world as long as I am here.";
 		close; 
 	}
-	mes "[¢²¡Ğ¡û ¡ù ¡Ğ]";
-	mes "¡ï¡ï¢³ ¡ş ¡ö¢³¢£ ¢± ¢³¡û¡õ ¡ø ¡ş¡ï¡ï ¡ø ¡û";
+	mes "[â’‰âŒ’â† â€» âŒ’]";
+	mes "â˜…â˜…â’Š ã€“ â– â’Šâ…² â’ˆ â’Šâ†â–¡ â–² ã€“â˜…â˜… â–² â†";
 	close;
 }
 
@@ -202,8 +202,8 @@ dic_in01,354,219,4	script	Resting Galten#in_5	492,{
 		mes "Resting is always so sweet.";
 		close; 
 	}
-	mes "[¡õ¡ø¡ò ¡ü ¢¤]";
-	mes "¡ï¡õ¡ù ¡ö ¡ò¡ğ¢² ¢³ ¡ö";
+	mes "[â–¡â–²â— â†‘ â…³]";
+	mes "â˜…â–¡â€» â–  â—â—‹â’‰ â’Š â– ";
 	close;
 }
 
@@ -216,9 +216,9 @@ dic_in01,365,197,1	script	Resting Galten#in_6	492,{
 		mes "You say I don't look like I'm resting? But I'm already used to this.";
 		close; 
 	}
-	mes "[¡õ¡ø¡ò ¡ü ¢¤]";
-	mes "¡ô¡ï¢¤ ¡ö ¡ù¡ğ¡ñ ¡ü ¡ó¡û¡û";
-	mes "¡ï¢£¡ó ¡ù ¢³¡ô¡ğ ¢£ ¡Ğ¡û¡ô ¡ô ¡Ğ¡ú¡ù ¡ô ¡ó";
+	mes "[â–¡â–²â— â†‘ â…³]";
+	mes "â—†â˜…â…³ â–  â€»â—‹â— â†‘ â—‡â†â†";
+	mes "â˜…â…²â—‡ â€» â’Šâ—†â—‹ â…² âŒ’â†â—† â—† âŒ’â†’â€» â—† â—‡";
 	close;
 }
 
@@ -232,8 +232,8 @@ dic_in01,29,119,4	script	Resting Piom#04	489,{
 		mes "Why is it so noisy when I'm trying to get rest?";
 		close; 
 	}
-	mes "[¢£¡ù¡ò ¢¤ ¡ù]";
-	mes "¡ü¢²¡ğ ¡Ğ ¡ò¡ø¢² ¡ô ¢²¡õ";
+	mes "[â…²â€»â— â…³ â€»]";
+	mes "â†‘â’‰â—‹ âŒ’ â—â–²â’‰ â—† â’‰â–¡";
 	close;
 }
 
@@ -264,8 +264,8 @@ dic_in01,91,113,5	script	Suspicious Piom#a	489,{
 		mes "I am not going to say anything, either!";
 		close; 
 	}
-	mes "¡ó¢³¡ó ¡ó ¡ó¡ş¡ö";
-	mes "¡õ ¢³¢²¡÷ ¡ó¡ó";
+	mes "â—‡â’Šâ—‡ â—‡ â—‡ã€“â– ";
+	mes "â–¡ â’Šâ’‰â–³ â—‡â—‡";
 	next;
 	if(select("Can't tell what it means:Is it a curse??") == 2) {
 		mes "[Suspicious Piom]";
@@ -287,10 +287,10 @@ dic_in01,168,116,5	script	Tired Piom#c	491,{
 		mes "But of course you'll have to pay the price.";
 		close; 
 	}
-	mes "¡ş¡õ¡ğ ¢³ ¢³¡ş";
-	mes "¡ş¡ø¡ğ ¡ö ¡ñ¡ú¡ğ ¡ò";
-	mes "¡ï¡ñ¡ú ¡ô ¡ö¡ö¡ò ¡û ¡ó¢¤¡ø ¡ø ¢² ¡ø";
-	mes "¢¤¢²¡ø ¡ò ¡ú¡ó¢±";
+	mes "ã€“â–¡â—‹ â’Š â’Šã€“";
+	mes "ã€“â–²â—‹ â–  â—â†’â—‹ â—";
+	mes "â˜…â—â†’ â—† â– â– â— â† â—‡â…³â–² â–² â’‰ â–²";
+	mes "â…³â’‰â–² â— â†’â—‡â’ˆ";
 	close;
 }
 
@@ -304,10 +304,10 @@ dic_in01,149,104,5	script	Tired Piom#b	455,{
 		emotion ET_QUESTION;
 		close; 
 	}
-	mes "¡ğ¡Ğ¡ú ¡ø ¢²";
-	mes "¡ö¡õ¡ó ¢¤ ¡ò¡ò¢³ ¡ô ¡ô¡ó¡ñ";
-	mes "¢£¡ñ¡ş ¡ü ¢²¡û¡ó ¡ò ¡ğ¡ş";
-	mes "¡ö¡ú¡ñ ¢³";
+	mes "â—‹âŒ’â†’ â–² â’‰";
+	mes "â– â–¡â—‡ â…³ â—â—â’Š â—† â—†â—‡â—";
+	mes "â…²â—ã€“ â†‘ â’‰â†â—‡ â— â—‹ã€“";
+	mes "â– â†’â— â’Š";
 	emotion ET_QUESTION;
 	close;
 }
@@ -329,17 +329,17 @@ dic_in01,341,113,3	script	Tired Piom#a	491,{
 		mes "I'll be rejected again, right?";
 		close; 
 	}
-	mes "¡÷¡ò¡û ¡ó ¡ó¡Ğ¢±";
-	mes "¡ó¡õ¡ù ¡ş ¡ò¢±¡ñ ¡õ ¢£";
-	mes "¡ü¡ğ¢¤ ¡ù ¡ò¡ô¡õ ¡ò ¡ñ";
-	mes "¢³¡ú¢³ ¡Ğ ¡ñ¡õ¡ù ¡÷ ¡÷¢±";
+	mes "â–³â—â† â—‡ â—‡âŒ’â’ˆ";
+	mes "â—‡â–¡â€» ã€“ â—â’ˆâ— â–¡ â…²";
+	mes "â†‘â—‹â…³ â€» â—â—†â–¡ â— â—";
+	mes "â’Šâ†’â’Š âŒ’ â—â–¡â€» â–³ â–³â’ˆ";
 	next;
 	mes "[Tired Piom]";
-	mes "¡ş";
+	mes "ã€“";
 	next;
 	emotion ET_SWEAT;
 	mes "[Tired Piom]";
-	mes "¡ø¡ú¡ø ¢± ¡ö¡ò";
+	mes "â–²â†’â–² â’ˆ â– â—";
 	close;
 }
 
@@ -366,9 +366,9 @@ dic_in01,32,54,5	script	Venknick#el_01	449,{
 		mes "The refined Bradium was the best ever. Do you want to try some?";
 		close; 
 	}
-	mes "[¡ó¡ò¡ğ]";
-	mes "¡ù¡ó¢¤ ¢± ¢£";
-	mes "¡õ¡ş¡ï ¢£ ¡÷¡÷¢¤ ¡ú ¡ó¡ñ¡ö ¢² ¡ş¢²¢¤ ¢² ¢£?";
+	mes "[â—‡â—â—‹]";
+	mes "â€»â—‡â…³ â’ˆ â…²";
+	mes "â–¡ã€“â˜… â…² â–³â–³â…³ â†’ â—‡â—â–  â’‰ ã€“â’‰â…³ â’‰ â…²?";
 	close;
 }
 
@@ -388,17 +388,17 @@ dic_in01,372,116,3	script	Thrilled Piom#a	490,{
 		mes "blessing?";
 		close;
 	}
-	mes "¡ò¡õ¢³ ¡õ ¡ô";
-	mes "¢£¡ó¡ø ¢² ¡ô¡÷";
-	mes "¡ò¡ô¢³ ¡ù ¢±¡ó¢± ¡õ";
-	mes "¡ó¡ü¡Ğ ¡ø ¢²¡ü¡Ğ ¡õ ¡ï";
+	mes "â—â–¡â’Š â–¡ â—†";
+	mes "â…²â—‡â–² â’‰ â—†â–³";
+	mes "â—â—†â’Š â€» â’ˆâ—‡â’ˆ â–¡";
+	mes "â—‡â†‘âŒ’ â–² â’‰â†‘âŒ’ â–¡ â˜…";
 	next;
 	mes "[Thrilled Piom]";
-	mes "¢£";
+	mes "â…²";
 	next;
 	mes "[Thrilled Piom]";
-	mes "¡Ğ¢¤¡ù ¢£ ¡ó¡ó";
-	mes "¡ù¡ó¡÷ ¡û ¡ş¡ô";
+	mes "âŒ’â…³â€» â…² â—‡â—‡";
+	mes "â€»â—‡â–³ â† ã€“â—†";
 	close;
 }
 
@@ -410,9 +410,9 @@ dic_in01,360,125,5	script	Serious Venknicka	449,{
 		mes "I will have to get more factory lines running.";
 		close; 
 	}
-	mes "¡û¡õ¡ñ ¢² ¢²¢¤¡Ğ ¢² ¡ü¡ñ¡õ";
-	mes "¡ş¡ó¡ö ¢²";
-	mes "¡ö¡÷¡û ¡ú ¡÷¡Ğ¢³ ¢³";
+	mes "â†â–¡â— â’‰ â’‰â…³âŒ’ â’‰ â†‘â—â–¡";
+	mes "ã€“â—‡â–  â’‰";
+	mes "â– â–³â† â†’ â–³âŒ’â’Š â’Š";
 	close;
 }
 
@@ -442,24 +442,24 @@ dic_in01,42,250,5	script	Guide#diel_1	489,{
 		mes "- The guide looks at you with an alert expression. -";
 		close;
 	}
-	mes "[¢³¡ñ]";
-	mes "¡õ¢£¡ó ¡Ğ ¡õ¡ñ¡ò ¢¤ ¡ø¡ø¢£ ¢± ¢²¢³¡÷ ¢±";
-	mes "¡ö¡ò¡ğ ¡ó ¡ô¡ô?";
+	mes "[â’Šâ—]";
+	mes "â–¡â…²â—‡ âŒ’ â–¡â—â— â…³ â–²â–²â…² â’ˆ â’‰â’Šâ–³ â’ˆ";
+	mes "â– â—â—‹ â—‡ â—†â—†?";
 	next;
-	mes "[¢³¡ñ]";
-	mes "¡Ğ¡ù¡ó ¡ù ¡ü¢²¡Ğ ¢± ¡÷¡ö¡ş";
-	mes "¡ñ¡ş¢² ¡ø ¡ó¡ï¡ï ¡ù ¡ğ¡ñ¡Ğ ¡ù ¢³¡ò¡ş ¡ù ¡ø¡ğ¡õ ¡õ ¢¤";
+	mes "[â’Šâ—]";
+	mes "âŒ’â€»â—‡ â€» â†‘â’‰âŒ’ â’ˆ â–³â– ã€“";
+	mes "â—ã€“â’‰ â–² â—‡â˜…â˜… â€» â—‹â—âŒ’ â€» â’Šâ—ã€“ â€» â–²â—‹â–¡ â–¡ â…³";
 	next;
-	mes "[¢³¡ñ]";
-	mes "¡û¡ù¡ô ¡ø ¡ğ¡ş¡÷ ¢³ ¡ş¡ù¡ñ ¡ú ¡ü¢¤¡ò ¡ú ¡ô¢£";
-	mes "¡÷¡ò¢¤ ¡ø ¡û¢³";
+	mes "[â’Šâ—]";
+	mes "â†â€»â—† â–² â—‹ã€“â–³ â’Š ã€“â€»â— â†’ â†‘â…³â— â†’ â—†â…²";
+	mes "â–³â—â…³ â–² â†â’Š";
 	next;
-	mes "[¢³¡ñ]";
-	mes "¡ô¡ğ¡ñ ¢¤ ¡ó¡÷¢³ ¡ş ¡ó¡õ¡÷ ¡ö ¡ó ¡ö";
+	mes "[â’Šâ—]";
+	mes "â—†â—‹â— â…³ â—‡â–³â’Š ã€“ â—‡â–¡â–³ â–  â—‡ â– ";
 	next;
-	mes "[¢³¡ñ]";
-	mes "¡ò¡ô¡ø ¡÷ ¡õ¡ø¡ğ ¡ó ¢¤¡Ğ¡ô ¡ø ¡ñ¡ñ¡ñ ¡ø ¡ú¡ö¡ø ¡ü";
-	mes "¡ï¢³¡ğ ¢¤ ¡ğ¡ö¢£ ¢± ¡ô¡ø";
+	mes "[â’Šâ—]";
+	mes "â—â—†â–² â–³ â–¡â–²â—‹ â—‡ â…³âŒ’â—† â–² â—â—â— â–² â†’â– â–² â†‘";
+	mes "â˜…â’Šâ—‹ â…³ â—‹â– â…² â’ˆ â—†â–²";
 	close;
 }
 
@@ -474,12 +474,12 @@ dic_in01,335,34,5	script	Talkative Piom#a	490,{
 		mes "here too.";
 		close; 
 	}
-	mes "¡ü¡ù¢± ¢³";
-	mes "¡÷¡ø¡ï ¡ş ¡ó¡ó";
-	mes "¡ñ¡õ¡ò ¡ó ¡÷¡ü¡ù ¡ö";
-	mes "¡ñ¡ø¡ü ¡ú ¡ô";
-	mes "¡ş¡ú¡ò ¢± ¡û¡ò¡ò ¡ù ¡÷";
-	mes "¢³¡ò¡ò ¡ù ¢±¢£¡ò";
+	mes "â†‘â€»â’ˆ â’Š";
+	mes "â–³â–²â˜… ã€“ â—‡â—‡";
+	mes "â—â–¡â— â—‡ â–³â†‘â€» â– ";
+	mes "â—â–²â†‘ â†’ â—†";
+	mes "ã€“â†’â— â’ˆ â†â—â— â€» â–³";
+	mes "â’Šâ—â— â€» â’ˆâ…²â—";
 	close;
 }
 
@@ -490,8 +490,8 @@ dic_in01,387,30,1	script	Manuk Piom#a	454,{
 		mes "I've come to pick up the weapon I ordered.";
 		close; 
 	}
-	mes "¡ü¡ó¡ş ¡ó ¡ï¡ğ¢¤ ¡ü ¡ğ¢±";
-	mes "¡ù¡ô¡ï ¡ú ¡ñ¡ù¢³ ¡ó ¡ò¡ö¡ó ¡ô¡ô";
+	mes "â†‘â—‡ã€“ â—‡ â˜…â—‹â…³ â†‘ â—‹â’ˆ";
+	mes "â€»â—†â˜… â†’ â—â€»â’Š â—‡ â—â– â—‡ â—†â—†";
 	close;
 }
 
@@ -505,11 +505,11 @@ dicastes01,282,210,4	script	Free Knit#a	453,{
 		mes "which is short.";
 		close; 
 	}
-	mes "¡ñ¡ş¡ğ ¡ó ¡ü¡ò¡ö ¡÷";
-	mes "¢³¡ğ¡ï ¢£ ¡ù¡ô¡ò ¡ô ¡ó¡ş¡ñ ¢² ¡ñ¡û¢£ ¢²";
-	mes "¡ô¡ó¡ğ ¡ş ¢£¡ğ¢¤ ¡õ ¡û¢³¡ü";
-	mes "¡ó¢³¡ò ¢± ¡ô¢£¢² ¡÷ ¡÷¡ñ";
-	mes "¡ò¢²¡ï ¢£ ¡ö¡ö";
+	mes "â—ã€“â—‹ â—‡ â†‘â—â–  â–³";
+	mes "â’Šâ—‹â˜… â…² â€»â—†â— â—† â—‡ã€“â— â’‰ â—â†â…² â’‰";
+	mes "â—†â—‡â—‹ ã€“ â…²â—‹â…³ â–¡ â†â’Šâ†‘";
+	mes "â—‡â’Šâ— â’ˆ â—†â…²â’‰ â–³ â–³â—";
+	mes "â—â’‰â˜… â…² â– â– ";
 	close;
 }
 
@@ -529,17 +529,17 @@ dicastes01,246,210,3	script	Free Venknick#a	449,{
 		mes "but why are you interested in it?";
 		close; 
 	}
-	mes "¡ô¡ï¢£ ¢¤ ¡÷¡õ¢± ¡ü ¡ñ¡õ";
-	mes "¡ü¢³";
-	mes "¡ö¡ù¢¤ ¢² ¡ù¡ó¡ô";
-	mes "¡ü¢£¢³ ¡ø ¡û¡ğ¡ü ¡õ";
+	mes "â—†â˜…â…² â…³ â–³â–¡â’ˆ â†‘ â—â–¡";
+	mes "â†‘â’Š";
+	mes "â– â€»â…³ â’‰ â€»â—‡â—†";
+	mes "â†‘â…²â’Š â–² â†â—‹â†‘ â–¡";
 	next;
 	mes "[Free Venknick]";
-	mes "¡ù";
+	mes "â€»";
 	next;
 	mes "[Free Venknick]";
-	mes "¡ş¢¤¢£ ¢± ¡ó¡ò¢³ ¡ü ¡ñ¡ğ";
-	mes "¢±¡û¢£ ¡ö ¡ü¡ò¡÷ ¡û ¡õ¡ò¡÷ ¢²¢²";
+	mes "ã€“â…³â…² â’ˆ â—‡â—â’Š â†‘ â—â—‹";
+	mes "â’ˆâ†â…² â–  â†‘â—â–³ â† â–¡â—â–³ â’‰â’‰";
 	close;
 }
 
@@ -552,9 +552,9 @@ dicastes01,235,245,4	script	Excited Piom#a	490,{
 		close; 
 	}
 	mes "[Excited Piom]";
-	mes "¡ú¡ş¡ó ¢³ ¡ü¢²¡ñ ¢±";
+	mes "â†’ã€“â—‡ â’Š â†‘â’‰â— â’ˆ";
 	emotion ET_DELIGHT;
-	mes "¢³¡ó¡ñ ¡õ ¡ğ¡ô¡ş ¡÷ ¡ú¡ò¡õ ¡ø ¢² ¡ø";
+	mes "â’Šâ—‡â— â–¡ â—‹â—†ã€“ â–³ â†’â—â–¡ â–² â’‰ â–²";
 	close;
 }
 
@@ -568,11 +568,11 @@ dicastes01,284,262,3	script	Favorable Knit#a	453,{
 		mes "We never have any quarrels between classes.";
 		close; 
 	}
-	mes "¡ô¢±¡ó ¡õ ¡ú¡÷¡Ğ ¡õ";
-	mes "¡ü¡ï¡Ğ ¡õ ¡ô¡ó¡ü ¡ó ¢³";
-	mes "¡ñ¡ô¡ü ¡ş ¢¤¡ñ¢¤ ¡ô ¡û¡ï¡ù";
-	mes "¡ú¡ö¡ô ¡ó ¢£¡ú¡ş ¡ø ¡ø¡ò";
-	mes "¢²¢³¡û ¢¤ ¡ú¡ñ¡ù ¡û ¢³¡ò¡ø ¡õ¡õ";
+	mes "â—†â’ˆâ—‡ â–¡ â†’â–³âŒ’ â–¡";
+	mes "â†‘â˜…âŒ’ â–¡ â—†â—‡â†‘ â—‡ â’Š";
+	mes "â—â—†â†‘ ã€“ â…³â—â…³ â—† â†â˜…â€»";
+	mes "â†’â– â—† â—‡ â…²â†’ã€“ â–² â–²â—";
+	mes "â’‰â’Šâ† â…³ â†’â—â€» â† â’Šâ—â–² â–¡â–¡";
 	close;
 }
 
@@ -587,11 +587,11 @@ dicastes01,164,180,4	script	Limpy Piom#a	489,{
 		emotion ET_THINK;
 		close; 
 	}
-	mes "¢²¡ô¡ş ¡ù ¡õ¡Ğ";
-	mes "¢³¡ô¡û ¡ú ¡ø";
-	mes "¢³¡ş¢¤ ¡ó ¡õ¡÷¡Ğ";
-	mes "¡ñ¡ò¡ü ¡ü ¡ù¡ş¢±";
-	mes "¢¤¡ò¡ş ¢¤ ¢£¡ñ ¢¤ ¢£¡ñ";
+	mes "â’‰â—†ã€“ â€» â–¡âŒ’";
+	mes "â’Šâ—†â† â†’ â–²";
+	mes "â’Šã€“â…³ â—‡ â–¡â–³âŒ’";
+	mes "â—â—â†‘ â†‘ â€»ã€“â’ˆ";
+	mes "â…³â—ã€“ â…³ â…²â— â…³ â…²â—";
 	emotion ET_THINK;
 	close;
 }
@@ -624,13 +624,13 @@ dicastes01,191,202,4	script	Complaining Galten#fihs	450,{
 		mes "Just forget about it quickly for your own good.";
 		close;
 	}
-	mes "[¡õ¢£¡ö ¡ú ]";
-	mes "¡õ¡ò¡û ¡ò ¢£¡û¡÷ ¡÷ ";
-	mes "¡û¡ù¡û ¡÷ ¡ü¡ş¡û ¢³ ¡ó";
+	mes "[â–¡â…²â–  â†’ ]";
+	mes "â–¡â—â† â— â…²â†â–³ â–³ ";
+	mes "â†â€»â† â–³ â†‘ã€“â† â’Š â—‡";
 	next;
-	mes "[¡õ¢£¡ö ¡ú ]";
-	mes "¡ğ¢±¡ü ¡û ¡õ¡÷¢¤";
-	mes "¢¤¡ş¡ø ¢² ¡÷";
+	mes "[â–¡â…²â–  â†’ ]";
+	mes "â—‹â’ˆâ†‘ â† â–¡â–³â…³";
+	mes "â…³ã€“â–² â’‰ â–³";
 	next;
 	mes "Don't know what it means.";
 	close;
@@ -678,9 +678,9 @@ dicastes01,202,197,4	script	Crazy Venknick#fihsing1	449,{
 		mes "You feel outraged at being tricked.";
 		close; 
 	}
-	mes "[¡ö¡ú¡ù ¢³ ]";
-	mes "¢²¡û¡ó ¡ó ¡ù¢¤¡ø";
-	mes "¢¤¡ğ¢² ¢± ¡ñ¡ö¢² ¡ø ¡ï¡ö¡ü";
+	mes "[â– â†’â€» â’Š ]";
+	mes "â’‰â†â—‡ â—‡ â€»â…³â–²";
+	mes "â…³â—‹â’‰ â’ˆ â—â– â’‰ â–² â˜…â– â†‘";
 	next;
 	mes "Don't know what it means.";
 	close;
@@ -695,9 +695,9 @@ dic_in01,98,110,5	script	Worried Piom#a	489,{
 		close;
 	}
 	mes "[Worried Piom]";
-	mes "¡û¢±¡÷ ¢² ¡ï¡ş¡ò ¡ü ¡ï¡û¢²";
-	mes "¡ï¡÷¢¤ ¡Ğ ¡ï¡ï¡Ğ ¢¤ ¢£";
-	mes "¡÷¡ş¡ğ ¡ó ¡ñ";
+	mes "â†â’ˆâ–³ â’‰ â˜…ã€“â— â†‘ â˜…â†â’‰";
+	mes "â˜…â–³â…³ âŒ’ â˜…â˜…âŒ’ â…³ â…²";
+	mes "â–³ã€“â—‹ â—‡ â—";
 	close;
 }
 
@@ -710,8 +710,8 @@ dic_in01,98,96,3	script	Lost Galten#a	492,{
 		close;
 	}
 	mes "[Lost Galten]";
-	mes "¡ó¡ô¡ï ¡û ¢³¡ú";
-	mes "¡ü¡ø¡ñ ¢£ ";
-	mes "¡ö¡ï¢² ¡û ¡ö¡ó";
+	mes "â—‡â—†â˜… â† â’Šâ†’";
+	mes "â†‘â–²â— â…² ";
+	mes "â– â˜…â’‰ â† â– â—‡";
 	close;
 }

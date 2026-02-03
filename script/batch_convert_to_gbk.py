@@ -21,10 +21,15 @@ import argparse
 import os
 import sys
 from pathlib import Path
-from tqdm import tqdm
 
 # Import the core conversion logic
 from convert_to_gbk import convert_file_to_gbk
+
+# Use tqdm for progress UI if available; otherwise run silently until summary
+try:
+	from tqdm import tqdm
+except Exception:
+	tqdm = None
 
 
 def find_files(paths: list[str], recursive: bool = False) -> list[str]:
@@ -62,24 +67,25 @@ Examples:
 
 	# Find all files to process
 	files = find_files(args.paths, args.recursive)
-	
+
 	if not files:
 		print("No *.zh-cn.txt files found.", file=sys.stderr)
 		return 1
 
-	print(f"Found {len(files)} file(s) to convert.\n")
-	
+	# Progress iterator: show tqdm progress bar if available; otherwise iterate silently
+	iterator = tqdm(files, desc="Converting", unit="file") if tqdm else files
+
 	success_count = 0
 	fail_count = 0
-	
-	for file_path in tqdm(files, desc="Converting", unit="file"):
+
+	# Do not emit per-file prints; only update counts and let tqdm show progress.
+	for file_path in iterator:
 		output_path = file_path if args.force else None
 		success, message = convert_file_to_gbk(file_path, output_path=output_path, insert_header=True)
-		
+
 		if success:
 			success_count += 1
 		else:
-			tqdm.write(f"✗ {file_path}: {message}")
 			fail_count += 1
 	
 	print(f"\nSummary: {success_count} succeeded, {fail_count} failed.")

@@ -83,6 +83,29 @@ def insert_translated_by_header(text: str) -> str:
 	return "".join(lines)
 
 
+def remove_zero_width_chars(text: str) -> tuple[str, int]:
+	"""Remove common zero-width characters from `text`.
+
+	Returns the cleaned text and the number of removed characters.
+	"""
+	zw_chars = (
+		"\u200b",  # ZERO WIDTH SPACE
+		"\u200c",  # ZERO WIDTH NON-JOINER
+		"\u200d",  # ZERO WIDTH JOINER
+		"\u200e",  # LEFT-TO-RIGHT MARK
+		"\u200f",  # RIGHT-TO-LEFT MARK
+		"\u2060",  # WORD JOINER
+		"\ufeff",  # ZERO WIDTH NO-BREAK SPACE (BOM)
+	)
+	removed = 0
+	for ch in zw_chars:
+		if ch in text:
+			cnt = text.count(ch)
+			removed += cnt
+			text = text.replace(ch, "")
+	return text, removed
+
+
 def write_gbk_atomic(text: str, out_path: str) -> None:
 	"""Write text to file in GBK encoding atomically."""
 	dirn = os.path.dirname(out_path) or "."
@@ -122,6 +145,9 @@ def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_
 	except Exception as e:
 		return False, f"Failed to read input file: {e}"
 
+	# Remove zero-width characters that GBK cannot encode (e.g. U+200B)
+	text, removed_count = remove_zero_width_chars(text)
+
 	if insert_header:
 		text = insert_translated_by_header(text)
 
@@ -136,7 +162,11 @@ def convert_file_to_gbk(input_path: str, output_path: str | None = None, insert_
 	except Exception as e:
 		return False, f"Failed to write output file: {e}"
 
-	return True, f"Converted `{input_path}` ({used_enc}) -> `{output_path}` (GBK)"
+	msg = f"Converted `{input_path}` ({used_enc}) -> `{output_path}` (GBK)"
+	if removed_count:
+		msg += f"; removed {removed_count} zero-width character(s)"
+
+	return True, msg
 
 
 def main(argv: list[str] | None = None) -> int:
