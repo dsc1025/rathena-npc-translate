@@ -75,7 +75,7 @@ iz_int,56,32,3	script	Wounded Swordsman#intro_npc01_iz_int	4_TOWER_01,5,5,{
 OnTouch:
 	npctalk "呃...请...帮帮我...", "", bc_self;
 	sleep2 500;
-	npctalk "为了和我说话..点击我的身体..", "", bc_self;
+	npctalk "和我说话..点击我的身体..", "", bc_self;
 	end;
 
 OnInit:

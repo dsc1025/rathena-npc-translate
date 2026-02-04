@@ -19,7 +19,7 @@
 veins,210,345,5	script	Veins Guide#veins01::GuideVeins	934,{
 	mes "[静脉指南]";
 	mes "感谢你们度过了狂风暴雨。欢迎来到^8B4513矿脉^000000，峡谷村。";
-	mes "如果您是第一次使用导游服务，为什么不先查看\"Notice\"菜单呢？";
+	mes "如果您是第一次使用导游服务，为什么不先查看 'Notice' 菜单呢？";
 	F_Navi("[静脉指南]");
 	next;
 	while (1) {
