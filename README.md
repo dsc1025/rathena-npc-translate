@@ -29,3 +29,28 @@ python -m script.switch_npc_path npc/re/scripts_athena.conf --suffix
 See [script/switch_npc_path.py](script/switch_npc_path.py)
 
 Notes: Run commands from the project root so imports and `npc/` paths resolve correctly; prefer the `-m package.module` form when running scripts that rely on package-relative imports.
+
+
+
+## Other Setting
+
+### Create char chinese name
+conf/inter_athena.conf
+```
+// You can specify the codepage to use in your MySQL tables here.
+// (Note that this feature requires MySQL 4.1+)
+default_codepage: GBK
+```
+
+### Disable Pincode
+conf/char_athena.conf
+```
+//===================================
+// Pincode system
+//===================================
+// NOTE: Requires client 2011-03-09aragexeRE or newer.
+// A window is opened before you can select your character and you will have to enter a pincode by using only your mouse.
+// Default: yes
+pincode_enabled: no
+
+```
