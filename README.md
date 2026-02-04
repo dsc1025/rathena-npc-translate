@@ -6,7 +6,7 @@
 
 **Scripts**
 
-- **script/batch_convert_to_gbk.py**: Batch-convert `*.zh-cn.txt` UTF-8 files to GBK and optionally insert a "Translated By" header. Examples:
+- **script/batch_convert_to_gbk.py**: Batch-convert `*.zh-cn.txt` UTF-8 files to GBK Examples:
 ```bash
 python -m script.batch_convert_to_gbk npc/re/guides/
 python -m script.batch_convert_to_gbk npc/re/ --recursive
