@@ -21,15 +21,8 @@ import argparse
 import os
 import sys
 from pathlib import Path
-
-# Import the core conversion logic
-from convert_to_gbk import convert_file_to_gbk
-
-# Use tqdm for progress UI if available; otherwise run silently until summary
-try:
-	from tqdm import tqdm
-except Exception:
-	tqdm = None
+from .convert_to_gbk import convert_file_to_gbk
+from tqdm import tqdm
 
 
 def find_files(paths: list[str], recursive: bool = False) -> list[str]:
