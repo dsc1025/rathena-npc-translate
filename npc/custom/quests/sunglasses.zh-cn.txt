@@ -1,0 +1,110 @@
+//===== rAthena Script =======================================
+//= Slotted Sunglasses Quest
+//===== By: ==================================================
+//= amichan
+//===== Current Version: =====================================
+//= 1.8
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Quest to get Slotted Sunglasses.
+//= Will reset after quest completion.
+//===== Additional Comments: =================================
+//= 1.0 by Aegis 1.1 by aichan 1.2 by x[tsk] 1.3 by Darkchild
+//= 1.5 Fixed Exploit [Lupus]
+//= 1.6 Fixed Exploit [KarLaeda]
+//= 1.7 Relocated 'Maseph' to moc_fild07. [Kisuka]
+//= 1.8 Cleaning. [Euphy]
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+alberta,88,193,5	script	Sunglasses Trader	73,{
+	mes "[太阳镜商人]";
+	if(SG_QUEST1 == 1) {
+		mes "我没有什么可以告诉你的了。";
+		next;
+		mes "[太阳镜商人]";
+		mes "去见玛瑟夫。她在摩洛哥北部的某个地方。";
+		close; }
+	mes "你好。我能为你做什么？";
+	next;
+	if(select("我听说你可以制作^0000FF开槽太阳镜^000000。：没什么，抱歉打扰你。")==2) {
+		mes "[太阳镜商人]";
+		mes "还没准备好就回到我身边吧。";
+		close; }
+	mes "[太阳镜商人]";
+	mes "我不制造它们，但我可以告诉你在哪里可以找到制造它们的人。只需支付少量费用...";
+	next;
+	if(select("多少钱？：不行，我自己去找她！")==2) {
+		mes "[太阳镜商人]";
+		mes "随你自己吧，造物主不会为你制造^0000FF开槽太阳镜^000000除非她知道你要来。";
+		mes "只有我可以告诉她你要来。";
+		next;
+		mes "[太阳镜商人]";
+		mes "当你放弃时，请回到我身边。哈哈哈...";
+		close; }
+	mes "[太阳镜商人]";
+	mes "为了让我告诉您有关^0000FF开槽太阳镜^000000的信息，您需要联系我：";
+	mes "- ^0000881 克拉钻石^000000";
+	mes "- ^00008850 根羽毛^000000";
+	mes " - ^000088100000z^000000";
+	next;
+	if(select("好吧，就到这里。: 太多了！")==2) {
+		mes "[太阳镜商人]";
+		mes "适合自己。";
+		close; }
+	mes "[太阳镜商人]";
+	if (countitem(730) < 1 || countitem(949) < 50 || Zeny < 100000) {
+		mes "你错过了一些东西。收集完所有材料后回来。";
+		close; }
+	delitem 730,1;
+	delitem 949,50;
+	set Zeny, Zeny-100000;
+	set SG_QUEST1,1;
+	mes "[太阳镜商人]";
+	mes "伟大的。现在，请仔细听。";
+	next;
+	mes "[太阳镜商人]";
+	mes "在摩洛哥北部某处寻找一个名叫马塞夫的人。";
+	mes "我会给她发一条消息，让她知道你要来。";
+	close;
+}
+
+moc_fild07,334,186,5	script	Maseph	702,{
+	mes "[玛瑟夫]";
+	if(SG_QUEST1 != 1) {
+		mes "美好的一天，不是吗？";
+		close; }
+	mes "你好呀。";
+	mes "你是冲着<<<CLR0>>>开槽太阳镜^000000而来的，对吧？";
+	next;
+	if(select("是：不，很抱歉打扰您。")==2) {
+		mes "[玛瑟夫]";
+		mes "那么你就走吧。";
+		close; }
+	mes "[玛瑟夫]";
+	mes "为了制作一个，我需要一副^000088太阳镜^000000和400000z。";
+	next;
+	if(select("给你：不用了，谢谢。")==2) {
+		mes "[玛瑟夫]";
+		mes "如你所愿。";
+		close; }
+	mes "[玛瑟夫]";
+	if (countitem(2201) < 1) {
+		mes "我需要一副^000088太阳镜^000000。当你有一个的时候就回来找我吧。";
+		close; }
+	if (Zeny < 400000) {
+		mes "您没有足够的 Zeny。当你这样做时，请回到我身边。";
+		close; }
+	delitem 2201,1;
+	set Zeny, Zeny-400000;
+	mes "谢谢。我马上就去办...";
+	next;
+	mes "[玛瑟夫]";
+	mes "给你，我的朋友。";
+	mes "享受您的^000088开槽太阳镜^000000。";
+	getitem 2202,1;
+	set SG_QUEST1,0;
+	close;
+}

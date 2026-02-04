@@ -1,0 +1,66 @@
+//===== rAthena Script =======================================
+//= Berzebub Card Quest
+//===== By: ==================================================
+//= jabs
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Quest to get the Berzebub Card
+//===== Additional Comments: =================================
+//= 1.1 Fixed ingredients. Was too exploitable [Lupus]
+//= 1.2 Optimized. [Euphy]
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+prontera,165,178,8	script	Old Woman	103,{
+
+	setarray .@Items[0],714,25,1061,100,1095,200,618,10,1551,2,1614,1,727,20;
+	set .@n$,"[Old Woman]";
+
+	mes .@n$;
+	if(BerzQuest == 1) {
+		mes "嘿嘿，我记住你了！我已经告诉过你这个任务只能完成一次。";
+		close; }
+	mes "你好，小伙子。我在格拉斯特海姆附近采蘑菇时发现了一件非常漂亮的东西。";
+	next;
+	if(select("继续说：离开")==2) goto M_Leave;
+
+	mes .@n$;
+	mes "我以前从未见过这样的物品。据我所知，它可以放置在任何有插槽的配件内。";
+	next;
+	mes .@n$;
+	mes "如果你对这个项目感兴趣，我会告诉你你需要什么才能让你成为你自己的一员。我只能给每个玩家其中一个，所以一旦你完成了这个任务，你就不能再做第二次了。";
+	next;
+	if(select("告诉我更多相关信息：不，我不在乎")==2) goto M_Leave;
+
+	mes .@n$;
+	mes "我相信该物品被称为^FF0000Berzebub Card^000000。它让你施法速度非常快！";
+	next;
+	mes .@n$;
+	mes "我需要以下所有物品：";
+	for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2) {
+		mes "～"+.@Items[.@i+1]+"x "+getitemname(.@Items[.@i]);
+		if (countitem(.@Items[.@i]) < .@Items[.@i+1]) set .@nr,1; }
+	next;
+	if(select("我拥有所有这些！：我会尽快得到这些")==2) goto M_Leave;
+
+	mes .@n$;
+	if (.@nr) {
+		mes "你撒谎！离开这里去拿那些东西，你真是摇滚明星的对不起借口。";
+		close; }
+	for(set .@i,0; .@i<getarraysize(.@Items); set .@i,.@i+2)
+		delitem .@Items[.@i], .@Items[.@i+1];
+	getitem 4145,1;
+	set BerzQuest, 1;
+	mes "恭喜！您拥有所有物品。正如所承诺的，这是你的^FF0000Berzebub 卡^000000。";
+	emotion ET_CONGRATULATION;
+	close;
+
+M_Leave:
+	mes .@n$;
+	mes "我这里有这么棒的东西......";
+	close;
+}

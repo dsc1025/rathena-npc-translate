@@ -1,0 +1,53 @@
+//===== rAthena Script =======================================
+//= Balmung & Lord Kaho's Horns Quest
+//===== By: ==================================================
+//= MagicalTux
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Custom quests for Balmung and Lord Kaho's Horns.
+//= WARNING: The quests are very easy, so be careful!
+//===== Additional Comments: =================================
+//= 1.1 Cleaned and optimized. [Euphy]
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+prontera,158,356,4	script	Royal Messenger	105,{
+	
+	setarray .@Req1[0],1161,999,120,984,10,996,10,994,10,995,10,997,10;
+	setarray .@Req2[0],5013,2298,1,1001,10,996,10,994,10,995,10,997,10;
+	
+	mes "[皇家信使]";
+	mes "欢迎来到普隆德拉。";
+	mes "我是负责皇家任务的使者。";
+	next;
+	if(select("听着……：走开")==2) close;
+	mes "[皇家信使]";
+	mes "有两个任务。";
+	mes "选择您喜欢的一个。";
+	next;
+	set .@i, select("巴尔蒙：卡霍大人的角：^777777没关系。^000000");
+	mes "[皇家信使]";
+	if (.@i==3) {
+		mes "祝你今天过得愉快。";
+		close; }
+	mes "您将需要以下物品：";
+	for(set .@j,1; .@j<13; set .@j,.@j+2) {
+		mes " ~ "+getd(".@Req"+.@i+"["+(.@j+1)+"]")+"x ^0055FF"+getitemname(getd(".@Req"+.@i+"["+.@j+"]"))+"^000000";
+		if (!.@nr && countitem(getd(".@Req"+.@i+"["+.@j+"]")) < getd(".@Req"+.@i+"["+(.@j+1)+"]")) set .@nr,1; }
+	mes " ~ 1,000,000z";
+	next;
+	mes "[皇家信使]";
+	if (.@nr || Zeny < 1000000) {
+		mes "满足所有要求后再回来。";
+		close; }
+	for(set .@j,1; .@j<13; set .@j,.@j+2)
+		delitem getd(".@Req"+.@i+"["+.@j+"]"), getd(".@Req"+.@i+"["+(.@j+1)+"]");
+	set Zeny, Zeny-1000000;
+	mes "我看到您已经拥有所需的所有物品。这是您的 "+getitemname(getd(".@Req"+.@i+"[0]"))+"，正如所承诺的。";
+	getitem getd(".@Req"+.@i+"[0]"),1;
+	close;
+}

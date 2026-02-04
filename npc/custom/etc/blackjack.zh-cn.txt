@@ -1,0 +1,349 @@
+//===== rAthena Script =======================================
+//= Black Jack
+//===== By: ==================================================
+//= kobra_k88
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Black Jack card game.  Gameplay based off standard casino
+//= black jack rules.  Dealer must have at least 17 to stay and will
+//= automatically stay at 17 and up.  Player must have at least
+//= 13 to stay.  Aces counted as 11 or 1.  Option to "Double Down".
+//= Currently does not allow for "insurance", or "splitting"
+//= of pairs.
+//===== Additional Comments: =================================
+//= 1.0 First version.
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+cmd_in02,188,89,1	script	Black Jack Dealer	57,{
+	mes "[经销商]";
+	mes "你好呀！您想玩黑杰克游戏吗？";
+M_Menu:
+	next;
+	menu "What are the rules?",M_0, "I want to play.",L_Play, "No thanks.",M_End;
+
+M_0:
+	mes "[经销商]";
+	mes "您想知道什么？";
+sM_Menu0:
+	next;
+	menu "The basics.",sM_0a, "Winning and loosing.",sM_0b, "'Double Down'.",sM_0c,
+	"Ace value.",sM_0d, "Nothing.",M_Menu;
+
+sM_0a:
+	mes "[经销商]";
+	mes "Black Jack 是一种纸牌游戏，目标是获得 21 点，或者作为";
+	mes "尽可能接近21点，但不超过21点。";
+	next;
+	mes "[经销商]";
+	mes "游戏开始前，玩家必须下注。  一旦下注";
+	mes "发牌完毕，庄家和闲家各发 2 张牌";
+	mes "每个。  根据您拥有的卡牌，您可以选择^5533FF“留下”^000000，";
+	mes "或者您可以选择^5533FF“拉”^000000。";
+	next;
+	mes "[经销商]";
+	mes "当您选择“留下”时，您就是在告诉经销商您不这样做";
+	mes "还需要卡。  这允许庄家如果他/她";
+	mes "想要。  为了留下来，您必须拥有^FF3355至少13点^000000。这";
+	mes "庄家只有在拥有^FF335517分或以上^000000时才能留下。";
+	next;
+	mes "[经销商]";
+	mes "当您选择“拉动”时，您就是在告诉经销商您想要";
+	mes "另一张卡。  通过抽更多的牌，你可以增加你的分数";
+	mes "全部的。  只要你的 ^FF3355 少于 21^000000 点，你就可以拉";
+	mes "从牌组中取出卡片。";
+	goto sM_Menu0;
+sM_0b:
+	mes "[经销商]";
+	mes "黑杰克有 3 种获胜和失败的方式。";
+	next;
+	mes "[经销商]";
+	mes "1.) 在黑杰克回合结束时，如果您有更多分数";
+	mes "比庄家你将赢得这一轮。  相反，如果你有";
+	mes "比你失去的经销商的分数少。";
+	next;
+	mes "[经销商]";
+	mes "2.) 如果您抽出一张牌，使您的总分超过 21 分，您";
+	mes "将自动失去回合。  这称为^5533FF'半身像'^000000。  如果";
+	mes "庄家爆牌，那么您将赢得这一轮。";
+	next;
+	mes "[经销商]";
+	mes "3.) 如果前 2 张牌的总点数为 21，那么您";
+	mes "将自动赢得该回合。  这称为^5533FF“黑杰克”^000000";
+	mes "当您获得“Ace”和“10 值”牌时就会发生这种情况。如果";
+	mes "庄家获得黑杰克，他/她将自动赢得这一轮。";
+	next;
+	mes "[经销商]";
+	mes "4.) 除了输赢之外，您还可以与庄家打平。  如果";
+	mes "在一场比赛结束时，您和庄家的总点数相同";
+	mes "回合，这将导致平局，没有赢家，也没有损失或收益";
+	mes "在金钱上。";
+	next;
+	mes "[经销商]";
+	mes "这称为与经销商的^5533FF“推”^000000。  这也";
+	mes "适用于您和庄家同时拥有 Black Jack";
+	mes "时间。";
+	goto sM_Menu0;
+sM_0c:
+	mes "[经销商]";
+	mes "“双倍下注”选项允许您将当前赌注加倍，";
+	mes "但缺点是你只能拉一个";
+	mes "附加卡。  此选项仅在开始时可用";
+	mes "每轮。";
+	next;
+	mes "[经销商]";
+	mes "何时加倍有用的一个例子是";
+	mes "你的前 2 张牌给你的总分是 11。你有一个很好的";
+	mes "您抽下一张牌时有机会获得 21 或 20。  这";
+	mes "将是一手值得加倍下注的好牌。";
+	goto sM_Menu0;
+sM_0d:
+	mes "[经销商]";
+	mes "“Ace”牌是 Black Jack 游戏中的一张独特牌，因为";
+	mes "它可以有 2 个值。  A 可以算作 11 点，";
+	mes "或仅 1 分。  例如，如果您有一张 A 和一张 4，那么";
+	mes "给你15分或5分。";
+	next;
+	mes "[经销商]";
+	mes "如果您决定留下，Ace 将自动算作";
+	mes "11 分，总分 15 分。";
+	next;
+	mes "[经销商]";
+	mes "如果您决定拉牌并得到 9，则 A 会";
+	mes "自动计为 1 分，总共 14 分";
+	mes "点。  如果 Ace 算作 11 点，那么您将得到";
+	mes "总分超过21分就输了。";
+	next;
+	mes "[经销商]";
+	mes "这是因为“Ace”的灵活性使得";
+	mes "它是游戏中最强大的卡牌。";
+	goto sM_Menu0;
+M_End:
+	mes "[经销商]";
+	mes "请随时回来";
+	close;
+
+//================
+L_Play:
+	mes "[经销商]";
+	mes "请您下注...";
+	next;
+	menu "2z",M_1a, "10z",M_1b, "20z",M_1c, "100z",M_1d, "Too rich for my blood....",M_End;
+
+M_1a:
+	if(Zeny < 2) goto sL_NotEnuf;
+	set @bet, 2;
+	goto L_Cont0;
+M_1b:
+	if(Zeny < 10) goto sL_NotEnuf;
+	set @bet, 10;
+	goto L_Cont0;
+M_1c:
+	if(Zeny < 20) goto sL_NotEnuf;
+	set @bet, 20;
+	goto L_Cont0;
+M_1d:
+	if(Zeny < 100) goto sL_NotEnuf;
+	set @bet, 100;
+	goto L_Cont0;
+
+sL_NotEnuf:
+	mes "[经销商]";
+	mes "抱歉，你没有足够的精力来下这个赌注。";
+	close;
+
+L_Cont0:
+	mes "（正在发牌）";
+	next;
+	deletearray $@card[0],13;
+	set @dealerTurn, 0;
+	set @numP, 0;
+	set @numD, 0;
+	set @pAce, 0;
+	set @dAce, 0;
+	callsub sF_GetCards, @numP, @playCard[@numP], @playCard$[@numP], @pAce;
+	callsub sF_GetCards, @numP, @playCard[@numP], @playCard$[@numP], @pAce;
+	callsub sF_GetCards, @numD, @dealCard[@numD], @dealCard$[@numD], @dAce;
+	callsub sF_GetCards, @numD, @dealCard[@numD], @dealCard$[@numD], @dAce;
+
+//==============
+L_Start:
+	callsub sF_GetTot;
+
+	mes "- 这是^FF5533经销商的^000000卡：";
+	if (@numD==2) callsub sF_D2cards;
+	if (@numD==3) callsub sF_D3cards;
+	if (@numD==4) callsub sF_D4cards;
+	if (@numD==5) callsub sF_D5cards;
+	mes "经销商有：^FF5533"+@dealTot+"^000000";
+	mes " ";
+	mes "- 这是^5533FF您的^000000卡：";
+	if (@numP==2) callsub sF_P2cards;
+	if (@numP==3) callsub sF_P3cards;
+	if (@numP==4) callsub sF_P4cards;
+	if (@numP==5) callsub sF_P5cards;
+	if(@pAce != 1 || @playTot == 21) mes "您有：^5533FF" +@playTot+ "^000000";
+	if(@pAce == 1 && @playTot != 21) mes "您有：^5533FF" +@playTot+ "^000000 或 ^5533FF" +(@playTot-10)+ "^000000";
+	next;
+	if(@playTot==21 && @dealTot==21) goto sL_Push;
+	if(@numP==2 && @playTot == 21) goto sL_Win;
+	if(@numD==2 && @dealTot == 21) goto sL_Lose;
+	if(@playTot > 21) goto sL_Lose;
+	if(@dealTot > 21) goto sL_Win;
+	if(@numP==2 && @dealerTurn==0) menu "Hit me(pull)",M_Hit, "Stay",M_Stay, "Double Down",M_Double;
+	if(@dealerTurn == 0) menu "Hit me(pull)",M_Hit, "Stay",M_Stay;
+
+M_Stay:
+	mes "[经销商]";
+	if(@playTot < 13) goto sL_PlayToLow;
+	if(@dealTot > 16) mes "经销商留下来。";
+	if(@dealTot > 16 || @numD == 5) goto L_Check;
+	mes "经销商要拉";
+	next;
+	callsub sF_GetCards, @numD, @dealCard[@numD], @dealCard$[@numD], @dAce;
+	set @dealerTurn, 1;
+	goto L_Start;
+
+sL_PlayToLow:
+	mes "抱歉，您的总金额不够高，无法入住。  你必须拉。";
+	next;
+	goto M_Hit;
+
+M_Hit:
+	if(@numP == 5) goto M_Stay;
+	callsub sF_GetCards, @numP, @playCard[@numP], @playCard$[@numP], @pAce;
+	goto L_Start;
+M_Double:
+	mes "[经销商]";
+	mes "玩家选择双倍下注。  您当前的赌注将是";
+	mes "双倍，你只能再抽一张牌。";
+	next;
+	set @dealerTurn, 1;
+	set @bet, @bet*2;
+	callsub sF_GetCards, @numP, @playCard[@numP], @playCard$[@numP], @pAce;
+	goto L_Start;
+
+//=============
+L_Check:
+	next;
+	if(@playTot < @dealTot) goto sL_Lose;
+	if(@playTot == @dealTot) goto sL_Push;
+
+sL_Win:
+	mes "[经销商]";
+	mes "恭喜你，你赢了！";
+	next;
+	set Zeny, Zeny + @bet;
+	goto L_Play;
+sL_Lose:
+	mes "[经销商]";
+	mes "对不起，但你输了。";
+	set Zeny, Zeny - @bet;
+	next;
+	goto L_Play;
+sL_Push:
+	mes "[经销商]";
+	mes "这是一个推动。  你与庄家平局。";
+	next;
+	goto L_Play;
+
+
+//==================================
+	// Sub function for dealing/pulling the cards
+sF_GetCards:
+	set @rnd, rand(1,13);
+	if($@card[@rnd] == 4) goto sF_GetCards;
+	set $@card[@rnd], $@card[@rnd] + 1;
+	set getarg(1), @rnd;
+	if(getarg(1) > 10) set getarg(1), 10;
+	if(getarg(1) == 1 && getarg(3) < 1) set getarg(1), 11;
+	if(getarg(1) == 11) set getarg(3), 1;
+	set getarg(2), " " + getarg(1) + " ";
+	if(@rnd == 10) set getarg(2), getarg(1);
+	if(@rnd == 1) set getarg(2), " A ";
+	if(@rnd == 11) set getarg(2), " J ";
+	if(@rnd == 12) set getarg(2), " Q ";
+	if(@rnd == 13) set getarg(2), " K ";
+	set getarg(0), getarg(0) + 1;
+	return;
+
+//==================================
+	// Sub function for getting the total score for each hand
+sF_GetTot:
+	set @i, 0;
+	set @dealTot, 0;
+	set @playTot, 0;
+
+GetDealTot:
+	set @dealTot, @dealTot + @dealCard[@i];
+	set @i, @i + 1;
+	if(@i < @numD) goto GetDealTot;
+	if(@dAce == 1 && @dealTot > 21) set @dealTot, @dealTot - 10;
+	set @i, 0;
+GetPlayTot:
+	set @playTot, @playTot + @playCard[@i];
+	set @i, @i + 1;
+	if(@i < @numP) goto GetPlayTot;
+	if(@pAce == 1 && @playTot > 21) set @pAce, 2;
+	if(@pAce > 0 && @playTot > 21) set @playTot, @playTot - 10;
+	return;
+
+//=======================================
+	// Sub function for displaying the Cards
+sF_D2cards:
+	mes ".-----。   .-----。";
+	mes "    | "+@dealCard$[0]+" |   | "+@dealCard$[1]+" | ";
+	mes "'-----' '-----'";
+	return;
+sF_P2cards:
+	mes ".-----。   .-----。";
+	mes "    | "+@playCard$[0]+" |   | "+@playCard$[1]+" | ";
+	mes "'-----' '-----'";
+	return;
+sF_D3cards:
+	mes ".-----。   .-----。   .-----。";
+	mes "    | "+@dealCard$[0]+" |   | "+@dealCard$[1]+" |   | "+@dealCard$[2]+" | ";
+	mes "'-----' '-----' '-----'";
+	return;
+sF_P3cards:
+	mes ".-----。   .-----。   .-----。";
+	mes "    | "+@playCard$[0]+" |   | "+@playCard$[1]+" |   | "+@playCard$[2]+" | ";
+	mes "'-----' '-----' '-----'";
+	return;
+sF_D4cards:
+	mes ".-----。  .-----。  .-----。";
+	mes " | "+@dealCard$[0]+" |  | "+@dealCard$[1]+" |  | "+@dealCard$[2]+" | ";
+	mes "'-----' '-----' '-----'";
+	mes ".-----。";
+	mes "    | "+@dealCard$[3]+" |";
+	mes "    '-----'   ";
+	return;
+sF_P4cards:
+	mes ".-----。  .-----。  .-----。";
+	mes " | "+@playCard$[0]+" |  | "+@playCard$[1]+" |  | "+@playCard$[2]+" |";
+	mes "'-----' '-----' '-----'";
+	mes ".-----。";
+	mes "    | "+@playCard$[3]+" |";
+	mes "    '-----'   ";
+	return;
+sF_D5cards:
+	mes ".-----。  .-----。  .-----。";
+	mes " | "+@dealCard$[0]+" |  | "+@dealCard$[1]+" |  | "+@dealCard$[2]+" | ";
+	mes "'-----' '-----' '-----'";
+	mes ".-----。   .-----。";
+	mes "    | "+@dealCard$[3]+" |   | "+@dealCard$[4]+" | ";
+	mes "'-----' '-----'";
+	return;
+sF_P5cards:
+	mes ".-----。  .-----。  .-----。";
+	mes " | "+@playCard$[0]+" |  | "+@playCard$[1]+" |  | "+@playCard$[2]+" | ";
+	mes "'-----' '-----' '-----'";
+	mes ".-----。   .-----。";
+	mes "    | "+@playCard$[3]+" |   | "+@playCard$[4]+" | ";
+	mes "'-----' '-----'";
+	return;
+}

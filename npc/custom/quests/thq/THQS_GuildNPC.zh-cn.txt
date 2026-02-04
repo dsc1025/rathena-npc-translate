@@ -1,0 +1,88 @@
+//===== rAthena Script =======================================
+//= Treasure Hunter Quests
+//===== By: ==================================================
+//= Fredzilla
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Start for Treasure hunter quests
+//===== Additional Comments: =================================
+//= Event_THQS - Used to check if you have already registered
+//= #Treasure_Token - used to keep track of tokens
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+yuno_in01,124,164,6	script	Guild Leader	108,{
+	mes "[基冈]";
+	mes "是什么风把你吹到这里来的？有话要说吗？";
+	next;
+	menu "I want to be a Treasure Hunter",-,"Take a New Quest.",N_NQuest,"Take me to the Official Shop.",N_OShop,"Never mind.",N_NVM;
+	if(Event_THQS==1) goto N_AlreadyReg;
+	mes "[基冈]";
+	mes "好吧"+strcharinfo(0)+"如果你想成为一名宝藏猎人，你必须首先。";
+	mes " ";
+	mes "^FF00001.^000000 您将获得 ^FF000025,000z^000000 基础培训和会员证明。";
+	mes " ";
+	mes "嗯...好吧，这就是你需要做的。哈哈哈。";
+	next;
+	menu "Pay ^FF000025,000z^000000.",-,"Thats way to high!!",N_HighPrice;
+	if (Zeny < 25000) goto N_NoZeny;
+	set Zeny,Zeny-25000;
+	//getitem 7950, 1;
+	//getitem 7951, 1;
+	set Event_THQS,1;
+	mes "[基冈]";
+	mes "恭喜！";
+	emotion ET_CONGRATULATION;
+	next;
+	mes "[基冈]";
+	mes "欢迎来到宝藏猎人公会。";
+	mes "您现在可以根据需要进行寻宝任务。";
+	close;
+N_NoZeny:
+	mes "[基冈]";
+	mes "嗯，您似乎没有 ^FF000025,000z^000000 "+strcharinfo(0)+"。当你这样做时请回来。";
+	close;
+N_HighPrice:
+	mes "[基冈]";
+	mes "好吧，如果您买不起小型^FF000025,000z^000000，那么您还不应该成为宝藏猎人。";
+	close;
+N_AlreadyReg:
+	mes "[基冈]";
+	mes "哈哈哈……你已经是会员了。";
+	close;
+N_NQuest:
+	if (Event_THQS!=1) goto A_NeedReg;
+	mes "[基冈]";
+	mes "好吧，"+strcharinfo(0)+" 如果你想接受任务，请与另一个房间里的宝藏猎人同伴交谈。";
+	close;
+A_NeedReg:
+	mes "[基冈]";
+	mes "抱歉，如果您想接受任务，您必须是宝藏猎人公会的成员。";
+	mes " ";
+	mes "现在您已经成为会员，可以随时使用我们的商店。它们都位于这一层。";
+	mes " ";
+	mes "我们还有另一家会员专卖店，我们用小金属钻石（称为宝藏猎人代币）来兑换稀有商品。";
+	mes " ";
+	mes "您甚至可以进入我们专属的个人地下城。";
+	close;
+N_OShop:
+	if (Event_THQS!=1) goto N_NeedMem;
+	mes "[基冈]";
+	mes "是的"+strcharinfo(0)+"我马上带你去我们店！";
+	next;
+	warp "prt_in",166,171;
+	close;
+	end;
+N_NeedMem:
+	mes "[基冈]";
+	mes "抱歉，只有会员才能访问我们的私人商店。";
+	close;
+N_NVM:
+	mes "[基冈]";
+	mes "好吧，等你有空的时候再来吧。";
+	close;
+}

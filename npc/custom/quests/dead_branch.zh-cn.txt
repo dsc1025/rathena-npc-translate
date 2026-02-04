@@ -1,0 +1,106 @@
+//===== rAthena Script ======================================= 
+//= Dead Branch (+Bloody Branch) Quest
+//===== By: ================================================== 
+//= GM-Yevon
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= rAthena Project
+//===== Description: ========================================= 
+// Simple item trade-in quest, a person can get a Dead Branch
+// by simply providing the items: Log x3 (7201), Wooden Heart x1 (7189), 
+// Trunk x5 (1019), and Wooden Gnarl x1 (7222).
+//===== Additional Comments: ================================= 
+//= 1.1 Optimized, added Bloody Branch with 0.01% chance [Lupus]
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+niflheim,204,179,3	script	Mister Mobry	121,{
+
+	mes "[莫布里先生]";
+	mes "你知道，树木拥有灵魂……";
+	next;
+
+	mes "[莫布里先生]";
+	mes "事实上，我知道这些灵魂的一个秘密，它可以以某种方式......也许帮助你......";
+	next;
+
+	mes "[莫布里先生]";
+	mes "我可以创造出一个充满活力的树枝……也就是说，如果你能给我提供正确的材料……";
+	next;
+	goto L_MENU;
+
+L_MENU:
+	menu "What Do I Need?",-,"Where Can I find this Crap?",M_FIND,"Make me a Dead Branch!",M_CREATE,"Forget it...",M_END;
+
+	mes "[莫布里先生]";
+	mes "姆韦嘿嘿……我看你是想控制树精吧？好的...我需要：";
+	mes "^1354453 条日志^000000";
+	mes "^1354451颗木心^000000";
+	mes "^1354455 中继线^000000";
+	mes "^1354451 木节^000000";
+	next;
+	goto L_MENU;
+
+M_FIND:
+	mes "[莫布里先生]";
+	mes "你可以从某些怪物身上找到以下物品呵呵...";
+	mes "^135445可以在树魔像上找到日志。^000000";
+	mes "^135445木心是树傀儡的精髓。^000000";
+	mes "^135445行李箱？说真的，想想木头...^000000";
+	mes "^135445木节...绞刑架...^000000";
+	next;
+	goto L_MENU;
+
+L_NOLOG:
+	mes "[莫布里先生]";
+	mes "^135445日志^000000是主体...我需要更多。";
+	mes "给我三块木头，我会给你灵魂......";
+	close;
+
+L_NOHEART:
+	mes "[莫布里先生]";
+	mes "^135445木心^000000是精神的本质。";
+	mes "给我一颗木心，我会让你成为灵魂......";
+	close;
+
+L_NOTRUNK:
+	mes "[莫布里先生]";
+	mes "什么？你甚至找不到^1354455个中继^000000？";
+	mes "杀了柳树长老什么的……哎呀……没有箱子，呵呵……可怜。";
+	close;
+
+L_NOGNARL:
+	mes "[莫布里先生]";
+	mes "如果没有^135445木节^000000，我怎样才能制作一个？";
+	mes "我说绞刑架……他们都在这个地方……";
+	close;
+
+M_CREATE:
+	mes "[莫布里先生]";
+	mes "好吧……让我们看看你给我带来了什么……";
+	next;
+	if(countitem(7201)<3) goto L_NOLOG;
+	if(countitem(7189)<1) goto L_NOHEART;
+	if(countitem(1019)<5) goto L_NOTRUNK;
+	if(countitem(7222)<1) goto L_NOGNARL;
+	delitem 7201,3;
+	delitem 7189,1;
+	delitem 1019,5;
+	delitem 7222,1;
+	mes "[莫布里先生]";
+	mes "呵呵...祝你和树精玩得开心...小心点...";
+	mes "呵呵……现在小心点了吗？如果你不介意的话我在乎什么......没关系。";
+	if(rand(1000)==0) goto L_GIVE2;
+	getitem 604,1; //Dead Branch
+	close;
+L_GIVE2:
+	getitem 12103,1; //Bloody Branch
+	close;
+
+M_END:
+	mes "[莫布里先生]";
+	mes "你没有精神……那就走吧！";
+	close;
+}

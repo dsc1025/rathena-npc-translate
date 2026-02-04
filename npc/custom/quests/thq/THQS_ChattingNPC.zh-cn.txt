@@ -1,0 +1,97 @@
+//===== rAthena Script =======================================
+//= Treasure Hunter Quests
+//===== By: ==================================================
+//= Fredzilla
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Start for Treasure hunter quests
+//===== Additional Comments: =================================
+//= Event_THQS - Used to check if you have already registered
+//= #Treasure_Token - used to keep track of tokens
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+//Entrance Flags
+yuno,48,101,6	script	Notice	722,{
+	mes "^FF0000[ 宝藏猎人公会大楼]^000000";
+	mes " ";
+	mes "欢迎来到宝藏猎人公会。";
+	mes "请随时过来看看";
+	mes "如果您愿意，请随时成为会员。";
+	mes " ";
+	mes "如需会员申请，请联系 Keegan";
+	mes "上楼梯，下大厅。";
+	close;
+}
+//Saver Girl;
+yuno_in01,32,178,3	script	Ahlma	94,{
+	mes "[阿尔玛]";
+	if (Event_THQS == 0) goto N_Member;
+	mes "欢迎来到宝藏猎人公会。";
+	mes "我可以怎样帮助您？";
+	next;
+	menu "Save",-,"Quit",N_Quit;
+	mes "[阿尔玛]";
+	mes "好的，已保存。谢谢~很快再见~";
+	savepoint "yuno_in01",34,176;
+	close;
+N_Quit:
+	mes "[阿尔玛]";
+	mes "好吧，如果你认为你是安全的，那就太好了。";
+	close;
+N_Member:
+	mes "抱歉，仅限会员。";
+	close;
+}
+//Retired Smile mask girl;
+yuno_in01,33,162,3	script	Smile Helper	92,{
+	mes "[微笑女孩]";
+	mes "哦天哪...我实在受够了";
+	mes "把微笑先生的面具换成垃圾。";
+	mes " ";
+	mes "你向我要一份，你会发现自己轻了 10 磅！";
+	close;
+}
+//Usless Female Assasin;
+yuno_in01,22,162,6	script	Female Assasin	725,{
+	mes "[Sharlet]";
+	if (Event_THQS > 0) goto N_Member;
+	mes "嗯，抱歉，如果您甚至不是会员，我不会浪费时间和您交谈！";
+	close;
+N_Member:
+	set @TEMP,rand(1,2);
+	if (@TEMP == 1) goto N_Chat1;
+	if (@TEMP == 2) goto N_Chat2;
+	mes "你读这个怎么样？？？";
+	mes "好吧，除非你正在阅读代码:)";
+	close;
+N_Chat1:
+	mes "啊，欢迎各位宝藏猎人"+strcharinfo(0)+".";
+	mes "你听说过那个独自进入格拉斯特海姆的勇敢者吗？！他一定是疯了。";
+	close;
+N_Chat2:
+	mes ""+strcharinfo(0)+" 你没有更好的事情可以做吗？就像一个任务。";
+	close;
+}
+//another useless member
+yuno_in01,25,162,6	script	Female Wizard	123,{
+	mes "[萨莎]";
+	if (Event_THQS > 0) goto N_Member;
+	mes "嗯，抱歉，如果您甚至不是会员，我不会浪费时间和您交谈！";
+	close;
+N_Member:
+	set @TEMP,rand(2);
+	if (@TEMP == 1) goto N_Chat;
+	mes "啊，欢迎各位宝藏猎人"+strcharinfo(0)+".";
+	mes "你听说过那个在树上跑来跑去的山羊人吗？";
+	mes " ";
+	mes "显然他的名字叫巴风特，他已经在普隆特拉郊外的森林迷宫里跑了一段时间了。";
+	close;
+N_Chat:
+	mes ""+strcharinfo(0)+" 你没有更好的事情可以做吗？就像一个任务。";
+	close;
+}

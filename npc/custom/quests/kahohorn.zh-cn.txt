@@ -1,0 +1,71 @@
+//===== rAthena Script =======================================
+//= Lord Kaho's Horns Quest
+//===== By: ==================================================
+//= ?
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Custom quest for Lord Kaho's Horns.
+//===== Additional Comments: =================================
+//= 1.1 Optimized, and fixed some requirements. [Euphy]
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+geffen,115,107,5	script	Lord Kaho's Servant	61,{
+
+	setarray .@Items[0],7005, 968, 923, 734, 724,2268,7036,7020,5053,7018,741,742,743,750,751,752,753,754;
+	setarray .@Drops[0],1272,1087,1039,1260,1046,1115,1252,1147,1038,1059;
+	set .@n$, "[Lord Kaho's Servant]";
+
+	mes .@n$;
+	mes "我拼命工作，试图满足卡霍大人对头饰的荒谬期望！";
+	mes "现在我终于找到了完美头饰的配方，我愿意分享我的时间和才能。";
+	next;
+	mes .@n$;
+	mes "您需要满足以下条件才能获得 Kaho 角：";
+	mes "3x ^0055FF帝国^000000";
+	next;
+	mes .@n$;
+	mes "哦，是的...";
+	mes "我还忘了说这些...";
+	next;
+	mes .@n$;
+	for(set .@i,0; .@i<10; set .@i,.@i+1)
+		mes "1x ^0055FF"+getitemname(.@Items[.@i])+"^000000（来自 "+getmonsterinfo(.@Drops[.@i], MOB_NAME)+"）";
+	next;
+	mes .@n$;
+	mes "我们还没有完成，亲爱的...";
+	mes "我是娃娃的忠实粉丝，所以你需要给我带这些可爱的东西！";
+	for(set .@i,10; .@i<18; set .@i,.@i+1)
+		mes "1x ^0055FF"+getitemname(.@Items[.@i])+"^000000";
+	next;
+	mes .@n$;
+	mes "最后，我努力用上面提到的所有物品为我的主人制作了这些喇叭......";
+	mes "请为我的努力附上^0055FF500万Zeny^000000。"; 
+	next;
+	mes .@n$;
+	mes "你准备好让我制作这个特殊的物品了吗？";
+	next;
+	if(select("当然可以！：这些要求是深不可测的！")==2) {
+		mes .@n$;
+		mes "而我所经历的，却是更难以想象的……";
+		mes "如果你成功获得这些物品，你将拥有不可思议的力量！";
+		close; }
+	mes .@n$;
+	for(set .@i,0; .@i<18; set .@i,.@i+1)
+		if (!countitem(.@Items[.@i])) { set .@nr,1; break; }
+	if (.@nr || countitem(714) < 3 || Zeny < 5000000) {
+		mes "如果你不带上所有需要的材料，我就做不起这个。请您理解，这是为了您这样的英雄！";
+		close; }
+	for(set .@i,0; .@i<18; set .@i,.@i+1)
+		delitem .@Items[.@i],1;
+	delitem 714,3;
+	set Zeny, Zeny-5000000;
+	mes "哇！你确实很勇敢！";
+	getitem 5013,1;
+	mes "享受成为米德加德之神的乐趣吧！";
+	close;
+}

@@ -1,0 +1,189 @@
+//===== rAthena Script =======================================
+//= Shifty Assassin
+//===== By: ==================================================
+//= acky
+//===== Current Version: =====================================
+//= 1.1.2
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Players buy ninjas to assassinate other players
+//===== Additional Comments: =================================
+//= 1.1.1 Changed all gmcommand to atcommand as Poki#3 suggested. [Vicious]
+//= 1.1.2 Updated WoE Check. [Paradox924X]
+//===== Translated By: =======================================
+//= dsc
+//============================================================
+
+morocc,148,86,5	script	Shifty Assassin	725,{
+	set .@ninja_price,250000;
+
+	// STARTS THE MENU //
+M_Start:
+	mes "[狡猾的刺客]";
+	mes "你想要什么？";
+	next;
+	menu "Buy Ninjas",M_Buy,"Assassinate somebody",M_Kill,"Check your Ninjas",M_Check, ( getgmlevel() > 90 ? "Add Ninjas" : "" ),-,"Cancel",M_Exit;
+
+	// GM MENU TO ADD NINJAS //
+	mes "[狡猾的刺客]";
+	mes "您想要提供多少名忍者？";
+	next;
+	input .@add;
+	set $ninja_avail, $ninja_avail+.@add;
+	mes .@add +"忍者补充道。";
+	close;
+
+	// BUY NINJAS //
+M_Buy:
+	mes "[狡猾的刺客]";
+	mes "您想购买多少个忍者？";
+	mes "有^0000FF" + $ninja_avail + "^000000可用忍者。";
+	mes "它们每个花费 ^0000FF" + .@ninja_price + " zeny ^000000。";
+
+	input .@buy;
+	next;
+	if ($ninja_avail < 1) goto NoNinjas;
+	if ($ninja_avail < .@buy) goto NotEnoughNinjas;
+	set .@price, .@buy*.@ninja_price;
+	if (Zeny < .@price) goto NoZeny;
+
+	mes "[狡猾的刺客]";
+	mes "这将花费您^0000FF"+ .@price +" zeny^000000。";
+	next;
+	menu "Continue",-,"Cancel",M_Exit;
+
+	set Zeny, Zeny - .@price;
+	set #ninjas, #ninjas + .@buy;
+	set $ninja_avail, $ninja_avail - .@buy;
+
+	mes "[狡猾的刺客]";
+	mes "谢谢。";
+	close;
+
+	// ASSASSINATE SOMEBODY //
+M_Kill:
+	if (agitcheck()) goto M_Busy;
+	mes "[狡猾的刺客]";
+	mes "输入目标的名称。";
+	mes "^FF0000请准确输入姓名，否则我将无法找到受害者。^000000";
+	next;
+	menu "Continue",-,"Cancel",M_Exit;
+	input .@name$;
+	if ( !getcharid( 3,.@name$ ) ) {
+		mes "[狡猾的刺客]";
+		mes .@name$ +"不在线。";
+		close;
+	}
+	next;
+	mes "[狡猾的刺客]";
+	mes "活跃忍者："+#ninjas;
+	mes "休息的忍者："+#ninjasr;
+	mes "您想发送多少个？";
+	input .@number;
+	if (.@number < 1) goto NoNinjasSent;
+	if (.@number > #ninjas) goto NotEnoughNinjas1;
+	if (.@number > 10) goto TooManyNinjas;
+	set .@chance, rand(1,12);
+	set #ninjas,#ninjas-.@number;
+	set #ninjas,#ninjas+#ninjasr;
+	set #ninjasr,0;
+	if (.@number < .@chance) goto M_Failure;
+
+	// SUCCESSFUL ATTACK //
+	mes "现在派遣忍者。";
+	next;
+	mes "[狡猾的刺客]";
+	set .@ninjasurvived, rand(1,.@number);
+	set #ninjasr,.@number-.@ninjasurvived;
+	mes "你的攻击成功了，但只有^FF0000" + #ninjasr + "^000000忍者幸存。";
+	set .@acc_id, getcharid( 3,.@name$ );
+	if ( .@acc_id )
+		unitkill .@acc_id;
+	announce .@name$ +" has been assassinated by " + strcharinfo(0) +"'s Ninjas.",bc_npc;
+	close;
+
+	// FAILED ATTACK //
+M_Failure:
+	mes "现在派遣忍者。";
+	next;
+	mes "[狡猾的刺客]";
+	set .@ninjasurvived, rand(1,.@number);
+	set #ninjasr, .@number-.@ninjasurvived;
+	mes "你的攻击失败了，只有^FF0000" + #ninjasr + "^000000忍者幸存。";
+
+	announce .@name$+" has survived " + strcharinfo(0) +"'s Ninja attack.",8;
+	close;
+
+	// NINJAS BUSY FOR WOE //
+M_Busy:
+	mes "[狡猾的刺客]";
+	mes "抱歉，我所有的忍者都在忙着帝国之战。";
+	close;
+
+	// CHECK YOUR NINJAS //
+M_Check:
+	mes "[狡猾的刺客]";
+	mes "你有：";
+	mes "^FF0000" + #ninjas + "^000000 活跃忍者。";
+	mes "^0000FF" + #ninjasr + "^000000 休息的忍者。";
+	next;
+	goto M_Start;
+
+
+	// LIMIT //
+NoNinjasSent:
+	mes "[狡猾的刺客]";
+	mes "没有忍者你就无法杀死任何人。";
+	next;
+	goto M_Start;
+
+TooManyNinjas:
+	mes "[狡猾的刺客]";
+	mes "您最多只能派遣 10 名忍者。";
+	next;
+	goto M_Start;
+
+NoZeny:
+	mes "[狡猾的刺客]";
+	mes "你没有足够的 zeny。";
+	close;
+
+NotEnoughNinjas:
+	mes "[狡猾的刺客]";
+	mes "没有那么多忍者可以买。";
+	next;
+	goto M_Start;
+
+NoNinjas:
+	mes "[狡猾的刺客]";
+	mes "没有剩下的忍者可供购买。";
+	close;
+
+NotEnoughNinjas1:
+	mes "[狡猾的刺客]";
+	mes "你没有那么多忍者。";
+	next;
+	goto M_Start;
+
+M_Exit:
+	mes "[狡猾的刺客]";
+	mes "再见。";
+	close;
+
+// TIMER DELAY NINJA ADDER //
+OnClock0600:
+OnClock1200:
+OnClock1500:
+OnClock1900:
+OnClock2000:
+OnClock0000:
+	set $ninja_avail,$ninja_avail+2;
+	end;
+OnClock1800:
+	set $ninja_avail,$ninja_avail+3;
+	end;
+OnInit:
+	set $ninja_avail,$ninja_avail+1;
+	end;
+}
