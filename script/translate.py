@@ -38,9 +38,11 @@ from deep_translator import GoogleTranslator as DT_GoogleTranslator
 SEP = '<<<SEP>>>'
 CLR_TOKEN = '<<<CLR{}>>>'
 BR_TOKEN = '<<<BR{}>>>'
+PUN_TOKEN = '<<<PUN{}>>>'
 
 clr_re = re.compile(r"\^[0-9a-fA-F]{6}")
 br_re = re.compile(r"[\[\]]")
+pun_re = re.compile(r"[:;,.!?/\\\-\+@#$%^&*()=]")
 
 string_re = re.compile(r'"([^\"]*)"')
 mes_line_re = re.compile(r'(?P<prefix>\bmes\b\s*)(?P<expr>.+)$')
@@ -150,6 +152,22 @@ def restore_color_codes(s, codes):
     return s
 
 
+def protect_ascii_punct(s):
+    codes = []
+    def _repl(m):
+        idx = len(codes)
+        codes.append(m.group(0))
+        return PUN_TOKEN.format(idx)
+    prov = pun_re.sub(_repl, s)
+    return prov, codes
+
+
+def restore_ascii_punct(s, codes):
+    for i, c in enumerate(codes):
+        s = s.replace(PUN_TOKEN.format(i), c)
+    return s
+
+
 def process_mes_expression(expr, target='zh-cn'):
     # First, replace F_Navi(...) first-string args with placeholders so they
     # won't be re-processed by the generic literal translation below.
@@ -170,19 +188,21 @@ def process_mes_expression(expr, target='zh-cn'):
         content = m.group(1)
         protected, color_codes = protect_color_codes(content)
         protected, br_codes = protect_brackets(protected)
-        string_parts.append((protected, color_codes, br_codes, content))
+        protected, pun_codes = protect_ascii_punct(protected)
+        string_parts.append((protected, color_codes, br_codes, pun_codes, content))
 
     protected_texts = [p[0] for p in string_parts]
     translated_parts = translate_protected_list(protected_texts, target=target) if protected_texts else []
 
     # Restore color codes and assemble final replacement texts in order
     restored_parts = []
-    for (tpart, (prot, color_codes, br_codes, raw_orig)) in zip(translated_parts, string_parts):
+    for (tpart, (prot, color_codes, br_codes, pun_codes, raw_orig)) in zip(translated_parts, string_parts):
         if re.fullmatch(r"[.．。…]{1,}", raw_orig.strip()):
             use_text = prot
         else:
             use_text = choose_translation(prot, tpart)
         s = restore_brackets(use_text, br_codes)
+        s = restore_ascii_punct(s, pun_codes)
         s = restore_color_codes(s, color_codes)
         s = s.replace('"', '\\"')
         restored_parts.append(s)
@@ -222,21 +242,25 @@ def process_npctalk_expression(expr, target='zh-cn'):
             before, sep, after = content.partition('#')
             protected, color_codes = protect_color_codes(before)
             protected, br_codes = protect_brackets(protected)
+            protected, pun_codes = protect_ascii_punct(protected)
             t = translate_text(protected, target=target)
             chosen = choose_translation(protected, t)
             if chosen == protected:
                 translated = before + sep + after
             else:
                 restored = restore_brackets(chosen, br_codes)
+                restored = restore_ascii_punct(restored, pun_codes)
                 restored = restore_color_codes(restored, color_codes)
                 restored = restored.replace('"', '\\"')
                 translated = restored + sep + after
         elif i <= 1:
             protected, color_codes = protect_color_codes(content)
             protected, br_codes = protect_brackets(protected)
+            protected, pun_codes = protect_ascii_punct(protected)
             t = translate_text(protected, target=target)
             chosen = choose_translation(protected, t)
             restored = restore_brackets(chosen, br_codes)
+            restored = restore_ascii_punct(restored, pun_codes)
             restored = restore_color_codes(restored, color_codes)
             translated = restored.replace('"', '\\"')
         else:
@@ -275,7 +299,8 @@ def process_select_expression(expr, target='zh-cn'):
         if flag:
             prot, color_codes = protect_color_codes(raw)
             prot, br_codes = protect_brackets(prot)
-            protected_items.append((prot, color_codes, br_codes, raw))
+            prot, pun_codes = protect_ascii_punct(prot)
+            protected_items.append((prot, color_codes, br_codes, pun_codes, raw))
 
     # Translate combined protected texts to preserve context
     translated_pieces = translate_protected_list([p[0] for p in protected_items], target=target)
@@ -288,7 +313,7 @@ def process_select_expression(expr, target='zh-cn'):
             restored_parts.append(raw)
         else:
             tpart = translated_pieces[ti]
-            prot, color_codes, br_codes, raw_orig = protected_items[ti]
+            prot, color_codes, br_codes, pun_codes, raw_orig = protected_items[ti]
             ti += 1
             if re.fullmatch(r"[.．。…]{1,}", raw_orig.strip()):
                 use_text = prot
@@ -297,6 +322,7 @@ def process_select_expression(expr, target='zh-cn'):
                 if (tpart is None) or (tpart.strip() == prot.strip()):
                     use_text = prot
             s = restore_brackets(use_text, br_codes)
+            s = restore_ascii_punct(s, pun_codes)
             s = restore_color_codes(s, color_codes)
             s = s.replace('"', '\\"')
             restored_parts.append(s)
@@ -354,8 +380,10 @@ def replace_f_navi_in_text(text, target='zh-cn'):
         content = m0.group(1)
         protected, color_codes = protect_color_codes(content)
         protected, br_codes = protect_brackets(protected)
+        protected, pun_codes = protect_ascii_punct(protected)
         translated = translate_protected_list([protected], target=target)[0]
         restored = restore_brackets(translated, br_codes)
+        restored = restore_ascii_punct(restored, pun_codes)
         restored = restore_color_codes(restored, color_codes)
         restored = restored.replace('"', '\\"')
 

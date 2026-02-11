@@ -63,6 +63,8 @@
 //= 6.6 Added Warp Points / View Points Function. [Joseph]
 //= 6.7 Added Rune Knight Kafra. [Euphy]
 //= 6.8 Updated some functions and added VIP features. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================
 
 //=== Main Function ========================================================
@@ -80,36 +82,36 @@ function	script	F_Kafra	{
 	// Display Kafra Welcome Message
 	switch(.@welcome) {
 	default:// Default message (obsolete)
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ¬¢è¿æ¥åˆ°";
-		mes "å¡å¤«æ‹‰å…¬å¸ã€‚";
-		mes "å¡å¤«æ‹‰æœåŠ¡";
-		mes "æ°¸è¿œç«™åœ¨ä½ è¿™è¾¹ã€‚";
-		mes "æˆ‘å¯ä»¥å¦‚ä½•å¸®åŠ©æ‚¨ï¼Ÿ";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "»¶Ó­À´µ½";
+		mes "¿¨·òÀ­¹«Ë¾¡£";
+		mes "¿¨·òÀ­·şÎñ";
+		mes "ÓÀÔ¶Õ¾ÔÚÄãÕâ±ß¡£";
+		mes "ÎÒ¿ÉÒÔÈçºÎ°ïÖúÄú£¿";
 		break;
 	case 1:// Niflheim specific message
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
+		mes "[¿¨·òÀ­Ô±¹¤]";
 		mes "^666666W-weeeelc-c-come";
-		mes "åˆ° th-the K-kaaafrrra";
-		mes "C-commer-riat-hosteã€‚";
+		mes "µ½ th-the K-kaaafrrra";
+		mes "C-commer-riat-hoste¡£";
 		break;
 	case 2:// Guild Castle Kafra message
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ¬¢è¿ã€‚ ^ff0000" + getguildname( getcharid(2) ) + "^000000 æˆå‘˜ã€‚";
-		mes "æ— è®ºæ‚¨èµ°åˆ°å“ªé‡Œï¼Œå¡å¤«æ‹‰â€‹â€‹å…¬å¸éƒ½ä¼šé™ªä¼´æ‚¨ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "»¶Ó­¡£ ^ff0000" + getguildname( getcharid(2) ) + "^000000 ³ÉÔ±¡£";
+		mes "ÎŞÂÛÄú×ßµ½ÄÄÀï£¬¿¨·òÀ­¹«Ë¾¶¼»áÅã°éÄú¡£";
 		break;
 	case 3:// Amatsu specific message (obsolete)
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "é‚£ä¹ˆï¼Œæ‚¨æ˜¯è¿œé“è€Œæ¥å­¦ä¹ æˆ‘ä»¬çš„æ–‡åŒ–ï¼Œè¿˜æ˜¯åªæ˜¯æ¥è§‚å…‰çš„ï¼Ÿ";
-		mes "æ— è®ºå“ªç§æƒ…å†µï¼Œä¸ºä»€ä¹ˆä¸åœç•™ä¸€æ®µæ—¶é—´å‘¢ï¼Ÿ";
-		mes "ç©ºæ°”æ°¸è¿œæ²‰é‡";
-		mes "ä»¤äººæ„‰æ‚¦çš„é‡èŠ±é¦™æ°”ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÄÇÃ´£¬ÄúÊÇÔ¶µÀ¶øÀ´Ñ§Ï°ÎÒÃÇµÄÎÄ»¯£¬»¹ÊÇÖ»ÊÇÀ´¹Û¹âµÄ£¿";
+		mes "ÎŞÂÛÄÄÖÖÇé¿ö£¬ÎªÊ²Ã´²»Í£ÁôÒ»¶ÎÊ±¼äÄØ£¿";
+		mes "¿ÕÆøÓÀÔ¶³ÁÖØ";
+		mes "ÁîÈËÓäÔÃµÄÒ°»¨ÏãÆø¡£";
 		break;
 	case 4:// Luoyang and Ayothaya specific message (obsolete)
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "ä¸æˆ‘ä»¬ä¼—å¤šçš„å¡å¤«æ‹‰";
-		mes "æœåŠ¡åœ°ç‚¹ï¼Œä½ æ°¸è¿œä¸ä¼š";
-		mes "ç¦»å®¶å¾ˆè¿œã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÓëÎÒÃÇÖÚ¶àµÄ¿¨·òÀ­";
+		mes "·şÎñµØµã£¬ÄãÓÀÔ¶²»»á";
+		mes "Àë¼ÒºÜÔ¶¡£";
 		break;
 	case 5:// NPC has it's own welcome message. (Display nothing)
 		break;
@@ -158,18 +160,18 @@ function	script	F_Kafra	{
 			if (.@menu_num != 4)// Display Einbroch "No Teleport Service" notice.
 				callfunc "F_KafTele",.@welcome;
 			else {
-				mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-				mes "ç”±äº^FF0000æœ‰é™";
-				mes "ä¼ è¾“åè®®^000000ï¼Œ";
-				mes "å¡å¤«æ‹‰å…¬å¸ä¸èƒ½";
-				mes "æä¾›ä¼ é€æœåŠ¡";
-				mes "åœ¨é»‘æ£®æ—å…±å’Œå›½ã€‚";
+				mes "[¿¨·òÀ­Ô±¹¤]";
+				mes "ÓÉÓÚ^FF0000ÓĞÏŞ";
+				mes "´«ÊäĞ­Òé^000000£¬";
+				mes "¿¨·òÀ­¹«Ë¾²»ÄÜ";
+				mes "Ìá¹©´«ËÍ·şÎñ";
+				mes "ÔÚºÚÉ­ÁÖ¹²ºÍ¹ú¡£";
 				next;
-				mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-				mes "æˆ‘ä»¬è¯·æ±‚æ‚¨";
-				mes "ä½¿ç”¨é£è‰‡æœåŠ¡";
-				mes "åè€Œã€‚è°¢è°¢ä½ çš„";
-				mes "ç†è§£ä¸åˆä½œã€‚";
+				mes "[¿¨·òÀ­Ô±¹¤]";
+				mes "ÎÒÃÇÇëÇóÄú";
+				mes "Ê¹ÓÃ·ÉÍ§·şÎñ";
+				mes "·´¶ø¡£Ğ»Ğ»ÄãµÄ";
+				mes "Àí½âÓëºÏ×÷¡£";
 			}
 			next;
 		}
@@ -202,9 +204,9 @@ function	script	F_KafStor	{
 	// Unable to access Guild Storage (Busy)
 	if (.@type == 1) {
 		if (guildopenstorage()) {
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-			mes "æŠ±æ­‰ï¼Œå¦ä¸€ä½å…¬ä¼šæˆå‘˜æ­£åœ¨ä½¿ç”¨å…¬ä¼šå­˜å‚¨ç©ºé—´";
-			mes "ç°åœ¨ã€‚  è¯·ç­‰é‚£ä¸ªäººè¯´å®Œã€‚";
+			mes "[¿¨·òÀ­Ô±¹¤]";
+			mes "±§Ç¸£¬ÁíÒ»Î»¹«»á³ÉÔ±ÕıÔÚÊ¹ÓÃ¹«»á´æ´¢¿Õ¼ä";
+			mes "ÏÖÔÚ¡£  ÇëµÈÄÇ¸öÈËËµÍê¡£";
 			close3;
 		}
 		cutin "", 255;
@@ -212,19 +214,19 @@ function	script	F_KafStor	{
 	}
 	// Unable to access Normal Storage (Insufficient Basic Skills)
 	if (!callfunc("F_CanOpenStorage")) {
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
+		mes "[¿¨·òÀ­Ô±¹¤]";
 		// Niflheim Specific Message
 		if (getarg(2) == 1) {
-			mes "^666666S-s-ssoooorryï¼Œ";
-			mes "ä½ -ä½ æ˜¯-a-aaaa";
-			mes "æ–°æ‰‹...N-éœ€è¦";
-			mes "B-åŸºç¡€ sssskill L çº§ 6...^000000";
+			mes "^666666S-s-ssoooorry£¬";
+			mes "Äã-ÄãÊÇ-a-aaaa";
+			mes "ĞÂÊÖ...N-ĞèÒª";
+			mes "B-»ù´¡ sssskill L ¼¶ 6...^000000";
 			return;
 		}
-		mes "å¯¹ä¸èµ·ï¼Œä½†æ˜¯ä½ ";
-		mes "éœ€è¦æ–°æ‰‹çš„";
-		mes "åŸºæœ¬æŠ€èƒ½ç­‰çº§ 6 è‡³";
-		mes "ä½¿ç”¨å­˜å‚¨æœåŠ¡ã€‚";
+		mes "¶Ô²»Æğ£¬µ«ÊÇÄã";
+		mes "ĞèÒªĞÂÊÖµÄ";
+		mes "»ù±¾¼¼ÄÜµÈ¼¶ 6 ÖÁ";
+		mes "Ê¹ÓÃ´æ´¢·şÎñ¡£";
 		return;
 	}
 	// Accessing Normal Storage (Skipped if accessing Storage from Guild castle)
@@ -234,21 +236,21 @@ function	script	F_KafStor	{
 			delitem 7059,1;
 		else {
 			if (Zeny < .@fee) {
-				mes "[å¡å¤«æ‹‰å‘˜å·¥]";
+				mes "[¿¨·òÀ­Ô±¹¤]";
 				// Niflheim Specific Message
 				if (getarg(2) == 1) {
 					percentheal -50,-50;
-					mes "^666666å¤©å•Š...";
-					mes "M-more z-zeny...ï¼";
-					mes "N-éœ€è¦150...zeny...";
-					mes "å‘ƒï¼ T-å¤ºå–BLè¡€~ï¼^000000";
+					mes "^666666Ìì°¡...";
+					mes "M-more z-zeny...£¡";
+					mes "N-ĞèÒª150...zeny...";
+					mes "ßÀ£¡ T-¶áÈ¡BLÑª~£¡^000000";
 					return;
 				}
 				// Standard Message
-				mes "å¯¹ä¸èµ·ï¼Œä½†ä½ ä¸";
-				mes "æœ‰è¶³å¤Ÿçš„ zeny å¯ä»¥ä½¿ç”¨";
-				mes "å­˜å‚¨æœåŠ¡ã€‚æˆ‘ä»¬çš„";
-				mes "å­˜å‚¨è®¿é—®è´¹ä¸º" + .@fee + " zenyã€‚";
+				mes "¶Ô²»Æğ£¬µ«Äã²»";
+				mes "ÓĞ×ã¹»µÄ zeny ¿ÉÒÔÊ¹ÓÃ";
+				mes "´æ´¢·şÎñ¡£ÎÒÃÇµÄ";
+				mes "´æ´¢·ÃÎÊ·ÑÎª" + .@fee + " zeny¡£";
 				return;
 			}
 			Zeny -= .@fee;
@@ -261,17 +263,17 @@ function	script	F_KafStor	{
 		// Niflheim specific Message
 		if (getarg(2) == 1) {
 			percentheal 0,-10;
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
+			mes "[¿¨·òÀ­Ô±¹¤]";
 			for ( .@i = 0; .@i < 5; .@i++ )
-				mes "^666666è°¢è°¢...ä½¿ç”¨...^000000";
+				mes "^666666Ğ»Ğ»...Ê¹ÓÃ...^000000";
 		}
 		// Normal message
 		else {
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-			mes "åœ¨è¿™é‡Œï¼Œè®©æˆ‘æ‰“å¼€";
-			mes "æ‚¨çš„å­˜å‚¨ç©ºé—´ã€‚";
-			mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨";
-			mes "å¡å¤«æ‹‰æœåŠ¡ã€‚";
+			mes "[¿¨·òÀ­Ô±¹¤]";
+			mes "ÔÚÕâÀï£¬ÈÃÎÒ´ò¿ª";
+			mes "ÄúµÄ´æ´¢¿Õ¼ä¡£";
+			mes "¸ĞĞ»ÄúÊ¹ÓÃ";
+			mes "¿¨·òÀ­·şÎñ¡£";
 		}
 	}
 	callfunc("F_CheckKafCode");	//check your storage password, if set
@@ -285,9 +287,9 @@ function	script	F_KafStor	{
 // Teleport Function
 //===================================================
 function	script	F_KafTele	{
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-	mes "è¯·é€‰æ‹©";
-	mes "ä½ çš„ç›®çš„åœ°ã€‚";
+	mes "[¿¨·òÀ­Ô±¹¤]";
+	mes "ÇëÑ¡Ôñ";
+	mes "ÄãµÄÄ¿µÄµØ¡£";
 	next;
 	.@j = select( implode(@wrpC$,":") ) - 1;
 	if (@wrpC$[.@j] == "Cancel")
@@ -298,11 +300,11 @@ function	script	F_KafTele	{
 		delitem 7060,1;
 	else {
 		if (Zeny < @wrpP[.@j]) {
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-			mes "æŠ±æ­‰ï¼Œä½†ä½ æ²¡æœ‰";
-			mes "è¶³å¤Ÿçš„ zeny è¿›è¡Œä¼ é€";
-			mes "æœåŠ¡ã€‚ä¼ é€è´¹ç”¨";
-			mes "åˆ°" + @wrpD$[.@j] + "æ˜¯" + @wrpP[.@j] + " zenyã€‚";
+			mes "[¿¨·òÀ­Ô±¹¤]";
+			mes "±§Ç¸£¬µ«ÄãÃ»ÓĞ";
+			mes "×ã¹»µÄ zeny ½øĞĞ´«ËÍ";
+			mes "·şÎñ¡£´«ËÍ·ÑÓÃ";
+			mes "µ½" + @wrpD$[.@j] + "ÊÇ" + @wrpP[.@j] + " zeny¡£";
 			close3;
 		}
 		Zeny -= @wrpP[.@j];
@@ -337,32 +339,32 @@ function	script	F_KafTele	{
 function	script	F_KafCart	{
 	// Ensure that the class wanting to rent a pushcart is a merchant
 	if (BaseClass != Job_Merchant) {
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æŠ±æ­‰ï¼Œä½†æ˜¯";
-		mes "æ‰‹æ¨è½¦ç§ŸèµæœåŠ¡";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "±§Ç¸£¬µ«ÊÇ";
+		mes "ÊÖÍÆ³µ×âÁŞ·şÎñ";
 		if (checkre(0) == true)
-			mes "ä»…é€‚ç”¨äºå•†æˆ·ç±»åˆ«ã€‚";
+			mes "½öÊÊÓÃÓÚÉÌ»§Àà±ğ¡£";
 		else {
-			mes "ä»…é€‚ç”¨äºå•†å®¶ï¼Œ";
-			mes "é“åŒ ã€é“åŒ å¤§å¸ˆã€";
-			mes "ç‚¼é‡‘æœ¯å£«å’Œç”Ÿç‰©åŒ–å­¦å®¶ã€‚";
+			mes "½öÊÊÓÃÓÚÉÌ¼Ò£¬";
+			mes "Ìú½³¡¢Ìú½³´óÊ¦¡¢";
+			mes "Á¶½ğÊõÊ¿ºÍÉúÎï»¯Ñ§¼Ò¡£";
 		}
 		return 1;
 	}
 	// Make sure the invoking character does not have a cart already
 	else if (checkcart() == true) {
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "ä½ å·²ç»æœ‰äº†";
-		mes "é…å¤‡æ‰‹æ¨è½¦ã€‚";
-		mes "ä¸å¹¸çš„æ˜¯ï¼Œæˆ‘ä»¬ä¸èƒ½";
-		mes "ç§Ÿå¤šäºä¸€é—´";
-		mes "æ¯ä¸ªå®¢æˆ·ä¸€æ¬¡ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÄãÒÑ¾­ÓĞÁË";
+		mes "Åä±¸ÊÖÍÆ³µ¡£";
+		mes "²»ĞÒµÄÊÇ£¬ÎÒÃÇ²»ÄÜ";
+		mes "×â¶àÓÚÒ»¼ä";
+		mes "Ã¿¸ö¿Í»§Ò»´Î¡£";
 		return 1;
 	}
 	// Check if the player has the Pushcart skill
 	else if (getskilllv("MC_PUSHCART") == 0) {
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "åªæœ‰å­¦ä¹ äº†\"Push Cart\"æŠ€èƒ½åæ‰èƒ½ç§Ÿç”¨è½¦ã€‚";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "Ö»ÓĞÑ§Ï°ÁË'Push Cart'¼¼ÄÜºó²ÅÄÜ×âÓÃ³µ¡£";
 		return 1;
 	}
 	// Consume "Free Ticket for the Cart Service" if available.
@@ -371,19 +373,19 @@ function	script	F_KafCart	{
 		delitem 7061,1;
 	else {
 		.@rental_fee = getarg(1);
-		mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-		mes "æ‰‹æ¨è½¦ç§Ÿèµ";
-		mes "è´¹ç”¨æ˜¯" + .@rental_fee + " zenyã€‚ä¼š";
-		mes "æ‚¨å–œæ¬¢ç§Ÿä¸€è¾†æ‰‹æ¨è½¦å—ï¼Ÿ";
+		mes "[¿¨·òÀ­Ô±¹¤]";
+		mes "ÊÖÍÆ³µ×âÁŞ";
+		mes "·ÑÓÃÊÇ" + .@rental_fee + " zeny¡£»á";
+		mes "ÄúÏ²»¶×âÒ»Á¾ÊÖÍÆ³µÂğ£¿";
 		next;
-		if (select("ç§Ÿä¸€è¾†æ‰‹æ¨è½¦ï¼šå–æ¶ˆ") == 2)
+		if (select("×âÒ»Á¾ÊÖÍÆ³µ£ºÈ¡Ïû") == 2)
 			return 0;
 		if (Zeny < .@rental_fee) {
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-			mes "å¯¹ä¸èµ·ï¼Œä½†æ˜¯ä½ ";
-			mes "æ²¡æœ‰è¶³å¤Ÿçš„";
-			mes "zeny æ”¯ä»˜æ‰‹æ¨è½¦è´¹ç”¨";
-			mes "ç§Ÿèµè´¹" + .@rental_fee + " zenyã€‚";
+			mes "[¿¨·òÀ­Ô±¹¤]";
+			mes "¶Ô²»Æğ£¬µ«ÊÇÄã";
+			mes "Ã»ÓĞ×ã¹»µÄ";
+			mes "zeny Ö§¸¶ÊÖÍÆ³µ·ÑÓÃ";
+			mes "×âÁŞ·Ñ" + .@rental_fee + " zeny¡£";
 			return 1;
 		}
 		Zeny -= .@rental_fee;
@@ -410,17 +412,17 @@ function	script	F_KafInfo	{
 		.@j = select(.@menu_list$) - 1;
 		switch(.@j) {
 		case 0:// Check Special Reserve Points.
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-			mes "è®©æˆ‘ä»¬æ¥çœ‹çœ‹...";
+			mes "[¿¨·òÀ­Ô±¹¤]";
+			mes "ÈÃÎÒÃÇÀ´¿´¿´...";
 			mes "" + strcharinfo(0) + "...";
-			mes "å•Šï¼Œä½ æ€»å…±æœ‰";
-			mes "" + RESRVPTS + " ç‰¹åˆ«å‚¨å¤‡ç‚¹ã€‚";
+			mes "°¡£¬Äã×Ü¹²ÓĞ";
+			mes "" + RESRVPTS + " ÌØ±ğ´¢±¸µã¡£";
 			next;
-			mes "[å¡å¤«æ‹‰å‘˜å·¥]";
-			mes "æ‚¨å¯ä»¥äº¤æ¢æ‚¨çš„";
-			mes "ç‰¹åˆ«å‚¨å¤‡ç§¯åˆ†";
-			mes "å¥–åŠ±ä½äº Al De Baran çš„ Kafra æ€»éƒ¨ã€‚è¯·ä½¿ç”¨æˆ‘ä»¬çš„";
-			mes "ä¾¿æ·çš„æœåŠ¡ï¼Œäº†è§£æˆ‘ä»¬çš„å¥–åŠ±è®¡åˆ’çš„å¥½å¤„ã€‚";
+			mes "[¿¨·òÀ­Ô±¹¤]";
+			mes "Äú¿ÉÒÔ½»»»ÄúµÄ";
+			mes "ÌØ±ğ´¢±¸»ı·Ö";
+			mes "½±ÀøÎ»ÓÚ Al De Baran µÄ Kafra ×Ü²¿¡£ÇëÊ¹ÓÃÎÒÃÇµÄ";
+			mes "±ã½İµÄ·şÎñ£¬ÁË½âÎÒÃÇµÄ½±Àø¼Æ»®µÄºÃ´¦¡£";
 			if (getarg(0) == 1)
 				return;
 			next;
@@ -447,24 +449,24 @@ function	script	F_KafInfo	{
 //===================================================================
 function	script	F_KafEnd	{
 	.@type = getarg(0);
-	mes "[å¡å¤«æ‹‰å‘˜å·¥]";
+	mes "[¿¨·òÀ­Ô±¹¤]";
 	if (getarg(1) == true) {// Save
-		mes "ä½ çš„é‡ç”Ÿç‚¹";
-		mes "å·²ä¿å­˜åœ¨è¿™é‡Œ";
+		mes "ÄãµÄÖØÉúµã";
+		mes "ÒÑ±£´æÔÚÕâÀï";
 		mes "" + getarg(2) + ".";
-		mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨";
-		mes "å¡å¤«æ‹‰æœåŠ¡ã€‚";
+		mes "¸ĞĞ»ÄúÊ¹ÓÃ";
+		mes "¿¨·òÀ­·şÎñ¡£";
 	} else if (.@type == 0 || .@type == 5) {// Generic End
-		mes "æˆ‘ä»¬ï¼Œåœ¨å¡å¤«æ‹‰å…¬å¸ï¼Œ";
-		mes "æˆ‘ä»¬å§‹ç»ˆè‡´åŠ›äºä¸ºæ‚¨æä¾›æœ€å¥½çš„æœåŠ¡ã€‚æˆ‘ä»¬å¸Œæœ›èƒ½å¤Ÿæ»¡è¶³æ‚¨çš„å†’é™©éœ€æ±‚å’Œå“è¶Šæ ‡å‡†ã€‚";
+		mes "ÎÒÃÇ£¬ÔÚ¿¨·òÀ­¹«Ë¾£¬";
+		mes "ÎÒÃÇÊ¼ÖÕÖÂÁ¦ÓÚÎªÄúÌá¹©×îºÃµÄ·şÎñ¡£ÎÒÃÇÏ£ÍûÄÜ¹»Âú×ãÄúµÄÃ°ÏÕĞèÇóºÍ×¿Ô½±ê×¼¡£";
 	} else if (.@type == 1) {// Niflheim End
 		percentheal 0,-25;
-		mes "^666666å¡å¤«æ‹‰ä»æ¥æ²¡æœ‰";
-		mes "äºŒä¸‰ä¸‰ä¸‰ä¸‰ã€‚æˆ‘ä»¬...";
-		mes "ä¸ºäº†ä½ ï¼Œä½ å°±åœ¨è¿™é‡Œã€‚<<CR0>";
+		mes "^666666¿¨·òÀ­´ÓÀ´Ã»ÓĞ";
+		mes "¶şÈıÈıÈıÈı¡£ÎÒÃÇ...";
+		mes "ÎªÁËÄã£¬Äã¾ÍÔÚÕâÀï¡£<<CR0>";
 	} else if (.@type == 2) {// RockRidge Save
-		mes "å·²ä¿å­˜ã€‚";
-		mes "æ„Ÿè°¢æ‚¨çš„æƒ é¡¾ã€‚";
+		mes "ÒÑ±£´æ¡£";
+		mes "¸ĞĞ»ÄúµÄ»İ¹Ë¡£";
 	}
 	close3;
 }
@@ -475,7 +477,7 @@ function	script	F_KafEnd	{
 function	script	F_CheckKafCode	{
 	if (!#kafra_code)
 		return;
-	mes "è¾“å…¥æ‚¨çš„å­˜å‚¨å¯†ç ï¼š";
+	mes "ÊäÈëÄúµÄ´æ´¢ÃÜÂë£º";
 	input .@code_;
 	if (.@code_ != #kafra_code) {
 		dispbottom "Wrong storage password.";
@@ -495,22 +497,22 @@ function	script	F_SetKafCode	{
 
 	mes .@npc_name$;
 	if (#kafra_code == 0) {
-		mes "" + .@comp_name$ + " è‡ªè±ªåœ°ä¸ºæ‚¨å‘ˆç°ä¸€é¡¹æ–°æœåŠ¡ï¼š";
-		mes "ä½¿ç”¨å¯†ç æä¾›é¢å¤–çš„å­˜å‚¨ä¿æŠ¤ã€‚";
+		mes "" + .@comp_name$ + " ×ÔºÀµØÎªÄú³ÊÏÖÒ»ÏîĞÂ·şÎñ£º";
+		mes "Ê¹ÓÃÃÜÂëÌá¹©¶îÍâµÄ´æ´¢±£»¤¡£";
 		next;
-		if (select( "è®¾ç½®æ–°å¯†ç  -> 5000z", "å–æ¶ˆ" ) == 1)
+		if (select( "ÉèÖÃĞÂÃÜÂë -> 5000z", "È¡Ïû" ) == 1)
 			callsub( S_SET, .@npc_name$, .@comp_name$ );
 		close3;
 	}
-	mes "æ‚¨çš„å­˜å‚¨ç©ºé—´å—å¯†ç ä¿æŠ¤ã€‚ä½ ç°åœ¨ä¼šåšä»€ä¹ˆï¼Ÿ";
+	mes "ÄúµÄ´æ´¢¿Õ¼äÊÜÃÜÂë±£»¤¡£ÄãÏÖÔÚ»á×öÊ²Ã´£¿";
 	next;
-	switch( select( "æ›´æ”¹æ—§å¯†ç  -> 5000z", "åˆ é™¤å­˜å‚¨å¯†ç  -> 1000z", "å–æ¶ˆ" ) ) {
+	switch( select( "¸ü¸Ä¾ÉÃÜÂë -> 5000z", "É¾³ı´æ´¢ÃÜÂë -> 1000z", "È¡Ïû" ) ) {
 	case 1:
 		mes .@npc_name$;
-		mes "é¦–å…ˆï¼Œè¯·è¾“å…¥æ‚¨çš„^0000FFæ—§å¯†ç ^000000ã€‚";
+		mes "Ê×ÏÈ£¬ÇëÊäÈëÄúµÄ^0000FF¾ÉÃÜÂë^000000¡£";
 		.@code = callfunc("F_EntKafCode");
 		if (!.@code || .@code != #kafra_code) {
-			mes "å¯†ç é”™è¯¯ã€‚æ‚¨æ— æ³•è®¾ç½®æ–°å¯†ç ã€‚";
+			mes "ÃÜÂë´íÎó¡£ÄúÎŞ·¨ÉèÖÃĞÂÃÜÂë¡£";
 			emotion ET_SCRATCH;
 			break;
 		}
@@ -519,29 +521,29 @@ function	script	F_SetKafCode	{
 		break;
 	case 2:
 		mes .@npc_name$;
-		mes "è¯·åœ¨åˆ é™¤ä¹‹å‰è¾“å…¥æ‚¨çš„å¯†ç ã€‚";
+		mes "ÇëÔÚÉ¾³ıÖ®Ç°ÊäÈëÄúµÄÃÜÂë¡£";
 		.@code = callfunc("F_EntKafCode");
 		if (!.@code) {
-			mes "å¯†ç å°šæœªåˆ é™¤ã€‚";
+			mes "ÃÜÂëÉĞÎ´É¾³ı¡£";
 			emotion ET_SCRATCH;
 			break;
 		}
 		next;
 		mes .@npc_name$;
 		if (Zeny < 1000) {
-			mes "ä½ çš„ç¦…æ„è¿˜ä¸å¤Ÿã€‚";
+			mes "ÄãµÄìøÒâ»¹²»¹»¡£";
 			emotion ET_MONEY;
 			break;
 		}
 		Zeny -= 1000;
 		if (.@code == #kafra_code) {
 			#kafra_code = 0;
-			mes "æ‚¨å·²æˆåŠŸæ¸…é™¤å­˜å‚¨å¯†ç ã€‚";
-			mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨" + .@comp_name$ + ".";
+			mes "ÄúÒÑ³É¹¦Çå³ı´æ´¢ÃÜÂë¡£";
+			mes "¸ĞĞ»ÄúÊ¹ÓÃ" + .@comp_name$ + ".";
 			emotion ET_THANKS;
 		} else {
-			mes "å¯†ç é”™è¯¯ã€‚æˆ‘ä»¬ä¸ä¼šé€€è¿˜æ‚¨çš„ 1000zã€‚";
-			mes "è¯·ä¸‹æ¬¡è¾“å…¥æ­£ç¡®çš„å¯†ç ã€‚";
+			mes "ÃÜÂë´íÎó¡£ÎÒÃÇ²»»áÍË»¹ÄúµÄ 1000z¡£";
+			mes "ÇëÏÂ´ÎÊäÈëÕıÈ·µÄÃÜÂë¡£";
 			emotion ET_SORRY;
 		}
 		break;
@@ -555,24 +557,24 @@ S_SET:
 	.@comp_name$ = getarg(1);
 
 	mes .@npc_name$;
-	mes "ç°åœ¨è¾“å…¥æ‚¨çš„^FF0000æ–°å¯†ç ^000000ä»¥ä¿æŠ¤æ‚¨çš„å­˜å‚¨å…é­ç›—çªƒã€‚";
+	mes "ÏÖÔÚÊäÈëÄúµÄ^FF0000ĞÂÃÜÂë^000000ÒÔ±£»¤ÄúµÄ´æ´¢ÃâÔâµÁÇÔ¡£";
 	.@code = callfunc("F_EntKafCode");
 	if (!.@code) {
-		mes "å¯†ç å°šæœªæ›´æ”¹ã€‚";
+		mes "ÃÜÂëÉĞÎ´¸ü¸Ä¡£";
 		emotion ET_SCRATCH;
 		return;
 	}
 	next;
 	mes .@npc_name$;
 	if (Zeny < 5000) {
-		mes "ä½ çš„ç¦…æ„è¿˜ä¸å¤Ÿã€‚";
+		mes "ÄãµÄìøÒâ»¹²»¹»¡£";
 		emotion ET_MONEY;
 		return;
 	}
 	Zeny -= 5000;
 	#kafra_code = .@code;
-	mes "æ‚¨å·²ä½¿ç”¨ç§˜å¯†å¯†ç ä¿æŠ¤æ‚¨çš„å­˜å‚¨ã€‚";
-	mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨" + .@comp_name$ + ".";
+	mes "ÄúÒÑÊ¹ÓÃÃØÃÜÃÜÂë±£»¤ÄúµÄ´æ´¢¡£";
+	mes "¸ĞĞ»ÄúÊ¹ÓÃ" + .@comp_name$ + ".";
 	emotion ET_THANKS;
 	return;
 }
@@ -581,7 +583,7 @@ S_SET:
 // Basic Password Validation Function
 //===================================================
 function	script	F_EntKafCode	{
-	mes "è¾“å…¥æ•°å­—1000~10000000ï¼š";
+	mes "ÊäÈëÊı×Ö1000~10000000£º";
 	@kafcode_try += 1;
 	if (@kafcode_try > 10) {
 		@kafcode_try = 0;
@@ -589,11 +591,11 @@ function	script	F_EntKafCode	{
 		return 0;
 	}
 	if (input(.@code_) == 1) {
-		mes "ä½ ä¸èƒ½ä½¿ç”¨è¿™ä¹ˆå¤§çš„å¯†ç ã€‚";
+		mes "Äã²»ÄÜÊ¹ÓÃÕâÃ´´óµÄÃÜÂë¡£";
 		return 0;
 	}
 	if (.@code_ < 1000) {
-		mes "æ‚¨ä¸åº”è¯¥ä½¿ç”¨è¿™ä¹ˆçŸ­çš„å¯†ç ã€‚";
+		mes "Äú²»Ó¦¸ÃÊ¹ÓÃÕâÃ´¶ÌµÄÃÜÂë¡£";
 		return 0;
 	}
 	return .@code_;

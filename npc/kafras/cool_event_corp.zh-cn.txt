@@ -19,67 +19,69 @@
 //= 1.4 Added Veins Cool Event Corp. Staff. [L0ne_W0lf]
 //= 1.5 Cool Event Corp staff is now more iRO like. [L0ne_W0lf]
 //= 1.6 Wrote a basic function and added VIP features. [Euphy]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 //callfunc "F_CoolEventCorp","<menu>","<location>","<save map>",<x>,<y>,"<warp map>";
 function	script	F_CoolEventCorp	{
 	cutin "zonda_01",2;
-	mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
-	mes "æ¬¢è¿æ¥åˆ°é…·æ´»åŠ¨å…¬å¸ã€‚";
-	mes "æˆ‘ä»¬çš„å‘˜å·¥å§‹ç»ˆåœ¨å·¥ä½œ";
-	mes "è¶…è¶Šä½ çš„æœŸæœ›";
-	mes "ä¸ºäº†ä¼˜è´¨çš„æœåŠ¡ã€‚é‚£ä¹ˆå¦‚ä½•";
-	mes "ä»Šå¤©æˆ‘å¯ä»¥å¸®ä½ å—ï¼Ÿ";
+	mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
+	mes "»¶Ó­À´µ½¿á»î¶¯¹«Ë¾¡£";
+	mes "ÎÒÃÇµÄÔ±¹¤Ê¼ÖÕÔÚ¹¤×÷";
+	mes "³¬Ô½ÄãµÄÆÚÍû";
+	mes "ÎªÁËÓÅÖÊµÄ·şÎñ¡£ÄÇÃ´ÈçºÎ";
+	mes "½ñÌìÎÒ¿ÉÒÔ°ïÄãÂğ£¿";
 	next;
 	switch(select(getarg(0))) {
 	case 1:
-		mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
-		mes "ä½ çš„é‡ç”Ÿç‚¹";
-		mes "å·²ä¿å­˜åœ¨è¿™é‡Œ";
+		mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
+		mes "ÄãµÄÖØÉúµã";
+		mes "ÒÑ±£´æÔÚÕâÀï";
 		mes getarg(1)+".";
-		mes "æ„Ÿè°¢æ‚¨ä½¿ç”¨";
-		mes "Cool Event Corp. æœåŠ¡~";
+		mes "¸ĞĞ»ÄúÊ¹ÓÃ";
+		mes "Cool Event Corp. ·şÎñ~";
 		savepoint getarg(2),getarg(3),getarg(4),1,1;
 		close2;
 		break;
 	case 2:
-		mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
+		mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
 		if(!callfunc("F_CanOpenStorage")){
-			mes "å¯¹ä¸èµ·ï¼Œä½†æ˜¯ä½ ";
-			mes "éœ€è¦æ–°æ‰‹çš„";
-			mes "åŸºæœ¬æŠ€èƒ½ç­‰çº§ 6 è‡³";
-			mes "ä½¿ç”¨å­˜å‚¨æœåŠ¡ã€‚";
+			mes "¶Ô²»Æğ£¬µ«ÊÇÄã";
+			mes "ĞèÒªĞÂÊÖµÄ";
+			mes "»ù±¾¼¼ÄÜµÈ¼¶ 6 ÖÁ";
+			mes "Ê¹ÓÃ´æ´¢·şÎñ¡£";
 			close2;
 			break;
 		}
 		if(Zeny < 40){
-			mes "å¯¹ä¸èµ·ï¼Œä½†ä½ ä¸";
-			mes "æœ‰è¶³å¤Ÿçš„ Zeny å¯ä¾›ä½¿ç”¨";
-			mes "å­˜å‚¨æœåŠ¡ã€‚æˆ‘ä»¬çš„";
-			mes "å­˜å‚¨è®¿é—®è´¹ä¸º 40 Zenyã€‚";
+			mes "¶Ô²»Æğ£¬µ«Äã²»";
+			mes "ÓĞ×ã¹»µÄ Zeny ¿É¹©Ê¹ÓÃ";
+			mes "´æ´¢·şÎñ¡£ÎÒÃÇµÄ";
+			mes "´æ´¢·ÃÎÊ·ÑÎª 40 Zeny¡£";
 			close2;
 			break;
 		}
 		set Zeny, Zeny - 40;
-		mes "è®©æˆ‘æ‰“å¼€ä½ çš„ä¸ªäºº";
-		mes "ç«‹å³ä¸ºæ‚¨å­˜å‚¨ã€‚";
-		mes "æ„Ÿè°¢æ‚¨å¯¹é…·æ´¾çš„æ”¯æŒ";
-		mes "Event Corp. é€šè¿‡ä½¿ç”¨æˆ‘ä»¬çš„";
-		mes "æœåŠ¡ã€‚ç¥ä½ æœ‰ç¾å¥½çš„ä¸€å¤©~";
+		mes "ÈÃÎÒ´ò¿ªÄãµÄ¸öÈË";
+		mes "Á¢¼´ÎªÄú´æ´¢¡£";
+		mes "¸ĞĞ»Äú¶Ô¿áÅÉµÄÖ§³Ö";
+		mes "Event Corp. Í¨¹ıÊ¹ÓÃÎÒÃÇµÄ";
+		mes "·şÎñ¡£×£ÄãÓĞÃÀºÃµÄÒ»Ìì~";
 		callfunc("F_CheckKafCode");	//check your storage password, if set
 		close2;
 		openstorage;
 		break;
 	case 3:
-		mes "è¯·é€‰æ‹©";
-		mes "ä½ çš„ç›®çš„åœ°ã€‚";
+		mes "ÇëÑ¡Ôñ";
+		mes "ÄãµÄÄ¿µÄµØ¡£";
 		next;
 		if (VIP_SCRIPT && !vip_status(VIP_STATUS_ACTIVE))
 			set .@cost,4400;
 		else
 			set .@cost,2200;
 		.@destination$ = getarg(5);
-		if (select(.@destination$ +" -> "+ .@cost +"zï¼šå–æ¶ˆ") == 1) {
+		if (select(.@destination$ +" -> "+ .@cost +"z£ºÈ¡Ïû") == 1) {
 			if ((countitem(7060) != 0) || (Zeny >= .@cost)) {
 				if (countitem(7060) != 0) {
 					delitem 7060,1; //Warp_Free_Ticket
@@ -93,42 +95,42 @@ function	script	F_CoolEventCorp	{
 				end;
 			}
 			else {
-				mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
-				mes "æŠ±æ­‰ï¼Œä½†ä½ æ²¡æœ‰";
-				mes "è¶³å¤Ÿçš„ zeny è¿›è¡Œä¼ é€";
-				mes "æœåŠ¡ã€‚ä¼ é€è´¹ç”¨";
-				mes "åˆ°"+ .@destination$ +"æ˜¯"+.@cost+" zenyã€‚";
+				mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
+				mes "±§Ç¸£¬µ«ÄãÃ»ÓĞ";
+				mes "×ã¹»µÄ zeny ½øĞĞ´«ËÍ";
+				mes "·şÎñ¡£´«ËÍ·ÑÓÃ";
+				mes "µ½"+ .@destination$ +"ÊÇ"+.@cost+" zeny¡£";
 			}
 		}
 		close2;
 		break;
 	case 4:
-		mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
+		mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
 		if(BaseClass != Job_Merchant){
-			mes "æŠ±æ­‰ï¼Œä½†æ˜¯";
-			mes "æ‰‹æ¨è½¦ç§ŸèµæœåŠ¡";
+			mes "±§Ç¸£¬µ«ÊÇ";
+			mes "ÊÖÍÆ³µ×âÁŞ·şÎñ";
 			if (checkre(0))
-				mes "ä»…é€‚ç”¨äºå•†æˆ·ç±»åˆ«ã€‚";
+				mes "½öÊÊÓÃÓÚÉÌ»§Àà±ğ¡£";
 			else {
-				mes "ä»…é€‚ç”¨äºå•†å®¶ï¼Œ";
-				mes "é“åŒ ã€æ€€ç‰¹å²å¯†æ–¯ã€";
-				mes "ç‚¼é‡‘æœ¯å£«å’Œåˆ›é€ è€…ã€‚";
+				mes "½öÊÊÓÃÓÚÉÌ¼Ò£¬";
+				mes "Ìú½³¡¢»³ÌØÊ·ÃÜË¹¡¢";
+				mes "Á¶½ğÊõÊ¿ºÍ´´ÔìÕß¡£";
 			}
 			close2;
 			break;
 		}
 		if(getskilllv("MC_PUSHCART") == 0){
-			mes "æ‚¨åªèƒ½åœ¨ä¹‹åç§Ÿç”¨ä¸€è¾†æ‰‹æ¨è½¦";
-			mes "å­¦ä¹ æ‰‹æ¨è½¦æŠ€èƒ½ã€‚";
+			mes "ÄúÖ»ÄÜÔÚÖ®ºó×âÓÃÒ»Á¾ÊÖÍÆ³µ";
+			mes "Ñ§Ï°ÊÖÍÆ³µ¼¼ÄÜ¡£";
 			close2;
 			break;
 		}
 		if(checkcart() == 1){
-			mes "ä½ å·²ç»æœ‰äº†";
-			mes "é…å¤‡æ‰‹æ¨è½¦ã€‚";
-			mes "ä¸å¹¸çš„æ˜¯ï¼Œæˆ‘ä»¬ä¸èƒ½";
-			mes "ç§Ÿå¤šäºä¸€é—´";
-			mes "æ¯ä¸ªå®¢æˆ·ä¸€æ¬¡ã€‚";
+			mes "ÄãÒÑ¾­ÓĞÁË";
+			mes "Åä±¸ÊÖÍÆ³µ¡£";
+			mes "²»ĞÒµÄÊÇ£¬ÎÒÃÇ²»ÄÜ";
+			mes "×â¶àÓÚÒ»¼ä";
+			mes "Ã¿¸ö¿Í»§Ò»´Î¡£";
 			close2;
 			break;
 		}
@@ -138,17 +140,17 @@ function	script	F_CoolEventCorp	{
 			close2;
 			break;
 		}
-		mes "æ‰‹æ¨è½¦ç§Ÿèµ";
-		mes "è´¹ç”¨ä¸º800 Zenyã€‚ä¼š";
-		mes "æ‚¨å–œæ¬¢ç§Ÿä¸€è¾†æ‰‹æ¨è½¦å—ï¼Ÿ";
+		mes "ÊÖÍÆ³µ×âÁŞ";
+		mes "·ÑÓÃÎª800 Zeny¡£»á";
+		mes "ÄúÏ²»¶×âÒ»Á¾ÊÖÍÆ³µÂğ£¿";
 		next;
-		if(select("ç§Ÿç”¨æ‰‹æ¨è½¦ï¼šå–æ¶ˆ") == 1){
+		if(select("×âÓÃÊÖÍÆ³µ£ºÈ¡Ïû") == 1){
 			if(Zeny < 800){
-				mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
-				mes "å¯¹ä¸èµ·ï¼Œä½†æ˜¯ä½ ";
-				mes "æ²¡æœ‰è¶³å¤Ÿçš„";
-				mes "Zeny æ”¯ä»˜æ‰‹æ¨è½¦è´¹ç”¨";
-				mes "ç§Ÿé‡‘800 Zenyã€‚";
+				mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
+				mes "¶Ô²»Æğ£¬µ«ÊÇÄã";
+				mes "Ã»ÓĞ×ã¹»µÄ";
+				mes "Zeny Ö§¸¶ÊÖÍÆ³µ·ÑÓÃ";
+				mes "×â½ğ800 Zeny¡£";
 			} else {
 				set Zeny, Zeny - 800;
 				setcart;
@@ -161,13 +163,13 @@ function	script	F_CoolEventCorp	{
 		//the function closes msg and removes cutins
 	case 6:
 	default:
-		mes "[é…·äº‹ä»¶å…¬å¸å‘˜å·¥]";
-		mes "Cool Event Corp. å§‹ç»ˆå¦‚ä¸€";
-		mes "åŠªåŠ›æä¾›æœ€å¥½çš„";
-		mes "ä¸ºæˆ‘ä»¬çš„å®¢æˆ·æä¾›æœåŠ¡ã€‚";
-		mes "å¸®åŠ©æˆ‘ä»¬æˆä¸ºæœ€å¥½çš„";
-		mes "å‘æˆ‘ä»¬æä¾›æ‚¨çš„æ„è§";
-		mes "å’Œè¯šå®çš„åé¦ˆã€‚è°¢è°¢ã€‚";
+		mes "[¿áÊÂ¼ş¹«Ë¾Ô±¹¤]";
+		mes "Cool Event Corp. Ê¼ÖÕÈçÒ»";
+		mes "Å¬Á¦Ìá¹©×îºÃµÄ";
+		mes "ÎªÎÒÃÇµÄ¿Í»§Ìá¹©·şÎñ¡£";
+		mes "°ïÖúÎÒÃÇ³ÉÎª×îºÃµÄ";
+		mes "ÏòÎÒÃÇÌá¹©ÄúµÄÒâ¼û";
+		mes "ºÍ³ÏÊµµÄ·´À¡¡£Ğ»Ğ»¡£";
 		close2;
 	}
 	cutin "", 255;

@@ -55,6 +55,8 @@
 //= 2.8 Corrected another typo this time in a variable.
 //= 2.9 Added GM management function. [Euphy]
 //= 2.9a Tweaked NPC sprite & cutin used. [Liam]
+//===== Translated By: =======================================
+//= dsc
 //============================================================ 
 
 einbroch,246,70,0	script	Vote Timer#ein	-1,{
@@ -313,47 +315,47 @@ function	script	F_VoteKafra	{
 	case 8: cutin "kafra_08",2; break;
 	case 9: cutin "kafra_09",2; break;
 	}
-	mes "[卡夫拉投票人员]";
-	mes "你好，冒险家。";
-	mes "如您所知，我们";
-	mes "正在举行选举";
-	mes "确定哪家公司将";
-	mes "提供地下城传送";
-	mes "服务。我可以怎样帮助您？";
+	mes "[������ͶƱ��Ա]";
+	mes "�ʺ�,ð�ռ�.";
+	mes "����������֪����,����";
+	mes "���ھ���ѡ��";
+	mes "ȷ���ļҹ�˾��";
+	mes "�ṩ���³Ǵ���";
+	mes "����. ����Ϊ���ṩʲô����?";
 	next;
-	switch(select("选举原因：投票：使用传送服务：取消")) {
+	switch(select("ѡ������:ͶƱ:ʹ�ô��ͷ���:ȡ��")) {
 	case 1:
-		mes "[卡夫拉投票人员]";
-		mes "Cool Event Corp 和";
-		mes "卡夫拉公司两者都有";
-		mes "一直计划提供一个";
-		mes "传送到地下城的服务。";
+		mes "[������ͶƱ��Ա]";
+		mes "Cool Event Corp ��";
+		mes "��������˾���߶���";
+		mes "һֱ�ƻ��ṩһ��";
+		mes "���͵����³ǵķ���.";
 		next;
-		mes "[卡夫拉投票人员]";
-		mes "但由于技术";
-		mes "限制，只有一家公司";
-		mes "可以作为提供者";
-		mes "地牢传送服务位于";
-		mes "时间。两家公司都同意在那里举行特别选举。";
+		mes "[������ͶƱ��Ա]";
+		mes "�����ڼ���";
+		mes "����, ����һ�ҹ�˾";
+		mes "������Ϊ�ṩ��";
+		mes "���δ��ͷ���λ��";
+		mes "ʱ��.����,���ҹ�˾��ͬ������ر�ѡ��.";
 		next;
-		mes "[卡夫拉投票人员]";
-		mes "每个公司都有自己的";
-		mes "政策和保障";
-		mes "关于地下城传送服务，在这次选举中，";
-		mes "客户最终将决定并选择最适合他们的。";
+		mes "[������ͶƱ��Ա]";
+		mes "ÿ����˾�����Լ���";
+		mes "���ߺͱ���";
+		mes "���ڵ��³Ǵ��ͷ���,�Լ������ѡ����,";
+		mes "�ͻ����ս�������ѡ�����ʺ����ǵ�.";
 		next;
-		mes "[卡夫拉投票人员]";
-		mes "目前，地牢";
-		mes "传送服务将是";
-		mes "在一系列试用期内提供。这样，客户可以";
-		mes "在做出最终决定之前先看看两家公司的利益。";
+		mes "[������ͶƱ��Ա]";
+		mes "����,����";
+		mes "���ͷ�����";
+		mes "��һϵ�����������ṩ.����,�ͻ�����";
+		mes "���������վ���֮ǰ�ȿ������ҹ�˾������.";
 		next;
-		mes "[卡夫拉投票人员]";
-		mes "如果你有资格，";
-		mes "请在每次选举中投票";
-		mes "来决定哪家公司将";
-		mes "提供地下城传送";
-		mes "下一个试用期的服务。谢谢您的支持~";
+		mes "[������ͶƱ��Ա]";
+		mes "���������,";
+		mes "����ÿ��ѡ����ͶƱ";
+		mes "�������ļҹ�˾��";
+		mes "�ṩ���³Ǵ���";
+		mes "�¸������ڷ���.��л����֧��~";
 		break;
 	case 2:
 		//if (lhz_boss < 17) {
@@ -371,169 +373,169 @@ function	script	F_VoteKafra	{
 		//else {
 			if ($DTS_Result == 0) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[卡夫拉投票人员]";
-					mes "我们，卡夫拉公司，";
-					mes "正在计划提供";
-					mes "地下城传送服务";
-					mes "前往以下地下城...";
+					mes "[������ͶƱ��Ա]";
+					mes "����,��������˾,";
+					mes "���ڼƻ��ṩ";
+					mes "���³Ǵ��ͷ���";
+					mes "ǰ�����µ��³�...";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_KafraWins == 0) {
-						mes "^FF0000玩具工厂，2层^000000";
+						mes "^FF0000��߹���, 2��^000000";
 					}
 					else if ($DTS_KafraWins == 1) {
-						mes "^FF0000玩具工厂，2层^000000";
-						mes "^FF0000Al De Baran 钟楼，3 层 ^000000";
+						mes "^FF0000��߹���, 2��^000000";
+						mes "^FF0000�����°�����¥, 3 ��^000000";
 					}
 					else {
-						mes "^FF0000玩具工厂，2层^000000";
-						mes "^FF0000阿尔德巴兰钟楼，第 3 层熔岩地牢，第 2 层^000000";
+						mes "^FF0000��߹���, 2��^000000";
+						mes "^FF0000�����°�����¥, 3�����ҵ���, 2��^000000";
 					}
 					next;
-					mes "[卡夫拉投票人员]";
-					mes "如果您有兴趣";
-					mes "传送服务到此";
-					mes "地区，那么请投票";
-					mes "我们。你想投票吗";
-					mes "卡夫拉公司？";
+					mes "[������ͶƱ��Ա]";
+					mes "���������Ȥ";
+					mes "���ͷ��񵽴�";
+					mes "����, ��ô��ͶƱ";
+					mes "����. ����ͶƱ��";
+					mes "Ϊ��������˾?";
 					next;
-					switch(select("否：是")) {
+					switch(select("��:��")) {
 					case 1:
-						mes "[卡夫拉投票人员]";
-						mes "我明白。但如果你";
-						mes "碰巧改变主意，";
-						mes "欢迎你回来";
-						mes "随时。谢谢你和";
-						mes "祝你有美好的一天，冒险家。";
+						mes "[������ͶƱ��Ա]";
+						mes "������. �������";
+						mes "���ɸı�������,";
+						mes "��ӭ�����";
+						mes "��ʱ. лл��";
+						mes "ף�������õ�һ��,ð�ռ�.";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_KafraVotes,$DTS_KafraVotes+1;
-						mes "[卡夫拉投票人员]";
-						mes "感谢您的投票！";
-						mes "我们将继续竭尽全力";
-						mes "提供最高品质";
-						mes "为我们的客户提供服务。有";
-						mes "美好的一天，记得Kafra服务就在你身边~";
+						mes "[������ͶƱ��Ա]";
+						mes "��л����ͶƱ!";
+						mes "���ǽ������߾�ȫ��";
+						mes "�ṩ���Ʒ��";
+						mes "Ϊ���ǵĿͻ�����. ��";
+						mes "���õ�һ�죬�ǵ�Kafra�������������~";
 						break;
 					}
 				}
 				else {
-					mes "[卡夫拉投票人员]";
-					mes "对不起，但你已经";
-					mes "已经参加过";
-					mes "这次选举。当下一个";
-					mes "选举来了，你将会";
-					mes "能够再次投票。";
-					mes "谢谢您的支持~";
+					mes "[������ͶƱ��Ա]";
+					mes "��Ǹ,�������Ѿ�";
+					mes "�Ѿ��μӹ�";
+					mes "���ѡ.�´ε�ʱ��";
+					mes "ѡ������,�㽫��";
+					mes "�����ٴ�ͶƱ.";
+					mes "лл����֧��~";
 				}
 			}
 			else if ($DTS_Result == 3) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[卡夫拉投票人员]";
-					mes "合计数量后";
-					mes "上次选举的选票，";
-					mes "我们得出的结论是";
-					mes "最低选民参与度";
-					mes "条件不满足。";
+					mes "[������ͶƱ��Ա]";
+					mes "�ϼ�������";
+					mes "�ϴ�ѡ�ٵ�Ʊ��,";
+					mes "���ǵó��Ľ�����";
+					mes "���ѡ������";
+					mes "����������.";
 					next;
-					mes "[卡夫拉投票人员]";
-					mes "因此，再次选举";
-					mes "确定哪家公司将";
-					mes "提供地下城传送";
-					mes "将举行服务。卡夫拉";
-					mes "公司将传送到";
-					mes "下面的地牢...";
+					mes "[������ͶƱ��Ա]";
+					mes "���,��ѡһ��";
+					mes "ȷ���ļҹ�˾��";
+					mes "�ṩ���³Ǵ���";
+					mes "������. Kafra����";
+					mes "��˾�����͵�";
+					mes "���µ��³�...";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_KafraWins == 0) {
-						mes "^FF0000玩具工厂，2层^000000";
+						mes "^FF0000��߹���, 2��^000000";
 					}
 					else if ($DTS_KafraWins == 1) {
-						mes "^FF0000玩具工厂，2层^000000";
-						mes "^FF0000Al De Baran 钟楼，3 层 ^000000";
+						mes "^FF0000��߹���, 2��^000000";
+						mes "^FF0000�����°�����¥, 3 ��^000000";
 					}
 					else {
-						mes "^FF0000玩具工厂，2层^000000";
-						mes "^FF0000阿尔德巴兰钟楼，第 3 层熔岩地牢，第 2 层^000000";
+						mes "^FF0000��߹���, 2��^000000";
+						mes "^FF0000�����°�����¥, 3�����ҵ���, 2��^000000";
 					}
 					next;
-					mes "[卡夫拉投票人员]";
-					mes "如果您有兴趣";
-					mes "传送服务到这些";
-					mes "地区，那么请投票";
-					mes "我们。你想投票吗";
-					mes "卡夫拉公司？";
+					mes "[������ͶƱ��Ա]";
+					mes "���������Ȥ";
+					mes "���ͷ�����Щ";
+					mes "����, ��ô��ͶƱ��";
+					mes "����. ����ͶƱ��";
+					mes "Ϊ��������˾?";
 					next;
-					switch(select("否：是")) {
+					switch(select("��:��")) {
 					case 1:
-						mes "[卡夫拉投票人员]";
-						mes "我明白。但如果你";
-						mes "碰巧改变主意，";
-						mes "欢迎你回来";
-						mes "随时。谢谢你和";
-						mes "祝你有美好的一天，冒险家。";
+						mes "[������ͶƱ��Ա]";
+						mes "������. �������";
+						mes "���ɸı�������,";
+						mes "��ӭ�����";
+						mes "��ʱ. лл��";
+						mes "ף�������õ�һ��,ð�ռ�.";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_KafraVotes,$DTS_KafraVotes+1;
-						mes "[卡夫拉投票人员]";
-						mes "感谢您的投票！";
-						mes "我们将继续竭尽全力";
-						mes "提供最高品质";
-						mes "为我们的客户提供服务。有";
-						mes "美好的一天，记得Kafra服务就在你身边~";
+						mes "[������ͶƱ��Ա]";
+						mes "��л����ͶƱ!";
+						mes "���ǽ������߾�ȫ��";
+						mes "�ṩ���Ʒ��";
+						mes "Ϊ���ǵĿͻ�����. ��";
+						mes "���õ�һ�죬�ǵ�Kafra�������������~";
 						break;
 					}
 				}
 				else {
-					mes "[卡夫拉投票人员]";
-					mes "合计数量后";
-					mes "上次选举的选票，";
-					mes "我们得出的结论是";
-					mes "最低选民参与度";
-					mes "条件不满足。";
+					mes "[������ͶƱ��Ա]";
+					mes "�ϼ�������";
+					mes "�ϴ�ѡ�ٵ�Ʊ��,";
+					mes "���ǵó��Ľ�����";
+					mes "���ѡ������";
+					mes "����������.";
 					next;
-					mes "[卡夫拉投票人员]";
-					mes "因此，再次选举";
-					mes "确定哪家公司将";
-					mes "提供地下城传送";
-					mes "将举行服务。然而，";
-					mes "由于您已经投票过，因此您不能在本次选举中再次投票。";
+					mes "[������ͶƱ��Ա]";
+					mes "���,��ѡһ��";
+					mes "ȷ���ļҹ�˾��";
+					mes "�ṩ���³Ǵ���";
+					mes "���񽫾���. ����,";
+					mes "�������Ѿ�ͶƱ��,������������ڱ���ѡ�����ٴ�ͶƱ.";
 					next;
-					mes "[卡夫拉投票人员]";
-					mes "您对这些活动的参与";
-					mes "选举受到高度赞赏，";
-					mes "我们鼓励您投票";
-					mes "在下次选举期间再次这样做。";
-					mes "谢谢你，祝你有美好的一天~";
+					mes "[������ͶƱ��Ա]";
+					mes "������Щ��Ĳ���";
+					mes "�ǳ���лѡ��,";
+					mes "���ǹ�����ͶƱ";
+					mes "�´�ѡ���ڼ��ٴ�.";
+					mes "лл�㣬ף�������õ�һ��~";
 				}
 			}
 			else {
-				mes "[卡夫拉投票人员]";
-				mes "抱歉，但是有";
-				mes "没有举行选举";
-				mes "这次。当民意调查进行时";
-				mes "打开，我们鼓励您采取";
-				mes "部分并发表您的意见。";
-				mes "谢谢您的支持~";
+				mes "[������ͶƱ��Ա]";
+				mes "��Ǹ,������";
+				mes "û�о���ѡ��";
+				mes "���.������������ʱ";
+				mes "��,���ǹ�������ȡ";
+				mes "���벢�����������.";
+				mes "лл����֧��~";
 			}
 		//}
 		break;
 	case 3:
 		if ($DTS_Result == 2) {
-			mes "[卡夫拉投票人员]";
-			mes "感谢您选择";
-			mes "地下城传送服务。";
-			mes "请记住，";
-			mes "免费 Warp 门票和 Kafra";
-			mes "特别储备积分不";
-			mes "申请这项特殊服务。";
+			mes "[������ͶƱ��Ա]";
+			mes "��л��ѡ��";
+			mes "���³Ǵ��ͷ���.";
+			mes "���ס��";
+			mes "��� Warp ��Ʊ�� Kafra";
+			mes "�ر𴢱����ֲ�";
+			mes "��������������.";
 			next;
 			if ($DTS_KafraWins == 0) {
-				switch(select("玩具厂，2 级 -> 4,000 z：取消")) {
+				switch(select("��߳�, 2��-> 4,000 z:ȡ��")) {
 				case 1:
 					if (Zeny >= 4000) {
 						cutin "",255;
@@ -542,23 +544,23 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[卡夫拉投票人员]";
-						mes "对不起，但你不";
-						mes "有足够的钱来支付";
-						mes "4,000 zeny 传送费用";
-						mes "到玩具厂。请";
-						mes "再次检查您的资金。";
+						mes "[������ͶƱ��Ա]";
+						mes "�Բ���,���㲻";
+						mes "���㹻��Ǯ��֧��";
+						mes "4,000 zeny ���ͷ���";
+						mes "�뵽��߳�.";
+						mes "�ٴμ�������ʽ�.";
 					}
 					break;
 				case 2:
-					mes "[卡夫拉投票人员]";
-					mes "我们，在卡夫拉公司，";
-					mes "我们始终致力于为您提供最好的服务。我们希望能够满足您的冒险需求和卓越标准。";
+					mes "[������ͶƱ��Ա]";
+					mes "����,��Kafra��˾,";
+					mes "����ʼ��������Ϊ���ṩ��õķ���.����ϣ���ܹ���������ð�������׿Խ��׼.";
 					break;
 				}
 			}
 			else if ($DTS_KafraWins == 1) {
-				switch(select("玩具厂，2 层 -> 4,000 z：钟楼，3 层 -> 4,000 z：取消")) {
+				switch(select("��߳�, 2��-> 4,000 z:��¥, 3��-> 4,000 z:ȡ��")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -567,12 +569,12 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[卡夫拉投票人员]";
-						mes "对不起，但你不";
-						mes "有足够的钱来支付";
-						mes "4,000 zeny 传送费用";
-						mes "到玩具厂。请";
-						mes "再次检查您的资金。";
+						mes "[������ͶƱ��Ա]";
+						mes "�Բ���,���㲻";
+						mes "���㹻��Ǯ��֧��";
+						mes "4,000 zeny ���ͷ���";
+						mes "�뵽��߳�.";
+						mes "�ٴμ�������ʽ�.";
 					}
 					break;
 				case 2:
@@ -583,23 +585,23 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[卡夫拉投票人员]";
-						mes "对不起，但你不";
-						mes "有足够的钱来支付";
-						mes "4,000 zeny 传送费用";
-						mes "到钟楼。请";
-						mes "再次检查您的资金。";
+						mes "[������ͶƱ��Ա]";
+						mes "�Բ���,���㲻";
+						mes "���㹻��Ǯ��֧��";
+						mes "4,000 zeny ���ͷ���";
+						mes "��ǰ����¥.";
+						mes "�ٴμ�������ʽ�.";
 					}
 					break;
 				case 3:
-					mes "[卡夫拉投票人员]";
-					mes "我们，在卡夫拉公司，";
-					mes "我们始终致力于为您提供最好的服务。我们希望能够满足您的冒险需求和卓越标准。";
+					mes "[������ͶƱ��Ա]";
+					mes "����,��Kafra��˾,";
+					mes "����ʼ��������Ϊ���ṩ��õķ���.����ϣ���ܹ���������ð�������׿Խ��׼.";
 					break;
 				}
 			}
 			else {
-				switch(select("玩具工厂，2 级 -> 4,000 z：钟楼，3 级 -> 4,000 z：熔岩地牢，2 级 -> 4,000 z：取消")) {
+				switch(select("��߳�,��2��-> 4,000 z:��¥,��3��-> 4,000 z:���ҵ���,��2��-> 4,000 z:ȡ��")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -608,12 +610,12 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[卡夫拉投票人员]";
-						mes "对不起，但你不";
-						mes "有足够的钱来支付";
-						mes "4,000 zeny 传送费用";
-						mes "到玩具厂。请";
-						mes "再次检查您的资金。";
+						mes "[������ͶƱ��Ա]";
+						mes "�Բ���,���㲻";
+						mes "���㹻��Ǯ��֧��";
+						mes "4,000 zeny ���ͷ���";
+						mes "�뵽��߳�.";
+						mes "�ٴμ�������ʽ�.";
 					}
 					break;
 				case 2:
@@ -624,12 +626,12 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[卡夫拉投票人员]";
-						mes "对不起，但你不";
-						mes "有足够的钱来支付";
-						mes "4,000 zeny 传送费用";
-						mes "到钟楼。请";
-						mes "再次检查您的资金。";
+						mes "[������ͶƱ��Ա]";
+						mes "�Բ���,���㲻";
+						mes "���㹻��Ǯ��֧��";
+						mes "4,000 zeny ���ͷ���";
+						mes "��ǰ����¥.";
+						mes "�ٴμ�������ʽ�.";
 					}
 					break;
 				case 3:
@@ -640,44 +642,44 @@ function	script	F_VoteKafra	{
 						end;
 					}
 					else {
-						mes "[卡夫拉投票人员]";
-						mes "对不起，但你不";
-						mes "有足够的钱来支付";
-						mes "4,000 zeny 传送费用";
-						mes "前往熔岩地牢。请";
-						mes "再次检查您的资金。";
+						mes "[������ͶƱ��Ա]";
+						mes "�Բ���,���㲻";
+						mes "���㹻��Ǯ��֧��";
+						mes "4,000 zeny ���ͷ���";
+						mes "��ǰ�����ҵ���.";
+						mes "�ٴμ�������ʽ�.";
 					}
 					break;
 				case 4:
-					mes "[卡夫拉投票人员]";
-					mes "我们，在卡夫拉公司，";
-					mes "我们始终致力于为您提供最好的服务。我们希望能够满足您的冒险需求和卓越标准。";
+					mes "[������ͶƱ��Ա]";
+					mes "����,��Kafra��˾,";
+					mes "����ʼ��������Ϊ���ṩ��õķ���.����ϣ���ܹ���������ð�������׿Խ��׼.";
 					break;
 				}
 			}
 		}
 		else if ($DTS_Result == 1) {
-			mes "[卡夫拉投票人员]";
-			mes "对不起，但是因为";
-			mes "结果来自最";
-			mes "最近的选举，酷事件";
-			mes "目前公司正在处理";
-			mes "地牢传送服务。对于给您带来的不便，我们深表歉意。";
+			mes "[������ͶƱ��Ա]";
+			mes "��Ǹ,������Ϊ";
+			mes "���������";
+			mes "�����ѡ��,���¼�";
+			mes "��˾.��ǰ���ڴ���";
+			mes "���δ��ͷ���. ���ڸ��������Ĳ��㣬�������Ǹ��.";
 		}
 		else {
-			mes "[卡夫拉投票人员]";
-			mes "抱歉，但是";
-			mes "地下城传送服务";
-			mes "投票期间不活跃";
-			mes "时期。一旦选举结束";
-			mes "结束了，地下城传送";
-			mes "服务将可用。";
+			mes "[������ͶƱ��Ա]";
+			mes "��Ǹ,����";
+			mes "���³Ǵ��ͷ���";
+			mes "ͶƱ�ڼ䲻��Ծ";
+			mes "period. һ��ѡ�ٽ���";
+			mes "Խ��,���δ���";
+			mes "���񽫿���.";
 		}
 		break;
 	case 4:
-		mes "[卡夫拉投票人员]";
-		mes "我们，在卡夫拉公司，";
-		mes "我们始终致力于为您提供最好的服务。我们希望能够满足您的冒险需求和卓越标准。";
+		mes "[������ͶƱ��Ա]";
+		mes "����,��Kafra��˾,";
+		mes "����ʼ��������Ϊ���ṩ��õķ���.����ϣ���ܹ���������ð�������׿Խ��׼.";
 		break;
 	}
 	close2;
@@ -713,50 +715,50 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 -	script	Cool Event Staff::VotingStaffCCE	874,{
 	callfunc "F_ClearGarbage";				//Clear outdated, unused variables
 	cutin "zonda_01",2;
-	mes "[Cool Event Corp. 投票人员]";
-	mes "你好！别忘了做";
-	mes "你的声音被听到并让";
-	mes "确保您在选举中投票";
-	mes "Cool Event Corp. 和";
-	mes "卡夫拉公司控制地下城传送服务！";
+	mes "[Cool Event Corp. ͶƱ��Ա]";
+	mes "���!������";
+	mes "�����������������";
+	mes "ȷ������ѡ����ͶƱ";
+	mes "Cool Event Corp. ��";
+	mes "��������˾���Ƶ��³Ǵ��ͷ���!";
 	next;
-	switch(select("选举原因：投票：使用传送服务：取消")) {
+	switch(select("ѡ������:ͶƱ:ʹ�ô��ͷ���:ȡ��")) {
 	case 1:
-		mes "[Cool Event Corp. 投票人员]";
-		mes "Cool Event Corp. 已";
-		mes "计划提供一个新的";
-		mes "地下城传送服务至";
-		mes "它的客户，服务不";
-		mes "Kafra 已经提供";
-		mes "公司。然而...";
+		mes "[Cool Event Corp. ͶƱ��Ա]";
+		mes "Cool Event Corp. ��";
+		mes "�ƻ��ṩһ���µ�";
+		mes "���³Ǵ��ͷ�����";
+		mes "��ͻ�,����";
+		mes "Kafra �Ѿ��ṩ";
+		mes "��˾.����...";
 		next;
-		mes "[Cool Event Corp. 投票人员]";
-		mes "卡夫拉公司，";
-		mes "已经垄断了";
-		mes "公共远程传输市场，";
-		mes "其实也有打算";
-		mes "提供类似的服务。";
+		mes "[Cool Event Corp. ͶƱ��Ա]";
+		mes "��������˾,";
+		mes "�Ѿ�¢����";
+		mes "����Զ�̴����г�,";
+		mes "��ʵҲ�д���";
+		mes "�ṩ���Ʒ���.";
 		next;
-		mes "[Cool Event Corp. 投票人员]";
-		mes "因为技术的原因";
-		mes "限制，只有一家公司";
-		mes "可以选择作为提供者";
-		mes "地下城传送服务的一部分。因此，我们将让客户";
-		mes "通过这些选举来决定。";
+		mes "[Cool Event Corp. ͶƱ��Ա]";
+		mes "��Ϊ������ԭ��";
+		mes "����, ����һ�ҹ�˾";
+		mes "����ѡ����Ϊ�ṩ��";
+		mes "�˵��³Ǵ��ͷ����.���,���ǽ��ÿͻ�";
+		mes "ͨ����Щѡ��������.";
 		next;
-		mes "[Cool Event Corp. 投票人员]";
-		mes "将进行多次选举";
-		mes "举办，以便我们的客户";
-		mes "可以亲自体验各公司的特色服务。";
-		mes "但是，请记住，您必须符合投票资格。";
+		mes "[Cool Event Corp. ͶƱ��Ա]";
+		mes "�����ж��ѡ��";
+		mes "�ٰ죬�Ա����ǵĿͻ�";
+		mes "�������Բ��Ը���˾����ɫ����.";
+		mes "����,���ס�����������ͶƱ�ʸ�.";
 		next;
-		mes "[Cool Event Corp. 投票人员]";
-		mes "对于选民资格";
-		mes "详情请访问我们的";
-		mes "总部位于 市";
-		mes "莱特哈尔岑位于";
-		mes "黑森林共和国。";
-		mes "感谢您抽出时间。";
+		mes "[Cool Event Corp. ͶƱ��Ա]";
+		mes "����ѡ���ʸ�";
+		mes "��ϸ��Ϣ,��������ǵ�";
+		mes "�ܲ�λ�� ��";
+		mes "���ع����λ��";
+		mes "��ɭ�ֹ��͹�.";
+		mes "Error 500 (Server Error)!!1500.That��s an error.There was an error. Please try again later.That��s all we know.";
 		break;
 	case 2:
 		//if (lhz_boss < 17) {
@@ -773,167 +775,167 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 		//else {
 			if ($DTS_Result == 0) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[Cool Event Corp. 投票人员]";
-					mes "酷事件公司，";
-					mes "如果选择提供";
-					mes "地下城传送服务，";
-					mes "会将冒险者传送到";
-					mes "下面的地牢...";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���¼���˾.,";
+					mes "���ѡ���ṩ";
+					mes "���³Ǵ��ͷ���,";
+					mes "�Ὣð���ߴ��͵�";
+					mes "���µ��³�...";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_JondaWins == 0) {
-						mes "^FF0000比亚兰地下城，第 3 层^000000";
+						mes "^FF0000���������³�, 3��^000000";
 					}
 					else if ($DTS_JondaWins == 1) {
-						mes "^FF0000比亚兰地下城，第 3 层^000000";
-						mes "^FF0000钟楼，三楼^000000";
+						mes "^FF0000���������³�, 3��^000000";
+						mes "^FF0000��¥,��¥^000000";
 					}
 					else {
-						mes "^FF0000比亚兰地下城，第 3 层^000000";
-						mes "^FF0000钟楼，三楼^000000";
-						mes "^FF0000格拉斯特海姆入口^000000";
+						mes "^FF0000���������³�, 3��^000000";
+						mes "^FF0000��¥,��¥^000000";
+						mes "^FF0000����˹�غ�ķ���^000000";
 					}
 					next;
-					mes "[Cool Event Corp. 投票人员]";
-					mes "如果您有兴趣";
-					mes "那么这些目的地";
-					mes "这将是你最好的";
-					mes "有兴趣为我们投票。";
-					mes "你想投票吗";
-					mes "对于酷事件公司？";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���������Ȥ";
+					mes "��ЩĿ�ĵ�, Ȼ��";
+					mes "�⽫������õ�";
+					mes "����ȤͶƱ������.";
+					mes "����ͶƱ��";
+					mes "���� Cool Event Corp.?";
 					next;
-					switch(select("否：是")) {
+					switch(select("��:��")) {
 					case 1:
-						mes "[Cool Event Corp. 投票人员]";
-						mes "啊，我明白了……好吧，如果你";
-						mes "碰巧改变主意，";
-						mes "请随时回来";
-						mes "为酷活动投票";
-						mes "公司，好吗？祝你有美好的一天~";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��,��������...��ô,�����";
+						mes "���ɸı�������,";
+						mes "����ʱ����";
+						mes "Ϊ��ͶƱ";
+						mes "��˾, �ð�? ף�������õ�һ��~";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_JondaVotes,$DTS_JondaVotes+1;
-						mes "[Cool Event Corp. 投票人员]";
-						mes "感谢您的投票！";
-						mes "正是像您这样的客户";
-						mes "确保成功和伟大";
-						mes "您所访问的服务";
-						mes "期待来自 Cool Event Corp.";
-						mes "谢谢你，祝你有美好的一天~";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��л����ͶƱ!";
+						mes "�������������Ŀͻ�";
+						mes "ȷ���ɹ���ΰ��";
+						mes "�������ʵķ���";
+						mes "�ڴ����� Cool Event Corp.";
+						mes "лл�㣬ף�������õ�һ��~";
 						break;
 					}
 				}
 				else {
-					mes "[Cool Event Corp. 投票人员]";
-					mes "对不起，但你已经";
-					mes "已经投票了";
-					mes "在这次选举中。然而，";
-					mes "请不要让它阻止你";
-					mes "来自为酷活动投票";
-					mes "下次选举的公司~";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "��Ǹ,�������Ѿ�";
+					mes "�Ѿ�ͶƱ��";
+					mes "�����ѡ��.����,";
+					mes "�벻Ҫ������ֹ��";
+					mes "����Ϊ��ͶƱ";
+					mes "�½�ѡ���еľ���.~";
 				}
 			}
 			else if ($DTS_Result == 3) {
 				if (lhz_vote <= $DTS_VoteCount) {
-					mes "[Cool Event Corp. 投票人员]";
-					mes "不幸的是，没有";
-					mes "足够的选民投票率";
-					mes "上次选举，所以我们举行";
-					mes "另一次选举来确定";
-					mes "哪家公司将提供";
-					mes "地下城传送服务。";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���ҵ���,û��";
+					mes "�㹻��ѡ��ͶƱ��";
+					mes "�ϴ�ѡ��,�������Ǿ���";
+					mes "��һ��ѡ����ȷ��";
+					mes "�ļҹ�˾���ṩ";
+					mes "���³Ǵ��ͷ���.";
 					next;
-					mes "[Cool Event Corp. 投票人员]";
-					mes "酷事件公司，";
-					mes "如果选择提供";
-					mes "地下城传送服务，";
-					mes "会将冒险者传送到";
-					mes "下面的地牢...";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���¼���˾.,";
+					mes "���ѡ���ṩ";
+					mes "���³Ǵ��ͷ���,";
+					mes "�Ὣð���ߴ��͵�";
+					mes "���µ��³�...";
 					next;
 					mes " ";
 					mes " ";
 					if ($DTS_JondaWins == 0) {
-						mes "^FF0000比亚兰地下城，第 3 层^000000";
+						mes "^FF0000���������³�, 3��^000000";
 					}
 					else if ($DTS_JondaWins == 1) {
-						mes "^FF0000比亚兰地下城，第 3 层^000000";
-						mes "^FF0000钟楼，三楼^000000";
+						mes "^FF0000���������³�, 3��^000000";
+						mes "^FF0000��¥,��¥^000000";
 					}
 					else {
-						mes "^FF0000比亚兰地下城，第 3 层^000000";
-						mes "^FF0000钟楼，三楼^000000";
-						mes "^FF0000格拉斯特海姆入口^000000";
+						mes "^FF0000���������³�, 3��^000000";
+						mes "^FF0000��¥,��¥^000000";
+						mes "^FF0000����˹�غ�ķ���^000000";
 					}
 					next;
-					mes "[Cool Event Corp. 投票人员]";
-					mes "如果您有兴趣";
-					mes "那么这些目的地";
-					mes "这将是你最好的";
-					mes "有兴趣为我们投票。";
-					mes "你想投票吗";
-					mes "对于酷事件公司？";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���������Ȥ";
+					mes "��ЩĿ�ĵ�, Ȼ��";
+					mes "�⽫������õ�";
+					mes "����ȤͶƱ������.";
+					mes "����ͶƱ��";
+					mes "���� Cool Event Corp.?";
 					next;
-					switch(select("否：是")) {
+					switch(select("��:��")) {
 					case 1:
-						mes "[Cool Event Corp. 投票人员]";
-						mes "啊，我明白了……好吧，如果你";
-						mes "碰巧改变主意，";
-						mes "请随时回来";
-						mes "为酷活动投票";
-						mes "公司，好吗？祝你有美好的一天~";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��,��������...��ô,�����";
+						mes "���ɸı�������,";
+						mes "����ʱ����";
+						mes "Ϊ��ͶƱ";
+						mes "��˾, �ð�? ף�������õ�һ��~";
 						break;
 					case 2:
 						set lhz_vote,$DTS_VoteCount+1;
 						set $DTS_JondaVotes,$DTS_JondaVotes+1;
-						mes "[Cool Event Corp. 投票人员]";
-						mes "感谢您的投票！";
-						mes "正是像您这样的客户";
-						mes "确保成功和伟大";
-						mes "您所访问的服务";
-						mes "期待来自 Cool Event Corp.";
-						mes "谢谢你，祝你有美好的一天~";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��л����ͶƱ!";
+						mes "�������������Ŀͻ�";
+						mes "ȷ���ɹ���ΰ��";
+						mes "�������ʵķ���";
+						mes "�ڴ����� Cool Event Corp.";
+						mes "лл�㣬ף�������õ�һ��~";
 						break;
 					}
 				}
 				else {
-					mes "[Cool Event Corp. 投票人员]";
-					mes "不幸的是，没有";
-					mes "足够的选民投票率";
-					mes "上次选举，所以我们举行";
-					mes "另一次选举来确定";
-					mes "哪家公司将提供";
-					mes "地下城传送服务。";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���ҵ���,û��";
+					mes "�㹻��ѡ��ͶƱ��";
+					mes "�ϴ�ѡ��,�������Ǿ���";
+					mes "��һ��ѡ����ȷ��";
+					mes "�ļҹ�˾���ṩ";
+					mes "���³Ǵ��ͷ���.";
 					next;
-					mes "[Cool Event Corp. 投票人员]";
-					mes "我们很感激";
-					mes "你已经参加过";
-					mes "在这第二次选举中";
-					mes "投票。感谢";
-					mes "感谢您的支持~";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "���Ǻܸм�";
+					mes "���Ѿ��μӹ�";
+					mes "����ڶ���ѡ����";
+					mes "ͶƱ. лл";
+					mes "��л����֧��~";
 				}
 			}
 			else {
-				mes "[Cool Event Corp. 投票人员]";
-				mes "抱歉，选举是";
-				mes "目前尚未举行。请来投下你的";
-				mes "在下一次选举中投票决定哪家公司将提供";
-				mes "地下城传送服务。";
+				mes "[Cool Event Corp. ͶƱ��Ա]";
+				mes "��Ǹ, ����ѡ����";
+				mes "Ŀǰ��δ����. ����Ͷ������";
+				mes "����һ��ѡ����ͶƱ�����ļҹ�˾���ṩ";
+				mes "���³Ǵ��ͷ���.";
 			}
 		//}
 		break;
 	case 3:
 		if ($DTS_Result == 1) {
-			mes "[Cool Event Corp. 投票人员]";
-			mes "请记住我们";
-			mes "不能接受免费 Warp 门票";
-			mes "或奖励特别储备积分";
-			mes "对于这项服务。现在，请";
-			mes "选择您的目的地。";
+			mes "[Cool Event Corp. ͶƱ��Ա]";
+			mes "���ס����";
+			mes "���ܽ������ Warp ��Ʊ";
+			mes "�����ر𴢱�����";
+			mes "���ڴ˷���.����,��";
+			mes "ѡ������Ŀ�ĵ�.";
 			next;
 			if ($DTS_JondaWins == 0) {
-				switch(select("Byalan 地牢，3 级 -> 4,000 z：取消")) {
+				switch(select("���� 3 <<PUND 3>> 4<3>>000 z<<PUN3>>ȡ��")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -942,26 +944,26 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. 投票人员]";
-						mes "对不起，但你确实";
-						mes "没有足够的 zeny";
-						mes "传送到这个目的地。";
-						mes "传送费用为4,000泽尼。";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��Ǹ, ����ȷʵ���";
+						mes "û���㹻�� zeny";
+						mes "���͵���Ŀ�ĵ�.";
+						mes "���ͷ���Ϊ 4,000 zeny.";
 					}
 					break;
 				case 2:
-					mes "[Cool Event Corp. 投票人员]";
-					mes "永远放心";
-					mes "Cool Event Corp. 可以";
-					mes "尽其所能";
-					mes "确保满足";
-					mes "它的顾客，无论年轻还是年老";
-					mes "和大的和小的。谢谢~";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "��Զ����";
+					mes "Cool Event Corp. ����";
+					mes "��������";
+					mes "ȷ������";
+					mes "���Ŀͻ�, �����˺�������";
+					mes "���д��СС��. лл~";
 					break;
 				}
 			}
 			else if ($DTS_JondaWins == 1) {
-				switch(select("拜兰地下城，第 3 层 -> 4,000 z：钟楼，3 楼 -> 4,000 z：取消")) {
+				switch(select("��������,>��3��-> 4,000 z:��¥,��¥-> 4,000 z:ȡ��")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -970,11 +972,11 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. 投票人员]";
-						mes "对不起，但你确实";
-						mes "没有足够的 zeny";
-						mes "传送到这个目的地。";
-						mes "传送费用为4,000泽尼。";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��Ǹ, ����ȷʵ���";
+						mes "û���㹻�� zeny";
+						mes "���͵���Ŀ�ĵ�.";
+						mes "���ͷ���Ϊ 4,000 zeny.";
 					}
 					break;
 				case 2:
@@ -985,33 +987,33 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. 投票人员]";
-						mes "对不起，但你确实";
-						mes "没有足够的 zeny";
-						mes "传送到这个目的地。";
-						mes "传送费用为4,000泽尼。";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��Ǹ, ����ȷʵ���";
+						mes "û���㹻�� zeny";
+						mes "���͵���Ŀ�ĵ�.";
+						mes "���ͷ���Ϊ 4,000 zeny.";
 					}
 					break;
 				case 3:
-					mes "[Cool Event Corp. 投票人员]";
-					mes "永远放心";
-					mes "Cool Event Corp. 可以";
-					mes "尽其所能";
-					mes "确保满足";
-					mes "它的顾客，无论年轻还是年老";
-					mes "和大的和小的。谢谢~";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "��Զ����";
+					mes "Cool Event Corp. ����";
+					mes "��������";
+					mes "ȷ������";
+					mes "���Ŀͻ�, �����˺�������";
+					mes "���д��СС��. лл~";
 					break;
 				}
 			}
 			else {
-				mes "[Cool Event Corp. 投票人员]";
-				mes "请记住我们";
-				mes "不能接受免费 Warp 门票";
-				mes "或奖励特别储备积分";
-				mes "对于这项服务。现在，请";
-				mes "选择您的目的地。";
+				mes "[Cool Event Corp. ͶƱ��Ա]";
+				mes "���ס����";
+				mes "���ܽ������ Warp ��Ʊ";
+				mes "�����ر𴢱�����";
+				mes "���ڴ˷���.����,��";
+				mes "ѡ������Ŀ�ĵ�.";
 				next;
-				switch(select("拜兰地下城，第 3 层 -> 4,000 z：钟楼，三楼 -> 4,000 z：格拉斯特海姆入口 -> 4,000 z：取消")) {
+				switch(select("����������,>��3��-> 4,000 z:��¥,��¥-> 4,000 z:����˹�غ�ķ���-> 4,000 z:ȡ��")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
@@ -1020,11 +1022,11 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. 投票人员]";
-						mes "对不起，但你确实";
-						mes "没有足够的 zeny";
-						mes "传送到这个目的地。";
-						mes "传送费用为4,000泽尼。";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��Ǹ, ����ȷʵ���";
+						mes "û���㹻�� zeny";
+						mes "���͵���Ŀ�ĵ�.";
+						mes "���ͷ���Ϊ 4,000 zeny.";
 					}
 					break;
 				case 2:
@@ -1035,11 +1037,11 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. 投票人员]";
-						mes "对不起，但你确实";
-						mes "没有足够的 zeny";
-						mes "传送到这个目的地。";
-						mes "传送费用为4,000泽尼。";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��Ǹ, ����ȷʵ���";
+						mes "û���㹻�� zeny";
+						mes "���͵���Ŀ�ĵ�.";
+						mes "���ͷ���Ϊ 4,000 zeny.";
 					}
 					break;
 				case 3:
@@ -1050,51 +1052,51 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 						end;
 					}
 					else {
-						mes "[Cool Event Corp. 投票人员]";
-						mes "对不起，但你确实";
-						mes "没有足够的 zeny";
-						mes "传送到这个目的地。";
-						mes "传送费用为4,000泽尼。";
+						mes "[Cool Event Corp. ͶƱ��Ա]";
+						mes "��Ǹ, ����ȷʵ���";
+						mes "û���㹻�� zeny";
+						mes "���͵���Ŀ�ĵ�.";
+						mes "���ͷ���Ϊ 4,000 zeny.";
 					}
 					break;
 				case 4:
-					mes "[Cool Event Corp. 投票人员]";
-					mes "永远放心";
-					mes "Cool Event Corp. 可以";
-					mes "尽其所能";
-					mes "确保满足";
-					mes "它的顾客，无论年轻还是年老";
-					mes "和大的和小的。谢谢~";
+					mes "[Cool Event Corp. ͶƱ��Ա]";
+					mes "��Զ����";
+					mes "Cool Event Corp. ����";
+					mes "��������";
+					mes "ȷ������";
+					mes "���Ŀͻ�, �����˺�������";
+					mes "���д��СС��. лл~";
 					break;
 				}
 			}
 		}
 		else if ($DTS_Result == 2) {
-			mes "[Cool Event Corp. 投票人员]";
-			mes "抱歉，但是很酷的活动";
-			mes "公司目前不提供";
-			mes "地牢传送服务";
-			mes "由于上次的结果";
-			mes "选举。请为我们投票";
-			mes "下次，可以吗？美好的一天~";
+			mes "[Cool Event Corp. ͶƱ��Ա]";
+			mes "��Ǹ,���Ǻܿ�Ļ";
+			mes "��˾. Ŀǰ���ṩ";
+			mes "���δ��ͷ���";
+			mes "�����ϴεĽ��";
+			mes "ѡ��. ��ͶƱ������";
+			mes "�´�, �ð�? ���õ�һ��~";
 		}
 		else {
-			mes "[Cool Event Corp. 投票人员]";
-			mes "抱歉，但是";
-			mes "地下城传送服务是";
-			mes "选举期间不可用";
-			mes "并会在选举结果公布后重新启动。";
-			mes "谢谢您，祝您有愉快的一天。";
+			mes "[Cool Event Corp. ͶƱ��Ա]";
+			mes "��Ǹ,����";
+			mes "���³Ǵ��ͷ�����";
+			mes "ѡ���ڼ䲻����";
+			mes "ѡ�ٽ����������������.";
+			mes "лл�㣬ף�������õ�һ��.";
 		}
 		break;
 	case 4:
-		mes "[Cool Event Corp. 投票人员]";
-		mes "Cool Event Corp. 始终如一";
-		mes "努力确保";
-		mes "不仅是我们的客户";
-		mes "满意，但我们还";
-		mes "超越你的最高标准。";
-		mes "谢谢您，祝您有美好的一天。";
+		mes "[Cool Event Corp. ͶƱ��Ա]";
+		mes "Cool Event Corp. ʼ����һ";
+		mes "Ŭ��ȷ��";
+		mes "���������ǵĿͻ�";
+		mes "����,������Ҳ";
+		mes "��Խ������߱�׼.";
+		mes "лл�㣬ף�������õ�һ��.";
 		break;
 	}
 	close2;
@@ -1180,156 +1182,156 @@ OnTimer15000:
 // Disabled in official script.
 sec_in02,17,160,4	script	Vote Globalvar Girl#yuno	864,{
 	callfunc "F_GM_NPC";
-	mes "[克里斯蒂的女仆]";
-	mes "克里斯蒂女士！";
+	mes "[����˹�ٵ�Ů��]";
+	mes "����˹��Ůʿ!";
 	next;
 	if (callfunc("F_GM_NPC",1854,0) == 1) {
-		mes "[克里斯蒂的女仆]";
-		mes "我是克里斯蒂女士的女仆。";
+		mes "[����˹�ٵ�Ů��]";
+		mes "���ǿ���˹��Ůʿ��Ů��.";
 		next;
-		switch(select("Globalvar 检查：设置零项：更改 Globalvar")) {
+		switch(select("ȫ�ֱ������:����Ŀ����Ϊ��:����ȫ�ֱ���")) {
 		case 1:
-			mes "当前的 GlobalVar 是";
+			mes "��ǰ�� GlobalVar ��";
 			next;
-			mes "[克里斯蒂的女仆]";
-			mes "全局 1 - 投票时间检查："+$DTS_Time+"";
-			mes "全球 2 - Cool Event Corp. 投票数："+$DTS_JondaVotes+"";
-			mes "全球 3 - 卡夫拉投票数："+$DTS_KafraVotes+"";
-			mes "全球 4 - 获胜者："+$DTS_Result+"";
-			mes "全球 5 - 传送服务周期检查："+$DTS_PeriodCheck+"";
-			mes "全球 6 - 卡夫拉积分："+$DTS_KafraWins+"";
-			mes "全球 7 - Cool Event Corp. 积分："+$DTS_JondaWins+"";
-			mes "全局 8 - 设置项目检查："+$DTS_VoteCount+"";
+			mes "[����˹�ٵ�Ů��]";
+			mes "ȫ�� 1 - ͶƱʱ���� : "+$DTS_Time+"";
+			mes "ȫ�� 2 - Cool Event Corp. ͶƱ�� : "+$DTS_JondaVotes+"";
+			mes "ȫ�� 3 - ������ͶƱ�� : "+$DTS_KafraVotes+"";
+			mes "ȫ�� 4 - ��ʤ�� : "+$DTS_Result+"";
+			mes "ȫ�� 5 - ���ͷ������ڼ��: "+$DTS_PeriodCheck+"";
+			mes "ȫ�� 6 - ���������� : "+$DTS_KafraWins+"";
+			mes "ȫ�� 7 - Cool Event Corp. ���� : "+$DTS_JondaWins+"";
+			mes "ȫ�� 8 - �������� : "+$DTS_VoteCount+"";
 			next;
-			mes "[克里斯蒂的女仆]";
-			mes "当前设置项值为"+lhz_vote+".";
+			mes "[����˹�ٵ�Ů��]";
+			mes "��ǰ Setitem ֵΪ "+lhz_vote+".";
 			close;
 		case 2:
 			set lhz_vote,0;
 			close;
 		case 3:
-			mes "[克里斯蒂的女仆]";
-			mes "您想要更改哪个 Globalvar 值？";
+			mes "[����˹�ٵ�Ů��]";
+			mes "����Ҫ�����ĸ� Globalvar ֵ?";
 			next;
-			switch(select("1 - 投票时间：2 - Cool Event Corp. 投票数：3 - Kafra 投票数：4 - 获胜者：5 - 传送服务期限：6 - Kafra 扭曲数：7 - Cool Event Corp. 扭曲数：8 - 设置项目值")) {
+			switch(select("1 - ͶƱʱ��:2 - Cool Event Corp. ͶƱ��:3 - Kafra ͶƱ��:4 - ��ʤ��:5 - ���ͷ�������:6 - Kafra ������:7 - Cool Event Corp. ������:8 - ������Ŀֵ")) {
 			case 1:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 到 1000 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 1000 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 1000)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_Time,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 2:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 到 1000 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 1000 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 1000)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_JondaVotes,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 3:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 到 1000 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 1000 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 1000)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_KafraVotes,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 4:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 到 3 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 3 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 3)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_Result,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 5:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 到 1000 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 1000 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 1000)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_PeriodCheck,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 6:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 和 2 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 2 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 2)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_KafraWins,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 7:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 和 2 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 2 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 2)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_JondaWins,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			case 8:
-				mes "[克里斯蒂的女仆]";
-				mes "请输入 0 到 10000 之间的数字。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "������ 0 �� 10000 ֮�������.";
 				next;
 				input .@input;
 				if ((.@input < 0) || (.@input > 10000)) {
-					mes "[克里斯蒂的女仆]";
-					mes "该值不正确。";
+					mes "[����˹�ٵ�Ů��]";
+					mes "ֵ����ȷ.";
 					close;
 				}
 				set $DTS_VoteCount,.@input;
-				mes "[克里斯蒂的女仆]";
-				mes "该值已被修改。";
+				mes "[����˹�ٵ�Ů��]";
+				mes "ֵ���޸�.";
 				close;
 			}
 		}
 	}
 	else {
-		mes "[克里斯蒂的女仆]";
-		mes "克里斯蒂女士...";
+		mes "[����˹�ٵ�Ů��]";
+		mes "����˹��Ůʿ...";
 		close;
 	}
 }
